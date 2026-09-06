@@ -15,9 +15,11 @@ from src.runtime.repo_transition_pressure import (
     metadata_only_pressure,
     multi_source_ledger_handshake,
     path_correspondence,
+    regional_correspondences,
     repeated_identity_pressure,
     same_bytes_later_committed,
     status_path,
+    unresolved_git_correspondences,
 )
 from src.runtime.repo_provenance_pressure import json_domain_result
 
@@ -44,6 +46,7 @@ class RepoTransitionPressureTest(unittest.TestCase):
             "capture_errors": [],
             "observation_started_at": "t0",
             "observation_finished_at": "t1",
+            "scope": {"excluded_dirs": ["traces"], "excluded_globs": ["*.pyc"]},
         }
         s1 = {
             "snapshot_id": "s1",
@@ -51,6 +54,7 @@ class RepoTransitionPressureTest(unittest.TestCase):
             "capture_errors": [],
             "observation_started_at": "t2",
             "observation_finished_at": "t3",
+            "scope": {"excluded_dirs": ["traces"], "excluded_globs": ["*.pyc"]},
         }
         fs_delta = filesystem_transition(s0, s1)
         git_delta = {
@@ -63,7 +67,93 @@ class RepoTransitionPressureTest(unittest.TestCase):
         out_of_scope = git_visible_filesystem_out_of_scope(correspondence)
 
         self.assertEqual(out_of_scope[0]["path"], "traces/generated.json")
-        self.assertFalse(next(row for row in correspondence if row["path"] == "traces/generated.json")["filesystem"]["in_scope"])
+        trace_row = next(row for row in correspondence if row["path"] == "traces/generated.json")
+        self.assertEqual(trace_row["correspondence"]["category"], "filesystem_out_of_scope")
+        self.assertFalse(trace_row["filesystem"]["in_scope"])
+
+    def test_directory_level_git_entry_maps_to_filesystem_descendants(self) -> None:
+        s0 = {
+            "snapshot_id": "s0",
+            "entries": [
+                {"path": "src/capture/a.py", "sha256": "a", "size_bytes": 1},
+                {"path": "src/capture/b.py", "sha256": "b", "size_bytes": 1},
+            ],
+            "capture_errors": [],
+            "observation_started_at": "t0",
+            "observation_finished_at": "t1",
+            "scope": {"excluded_dirs": ["traces"], "excluded_globs": ["*.pyc"]},
+        }
+        s1 = dict(s0, snapshot_id="s1", observation_started_at="t2", observation_finished_at="t3")
+        git_delta = {"status_removed": ["?? src/capture/"], "status_added": [], "status_current": []}
+
+        correspondence = path_correspondence(filesystem_transition(s0, s1), git_delta, [], s0, s1)
+
+        row = next(item for item in correspondence if item["path"] == "src/capture/")
+        self.assertEqual(row["correspondence"]["category"], "regional_correspondence")
+        self.assertEqual(row["correspondence"]["filesystem_descendants"], ["src/capture/a.py", "src/capture/b.py"])
+        self.assertEqual(regional_correspondences(correspondence)[0]["git_path"], "src/capture/")
+
+    def test_exact_path_remains_exact_correspondence(self) -> None:
+        s0 = {
+            "snapshot_id": "s0",
+            "entries": [{"path": "docs/contracts/capture.md", "sha256": "a", "size_bytes": 1}],
+            "capture_errors": [],
+            "observation_started_at": "t0",
+            "observation_finished_at": "t1",
+            "scope": {"excluded_dirs": ["traces"], "excluded_globs": ["*.pyc"]},
+        }
+        s1 = dict(s0, snapshot_id="s1", observation_started_at="t2", observation_finished_at="t3")
+        git_delta = {"status_removed": ["M docs/contracts/capture.md"], "status_added": [], "status_current": []}
+
+        correspondence = path_correspondence(filesystem_transition(s0, s1), git_delta, [], s0, s1)
+
+        row = next(item for item in correspondence if item["path"] == "docs/contracts/capture.md")
+        self.assertEqual(row["correspondence"]["category"], "exact_correspondence")
+
+    def test_unresolved_correspondence_is_not_silently_out_of_scope(self) -> None:
+        s0 = {
+            "snapshot_id": "s0",
+            "entries": [{"path": "visible.txt", "sha256": "a", "size_bytes": 1}],
+            "capture_errors": [],
+            "observation_started_at": "t0",
+            "observation_finished_at": "t1",
+            "scope": {"excluded_dirs": ["traces"], "excluded_globs": ["*.pyc"]},
+        }
+        s1 = dict(s0, snapshot_id="s1", observation_started_at="t2", observation_finished_at="t3")
+        git_delta = {"status_removed": ["?? unknown-region/"], "status_added": [], "status_current": []}
+
+        correspondence = path_correspondence(filesystem_transition(s0, s1), git_delta, [], s0, s1)
+
+        row = next(item for item in correspondence if item["path"] == "unknown-region/")
+        self.assertEqual(row["correspondence"]["category"], "unresolved_correspondence")
+        self.assertEqual(unresolved_git_correspondences(correspondence)[0]["git_path"], "unknown-region/")
+
+    def test_region_correspondence_does_not_claim_equivalence(self) -> None:
+        s0 = {
+            "snapshot_id": "s0",
+            "entries": [{"path": "src/capture/a.py", "sha256": "a", "size_bytes": 1}],
+            "capture_errors": [],
+            "observation_started_at": "t0",
+            "observation_finished_at": "t1",
+            "scope": {"excluded_dirs": ["traces"], "excluded_globs": ["*.pyc"]},
+        }
+        s1 = dict(s0, snapshot_id="s1", observation_started_at="t2", observation_finished_at="t3")
+        git_delta = {"status_removed": ["?? src/capture/"], "status_added": [], "status_current": []}
+
+        correspondence = path_correspondence(filesystem_transition(s0, s1), git_delta, [], s0, s1)
+        keys = set()
+        stack = [correspondence]
+        while stack:
+            value = stack.pop()
+            if isinstance(value, dict):
+                keys.update(value)
+                stack.extend(value.values())
+            elif isinstance(value, list):
+                stack.extend(value)
+
+        self.assertNotIn("same_change", keys)
+        self.assertNotIn("equivalent", keys)
+        self.assertNotIn("same_observation", keys)
 
     def test_path_surfaces_correlate_without_asserting_equivalence(self) -> None:
         s0 = {

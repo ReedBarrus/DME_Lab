@@ -33,7 +33,7 @@
     "git_retrospective_history",
     "path_correspondence"
   ],
-  "duration_seconds": 0.155870300004608,
+  "duration_seconds": 0.1295224000059534,
   "experiment": "repo_transition_pressure_v0",
   "filesystem_delta": {
     "added_paths": [],
@@ -323,22 +323,6 @@
       "baseline_status": [
         "??"
       ],
-      "commit_touches": [],
-      "current_status": [],
-      "path": "src/capture/"
-    },
-    {
-      "baseline_status": [
-        "??"
-      ],
-      "commit_touches": [],
-      "current_status": [],
-      "path": "tests/capture/"
-    },
-    {
-      "baseline_status": [
-        "??"
-      ],
       "commit_touches": [
         "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
       ],
@@ -430,6 +414,10 @@
   },
   "path_correspondence": [
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -449,6 +437,10 @@
       "path": ".gitignore"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -468,6 +460,10 @@
       "path": "AGENT_CONTEXT.md"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": true,
@@ -493,6 +489,10 @@
       "path": "PROJECT_STATE.md"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -512,6 +512,10 @@
       "path": "README.md"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -531,6 +535,10 @@
       "path": "WORKFLOW.md"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": true,
@@ -558,6 +566,10 @@
       "path": "docs/contracts/README.md"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -583,6 +595,10 @@
       "path": "docs/contracts/capture.md"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": true,
@@ -610,6 +626,10 @@
       "path": "docs/contracts/ingest.md"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -629,6 +649,10 @@
       "path": "docs/contracts/ledger.md"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -648,6 +672,10 @@
       "path": "docs/contracts/projection.md"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": true,
@@ -675,6 +703,10 @@
       "path": "docs/contracts/provenance.md"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -694,6 +726,10 @@
       "path": "docs/contracts/reconstruction.md"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -713,6 +749,10 @@
       "path": "docs/contracts/signal.md"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -732,6 +772,10 @@
       "path": "docs/decisions/README.md"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -751,6 +795,10 @@
       "path": "docs/decisions/ledger_pressure_pass_v0.md"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -770,6 +818,10 @@
       "path": "docs/decisions/ledger_runtime_pressure_v0.md"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -789,6 +841,10 @@
       "path": "docs/decisions/ledger_schema_pressure_v0.md"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": true,
@@ -814,6 +870,10 @@
       "path": "docs/decisions/repo_provenance_pressure_v0.md"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -833,6 +893,10 @@
       "path": "docs/distinctions/README.md"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -858,6 +922,10 @@
       "path": "docs/distinctions/registry.jsonl"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -877,6 +945,10 @@
       "path": "docs/lineage/DME_Theory.md"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -896,6 +968,10 @@
       "path": "docs/projection/v0_observability.md"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -915,6 +991,10 @@
       "path": "schemas/README.md"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -934,6 +1014,10 @@
       "path": "schemas/ledger_record_v0.schema.json"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -953,10 +1037,18 @@
       "path": "src/__init__.py"
     },
     {
+      "correspondence": {
+        "category": "regional_correspondence",
+        "filesystem_descendants": [
+          "src/capture/__init__.py",
+          "src/capture/git_state.py",
+          "src/capture/repo_snapshot.py"
+        ]
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
-        "in_scope": false,
+        "in_scope": true,
         "new_sha256": null,
         "old_sha256": null,
         "removed": false
@@ -974,6 +1066,10 @@
       "path": "src/capture/"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -997,6 +1093,10 @@
       "path": "src/capture/__init__.py"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1020,6 +1120,10 @@
       "path": "src/capture/git_state.py"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1043,6 +1147,10 @@
       "path": "src/capture/repo_snapshot.py"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1062,6 +1170,10 @@
       "path": "src/ingest/.gitkeep"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1081,6 +1193,10 @@
       "path": "src/ledger/.gitkeep"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1100,6 +1216,10 @@
       "path": "src/ledger/__init__.py"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1119,6 +1239,10 @@
       "path": "src/ledger/jsonl.py"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1138,6 +1262,10 @@
       "path": "src/ledger/schema.py"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1157,6 +1285,10 @@
       "path": "src/ledger/synthetic.py"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1176,6 +1308,10 @@
       "path": "src/projection/.gitkeep"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1195,6 +1331,10 @@
       "path": "src/runtime/.gitkeep"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1214,6 +1354,10 @@
       "path": "src/runtime/__init__.py"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1233,6 +1377,10 @@
       "path": "src/runtime/ledger_pressure.py"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1252,6 +1400,10 @@
       "path": "src/runtime/ledger_schema_pressure.py"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1277,6 +1429,10 @@
       "path": "src/runtime/repo_provenance_pressure.py"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1296,10 +1452,17 @@
       "path": "tests/__init__.py"
     },
     {
+      "correspondence": {
+        "category": "regional_correspondence",
+        "filesystem_descendants": [
+          "tests/capture/__init__.py",
+          "tests/capture/test_repo_snapshot.py"
+        ]
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
-        "in_scope": false,
+        "in_scope": true,
         "new_sha256": null,
         "old_sha256": null,
         "removed": false
@@ -1317,6 +1480,10 @@
       "path": "tests/capture/"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1340,6 +1507,10 @@
       "path": "tests/capture/__init__.py"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1363,6 +1534,10 @@
       "path": "tests/capture/test_repo_snapshot.py"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1382,6 +1557,10 @@
       "path": "tests/fixtures/.gitkeep"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1401,6 +1580,10 @@
       "path": "tests/fixtures/synthetic_envelopes.md"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1420,6 +1603,10 @@
       "path": "tests/replay/.gitkeep"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1439,6 +1626,10 @@
       "path": "tests/replay/__init__.py"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1458,6 +1649,10 @@
       "path": "tests/replay/test_ledger_harness.py"
     },
     {
+      "correspondence": {
+        "category": "exact_correspondence",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1477,6 +1672,10 @@
       "path": "tests/replay/test_ledger_schema.py"
     },
     {
+      "correspondence": {
+        "category": "filesystem_out_of_scope",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1502,6 +1701,10 @@
       "path": "traces/git_state_v0_baseline.json"
     },
     {
+      "correspondence": {
+        "category": "filesystem_out_of_scope",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1527,6 +1730,10 @@
       "path": "traces/repo_provenance_pressure_v0.json"
     },
     {
+      "correspondence": {
+        "category": "filesystem_out_of_scope",
+        "filesystem_descendants": []
+      },
       "filesystem": {
         "added": false,
         "content_changed": false,
@@ -1553,27 +1760,62 @@
     }
   ],
   "path_correspondence_summary": {
+    "correspondence_category_counts": {
+      "exact_correspondence": 49,
+      "filesystem_out_of_scope": 3,
+      "regional_correspondence": 2,
+      "unresolved_correspondence": 0
+    },
     "filesystem_added": 0,
     "filesystem_content_changed": 5,
     "filesystem_removed": 0,
     "git_commit_touched_paths": 16,
     "git_status_added": 0,
     "git_status_removed": 13,
-    "git_visible_filesystem_out_of_scope": 5,
+    "git_visible_filesystem_out_of_scope": 3,
+    "regional_correspondence": 2,
     "rows": 54,
-    "same_filesystem_bytes_later_committed": 8
+    "same_filesystem_bytes_later_committed": 8,
+    "unresolved_git_correspondence": 0
   },
+  "regional_correspondence": [
+    {
+      "baseline_status": [
+        "??"
+      ],
+      "commit_touches": [],
+      "current_status": [],
+      "filesystem_descendants": [
+        "src/capture/__init__.py",
+        "src/capture/git_state.py",
+        "src/capture/repo_snapshot.py"
+      ],
+      "git_path": "src/capture/"
+    },
+    {
+      "baseline_status": [
+        "??"
+      ],
+      "commit_touches": [],
+      "current_status": [],
+      "filesystem_descendants": [
+        "tests/capture/__init__.py",
+        "tests/capture/test_repo_snapshot.py"
+      ],
+      "git_path": "tests/capture/"
+    }
+  ],
   "repeated_observation_identity_pressure": {
     "different_observation_interval": true,
     "first_interval": [
-      "2026-09-06T06:58:07.411383Z",
-      "2026-09-06T06:58:07.413131Z"
+      "2026-09-06T08:00:09.741135Z",
+      "2026-09-06T08:00:09.742739Z"
     ],
     "same_envelope_identity": true,
     "same_snapshot_id": true,
     "second_interval": [
-      "2026-09-06T06:58:07.423303Z",
-      "2026-09-06T06:58:07.424704Z"
+      "2026-09-06T08:00:09.752809Z",
+      "2026-09-06T08:00:09.753667Z"
     ]
   },
   "root_identity_pressure": {
@@ -1710,6 +1952,7 @@
       ]
     }
   ],
+  "unresolved_git_correspondence": [],
   "unresolved_pressure": [
     "filesystem scope and Git scope are overlapping but non-coextensive",
     "snapshot identity includes metadata while compare_snapshots changed_paths uses content hash only",

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from copy import deepcopy
+import fnmatch
 import json
 import os
 from pathlib import Path
@@ -140,11 +141,16 @@ def path_correspondence(
 
     rows = []
     for path in all_paths:
+        category, descendants = classify_correspondence(path, fs_paths, before_snapshot.get("scope", {}), after_snapshot.get("scope", {}))
         rows.append(
             {
                 "path": path,
+                "correspondence": {
+                    "category": category,
+                    "filesystem_descendants": descendants,
+                },
                 "filesystem": {
-                    "in_scope": path in fs_paths,
+                    "in_scope": path in fs_paths or bool(descendants),
                     "added": path in added,
                     "removed": path in removed,
                     "content_changed": path in changed,
@@ -171,6 +177,40 @@ def path_correspondence(
             }
         )
     return rows
+
+
+def classify_correspondence(
+    path: str,
+    filesystem_paths: set[str],
+    before_scope: dict[str, Any],
+    after_scope: dict[str, Any],
+) -> tuple[str, list[str]]:
+    if path in filesystem_paths:
+        return "exact_correspondence", []
+
+    descendants = filesystem_descendants(path, filesystem_paths)
+    if descendants:
+        return "regional_correspondence", descendants
+
+    if path_excluded_by_scope(path, before_scope) and path_excluded_by_scope(path, after_scope):
+        return "filesystem_out_of_scope", []
+
+    return "unresolved_correspondence", []
+
+
+def filesystem_descendants(path: str, filesystem_paths: set[str]) -> list[str]:
+    prefix = path.rstrip("/") + "/"
+    return sorted(item for item in filesystem_paths if item.startswith(prefix))
+
+
+def path_excluded_by_scope(path: str, scope: dict[str, Any]) -> bool:
+    parts = path.strip("/").split("/")
+    excluded_dirs = scope.get("excluded_dirs", [])
+    excluded_globs = scope.get("excluded_globs", [])
+    if any(part in excluded_dirs for part in parts if part):
+        return True
+    leaf = parts[-1] if parts else path
+    return any(fnmatch.fnmatch(leaf, pattern) for pattern in excluded_globs)
 
 
 def status_path(status_entry: str) -> str:
@@ -210,13 +250,63 @@ def git_visible_filesystem_out_of_scope(correspondence: list[dict[str, Any]]) ->
             "commit_touches": row["git_historical"]["commit_touches"],
         }
         for row in correspondence
-        if not row["filesystem"]["in_scope"]
+        if row["correspondence"]["category"] == "filesystem_out_of_scope"
         and (
             row["git_working_state"]["baseline_status"]
             or row["git_working_state"]["current_status"]
             or row["git_historical"]["commit_touches"]
         )
     ]
+
+
+def regional_correspondences(correspondence: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [
+        {
+            "git_path": row["path"],
+            "baseline_status": row["git_working_state"]["baseline_status"],
+            "current_status": row["git_working_state"]["current_status"],
+            "commit_touches": row["git_historical"]["commit_touches"],
+            "filesystem_descendants": row["correspondence"]["filesystem_descendants"],
+        }
+        for row in correspondence
+        if row["correspondence"]["category"] == "regional_correspondence"
+        and (
+            row["git_working_state"]["baseline_status"]
+            or row["git_working_state"]["current_status"]
+            or row["git_historical"]["commit_touches"]
+        )
+    ]
+
+
+def unresolved_git_correspondences(correspondence: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [
+        {
+            "git_path": row["path"],
+            "baseline_status": row["git_working_state"]["baseline_status"],
+            "current_status": row["git_working_state"]["current_status"],
+            "commit_touches": row["git_historical"]["commit_touches"],
+        }
+        for row in correspondence
+        if row["correspondence"]["category"] == "unresolved_correspondence"
+        and (
+            row["git_working_state"]["baseline_status"]
+            or row["git_working_state"]["current_status"]
+            or row["git_historical"]["commit_touches"]
+        )
+    ]
+
+
+def correspondence_category_counts(correspondence: list[dict[str, Any]]) -> dict[str, int]:
+    categories = [
+        "exact_correspondence",
+        "regional_correspondence",
+        "filesystem_out_of_scope",
+        "unresolved_correspondence",
+    ]
+    return {
+        category: sum(1 for row in correspondence if row["correspondence"]["category"] == category)
+        for category in categories
+    }
 
 
 def multi_source_ledger_handshake(fs_snapshot: dict[str, Any], git_state: dict[str, Any]) -> dict[str, Any]:
@@ -338,6 +428,9 @@ def run(
     git_delta = git_observation_transition(g0, g1)
     history = git_history_between(root, g0["head_sha"], g1["head_sha"])
     correspondence = path_correspondence(fs_delta, git_delta, history, s0, s1)
+    out_of_scope = git_visible_filesystem_out_of_scope(correspondence)
+    regional = regional_correspondences(correspondence)
+    unresolved = unresolved_git_correspondences(correspondence)
     ledger_handshake = multi_source_ledger_handshake(s1, g1)
     repeat_identity = repeated_identity_pressure()
     metadata_pressure = metadata_only_pressure()
@@ -372,10 +465,15 @@ def run(
             "git_status_removed": len(git_delta["status_removed"]),
             "git_status_added": len(git_delta["status_added"]),
             "git_commit_touched_paths": len({item["path"] for commit in history for item in commit["changed_paths"]}),
-            "git_visible_filesystem_out_of_scope": len(git_visible_filesystem_out_of_scope(correspondence)),
+            "correspondence_category_counts": correspondence_category_counts(correspondence),
+            "regional_correspondence": len(regional),
+            "git_visible_filesystem_out_of_scope": len(out_of_scope),
+            "unresolved_git_correspondence": len(unresolved),
             "same_filesystem_bytes_later_committed": len(same_bytes_later_committed(correspondence)),
         },
-        "git_visible_filesystem_out_of_scope": git_visible_filesystem_out_of_scope(correspondence),
+        "regional_correspondence": regional,
+        "git_visible_filesystem_out_of_scope": out_of_scope,
+        "unresolved_git_correspondence": unresolved,
         "same_filesystem_bytes_later_committed": same_bytes_later_committed(correspondence),
         "candidate_envelopes": {
             "filesystem": {
