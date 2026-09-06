@@ -8,6 +8,8 @@ Repository scaffold initialized.
 
 Ledger pressure pass completed in `docs/decisions/ledger_pressure_pass_v0.md`.
 
+Synthetic ledger append/replay/integrity harness implemented and tested.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -68,18 +70,19 @@ navigation
 ## Missing Evidence
 
 - no raw observations captured
-- no ingest envelopes written
-- no append ledger format validated by runtime
-- no replay output reconstructed
+- no live ingest envelopes written
+- JSONL append ledger validated only against synthetic envelopes
+- raw replay validated only in canonical commit order
 - no projection exposed from evidence
 
 ## Next Smallest Question
 
-What is the smallest synthetic JSONL append/replay/integrity harness that can falsify the v0 ledger guarantees without introducing interpretation?
+What is the smallest machine-readable ledger schema that can describe the tested record boundary without adding semantic fields?
 
 ## Current Pressure
 
 - keep `record_id`, envelope identity, source sequence, event time, arrival time, and `commit_index` distinct
 - test raw replay in canonical commit order before resolved amendment views
-- define the integrity hash boundary before implementation
+- keep the integrity hash boundary explicit: canonical JSON of record content without the `integrity` field
 - preserve missingness structurally without explaining it semantically
+- JSONL and complete-envelope storage remain provisional after small synthetic tests

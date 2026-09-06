@@ -1,0 +1,93 @@
+{
+  "failed": 0,
+  "integrity_hash_boundary": "canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators",
+  "passed": 6,
+  "runtime_scope": "synthetic ledger append/replay/integrity only",
+  "scenarios": [
+    {
+      "append_duration_seconds": 0.0019751000072574243,
+      "bytes_written": 1182,
+      "guarantee": "deterministic order",
+      "mechanism": "append envelopes whose source sequence and event time disagree with commit order",
+      "name": "ordering_conflict",
+      "outcome": "survived",
+      "passed": true,
+      "pressure": "none observed in synthetic local run",
+      "records": 2,
+      "replay_duration_seconds": 0.0007886999956099316,
+      "verification_duration_seconds": 0.00023169998894445598,
+      "what_happened": "2 records appended and replayed in canonical commit order"
+    },
+    {
+      "append_duration_seconds": 0.0017162000003736466,
+      "bytes_written": 1168,
+      "guarantee": "stable identity",
+      "mechanism": "append records with duplicate envelope identity and distinct ledger record identities",
+      "name": "identity_collision",
+      "outcome": "survived",
+      "passed": true,
+      "pressure": "none observed in synthetic local run",
+      "records": 2,
+      "replay_duration_seconds": 0.0007781000022077933,
+      "verification_duration_seconds": 0.0001753999968059361,
+      "what_happened": "2 records appended and replayed in canonical commit order"
+    },
+    {
+      "append_duration_seconds": 0.0006279000081121922,
+      "bytes_written": 722,
+      "guarantee": "envelope preservation",
+      "mechanism": "append and replay a complete envelope containing opaque payload, explicit null, and missing field evidence",
+      "name": "envelope_preservation",
+      "outcome": "survived",
+      "passed": true,
+      "pressure": "none observed in synthetic local run",
+      "records": 1,
+      "replay_duration_seconds": 0.0008194999973056838,
+      "verification_duration_seconds": 0.00019439999596215785,
+      "what_happened": "1 records appended and replayed in canonical commit order"
+    },
+    {
+      "append_duration_seconds": null,
+      "bytes_written": 722,
+      "failure_count_after_mutation": 1,
+      "guarantee": "integrity",
+      "mechanism": "append one record, mutate persisted content, then verify per-record hash",
+      "name": "integrity_mutation",
+      "outcome": "survived",
+      "passed": true,
+      "pressure": "mutation detected by per-record hash",
+      "records": 1,
+      "replay_duration_seconds": null,
+      "verification_duration_seconds": 0.0008586999902036041,
+      "what_happened": "verification passed before mutation and failed after persisted content changed"
+    },
+    {
+      "append_duration_seconds": 0.0037909000093350187,
+      "bytes_written": 2478,
+      "guarantee": "missingness preservation",
+      "mechanism": "append separate envelopes for absent, explicit null, unavailable, and malformed states",
+      "name": "missingness",
+      "outcome": "survived",
+      "passed": true,
+      "pressure": "none observed in synthetic local run",
+      "records": 4,
+      "replay_duration_seconds": 0.0007762000022921711,
+      "verification_duration_seconds": 0.00028530000417958945,
+      "what_happened": "4 records appended and replayed in canonical commit order"
+    },
+    {
+      "append_duration_seconds": 0.015854099998250604,
+      "bytes_written": 1276,
+      "guarantee": "append-only amendment",
+      "mechanism": "append original record and later amendment record pointing at the original",
+      "name": "append_only_amendment",
+      "outcome": "survived",
+      "passed": true,
+      "pressure": "none observed in synthetic local run",
+      "records": 2,
+      "replay_duration_seconds": 0.000839599990285933,
+      "verification_duration_seconds": 0.00021630000264849514,
+      "what_happened": "2 records appended and replayed in canonical commit order"
+    }
+  ]
+}
