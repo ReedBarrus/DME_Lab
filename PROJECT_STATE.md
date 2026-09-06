@@ -6,6 +6,8 @@ Primary fast-entry working memory for DME_Lab.
 
 Repository scaffold initialized.
 
+Ledger pressure pass completed in `docs/decisions/ledger_pressure_pass_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -73,5 +75,11 @@ navigation
 
 ## Next Smallest Question
 
-What is the minimal append-only ledger contract that can preserve raw observation identity, ordering, integrity, and replayability without adding interpretation?
+What is the smallest synthetic JSONL append/replay/integrity harness that can falsify the v0 ledger guarantees without introducing interpretation?
 
+## Current Pressure
+
+- keep `record_id`, envelope identity, source sequence, event time, arrival time, and `commit_index` distinct
+- test raw replay in canonical commit order before resolved amendment views
+- define the integrity hash boundary before implementation
+- preserve missingness structurally without explaining it semantically

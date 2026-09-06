@@ -77,6 +77,21 @@ This favors replay clarity over storage efficiency.
 
 ---
 
+## Distinct Identity and Ordering Claims
+
+The following claims must remain distinguishable when present:
+
+* `record_id`
+* envelope identity
+* source sequence
+* event time
+* arrival time
+* `commit_index`
+
+The ledger must not treat any one of these as a silent substitute for another.
+
+---
+
 ## Core Guarantees
 
 ### 1. Deterministic Order
@@ -132,6 +147,8 @@ The system must be able to test whether committed content remains the same conte
 
 The minimum integrity mechanism may be a content hash.
 
+The hash boundary must be explicit before implementation. Integrity verifies preservation of committed content; it does not establish truth of the observed event.
+
 Hash chaining between records is deferred until runtime evidence demonstrates a need for tamper-evident ledger chaining.
 
 Integrity of a record and integrity of the full history are different claims.
@@ -149,6 +166,15 @@ missing != inferred
 The ledger must not fill absent data with guessed or derived values.
 
 If ingest admits an explicit gap, the ledger commits the gap.
+
+Before implementation, tests should distinguish at least:
+
+* absent
+* explicit null
+* unavailable
+* malformed
+
+These are structural states, not semantic explanations.
 
 ---
 
@@ -168,6 +194,8 @@ corrects
 ```
 
 These names are provisional.
+
+Raw replay exposes committed records in canonical commit order. Any resolved amendment view is deferred.
 
 ---
 
@@ -272,4 +300,3 @@ After this contract stabilizes:
 2. derive the minimum machine schema required for ledger records
 3. implement a tiny append/replay harness against synthetic envelopes
 4. test deterministic replay before connecting live OS capture
-
