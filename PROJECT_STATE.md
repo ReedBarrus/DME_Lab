@@ -10,6 +10,8 @@ Ledger pressure pass completed in `docs/decisions/ledger_pressure_pass_v0.md`.
 
 Synthetic ledger append/replay/integrity harness implemented and tested.
 
+Development distinction registry initialized as provisional, non-authoritative research memory.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -86,3 +88,4 @@ What is the smallest machine-readable ledger schema that can describe the tested
 - keep the integrity hash boundary explicit: canonical JSON of record content without the `integrity` field
 - preserve missingness structurally without explaining it semantically
 - JSONL and complete-envelope storage remain provisional after small synthetic tests
+- use `docs/distinctions/registry.jsonl` as appendable distinction memory, not as authority over runtime evidence
