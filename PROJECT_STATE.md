@@ -40,6 +40,18 @@ OS Source
 -> Exposed Projection
 ```
 
+signal
+-> provenance envelope
+-> append-only ledger
+-> deterministic replay
+-> reconstructed topology
+
+next:
+navigation
+-> comparison
+-> projection
+-> feedback
+
 ## Explicit Deferrals
 
 - Windows capture adapter
