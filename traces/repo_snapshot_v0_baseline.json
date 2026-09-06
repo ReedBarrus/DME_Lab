@@ -1,0 +1,372 @@
+{
+  "capture_errors": [],
+  "duration_seconds": 0.09230010000464972,
+  "entries": [
+    {
+      "kind": "file",
+      "mtime_ns": 1788665132853843800,
+      "path": ".gitignore",
+      "sha256": "c6f542ceab250e78e3e6e38a5554c8406c9dec4fc58f8b0143fce01a6a349373",
+      "size_bytes": 24
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788669143740875100,
+      "path": "AGENT_CONTEXT.md",
+      "sha256": "8bc385c89076d683f7e0d99e60c96fe882a27cbf4f8ba7cab0ecc85abcd36594",
+      "size_bytes": 1430
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788674776150121400,
+      "path": "PROJECT_STATE.md",
+      "sha256": "8391cdae89c64c7d3bf2fcc516372a7b3c72c9ac0e909955d873b4f0770b0605",
+      "size_bytes": 3634
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788659037929272200,
+      "path": "README.md",
+      "sha256": "169fdf111dc489ad8b912e3ea3f8a2a1ab2fd31d6e462412ede7319e355a791d",
+      "size_bytes": 1034
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788666915321009300,
+      "path": "WORKFLOW.md",
+      "sha256": "c0befbebec68a8fc331c2c62f34f125ba67bcefb811067f6049f2ba395bcfea0",
+      "size_bytes": 652
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788674811650681400,
+      "path": "docs/contracts/README.md",
+      "sha256": "32b09ba8a9040160c6499c77a27f5438185f32c7dbc5daf98af807cd00fbdd8e",
+      "size_bytes": 3748
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788674811650681400,
+      "path": "docs/contracts/capture.md",
+      "sha256": "710d86d9aa0e6b91a95857db8e271b9b211b1c82433ed8b15d9150f4e8fa6b5b",
+      "size_bytes": 1216
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788674811650681400,
+      "path": "docs/contracts/ingest.md",
+      "sha256": "6944050f2c835f87c84dd8c7cdead83a5ba2ab7556762a5049c4d3f525c2e236",
+      "size_bytes": 1256
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788669132136820600,
+      "path": "docs/contracts/ledger.md",
+      "sha256": "aca4896437b73eb58a2a91e8f980c1ad2b323c8692666c0f73bb7592b3736804",
+      "size_bytes": 7544
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788669132133582800,
+      "path": "docs/contracts/projection.md",
+      "sha256": "ae1e068a90a2ce5c9492367527ec71d74ba3334f74abf5ea222e7a086cefd159",
+      "size_bytes": 973
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788674811650681400,
+      "path": "docs/contracts/provenance.md",
+      "sha256": "2d930a38b95255e08b62a1e78bdd25f4f16887440de21099bc58fa38adff7e47",
+      "size_bytes": 1507
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788669132137821100,
+      "path": "docs/contracts/reconstruction.md",
+      "sha256": "3b80b2b058315a8f886f84886a41ff1c8d4968ca9177d406e2f92fd2b2e473bc",
+      "size_bytes": 926
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788669132134585800,
+      "path": "docs/contracts/signal.md",
+      "sha256": "d0f8129cba0e00f425aba42f60db07a81f29b5ae2a028d0265bf77467905487b",
+      "size_bytes": 993
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788661508800652600,
+      "path": "docs/decisions/README.md",
+      "sha256": "6c78c7fff6c5a6ddc65667d7a195ab12aac351cd7174a770ddd87126ce383d8c",
+      "size_bytes": 20
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788663851950299300,
+      "path": "docs/decisions/ledger_pressure_pass_v0.md",
+      "sha256": "7f06b563c99d1648105b3bca0af195d5961c8cb64c867018b33823feb57bf2fa",
+      "size_bytes": 9271
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788665111572021200,
+      "path": "docs/decisions/ledger_runtime_pressure_v0.md",
+      "sha256": "36a71e4369a5734b9c414802f465dc62cceb1b01f70a236c26b88d6caa092e1c",
+      "size_bytes": 3843
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788672752384000800,
+      "path": "docs/decisions/ledger_schema_pressure_v0.md",
+      "sha256": "6043e833d3b07ae64b746d45c8b0e5dc65ecd4c6e422cc7f9479c9a32e0ab8d1",
+      "size_bytes": 6129
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788674766472895300,
+      "path": "docs/decisions/repo_provenance_pressure_v0.md",
+      "sha256": "ad4f541b6fd607d180848fa9751e1cec3e9a80f56afa37169cc833b097a9444a",
+      "size_bytes": 5491
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788666915320008800,
+      "path": "docs/distinctions/README.md",
+      "sha256": "9976bec192803135a1b9482b0f4bf57019a0b4777d4a7bfeeb136bdcbe2d8239",
+      "size_bytes": 3214
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788674766473894800,
+      "path": "docs/distinctions/registry.jsonl",
+      "sha256": "0b413d8d84b8857405905fe6ee1bdd27ef3f548ba1f3daac3f933023abb74c76",
+      "size_bytes": 6610
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788659037941054200,
+      "path": "docs/lineage/DME_Theory.md",
+      "sha256": "27ed34322626e565d82af9e22efd89d6233587f76a9744644f9c12035aa4809e",
+      "size_bytes": 309
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788659037934553000,
+      "path": "docs/projection/v0_observability.md",
+      "sha256": "92dc7a3e3b90203c77b4c0d6a8e2d2aaed9fef34f31e7b57f69e6285378a2749",
+      "size_bytes": 631
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788672768273459700,
+      "path": "schemas/README.md",
+      "sha256": "78e9b87c52f563f10f253c65ab44e6dc8a15fa81ab55c15d8e40b931aef92989",
+      "size_bytes": 539
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788672466761662200,
+      "path": "schemas/ledger_record_v0.schema.json",
+      "sha256": "5dca1935ae1cb68eb997ef0fe7a2525c0cad8877558e78c3885e8c141402186e",
+      "size_bytes": 1196
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788665006211582200,
+      "path": "src/__init__.py",
+      "sha256": "245ee510e853e191cffb967e716dc5345fd46b04d4205adac2481ee72511295d",
+      "size_bytes": 44
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788674328727074000,
+      "path": "src/capture/__init__.py",
+      "sha256": "6ecc92d41d9b84e1870c7ff81eb95937d0cb19b6b4120d290551f79a273fe650",
+      "size_bytes": 370
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788674328728073900,
+      "path": "src/capture/git_state.py",
+      "sha256": "515a46c52ded521410d28c1ccaad571208700545d7e3d3dea796b9ef848ac45c",
+      "size_bytes": 1703
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788674328727074000,
+      "path": "src/capture/repo_snapshot.py",
+      "sha256": "be5cf003f4e1463595729e2f39665f3b0439b587ec083569ad4bf2b049961913",
+      "size_bytes": 5442
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788659037944513800,
+      "path": "src/ingest/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788659037944513800,
+      "path": "src/ledger/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788672466761662200,
+      "path": "src/ledger/__init__.py",
+      "sha256": "be7bf81dceb72607daed7e72e6b3d6e8625c6b6ac45ea421059eedba9d5ec748",
+      "size_bytes": 881
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788665006214757400,
+      "path": "src/ledger/jsonl.py",
+      "sha256": "fbcfcd201a73b00d0d0b4d8a5546586289933b69b12df2441b5028719a829b0e",
+      "size_bytes": 4265
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788672466761662200,
+      "path": "src/ledger/schema.py",
+      "sha256": "c0cc2f92236f6379d01f1deffa76051407af3ae0845c7e685e740d339c4add3e",
+      "size_bytes": 4562
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788665006214757400,
+      "path": "src/ledger/synthetic.py",
+      "sha256": "3bfef582af46235ffe62a98212dc62287a6e36e90ec6416cfe9e6e5cac3c9560",
+      "size_bytes": 3360
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788659037947995700,
+      "path": "src/projection/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788659037945888700,
+      "path": "src/runtime/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788665006217440200,
+      "path": "src/runtime/__init__.py",
+      "sha256": "73999f76cf63112a6682e8bf0ecc79b06fd1bf6e4bc34f6f2680807207205fdc",
+      "size_bytes": 37
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788665164245547800,
+      "path": "src/runtime/ledger_pressure.py",
+      "sha256": "199241f5ce5c76e630aec3fe3ccac131a7eb963a712cbe1b464d521bc2363329",
+      "size_bytes": 5378
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788672549914141400,
+      "path": "src/runtime/ledger_schema_pressure.py",
+      "sha256": "54257fa5937bfd7c81563826689605890b7837e808ad483ebdb54354d6632424",
+      "size_bytes": 8845
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788674328729074100,
+      "path": "src/runtime/repo_provenance_pressure.py",
+      "sha256": "e4f8a3b15efee4707f63b21957655d9a33e65a040201912556fa6b2f21968401",
+      "size_bytes": 6093
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788665046755799700,
+      "path": "tests/__init__.py",
+      "sha256": "d17047e535233825de2baa7176f730ba27c31bf27a2790dd9863b235e06631a6",
+      "size_bytes": 22
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788674541103228900,
+      "path": "tests/capture/__init__.py",
+      "sha256": "d1d369613c7a2998d3b55f38de452aab6294ec49db96829388a0c16cc4afce56",
+      "size_bytes": 31
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788674555548479000,
+      "path": "tests/capture/test_repo_snapshot.py",
+      "sha256": "37a5ec3d648f5254a1612730a18b2ac5879dab2d883622852872a04a16bfc12e",
+      "size_bytes": 6302
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788659037948995800,
+      "path": "tests/fixtures/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788665006222043300,
+      "path": "tests/fixtures/synthetic_envelopes.md",
+      "sha256": "31a2e61017e9f1cb16384e2f2f554fa0fb35371268a13894200d76e634be3d30",
+      "size_bytes": 351
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788659037949995900,
+      "path": "tests/replay/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788665046756805100,
+      "path": "tests/replay/__init__.py",
+      "sha256": "50cf829e684beea408208c029944fdeb3db0180cce60d5404b9ee3cec31ccf97",
+      "size_bytes": 40
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788665006220731100,
+      "path": "tests/replay/test_ledger_harness.py",
+      "sha256": "e82c0536e0252064a1346a50e255b38c763489f760fa8a52094b62aaa3c33279",
+      "size_bytes": 4239
+    },
+    {
+      "kind": "file",
+      "mtime_ns": 1788672549915407500,
+      "path": "tests/replay/test_ledger_schema.py",
+      "sha256": "c7f779208dfb35e388cb3451a2674cb35fefbb96502535dc939bb1efe43b1f10",
+      "size_bytes": 3690
+    }
+  ],
+  "observation_finished_at": "2026-09-06T06:07:20.620003Z",
+  "observation_started_at": "2026-09-06T06:07:20.527700Z",
+  "observer": "repo_snapshot",
+  "observer_version": "repo_snapshot_v0",
+  "root_identity": {
+    "kind": "repository_working_tree",
+    "name": ""
+  },
+  "scope": {
+    "excluded_dirs": [
+      ".git",
+      "__pycache__",
+      "traces"
+    ],
+    "excluded_globs": [
+      "*.pyc"
+    ],
+    "included": [
+      "working_tree_files"
+    ],
+    "root": "."
+  },
+  "snapshot_id": "repo-snapshot-v0:660b63323c908e534c2d7b55ee8c222c30d1d3f646ac131babccd779fa3aadfd"
+}

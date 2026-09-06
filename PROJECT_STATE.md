@@ -16,6 +16,10 @@ v0 contract surface mapped in `docs/contracts/README.md`.
 
 Ledger record schema hypothesis added as descriptive, shadow-only JSON Schema.
 
+Bounded repository filesystem observer and separate Git observer implemented.
+
+First live repository baseline captured in `traces/repo_snapshot_v0_baseline.json` and `traces/git_state_v0_baseline.json`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -75,15 +79,16 @@ navigation
 
 ## Missing Evidence
 
-- no raw observations captured
-- no live ingest envelopes written
-- JSONL append ledger validated only against synthetic envelopes
+- no general OS raw observations captured
+- no enforced live ingest admission rules
+- no canonical live ingest envelope ledger
+- JSONL append ledger pressure-tested mainly against synthetic envelopes, with one temporary live candidate-envelope handshake
 - raw replay validated only in canonical commit order
 - no projection exposed from evidence
 
 ## Next Smallest Question
 
-What is the smallest ingest/provenance admission experiment that can decide which structures may enter the ledger as admitted envelopes?
+What controlled repository perturbation should produce the second live snapshot, and what admission rule should it pressure?
 
 ## Contract Surface Status
 
@@ -104,3 +109,7 @@ What is the smallest ingest/provenance admission experiment that can decide whic
 - schema validation remains shadow-only and does not regulate ledger append
 - runtime can currently produce some records the schema rejects, including non-object envelopes and non-finite JSON values
 - ingest/provenance admission is now the likely next pressure frontier
+- repository snapshot baseline produced a JSON-domain valid candidate envelope
+- temporary ledger handshake for the live candidate passed schema shadow validation, replay, and integrity verification
+- filesystem observation and Git observation are separate live evidence regimes
+- snapshots expose endpoint structure, not complete transformation history

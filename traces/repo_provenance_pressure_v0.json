@@ -1,0 +1,81 @@
+{
+  "candidate_ingest_envelope": {
+    "envelope_identity": "repo-snapshot-envelope:repo-snapshot-v0:660b63323c908e534c2d7b55ee8c222c30d1d3f646ac131babccd779fa3aadfd",
+    "json_domain": {
+      "error": null,
+      "message": null,
+      "valid": true
+    },
+    "payload_snapshot_id": "repo-snapshot-v0:660b63323c908e534c2d7b55ee8c222c30d1d3f646ac131babccd779fa3aadfd",
+    "provenance_fields": [
+      "capture_errors",
+      "observation_finished_at",
+      "observation_started_at",
+      "observer",
+      "observer_version",
+      "root_identity",
+      "scope"
+    ],
+    "source": "repository_filesystem_snapshot"
+  },
+  "duration_seconds": 0.2259018000040669,
+  "experiment": "repo_provenance_pressure_v0",
+  "filesystem_baseline": {
+    "capture_error_count": 0,
+    "duration_seconds": 0.09230010000464972,
+    "entry_count": 49,
+    "observation_finished_at": "2026-09-06T06:07:20.620003Z",
+    "observation_started_at": "2026-09-06T06:07:20.527700Z",
+    "observer": "repo_snapshot",
+    "observer_version": "repo_snapshot_v0",
+    "scope": {
+      "excluded_dirs": [
+        ".git",
+        "__pycache__",
+        "traces"
+      ],
+      "excluded_globs": [
+        "*.pyc"
+      ],
+      "included": [
+        "working_tree_files"
+      ],
+      "root": "."
+    },
+    "snapshot_id": "repo-snapshot-v0:660b63323c908e534c2d7b55ee8c222c30d1d3f646ac131babccd779fa3aadfd",
+    "total_size_bytes": 117851
+  },
+  "git_baseline": {
+    "branch": "main",
+    "capture_error_count": 0,
+    "head_sha": "5f1181accff683eb5149b345c9a14daf4f98990c",
+    "observation_id": "git-state-v0:2026-09-06T06:07:20.620023Z",
+    "observed_at": "2026-09-06T06:07:20.620023Z",
+    "observer": "git_state",
+    "observer_version": "git_state_v0",
+    "status_count": 13
+  },
+  "ledger_handshake": {
+    "attempted": true,
+    "bytes_written": 10391,
+    "commit_index": 1,
+    "experimental_ledger": "temporary",
+    "integrity_errors": [],
+    "integrity_ok": true,
+    "record_id": "rec-000001",
+    "replayed_records": 1,
+    "schema_shadow_validation": {
+      "errors": [],
+      "valid": true
+    }
+  },
+  "observed_mismatches": [],
+  "runtime_scope": "bounded DME_Lab repository specimen",
+  "unresolved_pressure": [
+    "snapshot captures endpoint structure, not complete transformation history",
+    "filesystem and Git observations are separate regimes",
+    "observation interval is not event time",
+    "mtime is preserved as file metadata but not interpreted as event time",
+    "live envelope size may pressure complete-envelope storage as repository grows"
+  ]
+}

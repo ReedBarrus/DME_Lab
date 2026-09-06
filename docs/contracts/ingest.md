@@ -44,3 +44,10 @@ No dedicated ingest implementation exists.
 
 Current evidence is limited to synthetic envelopes used by ledger tests.
 
+A live repository snapshot candidate envelope has been constructed and compared in shadow mode:
+
+- `src/runtime/repo_provenance_pressure.py`
+- `traces/repo_provenance_pressure_v0.json`
+- `docs/decisions/repo_provenance_pressure_v0.md`
+
+This does not enforce admission or define final ingest rules.

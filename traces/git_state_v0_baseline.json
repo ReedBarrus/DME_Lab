@@ -1,0 +1,28 @@
+{
+  "branch": "main",
+  "capture_errors": [],
+  "head_sha": "5f1181accff683eb5149b345c9a14daf4f98990c",
+  "observation_id": "git-state-v0:2026-09-06T06:07:20.620023Z",
+  "observed_at": "2026-09-06T06:07:20.620023Z",
+  "observer": "git_state",
+  "observer_version": "git_state_v0",
+  "root_identity": {
+    "kind": "repository_working_tree",
+    "name": ""
+  },
+  "status_porcelain": [
+    "M PROJECT_STATE.md",
+    " M docs/contracts/README.md",
+    " M docs/contracts/capture.md",
+    " M docs/contracts/ingest.md",
+    " M docs/contracts/provenance.md",
+    " M docs/distinctions/registry.jsonl",
+    "?? docs/decisions/repo_provenance_pressure_v0.md",
+    "?? src/capture/",
+    "?? src/runtime/repo_provenance_pressure.py",
+    "?? tests/capture/",
+    "?? traces/git_state_v0_baseline.json",
+    "?? traces/repo_provenance_pressure_v0.json",
+    "?? traces/repo_snapshot_v0_baseline.json"
+  ]
+}

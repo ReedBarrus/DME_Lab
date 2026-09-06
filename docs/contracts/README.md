@@ -15,7 +15,7 @@ Contract text is not proof. A boundary status should say no more than the strong
 
 | Boundary | Status | Current Role | Evidence | Open Pressure |
 | --- | --- | --- | --- | --- |
-| Capture Adapter | deferred | Convert external OS/source behavior into raw observations. | none | real OS observation shape; capture identity and timing |
+| Capture Adapter | implemented within bounded repository specimen; general OS deferred | Convert external source behavior into raw observations. | `src/capture/repo_snapshot.py`; `src/capture/git_state.py`; `tests/capture/test_repo_snapshot.py`; `traces/repo_snapshot_v0_baseline.json`; `traces/git_state_v0_baseline.json` | real OS observation shape; capture identity and timing; second live snapshot |
 | Signal | projected | Represent primitive observed event content. | `docs/contracts/signal.md`; `docs/projection/v0_observability.md` | field encodings under real observation pressure |
 | Provenance | projected | Surround a signal with origin and handling metadata. | `docs/contracts/provenance.md`; synthetic fields exercised inside ledger tests only | real source sequence, arrival time, and integrity behavior |
 | Ingest Envelope | projected | Admit raw observation structure into the ledger boundary while preserving provenance and missingness. | `docs/contracts/ingest.md`; ledger input boundary; synthetic envelopes only | admission behavior; malformed and unavailable source structure |
@@ -38,5 +38,9 @@ Contract text is not proof. A boundary status should say no more than the strong
 - schema-valid != integrity-valid
 - per-record schema != ledger-wide invariant
 - runtime-produced != schema-valid
+- filesystem observation != Git observation
+- snapshot != complete transformation history
+- observation interval != event time
+- shadow schema comparison != admission decision
 
 Registry entries may point toward supporting evidence, but the registry alone does not upgrade a boundary status.
