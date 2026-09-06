@@ -4,6 +4,8 @@
 
 Provisional contract.
 
+Current status: pressure-tested within the synthetic v0 ledger scope.
+
 This document defines the minimum guarantees required of the first DME_Lab append-only ledger before a formal schema or runtime implementation is admitted.
 
 The ledger is not yet a semantic, causal, or consequence model.
@@ -235,6 +237,10 @@ Replay must not require semantic interpretation.
 
 Replay should reproduce the same ordered committed input sequence from the same valid ledger state.
 
+Raw replay is currently treated as part of the ledger boundary. It does not provide a resolved amendment view.
+
+Physical JSONL line order and canonical replay order must not be silently treated as equivalent.
+
 ---
 
 ## Acceptance Tests
@@ -262,6 +268,19 @@ Missing source information survives commit and replay as missing.
 ### Amendment
 
 Corrections do not erase prior committed records.
+
+---
+
+## Evidence
+
+Synthetic v0 evidence:
+
+* `src/ledger/jsonl.py`
+* `tests/replay/test_ledger_harness.py`
+* `traces/ledger_runtime_pressure_v0.json`
+* `docs/decisions/ledger_runtime_pressure_v0.md`
+
+This evidence does not validate live OS capture, distributed append, history-level integrity, or schema permanence.
 
 ---
 

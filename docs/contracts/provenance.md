@@ -1,6 +1,22 @@
 # Provenance Contract
 
+## Status
+
+Projected.
+
 Provenance records how a signal entered the system. It surrounds the signal without redefining it.
+
+## Role
+
+Keep origin and handling context visible around primitive signal content.
+
+## Input
+
+Capture or synthetic metadata surrounding a signal.
+
+## Output
+
+Provenance metadata inside an ingest envelope.
 
 ## Initial Metadata
 
@@ -10,11 +26,33 @@ Provenance records how a signal entered the system. It surrounds the signal with
 - integrity
 - capture version
 
+## Must Preserve
+
+- source information when present
+- envelope identity when present
+- source sequence when present
+- integrity metadata when present
+- capture version when present
+- missingness when provenance information is unavailable
+
 ## Boundary
 
 Provenance is not authority, interpretation, or proof of reality. It records origin and handling context.
+
+## Must Not Claim
+
+- truth
+- semantic interpretation
+- causality
+- completeness
+- authority over runtime evidence
 
 ## Open Pressure
 
 The integrity mechanism and sequence guarantees need runtime evidence before being treated as stable.
 
+Synthetic ledger tests exercise provenance-shaped fields, but do not validate a real provenance capture boundary.
+
+## Evidence
+
+No live provenance capture evidence exists.

@@ -32,6 +32,7 @@ Startup protocol:
 Read PROJECT_STATE.md first.
 Then README.md and WORKFLOW.md.
 Then read only the active contract/projection relevant to the task.
+Inspect docs/contracts/README.md when determining boundary maturity or evidence status.
 Inspect recent commits/traces when implementation state matters.
 Inspect docs/distinctions/README.md and docs/distinctions/registry.jsonl when current work may collide with previously conserved distinctions.
 Consult DME_Theory only for useful lineage or comparison.

@@ -12,6 +12,8 @@ Synthetic ledger append/replay/integrity harness implemented and tested.
 
 Development distinction registry initialized as provisional, non-authoritative research memory.
 
+v0 contract surface mapped in `docs/contracts/README.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -81,6 +83,12 @@ navigation
 
 What is the smallest machine-readable ledger schema that can describe the tested record boundary without adding semantic fields?
 
+## Contract Surface Status
+
+- projected: signal, provenance, ingest envelope, reconstruction, exposed projection
+- pressure-tested within synthetic v0 scope: append ledger, raw replay
+- deferred: capture adapter
+
 ## Current Pressure
 
 - keep `record_id`, envelope identity, source sequence, event time, arrival time, and `commit_index` distinct
@@ -89,3 +97,4 @@ What is the smallest machine-readable ledger schema that can describe the tested
 - preserve missingness structurally without explaining it semantically
 - JSONL and complete-envelope storage remain provisional after small synthetic tests
 - use `docs/distinctions/registry.jsonl` as appendable distinction memory, not as authority over runtime evidence
+- keep schema work local to boundaries with executable evidence; ledger record remains the current strongest candidate
