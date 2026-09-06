@@ -55,12 +55,10 @@ Synthetic ledger tests exercise provenance-shaped fields, but do not validate a 
 
 ## Evidence
 
-No live provenance capture evidence exists.
-
 Bounded repository provenance construction has been exercised in shadow mode:
 
 - `src/runtime/repo_provenance_pressure.py`
 - `traces/repo_provenance_pressure_v0.json`
 - `docs/decisions/repo_provenance_pressure_v0.md`
 
-This does not establish final provenance schema or enforced admission rules.
+This is bounded live repository evidence, not general provenance runtime validation. It does not establish final provenance schema or enforced admission rules.

@@ -42,7 +42,7 @@ An admitted envelope suitable for ledger append.
 
 No dedicated ingest implementation exists.
 
-Current evidence is limited to synthetic envelopes used by ledger tests.
+Evidence currently includes synthetic envelopes used by ledger tests and one bounded live repository candidate-envelope handshake.
 
 A live repository snapshot candidate envelope has been constructed and compared in shadow mode:
 
@@ -50,4 +50,4 @@ A live repository snapshot candidate envelope has been constructed and compared 
 - `traces/repo_provenance_pressure_v0.json`
 - `docs/decisions/repo_provenance_pressure_v0.md`
 
-This does not enforce admission or define final ingest rules.
+This does not implement or enforce ingest admission, and it does not define final ingest rules.
