@@ -14,6 +14,8 @@ Development distinction registry initialized as provisional, non-authoritative r
 
 v0 contract surface mapped in `docs/contracts/README.md`.
 
+Ledger record schema hypothesis added as descriptive, shadow-only JSON Schema.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -81,7 +83,7 @@ navigation
 
 ## Next Smallest Question
 
-What is the smallest machine-readable ledger schema that can describe the tested record boundary without adding semantic fields?
+What is the smallest ingest/provenance admission experiment that can decide which structures may enter the ledger as admitted envelopes?
 
 ## Contract Surface Status
 
@@ -98,3 +100,7 @@ What is the smallest machine-readable ledger schema that can describe the tested
 - JSONL and complete-envelope storage remain provisional after small synthetic tests
 - use `docs/distinctions/registry.jsonl` as appendable distinction memory, not as authority over runtime evidence
 - keep schema work local to boundaries with executable evidence; ledger record remains the current strongest candidate
+- current synthetic runtime records conform to `schemas/ledger_record_v0.schema.json`
+- schema validation remains shadow-only and does not regulate ledger append
+- runtime can currently produce some records the schema rejects, including non-object envelopes and non-finite JSON values
+- ingest/provenance admission is now the likely next pressure frontier

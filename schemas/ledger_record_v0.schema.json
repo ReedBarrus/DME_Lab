@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.local/schemas/ledger_record_v0.schema.json",
+  "title": "DME_Lab LedgerRecord v0",
+  "description": "Descriptive, shadow-only schema for the tested synthetic v0 ledger record boundary.",
+  "type": "object",
+  "required": [
+    "record_id",
+    "commit_index",
+    "envelope",
+    "integrity"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "record_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "commit_index": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "envelope": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "integrity": {
+      "type": "object",
+      "required": [
+        "algorithm",
+        "boundary",
+        "digest"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "algorithm": {
+          "const": "sha256"
+        },
+        "boundary": {
+          "const": "canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators"
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}
+

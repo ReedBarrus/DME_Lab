@@ -8,6 +8,7 @@ from .jsonl import (
     canonical_json,
     record_digest,
 )
+from .schema import SCHEMA_PATH, SchemaError, SchemaValidationResult, load_schema, validate_ledger_record
 from .synthetic import (
     amendment_pair,
     identity_collision_envelopes,
@@ -20,6 +21,9 @@ __all__ = [
     "HASH_BOUNDARY",
     "INTEGRITY_ALGORITHM",
     "JsonlLedger",
+    "SCHEMA_PATH",
+    "SchemaError",
+    "SchemaValidationResult",
     "VerificationResult",
     "amendment_pair",
     "canonical_json",
@@ -28,5 +32,6 @@ __all__ = [
     "ordering_conflict_envelopes",
     "preservation_envelope",
     "record_digest",
+    "load_schema",
+    "validate_ledger_record",
 ]
-

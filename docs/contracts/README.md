@@ -34,6 +34,9 @@ Contract text is not proof. A boundary status should say no more than the strong
 - synthetically exercised != validated against live observations
 - trace produced != guarantee established
 - projection != proof
+- descriptive schema != enforced schema
+- schema-valid != integrity-valid
+- per-record schema != ledger-wide invariant
+- runtime-produced != schema-valid
 
 Registry entries may point toward supporting evidence, but the registry alone does not upgrade a boundary status.
-

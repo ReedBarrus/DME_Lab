@@ -1,0 +1,285 @@
+{
+  "duration_seconds": 0.047923200007062405,
+  "json_domain_edge_cases": [
+    {
+      "case": "string",
+      "runtime_error": null,
+      "runtime_record_created": true,
+      "schema_errors": [],
+      "schema_valid": true
+    },
+    {
+      "case": "integer",
+      "runtime_error": null,
+      "runtime_record_created": true,
+      "schema_errors": [],
+      "schema_valid": true
+    },
+    {
+      "case": "float",
+      "runtime_error": null,
+      "runtime_record_created": true,
+      "schema_errors": [],
+      "schema_valid": true
+    },
+    {
+      "case": "boolean",
+      "runtime_error": null,
+      "runtime_record_created": true,
+      "schema_errors": [],
+      "schema_valid": true
+    },
+    {
+      "case": "null",
+      "runtime_error": null,
+      "runtime_record_created": true,
+      "schema_errors": [],
+      "schema_valid": true
+    },
+    {
+      "case": "array",
+      "runtime_error": null,
+      "runtime_record_created": true,
+      "schema_errors": [],
+      "schema_valid": true
+    },
+    {
+      "case": "nested_object",
+      "runtime_error": null,
+      "runtime_record_created": true,
+      "schema_errors": [],
+      "schema_valid": true
+    },
+    {
+      "case": "empty_string",
+      "runtime_error": null,
+      "runtime_record_created": true,
+      "schema_errors": [],
+      "schema_valid": true
+    },
+    {
+      "case": "empty_array",
+      "runtime_error": null,
+      "runtime_record_created": true,
+      "schema_errors": [],
+      "schema_valid": true
+    },
+    {
+      "case": "empty_object",
+      "runtime_error": null,
+      "runtime_record_created": true,
+      "schema_errors": [],
+      "schema_valid": true
+    },
+    {
+      "case": "nan",
+      "runtime_error": null,
+      "runtime_record_created": true,
+      "schema_errors": [
+        {
+          "message": "non-finite number is not valid JSON",
+          "path": "$.envelope.value",
+          "validator": "json_domain"
+        }
+      ],
+      "schema_valid": false
+    },
+    {
+      "case": "infinity",
+      "runtime_error": null,
+      "runtime_record_created": true,
+      "schema_errors": [
+        {
+          "message": "non-finite number is not valid JSON",
+          "path": "$.envelope.value",
+          "validator": "json_domain"
+        }
+      ],
+      "schema_valid": false
+    },
+    {
+      "case": "negative_infinity",
+      "runtime_error": null,
+      "runtime_record_created": true,
+      "schema_errors": [
+        {
+          "message": "non-finite number is not valid JSON",
+          "path": "$.envelope.value",
+          "validator": "json_domain"
+        }
+      ],
+      "schema_valid": false
+    },
+    {
+      "case": "non_string_key",
+      "runtime_error": null,
+      "runtime_record_created": true,
+      "schema_errors": [
+        {
+          "message": "object keys must be strings",
+          "path": "$.envelope",
+          "validator": "json_domain"
+        }
+      ],
+      "schema_valid": false
+    }
+  ],
+  "missingness_cases": [
+    {
+      "convention_dependent": true,
+      "missingness_state": "absent",
+      "record_id": "rec-000001",
+      "schema_valid": true,
+      "schema_visible_distinction": "envelope object preserves member structure only"
+    },
+    {
+      "convention_dependent": true,
+      "missingness_state": "explicit_null",
+      "record_id": "rec-000002",
+      "schema_valid": true,
+      "schema_visible_distinction": "envelope object preserves member structure only"
+    },
+    {
+      "convention_dependent": true,
+      "missingness_state": "unavailable",
+      "record_id": "rec-000003",
+      "schema_valid": true,
+      "schema_visible_distinction": "envelope object preserves member structure only"
+    },
+    {
+      "convention_dependent": true,
+      "missingness_state": "malformed",
+      "record_id": "rec-000004",
+      "schema_valid": true,
+      "schema_visible_distinction": "envelope object preserves member structure only"
+    }
+  ],
+  "runtime_possible_schema_rejected": [
+    {
+      "case": "array_envelope",
+      "runtime_produced": true,
+      "runtime_verification_ok": true,
+      "schema_errors": [
+        {
+          "message": "expected object",
+          "path": "$.envelope",
+          "validator": "type"
+        }
+      ],
+      "schema_valid": false
+    },
+    {
+      "case": "nan_envelope_value",
+      "runtime_produced": true,
+      "runtime_verification_ok": true,
+      "schema_errors": [
+        {
+          "message": "non-finite number is not valid JSON",
+          "path": "$.envelope.value",
+          "validator": "json_domain"
+        }
+      ],
+      "schema_valid": false
+    }
+  ],
+  "runtime_records": {
+    "conforming_count": 11,
+    "details": [
+      {
+        "errors": [],
+        "index": 1,
+        "record_id": "rec-000001",
+        "valid": true
+      },
+      {
+        "errors": [],
+        "index": 2,
+        "record_id": "rec-000002",
+        "valid": true
+      },
+      {
+        "errors": [],
+        "index": 3,
+        "record_id": "rec-000003",
+        "valid": true
+      },
+      {
+        "errors": [],
+        "index": 4,
+        "record_id": "rec-000004",
+        "valid": true
+      },
+      {
+        "errors": [],
+        "index": 5,
+        "record_id": "rec-000005",
+        "valid": true
+      },
+      {
+        "errors": [],
+        "index": 6,
+        "record_id": "rec-000006",
+        "valid": true
+      },
+      {
+        "errors": [],
+        "index": 7,
+        "record_id": "rec-000007",
+        "valid": true
+      },
+      {
+        "errors": [],
+        "index": 8,
+        "record_id": "rec-000008",
+        "valid": true
+      },
+      {
+        "errors": [],
+        "index": 9,
+        "record_id": "rec-000009",
+        "valid": true
+      },
+      {
+        "errors": [],
+        "index": 10,
+        "record_id": "rec-000010",
+        "valid": true
+      },
+      {
+        "errors": [],
+        "index": 11,
+        "record_id": "rec-000011",
+        "valid": true
+      }
+    ],
+    "nonconforming_count": 0,
+    "records_tested": 11
+  },
+  "schema_allowed_runtime_problematic": [
+    {
+      "case": "schema_valid_bad_digest",
+      "runtime_integrity_ok": false,
+      "runtime_pressure": "schema validity does not establish integrity validity",
+      "runtime_replayed": true,
+      "runtime_serialized": true,
+      "schema_valid": true
+    }
+  ],
+  "schema_boundary": "one LedgerRecord with record_id, commit_index, envelope, and integrity",
+  "schema_path": "schemas/ledger_record_v0.schema.json",
+  "schema_status": "descriptive shadow-only hypothesis",
+  "schema_title": "DME_Lab LedgerRecord v0",
+  "structural_validity_vs_integrity_validity": {
+    "finding": "mutated record remains schema-valid while failing integrity verification",
+    "integrity_valid": false,
+    "schema_valid": true
+  },
+  "unsupported_cross_record_guarantees": [
+    "unique record_id",
+    "monotonic commit_index",
+    "append-only history",
+    "deterministic replay order",
+    "amendment relationship behavior",
+    "history integrity"
+  ]
+}
