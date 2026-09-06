@@ -20,6 +20,10 @@ Bounded repository filesystem observer and separate Git observer implemented.
 
 First live repository baseline captured in `traces/repo_snapshot_v0_baseline.json` and `traces/git_state_v0_baseline.json`.
 
+Second live repository observations captured in `traces/repo_snapshot_v0_post_cleanup.json` and `traces/git_state_v0_post_cleanup.json`.
+
+Repository transition pressure completed in `docs/decisions/repo_transition_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -82,19 +86,20 @@ navigation
 - no general OS raw observations captured
 - no enforced live ingest admission rules
 - no canonical live ingest envelope ledger
-- JSONL append ledger pressure-tested mainly against synthetic envelopes, with one temporary live candidate-envelope handshake
+- JSONL append ledger pressure-tested mainly against synthetic envelopes, with bounded temporary live candidate-envelope handshakes
 - raw replay validated only in canonical commit order
 - no projection exposed from evidence
 
 ## Next Smallest Question
 
-What controlled repository perturbation should produce the second live snapshot, and what admission rule should it pressure?
+Which observed structures may become admitted envelopes, and which must remain capture errors, unavailable fields, or rejected candidates?
 
 ## Contract Surface Status
 
 - projected: signal, provenance, ingest envelope, reconstruction, exposed projection
 - pressure-tested within synthetic v0 scope: append ledger, raw replay
-- deferred: capture adapter
+- implemented within bounded repository specimen: capture adapter
+- deferred: general OS and Windows capture
 
 ## Current Pressure
 
@@ -113,3 +118,9 @@ What controlled repository perturbation should produce the second live snapshot,
 - temporary ledger handshake for the live candidate passed schema shadow validation, replay, and integrity verification
 - filesystem observation and Git observation are separate live evidence regimes
 - snapshots expose endpoint structure, not complete transformation history
+- second live transition produced 5 filesystem content changes, 0 filesystem adds, 0 filesystem removes, and 2 retrospective Git commits
+- multi-source temporary ledger preserved filesystem and Git candidate envelopes without collapsing source-specific provenance
+- repeated same-state observations currently reuse filesystem snapshot identity and candidate envelope identity
+- metadata-only changes can alter snapshot identity without producing content-changed paths
+- filesystem scope and Git scope are overlapping but non-coextensive
+- root identity remains ambiguous when v0 observers are invoked with `.`

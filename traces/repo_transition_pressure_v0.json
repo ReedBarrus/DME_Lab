@@ -1,0 +1,1721 @@
+{
+  "baseline": {
+    "git_head": "5f1181accff683eb5149b345c9a14daf4f98990c",
+    "git_observation_id": "git-state-v0:2026-09-06T06:07:20.620023Z",
+    "snapshot_id": "repo-snapshot-v0:660b63323c908e534c2d7b55ee8c222c30d1d3f646ac131babccd779fa3aadfd"
+  },
+  "candidate_envelopes": {
+    "filesystem": {
+      "envelope_identity": "repo-snapshot-envelope:repo-snapshot-v0:be452e352e465ed7ec1184fdf7ebc5340be49bf0de0188f76e53f3d783ec12fd",
+      "json_domain": {
+        "error": null,
+        "message": null,
+        "valid": true
+      }
+    },
+    "git": {
+      "envelope_identity": "git-state-envelope:git-state-v0:2026-09-06T06:32:38.356400Z",
+      "json_domain": {
+        "error": null,
+        "message": null,
+        "valid": true
+      }
+    }
+  },
+  "current": {
+    "git_head": "0a981a3339991208ce370bbceecc0c6dc9b05613",
+    "git_observation_id": "git-state-v0:2026-09-06T06:32:38.356400Z",
+    "snapshot_id": "repo-snapshot-v0:be452e352e465ed7ec1184fdf7ebc5340be49bf0de0188f76e53f3d783ec12fd"
+  },
+  "derived_artifacts_not_ingested": [
+    "filesystem_delta",
+    "git_observation_delta",
+    "git_retrospective_history",
+    "path_correspondence"
+  ],
+  "duration_seconds": 0.155870300004608,
+  "experiment": "repo_transition_pressure_v0",
+  "filesystem_delta": {
+    "added_paths": [],
+    "after_snapshot_id": "repo-snapshot-v0:be452e352e465ed7ec1184fdf7ebc5340be49bf0de0188f76e53f3d783ec12fd",
+    "before_snapshot_id": "repo-snapshot-v0:660b63323c908e534c2d7b55ee8c222c30d1d3f646ac131babccd779fa3aadfd",
+    "capture_error_delta": 0,
+    "changed_paths": [
+      {
+        "new": {
+          "kind": "file",
+          "mtime_ns": 1788675066136563600,
+          "path": "PROJECT_STATE.md",
+          "sha256": "85abb92798e90791e1c81bfa14df93d6692dd2e11876b5c187b48e5024db7192",
+          "size_bytes": 3696
+        },
+        "old": {
+          "kind": "file",
+          "mtime_ns": 1788674776150121400,
+          "path": "PROJECT_STATE.md",
+          "sha256": "8391cdae89c64c7d3bf2fcc516372a7b3c72c9ac0e909955d873b4f0770b0605",
+          "size_bytes": 3634
+        },
+        "path": "PROJECT_STATE.md"
+      },
+      {
+        "new": {
+          "kind": "file",
+          "mtime_ns": 1788675710006499400,
+          "path": "docs/contracts/README.md",
+          "sha256": "6f985085a375567faa78e45a2bafd7d1befbd3097bd624aca0b465dadc4c3894",
+          "size_bytes": 3844
+        },
+        "old": {
+          "kind": "file",
+          "mtime_ns": 1788674811650681400,
+          "path": "docs/contracts/README.md",
+          "sha256": "32b09ba8a9040160c6499c77a27f5438185f32c7dbc5daf98af807cd00fbdd8e",
+          "size_bytes": 3748
+        },
+        "path": "docs/contracts/README.md"
+      },
+      {
+        "new": {
+          "kind": "file",
+          "mtime_ns": 1788675710006499400,
+          "path": "docs/contracts/ingest.md",
+          "sha256": "8927d59204d8b3a5c942233e3eaea8773ab4f5036f9439f4e0ff2e1258000d0c",
+          "size_bytes": 1348
+        },
+        "old": {
+          "kind": "file",
+          "mtime_ns": 1788674811650681400,
+          "path": "docs/contracts/ingest.md",
+          "sha256": "6944050f2c835f87c84dd8c7cdead83a5ba2ab7556762a5049c4d3f525c2e236",
+          "size_bytes": 1256
+        },
+        "path": "docs/contracts/ingest.md"
+      },
+      {
+        "new": {
+          "kind": "file",
+          "mtime_ns": 1788675710006499400,
+          "path": "docs/contracts/provenance.md",
+          "sha256": "eb146bbb9b5b3069ce252f92500471fca140d43c47704a8f9d635cc586b07d3d",
+          "size_bytes": 1545
+        },
+        "old": {
+          "kind": "file",
+          "mtime_ns": 1788674811650681400,
+          "path": "docs/contracts/provenance.md",
+          "sha256": "2d930a38b95255e08b62a1e78bdd25f4f16887440de21099bc58fa38adff7e47",
+          "size_bytes": 1507
+        },
+        "path": "docs/contracts/provenance.md"
+      },
+      {
+        "new": {
+          "kind": "file",
+          "mtime_ns": 1788674849303704500,
+          "path": "docs/decisions/repo_provenance_pressure_v0.md",
+          "sha256": "a25acea23725eb1bd84db39c4c061739b994326c1ca8537f8d59b272b2c9c355",
+          "size_bytes": 5491
+        },
+        "old": {
+          "kind": "file",
+          "mtime_ns": 1788674766472895300,
+          "path": "docs/decisions/repo_provenance_pressure_v0.md",
+          "sha256": "ad4f541b6fd607d180848fa9751e1cec3e9a80f56afa37169cc833b097a9444a",
+          "size_bytes": 5491
+        },
+        "path": "docs/decisions/repo_provenance_pressure_v0.md"
+      }
+    ],
+    "entry_count_delta": 0,
+    "observation_intervals": {
+      "after": [
+        "2026-09-06T06:32:38.280253Z",
+        "2026-09-06T06:32:38.356383Z"
+      ],
+      "before": [
+        "2026-09-06T06:07:20.527700Z",
+        "2026-09-06T06:07:20.620003Z"
+      ]
+    },
+    "removed_paths": [],
+    "total_byte_delta": 288,
+    "unchanged_paths": [
+      ".gitignore",
+      "AGENT_CONTEXT.md",
+      "README.md",
+      "WORKFLOW.md",
+      "docs/contracts/capture.md",
+      "docs/contracts/ledger.md",
+      "docs/contracts/projection.md",
+      "docs/contracts/reconstruction.md",
+      "docs/contracts/signal.md",
+      "docs/decisions/README.md",
+      "docs/decisions/ledger_pressure_pass_v0.md",
+      "docs/decisions/ledger_runtime_pressure_v0.md",
+      "docs/decisions/ledger_schema_pressure_v0.md",
+      "docs/distinctions/README.md",
+      "docs/distinctions/registry.jsonl",
+      "docs/lineage/DME_Theory.md",
+      "docs/projection/v0_observability.md",
+      "schemas/README.md",
+      "schemas/ledger_record_v0.schema.json",
+      "src/__init__.py",
+      "src/capture/__init__.py",
+      "src/capture/git_state.py",
+      "src/capture/repo_snapshot.py",
+      "src/ingest/.gitkeep",
+      "src/ledger/.gitkeep",
+      "src/ledger/__init__.py",
+      "src/ledger/jsonl.py",
+      "src/ledger/schema.py",
+      "src/ledger/synthetic.py",
+      "src/projection/.gitkeep",
+      "src/runtime/.gitkeep",
+      "src/runtime/__init__.py",
+      "src/runtime/ledger_pressure.py",
+      "src/runtime/ledger_schema_pressure.py",
+      "src/runtime/repo_provenance_pressure.py",
+      "tests/__init__.py",
+      "tests/capture/__init__.py",
+      "tests/capture/test_repo_snapshot.py",
+      "tests/fixtures/.gitkeep",
+      "tests/fixtures/synthetic_envelopes.md",
+      "tests/replay/.gitkeep",
+      "tests/replay/__init__.py",
+      "tests/replay/test_ledger_harness.py",
+      "tests/replay/test_ledger_schema.py"
+    ]
+  },
+  "git_observation_delta": {
+    "after_branch": "main",
+    "after_capture_errors": [],
+    "after_head": "0a981a3339991208ce370bbceecc0c6dc9b05613",
+    "after_observed_at": "2026-09-06T06:32:38.356400Z",
+    "after_status_count": 0,
+    "before_branch": "main",
+    "before_capture_errors": [],
+    "before_head": "5f1181accff683eb5149b345c9a14daf4f98990c",
+    "before_observed_at": "2026-09-06T06:07:20.620023Z",
+    "before_status_count": 13,
+    "branch_changed": false,
+    "head_changed": true,
+    "status_added": [],
+    "status_current": [],
+    "status_removed": [
+      " M docs/contracts/README.md",
+      " M docs/contracts/capture.md",
+      " M docs/contracts/ingest.md",
+      " M docs/contracts/provenance.md",
+      " M docs/distinctions/registry.jsonl",
+      "?? docs/decisions/repo_provenance_pressure_v0.md",
+      "?? src/capture/",
+      "?? src/runtime/repo_provenance_pressure.py",
+      "?? tests/capture/",
+      "?? traces/git_state_v0_baseline.json",
+      "?? traces/repo_provenance_pressure_v0.json",
+      "?? traces/repo_snapshot_v0_baseline.json",
+      "M PROJECT_STATE.md"
+    ]
+  },
+  "git_retrospective_history": [
+    {
+      "changed_paths": [
+        {
+          "path": "PROJECT_STATE.md",
+          "status": "M"
+        },
+        {
+          "path": "docs/contracts/README.md",
+          "status": "M"
+        },
+        {
+          "path": "docs/contracts/capture.md",
+          "status": "M"
+        },
+        {
+          "path": "docs/contracts/ingest.md",
+          "status": "M"
+        },
+        {
+          "path": "docs/contracts/provenance.md",
+          "status": "M"
+        },
+        {
+          "path": "docs/decisions/repo_provenance_pressure_v0.md",
+          "status": "A"
+        },
+        {
+          "path": "docs/distinctions/registry.jsonl",
+          "status": "M"
+        },
+        {
+          "path": "src/capture/__init__.py",
+          "status": "A"
+        },
+        {
+          "path": "src/capture/git_state.py",
+          "status": "A"
+        },
+        {
+          "path": "src/capture/repo_snapshot.py",
+          "status": "A"
+        },
+        {
+          "path": "src/runtime/repo_provenance_pressure.py",
+          "status": "A"
+        },
+        {
+          "path": "tests/capture/__init__.py",
+          "status": "A"
+        },
+        {
+          "path": "tests/capture/test_repo_snapshot.py",
+          "status": "A"
+        },
+        {
+          "path": "traces/git_state_v0_baseline.json",
+          "status": "A"
+        },
+        {
+          "path": "traces/repo_provenance_pressure_v0.json",
+          "status": "A"
+        },
+        {
+          "path": "traces/repo_snapshot_v0_baseline.json",
+          "status": "A"
+        }
+      ],
+      "commit_timestamp": "2026-09-05T23:15:09-07:00",
+      "evidence_basis": "retrospective_git_history",
+      "message": "Project Provenance Source",
+      "parent_shas": [
+        "5f1181accff683eb5149b345c9a14daf4f98990c"
+      ],
+      "sha": "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+    },
+    {
+      "changed_paths": [
+        {
+          "path": "docs/contracts/README.md",
+          "status": "M"
+        },
+        {
+          "path": "docs/contracts/ingest.md",
+          "status": "M"
+        },
+        {
+          "path": "docs/contracts/provenance.md",
+          "status": "M"
+        }
+      ],
+      "commit_timestamp": "2026-09-05T23:23:28-07:00",
+      "evidence_basis": "retrospective_git_history",
+      "message": "Cleanup pass",
+      "parent_shas": [
+        "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+      ],
+      "sha": "0a981a3339991208ce370bbceecc0c6dc9b05613"
+    }
+  ],
+  "git_visible_filesystem_out_of_scope": [
+    {
+      "baseline_status": [
+        "??"
+      ],
+      "commit_touches": [],
+      "current_status": [],
+      "path": "src/capture/"
+    },
+    {
+      "baseline_status": [
+        "??"
+      ],
+      "commit_touches": [],
+      "current_status": [],
+      "path": "tests/capture/"
+    },
+    {
+      "baseline_status": [
+        "??"
+      ],
+      "commit_touches": [
+        "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+      ],
+      "current_status": [],
+      "path": "traces/git_state_v0_baseline.json"
+    },
+    {
+      "baseline_status": [
+        "??"
+      ],
+      "commit_touches": [
+        "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+      ],
+      "current_status": [],
+      "path": "traces/repo_provenance_pressure_v0.json"
+    },
+    {
+      "baseline_status": [
+        "??"
+      ],
+      "commit_touches": [
+        "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+      ],
+      "current_status": [],
+      "path": "traces/repo_snapshot_v0_baseline.json"
+    }
+  ],
+  "metadata_only_snapshot_pressure": {
+    "changed_paths_count": 0,
+    "finding": "metadata changed snapshot identity while content-change classification remained unchanged",
+    "snapshot_id_changed": true,
+    "unchanged_paths": [
+      "same-bytes.txt"
+    ]
+  },
+  "multi_source_ledger_handshake": {
+    "append_order": [
+      "filesystem",
+      "git"
+    ],
+    "append_order_claim": "experimental handling order, not source chronology",
+    "bytes_written": 11643,
+    "integrity_errors": [],
+    "integrity_ok": true,
+    "json_domain": {
+      "filesystem": {
+        "error": null,
+        "message": null,
+        "valid": true
+      },
+      "git": {
+        "error": null,
+        "message": null,
+        "valid": true
+      }
+    },
+    "records": [
+      {
+        "commit_index": 1,
+        "payload_observer": "repo_snapshot",
+        "record_id": "rec-000001",
+        "record_size_bytes": 10974,
+        "schema_shadow_validation": {
+          "errors": [],
+          "valid": true
+        },
+        "source": "filesystem"
+      },
+      {
+        "commit_index": 2,
+        "payload_observer": "git_state",
+        "record_id": "rec-000002",
+        "record_size_bytes": 1322,
+        "schema_shadow_validation": {
+          "errors": [],
+          "valid": true
+        },
+        "source": "git"
+      }
+    ],
+    "replayed_payload_observers": [
+      "repo_snapshot",
+      "git_state"
+    ],
+    "replayed_sources": [
+      "repository_filesystem_snapshot",
+      "repository_git_state"
+    ]
+  },
+  "path_correspondence": [
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "c6f542ceab250e78e3e6e38a5554c8406c9dec4fc58f8b0143fce01a6a349373",
+        "old_sha256": "c6f542ceab250e78e3e6e38a5554c8406c9dec4fc58f8b0143fce01a6a349373",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": ".gitignore"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "8bc385c89076d683f7e0d99e60c96fe882a27cbf4f8ba7cab0ecc85abcd36594",
+        "old_sha256": "8bc385c89076d683f7e0d99e60c96fe882a27cbf4f8ba7cab0ecc85abcd36594",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "AGENT_CONTEXT.md"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": true,
+        "in_scope": true,
+        "new_sha256": "85abb92798e90791e1c81bfa14df93d6692dd2e11876b5c187b48e5024db7192",
+        "old_sha256": "8391cdae89c64c7d3bf2fcc516372a7b3c72c9ac0e909955d873b4f0770b0605",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [
+          "M"
+        ],
+        "commit_touches": [
+          "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+        ]
+      },
+      "git_working_state": {
+        "baseline_status": [
+          "M"
+        ],
+        "current_status": []
+      },
+      "path": "PROJECT_STATE.md"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "169fdf111dc489ad8b912e3ea3f8a2a1ab2fd31d6e462412ede7319e355a791d",
+        "old_sha256": "169fdf111dc489ad8b912e3ea3f8a2a1ab2fd31d6e462412ede7319e355a791d",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "README.md"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "c0befbebec68a8fc331c2c62f34f125ba67bcefb811067f6049f2ba395bcfea0",
+        "old_sha256": "c0befbebec68a8fc331c2c62f34f125ba67bcefb811067f6049f2ba395bcfea0",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "WORKFLOW.md"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": true,
+        "in_scope": true,
+        "new_sha256": "6f985085a375567faa78e45a2bafd7d1befbd3097bd624aca0b465dadc4c3894",
+        "old_sha256": "32b09ba8a9040160c6499c77a27f5438185f32c7dbc5daf98af807cd00fbdd8e",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [
+          "M",
+          "M"
+        ],
+        "commit_touches": [
+          "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c",
+          "0a981a3339991208ce370bbceecc0c6dc9b05613"
+        ]
+      },
+      "git_working_state": {
+        "baseline_status": [
+          "M"
+        ],
+        "current_status": []
+      },
+      "path": "docs/contracts/README.md"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "710d86d9aa0e6b91a95857db8e271b9b211b1c82433ed8b15d9150f4e8fa6b5b",
+        "old_sha256": "710d86d9aa0e6b91a95857db8e271b9b211b1c82433ed8b15d9150f4e8fa6b5b",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [
+          "M"
+        ],
+        "commit_touches": [
+          "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+        ]
+      },
+      "git_working_state": {
+        "baseline_status": [
+          "M"
+        ],
+        "current_status": []
+      },
+      "path": "docs/contracts/capture.md"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": true,
+        "in_scope": true,
+        "new_sha256": "8927d59204d8b3a5c942233e3eaea8773ab4f5036f9439f4e0ff2e1258000d0c",
+        "old_sha256": "6944050f2c835f87c84dd8c7cdead83a5ba2ab7556762a5049c4d3f525c2e236",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [
+          "M",
+          "M"
+        ],
+        "commit_touches": [
+          "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c",
+          "0a981a3339991208ce370bbceecc0c6dc9b05613"
+        ]
+      },
+      "git_working_state": {
+        "baseline_status": [
+          "M"
+        ],
+        "current_status": []
+      },
+      "path": "docs/contracts/ingest.md"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "aca4896437b73eb58a2a91e8f980c1ad2b323c8692666c0f73bb7592b3736804",
+        "old_sha256": "aca4896437b73eb58a2a91e8f980c1ad2b323c8692666c0f73bb7592b3736804",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "docs/contracts/ledger.md"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "ae1e068a90a2ce5c9492367527ec71d74ba3334f74abf5ea222e7a086cefd159",
+        "old_sha256": "ae1e068a90a2ce5c9492367527ec71d74ba3334f74abf5ea222e7a086cefd159",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "docs/contracts/projection.md"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": true,
+        "in_scope": true,
+        "new_sha256": "eb146bbb9b5b3069ce252f92500471fca140d43c47704a8f9d635cc586b07d3d",
+        "old_sha256": "2d930a38b95255e08b62a1e78bdd25f4f16887440de21099bc58fa38adff7e47",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [
+          "M",
+          "M"
+        ],
+        "commit_touches": [
+          "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c",
+          "0a981a3339991208ce370bbceecc0c6dc9b05613"
+        ]
+      },
+      "git_working_state": {
+        "baseline_status": [
+          "M"
+        ],
+        "current_status": []
+      },
+      "path": "docs/contracts/provenance.md"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "3b80b2b058315a8f886f84886a41ff1c8d4968ca9177d406e2f92fd2b2e473bc",
+        "old_sha256": "3b80b2b058315a8f886f84886a41ff1c8d4968ca9177d406e2f92fd2b2e473bc",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "docs/contracts/reconstruction.md"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "d0f8129cba0e00f425aba42f60db07a81f29b5ae2a028d0265bf77467905487b",
+        "old_sha256": "d0f8129cba0e00f425aba42f60db07a81f29b5ae2a028d0265bf77467905487b",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "docs/contracts/signal.md"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "6c78c7fff6c5a6ddc65667d7a195ab12aac351cd7174a770ddd87126ce383d8c",
+        "old_sha256": "6c78c7fff6c5a6ddc65667d7a195ab12aac351cd7174a770ddd87126ce383d8c",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "docs/decisions/README.md"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "7f06b563c99d1648105b3bca0af195d5961c8cb64c867018b33823feb57bf2fa",
+        "old_sha256": "7f06b563c99d1648105b3bca0af195d5961c8cb64c867018b33823feb57bf2fa",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "docs/decisions/ledger_pressure_pass_v0.md"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "36a71e4369a5734b9c414802f465dc62cceb1b01f70a236c26b88d6caa092e1c",
+        "old_sha256": "36a71e4369a5734b9c414802f465dc62cceb1b01f70a236c26b88d6caa092e1c",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "docs/decisions/ledger_runtime_pressure_v0.md"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "6043e833d3b07ae64b746d45c8b0e5dc65ecd4c6e422cc7f9479c9a32e0ab8d1",
+        "old_sha256": "6043e833d3b07ae64b746d45c8b0e5dc65ecd4c6e422cc7f9479c9a32e0ab8d1",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "docs/decisions/ledger_schema_pressure_v0.md"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": true,
+        "in_scope": true,
+        "new_sha256": "a25acea23725eb1bd84db39c4c061739b994326c1ca8537f8d59b272b2c9c355",
+        "old_sha256": "ad4f541b6fd607d180848fa9751e1cec3e9a80f56afa37169cc833b097a9444a",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [
+          "A"
+        ],
+        "commit_touches": [
+          "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+        ]
+      },
+      "git_working_state": {
+        "baseline_status": [
+          "??"
+        ],
+        "current_status": []
+      },
+      "path": "docs/decisions/repo_provenance_pressure_v0.md"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "9976bec192803135a1b9482b0f4bf57019a0b4777d4a7bfeeb136bdcbe2d8239",
+        "old_sha256": "9976bec192803135a1b9482b0f4bf57019a0b4777d4a7bfeeb136bdcbe2d8239",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "docs/distinctions/README.md"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "0b413d8d84b8857405905fe6ee1bdd27ef3f548ba1f3daac3f933023abb74c76",
+        "old_sha256": "0b413d8d84b8857405905fe6ee1bdd27ef3f548ba1f3daac3f933023abb74c76",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [
+          "M"
+        ],
+        "commit_touches": [
+          "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+        ]
+      },
+      "git_working_state": {
+        "baseline_status": [
+          "M"
+        ],
+        "current_status": []
+      },
+      "path": "docs/distinctions/registry.jsonl"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "27ed34322626e565d82af9e22efd89d6233587f76a9744644f9c12035aa4809e",
+        "old_sha256": "27ed34322626e565d82af9e22efd89d6233587f76a9744644f9c12035aa4809e",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "docs/lineage/DME_Theory.md"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "92dc7a3e3b90203c77b4c0d6a8e2d2aaed9fef34f31e7b57f69e6285378a2749",
+        "old_sha256": "92dc7a3e3b90203c77b4c0d6a8e2d2aaed9fef34f31e7b57f69e6285378a2749",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "docs/projection/v0_observability.md"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "78e9b87c52f563f10f253c65ab44e6dc8a15fa81ab55c15d8e40b931aef92989",
+        "old_sha256": "78e9b87c52f563f10f253c65ab44e6dc8a15fa81ab55c15d8e40b931aef92989",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "schemas/README.md"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "5dca1935ae1cb68eb997ef0fe7a2525c0cad8877558e78c3885e8c141402186e",
+        "old_sha256": "5dca1935ae1cb68eb997ef0fe7a2525c0cad8877558e78c3885e8c141402186e",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "schemas/ledger_record_v0.schema.json"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "245ee510e853e191cffb967e716dc5345fd46b04d4205adac2481ee72511295d",
+        "old_sha256": "245ee510e853e191cffb967e716dc5345fd46b04d4205adac2481ee72511295d",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "src/__init__.py"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": false,
+        "new_sha256": null,
+        "old_sha256": null,
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [
+          "??"
+        ],
+        "current_status": []
+      },
+      "path": "src/capture/"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "6ecc92d41d9b84e1870c7ff81eb95937d0cb19b6b4120d290551f79a273fe650",
+        "old_sha256": "6ecc92d41d9b84e1870c7ff81eb95937d0cb19b6b4120d290551f79a273fe650",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [
+          "A"
+        ],
+        "commit_touches": [
+          "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+        ]
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "src/capture/__init__.py"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "515a46c52ded521410d28c1ccaad571208700545d7e3d3dea796b9ef848ac45c",
+        "old_sha256": "515a46c52ded521410d28c1ccaad571208700545d7e3d3dea796b9ef848ac45c",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [
+          "A"
+        ],
+        "commit_touches": [
+          "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+        ]
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "src/capture/git_state.py"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "be5cf003f4e1463595729e2f39665f3b0439b587ec083569ad4bf2b049961913",
+        "old_sha256": "be5cf003f4e1463595729e2f39665f3b0439b587ec083569ad4bf2b049961913",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [
+          "A"
+        ],
+        "commit_touches": [
+          "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+        ]
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "src/capture/repo_snapshot.py"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "old_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "src/ingest/.gitkeep"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "old_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "src/ledger/.gitkeep"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "be7bf81dceb72607daed7e72e6b3d6e8625c6b6ac45ea421059eedba9d5ec748",
+        "old_sha256": "be7bf81dceb72607daed7e72e6b3d6e8625c6b6ac45ea421059eedba9d5ec748",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "src/ledger/__init__.py"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "fbcfcd201a73b00d0d0b4d8a5546586289933b69b12df2441b5028719a829b0e",
+        "old_sha256": "fbcfcd201a73b00d0d0b4d8a5546586289933b69b12df2441b5028719a829b0e",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "src/ledger/jsonl.py"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "c0cc2f92236f6379d01f1deffa76051407af3ae0845c7e685e740d339c4add3e",
+        "old_sha256": "c0cc2f92236f6379d01f1deffa76051407af3ae0845c7e685e740d339c4add3e",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "src/ledger/schema.py"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "3bfef582af46235ffe62a98212dc62287a6e36e90ec6416cfe9e6e5cac3c9560",
+        "old_sha256": "3bfef582af46235ffe62a98212dc62287a6e36e90ec6416cfe9e6e5cac3c9560",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "src/ledger/synthetic.py"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "old_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "src/projection/.gitkeep"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "old_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "src/runtime/.gitkeep"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "73999f76cf63112a6682e8bf0ecc79b06fd1bf6e4bc34f6f2680807207205fdc",
+        "old_sha256": "73999f76cf63112a6682e8bf0ecc79b06fd1bf6e4bc34f6f2680807207205fdc",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "src/runtime/__init__.py"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "199241f5ce5c76e630aec3fe3ccac131a7eb963a712cbe1b464d521bc2363329",
+        "old_sha256": "199241f5ce5c76e630aec3fe3ccac131a7eb963a712cbe1b464d521bc2363329",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "src/runtime/ledger_pressure.py"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "54257fa5937bfd7c81563826689605890b7837e808ad483ebdb54354d6632424",
+        "old_sha256": "54257fa5937bfd7c81563826689605890b7837e808ad483ebdb54354d6632424",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "src/runtime/ledger_schema_pressure.py"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "e4f8a3b15efee4707f63b21957655d9a33e65a040201912556fa6b2f21968401",
+        "old_sha256": "e4f8a3b15efee4707f63b21957655d9a33e65a040201912556fa6b2f21968401",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [
+          "A"
+        ],
+        "commit_touches": [
+          "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+        ]
+      },
+      "git_working_state": {
+        "baseline_status": [
+          "??"
+        ],
+        "current_status": []
+      },
+      "path": "src/runtime/repo_provenance_pressure.py"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "d17047e535233825de2baa7176f730ba27c31bf27a2790dd9863b235e06631a6",
+        "old_sha256": "d17047e535233825de2baa7176f730ba27c31bf27a2790dd9863b235e06631a6",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "tests/__init__.py"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": false,
+        "new_sha256": null,
+        "old_sha256": null,
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [
+          "??"
+        ],
+        "current_status": []
+      },
+      "path": "tests/capture/"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "d1d369613c7a2998d3b55f38de452aab6294ec49db96829388a0c16cc4afce56",
+        "old_sha256": "d1d369613c7a2998d3b55f38de452aab6294ec49db96829388a0c16cc4afce56",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [
+          "A"
+        ],
+        "commit_touches": [
+          "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+        ]
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "tests/capture/__init__.py"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "37a5ec3d648f5254a1612730a18b2ac5879dab2d883622852872a04a16bfc12e",
+        "old_sha256": "37a5ec3d648f5254a1612730a18b2ac5879dab2d883622852872a04a16bfc12e",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [
+          "A"
+        ],
+        "commit_touches": [
+          "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+        ]
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "tests/capture/test_repo_snapshot.py"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "old_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "tests/fixtures/.gitkeep"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "31a2e61017e9f1cb16384e2f2f554fa0fb35371268a13894200d76e634be3d30",
+        "old_sha256": "31a2e61017e9f1cb16384e2f2f554fa0fb35371268a13894200d76e634be3d30",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "tests/fixtures/synthetic_envelopes.md"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "old_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "tests/replay/.gitkeep"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "50cf829e684beea408208c029944fdeb3db0180cce60d5404b9ee3cec31ccf97",
+        "old_sha256": "50cf829e684beea408208c029944fdeb3db0180cce60d5404b9ee3cec31ccf97",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "tests/replay/__init__.py"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "e82c0536e0252064a1346a50e255b38c763489f760fa8a52094b62aaa3c33279",
+        "old_sha256": "e82c0536e0252064a1346a50e255b38c763489f760fa8a52094b62aaa3c33279",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "tests/replay/test_ledger_harness.py"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": true,
+        "new_sha256": "c7f779208dfb35e388cb3451a2674cb35fefbb96502535dc939bb1efe43b1f10",
+        "old_sha256": "c7f779208dfb35e388cb3451a2674cb35fefbb96502535dc939bb1efe43b1f10",
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [],
+        "commit_touches": []
+      },
+      "git_working_state": {
+        "baseline_status": [],
+        "current_status": []
+      },
+      "path": "tests/replay/test_ledger_schema.py"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": false,
+        "new_sha256": null,
+        "old_sha256": null,
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [
+          "A"
+        ],
+        "commit_touches": [
+          "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+        ]
+      },
+      "git_working_state": {
+        "baseline_status": [
+          "??"
+        ],
+        "current_status": []
+      },
+      "path": "traces/git_state_v0_baseline.json"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": false,
+        "new_sha256": null,
+        "old_sha256": null,
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [
+          "A"
+        ],
+        "commit_touches": [
+          "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+        ]
+      },
+      "git_working_state": {
+        "baseline_status": [
+          "??"
+        ],
+        "current_status": []
+      },
+      "path": "traces/repo_provenance_pressure_v0.json"
+    },
+    {
+      "filesystem": {
+        "added": false,
+        "content_changed": false,
+        "in_scope": false,
+        "new_sha256": null,
+        "old_sha256": null,
+        "removed": false
+      },
+      "git_historical": {
+        "commit_statuses": [
+          "A"
+        ],
+        "commit_touches": [
+          "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+        ]
+      },
+      "git_working_state": {
+        "baseline_status": [
+          "??"
+        ],
+        "current_status": []
+      },
+      "path": "traces/repo_snapshot_v0_baseline.json"
+    }
+  ],
+  "path_correspondence_summary": {
+    "filesystem_added": 0,
+    "filesystem_content_changed": 5,
+    "filesystem_removed": 0,
+    "git_commit_touched_paths": 16,
+    "git_status_added": 0,
+    "git_status_removed": 13,
+    "git_visible_filesystem_out_of_scope": 5,
+    "rows": 54,
+    "same_filesystem_bytes_later_committed": 8
+  },
+  "repeated_observation_identity_pressure": {
+    "different_observation_interval": true,
+    "first_interval": [
+      "2026-09-06T06:58:07.411383Z",
+      "2026-09-06T06:58:07.413131Z"
+    ],
+    "same_envelope_identity": true,
+    "same_snapshot_id": true,
+    "second_interval": [
+      "2026-09-06T06:58:07.423303Z",
+      "2026-09-06T06:58:07.424704Z"
+    ]
+  },
+  "root_identity_pressure": {
+    "baseline_filesystem_root_identity": {
+      "kind": "repository_working_tree",
+      "name": ""
+    },
+    "baseline_git_root_identity": {
+      "kind": "repository_working_tree",
+      "name": ""
+    },
+    "current_filesystem_root_identity": {
+      "kind": "repository_working_tree",
+      "name": ""
+    },
+    "current_git_root_identity": {
+      "kind": "repository_working_tree",
+      "name": ""
+    },
+    "finding": "observer invocation with '.' leaves root_identity.name empty in v0 observations"
+  },
+  "same_filesystem_bytes_later_committed": [
+    {
+      "baseline_status": [
+        "M"
+      ],
+      "commit_touches": [
+        "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+      ],
+      "path": "docs/contracts/capture.md",
+      "sha256": "710d86d9aa0e6b91a95857db8e271b9b211b1c82433ed8b15d9150f4e8fa6b5b"
+    },
+    {
+      "baseline_status": [
+        "M"
+      ],
+      "commit_touches": [
+        "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+      ],
+      "path": "docs/distinctions/registry.jsonl",
+      "sha256": "0b413d8d84b8857405905fe6ee1bdd27ef3f548ba1f3daac3f933023abb74c76"
+    },
+    {
+      "baseline_status": [],
+      "commit_touches": [
+        "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+      ],
+      "path": "src/capture/__init__.py",
+      "sha256": "6ecc92d41d9b84e1870c7ff81eb95937d0cb19b6b4120d290551f79a273fe650"
+    },
+    {
+      "baseline_status": [],
+      "commit_touches": [
+        "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+      ],
+      "path": "src/capture/git_state.py",
+      "sha256": "515a46c52ded521410d28c1ccaad571208700545d7e3d3dea796b9ef848ac45c"
+    },
+    {
+      "baseline_status": [],
+      "commit_touches": [
+        "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+      ],
+      "path": "src/capture/repo_snapshot.py",
+      "sha256": "be5cf003f4e1463595729e2f39665f3b0439b587ec083569ad4bf2b049961913"
+    },
+    {
+      "baseline_status": [
+        "??"
+      ],
+      "commit_touches": [
+        "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+      ],
+      "path": "src/runtime/repo_provenance_pressure.py",
+      "sha256": "e4f8a3b15efee4707f63b21957655d9a33e65a040201912556fa6b2f21968401"
+    },
+    {
+      "baseline_status": [],
+      "commit_touches": [
+        "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+      ],
+      "path": "tests/capture/__init__.py",
+      "sha256": "d1d369613c7a2998d3b55f38de452aab6294ec49db96829388a0c16cc4afce56"
+    },
+    {
+      "baseline_status": [],
+      "commit_touches": [
+        "c4cba9ac923c63ff3f2e3e1f0bb5cce5dfd7b28c"
+      ],
+      "path": "tests/capture/test_repo_snapshot.py",
+      "sha256": "37a5ec3d648f5254a1612730a18b2ac5879dab2d883622852872a04a16bfc12e"
+    }
+  ],
+  "timing_surface": [
+    {
+      "basis": "observer-produced",
+      "claim": "filesystem observation_started_at",
+      "value": "2026-09-06T06:32:38.280253Z"
+    },
+    {
+      "basis": "observer-produced",
+      "claim": "filesystem observation_finished_at",
+      "value": "2026-09-06T06:32:38.356383Z"
+    },
+    {
+      "basis": "source-provided metadata",
+      "claim": "file mtime_ns",
+      "value": "per file entry"
+    },
+    {
+      "basis": "observer-produced",
+      "claim": "Git observed_at",
+      "value": "2026-09-06T06:32:38.356400Z"
+    },
+    {
+      "basis": "retrospectively reconstructed",
+      "claim": "Git commit timestamps",
+      "value": [
+        "2026-09-05T23:15:09-07:00",
+        "2026-09-05T23:23:28-07:00"
+      ]
+    },
+    {
+      "basis": "handling-produced provisional mapping",
+      "claim": "candidate arrival_time mapping",
+      "value": "capture completion or Git observed_at"
+    },
+    {
+      "basis": "ledger-produced",
+      "claim": "ledger append commit_index",
+      "value": [
+        1,
+        2
+      ]
+    }
+  ],
+  "unresolved_pressure": [
+    "filesystem scope and Git scope are overlapping but non-coextensive",
+    "snapshot identity includes metadata while compare_snapshots changed_paths uses content hash only",
+    "candidate filesystem envelope identity collapses same structural state observations",
+    "capture completion is only provisionally mapped to arrival_time",
+    "retrospective Git history is not contemporaneous filesystem history",
+    "root identity remains ambiguous when observer is invoked with '.'"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "branch": "main",
+  "capture_errors": [],
+  "head_sha": "0a981a3339991208ce370bbceecc0c6dc9b05613",
+  "observation_id": "git-state-v0:2026-09-06T06:32:38.356400Z",
+  "observed_at": "2026-09-06T06:32:38.356400Z",
+  "observer": "git_state",
+  "observer_version": "git_state_v0",
+  "root_identity": {
+    "kind": "repository_working_tree",
+    "name": ""
+  },
+  "status_porcelain": []
+}

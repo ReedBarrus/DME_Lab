@@ -36,18 +36,22 @@ An admitted envelope suitable for ledger append.
 
 - admission behavior is not yet implemented as its own boundary
 - malformed and unavailable source structures need pressure
-- synthetic envelopes exercise shape, not live capture
+- synthetic envelopes exercise ledger shape
+- bounded live candidate envelopes exercise shadow handshakes, not admission enforcement
 
 ## Evidence
 
 No dedicated ingest implementation exists.
 
-Evidence currently includes synthetic envelopes used by ledger tests and one bounded live repository candidate-envelope handshake.
+Evidence currently includes synthetic envelopes used by ledger tests and bounded live repository candidate-envelope handshakes.
 
 A live repository snapshot candidate envelope has been constructed and compared in shadow mode:
 
 - `src/runtime/repo_provenance_pressure.py`
 - `traces/repo_provenance_pressure_v0.json`
 - `docs/decisions/repo_provenance_pressure_v0.md`
+- `src/runtime/repo_transition_pressure.py`
+- `traces/repo_transition_pressure_v0.json`
+- `docs/decisions/repo_transition_pressure_v0.md`
 
 This does not implement or enforce ingest admission, and it does not define final ingest rules.

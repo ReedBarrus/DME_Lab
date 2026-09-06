@@ -50,5 +50,8 @@ Bounded repository observer evidence exists:
 - `tests/capture/test_repo_snapshot.py`
 - `traces/repo_snapshot_v0_baseline.json`
 - `traces/git_state_v0_baseline.json`
+- `traces/repo_snapshot_v0_post_cleanup.json`
+- `traces/git_state_v0_post_cleanup.json`
+- `traces/repo_transition_pressure_v0.json`
 
 This evidence does not validate general OS or Windows event capture.
