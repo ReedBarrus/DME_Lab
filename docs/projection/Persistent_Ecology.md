@@ -1,4 +1,11 @@
-# DME_Lab
+# Persistent Ecology
+
+> Non-authoritative projection.
+>
+> This document preserves a possible developmental horizon for DME_Lab.
+> It does not define runtime architecture, implementation requirements,
+> or evidence. Structures described here should enter the operational
+> system only when independently earned through executable pressure.
 
 DME_Lab is an experimental repository for discovering how a system can preserve, reconstruct, distinguish, and eventually navigate consequential state across changing observers, representations, histories, and actions.
 
