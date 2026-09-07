@@ -1,0 +1,2689 @@
+{
+  "ambient_vs_conserved": {
+    "ambient_current_repo_supplies": [
+      "hash algorithm identity",
+      "commitment boundary",
+      "canonicalization behavior",
+      "commit_index ordering semantics",
+      "prefix comparison semantics",
+      "candidate integrity recomputation semantics"
+    ],
+    "finding": "the same carrier is opaque when interpretation is not conserved or ambiently available",
+    "witness_supplies": [
+      "ordered digest bytes"
+    ]
+  },
+  "candidate_histories": {
+    "H13_tail_loss": {
+      "construction": "copy canonical H14 records 1..13; omit complete rec-000014",
+      "derived_state": {
+        "commit_indices": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "record_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000003",
+          "rec-000004",
+          "rec-000005",
+          "rec-000006",
+          "rec-000007",
+          "rec-000008",
+          "rec-000009",
+          "rec-000010",
+          "rec-000011",
+          "rec-000012",
+          "rec-000013"
+        ],
+        "stored_digest_count": 13
+      },
+      "record_count": 13
+    },
+    "H14_control": {
+      "construction": "current canonical H14 replay records 1..14",
+      "derived_state": {
+        "commit_indices": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "record_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000003",
+          "rec-000004",
+          "rec-000005",
+          "rec-000006",
+          "rec-000007",
+          "rec-000008",
+          "rec-000009",
+          "rec-000010",
+          "rec-000011",
+          "rec-000012",
+          "rec-000013",
+          "rec-000014"
+        ],
+        "stored_digest_count": 14
+      },
+      "record_count": 14
+    },
+    "H16_ID_replacement": {
+      "construction": "H16 extension with record 1 record_id changed to rec-999001 and digest recomputed",
+      "derived_state": {
+        "commit_indices": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "record_ids": [
+          "rec-999001",
+          "rec-000002",
+          "rec-000003",
+          "rec-000004",
+          "rec-000005",
+          "rec-000006",
+          "rec-000007",
+          "rec-000008",
+          "rec-000009",
+          "rec-000010",
+          "rec-000011",
+          "rec-000012",
+          "rec-000013",
+          "rec-000014",
+          "rec-000015",
+          "rec-000016"
+        ],
+        "stored_digest_count": 16
+      },
+      "record_count": 16
+    },
+    "H16_content_replacement": {
+      "construction": "H16 extension with record 1 envelope.provenance.observation_point changed and digest recomputed",
+      "derived_state": {
+        "commit_indices": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "record_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000003",
+          "rec-000004",
+          "rec-000005",
+          "rec-000006",
+          "rec-000007",
+          "rec-000008",
+          "rec-000009",
+          "rec-000010",
+          "rec-000011",
+          "rec-000012",
+          "rec-000013",
+          "rec-000014",
+          "rec-000015",
+          "rec-000016"
+        ],
+        "stored_digest_count": 16
+      },
+      "record_count": 16
+    },
+    "H16_extension": {
+      "construction": "temporary JSONL copy of H14 plus appended rec-000015 observation and rec-000016 admission",
+      "derived_state": {
+        "commit_indices": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "record_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000003",
+          "rec-000004",
+          "rec-000005",
+          "rec-000006",
+          "rec-000007",
+          "rec-000008",
+          "rec-000009",
+          "rec-000010",
+          "rec-000011",
+          "rec-000012",
+          "rec-000013",
+          "rec-000014",
+          "rec-000015",
+          "rec-000016"
+        ],
+        "stored_digest_count": 16
+      },
+      "record_count": 16
+    }
+  },
+  "carrier": {
+    "carrier_identity": "sha256:09f0f5f3402b1f187b3b09e4417f8e12010b22fe0968aeb2841a0b598553c200",
+    "commit_indices": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "digest_count": 14,
+    "digests": [
+      "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0",
+      "088150a2c4fa273649336f4d383c215fdb26a582b18e805676af0852e12ece49",
+      "13cb2fa243a67cd33b31b7682d5bdfdabbb12d1468fdbd822f7f1b5723879053",
+      "26f180c033d7afc0f28f85364ceb9dbab03ccca7fca448c87560fbf3c7274f55",
+      "eaeb24052ca0c24781dfec64364f85650b92bb7579b362ccf5c446a618e6a009",
+      "91e0fe6bbd9c7bcf4396ad5d36bb2706ceee7929f0d3df95d9cb9fbbdee70186",
+      "304610013cc41f331c10ac79530672736292eb72304744cb1051ca3c17db23e8",
+      "2fea6ea3f37c042b142d39d1ea735d4ad333bbc4401e4b5443984acca5913312",
+      "4e16fa12b0037aef4faf2809df25f2c1b9a5778dd9b09046b45d0580e350d8b1",
+      "86a030db971d54facb2793cb766a2403f523ab8f1a8b0692e54ea629a384422e",
+      "f7eaafdb44bc952ecff570a80f104c58696d0633bfbe576017a951a25194ddc5",
+      "cbc644039d37af6016d1623fad3fe7b13677482ba01b137ae88822558ab3b61c",
+      "1bb0b6306f8a5fba52c5bdb09349b0deb67f067b6e272f68bc87191f88daa2d3",
+      "3e167cf9d710080e52649c4d0c6fd8bd48040aea60cc3b8a2b071e44cbb79209"
+    ],
+    "interpretation_included": false,
+    "name": "W14_ordered_record_digests",
+    "record_count": 14,
+    "source": "e399720:traces/live_ingest_ledger_v0.jsonl"
+  },
+  "chart": {
+    "H13_tail_loss": {
+      "R0_full_current_semantics": {
+        "candidate_commitment_count": 13,
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "prefix comparison",
+        "outcome": "MISMATCHED",
+        "reason": "candidate history is shorter than witnessed prefix",
+        "witness_commitment_count": 14
+      },
+      "R1_digest_carrier_only": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "canonical bytes"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "hash algorithm"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "candidate integrity recomputation semantics",
+        "opaque_digest_prefix_equal": false,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "candidate integrity recomputation semantics unavailable"
+      },
+      "R2_algorithm_only": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "commitment boundary",
+        "opaque_digest_prefix_equal": false,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "commitment boundary unavailable"
+      },
+      "R3_algorithm_boundary_no_canonicalization": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "canonical byte representation",
+        "opaque_digest_prefix_equal": false,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "canonical byte representation unavailable"
+      },
+      "R4_commitment_semantics_no_ordering_or_relation": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "record ordering semantics",
+        "opaque_digest_prefix_equal": false,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "record ordering semantics unavailable"
+      },
+      "R5_commitment_and_ordering_no_prefix_rule": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "historical prefix comparison rule",
+        "opaque_digest_prefix_equal": false,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "historical prefix comparison rule unavailable"
+      },
+      "R6_sufficient_bounded_historical_verifier_semantics": {
+        "candidate_commitment_count": 13,
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "prefix comparison",
+        "outcome": "MISMATCHED",
+        "reason": "candidate history is shorter than witnessed prefix",
+        "witness_commitment_count": 14
+      },
+      "R7_wrong_boundary": {
+        "candidate_commitment_count": 13,
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "prefix comparison",
+        "outcome": "MISMATCHED",
+        "reason": "candidate history is shorter than witnessed prefix",
+        "witness_commitment_count": 14
+      },
+      "R8_wrong_canonicalization": {
+        "candidate_commitment_count": 13,
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "prefix comparison",
+        "outcome": "MISMATCHED",
+        "reason": "candidate history is shorter than witnessed prefix",
+        "witness_commitment_count": 14
+      }
+    },
+    "H14_control": {
+      "R0_full_current_semantics": {
+        "candidate_commitment_count": 14,
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": null,
+        "outcome": "RECOVERED",
+        "reason": "candidate commitments preserve the witnessed H14 digest prefix",
+        "witness_commitment_count": 14
+      },
+      "R1_digest_carrier_only": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "canonical bytes"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "hash algorithm"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "candidate integrity recomputation semantics",
+        "opaque_digest_prefix_equal": true,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "candidate integrity recomputation semantics unavailable"
+      },
+      "R2_algorithm_only": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "commitment boundary",
+        "opaque_digest_prefix_equal": true,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "commitment boundary unavailable"
+      },
+      "R3_algorithm_boundary_no_canonicalization": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "canonical byte representation",
+        "opaque_digest_prefix_equal": true,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "canonical byte representation unavailable"
+      },
+      "R4_commitment_semantics_no_ordering_or_relation": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "record ordering semantics",
+        "opaque_digest_prefix_equal": true,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "record ordering semantics unavailable"
+      },
+      "R5_commitment_and_ordering_no_prefix_rule": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "historical prefix comparison rule",
+        "opaque_digest_prefix_equal": true,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "historical prefix comparison rule unavailable"
+      },
+      "R6_sufficient_bounded_historical_verifier_semantics": {
+        "candidate_commitment_count": 14,
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": null,
+        "outcome": "RECOVERED",
+        "reason": "candidate commitments preserve the witnessed H14 digest prefix",
+        "witness_commitment_count": 14
+      },
+      "R7_wrong_boundary": {
+        "candidate_commitment_count": 14,
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "prefix comparison",
+        "first_mismatch": {
+          "candidate": "98340a221dc26912396c2e94b486a5f05e04a1d380b8f6b9d21166650cb65beb",
+          "position": 1,
+          "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+        },
+        "outcome": "MISMATCHED",
+        "reason": "executable interpretation produced commitments incompatible with the preserved witness",
+        "witness_commitment_count": 14
+      },
+      "R8_wrong_canonicalization": {
+        "candidate_commitment_count": 14,
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "prefix comparison",
+        "first_mismatch": {
+          "candidate": "58034d8360d2d0aff56b6a3444e9e5eb30b3cb52855d271d01932e39d764d3dd",
+          "position": 1,
+          "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+        },
+        "outcome": "MISMATCHED",
+        "reason": "executable interpretation produced commitments incompatible with the preserved witness",
+        "witness_commitment_count": 14
+      }
+    },
+    "H16_ID_replacement": {
+      "R0_full_current_semantics": {
+        "candidate_commitment_count": 16,
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "prefix comparison",
+        "first_mismatch": {
+          "candidate": "eef4260c879d98501a14ecc22f9820e7eefcb462828acece642ad64930e47f71",
+          "position": 1,
+          "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+        },
+        "outcome": "MISMATCHED",
+        "reason": "executable interpretation produced commitments incompatible with the preserved witness",
+        "witness_commitment_count": 14
+      },
+      "R1_digest_carrier_only": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "canonical bytes"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "hash algorithm"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "candidate integrity recomputation semantics",
+        "opaque_digest_prefix_equal": false,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "candidate integrity recomputation semantics unavailable"
+      },
+      "R2_algorithm_only": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "commitment boundary",
+        "opaque_digest_prefix_equal": false,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "commitment boundary unavailable"
+      },
+      "R3_algorithm_boundary_no_canonicalization": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "canonical byte representation",
+        "opaque_digest_prefix_equal": false,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "canonical byte representation unavailable"
+      },
+      "R4_commitment_semantics_no_ordering_or_relation": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "record ordering semantics",
+        "opaque_digest_prefix_equal": false,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "record ordering semantics unavailable"
+      },
+      "R5_commitment_and_ordering_no_prefix_rule": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "historical prefix comparison rule",
+        "opaque_digest_prefix_equal": false,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "historical prefix comparison rule unavailable"
+      },
+      "R6_sufficient_bounded_historical_verifier_semantics": {
+        "candidate_commitment_count": 16,
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "prefix comparison",
+        "first_mismatch": {
+          "candidate": "eef4260c879d98501a14ecc22f9820e7eefcb462828acece642ad64930e47f71",
+          "position": 1,
+          "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+        },
+        "outcome": "MISMATCHED",
+        "reason": "executable interpretation produced commitments incompatible with the preserved witness",
+        "witness_commitment_count": 14
+      },
+      "R7_wrong_boundary": {
+        "candidate_commitment_count": 16,
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "prefix comparison",
+        "first_mismatch": {
+          "candidate": "98340a221dc26912396c2e94b486a5f05e04a1d380b8f6b9d21166650cb65beb",
+          "position": 1,
+          "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+        },
+        "outcome": "MISMATCHED",
+        "reason": "executable interpretation produced commitments incompatible with the preserved witness",
+        "witness_commitment_count": 14
+      },
+      "R8_wrong_canonicalization": {
+        "candidate_commitment_count": 16,
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "prefix comparison",
+        "first_mismatch": {
+          "candidate": "18b3e2ec19d126e119083ac18c931d4ad2c8c2c9bd1eb8dfa01115b4c8569b4e",
+          "position": 1,
+          "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+        },
+        "outcome": "MISMATCHED",
+        "reason": "executable interpretation produced commitments incompatible with the preserved witness",
+        "witness_commitment_count": 14
+      }
+    },
+    "H16_content_replacement": {
+      "R0_full_current_semantics": {
+        "candidate_commitment_count": 16,
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "prefix comparison",
+        "first_mismatch": {
+          "candidate": "507e336fe10deea3f4a6cb342831356dfc5d0f588216fa61f7809243edeba8f2",
+          "position": 1,
+          "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+        },
+        "outcome": "MISMATCHED",
+        "reason": "executable interpretation produced commitments incompatible with the preserved witness",
+        "witness_commitment_count": 14
+      },
+      "R1_digest_carrier_only": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "canonical bytes"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "hash algorithm"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "candidate integrity recomputation semantics",
+        "opaque_digest_prefix_equal": false,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "candidate integrity recomputation semantics unavailable"
+      },
+      "R2_algorithm_only": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "commitment boundary",
+        "opaque_digest_prefix_equal": false,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "commitment boundary unavailable"
+      },
+      "R3_algorithm_boundary_no_canonicalization": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "canonical byte representation",
+        "opaque_digest_prefix_equal": false,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "canonical byte representation unavailable"
+      },
+      "R4_commitment_semantics_no_ordering_or_relation": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "record ordering semantics",
+        "opaque_digest_prefix_equal": false,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "record ordering semantics unavailable"
+      },
+      "R5_commitment_and_ordering_no_prefix_rule": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "historical prefix comparison rule",
+        "opaque_digest_prefix_equal": false,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "historical prefix comparison rule unavailable"
+      },
+      "R6_sufficient_bounded_historical_verifier_semantics": {
+        "candidate_commitment_count": 16,
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "prefix comparison",
+        "first_mismatch": {
+          "candidate": "507e336fe10deea3f4a6cb342831356dfc5d0f588216fa61f7809243edeba8f2",
+          "position": 1,
+          "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+        },
+        "outcome": "MISMATCHED",
+        "reason": "executable interpretation produced commitments incompatible with the preserved witness",
+        "witness_commitment_count": 14
+      },
+      "R7_wrong_boundary": {
+        "candidate_commitment_count": 16,
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "prefix comparison",
+        "first_mismatch": {
+          "candidate": "cb670922f135e62f3de0d7c1ba63614c54555592b9805291dc2a39c3dfedddd4",
+          "position": 1,
+          "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+        },
+        "outcome": "MISMATCHED",
+        "reason": "executable interpretation produced commitments incompatible with the preserved witness",
+        "witness_commitment_count": 14
+      },
+      "R8_wrong_canonicalization": {
+        "candidate_commitment_count": 16,
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "prefix comparison",
+        "first_mismatch": {
+          "candidate": "25dd17781d6959f7182c2747cd51282709800fcbc50deff077baa0e543cf545b",
+          "position": 1,
+          "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+        },
+        "outcome": "MISMATCHED",
+        "reason": "executable interpretation produced commitments incompatible with the preserved witness",
+        "witness_commitment_count": 14
+      }
+    },
+    "H16_extension": {
+      "R0_full_current_semantics": {
+        "candidate_commitment_count": 16,
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": null,
+        "outcome": "RECOVERED",
+        "reason": "candidate commitments preserve the witnessed H14 digest prefix",
+        "witness_commitment_count": 14
+      },
+      "R1_digest_carrier_only": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "canonical bytes"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "hash algorithm"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "candidate integrity recomputation semantics",
+        "opaque_digest_prefix_equal": true,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "candidate integrity recomputation semantics unavailable"
+      },
+      "R2_algorithm_only": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "commitment boundary",
+        "opaque_digest_prefix_equal": true,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "commitment boundary unavailable"
+      },
+      "R3_algorithm_boundary_no_canonicalization": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "canonical byte representation",
+        "opaque_digest_prefix_equal": true,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "canonical byte representation unavailable"
+      },
+      "R4_commitment_semantics_no_ordering_or_relation": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "record ordering semantics",
+        "opaque_digest_prefix_equal": true,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "record ordering semantics unavailable"
+      },
+      "R5_commitment_and_ordering_no_prefix_rule": {
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": false,
+            "status": "blocked",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "historical prefix comparison rule",
+        "opaque_digest_prefix_equal": true,
+        "opaque_equality_note": "opaque equality is not treated as recovered historical interpretation",
+        "outcome": "UNRESOLVED",
+        "reason": "historical prefix comparison rule unavailable"
+      },
+      "R6_sufficient_bounded_historical_verifier_semantics": {
+        "candidate_commitment_count": 16,
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": null,
+        "outcome": "RECOVERED",
+        "reason": "candidate commitments preserve the witnessed H14 digest prefix",
+        "witness_commitment_count": 14
+      },
+      "R7_wrong_boundary": {
+        "candidate_commitment_count": 16,
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "prefix comparison",
+        "first_mismatch": {
+          "candidate": "98340a221dc26912396c2e94b486a5f05e04a1d380b8f6b9d21166650cb65beb",
+          "position": 1,
+          "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+        },
+        "outcome": "MISMATCHED",
+        "reason": "executable interpretation produced commitments incompatible with the preserved witness",
+        "witness_commitment_count": 14
+      },
+      "R8_wrong_canonicalization": {
+        "candidate_commitment_count": 16,
+        "dependency_chain": [
+          {
+            "available": true,
+            "status": "available",
+            "step": "candidate record"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "selected commitment boundary"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "canonical bytes"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "hash algorithm"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "ordered commitments"
+          },
+          {
+            "available": true,
+            "status": "available",
+            "step": "historical prefix relation"
+          }
+        ],
+        "first_failure_point": "prefix comparison",
+        "first_mismatch": {
+          "candidate": "58034d8360d2d0aff56b6a3444e9e5eb30b3cb52855d271d01932e39d764d3dd",
+          "position": 1,
+          "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+        },
+        "outcome": "MISMATCHED",
+        "reason": "executable interpretation produced commitments incompatible with the preserved witness",
+        "witness_commitment_count": 14
+      }
+    }
+  },
+  "chart_overlap": {
+    "historical_relation_chart": "historical transformation x observer relation",
+    "proto_transition_map_pressure_supported": true,
+    "provenance_recovery_chart": "witness carrier x interpretation regime",
+    "shared_stable_referents": [
+      "H14",
+      "H16 extension",
+      "H16 content replacement",
+      "ordered digest witness",
+      "prefix preservation"
+    ],
+    "transition_maps_implemented": false,
+    "witness_content_chart": "historical transformation x witness representation"
+  },
+  "current_digest_semantics": {
+    "algorithm": "sha256",
+    "algorithm_metadata_enforced": false,
+    "boundary": [
+      "record_id",
+      "commit_index",
+      "envelope"
+    ],
+    "boundary_label": "canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators",
+    "boundary_metadata_enforced": false,
+    "canonicalization": "json.dumps(sort_keys=True, separators=(',', ':'), ensure_ascii=False) encoded as UTF-8",
+    "canonicalization_identity": "ambient source behavior; no explicit versioned identity",
+    "verify_checks": "stored integrity.digest equals recomputed digest over record_id, commit_index, and envelope"
+  },
+  "dependency_chain": [
+    "candidate record",
+    "selected commitment boundary",
+    "canonical bytes",
+    "hash algorithm",
+    "commit_index ordered commitments",
+    "prefix comparison against witnessed ordered digests",
+    "historical relation outcome"
+  ],
+  "distinctions": {
+    "added": [
+      "D-0034 witness_carrier_survival != historical_relation_recovery"
+    ],
+    "amended": [],
+    "not_registered": [
+      "metadata_presence != executed_semantics",
+      "ambient_interpretation != conserved_interpretation"
+    ]
+  },
+  "duration_seconds": 0.11306289999629371,
+  "experiment": "provenance_recovery_pressure_v0",
+  "finding": "same ordered digest carrier yields recovered, mismatched, or unresolved outcomes under different interpretation regimes",
+  "h16_content_replacement_mutation": {
+    "after": "T0_clean_pre_probe_content_replaced",
+    "before": "T0_clean_pre_probe",
+    "commit_index": 1,
+    "commit_indices_preserved": true,
+    "digest_recomputed": true,
+    "field": "envelope.provenance.observation_point",
+    "record_id": "rec-000001",
+    "record_ids_preserved": true
+  },
+  "interpretation_regimes": {
+    "R0_full_current_semantics": {
+      "available": {
+        "algorithm": "sha256",
+        "boundary": "current_record",
+        "candidate_recomputation": true,
+        "canonicalization": "current",
+        "ordering": "commit_index",
+        "prefix_rule": true
+      },
+      "dependency_chain": [
+        {
+          "available": true,
+          "status": "available",
+          "step": "candidate record"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "selected commitment boundary"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "canonical bytes"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "hash algorithm"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "ordered commitments"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "historical prefix relation"
+        }
+      ],
+      "first_failure_point": null,
+      "role": "ambient current-code control",
+      "source": "ambient current source code",
+      "withheld_or_changed": {}
+    },
+    "R1_digest_carrier_only": {
+      "available": {},
+      "dependency_chain": [
+        {
+          "available": true,
+          "status": "available",
+          "step": "candidate record"
+        },
+        {
+          "available": false,
+          "status": "reported",
+          "step": "selected commitment boundary"
+        },
+        {
+          "available": false,
+          "status": "reported",
+          "step": "canonical bytes"
+        },
+        {
+          "available": false,
+          "status": "reported",
+          "step": "hash algorithm"
+        },
+        {
+          "available": false,
+          "status": "reported",
+          "step": "ordered commitments"
+        },
+        {
+          "available": false,
+          "status": "reported",
+          "step": "historical prefix relation"
+        }
+      ],
+      "first_failure_point": "candidate integrity recomputation semantics",
+      "role": "carrier survived, interpretation absent",
+      "source": "witness bytes only",
+      "withheld_or_changed": {
+        "algorithm": null,
+        "boundary": null,
+        "candidate_recomputation": false,
+        "canonicalization": null,
+        "ordering": null,
+        "prefix_rule": false
+      }
+    },
+    "R2_algorithm_only": {
+      "available": {
+        "algorithm": "sha256",
+        "candidate_recomputation": true
+      },
+      "dependency_chain": [
+        {
+          "available": true,
+          "status": "available",
+          "step": "candidate record"
+        },
+        {
+          "available": false,
+          "status": "reported",
+          "step": "selected commitment boundary"
+        },
+        {
+          "available": false,
+          "status": "reported",
+          "step": "canonical bytes"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "hash algorithm"
+        },
+        {
+          "available": false,
+          "status": "reported",
+          "step": "ordered commitments"
+        },
+        {
+          "available": false,
+          "status": "reported",
+          "step": "historical prefix relation"
+        }
+      ],
+      "first_failure_point": "commitment boundary",
+      "role": "algorithm identity without boundary or canonicalization",
+      "source": "reduced conserved interpretation",
+      "withheld_or_changed": {
+        "boundary": null,
+        "canonicalization": null,
+        "ordering": null,
+        "prefix_rule": false
+      }
+    },
+    "R3_algorithm_boundary_no_canonicalization": {
+      "available": {
+        "algorithm": "sha256",
+        "boundary": "current_record",
+        "candidate_recomputation": true
+      },
+      "dependency_chain": [
+        {
+          "available": true,
+          "status": "available",
+          "step": "candidate record"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "selected commitment boundary"
+        },
+        {
+          "available": false,
+          "status": "reported",
+          "step": "canonical bytes"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "hash algorithm"
+        },
+        {
+          "available": false,
+          "status": "reported",
+          "step": "ordered commitments"
+        },
+        {
+          "available": false,
+          "status": "reported",
+          "step": "historical prefix relation"
+        }
+      ],
+      "first_failure_point": "canonical byte representation",
+      "role": "semantic boundary known, byte representation absent",
+      "source": "reduced conserved interpretation",
+      "withheld_or_changed": {
+        "canonicalization": null,
+        "ordering": null,
+        "prefix_rule": false
+      }
+    },
+    "R4_commitment_semantics_no_ordering_or_relation": {
+      "available": {
+        "algorithm": "sha256",
+        "boundary": "current_record",
+        "candidate_recomputation": true,
+        "canonicalization": "current"
+      },
+      "dependency_chain": [
+        {
+          "available": true,
+          "status": "available",
+          "step": "candidate record"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "selected commitment boundary"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "canonical bytes"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "hash algorithm"
+        },
+        {
+          "available": false,
+          "status": "reported",
+          "step": "ordered commitments"
+        },
+        {
+          "available": false,
+          "status": "reported",
+          "step": "historical prefix relation"
+        }
+      ],
+      "first_failure_point": "record ordering semantics",
+      "role": "candidate commitments recomputable, historical relation not yet available",
+      "source": "reduced conserved interpretation",
+      "withheld_or_changed": {
+        "ordering": null,
+        "prefix_rule": false
+      }
+    },
+    "R5_commitment_and_ordering_no_prefix_rule": {
+      "available": {
+        "algorithm": "sha256",
+        "boundary": "current_record",
+        "candidate_recomputation": true,
+        "canonicalization": "current",
+        "ordering": "commit_index"
+      },
+      "dependency_chain": [
+        {
+          "available": true,
+          "status": "available",
+          "step": "candidate record"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "selected commitment boundary"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "canonical bytes"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "hash algorithm"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "ordered commitments"
+        },
+        {
+          "available": false,
+          "status": "reported",
+          "step": "historical prefix relation"
+        }
+      ],
+      "first_failure_point": "historical prefix comparison rule",
+      "role": "ordered commitments available, prefix relation withheld",
+      "source": "reduced conserved interpretation",
+      "withheld_or_changed": {
+        "prefix_rule": false
+      }
+    },
+    "R6_sufficient_bounded_historical_verifier_semantics": {
+      "available": {
+        "algorithm": "sha256",
+        "boundary": "current_record",
+        "candidate_recomputation": true,
+        "canonicalization": "current",
+        "ordering": "commit_index",
+        "prefix_rule": true
+      },
+      "dependency_chain": [
+        {
+          "available": true,
+          "status": "available",
+          "step": "candidate record"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "selected commitment boundary"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "canonical bytes"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "hash algorithm"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "ordered commitments"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "historical prefix relation"
+        }
+      ],
+      "first_failure_point": null,
+      "role": "smallest tested explicit semantics sufficient for bounded prefix recovery",
+      "source": "explicit bounded semantics in this experiment",
+      "withheld_or_changed": {}
+    },
+    "R7_wrong_boundary": {
+      "available": {
+        "algorithm": "sha256",
+        "boundary": "envelope_only",
+        "candidate_recomputation": true,
+        "canonicalization": "current",
+        "ordering": "commit_index",
+        "prefix_rule": true
+      },
+      "dependency_chain": [
+        {
+          "available": true,
+          "status": "available",
+          "step": "candidate record"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "selected commitment boundary"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "canonical bytes"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "hash algorithm"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "ordered commitments"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "historical prefix relation"
+        }
+      ],
+      "first_failure_point": null,
+      "role": "complete but wrong commitment boundary",
+      "source": "wrong-but-executable interpretation",
+      "withheld_or_changed": {
+        "algorithm": "sha256",
+        "boundary": "envelope_only",
+        "candidate_recomputation": true,
+        "canonicalization": "current",
+        "ordering": "commit_index",
+        "prefix_rule": true
+      }
+    },
+    "R8_wrong_canonicalization": {
+      "available": {
+        "algorithm": "sha256",
+        "boundary": "current_record",
+        "candidate_recomputation": true,
+        "canonicalization": "spaced_json",
+        "ordering": "commit_index",
+        "prefix_rule": true
+      },
+      "dependency_chain": [
+        {
+          "available": true,
+          "status": "available",
+          "step": "candidate record"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "selected commitment boundary"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "canonical bytes"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "hash algorithm"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "ordered commitments"
+        },
+        {
+          "available": true,
+          "status": "available",
+          "step": "historical prefix relation"
+        }
+      ],
+      "first_failure_point": null,
+      "role": "complete but wrong canonical byte representation",
+      "source": "wrong-but-executable interpretation",
+      "withheld_or_changed": {
+        "algorithm": "sha256",
+        "boundary": "current_record",
+        "candidate_recomputation": true,
+        "canonicalization": "spaced_json",
+        "ordering": "commit_index",
+        "prefix_rule": true
+      }
+    }
+  },
+  "interpretation_survived_while_historical_relation_unresolved": true,
+  "matrix": {
+    "H13_tail_loss": {
+      "R0_full_current_semantics": "MISMATCHED",
+      "R1_digest_carrier_only": "UNRESOLVED",
+      "R2_algorithm_only": "UNRESOLVED",
+      "R3_algorithm_boundary_no_canonicalization": "UNRESOLVED",
+      "R4_commitment_semantics_no_ordering_or_relation": "UNRESOLVED",
+      "R5_commitment_and_ordering_no_prefix_rule": "UNRESOLVED",
+      "R6_sufficient_bounded_historical_verifier_semantics": "MISMATCHED",
+      "R7_wrong_boundary": "MISMATCHED",
+      "R8_wrong_canonicalization": "MISMATCHED"
+    },
+    "H14_control": {
+      "R0_full_current_semantics": "RECOVERED",
+      "R1_digest_carrier_only": "UNRESOLVED",
+      "R2_algorithm_only": "UNRESOLVED",
+      "R3_algorithm_boundary_no_canonicalization": "UNRESOLVED",
+      "R4_commitment_semantics_no_ordering_or_relation": "UNRESOLVED",
+      "R5_commitment_and_ordering_no_prefix_rule": "UNRESOLVED",
+      "R6_sufficient_bounded_historical_verifier_semantics": "RECOVERED",
+      "R7_wrong_boundary": "MISMATCHED",
+      "R8_wrong_canonicalization": "MISMATCHED"
+    },
+    "H16_ID_replacement": {
+      "R0_full_current_semantics": "MISMATCHED",
+      "R1_digest_carrier_only": "UNRESOLVED",
+      "R2_algorithm_only": "UNRESOLVED",
+      "R3_algorithm_boundary_no_canonicalization": "UNRESOLVED",
+      "R4_commitment_semantics_no_ordering_or_relation": "UNRESOLVED",
+      "R5_commitment_and_ordering_no_prefix_rule": "UNRESOLVED",
+      "R6_sufficient_bounded_historical_verifier_semantics": "MISMATCHED",
+      "R7_wrong_boundary": "MISMATCHED",
+      "R8_wrong_canonicalization": "MISMATCHED"
+    },
+    "H16_content_replacement": {
+      "R0_full_current_semantics": "MISMATCHED",
+      "R1_digest_carrier_only": "UNRESOLVED",
+      "R2_algorithm_only": "UNRESOLVED",
+      "R3_algorithm_boundary_no_canonicalization": "UNRESOLVED",
+      "R4_commitment_semantics_no_ordering_or_relation": "UNRESOLVED",
+      "R5_commitment_and_ordering_no_prefix_rule": "UNRESOLVED",
+      "R6_sufficient_bounded_historical_verifier_semantics": "MISMATCHED",
+      "R7_wrong_boundary": "MISMATCHED",
+      "R8_wrong_canonicalization": "MISMATCHED"
+    },
+    "H16_extension": {
+      "R0_full_current_semantics": "RECOVERED",
+      "R1_digest_carrier_only": "UNRESOLVED",
+      "R2_algorithm_only": "UNRESOLVED",
+      "R3_algorithm_boundary_no_canonicalization": "UNRESOLVED",
+      "R4_commitment_semantics_no_ordering_or_relation": "UNRESOLVED",
+      "R5_commitment_and_ordering_no_prefix_rule": "UNRESOLVED",
+      "R6_sufficient_bounded_historical_verifier_semantics": "RECOVERED",
+      "R7_wrong_boundary": "MISMATCHED",
+      "R8_wrong_canonicalization": "MISMATCHED"
+    }
+  },
+  "metadata_drift_result": {
+    "canonical_records_mutated": false,
+    "changed_fields": [
+      "integrity.algorithm",
+      "integrity.boundary"
+    ],
+    "current_verify_failures": [],
+    "current_verify_ok": true,
+    "finding": "stored integrity metadata does not govern current verifier execution",
+    "specimen": "H14 metadata labels changed on rec-000001; digest bytes and committed content unchanged"
+  },
+  "nearest_insufficient_regime": "R5_commitment_and_ordering_no_prefix_rule",
+  "new_persistent_witness_architecture_required": false,
+  "next_smallest_pressure_frontier": "test a minimal non-persistent declarative commitment-semantics record against the same recovery chart",
+  "outcome_counts": {
+    "MISMATCHED": 16,
+    "RECOVERED": 4,
+    "UNRESOLVED": 25
+  },
+  "outcome_semantics": {
+    "MISMATCHED": "the supplied regime can execute comparison and finds incompatible commitments or extent",
+    "RECOVERED": "the supplied regime can evaluate the H14 prefix and finds it conserved",
+    "UNRESOLVED": "the supplied regime lacks information needed to justify recovered or mismatched"
+  },
+  "persistent_architecture_added": [],
+  "prior_history_source": "e399720:traces/live_ingest_ledger_v0.jsonl",
+  "prior_history_source_classification": "Git analytical comparison evidence, not runtime witness authority",
+  "smallest_sufficient_tested_interpretation_regime": "R6_sufficient_bounded_historical_verifier_semantics",
+  "starting_commit": "99e1950eef0a208b5ea1aa9cecdbc532728f6aab",
+  "strongest_unresolved_horizon": "minimum declarative commitment semantics worth conserving before any witness persistence boundary is selected",
+  "verifier_implementation_finding": "bounded semantics are sufficient for this pressure; no persistent verifier specification was introduced",
+  "verifier_implementation_required": false,
+  "witness_bytes_survived_while_interpretation_failed": true,
+  "wrong_boundary_result": {
+    "H13_tail_loss": "MISMATCHED",
+    "H14_control": "MISMATCHED",
+    "H16_ID_replacement": "MISMATCHED",
+    "H16_content_replacement": "MISMATCHED",
+    "H16_extension": "MISMATCHED"
+  },
+  "wrong_canonicalization_result": {
+    "H13_tail_loss": "MISMATCHED",
+    "H14_control": "MISMATCHED",
+    "H16_ID_replacement": "MISMATCHED",
+    "H16_content_replacement": "MISMATCHED",
+    "H16_extension": "MISMATCHED"
+  }
+}
