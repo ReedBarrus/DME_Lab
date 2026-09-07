@@ -100,72 +100,37 @@ def append_admission(
 
 
 def derive_admitted_projection(replayed_records: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    observations = {
-        record["record_id"]: record
-        for record in replayed_records
-        if record.get("envelope", {}).get("record_type") == "observation"
-    }
-    admission_records = [
-        record
-        for record in replayed_records
-        if record.get("envelope", {}).get("record_type") == "admission"
-        and record["envelope"].get("decision") == "admitted"
-    ]
-    projected: list[dict[str, Any]] = []
-    included: set[str] = set()
-    for admission in admission_records:
-        subject_id = admission["envelope"]["subject_record_id"]
-        if subject_id in observations and subject_id not in included:
-            projected.append(
-                {
-                    "subject_record_id": subject_id,
-                    "observation_record_id": subject_id,
-                    "admission_record_ids": [
-                        record["record_id"]
-                        for record in admission_records
-                        if record["envelope"]["subject_record_id"] == subject_id
-                    ],
-                    "source": observations[subject_id]["envelope"].get("source"),
-                }
-            )
-            included.add(subject_id)
-    return projected
+    from src.reconstruction import derive_admitted_projection as project_from_reconstruction
+    from src.reconstruction import reconstruct_admission_relationships
+
+    return project_from_reconstruction(reconstruct_admission_relationships(replayed_records))
 
 
 def reconstruct_admission_lineage(replayed_records: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    projection_ids = {item["subject_record_id"] for item in derive_admitted_projection(replayed_records)}
-    admissions_by_subject: dict[str, list[dict[str, Any]]] = {}
-    for record in replayed_records:
-        envelope = record.get("envelope", {})
-        if envelope.get("record_type") == "admission":
-            admissions_by_subject.setdefault(envelope["subject_record_id"], []).append(
-                {
-                    "admission_record_id": record["record_id"],
-                    "comparator_identity": envelope["comparator_identity"],
-                    "comparator_version": envelope["comparator_version"],
-                    "comparison_result": envelope["comparison_result"],
-                    "decision": envelope["decision"],
-                    "decision_basis": envelope["decision_basis"],
-                }
-            )
+    from src.reconstruction import reconstruct_admission_relationships
 
-    lineage = []
-    for record in replayed_records:
-        envelope = record.get("envelope", {})
-        if envelope.get("record_type") != "observation":
-            continue
-        subject_id = record["record_id"]
-        lineage.append(
-            {
-                "subject_record_id": subject_id,
-                "observation": envelope["observation"],
-                "observation_source": envelope["source"],
-                "observation_provenance": envelope["provenance"],
-                "admission_records": admissions_by_subject.get(subject_id, []),
-                "participates_in_admitted_projection": subject_id in projection_ids,
-            }
-        )
-    return lineage
+    reconstruction = reconstruct_admission_relationships(replayed_records)
+    return [
+        {
+            "subject_record_id": observation["observation_record_id"],
+            "observation": observation["observation"],
+            "observation_source": observation["source"],
+            "observation_provenance": observation["provenance"],
+            "admission_records": [
+                {
+                    "admission_record_id": admission["admission_record_id"],
+                    "comparator_identity": admission["comparator_identity"],
+                    "comparator_version": admission["comparator_version"],
+                    "comparison_result": admission["comparison_result"],
+                    "decision": admission["decision"],
+                    "decision_basis": admission["decision_basis"],
+                }
+                for admission in observation["admissions"]
+            ],
+            "participates_in_admitted_projection": observation["participates_in_admitted_projection"],
+        }
+        for observation in reconstruction["observations"]
+    ]
 
 
 def decide_admission(comparison: dict[str, Any]) -> tuple[str, str]:

@@ -1,0 +1,129 @@
+{
+  "authoritative_history": {
+    "integrity_errors": [],
+    "integrity_ok": true,
+    "record_count": 8,
+    "record_ids": [
+      "rec-000001",
+      "rec-000002",
+      "rec-000003",
+      "rec-000004",
+      "rec-000005",
+      "rec-000006",
+      "rec-000007",
+      "rec-000008"
+    ]
+  },
+  "duration_seconds": 0.05008599999928265,
+  "experiment": "reconstruction_pressure_v0",
+  "lineage_summary": [
+    {
+      "admission_record_ids": [
+        "rec-000002",
+        "rec-000003"
+      ],
+      "comparator_versions": [
+        "ingest_candidate_envelope_minimum_v0",
+        "ingest_candidate_envelope_event_time_required_v0_pressure"
+      ],
+      "decisions": [
+        "admitted",
+        "rejected"
+      ],
+      "observation_record_id": "rec-000001",
+      "participates_in_admitted_projection": true,
+      "provenance": {
+        "basis": "post_cleanup_trace"
+      },
+      "source": "repository_filesystem_snapshot"
+    },
+    {
+      "admission_record_ids": [
+        "rec-000005",
+        "rec-000008"
+      ],
+      "comparator_versions": [
+        "ingest_candidate_envelope_minimum_v0",
+        "unknown_v0"
+      ],
+      "decisions": [
+        "admitted",
+        "unresolved"
+      ],
+      "observation_record_id": "rec-000004",
+      "participates_in_admitted_projection": true,
+      "provenance": {
+        "basis": "post_cleanup_trace"
+      },
+      "source": "repository_git_state"
+    },
+    {
+      "admission_record_ids": [
+        "rec-000007"
+      ],
+      "comparator_versions": [
+        "ingest_candidate_envelope_minimum_v0"
+      ],
+      "decisions": [
+        "rejected"
+      ],
+      "observation_record_id": "rec-000006",
+      "participates_in_admitted_projection": false,
+      "provenance": {
+        "basis": "deterministic_fixture"
+      },
+      "source": "malformed_pressure_fixture"
+    }
+  ],
+  "navigation_paths": [
+    {
+      "admission_record_ids": [
+        "rec-000002"
+      ],
+      "observation_record_id": "rec-000001",
+      "projection_subject_record_id": "rec-000001",
+      "reconstruction_type": "admission_relationships_v0",
+      "source": "repository_filesystem_snapshot"
+    },
+    {
+      "admission_record_ids": [
+        "rec-000005"
+      ],
+      "observation_record_id": "rec-000004",
+      "projection_subject_record_id": "rec-000004",
+      "reconstruction_type": "admission_relationships_v0",
+      "source": "repository_git_state"
+    }
+  ],
+  "projection": {
+    "rebuild_structural_equal": true,
+    "subject_record_ids": [
+      "rec-000001",
+      "rec-000004"
+    ],
+    "type": "admitted_projection_v0"
+  },
+  "reconstruction": {
+    "authoritative_record_ids": [
+      "rec-000001",
+      "rec-000002",
+      "rec-000003",
+      "rec-000004",
+      "rec-000005",
+      "rec-000006",
+      "rec-000007",
+      "rec-000008"
+    ],
+    "observation_count": 3,
+    "orphan_admission_count": 0,
+    "rebuild_structural_equal": true,
+    "type": "admission_relationships_v0"
+  },
+  "runtime_scope": "bounded admission relationships from temporary ledger replay",
+  "unresolved_pressure": [
+    "projection still uses any admitted decision without conflict resolution",
+    "no index or acceleration surface exists",
+    "no generalized topology exists",
+    "reconstruction only covers admission relationships"
+  ]
+}

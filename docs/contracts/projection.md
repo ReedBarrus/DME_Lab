@@ -2,7 +2,9 @@
 
 ## Status
 
-Projected.
+Projected for the general system.
+
+A bounded admitted projection exists for admission reconstruction pressure.
 
 ## Role
 
@@ -32,13 +34,19 @@ A human- or agent-facing view of selected reconstructed structure.
 
 ## Known Pressure
 
-- no reconstruction output exists yet
+- no generalized reconstruction output exists yet
 - no projection engine exists yet
-- reducibility to reconstructed evidence remains untested
+- reducibility to reconstructed evidence is tested only for bounded admission relationships
+- admission conflict policy remains unresolved
 
 ## Evidence
 
-No implementation or runtime evidence exists for exposed projection.
+No generalized projection implementation exists.
 
-Current evidence is projection-level documentation only.
+Bounded admitted projection evidence:
 
+- `src/reconstruction/admission.py`
+- `tests/reconstruction/test_admission_reconstruction.py`
+- `traces/reconstruction_pressure_v0.json`
+
+This evidence does not validate a generalized exposed projection engine.

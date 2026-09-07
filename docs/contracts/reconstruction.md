@@ -2,11 +2,13 @@
 
 ## Status
 
-Projected.
+Projected for the general system.
+
+A bounded v0 reconstruction mechanism is implemented for admission relationships.
 
 ## Role
 
-Reconstruction derives topology from replayed ledger entries.
+Reconstruction derives a recoverable structure from replayed ledger entries.
 
 ## Input
 
@@ -14,7 +16,7 @@ Raw replay output from a valid ledger state.
 
 ## Output
 
-A reconstructed topology derived from recorded observations.
+A reconstructed representation derived from recorded observations.
 
 ## Initial Requirement
 
@@ -23,12 +25,13 @@ Reconstruction must be deterministic for the same ledger input.
 ## Must Preserve
 
 - determinism for the same valid input
+- authoritative record references
 - provenance back to replayed ledger records
 - missing observations as missing
 
 ## Boundary
 
-Reconstruction is not proof of what happened outside the recorded evidence. Missing observations remain missing.
+Reconstruction is not authoritative history, proof of what happened outside recorded evidence, or an index. Missing observations remain missing.
 
 ## Must Not Claim
 
@@ -37,11 +40,23 @@ Reconstruction is not proof of what happened outside the recorded evidence. Miss
 - intent
 - consequence
 - completeness of OS history
+- independent source-of-truth status
 
 ## Open Pressure
 
-The first reconstruction target should be small enough to compare directly against the source ledger.
+- no generalized topology exists
+- no index exists
+- admission conflict resolution remains deferred
+- latest-decision semantics remain deferred
 
 ## Evidence
 
-No reconstruction implementation or runtime evidence exists.
+Bounded admission relationship reconstruction evidence:
+
+- `src/reconstruction/admission.py`
+- `tests/reconstruction/test_admission_reconstruction.py`
+- `src/runtime/reconstruction_pressure.py`
+- `traces/reconstruction_pressure_v0.json`
+- `docs/decisions/reconstruction_pressure_v0.md`
+
+This evidence does not validate generalized topology, indexing, projection engines, or OS event reconstruction.

@@ -26,6 +26,8 @@ Repository transition pressure completed in `docs/decisions/repo_transition_pres
 
 Bounded v0 ingest admission pressure completed in `docs/decisions/ingest_admission_pressure_v0.md`.
 
+Bounded v0 reconstruction pressure completed in `docs/decisions/reconstruction_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -90,16 +92,18 @@ navigation
 - no canonical live ingest envelope ledger
 - JSONL append ledger pressure-tested mainly against synthetic envelopes, with bounded temporary live candidate-envelope handshakes
 - raw replay validated only in canonical commit order
-- no projection exposed from evidence
+- no generalized projection exposed from evidence
 
 ## Next Smallest Question
 
-How should the controlled repository probe exercise preserved observations, admission classification, and admitted projection without deleting rejected evidence?
+How should the controlled repository probe exercise capture, admission classification, reconstruction, and admitted projection without deleting rejected evidence?
 
 ## Contract Surface Status
 
-- projected: signal, provenance, general ingest envelope, reconstruction, exposed projection
+- projected: signal, provenance, general ingest envelope, generalized reconstruction, generalized exposed projection
 - implemented within bounded v0 scope: ingest admission classification
+- implemented within bounded v0 scope: admission relationship reconstruction
+- implemented within bounded v0 scope: admitted projection
 - pressure-tested within synthetic v0 scope: append ledger, raw replay
 - implemented within bounded repository specimen: capture adapter
 - deferred: general OS and Windows capture
@@ -131,3 +135,7 @@ How should the controlled repository probe exercise preserved observations, admi
 - rejected and unresolved observations remain replayable in the temporary admission pressure ledger
 - admitted projection is derived from replayed observation and admission records, not duplicated into a second physical store
 - one preserved observation can have multiple admission records under different comparator versions
+- bounded reconstruction now recovers admission relationships from authoritative replayed ledger records
+- reconstructed admission relationships preserve record-id paths back to observation provenance
+- rebuilding reconstruction and admitted projection from the same replayed records is structurally stable in v0 pressure
+- no index exists or is yet justified by lookup pressure

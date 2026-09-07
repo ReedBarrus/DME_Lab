@@ -21,8 +21,8 @@ Contract text is not proof. A boundary status should say no more than the strong
 | Ingest Envelope | projected; bounded v0 admission mechanism implemented | Admit raw observation structure into the ledger boundary while preserving provenance and missingness. | `docs/contracts/ingest.md`; synthetic ledger envelopes; bounded live candidate-envelope handshakes; `src/ingest/admission.py`; `tests/ingest/test_admission.py`; `traces/ingest_admission_pressure_v0.json` | general admission behavior; policy conflict resolution; malformed and unavailable source structure |
 | Append Ledger | pressure-tested | Commit admitted envelopes as stable append-only records. | `src/ledger/jsonl.py`; `tests/replay/test_ledger_harness.py`; `traces/ledger_runtime_pressure_v0.json`; `docs/decisions/ledger_runtime_pressure_v0.md` | scale, serialization stability, single-writer assumption, amendment lookup |
 | Raw Replay | pressure-tested | Return committed ledger records in canonical `commit_index` order. | `src/ledger/jsonl.py::JsonlLedger.replay`; ordering and amendment tests | canonical order vs physical file order; replay cost; no resolved amendment view |
-| Reconstruction | projected | Derive a deterministic topology from replayed ledger input. | `docs/contracts/reconstruction.md` | smallest topology target; same input -> same output |
-| Exposed Projection | projected | Expose selected reconstructed structure without becoming proof or raw evidence. | `docs/contracts/projection.md`; `docs/projection/v0_observability.md` | reducibility to reconstructed evidence |
+| Reconstruction | projected; bounded v0 admission relationship reconstruction implemented | Derive deterministic recoverable structure from replayed ledger input. | `docs/contracts/reconstruction.md`; `src/reconstruction/admission.py`; `tests/reconstruction/test_admission_reconstruction.py`; `traces/reconstruction_pressure_v0.json` | generalized topology; index pressure; admission conflict policy |
+| Exposed Projection | projected; bounded admitted projection implemented | Expose selected reconstructed structure without becoming proof or raw evidence. | `docs/contracts/projection.md`; `docs/projection/v0_observability.md`; `src/reconstruction/admission.py`; `traces/reconstruction_pressure_v0.json` | generalized projection engine; admission conflict policy |
 
 ## Preserved Non-Equivalences
 
@@ -52,5 +52,7 @@ Contract text is not proof. A boundary status should say no more than the strong
 - persisted observation != admission classification
 - rejected != deleted
 - observation identity != admission classification
+- authoritative history != reconstructed representation
+- reconstruction != projection
 
 Registry entries may point toward supporting evidence, but the registry alone does not upgrade a boundary status.
