@@ -1,0 +1,1195 @@
+{
+  "chart_4_back_pressure": {
+    "axis_split": "declaration component presence separates from vocabulary binding recoverability",
+    "conditionality": "the original lexical values are not phenomenon-level necessities when equivalent mappings survive",
+    "necessity_interpretation_refined": true,
+    "prior_result_invalidated": false,
+    "refinement": "Chart 4 components were necessary under its fixed evaluator vocabulary; Chart 5 separates component role from token spelling and recoverable binding"
+  },
+  "chart_5_status": {
+    "coordinates": "vocabulary interpretation regime x historical specimen",
+    "earned": true,
+    "stable_coordinate_meaning": "each row fixes one vocabulary availability or binding transformation over fixed declaration structure"
+  },
+  "chart_fold_pressure": {
+    "evidence": "Chart 5 split Chart 4 declaration-component necessity into semantic role, lexical token, and binding",
+    "folding_machinery_added": false,
+    "supported": true
+  },
+  "correct_vocabulary_candidate": {
+    "algorithm_tokens": {
+      "sha256": {
+        "digest_bits": 256,
+        "family": "sha-2"
+      }
+    },
+    "encoding_tokens": {
+      "utf-8": {
+        "unicode_encoding": "utf-8"
+      }
+    },
+    "field_tokens": {
+      "commit_index": {
+        "boundary_key": "commit_index",
+        "source_path": [
+          "commit_index"
+        ]
+      },
+      "envelope": {
+        "boundary_key": "envelope",
+        "source_path": [
+          "envelope"
+        ]
+      },
+      "record_id": {
+        "boundary_key": "record_id",
+        "source_path": [
+          "record_id"
+        ]
+      }
+    },
+    "identity": {
+      "name": "dme_lab.bounded_commitment_vocabulary",
+      "provenance": "local Chart 5 pressure",
+      "version": "v0"
+    },
+    "ordering_tokens": {
+      "ascending": {
+        "reverse": false
+      }
+    },
+    "relation_tokens": {
+      "prefix": {
+        "kind": "left_sequence_prefix"
+      }
+    },
+    "serialization_tokens": {
+      "json": {
+        "data_model": "json",
+        "output": "text"
+      }
+    }
+  },
+  "cross_chart_correspondence": {
+    "Chart_3": "R6 sufficient bounded historical verifier semantics",
+    "Chart_4": "S9 smallest sufficient declarative representation",
+    "Chart_5": [
+      "V2_explicit_correct_vocabulary",
+      "V2a_mapping_only",
+      "V6_renamed_symbols_preserved_mapping",
+      "V7_equivalent_renamed_vocabulary"
+    ],
+    "outcomes_invariant": true,
+    "transition_map_implemented": false
+  },
+  "distinctions": {
+    "added": [
+      "D-0036 token_identity != semantic_operation_identity"
+    ],
+    "amended": [],
+    "not_registered": [
+      "lexical_equivalence != semantic_equivalence",
+      "vocabulary_interpretation_conserved != interpretation_eliminated"
+    ]
+  },
+  "duration_seconds": 0.10506499999610242,
+  "experiment": "vocabulary_identity_pressure_v0",
+  "finding": "renamed tokens preserve bounded historical recovery when their semantic descriptor bindings survive",
+  "first_mismatch_under_wrong_vocabulary": {
+    "V4_wrong_complete_relation_mapping": {
+      "H13_tail_loss": {
+        "candidate_commitment_count": 13,
+        "kind": "candidate_extent",
+        "witness_commitment_count": 14
+      },
+      "H16_ID_replacement": {
+        "candidate_commitment_count": 16,
+        "kind": "candidate_extent",
+        "witness_commitment_count": 14
+      },
+      "H16_content_replacement": {
+        "candidate_commitment_count": 16,
+        "kind": "candidate_extent",
+        "witness_commitment_count": 14
+      },
+      "H16_extension": {
+        "candidate_commitment_count": 16,
+        "kind": "candidate_extent",
+        "witness_commitment_count": 14
+      }
+    },
+    "V5_wrong_field_token_mapping": {
+      "H13_tail_loss": {
+        "candidate_commitment_count": 13,
+        "kind": "candidate_extent",
+        "witness_commitment_count": 14
+      },
+      "H14_control": {
+        "candidate": "3336816da451eaf7fef8ee03f9d7bf9aeaa5b0f1c935c997379eef5047732379",
+        "kind": "commitment",
+        "position": 1,
+        "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+      },
+      "H16_ID_replacement": {
+        "candidate": "3336816da451eaf7fef8ee03f9d7bf9aeaa5b0f1c935c997379eef5047732379",
+        "kind": "commitment",
+        "position": 1,
+        "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+      },
+      "H16_content_replacement": {
+        "candidate": "62cffb8428e887a9d44feadf6f9e2213f92c00a1a0f3b74e87726eb0241f9387",
+        "kind": "commitment",
+        "position": 1,
+        "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+      },
+      "H16_extension": {
+        "candidate": "3336816da451eaf7fef8ee03f9d7bf9aeaa5b0f1c935c997379eef5047732379",
+        "kind": "commitment",
+        "position": 1,
+        "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+      }
+    }
+  },
+  "first_unresolved_vocabulary_dependency": {
+    "V1_tokens_only": "algorithm_tokens.sha256 mapping unavailable",
+    "V3a_missing_relation_mapping": "relation_tokens.prefix mapping unavailable",
+    "V3b_missing_record_id_field_mapping": "field_tokens.record_id mapping unavailable",
+    "V3c_missing_serialization_mapping": "serialization_tokens.json mapping unavailable",
+    "V3d_missing_algorithm_mapping": "algorithm_tokens.sha256 mapping unavailable"
+  },
+  "fixed_S9_declaration": {
+    "definition": {
+      "algorithm": {
+        "name": "sha256"
+      },
+      "boundary": {
+        "fields": [
+          "record_id",
+          "commit_index",
+          "envelope"
+        ]
+      },
+      "canonicalization": {
+        "encoding": "utf-8",
+        "ensure_ascii": false,
+        "format": "json",
+        "separators": [
+          ",",
+          ":"
+        ],
+        "sort_keys": true
+      },
+      "ordering": {
+        "direction": "ascending",
+        "field": "commit_index"
+      },
+      "relation": {
+        "type": "prefix"
+      }
+    },
+    "exact_identity": "sha256:887a849a8a766c69745ee66051261798a2af0f077267a521f371144aff48128d",
+    "semantic_component_count": 10,
+    "shape_identity": "sha256:516774d12a6517b4d78bacc89cb55d5c23e0b0b2c63f8ba6033c4ae8764c5736"
+  },
+  "fixed_witness_carrier": {
+    "carrier_identity": "sha256:09f0f5f3402b1f187b3b09e4417f8e12010b22fe0968aeb2841a0b598553c200",
+    "definition": "ordered integrity.digest values from witnessed H14 records",
+    "digest_count": 14,
+    "name": "W14_ordered_record_digests",
+    "source": "e399720:traces/live_ingest_ledger_v0.jsonl"
+  },
+  "historical_specimens": {
+    "H13_tail_loss": {
+      "construction": "copy canonical H14 records 1..13; omit complete rec-000014",
+      "record_count": 13
+    },
+    "H14_control": {
+      "construction": "current canonical H14 replay records 1..14",
+      "record_count": 14
+    },
+    "H16_ID_replacement": {
+      "construction": "H16 extension with record 1 record_id changed to rec-999001 and digest recomputed",
+      "record_count": 16
+    },
+    "H16_content_replacement": {
+      "construction": "H16 extension with record 1 envelope.provenance.observation_point changed and digest recomputed",
+      "record_count": 16
+    },
+    "H16_extension": {
+      "construction": "temporary JSONL copy of H14 plus appended rec-000015 observation and rec-000016 admission",
+      "record_count": 16
+    }
+  },
+  "lexical_identity_finding": "token spelling did not carry operation identity in the bounded renamed regimes",
+  "matrix": {
+    "V0_current_ambient_control": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "RECOVERED"
+    },
+    "V1_tokens_only": {
+      "H13_tail_loss": "UNRESOLVED",
+      "H14_control": "UNRESOLVED",
+      "H16_ID_replacement": "UNRESOLVED",
+      "H16_content_replacement": "UNRESOLVED",
+      "H16_extension": "UNRESOLVED"
+    },
+    "V2_explicit_correct_vocabulary": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "RECOVERED"
+    },
+    "V2a_mapping_only": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "RECOVERED"
+    },
+    "V3a_missing_relation_mapping": {
+      "H13_tail_loss": "UNRESOLVED",
+      "H14_control": "UNRESOLVED",
+      "H16_ID_replacement": "UNRESOLVED",
+      "H16_content_replacement": "UNRESOLVED",
+      "H16_extension": "UNRESOLVED"
+    },
+    "V3b_missing_record_id_field_mapping": {
+      "H13_tail_loss": "UNRESOLVED",
+      "H14_control": "UNRESOLVED",
+      "H16_ID_replacement": "UNRESOLVED",
+      "H16_content_replacement": "UNRESOLVED",
+      "H16_extension": "UNRESOLVED"
+    },
+    "V3c_missing_serialization_mapping": {
+      "H13_tail_loss": "UNRESOLVED",
+      "H14_control": "UNRESOLVED",
+      "H16_ID_replacement": "UNRESOLVED",
+      "H16_content_replacement": "UNRESOLVED",
+      "H16_extension": "UNRESOLVED"
+    },
+    "V3d_missing_algorithm_mapping": {
+      "H13_tail_loss": "UNRESOLVED",
+      "H14_control": "UNRESOLVED",
+      "H16_ID_replacement": "UNRESOLVED",
+      "H16_content_replacement": "UNRESOLVED",
+      "H16_extension": "UNRESOLVED"
+    },
+    "V4_wrong_complete_relation_mapping": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "MISMATCHED"
+    },
+    "V5_wrong_field_token_mapping": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "MISMATCHED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "MISMATCHED"
+    },
+    "V6_renamed_symbols_preserved_mapping": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "RECOVERED"
+    },
+    "V7_equivalent_renamed_vocabulary": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "RECOVERED"
+    }
+  },
+  "nearest_insufficient_vocabulary_regime": {
+    "mapping_count": 7,
+    "same_size_alternatives": [
+      "V3b_missing_record_id_field_mapping",
+      "V3c_missing_serialization_mapping",
+      "V3d_missing_algorithm_mapping"
+    ],
+    "selected": "V3a_missing_relation_mapping"
+  },
+  "necessary_vocabulary_dimensions_under_tested_ablations": [
+    "algorithm-token operation binding",
+    "record_id field-token binding",
+    "serialization-token operation binding",
+    "relation-token operation binding"
+  ],
+  "next_smallest_pressure_frontier": "pressure one operation descriptor identity across evaluator-version change without persistence",
+  "outcome_counts": {
+    "MISMATCHED": 24,
+    "RECOVERED": 11,
+    "UNRESOLVED": 25
+  },
+  "outcome_semantics": {
+    "MISMATCHED": "resolved vocabulary executes the declared relation and rejects the candidate",
+    "RECOVERED": "resolved vocabulary executes the declared relation and the candidate preserves it",
+    "UNRESOLVED": "required vocabulary meaning is unavailable"
+  },
+  "persistent_architecture_added": [],
+  "proto_transition_pressure_strengthened": true,
+  "recursion_limit": "vocabulary interpretation conserved != interpretation eliminated",
+  "redundant_vocabulary_dimensions_in_bounded_execution": [
+    "original token spelling when semantic bindings are conserved",
+    "vocabulary name, version, and provenance metadata"
+  ],
+  "remaining_ambient_evaluator_interpretation": [
+    "vocabulary-description category and descriptor structure",
+    "SHA-2 family and 256-bit descriptor execution",
+    "record path traversal and boundary-key construction",
+    "JSON text descriptor execution and literal canonicalization parameters",
+    "UTF-8 descriptor execution",
+    "reverse boolean interpretation for ordering",
+    "left-sequence-prefix and sequence-equality descriptor execution",
+    "RECOVERED, MISMATCHED, and UNRESOLVED classification"
+  ],
+  "renamed_token_result": {
+    "declaration_shape_identity_preserved": true,
+    "exact_declaration_identity_changed": true,
+    "finding": "lexical coordinates changed while bounded historical outcomes remained invariant",
+    "full_outcomes": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "RECOVERED"
+    },
+    "full_rename_regime": "V7_equivalent_renamed_vocabulary",
+    "partial_outcomes": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "RECOVERED"
+    },
+    "partial_rename_regime": "V6_renamed_symbols_preserved_mapping",
+    "semantic_mapping_preserved": true
+  },
+  "retained_not_independently_ablated": [
+    "commit_index and envelope field-token bindings",
+    "encoding-token operation binding",
+    "ordering-token operation binding",
+    "operation-version identity"
+  ],
+  "semantic_mapping_finding": "conserved token-to-descriptor bindings preserved historical outcomes",
+  "smallest_sufficient_tested_vocabulary_identity": {
+    "finding": "eight explicit semantic bindings suffice under the local descriptor evaluator",
+    "mapping_count": 8,
+    "regime": "V2a_mapping_only",
+    "vocabulary_identity_metadata_required": false
+  },
+  "starting_commit": "f8f1898b098e2627c41f168f6633d1349af1c90e",
+  "strongest_unresolved_horizon": "identity and provenance of the operation descriptors remain ambient in the local evaluator",
+  "vocabulary_regimes": {
+    "V0_current_ambient_control": {
+      "behavioral_outcomes": {
+        "H13_tail_loss": "MISMATCHED",
+        "H14_control": "RECOVERED",
+        "H16_ID_replacement": "MISMATCHED",
+        "H16_content_replacement": "MISMATCHED",
+        "H16_extension": "RECOVERED"
+      },
+      "declaration_exact_identity": "sha256:887a849a8a766c69745ee66051261798a2af0f077267a521f371144aff48128d",
+      "declaration_shape_identity": "sha256:516774d12a6517b4d78bacc89cb55d5c23e0b0b2c63f8ba6033c4ae8764c5736",
+      "exact_token_mappings": {},
+      "first_unresolved_dependency": null,
+      "mapping_count": 0,
+      "mapping_delta_from_V2": {
+        "added": {},
+        "changed": {},
+        "missing": [
+          "algorithm_tokens.sha256",
+          "field_tokens.record_id",
+          "field_tokens.commit_index",
+          "field_tokens.envelope",
+          "serialization_tokens.json",
+          "encoding_tokens.utf-8",
+          "ordering_tokens.ascending",
+          "relation_tokens.prefix"
+        ]
+      },
+      "mode": "ambient_control",
+      "role": "ambient Chart 4 evaluator control",
+      "token_renames": {},
+      "vocabulary_identity": null
+    },
+    "V1_tokens_only": {
+      "behavioral_outcomes": {
+        "H13_tail_loss": "UNRESOLVED",
+        "H14_control": "UNRESOLVED",
+        "H16_ID_replacement": "UNRESOLVED",
+        "H16_content_replacement": "UNRESOLVED",
+        "H16_extension": "UNRESOLVED"
+      },
+      "declaration_exact_identity": "sha256:887a849a8a766c69745ee66051261798a2af0f077267a521f371144aff48128d",
+      "declaration_shape_identity": "sha256:516774d12a6517b4d78bacc89cb55d5c23e0b0b2c63f8ba6033c4ae8764c5736",
+      "exact_token_mappings": {},
+      "first_unresolved_dependency": "algorithm_tokens.sha256 mapping unavailable",
+      "mapping_count": 0,
+      "mapping_delta_from_V2": {
+        "added": {},
+        "changed": {},
+        "missing": [
+          "algorithm_tokens.sha256",
+          "field_tokens.record_id",
+          "field_tokens.commit_index",
+          "field_tokens.envelope",
+          "serialization_tokens.json",
+          "encoding_tokens.utf-8",
+          "ordering_tokens.ascending",
+          "relation_tokens.prefix"
+        ]
+      },
+      "mode": "explicit",
+      "role": "S9 symbols survive without vocabulary interpretation",
+      "token_renames": {},
+      "vocabulary_identity": null
+    },
+    "V2_explicit_correct_vocabulary": {
+      "behavioral_outcomes": {
+        "H13_tail_loss": "MISMATCHED",
+        "H14_control": "RECOVERED",
+        "H16_ID_replacement": "MISMATCHED",
+        "H16_content_replacement": "MISMATCHED",
+        "H16_extension": "RECOVERED"
+      },
+      "declaration_exact_identity": "sha256:887a849a8a766c69745ee66051261798a2af0f077267a521f371144aff48128d",
+      "declaration_shape_identity": "sha256:516774d12a6517b4d78bacc89cb55d5c23e0b0b2c63f8ba6033c4ae8764c5736",
+      "exact_token_mappings": {
+        "algorithm_tokens.sha256": {
+          "digest_bits": 256,
+          "family": "sha-2"
+        },
+        "encoding_tokens.utf-8": {
+          "unicode_encoding": "utf-8"
+        },
+        "field_tokens.commit_index": {
+          "boundary_key": "commit_index",
+          "source_path": [
+            "commit_index"
+          ]
+        },
+        "field_tokens.envelope": {
+          "boundary_key": "envelope",
+          "source_path": [
+            "envelope"
+          ]
+        },
+        "field_tokens.record_id": {
+          "boundary_key": "record_id",
+          "source_path": [
+            "record_id"
+          ]
+        },
+        "ordering_tokens.ascending": {
+          "reverse": false
+        },
+        "relation_tokens.prefix": {
+          "kind": "left_sequence_prefix"
+        },
+        "serialization_tokens.json": {
+          "data_model": "json",
+          "output": "text"
+        }
+      },
+      "first_unresolved_dependency": null,
+      "mapping_count": 8,
+      "mapping_delta_from_V2": {
+        "added": {},
+        "changed": {},
+        "missing": []
+      },
+      "mode": "explicit",
+      "role": "complete correct mappings with local identity metadata",
+      "token_renames": {},
+      "vocabulary_identity": {
+        "name": "dme_lab.bounded_commitment_vocabulary",
+        "provenance": "local Chart 5 pressure",
+        "version": "v0"
+      }
+    },
+    "V2a_mapping_only": {
+      "behavioral_outcomes": {
+        "H13_tail_loss": "MISMATCHED",
+        "H14_control": "RECOVERED",
+        "H16_ID_replacement": "MISMATCHED",
+        "H16_content_replacement": "MISMATCHED",
+        "H16_extension": "RECOVERED"
+      },
+      "declaration_exact_identity": "sha256:887a849a8a766c69745ee66051261798a2af0f077267a521f371144aff48128d",
+      "declaration_shape_identity": "sha256:516774d12a6517b4d78bacc89cb55d5c23e0b0b2c63f8ba6033c4ae8764c5736",
+      "exact_token_mappings": {
+        "algorithm_tokens.sha256": {
+          "digest_bits": 256,
+          "family": "sha-2"
+        },
+        "encoding_tokens.utf-8": {
+          "unicode_encoding": "utf-8"
+        },
+        "field_tokens.commit_index": {
+          "boundary_key": "commit_index",
+          "source_path": [
+            "commit_index"
+          ]
+        },
+        "field_tokens.envelope": {
+          "boundary_key": "envelope",
+          "source_path": [
+            "envelope"
+          ]
+        },
+        "field_tokens.record_id": {
+          "boundary_key": "record_id",
+          "source_path": [
+            "record_id"
+          ]
+        },
+        "ordering_tokens.ascending": {
+          "reverse": false
+        },
+        "relation_tokens.prefix": {
+          "kind": "left_sequence_prefix"
+        },
+        "serialization_tokens.json": {
+          "data_model": "json",
+          "output": "text"
+        }
+      },
+      "first_unresolved_dependency": null,
+      "mapping_count": 8,
+      "mapping_delta_from_V2": {
+        "added": {},
+        "changed": {},
+        "missing": []
+      },
+      "mode": "explicit",
+      "role": "correct mappings without vocabulary identity metadata",
+      "token_renames": {},
+      "vocabulary_identity": null
+    },
+    "V3a_missing_relation_mapping": {
+      "behavioral_outcomes": {
+        "H13_tail_loss": "UNRESOLVED",
+        "H14_control": "UNRESOLVED",
+        "H16_ID_replacement": "UNRESOLVED",
+        "H16_content_replacement": "UNRESOLVED",
+        "H16_extension": "UNRESOLVED"
+      },
+      "declaration_exact_identity": "sha256:887a849a8a766c69745ee66051261798a2af0f077267a521f371144aff48128d",
+      "declaration_shape_identity": "sha256:516774d12a6517b4d78bacc89cb55d5c23e0b0b2c63f8ba6033c4ae8764c5736",
+      "exact_token_mappings": {
+        "algorithm_tokens.sha256": {
+          "digest_bits": 256,
+          "family": "sha-2"
+        },
+        "encoding_tokens.utf-8": {
+          "unicode_encoding": "utf-8"
+        },
+        "field_tokens.commit_index": {
+          "boundary_key": "commit_index",
+          "source_path": [
+            "commit_index"
+          ]
+        },
+        "field_tokens.envelope": {
+          "boundary_key": "envelope",
+          "source_path": [
+            "envelope"
+          ]
+        },
+        "field_tokens.record_id": {
+          "boundary_key": "record_id",
+          "source_path": [
+            "record_id"
+          ]
+        },
+        "ordering_tokens.ascending": {
+          "reverse": false
+        },
+        "serialization_tokens.json": {
+          "data_model": "json",
+          "output": "text"
+        }
+      },
+      "first_unresolved_dependency": "relation_tokens.prefix mapping unavailable",
+      "mapping_count": 7,
+      "mapping_delta_from_V2": {
+        "added": {},
+        "changed": {},
+        "missing": [
+          "relation_tokens.prefix"
+        ]
+      },
+      "mode": "explicit",
+      "role": "relation-token mapping removed",
+      "token_renames": {},
+      "vocabulary_identity": {
+        "name": "dme_lab.bounded_commitment_vocabulary",
+        "provenance": "local Chart 5 pressure",
+        "version": "v0"
+      }
+    },
+    "V3b_missing_record_id_field_mapping": {
+      "behavioral_outcomes": {
+        "H13_tail_loss": "UNRESOLVED",
+        "H14_control": "UNRESOLVED",
+        "H16_ID_replacement": "UNRESOLVED",
+        "H16_content_replacement": "UNRESOLVED",
+        "H16_extension": "UNRESOLVED"
+      },
+      "declaration_exact_identity": "sha256:887a849a8a766c69745ee66051261798a2af0f077267a521f371144aff48128d",
+      "declaration_shape_identity": "sha256:516774d12a6517b4d78bacc89cb55d5c23e0b0b2c63f8ba6033c4ae8764c5736",
+      "exact_token_mappings": {
+        "algorithm_tokens.sha256": {
+          "digest_bits": 256,
+          "family": "sha-2"
+        },
+        "encoding_tokens.utf-8": {
+          "unicode_encoding": "utf-8"
+        },
+        "field_tokens.commit_index": {
+          "boundary_key": "commit_index",
+          "source_path": [
+            "commit_index"
+          ]
+        },
+        "field_tokens.envelope": {
+          "boundary_key": "envelope",
+          "source_path": [
+            "envelope"
+          ]
+        },
+        "ordering_tokens.ascending": {
+          "reverse": false
+        },
+        "relation_tokens.prefix": {
+          "kind": "left_sequence_prefix"
+        },
+        "serialization_tokens.json": {
+          "data_model": "json",
+          "output": "text"
+        }
+      },
+      "first_unresolved_dependency": "field_tokens.record_id mapping unavailable",
+      "mapping_count": 7,
+      "mapping_delta_from_V2": {
+        "added": {},
+        "changed": {},
+        "missing": [
+          "field_tokens.record_id"
+        ]
+      },
+      "mode": "explicit",
+      "role": "record_id field-token mapping removed",
+      "token_renames": {},
+      "vocabulary_identity": {
+        "name": "dme_lab.bounded_commitment_vocabulary",
+        "provenance": "local Chart 5 pressure",
+        "version": "v0"
+      }
+    },
+    "V3c_missing_serialization_mapping": {
+      "behavioral_outcomes": {
+        "H13_tail_loss": "UNRESOLVED",
+        "H14_control": "UNRESOLVED",
+        "H16_ID_replacement": "UNRESOLVED",
+        "H16_content_replacement": "UNRESOLVED",
+        "H16_extension": "UNRESOLVED"
+      },
+      "declaration_exact_identity": "sha256:887a849a8a766c69745ee66051261798a2af0f077267a521f371144aff48128d",
+      "declaration_shape_identity": "sha256:516774d12a6517b4d78bacc89cb55d5c23e0b0b2c63f8ba6033c4ae8764c5736",
+      "exact_token_mappings": {
+        "algorithm_tokens.sha256": {
+          "digest_bits": 256,
+          "family": "sha-2"
+        },
+        "encoding_tokens.utf-8": {
+          "unicode_encoding": "utf-8"
+        },
+        "field_tokens.commit_index": {
+          "boundary_key": "commit_index",
+          "source_path": [
+            "commit_index"
+          ]
+        },
+        "field_tokens.envelope": {
+          "boundary_key": "envelope",
+          "source_path": [
+            "envelope"
+          ]
+        },
+        "field_tokens.record_id": {
+          "boundary_key": "record_id",
+          "source_path": [
+            "record_id"
+          ]
+        },
+        "ordering_tokens.ascending": {
+          "reverse": false
+        },
+        "relation_tokens.prefix": {
+          "kind": "left_sequence_prefix"
+        }
+      },
+      "first_unresolved_dependency": "serialization_tokens.json mapping unavailable",
+      "mapping_count": 7,
+      "mapping_delta_from_V2": {
+        "added": {},
+        "changed": {},
+        "missing": [
+          "serialization_tokens.json"
+        ]
+      },
+      "mode": "explicit",
+      "role": "serialization-token mapping removed",
+      "token_renames": {},
+      "vocabulary_identity": {
+        "name": "dme_lab.bounded_commitment_vocabulary",
+        "provenance": "local Chart 5 pressure",
+        "version": "v0"
+      }
+    },
+    "V3d_missing_algorithm_mapping": {
+      "behavioral_outcomes": {
+        "H13_tail_loss": "UNRESOLVED",
+        "H14_control": "UNRESOLVED",
+        "H16_ID_replacement": "UNRESOLVED",
+        "H16_content_replacement": "UNRESOLVED",
+        "H16_extension": "UNRESOLVED"
+      },
+      "declaration_exact_identity": "sha256:887a849a8a766c69745ee66051261798a2af0f077267a521f371144aff48128d",
+      "declaration_shape_identity": "sha256:516774d12a6517b4d78bacc89cb55d5c23e0b0b2c63f8ba6033c4ae8764c5736",
+      "exact_token_mappings": {
+        "encoding_tokens.utf-8": {
+          "unicode_encoding": "utf-8"
+        },
+        "field_tokens.commit_index": {
+          "boundary_key": "commit_index",
+          "source_path": [
+            "commit_index"
+          ]
+        },
+        "field_tokens.envelope": {
+          "boundary_key": "envelope",
+          "source_path": [
+            "envelope"
+          ]
+        },
+        "field_tokens.record_id": {
+          "boundary_key": "record_id",
+          "source_path": [
+            "record_id"
+          ]
+        },
+        "ordering_tokens.ascending": {
+          "reverse": false
+        },
+        "relation_tokens.prefix": {
+          "kind": "left_sequence_prefix"
+        },
+        "serialization_tokens.json": {
+          "data_model": "json",
+          "output": "text"
+        }
+      },
+      "first_unresolved_dependency": "algorithm_tokens.sha256 mapping unavailable",
+      "mapping_count": 7,
+      "mapping_delta_from_V2": {
+        "added": {},
+        "changed": {},
+        "missing": [
+          "algorithm_tokens.sha256"
+        ]
+      },
+      "mode": "explicit",
+      "role": "algorithm-token mapping removed",
+      "token_renames": {},
+      "vocabulary_identity": {
+        "name": "dme_lab.bounded_commitment_vocabulary",
+        "provenance": "local Chart 5 pressure",
+        "version": "v0"
+      }
+    },
+    "V4_wrong_complete_relation_mapping": {
+      "behavioral_outcomes": {
+        "H13_tail_loss": "MISMATCHED",
+        "H14_control": "RECOVERED",
+        "H16_ID_replacement": "MISMATCHED",
+        "H16_content_replacement": "MISMATCHED",
+        "H16_extension": "MISMATCHED"
+      },
+      "declaration_exact_identity": "sha256:887a849a8a766c69745ee66051261798a2af0f077267a521f371144aff48128d",
+      "declaration_shape_identity": "sha256:516774d12a6517b4d78bacc89cb55d5c23e0b0b2c63f8ba6033c4ae8764c5736",
+      "exact_token_mappings": {
+        "algorithm_tokens.sha256": {
+          "digest_bits": 256,
+          "family": "sha-2"
+        },
+        "encoding_tokens.utf-8": {
+          "unicode_encoding": "utf-8"
+        },
+        "field_tokens.commit_index": {
+          "boundary_key": "commit_index",
+          "source_path": [
+            "commit_index"
+          ]
+        },
+        "field_tokens.envelope": {
+          "boundary_key": "envelope",
+          "source_path": [
+            "envelope"
+          ]
+        },
+        "field_tokens.record_id": {
+          "boundary_key": "record_id",
+          "source_path": [
+            "record_id"
+          ]
+        },
+        "ordering_tokens.ascending": {
+          "reverse": false
+        },
+        "relation_tokens.prefix": {
+          "kind": "sequence_equality"
+        },
+        "serialization_tokens.json": {
+          "data_model": "json",
+          "output": "text"
+        }
+      },
+      "first_unresolved_dependency": null,
+      "mapping_count": 8,
+      "mapping_delta_from_V2": {
+        "added": {},
+        "changed": {
+          "relation_tokens.prefix": {
+            "actual": {
+              "kind": "sequence_equality"
+            },
+            "expected": {
+              "kind": "left_sequence_prefix"
+            }
+          }
+        },
+        "missing": []
+      },
+      "mode": "explicit",
+      "role": "prefix token mapped to sequence equality",
+      "token_renames": {},
+      "vocabulary_identity": {
+        "name": "dme_lab.bounded_commitment_vocabulary",
+        "provenance": "local Chart 5 pressure",
+        "version": "v0"
+      }
+    },
+    "V5_wrong_field_token_mapping": {
+      "behavioral_outcomes": {
+        "H13_tail_loss": "MISMATCHED",
+        "H14_control": "MISMATCHED",
+        "H16_ID_replacement": "MISMATCHED",
+        "H16_content_replacement": "MISMATCHED",
+        "H16_extension": "MISMATCHED"
+      },
+      "declaration_exact_identity": "sha256:887a849a8a766c69745ee66051261798a2af0f077267a521f371144aff48128d",
+      "declaration_shape_identity": "sha256:516774d12a6517b4d78bacc89cb55d5c23e0b0b2c63f8ba6033c4ae8764c5736",
+      "exact_token_mappings": {
+        "algorithm_tokens.sha256": {
+          "digest_bits": 256,
+          "family": "sha-2"
+        },
+        "encoding_tokens.utf-8": {
+          "unicode_encoding": "utf-8"
+        },
+        "field_tokens.commit_index": {
+          "boundary_key": "commit_index",
+          "source_path": [
+            "commit_index"
+          ]
+        },
+        "field_tokens.envelope": {
+          "boundary_key": "envelope",
+          "source_path": [
+            "envelope"
+          ]
+        },
+        "field_tokens.record_id": {
+          "boundary_key": "record_id",
+          "source_path": [
+            "envelope"
+          ]
+        },
+        "ordering_tokens.ascending": {
+          "reverse": false
+        },
+        "relation_tokens.prefix": {
+          "kind": "left_sequence_prefix"
+        },
+        "serialization_tokens.json": {
+          "data_model": "json",
+          "output": "text"
+        }
+      },
+      "first_unresolved_dependency": null,
+      "mapping_count": 8,
+      "mapping_delta_from_V2": {
+        "added": {},
+        "changed": {
+          "field_tokens.record_id": {
+            "actual": {
+              "boundary_key": "record_id",
+              "source_path": [
+                "envelope"
+              ]
+            },
+            "expected": {
+              "boundary_key": "record_id",
+              "source_path": [
+                "record_id"
+              ]
+            }
+          }
+        },
+        "missing": []
+      },
+      "mode": "explicit",
+      "role": "record_id token bound to envelope content",
+      "token_renames": {},
+      "vocabulary_identity": {
+        "name": "dme_lab.bounded_commitment_vocabulary",
+        "provenance": "local Chart 5 pressure",
+        "version": "v0"
+      }
+    },
+    "V6_renamed_symbols_preserved_mapping": {
+      "behavioral_outcomes": {
+        "H13_tail_loss": "MISMATCHED",
+        "H14_control": "RECOVERED",
+        "H16_ID_replacement": "MISMATCHED",
+        "H16_content_replacement": "MISMATCHED",
+        "H16_extension": "RECOVERED"
+      },
+      "declaration_exact_identity": "sha256:8be8fd2eb377bccd458a53c64859abdb40de7c781dad112aeffa0e1e78d0d71b",
+      "declaration_shape_identity": "sha256:516774d12a6517b4d78bacc89cb55d5c23e0b0b2c63f8ba6033c4ae8764c5736",
+      "exact_token_mappings": {
+        "algorithm_tokens.op_a": {
+          "digest_bits": 256,
+          "family": "sha-2"
+        },
+        "encoding_tokens.utf-8": {
+          "unicode_encoding": "utf-8"
+        },
+        "field_tokens.commit_index": {
+          "boundary_key": "commit_index",
+          "source_path": [
+            "commit_index"
+          ]
+        },
+        "field_tokens.envelope": {
+          "boundary_key": "envelope",
+          "source_path": [
+            "envelope"
+          ]
+        },
+        "field_tokens.field_1": {
+          "boundary_key": "record_id",
+          "source_path": [
+            "record_id"
+          ]
+        },
+        "ordering_tokens.ascending": {
+          "reverse": false
+        },
+        "relation_tokens.rel_z": {
+          "kind": "left_sequence_prefix"
+        },
+        "serialization_tokens.json": {
+          "data_model": "json",
+          "output": "text"
+        }
+      },
+      "first_unresolved_dependency": null,
+      "mapping_count": 8,
+      "mapping_delta_from_V2": {
+        "added": {
+          "algorithm_tokens.op_a": {
+            "digest_bits": 256,
+            "family": "sha-2"
+          },
+          "field_tokens.field_1": {
+            "boundary_key": "record_id",
+            "source_path": [
+              "record_id"
+            ]
+          },
+          "relation_tokens.rel_z": {
+            "kind": "left_sequence_prefix"
+          }
+        },
+        "changed": {},
+        "missing": [
+          "algorithm_tokens.sha256",
+          "field_tokens.record_id",
+          "relation_tokens.prefix"
+        ]
+      },
+      "mode": "explicit",
+      "role": "selected symbols renamed with descriptor bindings preserved",
+      "token_renames": {
+        "algorithm": {
+          "sha256": "op_a"
+        },
+        "encoding": {},
+        "field": {
+          "record_id": "field_1"
+        },
+        "ordering": {},
+        "relation": {
+          "prefix": "rel_z"
+        },
+        "serialization": {}
+      },
+      "vocabulary_identity": {
+        "name": "dme_lab.bounded_commitment_vocabulary",
+        "provenance": "local Chart 5 pressure",
+        "version": "v0"
+      }
+    },
+    "V7_equivalent_renamed_vocabulary": {
+      "behavioral_outcomes": {
+        "H13_tail_loss": "MISMATCHED",
+        "H14_control": "RECOVERED",
+        "H16_ID_replacement": "MISMATCHED",
+        "H16_content_replacement": "MISMATCHED",
+        "H16_extension": "RECOVERED"
+      },
+      "declaration_exact_identity": "sha256:9f133dbbf6039bae0db08fd3dacc71ebbf80065b26c9631f86ee649d2bbda76f",
+      "declaration_shape_identity": "sha256:516774d12a6517b4d78bacc89cb55d5c23e0b0b2c63f8ba6033c4ae8764c5736",
+      "exact_token_mappings": {
+        "algorithm_tokens.op_a": {
+          "digest_bits": 256,
+          "family": "sha-2"
+        },
+        "encoding_tokens.enc_u": {
+          "unicode_encoding": "utf-8"
+        },
+        "field_tokens.field_1": {
+          "boundary_key": "record_id",
+          "source_path": [
+            "record_id"
+          ]
+        },
+        "field_tokens.field_2": {
+          "boundary_key": "commit_index",
+          "source_path": [
+            "commit_index"
+          ]
+        },
+        "field_tokens.field_3": {
+          "boundary_key": "envelope",
+          "source_path": [
+            "envelope"
+          ]
+        },
+        "ordering_tokens.ord_up": {
+          "reverse": false
+        },
+        "relation_tokens.rel_z": {
+          "kind": "left_sequence_prefix"
+        },
+        "serialization_tokens.ser_q": {
+          "data_model": "json",
+          "output": "text"
+        }
+      },
+      "first_unresolved_dependency": null,
+      "mapping_count": 8,
+      "mapping_delta_from_V2": {
+        "added": {
+          "algorithm_tokens.op_a": {
+            "digest_bits": 256,
+            "family": "sha-2"
+          },
+          "encoding_tokens.enc_u": {
+            "unicode_encoding": "utf-8"
+          },
+          "field_tokens.field_1": {
+            "boundary_key": "record_id",
+            "source_path": [
+              "record_id"
+            ]
+          },
+          "field_tokens.field_2": {
+            "boundary_key": "commit_index",
+            "source_path": [
+              "commit_index"
+            ]
+          },
+          "field_tokens.field_3": {
+            "boundary_key": "envelope",
+            "source_path": [
+              "envelope"
+            ]
+          },
+          "ordering_tokens.ord_up": {
+            "reverse": false
+          },
+          "relation_tokens.rel_z": {
+            "kind": "left_sequence_prefix"
+          },
+          "serialization_tokens.ser_q": {
+            "data_model": "json",
+            "output": "text"
+          }
+        },
+        "changed": {},
+        "missing": [
+          "algorithm_tokens.sha256",
+          "field_tokens.record_id",
+          "field_tokens.commit_index",
+          "field_tokens.envelope",
+          "serialization_tokens.json",
+          "encoding_tokens.utf-8",
+          "ordering_tokens.ascending",
+          "relation_tokens.prefix"
+        ]
+      },
+      "mode": "explicit",
+      "role": "all semantic symbols and vocabulary identity renamed with bindings preserved",
+      "token_renames": {
+        "algorithm": {
+          "sha256": "op_a"
+        },
+        "encoding": {
+          "utf-8": "enc_u"
+        },
+        "field": {
+          "commit_index": "field_2",
+          "envelope": "field_3",
+          "record_id": "field_1"
+        },
+        "ordering": {
+          "ascending": "ord_up"
+        },
+        "relation": {
+          "prefix": "rel_z"
+        },
+        "serialization": {
+          "json": "ser_q"
+        }
+      },
+      "vocabulary_identity": {
+        "name": "local.alt_coordinates",
+        "provenance": "local equivalent-mapping pressure",
+        "version": "renamed-v0"
+      }
+    }
+  },
+  "wrong_vocabulary_limit": "wrong vocabulary != corrupt history"
+}

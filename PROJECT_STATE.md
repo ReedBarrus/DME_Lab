@@ -46,6 +46,8 @@ Provenance recovery pressure completed in `docs/decisions/provenance_recovery_pr
 
 Declarative commitment semantics pressure completed in `docs/decisions/declarative_commitment_semantics_pressure_v0.md`.
 
+Vocabulary identity pressure completed in `docs/decisions/vocabulary_identity_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -114,8 +116,8 @@ navigation
 
 ## Next Smallest Question
 
-What minimum identity and provenance must accompany the local evaluator vocabulary
-so declarative commitment semantics remain recoverable without persistence architecture?
+What minimum identity must an operation descriptor preserve across evaluator-version
+change for bounded historical recovery to remain invariant without persistence?
 
 ## Contract Surface Status
 
@@ -187,5 +189,13 @@ so declarative commitment semantics remain recoverable without persistence archi
 - opaque `current_record` and `current` labels remained unresolved without ambient implementation meaning
 - complete but wrong boundary or canonicalization descriptions produced mismatch rather than unresolved
 - declaration vocabulary and token interpretation remain ambient in the bounded evaluator
+- Chart 5 held S9 structure and the H14 carrier fixed while varying vocabulary interpretation
+- eight explicit semantic bindings reproduced the R6/S9 historical outcomes without vocabulary identity metadata
+- tokens-only and focused missing mappings remained unresolved without inheriting ambient meaning
+- wrong complete relation and field bindings remained executable but changed historical outcomes
+- renamed tokens and vocabulary identity preserved outcomes when descriptor mappings remained equivalent
+- Chart 5 refines Chart 4 necessity into semantic role, token spelling, and recoverable binding without invalidating Chart 4
+- the resulting axis split supports chart-fold pressure, but no folding or transition machinery exists
+- operation-descriptor execution and provenance remain ambient in the local evaluator
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure
