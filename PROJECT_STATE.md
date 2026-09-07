@@ -36,6 +36,8 @@ Canonical bounded live ingest ledger continuation completed in `docs/decisions/l
 
 Ledger continuity pressure completed in `docs/decisions/ledger_continuity_pressure_v0.md`.
 
+History extent witness pressure completed in `docs/decisions/history_extent_witness_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -104,7 +106,7 @@ navigation
 
 ## Next Smallest Question
 
-What is the smallest whole-history corruption pressure beyond continuity gaps and duplicates?
+What is the smallest first-class witness conservation boundary, if any, needed beyond incidental experiment traces?
 
 ## Contract Surface Status
 
@@ -155,5 +157,8 @@ What is the smallest whole-history corruption pressure beyond continuity gaps an
 - per-record integrity verified before and after continuation, but ledger-wide history integrity remains unimplemented
 - ledger-wide continuity verification now checks duplicate commit indices, missing internal commit indices, and duplicate record IDs separately from per-record integrity
 - canonical live ingest continuity additionally requires start at commit index 1
+- a derived experiment trace can witness prior H14 extent without becoming authoritative history
+- temporary tail loss of `rec-000014` remains internally valid while failing witnessed extent correspondence
+- witness disagreement is preserved as mismatch evidence, not corruption proof or repair authority
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure

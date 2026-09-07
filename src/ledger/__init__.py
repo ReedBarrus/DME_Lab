@@ -1,6 +1,11 @@
 """Minimal synthetic ledger harness."""
 
 from .continuity import ContinuityVerificationResult, verify_continuity
+from .correspondence import (
+    HistoryExtentComparisonResult,
+    compare_history_extent,
+    history_extent,
+)
 from .jsonl import (
     HASH_BOUNDARY,
     INTEGRITY_ALGORITHM,
@@ -31,6 +36,7 @@ __all__ = [
     "JsonlLedger",
     "CANONICAL_LIVE_INGEST_LEDGER_PATH",
     "ContinuityVerificationResult",
+    "HistoryExtentComparisonResult",
     "SCHEMA_PATH",
     "SchemaError",
     "SchemaValidationResult",
@@ -38,6 +44,8 @@ __all__ = [
     "amendment_pair",
     "canonical_json",
     "canonical_live_ingest_ledger",
+    "compare_history_extent",
+    "history_extent",
     "identity_collision_envelopes",
     "missingness_envelopes",
     "ordering_conflict_envelopes",

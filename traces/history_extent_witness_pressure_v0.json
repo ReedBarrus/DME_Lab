@@ -1,0 +1,191 @@
+{
+  "ambiguity_preserved": {
+    "claim": "current ledger extent conflicts with previously preserved witness evidence",
+    "corruption_proven": false,
+    "repair_attempted": false
+  },
+  "canonical_ledger_path": "traces/live_ingest_ledger_v0.jsonl",
+  "duration_seconds": 0.07670340000186116,
+  "exact_missing_relation": {
+    "lost_projection_subject_ids": [
+      "rec-000013"
+    ],
+    "missing_admission_record_id": "rec-000014",
+    "missing_admission_subject_record_id": "rec-000013",
+    "surviving_observation_record_id": "rec-000013"
+  },
+  "experiment": "history_extent_witness_pressure_v0",
+  "extent_fields": [
+    "record_count",
+    "terminal_record_id",
+    "terminal_commit_index"
+  ],
+  "git_h14_witness": {
+    "checked": true,
+    "classification": "direct historical representation, not canonical runtime authority",
+    "commit": "e399720",
+    "extent": {
+      "record_count": 14,
+      "terminal_commit_index": 14,
+      "terminal_record_id": "rec-000014"
+    },
+    "preserves_h14": true
+  },
+  "h13_tail_loss_specimen": {
+    "continuity": {
+      "failures": [],
+      "ok": true,
+      "record_count": 13
+    },
+    "extent": {
+      "record_count": 13,
+      "terminal_commit_index": 13,
+      "terminal_record_id": "rec-000013"
+    },
+    "projection": {
+      "subject_count": 6,
+      "subject_record_ids": [
+        "rec-000001",
+        "rec-000003",
+        "rec-000005",
+        "rec-000007",
+        "rec-000009",
+        "rec-000011"
+      ]
+    },
+    "reconstruction": {
+      "admission_relation_count": 6,
+      "authoritative_record_ids": [
+        "rec-000001",
+        "rec-000002",
+        "rec-000003",
+        "rec-000004",
+        "rec-000005",
+        "rec-000006",
+        "rec-000007",
+        "rec-000008",
+        "rec-000009",
+        "rec-000010",
+        "rec-000011",
+        "rec-000012",
+        "rec-000013"
+      ],
+      "observation_count": 7,
+      "orphan_admission_count": 0
+    },
+    "record_integrity": {
+      "failures": [],
+      "ok": true,
+      "record_count": 13
+    },
+    "specimen_policy": "temporary in-memory records derived from H14 without rec-000014; canonical ledger not mutated",
+    "witness_correspondence": {
+      "current_extent": {
+        "record_count": 13,
+        "terminal_commit_index": 13,
+        "terminal_record_id": "rec-000013"
+      },
+      "duration_seconds": 1.8999999156221747e-06,
+      "interpretation": "extent_correspondence_only_not_corruption_proof",
+      "mismatches": [
+        {
+          "current": 13,
+          "field": "record_count",
+          "witnessed": 14
+        },
+        {
+          "current": "rec-000013",
+          "field": "terminal_record_id",
+          "witnessed": "rec-000014"
+        },
+        {
+          "current": 13,
+          "field": "terminal_commit_index",
+          "witnessed": 14
+        }
+      ],
+      "ok": false,
+      "witnessed_extent": {
+        "record_count": 14,
+        "terminal_commit_index": 14,
+        "terminal_record_id": "rec-000014"
+      }
+    }
+  },
+  "h14": {
+    "continuity": {
+      "failures": [],
+      "ok": true,
+      "record_count": 14
+    },
+    "extent": {
+      "record_count": 14,
+      "terminal_commit_index": 14,
+      "terminal_record_id": "rec-000014"
+    },
+    "projection": {
+      "subject_count": 7,
+      "subject_record_ids": [
+        "rec-000001",
+        "rec-000003",
+        "rec-000005",
+        "rec-000007",
+        "rec-000009",
+        "rec-000011",
+        "rec-000013"
+      ]
+    },
+    "reconstruction": {
+      "admission_relation_count": 7,
+      "authoritative_record_ids": [
+        "rec-000001",
+        "rec-000002",
+        "rec-000003",
+        "rec-000004",
+        "rec-000005",
+        "rec-000006",
+        "rec-000007",
+        "rec-000008",
+        "rec-000009",
+        "rec-000010",
+        "rec-000011",
+        "rec-000012",
+        "rec-000013",
+        "rec-000014"
+      ],
+      "observation_count": 7,
+      "orphan_admission_count": 0
+    },
+    "record_integrity": {
+      "failures": [],
+      "ok": true,
+      "record_count": 14
+    },
+    "witness_correspondence": {
+      "current_extent": {
+        "record_count": 14,
+        "terminal_commit_index": 14,
+        "terminal_record_id": "rec-000014"
+      },
+      "duration_seconds": 1.8999999156221747e-06,
+      "interpretation": "extent_correspondence_only_not_corruption_proof",
+      "mismatches": [],
+      "ok": true,
+      "witnessed_extent": {
+        "record_count": 14,
+        "terminal_commit_index": 14,
+        "terminal_record_id": "rec-000014"
+      }
+    }
+  },
+  "hash_chain_pressure": {
+    "earned": false,
+    "finding": "existing witness evidence detects this bounded tail-loss mismatch without hash chaining"
+  },
+  "new_persistent_architecture_required": false,
+  "persistent_architecture_added": [],
+  "selected_witness_artifact": "traces/live_ingest_continuation_v0.json",
+  "selected_witness_classification": "derived experiment witness",
+  "starting_commit": "e0e38249380de1623680091e833cce3fd16cff73",
+  "unresolved_horizon": "whether DME_Lab should conserve first-class extent witnesses rather than rely on incidental experiment traces"
+}
