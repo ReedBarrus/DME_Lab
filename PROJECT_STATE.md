@@ -56,6 +56,8 @@ Admissible history discriminator pressure completed in `docs/decisions/admissibl
 
 History constraint ablation pressure completed in `docs/decisions/history_constraint_ablation_pressure_v0.md`.
 
+Tie-order invariance pressure completed in `docs/decisions/tie_order_invariance_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -124,8 +126,8 @@ navigation
 
 ## Next Smallest Question
 
-Can duplicate-index relation evidence be justified without adding a tie-break
-rule when equal-index replay order depends on physical input order?
+Can one bounded whole-stack adversarial composition preserve the currently
+earned capture, ledger, reconstruction, and relation distinctions together?
 
 ## Contract Surface Status
 
@@ -239,5 +241,12 @@ rule when equal-index replay order depends on physical input order?
 - commit_index role coupling is supported across commitment identity, ordering, and continuity/admissibility, but not every related constraint contributed
 - Chart 9 strengthens Chart 8 by showing that single changes to the admissible basis alter local operation distinguishability
 - multiple alternative discrimination regimes were found, but no cost, attention, preference, regime-switching, or scheduler mechanism was added
+- tie-order invariance pressure reused the exact Chart 9 C2 construction without changing its evidence
+- the two-record commit-index tie has exactly two bounded linearizations under known unequal-index constraints
+- both linearizations produced prefix false and ordered-subsequence true
+- canonical replay ordering and whole-state C2 admissibility remain unresolved without tie semantics
+- both specific relations are resolved by invariance over every bounded compatible linearization
+- exact coordinate resolution was unnecessary for these bounded relation consequences; no tie-break was added
+- the next pressure moves to one whole-stack adversarial composition pass rather than further duplicate-index drilling
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure

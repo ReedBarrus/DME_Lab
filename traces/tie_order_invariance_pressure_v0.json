@@ -1,0 +1,227 @@
+{
+  "admissibility_status": "UNRESOLVED",
+  "architecture_added": [],
+  "bounded_linearizations": {
+    "L0_pressure_before_witnessed": {
+      "commit_indices": [
+        1,
+        2,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "ordered_subsequence": true,
+      "prefix": false,
+      "record_ids": [
+        "rec-000001",
+        "rec-pressure-duplicate",
+        "rec-000002",
+        "rec-000003",
+        "rec-000004",
+        "rec-000005",
+        "rec-000006",
+        "rec-000007",
+        "rec-000008",
+        "rec-000009",
+        "rec-000010",
+        "rec-000011",
+        "rec-000012",
+        "rec-000013",
+        "rec-000014"
+      ],
+      "tied_record_ids": [
+        "rec-pressure-duplicate",
+        "rec-000002"
+      ]
+    },
+    "L1_witnessed_before_pressure": {
+      "commit_indices": [
+        1,
+        2,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "ordered_subsequence": true,
+      "prefix": false,
+      "record_ids": [
+        "rec-000001",
+        "rec-000002",
+        "rec-pressure-duplicate",
+        "rec-000003",
+        "rec-000004",
+        "rec-000005",
+        "rec-000006",
+        "rec-000007",
+        "rec-000008",
+        "rec-000009",
+        "rec-000010",
+        "rec-000011",
+        "rec-000012",
+        "rec-000013",
+        "rec-000014"
+      ],
+      "tied_record_ids": [
+        "rec-000002",
+        "rec-pressure-duplicate"
+      ]
+    }
+  },
+  "chart_9_back_pressure": {
+    "prior_result_invalidated": false,
+    "prior_trace_modified": false,
+    "refined": true,
+    "refinement": "canonical replay order and C2 admissibility remain unresolved, while prefix and ordered-subsequence results are invariant across every bounded compatible linearization"
+  },
+  "distinctions": {
+    "added": [
+      {
+        "id": "D-0040",
+        "left": "ordering_resolution",
+        "relation": "not_equivalent_to",
+        "right": "relation_resolution"
+      }
+    ],
+    "amended": []
+  },
+  "duple_interpretation": {
+    "expression": "I_B(O) = (B, sigma_B(O))",
+    "finding": "the bounded basis can retain unresolved internal order while its observed relation response remains invariant",
+    "formulation_changed": false,
+    "runtime_abstraction_added": false,
+    "strengthened": true
+  },
+  "duration_seconds": 0.647789,
+  "experiment": "tie_order_invariance_pressure_v0",
+  "finding": "ordering_resolution != relation_resolution",
+  "fixed_C2_construction": {
+    "construction": "one rehashed pressure record shares commit_index 2 with witnessed rec-000002",
+    "record_count": 15,
+    "regime": "C2_relax_duplicate_index_prohibition",
+    "source_experiment": "history_constraint_ablation_pressure_v0",
+    "source_records_changed": false
+  },
+  "navigation_relevance": {
+    "all_admissible_resolutions_share_consequence": true,
+    "attention_or_cost_added": false,
+    "exact_state_resolution_required_for_this_consequence": false,
+    "navigator_added": false,
+    "scheduler_added": false
+  },
+  "next_smallest_frontier": "perform one whole-stack adversarial composition pass across the currently earned capture, ledger, reconstruction, and relation boundaries",
+  "ordering_constraints": {
+    "complete_bounded_linearization_count": 2,
+    "equal_index_relation": "unknown",
+    "physical_input_order_authoritative": false,
+    "secondary_key": null,
+    "unequal_indices": "ascending commit_index order remains fixed"
+  },
+  "ordering_status": "UNRESOLVED",
+  "prior_chart_9": {
+    "C2_reproduced_unchanged": true,
+    "committed_trace": "traces/history_constraint_ablation_pressure_v0.json",
+    "evidence_modified": false,
+    "remains_valid": true
+  },
+  "production_changes": {
+    "canonical_history": false,
+    "replay_semantics": false,
+    "secondary_order_key": false
+  },
+  "relation_resolution": {
+    "all_permitted_linearizations_evaluated": true,
+    "complete_relation_signatures": [
+      {
+        "ordered_subsequence": true,
+        "prefix": false
+      },
+      {
+        "ordered_subsequence": true,
+        "prefix": false
+      }
+    ],
+    "existential_result_sufficient": false,
+    "ordered_subsequence": {
+      "invariant": true,
+      "results": [
+        true,
+        true
+      ],
+      "status": "RESOLVED_BY_ORDER_INVARIANCE",
+      "value": true
+    },
+    "overall_status": "RESOLVED_BY_ORDER_INVARIANCE",
+    "prefix": {
+      "invariant": true,
+      "results": [
+        false,
+        false
+      ],
+      "status": "RESOLVED_BY_ORDER_INVARIANCE",
+      "value": false
+    },
+    "resolution_requires_invariance": true
+  },
+  "runtime_stable_sort_observations": {
+    "classification": "non-authoritative implementation behavior",
+    "observations": {
+      "inserted_after_existing_tie": {
+        "prefix": false,
+        "subsequence": true,
+        "tied_record_ids": [
+          "rec-000002",
+          "rec-pressure-duplicate"
+        ]
+      },
+      "inserted_before_existing_tie": {
+        "prefix": false,
+        "subsequence": true,
+        "tied_record_ids": [
+          "rec-pressure-duplicate",
+          "rec-000002"
+        ]
+      }
+    },
+    "used_to_select_linearization": false
+  },
+  "starting_commit": "9213defe909b09e69290839da39a90b925175d4c",
+  "strongest_unresolved_horizon": "C2 exact replay order and whole-state admissibility remain unresolved even though both tested relations are order-invariant",
+  "tie_break": {
+    "introduced": false,
+    "used": false
+  },
+  "tied_records": {
+    "commit_index": 2,
+    "count": 2,
+    "records": [
+      {
+        "digest": "26e0c651dd6efcdb8205a5c61807e2ccb842dd7eaf44d50be153bfdad98c95cf",
+        "record_id": "rec-pressure-duplicate"
+      },
+      {
+        "digest": "088150a2c4fa273649336f4d383c215fdb26a582b18e805676af0852e12ece49",
+        "record_id": "rec-000002"
+      }
+    ]
+  }
+}
