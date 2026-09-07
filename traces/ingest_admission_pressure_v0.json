@@ -1,0 +1,196 @@
+{
+  "admission_record_shape": [
+    "record_type",
+    "subject_record_id",
+    "comparator_identity",
+    "comparator_version",
+    "comparison_result",
+    "decision",
+    "decision_basis"
+  ],
+  "admitted_projection": [
+    {
+      "admission_record_ids": [
+        "rec-000002"
+      ],
+      "observation_record_id": "rec-000001",
+      "source": "repository_filesystem_snapshot",
+      "subject_record_id": "rec-000001"
+    },
+    {
+      "admission_record_ids": [
+        "rec-000005"
+      ],
+      "observation_record_id": "rec-000004",
+      "source": "repository_git_state",
+      "subject_record_id": "rec-000004"
+    }
+  ],
+  "cases": {
+    "filesystem_candidate": {
+      "admission_record_ids": [
+        "rec-000002",
+        "rec-000003"
+      ],
+      "comparison_valid": [
+        true,
+        false
+      ],
+      "decisions": [
+        "admitted",
+        "rejected"
+      ],
+      "observation_persisted": true,
+      "observation_record_id": "rec-000001",
+      "participates_in_admitted_projection": true
+    },
+    "git_candidate": {
+      "admission_record_ids": [
+        "rec-000005",
+        "rec-000010"
+      ],
+      "comparison_valid": [
+        true,
+        null
+      ],
+      "decisions": [
+        "admitted",
+        "unresolved"
+      ],
+      "observation_persisted": true,
+      "observation_record_id": "rec-000004",
+      "participates_in_admitted_projection": true
+    },
+    "malformed_required_field": {
+      "admission_record_ids": [
+        "rec-000007"
+      ],
+      "comparison_valid": [
+        false
+      ],
+      "decisions": [
+        "rejected"
+      ],
+      "observation_persisted": true,
+      "observation_record_id": "rec-000006",
+      "participates_in_admitted_projection": false
+    },
+    "non_json_admissible_value": {
+      "admission_record_ids": [
+        "rec-000009"
+      ],
+      "comparison_valid": [
+        false
+      ],
+      "decisions": [
+        "rejected"
+      ],
+      "json_trace_note": "raw non-JSON value summarized here rather than serialized into trace",
+      "observation_persisted": true,
+      "observation_record_id": "rec-000008",
+      "participates_in_admitted_projection": false,
+      "raw_value_preserved_in_temporary_ledger": "math.nan"
+    }
+  },
+  "duration_seconds": 0.07845539999834727,
+  "experiment": "ingest_admission_pressure_v0",
+  "integrity_errors": [],
+  "integrity_ok": true,
+  "lineage_summary": [
+    {
+      "admission_decisions": [
+        {
+          "admission_record_id": "rec-000002",
+          "comparator_version": "ingest_candidate_envelope_minimum_v0",
+          "comparison_status": "compared",
+          "comparison_valid": true,
+          "decision": "admitted",
+          "decision_basis": "comparison valid under comparator"
+        },
+        {
+          "admission_record_id": "rec-000003",
+          "comparator_version": "ingest_candidate_envelope_event_time_required_v0_pressure",
+          "comparison_status": "compared",
+          "comparison_valid": false,
+          "decision": "rejected",
+          "decision_basis": "comparison invalid under comparator"
+        }
+      ],
+      "observation_source": "repository_filesystem_snapshot",
+      "participates_in_admitted_projection": true,
+      "subject_record_id": "rec-000001"
+    },
+    {
+      "admission_decisions": [
+        {
+          "admission_record_id": "rec-000005",
+          "comparator_version": "ingest_candidate_envelope_minimum_v0",
+          "comparison_status": "compared",
+          "comparison_valid": true,
+          "decision": "admitted",
+          "decision_basis": "comparison valid under comparator"
+        },
+        {
+          "admission_record_id": "rec-000010",
+          "comparator_version": "unknown_v0",
+          "comparison_status": "unavailable",
+          "comparison_valid": null,
+          "decision": "unresolved",
+          "decision_basis": "comparison unavailable"
+        }
+      ],
+      "observation_source": "repository_git_state",
+      "participates_in_admitted_projection": true,
+      "subject_record_id": "rec-000004"
+    },
+    {
+      "admission_decisions": [
+        {
+          "admission_record_id": "rec-000007",
+          "comparator_version": "ingest_candidate_envelope_minimum_v0",
+          "comparison_status": "compared",
+          "comparison_valid": false,
+          "decision": "rejected",
+          "decision_basis": "comparison invalid under comparator"
+        }
+      ],
+      "observation_source": "malformed_pressure_fixture",
+      "participates_in_admitted_projection": false,
+      "subject_record_id": "rec-000006"
+    },
+    {
+      "admission_decisions": [
+        {
+          "admission_record_id": "rec-000009",
+          "comparator_version": "ingest_candidate_envelope_minimum_v0",
+          "comparison_status": "compared",
+          "comparison_valid": false,
+          "decision": "rejected",
+          "decision_basis": "comparison invalid under comparator"
+        }
+      ],
+      "observation_source": "non_json_pressure_fixture",
+      "participates_in_admitted_projection": false,
+      "subject_record_id": "rec-000008"
+    }
+  ],
+  "logical_layers": {
+    "L0": "observation / provenance record",
+    "L1": "comparison / admission record referring to L0",
+    "L2": "admitted projection derived from replay"
+  },
+  "record_counts": {
+    "admissions": 6,
+    "admitted_projection": 2,
+    "observations": 4,
+    "replayed": 10
+  },
+  "runtime_scope": "bounded v0 temporary ledger",
+  "unresolved_pressure": [
+    "projection uses any admitted decision without conflict resolution",
+    "strict comparator version exists only as pressure fixture",
+    "non-JSON value preservation relies on current Python JSON behavior in a temporary ledger",
+    "no generalized admission policy engine exists",
+    "no topology or reconstruction engine consumes admission records yet"
+  ]
+}

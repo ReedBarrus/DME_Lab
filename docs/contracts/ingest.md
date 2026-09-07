@@ -2,11 +2,13 @@
 
 ## Status
 
-Projected.
+Projected for the general system.
+
+A bounded v0 admission mechanism is implemented for temporary ledger pressure.
 
 ## Role
 
-Ingest admits captured observation structure into the ledger boundary as an ingest envelope.
+Ingest classifies preserved observation structure for downstream eligibility.
 
 ## Input
 
@@ -14,7 +16,7 @@ Raw observation structure from a capture adapter or synthetic test fixture.
 
 ## Output
 
-An admitted envelope suitable for ledger append.
+Preserved observation records, admission records, and derived admitted projections.
 
 ## Must Preserve
 
@@ -34,14 +36,15 @@ An admitted envelope suitable for ledger append.
 
 ## Known Pressure
 
-- admission behavior is not yet implemented as its own boundary
+- general admission behavior is not yet implemented
 - malformed and unavailable source structures need pressure
 - synthetic envelopes exercise ledger shape
 - bounded live candidate envelopes exercise shadow handshakes, not admission enforcement
+- bounded v0 admission records preserve classification without deleting observations
 
 ## Evidence
 
-No dedicated ingest implementation exists.
+No generalized ingest implementation exists.
 
 Evidence currently includes synthetic envelopes used by ledger tests and bounded live repository candidate-envelope handshakes.
 
@@ -53,5 +56,10 @@ A live repository snapshot candidate envelope has been constructed and compared 
 - `src/runtime/repo_transition_pressure.py`
 - `traces/repo_transition_pressure_v0.json`
 - `docs/decisions/repo_transition_pressure_v0.md`
+- `src/ingest/admission.py`
+- `tests/ingest/test_admission.py`
+- `src/runtime/ingest_admission_pressure.py`
+- `traces/ingest_admission_pressure_v0.json`
+- `docs/decisions/ingest_admission_pressure_v0.md`
 
-This does not implement or enforce ingest admission, and it does not define final ingest rules.
+This implements only a bounded v0 admission classification mechanism. It does not define final ingest rules, a generalized policy engine, or a durable admitted store.

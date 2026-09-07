@@ -18,7 +18,7 @@ Contract text is not proof. A boundary status should say no more than the strong
 | Capture Adapter | implemented within bounded repository specimen; general OS deferred | Convert external source behavior into raw observations. | `src/capture/repo_snapshot.py`; `src/capture/git_state.py`; `tests/capture/test_repo_snapshot.py`; `traces/repo_snapshot_v0_baseline.json`; `traces/git_state_v0_baseline.json`; `traces/repo_snapshot_v0_post_cleanup.json`; `traces/git_state_v0_post_cleanup.json`; `traces/repo_transition_pressure_v0.json` | real OS observation shape; stable root identity; explicit perturbation sequence |
 | Signal | projected | Represent primitive observed event content. | `docs/contracts/signal.md`; `docs/projection/v0_observability.md` | field encodings under real observation pressure |
 | Provenance | projected | Surround a signal with origin and handling metadata. | `docs/contracts/provenance.md`; synthetic fields in ledger tests; bounded repository provenance construction in shadow mode; `traces/repo_transition_pressure_v0.json` | real source sequence, arrival time, integrity behavior, final provenance schema |
-| Ingest Envelope | projected | Admit raw observation structure into the ledger boundary while preserving provenance and missingness. | `docs/contracts/ingest.md`; synthetic ledger envelopes; bounded live candidate-envelope handshakes | enforced admission behavior; malformed and unavailable source structure |
+| Ingest Envelope | projected; bounded v0 admission mechanism implemented | Admit raw observation structure into the ledger boundary while preserving provenance and missingness. | `docs/contracts/ingest.md`; synthetic ledger envelopes; bounded live candidate-envelope handshakes; `src/ingest/admission.py`; `tests/ingest/test_admission.py`; `traces/ingest_admission_pressure_v0.json` | general admission behavior; policy conflict resolution; malformed and unavailable source structure |
 | Append Ledger | pressure-tested | Commit admitted envelopes as stable append-only records. | `src/ledger/jsonl.py`; `tests/replay/test_ledger_harness.py`; `traces/ledger_runtime_pressure_v0.json`; `docs/decisions/ledger_runtime_pressure_v0.md` | scale, serialization stability, single-writer assumption, amendment lookup |
 | Raw Replay | pressure-tested | Return committed ledger records in canonical `commit_index` order. | `src/ledger/jsonl.py::JsonlLedger.replay`; ordering and amendment tests | canonical order vs physical file order; replay cost; no resolved amendment view |
 | Reconstruction | projected | Derive a deterministic topology from replayed ledger input. | `docs/contracts/reconstruction.md` | smallest topology target; same input -> same output |
@@ -49,5 +49,8 @@ Contract text is not proof. A boundary status should say no more than the strong
 - working-tree state != committed state
 - raw observation != derived comparison
 - invocation path != stable source identity
+- persisted observation != admission classification
+- rejected != deleted
+- observation identity != admission classification
 
 Registry entries may point toward supporting evidence, but the registry alone does not upgrade a boundary status.

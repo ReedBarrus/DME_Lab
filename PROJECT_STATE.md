@@ -24,6 +24,8 @@ Second live repository observations captured in `traces/repo_snapshot_v0_post_cl
 
 Repository transition pressure completed in `docs/decisions/repo_transition_pressure_v0.md`.
 
+Bounded v0 ingest admission pressure completed in `docs/decisions/ingest_admission_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -84,7 +86,7 @@ navigation
 ## Missing Evidence
 
 - no general OS raw observations captured
-- no enforced live ingest admission rules
+- no generalized live ingest admission rules
 - no canonical live ingest envelope ledger
 - JSONL append ledger pressure-tested mainly against synthetic envelopes, with bounded temporary live candidate-envelope handshakes
 - raw replay validated only in canonical commit order
@@ -92,11 +94,12 @@ navigation
 
 ## Next Smallest Question
 
-Which observed structures may become admitted envelopes, and which must remain capture errors, unavailable fields, or rejected candidates?
+How should the controlled repository probe exercise preserved observations, admission classification, and admitted projection without deleting rejected evidence?
 
 ## Contract Surface Status
 
-- projected: signal, provenance, ingest envelope, reconstruction, exposed projection
+- projected: signal, provenance, general ingest envelope, reconstruction, exposed projection
+- implemented within bounded v0 scope: ingest admission classification
 - pressure-tested within synthetic v0 scope: append ledger, raw replay
 - implemented within bounded repository specimen: capture adapter
 - deferred: general OS and Windows capture
@@ -124,3 +127,7 @@ Which observed structures may become admitted envelopes, and which must remain c
 - metadata-only changes can alter snapshot identity without producing content-changed paths
 - filesystem scope and Git scope are overlapping but non-coextensive
 - root identity remains ambiguous when v0 observers are invoked with `.`
+- bounded admission records now preserve `record_type`, `subject_record_id`, comparator identity/version, comparison result, decision, and decision basis
+- rejected and unresolved observations remain replayable in the temporary admission pressure ledger
+- admitted projection is derived from replayed observation and admission records, not duplicated into a second physical store
+- one preserved observation can have multiple admission records under different comparator versions
