@@ -1,0 +1,671 @@
+{
+  "C0_current_contract": {
+    "H14_carrier_identity": "sha256:09f0f5f3402b1f187b3b09e4417f8e12010b22fe0968aeb2841a0b598553c200",
+    "chart_8_admissible_discriminator_found": false,
+    "digest_algorithm": "sha256",
+    "digest_boundary": "canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators",
+    "rules": {
+      "commitment_boundary": [
+        "record_id",
+        "commit_index",
+        "envelope"
+      ],
+      "gap_free_commit_indices": true,
+      "integer_commit_indices": true,
+      "ordering": "commit_index ascending",
+      "start_at_one": true,
+      "unique_commit_indices": true,
+      "unique_record_ids": true
+    }
+  },
+  "architecture_added": [],
+  "attention_cost_note": {
+    "cost_or_attention_model_added": false,
+    "multiple_alternative_discrimination_regimes_found": true
+  },
+  "chart_8_back_pressure": {
+    "interpretation_refined": true,
+    "prior_result_invalidated": false,
+    "prior_trace_modified": false,
+    "refinement": "the bounded collapse is maintained by some rules, opened by several independent single-rule changes, and unresolved when duplicate indices remove canonical tie semantics"
+  },
+  "chart_9_matrix": {
+    "C0_current_contract": {
+      "H14_prefix": false,
+      "H14_subsequence": true,
+      "admissibility": false,
+      "classification": "control",
+      "discriminator_reachable": false,
+      "integrity": true,
+      "ordering": "resolved"
+    },
+    "C1_relax_integer_only": {
+      "H14_prefix": false,
+      "H14_subsequence": true,
+      "admissibility": true,
+      "classification": "collapse-contributing",
+      "discriminator_reachable": true,
+      "integrity": true,
+      "ordering": "resolved"
+    },
+    "C2_relax_duplicate_index_prohibition": {
+      "H14_prefix": "UNRESOLVED",
+      "H14_subsequence": "UNRESOLVED",
+      "admissibility": "UNRESOLVED",
+      "classification": "UNRESOLVED",
+      "discriminator_reachable": "UNRESOLVED",
+      "integrity": true,
+      "ordering": "UNRESOLVED"
+    },
+    "C3_relax_gap_free_only": {
+      "H14_prefix": true,
+      "H14_subsequence": true,
+      "admissibility": true,
+      "classification": "collapse-maintaining",
+      "discriminator_reachable": false,
+      "integrity": true,
+      "ordering": "resolved"
+    },
+    "C4_relax_start_at_one_only": {
+      "H14_prefix": false,
+      "H14_subsequence": true,
+      "admissibility": true,
+      "classification": "collapse-contributing",
+      "discriminator_reachable": true,
+      "integrity": true,
+      "ordering": "resolved"
+    },
+    "C5_relax_duplicate_record_id_only": {
+      "H14_prefix": true,
+      "H14_subsequence": true,
+      "admissibility": true,
+      "classification": "collapse-maintaining",
+      "discriminator_reachable": false,
+      "integrity": true,
+      "ordering": "resolved"
+    },
+    "C6_vary_replay_ordering_only": {
+      "H14_prefix": false,
+      "H14_subsequence": true,
+      "admissibility": true,
+      "classification": "collapse-contributing",
+      "discriminator_reachable": true,
+      "integrity": true,
+      "ordering": "resolved"
+    },
+    "C7_remove_commit_index_from_boundary_only": {
+      "H14_prefix": false,
+      "H14_subsequence": true,
+      "admissibility": true,
+      "classification": "collapse-contributing",
+      "discriminator_reachable": true,
+      "integrity": true,
+      "ordering": "resolved"
+    }
+  },
+  "chart_9_status": {
+    "coordinates": "single-constraint regime x integrity/admissibility/relation/reachability result",
+    "earned": true,
+    "stable_coordinate_meaning": "each non-control row changes one declared current-contract dimension"
+  },
+  "commit_index_role_coupling": {
+    "current_roles": [
+      "commitment identity",
+      "ordering",
+      "continuity/admissibility"
+    ],
+    "duplicate_index_role": "UNRESOLVED because equal-index ordering lacks canonical tie semantics",
+    "individually_contributing_role_ablation": {
+      "commitment_identity": "C7_remove_commit_index_from_boundary_only",
+      "coordinate_domain": "C1_relax_integer_only",
+      "history_origin": "C4_relax_start_at_one_only",
+      "ordering": "C6_vary_replay_ordering_only"
+    },
+    "non_contributing_single_ablation": {
+      "gap_freedom": "C3_relax_gap_free_only",
+      "record_id_uniqueness": "C5_relax_duplicate_record_id_only"
+    },
+    "supported": true
+  },
+  "constraint_classifications": {
+    "UNRESOLVED": [
+      "C2_relax_duplicate_index_prohibition"
+    ],
+    "collapse-contributing": [
+      "C1_relax_integer_only",
+      "C4_relax_start_at_one_only",
+      "C6_vary_replay_ordering_only",
+      "C7_remove_commit_index_from_boundary_only"
+    ],
+    "collapse-maintaining": [
+      "C3_relax_gap_free_only",
+      "C5_relax_duplicate_record_id_only"
+    ]
+  },
+  "distinctions": {
+    "added": [],
+    "amended": [
+      "D-0039"
+    ],
+    "amendment_basis": "single changes to the admissible basis altered whether the same operation pair was distinguishable"
+  },
+  "duple_basis_interpretation": {
+    "control_basis_collapses_relations": true,
+    "expression": "I_B(O) = (B, sigma_B(O))",
+    "runtime_basis_object_added": false,
+    "single_component_basis_changes_separate_relations": [
+      "C1_relax_integer_only",
+      "C4_relax_start_at_one_only",
+      "C6_vary_replay_ordering_only",
+      "C7_remove_commit_index_from_boundary_only"
+    ],
+    "strengthened": true
+  },
+  "duration_seconds": 0.538283,
+  "experiment": "history_constraint_ablation_pressure_v0",
+  "fixed_source_lineage": {
+    "identity_after": "sha256:4089416202e20dd698a893784f1846dce1ce9472870b851be1601df7331a3038",
+    "identity_before": "sha256:4089416202e20dd698a893784f1846dce1ce9472870b851be1601df7331a3038",
+    "record_count": 14,
+    "source": "e399720:traces/live_ingest_ledger_v0.jsonl",
+    "unchanged": true
+  },
+  "multiple_individual_constraints_contribute": true,
+  "navigation_relevance": {
+    "distinguishing_moves_exist_across_current_admissibility_boundaries": true,
+    "preference_between_reachable_regimes_established": false,
+    "regime_change_can_expose_distinction": true,
+    "regime_switching_added": false,
+    "scheduler_added": false
+  },
+  "next_smallest_pressure_frontier": "determine whether duplicate-index relation evidence can be justified without adding a tie-break rule",
+  "prior_chart_8": {
+    "committed_trace": "traces/admissible_history_discriminator_pressure_v0.json",
+    "evidence_modified": false,
+    "remains_valid": true,
+    "reproduced_unchanged": true
+  },
+  "production_changes": {
+    "canonical_history": false,
+    "digest_boundary": false,
+    "ledger_validator": false,
+    "replay_order": false
+  },
+  "single_constraint_variants": {
+    "C0_current_contract": {
+      "admissibility": false,
+      "carrier": {
+        "bytes_fixed": true,
+        "identity": "sha256:09f0f5f3402b1f187b3b09e4417f8e12010b22fe0968aeb2841a0b598553c200",
+        "recomputed": false
+      },
+      "changed_rule": null,
+      "constraint_classification": "control",
+      "continuity": {
+        "failures": [
+          {
+            "kind": "duplicate_commit_index",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "local_variant": false,
+        "ok": false,
+        "record_count": 15
+      },
+      "discriminator_reachable": false,
+      "integrity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 15
+      },
+      "ordering": {
+        "rule": "commit_index ascending",
+        "status": "resolved"
+      },
+      "relations": {
+        "H14_prefix": false,
+        "H14_subsequence": true
+      },
+      "rules": {
+        "commitment_boundary": [
+          "record_id",
+          "commit_index",
+          "envelope"
+        ],
+        "gap_free_commit_indices": true,
+        "integer_commit_indices": true,
+        "ordering": "commit_index ascending",
+        "start_at_one": true,
+        "unique_commit_indices": true,
+        "unique_record_ids": true
+      },
+      "rules_held_fixed": [
+        "integer_commit_indices",
+        "unique_commit_indices",
+        "gap_free_commit_indices",
+        "start_at_one",
+        "unique_record_ids",
+        "ordering",
+        "commitment_boundary"
+      ]
+    },
+    "C1_relax_integer_only": {
+      "admissibility": true,
+      "carrier": {
+        "bytes_fixed": true,
+        "identity": "sha256:09f0f5f3402b1f187b3b09e4417f8e12010b22fe0968aeb2841a0b598553c200",
+        "recomputed": false
+      },
+      "changed_rule": "integer_commit_indices",
+      "constraint_classification": "collapse-contributing",
+      "continuity": {
+        "failures": [],
+        "local_variant": true,
+        "locally_ignored_current_failures": [
+          "invalid_commit_index"
+        ],
+        "ok": true,
+        "record_count": 15
+      },
+      "discriminator_reachable": true,
+      "gap_freedom_interpretation": "the retained integer lineage remains the complete gap-free sequence 1..14",
+      "integrity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 15
+      },
+      "ordering": {
+        "rule": "commit_index ascending with one non-integer coordinate",
+        "status": "resolved"
+      },
+      "relations": {
+        "H14_prefix": false,
+        "H14_subsequence": true
+      },
+      "rules": {
+        "commitment_boundary": [
+          "record_id",
+          "commit_index",
+          "envelope"
+        ],
+        "gap_free_commit_indices": true,
+        "integer_commit_indices": "integers plus one non-integer coordinate",
+        "ordering": "commit_index ascending",
+        "start_at_one": true,
+        "unique_commit_indices": true,
+        "unique_record_ids": true
+      },
+      "rules_held_fixed": [
+        "unique_commit_indices",
+        "gap_free_commit_indices",
+        "start_at_one",
+        "unique_record_ids",
+        "ordering",
+        "commitment_boundary"
+      ]
+    },
+    "C2_relax_duplicate_index_prohibition": {
+      "admissibility": "UNRESOLVED",
+      "carrier": {
+        "bytes_fixed": true,
+        "identity": "sha256:09f0f5f3402b1f187b3b09e4417f8e12010b22fe0968aeb2841a0b598553c200",
+        "recomputed": false
+      },
+      "changed_rule": "unique_commit_indices",
+      "constraint_classification": "UNRESOLVED",
+      "continuity": {
+        "failures": [],
+        "local_variant": true,
+        "locally_ignored_current_failures": [
+          "duplicate_commit_index"
+        ],
+        "ok": true,
+        "record_count": 15
+      },
+      "discriminator_reachable": "UNRESOLVED",
+      "integrity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 15
+      },
+      "ordering": {
+        "physical_input_order_dependent": true,
+        "rule": "commit_index ascending without equal-index tie semantics",
+        "runtime_behavior": "stable sort retains physical input order for equal indices",
+        "runtime_observations": {
+          "inserted_after_existing_tie": {
+            "prefix": false,
+            "subsequence": true,
+            "tied_record_ids": [
+              "rec-000002",
+              "rec-pressure-duplicate"
+            ]
+          },
+          "inserted_before_existing_tie": {
+            "prefix": false,
+            "subsequence": true,
+            "tied_record_ids": [
+              "rec-pressure-duplicate",
+              "rec-000002"
+            ]
+          }
+        },
+        "status": "UNRESOLVED",
+        "tie_break_invented": false
+      },
+      "relations": {
+        "H14_prefix": "UNRESOLVED",
+        "H14_subsequence": "UNRESOLVED"
+      },
+      "rules": {
+        "commitment_boundary": [
+          "record_id",
+          "commit_index",
+          "envelope"
+        ],
+        "gap_free_commit_indices": true,
+        "integer_commit_indices": true,
+        "ordering": "commit_index ascending",
+        "start_at_one": true,
+        "unique_commit_indices": false,
+        "unique_record_ids": true
+      },
+      "rules_held_fixed": [
+        "integer_commit_indices",
+        "gap_free_commit_indices",
+        "start_at_one",
+        "unique_record_ids",
+        "ordering",
+        "commitment_boundary"
+      ]
+    },
+    "C3_relax_gap_free_only": {
+      "admissibility": true,
+      "carrier": {
+        "bytes_fixed": true,
+        "identity": "sha256:09f0f5f3402b1f187b3b09e4417f8e12010b22fe0968aeb2841a0b598553c200",
+        "recomputed": false
+      },
+      "changed_rule": "gap_free_commit_indices",
+      "constraint_classification": "collapse-maintaining",
+      "continuity": {
+        "failures": [],
+        "local_variant": true,
+        "locally_ignored_current_failures": [
+          "missing_commit_index"
+        ],
+        "ok": true,
+        "record_count": 15
+      },
+      "discriminator_reachable": false,
+      "integrity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 15
+      },
+      "ordering": {
+        "rule": "commit_index ascending",
+        "status": "resolved"
+      },
+      "relations": {
+        "H14_prefix": true,
+        "H14_subsequence": true
+      },
+      "rules": {
+        "commitment_boundary": [
+          "record_id",
+          "commit_index",
+          "envelope"
+        ],
+        "gap_free_commit_indices": false,
+        "integer_commit_indices": true,
+        "ordering": "commit_index ascending",
+        "start_at_one": true,
+        "unique_commit_indices": true,
+        "unique_record_ids": true
+      },
+      "rules_held_fixed": [
+        "integer_commit_indices",
+        "unique_commit_indices",
+        "start_at_one",
+        "unique_record_ids",
+        "ordering",
+        "commitment_boundary"
+      ]
+    },
+    "C4_relax_start_at_one_only": {
+      "admissibility": true,
+      "carrier": {
+        "bytes_fixed": true,
+        "identity": "sha256:09f0f5f3402b1f187b3b09e4417f8e12010b22fe0968aeb2841a0b598553c200",
+        "recomputed": false
+      },
+      "changed_rule": "start_at_one",
+      "constraint_classification": "collapse-contributing",
+      "continuity": {
+        "failures": [],
+        "local_variant": false,
+        "ok": true,
+        "record_count": 15
+      },
+      "discriminator_reachable": true,
+      "integrity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 15
+      },
+      "ordering": {
+        "rule": "commit_index ascending",
+        "status": "resolved"
+      },
+      "relations": {
+        "H14_prefix": false,
+        "H14_subsequence": true
+      },
+      "rules": {
+        "commitment_boundary": [
+          "record_id",
+          "commit_index",
+          "envelope"
+        ],
+        "gap_free_commit_indices": true,
+        "integer_commit_indices": true,
+        "ordering": "commit_index ascending",
+        "start_at_one": false,
+        "unique_commit_indices": true,
+        "unique_record_ids": true
+      },
+      "rules_held_fixed": [
+        "integer_commit_indices",
+        "unique_commit_indices",
+        "gap_free_commit_indices",
+        "unique_record_ids",
+        "ordering",
+        "commitment_boundary"
+      ]
+    },
+    "C5_relax_duplicate_record_id_only": {
+      "admissibility": true,
+      "carrier": {
+        "bytes_fixed": true,
+        "identity": "sha256:09f0f5f3402b1f187b3b09e4417f8e12010b22fe0968aeb2841a0b598553c200",
+        "recomputed": false
+      },
+      "changed_rule": "unique_record_ids",
+      "constraint_classification": "collapse-maintaining",
+      "continuity": {
+        "failures": [],
+        "local_variant": true,
+        "locally_ignored_current_failures": [
+          "duplicate_record_id"
+        ],
+        "ok": true,
+        "record_count": 15
+      },
+      "discriminator_reachable": false,
+      "integrity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 15
+      },
+      "ordering": {
+        "rule": "commit_index ascending",
+        "status": "resolved"
+      },
+      "relations": {
+        "H14_prefix": true,
+        "H14_subsequence": true
+      },
+      "rules": {
+        "commitment_boundary": [
+          "record_id",
+          "commit_index",
+          "envelope"
+        ],
+        "gap_free_commit_indices": true,
+        "integer_commit_indices": true,
+        "ordering": "commit_index ascending",
+        "start_at_one": true,
+        "unique_commit_indices": true,
+        "unique_record_ids": false
+      },
+      "rules_held_fixed": [
+        "integer_commit_indices",
+        "unique_commit_indices",
+        "gap_free_commit_indices",
+        "start_at_one",
+        "ordering",
+        "commitment_boundary"
+      ]
+    },
+    "C6_vary_replay_ordering_only": {
+      "admissibility": true,
+      "carrier": {
+        "bytes_fixed": true,
+        "identity": "sha256:09f0f5f3402b1f187b3b09e4417f8e12010b22fe0968aeb2841a0b598553c200",
+        "recomputed": false
+      },
+      "changed_rule": "ordering",
+      "constraint_classification": "collapse-contributing",
+      "continuity": {
+        "failures": [],
+        "local_variant": false,
+        "ok": true,
+        "record_count": 15
+      },
+      "current_replay_commit_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "discriminator_reachable": true,
+      "integrity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 15
+      },
+      "ordering": {
+        "rule": "physical input sequence",
+        "status": "resolved"
+      },
+      "relations": {
+        "H14_prefix": false,
+        "H14_subsequence": true
+      },
+      "rules": {
+        "commitment_boundary": [
+          "record_id",
+          "commit_index",
+          "envelope"
+        ],
+        "gap_free_commit_indices": true,
+        "integer_commit_indices": true,
+        "ordering": "physical input sequence",
+        "start_at_one": true,
+        "unique_commit_indices": true,
+        "unique_record_ids": true
+      },
+      "rules_held_fixed": [
+        "integer_commit_indices",
+        "unique_commit_indices",
+        "gap_free_commit_indices",
+        "start_at_one",
+        "unique_record_ids",
+        "commitment_boundary"
+      ]
+    },
+    "C7_remove_commit_index_from_boundary_only": {
+      "admissibility": true,
+      "carrier": {
+        "bytes_fixed": false,
+        "committed_fields": [
+          "record_id",
+          "envelope"
+        ],
+        "identity": "sha256:0e5348c558f4f4f99983d1e6fdb833f9db3d30ed1fed103cfc5c7667bce81b4f",
+        "reason": "commitment-generating boundary changed",
+        "recomputed": true,
+        "source_lineage_fixed": true
+      },
+      "changed_rule": "commitment_boundary",
+      "constraint_classification": "collapse-contributing",
+      "continuity": {
+        "failures": [],
+        "local_variant": false,
+        "ok": true,
+        "record_count": 15
+      },
+      "discriminator_reachable": true,
+      "integrity": {
+        "failures": [],
+        "mode": "local alternate-boundary recomputation",
+        "ok": true,
+        "record_count": 15
+      },
+      "ordering": {
+        "rule": "commit_index ascending",
+        "status": "resolved"
+      },
+      "relations": {
+        "H14_prefix": false,
+        "H14_subsequence": true
+      },
+      "rules": {
+        "commitment_boundary": [
+          "record_id",
+          "envelope"
+        ],
+        "gap_free_commit_indices": true,
+        "integer_commit_indices": true,
+        "ordering": "commit_index ascending",
+        "start_at_one": true,
+        "unique_commit_indices": true,
+        "unique_record_ids": true
+      },
+      "rules_held_fixed": [
+        "integer_commit_indices",
+        "unique_commit_indices",
+        "gap_free_commit_indices",
+        "start_at_one",
+        "unique_record_ids",
+        "ordering"
+      ]
+    }
+  },
+  "starting_commit": "6d5780550fea851c404921010e1fd5f3d3a2e0bc",
+  "strongest_unresolved_horizon": "duplicate-index ablation removes canonical tie semantics, so its discriminator reachability remains unresolved"
+}

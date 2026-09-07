@@ -54,6 +54,8 @@ Candidate set expansion pressure completed in `docs/decisions/candidate_set_expa
 
 Admissible history discriminator pressure completed in `docs/decisions/admissible_history_discriminator_pressure_v0.md`.
 
+History constraint ablation pressure completed in `docs/decisions/history_constraint_ablation_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -122,8 +124,8 @@ navigation
 
 ## Next Smallest Question
 
-Which single current history constraint is necessary for the observed
-admissibility collapse between prefix and ordered subsequence?
+Can duplicate-index relation evidence be justified without adding a tie-break
+rule when equal-index replay order depends on physical input order?
 
 ## Contract Surface Status
 
@@ -229,5 +231,13 @@ admissibility collapse between prefix and ordered subsequence?
 - Chart 8 strengthens Chart 7 from specimen coincidence to a bounded contract-induced observational limit without invalidating Chart 7
 - behavioral identity now explicitly depends on an observational basis that includes the admissible history domain; no basis runtime was added
 - future navigation must preserve ambiguity when distinguishing pressure lies outside the admissible state domain
+- Chart 9 changed one current history rule per regime while keeping H14 source lineage and relation implementations fixed
+- relaxing integer-only coordinates, start-at-one, replay ordering, or commit-index participation in the digest boundary independently opened a discriminator
+- relaxing gap freedom or record-ID uniqueness alone maintained the prefix/subsequence collapse
+- duplicate-index relaxation made equal-index order depend on physical input and remained unresolved without canonical tie semantics
+- only the commit-index-boundary variant rederived its H14 carrier; source H14 lineage remained fixed
+- commit_index role coupling is supported across commitment identity, ordering, and continuity/admissibility, but not every related constraint contributed
+- Chart 9 strengthens Chart 8 by showing that single changes to the admissible basis alter local operation distinguishability
+- multiple alternative discrimination regimes were found, but no cost, attention, preference, regime-switching, or scheduler mechanism was added
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure
