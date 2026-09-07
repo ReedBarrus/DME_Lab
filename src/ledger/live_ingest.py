@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from .continuity import ContinuityVerificationResult, verify_continuity
 from .jsonl import JsonlLedger, VerificationResult
 
 
@@ -26,3 +27,9 @@ def verify_canonical_live_ingest(
     path: Path | str = CANONICAL_LIVE_INGEST_LEDGER_PATH,
 ) -> VerificationResult:
     return canonical_live_ingest_ledger(path).verify()
+
+
+def verify_canonical_live_ingest_continuity(
+    path: Path | str = CANONICAL_LIVE_INGEST_LEDGER_PATH,
+) -> ContinuityVerificationResult:
+    return verify_continuity(replay_canonical_live_ingest(path), require_start_at_one=True)

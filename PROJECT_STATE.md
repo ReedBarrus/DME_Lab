@@ -34,6 +34,8 @@ Canonical bounded live ingest ledger extraction completed in `docs/decisions/liv
 
 Canonical bounded live ingest ledger continuation completed in `docs/decisions/live_ingest_continuation_v0.md`.
 
+Ledger continuity pressure completed in `docs/decisions/ledger_continuity_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -102,7 +104,7 @@ navigation
 
 ## Next Smallest Question
 
-What is the smallest ledger-wide history-continuity check needed for canonical live ingest history without adding a database, index, or hash chain prematurely?
+What is the smallest whole-history corruption pressure beyond continuity gaps and duplicates?
 
 ## Contract Surface Status
 
@@ -151,4 +153,7 @@ What is the smallest ledger-wide history-continuity check needed for canonical l
 - canonical bounded live ingest history continued from 12 to 14 records across reopen/process discontinuity
 - the original 12-record prefix remained structurally unchanged after continuation
 - per-record integrity verified before and after continuation, but ledger-wide history integrity remains unimplemented
+- ledger-wide continuity verification now checks duplicate commit indices, missing internal commit indices, and duplicate record IDs separately from per-record integrity
+- canonical live ingest continuity additionally requires start at commit index 1
+- hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure

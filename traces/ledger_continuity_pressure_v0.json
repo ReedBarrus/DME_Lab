@@ -1,0 +1,324 @@
+{
+  "canonical_history": {
+    "continuity_verify": {
+      "failures": [],
+      "ok": true,
+      "record_count": 14
+    },
+    "record_verify": {
+      "failures": [],
+      "ok": true,
+      "record_count": 14
+    }
+  },
+  "canonical_ledger_path": "traces/live_ingest_ledger_v0.jsonl",
+  "continuity_api": {
+    "canonical_live_ingest": "verify_canonical_live_ingest_continuity(path=CANONICAL_LIVE_INGEST_LEDGER_PATH)",
+    "canonical_start_scope": "canonical bounded live ingest history requires commit_index sequence to start at 1",
+    "excluded_checks": [
+      "admission relationships",
+      "semantic correctness",
+      "source chronology",
+      "event chronology",
+      "truth",
+      "projection",
+      "reconstruction",
+      "physical JSONL line order"
+    ],
+    "generic": "verify_continuity(records, require_start_at_one=False)",
+    "invariants": [
+      "unique commit_index",
+      "continuous internal commit_index sequence",
+      "unique record_id"
+    ]
+  },
+  "duration_seconds": 0.05916140000044834,
+  "experiment": "ledger_continuity_pressure_v0",
+  "finding": "per-record verification can pass while ledger-wide continuity fails",
+  "hash_chain_pressure": {
+    "earned": false,
+    "finding": "continuity detects bounded gaps and duplicates without cryptographic chaining"
+  },
+  "index_pressure": {
+    "appeared": false,
+    "finding": "scan replay is sufficient for bounded continuity verification"
+  },
+  "persistent_structures_added": [],
+  "preserved_distinctions": [
+    "record_integrity != history_integrity",
+    "canonical_replay_order != physical_file_order",
+    "per_record_schema != ledger_invariant",
+    "history_extension != history_mutation"
+  ],
+  "specimens": {
+    "control_exact_copy": {
+      "canonical_replay_commit_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "canonical_replay_record_ids": [
+        "rec-000001",
+        "rec-000002",
+        "rec-000003",
+        "rec-000004",
+        "rec-000005",
+        "rec-000006",
+        "rec-000007",
+        "rec-000008",
+        "rec-000009",
+        "rec-000010",
+        "rec-000011",
+        "rec-000012",
+        "rec-000013",
+        "rec-000014"
+      ],
+      "continuity_verify": {
+        "failures": [],
+        "ok": true,
+        "record_count": 14
+      },
+      "record_verify": {
+        "failures": [],
+        "ok": true,
+        "record_count": 14
+      }
+    },
+    "duplicate_commit_index_rec_000004_to_2": {
+      "canonical_replay_commit_indices": [
+        1,
+        2,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "canonical_replay_record_ids": [
+        "rec-000001",
+        "rec-000002",
+        "rec-000004",
+        "rec-000003",
+        "rec-000005",
+        "rec-000006",
+        "rec-000007",
+        "rec-000008",
+        "rec-000009",
+        "rec-000010",
+        "rec-000011",
+        "rec-000012",
+        "rec-000013",
+        "rec-000014"
+      ],
+      "continuity_verify": {
+        "failures": [
+          {
+            "kind": "duplicate_commit_index",
+            "values": [
+              2
+            ]
+          },
+          {
+            "kind": "missing_commit_index",
+            "values": [
+              4
+            ]
+          }
+        ],
+        "ok": false,
+        "record_count": 14
+      },
+      "record_verify": {
+        "failures": [],
+        "ok": true,
+        "record_count": 14
+      }
+    },
+    "duplicate_record_id_rec_000004_to_rec_000002": {
+      "canonical_replay_commit_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "canonical_replay_record_ids": [
+        "rec-000001",
+        "rec-000002",
+        "rec-000003",
+        "rec-000002",
+        "rec-000005",
+        "rec-000006",
+        "rec-000007",
+        "rec-000008",
+        "rec-000009",
+        "rec-000010",
+        "rec-000011",
+        "rec-000012",
+        "rec-000013",
+        "rec-000014"
+      ],
+      "continuity_verify": {
+        "failures": [
+          {
+            "kind": "duplicate_record_id",
+            "values": [
+              "rec-000002"
+            ]
+          }
+        ],
+        "ok": false,
+        "record_count": 14
+      },
+      "record_verify": {
+        "failures": [],
+        "ok": true,
+        "record_count": 14
+      }
+    },
+    "reversed_physical_lines": {
+      "canonical_replay_commit_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "canonical_replay_record_ids": [
+        "rec-000001",
+        "rec-000002",
+        "rec-000003",
+        "rec-000004",
+        "rec-000005",
+        "rec-000006",
+        "rec-000007",
+        "rec-000008",
+        "rec-000009",
+        "rec-000010",
+        "rec-000011",
+        "rec-000012",
+        "rec-000013",
+        "rec-000014"
+      ],
+      "continuity_verify": {
+        "failures": [],
+        "ok": true,
+        "record_count": 14
+      },
+      "physical_line_commit_indices": [
+        14,
+        13,
+        12,
+        11,
+        10,
+        9,
+        8,
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "physical_order_claim": "physical JSONL order remains distinct from canonical replay order",
+      "record_verify": {
+        "failures": [],
+        "ok": true,
+        "record_count": 14
+      }
+    },
+    "whole_record_deletion_rec_000007": {
+      "canonical_replay_commit_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "canonical_replay_record_ids": [
+        "rec-000001",
+        "rec-000002",
+        "rec-000003",
+        "rec-000004",
+        "rec-000005",
+        "rec-000006",
+        "rec-000008",
+        "rec-000009",
+        "rec-000010",
+        "rec-000011",
+        "rec-000012",
+        "rec-000013",
+        "rec-000014"
+      ],
+      "continuity_verify": {
+        "failures": [
+          {
+            "kind": "missing_commit_index",
+            "values": [
+              7
+            ]
+          }
+        ],
+        "ok": false,
+        "record_count": 13
+      },
+      "record_verify": {
+        "failures": [],
+        "ok": true,
+        "record_count": 13
+      }
+    }
+  },
+  "starting_commit": "e399720078f8e1d8c380eadad1716e6d0b387187",
+  "unresolved_pressure": [
+    "whole-history corruption pressure beyond gaps and duplicates remains deferred",
+    "partial writes and truncation recovery remain deferred",
+    "amendment records remain deferred",
+    "scope of generic continuity utility beyond current JSONL replay remains provisional"
+  ]
+}

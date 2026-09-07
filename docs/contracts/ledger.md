@@ -241,6 +241,8 @@ Raw replay is currently treated as part of the ledger boundary. It does not prov
 
 Physical JSONL line order and canonical replay order must not be silently treated as equivalent.
 
+Ledger-wide continuity checks are separate from per-record integrity checks.
+
 ---
 
 ## Acceptance Tests
@@ -256,6 +258,11 @@ Every replayed record resolves to exactly one committed `record_id`.
 ### Integrity
 
 Mutation or corruption of committed content can be detected.
+
+### Continuity
+
+Duplicate commit indices, missing internal commit indices, and duplicate record
+IDs can be detected over replayed history without interpreting source chronology.
 
 ### Provenance
 
@@ -285,9 +292,12 @@ Bounded live vertical-chain evidence:
 * `traces/live_ingest_ledger_v0.jsonl`
 * `traces/live_vertical_probe_v0.json`
 * `traces/live_ingest_continuation_v0.json`
+* `traces/ledger_continuity_pressure_v0.json`
 * `tests/runtime/test_live_vertical_probe.py`
+* `tests/replay/test_ledger_continuity.py`
 * `docs/decisions/live_ingest_ledger_extraction_v0.md`
 * `docs/decisions/live_ingest_continuation_v0.md`
+* `docs/decisions/ledger_continuity_pressure_v0.md`
 
 This evidence does not validate live OS capture, distributed append, history-level integrity, or schema permanence.
 

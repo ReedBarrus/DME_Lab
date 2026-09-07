@@ -1,5 +1,6 @@
 """Minimal synthetic ledger harness."""
 
+from .continuity import ContinuityVerificationResult, verify_continuity
 from .jsonl import (
     HASH_BOUNDARY,
     INTEGRITY_ALGORITHM,
@@ -13,6 +14,7 @@ from .live_ingest import (
     canonical_live_ingest_ledger,
     replay_canonical_live_ingest,
     verify_canonical_live_ingest,
+    verify_canonical_live_ingest_continuity,
 )
 from .schema import SCHEMA_PATH, SchemaError, SchemaValidationResult, load_schema, validate_ledger_record
 from .synthetic import (
@@ -28,6 +30,7 @@ __all__ = [
     "INTEGRITY_ALGORITHM",
     "JsonlLedger",
     "CANONICAL_LIVE_INGEST_LEDGER_PATH",
+    "ContinuityVerificationResult",
     "SCHEMA_PATH",
     "SchemaError",
     "SchemaValidationResult",
@@ -44,4 +47,6 @@ __all__ = [
     "load_schema",
     "validate_ledger_record",
     "verify_canonical_live_ingest",
+    "verify_canonical_live_ingest_continuity",
+    "verify_continuity",
 ]
