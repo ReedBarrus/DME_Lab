@@ -75,13 +75,19 @@ Path correspondence summary:
 - Git commit-touched paths: 16
 - Git status removed: 13
 - Git status added: 0
-- Git-visible filesystem-out-of-scope paths: 5
+- exact correspondences: 49
+- regional correspondences: 2
+- Git-visible filesystem-out-of-scope paths: 3
+- unresolved correspondences: 0
 - same filesystem bytes later committed: 8
 
-Git-visible but filesystem-out-of-scope paths:
+Regional Git-to-filesystem correspondences:
 
-- `src/capture/`
-- `tests/capture/`
+- `src/capture/` -> `src/capture/__init__.py`, `src/capture/git_state.py`, `src/capture/repo_snapshot.py`
+- `tests/capture/` -> `tests/capture/__init__.py`, `tests/capture/test_repo_snapshot.py`
+
+Git-visible but genuinely filesystem-out-of-scope paths:
+
 - `traces/git_state_v0_baseline.json`
 - `traces/repo_provenance_pressure_v0.json`
 - `traces/repo_snapshot_v0_baseline.json`
@@ -98,6 +104,28 @@ Unchanged filesystem bytes that nevertheless participated in Git history:
 - `tests/capture/test_repo_snapshot.py`
 
 This shows Git state transformation without corresponding filesystem content transformation over the observed interval.
+
+## Correspondence Amendment
+
+The initial correspondence interpretation counted 5 Git-visible paths as filesystem-out-of-scope.
+
+That over-counted genuine scope mismatch because path membership alone could not distinguish:
+
+```text
+excluded observational region
+from
+coarser Git directory representation
+```
+
+The amended classifier decomposes that ambiguity:
+
+- 3 genuine filesystem-out-of-scope paths remain under excluded `traces/`
+- 2 regional correspondences map Git directory-level entries to observed filesystem leaves
+- 0 unresolved Git correspondences remain for this transition
+
+`src/capture/` and `tests/capture/` are not evidence that Git observed regions invisible to the filesystem observer. They are evidence that Git porcelain represented regions at directory granularity while the filesystem observer represented file descendants.
+
+This does not claim directory-level observation is equivalent to leaf-level observation.
 
 ## Identity Pressure
 
@@ -173,6 +201,7 @@ Do not change v0 identity semantics inside this comparison. A later observer-ver
 - `working_tree_state != committed_state`
 - `raw_observation != derived_comparison`
 - `invocation_path != stable_source_identity`
+- `directory_level_observation != leaf_level_observation`
 
 `capture_finished_at != ingest_arrival_time` remains unresolved pressure, not a registry entry from this pass.
 
