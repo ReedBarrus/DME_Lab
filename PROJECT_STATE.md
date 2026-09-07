@@ -52,6 +52,8 @@ Operation identity pressure completed in `docs/decisions/operation_identity_pres
 
 Candidate set expansion pressure completed in `docs/decisions/candidate_set_expansion_pressure_v0.md`.
 
+Admissible history discriminator pressure completed in `docs/decisions/admissible_history_discriminator_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -120,8 +122,8 @@ navigation
 
 ## Next Smallest Question
 
-What is the smallest additional historical specimen that distinguishes prefix
-from ordered subsequence?
+Which single current history constraint is necessary for the observed
+admissibility collapse between prefix and ordered subsequence?
 
 ## Contract Surface Status
 
@@ -218,5 +220,14 @@ from ordered subsequence?
 - Chart 7 exposes a bounded observational-resolution limit without claiming universal behavioral equivalence
 - Chart 6 E6 sufficiency is refined as relative to its original candidate set; Chart 6 and D-0037 remain supported
 - future operation recognition must preserve ambiguity when multiple executable moves fit available evidence
+- admissible-history pressure held the H14 carrier, digest boundary, replay ordering, continuity rules, and canonical history fixed
+- duplicate-index and fractional-index insertions preserved all H14 digests and separated prefix from ordered subsequence but failed continuity
+- shifting indices 2..14 passed integrity and continuity after rehashing but preserved only one H14 digest
+- normal append passed integrity and continuity while preserving H14 as both prefix and ordered subsequence
+- no tested admissible construction preserved H14 as an ordered subsequence without also preserving it as a prefix
+- under current bounded assumptions and absent a constructed digest collision, dense committed indices 1..14 force additional admissible records after H14
+- Chart 8 strengthens Chart 7 from specimen coincidence to a bounded contract-induced observational limit without invalidating Chart 7
+- behavioral identity now explicitly depends on an observational basis that includes the admissible history domain; no basis runtime was added
+- future navigation must preserve ambiguity when distinguishing pressure lies outside the admissible state domain
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure

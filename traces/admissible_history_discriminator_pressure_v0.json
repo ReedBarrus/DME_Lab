@@ -1,0 +1,365 @@
+{
+  "abstract_discriminator": {
+    "candidate": [
+      "a",
+      "X",
+      "b",
+      "c"
+    ],
+    "distinguishes_relations": true,
+    "ordered_subsequence": true,
+    "prefix": false,
+    "valid_historical_specimen": false,
+    "witness": [
+      "a",
+      "b",
+      "c"
+    ]
+  },
+  "admissible_discriminator": {
+    "constructions": [],
+    "found": false
+  },
+  "architecture_added": [],
+  "attempted_historical_constructions": {
+    "A_duplicate_integer_index": {
+      "admissible_discriminator": false,
+      "admissible_under_current_bounded_rules": false,
+      "construction": "insert one rehashed record at integer commit_index 2 without changing H14 records",
+      "continuity": {
+        "failures": [
+          {
+            "kind": "duplicate_commit_index",
+            "values": [
+              2
+            ]
+          }
+        ],
+        "ok": false,
+        "record_count": 15
+      },
+      "failure_reason": "continuity failed: duplicate_commit_index",
+      "integrity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 15
+      },
+      "ordering": {
+        "commit_indices": [
+          1,
+          2,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "ok": true,
+        "rule": "commit_index ascending"
+      },
+      "record_count": 15,
+      "relations": {
+        "H14_ordered_digest_prefix": false,
+        "H14_ordered_digest_subsequence": true,
+        "distinguishes_relations": true
+      },
+      "witness_digest_preservation": {
+        "all_preserved": true,
+        "preserved_count": 14,
+        "witness_count": 14
+      }
+    },
+    "B_fractional_non_integer_index": {
+      "admissible_discriminator": false,
+      "admissible_under_current_bounded_rules": false,
+      "construction": "insert one rehashed record at commit_index 1.5 without changing H14 records",
+      "continuity": {
+        "failures": [
+          {
+            "kind": "invalid_commit_index",
+            "values": [
+              1.5
+            ]
+          }
+        ],
+        "ok": false,
+        "record_count": 15
+      },
+      "failure_reason": "continuity failed: invalid_commit_index",
+      "integrity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 15
+      },
+      "ordering": {
+        "commit_indices": [
+          1,
+          1.5,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "ok": true,
+        "rule": "commit_index ascending"
+      },
+      "record_count": 15,
+      "relations": {
+        "H14_ordered_digest_prefix": false,
+        "H14_ordered_digest_subsequence": true,
+        "distinguishes_relations": true
+      },
+      "witness_digest_preservation": {
+        "all_preserved": true,
+        "preserved_count": 14,
+        "witness_count": 14
+      }
+    },
+    "C_shift_subsequent_indices": {
+      "admissible_discriminator": false,
+      "admissible_under_current_bounded_rules": true,
+      "construction": "insert at integer commit_index 2, shift witnessed indices 2..14, and rehash changed records",
+      "continuity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 15
+      },
+      "failure_reason": "shifting committed indices changed H14 digest identities",
+      "integrity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 15
+      },
+      "ordering": {
+        "commit_indices": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "ok": true,
+        "rule": "commit_index ascending"
+      },
+      "record_count": 15,
+      "relations": {
+        "H14_ordered_digest_prefix": false,
+        "H14_ordered_digest_subsequence": false,
+        "distinguishes_relations": false
+      },
+      "witness_digest_preservation": {
+        "all_preserved": false,
+        "preserved_count": 1,
+        "witness_count": 14
+      }
+    },
+    "D_normal_append": {
+      "admissible_discriminator": false,
+      "admissible_under_current_bounded_rules": true,
+      "construction": "append one record through JsonlLedger after H14",
+      "continuity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 15
+      },
+      "failure_reason": "normal append preserved H14 as a left prefix",
+      "integrity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 15
+      },
+      "ordering": {
+        "commit_indices": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "ok": true,
+        "rule": "commit_index ascending"
+      },
+      "record_count": 15,
+      "relations": {
+        "H14_ordered_digest_prefix": true,
+        "H14_ordered_digest_subsequence": true,
+        "distinguishes_relations": false
+      },
+      "witness_digest_preservation": {
+        "all_preserved": true,
+        "preserved_count": 14,
+        "witness_count": 14
+      }
+    }
+  },
+  "chart_7_back_pressure": {
+    "interpretation_refined": true,
+    "prior_result_invalidated": false,
+    "prior_trace_modified": false,
+    "refinement": "the current admissible history constraints prevent the interior sequence shape needed to distinguish prefix from ordered subsequence for H14"
+  },
+  "chart_8_matrix": {
+    "A_duplicate_integer_index": {
+      "H14_prefix": false,
+      "H14_subsequence": true,
+      "admissible": false,
+      "admissible_discriminator": false,
+      "continuity": false,
+      "integrity": true,
+      "ordered": true
+    },
+    "B_fractional_non_integer_index": {
+      "H14_prefix": false,
+      "H14_subsequence": true,
+      "admissible": false,
+      "admissible_discriminator": false,
+      "continuity": false,
+      "integrity": true,
+      "ordered": true
+    },
+    "C_shift_subsequent_indices": {
+      "H14_prefix": false,
+      "H14_subsequence": false,
+      "admissible": true,
+      "admissible_discriminator": false,
+      "continuity": true,
+      "integrity": true,
+      "ordered": true
+    },
+    "D_normal_append": {
+      "H14_prefix": true,
+      "H14_subsequence": true,
+      "admissible": true,
+      "admissible_discriminator": false,
+      "continuity": true,
+      "integrity": true,
+      "ordered": true
+    }
+  },
+  "chart_8_status": {
+    "coordinates": "candidate construction x integrity/continuity/relation/admissibility result",
+    "earned": true,
+    "stable_coordinate_meaning": "each cell records one current validator or executed relation result"
+  },
+  "contract_induced_bounded_equivalence": {
+    "assumptions": [
+      "SHA-256 under the exact current commitment construction",
+      "record_id, commit_index, and envelope remain the committed boundary",
+      "candidate history is canonically ordered by ascending commit_index",
+      "complete-history continuity requires unique gap-free integer indices starting at 1",
+      "the bounded source is the witnessed H14 records",
+      "exact digest comparison is used",
+      "no digest collision is constructed"
+    ],
+    "bounded_implication": "admissible candidate history plus exact H14 ordered-digest subsequence preservation implies H14 left-prefix preservation",
+    "reason": "preserved H14 digests retain committed indices 1..14 absent a constructed collision; current continuity leaves only later integer indices for additional records",
+    "strengthened_beyond_existing_specimen_coincidence": true,
+    "supported": true,
+    "universal_append_only_or_SHA256_theorem_claimed": false
+  },
+  "current_contract": {
+    "canonical_history_modified": false,
+    "continuity": {
+      "duplicate_commit_indices_allowed": false,
+      "duplicate_record_ids_allowed": false,
+      "integer_commit_indices": true,
+      "missing_internal_commit_indices_allowed": false,
+      "require_start_at_one": true
+    },
+    "digest": {
+      "algorithm": "sha256",
+      "boundary": "canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators",
+      "committed_fields": [
+        "record_id",
+        "commit_index",
+        "envelope"
+      ],
+      "comparison": "exact stored digest value"
+    },
+    "digest_boundary_modifications": [],
+    "ordering": {
+      "direction": "ascending",
+      "field": "commit_index",
+      "implementation": "JsonlLedger.replay"
+    },
+    "validator_modifications": []
+  },
+  "distinctions": {
+    "D_0038_status": "supported",
+    "added": [
+      {
+        "id": "D-0039",
+        "left": "operation_semantics_difference",
+        "relation": "not_equivalent_to",
+        "right": "distinguishability_on_admissible_history"
+      }
+    ],
+    "amended": []
+  },
+  "duple_basis_interpretation": {
+    "basis_includes": "current admissible historical specimen domain",
+    "expression": "I_B(O) = (B, sigma_B(O))",
+    "finding": "prefix and ordered subsequence retain the same local behavioral identity when B is restricted to current admissible H14-preserving histories",
+    "runtime_abstraction_added": false,
+    "strengthened": true
+  },
+  "duration_seconds": 0.315554,
+  "experiment": "admissible_history_discriminator_pressure_v0",
+  "fixed_H14_carrier": {
+    "digest_count": 14,
+    "identity": "sha256:09f0f5f3402b1f187b3b09e4417f8e12010b22fe0968aeb2841a0b598553c200",
+    "source": "e399720:traces/live_ingest_ledger_v0.jsonl"
+  },
+  "navigation_admissibility_relevance": {
+    "ambiguity_must_be_preserved": true,
+    "discriminating_pressure_differs_from_admissible_discriminating_pressure": true,
+    "scheduler_added": false,
+    "tie_breaker_added": false
+  },
+  "next_smallest_pressure_frontier": "identify which single current history constraint is necessary for the observed admissibility collapse",
+  "prior_chart_7": {
+    "committed_trace": "traces/candidate_set_expansion_pressure_v0.json",
+    "evidence_modified": false,
+    "remains_valid": true,
+    "reproduced_unchanged": true
+  },
+  "starting_commit": "155379a4793e621b2de3f48c9ec7e77261437bda",
+  "strongest_unresolved_horizon": "whether the bounded collapse survives when exactly one governing history constraint is varied"
+}
