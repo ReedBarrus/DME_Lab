@@ -62,6 +62,8 @@ First bounded vertical composition pressure completed in `docs/decisions/vertica
 
 Admission disagreement exposure pressure completed in `docs/decisions/admission_disagreement_exposure_pressure_v0.md`.
 
+Persistent observational field pressure completed in `docs/decisions/persistent_observational_field_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -130,8 +132,9 @@ navigation
 
 ## Next Smallest Question
 
-Does a concrete read-only consumer require admission multiplicity or direct
-admission-record identity beyond unique non-admitted decision states?
+Does the coherent bounded field justify extracting an explicitly invoked
+foreground persistent coordinator without introducing a daemon, scheduler, or
+new identity semantics?
 
 ## Contract Surface Status
 
@@ -270,6 +273,15 @@ admission-record identity beyond unique non-admitted decision states?
 - Chart 11 records the candidate representation by disagreement-exposure criterion surface
 - D-0041 was sufficient for the result; no distinction was added or amended
 - multiplicity and direct admission-record identity remain outside the companion until concrete consumer pressure requires them
-- the next pressure should ask whether a concrete read-only consumer requires either currently omitted dimension
+- one temporary persistent field preserved six filesystem/Git observation rounds through 24 append-only records, including a disk reopen after record 20
+- repeated filesystem configurations reused structural, envelope, and signal identity while distinct capture timestamps and ledger coordinates preserved occurrence
+- equivalent Git configurations retained fresh timestamp-derived observation, envelope, and signal identities; the comparison surface remained experiment-local
+- O4 to O5 preserved filesystem structural identity while Git HEAD/status changed, conserving overlapping sources without collapsing them
+- every round passed integrity, continuity, replay, reconstruction, projection, companion, source-separation, and O1 ordered-digest prefix checks
+- disk history alone reconstructed 10 observations and projections after O5 before O6 continued the ledger to 24 records
+- temporal depth did not require admission multiplicity or direct admission-record IDs in the Chart 11 companion
+- Chart 12 records the bounded six-round field across stable coordinates without becoming a generalized state model
+- D-0011, D-0016, D-0030, and D-0041 were sufficient; no distinction was added or amended
+- the next pressure should ask whether an explicitly invoked foreground persistent coordinator is justified without adding always-on architecture
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure
