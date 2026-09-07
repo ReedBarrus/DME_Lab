@@ -44,6 +44,8 @@ Witness content ablation pressure completed in `docs/decisions/witness_content_a
 
 Provenance recovery pressure completed in `docs/decisions/provenance_recovery_pressure_v0.md`.
 
+Declarative commitment semantics pressure completed in `docs/decisions/declarative_commitment_semantics_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -112,8 +114,8 @@ navigation
 
 ## Next Smallest Question
 
-What is the smallest non-persistent declarative commitment-semantics representation
-that preserves bounded historical recovery across the provenance-recovery chart?
+What minimum identity and provenance must accompany the local evaluator vocabulary
+so declarative commitment semantics remain recoverable without persistence architecture?
 
 ## Contract Surface Status
 
@@ -179,5 +181,11 @@ that preserves bounded historical recovery across the provenance-recovery chart?
 - commitment semantics plus ordering remained unresolved when the historical prefix relation was withheld
 - changed integrity algorithm and boundary labels did not govern current verifier execution
 - shared chart referents pressure proto-transition-map investigation without establishing transition maps
+- full explicit declarative semantics reproduced the Chart 3 R6 historical outcomes
+- the smallest sufficient tested declaration explicitly preserves algorithm, boundary fields, exact canonicalization, ordering field and direction, and prefix relation
+- candidate recomputation mode was redundant because recomputation is implied by the bounded evaluator operation
+- opaque `current_record` and `current` labels remained unresolved without ambient implementation meaning
+- complete but wrong boundary or canonicalization descriptions produced mismatch rather than unresolved
+- declaration vocabulary and token interpretation remain ambient in the bounded evaluator
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure

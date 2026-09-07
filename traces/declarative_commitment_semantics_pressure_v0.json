@@ -1,0 +1,1223 @@
+{
+  "candidate_histories": {
+    "H13_tail_loss": {
+      "commit_index_extent": [
+        1,
+        13
+      ],
+      "construction": "copy canonical H14 records 1..13; omit complete rec-000014",
+      "record_count": 13
+    },
+    "H14_control": {
+      "commit_index_extent": [
+        1,
+        14
+      ],
+      "construction": "current canonical H14 replay records 1..14",
+      "record_count": 14
+    },
+    "H16_ID_replacement": {
+      "commit_index_extent": [
+        1,
+        16
+      ],
+      "construction": "H16 extension with record 1 record_id changed to rec-999001 and digest recomputed",
+      "record_count": 16
+    },
+    "H16_content_replacement": {
+      "commit_index_extent": [
+        1,
+        16
+      ],
+      "construction": "H16 extension with record 1 envelope.provenance.observation_point changed and digest recomputed",
+      "record_count": 16
+    },
+    "H16_extension": {
+      "commit_index_extent": [
+        1,
+        16
+      ],
+      "construction": "temporary JSONL copy of H14 plus appended rec-000015 observation and rec-000016 admission",
+      "record_count": 16
+    }
+  },
+  "chart_3_R6_correspondence": {
+    "R6_expected_outcomes": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "RECOVERED"
+    },
+    "S0_outcomes": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "RECOVERED"
+    },
+    "S0_reproduces_R6": true,
+    "S9_compressed_outcomes": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "RECOVERED"
+    },
+    "S9_reproduces_R6": true,
+    "executable_correspondence_observed": true,
+    "transition_map_claimed": false
+  },
+  "chart_overlap": {
+    "Chart_1": "historical transformation x observer relation",
+    "Chart_2": "historical transformation x witness representation",
+    "Chart_3": "witness carrier x interpretation regime",
+    "Chart_4": "interpretation representation x historical recovery",
+    "executable_correspondence": "Chart 3 R6 outcomes equal Chart 4 S0 and S9 outcomes",
+    "proto_transition_pressure_strengthened": true,
+    "shared_referents": [
+      "H13 tail loss",
+      "H14 control",
+      "H16 extension",
+      "H16 ID replacement",
+      "H16 content replacement",
+      "H14 ordered-digest carrier",
+      "prefix preservation"
+    ],
+    "transition_maps_implemented": false
+  },
+  "component_ablation_findings": {
+    "algorithm.name": "S1 removal made every historical result unresolved",
+    "boundary.fields": "S2 removal made every historical result unresolved",
+    "canonicalization.encoding": "S3e removal made every historical result unresolved",
+    "canonicalization.ensure_ascii": "S3d removal made every historical result unresolved",
+    "canonicalization.format": "S3a removal made every historical result unresolved",
+    "canonicalization.separators": "S3c removal made every historical result unresolved",
+    "canonicalization.sort_keys": "S3b removal made every historical result unresolved",
+    "ordering.direction": "S10 removal made every historical result unresolved",
+    "ordering.field": "S4a removal made every historical result unresolved",
+    "relation.type": "S5 removal made every historical result unresolved"
+  },
+  "declaration_scope": "local in-memory pressure value; no schema or persistence format",
+  "distinctions": {
+    "added": [
+      "D-0035 semantic_label != recoverable_semantic_description"
+    ],
+    "amended": [],
+    "not_registered": [
+      "declarative_semantics != interpretation_free_semantics",
+      "representation_presence != recovery_sufficiency"
+    ]
+  },
+  "duration_seconds": 0.10074200000235578,
+  "experiment": "declarative_commitment_semantics_pressure_v0",
+  "finding": "explicit commitment semantics can reproduce bounded historical recovery while opaque aliases cannot",
+  "first_mismatch_points_for_wrong_complete_semantics": {
+    "S7_wrong_complete_boundary": {
+      "H13_tail_loss": {
+        "candidate_commitment_count": 13,
+        "kind": "candidate_extent",
+        "witness_commitment_count": 14
+      },
+      "H14_control": {
+        "candidate": "98340a221dc26912396c2e94b486a5f05e04a1d380b8f6b9d21166650cb65beb",
+        "kind": "commitment",
+        "position": 1,
+        "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+      },
+      "H16_ID_replacement": {
+        "candidate": "98340a221dc26912396c2e94b486a5f05e04a1d380b8f6b9d21166650cb65beb",
+        "kind": "commitment",
+        "position": 1,
+        "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+      },
+      "H16_content_replacement": {
+        "candidate": "cb670922f135e62f3de0d7c1ba63614c54555592b9805291dc2a39c3dfedddd4",
+        "kind": "commitment",
+        "position": 1,
+        "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+      },
+      "H16_extension": {
+        "candidate": "98340a221dc26912396c2e94b486a5f05e04a1d380b8f6b9d21166650cb65beb",
+        "kind": "commitment",
+        "position": 1,
+        "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+      }
+    },
+    "S8_wrong_complete_canonicalization": {
+      "H13_tail_loss": {
+        "candidate_commitment_count": 13,
+        "kind": "candidate_extent",
+        "witness_commitment_count": 14
+      },
+      "H14_control": {
+        "candidate": "58034d8360d2d0aff56b6a3444e9e5eb30b3cb52855d271d01932e39d764d3dd",
+        "kind": "commitment",
+        "position": 1,
+        "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+      },
+      "H16_ID_replacement": {
+        "candidate": "18b3e2ec19d126e119083ac18c931d4ad2c8c2c9bd1eb8dfa01115b4c8569b4e",
+        "kind": "commitment",
+        "position": 1,
+        "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+      },
+      "H16_content_replacement": {
+        "candidate": "25dd17781d6959f7182c2747cd51282709800fcbc50deff077baa0e543cf545b",
+        "kind": "commitment",
+        "position": 1,
+        "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+      },
+      "H16_extension": {
+        "candidate": "58034d8360d2d0aff56b6a3444e9e5eb30b3cb52855d271d01932e39d764d3dd",
+        "kind": "commitment",
+        "position": 1,
+        "witness": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0"
+      }
+    }
+  },
+  "first_unresolved_dependency_by_representation": {
+    "S10_no_ordering_direction": "ordering.direction unavailable",
+    "S1_no_algorithm": "algorithm.name unavailable",
+    "S2_no_boundary": "boundary.fields unavailable",
+    "S3_no_canonicalization": "canonicalization.format unavailable",
+    "S3a_no_canonicalization_format": "canonicalization.format unavailable",
+    "S3b_no_canonicalization_sort_keys": "canonicalization.sort_keys unavailable",
+    "S3c_no_canonicalization_separators": "canonicalization.separators unavailable",
+    "S3d_no_canonicalization_ensure_ascii": "canonicalization.ensure_ascii unavailable",
+    "S3e_no_canonicalization_encoding": "canonicalization.encoding unavailable",
+    "S4_no_ordering": "ordering.field unavailable",
+    "S4a_no_ordering_field": "ordering.field unavailable",
+    "S5_no_relation": "relation.type unavailable",
+    "S6_opaque_aliases_only": "boundary semantic description unavailable; opaque alias supplied"
+  },
+  "full_declarative_candidate": {
+    "algorithm": {
+      "name": "sha256"
+    },
+    "boundary": {
+      "fields": [
+        "record_id",
+        "commit_index",
+        "envelope"
+      ]
+    },
+    "candidate_commitment": {
+      "mode": "recompute_from_record"
+    },
+    "canonicalization": {
+      "encoding": "utf-8",
+      "ensure_ascii": false,
+      "format": "json",
+      "separators": [
+        ",",
+        ":"
+      ],
+      "sort_keys": true
+    },
+    "ordering": {
+      "direction": "ascending",
+      "field": "commit_index"
+    },
+    "relation": {
+      "type": "prefix"
+    }
+  },
+  "h16_content_replacement_mutation": {
+    "after": "T0_clean_pre_probe_content_replaced",
+    "before": "T0_clean_pre_probe",
+    "commit_index": 1,
+    "commit_indices_preserved": true,
+    "digest_recomputed": true,
+    "field": "envelope.provenance.observation_point",
+    "record_id": "rec-000001",
+    "record_ids_preserved": true
+  },
+  "interpretive_limit": "declarative semantics survived != semantics are interpretation-free",
+  "matrix": {
+    "S0_full_explicit_semantics": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "RECOVERED"
+    },
+    "S10_no_ordering_direction": {
+      "H13_tail_loss": "UNRESOLVED",
+      "H14_control": "UNRESOLVED",
+      "H16_ID_replacement": "UNRESOLVED",
+      "H16_content_replacement": "UNRESOLVED",
+      "H16_extension": "UNRESOLVED"
+    },
+    "S1_no_algorithm": {
+      "H13_tail_loss": "UNRESOLVED",
+      "H14_control": "UNRESOLVED",
+      "H16_ID_replacement": "UNRESOLVED",
+      "H16_content_replacement": "UNRESOLVED",
+      "H16_extension": "UNRESOLVED"
+    },
+    "S2_no_boundary": {
+      "H13_tail_loss": "UNRESOLVED",
+      "H14_control": "UNRESOLVED",
+      "H16_ID_replacement": "UNRESOLVED",
+      "H16_content_replacement": "UNRESOLVED",
+      "H16_extension": "UNRESOLVED"
+    },
+    "S3_no_canonicalization": {
+      "H13_tail_loss": "UNRESOLVED",
+      "H14_control": "UNRESOLVED",
+      "H16_ID_replacement": "UNRESOLVED",
+      "H16_content_replacement": "UNRESOLVED",
+      "H16_extension": "UNRESOLVED"
+    },
+    "S3a_no_canonicalization_format": {
+      "H13_tail_loss": "UNRESOLVED",
+      "H14_control": "UNRESOLVED",
+      "H16_ID_replacement": "UNRESOLVED",
+      "H16_content_replacement": "UNRESOLVED",
+      "H16_extension": "UNRESOLVED"
+    },
+    "S3b_no_canonicalization_sort_keys": {
+      "H13_tail_loss": "UNRESOLVED",
+      "H14_control": "UNRESOLVED",
+      "H16_ID_replacement": "UNRESOLVED",
+      "H16_content_replacement": "UNRESOLVED",
+      "H16_extension": "UNRESOLVED"
+    },
+    "S3c_no_canonicalization_separators": {
+      "H13_tail_loss": "UNRESOLVED",
+      "H14_control": "UNRESOLVED",
+      "H16_ID_replacement": "UNRESOLVED",
+      "H16_content_replacement": "UNRESOLVED",
+      "H16_extension": "UNRESOLVED"
+    },
+    "S3d_no_canonicalization_ensure_ascii": {
+      "H13_tail_loss": "UNRESOLVED",
+      "H14_control": "UNRESOLVED",
+      "H16_ID_replacement": "UNRESOLVED",
+      "H16_content_replacement": "UNRESOLVED",
+      "H16_extension": "UNRESOLVED"
+    },
+    "S3e_no_canonicalization_encoding": {
+      "H13_tail_loss": "UNRESOLVED",
+      "H14_control": "UNRESOLVED",
+      "H16_ID_replacement": "UNRESOLVED",
+      "H16_content_replacement": "UNRESOLVED",
+      "H16_extension": "UNRESOLVED"
+    },
+    "S4_no_ordering": {
+      "H13_tail_loss": "UNRESOLVED",
+      "H14_control": "UNRESOLVED",
+      "H16_ID_replacement": "UNRESOLVED",
+      "H16_content_replacement": "UNRESOLVED",
+      "H16_extension": "UNRESOLVED"
+    },
+    "S4a_no_ordering_field": {
+      "H13_tail_loss": "UNRESOLVED",
+      "H14_control": "UNRESOLVED",
+      "H16_ID_replacement": "UNRESOLVED",
+      "H16_content_replacement": "UNRESOLVED",
+      "H16_extension": "UNRESOLVED"
+    },
+    "S5_no_relation": {
+      "H13_tail_loss": "UNRESOLVED",
+      "H14_control": "UNRESOLVED",
+      "H16_ID_replacement": "UNRESOLVED",
+      "H16_content_replacement": "UNRESOLVED",
+      "H16_extension": "UNRESOLVED"
+    },
+    "S6_opaque_aliases_only": {
+      "H13_tail_loss": "UNRESOLVED",
+      "H14_control": "UNRESOLVED",
+      "H16_ID_replacement": "UNRESOLVED",
+      "H16_content_replacement": "UNRESOLVED",
+      "H16_extension": "UNRESOLVED"
+    },
+    "S7_wrong_complete_boundary": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "MISMATCHED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "MISMATCHED"
+    },
+    "S8_wrong_complete_canonicalization": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "MISMATCHED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "MISMATCHED"
+    },
+    "S9_no_candidate_commitment_mode": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "RECOVERED"
+    }
+  },
+  "nearest_smaller_insufficient_representation": {
+    "same_size_alternatives": [
+      "S1_no_algorithm",
+      "S2_no_boundary",
+      "S3a_no_canonicalization_format",
+      "S3b_no_canonicalization_sort_keys",
+      "S3c_no_canonicalization_separators",
+      "S3d_no_canonicalization_ensure_ascii",
+      "S3e_no_canonicalization_encoding",
+      "S4a_no_ordering_field",
+      "S10_no_ordering_direction"
+    ],
+    "selected": "S5_no_relation",
+    "selection_basis": "one-component prefix-relation ablation corresponding to Chart 3 R5",
+    "semantic_component_count": 9
+  },
+  "necessary_components_under_tested_ablations": [
+    "algorithm.name",
+    "boundary.fields",
+    "canonicalization.format",
+    "canonicalization.sort_keys",
+    "canonicalization.separators",
+    "canonicalization.ensure_ascii",
+    "canonicalization.encoding",
+    "ordering.field",
+    "ordering.direction",
+    "relation.type"
+  ],
+  "next_smallest_pressure_frontier": "pressure the minimum identity needed to recover the local declaration vocabulary without persistence",
+  "opaque_alias_result": {
+    "finding": "ambient implementation handles are not counted as recoverable semantic descriptions",
+    "outcomes": {
+      "H13_tail_loss": "UNRESOLVED",
+      "H14_control": "UNRESOLVED",
+      "H16_ID_replacement": "UNRESOLVED",
+      "H16_content_replacement": "UNRESOLVED",
+      "H16_extension": "UNRESOLVED"
+    },
+    "representation": "S6_opaque_aliases_only"
+  },
+  "outcome_counts": {
+    "MISMATCHED": 16,
+    "RECOVERED": 4,
+    "UNRESOLVED": 65
+  },
+  "persistent_architecture_added": [],
+  "redundant_components_under_tested_ablations": [
+    "candidate_commitment.mode; recomputation is implied by this bounded evaluator operation"
+  ],
+  "remaining_ambient_evaluator_semantics": [
+    "declaration key structure and missing-component policy",
+    "sha256 token mapping to the local hashlib implementation",
+    "json token mapping to local JSON serialization",
+    "field-path lookup and boundary-object construction",
+    "ascending token mapping to sort direction",
+    "prefix token mapping to ordered prefix comparison",
+    "RECOVERED, MISMATCHED, and UNRESOLVED outcome rules",
+    "candidate commitment recomputation as the evaluator operation"
+  ],
+  "representations": {
+    "S0_full_explicit_semantics": {
+      "analysis": {
+        "executable": true,
+        "issues": [],
+        "opaque_aliases": {},
+        "semantic_component_count": 11,
+        "semantics_changed": {},
+        "semantics_missing": [],
+        "semantics_present": [
+          "algorithm.name",
+          "boundary.fields",
+          "canonicalization.format",
+          "canonicalization.sort_keys",
+          "canonicalization.separators",
+          "canonicalization.ensure_ascii",
+          "canonicalization.encoding",
+          "ordering.field",
+          "ordering.direction",
+          "relation.type",
+          "candidate_commitment.mode"
+        ]
+      },
+      "behavioral_consequence": {
+        "finding": "all required bounded historical distinctions preserved",
+        "histories_departing_from_required_outcome": []
+      },
+      "declaration_delta_from_S0": {
+        "changed": {},
+        "missing": [],
+        "opaque_aliases": {}
+      },
+      "role": "full explicit analytical control"
+    },
+    "S10_no_ordering_direction": {
+      "analysis": {
+        "executable": false,
+        "issues": [
+          "ordering.direction unavailable"
+        ],
+        "opaque_aliases": {},
+        "semantic_component_count": 9,
+        "semantics_changed": {},
+        "semantics_missing": [
+          "ordering.direction"
+        ],
+        "semantics_present": [
+          "algorithm.name",
+          "boundary.fields",
+          "canonicalization.format",
+          "canonicalization.sort_keys",
+          "canonicalization.separators",
+          "canonicalization.ensure_ascii",
+          "canonicalization.encoding",
+          "ordering.field",
+          "relation.type"
+        ]
+      },
+      "behavioral_consequence": {
+        "finding": "all bounded historical classifications became unresolved",
+        "histories_departing_from_required_outcome": [
+          "H13_tail_loss",
+          "H14_control",
+          "H16_extension",
+          "H16_ID_replacement",
+          "H16_content_replacement"
+        ]
+      },
+      "declaration_delta_from_S0": {
+        "changed": {},
+        "missing": [
+          "ordering.direction",
+          "candidate_commitment.mode"
+        ],
+        "opaque_aliases": {}
+      },
+      "role": "ordering field retained while direction removed"
+    },
+    "S1_no_algorithm": {
+      "analysis": {
+        "executable": false,
+        "issues": [
+          "algorithm.name unavailable"
+        ],
+        "opaque_aliases": {},
+        "semantic_component_count": 9,
+        "semantics_changed": {},
+        "semantics_missing": [
+          "algorithm.name"
+        ],
+        "semantics_present": [
+          "boundary.fields",
+          "canonicalization.format",
+          "canonicalization.sort_keys",
+          "canonicalization.separators",
+          "canonicalization.ensure_ascii",
+          "canonicalization.encoding",
+          "ordering.field",
+          "ordering.direction",
+          "relation.type"
+        ]
+      },
+      "behavioral_consequence": {
+        "finding": "all bounded historical classifications became unresolved",
+        "histories_departing_from_required_outcome": [
+          "H13_tail_loss",
+          "H14_control",
+          "H16_extension",
+          "H16_ID_replacement",
+          "H16_content_replacement"
+        ]
+      },
+      "declaration_delta_from_S0": {
+        "changed": {},
+        "missing": [
+          "algorithm.name",
+          "candidate_commitment.mode"
+        ],
+        "opaque_aliases": {}
+      },
+      "role": "algorithm identity removed"
+    },
+    "S2_no_boundary": {
+      "analysis": {
+        "executable": false,
+        "issues": [
+          "boundary.fields unavailable"
+        ],
+        "opaque_aliases": {},
+        "semantic_component_count": 9,
+        "semantics_changed": {},
+        "semantics_missing": [
+          "boundary.fields"
+        ],
+        "semantics_present": [
+          "algorithm.name",
+          "canonicalization.format",
+          "canonicalization.sort_keys",
+          "canonicalization.separators",
+          "canonicalization.ensure_ascii",
+          "canonicalization.encoding",
+          "ordering.field",
+          "ordering.direction",
+          "relation.type"
+        ]
+      },
+      "behavioral_consequence": {
+        "finding": "all bounded historical classifications became unresolved",
+        "histories_departing_from_required_outcome": [
+          "H13_tail_loss",
+          "H14_control",
+          "H16_extension",
+          "H16_ID_replacement",
+          "H16_content_replacement"
+        ]
+      },
+      "declaration_delta_from_S0": {
+        "changed": {},
+        "missing": [
+          "boundary.fields",
+          "candidate_commitment.mode"
+        ],
+        "opaque_aliases": {}
+      },
+      "role": "committed field-set identity removed"
+    },
+    "S3_no_canonicalization": {
+      "analysis": {
+        "executable": false,
+        "issues": [
+          "canonicalization.format unavailable",
+          "canonicalization.sort_keys unavailable",
+          "canonicalization.separators unavailable",
+          "canonicalization.ensure_ascii unavailable",
+          "canonicalization.encoding unavailable"
+        ],
+        "opaque_aliases": {},
+        "semantic_component_count": 5,
+        "semantics_changed": {},
+        "semantics_missing": [
+          "canonicalization.format",
+          "canonicalization.sort_keys",
+          "canonicalization.separators",
+          "canonicalization.ensure_ascii",
+          "canonicalization.encoding"
+        ],
+        "semantics_present": [
+          "algorithm.name",
+          "boundary.fields",
+          "ordering.field",
+          "ordering.direction",
+          "relation.type"
+        ]
+      },
+      "behavioral_consequence": {
+        "finding": "all bounded historical classifications became unresolved",
+        "histories_departing_from_required_outcome": [
+          "H13_tail_loss",
+          "H14_control",
+          "H16_extension",
+          "H16_ID_replacement",
+          "H16_content_replacement"
+        ]
+      },
+      "declaration_delta_from_S0": {
+        "changed": {},
+        "missing": [
+          "canonicalization.format",
+          "canonicalization.sort_keys",
+          "canonicalization.separators",
+          "canonicalization.ensure_ascii",
+          "canonicalization.encoding",
+          "candidate_commitment.mode"
+        ],
+        "opaque_aliases": {}
+      },
+      "role": "canonicalization description removed"
+    },
+    "S3a_no_canonicalization_format": {
+      "analysis": {
+        "executable": false,
+        "issues": [
+          "canonicalization.format unavailable"
+        ],
+        "opaque_aliases": {},
+        "semantic_component_count": 9,
+        "semantics_changed": {},
+        "semantics_missing": [
+          "canonicalization.format"
+        ],
+        "semantics_present": [
+          "algorithm.name",
+          "boundary.fields",
+          "canonicalization.sort_keys",
+          "canonicalization.separators",
+          "canonicalization.ensure_ascii",
+          "canonicalization.encoding",
+          "ordering.field",
+          "ordering.direction",
+          "relation.type"
+        ]
+      },
+      "behavioral_consequence": {
+        "finding": "all bounded historical classifications became unresolved",
+        "histories_departing_from_required_outcome": [
+          "H13_tail_loss",
+          "H14_control",
+          "H16_extension",
+          "H16_ID_replacement",
+          "H16_content_replacement"
+        ]
+      },
+      "declaration_delta_from_S0": {
+        "changed": {},
+        "missing": [
+          "canonicalization.format",
+          "candidate_commitment.mode"
+        ],
+        "opaque_aliases": {}
+      },
+      "role": "serialization format removed"
+    },
+    "S3b_no_canonicalization_sort_keys": {
+      "analysis": {
+        "executable": false,
+        "issues": [
+          "canonicalization.sort_keys unavailable"
+        ],
+        "opaque_aliases": {},
+        "semantic_component_count": 9,
+        "semantics_changed": {},
+        "semantics_missing": [
+          "canonicalization.sort_keys"
+        ],
+        "semantics_present": [
+          "algorithm.name",
+          "boundary.fields",
+          "canonicalization.format",
+          "canonicalization.separators",
+          "canonicalization.ensure_ascii",
+          "canonicalization.encoding",
+          "ordering.field",
+          "ordering.direction",
+          "relation.type"
+        ]
+      },
+      "behavioral_consequence": {
+        "finding": "all bounded historical classifications became unresolved",
+        "histories_departing_from_required_outcome": [
+          "H13_tail_loss",
+          "H14_control",
+          "H16_extension",
+          "H16_ID_replacement",
+          "H16_content_replacement"
+        ]
+      },
+      "declaration_delta_from_S0": {
+        "changed": {},
+        "missing": [
+          "canonicalization.sort_keys",
+          "candidate_commitment.mode"
+        ],
+        "opaque_aliases": {}
+      },
+      "role": "key-order behavior removed"
+    },
+    "S3c_no_canonicalization_separators": {
+      "analysis": {
+        "executable": false,
+        "issues": [
+          "canonicalization.separators unavailable"
+        ],
+        "opaque_aliases": {},
+        "semantic_component_count": 9,
+        "semantics_changed": {},
+        "semantics_missing": [
+          "canonicalization.separators"
+        ],
+        "semantics_present": [
+          "algorithm.name",
+          "boundary.fields",
+          "canonicalization.format",
+          "canonicalization.sort_keys",
+          "canonicalization.ensure_ascii",
+          "canonicalization.encoding",
+          "ordering.field",
+          "ordering.direction",
+          "relation.type"
+        ]
+      },
+      "behavioral_consequence": {
+        "finding": "all bounded historical classifications became unresolved",
+        "histories_departing_from_required_outcome": [
+          "H13_tail_loss",
+          "H14_control",
+          "H16_extension",
+          "H16_ID_replacement",
+          "H16_content_replacement"
+        ]
+      },
+      "declaration_delta_from_S0": {
+        "changed": {},
+        "missing": [
+          "canonicalization.separators",
+          "candidate_commitment.mode"
+        ],
+        "opaque_aliases": {}
+      },
+      "role": "JSON separators removed"
+    },
+    "S3d_no_canonicalization_ensure_ascii": {
+      "analysis": {
+        "executable": false,
+        "issues": [
+          "canonicalization.ensure_ascii unavailable"
+        ],
+        "opaque_aliases": {},
+        "semantic_component_count": 9,
+        "semantics_changed": {},
+        "semantics_missing": [
+          "canonicalization.ensure_ascii"
+        ],
+        "semantics_present": [
+          "algorithm.name",
+          "boundary.fields",
+          "canonicalization.format",
+          "canonicalization.sort_keys",
+          "canonicalization.separators",
+          "canonicalization.encoding",
+          "ordering.field",
+          "ordering.direction",
+          "relation.type"
+        ]
+      },
+      "behavioral_consequence": {
+        "finding": "all bounded historical classifications became unresolved",
+        "histories_departing_from_required_outcome": [
+          "H13_tail_loss",
+          "H14_control",
+          "H16_extension",
+          "H16_ID_replacement",
+          "H16_content_replacement"
+        ]
+      },
+      "declaration_delta_from_S0": {
+        "changed": {},
+        "missing": [
+          "canonicalization.ensure_ascii",
+          "candidate_commitment.mode"
+        ],
+        "opaque_aliases": {}
+      },
+      "role": "character escaping behavior removed"
+    },
+    "S3e_no_canonicalization_encoding": {
+      "analysis": {
+        "executable": false,
+        "issues": [
+          "canonicalization.encoding unavailable"
+        ],
+        "opaque_aliases": {},
+        "semantic_component_count": 9,
+        "semantics_changed": {},
+        "semantics_missing": [
+          "canonicalization.encoding"
+        ],
+        "semantics_present": [
+          "algorithm.name",
+          "boundary.fields",
+          "canonicalization.format",
+          "canonicalization.sort_keys",
+          "canonicalization.separators",
+          "canonicalization.ensure_ascii",
+          "ordering.field",
+          "ordering.direction",
+          "relation.type"
+        ]
+      },
+      "behavioral_consequence": {
+        "finding": "all bounded historical classifications became unresolved",
+        "histories_departing_from_required_outcome": [
+          "H13_tail_loss",
+          "H14_control",
+          "H16_extension",
+          "H16_ID_replacement",
+          "H16_content_replacement"
+        ]
+      },
+      "declaration_delta_from_S0": {
+        "changed": {},
+        "missing": [
+          "canonicalization.encoding",
+          "candidate_commitment.mode"
+        ],
+        "opaque_aliases": {}
+      },
+      "role": "byte encoding removed"
+    },
+    "S4_no_ordering": {
+      "analysis": {
+        "executable": false,
+        "issues": [
+          "ordering.field unavailable",
+          "ordering.direction unavailable"
+        ],
+        "opaque_aliases": {},
+        "semantic_component_count": 8,
+        "semantics_changed": {},
+        "semantics_missing": [
+          "ordering.field",
+          "ordering.direction"
+        ],
+        "semantics_present": [
+          "algorithm.name",
+          "boundary.fields",
+          "canonicalization.format",
+          "canonicalization.sort_keys",
+          "canonicalization.separators",
+          "canonicalization.ensure_ascii",
+          "canonicalization.encoding",
+          "relation.type"
+        ]
+      },
+      "behavioral_consequence": {
+        "finding": "all bounded historical classifications became unresolved",
+        "histories_departing_from_required_outcome": [
+          "H13_tail_loss",
+          "H14_control",
+          "H16_extension",
+          "H16_ID_replacement",
+          "H16_content_replacement"
+        ]
+      },
+      "declaration_delta_from_S0": {
+        "changed": {},
+        "missing": [
+          "ordering.field",
+          "ordering.direction",
+          "candidate_commitment.mode"
+        ],
+        "opaque_aliases": {}
+      },
+      "role": "historical ordering semantics removed"
+    },
+    "S4a_no_ordering_field": {
+      "analysis": {
+        "executable": false,
+        "issues": [
+          "ordering.field unavailable"
+        ],
+        "opaque_aliases": {},
+        "semantic_component_count": 9,
+        "semantics_changed": {},
+        "semantics_missing": [
+          "ordering.field"
+        ],
+        "semantics_present": [
+          "algorithm.name",
+          "boundary.fields",
+          "canonicalization.format",
+          "canonicalization.sort_keys",
+          "canonicalization.separators",
+          "canonicalization.ensure_ascii",
+          "canonicalization.encoding",
+          "ordering.direction",
+          "relation.type"
+        ]
+      },
+      "behavioral_consequence": {
+        "finding": "all bounded historical classifications became unresolved",
+        "histories_departing_from_required_outcome": [
+          "H13_tail_loss",
+          "H14_control",
+          "H16_extension",
+          "H16_ID_replacement",
+          "H16_content_replacement"
+        ]
+      },
+      "declaration_delta_from_S0": {
+        "changed": {},
+        "missing": [
+          "ordering.field",
+          "candidate_commitment.mode"
+        ],
+        "opaque_aliases": {}
+      },
+      "role": "ordering direction retained while field removed"
+    },
+    "S5_no_relation": {
+      "analysis": {
+        "executable": false,
+        "issues": [
+          "relation.type unavailable"
+        ],
+        "opaque_aliases": {},
+        "semantic_component_count": 9,
+        "semantics_changed": {},
+        "semantics_missing": [
+          "relation.type"
+        ],
+        "semantics_present": [
+          "algorithm.name",
+          "boundary.fields",
+          "canonicalization.format",
+          "canonicalization.sort_keys",
+          "canonicalization.separators",
+          "canonicalization.ensure_ascii",
+          "canonicalization.encoding",
+          "ordering.field",
+          "ordering.direction"
+        ]
+      },
+      "behavioral_consequence": {
+        "finding": "all bounded historical classifications became unresolved",
+        "histories_departing_from_required_outcome": [
+          "H13_tail_loss",
+          "H14_control",
+          "H16_extension",
+          "H16_ID_replacement",
+          "H16_content_replacement"
+        ]
+      },
+      "declaration_delta_from_S0": {
+        "changed": {},
+        "missing": [
+          "relation.type",
+          "candidate_commitment.mode"
+        ],
+        "opaque_aliases": {}
+      },
+      "role": "historical prefix relation removed"
+    },
+    "S6_opaque_aliases_only": {
+      "analysis": {
+        "executable": false,
+        "issues": [
+          "boundary semantic description unavailable; opaque alias supplied",
+          "canonicalization semantic description unavailable; opaque alias supplied"
+        ],
+        "opaque_aliases": {
+          "boundary": "current_record",
+          "canonicalization": "current"
+        },
+        "semantic_component_count": 4,
+        "semantics_changed": {},
+        "semantics_missing": [
+          "boundary.fields",
+          "canonicalization.format",
+          "canonicalization.sort_keys",
+          "canonicalization.separators",
+          "canonicalization.ensure_ascii",
+          "canonicalization.encoding"
+        ],
+        "semantics_present": [
+          "algorithm.name",
+          "ordering.field",
+          "ordering.direction",
+          "relation.type"
+        ]
+      },
+      "behavioral_consequence": {
+        "finding": "all bounded historical classifications became unresolved",
+        "histories_departing_from_required_outcome": [
+          "H13_tail_loss",
+          "H14_control",
+          "H16_extension",
+          "H16_ID_replacement",
+          "H16_content_replacement"
+        ]
+      },
+      "declaration_delta_from_S0": {
+        "changed": {},
+        "missing": [
+          "boundary.fields",
+          "canonicalization.format",
+          "canonicalization.sort_keys",
+          "canonicalization.separators",
+          "canonicalization.ensure_ascii",
+          "canonicalization.encoding",
+          "candidate_commitment.mode"
+        ],
+        "opaque_aliases": {
+          "boundary": "current_record",
+          "canonicalization": "current"
+        }
+      },
+      "role": "ambient implementation handles replace semantic descriptions"
+    },
+    "S7_wrong_complete_boundary": {
+      "analysis": {
+        "executable": true,
+        "issues": [],
+        "opaque_aliases": {},
+        "semantic_component_count": 10,
+        "semantics_changed": {
+          "boundary.fields": {
+            "actual": [
+              "envelope"
+            ],
+            "expected": [
+              "record_id",
+              "commit_index",
+              "envelope"
+            ]
+          }
+        },
+        "semantics_missing": [],
+        "semantics_present": [
+          "algorithm.name",
+          "boundary.fields",
+          "canonicalization.format",
+          "canonicalization.sort_keys",
+          "canonicalization.separators",
+          "canonicalization.ensure_ascii",
+          "canonicalization.encoding",
+          "ordering.field",
+          "ordering.direction",
+          "relation.type"
+        ]
+      },
+      "behavioral_consequence": {
+        "finding": "control and legitimate extension collapsed into mismatch",
+        "histories_departing_from_required_outcome": [
+          "H14_control",
+          "H16_extension"
+        ]
+      },
+      "declaration_delta_from_S0": {
+        "changed": {
+          "boundary.fields": {
+            "actual": [
+              "envelope"
+            ],
+            "expected": [
+              "record_id",
+              "commit_index",
+              "envelope"
+            ]
+          }
+        },
+        "missing": [
+          "candidate_commitment.mode"
+        ],
+        "opaque_aliases": {}
+      },
+      "role": "complete executable envelope-only boundary"
+    },
+    "S8_wrong_complete_canonicalization": {
+      "analysis": {
+        "executable": true,
+        "issues": [],
+        "opaque_aliases": {},
+        "semantic_component_count": 10,
+        "semantics_changed": {
+          "canonicalization.separators": {
+            "actual": [
+              ", ",
+              ": "
+            ],
+            "expected": [
+              ",",
+              ":"
+            ]
+          }
+        },
+        "semantics_missing": [],
+        "semantics_present": [
+          "algorithm.name",
+          "boundary.fields",
+          "canonicalization.format",
+          "canonicalization.sort_keys",
+          "canonicalization.separators",
+          "canonicalization.ensure_ascii",
+          "canonicalization.encoding",
+          "ordering.field",
+          "ordering.direction",
+          "relation.type"
+        ]
+      },
+      "behavioral_consequence": {
+        "finding": "control and legitimate extension collapsed into mismatch",
+        "histories_departing_from_required_outcome": [
+          "H14_control",
+          "H16_extension"
+        ]
+      },
+      "declaration_delta_from_S0": {
+        "changed": {
+          "canonicalization.separators": {
+            "actual": [
+              ", ",
+              ": "
+            ],
+            "expected": [
+              ",",
+              ":"
+            ]
+          }
+        },
+        "missing": [
+          "candidate_commitment.mode"
+        ],
+        "opaque_aliases": {}
+      },
+      "role": "complete executable spaced JSON canonicalization"
+    },
+    "S9_no_candidate_commitment_mode": {
+      "analysis": {
+        "executable": true,
+        "issues": [],
+        "opaque_aliases": {},
+        "semantic_component_count": 10,
+        "semantics_changed": {},
+        "semantics_missing": [],
+        "semantics_present": [
+          "algorithm.name",
+          "boundary.fields",
+          "canonicalization.format",
+          "canonicalization.sort_keys",
+          "canonicalization.separators",
+          "canonicalization.ensure_ascii",
+          "canonicalization.encoding",
+          "ordering.field",
+          "ordering.direction",
+          "relation.type"
+        ]
+      },
+      "behavioral_consequence": {
+        "finding": "all required bounded historical distinctions preserved",
+        "histories_departing_from_required_outcome": []
+      },
+      "declaration_delta_from_S0": {
+        "changed": {},
+        "missing": [
+          "candidate_commitment.mode"
+        ],
+        "opaque_aliases": {}
+      },
+      "role": "full semantics without redundant recomputation-mode declaration"
+    }
+  },
+  "smallest_sufficient_tested_representation": "S9_no_candidate_commitment_mode",
+  "starting_commit": "861afaa25e6536014a2b3d70b25c33182437481b",
+  "strongest_unresolved_horizon": "identity and provenance of the evaluator vocabulary still remain ambient",
+  "witness_carrier": {
+    "carrier_identity": "sha256:09f0f5f3402b1f187b3b09e4417f8e12010b22fe0968aeb2841a0b598553c200",
+    "definition": "ordered integrity.digest values from witnessed H14 records",
+    "digest_count": 14,
+    "interpretation_included": false,
+    "name": "W14_ordered_record_digests",
+    "source": "e399720:traces/live_ingest_ledger_v0.jsonl"
+  },
+  "wrong_boundary_result": {
+    "H13_tail_loss": "MISMATCHED",
+    "H14_control": "MISMATCHED",
+    "H16_ID_replacement": "MISMATCHED",
+    "H16_content_replacement": "MISMATCHED",
+    "H16_extension": "MISMATCHED"
+  },
+  "wrong_canonicalization_result": {
+    "H13_tail_loss": "MISMATCHED",
+    "H14_control": "MISMATCHED",
+    "H16_ID_replacement": "MISMATCHED",
+    "H16_content_replacement": "MISMATCHED",
+    "H16_extension": "MISMATCHED"
+  }
+}
