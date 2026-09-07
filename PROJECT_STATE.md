@@ -50,6 +50,8 @@ Vocabulary identity pressure completed in `docs/decisions/vocabulary_identity_pr
 
 Operation identity pressure completed in `docs/decisions/operation_identity_pressure_v0.md`.
 
+Candidate set expansion pressure completed in `docs/decisions/candidate_set_expansion_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -118,8 +120,8 @@ navigation
 
 ## Next Smallest Question
 
-Does the one-case behavioral witness still identify prefix behavior when one
-additional executable relation realization enters the bounded candidate set?
+What is the smallest additional historical specimen that distinguishes prefix
+from ordered subsequence?
 
 ## Contract Surface Status
 
@@ -208,5 +210,13 @@ additional executable relation realization enters the bounded candidate set?
 - Chart 6 refines Chart 5 operation binding into descriptor, implementation, and bounded behavior without invalidating Chart 5
 - the second axis split earns chart-fold pressure without adding folding machinery
 - proto-scheduler grounding strengthened, but preconditions, effects, and admissibility remain absent
+- candidate set expansion held the H14 carrier, S9 declaration, V2a vocabulary, B0/B1 cases, and five historical specimens fixed
+- ordered subsequence independently accepted H14 control and legitimate H16 extension
+- unchanged B1 selected one realization from the original two candidates but matched two of three after expansion
+- multiple B1 matches remained unresolved without implementation-name, ordering, or prior-success tie-breaking
+- prefix and ordered subsequence produced the same complete outcome pattern over all five existing historical specimens
+- Chart 7 exposes a bounded observational-resolution limit without claiming universal behavioral equivalence
+- Chart 6 E6 sufficiency is refined as relative to its original candidate set; Chart 6 and D-0037 remain supported
+- future operation recognition must preserve ambiguity when multiple executable moves fit available evidence
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure

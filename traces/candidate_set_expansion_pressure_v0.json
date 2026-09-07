@@ -1,0 +1,292 @@
+{
+  "B1_expanded_selection": {
+    "matching_realization_count": 2,
+    "matching_realizations": [
+      "alternate_iterative_prefix_v1",
+      "ordered_subsequence_v1"
+    ],
+    "outcome": "UNRESOLVED",
+    "tie_break_used": false
+  },
+  "B1_original_selection": {
+    "matching_realization_count": 1,
+    "matching_realizations": [
+      "alternate_iterative_prefix_v1"
+    ],
+    "outcome": "RECOVERED",
+    "tie_break_used": false
+  },
+  "B1_reversed_candidate_order_selection": {
+    "matching_realization_count": 2,
+    "matching_realizations": [
+      "alternate_iterative_prefix_v1",
+      "ordered_subsequence_v1"
+    ],
+    "outcome": "UNRESOLVED",
+    "tie_break_used": false
+  },
+  "E6_witness_sufficiency_after_expansion": {
+    "matching_realization_count": 2,
+    "matching_realizations": [
+      "alternate_iterative_prefix_v1",
+      "ordered_subsequence_v1"
+    ],
+    "outcome": "UNRESOLVED",
+    "remains_uniquely_sufficient": false
+  },
+  "architecture_added": [],
+  "behavioral_cases": {
+    "B0_H14_control_agreement": {
+      "candidate_count": 14,
+      "candidate_outputs": {
+        "alternate_iterative_prefix_v1": true,
+        "ordered_subsequence_v1": true,
+        "sequence_equality_v1": true
+      },
+      "domain": "witnessed H14 relation to candidate H14 control",
+      "expected": true,
+      "witness_count": 14
+    },
+    "B1_H16_extension_discriminator": {
+      "candidate_count": 16,
+      "candidate_outputs": {
+        "alternate_iterative_prefix_v1": true,
+        "ordered_subsequence_v1": true,
+        "sequence_equality_v1": false
+      },
+      "domain": "witnessed H14 relation to candidate H16 legitimate extension",
+      "expected": true,
+      "witness_count": 14
+    }
+  },
+  "behavioral_selection_outcome": "UNRESOLVED",
+  "candidate_set_dependency": {
+    "demonstrated": true,
+    "expanded_match_count": 2,
+    "finding": "the unchanged B1 witness changed from unique selection to unresolved after one candidate was added",
+    "original_match_count": 1
+  },
+  "chart_6_back_pressure": {
+    "interpretation_refined": true,
+    "prior_evidence_preserved": true,
+    "prior_result_invalidated": false,
+    "refinement": "E6 was sufficient relative to the original two-realization candidate set"
+  },
+  "chart_7_status": {
+    "coordinates": "relation realization x fixed behavioral case or historical specimen",
+    "earned": true,
+    "stable_coordinate_meaning": "each cell records executed boolean behavior or derived recovery outcome"
+  },
+  "direct_historical_outcomes": {
+    "alternate_iterative_prefix_v1": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "RECOVERED"
+    },
+    "ordered_subsequence_v1": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "RECOVERED"
+    },
+    "sequence_equality_v1": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "MISMATCHED"
+    }
+  },
+  "distinctions": {
+    "D_0037_status": "supported",
+    "added": [
+      {
+        "id": "D-0038",
+        "left": "behavioral_witness_sufficiency",
+        "relation": "not_equivalent_to",
+        "right": "candidate_set_independent_identity"
+      }
+    ],
+    "amended": []
+  },
+  "duration_seconds": 0.192247,
+  "expanded_candidate_set": [
+    "alternate_iterative_prefix_v1",
+    "sequence_equality_v1",
+    "ordered_subsequence_v1"
+  ],
+  "experiment": "candidate_set_expansion_pressure_v0",
+  "fixed_surfaces": {
+    "S9_declaration": {
+      "definition": {
+        "algorithm": {
+          "name": "sha256"
+        },
+        "boundary": {
+          "fields": [
+            "record_id",
+            "commit_index",
+            "envelope"
+          ]
+        },
+        "canonicalization": {
+          "encoding": "utf-8",
+          "ensure_ascii": false,
+          "format": "json",
+          "separators": [
+            ",",
+            ":"
+          ],
+          "sort_keys": true
+        },
+        "ordering": {
+          "direction": "ascending",
+          "field": "commit_index"
+        },
+        "relation": {
+          "type": "prefix"
+        }
+      },
+      "identity": "sha256:887a849a8a766c69745ee66051261798a2af0f077267a521f371144aff48128d"
+    },
+    "V2a_mapping_only_vocabulary": {
+      "definition": {
+        "algorithm_tokens": {
+          "sha256": {
+            "digest_bits": 256,
+            "family": "sha-2"
+          }
+        },
+        "encoding_tokens": {
+          "utf-8": {
+            "unicode_encoding": "utf-8"
+          }
+        },
+        "field_tokens": {
+          "commit_index": {
+            "boundary_key": "commit_index",
+            "source_path": [
+              "commit_index"
+            ]
+          },
+          "envelope": {
+            "boundary_key": "envelope",
+            "source_path": [
+              "envelope"
+            ]
+          },
+          "record_id": {
+            "boundary_key": "record_id",
+            "source_path": [
+              "record_id"
+            ]
+          }
+        },
+        "ordering_tokens": {
+          "ascending": {
+            "reverse": false
+          }
+        },
+        "relation_tokens": {
+          "prefix": {
+            "kind": "left_sequence_prefix"
+          }
+        },
+        "serialization_tokens": {
+          "json": {
+            "data_model": "json",
+            "output": "text"
+          }
+        }
+      },
+      "identity": "sha256:6bdf24ca17a7b77faa6b68176f00ebf169303d090707c01968977904eccf64d8",
+      "mapping_count": 8
+    },
+    "behavioral_case_ids": [
+      "B0_H14_control_agreement",
+      "B1_H16_extension_discriminator"
+    ],
+    "canonical_history_changed": false,
+    "carrier": {
+      "definition": "ordered integrity.digest values from witnessed H14 records",
+      "digest_count": 14,
+      "identity": "sha256:09f0f5f3402b1f187b3b09e4417f8e12010b22fe0968aeb2841a0b598553c200"
+    },
+    "historical_specimens": {
+      "H13_tail_loss": {
+        "construction": "copy canonical H14 records 1..13; omit complete rec-000014",
+        "record_count": 13
+      },
+      "H14_control": {
+        "construction": "current canonical H14 replay records 1..14",
+        "record_count": 14
+      },
+      "H16_ID_replacement": {
+        "construction": "H16 extension with record 1 record_id changed to rec-999001 and digest recomputed",
+        "record_count": 16
+      },
+      "H16_content_replacement": {
+        "construction": "H16 extension with record 1 envelope.provenance.observation_point changed and digest recomputed",
+        "record_count": 16
+      },
+      "H16_extension": {
+        "construction": "temporary JSONL copy of H14 plus appended rec-000015 observation and rec-000016 admission",
+        "record_count": 16
+      }
+    }
+  },
+  "new_realization": {
+    "aliases_existing_prefix_implementation": false,
+    "implementation_path": "src.runtime.candidate_set_expansion_pressure._ordered_subsequence",
+    "name": "ordered_subsequence_v1",
+    "semantics": "witnessed digests occur in candidate order without requiring a contiguous left prefix"
+  },
+  "next_smallest_pressure_frontier": "identify the smallest additional historical specimen that distinguishes prefix from ordered subsequence",
+  "observer_discriminability": {
+    "finding": "prefix and ordered subsequence occupy the same outcome coordinate over all five existing historical specimens",
+    "resolution_limit_exposed": true,
+    "semantic_identity_claimed": false
+  },
+  "original_candidate_set": [
+    "alternate_iterative_prefix_v1",
+    "sequence_equality_v1"
+  ],
+  "prefix_ordered_subsequence_comparison": {
+    "complete_patterns_differ": false,
+    "first_differing_existing_specimen": null,
+    "locally_indistinguishable_under_current_historical_specimens": true,
+    "ordered_subsequence_outcomes": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "RECOVERED"
+    },
+    "prefix_outcomes": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "RECOVERED"
+    },
+    "universal_behavioral_equivalence_claimed": false
+  },
+  "prior_chart_6": {
+    "D_0037_remains_supported": true,
+    "committed_trace": "traces\\operation_identity_pressure_v0.json",
+    "evidence_changed": false,
+    "reproduced_before_expansion": true
+  },
+  "scheduler_relevance": {
+    "multiple_matches_unresolved": true,
+    "operation_recognition_must_preserve_ambiguity": true,
+    "schedulable_primitive_established": false,
+    "scheduler_added": false,
+    "unique_match_recognized": true
+  },
+  "starting_commit": "aea624271d040045174778f9a53e085f24990bce",
+  "strongest_unresolved_horizon": "the fixed B0/B1 cases and five historical specimens do not distinguish prefix from ordered subsequence"
+}
