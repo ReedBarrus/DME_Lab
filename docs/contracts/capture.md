@@ -53,5 +53,6 @@ Bounded repository observer evidence exists:
 - `traces/repo_snapshot_v0_post_cleanup.json`
 - `traces/git_state_v0_post_cleanup.json`
 - `traces/repo_transition_pressure_v0.json`
+- `traces/live_vertical_probe_v0.json`
 
 This evidence does not validate general OS or Windows event capture.

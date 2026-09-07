@@ -4,7 +4,7 @@
 
 Provisional contract.
 
-Current status: pressure-tested within the synthetic v0 ledger scope.
+Current status: pressure-tested within the synthetic v0 ledger scope, with bounded live vertical-chain evidence.
 
 This document defines the minimum guarantees required of the first DME_Lab append-only ledger before a formal schema or runtime implementation is admitted.
 
@@ -279,6 +279,11 @@ Synthetic v0 evidence:
 * `tests/replay/test_ledger_harness.py`
 * `traces/ledger_runtime_pressure_v0.json`
 * `docs/decisions/ledger_runtime_pressure_v0.md`
+
+Bounded live vertical-chain evidence:
+
+* `traces/live_vertical_probe_v0.json`
+* `tests/runtime/test_live_vertical_probe.py`
 
 This evidence does not validate live OS capture, distributed append, history-level integrity, or schema permanence.
 

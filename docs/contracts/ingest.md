@@ -61,5 +61,7 @@ A live repository snapshot candidate envelope has been constructed and compared 
 - `src/runtime/ingest_admission_pressure.py`
 - `traces/ingest_admission_pressure_v0.json`
 - `docs/decisions/ingest_admission_pressure_v0.md`
+- `traces/live_vertical_probe_v0.json`
+- `docs/decisions/live_vertical_probe_v0.md`
 
-This implements only a bounded v0 admission classification mechanism. It does not define final ingest rules, a generalized policy engine, or a durable admitted store.
+The live vertical probe routes bounded live observations through the current admission mechanism. This does not define final ingest rules, a generalized policy engine, enforced admission, or a durable admitted store.

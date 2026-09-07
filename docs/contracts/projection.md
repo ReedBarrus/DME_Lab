@@ -48,5 +48,7 @@ Bounded admitted projection evidence:
 - `src/reconstruction/admission.py`
 - `tests/reconstruction/test_admission_reconstruction.py`
 - `traces/reconstruction_pressure_v0.json`
+- `traces/live_vertical_probe_v0.json`
+- `docs/decisions/live_vertical_probe_v0.md`
 
 This evidence does not validate a generalized exposed projection engine.

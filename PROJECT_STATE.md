@@ -28,6 +28,8 @@ Bounded v0 ingest admission pressure completed in `docs/decisions/ingest_admissi
 
 Bounded v0 reconstruction pressure completed in `docs/decisions/reconstruction_pressure_v0.md`.
 
+First bounded live vertical-chain probe completed in `docs/decisions/live_vertical_probe_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -96,7 +98,7 @@ navigation
 
 ## Next Smallest Question
 
-How should the controlled repository probe exercise capture, admission classification, reconstruction, and admitted projection without deleting rejected evidence?
+What is the smallest canonical live ingest ledger boundary that preserves admitted, rejected, and unresolved evidence without becoming generalized policy?
 
 ## Contract Surface Status
 
@@ -138,4 +140,6 @@ How should the controlled repository probe exercise capture, admission classific
 - bounded reconstruction now recovers admission relationships from authoritative replayed ledger records
 - reconstructed admission relationships preserve record-id paths back to observation provenance
 - rebuilding reconstruction and admitted projection from the same replayed records is structurally stable in v0 pressure
+- first live vertical probe preserved filesystem and Git observations through admission, replay, reconstruction, admitted projection, and provenance navigation
+- capture sequence and ledger commit order are distinct; ledger commit_index records handling order, not source chronology
 - no index exists or is yet justified by lookup pressure
