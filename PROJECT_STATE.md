@@ -42,6 +42,8 @@ Historical relation pressure completed in `docs/decisions/historical_relation_pr
 
 Witness content ablation pressure completed in `docs/decisions/witness_content_ablation_pressure_v0.md`.
 
+Provenance recovery pressure completed in `docs/decisions/provenance_recovery_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -110,7 +112,8 @@ navigation
 
 ## Next Smallest Question
 
-What interpretation and provenance must accompany a minimal ordered-digest prefix witness before any persistence boundary is selected?
+What is the smallest non-persistent declarative commitment-semantics representation
+that preserves bounded historical recovery across the provenance-recovery chart?
 
 ## Contract Surface Status
 
@@ -171,5 +174,10 @@ What interpretation and provenance must accompany a minimal ordered-digest prefi
 - ordered record IDs and commit indices do not establish historical content identity
 - ordered record digests are the smallest sufficient tested prefix witness projection within the bounded pressure
 - historical identity can change without changing current reconstruction/projection shape
+- the same fixed H14 ordered-digest carrier produced recovered, mismatched, and unresolved outcomes under different interpretation regimes
+- the smallest sufficient tested interpretation includes SHA-256 identity, commitment boundary, exact canonicalization, commit-index ordering, prefix comparison, and candidate recomputation semantics
+- commitment semantics plus ordering remained unresolved when the historical prefix relation was withheld
+- changed integrity algorithm and boundary labels did not govern current verifier execution
+- shared chart referents pressure proto-transition-map investigation without establishing transition maps
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure
