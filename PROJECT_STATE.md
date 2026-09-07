@@ -58,6 +58,8 @@ History constraint ablation pressure completed in `docs/decisions/history_constr
 
 Tie-order invariance pressure completed in `docs/decisions/tie_order_invariance_pressure_v0.md`.
 
+First bounded vertical composition pressure completed in `docs/decisions/vertical_composition_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -126,8 +128,8 @@ navigation
 
 ## Next Smallest Question
 
-Can one bounded whole-stack adversarial composition preserve the currently
-earned capture, ledger, reconstruction, and relation distinctions together?
+What is the smallest read-only projection companion that exposes admission
+disagreement without selecting comparator authority or resolving conflict?
 
 ## Contract Surface Status
 
@@ -247,6 +249,15 @@ earned capture, ledger, reconstruction, and relation distinctions together?
 - canonical replay ordering and whole-state C2 admissibility remain unresolved without tie semantics
 - both specific relations are resolved by invariance over every bounded compatible linearization
 - exact coordinate resolution was unnecessary for these bounded relation consequences; no tie-break was added
-- the next pressure moves to one whole-stack adversarial composition pass rather than further duplicate-index drilling
+- vertical composition used one temporary Git fixture and the real filesystem and Git observers across capture, ingest, append, integrity, continuity, replay, reconstruction, projection, and historical relation
+- clean Phase A and legitimate Phase B passed integrity and continuity, reconstructed deterministically, projected reproducibly, and Phase B preserved the Phase-A ordered-digest prefix
+- the Phase-B filesystem observation retained both an admitted v0 decision and a rejected event-time-required decision in replay and reconstruction
+- current admitted projection kept that subject while exposing only the admitted decision record; projection membership therefore did not establish uncontested admission
+- an integrity-valid and continuity-valid prior-provenance mutation remained structurally reconstructable with an unchanged projection while the Phase-A historical relation reported MISMATCHED
+- Phase-A-to-Phase-B operation recognition remained UNRESOLVED between prefix and ordered subsequence even though the fixed prefix relation returned RECOVERED
+- Chart 10 records five bounded composition scenarios across stable epistemic coordinates without becoming a generalized state model
+- D-0041 conserves projection membership as distinct from admission resolution
+- no tested contract made an unjustified certainty claim; composition exposed the unsupported inference from projection membership to uncontested admission
+- the next pressure is the smallest read-only conflict exposure beside projection membership, without comparator authority or conflict resolution
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure
