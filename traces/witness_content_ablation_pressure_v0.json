@@ -1,0 +1,380 @@
+{
+  "capability_matrix": {
+    "H13_tail_loss": {
+      "extent_only": false,
+      "five_field_prefix_identity": false,
+      "full_canonical_prior_records": false,
+      "ordered_commit_index_digest": false,
+      "ordered_record_digests": false,
+      "ordered_record_ids": false,
+      "ordered_record_ids_commit_indices": false,
+      "terminal_digest_only": false
+    },
+    "H14_control": {
+      "extent_only": true,
+      "five_field_prefix_identity": true,
+      "full_canonical_prior_records": true,
+      "ordered_commit_index_digest": true,
+      "ordered_record_digests": true,
+      "ordered_record_ids": true,
+      "ordered_record_ids_commit_indices": true,
+      "terminal_digest_only": true
+    },
+    "H16_ID_replacement": {
+      "extent_only": true,
+      "five_field_prefix_identity": false,
+      "full_canonical_prior_records": false,
+      "ordered_commit_index_digest": false,
+      "ordered_record_digests": false,
+      "ordered_record_ids": false,
+      "ordered_record_ids_commit_indices": false,
+      "terminal_digest_only": true
+    },
+    "H16_content_replacement": {
+      "extent_only": true,
+      "five_field_prefix_identity": false,
+      "full_canonical_prior_records": false,
+      "ordered_commit_index_digest": false,
+      "ordered_record_digests": false,
+      "ordered_record_ids": true,
+      "ordered_record_ids_commit_indices": true,
+      "terminal_digest_only": true
+    },
+    "H16_extension": {
+      "extent_only": true,
+      "five_field_prefix_identity": true,
+      "full_canonical_prior_records": true,
+      "ordered_commit_index_digest": true,
+      "ordered_record_digests": true,
+      "ordered_record_ids": true,
+      "ordered_record_ids_commit_indices": true,
+      "terminal_digest_only": true
+    }
+  },
+  "current_digest_boundary": {
+    "algorithm_boundary_checked_by_verify": false,
+    "algorithm_constant": "sha256",
+    "boundary_constant": "canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators",
+    "committed_fields": [
+      "record_id",
+      "commit_index",
+      "envelope"
+    ],
+    "finding": "verify recomputes digest over record_id, commit_index, and envelope; integrity metadata is stored but not checked"
+  },
+  "diagnostic_vs_discrimination": "redundant fields can still locate and explain disagreement without adding branch-discrimination power",
+  "duration_seconds": 0.1587020000006305,
+  "experiment": "witness_content_ablation_pressure_v0",
+  "fields_redundant_for_discrimination": [
+    "record_id when ordered digests are available and current integrity passes",
+    "commit_index when ordered digests are available and current integrity passes",
+    "integrity.algorithm and integrity.boundary under fixed bounded v0 runtime assumptions"
+  ],
+  "finding": "record identity sequence does not establish record content identity",
+  "h16_content_replacement_mutation": {
+    "after": "T0_clean_pre_probe_content_replaced",
+    "before": "T0_clean_pre_probe",
+    "commit_index": 1,
+    "commit_indices_preserved": true,
+    "digest_recomputed": true,
+    "field": "envelope.provenance.observation_point",
+    "record_id": "rec-000001",
+    "record_ids_preserved": true
+  },
+  "historical_identity_difference_without_derived_shape_change": true,
+  "memory_interpretation": "memory capacity is which prior distinctions remain recoverable under allowed transformation",
+  "new_persistent_witness_architecture_required": false,
+  "persistent_architecture_added": [],
+  "prior_history_source": "e399720:traces/live_ingest_ledger_v0.jsonl",
+  "prior_history_source_classification": "Git analytical comparison evidence, not runtime witness infrastructure",
+  "projection_findings": {
+    "extent_only": {
+      "derived_shape_note": "H16 content replacement and H16 extension have identical derived-state shape",
+      "lost_distinctions": [
+        "legitimate extension vs ID replacement",
+        "legitimate extension vs content replacement"
+      ],
+      "result_pattern": {
+        "H13_tail_loss": false,
+        "H14_control": true,
+        "H16_ID_replacement": true,
+        "H16_content_replacement": true,
+        "H16_extension": true
+      },
+      "sufficient_in_bounded_pressure": false
+    },
+    "five_field_prefix_identity": {
+      "derived_shape_note": "H16 content replacement and H16 extension have identical derived-state shape",
+      "lost_distinctions": [],
+      "result_pattern": {
+        "H13_tail_loss": false,
+        "H14_control": true,
+        "H16_ID_replacement": false,
+        "H16_content_replacement": false,
+        "H16_extension": true
+      },
+      "sufficient_in_bounded_pressure": true
+    },
+    "full_canonical_prior_records": {
+      "derived_shape_note": "H16 content replacement and H16 extension have identical derived-state shape",
+      "lost_distinctions": [],
+      "result_pattern": {
+        "H13_tail_loss": false,
+        "H14_control": true,
+        "H16_ID_replacement": false,
+        "H16_content_replacement": false,
+        "H16_extension": true
+      },
+      "sufficient_in_bounded_pressure": true
+    },
+    "ordered_commit_index_digest": {
+      "derived_shape_note": "H16 content replacement and H16 extension have identical derived-state shape",
+      "lost_distinctions": [],
+      "result_pattern": {
+        "H13_tail_loss": false,
+        "H14_control": true,
+        "H16_ID_replacement": false,
+        "H16_content_replacement": false,
+        "H16_extension": true
+      },
+      "sufficient_in_bounded_pressure": true
+    },
+    "ordered_record_digests": {
+      "derived_shape_note": "H16 content replacement and H16 extension have identical derived-state shape",
+      "lost_distinctions": [],
+      "result_pattern": {
+        "H13_tail_loss": false,
+        "H14_control": true,
+        "H16_ID_replacement": false,
+        "H16_content_replacement": false,
+        "H16_extension": true
+      },
+      "sufficient_in_bounded_pressure": true
+    },
+    "ordered_record_ids": {
+      "derived_shape_note": "H16 content replacement and H16 extension have identical derived-state shape",
+      "lost_distinctions": [
+        "legitimate extension vs content replacement"
+      ],
+      "result_pattern": {
+        "H13_tail_loss": false,
+        "H14_control": true,
+        "H16_ID_replacement": false,
+        "H16_content_replacement": true,
+        "H16_extension": true
+      },
+      "sufficient_in_bounded_pressure": false
+    },
+    "ordered_record_ids_commit_indices": {
+      "derived_shape_note": "H16 content replacement and H16 extension have identical derived-state shape",
+      "lost_distinctions": [
+        "legitimate extension vs content replacement"
+      ],
+      "result_pattern": {
+        "H13_tail_loss": false,
+        "H14_control": true,
+        "H16_ID_replacement": false,
+        "H16_content_replacement": true,
+        "H16_extension": true
+      },
+      "sufficient_in_bounded_pressure": false
+    },
+    "terminal_digest_only": {
+      "derived_shape_note": "H16 content replacement and H16 extension have identical derived-state shape",
+      "lost_distinctions": [
+        "legitimate extension vs ID replacement",
+        "legitimate extension vs content replacement"
+      ],
+      "result_pattern": {
+        "H13_tail_loss": false,
+        "H14_control": true,
+        "H16_ID_replacement": true,
+        "H16_content_replacement": true,
+        "H16_extension": true
+      },
+      "sufficient_in_bounded_pressure": false
+    }
+  },
+  "smallest_sufficient_tested_projection": "ordered_record_digests",
+  "smallest_tested_insufficient_projection_immediately_below": "ordered_record_ids_commit_indices",
+  "specimens": {
+    "H13_tail_loss": {
+      "construction": "copy canonical H14 records 1..13; omit complete rec-000014",
+      "continuity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 13
+      },
+      "derived_state": {
+        "admission_relation_count": 6,
+        "observation_count": 7,
+        "orphan_admission_count": 0,
+        "projection_subject_count": 6,
+        "projection_subject_ids": [
+          "rec-000001",
+          "rec-000003",
+          "rec-000005",
+          "rec-000007",
+          "rec-000009",
+          "rec-000011"
+        ]
+      },
+      "extent": {
+        "record_count": 13,
+        "terminal_commit_index": 13,
+        "terminal_record_id": "rec-000013"
+      },
+      "integrity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 13
+      }
+    },
+    "H14_control": {
+      "construction": "current canonical H14 replay records 1..14",
+      "continuity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 14
+      },
+      "derived_state": {
+        "admission_relation_count": 7,
+        "observation_count": 7,
+        "orphan_admission_count": 0,
+        "projection_subject_count": 7,
+        "projection_subject_ids": [
+          "rec-000001",
+          "rec-000003",
+          "rec-000005",
+          "rec-000007",
+          "rec-000009",
+          "rec-000011",
+          "rec-000013"
+        ]
+      },
+      "extent": {
+        "record_count": 14,
+        "terminal_commit_index": 14,
+        "terminal_record_id": "rec-000014"
+      },
+      "integrity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 14
+      }
+    },
+    "H16_ID_replacement": {
+      "construction": "H16 extension with record 1 record_id changed to rec-999001 and digest recomputed",
+      "continuity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 16
+      },
+      "derived_state": {
+        "admission_relation_count": 7,
+        "observation_count": 8,
+        "orphan_admission_count": 1,
+        "projection_subject_count": 7,
+        "projection_subject_ids": [
+          "rec-000003",
+          "rec-000005",
+          "rec-000007",
+          "rec-000009",
+          "rec-000011",
+          "rec-000013",
+          "rec-000015"
+        ]
+      },
+      "extent": {
+        "record_count": 16,
+        "terminal_commit_index": 16,
+        "terminal_record_id": "rec-000016"
+      },
+      "integrity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 16
+      }
+    },
+    "H16_content_replacement": {
+      "construction": "H16 extension with record 1 envelope.provenance.observation_point changed and digest recomputed",
+      "continuity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 16
+      },
+      "derived_state": {
+        "admission_relation_count": 8,
+        "observation_count": 8,
+        "orphan_admission_count": 0,
+        "projection_subject_count": 8,
+        "projection_subject_ids": [
+          "rec-000001",
+          "rec-000003",
+          "rec-000005",
+          "rec-000007",
+          "rec-000009",
+          "rec-000011",
+          "rec-000013",
+          "rec-000015"
+        ]
+      },
+      "extent": {
+        "record_count": 16,
+        "terminal_commit_index": 16,
+        "terminal_record_id": "rec-000016"
+      },
+      "integrity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 16
+      }
+    },
+    "H16_extension": {
+      "construction": "temporary JSONL copy of H14 plus appended rec-000015 observation and rec-000016 admission",
+      "continuity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 16
+      },
+      "derived_state": {
+        "admission_relation_count": 8,
+        "observation_count": 8,
+        "orphan_admission_count": 0,
+        "projection_subject_count": 8,
+        "projection_subject_ids": [
+          "rec-000001",
+          "rec-000003",
+          "rec-000005",
+          "rec-000007",
+          "rec-000009",
+          "rec-000011",
+          "rec-000013",
+          "rec-000015"
+        ]
+      },
+      "extent": {
+        "record_count": 16,
+        "terminal_commit_index": 16,
+        "terminal_record_id": "rec-000016"
+      },
+      "integrity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 16
+      }
+    }
+  },
+  "starting_commit": "d5145bd3582eb2ca7766d3ff1d9c3ad86e1c78fe",
+  "unresolved_horizon": "interpretation and provenance required for a minimal ordered-digest prefix witness without creating checkpoint or manifest architecture",
+  "witness_projections": {
+    "extent_only": "record_count and terminal_commit_index lower-bound comparison",
+    "five_field_prefix_identity": "record_id, commit_index, algorithm, boundary, and digest prefix",
+    "full_canonical_prior_records": "full prior record prefix equality analytical control",
+    "ordered_commit_index_digest": "ordered commit_index and integrity.digest prefix",
+    "ordered_record_digests": "ordered existing integrity.digest prefix",
+    "ordered_record_ids": "ordered record_id prefix",
+    "ordered_record_ids_commit_indices": "ordered record_id and commit_index prefix",
+    "terminal_digest_only": "witnessed terminal commit_index and its digest"
+  }
+}

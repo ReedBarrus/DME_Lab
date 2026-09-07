@@ -40,6 +40,8 @@ History extent witness pressure completed in `docs/decisions/history_extent_witn
 
 Historical relation pressure completed in `docs/decisions/historical_relation_pressure_v0.md`.
 
+Witness content ablation pressure completed in `docs/decisions/witness_content_ablation_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -108,7 +110,7 @@ navigation
 
 ## Next Smallest Question
 
-What is the minimum first-class prefix witness content, if any, needed without creating checkpoint or manifest architecture?
+What interpretation and provenance must accompany a minimal ordered-digest prefix witness before any persistence boundary is selected?
 
 ## Contract Surface Status
 
@@ -165,5 +167,9 @@ What is the minimum first-class prefix witness content, if any, needed without c
 - exact extent equality collapses tail loss, extension, and replacement into generic mismatch
 - lower-bound extent separates shrinkage from non-shrinkage but does not distinguish extension from replacement
 - prefix preservation distinguishes loss, control, extension, and replacement within the bounded append-only pressure
+- terminal record digest alone does not commit to interior prefix history in the current non-chained ledger
+- ordered record IDs and commit indices do not establish historical content identity
+- ordered record digests are the smallest sufficient tested prefix witness projection within the bounded pressure
+- historical identity can change without changing current reconstruction/projection shape
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure
