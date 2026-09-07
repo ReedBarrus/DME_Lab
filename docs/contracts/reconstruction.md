@@ -62,5 +62,7 @@ Bounded admission relationship reconstruction evidence:
 - `traces/live_vertical_probe_v0.json`
 - `docs/decisions/live_vertical_probe_v0.md`
 - `docs/decisions/live_ingest_ledger_extraction_v0.md`
+- `traces/live_ingest_continuation_v0.json`
+- `docs/decisions/live_ingest_continuation_v0.md`
 
 This evidence does not validate generalized topology, indexing, projection engines, or OS event reconstruction.

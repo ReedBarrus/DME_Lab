@@ -65,5 +65,7 @@ A live repository snapshot candidate envelope has been constructed and compared 
 - `traces/live_vertical_probe_v0.json`
 - `docs/decisions/live_vertical_probe_v0.md`
 - `docs/decisions/live_ingest_ledger_extraction_v0.md`
+- `traces/live_ingest_continuation_v0.json`
+- `docs/decisions/live_ingest_continuation_v0.md`
 
-The live vertical probe routes bounded live observations through the current admission mechanism. This does not define final ingest rules, a generalized policy engine, enforced admission, or a durable admitted store.
+The live vertical and continuation probes route bounded live observations through the current admission mechanism. This does not define final ingest rules, a generalized policy engine, enforced admission, or a durable admitted store.

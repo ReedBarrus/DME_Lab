@@ -32,6 +32,8 @@ First bounded live vertical-chain probe completed in `docs/decisions/live_vertic
 
 Canonical bounded live ingest ledger extraction completed in `docs/decisions/live_ingest_ledger_extraction_v0.md`.
 
+Canonical bounded live ingest ledger continuation completed in `docs/decisions/live_ingest_continuation_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -100,7 +102,7 @@ navigation
 
 ## Next Smallest Question
 
-What is the smallest explicit amendment record needed for canonical live ingest history without introducing generalized amendment policy?
+What is the smallest ledger-wide history-continuity check needed for canonical live ingest history without adding a database, index, or hash chain prematurely?
 
 ## Contract Surface Status
 
@@ -146,4 +148,7 @@ What is the smallest explicit amendment record needed for canonical live ingest 
 - capture sequence and ledger commit order are distinct; ledger commit_index records handling order, not source chronology
 - canonical bounded live ingest history now lives in `traces/live_ingest_ledger_v0.jsonl`
 - the live probe trace now summarizes and references authoritative history rather than owning complete records
+- canonical bounded live ingest history continued from 12 to 14 records across reopen/process discontinuity
+- the original 12-record prefix remained structurally unchanged after continuation
+- per-record integrity verified before and after continuation, but ledger-wide history integrity remains unimplemented
 - no index exists or is yet justified by lookup pressure

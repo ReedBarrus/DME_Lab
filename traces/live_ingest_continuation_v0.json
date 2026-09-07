@@ -1,0 +1,326 @@
+{
+  "admission_decisions": [
+    {
+      "admission_record_id": "rec-000014",
+      "comparator_identity": "ingest_candidate_envelope_minimum",
+      "comparator_version": "ingest_candidate_envelope_minimum_v0",
+      "comparison_valid": true,
+      "decision": "admitted",
+      "decision_basis": "comparison valid under comparator",
+      "observation_record_id": "rec-000013"
+    }
+  ],
+  "canonical_ledger_path": "traces/live_ingest_ledger_v0.jsonl",
+  "continuation_observation": {
+    "capture_error_count": 0,
+    "capture_finished_at": "2026-09-07T05:10:18.502805Z",
+    "capture_started_at": "2026-09-07T05:10:18.395283Z",
+    "entry_count": 71,
+    "observer": "repo_snapshot",
+    "observer_version": "repo_snapshot_v0",
+    "root_identity": {
+      "kind": "repository_working_tree",
+      "name": "DME_Lab"
+    },
+    "scope": {
+      "excluded_dirs": [
+        ".git",
+        "__pycache__",
+        "traces"
+      ],
+      "excluded_globs": [
+        "*.pyc"
+      ],
+      "included": [
+        "working_tree_files"
+      ],
+      "root": "."
+    },
+    "snapshot_id": "repo-snapshot-v0:8d4e34371f14c5d9b3b10590e1846b6cf3e623f90e2c38d7b5fe6c4a2b32e8e1",
+    "source": "repository_filesystem_snapshot"
+  },
+  "derived_state_continuity": {
+    "after_projection_subject_ids": [
+      "rec-000001",
+      "rec-000003",
+      "rec-000005",
+      "rec-000007",
+      "rec-000009",
+      "rec-000011",
+      "rec-000013"
+    ],
+    "after_reconstruction": {
+      "admission_relation_count": 7,
+      "authoritative_record_ids": [
+        "rec-000001",
+        "rec-000002",
+        "rec-000003",
+        "rec-000004",
+        "rec-000005",
+        "rec-000006",
+        "rec-000007",
+        "rec-000008",
+        "rec-000009",
+        "rec-000010",
+        "rec-000011",
+        "rec-000012",
+        "rec-000013",
+        "rec-000014"
+      ],
+      "observation_count": 7,
+      "orphan_admission_count": 0,
+      "type": "admission_relationships_v0"
+    },
+    "before_projection_subject_ids": [
+      "rec-000001",
+      "rec-000003",
+      "rec-000005",
+      "rec-000007",
+      "rec-000009",
+      "rec-000011"
+    ],
+    "before_reconstruction": {
+      "admission_relation_count": 6,
+      "authoritative_record_ids": [
+        "rec-000001",
+        "rec-000002",
+        "rec-000003",
+        "rec-000004",
+        "rec-000005",
+        "rec-000006",
+        "rec-000007",
+        "rec-000008",
+        "rec-000009",
+        "rec-000010",
+        "rec-000011",
+        "rec-000012"
+      ],
+      "observation_count": 6,
+      "orphan_admission_count": 0,
+      "type": "admission_relationships_v0"
+    },
+    "new_projection_appears": true,
+    "new_reconstruction_appears": true,
+    "old_projection_survives": true,
+    "old_reconstruction_survives": true,
+    "projection_not_appended_to_history": true,
+    "projection_rebuild_structural_equal": true,
+    "reconstruction_not_appended_to_history": true,
+    "reconstruction_rebuild_structural_equal": true
+  },
+  "duration_seconds": 0.12780659999407362,
+  "enlarged_history": {
+    "commit_indices": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "integrity": {
+      "failures": [],
+      "ok": true,
+      "record_count": 14
+    },
+    "new_commit_indices_continue_after_12": true,
+    "new_record_ids_continue_bounded_sequence": true,
+    "record_count": 14,
+    "record_ids": [
+      "rec-000001",
+      "rec-000002",
+      "rec-000003",
+      "rec-000004",
+      "rec-000005",
+      "rec-000006",
+      "rec-000007",
+      "rec-000008",
+      "rec-000009",
+      "rec-000010",
+      "rec-000011",
+      "rec-000012",
+      "rec-000013",
+      "rec-000014"
+    ],
+    "record_types": [
+      "observation",
+      "admission",
+      "observation",
+      "admission",
+      "observation",
+      "admission",
+      "observation",
+      "admission",
+      "observation",
+      "admission",
+      "observation",
+      "admission",
+      "observation",
+      "admission"
+    ]
+  },
+  "experiment": "live_ingest_continuation_v0",
+  "historical_non_mutation": {
+    "h0_before_equals_h1_prefix": true,
+    "h0_before_sha256": "7fc8bd2c8bfb03db79f2e086854165778aa59f636f266111c111ad00ec315845",
+    "h1_prefix_sha256": "7fc8bd2c8bfb03db79f2e086854165778aa59f636f266111c111ad00ec315845",
+    "old_commit_indices_unchanged": true,
+    "old_integrity_fields_unchanged": true,
+    "old_record_ids_unchanged": true
+  },
+  "index_pressure": {
+    "appeared": false,
+    "finding": "canonical replay scan remained sufficient for the enlarged bounded history"
+  },
+  "new_records": [
+    {
+      "commit_index": 13,
+      "comparator_identity": null,
+      "comparator_version": null,
+      "decision": null,
+      "decision_basis": null,
+      "record_id": "rec-000013",
+      "record_type": "observation",
+      "source": "repository_filesystem_snapshot",
+      "subject_record_id": null
+    },
+    {
+      "commit_index": 14,
+      "comparator_identity": "ingest_candidate_envelope_minimum",
+      "comparator_version": "ingest_candidate_envelope_minimum_v0",
+      "decision": "admitted",
+      "decision_basis": "comparison valid under comparator",
+      "record_id": "rec-000014",
+      "record_type": "admission",
+      "source": null,
+      "subject_record_id": "rec-000013"
+    }
+  ],
+  "process_discontinuity": {
+    "disk_state_alone_recovered_continuation": true,
+    "exercised": true,
+    "instance_a": "replayed H0 and appended continuation observation/admission records",
+    "instance_b": "fresh JsonlLedger replayed enlarged history from disk",
+    "instance_c": "fresh JsonlLedger replayed enlarged history for second rebuild"
+  },
+  "provenance_navigation_example": {
+    "admission_record_id": "rec-000014",
+    "decision": "admitted",
+    "decision_basis": "comparison valid under comparator",
+    "observation_record_id": "rec-000013",
+    "projection_subject_record_id": "rec-000013",
+    "provenance": {
+      "capture_errors": [],
+      "capture_finished_at": "2026-09-07T05:10:18.502805Z",
+      "capture_started_at": "2026-09-07T05:10:18.395283Z",
+      "experiment": "live_ingest_continuation_v0",
+      "observation_point": "C1_live_filesystem_continuation",
+      "observer_version": "repo_snapshot_v0",
+      "ordering_note": "captured before continuation report write; canonical ledger lives under excluded traces path",
+      "root_identity": {
+        "kind": "repository_working_tree",
+        "name": "DME_Lab"
+      },
+      "scope": {
+        "excluded_dirs": [
+          ".git",
+          "__pycache__",
+          "traces"
+        ],
+        "excluded_globs": [
+          "*.pyc"
+        ],
+        "included": [
+          "working_tree_files"
+        ],
+        "root": "."
+      },
+      "source_observer": "repo_snapshot"
+    },
+    "raw_signal_identity": "repo-snapshot-v0:8d4e34371f14c5d9b3b10590e1846b6cf3e623f90e2c38d7b5fe6c4a2b32e8e1",
+    "raw_signal_type": "repository_snapshot.v0",
+    "reconstruction_type": "admission_relationships_v0",
+    "source": "repository_filesystem_snapshot"
+  },
+  "starting_commit": "417ec22c8af868c62fe2587f24ef28dfa7ce185a",
+  "starting_history": {
+    "commit_indices": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "integrity": {
+      "failures": [],
+      "ok": true,
+      "record_count": 12
+    },
+    "projection_subject_ids": [
+      "rec-000001",
+      "rec-000003",
+      "rec-000005",
+      "rec-000007",
+      "rec-000009",
+      "rec-000011"
+    ],
+    "reconstruction": {
+      "admission_relation_count": 6,
+      "authoritative_record_ids": [
+        "rec-000001",
+        "rec-000002",
+        "rec-000003",
+        "rec-000004",
+        "rec-000005",
+        "rec-000006",
+        "rec-000007",
+        "rec-000008",
+        "rec-000009",
+        "rec-000010",
+        "rec-000011",
+        "rec-000012"
+      ],
+      "observation_count": 6,
+      "orphan_admission_count": 0,
+      "type": "admission_relationships_v0"
+    },
+    "record_count": 12,
+    "record_ids": [
+      "rec-000001",
+      "rec-000002",
+      "rec-000003",
+      "rec-000004",
+      "rec-000005",
+      "rec-000006",
+      "rec-000007",
+      "rec-000008",
+      "rec-000009",
+      "rec-000010",
+      "rec-000011",
+      "rec-000012"
+    ],
+    "records_sha256": "7fc8bd2c8bfb03db79f2e086854165778aa59f636f266111c111ad00ec315845"
+  },
+  "unresolved_pressure": [
+    "continuation used one filesystem observation; Git continuation remains unpressured in this pass",
+    "record integrity remains per-record and does not establish history-level integrity",
+    "history continuity does not establish history completeness or source chronology",
+    "canonical replay remains scan-based; no index exists or appeared necessary",
+    "amendment records, corruption pressure, concurrent writers, and interrupted writes remain deferred"
+  ]
+}
