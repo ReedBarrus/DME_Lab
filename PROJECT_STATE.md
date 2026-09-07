@@ -38,6 +38,8 @@ Ledger continuity pressure completed in `docs/decisions/ledger_continuity_pressu
 
 History extent witness pressure completed in `docs/decisions/history_extent_witness_pressure_v0.md`.
 
+Historical relation pressure completed in `docs/decisions/historical_relation_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -106,7 +108,7 @@ navigation
 
 ## Next Smallest Question
 
-What is the smallest first-class witness conservation boundary, if any, needed beyond incidental experiment traces?
+What is the minimum first-class prefix witness content, if any, needed without creating checkpoint or manifest architecture?
 
 ## Contract Surface Status
 
@@ -160,5 +162,8 @@ What is the smallest first-class witness conservation boundary, if any, needed b
 - a derived experiment trace can witness prior H14 extent without becoming authoritative history
 - temporary tail loss of `rec-000014` remains internally valid while failing witnessed extent correspondence
 - witness disagreement is preserved as mismatch evidence, not corruption proof or repair authority
+- exact extent equality collapses tail loss, extension, and replacement into generic mismatch
+- lower-bound extent separates shrinkage from non-shrinkage but does not distinguish extension from replacement
+- prefix preservation distinguishes loss, control, extension, and replacement within the bounded append-only pressure
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure

@@ -1,0 +1,488 @@
+{
+  "duration_seconds": 0.13344070000312058,
+  "experiment": "historical_relation_pressure_v0",
+  "finding": "extent growth does not establish historical conservation",
+  "git_supplied_historical_evidence": true,
+  "new_persistent_witness_architecture_required": false,
+  "observer_collapse_findings": {
+    "equality": "collapses loss, extension, and replacement into generic mismatch",
+    "lower_bound": "separates shrinkage from non-shrinkage, but collapses extension and replacement",
+    "prefix": "distinguishes loss, control, extension, and replacement within this bounded append-only pressure"
+  },
+  "observer_relation_pattern": "observer relation partitions historical state space; pressure reveals collapsed distinctions; refined relation increases distinguishability",
+  "persistent_architecture_added": [],
+  "prefix_identity_fields": [
+    "record_id",
+    "commit_index",
+    "integrity.algorithm",
+    "integrity.boundary",
+    "integrity.digest"
+  ],
+  "prefix_identity_required_new_information": false,
+  "pressure_matrix": {
+    "H13_tail_loss": {
+      "equality": false,
+      "lower_bound": false,
+      "prefix": false
+    },
+    "H14_control": {
+      "equality": true,
+      "lower_bound": true,
+      "prefix": true
+    },
+    "H16_extension": {
+      "equality": false,
+      "lower_bound": true,
+      "prefix": true
+    },
+    "H16_replacement": {
+      "equality": false,
+      "lower_bound": true,
+      "prefix": false
+    }
+  },
+  "prior_witnessed_history": {
+    "extent": {
+      "record_count": 14,
+      "terminal_commit_index": 14,
+      "terminal_record_id": "rec-000014"
+    },
+    "extent_source": "traces/live_ingest_continuation_v0.json",
+    "extent_source_classification": "derived experiment witness",
+    "prefix_record_count": 14,
+    "prefix_source": "e399720:traces/live_ingest_ledger_v0.jsonl",
+    "prefix_source_classification": "Git analytical comparison evidence, not runtime witness authority"
+  },
+  "specimens": {
+    "H13_tail_loss": {
+      "construction": "copy canonical H14 records 1..13; omit complete rec-000014",
+      "continuity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 13
+      },
+      "derived_state": {
+        "admission_relation_count": 6,
+        "observation_count": 7,
+        "orphan_admission_count": 0,
+        "projection_subject_count": 6,
+        "projection_subject_ids": [
+          "rec-000001",
+          "rec-000003",
+          "rec-000005",
+          "rec-000007",
+          "rec-000009",
+          "rec-000011"
+        ]
+      },
+      "extent": {
+        "record_count": 13,
+        "terminal_commit_index": 13,
+        "terminal_record_id": "rec-000013"
+      },
+      "integrity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 13
+      },
+      "relations": {
+        "equality": {
+          "current_extent": {
+            "record_count": 13,
+            "terminal_commit_index": 13,
+            "terminal_record_id": "rec-000013"
+          },
+          "duration_seconds": 4.499997885432094e-06,
+          "interpretation": "extent_correspondence_only_not_corruption_proof",
+          "mismatches": [
+            {
+              "current": 13,
+              "field": "record_count",
+              "witnessed": 14
+            },
+            {
+              "current": "rec-000013",
+              "field": "terminal_record_id",
+              "witnessed": "rec-000014"
+            },
+            {
+              "current": 13,
+              "field": "terminal_commit_index",
+              "witnessed": 14
+            }
+          ],
+          "ok": false,
+          "witnessed_extent": {
+            "record_count": 14,
+            "terminal_commit_index": 14,
+            "terminal_record_id": "rec-000014"
+          }
+        },
+        "lower_bound": {
+          "details": {
+            "comparisons": {
+              "record_count": {
+                "current": 13,
+                "ok": false,
+                "witnessed": 14
+              },
+              "terminal_commit_index": {
+                "current": 13,
+                "ok": false,
+                "witnessed": 14
+              }
+            },
+            "interpretation": "current extent has not fallen below witnessed extent"
+          },
+          "duration_seconds": 5.900001269765198e-06,
+          "ok": false,
+          "relation": "extent_lower_bound"
+        },
+        "prefix": {
+          "details": {
+            "current_prefix_count_checked": 13,
+            "identity_fields": [
+              "record_id",
+              "commit_index",
+              "integrity.algorithm",
+              "integrity.boundary",
+              "integrity.digest"
+            ],
+            "interpretation": "witnessed history remains structurally conserved as current ordered prefix",
+            "mismatches": [
+              {
+                "current_record_count": 13,
+                "kind": "current_shorter_than_witness",
+                "witnessed_record_count": 14
+              }
+            ],
+            "witnessed_record_count": 14
+          },
+          "duration_seconds": 3.4900003811344504e-05,
+          "ok": false,
+          "relation": "prefix_preservation"
+        }
+      }
+    },
+    "H14_control": {
+      "construction": "current canonical H14 replay records 1..14",
+      "continuity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 14
+      },
+      "derived_state": {
+        "admission_relation_count": 7,
+        "observation_count": 7,
+        "orphan_admission_count": 0,
+        "projection_subject_count": 7,
+        "projection_subject_ids": [
+          "rec-000001",
+          "rec-000003",
+          "rec-000005",
+          "rec-000007",
+          "rec-000009",
+          "rec-000011",
+          "rec-000013"
+        ]
+      },
+      "extent": {
+        "record_count": 14,
+        "terminal_commit_index": 14,
+        "terminal_record_id": "rec-000014"
+      },
+      "integrity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 14
+      },
+      "relations": {
+        "equality": {
+          "current_extent": {
+            "record_count": 14,
+            "terminal_commit_index": 14,
+            "terminal_record_id": "rec-000014"
+          },
+          "duration_seconds": 2.0000006770715117e-06,
+          "interpretation": "extent_correspondence_only_not_corruption_proof",
+          "mismatches": [],
+          "ok": true,
+          "witnessed_extent": {
+            "record_count": 14,
+            "terminal_commit_index": 14,
+            "terminal_record_id": "rec-000014"
+          }
+        },
+        "lower_bound": {
+          "details": {
+            "comparisons": {
+              "record_count": {
+                "current": 14,
+                "ok": true,
+                "witnessed": 14
+              },
+              "terminal_commit_index": {
+                "current": 14,
+                "ok": true,
+                "witnessed": 14
+              }
+            },
+            "interpretation": "current extent has not fallen below witnessed extent"
+          },
+          "duration_seconds": 4.5000051613897085e-06,
+          "ok": true,
+          "relation": "extent_lower_bound"
+        },
+        "prefix": {
+          "details": {
+            "current_prefix_count_checked": 14,
+            "identity_fields": [
+              "record_id",
+              "commit_index",
+              "integrity.algorithm",
+              "integrity.boundary",
+              "integrity.digest"
+            ],
+            "interpretation": "witnessed history remains structurally conserved as current ordered prefix",
+            "mismatches": [],
+            "witnessed_record_count": 14
+          },
+          "duration_seconds": 2.8800001018680632e-05,
+          "ok": true,
+          "relation": "prefix_preservation"
+        }
+      }
+    },
+    "H16_extension": {
+      "construction": "temporary JSONL copy of H14 plus appended rec-000015 observation and rec-000016 admission",
+      "continuity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 16
+      },
+      "derived_state": {
+        "admission_relation_count": 8,
+        "observation_count": 8,
+        "orphan_admission_count": 0,
+        "projection_subject_count": 8,
+        "projection_subject_ids": [
+          "rec-000001",
+          "rec-000003",
+          "rec-000005",
+          "rec-000007",
+          "rec-000009",
+          "rec-000011",
+          "rec-000013",
+          "rec-000015"
+        ]
+      },
+      "extent": {
+        "record_count": 16,
+        "terminal_commit_index": 16,
+        "terminal_record_id": "rec-000016"
+      },
+      "integrity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 16
+      },
+      "relations": {
+        "equality": {
+          "current_extent": {
+            "record_count": 16,
+            "terminal_commit_index": 16,
+            "terminal_record_id": "rec-000016"
+          },
+          "duration_seconds": 3.0000010156072676e-06,
+          "interpretation": "extent_correspondence_only_not_corruption_proof",
+          "mismatches": [
+            {
+              "current": 16,
+              "field": "record_count",
+              "witnessed": 14
+            },
+            {
+              "current": "rec-000016",
+              "field": "terminal_record_id",
+              "witnessed": "rec-000014"
+            },
+            {
+              "current": 16,
+              "field": "terminal_commit_index",
+              "witnessed": 14
+            }
+          ],
+          "ok": false,
+          "witnessed_extent": {
+            "record_count": 14,
+            "terminal_commit_index": 14,
+            "terminal_record_id": "rec-000014"
+          }
+        },
+        "lower_bound": {
+          "details": {
+            "comparisons": {
+              "record_count": {
+                "current": 16,
+                "ok": true,
+                "witnessed": 14
+              },
+              "terminal_commit_index": {
+                "current": 16,
+                "ok": true,
+                "witnessed": 14
+              }
+            },
+            "interpretation": "current extent has not fallen below witnessed extent"
+          },
+          "duration_seconds": 4.2000028770416975e-06,
+          "ok": true,
+          "relation": "extent_lower_bound"
+        },
+        "prefix": {
+          "details": {
+            "current_prefix_count_checked": 14,
+            "identity_fields": [
+              "record_id",
+              "commit_index",
+              "integrity.algorithm",
+              "integrity.boundary",
+              "integrity.digest"
+            ],
+            "interpretation": "witnessed history remains structurally conserved as current ordered prefix",
+            "mismatches": [],
+            "witnessed_record_count": 14
+          },
+          "duration_seconds": 3.029999788850546e-05,
+          "ok": true,
+          "relation": "prefix_preservation"
+        }
+      }
+    },
+    "H16_replacement": {
+      "construction": "H16 extension with record 1 record_id changed to rec-999001 and digest recomputed",
+      "continuity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 16
+      },
+      "derived_state": {
+        "admission_relation_count": 7,
+        "observation_count": 8,
+        "orphan_admission_count": 1,
+        "projection_subject_count": 7,
+        "projection_subject_ids": [
+          "rec-000003",
+          "rec-000005",
+          "rec-000007",
+          "rec-000009",
+          "rec-000011",
+          "rec-000013",
+          "rec-000015"
+        ]
+      },
+      "extent": {
+        "record_count": 16,
+        "terminal_commit_index": 16,
+        "terminal_record_id": "rec-000016"
+      },
+      "integrity": {
+        "failures": [],
+        "ok": true,
+        "record_count": 16
+      },
+      "relations": {
+        "equality": {
+          "current_extent": {
+            "record_count": 16,
+            "terminal_commit_index": 16,
+            "terminal_record_id": "rec-000016"
+          },
+          "duration_seconds": 2.2000021999701858e-06,
+          "interpretation": "extent_correspondence_only_not_corruption_proof",
+          "mismatches": [
+            {
+              "current": 16,
+              "field": "record_count",
+              "witnessed": 14
+            },
+            {
+              "current": "rec-000016",
+              "field": "terminal_record_id",
+              "witnessed": "rec-000014"
+            },
+            {
+              "current": 16,
+              "field": "terminal_commit_index",
+              "witnessed": 14
+            }
+          ],
+          "ok": false,
+          "witnessed_extent": {
+            "record_count": 14,
+            "terminal_commit_index": 14,
+            "terminal_record_id": "rec-000014"
+          }
+        },
+        "lower_bound": {
+          "details": {
+            "comparisons": {
+              "record_count": {
+                "current": 16,
+                "ok": true,
+                "witnessed": 14
+              },
+              "terminal_commit_index": {
+                "current": 16,
+                "ok": true,
+                "witnessed": 14
+              }
+            },
+            "interpretation": "current extent has not fallen below witnessed extent"
+          },
+          "duration_seconds": 3.5000048228539526e-06,
+          "ok": true,
+          "relation": "extent_lower_bound"
+        },
+        "prefix": {
+          "details": {
+            "current_prefix_count_checked": 14,
+            "identity_fields": [
+              "record_id",
+              "commit_index",
+              "integrity.algorithm",
+              "integrity.boundary",
+              "integrity.digest"
+            ],
+            "interpretation": "witnessed history remains structurally conserved as current ordered prefix",
+            "mismatches": [
+              {
+                "current": {
+                  "commit_index": 1,
+                  "integrity_algorithm": "sha256",
+                  "integrity_boundary": "canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators",
+                  "integrity_digest": "eef4260c879d98501a14ecc22f9820e7eefcb462828acece642ad64930e47f71",
+                  "record_id": "rec-999001"
+                },
+                "position": 1,
+                "witnessed": {
+                  "commit_index": 1,
+                  "integrity_algorithm": "sha256",
+                  "integrity_boundary": "canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators",
+                  "integrity_digest": "b4436f03a188f2fe80a7eb07f83e12be59f95a43efa89dc926e0afb0e0e290d0",
+                  "record_id": "rec-000001"
+                }
+              }
+            ],
+            "witnessed_record_count": 14
+          },
+          "duration_seconds": 2.7800000680144876e-05,
+          "ok": false,
+          "relation": "prefix_preservation"
+        }
+      }
+    }
+  },
+  "starting_commit": "68d9a2761e9500800d798b23c60dd165453230b4",
+  "unresolved_horizon": "minimum first-class prefix witness content without creating checkpoint or manifest architecture"
+}

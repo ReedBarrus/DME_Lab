@@ -3,8 +3,12 @@
 from .continuity import ContinuityVerificationResult, verify_continuity
 from .correspondence import (
     HistoryExtentComparisonResult,
+    HistoryRelationResult,
+    compare_extent_lower_bound,
     compare_history_extent,
+    compare_prefix_preservation,
     history_extent,
+    prefix_identity,
 )
 from .jsonl import (
     HASH_BOUNDARY,
@@ -37,6 +41,7 @@ __all__ = [
     "CANONICAL_LIVE_INGEST_LEDGER_PATH",
     "ContinuityVerificationResult",
     "HistoryExtentComparisonResult",
+    "HistoryRelationResult",
     "SCHEMA_PATH",
     "SchemaError",
     "SchemaValidationResult",
@@ -44,12 +49,15 @@ __all__ = [
     "amendment_pair",
     "canonical_json",
     "canonical_live_ingest_ledger",
+    "compare_extent_lower_bound",
     "compare_history_extent",
+    "compare_prefix_preservation",
     "history_extent",
     "identity_collision_envelopes",
     "missingness_envelopes",
     "ordering_conflict_envelopes",
     "preservation_envelope",
+    "prefix_identity",
     "record_digest",
     "replay_canonical_live_ingest",
     "load_schema",
