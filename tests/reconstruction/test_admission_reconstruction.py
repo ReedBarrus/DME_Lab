@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from copy import deepcopy
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
@@ -11,7 +12,11 @@ from src.ingest import (
     append_observation,
 )
 from src.ledger import JsonlLedger
-from src.reconstruction import derive_admitted_projection, reconstruct_admission_relationships
+from src.reconstruction import (
+    derive_admitted_projection,
+    derive_non_admitted_decision_states,
+    reconstruct_admission_relationships,
+)
 from tests.ingest.test_admission import filesystem_candidate, git_candidate
 
 
@@ -110,6 +115,70 @@ class AdmissionReconstructionTest(unittest.TestCase):
         self.assertNotEqual(reconstruction, replayed)
         self.assertEqual(reconstruction["reconstruction_type"], "admission_relationships_v0")
         self.assertNotIn("integrity", reconstruction["observations"][0])
+
+    def test_non_admitted_decision_states_expose_rejected_and_unresolved(self) -> None:
+        reconstruction = reconstruct_admission_relationships(replay_pressure_records())
+        projection = derive_admitted_projection(reconstruction)
+
+        companion = derive_non_admitted_decision_states(reconstruction, projection)
+
+        self.assertEqual(
+            companion,
+            [
+                {
+                    "subject_record_id": "rec-000001",
+                    "non_admitted_decision_states": ["rejected"],
+                },
+                {
+                    "subject_record_id": "rec-000004",
+                    "non_admitted_decision_states": ["unresolved"],
+                },
+            ],
+        )
+
+    def test_decision_states_companion_does_not_expand_projection(self) -> None:
+        reconstruction = reconstruct_admission_relationships(replay_pressure_records())
+        projection = derive_admitted_projection(reconstruction)
+
+        companion = derive_non_admitted_decision_states(reconstruction, projection)
+
+        self.assertEqual(
+            [item["subject_record_id"] for item in companion],
+            [item["subject_record_id"] for item in projection],
+        )
+        self.assertNotIn("rec-000006", [item["subject_record_id"] for item in companion])
+
+    def test_decision_states_companion_is_deterministic_and_read_only(self) -> None:
+        reconstruction = reconstruct_admission_relationships(replay_pressure_records())
+        projection = derive_admitted_projection(reconstruction)
+        reconstruction_before = deepcopy(reconstruction)
+        projection_before = deepcopy(projection)
+
+        first = derive_non_admitted_decision_states(reconstruction, projection)
+        second = derive_non_admitted_decision_states(reconstruction, projection)
+
+        self.assertEqual(first, second)
+        self.assertEqual(reconstruction, reconstruction_before)
+        self.assertEqual(projection, projection_before)
+
+    def test_decision_states_subject_id_navigates_to_full_evidence(self) -> None:
+        reconstruction = reconstruct_admission_relationships(replay_pressure_records())
+        projection = derive_admitted_projection(reconstruction)
+        companion = derive_non_admitted_decision_states(reconstruction, projection)
+        by_id = {
+            item["observation_record_id"]: item
+            for item in reconstruction["observations"]
+        }
+
+        for item in companion:
+            recovered = by_id[item["subject_record_id"]]["admissions"]
+            self.assertTrue(recovered)
+            self.assertTrue(
+                all(
+                    admission["subject_record_id"] == item["subject_record_id"]
+                    for admission in recovered
+                )
+            )
 
 
 if __name__ == "__main__":

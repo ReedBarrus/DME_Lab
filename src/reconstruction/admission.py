@@ -94,3 +94,34 @@ def derive_admitted_projection(reconstruction: dict[str, Any]) -> list[dict[str,
             }
         )
     return projection
+
+
+def derive_non_admitted_decision_states(
+    reconstruction: dict[str, Any],
+    admitted_projection: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Expose rejected/unresolved evidence beside existing projection members."""
+    observations_by_id = {
+        observation["observation_record_id"]: observation
+        for observation in reconstruction["observations"]
+    }
+    companion = []
+    for projected in admitted_projection:
+        subject_record_id = projected["subject_record_id"]
+        observation = observations_by_id[subject_record_id]
+        present = {
+            admission["decision"]
+            for admission in observation["admissions"]
+            if admission["decision"] != "admitted"
+        }
+        companion.append(
+            {
+                "subject_record_id": subject_record_id,
+                "non_admitted_decision_states": [
+                    decision
+                    for decision in ("rejected", "unresolved")
+                    if decision in present
+                ],
+            }
+        )
+    return companion

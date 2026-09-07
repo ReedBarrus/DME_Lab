@@ -60,6 +60,8 @@ Tie-order invariance pressure completed in `docs/decisions/tie_order_invariance_
 
 First bounded vertical composition pressure completed in `docs/decisions/vertical_composition_pressure_v0.md`.
 
+Admission disagreement exposure pressure completed in `docs/decisions/admission_disagreement_exposure_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -128,8 +130,8 @@ navigation
 
 ## Next Smallest Question
 
-What is the smallest read-only projection companion that exposes admission
-disagreement without selecting comparator authority or resolving conflict?
+Does a concrete read-only consumer require admission multiplicity or direct
+admission-record identity beyond unique non-admitted decision states?
 
 ## Contract Surface Status
 
@@ -137,6 +139,7 @@ disagreement without selecting comparator authority or resolving conflict?
 - implemented within bounded v0 scope: ingest admission classification
 - implemented within bounded v0 scope: admission relationship reconstruction
 - implemented within bounded v0 scope: admitted projection
+- implemented within bounded v0 scope: read-only non-admitted decision-state companion
 - pressure-tested within synthetic v0 scope, with canonical bounded live evidence: append ledger, raw replay
 - implemented within bounded repository specimen: capture adapter
 - deferred: general OS and Windows capture
@@ -258,6 +261,15 @@ disagreement without selecting comparator authority or resolving conflict?
 - Chart 10 records five bounded composition scenarios across stable epistemic coordinates without becoming a generalized state model
 - D-0041 conserves projection membership as distinct from admission resolution
 - no tested contract made an unjustified certainty claim; composition exposed the unsupported inference from projection membership to uncontested admission
-- the next pressure is the smallest read-only conflict exposure beside projection membership, without comparator authority or conflict resolution
+- admission disagreement exposure pressure used six deterministic temporary-ledger subjects spanning admitted-only, admitted plus rejected, admitted plus unresolved, mixed, duplicate admitted, and rejected-only exclusion
+- all five subjects with at least one admitted decision retained exactly the current any-admitted projection membership; the rejected-only control remained excluded
+- C0 projection-only exposed no disagreement and C1 generic disagreement collapsed rejected, unresolved, and mixed evidence
+- C2 unique non-admitted decision states was the smallest sufficient tested companion because projection membership already supplies admitted while subject_record_id preserves navigation to full reconstruction evidence
+- C3 counts, C4 grouped admission IDs, and C5 full evidence preserved additional multiplicity or identity detail not required by the declared question
+- the selected pure derive_non_admitted_decision_states companion was promoted beside admitted projection without changing projection membership, choosing comparator authority, resolving conflict, or writing authoritative state
+- Chart 11 records the candidate representation by disagreement-exposure criterion surface
+- D-0041 was sufficient for the result; no distinction was added or amended
+- multiplicity and direct admission-record identity remain outside the companion until concrete consumer pressure requires them
+- the next pressure should ask whether a concrete read-only consumer requires either currently omitted dimension
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure

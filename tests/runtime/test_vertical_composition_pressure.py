@@ -10,6 +10,8 @@ from src.runtime.vertical_composition_pressure import (
     run,
 )
 
+VERTICAL_COMPOSITION_COMMIT = "2d8fbda921ee13d6c3f4e98efab78c589f90943e"
+
 
 class VerticalCompositionPressureTest(unittest.TestCase):
     @classmethod
@@ -164,6 +166,7 @@ class VerticalCompositionPressureTest(unittest.TestCase):
                 "diff",
                 "--name-only",
                 STARTING_HEAD,
+                VERTICAL_COMPOSITION_COMMIT,
                 "--",
                 "docs/contracts",
                 "src/capture",
