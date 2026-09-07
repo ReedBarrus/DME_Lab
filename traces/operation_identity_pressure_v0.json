@@ -1,0 +1,553 @@
+{
+  "H14_prefix_equality_ambiguity": {
+    "distinguishes_candidates": false,
+    "equality_result": true,
+    "finding": "agreement on H14 control does not identify prefix rather than equality",
+    "prefix_result": true
+  },
+  "H16_extension_discrimination": {
+    "distinguishes_candidates": true,
+    "equality_result": false,
+    "finding": "H14 witnessed history is a prefix of H16 extension but is not equal to it",
+    "prefix_result": true
+  },
+  "architecture_added": [],
+  "behavioral_cases": {
+    "B0_H14_control_agreement": {
+      "candidate_count": 14,
+      "candidate_outputs": {
+        "alternate_iterative_prefix_v1": true,
+        "sequence_equality_v1": true
+      },
+      "domain": "witnessed H14 relation to candidate H14 control",
+      "expected": true,
+      "witness_count": 14
+    },
+    "B1_H16_extension_discriminator": {
+      "candidate_count": 16,
+      "candidate_outputs": {
+        "alternate_iterative_prefix_v1": true,
+        "sequence_equality_v1": false
+      },
+      "domain": "witnessed H14 relation to candidate H16 legitimate extension",
+      "expected": true,
+      "witness_count": 14
+    }
+  },
+  "behavioral_identity_finding": "bounded discriminating behavior, not source identity, carried operation equivalence in this pressure",
+  "behavioral_witness_compression": {
+    "candidate_set_dependency": true,
+    "compressed_to": "one actual-domain H14-to-H16-extension expected result",
+    "finding": "one discriminating case selected the equivalent prefix realization among two tested alternatives",
+    "full_implementation_identity_required": false,
+    "preserves_tested_operation_discrimination": true,
+    "supported": true
+  },
+  "changed_implementation_result": {
+    "historical_consequence_changed": true,
+    "implementation_path": "src.runtime.operation_identity_pressure._sequence_equality",
+    "outcomes": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "MISMATCHED"
+    },
+    "regime": "E3_same_descriptor_equality_implementation",
+    "same_descriptor_as_control": true
+  },
+  "chart_5_back_pressure": {
+    "operation_binding_interpretation_refined": true,
+    "prior_result_invalidated": false,
+    "refinement": "Chart 5 semantic binding splits into operation descriptor and bounded behavioral identity"
+  },
+  "chart_6_status": {
+    "coordinates": "operation descriptor/evaluator regime x historical specimen",
+    "earned": true,
+    "stable_coordinate_meaning": "each row fixes one relation realization or operation-identity representation"
+  },
+  "chart_fold_pressure": {
+    "evidence": "Chart 6 splits Chart 5 operation binding into descriptor, implementation, and bounded behavior",
+    "folding_machinery_added": false,
+    "second_fold_earned": true
+  },
+  "cross_chart_correspondence": {
+    "outcomes_invariant": true,
+    "path": "R6 <-> S9 <-> V2a <-> E0/E2/E4/E6",
+    "transition_map_implemented": false
+  },
+  "distinctions": {
+    "added": [
+      "D-0037 implementation_identity != operation_identity"
+    ],
+    "amended": [],
+    "not_registered": [
+      "behavioral_agreement_on_one_case != behavioral_equivalence",
+      "descriptor_survival != operation_recoverability"
+    ]
+  },
+  "duration_seconds": 0.09822149999672547,
+  "equivalent_alternate_implementation_result": {
+    "behaviorally_equivalent_under_current_bounded_pressure": true,
+    "implementation_path": "src.runtime.operation_identity_pressure._prefix_alternate_iterative",
+    "outcomes": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "RECOVERED"
+    },
+    "regime": "E2_explicit_equivalent_prefix_implementation",
+    "universal_equivalence_claimed": false
+  },
+  "evaluator_regimes": {
+    "E0_current_evaluator_control": {
+      "behavioral_witness": [],
+      "descriptor": {
+        "kind": "left_sequence_prefix"
+      },
+      "descriptor_identity": "sha256:65f14ad0d47de9075fcbde79af6408bfbba6494d6a19c441622f68531975c096",
+      "first_unresolved_dependency": null,
+      "implementation_identity": "current_chart_5_prefix",
+      "implementation_path": "src.runtime.vocabulary_identity_pressure._evaluate_relation",
+      "mode": "current",
+      "outcomes": {
+        "H13_tail_loss": "MISMATCHED",
+        "H14_control": "RECOVERED",
+        "H16_ID_replacement": "MISMATCHED",
+        "H16_content_replacement": "MISMATCHED",
+        "H16_extension": "RECOVERED"
+      },
+      "role": "current Chart 5 relation evaluator control"
+    },
+    "E1_descriptor_only_implementation_absent": {
+      "behavioral_witness": [],
+      "descriptor": {
+        "kind": "left_sequence_prefix"
+      },
+      "descriptor_identity": "sha256:65f14ad0d47de9075fcbde79af6408bfbba6494d6a19c441622f68531975c096",
+      "first_unresolved_dependency": "operation implementation unavailable",
+      "implementation_identity": null,
+      "implementation_path": null,
+      "mode": "absent",
+      "outcomes": {
+        "H13_tail_loss": "UNRESOLVED",
+        "H14_control": "UNRESOLVED",
+        "H16_ID_replacement": "UNRESOLVED",
+        "H16_content_replacement": "UNRESOLVED",
+        "H16_extension": "UNRESOLVED"
+      },
+      "role": "descriptor survives without recoverable evaluator meaning"
+    },
+    "E2_explicit_equivalent_prefix_implementation": {
+      "behavioral_witness": [],
+      "descriptor": {
+        "kind": "left_sequence_prefix"
+      },
+      "descriptor_identity": "sha256:65f14ad0d47de9075fcbde79af6408bfbba6494d6a19c441622f68531975c096",
+      "first_unresolved_dependency": null,
+      "implementation_identity": "alternate_iterative_prefix_v1",
+      "implementation_path": "src.runtime.operation_identity_pressure._prefix_alternate_iterative",
+      "mode": "direct",
+      "outcomes": {
+        "H13_tail_loss": "MISMATCHED",
+        "H14_control": "RECOVERED",
+        "H16_ID_replacement": "MISMATCHED",
+        "H16_content_replacement": "MISMATCHED",
+        "H16_extension": "RECOVERED"
+      },
+      "role": "separately implemented iterative prefix behavior"
+    },
+    "E3_same_descriptor_equality_implementation": {
+      "behavioral_witness": [],
+      "descriptor": {
+        "kind": "left_sequence_prefix"
+      },
+      "descriptor_identity": "sha256:65f14ad0d47de9075fcbde79af6408bfbba6494d6a19c441622f68531975c096",
+      "first_unresolved_dependency": null,
+      "implementation_identity": "sequence_equality_v1",
+      "implementation_path": "src.runtime.operation_identity_pressure._sequence_equality",
+      "mode": "direct",
+      "outcomes": {
+        "H13_tail_loss": "MISMATCHED",
+        "H14_control": "RECOVERED",
+        "H16_ID_replacement": "MISMATCHED",
+        "H16_content_replacement": "MISMATCHED",
+        "H16_extension": "MISMATCHED"
+      },
+      "role": "same descriptor realized as sequence equality"
+    },
+    "E4_renamed_descriptor_equivalent_implementation": {
+      "behavioral_witness": [],
+      "descriptor": {
+        "kind": "relation_q"
+      },
+      "descriptor_identity": "sha256:bdcb2289720cae3bc0dfc499274848b040aec0297ec286aaeff0a65ddc8f6102",
+      "first_unresolved_dependency": null,
+      "implementation_identity": "alternate_iterative_prefix_v1",
+      "implementation_path": "src.runtime.operation_identity_pressure._prefix_alternate_iterative",
+      "mode": "direct",
+      "outcomes": {
+        "H13_tail_loss": "MISMATCHED",
+        "H14_control": "RECOVERED",
+        "H16_ID_replacement": "MISMATCHED",
+        "H16_content_replacement": "MISMATCHED",
+        "H16_extension": "RECOVERED"
+      },
+      "role": "renamed descriptor with iterative prefix realization"
+    },
+    "E5_partial_behavioral_specification": {
+      "behavioral_witness": [],
+      "descriptor": {
+        "accepts_equal_sequences": true
+      },
+      "descriptor_identity": "sha256:e8ae5ff5574f53b2ae66a2125c305067106345fbbf42efe95e5ae977506dba6a",
+      "first_unresolved_dependency": "extension behavior unspecified",
+      "implementation_identity": null,
+      "implementation_path": null,
+      "mode": "partial",
+      "outcomes": {
+        "H13_tail_loss": "UNRESOLVED",
+        "H14_control": "UNRESOLVED",
+        "H16_ID_replacement": "UNRESOLVED",
+        "H16_content_replacement": "UNRESOLVED",
+        "H16_extension": "UNRESOLVED"
+      },
+      "role": "reflexive property stated without extension behavior"
+    },
+    "E6_minimal_discriminating_behavioral_witness": {
+      "behavioral_witness": [
+        {
+          "case_id": "B1_H16_extension_discriminator",
+          "expected": true
+        }
+      ],
+      "descriptor": {
+        "kind": "behaviorally_selected_relation"
+      },
+      "descriptor_identity": "sha256:067db2d6ab5690e4b204e53cab8feb50ced2bafd4b32ad20f41b6f370b8dca8f",
+      "first_unresolved_dependency": null,
+      "implementation_identity": "alternate_iterative_prefix_v1",
+      "implementation_path": "src.runtime.operation_identity_pressure._prefix_alternate_iterative",
+      "mode": "behavioral_selection",
+      "outcomes": {
+        "H13_tail_loss": "MISMATCHED",
+        "H14_control": "RECOVERED",
+        "H16_ID_replacement": "MISMATCHED",
+        "H16_content_replacement": "MISMATCHED",
+        "H16_extension": "RECOVERED"
+      },
+      "role": "one actual-domain case selects among tested realizations"
+    },
+    "E7_misleading_single_case_witness": {
+      "behavioral_witness": [
+        {
+          "case_id": "B0_H14_control_agreement",
+          "expected": true
+        }
+      ],
+      "descriptor": {
+        "kind": "behaviorally_selected_relation"
+      },
+      "descriptor_identity": "sha256:067db2d6ab5690e4b204e53cab8feb50ced2bafd4b32ad20f41b6f370b8dca8f",
+      "first_unresolved_dependency": "behavioral witness matched 2 candidate realizations",
+      "implementation_identity": null,
+      "implementation_path": null,
+      "mode": "behavioral_selection",
+      "outcomes": {
+        "H13_tail_loss": "UNRESOLVED",
+        "H14_control": "UNRESOLVED",
+        "H16_ID_replacement": "UNRESOLVED",
+        "H16_content_replacement": "UNRESOLVED",
+        "H16_extension": "UNRESOLVED"
+      },
+      "role": "one equal-history case agrees with both tested realizations"
+    }
+  },
+  "experiment": "operation_identity_pressure_v0",
+  "finding": "different implementations with conserved bounded relation behavior preserve historical consequences",
+  "first_unresolved_operation_dependency": {
+    "E1_descriptor_only_implementation_absent": "operation implementation unavailable",
+    "E5_partial_behavioral_specification": "extension behavior unspecified",
+    "E7_misleading_single_case_witness": "behavioral witness matched 2 candidate realizations"
+  },
+  "first_wrong_implementation_mismatch": {
+    "H13_tail_loss": {
+      "candidate_count": 13,
+      "kind": "relation_result",
+      "witness_count": 14
+    },
+    "H16_ID_replacement": {
+      "candidate_count": 16,
+      "kind": "relation_result",
+      "witness_count": 14
+    },
+    "H16_content_replacement": {
+      "candidate_count": 16,
+      "kind": "relation_result",
+      "witness_count": 14
+    },
+    "H16_extension": {
+      "candidate_count": 16,
+      "kind": "relation_result",
+      "witness_count": 14
+    }
+  },
+  "fixed_surfaces": {
+    "S9_declaration": {
+      "definition": {
+        "algorithm": {
+          "name": "sha256"
+        },
+        "boundary": {
+          "fields": [
+            "record_id",
+            "commit_index",
+            "envelope"
+          ]
+        },
+        "canonicalization": {
+          "encoding": "utf-8",
+          "ensure_ascii": false,
+          "format": "json",
+          "separators": [
+            ",",
+            ":"
+          ],
+          "sort_keys": true
+        },
+        "ordering": {
+          "direction": "ascending",
+          "field": "commit_index"
+        },
+        "relation": {
+          "type": "prefix"
+        }
+      },
+      "identity": "sha256:887a849a8a766c69745ee66051261798a2af0f077267a521f371144aff48128d"
+    },
+    "V2a_mapping_only_vocabulary": {
+      "definition": {
+        "algorithm_tokens": {
+          "sha256": {
+            "digest_bits": 256,
+            "family": "sha-2"
+          }
+        },
+        "encoding_tokens": {
+          "utf-8": {
+            "unicode_encoding": "utf-8"
+          }
+        },
+        "field_tokens": {
+          "commit_index": {
+            "boundary_key": "commit_index",
+            "source_path": [
+              "commit_index"
+            ]
+          },
+          "envelope": {
+            "boundary_key": "envelope",
+            "source_path": [
+              "envelope"
+            ]
+          },
+          "record_id": {
+            "boundary_key": "record_id",
+            "source_path": [
+              "record_id"
+            ]
+          }
+        },
+        "ordering_tokens": {
+          "ascending": {
+            "reverse": false
+          }
+        },
+        "relation_tokens": {
+          "prefix": {
+            "kind": "left_sequence_prefix"
+          }
+        },
+        "serialization_tokens": {
+          "json": {
+            "data_model": "json",
+            "output": "text"
+          }
+        }
+      },
+      "identity": "sha256:6bdf24ca17a7b77faa6b68176f00ebf169303d090707c01968977904eccf64d8",
+      "mapping_count": 8
+    },
+    "carrier": {
+      "definition": "ordered integrity.digest values from witnessed H14 records",
+      "digest_count": 14,
+      "identity": "sha256:09f0f5f3402b1f187b3b09e4417f8e12010b22fe0968aeb2841a0b598553c200"
+    },
+    "historical_specimens": {
+      "H13_tail_loss": {
+        "construction": "copy canonical H14 records 1..13; omit complete rec-000014",
+        "record_count": 13
+      },
+      "H14_control": {
+        "construction": "current canonical H14 replay records 1..14",
+        "record_count": 14
+      },
+      "H16_ID_replacement": {
+        "construction": "H16 extension with record 1 record_id changed to rec-999001 and digest recomputed",
+        "record_count": 16
+      },
+      "H16_content_replacement": {
+        "construction": "H16 extension with record 1 envelope.provenance.observation_point changed and digest recomputed",
+        "record_count": 16
+      },
+      "H16_extension": {
+        "construction": "temporary JSONL copy of H14 plus appended rec-000015 observation and rec-000016 admission",
+        "record_count": 16
+      }
+    }
+  },
+  "implementation_identity_finding": "different current and iterative implementations preserved the same bounded historical consequences",
+  "matrix": {
+    "E0_current_evaluator_control": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "RECOVERED"
+    },
+    "E1_descriptor_only_implementation_absent": {
+      "H13_tail_loss": "UNRESOLVED",
+      "H14_control": "UNRESOLVED",
+      "H16_ID_replacement": "UNRESOLVED",
+      "H16_content_replacement": "UNRESOLVED",
+      "H16_extension": "UNRESOLVED"
+    },
+    "E2_explicit_equivalent_prefix_implementation": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "RECOVERED"
+    },
+    "E3_same_descriptor_equality_implementation": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "MISMATCHED"
+    },
+    "E4_renamed_descriptor_equivalent_implementation": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "RECOVERED"
+    },
+    "E5_partial_behavioral_specification": {
+      "H13_tail_loss": "UNRESOLVED",
+      "H14_control": "UNRESOLVED",
+      "H16_ID_replacement": "UNRESOLVED",
+      "H16_content_replacement": "UNRESOLVED",
+      "H16_extension": "UNRESOLVED"
+    },
+    "E6_minimal_discriminating_behavioral_witness": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "RECOVERED"
+    },
+    "E7_misleading_single_case_witness": {
+      "H13_tail_loss": "UNRESOLVED",
+      "H14_control": "UNRESOLVED",
+      "H16_ID_replacement": "UNRESOLVED",
+      "H16_content_replacement": "UNRESOLVED",
+      "H16_extension": "UNRESOLVED"
+    }
+  },
+  "nearest_insufficient_operation_identity_representation": {
+    "case_count": 1,
+    "failure": "both tested realizations satisfy the witness",
+    "regime": "E7_misleading_single_case_witness",
+    "representation": {
+      "behavioral_case_ids": [
+        "B0_H14_control_agreement"
+      ],
+      "expected_results": [
+        true
+      ]
+    }
+  },
+  "next_smallest_pressure_frontier": "test the one-case behavioral witness against one additional executable relation realization",
+  "operation_descriptor_under_pressure": {
+    "Chart_5_descriptor": {
+      "kind": "left_sequence_prefix"
+    },
+    "declaration_token": "prefix",
+    "operation_orientation": "witnessed digest sequence is a prefix of candidate digest sequence"
+  },
+  "outcome_counts": {
+    "MISMATCHED": 16,
+    "RECOVERED": 9,
+    "UNRESOLVED": 15
+  },
+  "outcome_semantics": {
+    "MISMATCHED": "executable evaluator realization produces an incompatible historical relation",
+    "RECOVERED": "evaluator realization supports the intended historical relation",
+    "UNRESOLVED": "available operation identity cannot select a justified realization"
+  },
+  "proto_scheduler_relevance": {
+    "basis": "operation recognition survived lexical and implementation change under bounded behavior",
+    "grounding_strengthened": true,
+    "missing": [
+      "preconditions",
+      "effects",
+      "admissibility"
+    ],
+    "schedulable_primitive_established": false,
+    "scheduler_added": false
+  },
+  "remaining_ambient_interpretation": [
+    "behavioral-witness case format and expected-result meaning",
+    "candidate realization set",
+    "execution of candidate realizations against behavioral cases",
+    "selection rule requiring one matching realization",
+    "digest-sequence and boolean semantics",
+    "RECOVERED, MISMATCHED, and UNRESOLVED classification"
+  ],
+  "renamed_descriptor_result": {
+    "descriptor": {
+      "kind": "relation_q"
+    },
+    "historical_consequence_preserved": true,
+    "implementation_path": "src.runtime.operation_identity_pressure._prefix_alternate_iterative",
+    "outcomes": {
+      "H13_tail_loss": "MISMATCHED",
+      "H14_control": "RECOVERED",
+      "H16_ID_replacement": "MISMATCHED",
+      "H16_content_replacement": "MISMATCHED",
+      "H16_extension": "RECOVERED"
+    },
+    "regime": "E4_renamed_descriptor_equivalent_implementation"
+  },
+  "smallest_sufficient_tested_operation_identity_representation": {
+    "bounded_scope": "sufficient only to select between the two tested relation realizations",
+    "candidate_realizations": [
+      "alternate_iterative_prefix_v1",
+      "sequence_equality_v1"
+    ],
+    "case_count": 1,
+    "regime": "E6_minimal_discriminating_behavioral_witness",
+    "representation": {
+      "behavioral_case_ids": [
+        "B1_H16_extension_discriminator"
+      ],
+      "expected_results": [
+        true
+      ]
+    }
+  },
+  "starting_commit": "33adfa2b82ac546daf677b208c92eb083c6a90d7",
+  "strongest_unresolved_horizon": "the one-case witness is sufficient only against the two tested relation realizations"
+}

@@ -48,6 +48,8 @@ Declarative commitment semantics pressure completed in `docs/decisions/declarati
 
 Vocabulary identity pressure completed in `docs/decisions/vocabulary_identity_pressure_v0.md`.
 
+Operation identity pressure completed in `docs/decisions/operation_identity_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -116,8 +118,8 @@ navigation
 
 ## Next Smallest Question
 
-What minimum identity must an operation descriptor preserve across evaluator-version
-change for bounded historical recovery to remain invariant without persistence?
+Does the one-case behavioral witness still identify prefix behavior when one
+additional executable relation realization enters the bounded candidate set?
 
 ## Contract Surface Status
 
@@ -197,5 +199,14 @@ change for bounded historical recovery to remain invariant without persistence?
 - Chart 5 refines Chart 4 necessity into semantic role, token spelling, and recoverable binding without invalidating Chart 4
 - the resulting axis split supports chart-fold pressure, but no folding or transition machinery exists
 - operation-descriptor execution and provenance remain ambient in the local evaluator
+- Chart 6 held the H14 carrier, S9 declaration, V2a mapping, and historical specimens fixed while changing prefix realizations
+- a separately implemented iterative prefix path preserved the R6/S9/V2a historical outcomes
+- the same descriptor realized as equality changed the legitimate H16 extension outcome
+- H14 control alone could not distinguish prefix from equality; H16 extension did
+- one H14-to-H16-extension behavioral case selected prefix among the two tested realizations
+- implementation identity was unnecessary when bounded discriminating behavior was conserved
+- Chart 6 refines Chart 5 operation binding into descriptor, implementation, and bounded behavior without invalidating Chart 5
+- the second axis split earns chart-fold pressure without adding folding machinery
+- proto-scheduler grounding strengthened, but preconditions, effects, and admissibility remain absent
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure
