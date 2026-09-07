@@ -30,6 +30,8 @@ Bounded v0 reconstruction pressure completed in `docs/decisions/reconstruction_p
 
 First bounded live vertical-chain probe completed in `docs/decisions/live_vertical_probe_v0.md`.
 
+Canonical bounded live ingest ledger extraction completed in `docs/decisions/live_ingest_ledger_extraction_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -91,14 +93,14 @@ navigation
 
 - no general OS raw observations captured
 - no generalized live ingest admission rules
-- no canonical live ingest envelope ledger
+- no generalized live ingest envelope ledger
 - JSONL append ledger pressure-tested mainly against synthetic envelopes, with bounded temporary live candidate-envelope handshakes
 - raw replay validated only in canonical commit order
 - no generalized projection exposed from evidence
 
 ## Next Smallest Question
 
-What is the smallest canonical live ingest ledger boundary that preserves admitted, rejected, and unresolved evidence without becoming generalized policy?
+What is the smallest explicit amendment record needed for canonical live ingest history without introducing generalized amendment policy?
 
 ## Contract Surface Status
 
@@ -106,7 +108,7 @@ What is the smallest canonical live ingest ledger boundary that preserves admitt
 - implemented within bounded v0 scope: ingest admission classification
 - implemented within bounded v0 scope: admission relationship reconstruction
 - implemented within bounded v0 scope: admitted projection
-- pressure-tested within synthetic v0 scope: append ledger, raw replay
+- pressure-tested within synthetic v0 scope, with canonical bounded live evidence: append ledger, raw replay
 - implemented within bounded repository specimen: capture adapter
 - deferred: general OS and Windows capture
 
@@ -142,4 +144,6 @@ What is the smallest canonical live ingest ledger boundary that preserves admitt
 - rebuilding reconstruction and admitted projection from the same replayed records is structurally stable in v0 pressure
 - first live vertical probe preserved filesystem and Git observations through admission, replay, reconstruction, admitted projection, and provenance navigation
 - capture sequence and ledger commit order are distinct; ledger commit_index records handling order, not source chronology
+- canonical bounded live ingest history now lives in `traces/live_ingest_ledger_v0.jsonl`
+- the live probe trace now summarizes and references authoritative history rather than owning complete records
 - no index exists or is yet justified by lookup pressure

@@ -1,12 +1,12 @@
-"""Replay helpers for the bounded live vertical probe trace."""
+"""Replay helpers for the bounded live vertical probe."""
 
 from __future__ import annotations
 
 import json
-from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
+from src.ledger import replay_canonical_live_ingest
 from src.reconstruction import derive_admitted_projection, reconstruct_admission_relationships
 
 
@@ -17,8 +17,14 @@ def load_report(path: Path | str = TRACE_PATH) -> dict[str, Any]:
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
-def authoritative_records(report: dict[str, Any]) -> list[dict[str, Any]]:
-    return deepcopy(report["authoritative_history"]["records"])
+def canonical_ledger_path(report: dict[str, Any]) -> Path:
+    return Path(report["authoritative_history"]["ledger_path"])
+
+
+def authoritative_records(report: dict[str, Any] | None = None) -> list[dict[str, Any]]:
+    if report is None:
+        report = load_report()
+    return replay_canonical_live_ingest(canonical_ledger_path(report))
 
 
 def rebuild_from_report(report: dict[str, Any]) -> dict[str, Any]:

@@ -282,8 +282,10 @@ Synthetic v0 evidence:
 
 Bounded live vertical-chain evidence:
 
+* `traces/live_ingest_ledger_v0.jsonl`
 * `traces/live_vertical_probe_v0.json`
 * `tests/runtime/test_live_vertical_probe.py`
+* `docs/decisions/live_ingest_ledger_extraction_v0.md`
 
 This evidence does not validate live OS capture, distributed append, history-level integrity, or schema permanence.
 

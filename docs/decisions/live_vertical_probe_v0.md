@@ -37,9 +37,22 @@ The bounded trace records:
 Replay of the authoritative records rebuilt the same reconstruction and projection
 structurally.
 
+## Extraction Amendment
+
+The original trace at
+`6c999affebde4d5ae741e44eb37a77cee2c9d60c:traces/live_vertical_probe_v0.json`
+embedded the complete authoritative ledger history.
+
+That history was extracted to `traces/live_ingest_ledger_v0.jsonl`.
+
+The current trace is compacted to experiment summary, canonical ledger reference,
+record summaries, integrity/rebuild evidence, transition visibility, and
+provenance navigation examples.
+
 ## Evidence
 
 - `traces/live_vertical_probe_v0.json`
+- `traces/live_ingest_ledger_v0.jsonl`
 - `tests/runtime/test_live_vertical_probe.py`
 
 ## Deferred
