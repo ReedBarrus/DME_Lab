@@ -80,6 +80,8 @@ First repository-acoustic tomographic comparison pressure completed in `docs/dec
 
 Cross-domain predictive-transformation selection pressure completed in `docs/decisions/cross_domain_predictive_transformation_selection_pressure_v0.md`.
 
+Acoustic source-coordinate witness selection pressure completed in `docs/decisions/acoustic_source_coordinate_witness_selection_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -154,12 +156,14 @@ an independent contradiction, or a qualitatively new observation basis.
 
 Prediction-first pressure found no admissible cross-domain prediction in the
 partial occurrence, relational-signature, or admission candidates after
-generic repetition and shared-pipeline behavior were subtracted. The required
-result is `no_cross_domain_prediction_yet_earned`. Comparison remains frozen;
-the smallest missing evidence is a pre-ingest acoustic source-domain coordinate
-whose equality/change is independently observable and demonstrably matches a
-repository coordinate at the same relational scale. No witness, transformation,
-or next experiment is selected or authorized.
+generic repetition and shared-pipeline behavior were subtracted. The earned
+result remains `no_cross_domain_prediction_yet_earned` and comparison remains
+frozen. Read-only witness reconnaissance identified separate-process WASAPI
+shared-mode endpoint loopback as the smallest legitimate candidate for a
+content-bearing, post-system-mix acoustic coordinate. The required selection
+result is `candidate_requires_new_basis`: the Windows APIs and target Realtek
+endpoint are present, but the repository and installed tools contain no
+independent loopback observer. No implementation or execution is authorized.
 
 ## Contract Surface Status
 
