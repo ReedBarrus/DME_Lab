@@ -74,6 +74,8 @@ Bounded acoustic basis-entry pressure completed in `docs/decisions/acoustic_basi
 
 Bounded acoustic replication pressure completed in `docs/decisions/acoustic_replication_pressure_v0.md`.
 
+Bounded acoustic relational-recurrence pressure completed in `docs/decisions/acoustic_relational_recurrence_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -146,13 +148,15 @@ Foreground repository observation horizontal semantic pressure is locally
 saturated and frozen for dwell. Reopen it only for a concrete consumer demand,
 an independent contradiction, or a qualitatively new observation basis.
 
-Bounded acoustic replication supplied a declared-rule result without reopening
-repository pressure. Five replacement S2 occurrences were locally
-discriminable from both five C0 and five S1 occurrences on both captured
-microphone channels; S1 and C0 overlapped. No next implementation or domain is
-selected. The smallest unresolved physical question is why S2 response
-magnitude varies across occurrences and runs while remaining locally separated
-in the replacement block; this is not authorization for another experiment.
+Bounded acoustic recurrence supplied the same declared pairwise result after a
+fresh process/backend initialization and a newly seeded interleaved order. S2
+remained locally discriminable from C0 and S1 on both captured microphone
+channels while S1 and C0 overlapped, despite shifted numerical medians. No next
+implementation or domain is selected. The smallest newly forced question is
+whether this run-relative relational recurrence is sufficient for any concrete
+consumer decision despite unresolved mechanism and amplitude variation; no such
+consumer is currently in scope, and this is not authorization for another
+experiment.
 
 ## Contract Surface Status
 
@@ -382,5 +386,12 @@ in the replacement block; this is not authorization for another experiment.
 - raw PCM remained ephemeral in both blocks; hashes and deterministic measurements survived in raw and reconstructed nested observations, while waveform morphology was irrecoverably discarded
 - replication forced no new distinction or chart; D-0016 and D-0020 are stronger bounded post-hoc correspondences, and the registry remains unchanged through D-0046
 - no next experiment is authorized; the smallest residue is unexplained S2 magnitude variation within and across runs under otherwise fixed requested configuration
+- a fresh-process acoustic recurrence block froze seed 20260910, a new 15-trial interleaved order, the unchanged delta/range/MAD rule, and the complete prior verdict pattern before device enumeration
+- the new block independently reproduced S1-vs-C0 non-discrimination and S2 separation from both C0 and S1 on both microphone channels, satisfying `relationally_recurrent_under_declared_basis`
+- S2 medians shifted by -0.066660 and -0.060891 PCM RMS while all three pairwise verdicts survived; numerical realization changed without changing the declared relational structure
+- the fresh boundary establishes a new Python process, WinMM backend instance, and per-trial handle lifecycle only; it does not establish reset or identity of room, hardware, driver, routing, or Windows audio state
+- all 15 recurrence observations remained distinct through admission, a temporary 30-record ledger, replay, reconstruction, projection, and companion; no occurrence/configuration collapse or new identity ambiguity appeared
+- no acoustic recurrence distinction or chart was added; D-0016, D-0020, and D-0042 are bounded post-hoc correspondences only, and the registry remains unchanged through D-0046
+- no consumer decision or next experiment is authorized by recurrence; physical mechanism and magnitude variation remain intentionally unexplained
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure

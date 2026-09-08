@@ -6,6 +6,7 @@ import ctypes
 import hashlib
 import json
 import math
+import os
 import random
 import statistics
 import struct
@@ -64,6 +65,28 @@ REPLICATION_TRIAL_ORDER = (
     "S2",
     "C0",
     "S1",
+)
+RECURRENCE_EXPERIMENT = "acoustic_relational_recurrence_pressure_v0"
+RECURRENCE_OBSERVER_VERSION = "acoustic_relational_recurrence_pressure_v0"
+RECURRENCE_RANDOM_SEED = 20_260_910
+RECURRENCE_PREDECLARED_AT_UTC = "2026-09-08T07:55:02.0517046Z"
+RECURRENCE_STARTING_HEAD = "94543eafd8f6feadc45248e6b5d7861be6526212"
+RECURRENCE_TRIAL_ORDER = (
+    "S2",
+    "C0",
+    "C0",
+    "S2",
+    "C0",
+    "S1",
+    "S1",
+    "S2",
+    "S1",
+    "C0",
+    "S1",
+    "S2",
+    "S1",
+    "S2",
+    "C0",
 )
 
 
@@ -393,11 +416,46 @@ def predeclared_replication_basis() -> dict[str, Any]:
     }
 
 
+def materialize_recurrence_trial_order() -> list[str]:
+    """Reproduce the new order declared before recurrence acquisition."""
+    base = ["C0"] * 5 + ["S1"] * 5 + ["S2"] * 5
+    generated = random.Random(RECURRENCE_RANDOM_SEED).sample(base, len(base))
+    if tuple(generated) != RECURRENCE_TRIAL_ORDER:
+        raise RuntimeError("declared recurrence order no longer matches its seed")
+    return generated
+
+
+def predeclared_recurrence_basis() -> dict[str, Any]:
+    """Reuse the exact replication rule and freeze the recurrence criterion."""
+    basis = deepcopy(predeclared_replication_basis())
+    basis["randomization"] = {
+        "algorithm": "Python random.Random(seed).sample over five C0, five S1, five S2 labels",
+        "seed": RECURRENCE_RANDOM_SEED,
+        "trial_order": materialize_recurrence_trial_order(),
+    }
+    basis["recurrence_criterion"] = {
+        "label": "relationally_recurrent_under_declared_basis",
+        "requires_both_microphone_channels": True,
+        "expected_pairwise_discriminability": {
+            "S1_vs_C0": False,
+            "S2_vs_C0": True,
+            "S1_vs_S2": True,
+        },
+        "absolute_S2_magnitude_match_required": False,
+        "no_rule_weakening_after_acquisition": True,
+    }
+    return basis
+
+
 def evaluate_replication_measurements(
     observations: list[dict[str, Any]],
+    *,
+    basis: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Apply only the frozen delta/range/MAD basis to preserved occurrences."""
-    if [item["condition"] for item in observations] != materialize_replication_trial_order():
+    selected_basis = deepcopy(basis or predeclared_replication_basis())
+    expected_order = selected_basis["randomization"]["trial_order"]
+    if [item["condition"] for item in observations] != expected_order:
         raise ValueError("observations do not follow the predeclared trial order")
 
     values: dict[str, dict[str, list[float]]] = {
@@ -450,6 +508,7 @@ def evaluate_replication_measurements(
             )
             median_separation = abs(a["median"] - b["median"])
             threshold = 3.0 * max(a["mad"], b["mad"])
+            max_mad = max(a["mad"], b["mad"])
             mad_degenerate = bool(a["mad"] == 0.0 or b["mad"] == 0.0)
             separation_exceeds_threshold = bool(median_separation > threshold)
             discriminable = bool(
@@ -469,6 +528,10 @@ def evaluate_replication_measurements(
                 "left_mad": a["mad"],
                 "right_mad": b["mad"],
                 "three_times_max_mad": threshold,
+                "descriptive_median_separation_over_max_mad": (
+                    median_separation / max_mad if max_mad != 0.0 else None
+                ),
+                "normalized_separation_is_part_of_rule": False,
                 "separation_exceeds_three_times_max_mad": separation_exceeds_threshold,
                 "mad_degenerate": mad_degenerate,
                 "status": (
@@ -496,11 +559,135 @@ def evaluate_replication_measurements(
         }
 
     return {
-        "basis": predeclared_replication_basis(),
+        "basis": selected_basis,
         "individual_occurrences": occurrences,
         "within_condition": summaries,
         "pairwise": pairwise,
         "no_mechanism_inferred": True,
+    }
+
+
+def evaluate_relational_recurrence(analysis: dict[str, Any]) -> dict[str, Any]:
+    """Apply the frozen cross-run verdict-pattern criterion without weakening it."""
+    expected = predeclared_recurrence_basis()["recurrence_criterion"][
+        "expected_pairwise_discriminability"
+    ]
+    actual = {
+        pair: {
+            channel: analysis["pairwise"][pair]["channels"][channel][
+                "locally_discriminable_under_declared_basis"
+            ]
+            for channel in ("microphone_channel_0", "microphone_channel_1")
+        }
+        for pair in expected
+    }
+    matches = {
+        pair: {
+            channel: actual[pair][channel] is expected_value
+            for channel in actual[pair]
+        }
+        for pair, expected_value in expected.items()
+    }
+    recurrent = all(
+        matches[pair][channel]
+        for pair in matches
+        for channel in matches[pair]
+    )
+    return {
+        "criterion_declared_before_physical_acquisition": True,
+        "expected_pairwise_discriminability": expected,
+        "actual_pairwise_discriminability": actual,
+        "per_pair_channel_match": matches,
+        "relationally_recurrent_under_declared_basis": recurrent,
+        "absolute_S2_magnitude_match_required": False,
+        "mechanism_claimed": False,
+    }
+
+
+def compare_recurrence_to_prior_block(
+    current_analysis: dict[str, Any], prior_analysis: dict[str, Any]
+) -> dict[str, Any]:
+    """Describe run-relative numerical change without altering either verdict."""
+    conditions = {}
+    for condition in ("C0", "S1", "S2"):
+        conditions[condition] = {}
+        for channel in ("microphone_channel_0", "microphone_channel_1"):
+            prior = prior_analysis["within_condition"][condition][channel]
+            current = current_analysis["within_condition"][condition][channel]
+            conditions[condition][channel] = {
+                "prior_median": prior["median"],
+                "current_median": current["median"],
+                "median_shift_current_minus_prior": current["median"] - prior["median"],
+                "prior_mad": prior["mad"],
+                "current_mad": current["mad"],
+                "prior_range": [prior["minimum"], prior["maximum"]],
+                "current_range": [current["minimum"], current["maximum"]],
+                "range_endpoint_shift_current_minus_prior": [
+                    current["minimum"] - prior["minimum"],
+                    current["maximum"] - prior["maximum"],
+                ],
+            }
+
+    pairwise = {}
+    for pair in ("S1_vs_C0", "S2_vs_C0", "S1_vs_S2"):
+        pairwise[pair] = {}
+        for channel in ("microphone_channel_0", "microphone_channel_1"):
+            prior = prior_analysis["pairwise"][pair]["channels"][channel]
+            current = current_analysis["pairwise"][pair]["channels"][channel]
+            pairwise[pair][channel] = {
+                "prior_status": prior["status"],
+                "current_status": current["status"],
+                "status_recurred": prior["status"] == current["status"],
+                "current_descriptive_median_separation_over_max_mad": current[
+                    "descriptive_median_separation_over_max_mad"
+                ],
+            }
+    return {
+        "prior_primary_trace": "traces/acoustic_replication_pressure_v0.json",
+        "comparison_is_post_acquisition_and_descriptive": True,
+        "conditions": conditions,
+        "S2_median_and_range_shift": conditions["S2"],
+        "pairwise": pairwise,
+        "numerical_realization_changed": any(
+            details["median_shift_current_minus_prior"] != 0.0
+            for by_channel in conditions.values()
+            for details in by_channel.values()
+        ),
+        "mechanism_claimed": False,
+    }
+
+
+def predeclared_recurrence_trace() -> dict[str, Any]:
+    """Materialize the full recurrence commitment before device enumeration."""
+    return {
+        "experiment": RECURRENCE_EXPERIMENT,
+        "status": "predeclared_before_physical_acquisition",
+        "physical_pressure_executed": False,
+        "predeclaration_record": {
+            "materialized_at_utc": RECURRENCE_PREDECLARED_AT_UTC,
+            "starting_lineage": {
+                "branch": "main",
+                "head": RECURRENCE_STARTING_HEAD,
+                "message": "Sound Test 1",
+                "worktree": [],
+            },
+            "baseline_tests": {
+                "runner": "python -m unittest discover -s tests",
+                "passed": 461,
+                "failed": 0,
+            },
+        },
+        "predeclaration": predeclared_recurrence_basis(),
+        "planned_fresh_initialization": {
+            "separate_python_process": True,
+            "new_WinMM_backend_instance": True,
+            "prior_device_handles_reused": False,
+            "complete_physical_or_driver_reset_claimed": False,
+        },
+        "canonical_live_history_sha256_before": (
+            "0d877151c73cb2154417065387dc286a1277e80f3838c40874832a7061c17dd0"
+        ),
+        "raw_recordings_committed": False,
     }
 
 
@@ -519,12 +706,24 @@ def _select_named_device(
     return matches[0]
 
 
-def run_replication_pressure() -> dict[str, Any]:
-    """Execute the frozen 15-trial acoustic replication pressure."""
+def _run_replicated_acoustic_pressure(
+    *,
+    experiment: str,
+    observer_version: str,
+    identity_prefix: str,
+    basis: dict[str, Any],
+    predeclared_at_utc: str,
+    starting_head: str,
+    starting_message: str,
+    baseline_test_count: int,
+    temporary_ledger_name: str,
+) -> dict[str, Any]:
+    """Execute one frozen 15-trial block through a fresh WinMM backend."""
     if sys.platform != "win32":
         raise RuntimeError("physical pressure requires the inspected Windows WinMM backend")
-    basis = predeclared_replication_basis()
+    execution_process_started_at_utc = utc_now()
     backend = _WinMMBackend()
+    backend_instance_created_at_utc = utc_now()
     input_devices = backend.input_devices()
     output_devices = backend.output_devices()
     input_device = _select_named_device(input_devices, ("XIBERIA",), "capture device")
@@ -563,13 +762,13 @@ def run_replication_pressure() -> dict[str, Any]:
             ),
         )
         body = {
-            "experiment": REPLICATION_EXPERIMENT,
+            "experiment": experiment,
             "condition": condition,
             "trial_sequence_index": sequence_index,
             "replicate_index_within_condition": condition_counts[condition],
             "predeclared_trial_order": basis["randomization"]["trial_order"],
             "observer": OBSERVER,
-            "observer_version": REPLICATION_OBSERVER_VERSION,
+            "observer_version": observer_version,
             "command": {
                 "requested_playback": command_pcm is not None,
                 "requested_output_channel": requested_channel,
@@ -610,8 +809,8 @@ def run_replication_pressure() -> dict[str, Any]:
         }
         body_hash = canonical_sha256(body)
         observation = {
-            "observation_id": f"acoustic-replication-observation-v0:{body_hash}",
-            "trial_id": f"acoustic-replication-trial-v0:{sequence_index:02d}:{condition}:{body_hash[:16]}",
+            "observation_id": f"{identity_prefix}-observation-v0:{body_hash}",
+            "trial_id": f"{identity_prefix}-trial-v0:{sequence_index:02d}:{condition}:{body_hash[:16]}",
             **body,
         }
         observations.append(observation)
@@ -619,25 +818,34 @@ def run_replication_pressure() -> dict[str, Any]:
 
     with TemporaryDirectory() as tmpdir:
         pipeline = carry_through_pipeline(
-            observations, Path(tmpdir) / "acoustic_replication_pressure.jsonl"
+            observations, Path(tmpdir) / temporary_ledger_name
         )
 
     return {
-        "experiment": REPLICATION_EXPERIMENT,
+        "experiment": experiment,
         "status": "physical_acquisition_complete",
         "physical_pressure_executed": True,
         "primary_adjudication": True,
+        "fresh_acquisition_initialization": {
+            "new_process_for_block": True,
+            "process_id": os.getpid(),
+            "process_started_for_block_at_utc": execution_process_started_at_utc,
+            "backend_instance_created_at_utc": backend_instance_created_at_utc,
+            "prior_process_handles_reused": False,
+            "device_handles_opened_and_closed_within_each_trial": True,
+            "scope_limit": "does not establish reset of room, hardware, driver, or complete Windows audio state",
+        },
         "predeclaration_record": {
-            "materialized_at_utc": REPLICATION_PREDECLARED_AT_UTC,
+            "materialized_at_utc": predeclared_at_utc,
             "starting_lineage": {
                 "branch": "main",
-                "head": REPLICATION_STARTING_HEAD,
-                "message": "Horizontal Expansion- Soundscape",
+                "head": starting_head,
+                "message": starting_message,
                 "worktree": [],
             },
             "baseline_tests": {
                 "runner": "python -m unittest discover -s tests",
-                "passed": 451,
+                "passed": baseline_test_count,
                 "failed": 0,
             },
         },
@@ -670,17 +878,60 @@ def run_replication_pressure() -> dict[str, Any]:
                 "XIBERIA": "headphones and headset microphone capture",
             },
             "room_stereo_can_emit_substantial_sound": True,
+            "no_intentional_media_playback_requested": True,
+            "ambient_silence_machine_verified": False,
             "machine_verified": False,
             "per_trial_listening_required": False,
         },
         "trials": observations,
         "replicated_measurement_analysis": evaluate_replication_measurements(
-            observations
+            observations, basis=basis
         ),
         "pipeline": pipeline,
         "raw_recordings_committed": False,
         "canonical_live_history_used": False,
     }
+
+
+def run_replication_pressure() -> dict[str, Any]:
+    """Execute the original frozen 15-trial acoustic replication pressure."""
+    return _run_replicated_acoustic_pressure(
+        experiment=REPLICATION_EXPERIMENT,
+        observer_version=REPLICATION_OBSERVER_VERSION,
+        identity_prefix="acoustic-replication",
+        basis=predeclared_replication_basis(),
+        predeclared_at_utc=REPLICATION_PREDECLARED_AT_UTC,
+        starting_head=REPLICATION_STARTING_HEAD,
+        starting_message="Horizontal Expansion- Soundscape",
+        baseline_test_count=451,
+        temporary_ledger_name="acoustic_replication_pressure.jsonl",
+    )
+
+
+def run_relational_recurrence_pressure() -> dict[str, Any]:
+    """Execute the new-order recurrence block in a fresh bounded process."""
+    basis = predeclared_recurrence_basis()
+    prior_trace_path = Path("traces") / "acoustic_replication_pressure_v0.json"
+    prior_trace = json.loads(prior_trace_path.read_text(encoding="utf-8"))
+    if not prior_trace.get("primary_adjudication"):
+        raise RuntimeError("prior primary replication trace is not marked authoritative")
+    report = _run_replicated_acoustic_pressure(
+        experiment=RECURRENCE_EXPERIMENT,
+        observer_version=RECURRENCE_OBSERVER_VERSION,
+        identity_prefix="acoustic-relational-recurrence",
+        basis=basis,
+        predeclared_at_utc=RECURRENCE_PREDECLARED_AT_UTC,
+        starting_head=RECURRENCE_STARTING_HEAD,
+        starting_message="Sound Test 1",
+        baseline_test_count=461,
+        temporary_ledger_name="acoustic_relational_recurrence_pressure.jsonl",
+    )
+    analysis = report["replicated_measurement_analysis"]
+    report["relational_recurrence"] = evaluate_relational_recurrence(analysis)
+    report["run_to_run_comparison"] = compare_recurrence_to_prior_block(
+        analysis, prior_trace["replicated_measurement_analysis"]
+    )
+    return report
 
 
 def run_physical_pressure() -> dict[str, Any]:
@@ -1088,13 +1339,19 @@ class _WinMMBackend:
 
 
 def main() -> None:
-    replication = sys.argv[1:] == ["replication"]
-    report = run_replication_pressure() if replication else run_physical_pressure()
-    output_path = Path("traces") / (
-        "acoustic_replication_pressure_v0.json"
-        if replication
-        else "acoustic_basis_entry_pressure_v0.json"
-    )
+    mode = sys.argv[1:]
+    if mode == ["recurrence"]:
+        report = run_relational_recurrence_pressure()
+        output_name = "acoustic_relational_recurrence_pressure_v0.json"
+    elif mode == ["replication"]:
+        report = run_replication_pressure()
+        output_name = "acoustic_replication_pressure_v0.json"
+    elif not mode:
+        report = run_physical_pressure()
+        output_name = "acoustic_basis_entry_pressure_v0.json"
+    else:
+        raise SystemExit("usage: acoustic_basis_entry_pressure.py [replication|recurrence]")
+    output_path = Path("traces") / output_name
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(
         json.dumps(report, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
