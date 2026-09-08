@@ -1,0 +1,1317 @@
+{
+  "baseline_tests": {
+    "full": {
+      "failed": 0,
+      "passed": 352
+    },
+    "targeted": {
+      "failed": 0,
+      "passed": 76
+    }
+  },
+  "canonical_history": {
+    "path": "traces/live_ingest_ledger_v0.jsonl",
+    "sha256_after": "0d877151c73cb2154417065387dc286a1277e80f3838c40874832a7061c17dd0",
+    "sha256_before": "0d877151c73cb2154417065387dc286a1277e80f3838c40874832a7061c17dd0",
+    "unchanged": true
+  },
+  "chart_status": {
+    "coordinates": "specimen x last recorded configuration, external configuration at read, byte conservation, historical derivation, process lifetime, and source-freshness inference",
+    "earned": true,
+    "freshness_policy_or_latest_state_model": false,
+    "name": "Chart 16"
+  },
+  "comparison_matrix": [
+    {
+      "companion_changed": false,
+      "external_filesystem_at_read": "alpha",
+      "external_freshness_inferable_from_result": false,
+      "external_git_at_read": "clean",
+      "last_captured_filesystem": "alpha",
+      "last_captured_git_status": "clean",
+      "ledger_changed_by_current_result": false,
+      "projection_changed": false,
+      "reconstruction_changed": false,
+      "specimen": "C0"
+    },
+    {
+      "companion_changed": false,
+      "external_filesystem_at_read": "beta",
+      "external_freshness_inferable_from_result": false,
+      "external_git_at_read": "dirty",
+      "last_captured_filesystem": "alpha",
+      "last_captured_git_status": "clean",
+      "ledger_changed_by_current_result": false,
+      "projection_changed": false,
+      "reconstruction_changed": false,
+      "specimen": "S1"
+    },
+    {
+      "companion_changed": false,
+      "external_filesystem_at_read": "beta",
+      "external_freshness_inferable_from_result": false,
+      "external_git_at_read": "clean",
+      "last_captured_filesystem": "alpha",
+      "last_captured_git_status": "clean",
+      "ledger_changed_by_current_result": false,
+      "projection_changed": false,
+      "reconstruction_changed": false,
+      "specimen": "S2"
+    },
+    {
+      "companion_changed": false,
+      "external_filesystem_at_read": "beta",
+      "external_freshness_inferable_from_result": false,
+      "external_git_at_read": "clean",
+      "last_captured_filesystem": "alpha",
+      "last_captured_git_status": "clean",
+      "ledger_changed_by_current_result": false,
+      "projection_changed": false,
+      "reconstruction_changed": false,
+      "specimen": "R1"
+    },
+    {
+      "companion_changed": false,
+      "external_filesystem_at_read": "beta",
+      "external_freshness_inferable_from_result": false,
+      "external_git_at_read": "dirty",
+      "last_captured_filesystem": "beta",
+      "last_captured_git_status": "dirty",
+      "ledger_changed_by_current_result": false,
+      "projection_changed": false,
+      "reconstruction_changed": false,
+      "specimen": "F1"
+    }
+  ],
+  "consumer_interpretation": {
+    "current_DME_derivation_from_recorded_history": "JUSTIFIED",
+    "current_external_repository_configuration": "NOT_JUSTIFIED",
+    "no_source_change_since_last_observation": "NOT_JUSTIFIED",
+    "projection_contains_latest_external_configuration": "NOT_JUSTIFIED",
+    "projection_contains_latest_recorded_admitted_observations": "JUSTIFIED"
+  },
+  "critical_comparison": {
+    "S1_external_world_differs": true,
+    "S1_last_capture_equals_current_result_history": true,
+    "S2_external_world_differs": true,
+    "S2_last_capture_equals_current_result_history": true,
+    "classified_as_corrupt_or_incorrect_history": false,
+    "result_characterization": "current with respect to authoritative history and stale with respect to the externally changed repository"
+  },
+  "distinctions": {
+    "added": [
+      {
+        "id": "D-0045",
+        "left": "current_derived_history",
+        "relation": "not_equivalent_to",
+        "right": "current_external_configuration"
+      }
+    ],
+    "amended": []
+  },
+  "duration_seconds": 1.781724,
+  "epistemic_audit": {
+    "current_result_treated_as_current_world": false,
+    "driver_knowledge_transferred_to_DME": false,
+    "fresh_coordinator_treated_as_fresh_evidence": false,
+    "latest_recorded_treated_as_latest_world": false,
+    "recent_timestamp_treated_as_current_equality": false,
+    "reproducibility_treated_as_freshness": false,
+    "unchanged_ledger_treated_as_unchanged_world": false,
+    "unjustified_certainty_in_existing_contract": false
+  },
+  "experiment": "stale_current_result_pressure_v0",
+  "fixture_control": {
+    "arbitrary_sleep": false,
+    "independent_fixtures": [
+      "C0",
+      "S1/F1",
+      "S2/R1"
+    ],
+    "initial_configuration": "clean committed alpha",
+    "mutation_written_to_DME_history_before_recapture": false,
+    "round_trip_mutation": false,
+    "trajectory_owner": "external experiment driver"
+  },
+  "freshness_evidence": {
+    "age_computable_with_external_now_and_clock_assumptions": true,
+    "age_exposed_by_current_result": false,
+    "clock_identity_or_precision_contract_recorded": false,
+    "current_result_exposes_observation_timestamps_directly": false,
+    "filesystem_fields": [
+      "observation_started_at",
+      "observation_finished_at"
+    ],
+    "freshness_threshold_added": false,
+    "git_fields": [
+      "observed_at"
+    ],
+    "method_call_time_adds_world_knowledge": false,
+    "replay_time_adds_world_knowledge": false,
+    "source_change_since_observation_inferable": false,
+    "timestamps_recoverable_from_authoritative_reconstruction": true
+  },
+  "information_boundary": {
+    "absence_is_corruption": false,
+    "authoritative_history_lost": false,
+    "external_mutation_observed_before_F1": false,
+    "reconstruction_or_projection_information_lost": false,
+    "unobserved_external_divergence_present_in_history": false
+  },
+  "next_smallest_pressure": "isolate the absent-interval alpha-to-beta-to-alpha round trip without adding polling, latest-state selection, or transformation inference",
+  "prior_findings": {
+    "D_0042": "SUPPORTED_UNCHANGED",
+    "D_0043": "SUPPORTED_UNCHANGED",
+    "D_0044": "SUPPORTED_UNCHANGED",
+    "chart_11_companion_preserved": true,
+    "invalidated": [],
+    "source_separation_preserved": true
+  },
+  "production_contract": {
+    "docstring": "Rebuild the current derived state without appending or capturing.",
+    "implementation_matches_docstring": true,
+    "overclaimed_freshness": false,
+    "potential_consumer_overinterpretation": "the word current may be read as source-current if the documented without-capture boundary is ignored",
+    "production_change_made": false,
+    "renamed": false,
+    "world_freshness_claimed": false
+  },
+  "projection_audit": {
+    "claims_current_repository_configuration": false,
+    "claims_latest": false,
+    "contains_only_previously_admitted_observations": true,
+    "current_result_strengthens_to_world_current_claim": false,
+    "projection_redesigned": false,
+    "unchanged_before_recapture_in_S1_S2_R1": true
+  },
+  "specimens": {
+    "C0": {
+      "external_control": {
+        "basis": "direct fixture bytes and Git commands outside DME capture",
+        "branch": "main",
+        "differs_from_last_captured": false,
+        "filesystem_configuration": "alpha",
+        "filesystem_differs_from_last_captured": false,
+        "git_configuration": "clean",
+        "git_differs_from_last_captured": false,
+        "head_sha": "a6345f7ae84efd414a4c67e566287a8328d4e7d9",
+        "state_txt_sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8",
+        "status_porcelain": [],
+        "written_to_DME_history_by_control_read": false
+      },
+      "ground_truth": {
+        "basis": "external experiment control",
+        "source_matches_last_recorded_at_read": true,
+        "transferred_into_DME_history": false
+      },
+      "last_captured_evidence": {
+        "filesystem": {
+          "commit_index": 1,
+          "configuration": "alpha",
+          "observation_finished_at": "2026-09-08T03:31:36.305829Z",
+          "observation_record_id": "rec-000001",
+          "observation_started_at": "2026-09-08T03:31:36.298764Z",
+          "state_txt_sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+        },
+        "git": {
+          "branch": "main",
+          "commit_index": 2,
+          "head_sha": "a6345f7ae84efd414a4c67e566287a8328d4e7d9",
+          "observation_record_id": "rec-000002",
+          "observed_at": "2026-09-08T03:31:36.305850Z",
+          "status_porcelain": []
+        },
+        "selection": "last recorded observation per source by authoritative commit order",
+        "timestamps_recovered_from_authoritative_reconstruction": true
+      },
+      "name": "C0",
+      "process": "existing coordinator",
+      "read": {
+        "after": {
+          "admission_relation_count": 2,
+          "commit_indices": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "companion_count": 2,
+          "companion_sha256": "302781bd18a8330f3b6c6e2dff6e8bf43739507f7cf9843531385ae2e7b91e18",
+          "companion_states": [
+            [],
+            []
+          ],
+          "ledger_sha256": "3f70b05ad1f44b5e498a5e25266dbd93c8803a9a0a8557b6fac64f794a2fd29a",
+          "observation_count": 2,
+          "ordered_digests": [
+            "ad7a2e4f7ff40aa24632946315c7e642ed7988732935ed4f7757ee5c8c89cb11",
+            "c9e8546e292f69e801c4109fc766df69711680147b16bcd1c16b99b3131e9f58",
+            "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+            "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545"
+          ],
+          "projection_count": 2,
+          "projection_sha256": "9872e8a41b4af82c7c335171906ad156ff868629507a048e35435a232cd963d2",
+          "reconstruction_sha256": "744740fdb730fabf9fb917be9595414881164ea1698ab83f6c799049f4dc3ab1",
+          "record_count": 4,
+          "source_values": [
+            "repository_filesystem_snapshot",
+            "repository_git_state"
+          ]
+        },
+        "append_free": true,
+        "before": {
+          "admission_relation_count": 2,
+          "commit_indices": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "companion_count": 2,
+          "companion_sha256": "302781bd18a8330f3b6c6e2dff6e8bf43739507f7cf9843531385ae2e7b91e18",
+          "companion_states": [
+            [],
+            []
+          ],
+          "ledger_sha256": "3f70b05ad1f44b5e498a5e25266dbd93c8803a9a0a8557b6fac64f794a2fd29a",
+          "observation_count": 2,
+          "ordered_digests": [
+            "ad7a2e4f7ff40aa24632946315c7e642ed7988732935ed4f7757ee5c8c89cb11",
+            "c9e8546e292f69e801c4109fc766df69711680147b16bcd1c16b99b3131e9f58",
+            "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+            "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545"
+          ],
+          "projection_count": 2,
+          "projection_sha256": "9872e8a41b4af82c7c335171906ad156ff868629507a048e35435a232cd963d2",
+          "reconstruction_sha256": "744740fdb730fabf9fb917be9595414881164ea1698ab83f6c799049f4dc3ab1",
+          "record_count": 4,
+          "source_values": [
+            "repository_filesystem_snapshot",
+            "repository_git_state"
+          ]
+        },
+        "captured_observations": null,
+        "commit_indices_after": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "commit_indices_before": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "direct_observation_timing_keys": [],
+        "historical_surface_matches_last_capture": true,
+        "ledger_sha256_after": "3f70b05ad1f44b5e498a5e25266dbd93c8803a9a0a8557b6fac64f794a2fd29a",
+        "ledger_sha256_before": "3f70b05ad1f44b5e498a5e25266dbd93c8803a9a0a8557b6fac64f794a2fd29a",
+        "new_records": [],
+        "ordered_digests_after": [
+          "ad7a2e4f7ff40aa24632946315c7e642ed7988732935ed4f7757ee5c8c89cb11",
+          "c9e8546e292f69e801c4109fc766df69711680147b16bcd1c16b99b3131e9f58",
+          "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+          "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545"
+        ],
+        "ordered_digests_before": [
+          "ad7a2e4f7ff40aa24632946315c7e642ed7988732935ed4f7757ee5c8c89cb11",
+          "c9e8546e292f69e801c4109fc766df69711680147b16bcd1c16b99b3131e9f58",
+          "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+          "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545"
+        ],
+        "record_count_after": 4,
+        "record_count_before": 4,
+        "result": {
+          "authoritative": false,
+          "capture_mode": "explicit_foreground_invocation",
+          "captured_observations": null,
+          "derived": {
+            "admission_relation_count": 2,
+            "companion": [
+              {
+                "non_admitted_decision_states": [],
+                "subject_record_id": "rec-000001"
+              },
+              {
+                "non_admitted_decision_states": [],
+                "subject_record_id": "rec-000002"
+              }
+            ],
+            "companion_reproducible": true,
+            "observation_count": 2,
+            "orphan_admission_count": 0,
+            "projection": [
+              {
+                "admission_record_ids": [
+                  "rec-000003"
+                ],
+                "observation_record_id": "rec-000001",
+                "reconstruction_type": "admission_relationships_v0",
+                "source": "repository_filesystem_snapshot",
+                "subject_record_id": "rec-000001"
+              },
+              {
+                "admission_record_ids": [
+                  "rec-000004"
+                ],
+                "observation_record_id": "rec-000002",
+                "reconstruction_type": "admission_relationships_v0",
+                "source": "repository_git_state",
+                "subject_record_id": "rec-000002"
+              }
+            ],
+            "projection_reproducible": true,
+            "reconstruction_reproducible": true,
+            "source_provenance_separate": true
+          },
+          "ledger": {
+            "canonical_replay_reproducible": true,
+            "commit_indices": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "continuity_failures": [],
+            "continuity_ok": true,
+            "integrity_failures": [],
+            "integrity_ok": true,
+            "record_count": 4
+          },
+          "new_records": [],
+          "round_number": null
+        },
+        "structurally_healthy": true,
+        "world_evidence_introduced": false
+      },
+      "world_condition": "clean alpha"
+    },
+    "F1": {
+      "external_control": {
+        "basis": "direct fixture bytes and Git commands outside DME capture",
+        "branch": "main",
+        "differs_from_last_captured": false,
+        "filesystem_configuration": "beta",
+        "filesystem_differs_from_last_captured": false,
+        "git_configuration": "dirty",
+        "git_differs_from_last_captured": false,
+        "head_sha": "a6345f7ae84efd414a4c67e566287a8328d4e7d9",
+        "state_txt_sha256": "f44e64e75f3948e9f73f8dfa94721c4ce8cbb4f265c4790c702b2d41cfbf2753",
+        "status_porcelain": [
+          "M state.txt"
+        ],
+        "written_to_DME_history_by_control_read": false
+      },
+      "ground_truth": {
+        "DME_guarantees_continued_equality_after_capture": false,
+        "basis": "external experiment control after explicit capture",
+        "source_matches_last_recorded_at_read": true
+      },
+      "last_captured_evidence": {
+        "filesystem": {
+          "commit_index": 5,
+          "configuration": "beta",
+          "observation_finished_at": "2026-09-08T03:31:37.015260Z",
+          "observation_record_id": "rec-000005",
+          "observation_started_at": "2026-09-08T03:31:37.010883Z",
+          "state_txt_sha256": "f44e64e75f3948e9f73f8dfa94721c4ce8cbb4f265c4790c702b2d41cfbf2753"
+        },
+        "git": {
+          "branch": "main",
+          "commit_index": 6,
+          "head_sha": "a6345f7ae84efd414a4c67e566287a8328d4e7d9",
+          "observation_record_id": "rec-000006",
+          "observed_at": "2026-09-08T03:31:37.015276Z",
+          "status_porcelain": [
+            "M state.txt"
+          ]
+        },
+        "selection": "last recorded observation per source by authoritative commit order",
+        "timestamps_recovered_from_authoritative_reconstruction": true
+      },
+      "name": "F1",
+      "read": {
+        "after": {
+          "admission_relation_count": 4,
+          "commit_indices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "companion_count": 4,
+          "companion_sha256": "27a1dc3025346859575408273db73bb8743ff74da0ab4255da35dc96b115e3b6",
+          "companion_states": [
+            [],
+            [],
+            [],
+            []
+          ],
+          "ledger_sha256": "e11741d007e05e5e8f0dd7271d0a1ab6c012e83084846fb50b6490ac1a7fb0f8",
+          "observation_count": 4,
+          "ordered_digests": [
+            "af254182b8c07ef271deceb3eb598d14967d98c1f589250ec2042425be9ebce5",
+            "b7cc86341a3be839534287a8bf289fda51d720a5c8bc99dc91d4f167abcc0001",
+            "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+            "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545",
+            "ff3e5bf9dbd73576c456e9b5412f6c7db977857090f91a5ec39e90ae3eccb113",
+            "28c187fa068d909c5887672cb3454cd7f4927bc569aa61e705b5839f9d1afcdb",
+            "bc34a6f14594687a758725d32b5231a7314a63c2ec4d0b9234dbdcec4dad4878",
+            "60325c9225cb41234e690fde291fe6f069755933d1a038a1a31cac9cd5dfa677"
+          ],
+          "projection_count": 4,
+          "projection_sha256": "3bf6027b99e64e866135597cbc74528b1f2f59f3f1a21015fd35b3e680242316",
+          "reconstruction_sha256": "dce891a7394c4f54af9f56b26894f31bbfd9fcd9ab40d84c07916ff4927bbb0f",
+          "record_count": 8,
+          "source_values": [
+            "repository_filesystem_snapshot",
+            "repository_git_state",
+            "repository_filesystem_snapshot",
+            "repository_git_state"
+          ]
+        },
+        "append_free": true,
+        "before": {
+          "admission_relation_count": 4,
+          "commit_indices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "companion_count": 4,
+          "companion_sha256": "27a1dc3025346859575408273db73bb8743ff74da0ab4255da35dc96b115e3b6",
+          "companion_states": [
+            [],
+            [],
+            [],
+            []
+          ],
+          "ledger_sha256": "e11741d007e05e5e8f0dd7271d0a1ab6c012e83084846fb50b6490ac1a7fb0f8",
+          "observation_count": 4,
+          "ordered_digests": [
+            "af254182b8c07ef271deceb3eb598d14967d98c1f589250ec2042425be9ebce5",
+            "b7cc86341a3be839534287a8bf289fda51d720a5c8bc99dc91d4f167abcc0001",
+            "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+            "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545",
+            "ff3e5bf9dbd73576c456e9b5412f6c7db977857090f91a5ec39e90ae3eccb113",
+            "28c187fa068d909c5887672cb3454cd7f4927bc569aa61e705b5839f9d1afcdb",
+            "bc34a6f14594687a758725d32b5231a7314a63c2ec4d0b9234dbdcec4dad4878",
+            "60325c9225cb41234e690fde291fe6f069755933d1a038a1a31cac9cd5dfa677"
+          ],
+          "projection_count": 4,
+          "projection_sha256": "3bf6027b99e64e866135597cbc74528b1f2f59f3f1a21015fd35b3e680242316",
+          "reconstruction_sha256": "dce891a7394c4f54af9f56b26894f31bbfd9fcd9ab40d84c07916ff4927bbb0f",
+          "record_count": 8,
+          "source_values": [
+            "repository_filesystem_snapshot",
+            "repository_git_state",
+            "repository_filesystem_snapshot",
+            "repository_git_state"
+          ]
+        },
+        "captured_observations": null,
+        "commit_indices_after": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "commit_indices_before": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "direct_observation_timing_keys": [],
+        "historical_surface_matches_last_capture": true,
+        "ledger_sha256_after": "e11741d007e05e5e8f0dd7271d0a1ab6c012e83084846fb50b6490ac1a7fb0f8",
+        "ledger_sha256_before": "e11741d007e05e5e8f0dd7271d0a1ab6c012e83084846fb50b6490ac1a7fb0f8",
+        "new_records": [],
+        "ordered_digests_after": [
+          "af254182b8c07ef271deceb3eb598d14967d98c1f589250ec2042425be9ebce5",
+          "b7cc86341a3be839534287a8bf289fda51d720a5c8bc99dc91d4f167abcc0001",
+          "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+          "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545",
+          "ff3e5bf9dbd73576c456e9b5412f6c7db977857090f91a5ec39e90ae3eccb113",
+          "28c187fa068d909c5887672cb3454cd7f4927bc569aa61e705b5839f9d1afcdb",
+          "bc34a6f14594687a758725d32b5231a7314a63c2ec4d0b9234dbdcec4dad4878",
+          "60325c9225cb41234e690fde291fe6f069755933d1a038a1a31cac9cd5dfa677"
+        ],
+        "ordered_digests_before": [
+          "af254182b8c07ef271deceb3eb598d14967d98c1f589250ec2042425be9ebce5",
+          "b7cc86341a3be839534287a8bf289fda51d720a5c8bc99dc91d4f167abcc0001",
+          "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+          "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545",
+          "ff3e5bf9dbd73576c456e9b5412f6c7db977857090f91a5ec39e90ae3eccb113",
+          "28c187fa068d909c5887672cb3454cd7f4927bc569aa61e705b5839f9d1afcdb",
+          "bc34a6f14594687a758725d32b5231a7314a63c2ec4d0b9234dbdcec4dad4878",
+          "60325c9225cb41234e690fde291fe6f069755933d1a038a1a31cac9cd5dfa677"
+        ],
+        "record_count_after": 8,
+        "record_count_before": 8,
+        "result": {
+          "authoritative": false,
+          "capture_mode": "explicit_foreground_invocation",
+          "captured_observations": null,
+          "derived": {
+            "admission_relation_count": 4,
+            "companion": [
+              {
+                "non_admitted_decision_states": [],
+                "subject_record_id": "rec-000001"
+              },
+              {
+                "non_admitted_decision_states": [],
+                "subject_record_id": "rec-000002"
+              },
+              {
+                "non_admitted_decision_states": [],
+                "subject_record_id": "rec-000005"
+              },
+              {
+                "non_admitted_decision_states": [],
+                "subject_record_id": "rec-000006"
+              }
+            ],
+            "companion_reproducible": true,
+            "observation_count": 4,
+            "orphan_admission_count": 0,
+            "projection": [
+              {
+                "admission_record_ids": [
+                  "rec-000003"
+                ],
+                "observation_record_id": "rec-000001",
+                "reconstruction_type": "admission_relationships_v0",
+                "source": "repository_filesystem_snapshot",
+                "subject_record_id": "rec-000001"
+              },
+              {
+                "admission_record_ids": [
+                  "rec-000004"
+                ],
+                "observation_record_id": "rec-000002",
+                "reconstruction_type": "admission_relationships_v0",
+                "source": "repository_git_state",
+                "subject_record_id": "rec-000002"
+              },
+              {
+                "admission_record_ids": [
+                  "rec-000007"
+                ],
+                "observation_record_id": "rec-000005",
+                "reconstruction_type": "admission_relationships_v0",
+                "source": "repository_filesystem_snapshot",
+                "subject_record_id": "rec-000005"
+              },
+              {
+                "admission_record_ids": [
+                  "rec-000008"
+                ],
+                "observation_record_id": "rec-000006",
+                "reconstruction_type": "admission_relationships_v0",
+                "source": "repository_git_state",
+                "subject_record_id": "rec-000006"
+              }
+            ],
+            "projection_reproducible": true,
+            "reconstruction_reproducible": true,
+            "source_provenance_separate": true
+          },
+          "ledger": {
+            "canonical_replay_reproducible": true,
+            "commit_indices": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "continuity_failures": [],
+            "continuity_ok": true,
+            "integrity_failures": [],
+            "integrity_ok": true,
+            "record_count": 8
+          },
+          "new_records": [],
+          "round_number": null
+        },
+        "structurally_healthy": true,
+        "world_evidence_introduced": false
+      },
+      "recapture": {
+        "capture_returned": true,
+        "changed_only_after_explicit_capture": true,
+        "companion_count_after": 4,
+        "companion_count_before": 2,
+        "history_advanced": true,
+        "ledger_sha256_after": "e11741d007e05e5e8f0dd7271d0a1ab6c012e83084846fb50b6490ac1a7fb0f8",
+        "ledger_sha256_before": "2b90425bd4058ecb462e572f81f7ea64e9fee84e7ab6370d5ab358bf2b295912",
+        "new_commit_indices": [
+          5,
+          6,
+          7,
+          8
+        ],
+        "new_record_ids": [
+          "rec-000005",
+          "rec-000006",
+          "rec-000007",
+          "rec-000008"
+        ],
+        "observation_count_after": 4,
+        "observation_count_before": 2,
+        "projection_count_after": 4,
+        "projection_count_before": 2,
+        "record_count_after": 8,
+        "record_count_before": 4
+      },
+      "world_condition": "dirty beta explicitly observed after stale interval"
+    },
+    "R1": {
+      "external_control": {
+        "basis": "direct fixture bytes and Git commands outside DME capture",
+        "branch": "main",
+        "differs_from_last_captured": true,
+        "filesystem_configuration": "beta",
+        "filesystem_differs_from_last_captured": true,
+        "git_configuration": "clean",
+        "git_differs_from_last_captured": true,
+        "head_sha": "7bf824a2b6378edcbeadb15267d6736b3385d531",
+        "state_txt_sha256": "f44e64e75f3948e9f73f8dfa94721c4ce8cbb4f265c4790c702b2d41cfbf2753",
+        "status_porcelain": [],
+        "written_to_DME_history_by_control_read": false
+      },
+      "ground_truth": {
+        "basis": "external experiment control",
+        "source_matches_last_recorded_at_read": false,
+        "transferred_into_DME_history": false
+      },
+      "last_captured_evidence": {
+        "filesystem": {
+          "commit_index": 1,
+          "configuration": "alpha",
+          "observation_finished_at": "2026-09-08T03:31:37.459209Z",
+          "observation_record_id": "rec-000001",
+          "observation_started_at": "2026-09-08T03:31:37.454086Z",
+          "state_txt_sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+        },
+        "git": {
+          "branch": "main",
+          "commit_index": 2,
+          "head_sha": "a6345f7ae84efd414a4c67e566287a8328d4e7d9",
+          "observation_record_id": "rec-000002",
+          "observed_at": "2026-09-08T03:31:37.459224Z",
+          "status_porcelain": []
+        },
+        "selection": "last recorded observation per source by authoritative commit order",
+        "timestamps_recovered_from_authoritative_reconstruction": true
+      },
+      "name": "R1",
+      "process": "fresh coordinator from root plus ledger_path",
+      "read": {
+        "after": {
+          "admission_relation_count": 2,
+          "commit_indices": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "companion_count": 2,
+          "companion_sha256": "302781bd18a8330f3b6c6e2dff6e8bf43739507f7cf9843531385ae2e7b91e18",
+          "companion_states": [
+            [],
+            []
+          ],
+          "ledger_sha256": "84f066796708e4b1fcded71ce901fda98a08704a59133482cc1d0e9a584e2baf",
+          "observation_count": 2,
+          "ordered_digests": [
+            "ceccf71da7d578c91089b9da9a193d7c4eea46fd8ddfda6345a69e9b5874ccd0",
+            "19026c32953dc712013055941cdecafe0034e89a2bbcde91f209faa11d76177f",
+            "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+            "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545"
+          ],
+          "projection_count": 2,
+          "projection_sha256": "9872e8a41b4af82c7c335171906ad156ff868629507a048e35435a232cd963d2",
+          "reconstruction_sha256": "082bab6011138e45c9d9b47940035356d24470f70c6321bc20f3cc735b933318",
+          "record_count": 4,
+          "source_values": [
+            "repository_filesystem_snapshot",
+            "repository_git_state"
+          ]
+        },
+        "append_free": true,
+        "before": {
+          "admission_relation_count": 2,
+          "commit_indices": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "companion_count": 2,
+          "companion_sha256": "302781bd18a8330f3b6c6e2dff6e8bf43739507f7cf9843531385ae2e7b91e18",
+          "companion_states": [
+            [],
+            []
+          ],
+          "ledger_sha256": "84f066796708e4b1fcded71ce901fda98a08704a59133482cc1d0e9a584e2baf",
+          "observation_count": 2,
+          "ordered_digests": [
+            "ceccf71da7d578c91089b9da9a193d7c4eea46fd8ddfda6345a69e9b5874ccd0",
+            "19026c32953dc712013055941cdecafe0034e89a2bbcde91f209faa11d76177f",
+            "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+            "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545"
+          ],
+          "projection_count": 2,
+          "projection_sha256": "9872e8a41b4af82c7c335171906ad156ff868629507a048e35435a232cd963d2",
+          "reconstruction_sha256": "082bab6011138e45c9d9b47940035356d24470f70c6321bc20f3cc735b933318",
+          "record_count": 4,
+          "source_values": [
+            "repository_filesystem_snapshot",
+            "repository_git_state"
+          ]
+        },
+        "captured_observations": null,
+        "commit_indices_after": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "commit_indices_before": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "direct_observation_timing_keys": [],
+        "historical_surface_matches_last_capture": true,
+        "ledger_sha256_after": "84f066796708e4b1fcded71ce901fda98a08704a59133482cc1d0e9a584e2baf",
+        "ledger_sha256_before": "84f066796708e4b1fcded71ce901fda98a08704a59133482cc1d0e9a584e2baf",
+        "new_records": [],
+        "ordered_digests_after": [
+          "ceccf71da7d578c91089b9da9a193d7c4eea46fd8ddfda6345a69e9b5874ccd0",
+          "19026c32953dc712013055941cdecafe0034e89a2bbcde91f209faa11d76177f",
+          "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+          "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545"
+        ],
+        "ordered_digests_before": [
+          "ceccf71da7d578c91089b9da9a193d7c4eea46fd8ddfda6345a69e9b5874ccd0",
+          "19026c32953dc712013055941cdecafe0034e89a2bbcde91f209faa11d76177f",
+          "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+          "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545"
+        ],
+        "record_count_after": 4,
+        "record_count_before": 4,
+        "result": {
+          "authoritative": false,
+          "capture_mode": "explicit_foreground_invocation",
+          "captured_observations": null,
+          "derived": {
+            "admission_relation_count": 2,
+            "companion": [
+              {
+                "non_admitted_decision_states": [],
+                "subject_record_id": "rec-000001"
+              },
+              {
+                "non_admitted_decision_states": [],
+                "subject_record_id": "rec-000002"
+              }
+            ],
+            "companion_reproducible": true,
+            "observation_count": 2,
+            "orphan_admission_count": 0,
+            "projection": [
+              {
+                "admission_record_ids": [
+                  "rec-000003"
+                ],
+                "observation_record_id": "rec-000001",
+                "reconstruction_type": "admission_relationships_v0",
+                "source": "repository_filesystem_snapshot",
+                "subject_record_id": "rec-000001"
+              },
+              {
+                "admission_record_ids": [
+                  "rec-000004"
+                ],
+                "observation_record_id": "rec-000002",
+                "reconstruction_type": "admission_relationships_v0",
+                "source": "repository_git_state",
+                "subject_record_id": "rec-000002"
+              }
+            ],
+            "projection_reproducible": true,
+            "reconstruction_reproducible": true,
+            "source_provenance_separate": true
+          },
+          "ledger": {
+            "canonical_replay_reproducible": true,
+            "commit_indices": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "continuity_failures": [],
+            "continuity_ok": true,
+            "integrity_failures": [],
+            "integrity_ok": true,
+            "record_count": 4
+          },
+          "new_records": [],
+          "round_number": null
+        },
+        "structurally_healthy": true,
+        "world_evidence_introduced": false
+      },
+      "reopen_comparison": {
+        "existing_and_fresh_results_equal": true,
+        "existing_and_fresh_surfaces_equal": true,
+        "process_replacement_changed_freshness": false,
+        "reconstruction_or_projection_passed_to_fresh_coordinator": false
+      },
+      "world_condition": "same committed-beta world and stale clean-alpha history after reopen"
+    },
+    "S1": {
+      "external_control": {
+        "basis": "direct fixture bytes and Git commands outside DME capture",
+        "branch": "main",
+        "differs_from_last_captured": true,
+        "filesystem_configuration": "beta",
+        "filesystem_differs_from_last_captured": true,
+        "git_configuration": "dirty",
+        "git_differs_from_last_captured": true,
+        "head_sha": "a6345f7ae84efd414a4c67e566287a8328d4e7d9",
+        "state_txt_sha256": "f44e64e75f3948e9f73f8dfa94721c4ce8cbb4f265c4790c702b2d41cfbf2753",
+        "status_porcelain": [
+          "M state.txt"
+        ],
+        "written_to_DME_history_by_control_read": false
+      },
+      "ground_truth": {
+        "basis": "external experiment control",
+        "source_matches_last_recorded_at_read": false,
+        "transferred_into_DME_history": false
+      },
+      "last_captured_evidence": {
+        "filesystem": {
+          "commit_index": 1,
+          "configuration": "alpha",
+          "observation_finished_at": "2026-09-08T03:31:36.787849Z",
+          "observation_record_id": "rec-000001",
+          "observation_started_at": "2026-09-08T03:31:36.782128Z",
+          "state_txt_sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+        },
+        "git": {
+          "branch": "main",
+          "commit_index": 2,
+          "head_sha": "a6345f7ae84efd414a4c67e566287a8328d4e7d9",
+          "observation_record_id": "rec-000002",
+          "observed_at": "2026-09-08T03:31:36.787868Z",
+          "status_porcelain": []
+        },
+        "selection": "last recorded observation per source by authoritative commit order",
+        "timestamps_recovered_from_authoritative_reconstruction": true
+      },
+      "name": "S1",
+      "process": "existing coordinator",
+      "read": {
+        "after": {
+          "admission_relation_count": 2,
+          "commit_indices": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "companion_count": 2,
+          "companion_sha256": "302781bd18a8330f3b6c6e2dff6e8bf43739507f7cf9843531385ae2e7b91e18",
+          "companion_states": [
+            [],
+            []
+          ],
+          "ledger_sha256": "2b90425bd4058ecb462e572f81f7ea64e9fee84e7ab6370d5ab358bf2b295912",
+          "observation_count": 2,
+          "ordered_digests": [
+            "af254182b8c07ef271deceb3eb598d14967d98c1f589250ec2042425be9ebce5",
+            "b7cc86341a3be839534287a8bf289fda51d720a5c8bc99dc91d4f167abcc0001",
+            "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+            "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545"
+          ],
+          "projection_count": 2,
+          "projection_sha256": "9872e8a41b4af82c7c335171906ad156ff868629507a048e35435a232cd963d2",
+          "reconstruction_sha256": "9f8d66d7d5d1a11bf5e86597237cd7f664369e50802f017218a59ad2bf792384",
+          "record_count": 4,
+          "source_values": [
+            "repository_filesystem_snapshot",
+            "repository_git_state"
+          ]
+        },
+        "append_free": true,
+        "before": {
+          "admission_relation_count": 2,
+          "commit_indices": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "companion_count": 2,
+          "companion_sha256": "302781bd18a8330f3b6c6e2dff6e8bf43739507f7cf9843531385ae2e7b91e18",
+          "companion_states": [
+            [],
+            []
+          ],
+          "ledger_sha256": "2b90425bd4058ecb462e572f81f7ea64e9fee84e7ab6370d5ab358bf2b295912",
+          "observation_count": 2,
+          "ordered_digests": [
+            "af254182b8c07ef271deceb3eb598d14967d98c1f589250ec2042425be9ebce5",
+            "b7cc86341a3be839534287a8bf289fda51d720a5c8bc99dc91d4f167abcc0001",
+            "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+            "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545"
+          ],
+          "projection_count": 2,
+          "projection_sha256": "9872e8a41b4af82c7c335171906ad156ff868629507a048e35435a232cd963d2",
+          "reconstruction_sha256": "9f8d66d7d5d1a11bf5e86597237cd7f664369e50802f017218a59ad2bf792384",
+          "record_count": 4,
+          "source_values": [
+            "repository_filesystem_snapshot",
+            "repository_git_state"
+          ]
+        },
+        "captured_observations": null,
+        "commit_indices_after": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "commit_indices_before": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "direct_observation_timing_keys": [],
+        "historical_surface_matches_last_capture": true,
+        "ledger_sha256_after": "2b90425bd4058ecb462e572f81f7ea64e9fee84e7ab6370d5ab358bf2b295912",
+        "ledger_sha256_before": "2b90425bd4058ecb462e572f81f7ea64e9fee84e7ab6370d5ab358bf2b295912",
+        "new_records": [],
+        "ordered_digests_after": [
+          "af254182b8c07ef271deceb3eb598d14967d98c1f589250ec2042425be9ebce5",
+          "b7cc86341a3be839534287a8bf289fda51d720a5c8bc99dc91d4f167abcc0001",
+          "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+          "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545"
+        ],
+        "ordered_digests_before": [
+          "af254182b8c07ef271deceb3eb598d14967d98c1f589250ec2042425be9ebce5",
+          "b7cc86341a3be839534287a8bf289fda51d720a5c8bc99dc91d4f167abcc0001",
+          "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+          "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545"
+        ],
+        "record_count_after": 4,
+        "record_count_before": 4,
+        "result": {
+          "authoritative": false,
+          "capture_mode": "explicit_foreground_invocation",
+          "captured_observations": null,
+          "derived": {
+            "admission_relation_count": 2,
+            "companion": [
+              {
+                "non_admitted_decision_states": [],
+                "subject_record_id": "rec-000001"
+              },
+              {
+                "non_admitted_decision_states": [],
+                "subject_record_id": "rec-000002"
+              }
+            ],
+            "companion_reproducible": true,
+            "observation_count": 2,
+            "orphan_admission_count": 0,
+            "projection": [
+              {
+                "admission_record_ids": [
+                  "rec-000003"
+                ],
+                "observation_record_id": "rec-000001",
+                "reconstruction_type": "admission_relationships_v0",
+                "source": "repository_filesystem_snapshot",
+                "subject_record_id": "rec-000001"
+              },
+              {
+                "admission_record_ids": [
+                  "rec-000004"
+                ],
+                "observation_record_id": "rec-000002",
+                "reconstruction_type": "admission_relationships_v0",
+                "source": "repository_git_state",
+                "subject_record_id": "rec-000002"
+              }
+            ],
+            "projection_reproducible": true,
+            "reconstruction_reproducible": true,
+            "source_provenance_separate": true
+          },
+          "ledger": {
+            "canonical_replay_reproducible": true,
+            "commit_indices": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "continuity_failures": [],
+            "continuity_ok": true,
+            "integrity_failures": [],
+            "integrity_ok": true,
+            "record_count": 4
+          },
+          "new_records": [],
+          "round_number": null
+        },
+        "structurally_healthy": true,
+        "world_evidence_introduced": false
+      },
+      "world_condition": "dirty beta after clean-alpha capture"
+    },
+    "S2": {
+      "external_control": {
+        "basis": "direct fixture bytes and Git commands outside DME capture",
+        "branch": "main",
+        "differs_from_last_captured": true,
+        "filesystem_configuration": "beta",
+        "filesystem_differs_from_last_captured": true,
+        "git_configuration": "clean",
+        "git_differs_from_last_captured": true,
+        "head_sha": "7bf824a2b6378edcbeadb15267d6736b3385d531",
+        "state_txt_sha256": "f44e64e75f3948e9f73f8dfa94721c4ce8cbb4f265c4790c702b2d41cfbf2753",
+        "status_porcelain": [],
+        "written_to_DME_history_by_control_read": false
+      },
+      "ground_truth": {
+        "basis": "external experiment control",
+        "source_matches_last_recorded_at_read": false,
+        "transferred_into_DME_history": false
+      },
+      "last_captured_evidence": {
+        "filesystem": {
+          "commit_index": 1,
+          "configuration": "alpha",
+          "observation_finished_at": "2026-09-08T03:31:37.459209Z",
+          "observation_record_id": "rec-000001",
+          "observation_started_at": "2026-09-08T03:31:37.454086Z",
+          "state_txt_sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+        },
+        "git": {
+          "branch": "main",
+          "commit_index": 2,
+          "head_sha": "a6345f7ae84efd414a4c67e566287a8328d4e7d9",
+          "observation_record_id": "rec-000002",
+          "observed_at": "2026-09-08T03:31:37.459224Z",
+          "status_porcelain": []
+        },
+        "selection": "last recorded observation per source by authoritative commit order",
+        "timestamps_recovered_from_authoritative_reconstruction": true
+      },
+      "name": "S2",
+      "process": "existing coordinator",
+      "read": {
+        "after": {
+          "admission_relation_count": 2,
+          "commit_indices": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "companion_count": 2,
+          "companion_sha256": "302781bd18a8330f3b6c6e2dff6e8bf43739507f7cf9843531385ae2e7b91e18",
+          "companion_states": [
+            [],
+            []
+          ],
+          "ledger_sha256": "84f066796708e4b1fcded71ce901fda98a08704a59133482cc1d0e9a584e2baf",
+          "observation_count": 2,
+          "ordered_digests": [
+            "ceccf71da7d578c91089b9da9a193d7c4eea46fd8ddfda6345a69e9b5874ccd0",
+            "19026c32953dc712013055941cdecafe0034e89a2bbcde91f209faa11d76177f",
+            "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+            "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545"
+          ],
+          "projection_count": 2,
+          "projection_sha256": "9872e8a41b4af82c7c335171906ad156ff868629507a048e35435a232cd963d2",
+          "reconstruction_sha256": "082bab6011138e45c9d9b47940035356d24470f70c6321bc20f3cc735b933318",
+          "record_count": 4,
+          "source_values": [
+            "repository_filesystem_snapshot",
+            "repository_git_state"
+          ]
+        },
+        "append_free": true,
+        "before": {
+          "admission_relation_count": 2,
+          "commit_indices": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "companion_count": 2,
+          "companion_sha256": "302781bd18a8330f3b6c6e2dff6e8bf43739507f7cf9843531385ae2e7b91e18",
+          "companion_states": [
+            [],
+            []
+          ],
+          "ledger_sha256": "84f066796708e4b1fcded71ce901fda98a08704a59133482cc1d0e9a584e2baf",
+          "observation_count": 2,
+          "ordered_digests": [
+            "ceccf71da7d578c91089b9da9a193d7c4eea46fd8ddfda6345a69e9b5874ccd0",
+            "19026c32953dc712013055941cdecafe0034e89a2bbcde91f209faa11d76177f",
+            "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+            "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545"
+          ],
+          "projection_count": 2,
+          "projection_sha256": "9872e8a41b4af82c7c335171906ad156ff868629507a048e35435a232cd963d2",
+          "reconstruction_sha256": "082bab6011138e45c9d9b47940035356d24470f70c6321bc20f3cc735b933318",
+          "record_count": 4,
+          "source_values": [
+            "repository_filesystem_snapshot",
+            "repository_git_state"
+          ]
+        },
+        "captured_observations": null,
+        "commit_indices_after": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "commit_indices_before": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "direct_observation_timing_keys": [],
+        "historical_surface_matches_last_capture": true,
+        "ledger_sha256_after": "84f066796708e4b1fcded71ce901fda98a08704a59133482cc1d0e9a584e2baf",
+        "ledger_sha256_before": "84f066796708e4b1fcded71ce901fda98a08704a59133482cc1d0e9a584e2baf",
+        "new_records": [],
+        "ordered_digests_after": [
+          "ceccf71da7d578c91089b9da9a193d7c4eea46fd8ddfda6345a69e9b5874ccd0",
+          "19026c32953dc712013055941cdecafe0034e89a2bbcde91f209faa11d76177f",
+          "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+          "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545"
+        ],
+        "ordered_digests_before": [
+          "ceccf71da7d578c91089b9da9a193d7c4eea46fd8ddfda6345a69e9b5874ccd0",
+          "19026c32953dc712013055941cdecafe0034e89a2bbcde91f209faa11d76177f",
+          "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+          "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545"
+        ],
+        "record_count_after": 4,
+        "record_count_before": 4,
+        "result": {
+          "authoritative": false,
+          "capture_mode": "explicit_foreground_invocation",
+          "captured_observations": null,
+          "derived": {
+            "admission_relation_count": 2,
+            "companion": [
+              {
+                "non_admitted_decision_states": [],
+                "subject_record_id": "rec-000001"
+              },
+              {
+                "non_admitted_decision_states": [],
+                "subject_record_id": "rec-000002"
+              }
+            ],
+            "companion_reproducible": true,
+            "observation_count": 2,
+            "orphan_admission_count": 0,
+            "projection": [
+              {
+                "admission_record_ids": [
+                  "rec-000003"
+                ],
+                "observation_record_id": "rec-000001",
+                "reconstruction_type": "admission_relationships_v0",
+                "source": "repository_filesystem_snapshot",
+                "subject_record_id": "rec-000001"
+              },
+              {
+                "admission_record_ids": [
+                  "rec-000004"
+                ],
+                "observation_record_id": "rec-000002",
+                "reconstruction_type": "admission_relationships_v0",
+                "source": "repository_git_state",
+                "subject_record_id": "rec-000002"
+              }
+            ],
+            "projection_reproducible": true,
+            "reconstruction_reproducible": true,
+            "source_provenance_separate": true
+          },
+          "ledger": {
+            "canonical_replay_reproducible": true,
+            "commit_indices": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "continuity_failures": [],
+            "continuity_ok": true,
+            "integrity_failures": [],
+            "integrity_ok": true,
+            "record_count": 4
+          },
+          "new_records": [],
+          "round_number": null
+        },
+        "structurally_healthy": true,
+        "world_evidence_introduced": false
+      },
+      "world_condition": "clean committed beta after clean-alpha capture"
+    }
+  },
+  "starting_lineage": {
+    "branch": "main",
+    "head": "a07ef2e10661f8d1c442a817428737ef945b747c",
+    "message": "Wound 2",
+    "observed_head_at_run": "a07ef2e10661f8d1c442a817428737ef945b747c",
+    "worktree": []
+  },
+  "strongest_failure": "a structurally valid current_result can remain arbitrarily stale with respect to an externally changed repository until a new capture commits evidence",
+  "strongest_invariant": "current_result deterministically and append-freely reconstructs the same authoritative historical surface across external divergence and process replacement",
+  "strongest_unresolved_horizon": "no existing returned evidence establishes whether either external source still equals its most recent recorded observation"
+}

@@ -312,6 +312,16 @@ retry after unknown acknowledgement from intentional repeated observation?
 - projection preserved both admitted observations as separate historical subjects and made no current coherent repository-state claim
 - Chart 15 records source-relative configuration, external mutation, structural health, process-local grouping, durable grouping, and world-configuration justification across the four specimens
 - D-0044 records same_capture_invocation != same_world_configuration
-- the next smallest pressure is stale current_result semantics without introducing latest-state or temporal-fusion machinery
+- C0, S1, S2, R1, and F1 isolated read-only current_result semantics across stable alpha, dirty beta, committed beta, process replacement, and explicit recapture
+- every current_result call preserved ledger SHA, record count, commit indices, ordered digests, reconstruction, projection, and companion while acquiring no source evidence
+- S1 and S2 reproduced clean-alpha history exactly while external control observed dirty or committed beta; the results were historically correct, structurally healthy, and externally stale
+- R1 showed that a fresh coordinator reconstructs the same stale historical surface, so process freshness does not supply source freshness
+- only F1 capture_round advanced history from 4 to 8 records and from 2 to 4 projected subjects; its following current_result was again append-free
+- observation timestamps were absent from the current_result surface but recoverable through authoritative reconstruction; evidence age requires an external now and clock assumptions and cannot establish unchanged sources
+- the production docstring already scopes current_result to derived state without append or capture, so no external-freshness overclaim, rename, or production defect was introduced
+- Chart 16 records last captured configuration, external configuration at read, byte conservation, derivation, coordinator lifetime, and source-freshness inference
+- D-0045 records current_derived_history != current_external_configuration
+- D-0042 through D-0044 remain supported without amendment
+- the next smallest pressure is the absent-interval alpha-to-beta-to-alpha round trip without inferred transformation history
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure
