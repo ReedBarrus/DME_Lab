@@ -22,3 +22,6 @@ Not every cycle must emit a registry entry. Conserve only distinctions useful en
 ## Working Rule
 
 When information is absent, incomplete, or not yet captured, record it as missing. Do not fill the gap with interpretation.
+
+Long-horizon bounded investigations may be issued under the
+       Bounded Research Warrant.
