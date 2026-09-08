@@ -76,6 +76,8 @@ Bounded acoustic replication pressure completed in `docs/decisions/acoustic_repl
 
 Bounded acoustic relational-recurrence pressure completed in `docs/decisions/acoustic_relational_recurrence_pressure_v0.md`.
 
+First repository-acoustic tomographic comparison pressure completed in `docs/decisions/repository_acoustic_tomographic_comparison_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -148,15 +150,13 @@ Foreground repository observation horizontal semantic pressure is locally
 saturated and frozen for dwell. Reopen it only for a concrete consumer demand,
 an independent contradiction, or a qualitatively new observation basis.
 
-Bounded acoustic recurrence supplied the same declared pairwise result after a
-fresh process/backend initialization and a newly seeded interleaved order. S2
-remained locally discriminable from C0 and S1 on both captured microphone
-channels while S1 and C0 overlapped, despite shifted numerical medians. No next
-implementation or domain is selected. The smallest newly forced question is
-whether this run-relative relational recurrence is sufficient for any concrete
-consumer decision despite unresolved mechanism and amplitude variation; no such
-consumer is currently in scope, and this is not authorization for another
-experiment.
+The first repository-acoustic comparison found supported compatibility only at
+the deliberately shared generic-pipeline layer. Source-domain correspondences
+around occurrence, relational signature, and admission remain partial;
+coordinator recovery versus acoustic recurrence was refuted as a shared
+relation. Tomographic structure is not yet earned. Comparison is frozen until
+an independently justified transformation supplies a predeclared falsifiable
+expectation; none is currently selected or authorized.
 
 ## Contract Surface Status
 
@@ -393,5 +393,13 @@ experiment.
 - all 15 recurrence observations remained distinct through admission, a temporary 30-record ledger, replay, reconstruction, projection, and companion; no occurrence/configuration collapse or new identity ambiguity appeared
 - no acoustic recurrence distinction or chart was added; D-0016, D-0020, and D-0042 are bounded post-hoc correspondences only, and the registry remains unchanged through D-0046
 - no consumer decision or next experiment is authorized by recurrence; physical mechanism and magnitude variation remain intentionally unexplained
+- the first repository-acoustic comparison separated source-domain, shared-pipeline, and interpretation correspondences rather than promoting common pipeline shape into source tomography
+- configuration/condition descriptor versus occurrence and realization versus relational signature are partial correspondences only; their source scales and transformations do not fully match
+- coordinator replacement with durable recovery versus fresh acoustic acquisition with a recurring verdict is a refuted correspondence because old-record continuity is not new-observation recurrence
+- observation-envelope traversal through admission, ledger, replay, reconstruction, and projection is a supported local pipeline correspondence inherited by construction, not a source-domain map
+- D-0046 is only a partial acoustic correspondence because degraded Git has independent acquisition-failure evidence while acoustic speaker realization lacks independent ground truth
+- the comparison preserves explicit repository and acoustic residue and returns `tomographic_structure_not_yet_earned`
+- no new distinction, chart, comparison runtime, source, audio actuation, or production machinery was added; the registry remains unchanged through D-0046
+- horizontal judgment is `freeze_comparison_and_seek_new_transformation`; no transformation or next experiment is presently justified or authorized
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure
