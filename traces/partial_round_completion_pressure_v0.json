@@ -1,0 +1,2734 @@
+{
+  "D_0042": {
+    "amended": false,
+    "reason": "fresh coordinators recovered every durably committed record; record-level historical continuity did not require operation completion",
+    "status": "SUPPORTED_UNCHANGED"
+  },
+  "F4_control_comparison": {
+    "caller_outcome_inferable_from_either_history": false,
+    "caller_outcomes_differ": true,
+    "durable_completion_surfaces_equal": true,
+    "independent_occurrence_bytes_expected_to_differ": true,
+    "interpretation": "independent ledgers have different occurrence timestamps and digests, but equal durable composition surfaces and no acknowledgement coordinate",
+    "ledger_bytes_equal": false,
+    "production_acknowledgement_fields_equal": true
+  },
+  "baseline_tests": {
+    "foreground_coordinator": {
+      "failed": 0,
+      "passed": 23
+    },
+    "full": {
+      "failed": 0,
+      "passed": 299
+    }
+  },
+  "canonical_history": {
+    "path": "traces/live_ingest_ledger_v0.jsonl",
+    "sha256_after": "0d877151c73cb2154417065387dc286a1277e80f3838c40874832a7061c17dd0",
+    "sha256_before": "0d877151c73cb2154417065387dc286a1277e80f3838c40874832a7061c17dd0",
+    "unchanged": true
+  },
+  "chart_status": {
+    "coordinates": "fault boundary x durable record shape, caller outcome, integrity, continuity, reconstruction, projection, and completion inference",
+    "earned": true,
+    "generalized_transaction_model": false,
+    "name": "Chart 14"
+  },
+  "comparison_matrix": {
+    "C": {
+      "admissions": 4,
+      "caller_return": "SUCCESS",
+      "completion_inferable": "UNRESOLVED",
+      "continuity": "VALID",
+      "durable_new_records": 4,
+      "integrity": "VALID",
+      "observations": 4,
+      "projection_members": 4,
+      "total_records": 8
+    },
+    "F0": {
+      "admissions": 2,
+      "caller_return": "EXCEPTION",
+      "completion_inferable": "UNRESOLVED",
+      "continuity": "VALID",
+      "durable_new_records": 0,
+      "integrity": "VALID",
+      "observations": 2,
+      "projection_members": 2,
+      "total_records": 4
+    },
+    "F1": {
+      "admissions": 2,
+      "caller_return": "EXCEPTION",
+      "completion_inferable": "UNRESOLVED",
+      "continuity": "VALID",
+      "durable_new_records": 1,
+      "integrity": "VALID",
+      "observations": 3,
+      "projection_members": 2,
+      "total_records": 5
+    },
+    "F2": {
+      "admissions": 2,
+      "caller_return": "EXCEPTION",
+      "completion_inferable": "UNRESOLVED",
+      "continuity": "VALID",
+      "durable_new_records": 2,
+      "integrity": "VALID",
+      "observations": 4,
+      "projection_members": 2,
+      "total_records": 6
+    },
+    "F3": {
+      "admissions": 3,
+      "caller_return": "EXCEPTION",
+      "completion_inferable": "UNRESOLVED",
+      "continuity": "VALID",
+      "durable_new_records": 3,
+      "integrity": "VALID",
+      "observations": 4,
+      "projection_members": 3,
+      "total_records": 7
+    },
+    "F4": {
+      "admissions": 4,
+      "caller_return": "EXCEPTION",
+      "completion_inferable": "UNRESOLVED",
+      "continuity": "VALID",
+      "durable_new_records": 4,
+      "integrity": "VALID",
+      "observations": 4,
+      "projection_members": 4,
+      "total_records": 8
+    }
+  },
+  "distinctions": {
+    "added": [
+      {
+        "id": "D-0043",
+        "left": "caller_invocation_outcome",
+        "relation": "not_equivalent_to",
+        "right": "durable_history_state"
+      }
+    ],
+    "amended": []
+  },
+  "duration_seconds": 3.324674,
+  "epistemic_audit": {
+    "F4_and_control_acknowledgement_distinguished": false,
+    "all_completion_outcomes_from_history": [
+      "UNRESOLVED"
+    ],
+    "caller_exception_interpreted_as_no_persistence": false,
+    "continuity_interpreted_as_completion": false,
+    "driver_fault_knowledge_used_as_DME_knowledge": false,
+    "four_records_interpreted_as_caller_success": false,
+    "integrity_interpreted_as_completion": false,
+    "reconstruction_interpreted_as_completion": false,
+    "repeated_configuration_interpreted_as_retry": false,
+    "retry_distinguished_from_intentional_repeat": false
+  },
+  "experiment": "partial_round_completion_pressure_v0",
+  "fault_injection": {
+    "injected_stage_available_to_recovery_evaluator": false,
+    "mechanism": "experiment-local method replacement raises InjectedCaptureFailure at append boundaries and after durable result derivation",
+    "production_coordinator_modified": false,
+    "real_process_kill": false,
+    "torn_JSON_write": false
+  },
+  "fixture_control": {
+    "configuration_signatures": {
+      "C": {
+        "filesystem_capture_errors": [],
+        "filesystem_snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+        "git_branch": "main",
+        "git_capture_errors": [],
+        "git_head": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+        "git_status": [],
+        "state_txt_mtime_ns": 946684800000000000,
+        "state_txt_sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+      },
+      "F0": {
+        "filesystem_capture_errors": [],
+        "filesystem_snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+        "git_branch": "main",
+        "git_capture_errors": [],
+        "git_head": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+        "git_status": [],
+        "state_txt_mtime_ns": 946684800000000000,
+        "state_txt_sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+      },
+      "F1": {
+        "filesystem_capture_errors": [],
+        "filesystem_snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+        "git_branch": "main",
+        "git_capture_errors": [],
+        "git_head": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+        "git_status": [],
+        "state_txt_mtime_ns": 946684800000000000,
+        "state_txt_sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+      },
+      "F2": {
+        "filesystem_capture_errors": [],
+        "filesystem_snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+        "git_branch": "main",
+        "git_capture_errors": [],
+        "git_head": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+        "git_status": [],
+        "state_txt_mtime_ns": 946684800000000000,
+        "state_txt_sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+      },
+      "F3": {
+        "filesystem_capture_errors": [],
+        "filesystem_snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+        "git_branch": "main",
+        "git_capture_errors": [],
+        "git_head": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+        "git_status": [],
+        "state_txt_mtime_ns": 946684800000000000,
+        "state_txt_sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+      },
+      "F4": {
+        "filesystem_capture_errors": [],
+        "filesystem_snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+        "git_branch": "main",
+        "git_capture_errors": [],
+        "git_head": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+        "git_status": [],
+        "state_txt_mtime_ns": 946684800000000000,
+        "state_txt_sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+      }
+    },
+    "fixed_state_txt_content": "alpha",
+    "fixed_state_txt_mtime_ns": 946684800000000000,
+    "independent_repository_per_specimen": true,
+    "same_configuration": true,
+    "world_mutation_during_fault_pressure": false
+  },
+  "next_smallest_pressure": "isolate retry policy and request identity only if a concrete caller requires distinguishing retry from intentional repeated observation",
+  "partial_histories": {
+    "integrity_continuity_replay_valid": true,
+    "record_relation_legible": true,
+    "round_historical_unit_assumed": false,
+    "specimens": [
+      "F1",
+      "F2",
+      "F3"
+    ],
+    "treated_as_corruption": false
+  },
+  "prior_complete_history": {
+    "purpose": "independent prefix witness before pressured invocation",
+    "record_count": 4,
+    "record_types": [
+      "observation",
+      "observation",
+      "admission",
+      "admission"
+    ]
+  },
+  "prior_findings": {
+    "D_0040_preserved": true,
+    "D_0041_preserved": true,
+    "D_0042_preserved": true,
+    "charts_4_through_13_preserved": true,
+    "companion_semantics_preserved": true,
+    "projection_semantics_preserved": true,
+    "source_separation_preserved": true
+  },
+  "production_boundary": {
+    "atomic_round_guarantee": false,
+    "documentation_mismatch_found": false,
+    "durable_completion_acknowledgement": false,
+    "guarantee": "foreground composition through four independently committed records",
+    "production_change_made": false,
+    "status": "PRESERVED_WITH_SCOPED_GUARANTEE"
+  },
+  "retry_after_F4": {
+    "after_retry": {
+      "admission_relation_count": 6,
+      "admission_states_by_subject": {
+        "rec-000001": [
+          "admitted"
+        ],
+        "rec-000002": [
+          "admitted"
+        ],
+        "rec-000005": [
+          "admitted"
+        ],
+        "rec-000006": [
+          "admitted"
+        ],
+        "rec-000009": [
+          "admitted"
+        ],
+        "rec-000010": [
+          "admitted"
+        ]
+      },
+      "commit_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "companion": [
+        {
+          "non_admitted_decision_states": [],
+          "subject_record_id": "rec-000001"
+        },
+        {
+          "non_admitted_decision_states": [],
+          "subject_record_id": "rec-000002"
+        },
+        {
+          "non_admitted_decision_states": [],
+          "subject_record_id": "rec-000005"
+        },
+        {
+          "non_admitted_decision_states": [],
+          "subject_record_id": "rec-000006"
+        },
+        {
+          "non_admitted_decision_states": [],
+          "subject_record_id": "rec-000009"
+        },
+        {
+          "non_admitted_decision_states": [],
+          "subject_record_id": "rec-000010"
+        }
+      ],
+      "completion_inference": {
+        "complete_established": false,
+        "incomplete_established": false,
+        "outcome": "UNRESOLVED",
+        "reason": "authoritative records contain no requested-invocation, round, completion, or caller-acknowledgement identity"
+      },
+      "completion_surface": {
+        "admission_decisions": [
+          "admitted",
+          "admitted",
+          "admitted",
+          "admitted"
+        ],
+        "admission_subject_positions": [
+          0,
+          1,
+          4,
+          5
+        ],
+        "caller_acknowledgement_recorded": false,
+        "new_record_types": [
+          "observation",
+          "observation",
+          "admission",
+          "admission",
+          "observation",
+          "observation",
+          "admission",
+          "admission"
+        ],
+        "new_sources": [
+          "repository_filesystem_snapshot",
+          "repository_git_state",
+          null,
+          null,
+          "repository_filesystem_snapshot",
+          "repository_git_state",
+          null,
+          null
+        ],
+        "total_admission_relation_count": 6,
+        "total_companion_count": 6,
+        "total_observation_count": 6,
+        "total_projection_count": 6
+      },
+      "continuity_ok": true,
+      "current_result_read_only": true,
+      "durable_new_record_count": 8,
+      "evaluator_inputs": [
+        "root",
+        "ledger_path",
+        "prior complete prefix witness"
+      ],
+      "failed_process_state_used": false,
+      "integrity_ok": true,
+      "internally_valid": true,
+      "new_record_types": [
+        "observation",
+        "observation",
+        "admission",
+        "admission",
+        "observation",
+        "observation",
+        "admission",
+        "admission"
+      ],
+      "orphan_admission_count": 0,
+      "prior_prefix": {
+        "details": {
+          "current_prefix_count_checked": 4,
+          "identity_fields": [
+            "record_id",
+            "commit_index",
+            "integrity.algorithm",
+            "integrity.boundary",
+            "integrity.digest"
+          ],
+          "interpretation": "witnessed history remains structurally conserved as current ordered prefix",
+          "mismatches": [],
+          "witnessed_record_count": 4
+        },
+        "duration_seconds": 1.3600001693703234e-05,
+        "ok": true,
+        "relation": "prefix_preservation"
+      },
+      "production_completion_fields": [],
+      "projection_subject_ids": [
+        "rec-000001",
+        "rec-000002",
+        "rec-000005",
+        "rec-000006",
+        "rec-000009",
+        "rec-000010"
+      ],
+      "reconstructed_observation_count": 6,
+      "record_count": 12,
+      "record_ids": [
+        "rec-000001",
+        "rec-000002",
+        "rec-000003",
+        "rec-000004",
+        "rec-000005",
+        "rec-000006",
+        "rec-000007",
+        "rec-000008",
+        "rec-000009",
+        "rec-000010",
+        "rec-000011",
+        "rec-000012"
+      ],
+      "record_relation_legible": true,
+      "record_types": [
+        "observation",
+        "observation",
+        "admission",
+        "admission",
+        "observation",
+        "observation",
+        "admission",
+        "admission",
+        "observation",
+        "observation",
+        "admission",
+        "admission"
+      ],
+      "records": [
+        {
+          "commit_index": 1,
+          "decision": null,
+          "digest": "0a6a208837754c0a3cad25cd66db89628971d80448776dab748a0682fab9ca75",
+          "envelope_fields": [
+            "observation",
+            "provenance",
+            "record_type",
+            "source"
+          ],
+          "record_id": "rec-000001",
+          "record_type": "observation",
+          "signal_identity": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+          "source": "repository_filesystem_snapshot",
+          "source_configuration": {
+            "snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+          },
+          "subject_record_id": null
+        },
+        {
+          "commit_index": 2,
+          "decision": null,
+          "digest": "425ee580cfa7c2e561dc7e78fed2b5f75ea2d1e3e8d65827fd14223d7aa81a41",
+          "envelope_fields": [
+            "observation",
+            "provenance",
+            "record_type",
+            "source"
+          ],
+          "record_id": "rec-000002",
+          "record_type": "observation",
+          "signal_identity": "git-state-v0:2026-09-08T02:08:13.651484Z",
+          "source": "repository_git_state",
+          "source_configuration": {
+            "branch": "main",
+            "capture_errors": [],
+            "head_sha": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+            "status_porcelain": []
+          },
+          "subject_record_id": null
+        },
+        {
+          "commit_index": 3,
+          "decision": "admitted",
+          "digest": "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+          "envelope_fields": [
+            "comparator_identity",
+            "comparator_version",
+            "comparison_result",
+            "decision",
+            "decision_basis",
+            "record_type",
+            "subject_record_id"
+          ],
+          "record_id": "rec-000003",
+          "record_type": "admission",
+          "signal_identity": null,
+          "source": null,
+          "source_configuration": null,
+          "subject_record_id": "rec-000001"
+        },
+        {
+          "commit_index": 4,
+          "decision": "admitted",
+          "digest": "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545",
+          "envelope_fields": [
+            "comparator_identity",
+            "comparator_version",
+            "comparison_result",
+            "decision",
+            "decision_basis",
+            "record_type",
+            "subject_record_id"
+          ],
+          "record_id": "rec-000004",
+          "record_type": "admission",
+          "signal_identity": null,
+          "source": null,
+          "source_configuration": null,
+          "subject_record_id": "rec-000002"
+        },
+        {
+          "commit_index": 5,
+          "decision": null,
+          "digest": "83e5e457c35b17a847c2e1ed3acbe91309dfcff0fa55dade545017006e92e9c7",
+          "envelope_fields": [
+            "observation",
+            "provenance",
+            "record_type",
+            "source"
+          ],
+          "record_id": "rec-000005",
+          "record_type": "observation",
+          "signal_identity": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+          "source": "repository_filesystem_snapshot",
+          "source_configuration": {
+            "snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+          },
+          "subject_record_id": null
+        },
+        {
+          "commit_index": 6,
+          "decision": null,
+          "digest": "a274cf8ba7604c5b5ebb5bc19011f773503fe8a9cca3cce04e96519d67c1c5b7",
+          "envelope_fields": [
+            "observation",
+            "provenance",
+            "record_type",
+            "source"
+          ],
+          "record_id": "rec-000006",
+          "record_type": "observation",
+          "signal_identity": "git-state-v0:2026-09-08T02:08:13.760233Z",
+          "source": "repository_git_state",
+          "source_configuration": {
+            "branch": "main",
+            "capture_errors": [],
+            "head_sha": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+            "status_porcelain": []
+          },
+          "subject_record_id": null
+        },
+        {
+          "commit_index": 7,
+          "decision": "admitted",
+          "digest": "bc34a6f14594687a758725d32b5231a7314a63c2ec4d0b9234dbdcec4dad4878",
+          "envelope_fields": [
+            "comparator_identity",
+            "comparator_version",
+            "comparison_result",
+            "decision",
+            "decision_basis",
+            "record_type",
+            "subject_record_id"
+          ],
+          "record_id": "rec-000007",
+          "record_type": "admission",
+          "signal_identity": null,
+          "source": null,
+          "source_configuration": null,
+          "subject_record_id": "rec-000005"
+        },
+        {
+          "commit_index": 8,
+          "decision": "admitted",
+          "digest": "60325c9225cb41234e690fde291fe6f069755933d1a038a1a31cac9cd5dfa677",
+          "envelope_fields": [
+            "comparator_identity",
+            "comparator_version",
+            "comparison_result",
+            "decision",
+            "decision_basis",
+            "record_type",
+            "subject_record_id"
+          ],
+          "record_id": "rec-000008",
+          "record_type": "admission",
+          "signal_identity": null,
+          "source": null,
+          "source_configuration": null,
+          "subject_record_id": "rec-000006"
+        },
+        {
+          "commit_index": 9,
+          "decision": null,
+          "digest": "fcdae74dc83730090ef04950daadedd356c16fbb1dfb26449f282d7f9ee162fa",
+          "envelope_fields": [
+            "observation",
+            "provenance",
+            "record_type",
+            "source"
+          ],
+          "record_id": "rec-000009",
+          "record_type": "observation",
+          "signal_identity": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+          "source": "repository_filesystem_snapshot",
+          "source_configuration": {
+            "snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+          },
+          "subject_record_id": null
+        },
+        {
+          "commit_index": 10,
+          "decision": null,
+          "digest": "44df291847d758b5814522c3472efebe4fc9b335efdb6f72a8227affe5ce86a8",
+          "envelope_fields": [
+            "observation",
+            "provenance",
+            "record_type",
+            "source"
+          ],
+          "record_id": "rec-000010",
+          "record_type": "observation",
+          "signal_identity": "git-state-v0:2026-09-08T02:08:13.864895Z",
+          "source": "repository_git_state",
+          "source_configuration": {
+            "branch": "main",
+            "capture_errors": [],
+            "head_sha": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+            "status_porcelain": []
+          },
+          "subject_record_id": null
+        },
+        {
+          "commit_index": 11,
+          "decision": "admitted",
+          "digest": "c2e748d6092d10fe476c40a4215c7df7962af5531699214fa5e21b6d4e6e94f7",
+          "envelope_fields": [
+            "comparator_identity",
+            "comparator_version",
+            "comparison_result",
+            "decision",
+            "decision_basis",
+            "record_type",
+            "subject_record_id"
+          ],
+          "record_id": "rec-000011",
+          "record_type": "admission",
+          "signal_identity": null,
+          "source": null,
+          "source_configuration": null,
+          "subject_record_id": "rec-000009"
+        },
+        {
+          "commit_index": 12,
+          "decision": "admitted",
+          "digest": "a80aaf8af610840449e8b8fc9a16be899255f0f5c44657bd7addaf50941e9071",
+          "envelope_fields": [
+            "comparator_identity",
+            "comparator_version",
+            "comparison_result",
+            "decision",
+            "decision_basis",
+            "record_type",
+            "subject_record_id"
+          ],
+          "record_id": "rec-000012",
+          "record_type": "admission",
+          "signal_identity": null,
+          "source": null,
+          "source_configuration": null,
+          "subject_record_id": "rec-000010"
+        }
+      ],
+      "replay_reproducible": true,
+      "source_provenance_collapsed": false,
+      "source_values": [
+        "repository_filesystem_snapshot",
+        "repository_git_state",
+        "repository_filesystem_snapshot",
+        "repository_git_state",
+        "repository_filesystem_snapshot",
+        "repository_git_state"
+      ]
+    },
+    "after_unknown_acknowledgement": {
+      "admission_relation_count": 4,
+      "admission_states_by_subject": {
+        "rec-000001": [
+          "admitted"
+        ],
+        "rec-000002": [
+          "admitted"
+        ],
+        "rec-000005": [
+          "admitted"
+        ],
+        "rec-000006": [
+          "admitted"
+        ]
+      },
+      "commit_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "companion": [
+        {
+          "non_admitted_decision_states": [],
+          "subject_record_id": "rec-000001"
+        },
+        {
+          "non_admitted_decision_states": [],
+          "subject_record_id": "rec-000002"
+        },
+        {
+          "non_admitted_decision_states": [],
+          "subject_record_id": "rec-000005"
+        },
+        {
+          "non_admitted_decision_states": [],
+          "subject_record_id": "rec-000006"
+        }
+      ],
+      "completion_inference": {
+        "complete_established": false,
+        "incomplete_established": false,
+        "outcome": "UNRESOLVED",
+        "reason": "authoritative records contain no requested-invocation, round, completion, or caller-acknowledgement identity"
+      },
+      "completion_surface": {
+        "admission_decisions": [
+          "admitted",
+          "admitted"
+        ],
+        "admission_subject_positions": [
+          0,
+          1
+        ],
+        "caller_acknowledgement_recorded": false,
+        "new_record_types": [
+          "observation",
+          "observation",
+          "admission",
+          "admission"
+        ],
+        "new_sources": [
+          "repository_filesystem_snapshot",
+          "repository_git_state",
+          null,
+          null
+        ],
+        "total_admission_relation_count": 4,
+        "total_companion_count": 4,
+        "total_observation_count": 4,
+        "total_projection_count": 4
+      },
+      "continuity_ok": true,
+      "current_result_read_only": true,
+      "durable_new_record_count": 4,
+      "evaluator_inputs": [
+        "root",
+        "ledger_path",
+        "prior complete prefix witness"
+      ],
+      "failed_process_state_used": false,
+      "integrity_ok": true,
+      "internally_valid": true,
+      "new_record_types": [
+        "observation",
+        "observation",
+        "admission",
+        "admission"
+      ],
+      "orphan_admission_count": 0,
+      "prior_prefix": {
+        "details": {
+          "current_prefix_count_checked": 4,
+          "identity_fields": [
+            "record_id",
+            "commit_index",
+            "integrity.algorithm",
+            "integrity.boundary",
+            "integrity.digest"
+          ],
+          "interpretation": "witnessed history remains structurally conserved as current ordered prefix",
+          "mismatches": [],
+          "witnessed_record_count": 4
+        },
+        "duration_seconds": 1.1000010999850929e-05,
+        "ok": true,
+        "relation": "prefix_preservation"
+      },
+      "production_completion_fields": [],
+      "projection_subject_ids": [
+        "rec-000001",
+        "rec-000002",
+        "rec-000005",
+        "rec-000006"
+      ],
+      "reconstructed_observation_count": 4,
+      "record_count": 8,
+      "record_ids": [
+        "rec-000001",
+        "rec-000002",
+        "rec-000003",
+        "rec-000004",
+        "rec-000005",
+        "rec-000006",
+        "rec-000007",
+        "rec-000008"
+      ],
+      "record_relation_legible": true,
+      "record_types": [
+        "observation",
+        "observation",
+        "admission",
+        "admission",
+        "observation",
+        "observation",
+        "admission",
+        "admission"
+      ],
+      "records": [
+        {
+          "commit_index": 1,
+          "decision": null,
+          "digest": "0a6a208837754c0a3cad25cd66db89628971d80448776dab748a0682fab9ca75",
+          "envelope_fields": [
+            "observation",
+            "provenance",
+            "record_type",
+            "source"
+          ],
+          "record_id": "rec-000001",
+          "record_type": "observation",
+          "signal_identity": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+          "source": "repository_filesystem_snapshot",
+          "source_configuration": {
+            "snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+          },
+          "subject_record_id": null
+        },
+        {
+          "commit_index": 2,
+          "decision": null,
+          "digest": "425ee580cfa7c2e561dc7e78fed2b5f75ea2d1e3e8d65827fd14223d7aa81a41",
+          "envelope_fields": [
+            "observation",
+            "provenance",
+            "record_type",
+            "source"
+          ],
+          "record_id": "rec-000002",
+          "record_type": "observation",
+          "signal_identity": "git-state-v0:2026-09-08T02:08:13.651484Z",
+          "source": "repository_git_state",
+          "source_configuration": {
+            "branch": "main",
+            "capture_errors": [],
+            "head_sha": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+            "status_porcelain": []
+          },
+          "subject_record_id": null
+        },
+        {
+          "commit_index": 3,
+          "decision": "admitted",
+          "digest": "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+          "envelope_fields": [
+            "comparator_identity",
+            "comparator_version",
+            "comparison_result",
+            "decision",
+            "decision_basis",
+            "record_type",
+            "subject_record_id"
+          ],
+          "record_id": "rec-000003",
+          "record_type": "admission",
+          "signal_identity": null,
+          "source": null,
+          "source_configuration": null,
+          "subject_record_id": "rec-000001"
+        },
+        {
+          "commit_index": 4,
+          "decision": "admitted",
+          "digest": "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545",
+          "envelope_fields": [
+            "comparator_identity",
+            "comparator_version",
+            "comparison_result",
+            "decision",
+            "decision_basis",
+            "record_type",
+            "subject_record_id"
+          ],
+          "record_id": "rec-000004",
+          "record_type": "admission",
+          "signal_identity": null,
+          "source": null,
+          "source_configuration": null,
+          "subject_record_id": "rec-000002"
+        },
+        {
+          "commit_index": 5,
+          "decision": null,
+          "digest": "83e5e457c35b17a847c2e1ed3acbe91309dfcff0fa55dade545017006e92e9c7",
+          "envelope_fields": [
+            "observation",
+            "provenance",
+            "record_type",
+            "source"
+          ],
+          "record_id": "rec-000005",
+          "record_type": "observation",
+          "signal_identity": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+          "source": "repository_filesystem_snapshot",
+          "source_configuration": {
+            "snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+          },
+          "subject_record_id": null
+        },
+        {
+          "commit_index": 6,
+          "decision": null,
+          "digest": "a274cf8ba7604c5b5ebb5bc19011f773503fe8a9cca3cce04e96519d67c1c5b7",
+          "envelope_fields": [
+            "observation",
+            "provenance",
+            "record_type",
+            "source"
+          ],
+          "record_id": "rec-000006",
+          "record_type": "observation",
+          "signal_identity": "git-state-v0:2026-09-08T02:08:13.760233Z",
+          "source": "repository_git_state",
+          "source_configuration": {
+            "branch": "main",
+            "capture_errors": [],
+            "head_sha": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+            "status_porcelain": []
+          },
+          "subject_record_id": null
+        },
+        {
+          "commit_index": 7,
+          "decision": "admitted",
+          "digest": "bc34a6f14594687a758725d32b5231a7314a63c2ec4d0b9234dbdcec4dad4878",
+          "envelope_fields": [
+            "comparator_identity",
+            "comparator_version",
+            "comparison_result",
+            "decision",
+            "decision_basis",
+            "record_type",
+            "subject_record_id"
+          ],
+          "record_id": "rec-000007",
+          "record_type": "admission",
+          "signal_identity": null,
+          "source": null,
+          "source_configuration": null,
+          "subject_record_id": "rec-000005"
+        },
+        {
+          "commit_index": 8,
+          "decision": "admitted",
+          "digest": "60325c9225cb41234e690fde291fe6f069755933d1a038a1a31cac9cd5dfa677",
+          "envelope_fields": [
+            "comparator_identity",
+            "comparator_version",
+            "comparison_result",
+            "decision",
+            "decision_basis",
+            "record_type",
+            "subject_record_id"
+          ],
+          "record_id": "rec-000008",
+          "record_type": "admission",
+          "signal_identity": null,
+          "source": null,
+          "source_configuration": null,
+          "subject_record_id": "rec-000006"
+        }
+      ],
+      "replay_reproducible": true,
+      "source_provenance_collapsed": false,
+      "source_values": [
+        "repository_filesystem_snapshot",
+        "repository_git_state",
+        "repository_filesystem_snapshot",
+        "repository_git_state"
+      ]
+    },
+    "first_and_second_group_configuration_equal": true,
+    "fixture_configuration_signature": {
+      "filesystem_capture_errors": [],
+      "filesystem_snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+      "git_branch": "main",
+      "git_capture_errors": [],
+      "git_head": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+      "git_status": [],
+      "state_txt_mtime_ns": 946684800000000000,
+      "state_txt_sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+    },
+    "reason": "history preserves two distinct repeated observations but no request, attempt, or retry identity",
+    "retry_distinguishable_from_intentional_repeat": false,
+    "retry_marker_fields": [],
+    "retry_returned": true,
+    "retry_returned_new_record_ids": [
+      "rec-000009",
+      "rec-000010",
+      "rec-000011",
+      "rec-000012"
+    ],
+    "world_changed_before_retry": false
+  },
+  "specimens": {
+    "C": {
+      "caller": {
+        "exception": null,
+        "fault_stage": "none",
+        "result_returned": true,
+        "returned_new_record_ids": [
+          "rec-000005",
+          "rec-000006",
+          "rec-000007",
+          "rec-000008"
+        ]
+      },
+      "driver_fault_boundary": "successful return",
+      "expected_durable_new_records_from_driver": 4,
+      "fixture_configuration_signature": {
+        "filesystem_capture_errors": [],
+        "filesystem_snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+        "git_branch": "main",
+        "git_capture_errors": [],
+        "git_head": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+        "git_status": [],
+        "state_txt_mtime_ns": 946684800000000000,
+        "state_txt_sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+      },
+      "initial_commit": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+      "name": "C",
+      "recovery": {
+        "admission_relation_count": 4,
+        "admission_states_by_subject": {
+          "rec-000001": [
+            "admitted"
+          ],
+          "rec-000002": [
+            "admitted"
+          ],
+          "rec-000005": [
+            "admitted"
+          ],
+          "rec-000006": [
+            "admitted"
+          ]
+        },
+        "commit_indices": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "companion": [
+          {
+            "non_admitted_decision_states": [],
+            "subject_record_id": "rec-000001"
+          },
+          {
+            "non_admitted_decision_states": [],
+            "subject_record_id": "rec-000002"
+          },
+          {
+            "non_admitted_decision_states": [],
+            "subject_record_id": "rec-000005"
+          },
+          {
+            "non_admitted_decision_states": [],
+            "subject_record_id": "rec-000006"
+          }
+        ],
+        "completion_inference": {
+          "complete_established": false,
+          "incomplete_established": false,
+          "outcome": "UNRESOLVED",
+          "reason": "authoritative records contain no requested-invocation, round, completion, or caller-acknowledgement identity"
+        },
+        "completion_surface": {
+          "admission_decisions": [
+            "admitted",
+            "admitted"
+          ],
+          "admission_subject_positions": [
+            0,
+            1
+          ],
+          "caller_acknowledgement_recorded": false,
+          "new_record_types": [
+            "observation",
+            "observation",
+            "admission",
+            "admission"
+          ],
+          "new_sources": [
+            "repository_filesystem_snapshot",
+            "repository_git_state",
+            null,
+            null
+          ],
+          "total_admission_relation_count": 4,
+          "total_companion_count": 4,
+          "total_observation_count": 4,
+          "total_projection_count": 4
+        },
+        "continuity_ok": true,
+        "current_result_read_only": true,
+        "durable_new_record_count": 4,
+        "evaluator_inputs": [
+          "root",
+          "ledger_path",
+          "prior complete prefix witness"
+        ],
+        "failed_process_state_used": false,
+        "integrity_ok": true,
+        "internally_valid": true,
+        "new_record_types": [
+          "observation",
+          "observation",
+          "admission",
+          "admission"
+        ],
+        "orphan_admission_count": 0,
+        "prior_prefix": {
+          "details": {
+            "current_prefix_count_checked": 4,
+            "identity_fields": [
+              "record_id",
+              "commit_index",
+              "integrity.algorithm",
+              "integrity.boundary",
+              "integrity.digest"
+            ],
+            "interpretation": "witnessed history remains structurally conserved as current ordered prefix",
+            "mismatches": [],
+            "witnessed_record_count": 4
+          },
+          "duration_seconds": 1.1399999493733048e-05,
+          "ok": true,
+          "relation": "prefix_preservation"
+        },
+        "production_completion_fields": [],
+        "projection_subject_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000005",
+          "rec-000006"
+        ],
+        "reconstructed_observation_count": 4,
+        "record_count": 8,
+        "record_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000003",
+          "rec-000004",
+          "rec-000005",
+          "rec-000006",
+          "rec-000007",
+          "rec-000008"
+        ],
+        "record_relation_legible": true,
+        "record_types": [
+          "observation",
+          "observation",
+          "admission",
+          "admission",
+          "observation",
+          "observation",
+          "admission",
+          "admission"
+        ],
+        "records": [
+          {
+            "commit_index": 1,
+            "decision": null,
+            "digest": "258f60a90261541fe304d7b0982249366c701a33ef0e89cb4b0a1ec9940fca99",
+            "envelope_fields": [
+              "observation",
+              "provenance",
+              "record_type",
+              "source"
+            ],
+            "record_id": "rec-000001",
+            "record_type": "observation",
+            "signal_identity": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+            "source": "repository_filesystem_snapshot",
+            "source_configuration": {
+              "snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+            },
+            "subject_record_id": null
+          },
+          {
+            "commit_index": 2,
+            "decision": null,
+            "digest": "c25eeffd61c2bda5d98a5453332ec6d5a0142f0d630463c530528230a2a5c22e",
+            "envelope_fields": [
+              "observation",
+              "provenance",
+              "record_type",
+              "source"
+            ],
+            "record_id": "rec-000002",
+            "record_type": "observation",
+            "signal_identity": "git-state-v0:2026-09-08T02:08:13.194146Z",
+            "source": "repository_git_state",
+            "source_configuration": {
+              "branch": "main",
+              "capture_errors": [],
+              "head_sha": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+              "status_porcelain": []
+            },
+            "subject_record_id": null
+          },
+          {
+            "commit_index": 3,
+            "decision": "admitted",
+            "digest": "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+            "envelope_fields": [
+              "comparator_identity",
+              "comparator_version",
+              "comparison_result",
+              "decision",
+              "decision_basis",
+              "record_type",
+              "subject_record_id"
+            ],
+            "record_id": "rec-000003",
+            "record_type": "admission",
+            "signal_identity": null,
+            "source": null,
+            "source_configuration": null,
+            "subject_record_id": "rec-000001"
+          },
+          {
+            "commit_index": 4,
+            "decision": "admitted",
+            "digest": "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545",
+            "envelope_fields": [
+              "comparator_identity",
+              "comparator_version",
+              "comparison_result",
+              "decision",
+              "decision_basis",
+              "record_type",
+              "subject_record_id"
+            ],
+            "record_id": "rec-000004",
+            "record_type": "admission",
+            "signal_identity": null,
+            "source": null,
+            "source_configuration": null,
+            "subject_record_id": "rec-000002"
+          },
+          {
+            "commit_index": 5,
+            "decision": null,
+            "digest": "b4a50243cdf247ce83cc2deaf096549baa0100f96641108c2bb546b2ddc5c7fa",
+            "envelope_fields": [
+              "observation",
+              "provenance",
+              "record_type",
+              "source"
+            ],
+            "record_id": "rec-000005",
+            "record_type": "observation",
+            "signal_identity": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+            "source": "repository_filesystem_snapshot",
+            "source_configuration": {
+              "snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+            },
+            "subject_record_id": null
+          },
+          {
+            "commit_index": 6,
+            "decision": null,
+            "digest": "8fe2733943da5be05513391aad0d4507f100103ced3ef0174c0ff7ec24827dcc",
+            "envelope_fields": [
+              "observation",
+              "provenance",
+              "record_type",
+              "source"
+            ],
+            "record_id": "rec-000006",
+            "record_type": "observation",
+            "signal_identity": "git-state-v0:2026-09-08T02:08:13.300026Z",
+            "source": "repository_git_state",
+            "source_configuration": {
+              "branch": "main",
+              "capture_errors": [],
+              "head_sha": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+              "status_porcelain": []
+            },
+            "subject_record_id": null
+          },
+          {
+            "commit_index": 7,
+            "decision": "admitted",
+            "digest": "bc34a6f14594687a758725d32b5231a7314a63c2ec4d0b9234dbdcec4dad4878",
+            "envelope_fields": [
+              "comparator_identity",
+              "comparator_version",
+              "comparison_result",
+              "decision",
+              "decision_basis",
+              "record_type",
+              "subject_record_id"
+            ],
+            "record_id": "rec-000007",
+            "record_type": "admission",
+            "signal_identity": null,
+            "source": null,
+            "source_configuration": null,
+            "subject_record_id": "rec-000005"
+          },
+          {
+            "commit_index": 8,
+            "decision": "admitted",
+            "digest": "60325c9225cb41234e690fde291fe6f069755933d1a038a1a31cac9cd5dfa677",
+            "envelope_fields": [
+              "comparator_identity",
+              "comparator_version",
+              "comparison_result",
+              "decision",
+              "decision_basis",
+              "record_type",
+              "subject_record_id"
+            ],
+            "record_id": "rec-000008",
+            "record_type": "admission",
+            "signal_identity": null,
+            "source": null,
+            "source_configuration": null,
+            "subject_record_id": "rec-000006"
+          }
+        ],
+        "replay_reproducible": true,
+        "source_provenance_collapsed": false,
+        "source_values": [
+          "repository_filesystem_snapshot",
+          "repository_git_state",
+          "repository_filesystem_snapshot",
+          "repository_git_state"
+        ]
+      }
+    },
+    "F0": {
+      "caller": {
+        "exception": "InjectedCaptureFailure",
+        "fault_stage": "after 0 durable records before append 1",
+        "result_returned": false
+      },
+      "driver_fault_boundary": "after 0 durable records before append 1",
+      "expected_durable_new_records_from_driver": 0,
+      "fixture_configuration_signature": {
+        "filesystem_capture_errors": [],
+        "filesystem_snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+        "git_branch": "main",
+        "git_capture_errors": [],
+        "git_head": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+        "git_status": [],
+        "state_txt_mtime_ns": 946684800000000000,
+        "state_txt_sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+      },
+      "initial_commit": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+      "name": "F0",
+      "recovery": {
+        "admission_relation_count": 2,
+        "admission_states_by_subject": {
+          "rec-000001": [
+            "admitted"
+          ],
+          "rec-000002": [
+            "admitted"
+          ]
+        },
+        "commit_indices": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "companion": [
+          {
+            "non_admitted_decision_states": [],
+            "subject_record_id": "rec-000001"
+          },
+          {
+            "non_admitted_decision_states": [],
+            "subject_record_id": "rec-000002"
+          }
+        ],
+        "completion_inference": {
+          "complete_established": false,
+          "incomplete_established": false,
+          "outcome": "UNRESOLVED",
+          "reason": "authoritative records contain no requested-invocation, round, completion, or caller-acknowledgement identity"
+        },
+        "completion_surface": {
+          "admission_decisions": [],
+          "admission_subject_positions": [],
+          "caller_acknowledgement_recorded": false,
+          "new_record_types": [],
+          "new_sources": [],
+          "total_admission_relation_count": 2,
+          "total_companion_count": 2,
+          "total_observation_count": 2,
+          "total_projection_count": 2
+        },
+        "continuity_ok": true,
+        "current_result_read_only": true,
+        "durable_new_record_count": 0,
+        "evaluator_inputs": [
+          "root",
+          "ledger_path",
+          "prior complete prefix witness"
+        ],
+        "failed_process_state_used": false,
+        "integrity_ok": true,
+        "internally_valid": true,
+        "new_record_types": [],
+        "orphan_admission_count": 0,
+        "prior_prefix": {
+          "details": {
+            "current_prefix_count_checked": 4,
+            "identity_fields": [
+              "record_id",
+              "commit_index",
+              "integrity.algorithm",
+              "integrity.boundary",
+              "integrity.digest"
+            ],
+            "interpretation": "witnessed history remains structurally conserved as current ordered prefix",
+            "mismatches": [],
+            "witnessed_record_count": 4
+          },
+          "duration_seconds": 1.3599987141788006e-05,
+          "ok": true,
+          "relation": "prefix_preservation"
+        },
+        "production_completion_fields": [],
+        "projection_subject_ids": [
+          "rec-000001",
+          "rec-000002"
+        ],
+        "reconstructed_observation_count": 2,
+        "record_count": 4,
+        "record_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000003",
+          "rec-000004"
+        ],
+        "record_relation_legible": true,
+        "record_types": [
+          "observation",
+          "observation",
+          "admission",
+          "admission"
+        ],
+        "records": [
+          {
+            "commit_index": 1,
+            "decision": null,
+            "digest": "dde6daf531041fbb936deccc91dcf390231abd353e1fa684ca214a254f2d38a5",
+            "envelope_fields": [
+              "observation",
+              "provenance",
+              "record_type",
+              "source"
+            ],
+            "record_id": "rec-000001",
+            "record_type": "observation",
+            "signal_identity": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+            "source": "repository_filesystem_snapshot",
+            "source_configuration": {
+              "snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+            },
+            "subject_record_id": null
+          },
+          {
+            "commit_index": 2,
+            "decision": null,
+            "digest": "b398654e49ec3ae975b32210ede0ba961cc0406bbc8cab0ab969a3e3925ed6b8",
+            "envelope_fields": [
+              "observation",
+              "provenance",
+              "record_type",
+              "source"
+            ],
+            "record_id": "rec-000002",
+            "record_type": "observation",
+            "signal_identity": "git-state-v0:2026-09-08T02:08:10.938517Z",
+            "source": "repository_git_state",
+            "source_configuration": {
+              "branch": "main",
+              "capture_errors": [],
+              "head_sha": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+              "status_porcelain": []
+            },
+            "subject_record_id": null
+          },
+          {
+            "commit_index": 3,
+            "decision": "admitted",
+            "digest": "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+            "envelope_fields": [
+              "comparator_identity",
+              "comparator_version",
+              "comparison_result",
+              "decision",
+              "decision_basis",
+              "record_type",
+              "subject_record_id"
+            ],
+            "record_id": "rec-000003",
+            "record_type": "admission",
+            "signal_identity": null,
+            "source": null,
+            "source_configuration": null,
+            "subject_record_id": "rec-000001"
+          },
+          {
+            "commit_index": 4,
+            "decision": "admitted",
+            "digest": "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545",
+            "envelope_fields": [
+              "comparator_identity",
+              "comparator_version",
+              "comparison_result",
+              "decision",
+              "decision_basis",
+              "record_type",
+              "subject_record_id"
+            ],
+            "record_id": "rec-000004",
+            "record_type": "admission",
+            "signal_identity": null,
+            "source": null,
+            "source_configuration": null,
+            "subject_record_id": "rec-000002"
+          }
+        ],
+        "replay_reproducible": true,
+        "source_provenance_collapsed": false,
+        "source_values": [
+          "repository_filesystem_snapshot",
+          "repository_git_state"
+        ]
+      }
+    },
+    "F1": {
+      "caller": {
+        "exception": "InjectedCaptureFailure",
+        "fault_stage": "after 1 durable records before append 2",
+        "result_returned": false
+      },
+      "driver_fault_boundary": "after 1 durable records before append 2",
+      "expected_durable_new_records_from_driver": 1,
+      "fixture_configuration_signature": {
+        "filesystem_capture_errors": [],
+        "filesystem_snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+        "git_branch": "main",
+        "git_capture_errors": [],
+        "git_head": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+        "git_status": [],
+        "state_txt_mtime_ns": 946684800000000000,
+        "state_txt_sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+      },
+      "initial_commit": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+      "name": "F1",
+      "recovery": {
+        "admission_relation_count": 2,
+        "admission_states_by_subject": {
+          "rec-000001": [
+            "admitted"
+          ],
+          "rec-000002": [
+            "admitted"
+          ],
+          "rec-000005": []
+        },
+        "commit_indices": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "companion": [
+          {
+            "non_admitted_decision_states": [],
+            "subject_record_id": "rec-000001"
+          },
+          {
+            "non_admitted_decision_states": [],
+            "subject_record_id": "rec-000002"
+          }
+        ],
+        "completion_inference": {
+          "complete_established": false,
+          "incomplete_established": false,
+          "outcome": "UNRESOLVED",
+          "reason": "authoritative records contain no requested-invocation, round, completion, or caller-acknowledgement identity"
+        },
+        "completion_surface": {
+          "admission_decisions": [],
+          "admission_subject_positions": [],
+          "caller_acknowledgement_recorded": false,
+          "new_record_types": [
+            "observation"
+          ],
+          "new_sources": [
+            "repository_filesystem_snapshot"
+          ],
+          "total_admission_relation_count": 2,
+          "total_companion_count": 2,
+          "total_observation_count": 3,
+          "total_projection_count": 2
+        },
+        "continuity_ok": true,
+        "current_result_read_only": true,
+        "durable_new_record_count": 1,
+        "evaluator_inputs": [
+          "root",
+          "ledger_path",
+          "prior complete prefix witness"
+        ],
+        "failed_process_state_used": false,
+        "integrity_ok": true,
+        "internally_valid": true,
+        "new_record_types": [
+          "observation"
+        ],
+        "orphan_admission_count": 0,
+        "prior_prefix": {
+          "details": {
+            "current_prefix_count_checked": 4,
+            "identity_fields": [
+              "record_id",
+              "commit_index",
+              "integrity.algorithm",
+              "integrity.boundary",
+              "integrity.digest"
+            ],
+            "interpretation": "witnessed history remains structurally conserved as current ordered prefix",
+            "mismatches": [],
+            "witnessed_record_count": 4
+          },
+          "duration_seconds": 1.2899996363557875e-05,
+          "ok": true,
+          "relation": "prefix_preservation"
+        },
+        "production_completion_fields": [],
+        "projection_subject_ids": [
+          "rec-000001",
+          "rec-000002"
+        ],
+        "reconstructed_observation_count": 3,
+        "record_count": 5,
+        "record_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000003",
+          "rec-000004",
+          "rec-000005"
+        ],
+        "record_relation_legible": true,
+        "record_types": [
+          "observation",
+          "observation",
+          "admission",
+          "admission",
+          "observation"
+        ],
+        "records": [
+          {
+            "commit_index": 1,
+            "decision": null,
+            "digest": "c1cd7cbec0ddbb5cae3d28b3c2bb84549f8fde85f1b0c64abbcc9e7c88b340f4",
+            "envelope_fields": [
+              "observation",
+              "provenance",
+              "record_type",
+              "source"
+            ],
+            "record_id": "rec-000001",
+            "record_type": "observation",
+            "signal_identity": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+            "source": "repository_filesystem_snapshot",
+            "source_configuration": {
+              "snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+            },
+            "subject_record_id": null
+          },
+          {
+            "commit_index": 2,
+            "decision": null,
+            "digest": "d0ae6fe5b7b7a16ba3bd8717847b173160dbfcb4b403fc230eb05c89ba962a9f",
+            "envelope_fields": [
+              "observation",
+              "provenance",
+              "record_type",
+              "source"
+            ],
+            "record_id": "rec-000002",
+            "record_type": "observation",
+            "signal_identity": "git-state-v0:2026-09-08T02:08:11.390618Z",
+            "source": "repository_git_state",
+            "source_configuration": {
+              "branch": "main",
+              "capture_errors": [],
+              "head_sha": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+              "status_porcelain": []
+            },
+            "subject_record_id": null
+          },
+          {
+            "commit_index": 3,
+            "decision": "admitted",
+            "digest": "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+            "envelope_fields": [
+              "comparator_identity",
+              "comparator_version",
+              "comparison_result",
+              "decision",
+              "decision_basis",
+              "record_type",
+              "subject_record_id"
+            ],
+            "record_id": "rec-000003",
+            "record_type": "admission",
+            "signal_identity": null,
+            "source": null,
+            "source_configuration": null,
+            "subject_record_id": "rec-000001"
+          },
+          {
+            "commit_index": 4,
+            "decision": "admitted",
+            "digest": "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545",
+            "envelope_fields": [
+              "comparator_identity",
+              "comparator_version",
+              "comparison_result",
+              "decision",
+              "decision_basis",
+              "record_type",
+              "subject_record_id"
+            ],
+            "record_id": "rec-000004",
+            "record_type": "admission",
+            "signal_identity": null,
+            "source": null,
+            "source_configuration": null,
+            "subject_record_id": "rec-000002"
+          },
+          {
+            "commit_index": 5,
+            "decision": null,
+            "digest": "8b6c91a25addda2ed5f538e7de34a1612899a137f202058f7730c3e742a40a2e",
+            "envelope_fields": [
+              "observation",
+              "provenance",
+              "record_type",
+              "source"
+            ],
+            "record_id": "rec-000005",
+            "record_type": "observation",
+            "signal_identity": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+            "source": "repository_filesystem_snapshot",
+            "source_configuration": {
+              "snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+            },
+            "subject_record_id": null
+          }
+        ],
+        "replay_reproducible": true,
+        "source_provenance_collapsed": false,
+        "source_values": [
+          "repository_filesystem_snapshot",
+          "repository_git_state",
+          "repository_filesystem_snapshot"
+        ]
+      }
+    },
+    "F2": {
+      "caller": {
+        "exception": "InjectedCaptureFailure",
+        "fault_stage": "after 2 durable records before append 3",
+        "result_returned": false
+      },
+      "driver_fault_boundary": "after 2 durable records before append 3",
+      "expected_durable_new_records_from_driver": 2,
+      "fixture_configuration_signature": {
+        "filesystem_capture_errors": [],
+        "filesystem_snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+        "git_branch": "main",
+        "git_capture_errors": [],
+        "git_head": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+        "git_status": [],
+        "state_txt_mtime_ns": 946684800000000000,
+        "state_txt_sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+      },
+      "initial_commit": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+      "name": "F2",
+      "recovery": {
+        "admission_relation_count": 2,
+        "admission_states_by_subject": {
+          "rec-000001": [
+            "admitted"
+          ],
+          "rec-000002": [
+            "admitted"
+          ],
+          "rec-000005": [],
+          "rec-000006": []
+        },
+        "commit_indices": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "companion": [
+          {
+            "non_admitted_decision_states": [],
+            "subject_record_id": "rec-000001"
+          },
+          {
+            "non_admitted_decision_states": [],
+            "subject_record_id": "rec-000002"
+          }
+        ],
+        "completion_inference": {
+          "complete_established": false,
+          "incomplete_established": false,
+          "outcome": "UNRESOLVED",
+          "reason": "authoritative records contain no requested-invocation, round, completion, or caller-acknowledgement identity"
+        },
+        "completion_surface": {
+          "admission_decisions": [],
+          "admission_subject_positions": [],
+          "caller_acknowledgement_recorded": false,
+          "new_record_types": [
+            "observation",
+            "observation"
+          ],
+          "new_sources": [
+            "repository_filesystem_snapshot",
+            "repository_git_state"
+          ],
+          "total_admission_relation_count": 2,
+          "total_companion_count": 2,
+          "total_observation_count": 4,
+          "total_projection_count": 2
+        },
+        "continuity_ok": true,
+        "current_result_read_only": true,
+        "durable_new_record_count": 2,
+        "evaluator_inputs": [
+          "root",
+          "ledger_path",
+          "prior complete prefix witness"
+        ],
+        "failed_process_state_used": false,
+        "integrity_ok": true,
+        "internally_valid": true,
+        "new_record_types": [
+          "observation",
+          "observation"
+        ],
+        "orphan_admission_count": 0,
+        "prior_prefix": {
+          "details": {
+            "current_prefix_count_checked": 4,
+            "identity_fields": [
+              "record_id",
+              "commit_index",
+              "integrity.algorithm",
+              "integrity.boundary",
+              "integrity.digest"
+            ],
+            "interpretation": "witnessed history remains structurally conserved as current ordered prefix",
+            "mismatches": [],
+            "witnessed_record_count": 4
+          },
+          "duration_seconds": 1.2100004823878407e-05,
+          "ok": true,
+          "relation": "prefix_preservation"
+        },
+        "production_completion_fields": [],
+        "projection_subject_ids": [
+          "rec-000001",
+          "rec-000002"
+        ],
+        "reconstructed_observation_count": 4,
+        "record_count": 6,
+        "record_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000003",
+          "rec-000004",
+          "rec-000005",
+          "rec-000006"
+        ],
+        "record_relation_legible": true,
+        "record_types": [
+          "observation",
+          "observation",
+          "admission",
+          "admission",
+          "observation",
+          "observation"
+        ],
+        "records": [
+          {
+            "commit_index": 1,
+            "decision": null,
+            "digest": "c6ba7f90504f7e8d1a6672a5f61d72c0eec1d57168d343b1fba8d8657538aec8",
+            "envelope_fields": [
+              "observation",
+              "provenance",
+              "record_type",
+              "source"
+            ],
+            "record_id": "rec-000001",
+            "record_type": "observation",
+            "signal_identity": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+            "source": "repository_filesystem_snapshot",
+            "source_configuration": {
+              "snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+            },
+            "subject_record_id": null
+          },
+          {
+            "commit_index": 2,
+            "decision": null,
+            "digest": "d5db1ea09cbd1dd4c44bb06ba38f42f5b0857b8a28ffbc6ca0834d3b5fe573ca",
+            "envelope_fields": [
+              "observation",
+              "provenance",
+              "record_type",
+              "source"
+            ],
+            "record_id": "rec-000002",
+            "record_type": "observation",
+            "signal_identity": "git-state-v0:2026-09-08T02:08:11.832670Z",
+            "source": "repository_git_state",
+            "source_configuration": {
+              "branch": "main",
+              "capture_errors": [],
+              "head_sha": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+              "status_porcelain": []
+            },
+            "subject_record_id": null
+          },
+          {
+            "commit_index": 3,
+            "decision": "admitted",
+            "digest": "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+            "envelope_fields": [
+              "comparator_identity",
+              "comparator_version",
+              "comparison_result",
+              "decision",
+              "decision_basis",
+              "record_type",
+              "subject_record_id"
+            ],
+            "record_id": "rec-000003",
+            "record_type": "admission",
+            "signal_identity": null,
+            "source": null,
+            "source_configuration": null,
+            "subject_record_id": "rec-000001"
+          },
+          {
+            "commit_index": 4,
+            "decision": "admitted",
+            "digest": "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545",
+            "envelope_fields": [
+              "comparator_identity",
+              "comparator_version",
+              "comparison_result",
+              "decision",
+              "decision_basis",
+              "record_type",
+              "subject_record_id"
+            ],
+            "record_id": "rec-000004",
+            "record_type": "admission",
+            "signal_identity": null,
+            "source": null,
+            "source_configuration": null,
+            "subject_record_id": "rec-000002"
+          },
+          {
+            "commit_index": 5,
+            "decision": null,
+            "digest": "25b538bb56646a86c0e954a4abfb32f38551917580156653b9c45a206a02d7fb",
+            "envelope_fields": [
+              "observation",
+              "provenance",
+              "record_type",
+              "source"
+            ],
+            "record_id": "rec-000005",
+            "record_type": "observation",
+            "signal_identity": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+            "source": "repository_filesystem_snapshot",
+            "source_configuration": {
+              "snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+            },
+            "subject_record_id": null
+          },
+          {
+            "commit_index": 6,
+            "decision": null,
+            "digest": "0b69f2b6a626c3d7937cdf3f226337db727f454a146c6601c779474d3556b89f",
+            "envelope_fields": [
+              "observation",
+              "provenance",
+              "record_type",
+              "source"
+            ],
+            "record_id": "rec-000006",
+            "record_type": "observation",
+            "signal_identity": "git-state-v0:2026-09-08T02:08:11.941225Z",
+            "source": "repository_git_state",
+            "source_configuration": {
+              "branch": "main",
+              "capture_errors": [],
+              "head_sha": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+              "status_porcelain": []
+            },
+            "subject_record_id": null
+          }
+        ],
+        "replay_reproducible": true,
+        "source_provenance_collapsed": false,
+        "source_values": [
+          "repository_filesystem_snapshot",
+          "repository_git_state",
+          "repository_filesystem_snapshot",
+          "repository_git_state"
+        ]
+      }
+    },
+    "F3": {
+      "caller": {
+        "exception": "InjectedCaptureFailure",
+        "fault_stage": "after 3 durable records before append 4",
+        "result_returned": false
+      },
+      "driver_fault_boundary": "after 3 durable records before append 4",
+      "expected_durable_new_records_from_driver": 3,
+      "fixture_configuration_signature": {
+        "filesystem_capture_errors": [],
+        "filesystem_snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+        "git_branch": "main",
+        "git_capture_errors": [],
+        "git_head": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+        "git_status": [],
+        "state_txt_mtime_ns": 946684800000000000,
+        "state_txt_sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+      },
+      "initial_commit": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+      "name": "F3",
+      "recovery": {
+        "admission_relation_count": 3,
+        "admission_states_by_subject": {
+          "rec-000001": [
+            "admitted"
+          ],
+          "rec-000002": [
+            "admitted"
+          ],
+          "rec-000005": [
+            "admitted"
+          ],
+          "rec-000006": []
+        },
+        "commit_indices": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "companion": [
+          {
+            "non_admitted_decision_states": [],
+            "subject_record_id": "rec-000001"
+          },
+          {
+            "non_admitted_decision_states": [],
+            "subject_record_id": "rec-000002"
+          },
+          {
+            "non_admitted_decision_states": [],
+            "subject_record_id": "rec-000005"
+          }
+        ],
+        "completion_inference": {
+          "complete_established": false,
+          "incomplete_established": false,
+          "outcome": "UNRESOLVED",
+          "reason": "authoritative records contain no requested-invocation, round, completion, or caller-acknowledgement identity"
+        },
+        "completion_surface": {
+          "admission_decisions": [
+            "admitted"
+          ],
+          "admission_subject_positions": [
+            0
+          ],
+          "caller_acknowledgement_recorded": false,
+          "new_record_types": [
+            "observation",
+            "observation",
+            "admission"
+          ],
+          "new_sources": [
+            "repository_filesystem_snapshot",
+            "repository_git_state",
+            null
+          ],
+          "total_admission_relation_count": 3,
+          "total_companion_count": 3,
+          "total_observation_count": 4,
+          "total_projection_count": 3
+        },
+        "continuity_ok": true,
+        "current_result_read_only": true,
+        "durable_new_record_count": 3,
+        "evaluator_inputs": [
+          "root",
+          "ledger_path",
+          "prior complete prefix witness"
+        ],
+        "failed_process_state_used": false,
+        "integrity_ok": true,
+        "internally_valid": true,
+        "new_record_types": [
+          "observation",
+          "observation",
+          "admission"
+        ],
+        "orphan_admission_count": 0,
+        "prior_prefix": {
+          "details": {
+            "current_prefix_count_checked": 4,
+            "identity_fields": [
+              "record_id",
+              "commit_index",
+              "integrity.algorithm",
+              "integrity.boundary",
+              "integrity.digest"
+            ],
+            "interpretation": "witnessed history remains structurally conserved as current ordered prefix",
+            "mismatches": [],
+            "witnessed_record_count": 4
+          },
+          "duration_seconds": 1.0200004908256233e-05,
+          "ok": true,
+          "relation": "prefix_preservation"
+        },
+        "production_completion_fields": [],
+        "projection_subject_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000005"
+        ],
+        "reconstructed_observation_count": 4,
+        "record_count": 7,
+        "record_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000003",
+          "rec-000004",
+          "rec-000005",
+          "rec-000006",
+          "rec-000007"
+        ],
+        "record_relation_legible": true,
+        "record_types": [
+          "observation",
+          "observation",
+          "admission",
+          "admission",
+          "observation",
+          "observation",
+          "admission"
+        ],
+        "records": [
+          {
+            "commit_index": 1,
+            "decision": null,
+            "digest": "e0a6ec96c11dc20a95153edcad456666d3b46c1b117f321e33eff69beb036cfb",
+            "envelope_fields": [
+              "observation",
+              "provenance",
+              "record_type",
+              "source"
+            ],
+            "record_id": "rec-000001",
+            "record_type": "observation",
+            "signal_identity": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+            "source": "repository_filesystem_snapshot",
+            "source_configuration": {
+              "snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+            },
+            "subject_record_id": null
+          },
+          {
+            "commit_index": 2,
+            "decision": null,
+            "digest": "9fe967ecddcf55e30c0ce498a1361ebc6c78024950965d4363e2cf795b8d8fd9",
+            "envelope_fields": [
+              "observation",
+              "provenance",
+              "record_type",
+              "source"
+            ],
+            "record_id": "rec-000002",
+            "record_type": "observation",
+            "signal_identity": "git-state-v0:2026-09-08T02:08:12.284486Z",
+            "source": "repository_git_state",
+            "source_configuration": {
+              "branch": "main",
+              "capture_errors": [],
+              "head_sha": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+              "status_porcelain": []
+            },
+            "subject_record_id": null
+          },
+          {
+            "commit_index": 3,
+            "decision": "admitted",
+            "digest": "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+            "envelope_fields": [
+              "comparator_identity",
+              "comparator_version",
+              "comparison_result",
+              "decision",
+              "decision_basis",
+              "record_type",
+              "subject_record_id"
+            ],
+            "record_id": "rec-000003",
+            "record_type": "admission",
+            "signal_identity": null,
+            "source": null,
+            "source_configuration": null,
+            "subject_record_id": "rec-000001"
+          },
+          {
+            "commit_index": 4,
+            "decision": "admitted",
+            "digest": "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545",
+            "envelope_fields": [
+              "comparator_identity",
+              "comparator_version",
+              "comparison_result",
+              "decision",
+              "decision_basis",
+              "record_type",
+              "subject_record_id"
+            ],
+            "record_id": "rec-000004",
+            "record_type": "admission",
+            "signal_identity": null,
+            "source": null,
+            "source_configuration": null,
+            "subject_record_id": "rec-000002"
+          },
+          {
+            "commit_index": 5,
+            "decision": null,
+            "digest": "65591c408f68ab4426d7982a026f76377c4083887eb57ecc17366c3ce922824a",
+            "envelope_fields": [
+              "observation",
+              "provenance",
+              "record_type",
+              "source"
+            ],
+            "record_id": "rec-000005",
+            "record_type": "observation",
+            "signal_identity": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+            "source": "repository_filesystem_snapshot",
+            "source_configuration": {
+              "snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+            },
+            "subject_record_id": null
+          },
+          {
+            "commit_index": 6,
+            "decision": null,
+            "digest": "55169cb007ed795a1ba1099b49fe65c1441ac509d9b78ef55213303c82c406f0",
+            "envelope_fields": [
+              "observation",
+              "provenance",
+              "record_type",
+              "source"
+            ],
+            "record_id": "rec-000006",
+            "record_type": "observation",
+            "signal_identity": "git-state-v0:2026-09-08T02:08:12.389809Z",
+            "source": "repository_git_state",
+            "source_configuration": {
+              "branch": "main",
+              "capture_errors": [],
+              "head_sha": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+              "status_porcelain": []
+            },
+            "subject_record_id": null
+          },
+          {
+            "commit_index": 7,
+            "decision": "admitted",
+            "digest": "bc34a6f14594687a758725d32b5231a7314a63c2ec4d0b9234dbdcec4dad4878",
+            "envelope_fields": [
+              "comparator_identity",
+              "comparator_version",
+              "comparison_result",
+              "decision",
+              "decision_basis",
+              "record_type",
+              "subject_record_id"
+            ],
+            "record_id": "rec-000007",
+            "record_type": "admission",
+            "signal_identity": null,
+            "source": null,
+            "source_configuration": null,
+            "subject_record_id": "rec-000005"
+          }
+        ],
+        "replay_reproducible": true,
+        "source_provenance_collapsed": false,
+        "source_values": [
+          "repository_filesystem_snapshot",
+          "repository_git_state",
+          "repository_filesystem_snapshot",
+          "repository_git_state"
+        ]
+      }
+    },
+    "F4": {
+      "caller": {
+        "exception": "InjectedCaptureFailure",
+        "fault_stage": "after 4 durable records before return",
+        "result_returned": false
+      },
+      "driver_fault_boundary": "after 4 durable records before return",
+      "expected_durable_new_records_from_driver": 4,
+      "fixture_configuration_signature": {
+        "filesystem_capture_errors": [],
+        "filesystem_snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+        "git_branch": "main",
+        "git_capture_errors": [],
+        "git_head": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+        "git_status": [],
+        "state_txt_mtime_ns": 946684800000000000,
+        "state_txt_sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+      },
+      "initial_commit": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+      "name": "F4",
+      "recovery": {
+        "admission_relation_count": 4,
+        "admission_states_by_subject": {
+          "rec-000001": [
+            "admitted"
+          ],
+          "rec-000002": [
+            "admitted"
+          ],
+          "rec-000005": [
+            "admitted"
+          ],
+          "rec-000006": [
+            "admitted"
+          ]
+        },
+        "commit_indices": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "companion": [
+          {
+            "non_admitted_decision_states": [],
+            "subject_record_id": "rec-000001"
+          },
+          {
+            "non_admitted_decision_states": [],
+            "subject_record_id": "rec-000002"
+          },
+          {
+            "non_admitted_decision_states": [],
+            "subject_record_id": "rec-000005"
+          },
+          {
+            "non_admitted_decision_states": [],
+            "subject_record_id": "rec-000006"
+          }
+        ],
+        "completion_inference": {
+          "complete_established": false,
+          "incomplete_established": false,
+          "outcome": "UNRESOLVED",
+          "reason": "authoritative records contain no requested-invocation, round, completion, or caller-acknowledgement identity"
+        },
+        "completion_surface": {
+          "admission_decisions": [
+            "admitted",
+            "admitted"
+          ],
+          "admission_subject_positions": [
+            0,
+            1
+          ],
+          "caller_acknowledgement_recorded": false,
+          "new_record_types": [
+            "observation",
+            "observation",
+            "admission",
+            "admission"
+          ],
+          "new_sources": [
+            "repository_filesystem_snapshot",
+            "repository_git_state",
+            null,
+            null
+          ],
+          "total_admission_relation_count": 4,
+          "total_companion_count": 4,
+          "total_observation_count": 4,
+          "total_projection_count": 4
+        },
+        "continuity_ok": true,
+        "current_result_read_only": true,
+        "durable_new_record_count": 4,
+        "evaluator_inputs": [
+          "root",
+          "ledger_path",
+          "prior complete prefix witness"
+        ],
+        "failed_process_state_used": false,
+        "integrity_ok": true,
+        "internally_valid": true,
+        "new_record_types": [
+          "observation",
+          "observation",
+          "admission",
+          "admission"
+        ],
+        "orphan_admission_count": 0,
+        "prior_prefix": {
+          "details": {
+            "current_prefix_count_checked": 4,
+            "identity_fields": [
+              "record_id",
+              "commit_index",
+              "integrity.algorithm",
+              "integrity.boundary",
+              "integrity.digest"
+            ],
+            "interpretation": "witnessed history remains structurally conserved as current ordered prefix",
+            "mismatches": [],
+            "witnessed_record_count": 4
+          },
+          "duration_seconds": 1.1800002539530396e-05,
+          "ok": true,
+          "relation": "prefix_preservation"
+        },
+        "production_completion_fields": [],
+        "projection_subject_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000005",
+          "rec-000006"
+        ],
+        "reconstructed_observation_count": 4,
+        "record_count": 8,
+        "record_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000003",
+          "rec-000004",
+          "rec-000005",
+          "rec-000006",
+          "rec-000007",
+          "rec-000008"
+        ],
+        "record_relation_legible": true,
+        "record_types": [
+          "observation",
+          "observation",
+          "admission",
+          "admission",
+          "observation",
+          "observation",
+          "admission",
+          "admission"
+        ],
+        "records": [
+          {
+            "commit_index": 1,
+            "decision": null,
+            "digest": "70494c08eb6af41a094bb4703c4cf8e32fdae065c29ad8afb97edfddcc11e879",
+            "envelope_fields": [
+              "observation",
+              "provenance",
+              "record_type",
+              "source"
+            ],
+            "record_id": "rec-000001",
+            "record_type": "observation",
+            "signal_identity": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+            "source": "repository_filesystem_snapshot",
+            "source_configuration": {
+              "snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+            },
+            "subject_record_id": null
+          },
+          {
+            "commit_index": 2,
+            "decision": null,
+            "digest": "1158a00a9ae273cf142554ec725abb0420d05f5d4650954abc042dd645b49299",
+            "envelope_fields": [
+              "observation",
+              "provenance",
+              "record_type",
+              "source"
+            ],
+            "record_id": "rec-000002",
+            "record_type": "observation",
+            "signal_identity": "git-state-v0:2026-09-08T02:08:12.734452Z",
+            "source": "repository_git_state",
+            "source_configuration": {
+              "branch": "main",
+              "capture_errors": [],
+              "head_sha": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+              "status_porcelain": []
+            },
+            "subject_record_id": null
+          },
+          {
+            "commit_index": 3,
+            "decision": "admitted",
+            "digest": "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+            "envelope_fields": [
+              "comparator_identity",
+              "comparator_version",
+              "comparison_result",
+              "decision",
+              "decision_basis",
+              "record_type",
+              "subject_record_id"
+            ],
+            "record_id": "rec-000003",
+            "record_type": "admission",
+            "signal_identity": null,
+            "source": null,
+            "source_configuration": null,
+            "subject_record_id": "rec-000001"
+          },
+          {
+            "commit_index": 4,
+            "decision": "admitted",
+            "digest": "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545",
+            "envelope_fields": [
+              "comparator_identity",
+              "comparator_version",
+              "comparison_result",
+              "decision",
+              "decision_basis",
+              "record_type",
+              "subject_record_id"
+            ],
+            "record_id": "rec-000004",
+            "record_type": "admission",
+            "signal_identity": null,
+            "source": null,
+            "source_configuration": null,
+            "subject_record_id": "rec-000002"
+          },
+          {
+            "commit_index": 5,
+            "decision": null,
+            "digest": "d7bde42775cc5f20c863283e1667fca2e1320ac5fe3fca4202acdb2dd199408d",
+            "envelope_fields": [
+              "observation",
+              "provenance",
+              "record_type",
+              "source"
+            ],
+            "record_id": "rec-000005",
+            "record_type": "observation",
+            "signal_identity": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+            "source": "repository_filesystem_snapshot",
+            "source_configuration": {
+              "snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+            },
+            "subject_record_id": null
+          },
+          {
+            "commit_index": 6,
+            "decision": null,
+            "digest": "d2bbfee2290e4de4725c3797888cafb426c261b713b299308447ea2fa802170d",
+            "envelope_fields": [
+              "observation",
+              "provenance",
+              "record_type",
+              "source"
+            ],
+            "record_id": "rec-000006",
+            "record_type": "observation",
+            "signal_identity": "git-state-v0:2026-09-08T02:08:12.842077Z",
+            "source": "repository_git_state",
+            "source_configuration": {
+              "branch": "main",
+              "capture_errors": [],
+              "head_sha": "f55cf432d7d23f1a55256aba99c9500400fd53bc",
+              "status_porcelain": []
+            },
+            "subject_record_id": null
+          },
+          {
+            "commit_index": 7,
+            "decision": "admitted",
+            "digest": "bc34a6f14594687a758725d32b5231a7314a63c2ec4d0b9234dbdcec4dad4878",
+            "envelope_fields": [
+              "comparator_identity",
+              "comparator_version",
+              "comparison_result",
+              "decision",
+              "decision_basis",
+              "record_type",
+              "subject_record_id"
+            ],
+            "record_id": "rec-000007",
+            "record_type": "admission",
+            "signal_identity": null,
+            "source": null,
+            "source_configuration": null,
+            "subject_record_id": "rec-000005"
+          },
+          {
+            "commit_index": 8,
+            "decision": "admitted",
+            "digest": "60325c9225cb41234e690fde291fe6f069755933d1a038a1a31cac9cd5dfa677",
+            "envelope_fields": [
+              "comparator_identity",
+              "comparator_version",
+              "comparison_result",
+              "decision",
+              "decision_basis",
+              "record_type",
+              "subject_record_id"
+            ],
+            "record_id": "rec-000008",
+            "record_type": "admission",
+            "signal_identity": null,
+            "source": null,
+            "source_configuration": null,
+            "subject_record_id": "rec-000006"
+          }
+        ],
+        "replay_reproducible": true,
+        "source_provenance_collapsed": false,
+        "source_values": [
+          "repository_filesystem_snapshot",
+          "repository_git_state",
+          "repository_filesystem_snapshot",
+          "repository_git_state"
+        ]
+      }
+    }
+  },
+  "starting_lineage": {
+    "branch": "main",
+    "head": "b7757c91dbacf25d75217d30bed304b8081f033c",
+    "message": "Phase-C",
+    "observed_head_at_run": "b7757c91dbacf25d75217d30bed304b8081f033c",
+    "worktree": []
+  },
+  "strongest_failure": "authoritative history cannot establish whether a fully durable invocation was acknowledged to its caller",
+  "strongest_invariant": "fresh recovery preserves exactly the records and relations that became durable",
+  "strongest_unresolved_horizon": "policy for retrying after unknown acknowledgement remains absent",
+  "success_criterion": {
+    "answer": "partial composition remains record-legible while caller-level completion remains unresolved from authoritative history",
+    "answered": true
+  }
+}

@@ -66,6 +66,8 @@ Persistent observational field pressure completed in `docs/decisions/persistent_
 
 Foreground persistent coordinator pressure completed in `docs/decisions/foreground_persistent_coordinator_pressure_v0.md`.
 
+Partial-round and ambiguous-completion pressure completed in `docs/decisions/partial_round_completion_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -134,8 +136,8 @@ navigation
 
 ## Next Smallest Question
 
-What is the exact ledger and reconstruction consequence of a foreground
-capture round failing after only part of its four-record append sequence?
+Does a concrete caller require retry policy or request identity to distinguish
+retry after unknown acknowledgement from intentional repeated observation?
 
 ## Contract Surface Status
 
@@ -291,6 +293,16 @@ capture round failing after only part of its four-record append sequence?
 - the small repository-specific ForegroundRepositoryObservationCoordinator boundary was promoted as foreground, explicitly invoked, single-writer, and non-autonomous
 - Chart 13 records caller-selected captures across external world action, coordinator lifetime, source-relative configuration, ledger range, reconstruction, and prefix
 - D-0042 records coordinator_lifetime != historical_continuity without asserting persistent participant identity
-- the next pressure should isolate partial-round append failure before adding autonomy, polling, Windows observation, or new sources
+- F0 through F4 deterministically failed after zero through four new durable records over independent equal-world four-record prefixes
+- every partial history remained integrity-valid, continuity-valid, replayable, reconstructible, and legible at the committed record/relation level
+- F1 retained one unadmitted filesystem observation; F2 retained filesystem and Git observations without new admissions; F3 additionally retained one filesystem admission
+- authoritative history contained no round, request, completion, or caller-acknowledgement coordinate, so invocation completion remained UNRESOLVED for F0 through F4 and successful control
+- F4 and successful control had different caller outcomes but equal normalized durable composition surfaces; independent occurrence timestamps and digests differed without encoding acknowledgement
+- a retry after F4 appended another valid same-configuration observation pair and admissions, but history could not distinguish retry from intentional repetition
+- D-0042 remained supported without amendment because fresh coordinators recovered every durably committed record under mid-operation termination
+- the promoted foreground coordinator remains scoped to four independently committed records and provides no atomic-round or durable-acknowledgement guarantee
+- Chart 14 records fault boundary against durable shape, caller outcome, integrity, continuity, reconstruction, projection, and completion inference
+- D-0043 records caller_invocation_outcome != durable_history_state
+- the next pressure should require a concrete caller before introducing retry policy or request identity
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure
