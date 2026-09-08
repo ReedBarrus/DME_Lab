@@ -1,0 +1,31 @@
+{
+  "upstream_head": "2618453d233a5867757c22ff732459f701834372",
+  "baseline": {
+    "tests": 469,
+    "passed": true,
+    "seconds": 17.905
+  },
+  "focused": {
+    "tests": 3,
+    "passed": true,
+    "seconds": 0.467
+  },
+  "final": {
+    "tests": 472,
+    "passed": true,
+    "seconds": 16.103
+  },
+  "git_diff_check_passed": true,
+  "all_five_changed_files_trailing_whitespace_check_passed": true,
+  "patch_reverse_check_passed": true,
+  "existing_production_registry_and_canonical_history_git_unchanged": true,
+  "patch_sha256": "798b6459720734cbfef35f7af909d18ade8b1bde2dfd307734a5befdd659c7da",
+  "files": {
+    "PROJECT_STATE.md": "835f9b9b2f256cd59303dd315f6580961020e2fe4193e431c74852e3e961b80b",
+    "docs/decisions/consumer_git_acquisition_pressure_v0.md": "efda36e4cc460524102f758fa93888afbcf2d263a0e7e4d87dea2abe77ff406b",
+    "src/runtime/consumer_git_acquisition_pressure.py": "321f86acd7f7ff55f7430e2b25f399d9612702d0d1781bd7ee2164760f92b208",
+    "tests/runtime/test_consumer_git_acquisition_pressure.py": "6f78cb8708f081bb0b2788548be51b3821cb021dd4a56b905f0f5191ecb4793b",
+    "traces/consumer_git_acquisition_pressure_v0.json": "53ce285100d767dff51180cdc06721a0646a804d7d56975d658b5f23e5481783"
+  },
+  "status": "Local isolated-clone changes only; no commit or push."
+}

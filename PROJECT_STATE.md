@@ -82,6 +82,8 @@ Cross-domain predictive-transformation selection pressure completed in `docs/dec
 
 Acoustic source-coordinate witness selection pressure completed in `docs/decisions/acoustic_source_coordinate_witness_selection_pressure_v0.md`.
 
+Astra consumer-pressure adjudication and independent reproduction completed in `docs/decisions/astra_consumer_pressure_adjudication_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -164,6 +166,15 @@ content-bearing, post-system-mix acoustic coordinate. The required selection
 result is `candidate_requires_new_basis`: the Windows APIs and target Realtek
 endpoint are present, but the repository and installed tools contain no
 independent loopback observer. No implementation or execution is authorized.
+
+Astra's external consumer Git-acquisition pressure was independently
+reproduced against current main. Clean-Git and non-Git histories had opposite
+historical acquisition outcomes but exactly equal complete `current_result()`
+bodies; existing reconstruction recovered the distinguishing nested Git
+payloads without append. The required standing is
+`astra_pressure_reproduced`. This is a bounded operational consequence of
+D-0046, not a production defect, general consumer-safety result, new
+distinction, or navigation experiment.
 
 ## Contract Surface Status
 

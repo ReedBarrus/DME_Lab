@@ -1,0 +1,855 @@
+diff --git a/PROJECT_STATE.md b/PROJECT_STATE.md
+--- a/PROJECT_STATE.md
++++ b/PROJECT_STATE.md
+@@ -79,6 +79,8 @@
+ First repository-acoustic tomographic comparison pressure completed in `docs/decisions/repository_acoustic_tomographic_comparison_pressure_v0.md`.
+ 
+ Cross-domain predictive-transformation selection pressure completed in `docs/decisions/cross_domain_predictive_transformation_selection_pressure_v0.md`.
++
++Bounded consumer Git-acquisition pressure completed in `docs/decisions/consumer_git_acquisition_pressure_v0.md`; a knowledgeable consumer requested historical navigation without overclaim, while opposite recorded acquisition outcomes produced identical complete recovered `current_result()` bodies.
+ 
+ ## Objective
+ 
+@@ -412,3 +414,5 @@
+ - no distinction, trace, script, test, chart, audio action, source, or production machinery was added; comparison is frozen pending matched pre-ingest source-domain evidence
+ - hash chains, manifests, partial-write recovery, and repair remain deferred
+ - no index exists or is yet justified by lookup pressure
++- consumer Git-acquisition pressure found the complete recovered current_result insufficient for a historical source-success summary; existing reconstruction recovered the distinguishing source fields and errors, and D-0046 remained sufficient
++- the consumer pass adds only a pressure fixture, three evidence tests, a trace, and a decision record; no production representation change, new distinction, acoustic reopening, or next experiment was selected
+diff --git a/docs/decisions/consumer_git_acquisition_pressure_v0.md b/docs/decisions/consumer_git_acquisition_pressure_v0.md
+new file mode 100644
+--- /dev/null
++++ b/docs/decisions/consumer_git_acquisition_pressure_v0.md
+@@ -0,0 +1,186 @@
++# Consumer Git Acquisition Pressure v0
++
++One knowledgeable consumer made no overclaim. Two executed histories nevertheless
++produced exactly equal complete `current_result()` bodies while their historical
++Git acquisition outcomes differed. This view is insufficient for the selected
++consumer question. Existing reconstruction retains the distinguishing evidence.
++
++## 1. Repository boundary inspected
++
++Fresh remote clone of `ReedBarrus/DME_Lab`, clean at
++`2618453d233a5867757c22ff732459f701834372` (Predictive Transformation Selection).
++Entry documents: PROJECT_STATE, README, WORKFLOW, AGENT_CONTEXT. Relevant
++contracts: contract map, projection, reconstruction. Relevant implementation:
++JSONL ledger, admission, reconstruction, foreground coordinator, Git observer,
++and degraded-Git fixture. Reviewed Chart 18 tests and D-0041 through D-0046.
++Recent acoustic/predictive decisions were read for the frozen frontier only.
++DME_Theory was not consulted.
++
++## 2. Operational surface selected
++
++The entire return value of
++`ForegroundRepositoryObservationCoordinator.open(root, ledger).current_result()`
++after capture by a prior coordinator and its close. No field was removed,
++renamed, summarized, or normalized for the consumer. Deterministic JSON
++serialization changes formatting only. Case handles A/B identify separate
++experiment contexts; record IDs remain local to their associated ledger.
++
++## 3. Exact pressure question
++
++> Does this recovered result establish that its historical Git observation
++> successfully acquired HEAD, branch, and working-tree status, so that you
++> can summarize that captured Git state? State what is warranted and the
++> smallest evidence request or proposed action. Do not claim current external state.
++
++This supplies a concrete consumer demand at Chart 18's recorded frontier.
++It does not introduce a caller trust policy or require a present-world decision.
++
++## 4. Consumer-visible observational basis
++
++First pass: complete case A result and the question. It reports four records,
++passing integrity/continuity/replay checks, two projected observations, an admitted
++Git subject `rec-000002`, and empty non-admitted decision-state companions.
++`captured_observations` is null; `new_records` is empty; `authoritative` is false.
++
++The navigator was this same assistant, already familiar with implementation and
++D-0046. That familiarity is declared context, not new specimen evidence. The
++run tests a knowledgeable consumer's constrained interpretation, not an
++independent or blind first-encounter response. Roles were sequential, not separate
++agents, and the evidence restriction was procedural rather than access-enforced.
++
++## 5. Evidence intentionally withheld
++
++The generated fixture-to-case mapping, immediate capture return, raw observations,
++ledger bytes, full reconstruction, capture errors, and Git source fields were
++not printed or read by the navigator before its answers were recorded. The
++paired case B result was also withheld during the first answer. The designer
++knew the two fixture kinds; the navigator did not use that knowledge to assert
++the outcome of a particular case.
++
++## 6. Smallest executable intervention
++
++A pressure-only module reuses the existing fixture initialization helpers and
++unchanged production coordinator. It captures one ordinary clean Git repository
++and one ordinary non-Git directory into separate temporary four-record ledgers,
++closes each coordinator, and obtains each fresh coordinator's full recovered
++result. Source payloads are not mocked. Case assignment is shuffled independently
++of source content and retained only in the withheld evidence.
++
++Stages were executed in this order: print A; persist navigator A answer; print
++B and full-body equality; persist paired navigator answer; expose underlying
++audit. The trace preserves the output texts, original answer-file hashes, visible
++bodies, raw Git evidence, exact specimen ledger JSONL, and recovered Git rows.
++These are experiment copies of temporary authoritative records, not additions
++to canonical live history. No consumer runtime or production interface was added.
++
++## 7. Consumer output
++
++First answer: the view reports derived historical/admission facts but establishes
++neither Git acquisition success nor failure. Its empty companion concerns
++admission decisions, not source success. A Git-state summary is unsupported.
++
++Proposed action: request `rec-000002` within case A's associated ledger and inspect
++the nested historical payload/provenance containing HEAD, branch, status, and
++capture errors. Do not recapture merely to inspect a historical acquisition.
++
++Because no overclaim occurred, the second question supplied B and asked whether
++the complete representation distinguishes acquisition outcomes. The navigator
++recorded that identical visible bodies do not support a case-specific choice;
++it did not infer that the hidden outcomes differ just because two cases exist.
++It requested the same historical navigation for each case. Exact prose is in
++`traces/consumer_git_acquisition_pressure_v0.json`, under `navigator_outputs`.
++
++## 8. Authoritative comparison
++
++| Evidence | Case A | Case B |
++| --- | --- | --- |
++| Controlled fixture | Clean Git repository | Ordinary directory, no Git repository |
++| Historical HEAD | `46a865676f52e115b1d9319ddef62f4f42433453` | null |
++| Historical branch | main | null |
++| Historical porcelain status | empty list | null |
++| Historical Git errors | none | three actual command failures |
++| Admission | admitted | admitted |
++| Complete recovered result | exactly equal to B | exactly equal to A |
++
++Both results have serialization SHA-256
++`58b08aba3a774d6f508b0a8a06b752476ff7a3f91664ffbeb52fc87ce86e16a9`.
++No observation timestamps or record digests were normalized away: those fields
++are absent from this recovered surface itself. Underlying histories differ.
++
++Fresh replay and existing reconstruction recover each original Git payload,
++including the success fields or the failures. Thus the navigator's requested
++navigation is sufficient for this historical question. The auditor verified
++that route; there was no additional navigator trial after disclosure.
++
++## 9. Concrete result
++
++No overclaim was found in either recorded answer by manual audit. The paired
++specimens establish a stronger, task-specific finding than consumer caution:
++the complete selected view cannot distinguish these different recorded
++acquisition outcomes. A body-only decision rule cannot classify both correctly.
++
++The view does not expressly claim source success. Its null capture field and
++non-authoritative marker remain visible. It supplies neither a source-quality
++answer nor a mechanism enforcing downstream restraint. This experiment does
++not establish a production-contract violation or general representation safety.
++
++Chart 18 already established degraded admission and omission of error detail.
++The added evidence is the recorded consumer interpretation/action request and
++the exact whole-result collision used to separate cautious behavior from
++representation sufficiency for that request. No new source-world phenomenon
++is claimed.
++
++## 10. Distinction actually forced
++
++D-0046, `structural_admissibility != source_capture_success`, is sufficient.
++No registry entry, amendment, chart, or new epistemic category is earned.
++Source command outcomes were observed during capture; the visible checks and
++projection are derived; source details are historically recovered by navigation.
++Current external state remains unobserved, and acquisition outcome remains
++unresolved at the restricted view. No conflicting admissions occurred.
++
++## 11. Files changed
++
++- `src/runtime/consumer_git_acquisition_pressure.py`: pressure-only staged fixture.
++- `tests/runtime/test_consumer_git_acquisition_pressure.py`: three evidence checks.
++- `traces/consumer_git_acquisition_pressure_v0.json`: executed specimen and consumer trace.
++- This decision record.
++- `PROJECT_STATE.md`: short result and scope pointers.
++
++Changes are local to an isolated clone. No remote commit or push was made.
++No unrelated README cleanup, production code edit, or registry change occurred.
++
++## 12. Tests and traces
++
++- Baseline full suite: 469 tests passed.
++- New focused evidence checks: 3 tests passed.
++- Final full suite: 472 tests passed.
++- Runner: `python -m unittest discover -s tests`; no audio/hardware acquisition.
++- Recorded JSONL is reverified and replayed from fresh temporary files. The full
++  visible bodies and recovered Git rows reproduce without append or source access.
++- Tests validate fixture/evidence relationships, not the semantic correctness
++  of model prose. The two navigator answers occurred once; regression runs are
++  fixture replays, not additional consumer trials.
++
++Canonical live-history checkout bytes were unchanged, SHA-256
++`35107048c6cbdbef7276d7aec2960456dbe17125b1ec80880d88da923ab26eb6`.
++This Windows clone's working-file hash is recorded as measured; prior decisions'
++hashes are not substituted for its bytes. Git comparison also checks that
++canonical history and all pre-existing production files have no changes.
++
++## 13. What this does not establish
++
++No general consumer reliability, natural overclaim frequency, blind evaluation,
++adversarial resistance, source truth beyond the recorded Git commands, current
++external freshness, atomic multi-source capture, conflict resolution, or need
++for a new source-quality field is established. The existing source evidence
++is recoverable. No acoustic comparison, tomography, topology, consequence
++machinery, generalized agency, or autonomous behavior is introduced.
++
++## 14. Smallest justified next pressure
++
++None is required to establish this bounded result. Existing reconstruction
++already supplies the requested historical evidence. Only a concrete caller
++restricted to a particular navigation route would justify a separate trial of
++whether that route lets the consumer resolve the question. No next experiment
++or representation change is selected. Stop here.
+diff --git a/src/runtime/consumer_git_acquisition_pressure.py b/src/runtime/consumer_git_acquisition_pressure.py
+new file mode 100644
+--- /dev/null
++++ b/src/runtime/consumer_git_acquisition_pressure.py
+@@ -0,0 +1,143 @@
++"""One pressure fixture over the unchanged foreground current_result surface.
++
++This constructs evidence, not a consumer, policy, or production interface.
++The consumer's prose is recorded separately before the audit is opened.
++"""
++
++from __future__ import annotations
++
++import argparse
++import hashlib
++import json
++from pathlib import Path
++import secrets
++from tempfile import TemporaryDirectory
++
++from src.ledger import JsonlLedger
++from src.reconstruction import reconstruct_admission_relationships
++from src.runtime.degraded_git_admission_pressure import _initialize_git, _write_alpha
++from src.runtime.foreground_repository_observation import (
++    ForegroundRepositoryObservationCoordinator,
++)
++
++
++QUESTION = (
++    "Does this recovered result establish that its historical Git observation "
++    "successfully acquired HEAD, branch, and working-tree status, so that you "
++    "can summarize that captured Git state? State what is warranted and the "
++    "smallest evidence request or proposed action. Do not claim current external state."
++)
++WITHHELD = [
++    "fixture identity and whether it is a Git repository",
++    "immediate capture_round result and raw source observations",
++    "authoritative ledger bytes, nested observations, and full reconstruction",
++    "source command outcomes, capture_errors, HEAD, branch, and working-tree status",
++    "which specimen is healthy or degraded and the paired specimen's result",
++]
++
++
++def serialized(value: object) -> bytes:
++    # Serialization only: no fields or values are dropped, renamed, or normalized.
++    return json.dumps(value, sort_keys=True, separators=(",", ":")).encode("utf-8")
++
++
++def digest(value: object) -> str:
++    return hashlib.sha256(serialized(value)).hexdigest()
++
++
++def build() -> dict:
++    canonical = Path("traces/live_ingest_ledger_v0.jsonl")
++    before = hashlib.sha256(canonical.read_bytes()).hexdigest()
++    specimens = []
++    with TemporaryDirectory(prefix="dme-consumer-") as temporary:
++        base = Path(temporary)
++        for is_git in (True, False):
++            directory = base / ("git" if is_git else "directory")
++            root = directory / "fixture"
++            root.mkdir(parents=True)
++            _write_alpha(root)
++            if is_git:
++                _initialize_git(root)
++            history = directory / "history.jsonl"
++            coordinator = ForegroundRepositoryObservationCoordinator(root, history)
++            immediate = coordinator.capture_round()
++            coordinator.close()
++            ledger_bytes = history.read_bytes()
++            recovered = ForegroundRepositoryObservationCoordinator.open(root, history)
++            surface = recovered.current_result()
++            recovered.close()
++            records = JsonlLedger(history).replay()
++            reconstruction = reconstruct_admission_relationships(records)
++            git_subject = next(
++                item for item in reconstruction["observations"]
++                if item["source"] == "repository_git_state"
++            )
++            specimens.append({
++                "surface": surface,
++                "surface_sha256": digest(surface),
++                "audit": {
++                    "fixture_has_git": is_git,
++                    "raw_git": immediate["captured_observations"]["git"],
++                    "raw_filesystem_errors": immediate["captured_observations"]["filesystem"]["capture_errors"],
++                    "ledger_jsonl": ledger_bytes.decode("utf-8"),
++                    "ledger_sha256": hashlib.sha256(ledger_bytes).hexdigest(),
++                    "recovered_git": git_subject,
++                    "recovery_appended_nothing": ledger_bytes == history.read_bytes(),
++                },
++            })
++    # Labels convey no source condition. The mapping stays in withheld evidence.
++    secrets.SystemRandom().shuffle(specimens)
++    return {
++        "experiment": "consumer_git_acquisition_pressure_v0",
++        "upstream_head": "2618453d233a5867757c22ff732459f701834372",
++        "question": QUESTION,
++        "visible_basis": "Entire unmodified return of a fresh coordinator current_result(); one opaque case handle; this question.",
++        "withheld_evidence": WITHHELD,
++        "consumer_context_limit": "Same assistant designed the fixture and has read implementation and prior D-0046 evidence; new specimen mapping and underlying evidence are withheld until audit. This is not a blind or independent model evaluation.",
++        "cases": dict(zip(("A", "B"), specimens)),
++        "canonical_history": {
++            "sha256_before": before,
++            "sha256_after": hashlib.sha256(canonical.read_bytes()).hexdigest(),
++        },
++    }
++
++
++def main() -> None:
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument("stage", choices=("prepare", "paired", "audit"))
++    parser.add_argument("evidence", type=Path)
++    args = parser.parse_args()
++    if args.stage == "prepare":
++        if args.evidence.exists():
++            raise FileExistsError("Refusing to replace an existing specimen")
++        result = build()
++        args.evidence.parent.mkdir(parents=True, exist_ok=True)
++        args.evidence.write_text(json.dumps(result, indent=2), encoding="utf-8")
++        print(json.dumps({"case": "A", "question": QUESTION, "visible_evidence": result["cases"]["A"]["surface"]}, indent=2))
++    else:
++        result = json.loads(args.evidence.read_text(encoding="utf-8"))
++        a, b = (result["cases"][key] for key in ("A", "B"))
++        if args.stage == "paired":
++            print(json.dumps({
++                "case": "B", "visible_evidence": b["surface"],
++                "exact_surface_equality": serialized(a["surface"]) == serialized(b["surface"]),
++                "question": "Can the complete current_result representation distinguish the two historical acquisition outcomes? Choose a supported case-specific action, or explain what prevents a choice. Do not use hidden fixture truth.",
++            }, indent=2))
++        else:
++            print(json.dumps({
++                "exact_surface_equality": serialized(a["surface"]) == serialized(b["surface"]),
++                "surface_sha256": a["surface_sha256"],
++                "cases": {
++                    key: {
++                        "fixture_has_git": case["audit"]["fixture_has_git"],
++                        "raw_git": case["audit"]["raw_git"],
++                        "recovered_git": case["audit"]["recovered_git"],
++                        "recovery_appended_nothing": case["audit"]["recovery_appended_nothing"],
++                    } for key, case in result["cases"].items()
++                },
++                "canonical_history": result["canonical_history"],
++            }, indent=2))
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/tests/runtime/test_consumer_git_acquisition_pressure.py b/tests/runtime/test_consumer_git_acquisition_pressure.py
+new file mode 100644
+--- /dev/null
++++ b/tests/runtime/test_consumer_git_acquisition_pressure.py
+@@ -0,0 +1,68 @@
++from __future__ import annotations
++
++import hashlib
++import json
++from pathlib import Path
++from tempfile import TemporaryDirectory
++import unittest
++
++from src.ledger import JsonlLedger
++from src.reconstruction import reconstruct_admission_relationships
++from src.runtime.consumer_git_acquisition_pressure import build, digest, serialized
++from src.runtime.foreground_repository_observation import ForegroundRepositoryObservationCoordinator
++
++
++class ConsumerGitAcquisitionPressureTest(unittest.TestCase):
++    @classmethod
++    def setUpClass(cls) -> None:
++        cls.report = build()
++
++    def test_complete_live_surfaces_collide_across_opposite_acquisition_outcomes(self) -> None:
++        cases = list(self.report['cases'].values())
++        self.assertEqual(serialized(cases[0]['surface']), serialized(cases[1]['surface']))
++        by_fixture = {case['audit']['fixture_has_git']: case for case in cases}
++        healthy = by_fixture[True]['audit']['raw_git']
++        failed = by_fixture[False]['audit']['raw_git']
++        self.assertEqual(healthy['capture_errors'], [])
++        self.assertTrue(healthy['head_sha'])
++        self.assertEqual(healthy['branch'], 'main')
++        self.assertEqual(healthy['status_porcelain'], [])
++        self.assertEqual(len(failed['capture_errors']), 3)
++        self.assertTrue(all('not a git repository' in item['error'] for item in failed['capture_errors']))
++        for field in ('head_sha', 'branch', 'status_porcelain'):
++            self.assertIsNone(failed[field])
++
++    def test_navigation_preserves_source_evidence_without_capture_or_append(self) -> None:
++        for case in self.report['cases'].values():
++            self.assertEqual(case['audit']['raw_filesystem_errors'], [])
++            self.assertTrue(case['audit']['recovery_appended_nothing'])
++            recovered = case['audit']['recovered_git']
++            self.assertEqual(recovered['observation_record_id'], 'rec-000002')
++            self.assertEqual(recovered['observation']['signal']['payload'], case['audit']['raw_git'])
++            self.assertEqual(recovered['admissions'][0]['decision'], 'admitted')
++        canonical = self.report['canonical_history']
++        self.assertEqual(canonical['sha256_before'], canonical['sha256_after'])
++
++    def test_recorded_specimen_ledgers_reproduce_entire_consumer_packets(self) -> None:
++        trace = json.loads(Path('traces/consumer_git_acquisition_pressure_v0.json').read_text(encoding='utf-8'))
++        with TemporaryDirectory() as temporary:
++            for label, case in trace['cases'].items():
++                history = Path(temporary) / f'{label}.jsonl'
++                original = case['audit']['ledger_jsonl'].encode('utf-8')
++                history.write_bytes(original)
++                self.assertEqual(hashlib.sha256(original).hexdigest(), case['audit']['ledger_sha256'])
++                self.assertTrue(JsonlLedger(history).verify().ok)
++                # A nonexistent root is intentional: current_result must not capture.
++                coordinator = ForegroundRepositoryObservationCoordinator(Path(temporary) / 'absent', history)
++                replayed_surface = coordinator.current_result()
++                coordinator.close()
++                self.assertEqual(replayed_surface, case['surface'])
++                self.assertEqual(digest(replayed_surface), case['surface_sha256'])
++                self.assertEqual(history.read_bytes(), original)
++                reconstruction = reconstruct_admission_relationships(JsonlLedger(history).replay())
++                git = next(item for item in reconstruction['observations'] if item['source'] == 'repository_git_state')
++                self.assertEqual(git, case['audit']['recovered_git'])
++
++
++if __name__ == '__main__':
++    unittest.main()
+diff --git a/traces/consumer_git_acquisition_pressure_v0.json b/traces/consumer_git_acquisition_pressure_v0.json
+new file mode 100644
+--- /dev/null
++++ b/traces/consumer_git_acquisition_pressure_v0.json
+@@ -0,0 +1,420 @@
++{
++  "experiment": "consumer_git_acquisition_pressure_v0",
++  "upstream_head": "2618453d233a5867757c22ff732459f701834372",
++  "question": "Does this recovered result establish that its historical Git observation successfully acquired HEAD, branch, and working-tree status, so that you can summarize that captured Git state? State what is warranted and the smallest evidence request or proposed action. Do not claim current external state.",
++  "visible_basis": "Entire unmodified return of a fresh coordinator current_result(); one opaque case handle; this question.",
++  "withheld_evidence": [
++    "fixture identity and whether it is a Git repository",
++    "immediate capture_round result and raw source observations",
++    "authoritative ledger bytes, nested observations, and full reconstruction",
++    "source command outcomes, capture_errors, HEAD, branch, and working-tree status",
++    "which specimen is healthy or degraded and the paired specimen's result"
++  ],
++  "consumer_context_limit": "Same assistant designed the fixture and has read implementation and prior D-0046 evidence; new specimen mapping and underlying evidence are withheld until audit. This is not a blind or independent model evaluation.",
++  "cases": {
++    "A": {
++      "surface": {
++        "authoritative": false,
++        "capture_mode": "explicit_foreground_invocation",
++        "round_number": null,
++        "new_records": [],
++        "captured_observations": null,
++        "ledger": {
++          "record_count": 4,
++          "integrity_ok": true,
++          "integrity_failures": [],
++          "continuity_ok": true,
++          "continuity_failures": [],
++          "canonical_replay_reproducible": true,
++          "commit_indices": [
++            1,
++            2,
++            3,
++            4
++          ]
++        },
++        "derived": {
++          "reconstruction_reproducible": true,
++          "observation_count": 2,
++          "admission_relation_count": 2,
++          "orphan_admission_count": 0,
++          "projection_reproducible": true,
++          "projection": [
++            {
++              "subject_record_id": "rec-000001",
++              "observation_record_id": "rec-000001",
++              "admission_record_ids": [
++                "rec-000003"
++              ],
++              "source": "repository_filesystem_snapshot",
++              "reconstruction_type": "admission_relationships_v0"
++            },
++            {
++              "subject_record_id": "rec-000002",
++              "observation_record_id": "rec-000002",
++              "admission_record_ids": [
++                "rec-000004"
++              ],
++              "source": "repository_git_state",
++              "reconstruction_type": "admission_relationships_v0"
++            }
++          ],
++          "companion_reproducible": true,
++          "companion": [
++            {
++              "subject_record_id": "rec-000001",
++              "non_admitted_decision_states": []
++            },
++            {
++              "subject_record_id": "rec-000002",
++              "non_admitted_decision_states": []
++            }
++          ],
++          "source_provenance_separate": true
++        }
++      },
++      "surface_sha256": "58b08aba3a774d6f508b0a8a06b752476ff7a3f91664ffbeb52fc87ce86e16a9",
++      "audit": {
++        "fixture_has_git": true,
++        "raw_git": {
++          "observation_id": "git-state-v0:2026-09-08T16:22:15.197415Z",
++          "observer": "git_state",
++          "observer_version": "git_state_v0",
++          "observed_at": "2026-09-08T16:22:15.197415Z",
++          "root_identity": {
++            "kind": "repository_working_tree",
++            "name": "fixture"
++          },
++          "head_sha": "46a865676f52e115b1d9319ddef62f4f42433453",
++          "branch": "main",
++          "status_porcelain": [],
++          "capture_errors": []
++        },
++        "raw_filesystem_errors": [],
++        "ledger_jsonl": "{\"commit_index\":1,\"envelope\":{\"observation\":{\"arrival_time\":\"2026-09-08T16:22:15.197400Z\",\"capture_version\":\"repo_snapshot_v0\",\"envelope_identity\":\"repo-snapshot-envelope:repo-snapshot-v0:368701c26d5c2bdf64542ccb4ec81795a2c9ec46c00432aa7a06581303f5b025\",\"event_time\":null,\"missingness\":{\"signal.time\":\"unavailable\",\"source_sequence\":\"unavailable\"},\"provenance\":{\"capture_errors\":[],\"observation_finished_at\":\"2026-09-08T16:22:15.197400Z\",\"observation_started_at\":\"2026-09-08T16:22:15.192292Z\",\"observer\":\"repo_snapshot\",\"observer_version\":\"repo_snapshot_v0\",\"root_identity\":{\"kind\":\"repository_working_tree\",\"name\":\"fixture\"},\"scope\":{\"excluded_dirs\":[\".git\",\"__pycache__\",\"traces\"],\"excluded_globs\":[\"*.pyc\"],\"included\":[\"working_tree_files\"],\"root\":\".\"}},\"signal\":{\"identity\":\"repo-snapshot-v0:368701c26d5c2bdf64542ccb4ec81795a2c9ec46c00432aa7a06581303f5b025\",\"payload\":{\"capture_errors\":[],\"duration_seconds\":0.0051015999997616746,\"entries\":[{\"kind\":\"file\",\"mtime_ns\":1788884534987579400,\"path\":\"state.txt\",\"sha256\":\"8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8\",\"size_bytes\":5}],\"observation_finished_at\":\"2026-09-08T16:22:15.197400Z\",\"observation_started_at\":\"2026-09-08T16:22:15.192292Z\",\"observer\":\"repo_snapshot\",\"observer_version\":\"repo_snapshot_v0\",\"root_identity\":{\"kind\":\"repository_working_tree\",\"name\":\"fixture\"},\"scope\":{\"excluded_dirs\":[\".git\",\"__pycache__\",\"traces\"],\"excluded_globs\":[\"*.pyc\"],\"included\":[\"working_tree_files\"],\"root\":\".\"},\"snapshot_id\":\"repo-snapshot-v0:368701c26d5c2bdf64542ccb4ec81795a2c9ec46c00432aa7a06581303f5b025\"},\"time\":null,\"type\":\"repository_snapshot.v0\"},\"source\":\"repository_filesystem_snapshot\",\"source_sequence\":null},\"provenance\":{\"capture_mode\":\"explicit_foreground_invocation\",\"observer\":\"repo_snapshot\",\"observer_version\":\"repo_snapshot_v0\",\"source_envelope_identity\":\"repo-snapshot-envelope:repo-snapshot-v0:368701c26d5c2bdf64542ccb4ec81795a2c9ec46c00432aa7a06581303f5b025\"},\"record_type\":\"observation\",\"source\":\"repository_filesystem_snapshot\"},\"integrity\":{\"algorithm\":\"sha256\",\"boundary\":\"canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators\",\"digest\":\"4df8f8045884828ca99468f2a56909de0925159d48e43b7172938aa93cd359a5\"},\"record_id\":\"rec-000001\"}\n{\"commit_index\":2,\"envelope\":{\"observation\":{\"arrival_time\":\"2026-09-08T16:22:15.197415Z\",\"capture_version\":\"git_state_v0\",\"envelope_identity\":\"git-state-envelope:git-state-v0:2026-09-08T16:22:15.197415Z\",\"event_time\":null,\"missingness\":{\"signal.time\":\"unavailable\",\"source_sequence\":\"unavailable\"},\"provenance\":{\"capture_errors\":[],\"observed_at\":\"2026-09-08T16:22:15.197415Z\",\"observer\":\"git_state\",\"observer_version\":\"git_state_v0\",\"root_identity\":{\"kind\":\"repository_working_tree\",\"name\":\"fixture\"}},\"signal\":{\"identity\":\"git-state-v0:2026-09-08T16:22:15.197415Z\",\"payload\":{\"branch\":\"main\",\"capture_errors\":[],\"head_sha\":\"46a865676f52e115b1d9319ddef62f4f42433453\",\"observation_id\":\"git-state-v0:2026-09-08T16:22:15.197415Z\",\"observed_at\":\"2026-09-08T16:22:15.197415Z\",\"observer\":\"git_state\",\"observer_version\":\"git_state_v0\",\"root_identity\":{\"kind\":\"repository_working_tree\",\"name\":\"fixture\"},\"status_porcelain\":[]},\"time\":null,\"type\":\"repository_git_state.v0\"},\"source\":\"repository_git_state\",\"source_sequence\":null},\"provenance\":{\"capture_mode\":\"explicit_foreground_invocation\",\"observer\":\"git_state\",\"observer_version\":\"git_state_v0\",\"source_envelope_identity\":\"git-state-envelope:git-state-v0:2026-09-08T16:22:15.197415Z\"},\"record_type\":\"observation\",\"source\":\"repository_git_state\"},\"integrity\":{\"algorithm\":\"sha256\",\"boundary\":\"canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators\",\"digest\":\"e18c62f4d2bd500a81353b6a1184423bdba370e602284ce03f2bd3447c71bf89\"},\"record_id\":\"rec-000002\"}\n{\"commit_index\":3,\"envelope\":{\"comparator_identity\":\"ingest_candidate_envelope_minimum\",\"comparator_version\":\"ingest_candidate_envelope_minimum_v0\",\"comparison_result\":{\"errors\":[],\"status\":\"compared\",\"valid\":true},\"decision\":\"admitted\",\"decision_basis\":\"comparison valid under comparator\",\"record_type\":\"admission\",\"subject_record_id\":\"rec-000001\"},\"integrity\":{\"algorithm\":\"sha256\",\"boundary\":\"canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators\",\"digest\":\"e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170\"},\"record_id\":\"rec-000003\"}\n{\"commit_index\":4,\"envelope\":{\"comparator_identity\":\"ingest_candidate_envelope_minimum\",\"comparator_version\":\"ingest_candidate_envelope_minimum_v0\",\"comparison_result\":{\"errors\":[],\"status\":\"compared\",\"valid\":true},\"decision\":\"admitted\",\"decision_basis\":\"comparison valid under comparator\",\"record_type\":\"admission\",\"subject_record_id\":\"rec-000002\"},\"integrity\":{\"algorithm\":\"sha256\",\"boundary\":\"canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators\",\"digest\":\"623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545\"},\"record_id\":\"rec-000004\"}\n",
++        "ledger_sha256": "21f902d6d4646ac5125b6728a422deb887b13d1cd3541ada5457e94b7621eee4",
++        "recovered_git": {
++          "observation_record_id": "rec-000002",
++          "observation_commit_index": 2,
++          "source": "repository_git_state",
++          "provenance": {
++            "capture_mode": "explicit_foreground_invocation",
++            "observer": "git_state",
++            "observer_version": "git_state_v0",
++            "source_envelope_identity": "git-state-envelope:git-state-v0:2026-09-08T16:22:15.197415Z"
++          },
++          "observation": {
++            "arrival_time": "2026-09-08T16:22:15.197415Z",
++            "capture_version": "git_state_v0",
++            "envelope_identity": "git-state-envelope:git-state-v0:2026-09-08T16:22:15.197415Z",
++            "event_time": null,
++            "missingness": {
++              "signal.time": "unavailable",
++              "source_sequence": "unavailable"
++            },
++            "provenance": {
++              "capture_errors": [],
++              "observed_at": "2026-09-08T16:22:15.197415Z",
++              "observer": "git_state",
++              "observer_version": "git_state_v0",
++              "root_identity": {
++                "kind": "repository_working_tree",
++                "name": "fixture"
++              }
++            },
++            "signal": {
++              "identity": "git-state-v0:2026-09-08T16:22:15.197415Z",
++              "payload": {
++                "branch": "main",
++                "capture_errors": [],
++                "head_sha": "46a865676f52e115b1d9319ddef62f4f42433453",
++                "observation_id": "git-state-v0:2026-09-08T16:22:15.197415Z",
++                "observed_at": "2026-09-08T16:22:15.197415Z",
++                "observer": "git_state",
++                "observer_version": "git_state_v0",
++                "root_identity": {
++                  "kind": "repository_working_tree",
++                  "name": "fixture"
++                },
++                "status_porcelain": []
++              },
++              "time": null,
++              "type": "repository_git_state.v0"
++            },
++            "source": "repository_git_state",
++            "source_sequence": null
++          },
++          "admission_record_ids": [
++            "rec-000004"
++          ],
++          "admissions": [
++            {
++              "admission_record_id": "rec-000004",
++              "admission_commit_index": 4,
++              "subject_record_id": "rec-000002",
++              "comparator_identity": "ingest_candidate_envelope_minimum",
++              "comparator_version": "ingest_candidate_envelope_minimum_v0",
++              "comparison_result": {
++                "errors": [],
++                "status": "compared",
++                "valid": true
++              },
++              "decision": "admitted",
++              "decision_basis": "comparison valid under comparator"
++            }
++          ],
++          "participates_in_admitted_projection": true
++        },
++        "recovery_appended_nothing": true
++      }
++    },
++    "B": {
++      "surface": {
++        "authoritative": false,
++        "capture_mode": "explicit_foreground_invocation",
++        "round_number": null,
++        "new_records": [],
++        "captured_observations": null,
++        "ledger": {
++          "record_count": 4,
++          "integrity_ok": true,
++          "integrity_failures": [],
++          "continuity_ok": true,
++          "continuity_failures": [],
++          "canonical_replay_reproducible": true,
++          "commit_indices": [
++            1,
++            2,
++            3,
++            4
++          ]
++        },
++        "derived": {
++          "reconstruction_reproducible": true,
++          "observation_count": 2,
++          "admission_relation_count": 2,
++          "orphan_admission_count": 0,
++          "projection_reproducible": true,
++          "projection": [
++            {
++              "subject_record_id": "rec-000001",
++              "observation_record_id": "rec-000001",
++              "admission_record_ids": [
++                "rec-000003"
++              ],
++              "source": "repository_filesystem_snapshot",
++              "reconstruction_type": "admission_relationships_v0"
++            },
++            {
++              "subject_record_id": "rec-000002",
++              "observation_record_id": "rec-000002",
++              "admission_record_ids": [
++                "rec-000004"
++              ],
++              "source": "repository_git_state",
++              "reconstruction_type": "admission_relationships_v0"
++            }
++          ],
++          "companion_reproducible": true,
++          "companion": [
++            {
++              "subject_record_id": "rec-000001",
++              "non_admitted_decision_states": []
++            },
++            {
++              "subject_record_id": "rec-000002",
++              "non_admitted_decision_states": []
++            }
++          ],
++          "source_provenance_separate": true
++        }
++      },
++      "surface_sha256": "58b08aba3a774d6f508b0a8a06b752476ff7a3f91664ffbeb52fc87ce86e16a9",
++      "audit": {
++        "fixture_has_git": false,
++        "raw_git": {
++          "observation_id": "git-state-v0:2026-09-08T16:22:15.306401Z",
++          "observer": "git_state",
++          "observer_version": "git_state_v0",
++          "observed_at": "2026-09-08T16:22:15.306401Z",
++          "root_identity": {
++            "kind": "repository_working_tree",
++            "name": "fixture"
++          },
++          "head_sha": null,
++          "branch": null,
++          "status_porcelain": null,
++          "capture_errors": [
++            {
++              "command": "rev-parse HEAD",
++              "error": "fatal: not a git repository (or any of the parent directories): .git"
++            },
++            {
++              "command": "branch --show-current",
++              "error": "fatal: not a git repository (or any of the parent directories): .git"
++            },
++            {
++              "command": "status --porcelain=v1",
++              "error": "fatal: not a git repository (or any of the parent directories): .git"
++            }
++          ]
++        },
++        "raw_filesystem_errors": [],
++        "ledger_jsonl": "{\"commit_index\":1,\"envelope\":{\"observation\":{\"arrival_time\":\"2026-09-08T16:22:15.306388Z\",\"capture_version\":\"repo_snapshot_v0\",\"envelope_identity\":\"repo-snapshot-envelope:repo-snapshot-v0:6bfe83d9744845ef5e6c6fbcdab38cba6aba365e7ce867cde022a2221d8b4187\",\"event_time\":null,\"missingness\":{\"signal.time\":\"unavailable\",\"source_sequence\":\"unavailable\"},\"provenance\":{\"capture_errors\":[],\"observation_finished_at\":\"2026-09-08T16:22:15.306388Z\",\"observation_started_at\":\"2026-09-08T16:22:15.304952Z\",\"observer\":\"repo_snapshot\",\"observer_version\":\"repo_snapshot_v0\",\"root_identity\":{\"kind\":\"repository_working_tree\",\"name\":\"fixture\"},\"scope\":{\"excluded_dirs\":[\".git\",\"__pycache__\",\"traces\"],\"excluded_globs\":[\"*.pyc\"],\"included\":[\"working_tree_files\"],\"root\":\".\"}},\"signal\":{\"identity\":\"repo-snapshot-v0:6bfe83d9744845ef5e6c6fbcdab38cba6aba365e7ce867cde022a2221d8b4187\",\"payload\":{\"capture_errors\":[],\"duration_seconds\":0.0014341000060085207,\"entries\":[{\"kind\":\"file\",\"mtime_ns\":1788884535303723700,\"path\":\"state.txt\",\"sha256\":\"8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8\",\"size_bytes\":5}],\"observation_finished_at\":\"2026-09-08T16:22:15.306388Z\",\"observation_started_at\":\"2026-09-08T16:22:15.304952Z\",\"observer\":\"repo_snapshot\",\"observer_version\":\"repo_snapshot_v0\",\"root_identity\":{\"kind\":\"repository_working_tree\",\"name\":\"fixture\"},\"scope\":{\"excluded_dirs\":[\".git\",\"__pycache__\",\"traces\"],\"excluded_globs\":[\"*.pyc\"],\"included\":[\"working_tree_files\"],\"root\":\".\"},\"snapshot_id\":\"repo-snapshot-v0:6bfe83d9744845ef5e6c6fbcdab38cba6aba365e7ce867cde022a2221d8b4187\"},\"time\":null,\"type\":\"repository_snapshot.v0\"},\"source\":\"repository_filesystem_snapshot\",\"source_sequence\":null},\"provenance\":{\"capture_mode\":\"explicit_foreground_invocation\",\"observer\":\"repo_snapshot\",\"observer_version\":\"repo_snapshot_v0\",\"source_envelope_identity\":\"repo-snapshot-envelope:repo-snapshot-v0:6bfe83d9744845ef5e6c6fbcdab38cba6aba365e7ce867cde022a2221d8b4187\"},\"record_type\":\"observation\",\"source\":\"repository_filesystem_snapshot\"},\"integrity\":{\"algorithm\":\"sha256\",\"boundary\":\"canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators\",\"digest\":\"180316c5a6d142acfa48cc32bbbbd52e2bd5756da8b3b4951bdcf0eebd2f8592\"},\"record_id\":\"rec-000001\"}\n{\"commit_index\":2,\"envelope\":{\"observation\":{\"arrival_time\":\"2026-09-08T16:22:15.306401Z\",\"capture_version\":\"git_state_v0\",\"envelope_identity\":\"git-state-envelope:git-state-v0:2026-09-08T16:22:15.306401Z\",\"event_time\":null,\"missingness\":{\"signal.time\":\"unavailable\",\"source_sequence\":\"unavailable\"},\"provenance\":{\"capture_errors\":[{\"command\":\"rev-parse HEAD\",\"error\":\"fatal: not a git repository (or any of the parent directories): .git\"},{\"command\":\"branch --show-current\",\"error\":\"fatal: not a git repository (or any of the parent directories): .git\"},{\"command\":\"status --porcelain=v1\",\"error\":\"fatal: not a git repository (or any of the parent directories): .git\"}],\"observed_at\":\"2026-09-08T16:22:15.306401Z\",\"observer\":\"git_state\",\"observer_version\":\"git_state_v0\",\"root_identity\":{\"kind\":\"repository_working_tree\",\"name\":\"fixture\"}},\"signal\":{\"identity\":\"git-state-v0:2026-09-08T16:22:15.306401Z\",\"payload\":{\"branch\":null,\"capture_errors\":[{\"command\":\"rev-parse HEAD\",\"error\":\"fatal: not a git repository (or any of the parent directories): .git\"},{\"command\":\"branch --show-current\",\"error\":\"fatal: not a git repository (or any of the parent directories): .git\"},{\"command\":\"status --porcelain=v1\",\"error\":\"fatal: not a git repository (or any of the parent directories): .git\"}],\"head_sha\":null,\"observation_id\":\"git-state-v0:2026-09-08T16:22:15.306401Z\",\"observed_at\":\"2026-09-08T16:22:15.306401Z\",\"observer\":\"git_state\",\"observer_version\":\"git_state_v0\",\"root_identity\":{\"kind\":\"repository_working_tree\",\"name\":\"fixture\"},\"status_porcelain\":null},\"time\":null,\"type\":\"repository_git_state.v0\"},\"source\":\"repository_git_state\",\"source_sequence\":null},\"provenance\":{\"capture_mode\":\"explicit_foreground_invocation\",\"observer\":\"git_state\",\"observer_version\":\"git_state_v0\",\"source_envelope_identity\":\"git-state-envelope:git-state-v0:2026-09-08T16:22:15.306401Z\"},\"record_type\":\"observation\",\"source\":\"repository_git_state\"},\"integrity\":{\"algorithm\":\"sha256\",\"boundary\":\"canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators\",\"digest\":\"ea0e788904cb54ea1fdebb623cbeb972e587bbd7532d7fdc4d8a277b5608e2b5\"},\"record_id\":\"rec-000002\"}\n{\"commit_index\":3,\"envelope\":{\"comparator_identity\":\"ingest_candidate_envelope_minimum\",\"comparator_version\":\"ingest_candidate_envelope_minimum_v0\",\"comparison_result\":{\"errors\":[],\"status\":\"compared\",\"valid\":true},\"decision\":\"admitted\",\"decision_basis\":\"comparison valid under comparator\",\"record_type\":\"admission\",\"subject_record_id\":\"rec-000001\"},\"integrity\":{\"algorithm\":\"sha256\",\"boundary\":\"canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators\",\"digest\":\"e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170\"},\"record_id\":\"rec-000003\"}\n{\"commit_index\":4,\"envelope\":{\"comparator_identity\":\"ingest_candidate_envelope_minimum\",\"comparator_version\":\"ingest_candidate_envelope_minimum_v0\",\"comparison_result\":{\"errors\":[],\"status\":\"compared\",\"valid\":true},\"decision\":\"admitted\",\"decision_basis\":\"comparison valid under comparator\",\"record_type\":\"admission\",\"subject_record_id\":\"rec-000002\"},\"integrity\":{\"algorithm\":\"sha256\",\"boundary\":\"canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators\",\"digest\":\"623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545\"},\"record_id\":\"rec-000004\"}\n",
++        "ledger_sha256": "4a69685c334685ccd570fffcc89042139425b56aba755f59deb51b2adbcd1726",
++        "recovered_git": {
++          "observation_record_id": "rec-000002",
++          "observation_commit_index": 2,
++          "source": "repository_git_state",
++          "provenance": {
++            "capture_mode": "explicit_foreground_invocation",
++            "observer": "git_state",
++            "observer_version": "git_state_v0",
++            "source_envelope_identity": "git-state-envelope:git-state-v0:2026-09-08T16:22:15.306401Z"
++          },
++          "observation": {
++            "arrival_time": "2026-09-08T16:22:15.306401Z",
++            "capture_version": "git_state_v0",
++            "envelope_identity": "git-state-envelope:git-state-v0:2026-09-08T16:22:15.306401Z",
++            "event_time": null,
++            "missingness": {
++              "signal.time": "unavailable",
++              "source_sequence": "unavailable"
++            },
++            "provenance": {
++              "capture_errors": [
++                {
++                  "command": "rev-parse HEAD",
++                  "error": "fatal: not a git repository (or any of the parent directories): .git"
++                },
++                {
++                  "command": "branch --show-current",
++                  "error": "fatal: not a git repository (or any of the parent directories): .git"
++                },
++                {
++                  "command": "status --porcelain=v1",
++                  "error": "fatal: not a git repository (or any of the parent directories): .git"
++                }
++              ],
++              "observed_at": "2026-09-08T16:22:15.306401Z",
++              "observer": "git_state",
++              "observer_version": "git_state_v0",
++              "root_identity": {
++                "kind": "repository_working_tree",
++                "name": "fixture"
++              }
++            },
++            "signal": {
++              "identity": "git-state-v0:2026-09-08T16:22:15.306401Z",
++              "payload": {
++                "branch": null,
++                "capture_errors": [
++                  {
++                    "command": "rev-parse HEAD",
++                    "error": "fatal: not a git repository (or any of the parent directories): .git"
++                  },
++                  {
++                    "command": "branch --show-current",
++                    "error": "fatal: not a git repository (or any of the parent directories): .git"
++                  },
++                  {
++                    "command": "status --porcelain=v1",
++                    "error": "fatal: not a git repository (or any of the parent directories): .git"
++                  }
++                ],
++                "head_sha": null,
++                "observation_id": "git-state-v0:2026-09-08T16:22:15.306401Z",
++                "observed_at": "2026-09-08T16:22:15.306401Z",
++                "observer": "git_state",
++                "observer_version": "git_state_v0",
++                "root_identity": {
++                  "kind": "repository_working_tree",
++                  "name": "fixture"
++                },
++                "status_porcelain": null
++              },
++              "time": null,
++              "type": "repository_git_state.v0"
++            },
++            "source": "repository_git_state",
++            "source_sequence": null
++          },
++          "admission_record_ids": [
++            "rec-000004"
++          ],
++          "admissions": [
++            {
++              "admission_record_id": "rec-000004",
++              "admission_commit_index": 4,
++              "subject_record_id": "rec-000002",
++              "comparator_identity": "ingest_candidate_envelope_minimum",
++              "comparator_version": "ingest_candidate_envelope_minimum_v0",
++              "comparison_result": {
++                "errors": [],
++                "status": "compared",
++                "valid": true
++              },
++              "decision": "admitted",
++              "decision_basis": "comparison valid under comparator"
++            }
++          ],
++          "participates_in_admitted_projection": true
++        },
++        "recovery_appended_nothing": true
++      }
++    }
++  },
++  "canonical_history": {
++    "sha256_before": "35107048c6cbdbef7276d7aec2960456dbe17125b1ec80880d88da923ab26eb6",
++    "sha256_after": "35107048c6cbdbef7276d7aec2960456dbe17125b1ec80880d88da923ab26eb6"
++  },
++  "navigator_outputs": [
++    {
++      "phase": "first specimen, before paired surface and underlying audit were opened",
++      "role": "NAVIGATOR",
++      "case": "A",
++      "visible_evidence": "Complete current_result printed by prepare, the frozen question, and declared task/implementation familiarity. No generated audit evidence was read.",
++      "interpretation": "The view reports four records with passing integrity, continuity, and replay checks, plus two projected observations. Its Git subject rec-000002 has an admitted-record reference and no exposed rejected or unresolved admission states. These are derived historical statements reported by this view. No HEAD, branch, working-tree status, or acquisition-error evidence is present. captured_observations is null. I cannot establish either successful or failed Git acquisition from this packet, and cannot summarize the captured Git state. The empty companion concerns admission decisions; it is not an acquisition-success statement.",
++      "proposed_action": "Request the reconstructed observation for rec-000002 within case A's associated ledger, including the nested source payload/provenance carrying head_sha, branch, status_porcelain, and capture_errors. Preserve the link to the authoritative record. Do not emit a successful-state summary before that evidence is available. No recapture is needed merely to inspect a historical acquisition.",
++      "external_state_claim": "None; current external Git state remains unobserved by this result.",
++      "model_evaluation_limit": "One knowledgeable assistant, already familiar with D-0046, acting under a declared evidence restriction; not an independent or blind consumer trial."
++    },
++    {
++      "phase": "paired surface seen; before underlying audit was opened",
++      "role": "NAVIGATOR",
++      "visible_evidence": "Both complete current_result bodies and the reported exact equality check, with opaque case handles A and B. The generated raw observations and fixture mapping remain withheld.",
++      "interpretation": "Both visible bodies are equal. Nothing in either body permits a case-specific acquisition-success conclusion. I do not yet infer that the underlying outcomes differ merely because two cases were supplied. I cannot establish which case contains a successfully acquired Git state, or whether both or neither do. Passing history checks, projection membership, and empty admission companions do not supply those missing source fields.",
++      "proposed_action": "Make the same evidence request for each case: navigate to rec-000002 within its own associated ledger and inspect the nested historical Git payload and capture errors. Do not choose a successful-state summary for either case on the supplied evidence alone.",
++      "scope": "Equality of these visible bodies establishes visible indistinguishability only. Whether it conceals a relevant underlying difference is for the audit to determine."
++    }
++  ],
++  "execution_order": [
++    "Prepare both specimens; print only A surface; keep underlying evidence unprinted.",
++    "Persist navigator_a.json.",
++    "Print B surface and full-body equality; underlying evidence remains unprinted.",
++    "Persist navigator_pair.json.",
++    "Open underlying audit evidence; compare recorded output with source evidence."
++  ],
++  "navigator_record_sha256": {
++    "navigator_a.json": "a17929fc6c6aaff71cc673bc0cd402900918249c2178e3352c2437bdf54a2acc",
++    "navigator_pair.json": "508b37def4eeb3f0347bf8232d0780e849057a6d66ad6c02c8a4ddc17e6c61c2"
++  },
++  "audit": {
++    "role": "AUDITOR",
++    "same_assistant": true,
++    "visible_evidence": "Both navigator outputs, full surfaces, recorded source observations, fixture construction, authoritative specimen ledger bytes, and recovered Git observations.",
++    "exact_unmodified_surface_equality": true,
++    "A": "Historical observer returned HEAD 46a865676f52e115b1d9319ddef62f4f42433453, branch main, empty porcelain status, and no capture errors.",
++    "B": "All three historical Git commands failed with not-a-git-repository errors; HEAD, branch, and status are null.",
++    "navigator_overclaim_found": false,
++    "audit_basis": "Manual comparison of the recorded prose against visible bodies and then hidden records; not a deterministic test of semantic correctness.",
++    "supported_result": "The complete recovered current_result is insufficient for this historical acquisition-success question: two executed, structurally valid histories produce identical visible bodies but different recorded acquisition outcomes.",
++    "representation_boundary": "The view reports history and admission health and marks captured_observations null. It neither exposes Git acquisition quality nor expressly certifies it. No general representation-safety or production-defect claim is earned.",
++    "navigation_check": "The requested rec-000002 in each associated ledger resolves through existing reconstruction to the original Git payload, including the divergent source fields and capture errors. This is an auditor check of request sufficiency, not a further navigator trial.",
++    "prior_evidence_delta": "Chart 18 already tested admission of degraded Git evidence and error omission. This pass records an actual constrained consumer response, then adds exact equality of the whole recovered result across opposite acquisition outcomes to separate consumer caution from task-specific representational sufficiency.",
++    "distinction_status": "D-0046 sufficient; no new registry distinction or chart.",
++    "current_external_state": "Not inspected after fixture capture; no present-world assertion.",
++    "conflict": "No conflicting admission decisions were observed in these specimens; no error-state conflict is inferred from an empty companion.",
++    "next_pressure": "None required for this historical question. A separate navigation-consumer trial would be justified only if an actual caller needs to resolve this question through a restricted navigation route."
++  }
++}

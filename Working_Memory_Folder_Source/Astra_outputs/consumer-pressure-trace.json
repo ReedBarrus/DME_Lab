@@ -1,0 +1,420 @@
+{
+  "experiment": "consumer_git_acquisition_pressure_v0",
+  "upstream_head": "2618453d233a5867757c22ff732459f701834372",
+  "question": "Does this recovered result establish that its historical Git observation successfully acquired HEAD, branch, and working-tree status, so that you can summarize that captured Git state? State what is warranted and the smallest evidence request or proposed action. Do not claim current external state.",
+  "visible_basis": "Entire unmodified return of a fresh coordinator current_result(); one opaque case handle; this question.",
+  "withheld_evidence": [
+    "fixture identity and whether it is a Git repository",
+    "immediate capture_round result and raw source observations",
+    "authoritative ledger bytes, nested observations, and full reconstruction",
+    "source command outcomes, capture_errors, HEAD, branch, and working-tree status",
+    "which specimen is healthy or degraded and the paired specimen's result"
+  ],
+  "consumer_context_limit": "Same assistant designed the fixture and has read implementation and prior D-0046 evidence; new specimen mapping and underlying evidence are withheld until audit. This is not a blind or independent model evaluation.",
+  "cases": {
+    "A": {
+      "surface": {
+        "authoritative": false,
+        "capture_mode": "explicit_foreground_invocation",
+        "round_number": null,
+        "new_records": [],
+        "captured_observations": null,
+        "ledger": {
+          "record_count": 4,
+          "integrity_ok": true,
+          "integrity_failures": [],
+          "continuity_ok": true,
+          "continuity_failures": [],
+          "canonical_replay_reproducible": true,
+          "commit_indices": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "derived": {
+          "reconstruction_reproducible": true,
+          "observation_count": 2,
+          "admission_relation_count": 2,
+          "orphan_admission_count": 0,
+          "projection_reproducible": true,
+          "projection": [
+            {
+              "subject_record_id": "rec-000001",
+              "observation_record_id": "rec-000001",
+              "admission_record_ids": [
+                "rec-000003"
+              ],
+              "source": "repository_filesystem_snapshot",
+              "reconstruction_type": "admission_relationships_v0"
+            },
+            {
+              "subject_record_id": "rec-000002",
+              "observation_record_id": "rec-000002",
+              "admission_record_ids": [
+                "rec-000004"
+              ],
+              "source": "repository_git_state",
+              "reconstruction_type": "admission_relationships_v0"
+            }
+          ],
+          "companion_reproducible": true,
+          "companion": [
+            {
+              "subject_record_id": "rec-000001",
+              "non_admitted_decision_states": []
+            },
+            {
+              "subject_record_id": "rec-000002",
+              "non_admitted_decision_states": []
+            }
+          ],
+          "source_provenance_separate": true
+        }
+      },
+      "surface_sha256": "58b08aba3a774d6f508b0a8a06b752476ff7a3f91664ffbeb52fc87ce86e16a9",
+      "audit": {
+        "fixture_has_git": true,
+        "raw_git": {
+          "observation_id": "git-state-v0:2026-09-08T16:22:15.197415Z",
+          "observer": "git_state",
+          "observer_version": "git_state_v0",
+          "observed_at": "2026-09-08T16:22:15.197415Z",
+          "root_identity": {
+            "kind": "repository_working_tree",
+            "name": "fixture"
+          },
+          "head_sha": "46a865676f52e115b1d9319ddef62f4f42433453",
+          "branch": "main",
+          "status_porcelain": [],
+          "capture_errors": []
+        },
+        "raw_filesystem_errors": [],
+        "ledger_jsonl": "{\"commit_index\":1,\"envelope\":{\"observation\":{\"arrival_time\":\"2026-09-08T16:22:15.197400Z\",\"capture_version\":\"repo_snapshot_v0\",\"envelope_identity\":\"repo-snapshot-envelope:repo-snapshot-v0:368701c26d5c2bdf64542ccb4ec81795a2c9ec46c00432aa7a06581303f5b025\",\"event_time\":null,\"missingness\":{\"signal.time\":\"unavailable\",\"source_sequence\":\"unavailable\"},\"provenance\":{\"capture_errors\":[],\"observation_finished_at\":\"2026-09-08T16:22:15.197400Z\",\"observation_started_at\":\"2026-09-08T16:22:15.192292Z\",\"observer\":\"repo_snapshot\",\"observer_version\":\"repo_snapshot_v0\",\"root_identity\":{\"kind\":\"repository_working_tree\",\"name\":\"fixture\"},\"scope\":{\"excluded_dirs\":[\".git\",\"__pycache__\",\"traces\"],\"excluded_globs\":[\"*.pyc\"],\"included\":[\"working_tree_files\"],\"root\":\".\"}},\"signal\":{\"identity\":\"repo-snapshot-v0:368701c26d5c2bdf64542ccb4ec81795a2c9ec46c00432aa7a06581303f5b025\",\"payload\":{\"capture_errors\":[],\"duration_seconds\":0.0051015999997616746,\"entries\":[{\"kind\":\"file\",\"mtime_ns\":1788884534987579400,\"path\":\"state.txt\",\"sha256\":\"8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8\",\"size_bytes\":5}],\"observation_finished_at\":\"2026-09-08T16:22:15.197400Z\",\"observation_started_at\":\"2026-09-08T16:22:15.192292Z\",\"observer\":\"repo_snapshot\",\"observer_version\":\"repo_snapshot_v0\",\"root_identity\":{\"kind\":\"repository_working_tree\",\"name\":\"fixture\"},\"scope\":{\"excluded_dirs\":[\".git\",\"__pycache__\",\"traces\"],\"excluded_globs\":[\"*.pyc\"],\"included\":[\"working_tree_files\"],\"root\":\".\"},\"snapshot_id\":\"repo-snapshot-v0:368701c26d5c2bdf64542ccb4ec81795a2c9ec46c00432aa7a06581303f5b025\"},\"time\":null,\"type\":\"repository_snapshot.v0\"},\"source\":\"repository_filesystem_snapshot\",\"source_sequence\":null},\"provenance\":{\"capture_mode\":\"explicit_foreground_invocation\",\"observer\":\"repo_snapshot\",\"observer_version\":\"repo_snapshot_v0\",\"source_envelope_identity\":\"repo-snapshot-envelope:repo-snapshot-v0:368701c26d5c2bdf64542ccb4ec81795a2c9ec46c00432aa7a06581303f5b025\"},\"record_type\":\"observation\",\"source\":\"repository_filesystem_snapshot\"},\"integrity\":{\"algorithm\":\"sha256\",\"boundary\":\"canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators\",\"digest\":\"4df8f8045884828ca99468f2a56909de0925159d48e43b7172938aa93cd359a5\"},\"record_id\":\"rec-000001\"}\n{\"commit_index\":2,\"envelope\":{\"observation\":{\"arrival_time\":\"2026-09-08T16:22:15.197415Z\",\"capture_version\":\"git_state_v0\",\"envelope_identity\":\"git-state-envelope:git-state-v0:2026-09-08T16:22:15.197415Z\",\"event_time\":null,\"missingness\":{\"signal.time\":\"unavailable\",\"source_sequence\":\"unavailable\"},\"provenance\":{\"capture_errors\":[],\"observed_at\":\"2026-09-08T16:22:15.197415Z\",\"observer\":\"git_state\",\"observer_version\":\"git_state_v0\",\"root_identity\":{\"kind\":\"repository_working_tree\",\"name\":\"fixture\"}},\"signal\":{\"identity\":\"git-state-v0:2026-09-08T16:22:15.197415Z\",\"payload\":{\"branch\":\"main\",\"capture_errors\":[],\"head_sha\":\"46a865676f52e115b1d9319ddef62f4f42433453\",\"observation_id\":\"git-state-v0:2026-09-08T16:22:15.197415Z\",\"observed_at\":\"2026-09-08T16:22:15.197415Z\",\"observer\":\"git_state\",\"observer_version\":\"git_state_v0\",\"root_identity\":{\"kind\":\"repository_working_tree\",\"name\":\"fixture\"},\"status_porcelain\":[]},\"time\":null,\"type\":\"repository_git_state.v0\"},\"source\":\"repository_git_state\",\"source_sequence\":null},\"provenance\":{\"capture_mode\":\"explicit_foreground_invocation\",\"observer\":\"git_state\",\"observer_version\":\"git_state_v0\",\"source_envelope_identity\":\"git-state-envelope:git-state-v0:2026-09-08T16:22:15.197415Z\"},\"record_type\":\"observation\",\"source\":\"repository_git_state\"},\"integrity\":{\"algorithm\":\"sha256\",\"boundary\":\"canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators\",\"digest\":\"e18c62f4d2bd500a81353b6a1184423bdba370e602284ce03f2bd3447c71bf89\"},\"record_id\":\"rec-000002\"}\n{\"commit_index\":3,\"envelope\":{\"comparator_identity\":\"ingest_candidate_envelope_minimum\",\"comparator_version\":\"ingest_candidate_envelope_minimum_v0\",\"comparison_result\":{\"errors\":[],\"status\":\"compared\",\"valid\":true},\"decision\":\"admitted\",\"decision_basis\":\"comparison valid under comparator\",\"record_type\":\"admission\",\"subject_record_id\":\"rec-000001\"},\"integrity\":{\"algorithm\":\"sha256\",\"boundary\":\"canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators\",\"digest\":\"e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170\"},\"record_id\":\"rec-000003\"}\n{\"commit_index\":4,\"envelope\":{\"comparator_identity\":\"ingest_candidate_envelope_minimum\",\"comparator_version\":\"ingest_candidate_envelope_minimum_v0\",\"comparison_result\":{\"errors\":[],\"status\":\"compared\",\"valid\":true},\"decision\":\"admitted\",\"decision_basis\":\"comparison valid under comparator\",\"record_type\":\"admission\",\"subject_record_id\":\"rec-000002\"},\"integrity\":{\"algorithm\":\"sha256\",\"boundary\":\"canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators\",\"digest\":\"623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545\"},\"record_id\":\"rec-000004\"}\n",
+        "ledger_sha256": "21f902d6d4646ac5125b6728a422deb887b13d1cd3541ada5457e94b7621eee4",
+        "recovered_git": {
+          "observation_record_id": "rec-000002",
+          "observation_commit_index": 2,
+          "source": "repository_git_state",
+          "provenance": {
+            "capture_mode": "explicit_foreground_invocation",
+            "observer": "git_state",
+            "observer_version": "git_state_v0",
+            "source_envelope_identity": "git-state-envelope:git-state-v0:2026-09-08T16:22:15.197415Z"
+          },
+          "observation": {
+            "arrival_time": "2026-09-08T16:22:15.197415Z",
+            "capture_version": "git_state_v0",
+            "envelope_identity": "git-state-envelope:git-state-v0:2026-09-08T16:22:15.197415Z",
+            "event_time": null,
+            "missingness": {
+              "signal.time": "unavailable",
+              "source_sequence": "unavailable"
+            },
+            "provenance": {
+              "capture_errors": [],
+              "observed_at": "2026-09-08T16:22:15.197415Z",
+              "observer": "git_state",
+              "observer_version": "git_state_v0",
+              "root_identity": {
+                "kind": "repository_working_tree",
+                "name": "fixture"
+              }
+            },
+            "signal": {
+              "identity": "git-state-v0:2026-09-08T16:22:15.197415Z",
+              "payload": {
+                "branch": "main",
+                "capture_errors": [],
+                "head_sha": "46a865676f52e115b1d9319ddef62f4f42433453",
+                "observation_id": "git-state-v0:2026-09-08T16:22:15.197415Z",
+                "observed_at": "2026-09-08T16:22:15.197415Z",
+                "observer": "git_state",
+                "observer_version": "git_state_v0",
+                "root_identity": {
+                  "kind": "repository_working_tree",
+                  "name": "fixture"
+                },
+                "status_porcelain": []
+              },
+              "time": null,
+              "type": "repository_git_state.v0"
+            },
+            "source": "repository_git_state",
+            "source_sequence": null
+          },
+          "admission_record_ids": [
+            "rec-000004"
+          ],
+          "admissions": [
+            {
+              "admission_record_id": "rec-000004",
+              "admission_commit_index": 4,
+              "subject_record_id": "rec-000002",
+              "comparator_identity": "ingest_candidate_envelope_minimum",
+              "comparator_version": "ingest_candidate_envelope_minimum_v0",
+              "comparison_result": {
+                "errors": [],
+                "status": "compared",
+                "valid": true
+              },
+              "decision": "admitted",
+              "decision_basis": "comparison valid under comparator"
+            }
+          ],
+          "participates_in_admitted_projection": true
+        },
+        "recovery_appended_nothing": true
+      }
+    },
+    "B": {
+      "surface": {
+        "authoritative": false,
+        "capture_mode": "explicit_foreground_invocation",
+        "round_number": null,
+        "new_records": [],
+        "captured_observations": null,
+        "ledger": {
+          "record_count": 4,
+          "integrity_ok": true,
+          "integrity_failures": [],
+          "continuity_ok": true,
+          "continuity_failures": [],
+          "canonical_replay_reproducible": true,
+          "commit_indices": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "derived": {
+          "reconstruction_reproducible": true,
+          "observation_count": 2,
+          "admission_relation_count": 2,
+          "orphan_admission_count": 0,
+          "projection_reproducible": true,
+          "projection": [
+            {
+              "subject_record_id": "rec-000001",
+              "observation_record_id": "rec-000001",
+              "admission_record_ids": [
+                "rec-000003"
+              ],
+              "source": "repository_filesystem_snapshot",
+              "reconstruction_type": "admission_relationships_v0"
+            },
+            {
+              "subject_record_id": "rec-000002",
+              "observation_record_id": "rec-000002",
+              "admission_record_ids": [
+                "rec-000004"
+              ],
+              "source": "repository_git_state",
+              "reconstruction_type": "admission_relationships_v0"
+            }
+          ],
+          "companion_reproducible": true,
+          "companion": [
+            {
+              "subject_record_id": "rec-000001",
+              "non_admitted_decision_states": []
+            },
+            {
+              "subject_record_id": "rec-000002",
+              "non_admitted_decision_states": []
+            }
+          ],
+          "source_provenance_separate": true
+        }
+      },
+      "surface_sha256": "58b08aba3a774d6f508b0a8a06b752476ff7a3f91664ffbeb52fc87ce86e16a9",
+      "audit": {
+        "fixture_has_git": false,
+        "raw_git": {
+          "observation_id": "git-state-v0:2026-09-08T16:22:15.306401Z",
+          "observer": "git_state",
+          "observer_version": "git_state_v0",
+          "observed_at": "2026-09-08T16:22:15.306401Z",
+          "root_identity": {
+            "kind": "repository_working_tree",
+            "name": "fixture"
+          },
+          "head_sha": null,
+          "branch": null,
+          "status_porcelain": null,
+          "capture_errors": [
+            {
+              "command": "rev-parse HEAD",
+              "error": "fatal: not a git repository (or any of the parent directories): .git"
+            },
+            {
+              "command": "branch --show-current",
+              "error": "fatal: not a git repository (or any of the parent directories): .git"
+            },
+            {
+              "command": "status --porcelain=v1",
+              "error": "fatal: not a git repository (or any of the parent directories): .git"
+            }
+          ]
+        },
+        "raw_filesystem_errors": [],
+        "ledger_jsonl": "{\"commit_index\":1,\"envelope\":{\"observation\":{\"arrival_time\":\"2026-09-08T16:22:15.306388Z\",\"capture_version\":\"repo_snapshot_v0\",\"envelope_identity\":\"repo-snapshot-envelope:repo-snapshot-v0:6bfe83d9744845ef5e6c6fbcdab38cba6aba365e7ce867cde022a2221d8b4187\",\"event_time\":null,\"missingness\":{\"signal.time\":\"unavailable\",\"source_sequence\":\"unavailable\"},\"provenance\":{\"capture_errors\":[],\"observation_finished_at\":\"2026-09-08T16:22:15.306388Z\",\"observation_started_at\":\"2026-09-08T16:22:15.304952Z\",\"observer\":\"repo_snapshot\",\"observer_version\":\"repo_snapshot_v0\",\"root_identity\":{\"kind\":\"repository_working_tree\",\"name\":\"fixture\"},\"scope\":{\"excluded_dirs\":[\".git\",\"__pycache__\",\"traces\"],\"excluded_globs\":[\"*.pyc\"],\"included\":[\"working_tree_files\"],\"root\":\".\"}},\"signal\":{\"identity\":\"repo-snapshot-v0:6bfe83d9744845ef5e6c6fbcdab38cba6aba365e7ce867cde022a2221d8b4187\",\"payload\":{\"capture_errors\":[],\"duration_seconds\":0.0014341000060085207,\"entries\":[{\"kind\":\"file\",\"mtime_ns\":1788884535303723700,\"path\":\"state.txt\",\"sha256\":\"8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8\",\"size_bytes\":5}],\"observation_finished_at\":\"2026-09-08T16:22:15.306388Z\",\"observation_started_at\":\"2026-09-08T16:22:15.304952Z\",\"observer\":\"repo_snapshot\",\"observer_version\":\"repo_snapshot_v0\",\"root_identity\":{\"kind\":\"repository_working_tree\",\"name\":\"fixture\"},\"scope\":{\"excluded_dirs\":[\".git\",\"__pycache__\",\"traces\"],\"excluded_globs\":[\"*.pyc\"],\"included\":[\"working_tree_files\"],\"root\":\".\"},\"snapshot_id\":\"repo-snapshot-v0:6bfe83d9744845ef5e6c6fbcdab38cba6aba365e7ce867cde022a2221d8b4187\"},\"time\":null,\"type\":\"repository_snapshot.v0\"},\"source\":\"repository_filesystem_snapshot\",\"source_sequence\":null},\"provenance\":{\"capture_mode\":\"explicit_foreground_invocation\",\"observer\":\"repo_snapshot\",\"observer_version\":\"repo_snapshot_v0\",\"source_envelope_identity\":\"repo-snapshot-envelope:repo-snapshot-v0:6bfe83d9744845ef5e6c6fbcdab38cba6aba365e7ce867cde022a2221d8b4187\"},\"record_type\":\"observation\",\"source\":\"repository_filesystem_snapshot\"},\"integrity\":{\"algorithm\":\"sha256\",\"boundary\":\"canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators\",\"digest\":\"180316c5a6d142acfa48cc32bbbbd52e2bd5756da8b3b4951bdcf0eebd2f8592\"},\"record_id\":\"rec-000001\"}\n{\"commit_index\":2,\"envelope\":{\"observation\":{\"arrival_time\":\"2026-09-08T16:22:15.306401Z\",\"capture_version\":\"git_state_v0\",\"envelope_identity\":\"git-state-envelope:git-state-v0:2026-09-08T16:22:15.306401Z\",\"event_time\":null,\"missingness\":{\"signal.time\":\"unavailable\",\"source_sequence\":\"unavailable\"},\"provenance\":{\"capture_errors\":[{\"command\":\"rev-parse HEAD\",\"error\":\"fatal: not a git repository (or any of the parent directories): .git\"},{\"command\":\"branch --show-current\",\"error\":\"fatal: not a git repository (or any of the parent directories): .git\"},{\"command\":\"status --porcelain=v1\",\"error\":\"fatal: not a git repository (or any of the parent directories): .git\"}],\"observed_at\":\"2026-09-08T16:22:15.306401Z\",\"observer\":\"git_state\",\"observer_version\":\"git_state_v0\",\"root_identity\":{\"kind\":\"repository_working_tree\",\"name\":\"fixture\"}},\"signal\":{\"identity\":\"git-state-v0:2026-09-08T16:22:15.306401Z\",\"payload\":{\"branch\":null,\"capture_errors\":[{\"command\":\"rev-parse HEAD\",\"error\":\"fatal: not a git repository (or any of the parent directories): .git\"},{\"command\":\"branch --show-current\",\"error\":\"fatal: not a git repository (or any of the parent directories): .git\"},{\"command\":\"status --porcelain=v1\",\"error\":\"fatal: not a git repository (or any of the parent directories): .git\"}],\"head_sha\":null,\"observation_id\":\"git-state-v0:2026-09-08T16:22:15.306401Z\",\"observed_at\":\"2026-09-08T16:22:15.306401Z\",\"observer\":\"git_state\",\"observer_version\":\"git_state_v0\",\"root_identity\":{\"kind\":\"repository_working_tree\",\"name\":\"fixture\"},\"status_porcelain\":null},\"time\":null,\"type\":\"repository_git_state.v0\"},\"source\":\"repository_git_state\",\"source_sequence\":null},\"provenance\":{\"capture_mode\":\"explicit_foreground_invocation\",\"observer\":\"git_state\",\"observer_version\":\"git_state_v0\",\"source_envelope_identity\":\"git-state-envelope:git-state-v0:2026-09-08T16:22:15.306401Z\"},\"record_type\":\"observation\",\"source\":\"repository_git_state\"},\"integrity\":{\"algorithm\":\"sha256\",\"boundary\":\"canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators\",\"digest\":\"ea0e788904cb54ea1fdebb623cbeb972e587bbd7532d7fdc4d8a277b5608e2b5\"},\"record_id\":\"rec-000002\"}\n{\"commit_index\":3,\"envelope\":{\"comparator_identity\":\"ingest_candidate_envelope_minimum\",\"comparator_version\":\"ingest_candidate_envelope_minimum_v0\",\"comparison_result\":{\"errors\":[],\"status\":\"compared\",\"valid\":true},\"decision\":\"admitted\",\"decision_basis\":\"comparison valid under comparator\",\"record_type\":\"admission\",\"subject_record_id\":\"rec-000001\"},\"integrity\":{\"algorithm\":\"sha256\",\"boundary\":\"canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators\",\"digest\":\"e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170\"},\"record_id\":\"rec-000003\"}\n{\"commit_index\":4,\"envelope\":{\"comparator_identity\":\"ingest_candidate_envelope_minimum\",\"comparator_version\":\"ingest_candidate_envelope_minimum_v0\",\"comparison_result\":{\"errors\":[],\"status\":\"compared\",\"valid\":true},\"decision\":\"admitted\",\"decision_basis\":\"comparison valid under comparator\",\"record_type\":\"admission\",\"subject_record_id\":\"rec-000002\"},\"integrity\":{\"algorithm\":\"sha256\",\"boundary\":\"canonical JSON of the ledger record without its integrity field, using sort_keys=True and compact separators\",\"digest\":\"623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545\"},\"record_id\":\"rec-000004\"}\n",
+        "ledger_sha256": "4a69685c334685ccd570fffcc89042139425b56aba755f59deb51b2adbcd1726",
+        "recovered_git": {
+          "observation_record_id": "rec-000002",
+          "observation_commit_index": 2,
+          "source": "repository_git_state",
+          "provenance": {
+            "capture_mode": "explicit_foreground_invocation",
+            "observer": "git_state",
+            "observer_version": "git_state_v0",
+            "source_envelope_identity": "git-state-envelope:git-state-v0:2026-09-08T16:22:15.306401Z"
+          },
+          "observation": {
+            "arrival_time": "2026-09-08T16:22:15.306401Z",
+            "capture_version": "git_state_v0",
+            "envelope_identity": "git-state-envelope:git-state-v0:2026-09-08T16:22:15.306401Z",
+            "event_time": null,
+            "missingness": {
+              "signal.time": "unavailable",
+              "source_sequence": "unavailable"
+            },
+            "provenance": {
+              "capture_errors": [
+                {
+                  "command": "rev-parse HEAD",
+                  "error": "fatal: not a git repository (or any of the parent directories): .git"
+                },
+                {
+                  "command": "branch --show-current",
+                  "error": "fatal: not a git repository (or any of the parent directories): .git"
+                },
+                {
+                  "command": "status --porcelain=v1",
+                  "error": "fatal: not a git repository (or any of the parent directories): .git"
+                }
+              ],
+              "observed_at": "2026-09-08T16:22:15.306401Z",
+              "observer": "git_state",
+              "observer_version": "git_state_v0",
+              "root_identity": {
+                "kind": "repository_working_tree",
+                "name": "fixture"
+              }
+            },
+            "signal": {
+              "identity": "git-state-v0:2026-09-08T16:22:15.306401Z",
+              "payload": {
+                "branch": null,
+                "capture_errors": [
+                  {
+                    "command": "rev-parse HEAD",
+                    "error": "fatal: not a git repository (or any of the parent directories): .git"
+                  },
+                  {
+                    "command": "branch --show-current",
+                    "error": "fatal: not a git repository (or any of the parent directories): .git"
+                  },
+                  {
+                    "command": "status --porcelain=v1",
+                    "error": "fatal: not a git repository (or any of the parent directories): .git"
+                  }
+                ],
+                "head_sha": null,
+                "observation_id": "git-state-v0:2026-09-08T16:22:15.306401Z",
+                "observed_at": "2026-09-08T16:22:15.306401Z",
+                "observer": "git_state",
+                "observer_version": "git_state_v0",
+                "root_identity": {
+                  "kind": "repository_working_tree",
+                  "name": "fixture"
+                },
+                "status_porcelain": null
+              },
+              "time": null,
+              "type": "repository_git_state.v0"
+            },
+            "source": "repository_git_state",
+            "source_sequence": null
+          },
+          "admission_record_ids": [
+            "rec-000004"
+          ],
+          "admissions": [
+            {
+              "admission_record_id": "rec-000004",
+              "admission_commit_index": 4,
+              "subject_record_id": "rec-000002",
+              "comparator_identity": "ingest_candidate_envelope_minimum",
+              "comparator_version": "ingest_candidate_envelope_minimum_v0",
+              "comparison_result": {
+                "errors": [],
+                "status": "compared",
+                "valid": true
+              },
+              "decision": "admitted",
+              "decision_basis": "comparison valid under comparator"
+            }
+          ],
+          "participates_in_admitted_projection": true
+        },
+        "recovery_appended_nothing": true
+      }
+    }
+  },
+  "canonical_history": {
+    "sha256_before": "35107048c6cbdbef7276d7aec2960456dbe17125b1ec80880d88da923ab26eb6",
+    "sha256_after": "35107048c6cbdbef7276d7aec2960456dbe17125b1ec80880d88da923ab26eb6"
+  },
+  "navigator_outputs": [
+    {
+      "phase": "first specimen, before paired surface and underlying audit were opened",
+      "role": "NAVIGATOR",
+      "case": "A",
+      "visible_evidence": "Complete current_result printed by prepare, the frozen question, and declared task/implementation familiarity. No generated audit evidence was read.",
+      "interpretation": "The view reports four records with passing integrity, continuity, and replay checks, plus two projected observations. Its Git subject rec-000002 has an admitted-record reference and no exposed rejected or unresolved admission states. These are derived historical statements reported by this view. No HEAD, branch, working-tree status, or acquisition-error evidence is present. captured_observations is null. I cannot establish either successful or failed Git acquisition from this packet, and cannot summarize the captured Git state. The empty companion concerns admission decisions; it is not an acquisition-success statement.",
+      "proposed_action": "Request the reconstructed observation for rec-000002 within case A's associated ledger, including the nested source payload/provenance carrying head_sha, branch, status_porcelain, and capture_errors. Preserve the link to the authoritative record. Do not emit a successful-state summary before that evidence is available. No recapture is needed merely to inspect a historical acquisition.",
+      "external_state_claim": "None; current external Git state remains unobserved by this result.",
+      "model_evaluation_limit": "One knowledgeable assistant, already familiar with D-0046, acting under a declared evidence restriction; not an independent or blind consumer trial."
+    },
+    {
+      "phase": "paired surface seen; before underlying audit was opened",
+      "role": "NAVIGATOR",
+      "visible_evidence": "Both complete current_result bodies and the reported exact equality check, with opaque case handles A and B. The generated raw observations and fixture mapping remain withheld.",
+      "interpretation": "Both visible bodies are equal. Nothing in either body permits a case-specific acquisition-success conclusion. I do not yet infer that the underlying outcomes differ merely because two cases were supplied. I cannot establish which case contains a successfully acquired Git state, or whether both or neither do. Passing history checks, projection membership, and empty admission companions do not supply those missing source fields.",
+      "proposed_action": "Make the same evidence request for each case: navigate to rec-000002 within its own associated ledger and inspect the nested historical Git payload and capture errors. Do not choose a successful-state summary for either case on the supplied evidence alone.",
+      "scope": "Equality of these visible bodies establishes visible indistinguishability only. Whether it conceals a relevant underlying difference is for the audit to determine."
+    }
+  ],
+  "execution_order": [
+    "Prepare both specimens; print only A surface; keep underlying evidence unprinted.",
+    "Persist navigator_a.json.",
+    "Print B surface and full-body equality; underlying evidence remains unprinted.",
+    "Persist navigator_pair.json.",
+    "Open underlying audit evidence; compare recorded output with source evidence."
+  ],
+  "navigator_record_sha256": {
+    "navigator_a.json": "a17929fc6c6aaff71cc673bc0cd402900918249c2178e3352c2437bdf54a2acc",
+    "navigator_pair.json": "508b37def4eeb3f0347bf8232d0780e849057a6d66ad6c02c8a4ddc17e6c61c2"
+  },
+  "audit": {
+    "role": "AUDITOR",
+    "same_assistant": true,
+    "visible_evidence": "Both navigator outputs, full surfaces, recorded source observations, fixture construction, authoritative specimen ledger bytes, and recovered Git observations.",
+    "exact_unmodified_surface_equality": true,
+    "A": "Historical observer returned HEAD 46a865676f52e115b1d9319ddef62f4f42433453, branch main, empty porcelain status, and no capture errors.",
+    "B": "All three historical Git commands failed with not-a-git-repository errors; HEAD, branch, and status are null.",
+    "navigator_overclaim_found": false,
+    "audit_basis": "Manual comparison of the recorded prose against visible bodies and then hidden records; not a deterministic test of semantic correctness.",
+    "supported_result": "The complete recovered current_result is insufficient for this historical acquisition-success question: two executed, structurally valid histories produce identical visible bodies but different recorded acquisition outcomes.",
+    "representation_boundary": "The view reports history and admission health and marks captured_observations null. It neither exposes Git acquisition quality nor expressly certifies it. No general representation-safety or production-defect claim is earned.",
+    "navigation_check": "The requested rec-000002 in each associated ledger resolves through existing reconstruction to the original Git payload, including the divergent source fields and capture errors. This is an auditor check of request sufficiency, not a further navigator trial.",
+    "prior_evidence_delta": "Chart 18 already tested admission of degraded Git evidence and error omission. This pass records an actual constrained consumer response, then adds exact equality of the whole recovered result across opposite acquisition outcomes to separate consumer caution from task-specific representational sufficiency.",
+    "distinction_status": "D-0046 sufficient; no new registry distinction or chart.",
+    "current_external_state": "Not inspected after fixture capture; no present-world assertion.",
+    "conflict": "No conflicting admission decisions were observed in these specimens; no error-state conflict is inferred from an empty companion.",
+    "next_pressure": "None required for this historical question. A separate navigation-consumer trial would be justified only if an actual caller needs to resolve this question through a restricted navigation route."
+  }
+}
