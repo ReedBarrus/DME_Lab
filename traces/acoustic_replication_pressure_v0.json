@@ -1,0 +1,2999 @@
+{
+  "backend_capability_at_execution": {
+    "backend": "Windows WinMM",
+    "input_devices": [
+      {
+        "device_id": 0,
+        "name": "Microphone (XIBERIA)",
+        "reported_format_mask": "0x000fffff",
+        "reported_max_channels": 2
+      }
+    ],
+    "output_devices": [
+      {
+        "device_id": 0,
+        "name": "Speakers (Realtek High Definiti",
+        "reported_format_mask": "0x000fffff",
+        "reported_max_channels": 2
+      },
+      {
+        "device_id": 1,
+        "name": "Realtek Digital Output (Realtek",
+        "reported_format_mask": "0x000fffff",
+        "reported_max_channels": 2
+      },
+      {
+        "device_id": 2,
+        "name": "Q32G3WG3R3 (NVIDIA High Definit",
+        "reported_format_mask": "0x000fffff",
+        "reported_max_channels": 2
+      },
+      {
+        "device_id": 3,
+        "name": "Speakers (XIBERIA)",
+        "reported_format_mask": "0x000fffff",
+        "reported_max_channels": 2
+      }
+    ],
+    "selected_input_device": {
+      "device_id": 0,
+      "name": "Microphone (XIBERIA)",
+      "reported_format_mask": "0x000fffff",
+      "reported_max_channels": 2
+    },
+    "selected_output_device": {
+      "device_id": 0,
+      "name": "Speakers (Realtek High Definiti",
+      "reported_format_mask": "0x000fffff",
+      "reported_max_channels": 2
+    },
+    "selection_basis": "execution-time device names; numeric WinMM IDs not treated as stable identity",
+    "third_party_dependency_added": false
+  },
+  "canonical_live_history_used": false,
+  "experiment": "acoustic_replication_pressure_v0",
+  "operator_provenance": {
+    "device_roles": {
+      "Realtek": "room stereo playback",
+      "XIBERIA": "headphones and headset microphone capture"
+    },
+    "ambient_audio_state_machine_verified": false,
+    "machine_verified": false,
+    "replacement_context": "replacement block requested after the operator reported that video audio likely overlapped the first block; ambient state was not machine verified",
+    "per_trial_listening_required": false,
+    "room_stereo_can_emit_substantial_sound": true
+  },
+  "physical_pressure_executed": true,
+  "primary_adjudication": true,
+  "pipeline": {
+    "admission_record_count": 15,
+    "companion": [
+      {
+        "non_admitted_decision_states": [],
+        "subject_record_id": "rec-000001"
+      },
+      {
+        "non_admitted_decision_states": [],
+        "subject_record_id": "rec-000003"
+      },
+      {
+        "non_admitted_decision_states": [],
+        "subject_record_id": "rec-000005"
+      },
+      {
+        "non_admitted_decision_states": [],
+        "subject_record_id": "rec-000007"
+      },
+      {
+        "non_admitted_decision_states": [],
+        "subject_record_id": "rec-000009"
+      },
+      {
+        "non_admitted_decision_states": [],
+        "subject_record_id": "rec-000011"
+      },
+      {
+        "non_admitted_decision_states": [],
+        "subject_record_id": "rec-000013"
+      },
+      {
+        "non_admitted_decision_states": [],
+        "subject_record_id": "rec-000015"
+      },
+      {
+        "non_admitted_decision_states": [],
+        "subject_record_id": "rec-000017"
+      },
+      {
+        "non_admitted_decision_states": [],
+        "subject_record_id": "rec-000019"
+      },
+      {
+        "non_admitted_decision_states": [],
+        "subject_record_id": "rec-000021"
+      },
+      {
+        "non_admitted_decision_states": [],
+        "subject_record_id": "rec-000023"
+      },
+      {
+        "non_admitted_decision_states": [],
+        "subject_record_id": "rec-000025"
+      },
+      {
+        "non_admitted_decision_states": [],
+        "subject_record_id": "rec-000027"
+      },
+      {
+        "non_admitted_decision_states": [],
+        "subject_record_id": "rec-000029"
+      }
+    ],
+    "companion_reproducible": true,
+    "continuity_failures": [],
+    "continuity_ok": true,
+    "decision_bases": [
+      "comparison valid under comparator",
+      "comparison valid under comparator",
+      "comparison valid under comparator",
+      "comparison valid under comparator",
+      "comparison valid under comparator",
+      "comparison valid under comparator",
+      "comparison valid under comparator",
+      "comparison valid under comparator",
+      "comparison valid under comparator",
+      "comparison valid under comparator",
+      "comparison valid under comparator",
+      "comparison valid under comparator",
+      "comparison valid under comparator",
+      "comparison valid under comparator",
+      "comparison valid under comparator"
+    ],
+    "decisions": [
+      "admitted",
+      "admitted",
+      "admitted",
+      "admitted",
+      "admitted",
+      "admitted",
+      "admitted",
+      "admitted",
+      "admitted",
+      "admitted",
+      "admitted",
+      "admitted",
+      "admitted",
+      "admitted",
+      "admitted"
+    ],
+    "information_visibility": {
+      "command_direct_in_projection": false,
+      "command_direct_in_raw_observation": true,
+      "command_direct_in_reconstruction_nested_observation": true,
+      "measurements_direct_in_projection": false,
+      "measurements_direct_in_raw_observation": true,
+      "measurements_direct_in_reconstruction_nested_observation": true,
+      "projection_retains_subject_navigation": true,
+      "raw_hash_direct_in_projection": false,
+      "raw_hash_direct_in_raw_observation": true,
+      "raw_hash_direct_in_reconstruction_nested_observation": true,
+      "raw_pcm_persisted": false
+    },
+    "integrity_failures": [],
+    "integrity_ok": true,
+    "observation_record_count": 15,
+    "projection": [
+      {
+        "admission_record_ids": [
+          "rec-000002"
+        ],
+        "observation_record_id": "rec-000001",
+        "reconstruction_type": "admission_relationships_v0",
+        "source": "bounded_physical_acoustic_observation",
+        "subject_record_id": "rec-000001"
+      },
+      {
+        "admission_record_ids": [
+          "rec-000004"
+        ],
+        "observation_record_id": "rec-000003",
+        "reconstruction_type": "admission_relationships_v0",
+        "source": "bounded_physical_acoustic_observation",
+        "subject_record_id": "rec-000003"
+      },
+      {
+        "admission_record_ids": [
+          "rec-000006"
+        ],
+        "observation_record_id": "rec-000005",
+        "reconstruction_type": "admission_relationships_v0",
+        "source": "bounded_physical_acoustic_observation",
+        "subject_record_id": "rec-000005"
+      },
+      {
+        "admission_record_ids": [
+          "rec-000008"
+        ],
+        "observation_record_id": "rec-000007",
+        "reconstruction_type": "admission_relationships_v0",
+        "source": "bounded_physical_acoustic_observation",
+        "subject_record_id": "rec-000007"
+      },
+      {
+        "admission_record_ids": [
+          "rec-000010"
+        ],
+        "observation_record_id": "rec-000009",
+        "reconstruction_type": "admission_relationships_v0",
+        "source": "bounded_physical_acoustic_observation",
+        "subject_record_id": "rec-000009"
+      },
+      {
+        "admission_record_ids": [
+          "rec-000012"
+        ],
+        "observation_record_id": "rec-000011",
+        "reconstruction_type": "admission_relationships_v0",
+        "source": "bounded_physical_acoustic_observation",
+        "subject_record_id": "rec-000011"
+      },
+      {
+        "admission_record_ids": [
+          "rec-000014"
+        ],
+        "observation_record_id": "rec-000013",
+        "reconstruction_type": "admission_relationships_v0",
+        "source": "bounded_physical_acoustic_observation",
+        "subject_record_id": "rec-000013"
+      },
+      {
+        "admission_record_ids": [
+          "rec-000016"
+        ],
+        "observation_record_id": "rec-000015",
+        "reconstruction_type": "admission_relationships_v0",
+        "source": "bounded_physical_acoustic_observation",
+        "subject_record_id": "rec-000015"
+      },
+      {
+        "admission_record_ids": [
+          "rec-000018"
+        ],
+        "observation_record_id": "rec-000017",
+        "reconstruction_type": "admission_relationships_v0",
+        "source": "bounded_physical_acoustic_observation",
+        "subject_record_id": "rec-000017"
+      },
+      {
+        "admission_record_ids": [
+          "rec-000020"
+        ],
+        "observation_record_id": "rec-000019",
+        "reconstruction_type": "admission_relationships_v0",
+        "source": "bounded_physical_acoustic_observation",
+        "subject_record_id": "rec-000019"
+      },
+      {
+        "admission_record_ids": [
+          "rec-000022"
+        ],
+        "observation_record_id": "rec-000021",
+        "reconstruction_type": "admission_relationships_v0",
+        "source": "bounded_physical_acoustic_observation",
+        "subject_record_id": "rec-000021"
+      },
+      {
+        "admission_record_ids": [
+          "rec-000024"
+        ],
+        "observation_record_id": "rec-000023",
+        "reconstruction_type": "admission_relationships_v0",
+        "source": "bounded_physical_acoustic_observation",
+        "subject_record_id": "rec-000023"
+      },
+      {
+        "admission_record_ids": [
+          "rec-000026"
+        ],
+        "observation_record_id": "rec-000025",
+        "reconstruction_type": "admission_relationships_v0",
+        "source": "bounded_physical_acoustic_observation",
+        "subject_record_id": "rec-000025"
+      },
+      {
+        "admission_record_ids": [
+          "rec-000028"
+        ],
+        "observation_record_id": "rec-000027",
+        "reconstruction_type": "admission_relationships_v0",
+        "source": "bounded_physical_acoustic_observation",
+        "subject_record_id": "rec-000027"
+      },
+      {
+        "admission_record_ids": [
+          "rec-000030"
+        ],
+        "observation_record_id": "rec-000029",
+        "reconstruction_type": "admission_relationships_v0",
+        "source": "bounded_physical_acoustic_observation",
+        "subject_record_id": "rec-000029"
+      }
+    ],
+    "projection_count": 15,
+    "projection_reproducible": true,
+    "reconstruction_reproducible": true,
+    "record_count": 30,
+    "recovered_measurement_versions": [
+      "pcm_window_energy_v0",
+      "pcm_window_energy_v0",
+      "pcm_window_energy_v0",
+      "pcm_window_energy_v0",
+      "pcm_window_energy_v0",
+      "pcm_window_energy_v0",
+      "pcm_window_energy_v0",
+      "pcm_window_energy_v0",
+      "pcm_window_energy_v0",
+      "pcm_window_energy_v0",
+      "pcm_window_energy_v0",
+      "pcm_window_energy_v0",
+      "pcm_window_energy_v0",
+      "pcm_window_energy_v0",
+      "pcm_window_energy_v0"
+    ],
+    "recovered_raw_capture_sha256": [
+      "948011822a5d784d4252cf41db3bfa838482d072797f646ad4aa704164b4cb17",
+      "1c1c3b8f90e45c81042225eb3c7854c34c88b4bfc4e9a6751d085f7823c93277",
+      "1fba63559742e953a0196b0b6465436065ecb61311e9a5f1eeda03746e692be7",
+      "7f529559496031338235850be13bb64551e4706af85f3747f3e3d5ddc75a632b",
+      "f0f677aeaab9b0be5e1f604d0c0cc130a69e412f37a3268fce9a018d5072708d",
+      "b7d259fb6ad5abe906106d95cbd2e6269757bd9f14f3ab8d9c0fe0f35a84d08c",
+      "07257a2eba9ac9f73e5ad0a9f3163da36f070d2a8b78c01ca900c7bfb246ba0a",
+      "4c67b60293cc5e6ddf31890086087fff470c0041edd445495ff4b7b8d9cb11f6",
+      "299bfb3a098fbc50afa90f49e57bc303586cbf83550132fb8aeda84dcc773ff6",
+      "47b4860404181b81a17407dc3ef8f72b847806f10edf9df8917d1d734d86a82b",
+      "5b64fdc1d315ea2d5c2b219fcd009b44c09a4dc16c8b8c376550dc01d49fffbe",
+      "3810bcf51f995b241db0cd96f78f65ba30ec13efdd3772353d568ed422d95745",
+      "737abb176c5192a22ec16640d652133c108b42dd3949458fb7e213c378e62072",
+      "b9a168cfe71132385f577aafecac0857e6af1e27c5c9ce9e714548bdd4d2688e",
+      "4e39052148f7166bbdc700b855f66f08e1e0153be240b44e90a4e4d0fea5b635"
+    ],
+    "recovered_trial_ids": [
+      "acoustic-replication-trial-v0:01:S2:85022b4608771fb8",
+      "acoustic-replication-trial-v0:02:S1:9b1ae383d1fc79ee",
+      "acoustic-replication-trial-v0:03:C0:41f5e3af8bf82a08",
+      "acoustic-replication-trial-v0:04:C0:49c9f5ea71170a16",
+      "acoustic-replication-trial-v0:05:S2:13febe287f13fdb3",
+      "acoustic-replication-trial-v0:06:C0:d54298492cea203b",
+      "acoustic-replication-trial-v0:07:S2:93b69457e6856524",
+      "acoustic-replication-trial-v0:08:S1:8344f7bdefb98fcd",
+      "acoustic-replication-trial-v0:09:C0:57c296e3f8a7bd3d",
+      "acoustic-replication-trial-v0:10:S1:fd0f8021082c7bfa",
+      "acoustic-replication-trial-v0:11:S2:9d0ee88adb9c72c0",
+      "acoustic-replication-trial-v0:12:S1:fa2719d3b926a751",
+      "acoustic-replication-trial-v0:13:S2:e1e3ae6de5f590aa",
+      "acoustic-replication-trial-v0:14:C0:c7d3d11688362cf8",
+      "acoustic-replication-trial-v0:15:S1:4e27e704e060d630"
+    ],
+    "replay_reproducible": true,
+    "temporary_ledger": true
+  },
+  "predeclaration": {
+    "declared_before_physical_acquisition": true,
+    "discrimination_rule": {
+      "both_conditions_required": true,
+      "label": "locally_discriminable_under_declared_basis",
+      "mad_definition": "median(abs(x - median(x)))",
+      "mechanism_claimed": false,
+      "per_microphone_channel": true,
+      "range_condition": "closed observed delta_rms ranges do not overlap",
+      "separation_condition": "absolute median separation > 3 * max(MAD_A, MAD_B)",
+      "zero_mad_policy": "if either condition MAD is zero, mark criterion_degenerate_insufficient; do not substitute a statistic and do not declare discrimination"
+    },
+    "pairwise_comparisons": [
+      "S1_vs_C0",
+      "S2_vs_C0",
+      "S1_vs_S2"
+    ],
+    "primary_measurement": {
+      "definition": "nominal_response_window.rms_pcm - that_trial.baseline_window.rms_pcm",
+      "evaluated_independently_for": [
+        "microphone_channel_0",
+        "microphone_channel_1"
+      ],
+      "name": "delta_rms_pcm",
+      "underlying_values_retained": [
+        "baseline_window.rms_pcm",
+        "nominal_response_window.rms_pcm"
+      ]
+    },
+    "randomization": {
+      "algorithm": "Python random.Random(seed).sample over five C0, five S1, five S2 labels",
+      "seed": 20260903,
+      "trial_order": [
+        "S2",
+        "S1",
+        "C0",
+        "C0",
+        "S2",
+        "C0",
+        "S2",
+        "S1",
+        "C0",
+        "S1",
+        "S2",
+        "S1",
+        "S2",
+        "C0",
+        "S1"
+      ]
+    },
+    "replicates_per_condition": 5,
+    "total_trials": 15
+  },
+  "predeclaration_record": {
+    "baseline_tests": {
+      "failed": 0,
+      "passed": 451,
+      "runner": "python -m unittest discover -s tests"
+    },
+    "materialized_at_utc": "2026-09-08T07:03:37.0280999Z",
+    "starting_lineage": {
+      "branch": "main",
+      "head": "c9be23c5a7c3db66d9da677ba01d90952aaef1a3",
+      "message": "Horizontal Expansion- Soundscape",
+      "worktree": []
+    }
+  },
+  "raw_recordings_committed": false,
+  "replicated_measurement_analysis": {
+    "basis": {
+      "declared_before_physical_acquisition": true,
+      "discrimination_rule": {
+        "both_conditions_required": true,
+        "label": "locally_discriminable_under_declared_basis",
+        "mad_definition": "median(abs(x - median(x)))",
+        "mechanism_claimed": false,
+        "per_microphone_channel": true,
+        "range_condition": "closed observed delta_rms ranges do not overlap",
+        "separation_condition": "absolute median separation > 3 * max(MAD_A, MAD_B)",
+        "zero_mad_policy": "if either condition MAD is zero, mark criterion_degenerate_insufficient; do not substitute a statistic and do not declare discrimination"
+      },
+      "pairwise_comparisons": [
+        "S1_vs_C0",
+        "S2_vs_C0",
+        "S1_vs_S2"
+      ],
+      "primary_measurement": {
+        "definition": "nominal_response_window.rms_pcm - that_trial.baseline_window.rms_pcm",
+        "evaluated_independently_for": [
+          "microphone_channel_0",
+          "microphone_channel_1"
+        ],
+        "name": "delta_rms_pcm",
+        "underlying_values_retained": [
+          "baseline_window.rms_pcm",
+          "nominal_response_window.rms_pcm"
+        ]
+      },
+      "randomization": {
+        "algorithm": "Python random.Random(seed).sample over five C0, five S1, five S2 labels",
+        "seed": 20260903,
+        "trial_order": [
+          "S2",
+          "S1",
+          "C0",
+          "C0",
+          "S2",
+          "C0",
+          "S2",
+          "S1",
+          "C0",
+          "S1",
+          "S2",
+          "S1",
+          "S2",
+          "C0",
+          "S1"
+        ]
+      },
+      "replicates_per_condition": 5,
+      "total_trials": 15
+    },
+    "individual_occurrences": {
+      "C0": [
+        {
+          "delta_rms_pcm": {
+            "microphone_channel_0": 0.002075,
+            "microphone_channel_1": -0.004995
+          },
+          "trial_id": "acoustic-replication-trial-v0:03:C0:41f5e3af8bf82a08",
+          "trial_sequence_index": 3
+        },
+        {
+          "delta_rms_pcm": {
+            "microphone_channel_0": 0.004807,
+            "microphone_channel_1": -0.005387
+          },
+          "trial_id": "acoustic-replication-trial-v0:04:C0:49c9f5ea71170a16",
+          "trial_sequence_index": 4
+        },
+        {
+          "delta_rms_pcm": {
+            "microphone_channel_0": 0.004911,
+            "microphone_channel_1": -0.004302
+          },
+          "trial_id": "acoustic-replication-trial-v0:06:C0:d54298492cea203b",
+          "trial_sequence_index": 6
+        },
+        {
+          "delta_rms_pcm": {
+            "microphone_channel_0": 0.005401,
+            "microphone_channel_1": -0.005817
+          },
+          "trial_id": "acoustic-replication-trial-v0:09:C0:57c296e3f8a7bd3d",
+          "trial_sequence_index": 9
+        },
+        {
+          "delta_rms_pcm": {
+            "microphone_channel_0": 0.002934,
+            "microphone_channel_1": -0.007534
+          },
+          "trial_id": "acoustic-replication-trial-v0:14:C0:c7d3d11688362cf8",
+          "trial_sequence_index": 14
+        }
+      ],
+      "S1": [
+        {
+          "delta_rms_pcm": {
+            "microphone_channel_0": 0.005595,
+            "microphone_channel_1": -0.003956
+          },
+          "trial_id": "acoustic-replication-trial-v0:02:S1:9b1ae383d1fc79ee",
+          "trial_sequence_index": 2
+        },
+        {
+          "delta_rms_pcm": {
+            "microphone_channel_0": 0.003471,
+            "microphone_channel_1": -0.007041
+          },
+          "trial_id": "acoustic-replication-trial-v0:08:S1:8344f7bdefb98fcd",
+          "trial_sequence_index": 8
+        },
+        {
+          "delta_rms_pcm": {
+            "microphone_channel_0": 0.007504,
+            "microphone_channel_1": -0.003442
+          },
+          "trial_id": "acoustic-replication-trial-v0:10:S1:fd0f8021082c7bfa",
+          "trial_sequence_index": 10
+        },
+        {
+          "delta_rms_pcm": {
+            "microphone_channel_0": 0.001532,
+            "microphone_channel_1": -0.007864
+          },
+          "trial_id": "acoustic-replication-trial-v0:12:S1:fa2719d3b926a751",
+          "trial_sequence_index": 12
+        },
+        {
+          "delta_rms_pcm": {
+            "microphone_channel_0": 0.003144,
+            "microphone_channel_1": -0.004642
+          },
+          "trial_id": "acoustic-replication-trial-v0:15:S1:4e27e704e060d630",
+          "trial_sequence_index": 15
+        }
+      ],
+      "S2": [
+        {
+          "delta_rms_pcm": {
+            "microphone_channel_0": 0.948257,
+            "microphone_channel_1": 0.933465
+          },
+          "trial_id": "acoustic-replication-trial-v0:01:S2:85022b4608771fb8",
+          "trial_sequence_index": 1
+        },
+        {
+          "delta_rms_pcm": {
+            "microphone_channel_0": 1.042689,
+            "microphone_channel_1": 1.030347
+          },
+          "trial_id": "acoustic-replication-trial-v0:05:S2:13febe287f13fdb3",
+          "trial_sequence_index": 5
+        },
+        {
+          "delta_rms_pcm": {
+            "microphone_channel_0": 0.880117,
+            "microphone_channel_1": 0.873111
+          },
+          "trial_id": "acoustic-replication-trial-v0:07:S2:93b69457e6856524",
+          "trial_sequence_index": 7
+        },
+        {
+          "delta_rms_pcm": {
+            "microphone_channel_0": 1.070804,
+            "microphone_channel_1": 1.057754
+          },
+          "trial_id": "acoustic-replication-trial-v0:11:S2:9d0ee88adb9c72c0",
+          "trial_sequence_index": 11
+        },
+        {
+          "delta_rms_pcm": {
+            "microphone_channel_0": 1.130128,
+            "microphone_channel_1": 1.114617
+          },
+          "trial_id": "acoustic-replication-trial-v0:13:S2:e1e3ae6de5f590aa",
+          "trial_sequence_index": 13
+        }
+      ]
+    },
+    "no_mechanism_inferred": true,
+    "pairwise": {
+      "S1_vs_C0": {
+        "channel_results_consistent": true,
+        "channels": {
+          "microphone_channel_0": {
+            "absolute_median_separation": 0.0013359999999999995,
+            "left_condition": "S1",
+            "left_mad": 0.0019390000000000002,
+            "left_median": 0.003471,
+            "left_range": [
+              0.001532,
+              0.007504
+            ],
+            "locally_discriminable_under_declared_basis": false,
+            "mad_degenerate": false,
+            "ranges_do_not_overlap": false,
+            "right_condition": "C0",
+            "right_mad": 0.0005940000000000008,
+            "right_median": 0.004807,
+            "right_range": [
+              0.002075,
+              0.005401
+            ],
+            "separation_exceeds_three_times_max_mad": false,
+            "status": "not_locally_discriminable_under_declared_basis",
+            "three_times_max_mad": 0.005817000000000001
+          },
+          "microphone_channel_1": {
+            "absolute_median_separation": 0.000745,
+            "left_condition": "S1",
+            "left_mad": 0.0012000000000000001,
+            "left_median": -0.004642,
+            "left_range": [
+              -0.007864,
+              -0.003442
+            ],
+            "locally_discriminable_under_declared_basis": false,
+            "mad_degenerate": false,
+            "ranges_do_not_overlap": false,
+            "right_condition": "C0",
+            "right_mad": 0.0004299999999999998,
+            "right_median": -0.005387,
+            "right_range": [
+              -0.007534,
+              -0.004302
+            ],
+            "separation_exceeds_three_times_max_mad": false,
+            "status": "not_locally_discriminable_under_declared_basis",
+            "three_times_max_mad": 0.0036000000000000003
+          }
+        },
+        "discriminable_channels": []
+      },
+      "S1_vs_S2": {
+        "channel_results_consistent": true,
+        "channels": {
+          "microphone_channel_0": {
+            "absolute_median_separation": 1.039218,
+            "left_condition": "S1",
+            "left_mad": 0.0019390000000000002,
+            "left_median": 0.003471,
+            "left_range": [
+              0.001532,
+              0.007504
+            ],
+            "locally_discriminable_under_declared_basis": true,
+            "mad_degenerate": false,
+            "ranges_do_not_overlap": true,
+            "right_condition": "S2",
+            "right_mad": 0.08743900000000004,
+            "right_median": 1.042689,
+            "right_range": [
+              0.880117,
+              1.130128
+            ],
+            "separation_exceeds_three_times_max_mad": true,
+            "status": "locally_discriminable_under_declared_basis",
+            "three_times_max_mad": 0.26231700000000013
+          },
+          "microphone_channel_1": {
+            "absolute_median_separation": 1.034989,
+            "left_condition": "S1",
+            "left_mad": 0.0012000000000000001,
+            "left_median": -0.004642,
+            "left_range": [
+              -0.007864,
+              -0.003442
+            ],
+            "locally_discriminable_under_declared_basis": true,
+            "mad_degenerate": false,
+            "ranges_do_not_overlap": true,
+            "right_condition": "S2",
+            "right_mad": 0.08427000000000007,
+            "right_median": 1.030347,
+            "right_range": [
+              0.873111,
+              1.114617
+            ],
+            "separation_exceeds_three_times_max_mad": true,
+            "status": "locally_discriminable_under_declared_basis",
+            "three_times_max_mad": 0.2528100000000002
+          }
+        },
+        "discriminable_channels": [
+          "microphone_channel_0",
+          "microphone_channel_1"
+        ]
+      },
+      "S2_vs_C0": {
+        "channel_results_consistent": true,
+        "channels": {
+          "microphone_channel_0": {
+            "absolute_median_separation": 1.037882,
+            "left_condition": "S2",
+            "left_mad": 0.08743900000000004,
+            "left_median": 1.042689,
+            "left_range": [
+              0.880117,
+              1.130128
+            ],
+            "locally_discriminable_under_declared_basis": true,
+            "mad_degenerate": false,
+            "ranges_do_not_overlap": true,
+            "right_condition": "C0",
+            "right_mad": 0.0005940000000000008,
+            "right_median": 0.004807,
+            "right_range": [
+              0.002075,
+              0.005401
+            ],
+            "separation_exceeds_three_times_max_mad": true,
+            "status": "locally_discriminable_under_declared_basis",
+            "three_times_max_mad": 0.26231700000000013
+          },
+          "microphone_channel_1": {
+            "absolute_median_separation": 1.035734,
+            "left_condition": "S2",
+            "left_mad": 0.08427000000000007,
+            "left_median": 1.030347,
+            "left_range": [
+              0.873111,
+              1.114617
+            ],
+            "locally_discriminable_under_declared_basis": true,
+            "mad_degenerate": false,
+            "ranges_do_not_overlap": true,
+            "right_condition": "C0",
+            "right_mad": 0.0004299999999999998,
+            "right_median": -0.005387,
+            "right_range": [
+              -0.007534,
+              -0.004302
+            ],
+            "separation_exceeds_three_times_max_mad": true,
+            "status": "locally_discriminable_under_declared_basis",
+            "three_times_max_mad": 0.2528100000000002
+          }
+        },
+        "discriminable_channels": [
+          "microphone_channel_0",
+          "microphone_channel_1"
+        ]
+      }
+    },
+    "within_condition": {
+      "C0": {
+        "microphone_channel_0": {
+          "mad": 0.0005940000000000008,
+          "maximum": 0.005401,
+          "median": 0.004807,
+          "minimum": 0.002075,
+          "range_width": 0.0033260000000000004,
+          "values": [
+            0.002075,
+            0.004807,
+            0.004911,
+            0.005401,
+            0.002934
+          ]
+        },
+        "microphone_channel_1": {
+          "mad": 0.0004299999999999998,
+          "maximum": -0.004302,
+          "median": -0.005387,
+          "minimum": -0.007534,
+          "range_width": 0.0032319999999999996,
+          "values": [
+            -0.004995,
+            -0.005387,
+            -0.004302,
+            -0.005817,
+            -0.007534
+          ]
+        }
+      },
+      "S1": {
+        "microphone_channel_0": {
+          "mad": 0.0019390000000000002,
+          "maximum": 0.007504,
+          "median": 0.003471,
+          "minimum": 0.001532,
+          "range_width": 0.005972,
+          "values": [
+            0.005595,
+            0.003471,
+            0.007504,
+            0.001532,
+            0.003144
+          ]
+        },
+        "microphone_channel_1": {
+          "mad": 0.0012000000000000001,
+          "maximum": -0.003442,
+          "median": -0.004642,
+          "minimum": -0.007864,
+          "range_width": 0.004421999999999999,
+          "values": [
+            -0.003956,
+            -0.007041,
+            -0.003442,
+            -0.007864,
+            -0.004642
+          ]
+        }
+      },
+      "S2": {
+        "microphone_channel_0": {
+          "mad": 0.08743900000000004,
+          "maximum": 1.130128,
+          "median": 1.042689,
+          "minimum": 0.880117,
+          "range_width": 0.250011,
+          "values": [
+            0.948257,
+            1.042689,
+            0.880117,
+            1.070804,
+            1.130128
+          ]
+        },
+        "microphone_channel_1": {
+          "mad": 0.08427000000000007,
+          "maximum": 1.114617,
+          "median": 1.030347,
+          "minimum": 0.873111,
+          "range_width": 0.241506,
+          "values": [
+            0.933465,
+            1.030347,
+            0.873111,
+            1.057754,
+            1.114617
+          ]
+        }
+      }
+    }
+  },
+  "safety_boundary": {
+    "amplitude_full_scale": 0.02,
+    "deliberate_environmental_manipulation": false,
+    "excitation_seconds": 0.18,
+    "feedback": false,
+    "fixed_positions_requested": true,
+    "jack_untouched": true,
+    "nominal_level_dbfs": -33.9794,
+    "open_loop": true,
+    "playback_gain_unchanged": true,
+    "sustained_tone": false,
+    "system_output_gain_observed": false
+  },
+  "status": "physical_acquisition_complete",
+  "trials": [
+    {
+      "capture": {
+        "backend": "Windows WinMM waveIn/waveOut",
+        "channel_count": 2,
+        "frame_count": 36000,
+        "host_capture_duration_seconds": 0.778964,
+        "host_capture_finished_at_utc": "2026-09-08T07:16:59.082422Z",
+        "host_capture_started_at_utc": "2026-09-08T07:16:58.309270Z",
+        "input_device": {
+          "device_id": 0,
+          "name": "Microphone (XIBERIA)",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "sample_format": "signed_16_bit_little_endian_pcm",
+        "sample_rate_hz": 48000,
+        "timing_basis": "host API-call boundaries and monotonic elapsed time; no hardware clock or simultaneity guarantee"
+      },
+      "capture_errors": [],
+      "command": {
+        "command_submission_offset_seconds": 0.2002371,
+        "host_command_submission_at_utc": "2026-09-08T07:16:58.509508Z",
+        "output_device": {
+          "device_id": 0,
+          "name": "Speakers (Realtek High Definiti",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "requested_output_channel": "right",
+        "requested_playback": true,
+        "waveform": {
+          "amplitude_full_scale": 0.02,
+          "channel_count": 2,
+          "duration_seconds": 0.18,
+          "end_frequency_hz": 1700.0,
+          "frame_count": 8640,
+          "kind": "linear_chirp_hann_windowed",
+          "mono_waveform_sha256": "855e0dfc3fa4f6b71a70580ca1eb60fe78c683a1529e60ffb7e009e9bb56c346",
+          "nominal_level_dbfs": -33.9794,
+          "requested_output_channel": "right",
+          "sample_format": "signed_16_bit_little_endian_pcm",
+          "sample_rate_hz": 48000,
+          "start_frequency_hz": 700.0,
+          "stereo_command_sha256": "f81ad2f6e5b9f1678fd77c65c72dcef503cce95401205d3222b27de197ebc950"
+        }
+      },
+      "condition": "S2",
+      "epistemic_limits": {
+        "acoustic_causality_claimed": false,
+        "complete_acoustic_field_observed": false,
+        "microphone_transduction_observed_directly": false,
+        "physical_speaker_realization_observed": false,
+        "playback_capture_simultaneity_claimed": false,
+        "sampled_microphone_waveform_observed": true,
+        "speaker_channel_health_inferred": false
+      },
+      "experiment": "acoustic_replication_pressure_v0",
+      "measurements": {
+        "baseline_window": {
+          "end_frame_exclusive": 7680,
+          "start_frame": 0
+        },
+        "channel_count": 2,
+        "channels": [
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.475712
+            },
+            "channel": "microphone_channel_0",
+            "delta_rms_pcm": 0.948257,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 8,
+              "rms_pcm": 1.423969
+            },
+            "response_minus_baseline_db": 9.523129,
+            "response_to_baseline_ratio": 2.993342611,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 8,
+              "rms_pcm": 1.06789
+            }
+          },
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.484929
+            },
+            "channel": "microphone_channel_1",
+            "delta_rms_pcm": 0.933465,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 7,
+              "rms_pcm": 1.418394
+            },
+            "response_minus_baseline_db": 9.322375,
+            "response_to_baseline_ratio": 2.9249519,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 7,
+              "rms_pcm": 1.065598
+            }
+          }
+        ],
+        "frame_count": 36000,
+        "measurement_version": "pcm_window_energy_v0",
+        "nominal_response_window": {
+          "basis": "host command-submission offset plus fixed response window; not hardware synchronization",
+          "end_frame_exclusive": 27851,
+          "start_frame": 9611
+        },
+        "sample_rate_hz": 48000
+      },
+      "observation_id": "acoustic-replication-observation-v0:85022b4608771fb893907558a888bea2575e299481c98fbfe26b9fc7ea0ffcf6",
+      "observer": "winmm_acoustic_basis_pressure",
+      "observer_version": "acoustic_replication_pressure_v0",
+      "predeclared_trial_order": [
+        "S2",
+        "S1",
+        "C0",
+        "C0",
+        "S2",
+        "C0",
+        "S2",
+        "S1",
+        "C0",
+        "S1",
+        "S2",
+        "S1",
+        "S2",
+        "C0",
+        "S1"
+      ],
+      "raw_capture": {
+        "byte_count": 144000,
+        "disposition": "ephemeral buffer discarded after deterministic measurements and hash",
+        "persisted": false,
+        "sha256": "948011822a5d784d4252cf41db3bfa838482d072797f646ad4aa704164b4cb17"
+      },
+      "replicate_index_within_condition": 1,
+      "trial_id": "acoustic-replication-trial-v0:01:S2:85022b4608771fb8",
+      "trial_sequence_index": 1
+    },
+    {
+      "capture": {
+        "backend": "Windows WinMM waveIn/waveOut",
+        "channel_count": 2,
+        "frame_count": 36000,
+        "host_capture_duration_seconds": 0.779522,
+        "host_capture_finished_at_utc": "2026-09-08T07:17:00.052791Z",
+        "host_capture_started_at_utc": "2026-09-08T07:16:59.278869Z",
+        "input_device": {
+          "device_id": 0,
+          "name": "Microphone (XIBERIA)",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "sample_format": "signed_16_bit_little_endian_pcm",
+        "sample_rate_hz": 48000,
+        "timing_basis": "host API-call boundaries and monotonic elapsed time; no hardware clock or simultaneity guarantee"
+      },
+      "capture_errors": [],
+      "command": {
+        "command_submission_offset_seconds": 0.2004429,
+        "host_command_submission_at_utc": "2026-09-08T07:16:59.479309Z",
+        "output_device": {
+          "device_id": 0,
+          "name": "Speakers (Realtek High Definiti",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "requested_output_channel": "left",
+        "requested_playback": true,
+        "waveform": {
+          "amplitude_full_scale": 0.02,
+          "channel_count": 2,
+          "duration_seconds": 0.18,
+          "end_frequency_hz": 1700.0,
+          "frame_count": 8640,
+          "kind": "linear_chirp_hann_windowed",
+          "mono_waveform_sha256": "855e0dfc3fa4f6b71a70580ca1eb60fe78c683a1529e60ffb7e009e9bb56c346",
+          "nominal_level_dbfs": -33.9794,
+          "requested_output_channel": "left",
+          "sample_format": "signed_16_bit_little_endian_pcm",
+          "sample_rate_hz": 48000,
+          "start_frequency_hz": 700.0,
+          "stereo_command_sha256": "c4349f9b8ec95b563cb7141260a2c84b35c692163d10b693392a19179959d0a3"
+        }
+      },
+      "condition": "S1",
+      "epistemic_limits": {
+        "acoustic_causality_claimed": false,
+        "complete_acoustic_field_observed": false,
+        "microphone_transduction_observed_directly": false,
+        "physical_speaker_realization_observed": false,
+        "playback_capture_simultaneity_claimed": false,
+        "sampled_microphone_waveform_observed": true,
+        "speaker_channel_health_inferred": false
+      },
+      "experiment": "acoustic_replication_pressure_v0",
+      "measurements": {
+        "baseline_window": {
+          "end_frame_exclusive": 7680,
+          "start_frame": 0
+        },
+        "channel_count": 2,
+        "channels": [
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.47489
+            },
+            "channel": "microphone_channel_0",
+            "delta_rms_pcm": 0.005595,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.480485
+            },
+            "response_minus_baseline_db": 0.101736,
+            "response_to_baseline_ratio": 1.011781676,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.478452
+            }
+          },
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.483585
+            },
+            "channel": "microphone_channel_1",
+            "delta_rms_pcm": -0.003956,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.479629
+            },
+            "response_minus_baseline_db": -0.071348,
+            "response_to_baseline_ratio": 0.991819432,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.480393
+            }
+          }
+        ],
+        "frame_count": 36000,
+        "measurement_version": "pcm_window_energy_v0",
+        "nominal_response_window": {
+          "basis": "host command-submission offset plus fixed response window; not hardware synchronization",
+          "end_frame_exclusive": 27861,
+          "start_frame": 9621
+        },
+        "sample_rate_hz": 48000
+      },
+      "observation_id": "acoustic-replication-observation-v0:9b1ae383d1fc79ee5f9a83f32676a45f9fb5057e0cfaa92130b43c6417cee9d8",
+      "observer": "winmm_acoustic_basis_pressure",
+      "observer_version": "acoustic_replication_pressure_v0",
+      "predeclared_trial_order": [
+        "S2",
+        "S1",
+        "C0",
+        "C0",
+        "S2",
+        "C0",
+        "S2",
+        "S1",
+        "C0",
+        "S1",
+        "S2",
+        "S1",
+        "S2",
+        "C0",
+        "S1"
+      ],
+      "raw_capture": {
+        "byte_count": 144000,
+        "disposition": "ephemeral buffer discarded after deterministic measurements and hash",
+        "persisted": false,
+        "sha256": "1c1c3b8f90e45c81042225eb3c7854c34c88b4bfc4e9a6751d085f7823c93277"
+      },
+      "replicate_index_within_condition": 1,
+      "trial_id": "acoustic-replication-trial-v0:02:S1:9b1ae383d1fc79ee",
+      "trial_sequence_index": 2
+    },
+    {
+      "capture": {
+        "backend": "Windows WinMM waveIn/waveOut",
+        "channel_count": 2,
+        "frame_count": 36000,
+        "host_capture_duration_seconds": 0.77986,
+        "host_capture_finished_at_utc": "2026-09-08T07:17:01.012213Z",
+        "host_capture_started_at_utc": "2026-09-08T07:17:00.238657Z",
+        "input_device": {
+          "device_id": 0,
+          "name": "Microphone (XIBERIA)",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "sample_format": "signed_16_bit_little_endian_pcm",
+        "sample_rate_hz": 48000,
+        "timing_basis": "host API-call boundaries and monotonic elapsed time; no hardware clock or simultaneity guarantee"
+      },
+      "capture_errors": [],
+      "command": {
+        "command_submission_offset_seconds": null,
+        "host_command_submission_at_utc": null,
+        "output_device": null,
+        "requested_output_channel": null,
+        "requested_playback": false,
+        "waveform": null
+      },
+      "condition": "C0",
+      "epistemic_limits": {
+        "acoustic_causality_claimed": false,
+        "complete_acoustic_field_observed": false,
+        "microphone_transduction_observed_directly": false,
+        "physical_speaker_realization_observed": false,
+        "playback_capture_simultaneity_claimed": false,
+        "sampled_microphone_waveform_observed": true,
+        "speaker_channel_health_inferred": false
+      },
+      "experiment": "acoustic_replication_pressure_v0",
+      "measurements": {
+        "baseline_window": {
+          "end_frame_exclusive": 7680,
+          "start_frame": 0
+        },
+        "channel_count": 2,
+        "channels": [
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.477897
+            },
+            "channel": "microphone_channel_0",
+            "delta_rms_pcm": 0.002075,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.479972
+            },
+            "response_minus_baseline_db": 0.037632,
+            "response_to_baseline_ratio": 1.00434194,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.479207
+            }
+          },
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.484795
+            },
+            "channel": "microphone_channel_1",
+            "delta_rms_pcm": -0.004995,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.4798
+            },
+            "response_minus_baseline_db": -0.089958,
+            "response_to_baseline_ratio": 0.989696676,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.480538
+            }
+          }
+        ],
+        "frame_count": 36000,
+        "measurement_version": "pcm_window_energy_v0",
+        "nominal_response_window": {
+          "basis": "host command-submission offset plus fixed response window; not hardware synchronization",
+          "end_frame_exclusive": 27840,
+          "start_frame": 9600
+        },
+        "sample_rate_hz": 48000
+      },
+      "observation_id": "acoustic-replication-observation-v0:41f5e3af8bf82a08d739494ae61af0310330c5d13403bb891e2ddaadb927a7ec",
+      "observer": "winmm_acoustic_basis_pressure",
+      "observer_version": "acoustic_replication_pressure_v0",
+      "predeclared_trial_order": [
+        "S2",
+        "S1",
+        "C0",
+        "C0",
+        "S2",
+        "C0",
+        "S2",
+        "S1",
+        "C0",
+        "S1",
+        "S2",
+        "S1",
+        "S2",
+        "C0",
+        "S1"
+      ],
+      "raw_capture": {
+        "byte_count": 144000,
+        "disposition": "ephemeral buffer discarded after deterministic measurements and hash",
+        "persisted": false,
+        "sha256": "1fba63559742e953a0196b0b6465436065ecb61311e9a5f1eeda03746e692be7"
+      },
+      "replicate_index_within_condition": 1,
+      "trial_id": "acoustic-replication-trial-v0:03:C0:41f5e3af8bf82a08",
+      "trial_sequence_index": 3
+    },
+    {
+      "capture": {
+        "backend": "Windows WinMM waveIn/waveOut",
+        "channel_count": 2,
+        "frame_count": 36000,
+        "host_capture_duration_seconds": 0.77966,
+        "host_capture_finished_at_utc": "2026-09-08T07:17:01.971829Z",
+        "host_capture_started_at_utc": "2026-09-08T07:17:01.198677Z",
+        "input_device": {
+          "device_id": 0,
+          "name": "Microphone (XIBERIA)",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "sample_format": "signed_16_bit_little_endian_pcm",
+        "sample_rate_hz": 48000,
+        "timing_basis": "host API-call boundaries and monotonic elapsed time; no hardware clock or simultaneity guarantee"
+      },
+      "capture_errors": [],
+      "command": {
+        "command_submission_offset_seconds": null,
+        "host_command_submission_at_utc": null,
+        "output_device": null,
+        "requested_output_channel": null,
+        "requested_playback": false,
+        "waveform": null
+      },
+      "condition": "C0",
+      "epistemic_limits": {
+        "acoustic_causality_claimed": false,
+        "complete_acoustic_field_observed": false,
+        "microphone_transduction_observed_directly": false,
+        "physical_speaker_realization_observed": false,
+        "playback_capture_simultaneity_claimed": false,
+        "sampled_microphone_waveform_observed": true,
+        "speaker_channel_health_inferred": false
+      },
+      "experiment": "acoustic_replication_pressure_v0",
+      "measurements": {
+        "baseline_window": {
+          "end_frame_exclusive": 7680,
+          "start_frame": 0
+        },
+        "channel_count": 2,
+        "channels": [
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.473792
+            },
+            "channel": "microphone_channel_0",
+            "delta_rms_pcm": 0.004807,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.478599
+            },
+            "response_minus_baseline_db": 0.087681,
+            "response_to_baseline_ratio": 1.010145802,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.477348
+            }
+          },
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.483585
+            },
+            "channel": "microphone_channel_1",
+            "delta_rms_pcm": -0.005387,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.478198
+            },
+            "response_minus_baseline_db": -0.097301,
+            "response_to_baseline_ratio": 0.988860283,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.47967
+            }
+          }
+        ],
+        "frame_count": 36000,
+        "measurement_version": "pcm_window_energy_v0",
+        "nominal_response_window": {
+          "basis": "host command-submission offset plus fixed response window; not hardware synchronization",
+          "end_frame_exclusive": 27840,
+          "start_frame": 9600
+        },
+        "sample_rate_hz": 48000
+      },
+      "observation_id": "acoustic-replication-observation-v0:49c9f5ea71170a160fc983cf9507203e71797d4bcca2d4a1c148c0a61ec7bf8e",
+      "observer": "winmm_acoustic_basis_pressure",
+      "observer_version": "acoustic_replication_pressure_v0",
+      "predeclared_trial_order": [
+        "S2",
+        "S1",
+        "C0",
+        "C0",
+        "S2",
+        "C0",
+        "S2",
+        "S1",
+        "C0",
+        "S1",
+        "S2",
+        "S1",
+        "S2",
+        "C0",
+        "S1"
+      ],
+      "raw_capture": {
+        "byte_count": 144000,
+        "disposition": "ephemeral buffer discarded after deterministic measurements and hash",
+        "persisted": false,
+        "sha256": "7f529559496031338235850be13bb64551e4706af85f3747f3e3d5ddc75a632b"
+      },
+      "replicate_index_within_condition": 2,
+      "trial_id": "acoustic-replication-trial-v0:04:C0:49c9f5ea71170a16",
+      "trial_sequence_index": 4
+    },
+    {
+      "capture": {
+        "backend": "Windows WinMM waveIn/waveOut",
+        "channel_count": 2,
+        "frame_count": 36000,
+        "host_capture_duration_seconds": 0.780974,
+        "host_capture_finished_at_utc": "2026-09-08T07:17:02.939566Z",
+        "host_capture_started_at_utc": "2026-09-08T07:17:02.164611Z",
+        "input_device": {
+          "device_id": 0,
+          "name": "Microphone (XIBERIA)",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "sample_format": "signed_16_bit_little_endian_pcm",
+        "sample_rate_hz": 48000,
+        "timing_basis": "host API-call boundaries and monotonic elapsed time; no hardware clock or simultaneity guarantee"
+      },
+      "capture_errors": [],
+      "command": {
+        "command_submission_offset_seconds": 0.200128,
+        "host_command_submission_at_utc": "2026-09-08T07:17:02.364732Z",
+        "output_device": {
+          "device_id": 0,
+          "name": "Speakers (Realtek High Definiti",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "requested_output_channel": "right",
+        "requested_playback": true,
+        "waveform": {
+          "amplitude_full_scale": 0.02,
+          "channel_count": 2,
+          "duration_seconds": 0.18,
+          "end_frequency_hz": 1700.0,
+          "frame_count": 8640,
+          "kind": "linear_chirp_hann_windowed",
+          "mono_waveform_sha256": "855e0dfc3fa4f6b71a70580ca1eb60fe78c683a1529e60ffb7e009e9bb56c346",
+          "nominal_level_dbfs": -33.9794,
+          "requested_output_channel": "right",
+          "sample_format": "signed_16_bit_little_endian_pcm",
+          "sample_rate_hz": 48000,
+          "start_frequency_hz": 700.0,
+          "stereo_command_sha256": "f81ad2f6e5b9f1678fd77c65c72dcef503cce95401205d3222b27de197ebc950"
+        }
+      },
+      "condition": "S2",
+      "epistemic_limits": {
+        "acoustic_causality_claimed": false,
+        "complete_acoustic_field_observed": false,
+        "microphone_transduction_observed_directly": false,
+        "physical_speaker_realization_observed": false,
+        "playback_capture_simultaneity_claimed": false,
+        "sampled_microphone_waveform_observed": true,
+        "speaker_channel_health_inferred": false
+      },
+      "experiment": "acoustic_replication_pressure_v0",
+      "measurements": {
+        "baseline_window": {
+          "end_frame_exclusive": 7680,
+          "start_frame": 0
+        },
+        "channel_count": 2,
+        "channels": [
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.476396
+            },
+            "channel": "microphone_channel_0",
+            "delta_rms_pcm": 1.042689,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 7,
+              "rms_pcm": 1.519085
+            },
+            "response_minus_baseline_db": 10.072279,
+            "response_to_baseline_ratio": 3.188702256,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 7,
+              "rms_pcm": 1.133284
+            }
+          },
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.483315
+            },
+            "channel": "microphone_channel_1",
+            "delta_rms_pcm": 1.030347,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 7,
+              "rms_pcm": 1.513662
+            },
+            "response_minus_baseline_db": 9.915973,
+            "response_to_baseline_ratio": 3.131833276,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 7,
+              "rms_pcm": 1.129749
+            }
+          }
+        ],
+        "frame_count": 36000,
+        "measurement_version": "pcm_window_energy_v0",
+        "nominal_response_window": {
+          "basis": "host command-submission offset plus fixed response window; not hardware synchronization",
+          "end_frame_exclusive": 27846,
+          "start_frame": 9606
+        },
+        "sample_rate_hz": 48000
+      },
+      "observation_id": "acoustic-replication-observation-v0:13febe287f13fdb33f62b1b6de045635c0ef00a34ddae029096b601d2d235235",
+      "observer": "winmm_acoustic_basis_pressure",
+      "observer_version": "acoustic_replication_pressure_v0",
+      "predeclared_trial_order": [
+        "S2",
+        "S1",
+        "C0",
+        "C0",
+        "S2",
+        "C0",
+        "S2",
+        "S1",
+        "C0",
+        "S1",
+        "S2",
+        "S1",
+        "S2",
+        "C0",
+        "S1"
+      ],
+      "raw_capture": {
+        "byte_count": 144000,
+        "disposition": "ephemeral buffer discarded after deterministic measurements and hash",
+        "persisted": false,
+        "sha256": "f0f677aeaab9b0be5e1f604d0c0cc130a69e412f37a3268fce9a018d5072708d"
+      },
+      "replicate_index_within_condition": 2,
+      "trial_id": "acoustic-replication-trial-v0:05:S2:13febe287f13fdb3",
+      "trial_sequence_index": 5
+    },
+    {
+      "capture": {
+        "backend": "Windows WinMM waveIn/waveOut",
+        "channel_count": 2,
+        "frame_count": 36000,
+        "host_capture_duration_seconds": 0.780867,
+        "host_capture_finished_at_utc": "2026-09-08T07:17:03.901581Z",
+        "host_capture_started_at_utc": "2026-09-08T07:17:03.126380Z",
+        "input_device": {
+          "device_id": 0,
+          "name": "Microphone (XIBERIA)",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "sample_format": "signed_16_bit_little_endian_pcm",
+        "sample_rate_hz": 48000,
+        "timing_basis": "host API-call boundaries and monotonic elapsed time; no hardware clock or simultaneity guarantee"
+      },
+      "capture_errors": [],
+      "command": {
+        "command_submission_offset_seconds": null,
+        "host_command_submission_at_utc": null,
+        "output_device": null,
+        "requested_output_channel": null,
+        "requested_playback": false,
+        "waveform": null
+      },
+      "condition": "C0",
+      "epistemic_limits": {
+        "acoustic_causality_claimed": false,
+        "complete_acoustic_field_observed": false,
+        "microphone_transduction_observed_directly": false,
+        "physical_speaker_realization_observed": false,
+        "playback_capture_simultaneity_claimed": false,
+        "sampled_microphone_waveform_observed": true,
+        "speaker_channel_health_inferred": false
+      },
+      "experiment": "acoustic_replication_pressure_v0",
+      "measurements": {
+        "baseline_window": {
+          "end_frame_exclusive": 7680,
+          "start_frame": 0
+        },
+        "channel_count": 2,
+        "channels": [
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.476259
+            },
+            "channel": "microphone_channel_0",
+            "delta_rms_pcm": 0.004911,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.48117
+            },
+            "response_minus_baseline_db": 0.089107,
+            "response_to_baseline_ratio": 1.010311616,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.479207
+            }
+          },
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.483988
+            },
+            "channel": "microphone_channel_1",
+            "delta_rms_pcm": -0.004302,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.479686
+            },
+            "response_minus_baseline_db": -0.077551,
+            "response_to_baseline_ratio": 0.99111135,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.480509
+            }
+          }
+        ],
+        "frame_count": 36000,
+        "measurement_version": "pcm_window_energy_v0",
+        "nominal_response_window": {
+          "basis": "host command-submission offset plus fixed response window; not hardware synchronization",
+          "end_frame_exclusive": 27840,
+          "start_frame": 9600
+        },
+        "sample_rate_hz": 48000
+      },
+      "observation_id": "acoustic-replication-observation-v0:d54298492cea203bb3fd676f50e64b2aee7d67a329220fd747fcfbdd1419ae25",
+      "observer": "winmm_acoustic_basis_pressure",
+      "observer_version": "acoustic_replication_pressure_v0",
+      "predeclared_trial_order": [
+        "S2",
+        "S1",
+        "C0",
+        "C0",
+        "S2",
+        "C0",
+        "S2",
+        "S1",
+        "C0",
+        "S1",
+        "S2",
+        "S1",
+        "S2",
+        "C0",
+        "S1"
+      ],
+      "raw_capture": {
+        "byte_count": 144000,
+        "disposition": "ephemeral buffer discarded after deterministic measurements and hash",
+        "persisted": false,
+        "sha256": "b7d259fb6ad5abe906106d95cbd2e6269757bd9f14f3ab8d9c0fe0f35a84d08c"
+      },
+      "replicate_index_within_condition": 3,
+      "trial_id": "acoustic-replication-trial-v0:06:C0:d54298492cea203b",
+      "trial_sequence_index": 6
+    },
+    {
+      "capture": {
+        "backend": "Windows WinMM waveIn/waveOut",
+        "channel_count": 2,
+        "frame_count": 36000,
+        "host_capture_duration_seconds": 0.780547,
+        "host_capture_finished_at_utc": "2026-09-08T07:17:04.871399Z",
+        "host_capture_started_at_utc": "2026-09-08T07:17:04.096655Z",
+        "input_device": {
+          "device_id": 0,
+          "name": "Microphone (XIBERIA)",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "sample_format": "signed_16_bit_little_endian_pcm",
+        "sample_rate_hz": 48000,
+        "timing_basis": "host API-call boundaries and monotonic elapsed time; no hardware clock or simultaneity guarantee"
+      },
+      "capture_errors": [],
+      "command": {
+        "command_submission_offset_seconds": 0.2003995,
+        "host_command_submission_at_utc": "2026-09-08T07:17:04.297053Z",
+        "output_device": {
+          "device_id": 0,
+          "name": "Speakers (Realtek High Definiti",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "requested_output_channel": "right",
+        "requested_playback": true,
+        "waveform": {
+          "amplitude_full_scale": 0.02,
+          "channel_count": 2,
+          "duration_seconds": 0.18,
+          "end_frequency_hz": 1700.0,
+          "frame_count": 8640,
+          "kind": "linear_chirp_hann_windowed",
+          "mono_waveform_sha256": "855e0dfc3fa4f6b71a70580ca1eb60fe78c683a1529e60ffb7e009e9bb56c346",
+          "nominal_level_dbfs": -33.9794,
+          "requested_output_channel": "right",
+          "sample_format": "signed_16_bit_little_endian_pcm",
+          "sample_rate_hz": 48000,
+          "start_frequency_hz": 700.0,
+          "stereo_command_sha256": "f81ad2f6e5b9f1678fd77c65c72dcef503cce95401205d3222b27de197ebc950"
+        }
+      },
+      "condition": "S2",
+      "epistemic_limits": {
+        "acoustic_causality_claimed": false,
+        "complete_acoustic_field_observed": false,
+        "microphone_transduction_observed_directly": false,
+        "physical_speaker_realization_observed": false,
+        "playback_capture_simultaneity_claimed": false,
+        "sampled_microphone_waveform_observed": true,
+        "speaker_channel_health_inferred": false
+      },
+      "experiment": "acoustic_replication_pressure_v0",
+      "measurements": {
+        "baseline_window": {
+          "end_frame_exclusive": 7680,
+          "start_frame": 0
+        },
+        "channel_count": 2,
+        "channels": [
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.475164
+            },
+            "channel": "microphone_channel_0",
+            "delta_rms_pcm": 0.880117,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 8,
+              "rms_pcm": 1.355281
+            },
+            "response_minus_baseline_db": 9.103716,
+            "response_to_baseline_ratio": 2.852238385,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 8,
+              "rms_pcm": 1.021383
+            }
+          },
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.483585
+            },
+            "channel": "microphone_channel_1",
+            "delta_rms_pcm": 0.873111,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 7,
+              "rms_pcm": 1.356696
+            },
+            "response_minus_baseline_db": 8.960194,
+            "response_to_baseline_ratio": 2.805496448,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 7,
+              "rms_pcm": 1.023895
+            }
+          }
+        ],
+        "frame_count": 36000,
+        "measurement_version": "pcm_window_energy_v0",
+        "nominal_response_window": {
+          "basis": "host command-submission offset plus fixed response window; not hardware synchronization",
+          "end_frame_exclusive": 27859,
+          "start_frame": 9619
+        },
+        "sample_rate_hz": 48000
+      },
+      "observation_id": "acoustic-replication-observation-v0:93b69457e68565243a3b1b5a53f975c4b610fb9a4225d6e9135522b86787ef8c",
+      "observer": "winmm_acoustic_basis_pressure",
+      "observer_version": "acoustic_replication_pressure_v0",
+      "predeclared_trial_order": [
+        "S2",
+        "S1",
+        "C0",
+        "C0",
+        "S2",
+        "C0",
+        "S2",
+        "S1",
+        "C0",
+        "S1",
+        "S2",
+        "S1",
+        "S2",
+        "C0",
+        "S1"
+      ],
+      "raw_capture": {
+        "byte_count": 144000,
+        "disposition": "ephemeral buffer discarded after deterministic measurements and hash",
+        "persisted": false,
+        "sha256": "07257a2eba9ac9f73e5ad0a9f3163da36f070d2a8b78c01ca900c7bfb246ba0a"
+      },
+      "replicate_index_within_condition": 3,
+      "trial_id": "acoustic-replication-trial-v0:07:S2:93b69457e6856524",
+      "trial_sequence_index": 7
+    },
+    {
+      "capture": {
+        "backend": "Windows WinMM waveIn/waveOut",
+        "channel_count": 2,
+        "frame_count": 36000,
+        "host_capture_duration_seconds": 0.779768,
+        "host_capture_finished_at_utc": "2026-09-08T07:17:05.839501Z",
+        "host_capture_started_at_utc": "2026-09-08T07:17:05.065392Z",
+        "input_device": {
+          "device_id": 0,
+          "name": "Microphone (XIBERIA)",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "sample_format": "signed_16_bit_little_endian_pcm",
+        "sample_rate_hz": 48000,
+        "timing_basis": "host API-call boundaries and monotonic elapsed time; no hardware clock or simultaneity guarantee"
+      },
+      "capture_errors": [],
+      "command": {
+        "command_submission_offset_seconds": 0.2004322,
+        "host_command_submission_at_utc": "2026-09-08T07:17:05.265822Z",
+        "output_device": {
+          "device_id": 0,
+          "name": "Speakers (Realtek High Definiti",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "requested_output_channel": "left",
+        "requested_playback": true,
+        "waveform": {
+          "amplitude_full_scale": 0.02,
+          "channel_count": 2,
+          "duration_seconds": 0.18,
+          "end_frequency_hz": 1700.0,
+          "frame_count": 8640,
+          "kind": "linear_chirp_hann_windowed",
+          "mono_waveform_sha256": "855e0dfc3fa4f6b71a70580ca1eb60fe78c683a1529e60ffb7e009e9bb56c346",
+          "nominal_level_dbfs": -33.9794,
+          "requested_output_channel": "left",
+          "sample_format": "signed_16_bit_little_endian_pcm",
+          "sample_rate_hz": 48000,
+          "start_frequency_hz": 700.0,
+          "stereo_command_sha256": "c4349f9b8ec95b563cb7141260a2c84b35c692163d10b693392a19179959d0a3"
+        }
+      },
+      "condition": "S1",
+      "epistemic_limits": {
+        "acoustic_causality_claimed": false,
+        "complete_acoustic_field_observed": false,
+        "microphone_transduction_observed_directly": false,
+        "physical_speaker_realization_observed": false,
+        "playback_capture_simultaneity_claimed": false,
+        "sampled_microphone_waveform_observed": true,
+        "speaker_channel_health_inferred": false
+      },
+      "experiment": "acoustic_replication_pressure_v0",
+      "measurements": {
+        "baseline_window": {
+          "end_frame_exclusive": 7680,
+          "start_frame": 0
+        },
+        "channel_count": 2,
+        "channels": [
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.475986
+            },
+            "channel": "microphone_channel_0",
+            "delta_rms_pcm": 0.003471,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.479457
+            },
+            "response_minus_baseline_db": 0.06311,
+            "response_to_baseline_ratio": 1.007292231,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.478336
+            }
+          },
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.48627
+            },
+            "channel": "microphone_channel_1",
+            "delta_rms_pcm": -0.007041,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.479229
+            },
+            "response_minus_baseline_db": -0.126688,
+            "response_to_baseline_ratio": 0.98552039,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.480509
+            }
+          }
+        ],
+        "frame_count": 36000,
+        "measurement_version": "pcm_window_energy_v0",
+        "nominal_response_window": {
+          "basis": "host command-submission offset plus fixed response window; not hardware synchronization",
+          "end_frame_exclusive": 27861,
+          "start_frame": 9621
+        },
+        "sample_rate_hz": 48000
+      },
+      "observation_id": "acoustic-replication-observation-v0:8344f7bdefb98fcd518b4bb8a33c698c3ea9ba235051dbab665fc2111b3d008e",
+      "observer": "winmm_acoustic_basis_pressure",
+      "observer_version": "acoustic_replication_pressure_v0",
+      "predeclared_trial_order": [
+        "S2",
+        "S1",
+        "C0",
+        "C0",
+        "S2",
+        "C0",
+        "S2",
+        "S1",
+        "C0",
+        "S1",
+        "S2",
+        "S1",
+        "S2",
+        "C0",
+        "S1"
+      ],
+      "raw_capture": {
+        "byte_count": 144000,
+        "disposition": "ephemeral buffer discarded after deterministic measurements and hash",
+        "persisted": false,
+        "sha256": "4c67b60293cc5e6ddf31890086087fff470c0041edd445495ff4b7b8d9cb11f6"
+      },
+      "replicate_index_within_condition": 2,
+      "trial_id": "acoustic-replication-trial-v0:08:S1:8344f7bdefb98fcd",
+      "trial_sequence_index": 8
+    },
+    {
+      "capture": {
+        "backend": "Windows WinMM waveIn/waveOut",
+        "channel_count": 2,
+        "frame_count": 36000,
+        "host_capture_duration_seconds": 0.781313,
+        "host_capture_finished_at_utc": "2026-09-08T07:17:06.802182Z",
+        "host_capture_started_at_utc": "2026-09-08T07:17:06.026794Z",
+        "input_device": {
+          "device_id": 0,
+          "name": "Microphone (XIBERIA)",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "sample_format": "signed_16_bit_little_endian_pcm",
+        "sample_rate_hz": 48000,
+        "timing_basis": "host API-call boundaries and monotonic elapsed time; no hardware clock or simultaneity guarantee"
+      },
+      "capture_errors": [],
+      "command": {
+        "command_submission_offset_seconds": null,
+        "host_command_submission_at_utc": null,
+        "output_device": null,
+        "requested_output_channel": null,
+        "requested_playback": false,
+        "waveform": null
+      },
+      "condition": "C0",
+      "epistemic_limits": {
+        "acoustic_causality_claimed": false,
+        "complete_acoustic_field_observed": false,
+        "microphone_transduction_observed_directly": false,
+        "physical_speaker_realization_observed": false,
+        "playback_capture_simultaneity_claimed": false,
+        "sampled_microphone_waveform_observed": true,
+        "speaker_channel_health_inferred": false
+      },
+      "experiment": "acoustic_replication_pressure_v0",
+      "measurements": {
+        "baseline_window": {
+          "end_frame_exclusive": 7680,
+          "start_frame": 0
+        },
+        "channel_count": 2,
+        "channels": [
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.475027
+            },
+            "channel": "microphone_channel_0",
+            "delta_rms_pcm": 0.005401,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.480428
+            },
+            "response_minus_baseline_db": 0.0982,
+            "response_to_baseline_ratio": 1.01136988,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.478568
+            }
+          },
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.485332
+            },
+            "channel": "microphone_channel_1",
+            "delta_rms_pcm": -0.005817,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.479515
+            },
+            "response_minus_baseline_db": -0.104735,
+            "response_to_baseline_ratio": 0.98801439,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.480942
+            }
+          }
+        ],
+        "frame_count": 36000,
+        "measurement_version": "pcm_window_energy_v0",
+        "nominal_response_window": {
+          "basis": "host command-submission offset plus fixed response window; not hardware synchronization",
+          "end_frame_exclusive": 27840,
+          "start_frame": 9600
+        },
+        "sample_rate_hz": 48000
+      },
+      "observation_id": "acoustic-replication-observation-v0:57c296e3f8a7bd3d059e5671d750fe9a05533097d1738fbfffa8fdc560ca8175",
+      "observer": "winmm_acoustic_basis_pressure",
+      "observer_version": "acoustic_replication_pressure_v0",
+      "predeclared_trial_order": [
+        "S2",
+        "S1",
+        "C0",
+        "C0",
+        "S2",
+        "C0",
+        "S2",
+        "S1",
+        "C0",
+        "S1",
+        "S2",
+        "S1",
+        "S2",
+        "C0",
+        "S1"
+      ],
+      "raw_capture": {
+        "byte_count": 144000,
+        "disposition": "ephemeral buffer discarded after deterministic measurements and hash",
+        "persisted": false,
+        "sha256": "299bfb3a098fbc50afa90f49e57bc303586cbf83550132fb8aeda84dcc773ff6"
+      },
+      "replicate_index_within_condition": 4,
+      "trial_id": "acoustic-replication-trial-v0:09:C0:57c296e3f8a7bd3d",
+      "trial_sequence_index": 9
+    },
+    {
+      "capture": {
+        "backend": "Windows WinMM waveIn/waveOut",
+        "channel_count": 2,
+        "frame_count": 36000,
+        "host_capture_duration_seconds": 0.781026,
+        "host_capture_finished_at_utc": "2026-09-08T07:17:07.770375Z",
+        "host_capture_started_at_utc": "2026-09-08T07:17:06.995077Z",
+        "input_device": {
+          "device_id": 0,
+          "name": "Microphone (XIBERIA)",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "sample_format": "signed_16_bit_little_endian_pcm",
+        "sample_rate_hz": 48000,
+        "timing_basis": "host API-call boundaries and monotonic elapsed time; no hardware clock or simultaneity guarantee"
+      },
+      "capture_errors": [],
+      "command": {
+        "command_submission_offset_seconds": 0.2001358,
+        "host_command_submission_at_utc": "2026-09-08T07:17:07.195213Z",
+        "output_device": {
+          "device_id": 0,
+          "name": "Speakers (Realtek High Definiti",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "requested_output_channel": "left",
+        "requested_playback": true,
+        "waveform": {
+          "amplitude_full_scale": 0.02,
+          "channel_count": 2,
+          "duration_seconds": 0.18,
+          "end_frequency_hz": 1700.0,
+          "frame_count": 8640,
+          "kind": "linear_chirp_hann_windowed",
+          "mono_waveform_sha256": "855e0dfc3fa4f6b71a70580ca1eb60fe78c683a1529e60ffb7e009e9bb56c346",
+          "nominal_level_dbfs": -33.9794,
+          "requested_output_channel": "left",
+          "sample_format": "signed_16_bit_little_endian_pcm",
+          "sample_rate_hz": 48000,
+          "start_frequency_hz": 700.0,
+          "stereo_command_sha256": "c4349f9b8ec95b563cb7141260a2c84b35c692163d10b693392a19179959d0a3"
+        }
+      },
+      "condition": "S1",
+      "epistemic_limits": {
+        "acoustic_causality_claimed": false,
+        "complete_acoustic_field_observed": false,
+        "microphone_transduction_observed_directly": false,
+        "physical_speaker_realization_observed": false,
+        "playback_capture_simultaneity_claimed": false,
+        "sampled_microphone_waveform_observed": true,
+        "speaker_channel_health_inferred": false
+      },
+      "experiment": "acoustic_replication_pressure_v0",
+      "measurements": {
+        "baseline_window": {
+          "end_frame_exclusive": 7680,
+          "start_frame": 0
+        },
+        "channel_count": 2,
+        "channels": [
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.475712
+            },
+            "channel": "microphone_channel_0",
+            "delta_rms_pcm": 0.007504,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.483216
+            },
+            "response_minus_baseline_db": 0.135944,
+            "response_to_baseline_ratio": 1.01577425,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.480798
+            }
+          },
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.483585
+            },
+            "channel": "microphone_channel_1",
+            "delta_rms_pcm": -0.003442,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.480143
+            },
+            "response_minus_baseline_db": -0.062044,
+            "response_to_baseline_ratio": 0.992882327,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.480538
+            }
+          }
+        ],
+        "frame_count": 36000,
+        "measurement_version": "pcm_window_energy_v0",
+        "nominal_response_window": {
+          "basis": "host command-submission offset plus fixed response window; not hardware synchronization",
+          "end_frame_exclusive": 27847,
+          "start_frame": 9607
+        },
+        "sample_rate_hz": 48000
+      },
+      "observation_id": "acoustic-replication-observation-v0:fd0f8021082c7bfa7f252a89887263b702a10fd2a1a3a68a6b77b26a2db6c416",
+      "observer": "winmm_acoustic_basis_pressure",
+      "observer_version": "acoustic_replication_pressure_v0",
+      "predeclared_trial_order": [
+        "S2",
+        "S1",
+        "C0",
+        "C0",
+        "S2",
+        "C0",
+        "S2",
+        "S1",
+        "C0",
+        "S1",
+        "S2",
+        "S1",
+        "S2",
+        "C0",
+        "S1"
+      ],
+      "raw_capture": {
+        "byte_count": 144000,
+        "disposition": "ephemeral buffer discarded after deterministic measurements and hash",
+        "persisted": false,
+        "sha256": "47b4860404181b81a17407dc3ef8f72b847806f10edf9df8917d1d734d86a82b"
+      },
+      "replicate_index_within_condition": 3,
+      "trial_id": "acoustic-replication-trial-v0:10:S1:fd0f8021082c7bfa",
+      "trial_sequence_index": 10
+    },
+    {
+      "capture": {
+        "backend": "Windows WinMM waveIn/waveOut",
+        "channel_count": 2,
+        "frame_count": 36000,
+        "host_capture_duration_seconds": 0.778268,
+        "host_capture_finished_at_utc": "2026-09-08T07:17:08.736670Z",
+        "host_capture_started_at_utc": "2026-09-08T07:17:07.963995Z",
+        "input_device": {
+          "device_id": 0,
+          "name": "Microphone (XIBERIA)",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "sample_format": "signed_16_bit_little_endian_pcm",
+        "sample_rate_hz": 48000,
+        "timing_basis": "host API-call boundaries and monotonic elapsed time; no hardware clock or simultaneity guarantee"
+      },
+      "capture_errors": [],
+      "command": {
+        "command_submission_offset_seconds": 0.2002569,
+        "host_command_submission_at_utc": "2026-09-08T07:17:08.164250Z",
+        "output_device": {
+          "device_id": 0,
+          "name": "Speakers (Realtek High Definiti",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "requested_output_channel": "right",
+        "requested_playback": true,
+        "waveform": {
+          "amplitude_full_scale": 0.02,
+          "channel_count": 2,
+          "duration_seconds": 0.18,
+          "end_frequency_hz": 1700.0,
+          "frame_count": 8640,
+          "kind": "linear_chirp_hann_windowed",
+          "mono_waveform_sha256": "855e0dfc3fa4f6b71a70580ca1eb60fe78c683a1529e60ffb7e009e9bb56c346",
+          "nominal_level_dbfs": -33.9794,
+          "requested_output_channel": "right",
+          "sample_format": "signed_16_bit_little_endian_pcm",
+          "sample_rate_hz": 48000,
+          "start_frequency_hz": 700.0,
+          "stereo_command_sha256": "f81ad2f6e5b9f1678fd77c65c72dcef503cce95401205d3222b27de197ebc950"
+        }
+      },
+      "condition": "S2",
+      "epistemic_limits": {
+        "acoustic_causality_claimed": false,
+        "complete_acoustic_field_observed": false,
+        "microphone_transduction_observed_directly": false,
+        "physical_speaker_realization_observed": false,
+        "playback_capture_simultaneity_claimed": false,
+        "sampled_microphone_waveform_observed": true,
+        "speaker_channel_health_inferred": false
+      },
+      "experiment": "acoustic_replication_pressure_v0",
+      "measurements": {
+        "baseline_window": {
+          "end_frame_exclusive": 7680,
+          "start_frame": 0
+        },
+        "channel_count": 2,
+        "channels": [
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.476123
+            },
+            "channel": "microphone_channel_0",
+            "delta_rms_pcm": 1.070804,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 9,
+              "rms_pcm": 1.546927
+            },
+            "response_minus_baseline_db": 10.235013,
+            "response_to_baseline_ratio": 3.249007084,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 9,
+              "rms_pcm": 1.158447
+            }
+          },
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.485198
+            },
+            "channel": "microphone_channel_1",
+            "delta_rms_pcm": 1.057754,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 8,
+              "rms_pcm": 1.542952
+            },
+            "response_minus_baseline_db": 10.048668,
+            "response_to_baseline_ratio": 3.180046084,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 8,
+              "rms_pcm": 1.156972
+            }
+          }
+        ],
+        "frame_count": 36000,
+        "measurement_version": "pcm_window_energy_v0",
+        "nominal_response_window": {
+          "basis": "host command-submission offset plus fixed response window; not hardware synchronization",
+          "end_frame_exclusive": 27852,
+          "start_frame": 9612
+        },
+        "sample_rate_hz": 48000
+      },
+      "observation_id": "acoustic-replication-observation-v0:9d0ee88adb9c72c0882aede7ff0f3fe166ee8f60db3b5c60bd78d65755c52df7",
+      "observer": "winmm_acoustic_basis_pressure",
+      "observer_version": "acoustic_replication_pressure_v0",
+      "predeclared_trial_order": [
+        "S2",
+        "S1",
+        "C0",
+        "C0",
+        "S2",
+        "C0",
+        "S2",
+        "S1",
+        "C0",
+        "S1",
+        "S2",
+        "S1",
+        "S2",
+        "C0",
+        "S1"
+      ],
+      "raw_capture": {
+        "byte_count": 144000,
+        "disposition": "ephemeral buffer discarded after deterministic measurements and hash",
+        "persisted": false,
+        "sha256": "5b64fdc1d315ea2d5c2b219fcd009b44c09a4dc16c8b8c376550dc01d49fffbe"
+      },
+      "replicate_index_within_condition": 4,
+      "trial_id": "acoustic-replication-trial-v0:11:S2:9d0ee88adb9c72c0",
+      "trial_sequence_index": 11
+    },
+    {
+      "capture": {
+        "backend": "Windows WinMM waveIn/waveOut",
+        "channel_count": 2,
+        "frame_count": 36000,
+        "host_capture_duration_seconds": 0.78143,
+        "host_capture_finished_at_utc": "2026-09-08T07:17:09.705000Z",
+        "host_capture_started_at_utc": "2026-09-08T07:17:08.929878Z",
+        "input_device": {
+          "device_id": 0,
+          "name": "Microphone (XIBERIA)",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "sample_format": "signed_16_bit_little_endian_pcm",
+        "sample_rate_hz": 48000,
+        "timing_basis": "host API-call boundaries and monotonic elapsed time; no hardware clock or simultaneity guarantee"
+      },
+      "capture_errors": [],
+      "command": {
+        "command_submission_offset_seconds": 0.2002223,
+        "host_command_submission_at_utc": "2026-09-08T07:17:09.130098Z",
+        "output_device": {
+          "device_id": 0,
+          "name": "Speakers (Realtek High Definiti",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "requested_output_channel": "left",
+        "requested_playback": true,
+        "waveform": {
+          "amplitude_full_scale": 0.02,
+          "channel_count": 2,
+          "duration_seconds": 0.18,
+          "end_frequency_hz": 1700.0,
+          "frame_count": 8640,
+          "kind": "linear_chirp_hann_windowed",
+          "mono_waveform_sha256": "855e0dfc3fa4f6b71a70580ca1eb60fe78c683a1529e60ffb7e009e9bb56c346",
+          "nominal_level_dbfs": -33.9794,
+          "requested_output_channel": "left",
+          "sample_format": "signed_16_bit_little_endian_pcm",
+          "sample_rate_hz": 48000,
+          "start_frequency_hz": 700.0,
+          "stereo_command_sha256": "c4349f9b8ec95b563cb7141260a2c84b35c692163d10b693392a19179959d0a3"
+        }
+      },
+      "condition": "S1",
+      "epistemic_limits": {
+        "acoustic_causality_claimed": false,
+        "complete_acoustic_field_observed": false,
+        "microphone_transduction_observed_directly": false,
+        "physical_speaker_realization_observed": false,
+        "playback_capture_simultaneity_claimed": false,
+        "sampled_microphone_waveform_observed": true,
+        "speaker_channel_health_inferred": false
+      },
+      "experiment": "acoustic_replication_pressure_v0",
+      "measurements": {
+        "baseline_window": {
+          "end_frame_exclusive": 7680,
+          "start_frame": 0
+        },
+        "channel_count": 2,
+        "channels": [
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.480207
+            },
+            "channel": "microphone_channel_0",
+            "delta_rms_pcm": 0.001532,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.481739
+            },
+            "response_minus_baseline_db": 0.027666,
+            "response_to_baseline_ratio": 1.003190291,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.481289
+            }
+          },
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.488007
+            },
+            "channel": "microphone_channel_1",
+            "delta_rms_pcm": -0.007864,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.480143
+            },
+            "response_minus_baseline_db": -0.141109,
+            "response_to_baseline_ratio": 0.983885477,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.481808
+            }
+          }
+        ],
+        "frame_count": 36000,
+        "measurement_version": "pcm_window_energy_v0",
+        "nominal_response_window": {
+          "basis": "host command-submission offset plus fixed response window; not hardware synchronization",
+          "end_frame_exclusive": 27851,
+          "start_frame": 9611
+        },
+        "sample_rate_hz": 48000
+      },
+      "observation_id": "acoustic-replication-observation-v0:fa2719d3b926a7519c1228d5cd7f51f2d5b7f1d02bcec5a475e9729eff1e4993",
+      "observer": "winmm_acoustic_basis_pressure",
+      "observer_version": "acoustic_replication_pressure_v0",
+      "predeclared_trial_order": [
+        "S2",
+        "S1",
+        "C0",
+        "C0",
+        "S2",
+        "C0",
+        "S2",
+        "S1",
+        "C0",
+        "S1",
+        "S2",
+        "S1",
+        "S2",
+        "C0",
+        "S1"
+      ],
+      "raw_capture": {
+        "byte_count": 144000,
+        "disposition": "ephemeral buffer discarded after deterministic measurements and hash",
+        "persisted": false,
+        "sha256": "3810bcf51f995b241db0cd96f78f65ba30ec13efdd3772353d568ed422d95745"
+      },
+      "replicate_index_within_condition": 4,
+      "trial_id": "acoustic-replication-trial-v0:12:S1:fa2719d3b926a751",
+      "trial_sequence_index": 12
+    },
+    {
+      "capture": {
+        "backend": "Windows WinMM waveIn/waveOut",
+        "channel_count": 2,
+        "frame_count": 36000,
+        "host_capture_duration_seconds": 0.781696,
+        "host_capture_finished_at_utc": "2026-09-08T07:17:10.677235Z",
+        "host_capture_started_at_utc": "2026-09-08T07:17:09.901620Z",
+        "input_device": {
+          "device_id": 0,
+          "name": "Microphone (XIBERIA)",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "sample_format": "signed_16_bit_little_endian_pcm",
+        "sample_rate_hz": 48000,
+        "timing_basis": "host API-call boundaries and monotonic elapsed time; no hardware clock or simultaneity guarantee"
+      },
+      "capture_errors": [],
+      "command": {
+        "command_submission_offset_seconds": 0.2004633,
+        "host_command_submission_at_utc": "2026-09-08T07:17:10.102081Z",
+        "output_device": {
+          "device_id": 0,
+          "name": "Speakers (Realtek High Definiti",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "requested_output_channel": "right",
+        "requested_playback": true,
+        "waveform": {
+          "amplitude_full_scale": 0.02,
+          "channel_count": 2,
+          "duration_seconds": 0.18,
+          "end_frequency_hz": 1700.0,
+          "frame_count": 8640,
+          "kind": "linear_chirp_hann_windowed",
+          "mono_waveform_sha256": "855e0dfc3fa4f6b71a70580ca1eb60fe78c683a1529e60ffb7e009e9bb56c346",
+          "nominal_level_dbfs": -33.9794,
+          "requested_output_channel": "right",
+          "sample_format": "signed_16_bit_little_endian_pcm",
+          "sample_rate_hz": 48000,
+          "start_frequency_hz": 700.0,
+          "stereo_command_sha256": "f81ad2f6e5b9f1678fd77c65c72dcef503cce95401205d3222b27de197ebc950"
+        }
+      },
+      "condition": "S2",
+      "epistemic_limits": {
+        "acoustic_causality_claimed": false,
+        "complete_acoustic_field_observed": false,
+        "microphone_transduction_observed_directly": false,
+        "physical_speaker_realization_observed": false,
+        "playback_capture_simultaneity_claimed": false,
+        "sampled_microphone_waveform_observed": true,
+        "speaker_channel_health_inferred": false
+      },
+      "experiment": "acoustic_replication_pressure_v0",
+      "measurements": {
+        "baseline_window": {
+          "end_frame_exclusive": 7680,
+          "start_frame": 0
+        },
+        "channel_count": 2,
+        "channels": [
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.476123
+            },
+            "channel": "microphone_channel_0",
+            "delta_rms_pcm": 1.130128,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 8,
+              "rms_pcm": 1.606251
+            },
+            "response_minus_baseline_db": 10.561885,
+            "response_to_baseline_ratio": 3.37360514,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 8,
+              "rms_pcm": 1.193303
+            }
+          },
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.483988
+            },
+            "channel": "microphone_channel_1",
+            "delta_rms_pcm": 1.114617,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 8,
+              "rms_pcm": 1.598605
+            },
+            "response_minus_baseline_db": 10.378131,
+            "response_to_baseline_ratio": 3.302984785,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 8,
+              "rms_pcm": 1.189293
+            }
+          }
+        ],
+        "frame_count": 36000,
+        "measurement_version": "pcm_window_energy_v0",
+        "nominal_response_window": {
+          "basis": "host command-submission offset plus fixed response window; not hardware synchronization",
+          "end_frame_exclusive": 27862,
+          "start_frame": 9622
+        },
+        "sample_rate_hz": 48000
+      },
+      "observation_id": "acoustic-replication-observation-v0:e1e3ae6de5f590aad43b0cde6f57ba72f28b69595f618628ecc98b669e59ce7b",
+      "observer": "winmm_acoustic_basis_pressure",
+      "observer_version": "acoustic_replication_pressure_v0",
+      "predeclared_trial_order": [
+        "S2",
+        "S1",
+        "C0",
+        "C0",
+        "S2",
+        "C0",
+        "S2",
+        "S1",
+        "C0",
+        "S1",
+        "S2",
+        "S1",
+        "S2",
+        "C0",
+        "S1"
+      ],
+      "raw_capture": {
+        "byte_count": 144000,
+        "disposition": "ephemeral buffer discarded after deterministic measurements and hash",
+        "persisted": false,
+        "sha256": "737abb176c5192a22ec16640d652133c108b42dd3949458fb7e213c378e62072"
+      },
+      "replicate_index_within_condition": 5,
+      "trial_id": "acoustic-replication-trial-v0:13:S2:e1e3ae6de5f590aa",
+      "trial_sequence_index": 13
+    },
+    {
+      "capture": {
+        "backend": "Windows WinMM waveIn/waveOut",
+        "channel_count": 2,
+        "frame_count": 36000,
+        "host_capture_duration_seconds": 0.779843,
+        "host_capture_finished_at_utc": "2026-09-08T07:17:11.637407Z",
+        "host_capture_started_at_utc": "2026-09-08T07:17:10.863301Z",
+        "input_device": {
+          "device_id": 0,
+          "name": "Microphone (XIBERIA)",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "sample_format": "signed_16_bit_little_endian_pcm",
+        "sample_rate_hz": 48000,
+        "timing_basis": "host API-call boundaries and monotonic elapsed time; no hardware clock or simultaneity guarantee"
+      },
+      "capture_errors": [],
+      "command": {
+        "command_submission_offset_seconds": null,
+        "host_command_submission_at_utc": null,
+        "output_device": null,
+        "requested_output_channel": null,
+        "requested_playback": false,
+        "waveform": null
+      },
+      "condition": "C0",
+      "epistemic_limits": {
+        "acoustic_causality_claimed": false,
+        "complete_acoustic_field_observed": false,
+        "microphone_transduction_observed_directly": false,
+        "physical_speaker_realization_observed": false,
+        "playback_capture_simultaneity_claimed": false,
+        "sampled_microphone_waveform_observed": true,
+        "speaker_channel_health_inferred": false
+      },
+      "experiment": "acoustic_replication_pressure_v0",
+      "measurements": {
+        "baseline_window": {
+          "end_frame_exclusive": 7680,
+          "start_frame": 0
+        },
+        "channel_count": 2,
+        "channels": [
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.476123
+            },
+            "channel": "microphone_channel_0",
+            "delta_rms_pcm": 0.002934,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.479057
+            },
+            "response_minus_baseline_db": 0.053361,
+            "response_to_baseline_ratio": 1.006162273,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.478365
+            }
+          },
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.484929
+            },
+            "channel": "microphone_channel_1",
+            "delta_rms_pcm": -0.007534,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.477395
+            },
+            "response_minus_baseline_db": -0.136006,
+            "response_to_baseline_ratio": 0.984463705,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.479641
+            }
+          }
+        ],
+        "frame_count": 36000,
+        "measurement_version": "pcm_window_energy_v0",
+        "nominal_response_window": {
+          "basis": "host command-submission offset plus fixed response window; not hardware synchronization",
+          "end_frame_exclusive": 27840,
+          "start_frame": 9600
+        },
+        "sample_rate_hz": 48000
+      },
+      "observation_id": "acoustic-replication-observation-v0:c7d3d11688362cf8f7236ebca921b3b9f32c3c27333fc76bdfc27601d8883622",
+      "observer": "winmm_acoustic_basis_pressure",
+      "observer_version": "acoustic_replication_pressure_v0",
+      "predeclared_trial_order": [
+        "S2",
+        "S1",
+        "C0",
+        "C0",
+        "S2",
+        "C0",
+        "S2",
+        "S1",
+        "C0",
+        "S1",
+        "S2",
+        "S1",
+        "S2",
+        "C0",
+        "S1"
+      ],
+      "raw_capture": {
+        "byte_count": 144000,
+        "disposition": "ephemeral buffer discarded after deterministic measurements and hash",
+        "persisted": false,
+        "sha256": "b9a168cfe71132385f577aafecac0857e6af1e27c5c9ce9e714548bdd4d2688e"
+      },
+      "replicate_index_within_condition": 5,
+      "trial_id": "acoustic-replication-trial-v0:14:C0:c7d3d11688362cf8",
+      "trial_sequence_index": 14
+    },
+    {
+      "capture": {
+        "backend": "Windows WinMM waveIn/waveOut",
+        "channel_count": 2,
+        "frame_count": 36000,
+        "host_capture_duration_seconds": 0.77929,
+        "host_capture_finished_at_utc": "2026-09-08T07:17:12.603709Z",
+        "host_capture_started_at_utc": "2026-09-08T07:17:11.830527Z",
+        "input_device": {
+          "device_id": 0,
+          "name": "Microphone (XIBERIA)",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "sample_format": "signed_16_bit_little_endian_pcm",
+        "sample_rate_hz": 48000,
+        "timing_basis": "host API-call boundaries and monotonic elapsed time; no hardware clock or simultaneity guarantee"
+      },
+      "capture_errors": [],
+      "command": {
+        "command_submission_offset_seconds": 0.200367,
+        "host_command_submission_at_utc": "2026-09-08T07:17:12.030892Z",
+        "output_device": {
+          "device_id": 0,
+          "name": "Speakers (Realtek High Definiti",
+          "reported_format_mask": "0x000fffff",
+          "reported_max_channels": 2
+        },
+        "requested_output_channel": "left",
+        "requested_playback": true,
+        "waveform": {
+          "amplitude_full_scale": 0.02,
+          "channel_count": 2,
+          "duration_seconds": 0.18,
+          "end_frequency_hz": 1700.0,
+          "frame_count": 8640,
+          "kind": "linear_chirp_hann_windowed",
+          "mono_waveform_sha256": "855e0dfc3fa4f6b71a70580ca1eb60fe78c683a1529e60ffb7e009e9bb56c346",
+          "nominal_level_dbfs": -33.9794,
+          "requested_output_channel": "left",
+          "sample_format": "signed_16_bit_little_endian_pcm",
+          "sample_rate_hz": 48000,
+          "start_frequency_hz": 700.0,
+          "stereo_command_sha256": "c4349f9b8ec95b563cb7141260a2c84b35c692163d10b693392a19179959d0a3"
+        }
+      },
+      "condition": "S1",
+      "epistemic_limits": {
+        "acoustic_causality_claimed": false,
+        "complete_acoustic_field_observed": false,
+        "microphone_transduction_observed_directly": false,
+        "physical_speaker_realization_observed": false,
+        "playback_capture_simultaneity_claimed": false,
+        "sampled_microphone_waveform_observed": true,
+        "speaker_channel_health_inferred": false
+      },
+      "experiment": "acoustic_replication_pressure_v0",
+      "measurements": {
+        "baseline_window": {
+          "end_frame_exclusive": 7680,
+          "start_frame": 0
+        },
+        "channel_count": 2,
+        "channels": [
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.476942
+            },
+            "channel": "microphone_channel_0",
+            "delta_rms_pcm": 0.003144,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.480086
+            },
+            "response_minus_baseline_db": 0.057069,
+            "response_to_baseline_ratio": 1.006591997,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.478714
+            }
+          },
+          {
+            "baseline_window": {
+              "frame_count": 7680,
+              "peak_abs_pcm": 1,
+              "rms_pcm": 0.483585
+            },
+            "channel": "microphone_channel_1",
+            "delta_rms_pcm": -0.004642,
+            "nominal_response_window": {
+              "frame_count": 18240,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.478943
+            },
+            "response_minus_baseline_db": -0.08378,
+            "response_to_baseline_ratio": 0.99040086,
+            "whole_capture": {
+              "frame_count": 36000,
+              "peak_abs_pcm": 2,
+              "rms_pcm": 0.479525
+            }
+          }
+        ],
+        "frame_count": 36000,
+        "measurement_version": "pcm_window_energy_v0",
+        "nominal_response_window": {
+          "basis": "host command-submission offset plus fixed response window; not hardware synchronization",
+          "end_frame_exclusive": 27858,
+          "start_frame": 9618
+        },
+        "sample_rate_hz": 48000
+      },
+      "observation_id": "acoustic-replication-observation-v0:4e27e704e060d630ecafca2d99377dab463c4252ebf10bf8c42301e6ba7cebae",
+      "observer": "winmm_acoustic_basis_pressure",
+      "observer_version": "acoustic_replication_pressure_v0",
+      "predeclared_trial_order": [
+        "S2",
+        "S1",
+        "C0",
+        "C0",
+        "S2",
+        "C0",
+        "S2",
+        "S1",
+        "C0",
+        "S1",
+        "S2",
+        "S1",
+        "S2",
+        "C0",
+        "S1"
+      ],
+      "raw_capture": {
+        "byte_count": 144000,
+        "disposition": "ephemeral buffer discarded after deterministic measurements and hash",
+        "persisted": false,
+        "sha256": "4e39052148f7166bbdc700b855f66f08e1e0153be240b44e90a4e4d0fea5b635"
+      },
+      "replicate_index_within_condition": 5,
+      "trial_id": "acoustic-replication-trial-v0:15:S1:4e27e704e060d630",
+      "trial_sequence_index": 15
+    }
+  ]
+}

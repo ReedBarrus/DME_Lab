@@ -72,6 +72,8 @@ Foreground repository horizontal pressure capstone completed in `docs/decisions/
 
 Bounded acoustic basis-entry pressure completed in `docs/decisions/acoustic_basis_entry_pressure_v0.md`.
 
+Bounded acoustic replication pressure completed in `docs/decisions/acoustic_replication_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -144,12 +146,13 @@ Foreground repository observation horizontal semantic pressure is locally
 saturated and frozen for dwell. Reopen it only for a concrete consumer demand,
 an independent contradiction, or a qualitatively new observation basis.
 
-One bounded acoustic command/capture specimen supplied a qualitatively new
-observation basis without reopening repository pressure. No next implementation
-or domain is selected. The smallest unresolved physical question is whether
-replicated low-level trials under a declared discrimination criterion can
-establish command-conditioned local microphone-response differences without
-claiming speaker realization.
+Bounded acoustic replication supplied a declared-rule result without reopening
+repository pressure. Five replacement S2 occurrences were locally
+discriminable from both five C0 and five S1 occurrences on both captured
+microphone channels; S1 and C0 overlapped. No next implementation or domain is
+selected. The smallest unresolved physical question is why S2 response
+magnitude varies across occurrences and runs while remaining locally separated
+in the replacement block; this is not authorization for another experiment.
 
 ## Contract Surface Status
 
@@ -371,5 +374,13 @@ claiming speaker realization.
 - three acoustic observation envelopes passed COMPARATOR_V0 and survived a six-record temporary ledger, replay, reconstruction, projection, and companion without repository-specific payload assumptions or semantic inflation
 - the acoustic result forces no production change, chart, or registry distinction; D-0046 and D-0020 are only bounded post-hoc correspondences, not preselected templates or universal tomography
 - no next domain is selected; replicated conservative range-finding with an explicit discrimination criterion remains a possible question rather than an authorized next implementation
+- acoustic replication predeclared `delta_rms = response_window_rms - that_trial_pre_roll_rms`, an interleaved seed-20260903 order, and a two-part non-overlap plus median/MAD rule before acquisition
+- an initial 15-capture block was retained but excluded from primary adjudication after the operator reported likely overlapping video audio; a separately authorized 15-capture replacement used the same frozen order, low level, devices, and rule
+- in the replacement block S1 and C0 overlapped and were not locally discriminable, while S2 was locally discriminable from both C0 and S1 on both captured microphone channels; no MAD was zero
+- the result licenses replicated local sampled-microphone measurement differences under the declared command basis, not speaker realization, airborne causality, channel health, routing mechanism, synchronized timing, or complete room-field state
+- 15 replacement occurrences remained distinct through 15 observations, 15 admissions, a 30-record temporary ledger, replay, reconstruction, projection, and companion; projection preserved navigation but did not directly expose command or measurement fields
+- raw PCM remained ephemeral in both blocks; hashes and deterministic measurements survived in raw and reconstructed nested observations, while waveform morphology was irrecoverably discarded
+- replication forced no new distinction or chart; D-0016 and D-0020 are stronger bounded post-hoc correspondences, and the registry remains unchanged through D-0046
+- no next experiment is authorized; the smallest residue is unexplained S2 magnitude variation within and across runs under otherwise fixed requested configuration
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure

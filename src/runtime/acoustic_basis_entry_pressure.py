@@ -6,6 +6,8 @@ import ctypes
 import hashlib
 import json
 import math
+import random
+import statistics
 import struct
 import sys
 import time
@@ -41,6 +43,28 @@ CHIRP_START_HZ = 700.0
 CHIRP_END_HZ = 1_700.0
 INPUT_DEVICE_ID = 0
 OUTPUT_DEVICE_ID = 0
+REPLICATION_EXPERIMENT = "acoustic_replication_pressure_v0"
+REPLICATION_OBSERVER_VERSION = "acoustic_replication_pressure_v0"
+REPLICATION_RANDOM_SEED = 20_260_903
+REPLICATION_PREDECLARED_AT_UTC = "2026-09-08T07:03:37.0280999Z"
+REPLICATION_STARTING_HEAD = "c9be23c5a7c3db66d9da677ba01d90952aaef1a3"
+REPLICATION_TRIAL_ORDER = (
+    "S2",
+    "S1",
+    "C0",
+    "C0",
+    "S2",
+    "C0",
+    "S2",
+    "S1",
+    "C0",
+    "S1",
+    "S2",
+    "S1",
+    "S2",
+    "C0",
+    "S1",
+)
 
 
 def utc_now() -> str:
@@ -154,6 +178,7 @@ def derive_capture_measurements(
                 "whole_capture": metrics(whole),
                 "baseline_window": baseline_metrics,
                 "nominal_response_window": response_metrics,
+                "delta_rms_pcm": round(response_rms - baseline_rms, 6),
                 "response_to_baseline_ratio": round(ratio, 9) if ratio is not None else None,
                 "response_minus_baseline_db": round(delta_db, 6) if delta_db is not None else None,
             }
@@ -185,7 +210,7 @@ def make_acoustic_ingest_envelope(observation: dict[str, Any]) -> dict[str, Any]
         "source_sequence": None,
         "event_time": None,
         "arrival_time": observation["capture"]["host_capture_finished_at_utc"],
-        "capture_version": OBSERVER_VERSION,
+        "capture_version": observation["observer_version"],
         "provenance": {
             "trial_id": observation["trial_id"],
             "observer": observation["observer"],
@@ -325,6 +350,336 @@ def compare_trial_measurements(observations: list[dict[str, Any]]) -> dict[str, 
             "command-response causality",
             "repeatability or command-conditioned distribution",
         ],
+    }
+
+
+def materialize_replication_trial_order() -> list[str]:
+    """Reproduce the complete order declared before replication acquisition."""
+    base = ["C0"] * 5 + ["S1"] * 5 + ["S2"] * 5
+    generated = random.Random(REPLICATION_RANDOM_SEED).sample(base, len(base))
+    if tuple(generated) != REPLICATION_TRIAL_ORDER:
+        raise RuntimeError("declared replication order no longer matches its seed")
+    return generated
+
+
+def predeclared_replication_basis() -> dict[str, Any]:
+    """Return the frozen pre-acquisition measurement and discrimination rule."""
+    return {
+        "declared_before_physical_acquisition": True,
+        "randomization": {
+            "algorithm": "Python random.Random(seed).sample over five C0, five S1, five S2 labels",
+            "seed": REPLICATION_RANDOM_SEED,
+            "trial_order": materialize_replication_trial_order(),
+        },
+        "primary_measurement": {
+            "name": "delta_rms_pcm",
+            "definition": "nominal_response_window.rms_pcm - that_trial.baseline_window.rms_pcm",
+            "evaluated_independently_for": ["microphone_channel_0", "microphone_channel_1"],
+            "underlying_values_retained": ["baseline_window.rms_pcm", "nominal_response_window.rms_pcm"],
+        },
+        "pairwise_comparisons": ["S1_vs_C0", "S2_vs_C0", "S1_vs_S2"],
+        "discrimination_rule": {
+            "label": "locally_discriminable_under_declared_basis",
+            "per_microphone_channel": True,
+            "range_condition": "closed observed delta_rms ranges do not overlap",
+            "separation_condition": "absolute median separation > 3 * max(MAD_A, MAD_B)",
+            "mad_definition": "median(abs(x - median(x)))",
+            "both_conditions_required": True,
+            "zero_mad_policy": "if either condition MAD is zero, mark criterion_degenerate_insufficient; do not substitute a statistic and do not declare discrimination",
+            "mechanism_claimed": False,
+        },
+        "replicates_per_condition": 5,
+        "total_trials": 15,
+    }
+
+
+def evaluate_replication_measurements(
+    observations: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """Apply only the frozen delta/range/MAD basis to preserved occurrences."""
+    if [item["condition"] for item in observations] != materialize_replication_trial_order():
+        raise ValueError("observations do not follow the predeclared trial order")
+
+    values: dict[str, dict[str, list[float]]] = {
+        condition: {"microphone_channel_0": [], "microphone_channel_1": []}
+        for condition in ("C0", "S1", "S2")
+    }
+    occurrences: dict[str, list[dict[str, Any]]] = {condition: [] for condition in values}
+    for observation in observations:
+        by_channel = {
+            channel["channel"]: float(channel["delta_rms_pcm"])
+            for channel in observation["measurements"]["channels"]
+        }
+        condition = observation["condition"]
+        for channel_name, delta in by_channel.items():
+            values[condition][channel_name].append(delta)
+        occurrences[condition].append(
+            {
+                "trial_id": observation["trial_id"],
+                "trial_sequence_index": observation["trial_sequence_index"],
+                "delta_rms_pcm": by_channel,
+            }
+        )
+
+    summaries: dict[str, dict[str, Any]] = {}
+    for condition, channels in values.items():
+        summaries[condition] = {}
+        for channel_name, channel_values in channels.items():
+            median_value = statistics.median(channel_values)
+            mad_value = statistics.median(
+                abs(value - median_value) for value in channel_values
+            )
+            summaries[condition][channel_name] = {
+                "values": channel_values,
+                "minimum": min(channel_values),
+                "maximum": max(channel_values),
+                "median": median_value,
+                "mad": mad_value,
+                "range_width": max(channel_values) - min(channel_values),
+            }
+
+    pairwise = {}
+    for left, right in (("S1", "C0"), ("S2", "C0"), ("S1", "S2")):
+        pair_name = f"{left}_vs_{right}"
+        channel_results = {}
+        for channel_name in ("microphone_channel_0", "microphone_channel_1"):
+            a = summaries[left][channel_name]
+            b = summaries[right][channel_name]
+            ranges_do_not_overlap = bool(
+                a["maximum"] < b["minimum"] or b["maximum"] < a["minimum"]
+            )
+            median_separation = abs(a["median"] - b["median"])
+            threshold = 3.0 * max(a["mad"], b["mad"])
+            mad_degenerate = bool(a["mad"] == 0.0 or b["mad"] == 0.0)
+            separation_exceeds_threshold = bool(median_separation > threshold)
+            discriminable = bool(
+                not mad_degenerate
+                and ranges_do_not_overlap
+                and separation_exceeds_threshold
+            )
+            channel_results[channel_name] = {
+                "left_condition": left,
+                "right_condition": right,
+                "left_range": [a["minimum"], a["maximum"]],
+                "right_range": [b["minimum"], b["maximum"]],
+                "ranges_do_not_overlap": ranges_do_not_overlap,
+                "left_median": a["median"],
+                "right_median": b["median"],
+                "absolute_median_separation": median_separation,
+                "left_mad": a["mad"],
+                "right_mad": b["mad"],
+                "three_times_max_mad": threshold,
+                "separation_exceeds_three_times_max_mad": separation_exceeds_threshold,
+                "mad_degenerate": mad_degenerate,
+                "status": (
+                    "criterion_degenerate_insufficient"
+                    if mad_degenerate
+                    else "locally_discriminable_under_declared_basis"
+                    if discriminable
+                    else "not_locally_discriminable_under_declared_basis"
+                ),
+                "locally_discriminable_under_declared_basis": discriminable,
+            }
+        pairwise[pair_name] = {
+            "channels": channel_results,
+            "discriminable_channels": [
+                name
+                for name, result in channel_results.items()
+                if result["locally_discriminable_under_declared_basis"]
+            ],
+            "channel_results_consistent": len(
+                {
+                    result["status"] for result in channel_results.values()
+                }
+            )
+            == 1,
+        }
+
+    return {
+        "basis": predeclared_replication_basis(),
+        "individual_occurrences": occurrences,
+        "within_condition": summaries,
+        "pairwise": pairwise,
+        "no_mechanism_inferred": True,
+    }
+
+
+def _select_named_device(
+    devices: list[dict[str, Any]], required_tokens: tuple[str, ...], role: str
+) -> dict[str, Any]:
+    matches = [
+        item
+        for item in devices
+        if all(token.casefold() in item["name"].casefold() for token in required_tokens)
+    ]
+    if len(matches) != 1:
+        raise RuntimeError(
+            f"expected exactly one {role} matching {required_tokens}, found {len(matches)}"
+        )
+    return matches[0]
+
+
+def run_replication_pressure() -> dict[str, Any]:
+    """Execute the frozen 15-trial acoustic replication pressure."""
+    if sys.platform != "win32":
+        raise RuntimeError("physical pressure requires the inspected Windows WinMM backend")
+    basis = predeclared_replication_basis()
+    backend = _WinMMBackend()
+    input_devices = backend.input_devices()
+    output_devices = backend.output_devices()
+    input_device = _select_named_device(input_devices, ("XIBERIA",), "capture device")
+    output_device = _select_named_device(
+        output_devices, ("Speakers", "Realtek"), "room stereo playback device"
+    )
+
+    observations = []
+    condition_counts = {"C0": 0, "S1": 0, "S2": 0}
+    for sequence_index, condition in enumerate(
+        basis["randomization"]["trial_order"], start=1
+    ):
+        condition_counts[condition] += 1
+        requested_channel = {"C0": None, "S1": "left", "S2": "right"}[condition]
+        command_pcm = None
+        parameters = None
+        if requested_channel is not None:
+            command_pcm, _mono, parameters = build_excitation(requested_channel)
+        capture = backend.capture_trial(
+            command_pcm=command_pcm,
+            input_device_id=input_device["device_id"],
+            output_device_id=output_device["device_id"],
+            sample_rate=SAMPLE_RATE,
+            capture_seconds=CAPTURE_SECONDS,
+            pre_roll_seconds=PRE_ROLL_SECONDS,
+        )
+        raw_pcm = capture.pop("raw_pcm")
+        measurements = derive_capture_measurements(
+            raw_pcm,
+            sample_rate=SAMPLE_RATE,
+            channel_count=CHANNEL_COUNT,
+            nominal_response_offset_seconds=(
+                capture["command_submission_offset_seconds"]
+                if capture["command_submission_offset_seconds"] is not None
+                else PRE_ROLL_SECONDS
+            ),
+        )
+        body = {
+            "experiment": REPLICATION_EXPERIMENT,
+            "condition": condition,
+            "trial_sequence_index": sequence_index,
+            "replicate_index_within_condition": condition_counts[condition],
+            "predeclared_trial_order": basis["randomization"]["trial_order"],
+            "observer": OBSERVER,
+            "observer_version": REPLICATION_OBSERVER_VERSION,
+            "command": {
+                "requested_playback": command_pcm is not None,
+                "requested_output_channel": requested_channel,
+                "waveform": deepcopy(parameters),
+                "output_device": deepcopy(output_device) if command_pcm is not None else None,
+                "host_command_submission_at_utc": capture["host_command_submission_at_utc"],
+                "command_submission_offset_seconds": capture["command_submission_offset_seconds"],
+            },
+            "capture": {
+                "backend": "Windows WinMM waveIn/waveOut",
+                "input_device": deepcopy(input_device),
+                "sample_rate_hz": SAMPLE_RATE,
+                "channel_count": CHANNEL_COUNT,
+                "sample_format": "signed_16_bit_little_endian_pcm",
+                "frame_count": measurements["frame_count"],
+                "host_capture_started_at_utc": capture["host_capture_started_at_utc"],
+                "host_capture_finished_at_utc": capture["host_capture_finished_at_utc"],
+                "host_capture_duration_seconds": capture["host_capture_duration_seconds"],
+                "timing_basis": "host API-call boundaries and monotonic elapsed time; no hardware clock or simultaneity guarantee",
+            },
+            "measurements": measurements,
+            "raw_capture": {
+                "sha256": hashlib.sha256(raw_pcm).hexdigest(),
+                "byte_count": len(raw_pcm),
+                "persisted": False,
+                "disposition": "ephemeral buffer discarded after deterministic measurements and hash",
+            },
+            "capture_errors": deepcopy(capture["capture_errors"]),
+            "epistemic_limits": {
+                "physical_speaker_realization_observed": False,
+                "complete_acoustic_field_observed": False,
+                "microphone_transduction_observed_directly": False,
+                "sampled_microphone_waveform_observed": True,
+                "speaker_channel_health_inferred": False,
+                "playback_capture_simultaneity_claimed": False,
+                "acoustic_causality_claimed": False,
+            },
+        }
+        body_hash = canonical_sha256(body)
+        observation = {
+            "observation_id": f"acoustic-replication-observation-v0:{body_hash}",
+            "trial_id": f"acoustic-replication-trial-v0:{sequence_index:02d}:{condition}:{body_hash[:16]}",
+            **body,
+        }
+        observations.append(observation)
+        time.sleep(0.15)
+
+    with TemporaryDirectory() as tmpdir:
+        pipeline = carry_through_pipeline(
+            observations, Path(tmpdir) / "acoustic_replication_pressure.jsonl"
+        )
+
+    return {
+        "experiment": REPLICATION_EXPERIMENT,
+        "status": "physical_acquisition_complete",
+        "physical_pressure_executed": True,
+        "primary_adjudication": True,
+        "predeclaration_record": {
+            "materialized_at_utc": REPLICATION_PREDECLARED_AT_UTC,
+            "starting_lineage": {
+                "branch": "main",
+                "head": REPLICATION_STARTING_HEAD,
+                "message": "Horizontal Expansion- Soundscape",
+                "worktree": [],
+            },
+            "baseline_tests": {
+                "runner": "python -m unittest discover -s tests",
+                "passed": 451,
+                "failed": 0,
+            },
+        },
+        "predeclaration": basis,
+        "backend_capability_at_execution": {
+            "backend": "Windows WinMM",
+            "input_devices": input_devices,
+            "output_devices": output_devices,
+            "selected_input_device": input_device,
+            "selected_output_device": output_device,
+            "selection_basis": "execution-time device names; numeric WinMM IDs not treated as stable identity",
+            "third_party_dependency_added": False,
+        },
+        "safety_boundary": {
+            "open_loop": True,
+            "fixed_positions_requested": True,
+            "jack_untouched": True,
+            "playback_gain_unchanged": True,
+            "feedback": False,
+            "sustained_tone": False,
+            "excitation_seconds": EXCITATION_SECONDS,
+            "amplitude_full_scale": AMPLITUDE_FULL_SCALE,
+            "nominal_level_dbfs": round(20.0 * math.log10(AMPLITUDE_FULL_SCALE), 6),
+            "system_output_gain_observed": False,
+            "deliberate_environmental_manipulation": False,
+        },
+        "operator_provenance": {
+            "device_roles": {
+                "Realtek": "room stereo playback",
+                "XIBERIA": "headphones and headset microphone capture",
+            },
+            "room_stereo_can_emit_substantial_sound": True,
+            "machine_verified": False,
+            "per_trial_listening_required": False,
+        },
+        "trials": observations,
+        "replicated_measurement_analysis": evaluate_replication_measurements(
+            observations
+        ),
+        "pipeline": pipeline,
+        "raw_recordings_committed": False,
+        "canonical_live_history_used": False,
     }
 
 
@@ -733,8 +1088,13 @@ class _WinMMBackend:
 
 
 def main() -> None:
-    report = run_physical_pressure()
-    output_path = Path("traces") / "acoustic_basis_entry_pressure_v0.json"
+    replication = sys.argv[1:] == ["replication"]
+    report = run_replication_pressure() if replication else run_physical_pressure()
+    output_path = Path("traces") / (
+        "acoustic_replication_pressure_v0.json"
+        if replication
+        else "acoustic_basis_entry_pressure_v0.json"
+    )
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(
         json.dumps(report, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
