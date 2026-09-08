@@ -303,6 +303,15 @@ retry after unknown acknowledgement from intentional repeated observation?
 - the promoted foreground coordinator remains scoped to four independently committed records and provides no atomic-round or durable-acknowledgement guarantee
 - Chart 14 records fault boundary against durable shape, caller outcome, integrity, continuity, reconstruction, projection, and completion inference
 - D-0043 records caller_invocation_outcome != durable_history_state
-- the next pressure should require a concrete caller before introducing retry policy or request identity
+- retry policy after unknown acknowledgement remains unresolved until a concrete caller requires it
+- C0, S1, S2, and C1 isolated sequential filesystem/Git acquisition across stable alpha, dirty skew, committed skew, and settled beta
+- deterministic experiment-local interception mutated the fixture only after the real filesystem observer returned and before the real Git observer ran; production capture code remained unchanged
+- S1 returned filesystem-alpha plus later dirty Git, while S2 returned filesystem-alpha plus later clean committed-beta; both compositions remained integrity-valid, continuity-valid, reconstructible, and projectable
+- filesystem start/finish and Git observed-at fields survived fresh recovery and preserved their recorded timestamp relation, but Git supplied no complete interval and the evidence established neither simultaneity nor a shared world configuration
+- the immediate non-authoritative return grouped both captures as products of one requested composition; fresh authoritative history retained no round, request, invocation, or group identity
+- projection preserved both admitted observations as separate historical subjects and made no current coherent repository-state claim
+- Chart 15 records source-relative configuration, external mutation, structural health, process-local grouping, durable grouping, and world-configuration justification across the four specimens
+- D-0044 records same_capture_invocation != same_world_configuration
+- the next smallest pressure is stale current_result semantics without introducing latest-state or temporal-fusion machinery
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure

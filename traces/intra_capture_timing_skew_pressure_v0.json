@@ -1,0 +1,871 @@
+{
+  "baseline_tests": {
+    "full": {
+      "failed": 0,
+      "passed": 326
+    },
+    "targeted": {
+      "failed": 0,
+      "passed": 50
+    }
+  },
+  "canonical_history": {
+    "path": "traces/live_ingest_ledger_v0.jsonl",
+    "sha256_after": "0d877151c73cb2154417065387dc286a1277e80f3838c40874832a7061c17dd0",
+    "sha256_before": "0d877151c73cb2154417065387dc286a1277e80f3838c40874832a7061c17dd0",
+    "unchanged": true
+  },
+  "chart_status": {
+    "coordinates": "specimen x source-relative configuration, external mutation, structural health, process-local grouping, durable grouping, and world-configuration justification",
+    "earned": true,
+    "generalized_temporal_or_world_state_model": false,
+    "name": "Chart 15"
+  },
+  "comparison_matrix": [
+    {
+      "filesystem_configuration": "alpha",
+      "git_configuration": "clean alpha",
+      "integrity": true,
+      "mutation_between_acquisition_ground_truth": false,
+      "reconstruction": true,
+      "same_invocation_from_history": "UNRESOLVED",
+      "same_invocation_immediate": true,
+      "shared_world_configuration_from_DME_evidence": "UNRESOLVED",
+      "shared_world_configuration_ground_truth": true,
+      "specimen": "C0"
+    },
+    {
+      "filesystem_configuration": "alpha",
+      "git_configuration": "dirty later state over alpha HEAD",
+      "integrity": true,
+      "mutation_between_acquisition_ground_truth": true,
+      "reconstruction": true,
+      "same_invocation_from_history": "UNRESOLVED",
+      "same_invocation_immediate": true,
+      "shared_world_configuration_from_DME_evidence": "UNRESOLVED",
+      "shared_world_configuration_ground_truth": false,
+      "specimen": "S1"
+    },
+    {
+      "filesystem_configuration": "alpha",
+      "git_configuration": "clean committed beta",
+      "integrity": true,
+      "mutation_between_acquisition_ground_truth": true,
+      "reconstruction": true,
+      "same_invocation_from_history": "UNRESOLVED",
+      "same_invocation_immediate": true,
+      "shared_world_configuration_from_DME_evidence": "UNRESOLVED",
+      "shared_world_configuration_ground_truth": false,
+      "specimen": "S2"
+    },
+    {
+      "filesystem_configuration": "beta",
+      "git_configuration": "clean committed beta",
+      "integrity": true,
+      "mutation_between_acquisition_ground_truth": false,
+      "reconstruction": true,
+      "same_invocation_from_history": "UNRESOLVED",
+      "same_invocation_immediate": true,
+      "shared_world_configuration_from_DME_evidence": "UNRESOLVED",
+      "shared_world_configuration_ground_truth": true,
+      "specimen": "C1"
+    }
+  ],
+  "distinctions": {
+    "added": [
+      {
+        "id": "D-0044",
+        "left": "same_capture_invocation",
+        "relation": "not_equivalent_to",
+        "right": "same_world_configuration"
+      }
+    ],
+    "amended": []
+  },
+  "duration_seconds": 1.417897,
+  "epistemic_audit": {
+    "adjacency_treated_as_simultaneity": false,
+    "admission_treated_as_mutual_contemporaneity": false,
+    "driver_mutation_written_to_history": false,
+    "handling_order_treated_as_proof_of_mutation": false,
+    "reconstruction_treated_as_global_coherence": false,
+    "same_invocation_treated_as_same_world": false,
+    "successful_return_treated_as_one_instant": false,
+    "transition_record_manufactured": false,
+    "unjustified_certainty_exposed_by_existing_result": false
+  },
+  "experiment": "intra_capture_timing_skew_pressure_v0",
+  "fixture_control": {
+    "C1_reuses_settled_S2_world": true,
+    "independent_fixtures": [
+      "C0",
+      "S1",
+      "S2/C1"
+    ],
+    "initial_file": {
+      "content": "alpha",
+      "path": "state.txt",
+      "sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+    },
+    "later_file": {
+      "content": "beta",
+      "path": "state.txt",
+      "sha256": "f44e64e75f3948e9f73f8dfa94721c4ce8cbb4f265c4790c702b2d41cfbf2753"
+    },
+    "trajectory_owner": "external experiment driver"
+  },
+  "information_boundary": {
+    "external_driver_mutation_fact_durable": false,
+    "loss_is_corruption": false,
+    "process_local_invocation_association_lost_on_recovery": true,
+    "source_observation_content_lost_on_recovery": false,
+    "source_timing_fields_lost_on_recovery": false
+  },
+  "next_smallest_pressure": "pressure stale current_result semantics without adding a latest-state or temporal-fusion abstraction",
+  "prior_findings": {
+    "D_0042_preserved": true,
+    "D_0043_preserved": true,
+    "chart_11_companion_preserved": true,
+    "invalidated": [],
+    "partial_round_findings_preserved": true,
+    "source_separation_preserved": true
+  },
+  "production_boundary": {
+    "atomic_or_global_snapshot_guarantee": false,
+    "guarantee": "one explicit call sequentially acquires, admits, and returns two source-relative observations",
+    "production_change_made": false,
+    "status": "PRESERVED_WITH_SCOPED_GUARANTEE"
+  },
+  "projection_audit": {
+    "claims_current_coherent_repository_state": false,
+    "claims_simultaneity": false,
+    "preserves_admitted_observations_as_separate_subjects": true,
+    "projection_redesigned": false,
+    "silently_fuses_sources": false
+  },
+  "specimens": {
+    "C0": {
+      "DME_knowledge": {
+        "global_snapshot_claim": false,
+        "individual_source_observations_valid": true,
+        "mutation_between_acquisitions": "UNRESOLVED",
+        "same_world_configuration": "UNRESOLVED"
+      },
+      "filesystem": {
+        "capture_errors": [],
+        "configuration": "alpha",
+        "observation_finished_at": "2026-09-08T02:56:06.846963Z",
+        "observation_started_at": "2026-09-08T02:56:06.842139Z",
+        "snapshot_id": "repo-snapshot-v0:646d71c8fcb171cf128fb8469bf0f6743ef265aa829868061180ed4df367bd71",
+        "state_txt_sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+      },
+      "git": {
+        "branch": "main",
+        "capture_errors": [],
+        "configuration": "clean alpha",
+        "head_sha": "9688d0a554f83dc409086d8a2ca9d3a5b3debf74",
+        "observed_at": "2026-09-08T02:56:06.846980Z",
+        "status_porcelain": []
+      },
+      "ground_truth": {
+        "basis": "external deterministic experiment control",
+        "mutation_between_acquisitions": false,
+        "shared_world_configuration": true,
+        "transferred_into_DME_history": false
+      },
+      "health": {
+        "admission_relation_count": 2,
+        "companion_count": 2,
+        "companion_reproducible": true,
+        "companion_states": [
+          [],
+          []
+        ],
+        "continuity_ok": true,
+        "integrity_ok": true,
+        "observation_count": 2,
+        "projection_reproducible": true,
+        "projection_subject_count": 2,
+        "reconstruction_reproducible": true,
+        "replay_reproducible": true,
+        "source_separation": true,
+        "structurally_healthy": true
+      },
+      "immediate": {
+        "capture_returned": true,
+        "captured_observations_grouped_on_return": true,
+        "commit_indices": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "record_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000003",
+          "rec-000004"
+        ],
+        "same_acquisition_episode": true,
+        "same_invocation": true
+      },
+      "intervention": {
+        "driver_action": "none",
+        "filesystem_returned_before_driver": null,
+        "intercepted": false
+      },
+      "name": "C0",
+      "recovery": {
+        "captured_observations_available": false,
+        "commit_indices": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "durable_grouping_fields": [],
+        "observation_count": 2,
+        "read_only": true,
+        "record_count": 4,
+        "record_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000003",
+          "rec-000004"
+        ],
+        "result": {
+          "authoritative": false,
+          "capture_mode": "explicit_foreground_invocation",
+          "captured_observations": null,
+          "derived": {
+            "admission_relation_count": 2,
+            "companion": [
+              {
+                "non_admitted_decision_states": [],
+                "subject_record_id": "rec-000001"
+              },
+              {
+                "non_admitted_decision_states": [],
+                "subject_record_id": "rec-000002"
+              }
+            ],
+            "companion_reproducible": true,
+            "observation_count": 2,
+            "orphan_admission_count": 0,
+            "projection": [
+              {
+                "admission_record_ids": [
+                  "rec-000003"
+                ],
+                "observation_record_id": "rec-000001",
+                "reconstruction_type": "admission_relationships_v0",
+                "source": "repository_filesystem_snapshot",
+                "subject_record_id": "rec-000001"
+              },
+              {
+                "admission_record_ids": [
+                  "rec-000004"
+                ],
+                "observation_record_id": "rec-000002",
+                "reconstruction_type": "admission_relationships_v0",
+                "source": "repository_git_state",
+                "subject_record_id": "rec-000002"
+              }
+            ],
+            "projection_reproducible": true,
+            "reconstruction_reproducible": true,
+            "source_provenance_separate": true
+          },
+          "ledger": {
+            "canonical_replay_reproducible": true,
+            "commit_indices": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "continuity_failures": [],
+            "continuity_ok": true,
+            "integrity_failures": [],
+            "integrity_ok": true,
+            "record_count": 4
+          },
+          "new_records": [],
+          "round_number": null
+        },
+        "same_invocation_from_history": "UNRESOLVED"
+      },
+      "temporal_evidence": {
+        "filesystem_finished_before_git_observed": true,
+        "full_non_overlap_established": false,
+        "recorded_order": "filesystem interval then Git marker",
+        "simultaneity_established": false
+      }
+    },
+    "C1": {
+      "DME_knowledge": {
+        "global_snapshot_claim": false,
+        "individual_source_observations_valid": true,
+        "mutation_between_acquisitions": "UNRESOLVED",
+        "same_world_configuration": "UNRESOLVED"
+      },
+      "filesystem": {
+        "capture_errors": [],
+        "configuration": "beta",
+        "observation_finished_at": "2026-09-08T02:56:07.867978Z",
+        "observation_started_at": "2026-09-08T02:56:07.863837Z",
+        "snapshot_id": "repo-snapshot-v0:fb2eda0663c213164ead44f22f76dbe20a50005e2012e058ec3f54ae0bd77344",
+        "state_txt_sha256": "f44e64e75f3948e9f73f8dfa94721c4ce8cbb4f265c4790c702b2d41cfbf2753"
+      },
+      "git": {
+        "branch": "main",
+        "capture_errors": [],
+        "configuration": "clean committed beta",
+        "head_sha": "a27078db586c96bf5c2d76ce007eb3299254c47a",
+        "observed_at": "2026-09-08T02:56:07.867990Z",
+        "status_porcelain": []
+      },
+      "ground_truth": {
+        "basis": "external deterministic experiment control",
+        "mutation_between_acquisitions": false,
+        "shared_world_configuration": true,
+        "transferred_into_DME_history": false
+      },
+      "health": {
+        "admission_relation_count": 4,
+        "companion_count": 4,
+        "companion_reproducible": true,
+        "companion_states": [
+          [],
+          [],
+          [],
+          []
+        ],
+        "continuity_ok": true,
+        "integrity_ok": true,
+        "observation_count": 4,
+        "projection_reproducible": true,
+        "projection_subject_count": 4,
+        "reconstruction_reproducible": true,
+        "replay_reproducible": true,
+        "source_separation": true,
+        "structurally_healthy": true
+      },
+      "immediate": {
+        "capture_returned": true,
+        "captured_observations_grouped_on_return": true,
+        "commit_indices": [
+          5,
+          6,
+          7,
+          8
+        ],
+        "record_ids": [
+          "rec-000005",
+          "rec-000006",
+          "rec-000007",
+          "rec-000008"
+        ],
+        "same_acquisition_episode": true,
+        "same_invocation": true
+      },
+      "intervention": {
+        "driver_action": "none",
+        "filesystem_returned_before_driver": null,
+        "intercepted": false
+      },
+      "name": "C1",
+      "recovery": {
+        "captured_observations_available": false,
+        "commit_indices": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "durable_grouping_fields": [],
+        "observation_count": 4,
+        "read_only": true,
+        "record_count": 8,
+        "record_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000003",
+          "rec-000004",
+          "rec-000005",
+          "rec-000006",
+          "rec-000007",
+          "rec-000008"
+        ],
+        "result": {
+          "authoritative": false,
+          "capture_mode": "explicit_foreground_invocation",
+          "captured_observations": null,
+          "derived": {
+            "admission_relation_count": 4,
+            "companion": [
+              {
+                "non_admitted_decision_states": [],
+                "subject_record_id": "rec-000001"
+              },
+              {
+                "non_admitted_decision_states": [],
+                "subject_record_id": "rec-000002"
+              },
+              {
+                "non_admitted_decision_states": [],
+                "subject_record_id": "rec-000005"
+              },
+              {
+                "non_admitted_decision_states": [],
+                "subject_record_id": "rec-000006"
+              }
+            ],
+            "companion_reproducible": true,
+            "observation_count": 4,
+            "orphan_admission_count": 0,
+            "projection": [
+              {
+                "admission_record_ids": [
+                  "rec-000003"
+                ],
+                "observation_record_id": "rec-000001",
+                "reconstruction_type": "admission_relationships_v0",
+                "source": "repository_filesystem_snapshot",
+                "subject_record_id": "rec-000001"
+              },
+              {
+                "admission_record_ids": [
+                  "rec-000004"
+                ],
+                "observation_record_id": "rec-000002",
+                "reconstruction_type": "admission_relationships_v0",
+                "source": "repository_git_state",
+                "subject_record_id": "rec-000002"
+              },
+              {
+                "admission_record_ids": [
+                  "rec-000007"
+                ],
+                "observation_record_id": "rec-000005",
+                "reconstruction_type": "admission_relationships_v0",
+                "source": "repository_filesystem_snapshot",
+                "subject_record_id": "rec-000005"
+              },
+              {
+                "admission_record_ids": [
+                  "rec-000008"
+                ],
+                "observation_record_id": "rec-000006",
+                "reconstruction_type": "admission_relationships_v0",
+                "source": "repository_git_state",
+                "subject_record_id": "rec-000006"
+              }
+            ],
+            "projection_reproducible": true,
+            "reconstruction_reproducible": true,
+            "source_provenance_separate": true
+          },
+          "ledger": {
+            "canonical_replay_reproducible": true,
+            "commit_indices": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "continuity_failures": [],
+            "continuity_ok": true,
+            "integrity_failures": [],
+            "integrity_ok": true,
+            "record_count": 8
+          },
+          "new_records": [],
+          "round_number": null
+        },
+        "same_invocation_from_history": "UNRESOLVED"
+      },
+      "temporal_evidence": {
+        "filesystem_finished_before_git_observed": true,
+        "full_non_overlap_established": false,
+        "recorded_order": "filesystem interval then Git marker",
+        "simultaneity_established": false
+      }
+    },
+    "S1": {
+      "DME_knowledge": {
+        "global_snapshot_claim": false,
+        "individual_source_observations_valid": true,
+        "mutation_between_acquisitions": "UNRESOLVED",
+        "same_world_configuration": "UNRESOLVED"
+      },
+      "filesystem": {
+        "capture_errors": [],
+        "configuration": "alpha",
+        "observation_finished_at": "2026-09-08T02:56:07.185072Z",
+        "observation_started_at": "2026-09-08T02:56:07.180126Z",
+        "snapshot_id": "repo-snapshot-v0:4dc37ad587fa85290787b3e87246a69a4a8b922ec85836fdef6f47338bb51732",
+        "state_txt_sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+      },
+      "git": {
+        "branch": "main",
+        "capture_errors": [],
+        "configuration": "dirty later state over alpha HEAD",
+        "head_sha": "9688d0a554f83dc409086d8a2ca9d3a5b3debf74",
+        "observed_at": "2026-09-08T02:56:07.240773Z",
+        "status_porcelain": [
+          "M state.txt"
+        ]
+      },
+      "ground_truth": {
+        "basis": "external deterministic experiment control",
+        "mutation_between_acquisitions": true,
+        "shared_world_configuration": false,
+        "transferred_into_DME_history": false
+      },
+      "health": {
+        "admission_relation_count": 2,
+        "companion_count": 2,
+        "companion_reproducible": true,
+        "companion_states": [
+          [],
+          []
+        ],
+        "continuity_ok": true,
+        "integrity_ok": true,
+        "observation_count": 2,
+        "projection_reproducible": true,
+        "projection_subject_count": 2,
+        "reconstruction_reproducible": true,
+        "replay_reproducible": true,
+        "source_separation": true,
+        "structurally_healthy": true
+      },
+      "immediate": {
+        "capture_returned": true,
+        "captured_observations_grouped_on_return": true,
+        "commit_indices": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "record_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000003",
+          "rec-000004"
+        ],
+        "same_acquisition_episode": true,
+        "same_invocation": true
+      },
+      "intervention": {
+        "driver_action": "rewrite state.txt from alpha to beta without commit",
+        "filesystem_returned_before_driver": true,
+        "intercepted": true,
+        "post_action_head": "9688d0a554f83dc409086d8a2ca9d3a5b3debf74",
+        "post_action_status": [
+          "M state.txt"
+        ]
+      },
+      "name": "S1",
+      "recovery": {
+        "captured_observations_available": false,
+        "commit_indices": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "durable_grouping_fields": [],
+        "observation_count": 2,
+        "read_only": true,
+        "record_count": 4,
+        "record_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000003",
+          "rec-000004"
+        ],
+        "result": {
+          "authoritative": false,
+          "capture_mode": "explicit_foreground_invocation",
+          "captured_observations": null,
+          "derived": {
+            "admission_relation_count": 2,
+            "companion": [
+              {
+                "non_admitted_decision_states": [],
+                "subject_record_id": "rec-000001"
+              },
+              {
+                "non_admitted_decision_states": [],
+                "subject_record_id": "rec-000002"
+              }
+            ],
+            "companion_reproducible": true,
+            "observation_count": 2,
+            "orphan_admission_count": 0,
+            "projection": [
+              {
+                "admission_record_ids": [
+                  "rec-000003"
+                ],
+                "observation_record_id": "rec-000001",
+                "reconstruction_type": "admission_relationships_v0",
+                "source": "repository_filesystem_snapshot",
+                "subject_record_id": "rec-000001"
+              },
+              {
+                "admission_record_ids": [
+                  "rec-000004"
+                ],
+                "observation_record_id": "rec-000002",
+                "reconstruction_type": "admission_relationships_v0",
+                "source": "repository_git_state",
+                "subject_record_id": "rec-000002"
+              }
+            ],
+            "projection_reproducible": true,
+            "reconstruction_reproducible": true,
+            "source_provenance_separate": true
+          },
+          "ledger": {
+            "canonical_replay_reproducible": true,
+            "commit_indices": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "continuity_failures": [],
+            "continuity_ok": true,
+            "integrity_failures": [],
+            "integrity_ok": true,
+            "record_count": 4
+          },
+          "new_records": [],
+          "round_number": null
+        },
+        "same_invocation_from_history": "UNRESOLVED"
+      },
+      "temporal_evidence": {
+        "filesystem_finished_before_git_observed": true,
+        "full_non_overlap_established": false,
+        "recorded_order": "filesystem interval then Git marker",
+        "simultaneity_established": false
+      }
+    },
+    "S2": {
+      "DME_knowledge": {
+        "global_snapshot_claim": false,
+        "individual_source_observations_valid": true,
+        "mutation_between_acquisitions": "UNRESOLVED",
+        "same_world_configuration": "UNRESOLVED"
+      },
+      "filesystem": {
+        "capture_errors": [],
+        "configuration": "alpha",
+        "observation_finished_at": "2026-09-08T02:56:07.580175Z",
+        "observation_started_at": "2026-09-08T02:56:07.574866Z",
+        "snapshot_id": "repo-snapshot-v0:2d49fca0629c8aa718de97ee5a3b7a7d48a5850f880447b3a75af81209dc4f01",
+        "state_txt_sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+      },
+      "git": {
+        "branch": "main",
+        "capture_errors": [],
+        "configuration": "clean committed beta",
+        "head_sha": "a27078db586c96bf5c2d76ce007eb3299254c47a",
+        "observed_at": "2026-09-08T02:56:07.731697Z",
+        "status_porcelain": []
+      },
+      "ground_truth": {
+        "basis": "external deterministic experiment control",
+        "mutation_between_acquisitions": true,
+        "shared_world_configuration": false,
+        "transferred_into_DME_history": false
+      },
+      "health": {
+        "admission_relation_count": 2,
+        "companion_count": 2,
+        "companion_reproducible": true,
+        "companion_states": [
+          [],
+          []
+        ],
+        "continuity_ok": true,
+        "integrity_ok": true,
+        "observation_count": 2,
+        "projection_reproducible": true,
+        "projection_subject_count": 2,
+        "reconstruction_reproducible": true,
+        "replay_reproducible": true,
+        "source_separation": true,
+        "structurally_healthy": true
+      },
+      "immediate": {
+        "capture_returned": true,
+        "captured_observations_grouped_on_return": true,
+        "commit_indices": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "record_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000003",
+          "rec-000004"
+        ],
+        "same_acquisition_episode": true,
+        "same_invocation": true
+      },
+      "intervention": {
+        "driver_action": "rewrite state.txt from alpha to beta, add, and commit",
+        "filesystem_returned_before_driver": true,
+        "intercepted": true,
+        "post_action_head": "a27078db586c96bf5c2d76ce007eb3299254c47a",
+        "post_action_status": []
+      },
+      "name": "S2",
+      "recovery": {
+        "captured_observations_available": false,
+        "commit_indices": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "durable_grouping_fields": [],
+        "observation_count": 2,
+        "read_only": true,
+        "record_count": 4,
+        "record_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000003",
+          "rec-000004"
+        ],
+        "result": {
+          "authoritative": false,
+          "capture_mode": "explicit_foreground_invocation",
+          "captured_observations": null,
+          "derived": {
+            "admission_relation_count": 2,
+            "companion": [
+              {
+                "non_admitted_decision_states": [],
+                "subject_record_id": "rec-000001"
+              },
+              {
+                "non_admitted_decision_states": [],
+                "subject_record_id": "rec-000002"
+              }
+            ],
+            "companion_reproducible": true,
+            "observation_count": 2,
+            "orphan_admission_count": 0,
+            "projection": [
+              {
+                "admission_record_ids": [
+                  "rec-000003"
+                ],
+                "observation_record_id": "rec-000001",
+                "reconstruction_type": "admission_relationships_v0",
+                "source": "repository_filesystem_snapshot",
+                "subject_record_id": "rec-000001"
+              },
+              {
+                "admission_record_ids": [
+                  "rec-000004"
+                ],
+                "observation_record_id": "rec-000002",
+                "reconstruction_type": "admission_relationships_v0",
+                "source": "repository_git_state",
+                "subject_record_id": "rec-000002"
+              }
+            ],
+            "projection_reproducible": true,
+            "reconstruction_reproducible": true,
+            "source_provenance_separate": true
+          },
+          "ledger": {
+            "canonical_replay_reproducible": true,
+            "commit_indices": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "continuity_failures": [],
+            "continuity_ok": true,
+            "integrity_failures": [],
+            "integrity_ok": true,
+            "record_count": 4
+          },
+          "new_records": [],
+          "round_number": null
+        },
+        "same_invocation_from_history": "UNRESOLVED"
+      },
+      "temporal_evidence": {
+        "filesystem_finished_before_git_observed": true,
+        "full_non_overlap_established": false,
+        "recorded_order": "filesystem interval then Git marker",
+        "simultaneity_established": false
+      }
+    }
+  },
+  "starting_lineage": {
+    "branch": "main",
+    "head": "249cde3783a528018269c7b7f08a7a9dfe245c9b",
+    "message": "Pre-goblin capstone Super Tetaroni",
+    "observed_head_at_run": "249cde3783a528018269c7b7f08a7a9dfe245c9b",
+    "worktree": []
+  },
+  "strongest_failure": "one successful capture can return a structurally healthy pair that, by experiment control, never described one shared repository configuration",
+  "strongest_invariant": "individually valid source-relative observations remain durable, separate, reconstructible, and projectable despite intra-capture world change",
+  "strongest_unresolved_horizon": "authoritative history lacks durable invocation grouping and cannot decide whether independently timed source observations share a world configuration",
+  "temporal_audit": {
+    "clock_identity_or_precision_recorded": false,
+    "complete_interval_non_overlap_reason": "Git records one observed_at marker, not a start/finish interval",
+    "complete_interval_non_overlap_recoverable": false,
+    "fields_persist_in_observation_payload_and_provenance": true,
+    "filesystem_evidence": [
+      "observation_started_at",
+      "observation_finished_at"
+    ],
+    "git_evidence": [
+      "observed_at"
+    ],
+    "recorded_timestamp_order_recoverable": true,
+    "shared_world_configuration_recoverable": false,
+    "simultaneity_recoverable": false
+  },
+  "timing_intervention": {
+    "arbitrary_sleep": false,
+    "deterministic_boundary": "after filesystem return and before Git call",
+    "mechanism": "experiment-local replacement of the coordinator module's make_repo_snapshot reference; the wrapper calls the real observer to completion, then an external-driver callback mutates the fixture before production control reaches observe_git_state",
+    "mutation_owned_by_production_coordinator": false,
+    "production_capture_code_modified": false,
+    "race_based": false
+  },
+  "together_audit": {
+    "adjacent_commit_indices_license_simultaneity": false,
+    "same_acquisition_episode_process_local": true,
+    "same_durable_historical_group": "UNRESOLVED",
+    "same_invocation_licenses_same_world_configuration": false,
+    "same_invocation_process_local": true,
+    "same_world_configuration_from_DME_evidence": "UNRESOLVED",
+    "successful_reconstruction_licenses_global_snapshot": false
+  }
+}

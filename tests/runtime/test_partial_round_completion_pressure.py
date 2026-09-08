@@ -249,7 +249,7 @@ class PartialRoundCompletionPressureTest(unittest.TestCase):
     def test_D0043_is_registered_from_executed_evidence(self) -> None:
         with open("docs/distinctions/registry.jsonl", encoding="utf-8") as registry:
             entries = [json.loads(line) for line in registry if line.strip()]
-        distinction = entries[-1]
+        distinction = next(entry for entry in entries if entry["id"] == "D-0043")
         self.assertEqual(distinction["id"], "D-0043")
         self.assertEqual(distinction["left"], "caller_invocation_outcome")
         self.assertEqual(distinction["right"], "durable_history_state")
