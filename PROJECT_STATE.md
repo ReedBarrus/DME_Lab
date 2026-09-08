@@ -68,6 +68,8 @@ Foreground persistent coordinator pressure completed in `docs/decisions/foregrou
 
 Partial-round and ambiguous-completion pressure completed in `docs/decisions/partial_round_completion_pressure_v0.md`.
 
+Foreground repository horizontal pressure capstone completed in `docs/decisions/foreground_repository_horizontal_capstone_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -136,8 +138,13 @@ navigation
 
 ## Next Smallest Question
 
-Does a concrete caller require retry policy or request identity to distinguish
-retry after unknown acknowledgement from intentional repeated observation?
+Foreground repository observation horizontal semantic pressure is locally
+saturated and frozen for dwell. Reopen it only for a concrete consumer demand,
+an independent contradiction, or a qualitatively new observation basis.
+
+No next implementation is selected. The smallest eventual question is whether
+the earned distinctions recur outside repository observation; do not design
+that observer here.
 
 ## Contract Surface Status
 
@@ -346,5 +353,10 @@ retry after unknown acknowledgement from intentional repeated observation?
 - D-0046 records structural_admissibility != source_capture_success
 - D-0012, D-0016, and D-0042 through D-0045 remain supported
 - the next pressure requires a concrete consumer before source-quality companion data, trust policy, retry, confidence, or source ranking
+- horizontal capstone composition found no conflict among Charts 11-18 and invalidated no prior finding
+- D-0012, D-0016, D-0023, D-0025 through D-0027, and D-0041 through D-0046 remain independently necessary on their scoped evidence
+- the current pressure map licenses source-relative historical recovery and navigation, not caller acknowledgement, durable invocation grouping, shared-world capture, external freshness, complete interval history, source success, or admission resolution
+- remaining foreground questions require a concrete consumer, an independent contradiction, a qualitatively new observation basis, or a separate durability/concurrency regime
+- no Chart 19, D-0047, production change, atlas machinery, or next implementation was earned; the foreground semantic surface is locally saturated and frozen for dwell
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure
