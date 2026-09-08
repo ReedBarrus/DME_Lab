@@ -1,0 +1,747 @@
+"""Bounded physical acoustic entry pressure over the generic DME v0 pipeline."""
+
+from __future__ import annotations
+
+import ctypes
+import hashlib
+import json
+import math
+import struct
+import sys
+import time
+from copy import deepcopy
+from ctypes import wintypes
+from datetime import datetime, timezone
+from pathlib import Path
+from tempfile import TemporaryDirectory
+from typing import Any
+
+from src.ingest import COMPARATOR_V0, append_admission, append_observation
+from src.ledger import JsonlLedger, verify_continuity
+from src.reconstruction import (
+    derive_admitted_projection,
+    derive_non_admitted_decision_states,
+    reconstruct_admission_relationships,
+)
+
+
+EXPERIMENT = "acoustic_basis_entry_pressure_v0"
+SOURCE = "bounded_physical_acoustic_observation"
+OBSERVER = "winmm_acoustic_basis_pressure"
+OBSERVER_VERSION = "acoustic_basis_pressure_v0"
+SAMPLE_RATE = 48_000
+CHANNEL_COUNT = 2
+SAMPLE_WIDTH_BYTES = 2
+CAPTURE_SECONDS = 0.75
+PRE_ROLL_SECONDS = 0.20
+EXCITATION_SECONDS = 0.18
+POST_RESPONSE_SECONDS = 0.20
+AMPLITUDE_FULL_SCALE = 0.02
+CHIRP_START_HZ = 700.0
+CHIRP_END_HZ = 1_700.0
+INPUT_DEVICE_ID = 0
+OUTPUT_DEVICE_ID = 0
+
+
+def utc_now() -> str:
+    return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+
+
+def canonical_sha256(value: Any) -> str:
+    encoded = json.dumps(
+        value,
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+        allow_nan=False,
+    ).encode("utf-8")
+    return hashlib.sha256(encoded).hexdigest()
+
+
+def build_excitation(
+    requested_channel: str,
+    *,
+    sample_rate: int = SAMPLE_RATE,
+    duration_seconds: float = EXCITATION_SECONDS,
+    amplitude_full_scale: float = AMPLITUDE_FULL_SCALE,
+    start_hz: float = CHIRP_START_HZ,
+    end_hz: float = CHIRP_END_HZ,
+) -> tuple[bytes, bytes, dict[str, Any]]:
+    """Build a conservative stereo PCM chirp with energy in one requested lane."""
+    if requested_channel not in {"left", "right"}:
+        raise ValueError("requested_channel must be 'left' or 'right'")
+    if not 0.0 < amplitude_full_scale <= 0.05:
+        raise ValueError("pressure excitation amplitude must be in (0, 0.05]")
+
+    frame_count = round(sample_rate * duration_seconds)
+    mono_samples: list[int] = []
+    stereo = bytearray()
+    sweep_rate = (end_hz - start_hz) / duration_seconds
+    for index in range(frame_count):
+        t = index / sample_rate
+        window = math.sin(math.pi * index / max(frame_count - 1, 1)) ** 2
+        phase = 2.0 * math.pi * (start_hz * t + 0.5 * sweep_rate * t * t)
+        sample = round(32767 * amplitude_full_scale * window * math.sin(phase))
+        mono_samples.append(sample)
+        left, right = (sample, 0) if requested_channel == "left" else (0, sample)
+        stereo.extend(struct.pack("<hh", left, right))
+
+    mono = b"".join(struct.pack("<h", sample) for sample in mono_samples)
+    parameters = {
+        "kind": "linear_chirp_hann_windowed",
+        "sample_rate_hz": sample_rate,
+        "duration_seconds": duration_seconds,
+        "frame_count": frame_count,
+        "channel_count": CHANNEL_COUNT,
+        "sample_format": "signed_16_bit_little_endian_pcm",
+        "requested_output_channel": requested_channel,
+        "amplitude_full_scale": amplitude_full_scale,
+        "nominal_level_dbfs": round(20.0 * math.log10(amplitude_full_scale), 6),
+        "start_frequency_hz": start_hz,
+        "end_frequency_hz": end_hz,
+        "mono_waveform_sha256": hashlib.sha256(mono).hexdigest(),
+        "stereo_command_sha256": hashlib.sha256(stereo).hexdigest(),
+    }
+    return bytes(stereo), mono, parameters
+
+
+def derive_capture_measurements(
+    raw_pcm: bytes,
+    *,
+    sample_rate: int,
+    channel_count: int,
+    nominal_response_offset_seconds: float,
+    excitation_seconds: float = EXCITATION_SECONDS,
+    post_response_seconds: float = POST_RESPONSE_SECONDS,
+) -> dict[str, Any]:
+    """Derive deterministic, non-semantic measurements from an ephemeral PCM buffer."""
+    if channel_count != 2:
+        raise ValueError("the bounded pressure expects two captured PCM channels")
+    complete_bytes = len(raw_pcm) - (len(raw_pcm) % (channel_count * 2))
+    frames = list(struct.iter_unpack("<hh", raw_pcm[:complete_bytes]))
+    response_start = max(0, round(nominal_response_offset_seconds * sample_rate))
+    response_end = min(
+        len(frames),
+        response_start
+        + round((excitation_seconds + post_response_seconds) * sample_rate),
+    )
+    baseline_end = min(len(frames), max(1, round(PRE_ROLL_SECONDS * 0.8 * sample_rate)))
+
+    def metrics(values: list[int]) -> dict[str, float | int]:
+        if not values:
+            return {"frame_count": 0, "rms_pcm": 0.0, "peak_abs_pcm": 0}
+        square_mean = sum(value * value for value in values) / len(values)
+        return {
+            "frame_count": len(values),
+            "rms_pcm": round(math.sqrt(square_mean), 6),
+            "peak_abs_pcm": max(abs(value) for value in values),
+        }
+
+    channels = []
+    for channel_index, channel_name in enumerate(("microphone_channel_0", "microphone_channel_1")):
+        whole = [frame[channel_index] for frame in frames]
+        baseline = whole[:baseline_end]
+        response = whole[response_start:response_end]
+        baseline_metrics = metrics(baseline)
+        response_metrics = metrics(response)
+        baseline_rms = float(baseline_metrics["rms_pcm"])
+        response_rms = float(response_metrics["rms_pcm"])
+        ratio = response_rms / baseline_rms if baseline_rms > 0 else None
+        delta_db = 20.0 * math.log10(ratio) if ratio is not None and ratio > 0 else None
+        channels.append(
+            {
+                "channel": channel_name,
+                "whole_capture": metrics(whole),
+                "baseline_window": baseline_metrics,
+                "nominal_response_window": response_metrics,
+                "response_to_baseline_ratio": round(ratio, 9) if ratio is not None else None,
+                "response_minus_baseline_db": round(delta_db, 6) if delta_db is not None else None,
+            }
+        )
+
+    return {
+        "measurement_version": "pcm_window_energy_v0",
+        "frame_count": len(frames),
+        "channel_count": channel_count,
+        "sample_rate_hz": sample_rate,
+        "nominal_response_window": {
+            "start_frame": response_start,
+            "end_frame_exclusive": response_end,
+            "basis": "host command-submission offset plus fixed response window; not hardware synchronization",
+        },
+        "baseline_window": {
+            "start_frame": 0,
+            "end_frame_exclusive": baseline_end,
+        },
+        "channels": channels,
+    }
+
+
+def make_acoustic_ingest_envelope(observation: dict[str, Any]) -> dict[str, Any]:
+    """Wrap physical measurement metadata without manufacturing an event time."""
+    identity = observation["observation_id"]
+    envelope_body = {
+        "source": SOURCE,
+        "source_sequence": None,
+        "event_time": None,
+        "arrival_time": observation["capture"]["host_capture_finished_at_utc"],
+        "capture_version": OBSERVER_VERSION,
+        "provenance": {
+            "trial_id": observation["trial_id"],
+            "observer": observation["observer"],
+            "observer_version": observation["observer_version"],
+            "backend": observation["capture"]["backend"],
+            "input_device": deepcopy(observation["capture"]["input_device"]),
+            "output_device": deepcopy(observation["command"].get("output_device")),
+            "capture_errors": deepcopy(observation["capture_errors"]),
+        },
+        "signal": {
+            "identity": identity,
+            "time": None,
+            "type": "bounded_microphone_capture_measurements",
+            "payload": deepcopy(observation),
+        },
+        "missingness": {
+            "event_time": "unavailable: backend provides no warranted physical-event timestamp",
+            "physical_speaker_realization": "unobserved",
+            "complete_acoustic_field": "unobserved",
+            "inferred_source_state": "not inferred",
+        },
+    }
+    return {
+        "envelope_identity": f"acoustic-ingest-v0:{canonical_sha256(envelope_body)}",
+        **envelope_body,
+    }
+
+
+def carry_through_pipeline(
+    observations: list[dict[str, Any]], ledger_path: Path | str
+) -> dict[str, Any]:
+    """Carry physical metadata through a temporary instance of the current pipeline."""
+    ledger = JsonlLedger(ledger_path)
+    observation_records = []
+    admission_records = []
+    for observation in observations:
+        envelope = make_acoustic_ingest_envelope(observation)
+        observation_record = append_observation(
+            ledger,
+            envelope,
+            source=SOURCE,
+            provenance={
+                "pressure": EXPERIMENT,
+                "trial_id": observation["trial_id"],
+                "raw_capture_persisted": False,
+            },
+        )
+        admission_record = append_admission(
+            ledger, observation_record, comparator_version=COMPARATOR_V0
+        )
+        observation_records.append(observation_record)
+        admission_records.append(admission_record)
+
+    replay_a = ledger.replay()
+    replay_b = JsonlLedger(ledger_path).replay()
+    integrity = ledger.verify()
+    continuity = verify_continuity(replay_a, require_start_at_one=True)
+    reconstruction_a = reconstruct_admission_relationships(replay_a)
+    reconstruction_b = reconstruct_admission_relationships(deepcopy(replay_b))
+    projection_a = derive_admitted_projection(reconstruction_a)
+    projection_b = derive_admitted_projection(reconstruction_b)
+    companion_a = derive_non_admitted_decision_states(reconstruction_a, projection_a)
+    companion_b = derive_non_admitted_decision_states(reconstruction_b, projection_b)
+
+    recovered = [item["observation"]["signal"]["payload"] for item in reconstruction_a["observations"]]
+    return {
+        "temporary_ledger": True,
+        "record_count": len(replay_a),
+        "observation_record_count": len(observation_records),
+        "admission_record_count": len(admission_records),
+        "decisions": [record["envelope"]["decision"] for record in admission_records],
+        "decision_bases": [record["envelope"]["decision_basis"] for record in admission_records],
+        "integrity_ok": integrity.ok,
+        "integrity_failures": list(integrity.failures),
+        "continuity_ok": continuity.ok,
+        "continuity_failures": list(continuity.failures),
+        "replay_reproducible": replay_a == replay_b,
+        "reconstruction_reproducible": reconstruction_a == reconstruction_b,
+        "projection_reproducible": projection_a == projection_b,
+        "companion_reproducible": companion_a == companion_b,
+        "projection_count": len(projection_a),
+        "projection": projection_a,
+        "companion": companion_a,
+        "recovered_trial_ids": [item["trial_id"] for item in recovered],
+        "recovered_raw_capture_sha256": [item["raw_capture"]["sha256"] for item in recovered],
+        "recovered_measurement_versions": [item["measurements"]["measurement_version"] for item in recovered],
+        "information_visibility": {
+            "command_direct_in_raw_observation": True,
+            "measurements_direct_in_raw_observation": True,
+            "raw_hash_direct_in_raw_observation": True,
+            "command_direct_in_reconstruction_nested_observation": True,
+            "measurements_direct_in_reconstruction_nested_observation": True,
+            "raw_hash_direct_in_reconstruction_nested_observation": True,
+            "command_direct_in_projection": False,
+            "measurements_direct_in_projection": False,
+            "raw_hash_direct_in_projection": False,
+            "projection_retains_subject_navigation": all(
+                bool(row["subject_record_id"]) for row in projection_a
+            ),
+            "raw_pcm_persisted": False,
+        },
+    }
+
+
+def compare_trial_measurements(observations: list[dict[str, Any]]) -> dict[str, Any]:
+    by_specimen = {item["specimen"]: item for item in observations}
+
+    def response_vector(specimen: str) -> list[float]:
+        return [
+            float(channel["nominal_response_window"]["rms_pcm"])
+            for channel in by_specimen[specimen]["measurements"]["channels"]
+        ]
+
+    c0 = response_vector("C0")
+    s1 = response_vector("S1")
+    s2 = response_vector("S2")
+
+    def delta(left: list[float], right: list[float]) -> list[float]:
+        return [round(a - b, 6) for a, b in zip(left, right)]
+
+    return {
+        "measurement_basis": "two-channel nominal-response-window RMS in captured PCM units",
+        "C0_response_rms_pcm": c0,
+        "S1_response_rms_pcm": s1,
+        "S2_response_rms_pcm": s2,
+        "S1_minus_C0_rms_pcm": delta(s1, c0),
+        "S2_minus_C0_rms_pcm": delta(s2, c0),
+        "S1_minus_S2_rms_pcm": delta(s1, s2),
+        "S1_S2_measurement_vectors_exactly_equal": s1 == s2,
+        "discrimination_threshold_declared": False,
+        "replicate_trials_per_command": 1,
+        "licensed_claim": "measured microphone-response values under the three commanded conditions",
+        "not_licensed": [
+            "exact emitted speaker waveform",
+            "speaker channel health",
+            "complete room acoustic field",
+            "command-response causality",
+            "repeatability or command-conditioned distribution",
+        ],
+    }
+
+
+def run_physical_pressure() -> dict[str, Any]:
+    """Execute the bounded C0/S1/S2 physical trial set using Windows WinMM."""
+    if sys.platform != "win32":
+        raise RuntimeError("physical pressure requires the inspected Windows WinMM backend")
+    backend = _WinMMBackend()
+    input_devices = backend.input_devices()
+    output_devices = backend.output_devices()
+    if not input_devices or not output_devices:
+        raise RuntimeError("physical pressure not executed because acquisition capability is absent")
+
+    input_device = input_devices[INPUT_DEVICE_ID]
+    output_device = output_devices[OUTPUT_DEVICE_ID]
+    commands: list[tuple[str, str | None, bytes | None, dict[str, Any] | None]] = [
+        ("C0", None, None, None),
+    ]
+    for specimen, channel in (("S1", "left"), ("S2", "right")):
+        stereo, _mono, parameters = build_excitation(channel)
+        commands.append((specimen, channel, stereo, parameters))
+
+    observations = []
+    for ordinal, (specimen, requested_channel, command_pcm, parameters) in enumerate(commands, start=1):
+        capture = backend.capture_trial(
+            command_pcm=command_pcm,
+            input_device_id=INPUT_DEVICE_ID,
+            output_device_id=OUTPUT_DEVICE_ID,
+            sample_rate=SAMPLE_RATE,
+            capture_seconds=CAPTURE_SECONDS,
+            pre_roll_seconds=PRE_ROLL_SECONDS,
+        )
+        raw_pcm = capture.pop("raw_pcm")
+        measurements = derive_capture_measurements(
+            raw_pcm,
+            sample_rate=SAMPLE_RATE,
+            channel_count=CHANNEL_COUNT,
+            nominal_response_offset_seconds=(
+                capture["command_submission_offset_seconds"]
+                if capture["command_submission_offset_seconds"] is not None
+                else PRE_ROLL_SECONDS
+            ),
+        )
+        raw_hash = hashlib.sha256(raw_pcm).hexdigest()
+        observation_body = {
+            "experiment": EXPERIMENT,
+            "specimen": specimen,
+            "trial_ordinal": ordinal,
+            "observer": OBSERVER,
+            "observer_version": OBSERVER_VERSION,
+            "command": {
+                "requested_playback": command_pcm is not None,
+                "requested_output_channel": requested_channel,
+                "waveform": deepcopy(parameters),
+                "output_device": deepcopy(output_device) if command_pcm is not None else None,
+                "host_command_submission_at_utc": capture["host_command_submission_at_utc"],
+                "command_submission_offset_seconds": capture["command_submission_offset_seconds"],
+            },
+            "capture": {
+                "backend": "Windows WinMM waveIn/waveOut",
+                "input_device": deepcopy(input_device),
+                "sample_rate_hz": SAMPLE_RATE,
+                "channel_count": CHANNEL_COUNT,
+                "sample_format": "signed_16_bit_little_endian_pcm",
+                "frame_count": measurements["frame_count"],
+                "host_capture_started_at_utc": capture["host_capture_started_at_utc"],
+                "host_capture_finished_at_utc": capture["host_capture_finished_at_utc"],
+                "host_capture_duration_seconds": capture["host_capture_duration_seconds"],
+                "timing_basis": "host API-call boundaries and monotonic elapsed time; no hardware clock or simultaneity guarantee",
+            },
+            "measurements": measurements,
+            "raw_capture": {
+                "sha256": raw_hash,
+                "byte_count": len(raw_pcm),
+                "persisted": False,
+                "disposition": "ephemeral buffer discarded after deterministic measurements and hash",
+            },
+            "capture_errors": deepcopy(capture["capture_errors"]),
+            "epistemic_limits": {
+                "physical_speaker_realization_observed": False,
+                "complete_acoustic_field_observed": False,
+                "microphone_transduction_observed_directly": False,
+                "sampled_microphone_waveform_observed": True,
+                "speaker_channel_health_inferred": False,
+                "playback_capture_simultaneity_claimed": False,
+            },
+        }
+        observation = {
+            "observation_id": f"acoustic-observation-v0:{canonical_sha256(observation_body)}",
+            "trial_id": f"acoustic-trial-v0:{specimen}:{canonical_sha256(observation_body)[:16]}",
+            **observation_body,
+        }
+        observations.append(observation)
+        time.sleep(0.15)
+
+    with TemporaryDirectory() as tmpdir:
+        pipeline = carry_through_pipeline(observations, Path(tmpdir) / "acoustic_pressure.jsonl")
+
+    return {
+        "experiment": EXPERIMENT,
+        "physical_pressure_executed": True,
+        "operator_provided_context": {
+            "report": "predominantly only the left output is physically realized; the other channel may intermittently return when the jack is moved",
+            "epistemic_status": "unverified operator-provided provenance",
+            "encoded_as_machine_verified_hardware_fact": False,
+            "jack_moved_during_pressure": False,
+            "device_roles": {
+                "Realtek": "room stereo playback",
+                "XIBERIA": "headphones and headset microphone capture",
+            },
+            "volume_warning": "room stereo can emit substantial sound; begin future range finding below established levels and increase only gradually",
+            "post_run_audibility_report": "operator did not hear playback",
+            "audibility_report_machine_verified": False,
+        },
+        "backend_capability": {
+            "backend": "Windows WinMM",
+            "input_devices": input_devices,
+            "output_devices": output_devices,
+            "selected_input_device_id": INPUT_DEVICE_ID,
+            "selected_output_device_id": OUTPUT_DEVICE_ID,
+            "third_party_dependency_added": False,
+        },
+        "safety_boundary": {
+            "open_loop": True,
+            "fixed_positions_requested": True,
+            "feedback": False,
+            "sustained_tone": False,
+            "excitation_seconds": EXCITATION_SECONDS,
+            "amplitude_full_scale": AMPLITUDE_FULL_SCALE,
+            "nominal_level_dbfs": round(20.0 * math.log10(AMPLITUDE_FULL_SCALE), 6),
+            "system_output_gain_observed": False,
+            "further_emission_in_this_pass": False,
+        },
+        "trials": observations,
+        "measurement_comparison": compare_trial_measurements(observations),
+        "pipeline": pipeline,
+        "raw_recordings_committed": False,
+        "canonical_live_history_used": False,
+    }
+
+
+class WAVEFORMATEX(ctypes.Structure):
+    _fields_ = [
+        ("wFormatTag", wintypes.WORD),
+        ("nChannels", wintypes.WORD),
+        ("nSamplesPerSec", wintypes.DWORD),
+        ("nAvgBytesPerSec", wintypes.DWORD),
+        ("nBlockAlign", wintypes.WORD),
+        ("wBitsPerSample", wintypes.WORD),
+        ("cbSize", wintypes.WORD),
+    ]
+
+
+class WAVEHDR(ctypes.Structure):
+    _fields_ = [
+        ("lpData", ctypes.c_void_p),
+        ("dwBufferLength", wintypes.DWORD),
+        ("dwBytesRecorded", wintypes.DWORD),
+        ("dwUser", ctypes.c_size_t),
+        ("dwFlags", wintypes.DWORD),
+        ("dwLoops", wintypes.DWORD),
+        ("lpNext", ctypes.c_void_p),
+        ("reserved", ctypes.c_size_t),
+    ]
+
+
+class WAVEINCAPSW(ctypes.Structure):
+    _fields_ = [
+        ("wMid", wintypes.WORD),
+        ("wPid", wintypes.WORD),
+        ("vDriverVersion", wintypes.DWORD),
+        ("szPname", wintypes.WCHAR * 32),
+        ("dwFormats", wintypes.DWORD),
+        ("wChannels", wintypes.WORD),
+        ("wReserved1", wintypes.WORD),
+    ]
+
+
+class WAVEOUTCAPSW(ctypes.Structure):
+    _fields_ = [
+        ("wMid", wintypes.WORD),
+        ("wPid", wintypes.WORD),
+        ("vDriverVersion", wintypes.DWORD),
+        ("szPname", wintypes.WCHAR * 32),
+        ("dwFormats", wintypes.DWORD),
+        ("wChannels", wintypes.WORD),
+        ("wReserved1", wintypes.WORD),
+        ("dwSupport", wintypes.DWORD),
+    ]
+
+
+class _WinMMBackend:
+    WAVE_FORMAT_PCM = 1
+    CALLBACK_NULL = 0
+    WHDR_DONE = 0x00000001
+
+    def __init__(self) -> None:
+        self.winmm = ctypes.WinDLL("winmm")
+
+    def input_devices(self) -> list[dict[str, Any]]:
+        return self._devices("input")
+
+    def output_devices(self) -> list[dict[str, Any]]:
+        return self._devices("output")
+
+    def _devices(self, kind: str) -> list[dict[str, Any]]:
+        if kind == "input":
+            count = self.winmm.waveInGetNumDevs()
+            function = self.winmm.waveInGetDevCapsW
+            caps_type = WAVEINCAPSW
+        else:
+            count = self.winmm.waveOutGetNumDevs()
+            function = self.winmm.waveOutGetDevCapsW
+            caps_type = WAVEOUTCAPSW
+        devices = []
+        for device_id in range(count):
+            caps = caps_type()
+            self._check(function(device_id, ctypes.byref(caps), ctypes.sizeof(caps)), f"{kind} device caps")
+            devices.append(
+                {
+                    "device_id": device_id,
+                    "name": caps.szPname,
+                    "reported_max_channels": caps.wChannels,
+                    "reported_format_mask": f"0x{caps.dwFormats:08x}",
+                }
+            )
+        return devices
+
+    @staticmethod
+    def _format(sample_rate: int) -> WAVEFORMATEX:
+        block_align = CHANNEL_COUNT * SAMPLE_WIDTH_BYTES
+        return WAVEFORMATEX(
+            _WinMMBackend.WAVE_FORMAT_PCM,
+            CHANNEL_COUNT,
+            sample_rate,
+            sample_rate * block_align,
+            block_align,
+            SAMPLE_WIDTH_BYTES * 8,
+            0,
+        )
+
+    def capture_trial(
+        self,
+        *,
+        command_pcm: bytes | None,
+        input_device_id: int,
+        output_device_id: int,
+        sample_rate: int,
+        capture_seconds: float,
+        pre_roll_seconds: float,
+    ) -> dict[str, Any]:
+        fmt = self._format(sample_rate)
+        frame_count = round(sample_rate * capture_seconds)
+        capture_buffer = ctypes.create_string_buffer(frame_count * fmt.nBlockAlign)
+        capture_header = WAVEHDR(
+            ctypes.cast(capture_buffer, ctypes.c_void_p),
+            len(capture_buffer),
+            0,
+            0,
+            0,
+            0,
+            None,
+            0,
+        )
+        input_handle = ctypes.c_void_p()
+        errors: list[dict[str, Any]] = []
+        input_prepared = False
+        host_command_submission_at_utc = None
+        command_submission_offset_seconds = None
+        started_at = None
+        finished_at = None
+        start_perf = None
+        try:
+            self._check(
+                self.winmm.waveInOpen(
+                    ctypes.byref(input_handle),
+                    input_device_id,
+                    ctypes.byref(fmt),
+                    0,
+                    0,
+                    self.CALLBACK_NULL,
+                ),
+                "waveInOpen",
+            )
+            self._check(
+                self.winmm.waveInPrepareHeader(
+                    input_handle, ctypes.byref(capture_header), ctypes.sizeof(capture_header)
+                ),
+                "waveInPrepareHeader",
+            )
+            input_prepared = True
+            self._check(
+                self.winmm.waveInAddBuffer(
+                    input_handle, ctypes.byref(capture_header), ctypes.sizeof(capture_header)
+                ),
+                "waveInAddBuffer",
+            )
+            started_at = utc_now()
+            start_perf = time.perf_counter()
+            self._check(self.winmm.waveInStart(input_handle), "waveInStart")
+            self._wait_until(start_perf + pre_roll_seconds)
+            if command_pcm is not None:
+                host_command_submission_at_utc = utc_now()
+                command_submission_offset_seconds = time.perf_counter() - start_perf
+                self._play(command_pcm, output_device_id, fmt)
+            deadline = start_perf + max(capture_seconds + 2.0, 3.0)
+            while not capture_header.dwFlags & self.WHDR_DONE:
+                if time.perf_counter() > deadline:
+                    raise RuntimeError("waveIn capture timed out")
+                time.sleep(0.005)
+            finished_at = utc_now()
+        except Exception as exc:
+            errors.append({"stage": "winmm_capture_or_playback", "error": str(exc)})
+            raise
+        finally:
+            if input_handle.value:
+                self.winmm.waveInStop(input_handle)
+                self.winmm.waveInReset(input_handle)
+                if input_prepared:
+                    self.winmm.waveInUnprepareHeader(
+                        input_handle, ctypes.byref(capture_header), ctypes.sizeof(capture_header)
+                    )
+                self.winmm.waveInClose(input_handle)
+
+        duration = time.perf_counter() - start_perf if start_perf is not None else None
+        byte_count = int(capture_header.dwBytesRecorded)
+        return {
+            "raw_pcm": bytes(capture_buffer.raw[:byte_count]),
+            "host_capture_started_at_utc": started_at,
+            "host_capture_finished_at_utc": finished_at,
+            "host_capture_duration_seconds": round(duration, 6) if duration is not None else None,
+            "host_command_submission_at_utc": host_command_submission_at_utc,
+            "command_submission_offset_seconds": (
+                round(command_submission_offset_seconds, 9)
+                if command_submission_offset_seconds is not None
+                else None
+            ),
+            "capture_errors": errors,
+        }
+
+    def _play(self, pcm: bytes, output_device_id: int, fmt: WAVEFORMATEX) -> None:
+        output_buffer = ctypes.create_string_buffer(pcm)
+        output_header = WAVEHDR(
+            ctypes.cast(output_buffer, ctypes.c_void_p),
+            len(pcm),
+            0,
+            0,
+            0,
+            0,
+            None,
+            0,
+        )
+        output_handle = ctypes.c_void_p()
+        prepared = False
+        try:
+            self._check(
+                self.winmm.waveOutOpen(
+                    ctypes.byref(output_handle),
+                    output_device_id,
+                    ctypes.byref(fmt),
+                    0,
+                    0,
+                    self.CALLBACK_NULL,
+                ),
+                "waveOutOpen",
+            )
+            self._check(
+                self.winmm.waveOutPrepareHeader(
+                    output_handle, ctypes.byref(output_header), ctypes.sizeof(output_header)
+                ),
+                "waveOutPrepareHeader",
+            )
+            prepared = True
+            self._check(
+                self.winmm.waveOutWrite(
+                    output_handle, ctypes.byref(output_header), ctypes.sizeof(output_header)
+                ),
+                "waveOutWrite",
+            )
+            deadline = time.perf_counter() + EXCITATION_SECONDS + 2.0
+            while not output_header.dwFlags & self.WHDR_DONE:
+                if time.perf_counter() > deadline:
+                    raise RuntimeError("waveOut playback timed out")
+                time.sleep(0.002)
+        finally:
+            if output_handle.value:
+                self.winmm.waveOutReset(output_handle)
+                if prepared:
+                    self.winmm.waveOutUnprepareHeader(
+                        output_handle, ctypes.byref(output_header), ctypes.sizeof(output_header)
+                    )
+                self.winmm.waveOutClose(output_handle)
+
+    @staticmethod
+    def _wait_until(deadline: float) -> None:
+        while True:
+            remaining = deadline - time.perf_counter()
+            if remaining <= 0:
+                return
+            time.sleep(min(remaining, 0.005))
+
+    @staticmethod
+    def _check(result: int, operation: str) -> None:
+        if result != 0:
+            raise RuntimeError(f"{operation} failed with WinMM result {result}")
+
+
+def main() -> None:
+    report = run_physical_pressure()
+    output_path = Path("traces") / "acoustic_basis_entry_pressure_v0.json"
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(
+        json.dumps(report, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    print(json.dumps(report, indent=2, sort_keys=True, ensure_ascii=False))
+
+
+if __name__ == "__main__":
+    main()

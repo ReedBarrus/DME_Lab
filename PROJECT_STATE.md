@@ -70,6 +70,8 @@ Partial-round and ambiguous-completion pressure completed in `docs/decisions/par
 
 Foreground repository horizontal pressure capstone completed in `docs/decisions/foreground_repository_horizontal_capstone_v0.md`.
 
+Bounded acoustic basis-entry pressure completed in `docs/decisions/acoustic_basis_entry_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -142,9 +144,12 @@ Foreground repository observation horizontal semantic pressure is locally
 saturated and frozen for dwell. Reopen it only for a concrete consumer demand,
 an independent contradiction, or a qualitatively new observation basis.
 
-No next implementation is selected. The smallest eventual question is whether
-the earned distinctions recur outside repository observation; do not design
-that observer here.
+One bounded acoustic command/capture specimen supplied a qualitatively new
+observation basis without reopening repository pressure. No next implementation
+or domain is selected. The smallest unresolved physical question is whether
+replicated low-level trials under a declared discrimination criterion can
+establish command-conditioned local microphone-response differences without
+claiming speaker realization.
 
 ## Contract Surface Status
 
@@ -358,5 +363,13 @@ that observer here.
 - the current pressure map licenses source-relative historical recovery and navigation, not caller acknowledgement, durable invocation grouping, shared-world capture, external freshness, complete interval history, source success, or admission resolution
 - remaining foreground questions require a concrete consumer, an independent contradiction, a qualitatively new observation basis, or a separate durability/concurrency regime
 - no Chart 19, D-0047, production change, atlas machinery, or next implementation was earned; the foreground semantic surface is locally saturated and frozen for dwell
+- one open-loop WinMM acoustic pass captured C0 no-playback, S1 left-lane, and S2 right-lane trials through a Realtek room-stereo command and XIBERIA headset microphone, as operator-identified device roles
+- the 180 ms chirp used 0.02 full scale (about -33.98 dBFS); no gain increase, feedback, jack movement, or further emission occurred, and the operator reported hearing no playback
+- S1 microphone-window RMS remained near C0 while S2 measured about 2.029 PCM RMS above C0 on both captured channels; one trial per command and no threshold license only the numerical local-response comparison
+- physical speaker realization, emitted waveform, command-response causality, complete room field, and channel health remain unobserved or unresolved
+- raw PCM was ephemeral and discarded after SHA-256 plus deterministic measurement derivation; ingest, ledger, and reconstruction preserve the selected metadata basis, while projection retains only navigation coordinates
+- three acoustic observation envelopes passed COMPARATOR_V0 and survived a six-record temporary ledger, replay, reconstruction, projection, and companion without repository-specific payload assumptions or semantic inflation
+- the acoustic result forces no production change, chart, or registry distinction; D-0046 and D-0020 are only bounded post-hoc correspondences, not preselected templates or universal tomography
+- no next domain is selected; replicated conservative range-finding with an explicit discrimination criterion remains a possible question rather than an authorized next implementation
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure
