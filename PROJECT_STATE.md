@@ -78,6 +78,8 @@ Bounded acoustic relational-recurrence pressure completed in `docs/decisions/aco
 
 First repository-acoustic tomographic comparison pressure completed in `docs/decisions/repository_acoustic_tomographic_comparison_pressure_v0.md`.
 
+Cross-domain predictive-transformation selection pressure completed in `docs/decisions/cross_domain_predictive_transformation_selection_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -150,13 +152,14 @@ Foreground repository observation horizontal semantic pressure is locally
 saturated and frozen for dwell. Reopen it only for a concrete consumer demand,
 an independent contradiction, or a qualitatively new observation basis.
 
-The first repository-acoustic comparison found supported compatibility only at
-the deliberately shared generic-pipeline layer. Source-domain correspondences
-around occurrence, relational signature, and admission remain partial;
-coordinator recovery versus acoustic recurrence was refuted as a shared
-relation. Tomographic structure is not yet earned. Comparison is frozen until
-an independently justified transformation supplies a predeclared falsifiable
-expectation; none is currently selected or authorized.
+Prediction-first pressure found no admissible cross-domain prediction in the
+partial occurrence, relational-signature, or admission candidates after
+generic repetition and shared-pipeline behavior were subtracted. The required
+result is `no_cross_domain_prediction_yet_earned`. Comparison remains frozen;
+the smallest missing evidence is a pre-ingest acoustic source-domain coordinate
+whose equality/change is independently observable and demonstrably matches a
+repository coordinate at the same relational scale. No witness, transformation,
+or next experiment is selected or authorized.
 
 ## Contract Surface Status
 
@@ -401,5 +404,11 @@ expectation; none is currently selected or authorized.
 - the comparison preserves explicit repository and acoustic residue and returns `tomographic_structure_not_yet_earned`
 - no new distinction, chart, comparison runtime, source, audio actuation, or production machinery was added; the registry remains unchanged through D-0046
 - horizontal judgment is `freeze_comparison_and_seek_new_transformation`; no transformation or next experiment is presently justified or authorized
+- prediction-first pressure rejected Candidate A's distinct-occurrence expectation as generic identity handling rather than novel source-domain prediction
+- Candidate C supplied no declared preservation/change pattern for a qualitatively new acoustic transformation; another process restart would add recurrence evidence but not cross-domain predictive novelty
+- Candidate E's admission expectation is entailed by COMPARATOR_V0 and disappears under pipeline subtraction, while no independent acoustic actuation-success coordinate exists
+- spatial displacement, orientation, distance, new command, richer measurement, repository-native transformation, and another observation basis were compared but none had an evidence-derived falsifiable signature
+- the selected result is `no_cross_domain_prediction_yet_earned`; microphone movement and all other next transformations remain unjustified
+- no distinction, trace, script, test, chart, audio action, source, or production machinery was added; comparison is frozen pending matched pre-ingest source-domain evidence
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure
