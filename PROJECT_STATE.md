@@ -84,6 +84,8 @@ Acoustic source-coordinate witness selection pressure completed in `docs/decisio
 
 Astra consumer-pressure adjudication and independent reproduction completed in `docs/decisions/astra_consumer_pressure_adjudication_v0.md`.
 
+Public history-association adjudication completed in `docs/decisions/public_history_association_adjudication_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -175,6 +177,18 @@ payloads without append. The required standing is
 `astra_pressure_reproduced`. This is a bounded operational consequence of
 D-0046, not a production defect, general consumer-safety result, new
 distinction, or navigation experiment.
+
+Astra Pass 2's specimen-to-history association failure survives inspection of
+the complete materially relevant public surface. The detached four-record
+`current_result()` exposes useful ledger-local record references, but no ledger
+path, root, trace, history identity, or other public binding to its actual
+history. The contracts legitimately lead to the 14-record canonical live
+ledger, but that ledger is not associated with the specimen and assigns
+different roles to the same record-ID strings. The actual degraded Git evidence
+remains recoverable once its associated history is supplied. The required
+standing is `public_history_association_not_resolvable`; this is a bounded
+operational consequence of existing distinctions, not a new distinction,
+production defect, resolver requirement, or strict unfamiliar-consumer result.
 
 ## Contract Surface Status
 

@@ -1,0 +1,11 @@
+{
+  "consumer_packet.json": "239893ac032af58ad327940207ee19c82c9eecc58bb37e91b6d3c3b859ecbc92",
+  "consumer_request.txt": "aa7bcd7f36167d303863a346954a620b5de3cf4a6eea1bd5613420961024a586",
+  "broker_response.txt": "a69ba4ec22bee7fae67eee117224a81ac103d4179ec0dbd2cefa1378261fcc32",
+  "consumer_final.md": "3911ad29427fc42dbcb94fe2765f35487f3cba1c9f77bf7ee0f75633177a58ae",
+  "public_live_ingest_ledger_v0.jsonl": "2a2b4adb673df0a87855f075e464796d8ca49e2e0e59b74ea8be579ec815f03f",
+  "navigation_delivery_1.json": "4e818e20d0789763cccda9f8daf158686d8ec05422f4d6aeba739aa29c0e347d",
+  "withheld_binding.json": "0b151813d11ab8431c92c4dca97c0c2eef1d01c23af63afbef7d97291bfac22c",
+  "consumer-navigation-report.md": "3a3d10464f1a24934b3fa7e776f6f2c1152fe9e4ed6339f8eabbe449ef142a6f",
+  "consumer-navigation-trace.json": "0a0b62c7640f528c09cf4551b1e4dfa2bdfd296cd950f7e7bc477c7841810c4b"
+}
