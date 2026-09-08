@@ -333,6 +333,18 @@ retry after unknown acknowledgement from intentional repeated observation?
 - Chart 17 records control-known path, source endpoint relations, occurrence, reconstruction, projection, and intervening-transformation inference
 - D-0012 snapshot != complete_transformation_history was sufficient; no distinction was added or amended
 - D-0016 and D-0042 through D-0045 remain supported
-- the next smallest pressure is degraded Git-source admission without polling, recurrence operators, or autonomous observation
+- C0 and S1 compared a healthy clean Git repository with an ordinary filesystem directory lacking .git through the real promoted foreground path
+- S1 returned a normal Git observation with three capture_errors and null head_sha, branch, and status_porcelain while filesystem capture remained healthy
+- the degraded Git ingest envelope preserved errors in provenance and raw signal payload and passed COMPARATOR_V0 minimum structural validation
+- both healthy and degraded Git observations were admitted with basis comparison valid under comparator and entered the any-admitted projection
+- COMPARATOR_V0 checks minimum record, observation-envelope, and signal shape but does not inspect Git success fields or capture_errors
+- degraded errors remained recoverable in ledger/replay and reconstruction nested observation provenance and signal payload, including after fresh coordinator recovery
+- capture_errors were not copied into outer coordinator provenance and were not directly exposed by projection, Chart 11 companion, or current_result
+- the projection boundary retained subject navigation to authoritative reconstruction and did not erase degraded-source evidence from history
+- both specimens remained integrity-valid, continuity-valid, reconstructible, projectable, companion-reproducible, and source-separated
+- Chart 18 records acquisition quality, error carriage, structural schema, comparator decision, reconstruction recovery, projection exposure, and companion exposure
+- D-0046 records structural_admissibility != source_capture_success
+- D-0012, D-0016, and D-0042 through D-0045 remain supported
+- the next pressure requires a concrete consumer before source-quality companion data, trust policy, retry, confidence, or source ranking
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure

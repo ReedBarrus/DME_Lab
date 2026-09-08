@@ -1,0 +1,452 @@
+{
+  "baseline_tests": {
+    "full": {
+      "failed": 0,
+      "passed": 413
+    },
+    "targeted": {
+      "failed": 0,
+      "passed": 137
+    }
+  },
+  "canonical_history": {
+    "path": "traces/live_ingest_ledger_v0.jsonl",
+    "sha256_after": "0d877151c73cb2154417065387dc286a1277e80f3838c40874832a7061c17dd0",
+    "sha256_before": "0d877151c73cb2154417065387dc286a1277e80f3838c40874832a7061c17dd0",
+    "unchanged": true
+  },
+  "capture_error_visibility": {
+    "companion_row": false,
+    "current_result_top_level_or_projection": false,
+    "fresh_reconstruction_nested_signal_payload": true,
+    "ingest_envelope_provenance": true,
+    "ingest_envelope_signal_payload": true,
+    "ledger_nested_observation_provenance": true,
+    "ledger_nested_signal_payload": true,
+    "observation_record_outer_provenance": false,
+    "projection_row": false,
+    "raw_git_observation": true,
+    "reconstruction_nested_observation_provenance": true,
+    "reconstruction_nested_signal_payload": true,
+    "reconstruction_outer_provenance": false
+  },
+  "chart_status": {
+    "coordinates": "specimen x raw acquisition quality, error carriage, structural schema, named comparator decision, reconstruction recovery, projection exposure, and companion exposure",
+    "earned": true,
+    "name": "Chart 18",
+    "trust_or_source_health_policy": false
+  },
+  "comparator_audit": {
+    "certifies_source_capture_success": false,
+    "checks_capture_errors": false,
+    "checks_git_branch": false,
+    "checks_git_head_sha": false,
+    "checks_git_status": false,
+    "identity": "ingest_candidate_envelope_minimum",
+    "kind": "minimum structural observation-envelope comparator",
+    "required_ingest_observation_fields": [
+      "envelope_identity",
+      "source",
+      "signal"
+    ],
+    "required_observation_record_fields": [
+      "record_type",
+      "source",
+      "observation",
+      "provenance"
+    ],
+    "required_record_fields": [
+      "record_id",
+      "commit_index",
+      "envelope",
+      "integrity"
+    ],
+    "required_signal_fields": [
+      "identity",
+      "type",
+      "payload"
+    ],
+    "version": "ingest_candidate_envelope_minimum_v0"
+  },
+  "comparison_matrix": [
+    {
+      "Git_acquisition": "SUCCESSFUL",
+      "admission": "admitted",
+      "capture_error_count": 0,
+      "comparator": "ingest_candidate_envelope_minimum_v0",
+      "envelope_constructed": true,
+      "projection_exposes_errors": false,
+      "projection_included": true,
+      "schema_valid": true,
+      "specimen": "C0"
+    },
+    {
+      "Git_acquisition": "DEGRADED",
+      "admission": "admitted",
+      "capture_error_count": 3,
+      "comparator": "ingest_candidate_envelope_minimum_v0",
+      "envelope_constructed": true,
+      "projection_exposes_errors": false,
+      "projection_included": true,
+      "schema_valid": true,
+      "specimen": "S1"
+    }
+  ],
+  "distinctions": {
+    "added": [
+      {
+        "id": "D-0046",
+        "left": "structural_admissibility",
+        "relation": "not_equivalent_to",
+        "right": "source_capture_success"
+      }
+    ],
+    "amended": []
+  },
+  "duration_seconds": 0.458478,
+  "epistemic_audit": {
+    "admission_treated_as_source_success": false,
+    "capture_errors_treated_as_discard_requirement": false,
+    "projection_treated_as_epistemic_resolution": false,
+    "record_integrity_treated_as_source_semantic_validity": false,
+    "schema_validity_treated_as_trustworthy_content": false,
+    "unjustified_certainty_in_production": false,
+    "well_formed_failure_treated_as_successful_source_state": false
+  },
+  "experiment": "degraded_git_admission_pressure_v0",
+  "fixture_control": {
+    "C0": "ordinary clean Git repository",
+    "S1": "ordinary filesystem directory with state.txt and no .git repository",
+    "filesystem_observer_expected_healthy": true,
+    "mocked_payload": false,
+    "real_git_observer": true
+  },
+  "information_boundary": {
+    "boundary": "projection and companion retain subject/navigation coordinates but require authoritative reconstruction to recover source-quality detail",
+    "companion_directly_exposes_degraded_condition": false,
+    "current_result_directly_exposes_degraded_condition": false,
+    "degraded_condition_preserved_in_authoritative_history": true,
+    "degraded_condition_recoverable_after_fresh_replay": true,
+    "information_erased_from_history": false,
+    "projection_directly_exposes_degraded_condition": false
+  },
+  "next_smallest_pressure": "require a concrete consumer before adding source-quality companion data, trust policy, retry, confidence, or source ranking",
+  "prior_findings": {
+    "D_0012": "SUPPORTED_UNCHANGED",
+    "D_0016": "SUPPORTED_UNCHANGED",
+    "D_0042": "SUPPORTED_UNCHANGED",
+    "D_0043": "SUPPORTED_UNCHANGED",
+    "D_0044": "SUPPORTED_UNCHANGED",
+    "D_0045": "SUPPORTED_UNCHANGED",
+    "chart_11_companion_preserved": true,
+    "invalidated": []
+  },
+  "production_contract": {
+    "admission_claim": "comparison valid under named comparator",
+    "claims_projected_subject_is_epistemically_resolved": false,
+    "claims_source_capture_succeeded": false,
+    "production_change_made": false,
+    "production_defect_found": false,
+    "structural_comparator_preserved": true
+  },
+  "specimens": {
+    "C0": {
+      "capture_error_visibility": {
+        "companion_row": false,
+        "current_result_top_level_or_projection": false,
+        "fresh_reconstruction_nested_signal_payload": false,
+        "ingest_envelope_provenance": false,
+        "ingest_envelope_signal_payload": false,
+        "ledger_nested_observation_provenance": false,
+        "ledger_nested_signal_payload": false,
+        "observation_record_outer_provenance": false,
+        "projection_row": false,
+        "raw_git_observation": false,
+        "reconstruction_nested_observation_provenance": false,
+        "reconstruction_nested_signal_payload": false,
+        "reconstruction_outer_provenance": false
+      },
+      "fixture": {
+        "filesystem_capture_errors": [],
+        "git_directory_present": true,
+        "root_kind": "Git repository"
+      },
+      "fresh_recovery": {
+        "append_free": true,
+        "current_result_captured_observations": null,
+        "current_result_projection_contains_git": true,
+        "inputs": [
+          "root",
+          "ledger_path"
+        ],
+        "ledger_sha256_after": "5893b89b197ab059e9b292b410fe73aab960c6269ee630641465543f18c78474",
+        "ledger_sha256_before": "5893b89b197ab059e9b292b410fe73aab960c6269ee630641465543f18c78474",
+        "process_local_failure_knowledge_required": false,
+        "reconstruction_capture_errors": []
+      },
+      "health": {
+        "admission_relation_count": 2,
+        "capture_returned_normally": true,
+        "companion_count": 2,
+        "companion_reproducible": true,
+        "continuity_ok": true,
+        "integrity_ok": true,
+        "observation_count": 2,
+        "orphan_admission_count": 0,
+        "projection_count": 2,
+        "projection_reproducible": true,
+        "reconstruction_reproducible": true,
+        "record_count": 4,
+        "replay_reproducible": true,
+        "source_separation": true,
+        "structurally_healthy": true
+      },
+      "layers": {
+        "downstream_projection_exposure": {
+          "capture_errors_directly_visible": false,
+          "companion_exposes_capture_errors": false,
+          "companion_non_admitted_states": [],
+          "companion_row": {
+            "non_admitted_decision_states": [],
+            "subject_record_id": "rec-000002"
+          },
+          "included": true,
+          "projection_row": {
+            "admission_record_ids": [
+              "rec-000004"
+            ],
+            "observation_record_id": "rec-000002",
+            "reconstruction_type": "admission_relationships_v0",
+            "source": "repository_git_state",
+            "subject_record_id": "rec-000002"
+          }
+        },
+        "raw_git_acquisition_quality": {
+          "branch": "main",
+          "capture_error_count": 0,
+          "capture_errors": [],
+          "failed_commands": [],
+          "head_sha": "46a865676f52e115b1d9319ddef62f4f42433453",
+          "null_fields": [],
+          "observation_object_returned": true,
+          "status": "SUCCESSFUL",
+          "status_porcelain": []
+        },
+        "structural_admission_decision": {
+          "certifies_source_capture_success": false,
+          "comparator_identity": "ingest_candidate_envelope_minimum",
+          "comparator_version": "ingest_candidate_envelope_minimum_v0",
+          "decision": "admitted",
+          "decision_basis": "comparison valid under comparator",
+          "envelope_keys": [
+            "arrival_time",
+            "capture_version",
+            "envelope_identity",
+            "event_time",
+            "missingness",
+            "provenance",
+            "signal",
+            "source",
+            "source_sequence"
+          ],
+          "ingest_envelope_constructed": true,
+          "schema_errors": [],
+          "schema_status": "compared",
+          "schema_valid": true,
+          "signal_keys": [
+            "identity",
+            "payload",
+            "time",
+            "type"
+          ]
+        }
+      },
+      "name": "C0",
+      "records": {
+        "commit_indices": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "filesystem_observation_id": "rec-000001",
+        "git_admission_id": "rec-000004",
+        "git_observation_id": "rec-000002"
+      }
+    },
+    "S1": {
+      "capture_error_visibility": {
+        "companion_row": false,
+        "current_result_top_level_or_projection": false,
+        "fresh_reconstruction_nested_signal_payload": true,
+        "ingest_envelope_provenance": true,
+        "ingest_envelope_signal_payload": true,
+        "ledger_nested_observation_provenance": true,
+        "ledger_nested_signal_payload": true,
+        "observation_record_outer_provenance": false,
+        "projection_row": false,
+        "raw_git_observation": true,
+        "reconstruction_nested_observation_provenance": true,
+        "reconstruction_nested_signal_payload": true,
+        "reconstruction_outer_provenance": false
+      },
+      "fixture": {
+        "filesystem_capture_errors": [],
+        "git_directory_present": false,
+        "root_kind": "ordinary non-Git directory"
+      },
+      "fresh_recovery": {
+        "append_free": true,
+        "current_result_captured_observations": null,
+        "current_result_projection_contains_git": true,
+        "inputs": [
+          "root",
+          "ledger_path"
+        ],
+        "ledger_sha256_after": "7d18bb6ce1bb5dd68055fe48f6749f65eed213b5005743a671c3cf447dbb1b39",
+        "ledger_sha256_before": "7d18bb6ce1bb5dd68055fe48f6749f65eed213b5005743a671c3cf447dbb1b39",
+        "process_local_failure_knowledge_required": false,
+        "reconstruction_capture_errors": [
+          {
+            "command": "rev-parse HEAD",
+            "error": "fatal: not a git repository (or any of the parent directories): .git"
+          },
+          {
+            "command": "branch --show-current",
+            "error": "fatal: not a git repository (or any of the parent directories): .git"
+          },
+          {
+            "command": "status --porcelain=v1",
+            "error": "fatal: not a git repository (or any of the parent directories): .git"
+          }
+        ]
+      },
+      "health": {
+        "admission_relation_count": 2,
+        "capture_returned_normally": true,
+        "companion_count": 2,
+        "companion_reproducible": true,
+        "continuity_ok": true,
+        "integrity_ok": true,
+        "observation_count": 2,
+        "orphan_admission_count": 0,
+        "projection_count": 2,
+        "projection_reproducible": true,
+        "reconstruction_reproducible": true,
+        "record_count": 4,
+        "replay_reproducible": true,
+        "source_separation": true,
+        "structurally_healthy": true
+      },
+      "layers": {
+        "downstream_projection_exposure": {
+          "capture_errors_directly_visible": false,
+          "companion_exposes_capture_errors": false,
+          "companion_non_admitted_states": [],
+          "companion_row": {
+            "non_admitted_decision_states": [],
+            "subject_record_id": "rec-000002"
+          },
+          "included": true,
+          "projection_row": {
+            "admission_record_ids": [
+              "rec-000004"
+            ],
+            "observation_record_id": "rec-000002",
+            "reconstruction_type": "admission_relationships_v0",
+            "source": "repository_git_state",
+            "subject_record_id": "rec-000002"
+          }
+        },
+        "raw_git_acquisition_quality": {
+          "branch": null,
+          "capture_error_count": 3,
+          "capture_errors": [
+            {
+              "command": "rev-parse HEAD",
+              "error": "fatal: not a git repository (or any of the parent directories): .git"
+            },
+            {
+              "command": "branch --show-current",
+              "error": "fatal: not a git repository (or any of the parent directories): .git"
+            },
+            {
+              "command": "status --porcelain=v1",
+              "error": "fatal: not a git repository (or any of the parent directories): .git"
+            }
+          ],
+          "failed_commands": [
+            "rev-parse HEAD",
+            "branch --show-current",
+            "status --porcelain=v1"
+          ],
+          "head_sha": null,
+          "null_fields": [
+            "head_sha",
+            "branch",
+            "status_porcelain"
+          ],
+          "observation_object_returned": true,
+          "status": "DEGRADED",
+          "status_porcelain": null
+        },
+        "structural_admission_decision": {
+          "certifies_source_capture_success": false,
+          "comparator_identity": "ingest_candidate_envelope_minimum",
+          "comparator_version": "ingest_candidate_envelope_minimum_v0",
+          "decision": "admitted",
+          "decision_basis": "comparison valid under comparator",
+          "envelope_keys": [
+            "arrival_time",
+            "capture_version",
+            "envelope_identity",
+            "event_time",
+            "missingness",
+            "provenance",
+            "signal",
+            "source",
+            "source_sequence"
+          ],
+          "ingest_envelope_constructed": true,
+          "schema_errors": [],
+          "schema_status": "compared",
+          "schema_valid": true,
+          "signal_keys": [
+            "identity",
+            "payload",
+            "time",
+            "type"
+          ]
+        }
+      },
+      "name": "S1",
+      "records": {
+        "commit_indices": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "filesystem_observation_id": "rec-000001",
+        "git_admission_id": "rec-000004",
+        "git_observation_id": "rec-000002"
+      }
+    }
+  },
+  "starting_lineage": {
+    "branch": "main",
+    "head": "d129a6da2a617ccbc6e6a4bf871bd49768688e3e",
+    "message": "The completion of the Real Wound 4",
+    "observed_head_at_run": "d129a6da2a617ccbc6e6a4bf871bd49768688e3e",
+    "worktree": []
+  },
+  "strongest_failure": "projection membership and an admitted decision do not directly expose or certify the underlying Git acquisition quality",
+  "strongest_invariant": "a well-formed failed acquisition remains integrity-valid, replayable, and fully recoverable as authoritative evidence through reconstruction",
+  "strongest_unresolved_horizon": "whether a concrete projection consumer requires direct source-quality exposure without traversing authoritative reconstruction",
+  "three_layer_result": {
+    "correct_interpretation": "the degraded acquisition attempt was structurally admitted as evidence; successful Git source state was not certified",
+    "downstream_projection_exposure": "Git subject included without direct error detail",
+    "raw_Git_acquisition_quality": "degraded with three real command failures",
+    "structural_admission_decision": "admitted under COMPARATOR_V0"
+  }
+}
