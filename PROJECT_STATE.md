@@ -322,6 +322,17 @@ retry after unknown acknowledgement from intentional repeated observation?
 - Chart 16 records last captured configuration, external configuration at read, byte conservation, derivation, coordinator lifetime, and source-freshness inference
 - D-0045 records current_derived_history != current_external_configuration
 - D-0042 through D-0044 remain supported without amendment
-- the next smallest pressure is the absent-interval alpha-to-beta-to-alpha round trip without inferred transformation history
+- C0, S1, and S2 compared true alpha stasis, an unobserved alpha-to-beta-to-alpha excursion, and a visible alpha-to-beta endpoint change
+- S1 restored alpha content and original mtime plus clean Git HEAD, branch, status, and capture-error state before its second real capture
+- C0 and S1 produced equivalent filesystem snapshot identities and Git configuration surfaces at distinct observation occurrences despite different control-known interval paths
+- record IDs, commit indices, capture timestamps, and digests distinguished occurrences but did not establish stasis, transformation, or recurrence
+- S2 changed filesystem snapshot identity and Git status, confirming that both observers detect an ordinary endpoint difference while leaving intermediate path unresolved
+- every specimen preserved eight valid contiguous records, four reconstructed observations, four projected subjects, four Chart 11 companion rows, and separate source provenance
+- fresh coordinators recovered the complete endpoint histories append-free from root plus ledger path without driver-path knowledge
+- the hidden excursion was never observed, so its absence is an endpoint-observability boundary rather than corruption or loss of captured evidence
+- Chart 17 records control-known path, source endpoint relations, occurrence, reconstruction, projection, and intervening-transformation inference
+- D-0012 snapshot != complete_transformation_history was sufficient; no distinction was added or amended
+- D-0016 and D-0042 through D-0045 remain supported
+- the next smallest pressure is degraded Git-source admission without polling, recurrence operators, or autonomous observation
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure

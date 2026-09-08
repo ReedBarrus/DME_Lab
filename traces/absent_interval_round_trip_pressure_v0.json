@@ -1,0 +1,869 @@
+{
+  "C0_S1_comparison": {
+    "captured_filesystem_configuration_sequences_equal": true,
+    "captured_git_configuration_sequences_equal": true,
+    "control_paths_differ": true,
+    "distinguishable_as_occurrence_instances": true,
+    "distinguishable_as_stasis_vs_excursion": false,
+    "filesystem_endpoint_relations_equal": true,
+    "git_endpoint_relations_equal": true,
+    "interval_path_indistinguishable_from_DME_evidence": true,
+    "occurrence_multiplicity_equal": true,
+    "ordinary_occurrence_coordinates_and_times_differ": true,
+    "raw_ledger_bytes_equal": false,
+    "record_shape_equal": true
+  },
+  "baseline_tests": {
+    "full": {
+      "failed": 0,
+      "passed": 380
+    },
+    "targeted": {
+      "failed": 0,
+      "passed": 104
+    }
+  },
+  "canonical_history": {
+    "path": "traces/live_ingest_ledger_v0.jsonl",
+    "sha256_after": "0d877151c73cb2154417065387dc286a1277e80f3838c40874832a7061c17dd0",
+    "sha256_before": "0d877151c73cb2154417065387dc286a1277e80f3838c40874832a7061c17dd0",
+    "unchanged": true
+  },
+  "chart_status": {
+    "coordinates": "control-known interval path x filesystem endpoint relation, Git endpoint relation, observation occurrence, reconstruction, projection, and intervening-transformation inference",
+    "earned": true,
+    "name": "Chart 17",
+    "recurrence_or_transformation_model": false
+  },
+  "comparison_matrix": [
+    {
+      "control_known_path": [
+        "alpha",
+        "alpha"
+      ],
+      "distinct_observation_occurrences": true,
+      "filesystem_endpoints_equivalent": true,
+      "git_endpoints_equivalent": true,
+      "integrity": true,
+      "intervening_transformation_from_DME": "UNRESOLVED",
+      "projection_count": 4,
+      "reconstruction": true,
+      "specimen": "C0"
+    },
+    {
+      "control_known_path": [
+        "alpha",
+        "beta",
+        "alpha"
+      ],
+      "distinct_observation_occurrences": true,
+      "filesystem_endpoints_equivalent": true,
+      "git_endpoints_equivalent": true,
+      "integrity": true,
+      "intervening_transformation_from_DME": "UNRESOLVED",
+      "projection_count": 4,
+      "reconstruction": true,
+      "specimen": "S1"
+    },
+    {
+      "control_known_path": [
+        "alpha",
+        "beta"
+      ],
+      "distinct_observation_occurrences": true,
+      "filesystem_endpoints_equivalent": false,
+      "git_endpoints_equivalent": false,
+      "integrity": true,
+      "intervening_transformation_from_DME": "endpoint difference observed; intermediate path unresolved",
+      "projection_count": 4,
+      "reconstruction": true,
+      "specimen": "S2"
+    }
+  ],
+  "distinctions": {
+    "added": [],
+    "amended": [],
+    "existing_sufficient": "D-0012 snapshot != complete_transformation_history"
+  },
+  "duration_seconds": 1.478144,
+  "epistemic_audit": {
+    "driver_knowledge_transferred_to_DME": false,
+    "elapsed_time_treated_as_change": false,
+    "repeated_configuration_treated_as_hidden_excursion": false,
+    "same_endpoint_treated_as_no_event": false,
+    "same_git_configuration_treated_as_static_history": false,
+    "same_snapshot_identity_treated_as_unchanged_world": false,
+    "two_occurrences_treated_as_transformation": false,
+    "unjustified_certainty_in_production": false
+  },
+  "experiment": "absent_interval_round_trip_pressure_v0",
+  "fixture_control": {
+    "arbitrary_sleep": false,
+    "capture_during_mutation": false,
+    "driver_path_written_to_ledger": false,
+    "fixed_initial_mtime_ns": 946684800000000000,
+    "independent_fixtures": [
+      "C0",
+      "S1",
+      "S2"
+    ],
+    "initial_configuration": "clean committed alpha",
+    "intra_capture_skew": false,
+    "trajectory_owner": "external experiment driver"
+  },
+  "inference_audit": {
+    "DME_can_distinguish_C0_stasis_from_S1_excursion": false,
+    "DME_can_establish_hidden_excursion_in_S1_interval": false,
+    "DME_can_establish_nothing_happened_in_C0_interval": false,
+    "DME_supported_claim_for_C0_and_S1": "two distinct observation occurrences expose equivalent source-relative endpoint configurations; the intervening transformation path is unresolved",
+    "S2_visible_endpoint_change_detected": true,
+    "equal_configuration_implies_recurrence_through_excursion": false,
+    "occurrence_multiplicity_establishes_transformation": false,
+    "recurrence_implies_hidden_transformation": false,
+    "timestamps_establish_interval_path": false
+  },
+  "information_boundary": {
+    "absence_caused_by_DME_information_loss": false,
+    "boundary": "the transformation occurred outside the current observation basis",
+    "captured_observation_information_lost": false,
+    "observer_corruption": false,
+    "unobserved_excursion_present_in_history": false
+  },
+  "next_smallest_pressure": "isolate degraded Git-source admission without adding polling, recurrence operators, or autonomous observation",
+  "prior_findings": {
+    "D_0012": "SUPPORTED_AND_SUFFICIENT",
+    "D_0016_reused_for_configuration_vs_occurrence": true,
+    "D_0042": "SUPPORTED_UNCHANGED",
+    "D_0043": "SUPPORTED_UNCHANGED",
+    "D_0044": "SUPPORTED_UNCHANGED",
+    "D_0045": "SUPPORTED_UNCHANGED",
+    "chart_11_companion_preserved": true,
+    "invalidated": []
+  },
+  "production_contract": {
+    "equivalent_endpoints_claim_no_intervening_transformation": false,
+    "production_change_made": false,
+    "production_defect_found": false
+  },
+  "projection_audit": {
+    "claims_current_coherent_world": false,
+    "claims_recurrence": false,
+    "claims_stasis": false,
+    "collapses_repeated_observations": false,
+    "preserves_both_occurrences_per_source": true,
+    "supersession_or_recurrence_semantics_added": false
+  },
+  "specimens": {
+    "C0": {
+      "DME_interval_claim": "intervening transformation path is UNRESOLVED",
+      "control": {
+        "basis": "external deterministic driver",
+        "mutation": {
+          "action": "none",
+          "git_status_after": [],
+          "mtime_ns_after": 946684800000000000,
+          "original_mtime_ns": 946684800000000000,
+          "state_txt_sha256_after": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+        },
+        "path": [
+          "alpha",
+          "alpha"
+        ],
+        "transformation_occurred": false,
+        "written_to_DME_history": false
+      },
+      "endpoint_relation": {
+        "both_sources_equivalent": true,
+        "filesystem_configuration_equivalent": true,
+        "git_configuration_equivalent": true
+      },
+      "first_capture": {
+        "filesystem_configuration": {
+          "capture_errors": [],
+          "entries": [
+            {
+              "kind": "file",
+              "mtime_ns": 946684800000000000,
+              "path": "state.txt",
+              "sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8",
+              "size_bytes": 5
+            }
+          ],
+          "root_identity": {
+            "kind": "repository_working_tree",
+            "name": "fixture"
+          },
+          "scope": {
+            "excluded_dirs": [
+              ".git",
+              "__pycache__",
+              "traces"
+            ],
+            "excluded_globs": [
+              "*.pyc"
+            ],
+            "included": [
+              "working_tree_files"
+            ],
+            "root": "."
+          },
+          "snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+        },
+        "filesystem_occurrence": {
+          "commit_index": 1,
+          "digest": "6ba6ff6d639631654332e90b55a6aa8976d0792470d00a5efcbdb7af20f11801",
+          "envelope_identity": "repo-snapshot-envelope:repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+          "observation_finished_at": "2026-09-08T03:55:11.160454Z",
+          "observation_started_at": "2026-09-08T03:55:11.154980Z",
+          "record_id": "rec-000001",
+          "source_observation_identity": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+        },
+        "git_configuration": {
+          "branch": "main",
+          "capture_errors": [],
+          "head_sha": "0f03231fa0541258d145d53bb6f3a90a729441e7",
+          "status_porcelain": []
+        },
+        "git_occurrence": {
+          "commit_index": 2,
+          "digest": "8feb8764d67e2197c98aa8a42a97573962413fd11b14438c3d952a7a14c07823",
+          "envelope_identity": "git-state-envelope:git-state-v0:2026-09-08T03:55:11.160471Z",
+          "observed_at": "2026-09-08T03:55:11.160471Z",
+          "record_id": "rec-000002",
+          "source_observation_identity": "git-state-v0:2026-09-08T03:55:11.160471Z"
+        },
+        "new_commit_indices": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "new_digests": [
+          "6ba6ff6d639631654332e90b55a6aa8976d0792470d00a5efcbdb7af20f11801",
+          "8feb8764d67e2197c98aa8a42a97573962413fd11b14438c3d952a7a14c07823",
+          "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+          "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545"
+        ],
+        "new_record_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000003",
+          "rec-000004"
+        ]
+      },
+      "health": {
+        "admission_relation_count": 4,
+        "companion_count": 4,
+        "companion_reproducible": true,
+        "companion_states": [
+          [],
+          [],
+          [],
+          []
+        ],
+        "continuity_ok": true,
+        "integrity_ok": true,
+        "observation_count": 4,
+        "projection_count": 4,
+        "projection_reproducible": true,
+        "projection_subject_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000005",
+          "rec-000006"
+        ],
+        "reconstruction_reproducible": true,
+        "record_count": 8,
+        "replay_reproducible": true,
+        "second_capture_returned_normally": true,
+        "source_separation": true,
+        "structurally_healthy": true
+      },
+      "name": "C0",
+      "occurrence_relation": {
+        "commit_indices_distinct": true,
+        "distinct_observation_occurrences": true,
+        "filesystem_capture_times_distinct": true,
+        "filesystem_envelope_identity_equal": true,
+        "filesystem_records_distinct": true,
+        "filesystem_source_identity_equal": true,
+        "git_capture_times_distinct": true,
+        "git_envelope_identity_equal": false,
+        "git_records_distinct": true,
+        "git_source_identity_equal": false,
+        "record_digests_distinct": true
+      },
+      "recovery": {
+        "append_free": true,
+        "captured_observations": null,
+        "companion_count": 4,
+        "driver_path_available": false,
+        "fresh_coordinator": true,
+        "inputs": [
+          "root",
+          "ledger_path"
+        ],
+        "ledger_sha256_after": "5d48e2410f3a2964f04aa5100b8eef9bf5b4acd5b49ab78fde8b9477fef13306",
+        "ledger_sha256_before": "5d48e2410f3a2964f04aa5100b8eef9bf5b4acd5b49ab78fde8b9477fef13306",
+        "observation_count": 4,
+        "projection_count": 4,
+        "record_count": 8
+      },
+      "second_capture": {
+        "filesystem_configuration": {
+          "capture_errors": [],
+          "entries": [
+            {
+              "kind": "file",
+              "mtime_ns": 946684800000000000,
+              "path": "state.txt",
+              "sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8",
+              "size_bytes": 5
+            }
+          ],
+          "root_identity": {
+            "kind": "repository_working_tree",
+            "name": "fixture"
+          },
+          "scope": {
+            "excluded_dirs": [
+              ".git",
+              "__pycache__",
+              "traces"
+            ],
+            "excluded_globs": [
+              "*.pyc"
+            ],
+            "included": [
+              "working_tree_files"
+            ],
+            "root": "."
+          },
+          "snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+        },
+        "filesystem_occurrence": {
+          "commit_index": 5,
+          "digest": "f34aa54d840c4617e59ea98fa53e3e354382b81089614311d6eb89384cb105a0",
+          "envelope_identity": "repo-snapshot-envelope:repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+          "observation_finished_at": "2026-09-08T03:55:11.306824Z",
+          "observation_started_at": "2026-09-08T03:55:11.302621Z",
+          "record_id": "rec-000005",
+          "source_observation_identity": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+        },
+        "git_configuration": {
+          "branch": "main",
+          "capture_errors": [],
+          "head_sha": "0f03231fa0541258d145d53bb6f3a90a729441e7",
+          "status_porcelain": []
+        },
+        "git_occurrence": {
+          "commit_index": 6,
+          "digest": "1a02aab43a5e0c34fdd6e43145f33f27b37c6b512101d488fb6758bd87e3cb09",
+          "envelope_identity": "git-state-envelope:git-state-v0:2026-09-08T03:55:11.306837Z",
+          "observed_at": "2026-09-08T03:55:11.306837Z",
+          "record_id": "rec-000006",
+          "source_observation_identity": "git-state-v0:2026-09-08T03:55:11.306837Z"
+        },
+        "new_commit_indices": [
+          5,
+          6,
+          7,
+          8
+        ],
+        "new_digests": [
+          "f34aa54d840c4617e59ea98fa53e3e354382b81089614311d6eb89384cb105a0",
+          "1a02aab43a5e0c34fdd6e43145f33f27b37c6b512101d488fb6758bd87e3cb09",
+          "bc34a6f14594687a758725d32b5231a7314a63c2ec4d0b9234dbdcec4dad4878",
+          "60325c9225cb41234e690fde291fe6f069755933d1a038a1a31cac9cd5dfa677"
+        ],
+        "new_record_ids": [
+          "rec-000005",
+          "rec-000006",
+          "rec-000007",
+          "rec-000008"
+        ]
+      }
+    },
+    "S1": {
+      "DME_interval_claim": "intervening transformation path is UNRESOLVED",
+      "control": {
+        "basis": "external deterministic driver",
+        "mutation": {
+          "action": "alpha -> beta -> alpha without capture",
+          "beta_control": {
+            "git_status": [
+              "M state.txt"
+            ],
+            "state_txt_sha256": "f44e64e75f3948e9f73f8dfa94721c4ce8cbb4f265c4790c702b2d41cfbf2753"
+          },
+          "git_status_after_restore": [],
+          "original_mtime_ns": 946684800000000000,
+          "restored_mtime_ns": 946684800000000000,
+          "restored_state_txt_sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8"
+        },
+        "path": [
+          "alpha",
+          "beta",
+          "alpha"
+        ],
+        "transformation_occurred": true,
+        "written_to_DME_history": false
+      },
+      "endpoint_relation": {
+        "both_sources_equivalent": true,
+        "filesystem_configuration_equivalent": true,
+        "git_configuration_equivalent": true
+      },
+      "first_capture": {
+        "filesystem_configuration": {
+          "capture_errors": [],
+          "entries": [
+            {
+              "kind": "file",
+              "mtime_ns": 946684800000000000,
+              "path": "state.txt",
+              "sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8",
+              "size_bytes": 5
+            }
+          ],
+          "root_identity": {
+            "kind": "repository_working_tree",
+            "name": "fixture"
+          },
+          "scope": {
+            "excluded_dirs": [
+              ".git",
+              "__pycache__",
+              "traces"
+            ],
+            "excluded_globs": [
+              "*.pyc"
+            ],
+            "included": [
+              "working_tree_files"
+            ],
+            "root": "."
+          },
+          "snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+        },
+        "filesystem_occurrence": {
+          "commit_index": 1,
+          "digest": "a9365b3b32d359cbba1a0470420b814afc4c1221a4db20ccec4fc8118aec237a",
+          "envelope_identity": "repo-snapshot-envelope:repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+          "observation_finished_at": "2026-09-08T03:55:11.623667Z",
+          "observation_started_at": "2026-09-08T03:55:11.618653Z",
+          "record_id": "rec-000001",
+          "source_observation_identity": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+        },
+        "git_configuration": {
+          "branch": "main",
+          "capture_errors": [],
+          "head_sha": "0f03231fa0541258d145d53bb6f3a90a729441e7",
+          "status_porcelain": []
+        },
+        "git_occurrence": {
+          "commit_index": 2,
+          "digest": "b9cab8d6ffdc134ec57c9966f894861ae99f87fa39a4f2bffcaba575a969c774",
+          "envelope_identity": "git-state-envelope:git-state-v0:2026-09-08T03:55:11.623681Z",
+          "observed_at": "2026-09-08T03:55:11.623681Z",
+          "record_id": "rec-000002",
+          "source_observation_identity": "git-state-v0:2026-09-08T03:55:11.623681Z"
+        },
+        "new_commit_indices": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "new_digests": [
+          "a9365b3b32d359cbba1a0470420b814afc4c1221a4db20ccec4fc8118aec237a",
+          "b9cab8d6ffdc134ec57c9966f894861ae99f87fa39a4f2bffcaba575a969c774",
+          "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+          "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545"
+        ],
+        "new_record_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000003",
+          "rec-000004"
+        ]
+      },
+      "health": {
+        "admission_relation_count": 4,
+        "companion_count": 4,
+        "companion_reproducible": true,
+        "companion_states": [
+          [],
+          [],
+          [],
+          []
+        ],
+        "continuity_ok": true,
+        "integrity_ok": true,
+        "observation_count": 4,
+        "projection_count": 4,
+        "projection_reproducible": true,
+        "projection_subject_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000005",
+          "rec-000006"
+        ],
+        "reconstruction_reproducible": true,
+        "record_count": 8,
+        "replay_reproducible": true,
+        "second_capture_returned_normally": true,
+        "source_separation": true,
+        "structurally_healthy": true
+      },
+      "name": "S1",
+      "occurrence_relation": {
+        "commit_indices_distinct": true,
+        "distinct_observation_occurrences": true,
+        "filesystem_capture_times_distinct": true,
+        "filesystem_envelope_identity_equal": true,
+        "filesystem_records_distinct": true,
+        "filesystem_source_identity_equal": true,
+        "git_capture_times_distinct": true,
+        "git_envelope_identity_equal": false,
+        "git_records_distinct": true,
+        "git_source_identity_equal": false,
+        "record_digests_distinct": true
+      },
+      "recovery": {
+        "append_free": true,
+        "captured_observations": null,
+        "companion_count": 4,
+        "driver_path_available": false,
+        "fresh_coordinator": true,
+        "inputs": [
+          "root",
+          "ledger_path"
+        ],
+        "ledger_sha256_after": "ce9f5f7e7c5256eb81553740f3aa40f94d2777a77a93c46ca31455737ba6a669",
+        "ledger_sha256_before": "ce9f5f7e7c5256eb81553740f3aa40f94d2777a77a93c46ca31455737ba6a669",
+        "observation_count": 4,
+        "projection_count": 4,
+        "record_count": 8
+      },
+      "second_capture": {
+        "filesystem_configuration": {
+          "capture_errors": [],
+          "entries": [
+            {
+              "kind": "file",
+              "mtime_ns": 946684800000000000,
+              "path": "state.txt",
+              "sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8",
+              "size_bytes": 5
+            }
+          ],
+          "root_identity": {
+            "kind": "repository_working_tree",
+            "name": "fixture"
+          },
+          "scope": {
+            "excluded_dirs": [
+              ".git",
+              "__pycache__",
+              "traces"
+            ],
+            "excluded_globs": [
+              "*.pyc"
+            ],
+            "included": [
+              "working_tree_files"
+            ],
+            "root": "."
+          },
+          "snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+        },
+        "filesystem_occurrence": {
+          "commit_index": 5,
+          "digest": "811c605044d041915e7ec7fe7a2c13064415ea9fb0e7f5baf20d1c2660d031d0",
+          "envelope_identity": "repo-snapshot-envelope:repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+          "observation_finished_at": "2026-09-08T03:55:11.799445Z",
+          "observation_started_at": "2026-09-08T03:55:11.794920Z",
+          "record_id": "rec-000005",
+          "source_observation_identity": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+        },
+        "git_configuration": {
+          "branch": "main",
+          "capture_errors": [],
+          "head_sha": "0f03231fa0541258d145d53bb6f3a90a729441e7",
+          "status_porcelain": []
+        },
+        "git_occurrence": {
+          "commit_index": 6,
+          "digest": "d1a6ef1c80dc0ccfccb9ea82351f696fbce55f2fa15d6727fbcc8c6b13b1a5b3",
+          "envelope_identity": "git-state-envelope:git-state-v0:2026-09-08T03:55:11.799458Z",
+          "observed_at": "2026-09-08T03:55:11.799458Z",
+          "record_id": "rec-000006",
+          "source_observation_identity": "git-state-v0:2026-09-08T03:55:11.799458Z"
+        },
+        "new_commit_indices": [
+          5,
+          6,
+          7,
+          8
+        ],
+        "new_digests": [
+          "811c605044d041915e7ec7fe7a2c13064415ea9fb0e7f5baf20d1c2660d031d0",
+          "d1a6ef1c80dc0ccfccb9ea82351f696fbce55f2fa15d6727fbcc8c6b13b1a5b3",
+          "bc34a6f14594687a758725d32b5231a7314a63c2ec4d0b9234dbdcec4dad4878",
+          "60325c9225cb41234e690fde291fe6f069755933d1a038a1a31cac9cd5dfa677"
+        ],
+        "new_record_ids": [
+          "rec-000005",
+          "rec-000006",
+          "rec-000007",
+          "rec-000008"
+        ]
+      }
+    },
+    "S2": {
+      "DME_interval_claim": "visible endpoint change occurred between captured observations",
+      "control": {
+        "basis": "external deterministic driver",
+        "mutation": {
+          "action": "alpha -> beta without restoration",
+          "git_status_after": [
+            "M state.txt"
+          ],
+          "mtime_ns_after": 1788839712230578000,
+          "original_mtime_ns": 946684800000000000,
+          "state_txt_sha256_after": "f44e64e75f3948e9f73f8dfa94721c4ce8cbb4f265c4790c702b2d41cfbf2753"
+        },
+        "path": [
+          "alpha",
+          "beta"
+        ],
+        "transformation_occurred": true,
+        "written_to_DME_history": false
+      },
+      "endpoint_relation": {
+        "both_sources_equivalent": false,
+        "filesystem_configuration_equivalent": false,
+        "git_configuration_equivalent": false
+      },
+      "first_capture": {
+        "filesystem_configuration": {
+          "capture_errors": [],
+          "entries": [
+            {
+              "kind": "file",
+              "mtime_ns": 946684800000000000,
+              "path": "state.txt",
+              "sha256": "8ed3f6ad685b959ead7022518e1af76cd816f8e8ec7ccdda1ed4018e8f2223f8",
+              "size_bytes": 5
+            }
+          ],
+          "root_identity": {
+            "kind": "repository_working_tree",
+            "name": "fixture"
+          },
+          "scope": {
+            "excluded_dirs": [
+              ".git",
+              "__pycache__",
+              "traces"
+            ],
+            "excluded_globs": [
+              "*.pyc"
+            ],
+            "included": [
+              "working_tree_files"
+            ],
+            "root": "."
+          },
+          "snapshot_id": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+        },
+        "filesystem_occurrence": {
+          "commit_index": 1,
+          "digest": "7d49e92fcebd9187f031ff4df944305077c4e8f5c827bc7403d87f87d08f34b1",
+          "envelope_identity": "repo-snapshot-envelope:repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c",
+          "observation_finished_at": "2026-09-08T03:55:12.116743Z",
+          "observation_started_at": "2026-09-08T03:55:12.111724Z",
+          "record_id": "rec-000001",
+          "source_observation_identity": "repo-snapshot-v0:c66b6b6f5a1373a95168c525bec8aa242bfa68cfd508a88575244fab9aa5eb6c"
+        },
+        "git_configuration": {
+          "branch": "main",
+          "capture_errors": [],
+          "head_sha": "0f03231fa0541258d145d53bb6f3a90a729441e7",
+          "status_porcelain": []
+        },
+        "git_occurrence": {
+          "commit_index": 2,
+          "digest": "9835f628bd7284da97a578c5b3b6fabff79ec788f22ec3998be1f7152cc9c118",
+          "envelope_identity": "git-state-envelope:git-state-v0:2026-09-08T03:55:12.116758Z",
+          "observed_at": "2026-09-08T03:55:12.116758Z",
+          "record_id": "rec-000002",
+          "source_observation_identity": "git-state-v0:2026-09-08T03:55:12.116758Z"
+        },
+        "new_commit_indices": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "new_digests": [
+          "7d49e92fcebd9187f031ff4df944305077c4e8f5c827bc7403d87f87d08f34b1",
+          "9835f628bd7284da97a578c5b3b6fabff79ec788f22ec3998be1f7152cc9c118",
+          "e63cfd97ee170922eb986ae325fb889a44f3ee80e9dc46a4f5427ad8034a3170",
+          "623219ac118cffded0b18713863ba65e1956ea5c93f67b87c1c19706bd627545"
+        ],
+        "new_record_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000003",
+          "rec-000004"
+        ]
+      },
+      "health": {
+        "admission_relation_count": 4,
+        "companion_count": 4,
+        "companion_reproducible": true,
+        "companion_states": [
+          [],
+          [],
+          [],
+          []
+        ],
+        "continuity_ok": true,
+        "integrity_ok": true,
+        "observation_count": 4,
+        "projection_count": 4,
+        "projection_reproducible": true,
+        "projection_subject_ids": [
+          "rec-000001",
+          "rec-000002",
+          "rec-000005",
+          "rec-000006"
+        ],
+        "reconstruction_reproducible": true,
+        "record_count": 8,
+        "replay_reproducible": true,
+        "second_capture_returned_normally": true,
+        "source_separation": true,
+        "structurally_healthy": true
+      },
+      "name": "S2",
+      "occurrence_relation": {
+        "commit_indices_distinct": true,
+        "distinct_observation_occurrences": true,
+        "filesystem_capture_times_distinct": true,
+        "filesystem_envelope_identity_equal": false,
+        "filesystem_records_distinct": true,
+        "filesystem_source_identity_equal": false,
+        "git_capture_times_distinct": true,
+        "git_envelope_identity_equal": false,
+        "git_records_distinct": true,
+        "git_source_identity_equal": false,
+        "record_digests_distinct": true
+      },
+      "recovery": {
+        "append_free": true,
+        "captured_observations": null,
+        "companion_count": 4,
+        "driver_path_available": false,
+        "fresh_coordinator": true,
+        "inputs": [
+          "root",
+          "ledger_path"
+        ],
+        "ledger_sha256_after": "d5da7a8cdd2068b40f61a88aacc002024f48e06f4c881bd5029311daf0ae29fc",
+        "ledger_sha256_before": "d5da7a8cdd2068b40f61a88aacc002024f48e06f4c881bd5029311daf0ae29fc",
+        "observation_count": 4,
+        "projection_count": 4,
+        "record_count": 8
+      },
+      "second_capture": {
+        "filesystem_configuration": {
+          "capture_errors": [],
+          "entries": [
+            {
+              "kind": "file",
+              "mtime_ns": 1788839712230578000,
+              "path": "state.txt",
+              "sha256": "f44e64e75f3948e9f73f8dfa94721c4ce8cbb4f265c4790c702b2d41cfbf2753",
+              "size_bytes": 4
+            }
+          ],
+          "root_identity": {
+            "kind": "repository_working_tree",
+            "name": "fixture"
+          },
+          "scope": {
+            "excluded_dirs": [
+              ".git",
+              "__pycache__",
+              "traces"
+            ],
+            "excluded_globs": [
+              "*.pyc"
+            ],
+            "included": [
+              "working_tree_files"
+            ],
+            "root": "."
+          },
+          "snapshot_id": "repo-snapshot-v0:4bbae79ab0c0468da33931576482c317def6c7b4ea7a1f29ff37af721f0a24f9"
+        },
+        "filesystem_occurrence": {
+          "commit_index": 5,
+          "digest": "b74bdda1e62f147bd4011c31503075f1478fa94418d4801237b42434349e6c8b",
+          "envelope_identity": "repo-snapshot-envelope:repo-snapshot-v0:4bbae79ab0c0468da33931576482c317def6c7b4ea7a1f29ff37af721f0a24f9",
+          "observation_finished_at": "2026-09-08T03:55:12.264080Z",
+          "observation_started_at": "2026-09-08T03:55:12.260050Z",
+          "record_id": "rec-000005",
+          "source_observation_identity": "repo-snapshot-v0:4bbae79ab0c0468da33931576482c317def6c7b4ea7a1f29ff37af721f0a24f9"
+        },
+        "git_configuration": {
+          "branch": "main",
+          "capture_errors": [],
+          "head_sha": "0f03231fa0541258d145d53bb6f3a90a729441e7",
+          "status_porcelain": [
+            "M state.txt"
+          ]
+        },
+        "git_occurrence": {
+          "commit_index": 6,
+          "digest": "fd7f0b06c766010b7f29cc28b8827cd9d0d0d19fc52199b75ffb8d2c625c9cc8",
+          "envelope_identity": "git-state-envelope:git-state-v0:2026-09-08T03:55:12.264093Z",
+          "observed_at": "2026-09-08T03:55:12.264093Z",
+          "record_id": "rec-000006",
+          "source_observation_identity": "git-state-v0:2026-09-08T03:55:12.264093Z"
+        },
+        "new_commit_indices": [
+          5,
+          6,
+          7,
+          8
+        ],
+        "new_digests": [
+          "b74bdda1e62f147bd4011c31503075f1478fa94418d4801237b42434349e6c8b",
+          "fd7f0b06c766010b7f29cc28b8827cd9d0d0d19fc52199b75ffb8d2c625c9cc8",
+          "bc34a6f14594687a758725d32b5231a7314a63c2ec4d0b9234dbdcec4dad4878",
+          "60325c9225cb41234e690fde291fe6f069755933d1a038a1a31cac9cd5dfa677"
+        ],
+        "new_record_ids": [
+          "rec-000005",
+          "rec-000006",
+          "rec-000007",
+          "rec-000008"
+        ]
+      }
+    }
+  },
+  "starting_lineage": {
+    "branch": "main",
+    "head": "938d6f7e48443252d78c193aaf7f129ee5dca26e",
+    "message": "WOund 4",
+    "observed_head_at_run": "938d6f7e48443252d78c193aaf7f129ee5dca26e",
+    "worktree": []
+  },
+  "strongest_failure": "endpoint observations alone cannot distinguish true stasis from an unobserved excursion that returns to the same observable configuration",
+  "strongest_invariant": "equivalent source-relative configurations remain legible as distinct admitted observation occurrences without overwriting or collapsing history",
+  "strongest_unresolved_horizon": "the transformation path inside an interval with no observation remains unknowable from the current endpoint-only evidence basis"
+}
