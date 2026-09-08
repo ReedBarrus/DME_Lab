@@ -64,6 +64,8 @@ Admission disagreement exposure pressure completed in `docs/decisions/admission_
 
 Persistent observational field pressure completed in `docs/decisions/persistent_observational_field_pressure_v0.md`.
 
+Foreground persistent coordinator pressure completed in `docs/decisions/foreground_persistent_coordinator_pressure_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -132,9 +134,8 @@ navigation
 
 ## Next Smallest Question
 
-Does the coherent bounded field justify extracting an explicitly invoked
-foreground persistent coordinator without introducing a daemon, scheduler, or
-new identity semantics?
+What is the exact ledger and reconstruction consequence of a foreground
+capture round failing after only part of its four-record append sequence?
 
 ## Contract Surface Status
 
@@ -143,6 +144,7 @@ new identity semantics?
 - implemented within bounded v0 scope: admission relationship reconstruction
 - implemented within bounded v0 scope: admitted projection
 - implemented within bounded v0 scope: read-only non-admitted decision-state companion
+- implemented within bounded repository scope: explicitly invoked foreground filesystem/Git observation coordinator
 - pressure-tested within synthetic v0 scope, with canonical bounded live evidence: append ledger, raw replay
 - implemented within bounded repository specimen: capture adapter
 - deferred: general OS and Windows capture
@@ -282,6 +284,13 @@ new identity semantics?
 - temporal depth did not require admission multiplicity or direct admission-record IDs in the Chart 11 companion
 - Chart 12 records the bounded six-round field across stable coordinates without becoming a generalized state model
 - D-0011, D-0016, D-0030, and D-0041 were sufficient; no distinction was added or amended
-- the next pressure should ask whether an explicitly invoked foreground persistent coordinator is justified without adding always-on architecture
+- an externally controlled Phase-C trajectory drove five foreground captures through clean alpha, repeated alpha, dirty beta, committed beta, and dirty gamma after coordinator absence
+- the foreground coordinator retained only root, ledger path, and process-local close state; it cached no history-derived state or round counter
+- a fresh coordinator recovered 16 records, 8 observations, 8 admission relations, 8 projection subjects, and 8 companion rows from disk before continuing to 20 records
+- world mutation during coordinator absence appended no history and was represented afterward only as a changed observed endpoint with unavailable intermediate transformation history
+- the small repository-specific ForegroundRepositoryObservationCoordinator boundary was promoted as foreground, explicitly invoked, single-writer, and non-autonomous
+- Chart 13 records caller-selected captures across external world action, coordinator lifetime, source-relative configuration, ledger range, reconstruction, and prefix
+- D-0042 records coordinator_lifetime != historical_continuity without asserting persistent participant identity
+- the next pressure should isolate partial-round append failure before adding autonomy, polling, Windows observation, or new sources
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure
