@@ -24,6 +24,7 @@ Newly reachable / open:
 
 - PR-006 — scoped interval or change observation
 - PR-018 — prospective cross-domain prediction
+- PR-019 — source-side positional return under a fixed microphone
 
 Shelved:
 
@@ -330,9 +331,33 @@ not authorized or active.
   pure airborne causality, transfer-function semantics, and tomography were not
   earned.
 - **Blocked by:** PR-015
-- **Unlocks:** PR-017
+- **Unlocks:** PR-017, PR-019
 - **Evidence:** [decision](docs/decisions/acoustic_positional_transformation_pressure_v0.md),
   [trace](traces/acoustic_positional_transformation_pressure_v0.json)
+
+### PR-019 — Source-side positional return under a fixed microphone
+
+- **Pressure:** Under a recurrent independently observed post-mix endpoint
+  relation and a fixed microphone, does controlled speaker A1 -> B -> A2
+  displacement produce a discriminable B microphone realization and return
+  recurrence toward A1?
+- **Standing:** `OPEN`
+- **Missing discriminator:** prospectively frozen operator-defined speaker
+  positions, fixed-microphone controls, paired endpoint/microphone observations,
+  and a frozen separation/return rule.
+- **Resolution so far:** an analysis-only dwell selected this as the smallest
+  physical pressure on PR-017's source-change versus observer-change scale
+  mismatch. No trial, prediction, or physical interpretation was earned.
+- **Residue:** success would establish at most within-domain prospective
+  recurrence and limited evidence against a microphone-handling-only account.
+  PR-016 and ordinary acoustic expectations already supply the expected
+  change-and-return relation, so this pressure cannot by itself make PR-018
+  informative.
+- **Blocked by:** explicit selection and operator authorization
+- **Unlocks:** —
+- **Evidence:** [selection dwell](docs/decisions/acoustic_prediction_bridge_dwell_v0.md),
+  [microphone-side return](docs/decisions/acoustic_positional_transformation_pressure_v0.md),
+  [cross-domain re-adjudication](docs/decisions/cross_domain_tomographic_readjudication_v0.md)
 
 ## D. Cross-domain structure and prediction
 

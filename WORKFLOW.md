@@ -18,22 +18,23 @@ pressure
 → adjudicate
 → preserve evidence and residue
 → expose newly reachable pressure
+```
 
 The order may change.
 
 An investigation may return to an earlier operation, stop when its basis is
 insufficient, or remain unresolved without being treated as failure.
 
-Evidence Before Closure
+## Evidence Before Closure
 
 Preserve the difference between:
 
-what was proposed;
-what was implemented or intervened upon;
-what was directly observed;
-what was derived or reconstructed;
-what was inferred;
-what remains unknown.
+- what was proposed;
+- what was implemented or intervened upon;
+- what was directly observed;
+- what was derived or reconstructed;
+- what was inferred;
+- what remains unknown.
 
 When information is absent, incomplete, stale, or outside the observer basis,
 record that boundary explicitly. Do not repair missing evidence with
@@ -42,7 +43,7 @@ interpretation.
 A successful experiment may therefore resolve a question, narrow it, remove
 one blocker, refute a candidate, or expose a better question.
 
-Pressure Selection
+## Pressure Selection
 
 Research direction begins from consequential ambiguity, not from existing
 vocabulary or registry entries.
@@ -52,10 +53,12 @@ interpretations that available evidence cannot currently distinguish.
 
 Prefer:
 
+```text
 small intervention
 → large discrimination gain
 → sharper constraint
 → smaller next intervention
+```
 
 DME_Lab normally maintains one active experimental pressure at a time unless a
 separate need independently justifies parallel work.
@@ -63,11 +66,12 @@ separate need independently justifies parallel work.
 Interruption, redirection, or dwell are normal parts of the workflow. They do
 not invalidate prior evidence.
 
-Pressure / Resolution Navigation
+## Pressure / Resolution Navigation
 
-PRESSURE_RESOLUTION_MAP.md is a derived navigation surface over committed
+`PRESSURE_RESOLUTION_MAP.md` is a derived navigation surface over committed
 evidence.
 
+```text
 pressure map
 → select one reachable pressure
 → investigate
@@ -75,26 +79,27 @@ pressure map
 → adjudicate
 → update resolution and residue
 → reveal changed reachability
+```
 
 Before activating a pressure:
 
-identify or add the relevant pressure node;
-state the unresolved discrimination;
-identify any known missing basis or blocker;
-mark the node ACTIVE only after explicit selection;
-reference the node from a warrant or investigation when useful.
+- identify or add the relevant pressure node;
+- state the unresolved discrimination;
+- identify any known missing basis or blocker;
+- mark the node ACTIVE only after explicit selection;
+- reference the node from a warrant or investigation when useful.
 
 After adjudication:
 
-link authoritative evidence;
-record the bounded resolution;
-preserve unresolved residue;
-expose newly reachable pressures;
-do not activate the next pressure automatically.
+- link authoritative evidence;
+- record the bounded resolution;
+- preserve unresolved residue;
+- expose newly reachable pressures;
+- do not activate the next pressure automatically.
 
 The map reflects repository standing. It does not establish it.
 
-Constraints and Local Distinctions
+## Constraints and Local Distinctions
 
 Reusable constraints preserve limits already warranted by evidence, design, or
 declared basis.
@@ -110,19 +115,19 @@ conserved only when pressure independently forces them.
 
 Do not grow symbolic structure merely because nearby vocabulary is available.
 
-Recurring Operations
+## Recurring Operations
 
 The lab currently performs recurring operations such as:
 
-observe
-compare
-transform
-constrain
-distinguish
-reconstruct
-project
-integrate
-adjudicate
+- observe
+- compare
+- transform
+- constrain
+- distinguish
+- reconstruct
+- project
+- integrate
+- adjudicate
 
 These names are descriptive handles, not yet a formal grammar or required
 execution sequence.
@@ -132,7 +137,7 @@ mechanization of some operations.
 
 Until then, keep their meaning grounded in concrete use.
 
-Human and Agent Participation
+## Human and Agent Participation
 
 Participants may propose questions, challenge interpretations, design
 pressures, execute bounded work, or inspect evidence.
@@ -149,16 +154,16 @@ evidence.
 
 The repository preserves the standing that survives.
 
-Bounded Research
+## Bounded Research
 
 Long-horizon investigations may use the
-docs/methods/Bounded_Research_Warrant.md.
+`docs/methods/Bounded_Research_Warrant.md`.
 
 A warrant grants bounded investigative latitude. It does not grant epistemic
 sovereignty, implementation authority outside its scope, or permission to
 promote candidate structure automatically.
 
-Conservation Rule
+## Conservation Rule
 
 Do not conserve every observation as a concept and do not formalize every
 recurring phrase as an operator.
@@ -169,25 +174,17 @@ epistemically meaningful work.
 
 Otherwise, leave the system lighter.
 
-Development Posture
+## Development Posture
+
+```text
 pressure
 → evidence
 → bounded resolution
 → conserved structure where earned
 → changed reachability
 → pressure again
+```
 
 Call the shape early.
 
 Instantiate it late.
-
-informal operators:
-observe
-compare
-transform
-constrain
-distinguish
-reconstruct
-project
-integrate
-adjudicate
