@@ -23,12 +23,15 @@ observation / reconstruction / navigation
 
 CONTROLLER
 authorization / action / execution boundary
+```
 
 The separation exists to preserve causal clarity.
 
 A viewer should never have to wonder whether inspecting state changed it.
 
-Projected Relationship
+## Projected Relationship
+
+```text
 external world / repository
 ↓
 observation
@@ -56,56 +59,60 @@ new observation
 DME reconstruction
 ↓
 Cockpit changes
+```
 
 The Controller should never directly edit the Cockpit's projection model as a
 substitute for observing consequence.
 
-Core Projected Rule
+## Core Projected Rule
 
 Capability does not establish admissibility.
 
+```text
 can perform action
 !=
 should perform action
+```
 
 A controller may know how to execute an operation while lacking:
 
-authorization;
-sufficient source freshness;
-preconditions;
-consequence bounds;
-identity confidence;
-acknowledgement;
-retry safety.
+- authorization;
+- sufficient source freshness;
+- preconditions;
+- consequence bounds;
+- identity confidence;
+- acknowledgement;
+- retry safety.
 
 The Controller should preserve those differences.
 
-Possible Future Action Record
+## Possible Future Action Record
 
 A future attributable action may need enough structure to recover:
 
-requested operation
-actor / authority
-target
-basis / reconstructed state
-preconditions
-permissions
-expected consequence
-attempt identity
-execution start
-external acknowledgement
-observed consequence
-completion standing
-residue
+- requested operation
+- actor / authority
+- target
+- basis / reconstructed state
+- preconditions
+- permissions
+- expected consequence
+- attempt identity
+- execution start
+- external acknowledgement
+- observed consequence
+- completion standing
+- residue
 
 This is only a candidate shape.
 
 Do not implement it from this projection.
 
-Action Loop
+## Action Loop
 
 A possible future bounded loop is:
 
+```text
 state S0
 ↓
 candidate operation A
@@ -125,9 +132,11 @@ state S1
 compare expected ↔ observed consequence
 ↓
 update reconstruction
+```
 
 The loop must tolerate:
 
+```text
 attempted
 !=
 completed
@@ -143,10 +152,13 @@ currently fresh
 retry requested
 !=
 retry safe
-Lost Acknowledgement
+```
+
+## Lost Acknowledgement
 
 One projected high-value pressure is:
 
+```text
 action attempted
 ↓
 external effect may occur
@@ -156,6 +168,7 @@ acknowledgement lost
 worker interrupted
 ↓
 new worker resumes
+```
 
 The Controller must not blindly retry.
 
@@ -165,31 +178,32 @@ deciding whether another action is admissible.
 This problem should be experimentally pressured before generalized retry or
 transaction semantics are implemented.
 
-Controller Authority
+## Controller Authority
 
 Controller authority should be explicit and bounded.
 
 Potential dimensions include:
 
-who authorized?
-what target?
-what operation class?
-what consequence boundary?
-what time / state basis?
-what retry policy?
-what revocation condition?
+- who authorized?
+- what target?
+- what operation class?
+- what consequence boundary?
+- what time / state basis?
+- what retry policy?
+- what revocation condition?
 
 No implicit universal agent authority.
 
 No action should become authorized merely because it is reachable.
 
-Thin Kernel, Domain Adapters
+## Thin Kernel, Domain Adapters
 
 The projected Controller should not contain native operational semantics for
 every external system.
 
 Prefer:
 
+```text
 DME reconstructed state
 ↓
 bounded action interface
@@ -197,34 +211,36 @@ bounded action interface
 domain adapter
 ↓
 external system
+```
 
 Possible future domains:
 
-Git
-filesystem
-browser
-email
-calendar
-AV systems
-applications
-network services
-robots
-physical actuators
+- Git
+- filesystem
+- browser
+- email
+- calendar
+- AV systems
+- applications
+- network services
+- robots
+- physical actuators
 
 Each domain should earn its own observation and action boundary.
 
-Relationship to Agents
+## Relationship to Agents
 
 Agents may eventually:
 
-propose action
-inspect evidence
-evaluate alternatives
-request authorization
-interpret consequence
+- propose action
+- inspect evidence
+- evaluate alternatives
+- request authorization
+- interpret consequence
 
 They should not implicitly become the Controller.
 
+```text
 agent proposal
 !=
 authorized action
@@ -236,10 +252,11 @@ admissibility
 agent memory
 !=
 current external state
+```
 
 A Controller may execute an authorized operation without containing an LLM.
 
-Relationship to Cockpit
+## Relationship to Cockpit
 
 The Cockpit remains read-only.
 
@@ -250,47 +267,40 @@ convenient.
 
 A later composition may visually connect:
 
-Cockpit
-→ inspect reachable action
-
-Controller
-→ request / receive authority
-
-Controller
-→ execute
-
-Cockpit
-→ observe resulting reconstruction
+- Cockpit → inspect reachable action
+- Controller → request / receive authority
+- Controller → execute
+- Cockpit → observe resulting reconstruction
 
 Composition should occur only after both sides independently earn their roles.
 
-Reopening Conditions
+## Reopening Conditions
 
 Reopen Controller development only when a real pressure requires at least one
 of:
 
-repeated manual execution becomes a meaningful bottleneck;
-ambiguity over whether an external action completed;
-unsafe or costly retry risk;
-stale state can invalidate an intended action;
-multiple agents or workers need shared execution authority;
-permissions or consequence boundaries need explicit enforcement;
-a real process requires sustained observe → act → observe consequence loops;
-human reconstruction and execution latency becomes consequential.
+- repeated manual execution becomes a meaningful bottleneck;
+- ambiguity over whether an external action completed;
+- unsafe or costly retry risk;
+- stale state can invalidate an intended action;
+- multiple agents or workers need shared execution authority;
+- permissions or consequence boundaries need explicit enforcement;
+- a real process requires sustained observe → act → observe consequence loops;
+- human reconstruction and execution latency becomes consequential.
 
 Do not reopen merely because automation would be entertaining.
 
-First Legitimate Pressure
+## First Legitimate Pressure
 
 When action pressure actually arrives, begin with one bounded consequence.
 
 Prefer something:
 
-reversible
-low consequence
-externally observable
-easy to attribute
-easy to verify
+- reversible
+- low consequence
+- externally observable
+- easy to attribute
+- easy to verify
 
 Compare:
 
@@ -300,28 +310,29 @@ Controller-mediated execution
 
 Ask whether the Controller improves:
 
-provenance;
-completion certainty;
-retry safety;
-reconstruction after interruption;
-consequence attribution.
+- provenance;
+- completion certainty;
+- retry safety;
+- reconstruction after interruption;
+- consequence attribution.
 
 Do not begin with generalized automation.
 
-Non-Goals
+## Non-Goals
 
 This projection does not authorize:
 
-autonomous world control;
-universal orchestration;
-generalized task planning;
-persistent agent consciousness;
-a global world state;
-unrestricted computer use;
-hidden action;
-self-expanding permissions;
-a universal consequence engine.
-Standing
+- autonomous world control;
+- universal orchestration;
+- generalized task planning;
+- persistent agent consciousness;
+- a global world state;
+- unrestricted computer use;
+- hidden action;
+- self-expanding permissions;
+- a universal consequence engine.
+
+## Standing
 
 PARKED.
 
@@ -332,6 +343,7 @@ action pressure earns reopening.
 
 Until then:
 
+```text
 observe
 reconstruct
 visualize
@@ -342,3 +354,4 @@ before:
 authorize
 act
 observe consequence
+```

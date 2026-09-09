@@ -94,6 +94,12 @@ History-association selection adjudication completed in `docs/decisions/history_
 
 Constraint Registry lineage audit completed in `docs/decisions/constraint_registry_lineage_audit_v0.md`.
 
+Acoustic prediction bridge dwell completed in `docs/decisions/acoustic_prediction_bridge_dwell_v0.md`.
+
+Source-side positional return pressure completed in `docs/decisions/acoustic_source_side_positional_return_pressure_v0.md`.
+
+Independent source-side positional return replication completed in `docs/decisions/acoustic_source_side_positional_return_replication_v1.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -160,70 +166,39 @@ navigation
 - raw replay validated only in canonical commit order
 - no generalized projection exposed from evidence
 
-## Next Smallest Question
+## Current Navigation and Development Standing
 
-Foreground repository observation horizontal semantic pressure is locally
-saturated and frozen for dwell. Reopen it only for a concrete consumer demand,
-an independent contradiction, or a qualitatively new observation basis.
+`PRESSURE_RESOLUTION_MAP.md` is the current derived navigation surface over
+committed evidence. It does not establish the standing it displays.
 
-Prediction-first pressure found no admissible cross-domain prediction in the
-partial occurrence, relational-signature, or admission candidates after
-generic repetition and shared-pipeline behavior were subtracted. The earned
-result remains `no_cross_domain_prediction_yet_earned` and comparison remains
-frozen.
+- Active experimental pressure: none.
+- PR-006 remains `OPEN`, blocked by a concrete consumer need and a separately
+  justified bounded observation basis.
+- PR-018 remains `OPEN`; its exact status remains
+  `cross_domain_prediction_not_earned` pending an antecedent mapping and
+  independently authorized unseen target evidence.
+- No next experimental pressure has been selected.
 
-The selected new acoustic witness basis has now been pressure-tested. A
-separate-process WASAPI shared-mode loopback observer acquired actual
-`IAudioCaptureClient` packets from the exact active Realtek endpoint. Under a
-frozen five-trial-per-condition test, post-mix PCM discriminated no intentional
-render, 900 Hz, and 1500 Hz conditions, and endpoint/mix acquisition recurred
-across fresh watcher processes. The bounded result is
-`post_mix_loopback_witness_validated`. This is a post-mix render-endpoint
-coordinate only: driver receipt, DAC output, speaker actuation, airborne sound,
-microphone causality, cross-domain prediction, and tomography remain
-unobserved. No next experiment is authorized.
+PR-019 preserves two independently retained specimens:
 
-A bounded A1 -> B -> A2 physical-position pressure paired that recurrent
-post-mix endpoint witness with independently captured XIBERIA microphone PCM.
-Under the frozen source-normalized spectral-distance rule, the endpoint source
-gate passed, B discriminated from A1, and all five return trials were closer to
-A1 than B. The required result is
-`positional_acoustic_transformation_recurrent`. The displacement and return are
-operator-reported interventions rather than measured geometry; physical
-mechanism, pure airborne causality, exact pose, transfer-function semantics,
-and tomography remain unearned. No next physical transformation is authorized.
+- R0 — `BASIS_INSUFFICIENT`: the first source-side positional run completed all
+  paired observations, but its endpoint source gate failed and B did not pass
+  the frozen discrimination threshold.
+- R1 — `BOUNDED_RESOLUTION`: the independently selected replication passed the
+  endpoint source gate, B discrimination, and all A2 recurrence criteria under
+  the unchanged protocol.
 
-Astra's external consumer Git-acquisition pressure was independently
-reproduced against current main. Clean-Git and non-Git histories had opposite
-historical acquisition outcomes but exactly equal complete `current_result()`
-bodies; existing reconstruction recovered the distinguishing nested Git
-payloads without append. The required standing is
-`astra_pressure_reproduced`. This is a bounded operational consequence of
-D-0046, not a production defect, general consumer-safety result, new
-distinction, or navigation experiment.
+The strongest licensed acoustic interpretation is recurrent source-side
+positional return under an operator-reported fixed microphone configuration.
+Pure airborne causality, exact geometry, transfer-function semantics,
+tomography, and prospective cross-domain prediction remain unearned. The
+replication forced no new constraint or chart.
 
-Astra Pass 2's specimen-to-history association failure survives inspection of
-the complete materially relevant public surface. The detached four-record
-`current_result()` exposes useful ledger-local record references, but no ledger
-path, root, trace, history identity, or other public binding to its actual
-history. The contracts legitimately lead to the 14-record canonical live
-ledger, but that ledger is not associated with the specimen and assigns
-different roles to the same record-ID strings. The actual degraded Git evidence
-remains recoverable once its associated history is supplied. The required
-standing is `public_history_association_not_resolvable`; this is a bounded
-operational consequence of existing distinctions, not a new distinction,
-production defect, resolver requirement, or strict unfamiliar-consumer result.
-
-Detached-history association selection pressure supports two functional roles:
-a reachable evidence location and discrimination of every committed record
-boundary in the result's original prefix at its existing recorded extent. Three
-tested encodings currently realize that relation: a complete prefix digest set,
-an aggregate ordered-prefix digest, and an aggregate canonical digest-set hash.
-The required standing is `history_association_selection_reproduced`; current
-evidence does not select among them. The relation survives legitimate
-continuation and physical copy but does not establish freshness, source success,
-historical truth, unique physical lineage, a unique current tail, or authenticated
-causal derivation. No production carrier or new distinction was selected.
+The DME Cockpit is authorized as read-only, repository-derived,
+observer-facing projection work. This implementation-development decision is
+not an active experimental pressure and does not create a Pressure / Resolution
+Map node. The Controller remains a `PARKED`, non-authoritative projection and
+is not an implementation warrant.
 
 ## Contract Surface Status
 
@@ -237,7 +212,7 @@ causal derivation. No production carrier or new distinction was selected.
 - implemented within bounded repository specimen: capture adapter
 - deferred: general OS and Windows capture
 
-## Current Pressure
+## Conserved Pressure Evidence
 
 - keep `record_id`, envelope identity, source sequence, event time, arrival time, and `commit_index` distinct
 - test raw replay in canonical commit order before resolved amendment views
@@ -249,7 +224,7 @@ causal derivation. No production carrier or new distinction was selected.
 - current synthetic runtime records conform to `schemas/ledger_record_v0.schema.json`
 - schema validation remains shadow-only and does not regulate ledger append
 - runtime can currently produce some records the schema rejects, including non-object envelopes and non-finite JSON values
-- ingest/provenance admission is now the likely next pressure frontier
+- ingest/provenance admission was a prior pressure frontier
 - repository snapshot baseline produced a JSON-domain valid candidate envelope
 - temporary ledger handshake for the live candidate passed schema shadow validation, replay, and integrity verification
 - filesystem observation and Git observation are separate live evidence regimes
@@ -431,7 +406,7 @@ causal derivation. No production carrier or new distinction was selected.
 - Chart 18 records acquisition quality, error carriage, structural schema, comparator decision, reconstruction recovery, projection exposure, and companion exposure
 - D-0046 records structural_admissibility != source_capture_success
 - D-0012, D-0016, and D-0042 through D-0045 remain supported
-- the next pressure requires a concrete consumer before source-quality companion data, trust policy, retry, confidence, or source ranking
+- the foreground capstone left source-quality companion data, trust policy, retry, confidence, and source ranking blocked on a concrete consumer
 - horizontal capstone composition found no conflict among Charts 11-18 and invalidated no prior finding
 - D-0012, D-0016, D-0023, D-0025 through D-0027, and D-0041 through D-0046 remain independently necessary on their scoped evidence
 - the current pressure map licenses source-relative historical recovery and navigation, not caller acknowledgement, durable invocation grouping, shared-world capture, external freshness, complete interval history, source success, or admission resolution
