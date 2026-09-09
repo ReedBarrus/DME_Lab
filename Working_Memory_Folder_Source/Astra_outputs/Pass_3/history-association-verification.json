@@ -1,0 +1,62 @@
+{
+  "primary_status": "multiple_history_association_candidates_remain",
+  "starting_ref": "cb8b916184d1e42e720834a62a68b4b4e0ace49c",
+  "final_head": "cb8b916184d1e42e720834a62a68b4b4e0ace49c",
+  "fetched_origin_main": "cb8b916184d1e42e720834a62a68b4b4e0ace49c",
+  "final_status": "## main...origin/main",
+  "porcelain": "",
+  "diff_check": "",
+  "repository_files_changed": [],
+  "committed_or_pushed": false,
+  "baseline_repository_suite": {
+    "tests": 472,
+    "passed": true,
+    "seconds": 16.398
+  },
+  "final_repository_suite": {
+    "tests": 472,
+    "passed": true,
+    "seconds": 16.234
+  },
+  "external_handoff_tests": {
+    "tests": 9,
+    "passed": true,
+    "log": "test_all_saved_histories_recommit_validate_and_reproduce_full_result (__main__.AssociationEvidenceTests.test_all_saved_histories_recommit_validate_and_reproduce_full_result) ... ok\ntest_detached_process_reads_preserve_data_and_distinguish_recorded_errors (__main__.AssociationEvidenceTests.test_detached_process_reads_preserve_data_and_distinguish_recorded_errors) ... ok\ntest_each_removed_set_member_leaves_a_valid_undiscriminated_prefix (__main__.AssociationEvidenceTests.test_each_removed_set_member_leaves_a_valid_undiscriminated_prefix) ... ok\ntest_extensions_keep_original_record_and_do_not_claim_current_tail (__main__.AssociationEvidenceTests.test_extensions_keep_original_record_and_do_not_claim_current_tail) ... ok\ntest_finalists_accept_exactly_the_original_prefix_in_saved_matrix (__main__.AssociationEvidenceTests.test_finalists_accept_exactly_the_original_prefix_in_saved_matrix) ... ok\ntest_location_and_interpretation_cannot_be_silently_invented (__main__.AssociationEvidenceTests.test_location_and_interpretation_cannot_be_silently_invented) ... ok\ntest_original_acquisition_counterexample_defeats_locator_ids_and_terminal (__main__.AssociationEvidenceTests.test_original_acquisition_counterexample_defeats_locator_ids_and_terminal) ... ok\ntest_role_swap_is_rejected_even_if_supplied_commitment_matches_wrong_history (__main__.AssociationEvidenceTests.test_role_swap_is_rejected_even_if_supplied_commitment_matches_wrong_history) ... ok\ntest_trace_binding_and_canonical_history_conservation (__main__.AssociationEvidenceTests.test_trace_binding_and_canonical_history_conservation) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.307s\n\nOK\n"
+  },
+  "specimens": 16,
+  "selection_matrix_cells": 135,
+  "finalist_matrix_cells": 48,
+  "finalist_encodings": [
+    "digest_set",
+    "prefix_digest",
+    "digest_set_hash"
+  ],
+  "functional_equivalence_on_matrix": true,
+  "canonical_history_unchanged": true,
+  "selection_trace_sha256": "71a1c636ec8ea04350d6e6a67e5ac4c6e228189f21a7f6d16d13c542ad4a45db",
+  "adversarial_trace_sha256": "c83427a3c3d9333f0ff5884ff2450932452577c0cd77fdfdc1fd3ce5077d081a",
+  "archived_specimen_file_sha256": {
+    "D4": "2c1c5d0f6654c601515857c4be66c0a50349d17f6c0b32f82bc1a404943f428f",
+    "H4": "6b0dc2b7b05259e3c0da8d0abe50a3ec2c3a9bd3aa4207010149597f04aa33a9",
+    "roles4": "91d0e6d092fb7131694af3695470d65c38df71e85b0f5e89fccf814a0ce5fe33",
+    "copy_H4": "6b0dc2b7b05259e3c0da8d0abe50a3ec2c3a9bd3aa4207010149597f04aa33a9",
+    "changed_1": "62b081bd3afddc12e65afd1ca0f84f31ae6ffa0f797de41a290d6cbc51d83a5a",
+    "changed_2": "f1ca8ca76c0b586e9c83bafd3342bd14223a1020b56e522152abcb28719d3570",
+    "changed_3": "facb419d8067c5c723077659b62e048460f9454895a70bfa7bd669d7b91b748d",
+    "changed_4": "e458d5c614427dbf37a8eb1068067c3b3ea700cf8ad932cfc0dd894879c55076",
+    "renamed4": "ef04c6bb3c728ff7242d0420ecd38759a5fe933651069e7560d3ee65e785250c",
+    "H6": "d37a70b7c8de5ef7a4139ed4fec79e10ed19b5f857aa28278085966fe4c528b1",
+    "H6_other_tail": "d12474fb00186122a8be429d7dc0d9fc925b601ac831c056a67c5c19a4d3dc3f",
+    "H3": "2fa903c27bffcac2e4aaf2c19deb3eeaa42fae1dd82dee80e3c853e7321b310f",
+    "H14": "2a2b4adb673df0a87855f075e464796d8ca49e2e0e59b74ea8be579ec815f03f",
+    "H16": "0d003664a449efa879bb4de2587ef21c16a49079da14f680ea97625cf2a45877",
+    "reencoded_H4": "5b1ae16957daf262979a6cbf6303206556af208d30842f522056f6d42a37cea0",
+    "mixed4": "bcbdbda1cadad2c94601e360c0125013c7a2af9fc24ef6bed02d323cbf3ba78c"
+  },
+  "limits": [
+    "Same-host detached transport with accessible declared URI",
+    "Faithful original result and association pairing assumed",
+    "Original committed prefix correspondence; no physical lineage authentication",
+    "Standalone public-declaration reader; not a naive human or LLM trial"
+  ]
+}
