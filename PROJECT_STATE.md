@@ -84,6 +84,8 @@ Acoustic source-coordinate witness selection pressure completed in `docs/decisio
 
 WASAPI loopback witness validation completed in `docs/decisions/wasapi_loopback_witness_validation_v0.md`.
 
+Acoustic positional transformation pressure completed in `docs/decisions/acoustic_positional_transformation_pressure_v0.md`.
+
 Astra consumer-pressure adjudication and independent reproduction completed in `docs/decisions/astra_consumer_pressure_adjudication_v0.md`.
 
 Public history-association adjudication completed in `docs/decisions/public_history_association_adjudication_v0.md`.
@@ -178,6 +180,16 @@ across fresh watcher processes. The bounded result is
 coordinate only: driver receipt, DAC output, speaker actuation, airborne sound,
 microphone causality, cross-domain prediction, and tomography remain
 unobserved. No next experiment is authorized.
+
+A bounded A1 -> B -> A2 physical-position pressure paired that recurrent
+post-mix endpoint witness with independently captured XIBERIA microphone PCM.
+Under the frozen source-normalized spectral-distance rule, the endpoint source
+gate passed, B discriminated from A1, and all five return trials were closer to
+A1 than B. The required result is
+`positional_acoustic_transformation_recurrent`. The displacement and return are
+operator-reported interventions rather than measured geometry; physical
+mechanism, pure airborne causality, exact pose, transfer-function semantics,
+and tomography remain unearned. No next physical transformation is authorized.
 
 Astra's external consumer Git-acquisition pressure was independently
 reproduced against current main. Clean-Git and non-Git histories had opposite
@@ -468,5 +480,12 @@ causal derivation. No production carrier or new distinction was selected.
 - watcher processes received only endpoint ID, duration, and artifact paths; condition and emitter metadata were joined after acquisition, preserving command construction != render-path observation != physical realization
 - the bounded result is `post_mix_loopback_witness_validated`; it establishes a post-mix render-endpoint coordinate, not driver receipt, DAC output, speaker actuation, airborne sound, microphone causality, or tomography
 - raw PCM remained ephemeral after per-capture hashing and measurement; the canonical ledger remained byte-identical and no distinction, chart, production source, adapter, or generalized observer was added
+- positional pressure froze A and B before primary evidence, then retained five paired endpoint/microphone observations at A1, five after an operator-reported lateral displacement by approximately the microphone's own length, and five after operator-confirmed return to A2
+- three exploratory A-position preflights at 0.005, 0.010, and 0.020 full scale were retained separately; only the existing 0.020 ceiling produced a sufficient supported-band microphone response, and no higher level was attempted
+- all 15 primary Realtek loopback captures used unique external watcher processes and recurrent endpoint shape; all 15 XIBERIA buffers had distinct hashes and zero capture errors
+- endpoint shape varied by at most approximately `7.78e-15` dB and endpoint mean level by 0.516145 dB, satisfying the frozen source-stability gate before positional attribution
+- A1-to-B response-centroid distance was 22.603324 dB against a frozen 9.458592 dB threshold; A1-to-A2 was 3.824222 dB, A2-to-B was 24.203247 dB, and all five A2 trials were individually closer to A1
+- the bounded result is `positional_acoustic_transformation_recurrent`; it licenses a recurrent position-conditioned sampled-microphone realization under the declared operator intervention, not a measured geometry, physical transfer function, pure airborne mechanism, general acoustic law, or tomography
+- no new distinction, chart, production promotion, canonical-history mutation, or next physical transformation was earned
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure
