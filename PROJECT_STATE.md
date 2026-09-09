@@ -487,5 +487,14 @@ causal derivation. No production carrier or new distinction was selected.
 - A1-to-B response-centroid distance was 22.603324 dB against a frozen 9.458592 dB threshold; A1-to-A2 was 3.824222 dB, A2-to-B was 24.203247 dB, and all five A2 trials were individually closer to A1
 - the bounded result is `positional_acoustic_transformation_recurrent`; it licenses a recurrent position-conditioned sampled-microphone realization under the declared operator intervention, not a measured geometry, physical transfer function, pure airborne mechanism, general acoustic law, or tomography
 - no new distinction, chart, production promotion, canonical-history mutation, or next physical transformation was earned
+- hardware-free cross-domain re-adjudication confirmed that separate-process WASAPI endpoint evidence plus positional A1-to-B-to-A2 recurrence removes the specific acoustic source-coordinate blocker in the earlier repository-acoustic comparison
+- the pre-existing absent-interval pressure supplies a prior repository alpha-to-beta-to-alpha relation with exact endpoint equivalence at distinct occurrences, while the acoustic pressure supplies a stable observed endpoint, discriminable B microphone realization, and metric return toward A1
+- after subtracting common capture, envelope, ledger/trace, reconstruction, and analysis machinery, one nontrivial return-transformation candidate survives as a partial, basis-relative retrospective correspondence
+- the match remains inexact: repository B was control-observed but absent from DME capture, acoustic B was directly paired-observed; repository return is exact declared-field equality, acoustic return is noisy spectral recurrence; source/observer scale, clocks, geometry, and persistence differ
+- a post-hoc withholding check classified both remaining A1 trials, both remaining B trials, and all five A2 trials toward the expected first-three-trial centroid, supporting robustness without creating prospective evidence
+- no prior artifact predicted the positional consequence; prior prediction selection explicitly declined microphone displacement for lack of a directional preserved/changed signature
+- current statuses are `tomographic_structure_candidate_prediction_not_earned` and `cross_domain_prediction_not_earned`
+- the comparative geometry changed qualitatively but boundedly: the anticipated coordinate was supplied, a new independent observer relation and return-transformation family were introduced, and one serious retrospective candidate replaced the earlier no-matched-candidate standing
+- no new distinction, chart, trace, test, source, observer, production change, runtime ontology, canonical-history mutation, or next experiment was earned
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure
