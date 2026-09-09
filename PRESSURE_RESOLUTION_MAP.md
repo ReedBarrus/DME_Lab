@@ -24,7 +24,6 @@ Newly reachable / open:
 
 - PR-006 — scoped interval or change observation
 - PR-018 — prospective cross-domain prediction
-- PR-019 — source-side positional return under a fixed microphone
 
 Shelved:
 
@@ -341,23 +340,24 @@ not authorized or active.
   relation and a fixed microphone, does controlled speaker A1 -> B -> A2
   displacement produce a discriminable B microphone realization and return
   recurrence toward A1?
-- **Standing:** `OPEN`
-- **Missing discriminator:** prospectively frozen operator-defined speaker
-  positions, fixed-microphone controls, paired endpoint/microphone observations,
-  and a frozen separation/return rule.
-- **Resolution so far:** an analysis-only dwell selected this as the smallest
-  physical pressure on PR-017's source-change versus observer-change scale
-  mismatch. No trial, prediction, or physical interpretation was earned.
-- **Residue:** success would establish at most within-domain prospective
-  recurrence and limited evidence against a microphone-handling-only account.
-  PR-016 and ordinary acoustic expectations already supply the expected
-  change-and-return relation, so this pressure cannot by itself make PR-018
-  informative.
-- **Blocked by:** explicit selection and operator authorization
+- **Standing:** `BASIS_INSUFFICIENT`
+- **Missing discriminator:** a recurrent post-mix endpoint relation and B
+  separation under the frozen response rule.
+- **Resolution so far:** all 15 paired primary observations completed, but
+  unrelated game audio contaminated the endpoint witness by operator report.
+  Endpoint shape and level stability both failed, and B did not exceed the
+  frozen discrimination threshold. Exact status:
+  `source_side_positional_return_evidence_insufficient`.
+- **Residue:** descriptive A2 distances returned toward A1, but positional
+  recurrence is not licensed because the source gate failed and B was not
+  discriminated. Relative geometry versus microphone-handling nuisance remains
+  unresolved, and PR-018 gains no predictive standing.
+- **Blocked by:** a separately selected clean source basis; no repeat is
+  authorized by this result
 - **Unlocks:** —
-- **Evidence:** [selection dwell](docs/decisions/acoustic_prediction_bridge_dwell_v0.md),
-  [microphone-side return](docs/decisions/acoustic_positional_transformation_pressure_v0.md),
-  [cross-domain re-adjudication](docs/decisions/cross_domain_tomographic_readjudication_v0.md)
+- **Evidence:** [decision](docs/decisions/acoustic_source_side_positional_return_pressure_v0.md),
+  [trace](traces/acoustic_source_side_positional_return_pressure_v0.json),
+  [selection dwell](docs/decisions/acoustic_prediction_bridge_dwell_v0.md)
 
 ## D. Cross-domain structure and prediction
 
