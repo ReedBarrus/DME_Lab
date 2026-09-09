@@ -86,6 +86,8 @@ Astra consumer-pressure adjudication and independent reproduction completed in `
 
 Public history-association adjudication completed in `docs/decisions/public_history_association_adjudication_v0.md`.
 
+History-association selection adjudication completed in `docs/decisions/history_association_selection_adjudication_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -189,6 +191,17 @@ remains recoverable once its associated history is supplied. The required
 standing is `public_history_association_not_resolvable`; this is a bounded
 operational consequence of existing distinctions, not a new distinction,
 production defect, resolver requirement, or strict unfamiliar-consumer result.
+
+Detached-history association selection pressure supports two functional roles:
+a reachable evidence location and discrimination of every committed record
+boundary in the result's original prefix at its existing recorded extent. Three
+tested encodings currently realize that relation: a complete prefix digest set,
+an aggregate ordered-prefix digest, and an aggregate canonical digest-set hash.
+The required standing is `history_association_selection_reproduced`; current
+evidence does not select among them. The relation survives legitimate
+continuation and physical copy but does not establish freshness, source success,
+historical truth, unique physical lineage, a unique current tail, or authenticated
+causal derivation. No production carrier or new distinction was selected.
 
 ## Contract Surface Status
 
