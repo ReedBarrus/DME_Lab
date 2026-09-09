@@ -21,6 +21,9 @@ Repository evidence remains authoritative.
 
 If the Cockpit disagrees with repository state, the Cockpit is wrong.
 
+The bounded normalization and source boundary for the first implementation is
+defined in the [Cockpit Projection Contract](PROJECTION_CONTRACT.md).
+
 ---
 
 ## Governing Rule
