@@ -340,24 +340,34 @@ not authorized or active.
   relation and a fixed microphone, does controlled speaker A1 -> B -> A2
   displacement produce a discriminable B microphone realization and return
   recurrence toward A1?
-- **Standing:** `BASIS_INSUFFICIENT`
-- **Missing discriminator:** a recurrent post-mix endpoint relation and B
-  separation under the frozen response rule.
-- **Resolution so far:** all 15 paired primary observations completed, but
-  unrelated game audio contaminated the endpoint witness by operator report.
-  Endpoint shape and level stability both failed, and B did not exceed the
-  frozen discrimination threshold. Exact status:
-  `source_side_positional_return_evidence_insufficient`.
-- **Residue:** descriptive A2 distances returned toward A1, but positional
-  recurrence is not licensed because the source gate failed and B was not
-  discriminated. Relative geometry versus microphone-handling nuisance remains
-  unresolved, and PR-018 gains no predictive standing.
-- **Blocked by:** a separately selected clean source basis; no repeat is
-  authorized by this result
+- **Standing:** `BOUNDED_RESOLUTION`
+- **Missing discriminator:** —
+- **Resolution so far:** an independently selected replication passed the
+  endpoint source gate, B discrimination, and every A2 return criterion. Exact
+  current status: `source_side_positional_return_replication_recurrent`.
+- **Residue:** the original failed-basis specimen remains valid and separate.
+  Geometry, quiet-source condition, and fixed microphone were operator
+  provenance; physical mechanism, pure airborne causality, transfer-function
+  semantics, and prospective cross-domain prediction remain unearned.
+- **Blocked by:** —
 - **Unlocks:** —
-- **Evidence:** [decision](docs/decisions/acoustic_source_side_positional_return_pressure_v0.md),
-  [trace](traces/acoustic_source_side_positional_return_pressure_v0.json),
+- **Evidence:** [replication decision](docs/decisions/acoustic_source_side_positional_return_replication_v1.md),
+  [replication trace](traces/acoustic_source_side_positional_return_replication_v1.json),
+  [original decision](docs/decisions/acoustic_source_side_positional_return_pressure_v0.md),
+  [original trace](traces/acoustic_source_side_positional_return_pressure_v0.json),
   [selection dwell](docs/decisions/acoustic_prediction_bridge_dwell_v0.md)
+
+#### PR-019 — Resolution history
+
+- **R0 — `BASIS_INSUFFICIENT`:** all 15 paired observations completed, but the
+  endpoint source gate failed and B did not pass its frozen discrimination
+  threshold. Game audio was operator-reported provenance, not a demonstrated
+  causal explanation.
+- **R1 — `BOUNDED_RESOLUTION`:** a separately selected replication declared no
+  known intentional unrelated endpoint playback before acquisition, reused the
+  unchanged protocol and geometry, passed both endpoint source criteria,
+  discriminated B, and passed all A2 recurrence criteria. The replication was
+  independently adjudicated before retrospective comparison.
 
 ## D. Cross-domain structure and prediction
 
