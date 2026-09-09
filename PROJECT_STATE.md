@@ -82,6 +82,8 @@ Cross-domain predictive-transformation selection pressure completed in `docs/dec
 
 Acoustic source-coordinate witness selection pressure completed in `docs/decisions/acoustic_source_coordinate_witness_selection_pressure_v0.md`.
 
+WASAPI loopback witness validation completed in `docs/decisions/wasapi_loopback_witness_validation_v0.md`.
+
 Astra consumer-pressure adjudication and independent reproduction completed in `docs/decisions/astra_consumer_pressure_adjudication_v0.md`.
 
 Public history-association adjudication completed in `docs/decisions/public_history_association_adjudication_v0.md`.
@@ -164,12 +166,18 @@ Prediction-first pressure found no admissible cross-domain prediction in the
 partial occurrence, relational-signature, or admission candidates after
 generic repetition and shared-pipeline behavior were subtracted. The earned
 result remains `no_cross_domain_prediction_yet_earned` and comparison remains
-frozen. Read-only witness reconnaissance identified separate-process WASAPI
-shared-mode endpoint loopback as the smallest legitimate candidate for a
-content-bearing, post-system-mix acoustic coordinate. The required selection
-result is `candidate_requires_new_basis`: the Windows APIs and target Realtek
-endpoint are present, but the repository and installed tools contain no
-independent loopback observer. No implementation or execution is authorized.
+frozen.
+
+The selected new acoustic witness basis has now been pressure-tested. A
+separate-process WASAPI shared-mode loopback observer acquired actual
+`IAudioCaptureClient` packets from the exact active Realtek endpoint. Under a
+frozen five-trial-per-condition test, post-mix PCM discriminated no intentional
+render, 900 Hz, and 1500 Hz conditions, and endpoint/mix acquisition recurred
+across fresh watcher processes. The bounded result is
+`post_mix_loopback_witness_validated`. This is a post-mix render-endpoint
+coordinate only: driver receipt, DAC output, speaker actuation, airborne sound,
+microphone causality, cross-domain prediction, and tomography remain
+unobserved. No next experiment is authorized.
 
 Astra's external consumer Git-acquisition pressure was independently
 reproduced against current main. Clean-Git and non-Git histories had opposite
@@ -452,5 +460,13 @@ causal derivation. No production carrier or new distinction was selected.
 - spatial displacement, orientation, distance, new command, richer measurement, repository-native transformation, and another observation basis were compared but none had an evidence-derived falsifiable signature
 - the selected result is `no_cross_domain_prediction_yet_earned`; microphone movement and all other next transformations remain unjustified
 - no distinction, trace, script, test, chart, audio action, source, or production machinery was added; comparison is frozen pending matched pre-ingest source-domain evidence
+- separate-process WASAPI shared-mode loopback validation selected the exact active `Speakers (Realtek High Definition Audio)` endpoint and observed its 48 kHz, stereo, 32-bit-float post-mix format
+- an idle no-render gate yielded no packets; an all-zero render activation yielded actual `IAudioCaptureClient` packets before any tonal trial, so packet availability was established without using emitter success as the witness
+- the frozen primary used five C0, five 900 Hz S1, and five 1500 Hz S2 trials at 0.002 full scale; all trials were retained and no device, gain, or hardware setting was changed
+- all ten commanded trials contained content-bearing endpoint PCM; S1 and S2 passed every predeclared spectral-dominance criterion, while all five C0 intervals retained explicit packet absence and imitated neither command relation
+- nineteen unique external watcher processes covered gate, preflight, and primary captures; every primary process reacquired the same endpoint ID and mix format with zero acquisition failures
+- watcher processes received only endpoint ID, duration, and artifact paths; condition and emitter metadata were joined after acquisition, preserving command construction != render-path observation != physical realization
+- the bounded result is `post_mix_loopback_witness_validated`; it establishes a post-mix render-endpoint coordinate, not driver receipt, DAC output, speaker actuation, airborne sound, microphone causality, or tomography
+- raw PCM remained ephemeral after per-capture hashing and measurement; the canonical ledger remained byte-identical and no distinction, chart, production source, adapter, or generalized observer was added
 - hash chains, manifests, partial-write recovery, and repair remain deferred
 - no index exists or is yet justified by lookup pressure
