@@ -212,7 +212,7 @@ class IntraCaptureTimingSkewPressureTest(unittest.TestCase):
         )
 
     def test_D0044_is_registered_from_executed_evidence(self) -> None:
-        with open("docs/distinctions/registry.jsonl", encoding="utf-8") as registry:
+        with open("docs/constraints/registry.jsonl", encoding="utf-8") as registry:
             entries = [json.loads(line) for line in registry if line.strip()]
         distinction = next(entry for entry in entries if entry["id"] == "D-0044")
         self.assertEqual(distinction["id"], "D-0044")

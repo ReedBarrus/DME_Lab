@@ -10,7 +10,7 @@ Ledger pressure pass completed in `docs/decisions/ledger_pressure_pass_v0.md`.
 
 Synthetic ledger append/replay/integrity harness implemented and tested.
 
-Development distinction registry initialized as provisional, non-authoritative research memory.
+Constraint Registry initialized as provisional, non-authoritative research memory; its historical `D-*` identifiers are preserved.
 
 v0 contract surface mapped in `docs/contracts/README.md`.
 
@@ -91,6 +91,8 @@ Astra consumer-pressure adjudication and independent reproduction completed in `
 Public history-association adjudication completed in `docs/decisions/public_history_association_adjudication_v0.md`.
 
 History-association selection adjudication completed in `docs/decisions/history_association_selection_adjudication_v0.md`.
+
+Constraint Registry lineage audit completed in `docs/decisions/constraint_registry_lineage_audit_v0.md`.
 
 ## Objective
 
@@ -242,7 +244,7 @@ causal derivation. No production carrier or new distinction was selected.
 - keep the integrity hash boundary explicit: canonical JSON of record content without the `integrity` field
 - preserve missingness structurally without explaining it semantically
 - JSONL and complete-envelope storage remain provisional after small synthetic tests
-- use `docs/distinctions/registry.jsonl` as appendable distinction memory, not as authority over runtime evidence
+- use `docs/constraints/registry.jsonl` as appendable constraint memory, not as authority over runtime evidence
 - keep schema work local to boundaries with executable evidence; ledger record remains the current strongest candidate
 - current synthetic runtime records conform to `schemas/ledger_record_v0.schema.json`
 - schema validation remains shadow-only and does not regulate ledger append

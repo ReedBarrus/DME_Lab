@@ -1,57 +1,193 @@
 # Workflow
 
-DME_Lab develops by cycling through pressure, implementation, and evidence.
+DME_Lab develops by applying bounded pressure to unresolved questions and
+conserving only what survives observation.
+
+The workflow is iterative, interruptible, and basis-relative. It is not a
+required linear pipeline.
+
+A common experimental movement is:
 
 ```text
-question / pressure
--> projection
--> contract
--> implementation
--> trace
--> reconstruction
--> comparison
--> distinction
--> feedback
--> amendment
-```
+pressure
+→ observe
+→ compare / transform
+→ constrain interpretation
+→ distinguish what matters locally
+→ reconstruct / project / integrate
+→ adjudicate
+→ preserve evidence and residue
+→ expose newly reachable pressure
 
-Each stage should preserve the difference between what was projected, what was implemented, what was observed, and what was reconstructed.
+The order may change.
 
-Not every cycle must emit a registry entry. Conserve only distinctions useful enough to reduce future drift or relearning.
+An investigation may return to an earlier operation, stop when its basis is
+insufficient, or remain unresolved without being treated as failure.
 
-## Working Rule
+Evidence Before Closure
 
-When information is absent, incomplete, or not yet captured, record it as missing. Do not fill the gap with interpretation.
+Preserve the difference between:
 
-Long-horizon bounded investigations may be issued under the
-       Bounded Research Warrant.
+what was proposed;
+what was implemented or intervened upon;
+what was directly observed;
+what was derived or reconstructed;
+what was inferred;
+what remains unknown.
 
-## Pressure / Resolution Navigation
+When information is absent, incomplete, stale, or outside the observer basis,
+record that boundary explicitly. Do not repair missing evidence with
+interpretation.
 
-`PRESSURE_RESOLUTION_MAP.md` is a derived navigation surface over committed
-evidence:
+A successful experiment may therefore resolve a question, narrow it, remove
+one blocker, refute a candidate, or expose a better question.
 
-```text
+Pressure Selection
+
+Research direction begins from consequential ambiguity, not from existing
+vocabulary or registry entries.
+
+A pressure is worth activating when a concrete question contains competing
+interpretations that available evidence cannot currently distinguish.
+
+Prefer:
+
+small intervention
+→ large discrimination gain
+→ sharper constraint
+→ smaller next intervention
+
+DME_Lab normally maintains one active experimental pressure at a time unless a
+separate need independently justifies parallel work.
+
+Interruption, redirection, or dwell are normal parts of the workflow. They do
+not invalidate prior evidence.
+
+Pressure / Resolution Navigation
+
+PRESSURE_RESOLUTION_MAP.md is a derived navigation surface over committed
+evidence.
+
 pressure map
--> selected pressure
--> normal experimental workflow
--> evidence / adjudication
--> pressure map update
-```
+→ select one reachable pressure
+→ investigate
+→ preserve evidence
+→ adjudicate
+→ update resolution and residue
+→ reveal changed reachability
 
-Before beginning a new pressure:
+Before activating a pressure:
 
-1. identify or add the relevant pressure node;
-2. state what distinction is unresolved;
-3. mark a node `ACTIVE` only when Reed explicitly selects it;
-4. use the node ID in the investigation or warrant where useful.
+identify or add the relevant pressure node;
+state the unresolved discrimination;
+identify any known missing basis or blocker;
+mark the node ACTIVE only after explicit selection;
+reference the node from a warrant or investigation when useful.
 
 After adjudication:
 
-1. link the authoritative evidence;
-2. record the bounded resolution;
-3. preserve unresolved residue;
-4. expose newly reachable pressures without automatically activating them.
+link authoritative evidence;
+record the bounded resolution;
+preserve unresolved residue;
+expose newly reachable pressures;
+do not activate the next pressure automatically.
 
-The map is navigation over this workflow, not a replacement for it. It does not
-override decisions, traces, tests, `PROJECT_STATE.md`, or repository state.
+The map reflects repository standing. It does not establish it.
+
+Constraints and Local Distinctions
+
+Reusable constraints preserve limits already warranted by evidence, design, or
+declared basis.
+
+They should constrain future interpretation without choosing research
+direction.
+
+A local distinction occurs when such a constraint becomes relevant to concrete
+observations, claims, subjects, or transformations.
+
+Existing constraints should be reused when sufficient. New ones should be
+conserved only when pressure independently forces them.
+
+Do not grow symbolic structure merely because nearby vocabulary is available.
+
+Recurring Operations
+
+The lab currently performs recurring operations such as:
+
+observe
+compare
+transform
+constrain
+distinguish
+reconstruct
+project
+integrate
+adjudicate
+
+These names are descriptive handles, not yet a formal grammar or required
+execution sequence.
+
+Repeated pressure may eventually justify compression, typing, composition, or
+mechanization of some operations.
+
+Until then, keep their meaning grounded in concrete use.
+
+Human and Agent Participation
+
+Participants may propose questions, challenge interpretations, design
+pressures, execute bounded work, or inspect evidence.
+
+No participant's interpretation outranks repository evidence.
+
+Reed selects or authorizes active pressure and supplies operator provenance
+where required.
+
+ChatGPT and Astra may dwell, compare, challenge, and propose relationships.
+
+Codex or another investigator may execute bounded pressure and produce
+evidence.
+
+The repository preserves the standing that survives.
+
+Bounded Research
+
+Long-horizon investigations may use the
+docs/methods/Bounded_Research_Warrant.md.
+
+A warrant grants bounded investigative latitude. It does not grant epistemic
+sovereignty, implementation authority outside its scope, or permission to
+promote candidate structure automatically.
+
+Conservation Rule
+
+Do not conserve every observation as a concept and do not formalize every
+recurring phrase as an operator.
+
+Conserve structure when doing so prevents demonstrated drift, preserves a
+consequential boundary, supports reconstruction, or reduces repeated
+epistemically meaningful work.
+
+Otherwise, leave the system lighter.
+
+Development Posture
+pressure
+→ evidence
+→ bounded resolution
+→ conserved structure where earned
+→ changed reachability
+→ pressure again
+
+Call the shape early.
+
+Instantiate it late.
+
+informal operators:
+observe
+compare
+transform
+constrain
+distinguish
+reconstruct
+project
+integrate
+adjudicate
