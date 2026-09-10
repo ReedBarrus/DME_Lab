@@ -24,6 +24,9 @@ If the Cockpit disagrees with repository state, the Cockpit is wrong.
 The bounded normalization and source boundary for the first implementation is
 defined in the [Cockpit Projection Contract](PROJECTION_CONTRACT.md).
 
+The first implementable observer composition is defined in the
+[DME Cockpit v0 Page Specification](V0_PAGE_SPEC.md).
+
 ---
 
 ## Governing Rule
