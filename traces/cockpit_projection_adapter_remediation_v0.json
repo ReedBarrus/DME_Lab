@@ -1,0 +1,91 @@
+{
+  "remediation_version": "cockpit_projection_adapter_remediation_v0",
+  "adapter_version": "cockpit_projection_adapter_v0",
+  "source_basis": {
+    "starting_head": "d3c9db69d701dfea7237282b38b78b9d12bd4f3b",
+    "starting_origin_main": "d3c9db69d701dfea7237282b38b78b9d12bd4f3b",
+    "freshness_status": "current"
+  },
+  "p8": {
+    "strategy": "diagnose unconsumed strongly structured R-entry lines within one parsed pressure-node extent",
+    "unsupported_heading_accepted": false,
+    "unsupported_entries_promoted_to_history": false,
+    "diagnostic_kind": "unsupported_structure",
+    "raw_lines_and_coordinates_retained": true,
+    "projection_status": "partial",
+    "healthy_exact_history_unchanged": true
+  },
+  "p11": {
+    "all_duplicate_occurrences_preserved": true,
+    "occurrence_discriminator": "committed heading line",
+    "diagnostic_kind": "duplicate_pressure_id",
+    "canonical_winner_selected": false,
+    "fields_merged": false,
+    "explicit_relation_preserved_once": true,
+    "duplicate_target_resolution": {
+      "status": "ambiguous",
+      "candidate_count": 2
+    }
+  },
+  "current_repository_smoke": {
+    "source_commit": "d3c9db69d701dfea7237282b38b78b9d12bd4f3b",
+    "projection_status": "complete",
+    "active_pressure": null,
+    "active_pressure_status": "agreement",
+    "active_pressure_semantic_status": "explicit_none",
+    "pressure_node_count": 19,
+    "pressure_relation_count": 24,
+    "constraint_count": 46,
+    "evidence_reference_count": 214,
+    "projection_document_count": 3,
+    "pr018": {
+      "standing": "OPEN",
+      "active": false
+    },
+    "pr019": {
+      "standing": "BOUNDED_RESOLUTION",
+      "resolution_history": [
+        {
+          "id": "R0",
+          "standing": "BASIS_INSUFFICIENT"
+        },
+        {
+          "id": "R1",
+          "standing": "BOUNDED_RESOLUTION"
+        }
+      ]
+    },
+    "controller": {
+      "classification": "projection_document",
+      "standing": "PARKED"
+    },
+    "diagnostics": [],
+    "relations_with_target_resolution": []
+  },
+  "verification": {
+    "focused_tests": {
+      "passed": 25,
+      "failed": 0
+    },
+    "full_hardware_free_suite": {
+      "passed": 533,
+      "failed": 0
+    },
+    "git_diff_check": "passed"
+  },
+  "stage3_decision_changed": false,
+  "stage3_trace_changed": false,
+  "projection_contract_changed": false,
+  "pressure_map_changed": false,
+  "constraint_registry_changed": false,
+  "scientific_evidence_changed": false,
+  "new_constraint": false,
+  "new_chart": false,
+  "website_code_changed": false,
+  "controller_code_changed": false,
+  "adjudication": {
+    "status": "bounded_projection_adapter_remediation_passed",
+    "strongest_supported": "The named P8 and P11 structural failure classes remain visibly unresolved without changing healthy supported repository meaning.",
+    "strongest_not_supported": "General Markdown robustness and general projection safety remain unearned."
+  }
+}

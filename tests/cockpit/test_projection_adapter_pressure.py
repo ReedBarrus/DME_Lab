@@ -44,11 +44,15 @@ class CockpitProjectionAdapterPressureTest(unittest.TestCase):
     def test_P7_malformed_constraint_record_survives(self) -> None:
         self.assertEqual(self.scenarios["P7"]["classification"], SURVIVES)
 
-    def test_P8_resolution_history_wound_is_observed_violation(self) -> None:
+    def test_P8_resolution_history_wound_is_now_visible_regression_residue(self) -> None:
         self.assertEqual(
-            self.scenarios["P8"]["classification"], CONTRACT_VIOLATION
+            self.scenarios["P8"]["classification"], SURVIVES
         )
         self.assertEqual(self.scenarios["P8"]["observed"]["damaged_history"], [])
+        self.assertIn(
+            "unsupported_structure",
+            [item["kind"] for item in self.scenarios["P8"]["diagnostics"]],
+        )
 
     def test_P9_stale_projection_basis_survives(self) -> None:
         self.assertEqual(self.scenarios["P9"]["classification"], SURVIVES)
@@ -60,11 +64,15 @@ class CockpitProjectionAdapterPressureTest(unittest.TestCase):
         self.assertEqual(
             self.scenarios["P11"]["classification"], CONTRACT_AMBIGUITY
         )
+        self.assertIn(
+            "duplicate_pressure_id",
+            [item["kind"] for item in self.scenarios["P11"]["diagnostics"]],
+        )
 
     def test_pressure_completion_does_not_require_all_semantic_survivals(self) -> None:
         counts = self.result["classification_counts"]
-        self.assertEqual(counts[SURVIVES], 9)
-        self.assertEqual(counts[CONTRACT_VIOLATION], 1)
+        self.assertEqual(counts[SURVIVES], 10)
+        self.assertEqual(counts[CONTRACT_VIOLATION], 0)
         self.assertEqual(counts[CONTRACT_AMBIGUITY], 1)
         self.assertFalse(self.result["adjudication"]["adapter_remediated"])
 

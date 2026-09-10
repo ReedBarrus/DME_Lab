@@ -168,6 +168,17 @@ preserved nine named source wounds but exposed one unresolved silent
 resolution-history loss and one duplicate-pressure-ID contract ambiguity. This
 does not establish general adapter reliability.
 
+The [bounded Adapter v0 remediation](../decisions/cockpit_projection_adapter_remediation_v0.md)
+now makes strongly structured but unsupported history residue visible instead
+of silently dropping it. It also preserves every duplicate pressure occurrence
+with occurrence-local provenance, emits identity ambiguity, and leaves an
+explicit relation to a duplicated target unresolved rather than selecting a
+winner. Unsupported history is not promoted into valid resolution history.
+
+A fresh adversarial re-pressure pass remains required before UI construction.
+The remediation does not establish general Markdown robustness or general
+projection safety.
+
 ## Freshness
 
 The Cockpit should visibly identify the repository state from which it was

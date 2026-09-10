@@ -206,12 +206,25 @@ The Cockpit website is not yet implemented and the Controller remains parked.
 This is implementation development, not an active scientific Pressure /
 Resolution Map node.
 
-The first bounded Cockpit adapter pressure preserved nine named source wounds
-while exposing one unresolved contract violation: history-like R0/R1 material
-can disappear silently under an unsupported history heading while current
-standing remains clean. Duplicate pressure-ID behavior remains a contract
-ambiguity. The adapter and projection contract were not remediated, and no next
-implementation pass was selected.
+Stage 3 Cockpit adapter pressure preserved nine named source wounds while
+exposing one silent-history-loss contract violation and one duplicate-pressure-
+ID contract ambiguity. Stage 4A tightened the projection contract so duplicate
+current IDs preserve every occurrence, remain uniquely unresolved, and make
+relations to that ID visibly ambiguous.
+
+Stage 4B implemented only the bounded remediation licensed by those findings.
+Strongly structured R-entry material outside the exact supported Resolution
+history section now remains visible as unsupported residue without becoming
+valid history. Duplicate current pressure nodes now retain occurrence-local
+line provenance and emit `duplicate_pressure_id`; an explicit relation to the
+duplicated ID survives with ambiguous unique-target resolution. The Stage 3
+decision and trace remain unchanged historical evidence, and the projection
+contract was not changed in Stage 4B.
+
+A fresh adversarial re-pressure pass remains required before Cockpit UI
+construction. The adapter is not declared generally reliable. The Controller
+remains `PARKED`; this is Cockpit implementation development, not an active
+scientific Pressure / Resolution Map node.
 
 ## Contract Surface Status
 

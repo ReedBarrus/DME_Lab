@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 from datetime import datetime, timezone
 import hashlib
 import json
@@ -107,6 +108,7 @@ def _provenance(
     source_commit: str,
     source_kind: str,
     source_anchor: str | None = None,
+    source_line: int | None = None,
 ) -> dict[str, Any]:
     value: dict[str, Any] = {
         "source_path": source_path,
@@ -115,6 +117,8 @@ def _provenance(
     }
     if source_anchor is not None:
         value["source_anchor"] = source_anchor
+    if source_line is not None:
+        value["source_line"] = source_line
     return value
 
 
@@ -280,10 +284,11 @@ def _parse_history(
     lines: list[str],
     *,
     pressure_id: str,
+    node_body_start_line: int,
     source_path: str,
     source_commit: str,
     diagnostics: list[dict[str, Any]],
-) -> list[dict[str, Any]]:
+) -> tuple[list[dict[str, Any]], set[int]]:
     heading_index: int | None = None
     heading_text: str | None = None
     for index, line in enumerate(lines):
@@ -293,15 +298,25 @@ def _parse_history(
             heading_text = line.removeprefix("#### ")
             break
     if heading_index is None or heading_text is None:
-        return []
+        return [], set()
+
+    section_end = len(lines)
+    for index in range(heading_index + 1, len(lines)):
+        heading_match = re.match(r"^(#+)\s", lines[index])
+        if heading_match and len(heading_match.group(1)) <= 4:
+            section_end = index
+            break
 
     history: list[dict[str, Any]] = []
+    consumed_entry_lines: set[int] = set()
     index = heading_index + 1
-    while index < len(lines):
+    while index < section_end:
         match = HISTORY_ENTRY_RE.match(lines[index])
         if not match:
             index += 1
             continue
+        entry_index = index
+        consumed_entry_lines.add(entry_index)
         label, standing_raw, first_summary = match.groups()
         parts = [first_summary]
         index += 1
@@ -325,11 +340,15 @@ def _parse_history(
                 "summary": summary,
                 "raw_summary": raw_summary,
                 "provenance": _provenance(
-                    source_path, source_commit, "pressure_map", anchor
+                    source_path,
+                    source_commit,
+                    "pressure_map",
+                    anchor,
+                    node_body_start_line + entry_index,
                 ),
             }
         )
-    return history
+    return history, consumed_entry_lines
 
 
 def _reference_kind(target: str) -> str:
@@ -372,13 +391,25 @@ def _make_reference(
     origin_id: str,
     source_path: str,
     source_anchor: str,
+    source_line: int | None = None,
     target: str,
     label: str | None,
     occurrence: int,
     diagnostics: list[dict[str, Any]],
 ) -> dict[str, Any]:
+    identity_parts: list[Any] = [
+        origin_kind,
+        origin_id,
+        source_path,
+        source_anchor,
+        target,
+        label,
+        occurrence,
+    ]
+    if source_line is not None:
+        identity_parts.append(source_line)
     identity_basis = json.dumps(
-        [origin_kind, origin_id, source_path, source_anchor, target, label, occurrence],
+        identity_parts,
         ensure_ascii=False,
         separators=(",", ":"),
     )
@@ -415,7 +446,11 @@ def _make_reference(
         "resolution_status": resolution_status,
         "committed_path_checked": committed_path,
         "provenance": _provenance(
-            source_path, source_commit, origin_kind, source_anchor
+            source_path,
+            source_commit,
+            origin_kind,
+            source_anchor,
+            source_line,
         ),
     }
 
@@ -439,6 +474,8 @@ def _parse_pressure_map(
         if match:
             headings.append((index, match))
 
+    pressure_id_counts = Counter(match.group(1) for _, match in headings)
+
     for heading_position, (start, match) in enumerate(headings):
         end = headings[heading_position + 1][0] if heading_position + 1 < len(headings) else len(lines)
         for index in range(start + 1, end):
@@ -447,9 +484,15 @@ def _parse_pressure_map(
                 break
         pressure_id, title = match.groups()
         anchor = f"{pressure_id} \u2014 {title}"
+        heading_line = start + 1
         node_lines = lines[start + 1 : end]
         history_start = next(
-            (i for i, line in enumerate(node_lines) if HISTORY_HEADING_RE.match(line)),
+            (
+                i
+                for i, line in enumerate(node_lines)
+                if (history_match := HISTORY_HEADING_RE.match(line))
+                and history_match.group(1) == pressure_id
+            ),
             len(node_lines),
         )
         fields = _parse_explicit_fields(node_lines[:history_start])
@@ -473,6 +516,37 @@ def _parse_pressure_map(
                 source_anchor=anchor,
                 object_id=pressure_id,
                 field="standing",
+            )
+
+        resolution_history, consumed_history_lines = _parse_history(
+            node_lines,
+            pressure_id=pressure_id,
+            node_body_start_line=start + 2,
+            source_path=source_path,
+            source_commit=source_commit,
+            diagnostics=diagnostics,
+        )
+        unsupported_history_lines = [
+            {"line": start + 2 + index, "text": line}
+            for index, line in enumerate(node_lines)
+            if HISTORY_ENTRY_RE.match(line) and index not in consumed_history_lines
+        ]
+        if unsupported_history_lines:
+            _diagnostic(
+                diagnostics,
+                kind="unsupported_structure",
+                source_commit=source_commit,
+                source_path=source_path,
+                source_kind="pressure_map",
+                source_anchor=f"line {unsupported_history_lines[0]['line']}",
+                object_id=pressure_id,
+                field="resolution_history",
+                raw_value=unsupported_history_lines,
+                message=(
+                    "history-entry-shaped source material remains outside the supported "
+                    "Resolution history section and was not parsed as history"
+                ),
+                severity="error",
             )
 
         node: dict[str, Any] = {
@@ -543,17 +617,20 @@ def _parse_pressure_map(
                 object_id=pressure_id,
             ),
             "evidence_ref_ids": [],
-            "resolution_history": _parse_history(
-                node_lines,
-                pressure_id=pressure_id,
-                source_path=source_path,
-                source_commit=source_commit,
-                diagnostics=diagnostics,
-            ),
+            "resolution_history": resolution_history,
             "provenance": _provenance(
-                source_path, source_commit, "pressure_map", anchor
+                source_path,
+                source_commit,
+                "pressure_map",
+                anchor,
+                heading_line,
             ),
         }
+        if pressure_id_counts[pressure_id] > 1:
+            node["identity_resolution"] = {
+                "status": "ambiguous",
+                "candidate_count": pressure_id_counts[pressure_id],
+            }
 
         for relation_field, relation_kind in (
             ("blocked_by", "blocked_by"),
@@ -579,6 +656,7 @@ def _parse_pressure_map(
                                 source_commit,
                                 "pressure_map",
                                 f"{anchor} / {relation_field}",
+                                heading_line,
                             ),
                         }
                     )
@@ -596,6 +674,7 @@ def _parse_pressure_map(
                             source_commit,
                             "pressure_map",
                             f"{anchor} / {relation_field}",
+                            heading_line,
                         ),
                     }
                 )
@@ -611,6 +690,9 @@ def _parse_pressure_map(
                     origin_id=pressure_id,
                     source_path=source_path,
                     source_anchor=f"{anchor} / evidence",
+                    source_line=(
+                        heading_line if pressure_id_counts[pressure_id] > 1 else None
+                    ),
                     target=link.group(2),
                     label=link.group(1),
                     occurrence=occurrence,
@@ -619,6 +701,41 @@ def _parse_pressure_map(
                 references.append(reference)
                 node["evidence_ref_ids"].append(reference["id"])
         nodes.append(node)
+
+    nodes_by_id: dict[str, list[dict[str, Any]]] = {}
+    for node in nodes:
+        nodes_by_id.setdefault(node["id"], []).append(node)
+    for pressure_id, candidates in nodes_by_id.items():
+        if len(candidates) < 2:
+            continue
+        occurrence_provenance = [candidate["provenance"] for candidate in candidates]
+        _diagnostic(
+            diagnostics,
+            kind="duplicate_pressure_id",
+            source_commit=source_commit,
+            source_path=source_path,
+            source_kind="pressure_map",
+            source_anchor=f"duplicate current pressure ID {pressure_id}",
+            object_id=pressure_id,
+            field="id",
+            raw_value=occurrence_provenance,
+            message=(
+                f"pressure ID {pressure_id!r} has {len(candidates)} current occurrences; "
+                "unique identity remains ambiguous"
+            ),
+            severity="error",
+        )
+
+    for relation in relations:
+        target_pressure_id = relation["target_pressure_id"]
+        if target_pressure_id is None:
+            continue
+        candidate_count = len(nodes_by_id.get(target_pressure_id, []))
+        if candidate_count > 1:
+            relation["target_resolution"] = {
+                "status": "ambiguous",
+                "candidate_count": candidate_count,
+            }
 
     navigation = _parse_current_navigation(
         lines,
