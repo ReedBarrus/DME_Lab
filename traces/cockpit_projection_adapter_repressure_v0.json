@@ -1,0 +1,979 @@
+{
+  "repressure_version": "cockpit_projection_adapter_repressure_v0",
+  "adapter_version": "cockpit_projection_adapter_v0",
+  "predeclared_classification": {
+    "survives": "The tested wound remains visible and no stronger clean interpretation appears.",
+    "contract_violation": "The adapter produces a plausible clean projection while materially hiding, collapsing, inventing, or strengthening the tested source condition.",
+    "regression": "A healthy currently supported source shape degrades, misparses, or emits a new unjustified diagnostic because of Stage 4B.",
+    "contract_ambiguity": "The pressure exposes behavior not currently specified enough to adjudicate.",
+    "basis_insufficient": "The fixture does not actually discriminate the intended question."
+  },
+  "scenarios": [
+    {
+      "id": "R1",
+      "title": "P8 original wound replay",
+      "mutation": "Used unsupported heading 'Prior resolutions' above intact strongly structured R0/R1 entries.",
+      "expected_discriminator": "Current standing survives, history remains unaccepted, and raw R-entry lines plus committed coordinates remain visible in a partial projection.",
+      "observed": {
+        "node": {
+          "id": "PR-001",
+          "title": "Bounded specimen",
+          "pressure": "Can the bounded source condition remain visible?",
+          "standing": {
+            "raw_value": "`BOUNDED_RESOLUTION`",
+            "value": "BOUNDED_RESOLUTION",
+            "status": "known_value"
+          },
+          "resolution_history": [],
+          "identity_resolution": null,
+          "provenance": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "source_commit": "7c627d9baae6ccd8f4061681346df4e49518d174",
+            "source_kind": "pressure_map",
+            "source_anchor": "PR-001 — Bounded specimen",
+            "source_line": 13
+          }
+        },
+        "history_residue": [
+          {
+            "line": 26,
+            "text": "- **R0 — `BASIS_INSUFFICIENT`:** The first basis did not discriminate."
+          },
+          {
+            "line": 27,
+            "text": "- **R1 — `BOUNDED_RESOLUTION`:** The second bounded basis discriminated."
+          }
+        ],
+        "projection_status": "partial"
+      },
+      "diagnostics": [
+        {
+          "kind": "unsupported_structure",
+          "affected": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "object_id": "PR-001",
+            "field": "resolution_history"
+          },
+          "severity": "error",
+          "message": "history-entry-shaped source material remains outside the supported Resolution history section and was not parsed as history",
+          "provenance": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "source_commit": "7c627d9baae6ccd8f4061681346df4e49518d174",
+            "source_kind": "pressure_map",
+            "source_anchor": "line 26"
+          },
+          "raw_value": [
+            {
+              "line": 26,
+              "text": "- **R0 — `BASIS_INSUFFICIENT`:** The first basis did not discriminate."
+            },
+            {
+              "line": 27,
+              "text": "- **R1 — `BOUNDED_RESOLUTION`:** The second bounded basis discriminated."
+            }
+          ]
+        }
+      ],
+      "classification": "SURVIVES",
+      "rationale": "Unsupported structured history remained rejected and visible."
+    },
+    {
+      "id": "R2",
+      "title": "P8 nearby heading variant",
+      "mutation": "Used unsupported heading 'Earlier outcomes' above intact strongly structured R0/R1 entries.",
+      "expected_discriminator": "Current standing survives, history remains unaccepted, and raw R-entry lines plus committed coordinates remain visible in a partial projection.",
+      "observed": {
+        "node": {
+          "id": "PR-001",
+          "title": "Bounded specimen",
+          "pressure": "Can the bounded source condition remain visible?",
+          "standing": {
+            "raw_value": "`BOUNDED_RESOLUTION`",
+            "value": "BOUNDED_RESOLUTION",
+            "status": "known_value"
+          },
+          "resolution_history": [],
+          "identity_resolution": null,
+          "provenance": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "source_commit": "309202594a5656831996f2f90369663383739baf",
+            "source_kind": "pressure_map",
+            "source_anchor": "PR-001 — Bounded specimen",
+            "source_line": 13
+          }
+        },
+        "history_residue": [
+          {
+            "line": 26,
+            "text": "- **R0 — `BASIS_INSUFFICIENT`:** The first basis did not discriminate."
+          },
+          {
+            "line": 27,
+            "text": "- **R1 — `BOUNDED_RESOLUTION`:** The second bounded basis discriminated."
+          }
+        ],
+        "projection_status": "partial"
+      },
+      "diagnostics": [
+        {
+          "kind": "unsupported_structure",
+          "affected": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "object_id": "PR-001",
+            "field": "resolution_history"
+          },
+          "severity": "error",
+          "message": "history-entry-shaped source material remains outside the supported Resolution history section and was not parsed as history",
+          "provenance": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "source_commit": "309202594a5656831996f2f90369663383739baf",
+            "source_kind": "pressure_map",
+            "source_anchor": "line 26"
+          },
+          "raw_value": [
+            {
+              "line": 26,
+              "text": "- **R0 — `BASIS_INSUFFICIENT`:** The first basis did not discriminate."
+            },
+            {
+              "line": 27,
+              "text": "- **R1 — `BOUNDED_RESOLUTION`:** The second bounded basis discriminated."
+            }
+          ]
+        }
+      ],
+      "classification": "SURVIVES",
+      "rationale": "Unsupported structured history remained rejected and visible."
+    },
+    {
+      "id": "R3",
+      "title": "P8 healthy control",
+      "mutation": "Used the exact supported Resolution history heading with valid R0/R1 entries.",
+      "expected_discriminator": "Supported history parses normally with no unsupported diagnostic or partial status.",
+      "observed": {
+        "node": {
+          "id": "PR-001",
+          "title": "Bounded specimen",
+          "pressure": "Can the bounded source condition remain visible?",
+          "standing": {
+            "raw_value": "`BOUNDED_RESOLUTION`",
+            "value": "BOUNDED_RESOLUTION",
+            "status": "known_value"
+          },
+          "resolution_history": [
+            {
+              "id": "R0",
+              "standing": {
+                "raw_value": "BASIS_INSUFFICIENT",
+                "value": "BASIS_INSUFFICIENT",
+                "status": "known_value"
+              },
+              "summary": "The first basis did not discriminate.",
+              "provenance": {
+                "source_path": "PRESSURE_RESOLUTION_MAP.md",
+                "source_commit": "764da6245cb5faec285e56c1a0264836581550ea",
+                "source_kind": "pressure_map",
+                "source_anchor": "PR-001 — Resolution history / R0",
+                "source_line": 26
+              }
+            },
+            {
+              "id": "R1",
+              "standing": {
+                "raw_value": "BOUNDED_RESOLUTION",
+                "value": "BOUNDED_RESOLUTION",
+                "status": "known_value"
+              },
+              "summary": "The second bounded basis discriminated.",
+              "provenance": {
+                "source_path": "PRESSURE_RESOLUTION_MAP.md",
+                "source_commit": "764da6245cb5faec285e56c1a0264836581550ea",
+                "source_kind": "pressure_map",
+                "source_anchor": "PR-001 — Resolution history / R1",
+                "source_line": 27
+              }
+            }
+          ],
+          "identity_resolution": null,
+          "provenance": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "source_commit": "764da6245cb5faec285e56c1a0264836581550ea",
+            "source_kind": "pressure_map",
+            "source_anchor": "PR-001 — Bounded specimen",
+            "source_line": 13
+          }
+        },
+        "projection_status": "complete"
+      },
+      "diagnostics": [],
+      "classification": "SURVIVES",
+      "rationale": "The exact supported history shape remained healthy."
+    },
+    {
+      "id": "R4",
+      "title": "history-like prose false positive",
+      "mutation": "Mentioned 'R0 was discussed previously' in ordinary Pressure prose.",
+      "expected_discriminator": "Loose prose remains ordinary copied text and emits no unsupported-history diagnostic.",
+      "observed": {
+        "pressure": {
+          "raw_value": "R0 was discussed previously, without a structured history declaration.",
+          "value": "R0 was discussed previously, without a structured history declaration.",
+          "status": "known_value"
+        },
+        "resolution_history": [],
+        "projection_status": "complete"
+      },
+      "diagnostics": [],
+      "classification": "SURVIVES",
+      "rationale": "Loose prose did not trigger the structural wound detector."
+    },
+    {
+      "id": "R5",
+      "title": "P11 original duplicate replay",
+      "mutation": "Created two current PR-001 nodes with different titles and standings.",
+      "expected_discriminator": "Both occurrences and fields survive with distinct provenance, one duplicate diagnostic, and no canonical winner.",
+      "observed": {
+        "nodes": [
+          {
+            "id": "PR-001",
+            "title": "Occurrence A",
+            "pressure": "Can the bounded source condition remain visible?",
+            "standing": {
+              "raw_value": "`BOUNDED_RESOLUTION`",
+              "value": "BOUNDED_RESOLUTION",
+              "status": "known_value"
+            },
+            "resolution_history": [],
+            "identity_resolution": {
+              "status": "ambiguous",
+              "candidate_count": 2
+            },
+            "provenance": {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "ffa1a7a68f57b717424b7a788f439cbb73a7a524",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — Occurrence A",
+              "source_line": 13
+            }
+          },
+          {
+            "id": "PR-001",
+            "title": "Occurrence B",
+            "pressure": "Can the bounded source condition remain visible?",
+            "standing": {
+              "raw_value": "`OPEN`",
+              "value": "OPEN",
+              "status": "known_value"
+            },
+            "resolution_history": [],
+            "identity_resolution": {
+              "status": "ambiguous",
+              "candidate_count": 2
+            },
+            "provenance": {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "ffa1a7a68f57b717424b7a788f439cbb73a7a524",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — Occurrence B",
+              "source_line": 25
+            }
+          }
+        ],
+        "source_lines": [
+          13,
+          25
+        ],
+        "projection_status": "partial"
+      },
+      "diagnostics": [
+        {
+          "kind": "duplicate_pressure_id",
+          "affected": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "object_id": "PR-001",
+            "field": "id"
+          },
+          "severity": "error",
+          "message": "pressure ID 'PR-001' has 2 current occurrences; unique identity remains ambiguous",
+          "provenance": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "source_commit": "ffa1a7a68f57b717424b7a788f439cbb73a7a524",
+            "source_kind": "pressure_map",
+            "source_anchor": "duplicate current pressure ID PR-001"
+          },
+          "raw_value": [
+            {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "ffa1a7a68f57b717424b7a788f439cbb73a7a524",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — Occurrence A",
+              "source_line": 13
+            },
+            {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "ffa1a7a68f57b717424b7a788f439cbb73a7a524",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — Occurrence B",
+              "source_line": 25
+            }
+          ]
+        }
+      ],
+      "classification": "SURVIVES",
+      "rationale": "Duplicate identity remained occurrence-preserving and unresolved."
+    },
+    {
+      "id": "R6",
+      "title": "identical duplicate headings",
+      "mutation": "Created two textually identical PR-001 headings with different bodies.",
+      "expected_discriminator": "Committed source lines distinguish the occurrences without title-based uniqueness.",
+      "observed": {
+        "nodes": [
+          {
+            "id": "PR-001",
+            "title": "Same title",
+            "pressure": "Can the first identical heading remain local?",
+            "standing": {
+              "raw_value": "`BOUNDED_RESOLUTION`",
+              "value": "BOUNDED_RESOLUTION",
+              "status": "known_value"
+            },
+            "resolution_history": [],
+            "identity_resolution": {
+              "status": "ambiguous",
+              "candidate_count": 2
+            },
+            "provenance": {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "0c0628fa1e2e837287c6094df57ca99c1ad950c6",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — Same title",
+              "source_line": 13
+            }
+          },
+          {
+            "id": "PR-001",
+            "title": "Same title",
+            "pressure": "Can the second identical heading remain local?",
+            "standing": {
+              "raw_value": "`OPEN`",
+              "value": "OPEN",
+              "status": "known_value"
+            },
+            "resolution_history": [],
+            "identity_resolution": {
+              "status": "ambiguous",
+              "candidate_count": 2
+            },
+            "provenance": {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "0c0628fa1e2e837287c6094df57ca99c1ad950c6",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — Same title",
+              "source_line": 25
+            }
+          }
+        ],
+        "source_lines": [
+          13,
+          25
+        ]
+      },
+      "diagnostics": [
+        {
+          "kind": "duplicate_pressure_id",
+          "affected": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "object_id": "PR-001",
+            "field": "id"
+          },
+          "severity": "error",
+          "message": "pressure ID 'PR-001' has 2 current occurrences; unique identity remains ambiguous",
+          "provenance": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "source_commit": "0c0628fa1e2e837287c6094df57ca99c1ad950c6",
+            "source_kind": "pressure_map",
+            "source_anchor": "duplicate current pressure ID PR-001"
+          },
+          "raw_value": [
+            {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "0c0628fa1e2e837287c6094df57ca99c1ad950c6",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — Same title",
+              "source_line": 13
+            },
+            {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "0c0628fa1e2e837287c6094df57ca99c1ad950c6",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — Same title",
+              "source_line": 25
+            }
+          ]
+        }
+      ],
+      "classification": "SURVIVES",
+      "rationale": "Identical headings remained distinguishable by occurrence-local coordinates."
+    },
+    {
+      "id": "R7",
+      "title": "duplicate relation target",
+      "mutation": "Referenced two current PR-001 occurrences once from PR-003 Blocked by.",
+      "expected_discriminator": "One explicit relation survives with target PR-001 and ambiguous two-candidate resolution; no duplicate or invented edges appear.",
+      "observed": {
+        "matching_relations": [
+          {
+            "relation_kind": "blocked_by",
+            "source_pressure_id": "PR-003",
+            "target_kind": "pressure",
+            "target_pressure_id": "PR-001",
+            "condition_text": null,
+            "raw_source_field": "PR-001",
+            "target_resolution": {
+              "status": "ambiguous",
+              "candidate_count": 2
+            },
+            "provenance": {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "1620e4e8ef7e5db5396bdfd713c0f2210363a5e4",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-003 — Bounded specimen / blocked_by",
+              "source_line": 37
+            }
+          }
+        ],
+        "invented_duplicate_source_relations": [],
+        "duplicate_source_lines": [
+          13,
+          25
+        ]
+      },
+      "diagnostics": [
+        {
+          "kind": "duplicate_pressure_id",
+          "affected": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "object_id": "PR-001",
+            "field": "id"
+          },
+          "severity": "error",
+          "message": "pressure ID 'PR-001' has 2 current occurrences; unique identity remains ambiguous",
+          "provenance": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "source_commit": "1620e4e8ef7e5db5396bdfd713c0f2210363a5e4",
+            "source_kind": "pressure_map",
+            "source_anchor": "duplicate current pressure ID PR-001"
+          },
+          "raw_value": [
+            {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "1620e4e8ef7e5db5396bdfd713c0f2210363a5e4",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — Occurrence A",
+              "source_line": 13
+            },
+            {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "1620e4e8ef7e5db5396bdfd713c0f2210363a5e4",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — Occurrence B",
+              "source_line": 25
+            }
+          ]
+        }
+      ],
+      "classification": "SURVIVES",
+      "rationale": "The explicit relation survived once and unique target resolution remained ambiguous."
+    },
+    {
+      "id": "R8",
+      "title": "duplicate ID without relation",
+      "mutation": "Created duplicate PR-001 nodes with no explicit incoming or outgoing relation.",
+      "expected_discriminator": "Duplicate identity is diagnosed independently of graph usage.",
+      "observed": {
+        "node_count": 2,
+        "source_lines": [
+          13,
+          25
+        ],
+        "relation_count": 0
+      },
+      "diagnostics": [
+        {
+          "kind": "duplicate_pressure_id",
+          "affected": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "object_id": "PR-001",
+            "field": "id"
+          },
+          "severity": "error",
+          "message": "pressure ID 'PR-001' has 2 current occurrences; unique identity remains ambiguous",
+          "provenance": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "source_commit": "3bb3c8b1496f8322f3cc1771b8c80df355e9d62e",
+            "source_kind": "pressure_map",
+            "source_anchor": "duplicate current pressure ID PR-001"
+          },
+          "raw_value": [
+            {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "3bb3c8b1496f8322f3cc1771b8c80df355e9d62e",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — A",
+              "source_line": 13
+            },
+            {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "3bb3c8b1496f8322f3cc1771b8c80df355e9d62e",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — B",
+              "source_line": 25
+            }
+          ]
+        }
+      ],
+      "classification": "SURVIVES",
+      "rationale": "Duplicate detection did not depend on an explicit relation."
+    },
+    {
+      "id": "R9",
+      "title": "unique identity control",
+      "mutation": "Created unique PR-001 and PR-002 nodes with one explicit relation.",
+      "expected_discriminator": "No duplicate diagnostic or ambiguity metadata leaks into healthy unique identity.",
+      "observed": {
+        "nodes": [
+          {
+            "id": "PR-001",
+            "title": "Bounded specimen",
+            "pressure": "Can the bounded source condition remain visible?",
+            "standing": {
+              "raw_value": "`BOUNDED_RESOLUTION`",
+              "value": "BOUNDED_RESOLUTION",
+              "status": "known_value"
+            },
+            "resolution_history": [],
+            "identity_resolution": null,
+            "provenance": {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "667026bf289e76ab6ab550994dc4f8c9715f0d29",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — Bounded specimen",
+              "source_line": 13
+            }
+          },
+          {
+            "id": "PR-002",
+            "title": "Bounded specimen",
+            "pressure": "Can the bounded source condition remain visible?",
+            "standing": {
+              "raw_value": "`BOUNDED_RESOLUTION`",
+              "value": "BOUNDED_RESOLUTION",
+              "status": "known_value"
+            },
+            "resolution_history": [],
+            "identity_resolution": null,
+            "provenance": {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "667026bf289e76ab6ab550994dc4f8c9715f0d29",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-002 — Bounded specimen",
+              "source_line": 25
+            }
+          }
+        ],
+        "relations": [
+          {
+            "relation_kind": "blocked_by",
+            "source_pressure_id": "PR-002",
+            "target_kind": "pressure",
+            "target_pressure_id": "PR-001",
+            "condition_text": null,
+            "raw_source_field": "PR-001",
+            "target_resolution": null,
+            "provenance": {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "667026bf289e76ab6ab550994dc4f8c9715f0d29",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-002 — Bounded specimen / blocked_by",
+              "source_line": 25
+            }
+          }
+        ],
+        "projection_status": "complete"
+      },
+      "diagnostics": [],
+      "classification": "SURVIVES",
+      "rationale": "Unique identity and its explicit relation remained clean."
+    },
+    {
+      "id": "R10",
+      "title": "combined P8 and P11 wound",
+      "mutation": "Combined duplicate PR-001 occurrences with unsupported structured history residue on one occurrence.",
+      "expected_discriminator": "Both diagnostics survive independently and neither occurrence becomes canonical.",
+      "observed": {
+        "nodes": [
+          {
+            "id": "PR-001",
+            "title": "Same title",
+            "pressure": "Can the bounded source condition remain visible?",
+            "standing": {
+              "raw_value": "`BOUNDED_RESOLUTION`",
+              "value": "BOUNDED_RESOLUTION",
+              "status": "known_value"
+            },
+            "resolution_history": [],
+            "identity_resolution": {
+              "status": "ambiguous",
+              "candidate_count": 2
+            },
+            "provenance": {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "ce052415a502ade469a26c43c161132875dba4dd",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — Same title",
+              "source_line": 13
+            }
+          },
+          {
+            "id": "PR-001",
+            "title": "Same title",
+            "pressure": "Can the cleaner occurrence remain non-canonical?",
+            "standing": {
+              "raw_value": "`OPEN`",
+              "value": "OPEN",
+              "status": "known_value"
+            },
+            "resolution_history": [],
+            "identity_resolution": {
+              "status": "ambiguous",
+              "candidate_count": 2
+            },
+            "provenance": {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "ce052415a502ade469a26c43c161132875dba4dd",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — Same title",
+              "source_line": 30
+            }
+          }
+        ],
+        "duplicate_diagnostic_count": 1,
+        "unsupported_history_diagnostic_count": 1,
+        "projection_status": "partial"
+      },
+      "diagnostics": [
+        {
+          "kind": "duplicate_pressure_id",
+          "affected": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "object_id": "PR-001",
+            "field": "id"
+          },
+          "severity": "error",
+          "message": "pressure ID 'PR-001' has 2 current occurrences; unique identity remains ambiguous",
+          "provenance": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "source_commit": "ce052415a502ade469a26c43c161132875dba4dd",
+            "source_kind": "pressure_map",
+            "source_anchor": "duplicate current pressure ID PR-001"
+          },
+          "raw_value": [
+            {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "ce052415a502ade469a26c43c161132875dba4dd",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — Same title",
+              "source_line": 13
+            },
+            {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "ce052415a502ade469a26c43c161132875dba4dd",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — Same title",
+              "source_line": 30
+            }
+          ]
+        },
+        {
+          "kind": "unsupported_structure",
+          "affected": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "object_id": "PR-001",
+            "field": "resolution_history"
+          },
+          "severity": "error",
+          "message": "history-entry-shaped source material remains outside the supported Resolution history section and was not parsed as history",
+          "provenance": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "source_commit": "ce052415a502ade469a26c43c161132875dba4dd",
+            "source_kind": "pressure_map",
+            "source_anchor": "line 26"
+          },
+          "raw_value": [
+            {
+              "line": 26,
+              "text": "- **R0 — `BASIS_INSUFFICIENT`:** The first basis did not discriminate."
+            },
+            {
+              "line": 27,
+              "text": "- **R1 — `BOUNDED_RESOLUTION`:** The second bounded basis discriminated."
+            }
+          ]
+        }
+      ],
+      "classification": "SURVIVES",
+      "rationale": "Both wounds remained independently visible without winner selection."
+    },
+    {
+      "id": "R11",
+      "title": "current repository smoke",
+      "mutation": "Projected the exact authoritative starting commit against origin/main.",
+      "expected_discriminator": "The healthy current specimen remains complete, current, semantically unchanged, and free of remediation diagnostics or relation ambiguity.",
+      "observed": {
+        "source_commit": "6f65398e9e1b01952126e2a2456974356231df75",
+        "freshness": {
+          "freshness_ref": "origin/main",
+          "observed_tail": "6f65398e9e1b01952126e2a2456974356231df75",
+          "check_time": "2026-09-10T04:00:00Z",
+          "status": "current"
+        },
+        "projection_status": "complete",
+        "active_pressure": {
+          "value": null,
+          "status": "agreement",
+          "semantic_status": "explicit_none",
+          "declarations": [
+            {
+              "raw_value": "none",
+              "value": null,
+              "status": "explicit_none",
+              "provenance": {
+                "source_path": "PRESSURE_RESOLUTION_MAP.md",
+                "source_commit": "6f65398e9e1b01952126e2a2456974356231df75",
+                "source_kind": "pressure_map",
+                "source_anchor": "Current Navigation / Active pressure"
+              }
+            },
+            {
+              "raw_value": "none",
+              "value": null,
+              "status": "explicit_none",
+              "provenance": {
+                "source_path": "PROJECT_STATE.md",
+                "source_commit": "6f65398e9e1b01952126e2a2456974356231df75",
+                "source_kind": "project_state",
+                "source_anchor": "Current Navigation and Development Standing / active pressure"
+              }
+            }
+          ]
+        },
+        "pressure_node_count": 19,
+        "pressure_relation_count": 24,
+        "constraint_count": 46,
+        "evidence_reference_count": 214,
+        "projection_document_count": 3,
+        "pr018": {
+          "standing": {
+            "raw_value": "`OPEN`",
+            "value": "OPEN",
+            "status": "known_value"
+          },
+          "active": false
+        },
+        "pr019": {
+          "standing": {
+            "raw_value": "`BOUNDED_RESOLUTION`",
+            "value": "BOUNDED_RESOLUTION",
+            "status": "known_value"
+          },
+          "resolution_history": [
+            {
+              "id": "R0",
+              "standing": "BASIS_INSUFFICIENT"
+            },
+            {
+              "id": "R1",
+              "standing": "BOUNDED_RESOLUTION"
+            }
+          ]
+        },
+        "controller": {
+          "classification": "projection_document",
+          "standing": {
+            "value": "PARKED",
+            "raw_value": "PARKED.",
+            "status": "known_value",
+            "source_heading": "Standing"
+          }
+        },
+        "relations_with_target_resolution": []
+      },
+      "diagnostics": [],
+      "classification": "SURVIVES",
+      "rationale": "The authoritative healthy repository projection remained clean."
+    },
+    {
+      "id": "R12",
+      "title": "three-way duplicate",
+      "mutation": "Created three current PR-001 occurrences and one explicit reference from PR-003.",
+      "expected_discriminator": "All three occurrences survive, one duplicate condition remains, and the explicit target reports three candidates without a winner.",
+      "observed": {
+        "nodes": [
+          {
+            "id": "PR-001",
+            "title": "Occurrence A",
+            "pressure": "Can the bounded source condition remain visible?",
+            "standing": {
+              "raw_value": "`BOUNDED_RESOLUTION`",
+              "value": "BOUNDED_RESOLUTION",
+              "status": "known_value"
+            },
+            "resolution_history": [],
+            "identity_resolution": {
+              "status": "ambiguous",
+              "candidate_count": 3
+            },
+            "provenance": {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "59fc26c95211946e8accf8b2502f5757ff31945f",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — Occurrence A",
+              "source_line": 13
+            }
+          },
+          {
+            "id": "PR-001",
+            "title": "Occurrence B",
+            "pressure": "Can the bounded source condition remain visible?",
+            "standing": {
+              "raw_value": "`OPEN`",
+              "value": "OPEN",
+              "status": "known_value"
+            },
+            "resolution_history": [],
+            "identity_resolution": {
+              "status": "ambiguous",
+              "candidate_count": 3
+            },
+            "provenance": {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "59fc26c95211946e8accf8b2502f5757ff31945f",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — Occurrence B",
+              "source_line": 25
+            }
+          },
+          {
+            "id": "PR-001",
+            "title": "Occurrence C",
+            "pressure": "Can the bounded source condition remain visible?",
+            "standing": {
+              "raw_value": "`PARTIAL_RESOLUTION`",
+              "value": "PARTIAL_RESOLUTION",
+              "status": "known_value"
+            },
+            "resolution_history": [],
+            "identity_resolution": {
+              "status": "ambiguous",
+              "candidate_count": 3
+            },
+            "provenance": {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "59fc26c95211946e8accf8b2502f5757ff31945f",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — Occurrence C",
+              "source_line": 37
+            }
+          }
+        ],
+        "source_lines": [
+          13,
+          25,
+          37
+        ],
+        "relations": [
+          {
+            "relation_kind": "blocked_by",
+            "source_pressure_id": "PR-003",
+            "target_kind": "pressure",
+            "target_pressure_id": "PR-001",
+            "condition_text": null,
+            "raw_source_field": "PR-001",
+            "target_resolution": {
+              "status": "ambiguous",
+              "candidate_count": 3
+            },
+            "provenance": {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "59fc26c95211946e8accf8b2502f5757ff31945f",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-003 — Bounded specimen / blocked_by",
+              "source_line": 49
+            }
+          }
+        ]
+      },
+      "diagnostics": [
+        {
+          "kind": "duplicate_pressure_id",
+          "affected": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "object_id": "PR-001",
+            "field": "id"
+          },
+          "severity": "error",
+          "message": "pressure ID 'PR-001' has 3 current occurrences; unique identity remains ambiguous",
+          "provenance": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "source_commit": "59fc26c95211946e8accf8b2502f5757ff31945f",
+            "source_kind": "pressure_map",
+            "source_anchor": "duplicate current pressure ID PR-001"
+          },
+          "raw_value": [
+            {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "59fc26c95211946e8accf8b2502f5757ff31945f",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — Occurrence A",
+              "source_line": 13
+            },
+            {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "59fc26c95211946e8accf8b2502f5757ff31945f",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — Occurrence B",
+              "source_line": 25
+            },
+            {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "59fc26c95211946e8accf8b2502f5757ff31945f",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — Occurrence C",
+              "source_line": 37
+            }
+          ]
+        }
+      ],
+      "classification": "SURVIVES",
+      "rationale": "Three-way ambiguity remained occurrence-preserving and unresolved."
+    }
+  ],
+  "classification_counts": {
+    "SURVIVES": 12,
+    "CONTRACT_VIOLATION": 0,
+    "REGRESSION": 0,
+    "CONTRACT_AMBIGUITY": 0,
+    "BASIS_INSUFFICIENT": 0
+  },
+  "adjudication": {
+    "status": "bounded_repressure_survived",
+    "strongest_supported": "The remediated adapter survived the named original and nearby P8/P11 re-pressure specimens without silent loss, winner selection, or healthy-source regression.",
+    "strongest_not_supported": "General projection safety, general Markdown robustness, arbitrary malformed-input safety, generalized graph correctness, and generalized identity correctness remain unsupported.",
+    "ui_authorized_next": true,
+    "ui_scope": "first bounded plain read-only observer specimen over the normalized model",
+    "adapter_changed": false
+  }
+}
+
+

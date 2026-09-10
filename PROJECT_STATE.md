@@ -221,10 +221,18 @@ duplicated ID survives with ambiguous unique-target resolution. The Stage 3
 decision and trace remain unchanged historical evidence, and the projection
 contract was not changed in Stage 4B.
 
-A fresh adversarial re-pressure pass remains required before Cockpit UI
-construction. The adapter is not declared generally reliable. The Controller
-remains `PARKED`; this is Cockpit implementation development, not an active
-scientific Pressure / Resolution Map node.
+Stage 4C independently re-pressured the original and nearby P8/P11 wounds,
+healthy history and identity controls, duplicate relation targets, a combined
+wound, and a three-way duplicate. All 12 named specimens survived without
+silent loss, winner selection, or healthy-source regression; the exact current
+repository projection also remained complete and diagnostic-free.
+
+The next permitted Cockpit step is a deliberately plain, read-only observer UI
+specimen over the normalized model, where usability and visual projection can
+be pressured. This is not production readiness, general adapter reliability,
+authority, or Controller integration. The Controller remains `PARKED`; this is
+Cockpit implementation development, not an active scientific Pressure /
+Resolution Map node.
 
 ## Contract Surface Status
 

@@ -175,9 +175,15 @@ with occurrence-local provenance, emits identity ambiguity, and leaves an
 explicit relation to a duplicated target unresolved rather than selecting a
 winner. Unsupported history is not promoted into valid resolution history.
 
-A fresh adversarial re-pressure pass remains required before UI construction.
-The remediation does not establish general Markdown robustness or general
-projection safety.
+The [bounded independent re-pressure](../decisions/cockpit_projection_adapter_repressure_v0.md)
+then exercised the original and nearby P8/P11 wounds, healthy controls, their
+combined form, and a three-way duplicate. All named specimens survived without
+silent loss, winner selection, or healthy-source regression. This still does
+not establish general Markdown robustness or general projection safety.
+
+The next permitted Cockpit step is a deliberately plain, read-only observer
+surface over the normalized model. It is a usability and visual-projection
+specimen, not production readiness, authority, or Controller integration.
 
 ## Freshness
 
