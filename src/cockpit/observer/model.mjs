@@ -8,12 +8,28 @@ const KNOWN_ARRAY_SURFACES = [
 ];
 
 export const READ_ONLY_INTERACTIONS = Object.freeze([
+  'switch_view',
   'select',
   'inspect',
   'follow_relation',
+  'inspect_declared_history',
   'open_evidence_reference',
   'copy_reference',
 ]);
+
+export const VIEW_NAMES = Object.freeze([
+  'MAP',
+  'CONSTRAINTS',
+  'LINEAGE',
+  'HORIZON',
+  'SOURCE',
+]);
+
+export const TRANSITION_TYPES = Object.freeze({
+  VIEW: 'view_transition',
+  SELECTION: 'object_selection',
+  TRAVERSAL: 'object_traversal',
+});
 
 export const STANDING_FORMS = Object.freeze({
   OPEN: 'open',
@@ -93,6 +109,29 @@ function occurrenceKey(node, index) {
   const line = node?.provenance?.source_line;
   const id = String(node?.id ?? 'missing').replace(/[^A-Za-z0-9_-]/g, '-');
   return 'pressure-' + String(index).padStart(3, '0') + '-' + id + '-line-' + (line ?? 'missing');
+}
+
+function normalizedObjectKey(prefix, object, index) {
+  const identity = object?.id ?? object?.title ?? object?.source_path ?? 'missing';
+  const safeIdentity = String(identity).replace(/[^A-Za-z0-9_-]/g, '-');
+  return prefix + '-' + String(index).padStart(3, '0') + '-' + safeIdentity;
+}
+
+function objectDiagnostics(diagnostics, object, identityKeys = []) {
+  return diagnostics.filter((diagnostic) => {
+    const affected = diagnostic?.affected ?? {};
+    if (identityKeys.some((key) => affected[key] && affected[key] === object?.id)) {
+      return true;
+    }
+    if (
+      affected.source_path
+      && object?.source_path
+      && affected.source_path === object.source_path
+    ) {
+      return true;
+    }
+    return false;
+  });
 }
 
 function diagnosticsForNode(diagnostics, node) {
@@ -207,6 +246,28 @@ export function buildObserverModel(rawModel) {
     ? rawModel.evidence_refs
     : [];
   const evidenceById = new Map(evidenceRefs.map((reference) => [reference.id, reference]));
+  const constraints = surfaceAvailability.constraints ? rawModel.constraints : [];
+  const constraintOccurrences = constraints.map((constraint, index) => ({
+    key: normalizedObjectKey('constraint', constraint, index),
+    index,
+    constraint,
+    diagnostics: objectDiagnostics(diagnostics, constraint, ['object_id', 'constraint_id']),
+  }));
+  const evidenceOccurrences = evidenceRefs.map((reference, index) => ({
+    key: normalizedObjectKey('evidence', reference, index),
+    index,
+    reference,
+    diagnostics: objectDiagnostics(diagnostics, reference, ['object_id', 'reference_id']),
+  }));
+  const projectionDocuments = surfaceAvailability.projection_documents
+    ? rawModel.projection_documents
+    : [];
+  const projectionDocumentOccurrences = projectionDocuments.map((document, index) => ({
+    key: normalizedObjectKey('projection', document, index),
+    index,
+    document,
+    diagnostics: objectDiagnostics(diagnostics, document, ['object_id', 'document_id']),
+  }));
 
   return {
     rawModel,
@@ -214,27 +275,189 @@ export function buildObserverModel(rawModel) {
     surfaceAvailability,
     occurrences,
     semanticEdges,
+    constraintOccurrences,
     evidenceRefs,
     evidenceById,
+    evidenceOccurrences,
+    projectionDocumentOccurrences,
     diagnostics: {
       available: surfaceAvailability.projection_diagnostics,
       items: diagnostics,
     },
+    activeView: 'MAP',
     selectedOccurrenceKey: occurrences[0]?.key ?? null,
+    selectedConstraintKey: constraintOccurrences[0]?.key ?? null,
+    selectedEvidenceKey: evidenceOccurrences[0]?.key ?? null,
+    selectedProjectionDocumentKey: projectionDocumentOccurrences[0]?.key ?? null,
+    lastTransition: {
+      type: TRANSITION_TYPES.VIEW,
+      from: null,
+      to: 'MAP',
+      coordinate: 'initial_view',
+      assertsRelation: false,
+    },
   };
+}
+
+function transition(viewModel, updates, details) {
+  return {
+    ...viewModel,
+    ...updates,
+    lastTransition: {
+      ...details,
+      assertsRelation: false,
+    },
+  };
+}
+
+export function selectView(viewModel, view) {
+  if (!VIEW_NAMES.includes(view)) {
+    return viewModel;
+  }
+  return transition(viewModel, { activeView: view }, {
+    type: TRANSITION_TYPES.VIEW,
+    from: viewModel.activeView,
+    to: view,
+    coordinate: 'projection_lens',
+  });
 }
 
 export function selectOccurrence(viewModel, key) {
   if (!viewModel.occurrences.some((occurrence) => occurrence.key === key)) {
     return viewModel;
   }
-  return { ...viewModel, selectedOccurrenceKey: key };
+  return transition(viewModel, { selectedOccurrenceKey: key }, {
+    type: TRANSITION_TYPES.SELECTION,
+    from: viewModel.selectedOccurrenceKey,
+    to: key,
+    coordinate: 'pressure_occurrence',
+  });
 }
 
 export function selectedOccurrence(viewModel) {
   return viewModel.occurrences.find(
     (occurrence) => occurrence.key === viewModel.selectedOccurrenceKey,
   ) ?? null;
+}
+
+export function openLineage(viewModel, occurrenceKeyValue) {
+  if (!viewModel.occurrences.some((occurrence) => occurrence.key === occurrenceKeyValue)) {
+    return viewModel;
+  }
+  return transition(viewModel, {
+    activeView: 'LINEAGE',
+    selectedOccurrenceKey: occurrenceKeyValue,
+  }, {
+    type: TRANSITION_TYPES.TRAVERSAL,
+    from: occurrenceKeyValue,
+    to: occurrenceKeyValue,
+    coordinate: 'pressure_occurrence_to_declared_lineage',
+  });
+}
+
+export function followPressureRelation(viewModel, relationKey, fromOccurrenceKey) {
+  const edge = viewModel.semanticEdges.find((candidate) => candidate.key === relationKey);
+  if (!edge?.drawable) {
+    return viewModel;
+  }
+  const fromSource = edge.sourceCandidates[0]?.key === fromOccurrenceKey;
+  const fromTarget = edge.targetCandidates[0]?.key === fromOccurrenceKey;
+  if (!fromSource && !fromTarget) {
+    return viewModel;
+  }
+  const target = fromSource ? edge.targetCandidates[0] : edge.sourceCandidates[0];
+  return transition(viewModel, { selectedOccurrenceKey: target.key }, {
+    type: TRANSITION_TYPES.TRAVERSAL,
+    from: fromOccurrenceKey,
+    to: target.key,
+    coordinate: 'explicit_pressure_relation',
+    relationKey,
+  });
+}
+
+export function selectConstraint(viewModel, key) {
+  if (!viewModel.constraintOccurrences.some((occurrence) => occurrence.key === key)) {
+    return viewModel;
+  }
+  return transition(viewModel, { selectedConstraintKey: key }, {
+    type: TRANSITION_TYPES.SELECTION,
+    from: viewModel.selectedConstraintKey,
+    to: key,
+    coordinate: 'constraint_occurrence',
+  });
+}
+
+export function selectedConstraint(viewModel) {
+  return viewModel.constraintOccurrences.find(
+    (occurrence) => occurrence.key === viewModel.selectedConstraintKey,
+  ) ?? null;
+}
+
+export function selectEvidence(viewModel, key) {
+  if (!viewModel.evidenceOccurrences.some((occurrence) => occurrence.key === key)) {
+    return viewModel;
+  }
+  return transition(viewModel, { selectedEvidenceKey: key }, {
+    type: TRANSITION_TYPES.SELECTION,
+    from: viewModel.selectedEvidenceKey,
+    to: key,
+    coordinate: 'evidence_reference',
+  });
+}
+
+export function selectedEvidence(viewModel) {
+  return viewModel.evidenceOccurrences.find(
+    (occurrence) => occurrence.key === viewModel.selectedEvidenceKey,
+  ) ?? null;
+}
+
+export function selectProjectionDocument(viewModel, key) {
+  if (!viewModel.projectionDocumentOccurrences.some((occurrence) => occurrence.key === key)) {
+    return viewModel;
+  }
+  return transition(viewModel, { selectedProjectionDocumentKey: key }, {
+    type: TRANSITION_TYPES.SELECTION,
+    from: viewModel.selectedProjectionDocumentKey,
+    to: key,
+    coordinate: 'projection_document',
+  });
+}
+
+export function selectedProjectionDocument(viewModel) {
+  return viewModel.projectionDocumentOccurrences.find(
+    (occurrence) => occurrence.key === viewModel.selectedProjectionDocumentKey,
+  ) ?? null;
+}
+
+function ownerEvidenceIds(viewModel, ownerKind, ownerKey) {
+  if (ownerKind === 'pressure') {
+    const owner = viewModel.occurrences.find((occurrence) => occurrence.key === ownerKey);
+    return owner?.node?.evidence_ref_ids;
+  }
+  if (ownerKind === 'constraint') {
+    const owner = viewModel.constraintOccurrences.find((occurrence) => occurrence.key === ownerKey);
+    return owner?.constraint?.evidence_ref_ids;
+  }
+  return null;
+}
+
+export function followEvidence(viewModel, ownerKind, ownerKey, evidenceKey) {
+  const evidence = viewModel.evidenceOccurrences.find(
+    (occurrence) => occurrence.key === evidenceKey,
+  );
+  const ids = ownerEvidenceIds(viewModel, ownerKind, ownerKey);
+  if (!evidence || !Array.isArray(ids) || !ids.includes(evidence.reference?.id)) {
+    return viewModel;
+  }
+  return transition(viewModel, {
+    activeView: 'SOURCE',
+    selectedEvidenceKey: evidenceKey,
+  }, {
+    type: TRANSITION_TYPES.TRAVERSAL,
+    from: ownerKey,
+    to: evidenceKey,
+    coordinate: 'explicit_evidence_ref_id',
+  });
 }
 
 export async function loadProjection(fetchImplementation, url) {

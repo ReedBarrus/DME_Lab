@@ -196,6 +196,14 @@ found no structured current-standing basis in the normalized pressure model,
 so the observer reports that limitation instead of reparsing repository prose.
 Projection v1 remains in progress.
 
+The [Projection v1 P2 bounded-view implementation](../decisions/cockpit_projection_v1_bounded_views_v0.md)
+adds MAP, CONSTRAINTS, LINEAGE, HORIZON, and SOURCE as discrete lenses over the
+same normalized JSON. View transitions change foreground only; object traversal
+is available only through emitted pressure relations, resolution history,
+evidence IDs, and source paths. No lens or transition invokes Controller,
+changes standing, mutates the repository, executes an experiment, or creates
+an external effect.
+
 Generate its ignored, derived JSON input:
 
 ```text
@@ -210,9 +218,9 @@ http://127.0.0.1:8000/src/cockpit/observer/
 ```
 
 The adapter resolves `HEAD` to an exact commit. If generation fails, the
-generator leaves no older output available as a silent fallback. The next
-expected Projection v1 pass is bounded Constraints / Lineage / Horizon /
-Source views plus projection-only typed transitions among those views.
+generator leaves no older output available as a silent fallback. Projection v1
+remains in progress; the next step is P3 adversarial human, navigation, and
+unsupported-inference pressure over the bounded views and transitions.
 
 ## Freshness
 

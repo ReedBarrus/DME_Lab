@@ -1,7 +1,11 @@
 import {
   navigationPresentation,
   normalizedField,
+  selectedConstraint,
+  selectedEvidence,
   selectedOccurrence,
+  selectedProjectionDocument,
+  VIEW_NAMES,
 } from './model.mjs';
 
 export function escapeHtml(value) {
@@ -106,6 +110,51 @@ export function renderNavigation(viewModel) {
     + '<div><span>PROJECTION DIAGNOSTICS</span><a href="#diagnostics" class="'
     + diagnosticClass + '">' + escapeHtml(diagnosticText) + '</a></div>'
     + '</section>';
+}
+
+function selectedContext(viewModel) {
+  if (viewModel.activeView === 'MAP' || viewModel.activeView === 'LINEAGE') {
+    const occurrence = selectedOccurrence(viewModel);
+    return occurrence
+      ? '<code>' + escapeHtml(occurrence.node?.id ?? 'missing ID') + '</code> occurrence '
+        + String(occurrence.index + 1)
+      : '<span class="missing">none available</span>';
+  }
+  if (viewModel.activeView === 'CONSTRAINTS') {
+    const occurrence = selectedConstraint(viewModel);
+    return occurrence
+      ? '<code>' + escapeHtml(occurrence.constraint?.id ?? 'missing ID') + '</code>'
+      : '<span class="missing">none available</span>';
+  }
+  if (viewModel.activeView === 'HORIZON') {
+    const occurrence = selectedProjectionDocument(viewModel);
+    return occurrence
+      ? escapeHtml(occurrence.document?.title ?? 'missing title')
+      : '<span class="missing">none available</span>';
+  }
+  const occurrence = selectedEvidence(viewModel);
+  return occurrence
+    ? '<code>' + escapeHtml(occurrence.reference?.id ?? 'missing ID') + '</code>'
+    : '<span class="missing">none available</span>';
+}
+
+export function renderViewNavigation(viewModel) {
+  const diagnosticText = viewModel.diagnostics.available
+    ? String(viewModel.diagnostics.items.length) + ' diagnostics'
+    : 'diagnostics unavailable';
+  const buttons = VIEW_NAMES.map((view) => '<button type="button" data-view="'
+    + view + '" aria-pressed="' + String(viewModel.activeView === view) + '">'
+    + view + '</button>').join('');
+  return '<section class="view-shell" aria-label="Projection views">'
+    + '<nav class="view-tabs">' + buttons + '</nav>'
+    + '<div class="selected-context"><span>SELECTED IN THIS LENS</span><strong>'
+    + selectedContext(viewModel) + '</strong></div>'
+    + '<div class="transition-context"><span>LAST LOCAL TRANSITION</span><strong><code>'
+    + escapeHtml(viewModel.lastTransition?.type ?? 'missing') + '</code> / '
+    + escapeHtml(viewModel.lastTransition?.coordinate ?? 'missing') + '</strong>'
+    + '<small>foreground only; asserts no new relation</small></div>'
+    + '<a class="view-diagnostic-link" href="#diagnostics">'
+    + escapeHtml(diagnosticText) + '</a></section>';
 }
 
 function mapGeometry(occurrences) {
@@ -327,6 +376,42 @@ function referenceUrl(reference, repositoryState) {
     + '/' + encodedPath;
 }
 
+function committedPathUrl(path, repositoryState) {
+  const identity = repositoryState?.repository_identity;
+  const sourceCommit = repositoryState?.source_commit;
+  if (
+    identity?.host !== 'github.com'
+    || !identity.owner
+    || !identity.repository
+    || !sourceCommit
+    || !path
+  ) {
+    return null;
+  }
+  const encodedPath = String(path).split('/').map(encodeURIComponent).join('/');
+  return 'https://github.com/' + encodeURIComponent(identity.owner)
+    + '/' + encodeURIComponent(identity.repository)
+    + '/blob/' + encodeURIComponent(sourceCommit)
+    + '/' + encodedPath;
+}
+
+function uniqueEvidenceOccurrence(viewModel, id) {
+  const matches = viewModel.evidenceOccurrences.filter(
+    (occurrence) => occurrence.reference?.id === id,
+  );
+  return matches.length === 1 ? matches[0] : null;
+}
+
+function evidenceTransitionButton(ownerKind, ownerKey, evidenceOccurrence) {
+  if (!evidenceOccurrence) {
+    return '';
+  }
+  return '<button type="button" class="text-action" data-follow-evidence-key="'
+    + escapeHtml(evidenceOccurrence.key) + '" data-evidence-owner-kind="'
+    + escapeHtml(ownerKind) + '" data-evidence-owner-key="'
+    + escapeHtml(ownerKey) + '">inspect in SOURCE</button>';
+}
+
 function evidenceSection(occurrence, viewModel) {
   const ids = Array.isArray(occurrence.node?.evidence_ref_ids)
     ? occurrence.node.evidence_ref_ids
@@ -336,6 +421,7 @@ function evidenceSection(occurrence, viewModel) {
   }
   const items = ids.map((id) => {
     const reference = viewModel.evidenceById.get(id);
+    const evidenceOccurrence = uniqueEvidenceOccurrence(viewModel, id);
     if (!reference) {
       return '<li class="reference missing"><code>' + escapeHtml(id)
         + '</code><span>reference object missing</span></li>';
@@ -349,7 +435,8 @@ function evidenceSection(occurrence, viewModel) {
     return '<li class="reference reference-' + safeClass(reference.resolution_status) + '">'
       + targetMarkup
       + '<small>reference status: ' + escapeHtml(reference.resolution_status ?? 'missing')
-      + '</small></li>';
+      + '</small>' + evidenceTransitionButton('pressure', occurrence.key, evidenceOccurrence)
+      + '</li>';
   }).join('');
   return '<section class="inspector-section"><h3>EVIDENCE</h3><ul class="evidence-list">'
     + items + '</ul><p class="reference-boundary">References support navigation. Resolution is not a proof badge.</p></section>';
@@ -403,8 +490,9 @@ function relationSection(occurrence, viewModel) {
         ? relation.target_pressure_id ?? relation.condition_text ?? 'missing target'
         : relation.source_pressure_id ?? 'missing source';
       const follow = edge.drawable && counterpart.length === 1
-        ? '<button type="button" data-follow-occurrence-key="'
-          + escapeHtml(counterpart[0].key) + '">follow</button>'
+        ? '<button type="button" data-follow-relation-key="'
+          + escapeHtml(edge.key) + '" data-from-occurrence-key="'
+          + escapeHtml(occurrence.key) + '">follow</button>'
         : '';
       return '<li><div><code>' + escapeHtml(outgoing ? 'OUT' : 'IN') + '</code> '
         + '<strong>' + escapeHtml(relation.relation_kind ?? 'missing relation kind')
@@ -432,7 +520,9 @@ export function renderInspector(viewModel) {
     + escapeHtml(node?.id ?? 'missing ID') + '</code> '
     + escapeHtml(node?.title ?? 'missing title') + '</h2></div>'
     + '<button type="button" id="copy-pressure-id" data-copy-value="'
-    + escapeHtml(node?.id ?? '') + '">Copy ID</button></div>'
+    + escapeHtml(node?.id ?? '') + '">Copy ID</button>'
+    + '<button type="button" class="text-action" data-open-lineage-key="'
+    + escapeHtml(occurrence.key) + '">open LINEAGE</button></div>'
     + '<section class="inspector-section current-standing"><h3>CURRENT</h3>'
     + '<h4>STANDING</h4>'
     + '<strong>' + escapeHtml(occurrence.currentStanding) + '</strong>'
@@ -453,6 +543,317 @@ export function renderInspector(viewModel) {
     + '</pre></section>'
     + localDiagnosticsSection(occurrence)
     + '</aside>';
+}
+
+function unavailableSurface(title, surfaceName) {
+  return '<section class="bounded-view unavailable-surface"><p class="eyebrow">'
+    + escapeHtml(title) + '</p><h2>' + escapeHtml(surfaceName) + ' unavailable</h2>'
+    + '<p>The normalized <code>' + escapeHtml(surfaceName)
+    + '</code> array is missing. This lens does not reconstruct it from repository files.</p></section>';
+}
+
+function ownedEvidenceSection(ownerKind, ownerKey, ids, viewModel) {
+  if (!Array.isArray(ids) || ids.length === 0) {
+    return '<section class="inspector-section"><h3>EVIDENCE</h3>'
+      + '<p class="explicit-none">none supplied</p></section>';
+  }
+  const items = ids.map((id) => {
+    const occurrence = uniqueEvidenceOccurrence(viewModel, id);
+    const reference = occurrence?.reference;
+    return '<li><code>' + escapeHtml(id) + '</code><span>'
+      + escapeHtml(reference?.resolution_status ?? 'reference object missing') + '</span>'
+      + evidenceTransitionButton(ownerKind, ownerKey, occurrence) + '</li>';
+  }).join('');
+  return '<section class="inspector-section"><h3>EVIDENCE</h3>'
+    + '<ul class="owned-evidence-list">' + items + '</ul>'
+    + '<p class="reference-boundary">Evidence references are navigation, not proof.</p></section>';
+}
+
+function renderConstraintCard(occurrence, selectedKey) {
+  const constraint = occurrence.constraint;
+  const searchable = [
+    constraint?.id,
+    constraint?.left,
+    constraint?.relation,
+    constraint?.right,
+    constraint?.scope,
+    constraint?.basis,
+    constraint?.standing,
+    constraint?.note,
+  ].filter((value) => value !== null && value !== undefined).join(' ').toLowerCase();
+  return '<button type="button" class="constraint-card'
+    + (occurrence.key === selectedKey ? ' is-selected' : '')
+    + '" data-constraint-key="' + escapeHtml(occurrence.key)
+    + '" data-filter-text="' + escapeHtml(searchable) + '">'
+    + '<span class="object-heading"><code>' + escapeHtml(constraint?.id ?? 'missing ID')
+    + '</code><small>' + escapeHtml(constraint?.standing ?? 'missing standing') + '</small></span>'
+    + '<span class="constraint-expression"><strong>' + escapeHtml(constraint?.left ?? 'missing left')
+    + '</strong><em>' + escapeHtml(constraint?.relation ?? 'missing relation')
+    + '</em><strong>' + escapeHtml(constraint?.right ?? 'missing right') + '</strong></span>'
+    + '<span class="constraint-coordinates"><code>scope '
+    + escapeHtml(constraint?.scope ?? 'missing') + '</code><code>basis '
+    + escapeHtml(constraint?.basis ?? 'missing') + '</code></span></button>';
+}
+
+function renderConstraintInspector(viewModel) {
+  const occurrence = selectedConstraint(viewModel);
+  if (!occurrence) {
+    return '<aside class="inspector empty"><h2>Constraint Inspector</h2><p>No constraint is available.</p></aside>';
+  }
+  const constraint = occurrence.constraint;
+  return '<aside class="inspector"><div class="inspector-heading"><div>'
+    + '<p class="eyebrow">SELECTED CONSTRAINT OCCURRENCE ' + String(occurrence.index + 1) + '</p>'
+    + '<h2><code>' + escapeHtml(constraint?.id ?? 'missing ID') + '</code></h2></div></div>'
+    + '<section class="inspector-section constraint-inspection"><h3>CONSTRAINT</h3>'
+    + fieldBlock('LEFT', constraint?.left)
+    + fieldBlock('RELATION', constraint?.relation)
+    + fieldBlock('RIGHT', constraint?.right) + '</section>'
+    + '<section class="inspector-section"><h3>BOUNDED COORDINATES</h3>'
+    + fieldBlock('SCOPE', constraint?.scope)
+    + fieldBlock('BASIS', constraint?.basis)
+    + fieldBlock('STANDING', constraint?.standing) + '</section>'
+    + fieldSection('NOTE', constraint?.note)
+    + ownedEvidenceSection('constraint', occurrence.key, constraint?.evidence_ref_ids, viewModel)
+    + '<section class="inspector-section"><h3>RECORD PROVENANCE</h3><pre>'
+    + escapeHtml(JSON.stringify(constraint?.provenance ?? [], null, 2)) + '</pre></section>'
+    + '<section class="inspector-section"><h3>ADAPTER PROVENANCE</h3><pre>'
+    + escapeHtml(JSON.stringify(constraint?.adapter_provenance ?? {}, null, 2)) + '</pre></section>'
+    + localObjectDiagnostics(occurrence.diagnostics) + '</aside>';
+}
+
+function localObjectDiagnostics(diagnostics) {
+  if (!Array.isArray(diagnostics) || diagnostics.length === 0) {
+    return '<section class="inspector-section"><h3>DIAGNOSTICS</h3><p>0 associated</p></section>';
+  }
+  return '<section class="inspector-section has-diagnostic"><h3>DIAGNOSTICS</h3><ul>'
+    + diagnostics.map((diagnostic) => '<li><code>'
+      + escapeHtml(diagnostic?.kind ?? 'missing kind') + '</code> '
+      + escapeHtml(diagnostic?.message ?? 'missing message') + '</li>').join('')
+    + '</ul></section>';
+}
+
+export function renderConstraintsView(viewModel) {
+  if (!viewModel.surfaceAvailability.constraints) {
+    return unavailableSurface('BOUNDED VIEW', 'constraints');
+  }
+  const cards = viewModel.constraintOccurrences.map(
+    (occurrence) => renderConstraintCard(occurrence, viewModel.selectedConstraintKey),
+  ).join('');
+  return '<section class="bounded-view" data-view-name="CONSTRAINTS">'
+    + '<div class="section-heading"><div><p class="eyebrow">BOUNDED VIEW</p>'
+    + '<h2>Constraints</h2></div><p>' + String(viewModel.constraintOccurrences.length)
+    + ' normalized records</p></div>'
+    + '<p class="semantic-boundary"><code>constraint != local distinction event</code>. '
+    + 'Existence establishes no pressure relevance, priority, confidence, or universal truth.</p>'
+    + '<label class="view-filter">SEARCH EMITTED CONSTRAINT FIELDS'
+    + '<input type="search" data-filter-target="constraint-card" placeholder="ID, term, scope, basis, standing"></label>'
+    + '<div class="bounded-grid"><div class="object-list">' + cards + '</div>'
+    + renderConstraintInspector(viewModel) + '</div></section>';
+}
+
+function lineageRelationList(occurrence, viewModel) {
+  const relations = viewModel.semanticEdges.filter((edge) =>
+    edge.sourceCandidates.some((candidate) => candidate.key === occurrence.key)
+      || edge.targetCandidates.some((candidate) => candidate.key === occurrence.key));
+  if (relations.length === 0) {
+    return '<p class="explicit-none">no explicit normalized pressure relations</p>';
+  }
+  return '<ul class="lineage-relations">' + relations.map((edge) => {
+    const outgoing = edge.sourceCandidates.some((candidate) => candidate.key === occurrence.key);
+    const counterpart = outgoing ? edge.targetCandidates : edge.sourceCandidates;
+    const targetText = outgoing
+      ? edge.relation?.target_pressure_id ?? edge.relation?.condition_text ?? 'missing target'
+      : edge.relation?.source_pressure_id ?? 'missing source';
+    const follow = edge.drawable && counterpart.length === 1
+      ? '<button type="button" data-follow-relation-key="' + escapeHtml(edge.key)
+        + '" data-from-occurrence-key="' + escapeHtml(occurrence.key) + '">follow</button>'
+      : '';
+    return '<li><code>' + escapeHtml(outgoing ? 'OUT' : 'IN') + '</code><strong>'
+      + escapeHtml(edge.relation?.relation_kind ?? 'missing kind') + '</strong><span>'
+      + escapeHtml(targetText) + '</span><small>'
+      + escapeHtml(edge.ambiguous ? 'endpoint ambiguous' : 'explicit normalized relation')
+      + '</small>' + follow + '</li>';
+  }).join('') + '</ul>';
+}
+
+export function renderLineageView(viewModel) {
+  if (!viewModel.surfaceAvailability.pressure_nodes) {
+    return unavailableSurface('BOUNDED VIEW', 'pressure_nodes');
+  }
+  const occurrence = selectedOccurrence(viewModel);
+  if (!occurrence) {
+    return '<section class="bounded-view"><h2>Lineage</h2><p>No pressure occurrence is available.</p></section>';
+  }
+  const pressureChoices = viewModel.occurrences.map((candidate) => '<button type="button" class="lineage-choice'
+    + (candidate.key === occurrence.key ? ' is-selected' : '') + '" data-occurrence-key="'
+    + escapeHtml(candidate.key) + '"><code>' + escapeHtml(candidate.node?.id ?? 'missing ID')
+    + '</code><span>occurrence ' + String(candidate.index + 1) + '</span></button>').join('');
+  const history = Array.isArray(occurrence.node?.resolution_history)
+    ? occurrence.node.resolution_history
+    : [];
+  const historyMarkup = history.length === 0
+    ? '<p class="explicit-none">no normalized history entries</p>'
+    : '<ol class="declared-history">' + history.map((entry, index) => '<li>'
+      + '<span>DECLARED ORDER ' + String(index + 1) + '</span><code>'
+      + escapeHtml(entry?.id ?? 'missing label') + '</code><strong>'
+      + escapeHtml(normalizedField(entry?.standing).text) + '</strong><p>'
+      + escapeHtml(entry?.summary ?? 'missing summary') + '</p><details><summary>provenance</summary><pre>'
+      + escapeHtml(JSON.stringify(entry?.provenance ?? {}, null, 2)) + '</pre></details></li>').join('')
+      + '</ol>';
+  return '<section class="bounded-view" data-view-name="LINEAGE">'
+    + '<div class="section-heading"><div><p class="eyebrow">SELECTED-PRESSURE LINEAGE</p>'
+    + '<h2>Declared lineage</h2></div><p><code>'
+    + escapeHtml(occurrence.node?.id ?? 'missing ID') + '</code> occurrence '
+    + String(occurrence.index + 1) + '</p></div>'
+    + '<p class="semantic-boundary">Declared history order is shown. '
+    + '<strong>Visual continuity does not establish causal lineage.</strong></p>'
+    + '<div class="lineage-layout"><nav class="lineage-pressure-list">' + pressureChoices + '</nav>'
+    + '<div class="lineage-detail"><section class="lineage-current"><span>CURRENT STANDING</span><strong>'
+    + escapeHtml(occurrence.currentStanding) + '</strong><small>basis not explicitly projected</small></section>'
+    + '<section><h3>DECLARED RESOLUTION HISTORY</h3>' + historyMarkup + '</section>'
+    + '<section><h3>EXPLICIT PRESSURE RELATIONS</h3>'
+    + lineageRelationList(occurrence, viewModel) + '</section>'
+    + evidenceSection(occurrence, viewModel)
+    + '<section class="inspector-section"><h3>PROVENANCE</h3><pre>'
+    + escapeHtml(JSON.stringify(occurrence.node?.provenance ?? {}, null, 2)) + '</pre></section>'
+    + localObjectDiagnostics(occurrence.diagnostics) + '</div></div></section>';
+}
+
+function renderProjectionDocument(occurrence, selectedKey) {
+  const document = occurrence.document;
+  const standing = normalizedField(document?.standing);
+  return '<button type="button" class="projection-card'
+    + (occurrence.key === selectedKey ? ' is-selected' : '')
+    + '" data-projection-document-key="' + escapeHtml(occurrence.key) + '">'
+    + '<span class="object-heading"><strong>' + escapeHtml(document?.title ?? 'missing title')
+    + '</strong><code>' + escapeHtml(standing.text) + '</code></span>'
+    + '<span>' + escapeHtml(document?.classification ?? 'missing classification') + '</span>'
+    + '<small>' + escapeHtml(document?.source_path ?? 'missing source path') + '</small>'
+    + '<em>' + escapeHtml(document?.explicit_non_authority?.declared === true
+      ? 'NON-AUTHORITATIVE' : 'non-authority declaration unavailable') + '</em></button>';
+}
+
+export function renderHorizonView(viewModel) {
+  if (!viewModel.surfaceAvailability.projection_documents) {
+    return unavailableSurface('BOUNDED VIEW', 'projection_documents');
+  }
+  const selected = selectedProjectionDocument(viewModel);
+  const cards = viewModel.projectionDocumentOccurrences.map(
+    (occurrence) => renderProjectionDocument(occurrence, viewModel.selectedProjectionDocumentKey),
+  ).join('');
+  let inspector = '<aside class="inspector empty"><h2>Projection Document</h2><p>No document is available.</p></aside>';
+  if (selected) {
+    const document = selected.document;
+    const href = committedPathUrl(document?.source_path, viewModel.repositoryState);
+    inspector = '<aside class="inspector"><div class="inspector-heading"><div>'
+      + '<p class="eyebrow">PROJECTED TERRITORY</p><h2>'
+      + escapeHtml(document?.title ?? 'missing title') + '</h2></div></div>'
+      + fieldSection('STANDING', document?.standing)
+      + fieldSection('CLASSIFICATION', document?.classification)
+      + '<section class="inspector-section"><h3>EXPLICIT NON-AUTHORITY</h3><strong>'
+      + escapeHtml(document?.explicit_non_authority?.declared === true ? 'DECLARED' : 'UNAVAILABLE')
+      + '</strong><p>' + escapeHtml(document?.explicit_non_authority?.text ?? 'missing') + '</p></section>'
+      + '<section class="inspector-section"><h3>SOURCE</h3><code>'
+      + escapeHtml(document?.source_path ?? 'missing path') + '</code>'
+      + (href ? '<a class="source-open" href="' + escapeHtml(href)
+        + '" target="_blank" rel="noreferrer">open normalized committed source</a>' : '')
+      + '<p class="reference-boundary">Opening is navigation only. Document contents do not feed back into this model.</p></section>'
+      + '<section class="inspector-section"><h3>PROVENANCE</h3><pre>'
+      + escapeHtml(JSON.stringify(document?.provenance ?? {}, null, 2)) + '</pre></section>'
+      + localObjectDiagnostics(selected.diagnostics) + '</aside>';
+  }
+  return '<section class="bounded-view horizon-view" data-view-name="HORIZON">'
+    + '<div class="section-heading"><div><p class="eyebrow">BOUNDED VIEW</p><h2>Projection Horizon</h2></div>'
+    + '<p>' + String(viewModel.projectionDocumentOccurrences.length) + ' normalized documents</p></div>'
+    + '<div class="earned-boundary"><strong>EARNED / OBSERVED COCKPIT TERRITORY</strong>'
+    + '<span>projection horizon</span><strong>PROJECTED TERRITORY</strong></div>'
+    + '<p class="semantic-boundary">Projection documents remain non-authoritative. '
+    + 'Display does not make them implemented, available, authorized, active, or ready.</p>'
+    + '<div class="bounded-grid"><div class="object-list projection-list">' + cards + '</div>'
+    + inspector + '</div></section>';
+}
+
+function evidenceFilterText(reference) {
+  return [
+    reference?.id,
+    reference?.origin?.kind,
+    reference?.origin?.id,
+    reference?.original_target,
+    reference?.label,
+    reference?.target_kind,
+    reference?.resolution_status,
+    reference?.committed_path_checked,
+  ].filter((value) => value !== null && value !== undefined).join(' ').toLowerCase();
+}
+
+function renderEvidenceCard(occurrence, selectedKey) {
+  const reference = occurrence.reference;
+  return '<button type="button" class="source-card reference-'
+    + safeClass(reference?.resolution_status) + (occurrence.key === selectedKey ? ' is-selected' : '')
+    + '" data-evidence-key="' + escapeHtml(occurrence.key)
+    + '" data-filter-text="' + escapeHtml(evidenceFilterText(reference)) + '">'
+    + '<span class="object-heading"><code>' + escapeHtml(reference?.id ?? 'missing ID')
+    + '</code><strong>' + escapeHtml(reference?.resolution_status ?? 'missing status') + '</strong></span>'
+    + '<span>' + escapeHtml(reference?.label ?? reference?.original_target ?? 'missing target') + '</span>'
+    + '<small>origin ' + escapeHtml(reference?.origin?.kind ?? 'missing') + ' / '
+    + escapeHtml(reference?.origin?.id ?? 'missing') + '</small></button>';
+}
+
+export function renderSourceView(viewModel) {
+  if (!viewModel.surfaceAvailability.evidence_refs) {
+    return unavailableSurface('BOUNDED VIEW', 'evidence_refs');
+  }
+  const selected = selectedEvidence(viewModel);
+  const cards = viewModel.evidenceOccurrences.map(
+    (occurrence) => renderEvidenceCard(occurrence, viewModel.selectedEvidenceKey),
+  ).join('');
+  let inspector = '<aside class="inspector empty"><h2>Source Inspector</h2><p>No reference is available.</p></aside>';
+  if (selected) {
+    const reference = selected.reference;
+    const href = referenceUrl(reference, viewModel.repositoryState);
+    inspector = '<aside class="inspector"><div class="inspector-heading"><div>'
+      + '<p class="eyebrow">SELECTED EVIDENCE REFERENCE ' + String(selected.index + 1) + '</p><h2><code>'
+      + escapeHtml(reference?.id ?? 'missing ID') + '</code></h2></div></div>'
+      + fieldSection('RESOLUTION STATUS', reference?.resolution_status)
+      + fieldSection('TARGET KIND', reference?.target_kind)
+      + fieldSection('ORIGINAL TARGET', reference?.original_target)
+      + '<section class="inspector-section"><h3>ORIGIN IDENTITY</h3><pre>'
+      + escapeHtml(JSON.stringify(reference?.origin ?? {}, null, 2)) + '</pre></section>'
+      + fieldSection('COMMITTED PATH CHECKED', reference?.committed_path_checked)
+      + '<section class="inspector-section"><h3>SOURCE NAVIGATION</h3>'
+      + (href ? '<a class="source-open" href="' + escapeHtml(href)
+        + '" target="_blank" rel="noreferrer">open normalized source reference</a>'
+        : '<p class="missing">no safe navigable URL emitted or derivable from normalized repository identity</p>')
+      + '<p class="reference-boundary"><code>resolved</code> means resolvable under the adapter rule, not proved, verified, true, or causal. Source contents are not fetched back into the model.</p></section>'
+      + '<section class="inspector-section"><h3>PROVENANCE</h3><pre>'
+      + escapeHtml(JSON.stringify(reference?.provenance ?? {}, null, 2)) + '</pre></section>'
+      + localObjectDiagnostics(selected.diagnostics) + '</aside>';
+  }
+  return '<section class="bounded-view" data-view-name="SOURCE">'
+    + '<div class="section-heading"><div><p class="eyebrow">BOUNDED VIEW</p><h2>Source / Reference Browser</h2></div>'
+    + '<p>' + String(viewModel.evidenceOccurrences.length) + ' normalized references</p></div>'
+    + '<p class="semantic-boundary">Exact resolution status is retained. Reference resolution is not epistemic warrant.</p>'
+    + '<label class="view-filter">SEARCH EMITTED REFERENCE FIELDS'
+    + '<input type="search" data-filter-target="source-card" placeholder="ID, origin, target, status"></label>'
+    + '<div class="bounded-grid"><div class="object-list source-list">' + cards + '</div>'
+    + inspector + '</div></section>';
+}
+
+export function renderActiveView(viewModel) {
+  if (viewModel.activeView === 'CONSTRAINTS') {
+    return renderConstraintsView(viewModel);
+  }
+  if (viewModel.activeView === 'LINEAGE') {
+    return renderLineageView(viewModel);
+  }
+  if (viewModel.activeView === 'HORIZON') {
+    return renderHorizonView(viewModel);
+  }
+  if (viewModel.activeView === 'SOURCE') {
+    return renderSourceView(viewModel);
+  }
+  return '<div class="observer-grid" data-view-name="MAP"><div>'
+    + renderMap(viewModel) + '</div><div>' + renderInspector(viewModel) + '</div></div>';
 }
 
 function diagnosticItem(diagnostic) {

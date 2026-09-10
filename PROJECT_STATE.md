@@ -230,14 +230,15 @@ silent loss, winner selection, or healthy-source regression; the exact current
 repository projection also remained complete and diagnostic-free.
 
 Stage 4C cleared bounded construction of the first observer over the remediated
-adapter basis. That plain observer now exists. Its first Projection v1
-human-use refinement separates typed scientific standing from projection
-diagnostics, compresses map nodes, and exposes that current standing basis is
-not explicitly projected. Projection v1 remains in progress; the next expected
-pass is bounded Constraints / Lineage / Horizon / Source views plus
-projection-only typed transitions among them. No general comprehension, visual
-semantic safety, production readiness, general adapter reliability, authority,
-Controller integration, or active scientific pressure is established. The
+adapter basis. That plain observer and the P1 standing-topology refinement are
+committed. Projection v1 P2 now exposes MAP, CONSTRAINTS, LINEAGE, HORIZON, and
+SOURCE as bounded read-only lenses with discrete projection-only transitions.
+Pressure-to-constraint relations remain unprojected because none are
+normalized. Current pressure-standing basis remains explicitly unprojected.
+Projection v1 remains in progress; the next step is P3 adversarial human,
+navigation, and unsupported-inference pressure. No active scientific pressure,
+general comprehension, visual semantic safety, production readiness,
+Controller integration, or external action authority is established. The
 Controller remains `PARKED`.
 
 ## Contract Surface Status

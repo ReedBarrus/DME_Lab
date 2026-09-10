@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <title>DME Cockpit — Plain Observer</title>
+  <title>DME Cockpit — Bounded Projection</title>
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
@@ -19,11 +19,9 @@
     <p class="loading">Loading normalized Cockpit projection…</p>
   </header>
   <nav id="navigation-root" aria-label="Current repository navigation"></nav>
+  <div id="view-navigation-root"></div>
   <main>
-    <div class="observer-grid">
-      <div id="map-root"></div>
-      <div id="inspector-root"></div>
-    </div>
+    <div id="view-root"></div>
     <div id="diagnostics-root" aria-live="polite"></div>
   </main>
   <footer>

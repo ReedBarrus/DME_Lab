@@ -20,6 +20,10 @@
   box-sizing: border-box;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 html {
   background: var(--background);
 }
@@ -192,6 +196,77 @@ h3,
 .navigation-strip .explicit-none,
 .navigation-strip .missing {
   color: var(--alert);
+}
+
+.view-shell {
+  display: grid;
+  grid-template-columns: auto minmax(180px, 1fr) minmax(260px, 1.5fr) auto;
+  align-items: stretch;
+  border-bottom: 1px solid var(--border);
+  background: #11151a;
+}
+
+.view-tabs {
+  display: flex;
+  align-items: stretch;
+}
+
+.view-tabs button,
+.text-action {
+  border: 0;
+  border-right: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.view-tabs button {
+  padding: 13px 12px;
+}
+
+.view-tabs button[aria-pressed="true"] {
+  background: var(--panel-raised);
+  color: var(--selected);
+  box-shadow: inset 0 -3px 0 var(--selected);
+}
+
+.selected-context,
+.transition-context {
+  min-width: 0;
+  padding: 8px 12px;
+  border-left: 1px solid var(--border);
+}
+
+.selected-context > span,
+.transition-context > span {
+  display: block;
+  color: var(--quiet);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.selected-context strong,
+.transition-context strong,
+.transition-context small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.transition-context small {
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.view-diagnostic-link {
+  align-self: center;
+  padding: 12px;
 }
 
 .token-list {
@@ -505,6 +580,13 @@ marker path {
   cursor: pointer;
 }
 
+.inspector-heading .text-action,
+.text-action {
+  padding: 6px 8px;
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+}
+
 .inspector-section {
   padding: 12px 15px;
   border-bottom: 1px solid #2d343c;
@@ -689,6 +771,294 @@ marker path {
   min-width: 0;
 }
 
+.bounded-view {
+  border: 1px solid var(--border);
+  background: var(--panel);
+}
+
+.semantic-boundary {
+  margin: 0;
+  padding: 10px 15px;
+  border-bottom: 1px solid var(--border);
+  background: #101419;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.semantic-boundary strong,
+.semantic-boundary code {
+  color: var(--text);
+}
+
+.view-filter {
+  display: grid;
+  grid-template-columns: auto minmax(220px, 520px);
+  align-items: center;
+  gap: 12px;
+  padding: 10px 15px;
+  border-bottom: 1px solid var(--border);
+  color: var(--quiet);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.view-filter input {
+  width: 100%;
+  padding: 7px 9px;
+  border: 1px solid var(--border-strong);
+  border-radius: 0;
+  background: #0b0e12;
+  color: var(--text);
+  font: 12px "Cascadia Code", Consolas, monospace;
+}
+
+.bounded-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 430px);
+  gap: 18px;
+  padding: 16px;
+  align-items: start;
+}
+
+.object-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+  gap: 9px;
+}
+
+.object-list > button,
+.lineage-choice {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--panel-raised);
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+}
+
+.object-list > button {
+  padding: 11px;
+}
+
+.object-list > button:hover,
+.object-list > button:focus-visible,
+.object-list > button.is-selected,
+.lineage-choice.is-selected {
+  outline: 2px solid var(--selected);
+  outline-offset: 1px;
+}
+
+.object-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.object-heading small {
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.constraint-expression {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+  margin: 13px 0;
+}
+
+.constraint-expression em {
+  color: var(--open);
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 10px;
+  font-style: normal;
+}
+
+.constraint-coordinates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.owned-evidence-list {
+  padding: 0;
+  list-style: none;
+}
+
+.owned-evidence-list li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 8px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dotted var(--border);
+}
+
+.owned-evidence-list span {
+  grid-column: 1;
+  color: var(--muted);
+}
+
+.owned-evidence-list button {
+  grid-column: 2;
+  grid-row: 1 / 3;
+}
+
+.lineage-layout {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 18px;
+  padding: 16px;
+}
+
+.lineage-pressure-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lineage-choice {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  padding: 7px;
+}
+
+.lineage-choice span {
+  color: var(--quiet);
+  font-size: 9px;
+}
+
+.lineage-detail {
+  min-width: 0;
+  border: 1px solid var(--border);
+}
+
+.lineage-detail > section:not(.inspector-section) {
+  padding: 13px 15px;
+  border-bottom: 1px solid var(--border);
+}
+
+.lineage-current {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 14px;
+}
+
+.lineage-current > span,
+.lineage-current > small {
+  color: var(--muted);
+}
+
+.lineage-current > strong {
+  font-family: "Cascadia Code", Consolas, monospace;
+}
+
+.lineage-current > small {
+  grid-column: 2;
+}
+
+.declared-history,
+.lineage-relations {
+  padding: 0;
+  list-style: none;
+}
+
+.declared-history li,
+.lineage-relations li {
+  margin-top: 8px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  background: #11151a;
+}
+
+.declared-history li > span {
+  display: block;
+  color: var(--quiet);
+  font-size: 9px;
+}
+
+.declared-history li > code,
+.declared-history li > strong,
+.lineage-relations li > * {
+  margin-right: 10px;
+}
+
+.lineage-relations small {
+  display: block;
+  color: var(--muted);
+}
+
+.earned-boundary {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 15px;
+  padding: 18px;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+.earned-boundary span {
+  padding: 4px 12px;
+  border-top: 1px dashed var(--candidate);
+  border-bottom: 1px dashed var(--candidate);
+  color: var(--candidate);
+  font: 10px "Cascadia Code", Consolas, monospace;
+  text-transform: uppercase;
+}
+
+.projection-card {
+  border-style: dashed !important;
+  opacity: 0.82;
+}
+
+.projection-card > span,
+.projection-card > small,
+.projection-card > em,
+.source-card > span,
+.source-card > small {
+  display: block;
+  margin-top: 7px;
+}
+
+.projection-card > em {
+  color: var(--candidate);
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.source-card.reference-broken,
+.source-card.reference-broken_reference,
+.source-card.reference-external_unchecked,
+.source-card.reference-unsupported {
+  border-left-width: 5px;
+}
+
+.source-card.reference-broken,
+.source-card.reference-broken_reference {
+  border-left-color: var(--alert);
+}
+
+.source-card.reference-external_unchecked,
+.source-card.reference-unsupported {
+  border-left-color: var(--open);
+}
+
+.source-open {
+  display: block;
+  margin-top: 10px;
+}
+
+.unavailable-surface {
+  padding: 18px;
+  border-color: var(--alert);
+}
+
 .load-failure {
   max-width: 720px;
   margin: 40px auto;
@@ -719,6 +1089,20 @@ footer {
     overflow-x: auto;
   }
 
+  .view-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .view-tabs {
+    overflow-x: auto;
+  }
+
+  .selected-context,
+  .transition-context,
+  .view-diagnostic-link {
+    border-top: 1px solid var(--border);
+  }
+
   .observer-grid {
     display: block;
   }
@@ -728,6 +1112,15 @@ footer {
     top: auto;
     max-height: none;
     margin-top: 16px;
+  }
+
+  .bounded-grid,
+  .lineage-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .object-list {
+    grid-template-columns: 1fr;
   }
 
   .map-legend {

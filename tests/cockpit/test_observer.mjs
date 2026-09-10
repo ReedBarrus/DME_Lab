@@ -5,18 +5,36 @@ import test from 'node:test';
 import {
   READ_ONLY_INTERACTIONS,
   STANDING_FORMS,
+  TRANSITION_TYPES,
+  VIEW_NAMES,
   buildObserverModel,
+  followEvidence,
+  followPressureRelation,
   loadProjection,
   navigationPresentation,
+  openLineage,
+  selectConstraint,
+  selectEvidence,
   selectOccurrence,
+  selectProjectionDocument,
+  selectView,
+  selectedConstraint,
+  selectedEvidence,
   selectedOccurrence,
+  selectedProjectionDocument,
 } from '../../src/cockpit/observer/model.mjs';
 import {
+  renderActiveView,
+  renderConstraintsView,
   renderDiagnostics,
   renderHeader,
+  renderHorizonView,
   renderInspector,
+  renderLineageView,
   renderMap,
   renderNavigation,
+  renderSourceView,
+  renderViewNavigation,
   unavailableMarkup,
 } from '../../src/cockpit/observer/render.mjs';
 
@@ -107,6 +125,111 @@ function healthyModel() {
     projection_documents: [{ title: 'SYNTHETIC-PROJECTION-NOT-RENDERED' }],
     projection_diagnostics: [],
   };
+}
+
+function p2Model() {
+  const raw = healthyModel();
+  raw.pressure_nodes[0].evidence_ref_ids = ['E-PRESSURE'];
+  raw.pressure_relations = [
+    {
+      source_pressure_id: 'PR-018',
+      relation_kind: 'unlocks',
+      target_kind: 'pressure',
+      target_pressure_id: 'PR-019',
+      provenance: { source_path: 'synthetic/map.md', source_line: 14 },
+    },
+  ];
+  raw.constraints = [
+    {
+      classification: 'constraint',
+      id: 'D-9001',
+      left: 'captured_endpoint',
+      relation: 'not_equivalent_to',
+      right: 'complete_history',
+      scope: 'synthetic_scope',
+      basis: 'deterministic_test',
+      standing: 'supported',
+      note: 'Synthetic bounded constraint.',
+      provenance: ['tests/synthetic.py::test_boundary'],
+      adapter_provenance: {
+        source_path: 'docs/constraints/registry.jsonl',
+        source_commit: 'synthetic-healthy',
+        source_anchor: 'line 1 / D-9001',
+      },
+      evidence_ref_ids: ['E-CONSTRAINT'],
+    },
+    {
+      classification: 'constraint',
+      id: 'D-9002',
+      left: 'projection',
+      relation: 'not_equivalent_to',
+      right: 'authority',
+      scope: 'synthetic_projection',
+      basis: 'design_constraint',
+      standing: 'candidate',
+      provenance: [],
+      adapter_provenance: {
+        source_path: 'docs/constraints/registry.jsonl',
+        source_commit: 'synthetic-healthy',
+        source_anchor: 'line 2 / D-9002',
+      },
+      evidence_ref_ids: [],
+    },
+  ];
+  raw.evidence_refs = [
+    {
+      id: 'E-PRESSURE',
+      origin: { kind: 'pressure', id: 'PR-018' },
+      original_target: 'docs/decisions/synthetic_pressure.md',
+      label: 'synthetic pressure decision',
+      target_kind: 'decision',
+      resolution_status: 'resolved',
+      committed_path_checked: 'docs/decisions/synthetic_pressure.md',
+      provenance: { source_path: 'synthetic/map.md', source_line: 15 },
+    },
+    {
+      id: 'E-CONSTRAINT',
+      origin: { kind: 'constraint', id: 'D-9001' },
+      original_target: 'tests/synthetic.py::test_boundary',
+      label: null,
+      target_kind: 'test',
+      resolution_status: 'broken',
+      committed_path_checked: 'tests/synthetic.py',
+      provenance: {
+        source_path: 'docs/constraints/registry.jsonl',
+        source_line: 1,
+      },
+    },
+    {
+      id: 'E-EXTERNAL',
+      origin: { kind: 'pressure', id: 'PR-019' },
+      original_target: 'https://example.invalid/research',
+      label: 'external specimen',
+      target_kind: 'external',
+      resolution_status: 'external_unchecked',
+      committed_path_checked: null,
+      provenance: { source_path: 'synthetic/map.md', source_line: 40 },
+    },
+  ];
+  raw.projection_documents = [
+    {
+      source_path: 'docs/projection/Controller.md',
+      title: 'Controller',
+      source_commit: 'synthetic-healthy',
+      classification: 'projection_document',
+      explicit_non_authority: {
+        declared: true,
+        text: 'Non-authoritative projection. No action authority.',
+      },
+      standing: { value: 'PARKED', status: 'known_value' },
+      provenance: {
+        source_path: 'docs/projection/Controller.md',
+        source_commit: 'synthetic-healthy',
+        source_anchor: 'Standing',
+      },
+    },
+  ];
+  return raw;
 }
 
 test('normalized JSON loads through the supplied URL without repository access', async () => {
@@ -388,7 +511,7 @@ test('inspector exposes only explicit normalized relation topology', () => {
   assert.match(markup, /RELATIONS/);
   assert.match(markup, /blocked_by/);
   assert.match(markup, /explicit normalized relation/);
-  assert.match(markup, /data-follow-occurrence-key/);
+  assert.match(markup, /data-follow-relation-key/);
 });
 
 test('failed and unavailable projections remain explicit', async () => {
@@ -407,7 +530,15 @@ test('failed and unavailable projections remain explicit', async () => {
 test('the implemented interaction vocabulary has no mutation action', async () => {
   assert.deepEqual(
     READ_ONLY_INTERACTIONS,
-    ['select', 'inspect', 'follow_relation', 'open_evidence_reference', 'copy_reference'],
+    [
+      'switch_view',
+      'select',
+      'inspect',
+      'follow_relation',
+      'inspect_declared_history',
+      'open_evidence_reference',
+      'copy_reference',
+    ],
   );
   const index = await readFile(
     new URL('../../src/cockpit/observer/index.html', import.meta.url),
@@ -433,4 +564,180 @@ test('first observer rendering excludes deferred normalized surfaces', () => {
 
   assert.doesNotMatch(markup, /SYNTHETIC-CONSTRAINT-NOT-RENDERED/);
   assert.doesNotMatch(markup, /SYNTHETIC-PROJECTION-NOT-RENDERED/);
+});
+
+test('P2 view shell exposes only the bounded normalized lens vocabulary', () => {
+  const view = buildObserverModel(p2Model());
+  const markup = renderViewNavigation(view);
+
+  assert.equal(view.activeView, 'MAP');
+  assert.deepEqual([...VIEW_NAMES], ['MAP', 'CONSTRAINTS', 'LINEAGE', 'HORIZON', 'SOURCE']);
+  for (const name of VIEW_NAMES) {
+    assert.match(markup, new RegExp('data-view="' + name + '"'));
+  }
+  assert.doesNotMatch(markup, /SYSTEM|DISTINCTION ATLAS|BOSS/i);
+});
+
+test('every normalized constraint remains independently addressable', () => {
+  const view = buildObserverModel(p2Model());
+  const keys = view.constraintOccurrences.map((occurrence) => occurrence.key);
+  const markup = renderConstraintsView(view);
+
+  assert.equal(view.constraintOccurrences.length, 2);
+  assert.equal(new Set(keys).size, 2);
+  assert.match(markup, /captured_endpoint/);
+  assert.match(markup, /not_equivalent_to/);
+  assert.match(markup, /complete_history/);
+  assert.match(markup, /synthetic_scope/);
+  assert.match(markup, /deterministic_test/);
+  assert.match(markup, /constraint != local distinction event/);
+});
+
+test('constraint evidence traversal uses only emitted evidence_ref_ids', () => {
+  const view = buildObserverModel(p2Model());
+  const constraint = view.constraintOccurrences[0];
+  const allowed = view.evidenceOccurrences.find(
+    (occurrence) => occurrence.reference.id === 'E-CONSTRAINT',
+  );
+  const unrelated = view.evidenceOccurrences.find(
+    (occurrence) => occurrence.reference.id === 'E-PRESSURE',
+  );
+  const followed = followEvidence(view, 'constraint', constraint.key, allowed.key);
+  const rejected = followEvidence(view, 'constraint', constraint.key, unrelated.key);
+
+  assert.equal(followed.activeView, 'SOURCE');
+  assert.equal(followed.selectedEvidenceKey, allowed.key);
+  assert.equal(followed.lastTransition.coordinate, 'explicit_evidence_ref_id');
+  assert.equal(rejected, view);
+  assert.equal(view.semanticEdges.length, 1);
+  assert.ok(view.semanticEdges.every((edge) => edge.relation.source_pressure_id));
+});
+
+test('lineage renders current standing and declared history in normalized order only', () => {
+  const raw = p2Model();
+  raw.pressure_nodes[1].resolution_history = [
+    { id: 'R0', standing: { value: 'BASIS_INSUFFICIENT', status: 'known_value' }, summary: 'first' },
+    { id: 'R1', standing: { value: 'BLOCKER_REMOVED', status: 'known_value' }, summary: 'second' },
+    { id: 'R2', standing: { value: 'CANDIDATE_SURVIVED', status: 'known_value' }, summary: 'third' },
+  ];
+  raw.pressure_nodes[1].standing = { value: 'CANDIDATE_SURVIVED', status: 'known_value' };
+  let view = buildObserverModel(raw);
+  view = openLineage(view, view.occurrences[1].key);
+  const markup = renderLineageView(view);
+
+  assert.equal(view.activeView, 'LINEAGE');
+  assert.match(markup, /CURRENT STANDING/);
+  assert.ok(markup.indexOf('R0') < markup.indexOf('R1'));
+  assert.ok(markup.indexOf('R1') < markup.indexOf('R2'));
+  assert.match(markup, /Visual continuity does not establish causal lineage/);
+  assert.doesNotMatch(markup, /prediction succeeded|causal successor/i);
+});
+
+test('explicit pressure relations remain the only lineage traversals', () => {
+  const view = buildObserverModel(p2Model());
+  const source = view.occurrences.find((occurrence) => occurrence.node.id === 'PR-018');
+  const target = view.occurrences.find((occurrence) => occurrence.node.id === 'PR-019');
+  const followed = followPressureRelation(view, view.semanticEdges[0].key, source.key);
+  const rejected = followPressureRelation(view, 'missing-relation', source.key);
+
+  assert.equal(followed.selectedOccurrenceKey, target.key);
+  assert.equal(followed.lastTransition.coordinate, 'explicit_pressure_relation');
+  assert.equal(rejected, view);
+});
+
+test('duplicate pressure occurrence identity survives MAP to LINEAGE', async () => {
+  const view = buildObserverModel(await fixture('duplicate_ambiguous.json'));
+  const duplicates = view.occurrences.filter((occurrence) => occurrence.node.id === 'PR-901');
+  const lineage = openLineage(view, duplicates[1].key);
+
+  assert.notEqual(duplicates[0].key, duplicates[1].key);
+  assert.equal(lineage.selectedOccurrenceKey, duplicates[1].key);
+  assert.equal(selectedOccurrence(lineage).index, duplicates[1].index);
+});
+
+test('HORIZON is populated only by normalized projection documents', () => {
+  const raw = p2Model();
+  raw.projection_documents[0].body = 'SYNTHETIC-DOCUMENT-BODY-MUST-NOT-RENDER';
+  raw.pressure_nodes[0].title = 'PRESSURE-NOT-A-HORIZON-DOCUMENT';
+  const view = buildObserverModel(raw);
+  const markup = renderHorizonView(view);
+
+  assert.equal(view.projectionDocumentOccurrences.length, 1);
+  assert.match(markup, /Controller/);
+  assert.match(markup, /PARKED/);
+  assert.match(markup, /NON-AUTHORITATIVE/);
+  assert.match(markup, /open normalized committed source/);
+  assert.doesNotMatch(markup, /SYNTHETIC-DOCUMENT-BODY-MUST-NOT-RENDER/);
+  assert.doesNotMatch(markup, /PRESSURE-NOT-A-HORIZON-DOCUMENT/);
+});
+
+test('SOURCE preserves independently addressable references, exact status, and origin', () => {
+  let view = buildObserverModel(p2Model());
+  const broken = view.evidenceOccurrences.find(
+    (occurrence) => occurrence.reference.id === 'E-CONSTRAINT',
+  );
+  view = selectView(selectEvidence(view, broken.key), 'SOURCE');
+  const markup = renderSourceView(view);
+
+  assert.equal(view.evidenceOccurrences.length, 3);
+  assert.equal(new Set(view.evidenceOccurrences.map((occurrence) => occurrence.key)).size, 3);
+  assert.match(markup, /broken/);
+  assert.match(markup, /constraint/);
+  assert.match(markup, /D-9001/);
+  assert.match(markup, /resolved/);
+  assert.match(markup, /external_unchecked/);
+  assert.doesNotMatch(markup, /badge verified|badge proved|status confirmed/i);
+});
+
+test('view switching changes only local lens state and creates no semantic relation', () => {
+  const view = buildObserverModel(p2Model());
+  const rawBefore = structuredClone(view.rawModel);
+  const navigationBefore = structuredClone(view.repositoryState.current_navigation);
+  const edgeCount = view.semanticEdges.length;
+  const switched = selectView(view, 'CONSTRAINTS');
+
+  assert.equal(switched.activeView, 'CONSTRAINTS');
+  assert.equal(switched.lastTransition.type, 'view_transition');
+  assert.equal(switched.lastTransition.assertsRelation, false);
+  assert.equal(switched.semanticEdges.length, edgeCount);
+  assert.deepEqual(switched.rawModel, rawBefore);
+  assert.deepEqual(switched.repositoryState.current_navigation, navigationBefore);
+  assert.ok(switched.occurrences.every((occurrence) => !occurrence.isActive));
+});
+
+test('pressure to constraint is never synthesized by view switching or evidence traversal', () => {
+  const view = buildObserverModel(p2Model());
+  const pressure = view.occurrences[0];
+  const constraintEvidence = view.evidenceOccurrences.find(
+    (occurrence) => occurrence.reference.id === 'E-CONSTRAINT',
+  );
+  const switched = selectView(view, 'CONSTRAINTS');
+  const rejected = followEvidence(view, 'pressure', pressure.key, constraintEvidence.key);
+
+  assert.equal(switched.selectedConstraintKey, view.selectedConstraintKey);
+  assert.equal(rejected, view);
+  assert.ok(view.semanticEdges.every(
+    (edge) => edge.relation.target_kind === 'pressure',
+  ));
+});
+
+test('global diagnostics remain visible in every bounded lens', async () => {
+  const base = buildObserverModel(await fixture('partial_unsupported.json'));
+  for (const name of VIEW_NAMES) {
+    const view = selectView(base, name);
+    assert.match(renderViewNavigation(view), /1 diagnostics/);
+    assert.match(renderDiagnostics(view), /unsupported_structure/);
+  }
+  assert.equal(base.occurrences[0].hasProjectionDiagnostic, true);
+});
+
+test('renderActiveView uses only the selected bounded lens', () => {
+  const base = buildObserverModel(p2Model());
+  const constraints = renderActiveView(selectView(base, 'CONSTRAINTS'));
+  const horizon = renderActiveView(selectView(base, 'HORIZON'));
+
+  assert.match(constraints, /data-view-name="CONSTRAINTS"/);
+  assert.doesNotMatch(constraints, /data-view-name="MAP"/);
+  assert.match(horizon, /data-view-name="HORIZON"/);
+  assert.doesNotMatch(horizon, /D-9001/);
 });
