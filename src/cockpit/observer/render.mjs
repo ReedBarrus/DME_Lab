@@ -218,6 +218,9 @@ function nodeBadges(occurrence) {
   if (occurrence.isDuplicate) {
     badges.push('<span class="badge ambiguous">duplicate identity</span>');
   }
+  if (occurrence.hasAmbiguousActivity) {
+    badges.push('<span class="badge ambiguous">active occurrence ambiguous</span>');
+  }
   if (occurrence.hasProjectionDiagnostic) {
     badges.push('<span class="badge diagnostic">projection diagnostic '
       + occurrence.diagnostics.length + '</span>');
@@ -395,11 +398,14 @@ function committedPathUrl(path, repositoryState) {
     + '/' + encodedPath;
 }
 
-function uniqueEvidenceOccurrence(viewModel, id) {
-  const matches = viewModel.evidenceOccurrences.filter(
+function evidenceIdentity(viewModel, id) {
+  const occurrences = viewModel.evidenceOccurrences.filter(
     (occurrence) => occurrence.reference?.id === id,
   );
-  return matches.length === 1 ? matches[0] : null;
+  return {
+    occurrences,
+    occurrence: occurrences.length === 1 ? occurrences[0] : null,
+  };
 }
 
 function evidenceTransitionButton(ownerKind, ownerKey, evidenceOccurrence) {
@@ -420,12 +426,18 @@ function evidenceSection(occurrence, viewModel) {
     return '<section class="inspector-section"><h3>EVIDENCE</h3><p class="missing">none supplied</p></section>';
   }
   const items = ids.map((id) => {
-    const reference = viewModel.evidenceById.get(id);
-    const evidenceOccurrence = uniqueEvidenceOccurrence(viewModel, id);
-    if (!reference) {
+    const identity = evidenceIdentity(viewModel, id);
+    if (identity.occurrences.length === 0) {
       return '<li class="reference missing"><code>' + escapeHtml(id)
         + '</code><span>reference object missing</span></li>';
     }
+    if (identity.occurrences.length > 1) {
+      return '<li class="reference missing"><code>' + escapeHtml(id)
+        + '</code><span>reference identity ambiguous: '
+        + String(identity.occurrences.length) + ' normalized occurrences; no target selected</span></li>';
+    }
+    const evidenceOccurrence = identity.occurrence;
+    const reference = evidenceOccurrence.reference;
     const href = referenceUrl(reference, viewModel.repositoryState);
     const target = reference.label || reference.original_target || reference.id;
     const targetMarkup = href
@@ -558,7 +570,12 @@ function ownedEvidenceSection(ownerKind, ownerKey, ids, viewModel) {
       + '<p class="explicit-none">none supplied</p></section>';
   }
   const items = ids.map((id) => {
-    const occurrence = uniqueEvidenceOccurrence(viewModel, id);
+    const identity = evidenceIdentity(viewModel, id);
+    if (identity.occurrences.length > 1) {
+      return '<li><code>' + escapeHtml(id) + '</code><span>reference identity ambiguous: '
+        + String(identity.occurrences.length) + ' normalized occurrences; no target selected</span></li>';
+    }
+    const occurrence = identity.occurrence;
     const reference = occurrence?.reference;
     return '<li><code>' + escapeHtml(id) + '</code><span>'
       + escapeHtml(reference?.resolution_status ?? 'reference object missing') + '</span>'

@@ -222,7 +222,12 @@ export function buildObserverModel(rawModel) {
       node,
       currentStanding,
       standingClass: currentStandingClass,
-      isActive: explicitActiveId !== null && node?.id === explicitActiveId,
+      isActive: explicitActiveId !== null
+        && node?.id === explicitActiveId
+        && idCounts.get(explicitActiveId) === 1,
+      hasAmbiguousActivity: explicitActiveId !== null
+        && node?.id === explicitActiveId
+        && idCounts.get(explicitActiveId) !== 1,
       isDuplicate: (idCounts.get(node?.id) || 0) > 1,
       missingDiscriminator: normalizedField(node?.missing_discriminator),
       residue: normalizedField(node?.residue),
@@ -245,7 +250,6 @@ export function buildObserverModel(rawModel) {
   const evidenceRefs = surfaceAvailability.evidence_refs
     ? rawModel.evidence_refs
     : [];
-  const evidenceById = new Map(evidenceRefs.map((reference) => [reference.id, reference]));
   const constraints = surfaceAvailability.constraints ? rawModel.constraints : [];
   const constraintOccurrences = constraints.map((constraint, index) => ({
     key: normalizedObjectKey('constraint', constraint, index),
@@ -277,7 +281,6 @@ export function buildObserverModel(rawModel) {
     semanticEdges,
     constraintOccurrences,
     evidenceRefs,
-    evidenceById,
     evidenceOccurrences,
     projectionDocumentOccurrences,
     diagnostics: {
@@ -442,11 +445,21 @@ function ownerEvidenceIds(viewModel, ownerKind, ownerKey) {
 }
 
 export function followEvidence(viewModel, ownerKind, ownerKey, evidenceKey) {
-  const evidence = viewModel.evidenceOccurrences.find(
+  const selectedEvidenceOccurrence = viewModel.evidenceOccurrences.find(
     (occurrence) => occurrence.key === evidenceKey,
   );
   const ids = ownerEvidenceIds(viewModel, ownerKind, ownerKey);
-  if (!evidence || !Array.isArray(ids) || !ids.includes(evidence.reference?.id)) {
+  const identityMatches = selectedEvidenceOccurrence
+    ? viewModel.evidenceOccurrences.filter(
+      (occurrence) => occurrence.reference?.id === selectedEvidenceOccurrence.reference?.id,
+    )
+    : [];
+  if (
+    !selectedEvidenceOccurrence
+    || identityMatches.length !== 1
+    || !Array.isArray(ids)
+    || !ids.includes(selectedEvidenceOccurrence.reference?.id)
+  ) {
     return viewModel;
   }
   return transition(viewModel, {

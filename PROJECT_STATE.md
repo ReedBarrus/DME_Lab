@@ -235,11 +235,15 @@ committed. Projection v1 P2 now exposes MAP, CONSTRAINTS, LINEAGE, HORIZON, and
 SOURCE as bounded read-only lenses with discrete projection-only transitions.
 Pressure-to-constraint relations remain unprojected because none are
 normalized. Current pressure-standing basis remains explicitly unprojected.
-Projection v1 remains in progress; the next step is P3 adversarial human,
-navigation, and unsupported-inference pressure. No active scientific pressure,
-general comprehension, visual semantic safety, production readiness,
-Controller integration, or external action authority is established. The
-Controller remains `PARKED`.
+P3 adversarial navigation pressure exposed and repaired two bounded identity
+failures: ambiguous active pressure IDs no longer activate multiple
+occurrences, and ambiguous evidence IDs no longer select a display or traversal
+winner. Projection v1 is boundedly closed as the current read-only observer
+surface and remains subject to future human-use pressure. No next research
+direction or active scientific pressure is selected. General comprehension,
+visual semantic safety, production readiness, observational geometry,
+Controller integration, and external action authority remain unestablished.
+The Controller remains `PARKED`.
 
 ## Contract Surface Status
 

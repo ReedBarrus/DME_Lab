@@ -741,3 +741,136 @@ test('renderActiveView uses only the selected bounded lens', () => {
   assert.match(horizon, /data-view-name="HORIZON"/);
   assert.doesNotMatch(horizon, /D-9001/);
 });
+
+test('ambiguous active pressure ID does not activate multiple occurrences', async () => {
+  const raw = await fixture('duplicate_ambiguous.json');
+  raw.repository_state.current_navigation.active_pressure = {
+    value: 'PR-901',
+    status: 'known_value',
+  };
+  const view = buildObserverModel(raw);
+  const duplicates = view.occurrences.filter((occurrence) => occurrence.node.id === 'PR-901');
+  const markup = renderMap(view);
+
+  assert.equal(duplicates.length, 2);
+  assert.ok(duplicates.every((occurrence) => !occurrence.isActive));
+  assert.ok(duplicates.every((occurrence) => occurrence.hasAmbiguousActivity));
+  assert.match(markup, /active occurrence ambiguous/);
+  assert.doesNotMatch(markup, /class="badge active">active/);
+  assert.match(renderNavigation(view), /PR-901/);
+
+  const uniqueRaw = healthyModel();
+  uniqueRaw.repository_state.current_navigation.active_pressure = {
+    value: 'PR-018',
+    status: 'known_value',
+  };
+  const unique = buildObserverModel(uniqueRaw).occurrences.find(
+    (occurrence) => occurrence.node.id === 'PR-018',
+  );
+  assert.equal(unique.isActive, true);
+  assert.equal(unique.hasAmbiguousActivity, false);
+});
+
+test('duplicate evidence ID remains occurrence-ambiguous and cannot select a target', () => {
+  const raw = p2Model();
+  raw.pressure_nodes[0].evidence_ref_ids = ['E-COLLISION'];
+  raw.evidence_refs = [
+    {
+      id: 'E-COLLISION',
+      origin: { kind: 'pressure', id: 'PR-018' },
+      original_target: 'first-target.md',
+      resolution_status: 'resolved',
+    },
+    {
+      id: 'E-COLLISION',
+      origin: { kind: 'constraint', id: 'D-9001' },
+      original_target: 'second-target.md',
+      resolution_status: 'broken',
+    },
+  ];
+  const view = buildObserverModel(raw);
+  const owner = view.occurrences[0];
+  const markup = renderInspector(view);
+
+  assert.equal(view.evidenceOccurrences.length, 2);
+  assert.match(markup, /reference identity ambiguous: 2 normalized occurrences/);
+  assert.doesNotMatch(markup, /first-target\.md|second-target\.md/);
+  assert.doesNotMatch(markup, /data-follow-evidence-key/);
+  for (const evidence of view.evidenceOccurrences) {
+    assert.equal(followEvidence(view, 'pressure', owner.key, evidence.key), view);
+  }
+
+  const first = selectEvidence(selectView(view, 'SOURCE'), view.evidenceOccurrences[0].key);
+  const second = selectEvidence(first, view.evidenceOccurrences[1].key);
+  assert.notEqual(view.evidenceOccurrences[0].key, view.evidenceOccurrences[1].key);
+  assert.deepEqual(selectedEvidence(first).reference.origin, { kind: 'pressure', id: 'PR-018' });
+  assert.deepEqual(selectedEvidence(second).reference.origin, { kind: 'constraint', id: 'D-9001' });
+});
+
+test('multi-lens recovery preserves prior typed selections without reverse relations', () => {
+  const original = p2Model();
+  let view = buildObserverModel(original);
+  const pressure = view.occurrences.find((occurrence) => occurrence.node.id === 'PR-018');
+  const pressureEvidence = view.evidenceOccurrences.find(
+    (occurrence) => occurrence.reference.id === 'E-PRESSURE',
+  );
+  view = selectOccurrence(view, pressure.key);
+  view = openLineage(view, pressure.key);
+  view = followEvidence(view, 'pressure', pressure.key, pressureEvidence.key);
+  assert.equal(view.activeView, 'SOURCE');
+  assert.deepEqual(selectedEvidence(view).reference.origin, { kind: 'pressure', id: 'PR-018' });
+  view = selectView(view, 'MAP');
+  view = selectView(view, 'LINEAGE');
+  assert.equal(selectedOccurrence(view).key, pressure.key);
+
+  const constraint = view.constraintOccurrences[0];
+  const constraintEvidence = view.evidenceOccurrences.find(
+    (occurrence) => occurrence.reference.id === 'E-CONSTRAINT',
+  );
+  view = selectConstraint(selectView(view, 'CONSTRAINTS'), constraint.key);
+  view = followEvidence(view, 'constraint', constraint.key, constraintEvidence.key);
+  view = selectView(view, 'CONSTRAINTS');
+  assert.equal(selectedConstraint(view).key, constraint.key);
+  assert.deepEqual(selectedEvidence(selectView(view, 'SOURCE')).reference.origin, {
+    kind: 'constraint',
+    id: 'D-9001',
+  });
+  assert.deepEqual(view.rawModel, original);
+  assert.equal(view.repositoryState.current_navigation.active_pressure.value, null);
+  assert.ok(view.semanticEdges.every((edge) => edge.relation.target_kind === 'pressure'));
+});
+
+test('projection documents remain selections rather than requirements or actions', () => {
+  const view = buildObserverModel(p2Model());
+  const document = view.projectionDocumentOccurrences[0];
+  const selected = selectProjectionDocument(selectView(view, 'HORIZON'), document.key);
+  const markup = renderHorizonView(selected);
+
+  assert.equal(selected.lastTransition.type, TRANSITION_TYPES.SELECTION);
+  assert.equal(selected.lastTransition.assertsRelation, false);
+  assert.equal(selected.semanticEdges.length, view.semanticEdges.length);
+  assert.match(markup, /PARKED/);
+  assert.match(markup, /NON-AUTHORITATIVE/);
+  assert.doesNotMatch(markup, /data-(?:execute|invoke|write|requirement)/i);
+});
+
+test('P3 failure fixtures keep non-current state and diagnostics across every lens', async () => {
+  const cases = [
+    ['partial_unsupported.json', /status-partial/, /unsupported_structure/],
+    ['failed_projection.json', /status-failed/, /missing_required_source/],
+    ['stale_freshness.json', /freshness-stale/, /0 reported/],
+    ['source_conflict.json', /has-projection-condition/, /source_conflict/],
+    ['duplicate_ambiguous.json', /status-partial/, /duplicate_pressure_id/],
+    ['broken_evidence.json', /has-projection-condition/, /broken_reference/],
+    ['unknown_standing.json', /has-projection-condition/, /unknown_standing/],
+  ];
+  for (const [name, headerPattern, diagnosticPattern] of cases) {
+    const base = buildObserverModel(await fixture(name));
+    assert.match(renderHeader(base), headerPattern);
+    for (const lens of VIEW_NAMES) {
+      const view = selectView(base, lens);
+      assert.match(renderDiagnostics(view), diagnosticPattern);
+      assert.notEqual(renderActiveView(view), '');
+    }
+  }
+});

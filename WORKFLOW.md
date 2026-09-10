@@ -204,8 +204,6 @@ Then every candidate mechanism gets two audit dimensions:
 LOCAL SUFFICIENCY
 Does it actually resolve or sharpen the present pressure?
 
-# Dynamic Ranges
-
 COMPOSITIONAL COMPATIBILITY
 Can it coexist and compose with already-earned structures
 without forcing unsupported collapse, contradiction,

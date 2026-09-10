@@ -204,6 +204,13 @@ evidence IDs, and source paths. No lens or transition invokes Controller,
 changes standing, mutates the repository, executes an experiment, or creates
 an external effect.
 
+The [Projection v1 P3 adversarial navigation pass](../decisions/cockpit_projection_v1_adversarial_navigation_v0.md)
+withheld occurrence-level activity for an ambiguous active pressure ID and
+removed last-write-wins behavior for ambiguous evidence IDs. After those two
+bounded repairs, Projection v1 is boundedly closed as the current read-only
+observer surface. General human comprehension and visual-semantic safety remain
+unclaimed and require future human-use pressure.
+
 Generate its ignored, derived JSON input:
 
 ```text
@@ -219,8 +226,9 @@ http://127.0.0.1:8000/src/cockpit/observer/
 
 The adapter resolves `HEAD` to an exact commit. If generation fails, the
 generator leaves no older output available as a silent fallback. Projection v1
-remains in progress; the next step is P3 adversarial human, navigation, and
-unsupported-inference pressure over the bounded views and transitions.
+closure does not select a next research direction or activate a scientific
+pressure. Controller remains parked and observational geometry remains
+unearned.
 
 ## Freshness
 
