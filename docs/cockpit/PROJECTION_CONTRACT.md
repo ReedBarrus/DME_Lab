@@ -227,6 +227,16 @@ For example, a node may currently retain `BOUNDED_RESOLUTION` while an R0 entry
 retains `BASIS_INSUFFICIENT`. Both must remain inspectable without being merged
 into a single cleaned status.
 
+### Duplicate pressure identity
+
+Within one projected `PRESSURE_RESOLUTION_MAP.md`, a pressure ID is expected to
+identify at most one current pressure node. If multiple parsed node occurrences
+carry the same pressure ID, the normalized model must preserve every occurrence
+independently with its occurrence-local provenance and emit
+`duplicate_pressure_id`. It must not merge the occurrences or choose a
+canonical occurrence by file order. Any operation requiring a unique lookup by
+that ID must treat the identity as ambiguous and unresolved.
+
 ## Pressure Relations
 
 | Contract aspect | Requirement |
@@ -238,6 +248,10 @@ into a single cleaned status.
 | Prohibited inference | Relations from file order, section membership, shared evidence, matching words, temporal adjacency, Git adjacency, or likely causality. |
 | Missingness | Absent or em-dash relations remain absent; unresolved target IDs remain unresolved references. |
 | Provenance | Map path, source commit, node anchor, and exact relation field are required. |
+
+If an explicit relation target ID matches multiple current pressure nodes, the
+target text and ID remain preserved, but unique target resolution is ambiguous.
+The adapter must not invent relations among the duplicate occurrences.
 
 ## Constraints
 
@@ -321,9 +335,13 @@ Expected diagnostic classes include:
 - `unknown_standing`
 - `source_conflict`
 - `stale_projection_basis`
+- `duplicate_pressure_id`
 
 Names may change during implementation. Their observable failure semantics may
 not disappear.
+
+`duplicate_pressure_id` indicates projection identity ambiguity. It does not
+establish scientific falsity, source corruption, or claim invalidity.
 
 ### Missingness behavior
 
