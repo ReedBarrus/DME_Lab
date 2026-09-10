@@ -237,3 +237,24 @@ solves locally only by erasing or violating earned distinctions
 
 BASIS INSUFFICIENT
 cannot yet adjudicate one or both dimensions
+
+# Example
+Candidate:
+Current pressure:
+
+Local sufficiency:
+- discriminator gained:
+- unresolved ambiguity:
+- minimum mechanism actually required:
+
+Compositional compatibility:
+- earned structures preserved:
+- distinctions collapsed:
+- assumptions introduced:
+- future composition blocked/enabled:
+
+Standing:
+- locally earned?
+- globally compatible?
+- unresolved?
+- overbuilt?
