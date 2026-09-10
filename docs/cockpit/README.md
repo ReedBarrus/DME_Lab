@@ -163,6 +163,11 @@ Its JSON output is derived and read-only. The adapter resolves the requested
 source ref to an exact commit before reading allowlisted files from that
 committed tree. Generated JSON is not repository authority.
 
+The first [bounded adversarial pressure pass](../decisions/cockpit_projection_adapter_pressure_v0.md)
+preserved nine named source wounds but exposed one unresolved silent
+resolution-history loss and one duplicate-pressure-ID contract ambiguity. This
+does not establish general adapter reliability.
+
 ## Freshness
 
 The Cockpit should visibly identify the repository state from which it was

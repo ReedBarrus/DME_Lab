@@ -1,0 +1,498 @@
+{
+  "pressure_version": "cockpit_projection_adapter_pressure_v0",
+  "adapter_version": "cockpit_projection_adapter_v0",
+  "predeclared_semantic_rule": {
+    "survives": "The changed or ambiguous condition remains recoverably visible in normalized output or diagnostics and is not strengthened.",
+    "contract_violation": "The adapter emits a plausible clean projection while materially hiding, inventing, collapsing, or strengthening the tested source condition.",
+    "basis_insufficient": "The committed fixture or retained observation cannot discriminate the intended behavior."
+  },
+  "baseline": {
+    "source_commit": "c4256e077c69d03b1461755dbaa20c2ff5f1c15f",
+    "freshness": {
+      "freshness_ref": "origin/main",
+      "observed_tail": "c4256e077c69d03b1461755dbaa20c2ff5f1c15f",
+      "check_time": "2026-09-09T20:00:00Z",
+      "status": "current"
+    },
+    "active_pressure": {
+      "value": null,
+      "status": "agreement",
+      "semantic_status": "explicit_none",
+      "declarations": [
+        {
+          "raw_value": "none",
+          "value": null,
+          "status": "explicit_none",
+          "provenance": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "source_commit": "c4256e077c69d03b1461755dbaa20c2ff5f1c15f",
+            "source_kind": "pressure_map",
+            "source_anchor": "Current Navigation / Active pressure"
+          }
+        },
+        {
+          "raw_value": "none",
+          "value": null,
+          "status": "explicit_none",
+          "provenance": {
+            "source_path": "PROJECT_STATE.md",
+            "source_commit": "c4256e077c69d03b1461755dbaa20c2ff5f1c15f",
+            "source_kind": "project_state",
+            "source_anchor": "Current Navigation and Development Standing / active pressure"
+          }
+        }
+      ]
+    },
+    "pressure_node_count": 19,
+    "pressure_relation_count": 24,
+    "constraint_count": 46,
+    "evidence_reference_count": 214,
+    "projection_document_count": 3,
+    "diagnostic_counts": {},
+    "pr018": {
+      "standing": {
+        "raw_value": "`OPEN`",
+        "value": "OPEN",
+        "status": "known_value"
+      },
+      "active": false
+    },
+    "pr019": {
+      "standing": {
+        "raw_value": "`BOUNDED_RESOLUTION`",
+        "value": "BOUNDED_RESOLUTION",
+        "status": "known_value"
+      },
+      "resolution_history": [
+        {
+          "id": "R0",
+          "standing": {
+            "raw_value": "BASIS_INSUFFICIENT",
+            "value": "BASIS_INSUFFICIENT",
+            "status": "known_value"
+          }
+        },
+        {
+          "id": "R1",
+          "standing": {
+            "raw_value": "BOUNDED_RESOLUTION",
+            "value": "BOUNDED_RESOLUTION",
+            "status": "known_value"
+          }
+        }
+      ]
+    },
+    "controller": {
+      "classification": "projection_document",
+      "standing": {
+        "value": "PARKED",
+        "raw_value": "PARKED.",
+        "status": "known_value",
+        "source_heading": "Standing"
+      }
+    }
+  },
+  "scenarios": [
+    {
+      "id": "P1",
+      "title": "missing required source",
+      "mutation": "Omitted PRESSURE_RESOLUTION_MAP.md from the committed tree.",
+      "intended_discriminator": "Missing map must remain visible and projection must not appear complete.",
+      "observed": {
+        "source_commit": "b9eeb73eebcca3d3c7b93dae5229b88d6e1f4f43",
+        "projection_status": "partial",
+        "pressure_nodes": 0,
+        "source_surfaces": [
+          {
+            "source_path": "PROJECT_STATE.md",
+            "status": "available"
+          },
+          {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "status": "missing"
+          },
+          {
+            "source_path": "docs/constraints/README.md",
+            "status": "available"
+          },
+          {
+            "source_path": "docs/constraints/registry.jsonl",
+            "status": "available"
+          }
+        ]
+      },
+      "diagnostics": [
+        {
+          "kind": "missing_required_source",
+          "affected": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md"
+          },
+          "message": "required committed source is unavailable: fatal: path 'PRESSURE_RESOLUTION_MAP.md' does not exist in 'b9eeb73eebcca3d3c7b93dae5229b88d6e1f4f43'"
+        },
+        {
+          "kind": "source_conflict",
+          "affected": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "field": "newly_reachable_open"
+          },
+          "message": "Pressure Map and PROJECT_STATE open-pressure declarations disagree",
+          "raw_value": {
+            "pressure_map": [],
+            "project_state": [
+              "PR-018"
+            ]
+          }
+        }
+      ],
+      "classification": "SURVIVES",
+      "rationale": "The absent required map remained explicit and the projection was partial."
+    },
+    {
+      "id": "P2",
+      "title": "unknown pressure standing",
+      "mutation": "Set PR-001 standing to the unrecognized token GOBLIN_PENDING.",
+      "intended_discriminator": "The exact token must survive without nearest-standing substitution.",
+      "observed": {
+        "standing": {
+          "raw_value": "`GOBLIN_PENDING`",
+          "value": "GOBLIN_PENDING",
+          "status": "unknown_standing"
+        }
+      },
+      "diagnostics": [
+        {
+          "kind": "unknown_standing",
+          "affected": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "object_id": "PR-001",
+            "field": "standing"
+          },
+          "message": "unrecognized pressure standing 'GOBLIN_PENDING' was preserved",
+          "raw_value": "`GOBLIN_PENDING`"
+        }
+      ],
+      "classification": "SURVIVES",
+      "rationale": "The raw unknown token and diagnostic were preserved."
+    },
+    {
+      "id": "P3",
+      "title": "broken evidence reference",
+      "mutation": "Pointed PR-001 Evidence to a nonexistent committed decision path.",
+      "intended_discriminator": "The reference must remain navigable residue with broken status and diagnostic.",
+      "observed": {
+        "matching_references": [
+          {
+            "id": "evidence-a09d067a2e521b66",
+            "origin": {
+              "kind": "pressure_node",
+              "id": "PR-001"
+            },
+            "original_target": "docs/decisions/not-present.md",
+            "label": "missing",
+            "target_kind": "decision",
+            "resolution_status": "broken",
+            "committed_path_checked": "docs/decisions/not-present.md",
+            "provenance": {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "d3a5b3ac76e5ffe76971b2a11f928d212597c4e0",
+              "source_kind": "pressure_node",
+              "source_anchor": "PR-001 — Bounded specimen / evidence"
+            }
+          }
+        ]
+      },
+      "diagnostics": [
+        {
+          "kind": "broken_reference",
+          "affected": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "object_id": "PR-001",
+            "field": "evidence_reference"
+          },
+          "message": "committed evidence target 'docs/decisions/not-present.md' does not exist",
+          "raw_value": "docs/decisions/not-present.md"
+        }
+      ],
+      "classification": "SURVIVES",
+      "rationale": "The broken occurrence remained represented without warrant inflation."
+    },
+    {
+      "id": "P4",
+      "title": "source conflict",
+      "mutation": "Map declared no active pressure while PROJECT_STATE declared PR-018 active.",
+      "intended_discriminator": "Both declarations and unresolved conflict must survive without a selected winner.",
+      "observed": {
+        "active_pressure": {
+          "value": null,
+          "status": "conflicting",
+          "semantic_status": "conflicting",
+          "declarations": [
+            {
+              "raw_value": "none",
+              "value": null,
+              "status": "explicit_none",
+              "provenance": {
+                "source_path": "PRESSURE_RESOLUTION_MAP.md",
+                "source_commit": "8fe8bacf2c0eab7ca57e5a6cac4fc0f239f7670f",
+                "source_kind": "pressure_map",
+                "source_anchor": "Current Navigation / Active pressure"
+              }
+            },
+            {
+              "raw_value": "PR-018",
+              "value": "PR-018",
+              "status": "known_value",
+              "provenance": {
+                "source_path": "PROJECT_STATE.md",
+                "source_commit": "8fe8bacf2c0eab7ca57e5a6cac4fc0f239f7670f",
+                "source_kind": "project_state",
+                "source_anchor": "Current Navigation and Development Standing / active pressure"
+              }
+            }
+          ]
+        }
+      },
+      "diagnostics": [
+        {
+          "kind": "source_conflict",
+          "affected": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "field": "active_pressure"
+          },
+          "message": "Pressure Map and PROJECT_STATE active-pressure declarations disagree",
+          "raw_value": [
+            "none",
+            "PR-018"
+          ]
+        }
+      ],
+      "classification": "SURVIVES",
+      "rationale": "Both active-pressure claims remained visible and no clean winner was selected."
+    },
+    {
+      "id": "P5",
+      "title": "relation-looking prose",
+      "mutation": "Mentioned PR-002 in Pressure prose with absent relation fields, then committed an explicit Blocked by control.",
+      "intended_discriminator": "Incidental prose must create no edge while the explicit field creates exactly one.",
+      "observed": {
+        "prose_specimen_relations": [],
+        "explicit_control_relations": [
+          {
+            "relation_kind": "blocked_by",
+            "source_pressure_id": "PR-001",
+            "target_kind": "pressure",
+            "target_pressure_id": "PR-002",
+            "condition_text": null,
+            "raw_source_field": "PR-002",
+            "provenance": {
+              "source_path": "PRESSURE_RESOLUTION_MAP.md",
+              "source_commit": "2fa24b9e6197b13db05ab1c682803f16f9d6a703",
+              "source_kind": "pressure_map",
+              "source_anchor": "PR-001 — Bounded specimen / blocked_by"
+            }
+          }
+        ]
+      },
+      "diagnostics": [],
+      "classification": "SURVIVES",
+      "rationale": "Only the explicit Blocked by field produced a relation."
+    },
+    {
+      "id": "P6",
+      "title": "malformed pressure structure",
+      "mutation": "Removed the required colon from the PR-001 Standing field marker.",
+      "intended_discriminator": "Parser narrowness must be visible while PR-002 remains independently projectable.",
+      "observed": {
+        "wounded_standing": {
+          "raw_value": null,
+          "value": null,
+          "status": "missing"
+        },
+        "other_node_standing": {
+          "raw_value": "`BOUNDED_RESOLUTION`",
+          "value": "BOUNDED_RESOLUTION",
+          "status": "known_value"
+        },
+        "projection_status": "partial"
+      },
+      "diagnostics": [
+        {
+          "kind": "parse_failure",
+          "affected": {
+            "source_path": "PRESSURE_RESOLUTION_MAP.md",
+            "object_id": "PR-001",
+            "field": "standing"
+          },
+          "message": "required pressure field 'standing' is missing"
+        }
+      ],
+      "classification": "SURVIVES",
+      "rationale": "The malformed field became explicit missingness and did not contaminate the valid node."
+    },
+    {
+      "id": "P7",
+      "title": "malformed constraint among valid records",
+      "mutation": "Committed valid D-0001, malformed JSON, then valid D-0002.",
+      "intended_discriminator": "Both valid records and malformed-line residue must remain separately visible.",
+      "observed": {
+        "constraint_ids": [
+          "D-0001",
+          "D-0002"
+        ],
+        "projection_status": "partial"
+      },
+      "diagnostics": [
+        {
+          "kind": "parse_failure",
+          "affected": {
+            "source_path": "docs/constraints/registry.jsonl",
+            "object_id": "line-2"
+          },
+          "message": "malformed constraint JSONL record: Expecting property name enclosed in double quotes",
+          "raw_value": "{malformed"
+        }
+      ],
+      "classification": "SURVIVES",
+      "rationale": "Both valid constraints survived and the malformed line remained diagnostic residue."
+    },
+    {
+      "id": "P8",
+      "title": "resolution-history wound",
+      "mutation": "Renamed only the recognized Resolution history heading to Prior resolutions; retained both visible R entries.",
+      "intended_discriminator": "Unrecognized history-like structure must not disappear behind a clean current standing without residue.",
+      "observed": {
+        "healthy_current_standing": {
+          "raw_value": "`BOUNDED_RESOLUTION`",
+          "value": "BOUNDED_RESOLUTION",
+          "status": "known_value"
+        },
+        "healthy_history": [
+          {
+            "id": "R0",
+            "standing": "BASIS_INSUFFICIENT"
+          },
+          {
+            "id": "R1",
+            "standing": "BOUNDED_RESOLUTION"
+          }
+        ],
+        "damaged_current_standing": {
+          "raw_value": "`BOUNDED_RESOLUTION`",
+          "value": "BOUNDED_RESOLUTION",
+          "status": "known_value"
+        },
+        "damaged_history": []
+      },
+      "diagnostics": [],
+      "classification": "CONTRACT_VIOLATION",
+      "rationale": "Visible history-like source material was silently omitted while current BOUNDED_RESOLUTION remained clean."
+    },
+    {
+      "id": "P9",
+      "title": "stale projection basis",
+      "mutation": "Projected commit A after a later commit B changed PR-001 on the freshness ref.",
+      "intended_discriminator": "Freshness must be stale while normalized source content remains commit A.",
+      "observed": {
+        "source_commit": "f06efc5ebe13f7b52c1e94a16bc316620c5fb891",
+        "observed_tail": "2d70ffdd3eca89d7593e96cf6b8910edab676044",
+        "freshness_status": "stale",
+        "projected_pr001_standing": "BOUNDED_RESOLUTION"
+      },
+      "diagnostics": [],
+      "classification": "SURVIVES",
+      "rationale": "The adapter labeled A stale against B and continued to project A's content."
+    },
+    {
+      "id": "P10",
+      "title": "projection document containment",
+      "mutation": "Inserted PR-999, ACTIVE PIPELINE, SUPER_CONTROLLER, and RUNNING prose into the non-authoritative Controller projection.",
+      "intended_discriminator": "Speculative projection text must create no earned pressure, relation, active state, or authority.",
+      "observed": {
+        "controller_classification": "projection_document",
+        "controller_standing": {
+          "value": "PARKED",
+          "raw_value": "PARKED.",
+          "status": "known_value",
+          "source_heading": "Standing"
+        },
+        "pr999_node_created": false,
+        "pr999_relation_created": false,
+        "active_pressure": {
+          "value": null,
+          "status": "agreement",
+          "semantic_status": "explicit_none",
+          "declarations": [
+            {
+              "raw_value": "none",
+              "value": null,
+              "status": "explicit_none",
+              "provenance": {
+                "source_path": "PRESSURE_RESOLUTION_MAP.md",
+                "source_commit": "49f0e9e1f1132f8307a79351b764f820d6cecd78",
+                "source_kind": "pressure_map",
+                "source_anchor": "Current Navigation / Active pressure"
+              }
+            },
+            {
+              "raw_value": "none",
+              "value": null,
+              "status": "explicit_none",
+              "provenance": {
+                "source_path": "PROJECT_STATE.md",
+                "source_commit": "49f0e9e1f1132f8307a79351b764f820d6cecd78",
+                "source_kind": "project_state",
+                "source_anchor": "Current Navigation and Development Standing / active pressure"
+              }
+            }
+          ]
+        }
+      },
+      "diagnostics": [],
+      "classification": "SURVIVES",
+      "rationale": "The allowlisted document remained a parked projection and its internal prose was contained."
+    },
+    {
+      "id": "P11",
+      "title": "duplicate pressure ID",
+      "mutation": "Committed two explicit PR-001 headings with different titles and standings.",
+      "intended_discriminator": "Duplicate identity must not silently collapse; unspecified handling remains contract ambiguity.",
+      "observed": {
+        "matching_node_count": 2,
+        "matching_nodes": [
+          {
+            "title": "Bounded specimen",
+            "standing": {
+              "raw_value": "`BOUNDED_RESOLUTION`",
+              "value": "BOUNDED_RESOLUTION",
+              "status": "known_value"
+            }
+          },
+          {
+            "title": "Conflicting duplicate",
+            "standing": {
+              "raw_value": "`OPEN`",
+              "value": "OPEN",
+              "status": "known_value"
+            }
+          }
+        ]
+      },
+      "diagnostics": [],
+      "classification": "CONTRACT_AMBIGUITY",
+      "rationale": "Both duplicate nodes remain visible, but the contract does not define duplicate-ID validity, conflict diagnostics, or consumer semantics."
+    }
+  ],
+  "classification_counts": {
+    "SURVIVES": 9,
+    "CONTRACT_VIOLATION": 1,
+    "BASIS_INSUFFICIENT": 0,
+    "CONTRACT_AMBIGUITY": 1
+  },
+  "adjudication": {
+    "status": "bounded_adapter_pressure_exposed_unresolved_wound",
+    "strongest_supported": "Across the named bounded specimens, the adapter preserved required-source absence, unknown standing, broken links, explicit source conflict, explicit-only relations, malformed fields and JSONL residue, stale commit basis, and projection document containment.",
+    "strongest_not_supported": "The adapter is not generally contract-safe: an unrecognized but visibly history-like section can disappear while leaving a plausible clean current standing, and duplicate pressure-ID semantics remain unspecified.",
+    "adapter_remediated": false,
+    "projection_contract_changed": false
+  }
+}

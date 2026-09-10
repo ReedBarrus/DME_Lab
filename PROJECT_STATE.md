@@ -202,9 +202,16 @@ is not an implementation warrant.
 
 The bounded Cockpit Projection Adapter v0 now deterministically projects the
 allowlisted committed repository surfaces into the contracted read-only model.
-The Cockpit website is not yet implemented, adapter adversarial pressure
-remains next, and the Controller remains parked. This is implementation
-development, not an active scientific Pressure / Resolution Map node.
+The Cockpit website is not yet implemented and the Controller remains parked.
+This is implementation development, not an active scientific Pressure /
+Resolution Map node.
+
+The first bounded Cockpit adapter pressure preserved nine named source wounds
+while exposing one unresolved contract violation: history-like R0/R1 material
+can disappear silently under an unsupported history heading while current
+standing remains clean. Duplicate pressure-ID behavior remains a contract
+ambiguity. The adapter and projection contract were not remediated, and no next
+implementation pass was selected.
 
 ## Contract Surface Status
 
