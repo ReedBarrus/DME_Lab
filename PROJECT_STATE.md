@@ -200,6 +200,12 @@ not an active experimental pressure and does not create a Pressure / Resolution
 Map node. The Controller remains a `PARKED`, non-authoritative projection and
 is not an implementation warrant.
 
+The bounded Cockpit Projection Adapter v0 now deterministically projects the
+allowlisted committed repository surfaces into the contracted read-only model.
+The Cockpit website is not yet implemented, adapter adversarial pressure
+remains next, and the Controller remains parked. This is implementation
+development, not an active scientific Pressure / Resolution Map node.
+
 ## Contract Surface Status
 
 - projected: signal, provenance, general ingest envelope, generalized reconstruction, generalized exposed projection

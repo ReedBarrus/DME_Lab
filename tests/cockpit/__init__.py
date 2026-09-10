@@ -1,0 +1,1 @@
+"""Cockpit projection adapter tests."""

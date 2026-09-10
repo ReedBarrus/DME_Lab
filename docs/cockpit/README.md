@@ -150,6 +150,19 @@ publish
 
 The exact hosting and build system are implementation choices.
 
+## Adapter v0
+
+The bounded adapter is implemented in
+`src/cockpit/projection_adapter.py` and may be invoked with:
+
+```text
+python -m src.cockpit.projection_adapter --repo . --source-ref HEAD --freshness-ref origin/main
+```
+
+Its JSON output is derived and read-only. The adapter resolves the requested
+source ref to an exact commit before reading allowlisted files from that
+committed tree. Generated JSON is not repository authority.
+
 ## Freshness
 
 The Cockpit should visibly identify the repository state from which it was
