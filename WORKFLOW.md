@@ -188,3 +188,52 @@ pressure
 Call the shape early.
 
 Instantiate it late.
+
+## Global-Local Coupling:
+
+Every active research pressure is evaluated at two coupled scales:
+
+LOCAL
+What is the smallest mechanism sufficient
+to discriminate or advance the current pressure?
+
+GLOBAL
+If preserved, can that mechanism compose with
+the broader system without erasing earned distinctions?
+Then every candidate mechanism gets two audit dimensions:
+LOCAL SUFFICIENCY
+Does it actually resolve or sharpen the present pressure?
+
+# Dynamic Ranges
+
+COMPOSITIONAL COMPATIBILITY
+Can it coexist and compose with already-earned structures
+without forcing unsupported collapse, contradiction,
+or hidden semantic strengthening?
+And critically:
+global compatibility
+does not imply local necessity
+
+local sufficiency
+does not imply global architecture
+That prevents Candidate A from becoming a blueprint while still letting it function as a very useful stress surface.
+
+# Outcome Taxonomy: 
+
+LOCAL-ONLY SURVIVOR
+solves current pressure, broader composition unresolved
+
+COMPOSITIONALLY COMPATIBLE
+fits broader candidate regime but is not locally required
+
+LOCALLY + COMPOSITIONALLY EARNED
+solves current pressure and preserves required composition
+
+OVERBUILT
+globally elegant but current pressure does not justify it
+
+INCOMPATIBLE
+solves locally only by erasing or violating earned distinctions
+
+BASIS INSUFFICIENT
+cannot yet adjudicate one or both dimensions
