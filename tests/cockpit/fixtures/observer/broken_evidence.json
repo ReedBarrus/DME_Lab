@@ -1,0 +1,54 @@
+{
+  "repository_state": {
+    "projection_classification": "derived_read_only",
+    "projection_status": "partial",
+    "repository_identity": {"status": "known_value", "host": "example.invalid", "owner": "synthetic", "repository": "observer_fixture"},
+    "branch": {"value": "fixture", "status": "known_value"},
+    "source_ref": "fixture-broken-evidence",
+    "source_commit": "synthetic-broken",
+    "adapter_version": "synthetic_fixture",
+    "projection_time": "2026-09-09T12:00:00Z",
+    "freshness": {"status": "current", "observed_tail": "synthetic-broken"},
+    "current_navigation": {
+      "active_pressure": {"value": null, "status": "explicit_none"},
+      "newly_reachable_open_pressures": {"values": ["PR-905"], "status": "known_value"},
+      "shelved_pressures": {"values": [], "status": "known_value"},
+      "next_experimental_pressure": {"value": null, "status": "explicit_none"}
+    }
+  },
+  "pressure_nodes": [
+    {
+      "id": "PR-905",
+      "title": "Synthetic broken evidence",
+      "standing": {"value": "OPEN", "status": "known_value"},
+      "resolution_history": [],
+      "evidence_ref_ids": ["synthetic-broken"],
+      "provenance": {"source_path": "synthetic/pressure-map.md", "source_line": 10}
+    }
+  ],
+  "pressure_relations": [],
+  "constraints": [],
+  "evidence_refs": [
+    {
+      "id": "synthetic-broken",
+      "origin": {"kind": "pressure", "id": "PR-905"},
+      "original_target": "synthetic/missing-evidence.md",
+      "label": "missing synthetic evidence",
+      "target_kind": "decision",
+      "resolution_status": "broken",
+      "committed_path_checked": "synthetic/missing-evidence.md",
+      "provenance": {"source_path": "synthetic/pressure-map.md", "source_kind": "synthetic_fixture"}
+    }
+  ],
+  "projection_documents": [],
+  "projection_diagnostics": [
+    {
+      "kind": "broken_reference",
+      "severity": "warning",
+      "affected": {"source_path": "synthetic/missing-evidence.md", "object_id": "PR-905", "field": "evidence"},
+      "message": "Synthetic evidence target is absent.",
+      "raw_value": "synthetic/missing-evidence.md",
+      "provenance": {"source_path": "synthetic/pressure-map.md", "source_kind": "synthetic_fixture"}
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>DME Cockpit — Plain Observer</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <noscript>
+    <section class="load-failure wounded">
+      <h1>PROJECTION UNAVAILABLE</h1>
+      <p>The plain observer requires JavaScript to render the supplied normalized JSON.</p>
+    </section>
+  </noscript>
+  <div id="failure-root"></div>
+  <header id="repository-root" aria-live="polite">
+    <p class="loading">Loading normalized Cockpit projection…</p>
+  </header>
+  <nav id="navigation-root" aria-label="Current repository navigation"></nav>
+  <main>
+    <div class="observer-grid">
+      <div id="map-root"></div>
+      <div id="inspector-root"></div>
+    </div>
+    <div id="diagnostics-root" aria-live="polite"></div>
+  </main>
+  <footer>
+    <p>Derived read-only observer. Repository evidence remains authoritative.</p>
+  </footer>
+  <script type="module" src="./app.mjs"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+  "repository_state": {
+    "projection_classification": "derived_read_only",
+    "projection_status": "partial",
+    "repository_identity": {"status": "known_value", "host": "example.invalid", "owner": "synthetic", "repository": "observer_fixture"},
+    "branch": {"value": "fixture", "status": "known_value"},
+    "source_ref": "fixture-unknown-standing",
+    "source_commit": "synthetic-unknown",
+    "adapter_version": "synthetic_fixture",
+    "projection_time": "2026-09-09T12:00:00Z",
+    "freshness": {"status": "current", "observed_tail": "synthetic-unknown"},
+    "current_navigation": {
+      "active_pressure": {"value": null, "status": "explicit_none"},
+      "newly_reachable_open_pressures": {"values": ["PR-904"], "status": "known_value"},
+      "shelved_pressures": {"values": [], "status": "known_value"},
+      "next_experimental_pressure": {"value": null, "status": "explicit_none"}
+    }
+  },
+  "pressure_nodes": [
+    {
+      "id": "PR-904",
+      "title": "Synthetic unknown standing",
+      "standing": {"raw_value": "UNSEEN_STANDING", "value": "UNSEEN_STANDING", "status": "unknown_standing"},
+      "resolution_history": [],
+      "evidence_ref_ids": [],
+      "provenance": {"source_path": "synthetic/pressure-map.md", "source_line":10}
+    }
+  ],
+  "pressure_relations": [],
+  "constraints": [],
+  "evidence_refs": [],
+  "projection_documents": [],
+  "projection_diagnostics": [
+    {
+      "kind": "unknown_standing",
+      "severity": "error",
+      "affected": {"source_path": "synthetic/pressure-map.md", "object_id": "PR-904", "field": "standing"},
+      "message": "Synthetic standing is outside the known vocabulary.",
+      "raw_value": "UNSEEN_STANDING",
+      "provenance": {"source_path": "synthetic/pressure-map.md", "source_kind": "synthetic_fixture"}
+    }
+  ]
+}

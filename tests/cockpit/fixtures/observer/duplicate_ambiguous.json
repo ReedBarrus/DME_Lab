@@ -1,0 +1,49 @@
+{
+  "repository_state": {
+    "projection_classification": "derived_read_only",
+    "projection_status": "partial",
+    "repository_identity": {"status": "known_value", "host": "example.invalid", "owner": "synthetic", "repository": "observer_fixture"},
+    "branch": {"value": "fixture", "status": "known_value"},
+    "source_ref": "fixture-duplicate",
+    "source_commit": "synthetic-duplicate",
+    "adapter_version": "synthetic_fixture",
+    "projection_time": "2026-09-09T12:00:00Z",
+    "freshness": {"status": "current", "observed_tail": "synthetic-duplicate"},
+    "current_navigation": {
+      "active_pressure": {"value": null, "status": "explicit_none"},
+      "newly_reachable_open_pressures": {"values": [], "status": "known_value"},
+      "shelved_pressures": {"values": [], "status": "known_value"},
+      "next_experimental_pressure": {"value": null, "status": "explicit_none"}
+    }
+  },
+  "pressure_nodes": [
+    {"id": "PR-901", "title": "Synthetic duplicate A", "standing": {"value": "OPEN", "status": "known_value"}, "resolution_history": [], "evidence_ref_ids": [], "provenance": {"source_path": "synthetic/pressure-map.md", "source_line": 10}},
+    {"id": "PR-901", "title": "Synthetic duplicate B", "standing": {"value": "BASIS_INSUFFICIENT", "status": "known_value"}, "resolution_history": [], "evidence_ref_ids": [], "provenance": {"source_path": "synthetic/pressure-map.md", "source_line": 20}},
+    {"id": "PR-902", "title": "Synthetic relation source", "standing": {"value": "OPEN", "status": "known_value"}, "resolution_history": [], "evidence_ref_ids": [], "provenance": {"source_path": "synthetic/pressure-map.md", "source_line": 30}}
+  ],
+  "pressure_relations": [
+    {
+      "relation_kind": "blocked_by",
+      "source_pressure_id": "PR-902",
+      "target_kind": "pressure",
+      "target_pressure_id": "PR-901",
+      "condition_text": null,
+      "raw_source_field": "PR-901",
+      "target_resolution": {"status": "ambiguous", "candidate_count": 2},
+      "provenance": {"source_path": "synthetic/pressure-map.md", "source_line": 36}
+    }
+  ],
+  "constraints": [],
+  "evidence_refs": [],
+  "projection_documents": [],
+  "projection_diagnostics": [
+    {
+      "kind": "duplicate_pressure_id",
+      "severity": "error",
+      "affected": {"source_path": "synthetic/pressure-map.md", "object_id": "PR-901"},
+      "message": "Synthetic duplicate identity has two current occurrences.",
+      "raw_value": {"candidate_count": 2},
+      "provenance": {"source_path": "synthetic/pressure-map.md", "source_kind": "synthetic_fixture"}
+    }
+  ]
+}

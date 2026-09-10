@@ -184,9 +184,27 @@ combined form, and a three-way duplicate. All named specimens survived without
 silent loss, winner selection, or healthy-source regression. This still does
 not establish general Markdown robustness or general projection safety.
 
-The next permitted Cockpit step is a deliberately plain, read-only observer
-surface over the normalized model. It is a usability and visual-projection
-specimen, not production readiness, authority, or Controller integration.
+The [first plain observer implementation](../decisions/cockpit_plain_observer_v0.md)
+renders the bounded normalized model without frontend repository parsing. It is
+an implementation specimen, not a usability, visual-safety, production,
+authority, or Controller result.
+
+Generate its ignored, derived JSON input:
+
+```text
+python -m src.cockpit.generate_projection --repo . --source-ref HEAD --freshness-ref origin/main --output generated/cockpit_projection.json
+```
+
+Serve the repository and open the observer:
+
+```text
+python -m http.server 8000
+http://127.0.0.1:8000/src/cockpit/observer/
+```
+
+The adapter resolves `HEAD` to an exact commit. If generation fails, the
+generator leaves no older output available as a silent fallback. The next
+required pass is bounded observer usability and unsupported-inference pressure.
 
 ## Freshness
 

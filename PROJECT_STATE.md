@@ -202,9 +202,11 @@ is not an implementation warrant.
 
 The bounded Cockpit Projection Adapter v0 now deterministically projects the
 allowlisted committed repository surfaces into the contracted read-only model.
-The Cockpit website is not yet implemented and the Controller remains parked.
-This is implementation development, not an active scientific Pressure /
-Resolution Map node.
+The v0 page specification fixes the normalized model as the sole frontend data
+boundary. The first deliberately plain, read-only observer is now implemented
+over generated exact-commit adapter JSON. The Controller remains parked. This
+is implementation development, not an active scientific Pressure / Resolution
+Map node.
 
 Stage 3 Cockpit adapter pressure preserved nine named source wounds while
 exposing one silent-history-loss contract violation and one duplicate-pressure-
@@ -227,12 +229,13 @@ wound, and a three-way duplicate. All 12 named specimens survived without
 silent loss, winner selection, or healthy-source regression; the exact current
 repository projection also remained complete and diagnostic-free.
 
-The next permitted Cockpit step is a deliberately plain, read-only observer UI
-specimen over the normalized model, where usability and visual projection can
-be pressured. This is not production readiness, general adapter reliability,
-authority, or Controller integration. The Controller remains `PARKED`; this is
-Cockpit implementation development, not an active scientific Pressure /
-Resolution Map node.
+Stage 4C cleared bounded construction of the first observer over the remediated
+adapter basis. That plain observer now exists; the next required Cockpit step is
+bounded pressure against human interpretation, reconstruction usefulness, and
+unsupported visual inference. No usability success, visual semantic safety,
+production readiness, general adapter reliability, authority, Controller
+integration, or active scientific pressure is established. The Controller
+remains `PARKED`.
 
 ## Contract Surface Status
 

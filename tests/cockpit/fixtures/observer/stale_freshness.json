@@ -1,0 +1,25 @@
+{
+  "repository_state": {
+    "projection_classification": "derived_read_only",
+    "projection_status": "complete",
+    "repository_identity": {"status": "known_value", "host": "example.invalid", "owner": "synthetic", "repository": "observer_fixture"},
+    "branch": {"value": "fixture", "status": "known_value"},
+    "source_ref": "fixture-stale",
+    "source_commit": "synthetic-old",
+    "adapter_version": "synthetic_fixture",
+    "projection_time": "2026-09-09T12:00:00Z",
+    "freshness": {"freshness_ref": "fixture-tail", "observed_tail": "synthetic-new", "status": "stale"},
+    "current_navigation": {
+      "active_pressure": {"value": null, "status": "explicit_none"},
+      "newly_reachable_open_pressures": {"values": [], "status": "known_value"},
+      "shelved_pressures": {"values": [], "status": "known_value"},
+      "next_experimental_pressure": {"value": null, "status": "explicit_none"}
+    }
+  },
+  "pressure_nodes": [],
+  "pressure_relations": [],
+  "constraints": [],
+  "evidence_refs": [],
+  "projection_documents": [],
+  "projection_diagnostics": []
+}

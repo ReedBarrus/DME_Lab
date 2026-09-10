@@ -1,0 +1,33 @@
+{
+  "repository_state": {
+    "projection_classification": "derived_read_only",
+    "projection_status": "failed",
+    "repository_identity": {"status": "known_value", "host": "example.invalid", "owner": "synthetic", "repository": "observer_fixture"},
+    "branch": {"value": "fixture", "status": "known_value"},
+    "source_ref": "fixture-failed",
+    "source_commit": "synthetic-failed",
+    "adapter_version": "synthetic_fixture",
+    "projection_time": "2026-09-09T12:00:00Z",
+    "freshness": {"status": "unknown", "observed_tail": null},
+    "current_navigation": {
+      "active_pressure": {"value": null, "status": "missing"},
+      "newly_reachable_open_pressures": {"values": [], "status": "missing"},
+      "shelved_pressures": {"values": [], "status": "missing"},
+      "next_experimental_pressure": {"value": null, "status": "missing"}
+    }
+  },
+  "pressure_nodes": [],
+  "pressure_relations": [],
+  "constraints": [],
+  "evidence_refs": [],
+  "projection_documents": [],
+  "projection_diagnostics": [
+    {
+      "kind": "missing_required_source",
+      "severity": "error",
+      "affected": {"source_path": "synthetic/required-source.md"},
+      "message": "Synthetic required source is unavailable.",
+      "provenance": {"source_path": "synthetic/required-source.md", "source_kind": "synthetic_fixture"}
+    }
+  ]
+}
