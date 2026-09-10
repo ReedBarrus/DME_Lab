@@ -15,6 +15,17 @@ export const READ_ONLY_INTERACTIONS = Object.freeze([
   'copy_reference',
 ]);
 
+export const STANDING_FORMS = Object.freeze({
+  OPEN: 'open',
+  PARTIAL_RESOLUTION: 'partial-resolution',
+  BOUNDED_RESOLUTION: 'bounded-resolution',
+  BASIS_INSUFFICIENT: 'basis-insufficient',
+  BLOCKER_REMOVED: 'blocker-removed',
+  CANDIDATE_SURVIVED: 'candidate-survived',
+  EQUIVALENT_UNDER_CURRENT_PRESSURE: 'equivalent-current-pressure',
+  SHELVED: 'shelved',
+});
+
 function own(object, key) {
   return object !== null
     && typeof object === 'object'
@@ -108,18 +119,8 @@ function activePressureId(repositoryState) {
   return presented.kind === 'value' ? presented.text : null;
 }
 
-function standingText(node) {
-  return normalizedField(node?.standing).text;
-}
-
 function standingClass(standing) {
-  const mappings = {
-    OPEN: 'open',
-    BASIS_INSUFFICIENT: 'basis-insufficient',
-    CANDIDATE_SURVIVED: 'candidate-survived',
-    BOUNDED_RESOLUTION: 'bounded',
-  };
-  return mappings[standing] || 'neutral';
+  return STANDING_FORMS[standing] || 'unknown-standing';
 }
 
 function relationPresentation(relation, index, occurrences) {
@@ -171,20 +172,28 @@ export function buildObserverModel(rawModel) {
   const explicitActiveId = activePressureId(rawModel.repository_state);
   const occurrences = nodes.map((node, index) => {
     const localDiagnostics = diagnosticsForNode(diagnostics, node);
-    const currentStanding = standingText(node);
+    const standingField = normalizedField(node?.standing);
+    const currentStanding = standingField.text;
+    const currentStandingClass = standingField.kind === 'value'
+      ? standingClass(currentStanding)
+      : 'missing-standing';
     return {
       key: occurrenceKey(node, index),
       index,
       node,
       currentStanding,
-      standingClass: standingClass(currentStanding),
+      standingClass: currentStandingClass,
       isActive: explicitActiveId !== null && node?.id === explicitActiveId,
       isDuplicate: (idCounts.get(node?.id) || 0) > 1,
+      missingDiscriminator: normalizedField(node?.missing_discriminator),
+      residue: normalizedField(node?.residue),
+      hasUnknownStanding: currentStandingClass === 'unknown-standing',
+      hasMissingStanding: currentStandingClass === 'missing-standing',
       historyCount: Array.isArray(node?.resolution_history)
         ? node.resolution_history.length
         : 0,
       diagnostics: localDiagnostics,
-      isWounded: localDiagnostics.length > 0,
+      hasProjectionDiagnostic: localDiagnostics.length > 0,
     };
   });
 

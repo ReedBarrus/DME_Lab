@@ -43,7 +43,7 @@ export function renderHeader(viewModel) {
   const freshness = state.freshness;
   const freshnessStatus = freshness?.status ?? 'missing';
   const projectionStatus = state.projection_status ?? 'missing';
-  const wounded = projectionStatus !== 'complete'
+  const hasProjectionCondition = projectionStatus !== 'complete'
     || freshnessStatus === 'stale'
     || freshnessStatus === 'unknown'
     || freshnessStatus === 'missing'
@@ -51,7 +51,7 @@ export function renderHeader(viewModel) {
     || viewModel.diagnostics.items.length > 0;
   const classes = 'repository-header status-' + safeClass(projectionStatus)
     + ' freshness-' + safeClass(freshnessStatus)
-    + (wounded ? ' wounded' : '');
+    + (hasProjectionCondition ? ' has-projection-condition' : '');
 
   return '<section class="' + classes + '" aria-labelledby="instrument-title">'
     + '<div class="title-block">'
@@ -91,7 +91,7 @@ export function renderNavigation(viewModel) {
   let diagnosticClass = 'missing';
   if (viewModel.diagnostics.available) {
     diagnosticText = String(viewModel.diagnostics.items.length) + ' reported';
-    diagnosticClass = viewModel.diagnostics.items.length === 0 ? 'current' : 'wounded';
+    diagnosticClass = viewModel.diagnostics.items.length === 0 ? 'current' : 'diagnostic-present';
   }
 
   return '<section class="navigation-strip" aria-label="Current navigation">'
@@ -134,7 +134,7 @@ function mapGeometry(occurrences) {
   };
 }
 
-function renderEdge(edge, geometry) {
+function renderEdge(edge, geometry, selectedKey) {
   if (!edge.drawable) {
     return '';
   }
@@ -148,13 +148,17 @@ function renderEdge(edge, geometry) {
   const x2 = target.x + target.width / 2;
   const y2 = target.y + target.height / 2;
   const relation = edge.relation;
+  const midpoint = (x1 + x2) / 2;
+  const selected = edge.sourceCandidates[0].key === selectedKey
+    || edge.targetCandidates[0].key === selectedKey;
   const label = String(relation.source_pressure_id) + ' '
     + String(relation.relation_kind) + ' ' + String(relation.target_pressure_id);
-  return '<line class="semantic-edge edge-' + safeClass(relation.relation_kind)
+  return '<path class="semantic-edge edge-' + safeClass(relation.relation_kind)
+    + (selected ? ' is-foreground' : '')
     + '" data-relation-key="' + escapeHtml(edge.key)
-    + '" x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2
+    + '" d="M ' + x1 + ' ' + y1 + ' H ' + midpoint + ' V ' + y2 + ' H ' + x2
     + '" marker-end="url(#arrow)">'
-    + '<title>' + escapeHtml(label) + '</title></line>';
+    + '<title>' + escapeHtml(label) + '</title></path>';
 }
 
 function nodeBadges(occurrence) {
@@ -163,10 +167,25 @@ function nodeBadges(occurrence) {
     badges.push('<span class="badge history">history ' + occurrence.historyCount + '</span>');
   }
   if (occurrence.isDuplicate) {
-    badges.push('<span class="badge ambiguous">duplicate ID</span>');
+    badges.push('<span class="badge ambiguous">duplicate identity</span>');
   }
-  if (occurrence.isWounded) {
-    badges.push('<span class="badge wounded">wounded ' + occurrence.diagnostics.length + '</span>');
+  if (occurrence.hasProjectionDiagnostic) {
+    badges.push('<span class="badge diagnostic">projection diagnostic '
+      + occurrence.diagnostics.length + '</span>');
+  }
+  if (occurrence.hasUnknownStanding) {
+    badges.push('<span class="badge diagnostic">unknown standing</span>');
+  }
+  if (occurrence.hasMissingStanding) {
+    badges.push('<span class="badge missing-field">standing missing</span>');
+  }
+  if (occurrence.missingDiscriminator.kind === 'value') {
+    badges.push('<span class="badge discriminator">missing discriminator</span>');
+  } else if (occurrence.missingDiscriminator.kind === 'missing') {
+    badges.push('<span class="badge missing-field">discriminator unprojected</span>');
+  }
+  if (occurrence.residue.kind === 'value') {
+    badges.push('<span class="badge residue">residue</span>');
   }
   if (occurrence.isActive) {
     badges.push('<span class="badge active">active</span>');
@@ -182,7 +201,7 @@ function renderNode(occurrence, point, selectedKey) {
     'standing-' + occurrence.standingClass,
     occurrence.isActive ? 'is-active' : '',
     occurrence.isDuplicate ? 'is-duplicate' : '',
-    occurrence.isWounded ? 'is-wounded' : '',
+    occurrence.hasProjectionDiagnostic ? 'has-diagnostic' : '',
     selected ? 'is-selected' : '',
   ].filter(Boolean).join(' ');
   return '<foreignObject x="' + point.x + '" y="' + point.y
@@ -222,7 +241,7 @@ function renderUnresolvedRelations(edges) {
 export function renderMap(viewModel) {
   const geometry = mapGeometry(viewModel.occurrences);
   const edges = viewModel.semanticEdges.map(
-    (edge) => renderEdge(edge, geometry),
+    (edge) => renderEdge(edge, geometry, viewModel.selectedOccurrenceKey),
   ).join('');
   const nodes = viewModel.occurrences.map(
     (occurrence) => renderNode(
@@ -238,9 +257,12 @@ export function renderMap(viewModel) {
     + '<p>' + viewModel.occurrences.length + ' node occurrences · '
     + viewModel.semanticEdges.length + ' explicit relations</p></div>'
     + '<div class="map-legend" aria-label="Map legend">'
-    + '<span><i class="legend-form solid"></i>bounded / stable form</span>'
-    + '<span><i class="legend-form open"></i>open</span>'
-    + '<span><i class="legend-form interrupted"></i>wounded / insufficient</span>'
+    + '<span><i class="legend-form solid"></i>BOUNDED_RESOLUTION</span>'
+    + '<span><i class="legend-form open"></i>OPEN</span>'
+    + '<span><i class="legend-form interrupted"></i>BASIS_INSUFFICIENT &ne; projection diagnostic</span>'
+    + '<span><i class="legend-form candidate"></i>CANDIDATE_SURVIVED</span>'
+    + '<span><i class="legend-edge unlocks"></i>unlocks</span>'
+    + '<span><i class="legend-edge blocked"></i>blocked_by</span>'
     + '<strong>Position and proximity aid composition only. Relations exist only where the normalized model supplies them.</strong>'
     + '</div>'
     + '<div class="map-scroll">'
@@ -262,6 +284,14 @@ function fieldSection(label, field) {
     + '<p>' + escapeHtml(value.text) + '</p>'
     + (value.status ? '<small>field status: ' + escapeHtml(value.status) + '</small>' : '')
     + '</section>';
+}
+
+function fieldBlock(label, field) {
+  const value = normalizedField(field);
+  return '<div class="inspector-field field-' + safeClass(value.kind) + '">'
+    + '<h4>' + escapeHtml(label) + '</h4><p>' + escapeHtml(value.text) + '</p>'
+    + (value.status ? '<small>field status: ' + escapeHtml(value.status) + '</small>' : '')
+    + '</div>';
 }
 
 function safeHttpUrl(value) {
@@ -350,11 +380,42 @@ function localDiagnosticsSection(occurrence) {
   if (occurrence.diagnostics.length === 0) {
     return '<section class="inspector-section"><h3>DIAGNOSTICS</h3><p>0 associated</p></section>';
   }
-  return '<section class="inspector-section wounded"><h3>DIAGNOSTICS</h3><ul>'
+  return '<section class="inspector-section has-diagnostic"><h3>DIAGNOSTICS</h3><ul>'
     + occurrence.diagnostics.map((diagnostic) => '<li><code>'
       + escapeHtml(diagnostic.kind ?? 'missing kind') + '</code><p>'
       + escapeHtml(diagnostic.message ?? 'missing message') + '</p></li>').join('')
     + '</ul></section>';
+}
+
+function relationSection(occurrence, viewModel) {
+  const relations = viewModel.semanticEdges.filter((edge) =>
+    edge.sourceCandidates.some((candidate) => candidate.key === occurrence.key)
+      || edge.targetCandidates.some((candidate) => candidate.key === occurrence.key));
+  const normalized = relations.length === 0
+    ? '<p class="explicit-none">no explicit normalized relations for this occurrence</p>'
+    : '<ul class="relation-list">' + relations.map((edge) => {
+      const relation = edge.relation;
+      const outgoing = edge.sourceCandidates.some(
+        (candidate) => candidate.key === occurrence.key,
+      );
+      const counterpart = outgoing ? edge.targetCandidates : edge.sourceCandidates;
+      const target = outgoing
+        ? relation.target_pressure_id ?? relation.condition_text ?? 'missing target'
+        : relation.source_pressure_id ?? 'missing source';
+      const follow = edge.drawable && counterpart.length === 1
+        ? '<button type="button" data-follow-occurrence-key="'
+          + escapeHtml(counterpart[0].key) + '">follow</button>'
+        : '';
+      return '<li><div><code>' + escapeHtml(outgoing ? 'OUT' : 'IN') + '</code> '
+        + '<strong>' + escapeHtml(relation.relation_kind ?? 'missing relation kind')
+        + '</strong> <code>' + escapeHtml(target) + '</code></div>'
+        + '<small>' + escapeHtml(edge.ambiguous ? 'endpoint ambiguous' : 'explicit normalized relation')
+        + '</small>' + follow + '</li>';
+    }).join('') + '</ul>';
+  return '<section class="inspector-section relation-section"><h3>RELATIONS</h3>'
+    + fieldBlock('BLOCKED BY', occurrence.node?.blocked_by)
+    + fieldBlock('UNLOCKS', occurrence.node?.unlocks)
+    + normalized + '</section>';
 }
 
 export function renderInspector(viewModel) {
@@ -372,16 +433,19 @@ export function renderInspector(viewModel) {
     + escapeHtml(node?.title ?? 'missing title') + '</h2></div>'
     + '<button type="button" id="copy-pressure-id" data-copy-value="'
     + escapeHtml(node?.id ?? '') + '">Copy ID</button></div>'
-    + '<section class="inspector-section current-standing"><h3>CURRENT STANDING</h3>'
+    + '<section class="inspector-section current-standing"><h3>CURRENT</h3>'
+    + '<h4>STANDING</h4>'
     + '<strong>' + escapeHtml(occurrence.currentStanding) + '</strong>'
     + (occurrence.isActive ? '<span class="badge active">active</span>' : '<span class="badge">not active</span>')
+    + '<p class="projection-limit">basis not explicitly projected</p>'
     + '</section>'
-    + fieldSection('PRESSURE', node?.pressure)
-    + fieldSection('MISSING DISCRIMINATOR', node?.missing_discriminator)
+    + '<section class="inspector-section context-section"><h3>CONTEXT / MISSING DISCRIMINATOR</h3>'
+    + fieldBlock('PRESSURE', node?.pressure)
+    + fieldBlock('MISSING DISCRIMINATOR', node?.missing_discriminator)
+    + '</section>'
     + fieldSection('RESOLUTION SO FAR', node?.resolution_so_far)
     + fieldSection('RESIDUE', node?.residue)
-    + fieldSection('BLOCKED BY', node?.blocked_by)
-    + fieldSection('UNLOCKS', node?.unlocks)
+    + relationSection(occurrence, viewModel)
     + historySection(occurrence)
     + evidenceSection(occurrence, viewModel)
     + '<section class="inspector-section"><h3>PROVENANCE</h3><pre>'
@@ -409,8 +473,8 @@ function diagnosticItem(diagnostic) {
 
 export function renderDiagnostics(viewModel) {
   if (!viewModel.diagnostics.available) {
-    return '<section id="diagnostics" class="diagnostics-panel wounded" aria-labelledby="diagnostics-title">'
-      + '<div class="section-heading"><div><p class="eyebrow">PROJECTION WOUNDED</p>'
+    return '<section id="diagnostics" class="diagnostics-panel has-diagnostic" aria-labelledby="diagnostics-title">'
+      + '<div class="section-heading"><div><p class="eyebrow">PROJECTION DIAGNOSTICS MISSING</p>'
       + '<h2 id="diagnostics-title">Diagnostics unavailable</h2></div></div>'
       + '<p>The normalized diagnostics array is missing. This is not zero diagnostics.</p></section>';
   }
@@ -420,15 +484,15 @@ export function renderDiagnostics(viewModel) {
       + '<h2 id="diagnostics-title">0 reported</h2></div></div>'
       + '<p>The normalized diagnostics array is present and empty.</p></section>';
   }
-  return '<section id="diagnostics" class="diagnostics-panel wounded" aria-labelledby="diagnostics-title">'
-    + '<div class="section-heading"><div><p class="eyebrow">PROJECTION WOUNDED</p>'
+  return '<section id="diagnostics" class="diagnostics-panel has-diagnostic" aria-labelledby="diagnostics-title">'
+    + '<div class="section-heading"><div><p class="eyebrow">PROJECTION DIAGNOSTICS PRESENT</p>'
     + '<h2 id="diagnostics-title">' + viewModel.diagnostics.items.length
     + ' diagnostics reported</h2></div></div>'
     + '<ol>' + viewModel.diagnostics.items.map(diagnosticItem).join('') + '</ol></section>';
 }
 
 export function unavailableMarkup(message) {
-  return '<section class="load-failure wounded" role="alert">'
+  return '<section class="load-failure has-diagnostic" role="alert">'
     + '<p class="eyebrow">PROJECTION FAILED</p>'
     + '<h1>PROJECTION UNAVAILABLE</h1>'
     + '<p>' + escapeHtml(message) + '</p>'

@@ -189,6 +189,13 @@ renders the bounded normalized model without frontend repository parsing. It is
 an implementation specimen, not a usability, visual-safety, production,
 authority, or Controller result.
 
+The [first Projection v1 human-use refinement](../decisions/cockpit_projection_v1_standing_topology_v0.md)
+compresses the map, preserves exact standing forms, and separates scientific
+basis insufficiency from typed projection diagnostics. Its basis/scope audit
+found no structured current-standing basis in the normalized pressure model,
+so the observer reports that limitation instead of reparsing repository prose.
+Projection v1 remains in progress.
+
 Generate its ignored, derived JSON input:
 
 ```text
@@ -204,7 +211,8 @@ http://127.0.0.1:8000/src/cockpit/observer/
 
 The adapter resolves `HEAD` to an exact commit. If generation fails, the
 generator leaves no older output available as a silent fallback. The next
-required pass is bounded observer usability and unsupported-inference pressure.
+expected Projection v1 pass is bounded Constraints / Lineage / Horizon /
+Source views plus projection-only typed transitions among those views.
 
 ## Freshness
 

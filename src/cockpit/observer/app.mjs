@@ -46,6 +46,13 @@ function render() {
     });
   });
 
+  document.querySelectorAll('[data-follow-occurrence-key]').forEach((button) => {
+    button.addEventListener('click', () => {
+      viewModel = selectOccurrence(viewModel, button.dataset.followOccurrenceKey);
+      render();
+    });
+  });
+
   const copyButton = document.querySelector('#copy-pressure-id');
   if (copyButton) {
     copyButton.addEventListener('click', async () => {

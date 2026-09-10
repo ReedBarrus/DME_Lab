@@ -230,12 +230,15 @@ silent loss, winner selection, or healthy-source regression; the exact current
 repository projection also remained complete and diagnostic-free.
 
 Stage 4C cleared bounded construction of the first observer over the remediated
-adapter basis. That plain observer now exists; the next required Cockpit step is
-bounded pressure against human interpretation, reconstruction usefulness, and
-unsupported visual inference. No usability success, visual semantic safety,
-production readiness, general adapter reliability, authority, Controller
-integration, or active scientific pressure is established. The Controller
-remains `PARKED`.
+adapter basis. That plain observer now exists. Its first Projection v1
+human-use refinement separates typed scientific standing from projection
+diagnostics, compresses map nodes, and exposes that current standing basis is
+not explicitly projected. Projection v1 remains in progress; the next expected
+pass is bounded Constraints / Lineage / Horizon / Source views plus
+projection-only typed transitions among them. No general comprehension, visual
+semantic safety, production readiness, general adapter reliability, authority,
+Controller integration, or active scientific pressure is established. The
+Controller remains `PARKED`.
 
 ## Contract Surface Status
 

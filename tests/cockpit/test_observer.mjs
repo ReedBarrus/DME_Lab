@@ -4,6 +4,7 @@ import test from 'node:test';
 
 import {
   READ_ONLY_INTERACTIONS,
+  STANDING_FORMS,
   buildObserverModel,
   loadProjection,
   navigationPresentation,
@@ -79,7 +80,7 @@ function healthyModel() {
         pressure: { value: 'Can history remain separate?', status: 'known_value' },
         missing_discriminator: { value: null, status: 'explicit_absent' },
         resolution_so_far: { value: 'Current bounded result.', status: 'known_value' },
-        residue: { value: 'Earlier wound remains visible.', status: 'known_value' },
+        residue: { value: 'Earlier unresolved result remains visible.', status: 'known_value' },
         blocked_by: { value: null, status: 'explicit_absent' },
         unlocks: { value: null, status: 'explicit_absent' },
         resolution_history: [
@@ -132,7 +133,7 @@ test('every pressure node entry becomes an independently addressable occurrence'
   assert.notEqual(duplicates[0].key, duplicates[1].key);
   assert.equal(new Set(view.occurrences.map((occurrence) => occurrence.key)).size, 3);
   assert.ok(duplicates.every((occurrence) => occurrence.isDuplicate));
-  assert.match(renderMap(view), /duplicate ID/);
+  assert.match(renderMap(view), /duplicate identity/);
 });
 
 test('only normalized pressure relations create semantic edge objects', async () => {
@@ -189,7 +190,7 @@ test('current and historical standings remain separately accessible', () => {
     pressure.node.resolution_history.map((entry) => entry.standing.value),
     ['BASIS_INSUFFICIENT', 'BOUNDED_RESOLUTION'],
   );
-  assert.ok(markup.indexOf('CURRENT STANDING') < markup.indexOf('RESOLUTION HISTORY'));
+  assert.ok(markup.indexOf('CURRENT') < markup.indexOf('RESOLUTION HISTORY'));
   assert.match(markup, /R0/);
   assert.match(markup, /BASIS_INSUFFICIENT/);
   assert.match(markup, /R1/);
@@ -201,11 +202,11 @@ test('diagnostics remain globally visible and unsupported structure remains raw 
 
   assert.equal(view.diagnostics.available, true);
   assert.equal(view.diagnostics.items.length, 1);
-  assert.match(diagnostics, /PROJECTION WOUNDED/);
+  assert.match(diagnostics, /PROJECTION DIAGNOSTICS PRESENT/);
   assert.match(diagnostics, /unsupported_structure/);
   assert.match(diagnostics, /R0 synthetic residue/);
   assert.equal(view.occurrences[0].node.resolution_history.length, 0);
-  assert.equal(view.occurrences[0].isWounded, true);
+  assert.equal(view.occurrences[0].hasProjectionDiagnostic, true);
 });
 
 test('missing diagnostics is not rendered as zero diagnostics', () => {
@@ -239,13 +240,14 @@ test('source conflict is shown without selecting an active pressure', async () =
   assert.match(renderDiagnostics(view), /source_conflict/);
 });
 
-test('unknown standing retains its exact value and remains wounded', async () => {
+test('unknown standing retains its exact value and projection diagnostic', async () => {
   const view = buildObserverModel(await fixture('unknown_standing.json'));
   const occurrence = view.occurrences[0];
 
   assert.equal(occurrence.currentStanding, 'UNSEEN_STANDING');
-  assert.equal(occurrence.standingClass, 'neutral');
-  assert.equal(occurrence.isWounded, true);
+  assert.equal(occurrence.standingClass, 'unknown-standing');
+  assert.equal(occurrence.hasUnknownStanding, true);
+  assert.equal(occurrence.hasProjectionDiagnostic, true);
   assert.match(renderMap(view), /UNSEEN_STANDING/);
   assert.match(renderDiagnostics(view), /unknown_standing/);
 });
@@ -259,6 +261,134 @@ test('broken evidence remains visible as a broken navigation reference', async (
   assert.doesNotMatch(markup, />verified</i);
   assert.doesNotMatch(markup, />proved</i);
   assert.doesNotMatch(markup, />confirmed</i);
+});
+
+test('BASIS_INSUFFICIENT is a scientific standing, not a projection diagnostic', () => {
+  const raw = healthyModel();
+  raw.pressure_nodes[0].standing = {
+    value: 'BASIS_INSUFFICIENT',
+    status: 'known_value',
+  };
+  raw.pressure_nodes[0].missing_discriminator = {
+    value: 'A public association from the detached result to reachable history.',
+    status: 'known_value',
+  };
+  const view = buildObserverModel(raw);
+  const occurrence = view.occurrences[0];
+  const map = renderMap(view);
+
+  assert.equal(occurrence.standingClass, 'basis-insufficient');
+  assert.equal(occurrence.hasProjectionDiagnostic, false);
+  assert.match(map, /BASIS_INSUFFICIENT &ne; projection diagnostic/);
+  assert.doesNotMatch(map, /has-diagnostic/);
+  assert.match(renderDiagnostics(view), /0 reported/);
+});
+
+test('projection diagnostics remain separate from scientific insufficiency', async () => {
+  const view = buildObserverModel(await fixture('partial_unsupported.json'));
+  const occurrence = view.occurrences[0];
+  const map = renderMap(view);
+
+  assert.equal(occurrence.hasProjectionDiagnostic, true);
+  assert.match(map, /projection diagnostic 1/);
+  assert.match(map, /has-diagnostic/);
+  assert.match(renderDiagnostics(view), /unsupported_structure/);
+});
+
+test('candidate survived remains exact, basis-relative, and inactive', () => {
+  const raw = healthyModel();
+  raw.pressure_nodes[0].standing = {
+    value: 'CANDIDATE_SURVIVED',
+    status: 'known_value',
+  };
+  raw.pressure_nodes[0].missing_discriminator = {
+    value: 'Exact scale matching and an antecedently declared invariant.',
+    status: 'known_value',
+  };
+  raw.pressure_nodes[0].resolution_so_far = {
+    value: 'The candidate survived the current bounded pressure only.',
+    status: 'known_value',
+  };
+  const view = buildObserverModel(raw);
+  const occurrence = view.occurrences[0];
+  const markup = renderInspector(view) + renderMap(view);
+
+  assert.equal(occurrence.currentStanding, 'CANDIDATE_SURVIVED');
+  assert.equal(occurrence.isActive, false);
+  assert.match(markup, /basis not explicitly projected/);
+  assert.doesNotMatch(markup, />active<\/span>/);
+  assert.doesNotMatch(markup, /fully resolved|prediction succeeded|verified candidate/i);
+});
+
+test('missing discriminator and residue remain separate inspector regions', () => {
+  const raw = healthyModel();
+  raw.pressure_nodes[0].missing_discriminator = {
+    value: 'Synthetic missing discriminator.',
+    status: 'known_value',
+  };
+  raw.pressure_nodes[0].residue = {
+    value: 'Synthetic preserved residue.',
+    status: 'known_value',
+  };
+  const markup = renderInspector(buildObserverModel(raw));
+
+  assert.ok(markup.indexOf('MISSING DISCRIMINATOR') < markup.indexOf('Synthetic missing discriminator.'));
+  assert.ok(markup.indexOf('RESIDUE') < markup.indexOf('Synthetic preserved residue.'));
+  assert.notEqual(markup.indexOf('Synthetic missing discriminator.'), markup.indexOf('Synthetic preserved residue.'));
+});
+
+test('standing grammar contains no fully resolved category or scalar rank', () => {
+  assert.deepEqual(Object.keys(STANDING_FORMS), [
+    'OPEN',
+    'PARTIAL_RESOLUTION',
+    'BOUNDED_RESOLUTION',
+    'BASIS_INSUFFICIENT',
+    'BLOCKER_REMOVED',
+    'CANDIDATE_SURVIVED',
+    'EQUIVALENT_UNDER_CURRENT_PRESSURE',
+    'SHELVED',
+  ]);
+  assert.doesNotMatch(JSON.stringify(STANDING_FORMS), /fully|percent|rank/i);
+});
+
+test('relation degree does not change standing or node geometry', () => {
+  const withoutRelations = buildObserverModel(healthyModel());
+  const raw = healthyModel();
+  raw.pressure_relations = [
+    {
+      source_pressure_id: 'PR-018',
+      relation_kind: 'unlocks',
+      target_kind: 'pressure',
+      target_pressure_id: 'PR-019',
+      provenance: { source_path: 'synthetic/map.md', source_line: 10 },
+    },
+  ];
+  const withRelations = buildObserverModel(raw);
+
+  assert.equal(withRelations.occurrences[0].currentStanding, withoutRelations.occurrences[0].currentStanding);
+  assert.equal(withRelations.occurrences[0].standingClass, withoutRelations.occurrences[0].standingClass);
+  assert.match(renderMap(withRelations), /edge-unlocks/);
+  assert.match(renderMap(withRelations), /legend-edge unlocks/);
+  assert.doesNotMatch(renderMap(withRelations), /degree-|importance-|rank-/);
+});
+
+test('inspector exposes only explicit normalized relation topology', () => {
+  const raw = healthyModel();
+  raw.pressure_relations = [
+    {
+      source_pressure_id: 'PR-018',
+      relation_kind: 'blocked_by',
+      target_kind: 'pressure',
+      target_pressure_id: 'PR-019',
+      provenance: { source_path: 'synthetic/map.md', source_line: 10 },
+    },
+  ];
+  const markup = renderInspector(buildObserverModel(raw));
+
+  assert.match(markup, /RELATIONS/);
+  assert.match(markup, /blocked_by/);
+  assert.match(markup, /explicit normalized relation/);
+  assert.match(markup, /data-follow-occurrence-key/);
 });
 
 test('failed and unavailable projections remain explicit', async () => {
