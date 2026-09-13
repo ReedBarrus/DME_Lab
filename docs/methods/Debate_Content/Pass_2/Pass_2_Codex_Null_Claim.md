@@ -1,276 +1,184 @@
 INPUT ARTIFACTS USED
 - Candidate A: docs/projection/consequential_geometry_A.md
 - Candidate B: docs/projection/Consequence_Formal_B.md
-- Debate protocol: docs/methods/Candidate_Pressure_Debate_Protocol_v0.md
-- ChatGPT Advocate A: docs/methods/Debate_Content/Pass_1/Pass_1_Chat_Advocate.md
-- Astra Adversary: docs/methods/Debate_Content/Pass_1/Pass_1_Astra.md
-- Authoritative PR evidence:
-  - WORKFLOW.md
-  - PRESSURE_RESOLUTION_MAP.md
-  - docs/decisions/absent_interval_round_trip_pressure_v0.md
-The two Round A artifacts are currently untracked. No competing Round A advocate/adversary pair was found.
-SURVIVING A CLAIM
-A persistent traversal-sensitive coordinate can distinguish endpoint equivalence from relevant source-relative change when all of the following are declared:
-- Coordinate: an irreversible or otherwise traversal-sensitive witness.
-- Association/provenance: the witness is associated with the selected source and endpoint interval, with enough provenance to warrant that association.
-- Scope: a declared class of relevant source-relative changes.
-- Assumptions: witness soundness, retention, and sufficient detection coverage for that scope.
-- Supported verdict: witness advancement supports “at least one relevant change occurred.”
-- Unsupported claims: unchanged witness does not support “no change occurred” without validated completeness. The witness does not establish path, count, cause, semantic consequence, complete history, or cross-source simultaneity.
-No larger Consequential Geometry structure survives as locally necessary.
-SURVIVING B CLAIM
-For a declared semantic scope, evidence and a bounded observer relation determine a compatibility set of histories consistent with the observation. The consumer question has a determinate answer only when all compatible histories agree.
-Locally this requires:
-- Coordinate: the bounded witness observation.
-- Association/provenance: evidence associating it with the selected source and interval.
-- Scope: the relevant-change predicate.
-- Assumptions: adequate observer semantics and evidence coverage.
-- Supported verdict: advancement yields “yes” when every compatible history contains a relevant change.
-- Unsupported claims: a unique history, complete transformation history, cause, semantic consequence, or a “no” verdict when unchanged observations remain compatible with hidden traversal.
-The compatibility-set formulation makes uncertainty explicit but does not presently change the executable verdict.
-NULL CLAIM
-A persistent source-relative change witness is sufficient for this bounded consumer question without a shared observational-geometry abstraction.
-It requires:
-- Coordinate: a durable, traversal-sensitive witness.
-- Association/provenance: selected-source and endpoint-interval association.
-- Scope: an explicit relevant-change boundary.
-- Assumptions: soundness, retention, and sufficient coverage.
-- Supported verdict: valid advancement supports at least one relevant change.
-- Unsupported claims: unchanged means stasis only if completeness is independently established. No path, cause, complete history, semantic consequence, or cross-source timing follows.
-SHARED GROUND
-All candidates preserve:
-- Endpoint equality does not establish complete transformation history.
-- Endpoint state is not traversal evidence.
-- A valid witness advancement can support at least one scoped source-relative change.
-- Source, scope, interval association, and evidential validity matter.
-- Missing or ambiguous association prevents a warranted answer.
-- An unchanged witness supports “no change” only under adequate detection completeness.
-- A witness does not establish cause, path, count, semantic consequence, or complete history.
-- Witness association does not become source truth merely because it exists.
-ACTUAL DISAGREEMENT
-NO EXECUTABLE DISAGREEMENT FOUND
-The surviving difference is organizational: A and B favor explicit structures for preserving scope, observation, compatibility, and provenance; Null treats those obligations as conditions of one bounded local mechanism. None presently produces a different consumer verdict from identical admissible observations.
-LOCAL SUFFICIENCY AUDIT
-The minimum locally sufficient mechanism is one persistent source-relative witness carrying or being unambiguously associated with:
-- selected source identity;
-- relevant-change scope;
-- before/after witness values;
-- the bounded endpoint interval;
-- soundness and retention conditions;
-- detection coverage sufficient for any claimed negative verdict;
-- explicit missing or invalid states distinct from “unchanged.”
-With soundness but without completeness, the locally warranted result space is effectively YES | UNRESOLVED, not an unconditional binary YES | NO.
-Classification:
-- Bounded witness mechanism: LOCAL-ONLY SURVIVOR
-- Explicit source, scope, association, and validity semantics: LOCALLY + COMPOSITIONALLY EARNED
-- Shared/global observational geometry: OVERBUILT
-COMPOSITIONAL COMPATIBILITY AUDIT
-Later composition may need to retain:
-- witness identity and realization type;
-- source identity;
-- relevance predicate and scope;
-- before/after values;
-- endpoint and interval identifiers;
-- association method;
-- coverage, reset, rollover, and retention semantics;
-- missingness and acquisition failures;
-- provenance and evidence references.
-These distinctions could matter for stale-history detection, cross-source timing, reconstruction, provenance, and recoverability. They do not currently earn a clock system, global observer model, compatibility engine, or consequence geometry.
-Visual or documentary continuity must not be treated as causal, temporal, or source association.
-DISTINCT EXECUTABLE PREDICTIONS
-NO
-For the proposed cases, all candidates agree:
-- Valid advancement associated with the selected source and interval: YES.
-- Unchanged witness without completeness: UNRESOLVED.
-- Missing source association: UNRESOLVED.
-- Ambiguous interval association: UNRESOLVED.
-- Witness belonging to another source: no answer about the selected source.
-- Reset without established reset semantics: UNRESOLVED.
-- Conflicting witnesses without an earned precedence rule: UNRESOLVED.
-EXPERIMENTAL ADJUDICATION
-EQUIVALENT UNDER CURRENT PRESSURE
-SMALLEST EXECUTABLE DISCRIMINATOR
-NONE YET
-The smallest separating pressure would require a candidate-specific operational commitment that changes the verdict under identical coordinates—for example, one candidate returning determinate NO after an unchanged or reset witness while another requires UNRESOLVED.
-Alternatively, a candidate would need to identify an additional retained coordinate whose removal demonstrably changes an admissible PR-006 verdict. No such divergent commitment currently survives.
-OVERBUILT STRUCTURE REJECTED
-- Full Consequential Geometry machinery
-- Global configuration-space or realization atlas
-- General compatibility-set execution engine
-- Transformation-contract framework
-- General event infrastructure
-- Watcher daemon
-- Clock or cross-source synchronization subsystem
-- Provenance graph
-- General OS observation layer
-- Schema expansion
-- Consequence engine
-- Controller integration
-- Complete hidden-history reconstruction
-RECOMMENDED NEXT MOVE
-rotate to Candidate B advocacy
-
-
-Friday 3:25 PM
-
-
-
-
-
-
-
-Yesterday 4:51 PM
-You are the ADVERSARY for Candidate B in Round B of the DME_Lab Candidate Press…
-
-
-
-
-Worked for 1m 43s
-
-
-
-INPUT ARTIFACTS USED
-- Candidate A: docs/projection/consequential_geometry_A.md
-- Candidate B: docs/projection/Consequence_Formal_B.md
-- Debate protocol: docs/methods/Candidate_Pressure_Debate_Protocol_v0.md
-- Completed Round A artifacts:
+- Protocol: docs/methods/Candidate_Pressure_Debate_Protocol_v0.md
+- Pass 1 artifacts:
   - docs/methods/Debate_Content/Pass_1/Pass_1_Chat_Advocate.md
   - docs/methods/Debate_Content/Pass_1/Pass_1_Astra.md
-- Round A adjudication: no repository artifact exists under docs/methods/; the supplied prior-round state was used as conversational context and cross-checked against the two completed Round A files.
-- Astra Advocate B: docs/methods/Debate_Content/Pass_1/Pass_2_Astra_Advocation.md
-  - This was identified by content. Despite its location under Pass_1, it is the unambiguous Candidate B advocacy artifact.
+  - docs/methods/Debate_Content/Pass_1/Pass_1_Codex_Experimentalist.md
+- Completed Pass 2 artifacts:
+  - docs/methods/Debate_Content/Pass_2/Pass_2_Astra_Advocation.md
+  - docs/methods/Debate_Content/Pass_2/Pass_2_Codex_Experimentalist.md — contains the Codex adversarial pass despite its filename.
+  - docs/methods/Debate_Content/Pass_2/Pass_2_Chat_Adversary.md — contains the ChatGPT experimental adjudication despite its filename.
+- docs/methods/Debate_Content/Pass_2/Pass_2_Codex_Null_Claim.md was not treated as completed evidence: it is currently an empty, pre-existing local modification and was left untouched.
 - Authoritative PR evidence:
   - WORKFLOW.md
   - PRESSURE_RESOLUTION_MAP.md
   - docs/decisions/absent_interval_round_trip_pressure_v0.md
-FAIR RECONSTRUCTION OF B
-B’s strongest local claim is:
-A witness warrants a definite answer only when every source history compatible with its valid, jointly associated result agrees on whether at least one relevant change occurred.
-For the bounded predicate \(q\):
-- compatible answers {YES} → YES
-- compatible answers {NO} → NO
-- compatible answers {YES, NO} → UNRESOLVED
-- no compatible histories → inconsistent evidence or assumptions, not YES or NO
-Operationally:
-- Valid, soundly attributed advancement → YES
-- Unchanged without established completeness → UNRESOLVED
-- Unchanged with complete interval coverage, valid retention, and unambiguous association → scoped NO
-- Reset, missingness, conflict, malformed state, or ambiguous association → preserve the wound; do not manufacture a verdict
-B does not claim that histories must be enumerated or that its general transformation and evidence machinery must be instantiated for PR-006.
-STRONGEST B COMPONENT THAT SURVIVES
-NONE
-B’s compatibility-set account usefully explains why incomplete observations remain unresolved and why model adequacy must remain separate from observational uncertainty. It does not add a B-specific coordinate or verdict beyond an enriched bounded witness.
-NULL REDUCTION RESULT
-YES
-An enriched Null mechanism can preserve:
-- the persistent witness;
+STRONGEST NULL CLAIM
+For the single bounded question—
+Did the selected repository source undergo at least one relevant source-relative change between endpoint captures?
+
+—a persistent traversal-sensitive witness is sufficient in principle when one local contract preserves the exact source, scope, interval, association, validity, and coverage semantics needed to interpret it.
+That contract may warrant YES, NO, or UNRESOLVED without instantiating shared consequence geometry, compatibility sets, observer inverse images, evidence graphs, or transformation contracts.
+Null claims only:
+No shared observational abstraction has yet earned implementation.
+
+It does not claim that interpretation can be omitted or that abstraction will never become necessary.
+MINIMUM NULL MECHANISM
+One bounded association tuple:
+(
+  witness identity and semantics,
+  before value/status,
+  after value/status,
+  selected source,
+  endpoint interval,
+  relevant-change predicate,
+  source/interval association,
+  positive soundness condition,
+  coverage/completeness condition,
+  retention condition,
+  reset/rollover interpretation,
+  acquisition/validity state,
+  sufficient local provenance
+)
+These elements may be fixed unambiguously by construction or carried directly with the observation. They need not become independent global primitives.
+The mechanism must distinguish:
+- valid advancement;
+- valid unchanged value;
+- missing acquisition;
+- detected reset;
+- rollover;
+- malformed state;
+- conflicting observations;
+- wrong-source association;
+- ambiguous interval association.
+The tuple is occurrence-local. Fields from separate observations may not be recombined to manufacture a valid association.
+RESULT SEMANTICS
+YES:
+A valid witness advancement is jointly associated with the selected source and target interval, and the declared witness semantics establish that accepted advancement entails at least one relevant change within scope.
+NO:
+The witness is valid and unchanged, and independently warranted conditions establish complete detection over the entire interval, complete coverage of the declared relevant-change class, valid retention, sound reset/rollover handling, correct association, and no unresolved conflicting evidence.
+UNRESOLVED:
+The available observation cannot warrant either answer. This includes incomplete coverage, missing acquisition, unknown reset or rollover effects, conflict without an earned precedence rule, wrong-source evidence, or ambiguous interval association.
+INVALID:
+The observation violates its local contract—for example, malformed values, impossible transitions, failed acquisition represented as data, or a known-broken association. Invalid evidence cannot yield YES or NO; the consumer remains unresolved with the invalidity visible.
+DEPENDENCY PRESERVATION
+Null preserves dependency through one occurrence-local association:
+(witness observation, source, interval, relevance semantics)
+The relation is part of the bounded record or its immutable enclosing context. It is not reconstructed from detached fields.
+For example:
+- an advancement for the selected source outside the interval; and
+- an advancement inside the interval for another source
+cannot be combined into evidence of a selected-source change during the interval.
+This requires tuple-level dependency, not a provenance graph. It remains local because it binds one observation to one bounded claim and supplies no reusable cross-observer traversal, derivation, or navigation system.
+UNCERTAINTY HANDLING
+Null uses explicit validity and result states rather than enumerated possible histories:
+unchanged + incomplete coverage       → UNRESOLVED
+reset + unknown reset semantics       → UNRESOLVED
+conflict + no precedence rule         → UNRESOLVED
+missing or ambiguous association      → UNRESOLVED
+malformed observation                 → INVALID
+This preserves the uncertainty consequential to the current predicate without claiming which hidden history occurred.
+A compatibility engine would become locally necessary only if two observations with the same complete local contract required different warranted verdicts because of a relation among possible histories that the bounded contract could not express.
+No such case has been established.
+NEGATIVE VERDICT
+NO RELEVANT CHANGE requires all of the following:
+- the relevant-change class is explicitly bounded;
+- every relevant change in that class would affect the witness;
+- coverage spans the complete endpoint interval;
+- no undetected observation gap exists;
+- witnessed change cannot disappear before the final read;
+- reset and rollover are absent or completely accounted for;
+- both acquisitions are valid;
+- the observation is jointly bound to the selected source and interval;
+- the witness is unchanged;
+- no unresolved conflicting evidence defeats the negative inference.
+A local contract can represent these conditions and their warrant status. A first-class observer-completeness abstraction would only rename them unless multiple observation regimes require shared comparison or composition.
+WHAT NULL DOES NOT PROVIDE
+Null deliberately does not generalize:
+- reusable observer identity;
+- cross-witness comparison or precedence;
+- compatibility reasoning over modeled histories;
+- translation between observation regimes;
+- generalized provenance composition;
+- global semantic scopes;
+- transformation composition;
+- cross-source timing or simultaneity;
+- stale-history reconstruction;
+- recoverability calculus;
+- consequence navigation;
+- observer charts or atlas structure.
+These remain future compositional opportunities. Their absence is not a local PR-006 defect unless one becomes necessary to determine the bounded verdict.
+ATTACK ON A NECESSITY
+Null already preserves A’s locally consequential distinctions:
+endpoint state != traversal evidence
+association != source truth
+witness advancement != complete history
+It also preserves source, scope, basis limits, association, validity, and sufficient local provenance.
+The following A components do not change the current verdict:
+- situated configuration objects;
+- transformation objects;
+- A/R/U/V/K tuples;
+- consequence debt;
+- observer charts;
+- atlas structure;
+- residue geometry;
+- reversibility and recoverability structure;
+- navigation machinery.
+No A-specific distinction has been shown that Null cannot preserve locally. A’s richer provenance and consequence structure remains compositionally interesting, not locally necessary.
+ATTACK ON B NECESSITY
+Null produces the same verdict rule as B:
+sound associated advancement          → YES
+complete valid unchanged              → NO
+mixed, incomplete, or invalid basis   → UNRESOLVED
+It can do so without:
+- represented compatibility sets;
+- observer inverse-image machinery;
+- evidence-term graphs;
+- transformation contracts;
+- global semantic-scope objects;
+- general dependency graphs.
+B’s model-adequacy warning can be retained as a local coverage assumption. Its dependency-preservation requirement can be retained as an occurrence-local tuple.
+No locally consequential B distinction remains unavailable to Null.
+LOCAL SUFFICIENCY
+Yes, in principle.
+The bounded contract completely supports the declared YES | NO | UNRESOLVED result space while preserving invalidity separately.
+This does not establish that a real repository witness satisfying the contract has been acquired or validated. PR-006 therefore remains OPEN, and actual observer adequacy remains BASIS INSUFFICIENT.
+Workflow classification:
+- Bounded contract: LOCAL-ONLY SURVIVOR
+- Lossless occurrence-local association: COMPOSITIONALLY COMPATIBLE
+- Actual PR-006 observer realization: BASIS INSUFFICIENT
+- Shared A/B runtime machinery: OVERBUILT
+COMPOSITIONAL COMPATIBILITY
+The bounded mechanism can remain compositionally available if it retains, without flattening:
+- witness identity and realization semantics;
+- raw before/after values and statuses;
 - selected source;
-- endpoint interval;
-- relevant-change predicate;
-- joint association;
-- positive-result soundness;
-- completeness and coverage state;
-- retention and reset semantics;
-- missing, invalid, malformed, ambiguous, and conflicting states.
-It therefore produces the same local verdicts without an explicit compatibility-set engine, semantic-scope object, evidence-term calculus, or transformation-contract framework.
-COMPATIBILITY-SET ATTACK
-Explicit possibility or compatibility structure is not locally required.
-A bounded decision rule can correctly implement:
-valid advancement          → YES
-complete valid unchanged   → NO
-anything inadequately bound,
-covered, or valid          → UNRESOLVED
-without constructing, enumerating, or storing possible histories.
-Compatibility sets remain a formal-semantic explanation of the decision boundary. They provide no additional observation and do not validate the observer.
-MODEL-ADEQUACY ATTACK
-Suppose B’s modeled history space assumes uninterrupted witness coverage. An unchanged witness then leaves only modeled stasis histories, apparently warranting NO.
-In reality, the observer stopped briefly. The source underwent A → B → A entirely during that interruption. Because the possibility model omitted interrupted-coverage histories, every modeled history agrees while the real hidden traversal remains possible.
-Therefore:
-all modeled histories agree
-!=
-the real-world claim is warranted
-The conclusion is warranted only relative to an adequate declared model. B acknowledges this boundary, but its compatibility formalism must not visually or operationally conceal it.
-DEPENDENCY-PRESERVATION ATTACK
-Preserving joint dependency can change a PR-006 verdict, but it is not distinctive to B.
-Smallest specimen:
-- Record 1: witness advanced for the selected source, outside the target interval.
-- Record 2: witness advanced during the target interval, for another source.
-The detached marginals contain:
-- an advancement;
-- the selected source;
-- the target interval.
-No single observation binds all three. Combining those marginals would incorrectly yield YES; preserving occurrence-level dependency yields UNRESOLVED.
-This joint binding is locally necessary. Enriched Null already requires unambiguous association among witness, source, interval, and claim, so B does not uniquely preserve it.
-SCOPE ATTACK
-First-class semantic-scope machinery is not locally required.
-The relevant-change predicate can be fixed directly in the bounded witness contract. Promoting scope to an independent primitive does not change any present verdict.
-First-class scopes may become compositionally useful when multiple observers, relevance regimes, or scope translations coexist. That pressure is absent here.
-EVIDENCE ATTACK
-Explicit evidence-term objects are not locally required.
-PR-006 requires a reliable, dependency-preserving association between:
-- the witness result;
-- selected source;
-- target interval;
-- relevant-change claim;
-- applicable validity conditions.
-A bounded specimen can carry that association directly. A generalized derivation or provenance framework does not improve the local verdict.
-Furthermore:
-record exists != claim true
-association != authenticity
-derivation exists != premises sound
-TRANSFORMATION-CONTRACT ATTACK
-Transformation contracts are not locally required.
-The controlled A → B → A intervention defines the pressure specimen, but formalizing that intervention as a transformation contract does not change what the observer legitimately reports.
-Experimenter knowledge that a transformation was requested also cannot substitute for source-relative evidence that it occurred.
-Classification: OVERBUILT FOR CURRENT PRESSURE.
-NEGATIVE-VERDICT ATTACK
-For a warranted NO, B requires:
-- a closed relevant-change predicate;
-- complete detection coverage over the bounded interval;
-- unambiguous association with the selected source and interval;
-- guaranteed retention through the read;
-- no unresolved reset, rollover, or interruption;
-- valid, non-missing, non-malformed acquisition;
-- unchanged witness under those established conditions.
-These requirements are not executably distinct from Null’s completeness conditions.
-Without them:
-unchanged witness → UNRESOLVED
-not:
-unchanged witness → NO CHANGE
-LOCAL SUFFICIENCY VERDICT
-The smallest surviving mechanism is:
-persistent traversal-sensitive witness
-+ jointly bound selected source
-+ jointly bound endpoint interval
-+ fixed relevant-change predicate
-+ positive-result soundness
-+ explicit coverage/completeness state
-+ retention/reset/rollover semantics
-+ missing/invalid/conflict states
-This supports YES | NO | UNRESOLVED, with NO available only under established two-sided completeness.
-Classification:
-- Bounded witness and joint association: LOCALLY + COMPOSITIONALLY EARNED
-- Explicit compatibility-set machinery: OVERBUILT
-- Current empirical observer adequacy: BASIS INSUFFICIENT
-COMPOSITIONAL COMPATIBILITY VERDICT
-The following B structures remain useful future hypotheses:
-- model-relative compatibility semantics;
-- dependency-preserving evidence relations;
-- explicit scope translation;
-- provenance-bearing derivations;
-- observer overlap and inconsistency handling;
-- guarded transformation relations;
-- recovery-relative predecessor compatibility.
-They may matter for stale history, cross-source timing, reconstruction, provenance, and recoverability.
-Classification: COMPOSITIONALLY COMPATIBLE, not locally necessary or architecturally earned.
-DISTINCT EXECUTABLE B COMMITMENT
-NO DISTINCT EXECUTABLE B COMMITMENT FOUND
-DIFFERENCE CLASS
-FORMAL-SEMANTIC DIFFERENCE ONLY
-ADVERSARY VERDICT
-B COLLAPSES TO A/NULL UNDER CURRENT PRESSURE
-EXPERIMENTALIST HANDOFF
-- Surviving disagreement: whether compatibility, scope, and evidence dependencies should be expressed through explicit formal objects or retained inside one bounded witness contract.
-- Exact candidate-specific prediction: none; B, A, and enriched Null authorize the same local verdicts.
-- Smallest specimen that might separate it: two advanced witness records whose source and interval associations are individually admissible but do not jointly bind the selected source to the target interval—only if a candidate explicitly permits marginal recombination.
-- Unresolved basis: no candidate currently supplies a divergent rule for joint association, coverage, reset, or model adequacy under identical observations.
+- exact relevance predicate;
+- endpoint identities;
+- source/interval/witness association;
+- coverage and completeness status;
+- reset, rollover, and retention conditions;
+- missingness, invalidity, and conflict;
+- the basis for its local provenance claim.
+Later systems may translate or incorporate this record into richer observer, provenance, reconstruction, or recovery structures.
+This is compatibility, not proof that those structures are already earned. Null must preserve the raw distinctions and avoid encoding assumptions that make future composition impossible.
+IS NULL ACTUALLY SMALLER?
+REPRESENTATIONALLY SMALLER ONLY
+Null does not eliminate the semantic obligations identified by A and B. It packages the locally necessary subset into one bounded contract instead of promoting those obligations into reusable global objects.
+Its advantage is therefore restraint in representation and authority, not a smaller information requirement or a distinct observational theory.
+NULL FALSIFIER
+Null is defeated if two observations contain the same complete, valid local contract yet require different warranted PR-006 verdicts because of an additional reusable relation that cannot be represented occurrence-locally.
+The smallest exposing pressure would use two individually valid witnesses over the same source and interval whose conflict can be correctly adjudicated only through shared observer lineage, dependency, or compatibility semantics.
+If YES, NO, or UNRESOLVED cannot be determined correctly without that cross-record structure, Null may not rescue itself by appending arbitrary global metadata to the local tuple. The shared abstraction would then be locally necessary.
+DISTINCT NULL COMMITMENT
+No shared observational-geometry abstraction should be implemented or formally promoted solely to answer PR-006 while the complete warranted verdict can be preserved by one occurrence-local contract.
+This is an implementation and conservation commitment, not a distinct prediction about source behavior.
+ADVOCATE VERDICT
+NULL SURVIVES ONLY AS IMPLEMENTATION RESTRAINT
+ADVERSARY HANDOFF
+- Strongest Null claim: one occurrence-local witness contract preserves every distinction required for the bounded YES | NO | UNRESOLVED verdict.
+- Weakest point: Null carries nearly the same semantic information as local A/B and is only representationally smaller.
+- Exact place A or B might still be necessary: adjudicating valid cross-witness conflict or context-dependent verdicts that cannot be represented within one bounded association tuple.
+- Smallest pressure that could expose that necessity: two locally complete witness records requiring different verdicts depending on a shared observer-lineage, dependency, or compatibility relation unavailable to either local contract.
