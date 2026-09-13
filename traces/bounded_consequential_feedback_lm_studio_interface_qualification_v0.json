@@ -1,0 +1,55 @@
+{
+  "adapter_repository_commit": "f9b74c0e6c5a66a322d934b81a17959a59c46e5e",
+  "artifact": "bounded_consequential_feedback_lm_studio_interface_qualification_v0",
+  "artifact_class": "NON_SCIENTIFIC_INTERFACE_QUALIFICATION",
+  "call_evidence": [
+    {
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "http_status": 200,
+      "parsed_requested_action": null,
+      "raw_model_response": "The provided input appears to be a JSON object containing a fixed task and legal",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Non-scientific interface qualification. Return exactly SUBMIT_RED.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Non-scientific interface qualification. Return exactly SUBMIT_RED.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[]}",
+      "task": "Non-scientific interface qualification. Return exactly SUBMIT_RED.",
+      "tools_supplied": false
+    },
+    {
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "http_status": 200,
+      "parsed_requested_action": null,
+      "raw_model_response": "The fixed task is to return exactly \"SUBMIT_BLUE\" when the non",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Non-scientific interface qualification. Return exactly SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Non-scientific interface qualification. Return exactly SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[]}",
+      "task": "Non-scientific interface qualification. Return exactly SUBMIT_BLUE.",
+      "tools_supplied": false
+    }
+  ],
+  "endpoint_configuration": {
+    "authentication_configured": false,
+    "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+    "environment_proxies_allowed": false,
+    "loopback_only": true,
+    "redirects_allowed": false,
+    "timeout_seconds": 120.0
+  },
+  "frozen_schedule_entries_consumed": 0,
+  "frozen_schedule_executed": false,
+  "model_identifier": "hermes-3-llama-3.2-3b",
+  "phase_2_specimen_freeze_entered": false,
+  "phase_3_empirical_execution_entered": false,
+  "provider_exposed_sampling_settings": {
+    "max_tokens": 16,
+    "temperature": 0.0,
+    "top_p": 1.0
+  },
+  "qualification_calls_made": 2,
+  "qualification_passed": false,
+  "qualification_rule": {
+    "blue_required_raw_response": "SUBMIT_BLUE",
+    "red_required_raw_response": "SUBMIT_RED",
+    "strict_whitespace_or_prose_repair": false
+  },
+  "stop_rule_observed": true
+}
