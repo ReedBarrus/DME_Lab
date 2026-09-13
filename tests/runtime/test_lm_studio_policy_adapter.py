@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import unittest
 
 from src.runtime.bounded_consequential_feedback_experiment import (
@@ -12,11 +13,18 @@ from src.runtime.bounded_consequential_feedback_experiment import (
     SUBMIT_BLUE,
     SUBMIT_RED,
     BoundedColorWorld,
+    run_episode,
 )
 from src.runtime.lm_studio_policy_adapter import (
+    CONSTRAINED_TYPED_ACTION,
     DEFAULT_ENDPOINT,
+    STRUCTURED_ACTION_SCHEMA_HASH,
+    LMStudioActuationError,
+    LMStudioConstrainedActionPolicyAdapter,
     LMStudioEndpointConfig,
     LMStudioPolicyAdapter,
+    parse_structured_action,
+    structured_action_response_format,
 )
 
 
@@ -215,6 +223,159 @@ class LMStudioPolicyAdapterTest(unittest.TestCase):
                     model_identifier="test/local-model",
                     sampling_settings={forbidden: []},
                 )
+
+
+class LMStudioConstrainedActionPolicyAdapterTest(unittest.TestCase):
+    def test_response_format_is_exactly_the_frozen_action_schema(self) -> None:
+        expected = {
+            "type": "json_schema",
+            "json_schema": {
+                "name": "bounded_terminal_action",
+                "strict": True,
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "action": {
+                            "type": "string",
+                            "enum": [SUBMIT_RED, SUBMIT_BLUE],
+                        }
+                    },
+                    "required": ["action"],
+                    "additionalProperties": False,
+                },
+            },
+        }
+        response_format = structured_action_response_format()
+        canonical = json.dumps(
+            response_format,
+            ensure_ascii=False,
+            separators=(",", ":"),
+            sort_keys=True,
+        )
+        self.assertEqual(response_format, expected)
+        self.assertEqual(
+            STRUCTURED_ACTION_SCHEMA_HASH,
+            "sha256:" + hashlib.sha256(canonical.encode("utf-8")).hexdigest(),
+        )
+
+    def test_sampling_settings_cannot_override_response_format(self) -> None:
+        with self.assertRaises(ValueError):
+            LMStudioEndpointConfig(
+                endpoint=DEFAULT_ENDPOINT,
+                model_identifier="test/local-model",
+                sampling_settings={"response_format": {}},
+            )
+
+    def test_typed_request_adds_only_fixed_response_format(self) -> None:
+        transport = FakeTransport(['{"action":"SUBMIT_RED"}'])
+        adapter = LMStudioConstrainedActionPolicyAdapter(
+            config(), transport=transport
+        )
+        adapter(FIXED_TASK, visible_history(RED, CONDITION_F))
+        body = json.loads(transport.calls[0]["body"])
+
+        self.assertEqual(body["response_format"], structured_action_response_format())
+        self.assertEqual(
+            json.loads(body["messages"][0]["content"]),
+            {
+                "fixed_task": FIXED_TASK,
+                "policy_visible_protocol_history": [
+                    {"event_type": "INSPECT_EXECUTED", "payload": {"action": "INSPECT"}},
+                    {
+                        "event_type": "FEEDBACK_DELIVERED",
+                        "payload": {"feedback": RED},
+                    },
+                ],
+                "legal_action_vocabulary": [SUBMIT_RED, SUBMIT_BLUE],
+            },
+        )
+        self.assertEqual(adapter.call_records[0]["actuation_realization"], CONSTRAINED_TYPED_ACTION)
+
+    def test_typed_P_input_remains_hidden_and_schedule_free(self) -> None:
+        transport = FakeTransport(['{"action":"SUBMIT_RED"}'])
+        adapter = LMStudioConstrainedActionPolicyAdapter(
+            config(), transport=transport
+        )
+        adapter(FIXED_TASK, visible_history(BLUE, CONDITION_P))
+        body = json.loads(transport.calls[0]["body"])
+        visible = json.loads(body["messages"][0]["content"])
+
+        self.assertEqual(
+            visible["policy_visible_protocol_history"],
+            [{"event_type": "INSPECT_EXECUTED", "payload": {"action": "INSPECT"}}],
+        )
+        serialized_history = json.dumps(visible["policy_visible_protocol_history"])
+        for forbidden in (RED, BLUE, "FEEDBACK_WITHHELD", "condition", "schedule", "slot"):
+            self.assertNotIn(forbidden, serialized_history)
+        self.assertEqual(len(body["messages"]), 1)
+        self.assertNotIn("tools", body)
+        self.assertNotIn("integrations", body)
+
+    def test_valid_structures_extract_each_exact_action(self) -> None:
+        for action in (SUBMIT_RED, SUBMIT_BLUE):
+            structured, selected = parse_structured_action(
+                json.dumps({"action": action})
+            )
+            self.assertEqual(structured, {"action": action})
+            self.assertEqual(selected, action)
+
+    def test_malformed_duplicate_and_prose_outputs_are_rejected(self) -> None:
+        malformed = (
+            "not json",
+            '{"action":"SUBMIT_RED"',
+            '```json\n{"action":"SUBMIT_RED"}\n```',
+            '{"action":"SUBMIT_RED","action":"SUBMIT_BLUE"}',
+            "The action is SUBMIT_RED",
+        )
+        for raw in malformed:
+            with self.assertRaises(LMStudioActuationError):
+                parse_structured_action(raw)
+
+    def test_extra_fields_and_invalid_enums_are_rejected(self) -> None:
+        invalid = (
+            '{"action":"SUBMIT_RED","reason":"feedback said RED"}',
+            '{"action":"RED"}',
+            '{"action":"submit_red"}',
+            '{"action":null}',
+            '{"action":["SUBMIT_RED"]}',
+            '{}',
+            '[{"action":"SUBMIT_RED"}]',
+        )
+        for raw in invalid:
+            with self.assertRaises(LMStudioActuationError):
+                parse_structured_action(raw)
+
+    def test_actuation_failure_is_recorded_without_default_or_repair(self) -> None:
+        raw = '{"action":"SUBMIT_RED","explanation":"chosen"}'
+        adapter = LMStudioConstrainedActionPolicyAdapter(
+            config(), transport=FakeTransport([raw])
+        )
+        with self.assertRaises(LMStudioActuationError):
+            adapter(FIXED_TASK, visible_history(RED, CONDITION_F))
+        record = adapter.call_records[0]
+        self.assertEqual(record["raw_model_response"], raw)
+        self.assertIsNone(record["structured_output"])
+        self.assertIsNone(record["selected_action"])
+        self.assertEqual(record["actuation_failure"], "SCHEMA_VALIDATION_FAILURE")
+
+    def test_world_independently_accepts_and_scores_extracted_action(self) -> None:
+        adapter = LMStudioConstrainedActionPolicyAdapter(
+            config(), transport=FakeTransport(['{"action":"SUBMIT_BLUE"}'])
+        )
+        episode = run_episode(
+            episode_id="typed-blue-control",
+            hidden_color=BLUE,
+            condition=CONDITION_F,
+            policy=adapter,
+        )
+        record = adapter.call_records[0]
+
+        self.assertEqual(record["raw_model_response"], '{"action":"SUBMIT_BLUE"}')
+        self.assertEqual(record["structured_output"], {"action": SUBMIT_BLUE})
+        self.assertEqual(record["selected_action"], SUBMIT_BLUE)
+        self.assertEqual(episode["requested_action"], SUBMIT_BLUE)
+        self.assertEqual(episode["accepted_terminal_action"], SUBMIT_BLUE)
+        self.assertTrue(episode["correct"])
 
 
 if __name__ == "__main__":
