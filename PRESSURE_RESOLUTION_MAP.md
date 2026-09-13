@@ -134,24 +134,34 @@ not authorized or active.
 
 ### PR-006 — Scoped interval or change observation
 
-- **Pressure:** Would a narrowly selected source-relative change coordinate
-  discriminate hidden intervals, externally stale history, or sequential
-  source skew under a concrete consumer basis?
+- **Pressure:** `Q_OPERATION` — Between equivalent endpoint captures, did the
+  selected file undergo at least one qualifying NTFS unnamed-data
+  overwrite-category operation?
 - **Standing:** `OPEN`
-- **Missing discriminator:** a selected event/change source, scope, clock,
-  attribution rule, and consumer question with a woundable failure boundary.
+- **Missing discriminator:** an authorized and executed bounded `Q_OPERATION`
+  pressure. The consumer is selected, but no experiment is yet authorized or
+  executed.
 - **Resolution so far:** PR-001, PR-004, and PR-005 partially converge on absent
-  source-relative change evidence. That convergence supports this question,
-  not a general OS observer.
-- **Residue:** change notification would not by itself establish caller
-  acknowledgement, cross-source simultaneity, physical realization, semantic
-  consequence, or complete transformation history.
-- **Blocked by:** concrete consumer need and a separately justified bounded
-  observation basis
+  source-relative change evidence. The qualified NTFS USN basis now supplies
+  the separately justified bounded operation-category basis for
+  `Q_OPERATION`. AA and AB empirically preserve
+  `endpoint logical-content state != NTFS overwrite-operation-category
+  evidence` and refute `DATA_OVERWRITE -> logical endpoint byte inequality`
+  within the qualified fixture.
+- **Residue:** `Q_CONTENT` remains unresolved: between equivalent endpoints,
+  the current USN basis cannot establish that logical content departed from A
+  and later returned to A. Endpoint-content plus operation evidence can expose
+  a qualifying overwrite despite equal endpoints, but cannot distinguish an
+  A -> A overwrite from hidden A -> B -> A content traversal. Repeat-run
+  stability also remains useful residue.
+- **Blocked by:** authorization and execution of the selected `Q_OPERATION`
+  pressure; the current basis remains insufficient for `Q_CONTENT`
 - **Unlocks:** —
 - **Evidence:** [absent interval](docs/decisions/absent_interval_round_trip_pressure_v0.md),
   [stale reconstruction](docs/decisions/stale_current_result_pressure_v0.md),
-  [timing skew](docs/decisions/intra_capture_timing_skew_pressure_v0.md)
+  [timing skew](docs/decisions/intra_capture_timing_skew_pressure_v0.md),
+  [USN basis qualification](docs/decisions/ntfs_usn_observation_basis_qualification_v0.md),
+  [qualification trace](traces/ntfs_usn_observation_basis_qualification_v0.json)
 
 ## B. Source success, admission, and consumer visibility
 

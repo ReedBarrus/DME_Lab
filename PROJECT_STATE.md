@@ -100,6 +100,9 @@ Source-side positional return pressure completed in `docs/decisions/acoustic_sou
 
 Independent source-side positional return replication completed in `docs/decisions/acoustic_source_side_positional_return_replication_v1.md`.
 
+Bounded NTFS USN observation-basis qualification adjudication completed in
+`docs/decisions/ntfs_usn_observation_basis_qualification_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -172,12 +175,18 @@ navigation
 committed evidence. It does not establish the standing it displays.
 
 - Active experimental pressure: none.
-- PR-006 remains `OPEN`, blocked by a concrete consumer need and a separately
-  justified bounded observation basis.
+- PR-006 remains `OPEN`. Its separately justified bounded observation basis is
+  now satisfied only for the selected `Q_OPERATION` consumer: whether at least
+  one qualifying NTFS unnamed-data overwrite-category operation occurred
+  between equivalent endpoint captures. No `Q_OPERATION` experiment has been
+  authorized or executed.
+- `Q_CONTENT` remains unresolved: the current USN basis cannot establish that
+  logical content departed from A and later returned to A.
 - PR-018 remains `OPEN`; its exact status remains
   `cross_domain_prediction_not_earned` pending an antecedent mapping and
   independently authorized unseen target evidence.
-- No next experimental pressure has been selected.
+- `Q_OPERATION` is the selected next consumer question, but active experimental
+  pressure remains none.
 
 PR-019 preserves two independently retained specimens:
 
