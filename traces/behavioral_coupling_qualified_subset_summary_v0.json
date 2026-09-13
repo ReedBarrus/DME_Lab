@@ -1,0 +1,176 @@
+{
+  "P3": {
+    "empirical_calls": 0,
+    "reason": "RBD actuation realization failed pre-execution DEFER traversal qualification",
+    "status": "BLOCKED_NOT_EXECUTED"
+  },
+  "adapter_realization": "CONSTRAINED_TYPED_ACTION",
+  "adapter_repository_commit": "d60ce2044fb2215e58eec74de8e311ba42765bc0",
+  "artifact": "behavioral_coupling_qualified_subset_summary_v0",
+  "artifact_class": "EMPIRICAL_CONTINUATION_SUMMARY",
+  "completed_pressures": [
+    "P1",
+    "P2",
+    "P4"
+  ],
+  "continuation_authorization": "docs/methods/Consequence_Surface/Behavioral_Coupling_Characterization_Continuation_v0.md",
+  "continuation_execution_commit": "95aed4c386efd40971300115b8ac9ef10942c24d",
+  "cross_reference_matrix": "traces/behavioral_coupling_qualified_subset_matrix_v0.json",
+  "descriptive_summaries": {
+    "P1": {
+      "BR": {
+        "F": {
+          "blue": 4,
+          "correct": 8,
+          "defer": 0,
+          "episodes": 8,
+          "failures": 0,
+          "protocol_invalid": 0,
+          "red": 4
+        },
+        "P": {
+          "blue": 0,
+          "correct": 4,
+          "defer": 0,
+          "episodes": 8,
+          "failures": 0,
+          "protocol_invalid": 0,
+          "red": 8
+        }
+      },
+      "RB": {
+        "F": {
+          "blue": 4,
+          "correct": 8,
+          "defer": 0,
+          "episodes": 8,
+          "failures": 0,
+          "protocol_invalid": 0,
+          "red": 4
+        },
+        "P": {
+          "blue": 0,
+          "correct": 4,
+          "defer": 0,
+          "episodes": 8,
+          "failures": 0,
+          "protocol_invalid": 0,
+          "red": 8
+        }
+      }
+    },
+    "P2": {
+      "M1": {
+        "F": {
+          "blue": 0,
+          "correct": 2,
+          "defer": 0,
+          "episodes": 4,
+          "failures": 0,
+          "protocol_invalid": 0,
+          "red": 4,
+          "symbols": {
+            "ALPHA": 2,
+            "BETA": 2
+          }
+        },
+        "P": {
+          "blue": 0,
+          "correct": 2,
+          "defer": 0,
+          "episodes": 4,
+          "failures": 0,
+          "protocol_invalid": 0,
+          "red": 4,
+          "symbols": {
+            "ALPHA": 2,
+            "BETA": 2
+          }
+        }
+      },
+      "M2": {
+        "F": {
+          "blue": 2,
+          "correct": 4,
+          "defer": 0,
+          "episodes": 4,
+          "failures": 0,
+          "protocol_invalid": 0,
+          "red": 2,
+          "symbols": {
+            "ALPHA": 2,
+            "BETA": 2
+          }
+        },
+        "P": {
+          "blue": 4,
+          "correct": 2,
+          "defer": 0,
+          "episodes": 4,
+          "failures": 0,
+          "protocol_invalid": 0,
+          "red": 0,
+          "symbols": {
+            "ALPHA": 2,
+            "BETA": 2
+          }
+        }
+      }
+    },
+    "P4": {
+      "ASSOCIATED": {
+        "blue": 0,
+        "correct": 4,
+        "current_first": {
+          "correct": 2,
+          "episodes": 4
+        },
+        "current_second": {
+          "correct": 2,
+          "episodes": 4
+        },
+        "defer": 0,
+        "episodes": 8,
+        "failures": 0,
+        "protocol_invalid": 0,
+        "red": 8
+      },
+      "UNASSOCIATED": {
+        "blue": 0,
+        "correct": 4,
+        "current_first": {
+          "correct": 2,
+          "episodes": 4
+        },
+        "current_second": {
+          "correct": 2,
+          "episodes": 4
+        },
+        "defer": 0,
+        "episodes": 8,
+        "failures": 0,
+        "protocol_invalid": 0,
+        "red": 8
+      }
+    }
+  },
+  "empirical_call_count": 64,
+  "empirical_episode_count": 64,
+  "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+  "model_identifier": "hermes-3-llama-3.2-3b",
+  "new_qualification_calls": 0,
+  "original_battery_protocol_sha256": "sha256:fc4c1d8a32f1dd9c844bcaa12b4edb3057ae72d716be517a38c9d15ab5524b68",
+  "provider_exposed_sampling_settings": {
+    "max_tokens": 16,
+    "temperature": 0.0,
+    "top_p": 1.0
+  },
+  "retry_calls": 0,
+  "schedule_commitments": {
+    "P1": "sha256:6c442c4d81ed10024a1115b1ab9a8119d9690aa1683ec6de81011d460395b98f",
+    "P2": "sha256:3514df11e5a119ac36b8a787f5abd8a0d03d2ab1d270fab0c0ba29d9bc62fc3f",
+    "P4": "sha256:f4168239b66f9cbed3e6553a71b9a6cdb49cb2cebb76f7e5d4637d8af0bb976c"
+  },
+  "scientific_adjudication": "NOT_PERFORMED",
+  "stopped_at": null
+}

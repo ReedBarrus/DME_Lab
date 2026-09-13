@@ -354,6 +354,7 @@ class BehavioralCouplingCharacterizationTest(unittest.TestCase):
                 DeterministicAdapter,
             ),
             patch.object(continuation, "_write_new_json", side_effect=retain),
+            patch.object(continuation, "OUTPUT_PATHS", ()),
         ):
             result = continuation.execute_qualified_subset_once(
                 "continuation-commit"

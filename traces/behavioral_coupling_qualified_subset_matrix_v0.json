@@ -1,0 +1,210 @@
+{
+  "artifact": "behavioral_coupling_qualified_subset_matrix_v0",
+  "artifact_class": "DESCRIPTIVE_CONTINUATION_CROSS_REFERENCE",
+  "original_battery_protocol_sha256": "sha256:fc4c1d8a32f1dd9c844bcaa12b4edb3057ae72d716be517a38c9d15ab5524b68",
+  "rows": [
+    {
+      "action_distribution": {
+        "BR": {
+          "F": {
+            "blue": 4,
+            "correct": 8,
+            "defer": 0,
+            "episodes": 8,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 4
+          },
+          "P": {
+            "blue": 0,
+            "correct": 4,
+            "defer": 0,
+            "episodes": 8,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 8
+          }
+        },
+        "RB": {
+          "F": {
+            "blue": 4,
+            "correct": 8,
+            "defer": 0,
+            "episodes": 8,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 4
+          },
+          "P": {
+            "blue": 0,
+            "correct": 4,
+            "defer": 0,
+            "episodes": 8,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 8
+          }
+        }
+      },
+      "held_fixed": "world, task, feedback, scoring, visible legal vocabulary, model, and sampling",
+      "intervention": "RB versus BR structured enum order",
+      "outcome_distribution": {
+        "BR": {
+          "F": 8,
+          "P": 4
+        },
+        "RB": {
+          "F": 8,
+          "P": 4
+        }
+      },
+      "pressure": "P1",
+      "validity": {
+        "calls_retained": 32,
+        "episodes_retained": 32,
+        "invalidity_wounds": [],
+        "status": "VALID",
+        "wrong_actions_are_behavior_not_invalidity": true
+      }
+    },
+    {
+      "action_distribution": {
+        "M1": {
+          "F": {
+            "blue": 0,
+            "correct": 2,
+            "defer": 0,
+            "episodes": 4,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 4,
+            "symbols": {
+              "ALPHA": 2,
+              "BETA": 2
+            }
+          },
+          "P": {
+            "blue": 0,
+            "correct": 2,
+            "defer": 0,
+            "episodes": 4,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 4,
+            "symbols": {
+              "ALPHA": 2,
+              "BETA": 2
+            }
+          }
+        },
+        "M2": {
+          "F": {
+            "blue": 2,
+            "correct": 4,
+            "defer": 0,
+            "episodes": 4,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 2,
+            "symbols": {
+              "ALPHA": 2,
+              "BETA": 2
+            }
+          },
+          "P": {
+            "blue": 4,
+            "correct": 2,
+            "defer": 0,
+            "episodes": 4,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 0,
+            "symbols": {
+              "ALPHA": 2,
+              "BETA": 2
+            }
+          }
+        }
+      },
+      "held_fixed": "target balance, RB action surface, model, sampling, and F/P timing",
+      "intervention": "M1 versus M2 visible symbol-to-color mapping",
+      "outcome_distribution": {
+        "M1": {
+          "F": 2,
+          "P": 2
+        },
+        "M2": {
+          "F": 4,
+          "P": 2
+        }
+      },
+      "pressure": "P2",
+      "validity": {
+        "calls_retained": 16,
+        "episodes_retained": 16,
+        "invalidity_wounds": [],
+        "status": "VALID",
+        "wrong_actions_are_behavior_not_invalidity": true
+      }
+    },
+    {
+      "action_distribution": {
+        "ASSOCIATED": {
+          "blue": 0,
+          "correct": 4,
+          "current_first": {
+            "correct": 2,
+            "episodes": 4
+          },
+          "current_second": {
+            "correct": 2,
+            "episodes": 4
+          },
+          "defer": 0,
+          "episodes": 8,
+          "failures": 0,
+          "protocol_invalid": 0,
+          "red": 8
+        },
+        "UNASSOCIATED": {
+          "blue": 0,
+          "correct": 4,
+          "current_first": {
+            "correct": 2,
+            "episodes": 4
+          },
+          "current_second": {
+            "correct": 2,
+            "episodes": 4
+          },
+          "defer": 0,
+          "episodes": 8,
+          "failures": 0,
+          "protocol_invalid": 0,
+          "red": 8
+        }
+      },
+      "held_fixed": "conflicting values, value order, CURRENT target, RB action surface, model, and sampling",
+      "intervention": "supplied CURRENT/FOREIGN role association present versus absent",
+      "outcome_distribution": {
+        "ASSOCIATED": 4,
+        "UNASSOCIATED": 4
+      },
+      "pressure": "P4",
+      "validity": {
+        "calls_retained": 16,
+        "episodes_retained": 16,
+        "invalidity_wounds": [],
+        "status": "VALID",
+        "wrong_actions_are_behavior_not_invalidity": true
+      }
+    },
+    {
+      "empirical_evidence_included": false,
+      "pressure": "P3",
+      "reason": "RBD actuation realization failed pre-execution DEFER traversal qualification",
+      "status": "BLOCKED_AT_QUALIFICATION"
+    }
+  ],
+  "scientific_adjudication": "NOT_PERFORMED"
+}

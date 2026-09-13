@@ -1,0 +1,2563 @@
+{
+  "P3_status": "BLOCKED_AT_QUALIFICATION_NOT_EXECUTED",
+  "adapter_realization": "CONSTRAINED_TYPED_ACTION",
+  "adapter_repository_commit": "d60ce2044fb2215e58eec74de8e311ba42765bc0",
+  "artifact": "behavioral_coupling_p1_world_v0",
+  "artifact_class": "EMPIRICAL_WORLD_TRACE",
+  "battery_protocol_sha256": "sha256:fc4c1d8a32f1dd9c844bcaa12b4edb3057ae72d716be517a38c9d15ab5524b68",
+  "continuation_authorization": "docs/methods/Consequence_Surface/Behavioral_Coupling_Characterization_Continuation_v0.md",
+  "continuation_execution_commit": "95aed4c386efd40971300115b8ac9ef10942c24d",
+  "descriptive_summary": {
+    "BR": {
+      "F": {
+        "blue": 4,
+        "correct": 8,
+        "defer": 0,
+        "episodes": 8,
+        "failures": 0,
+        "protocol_invalid": 0,
+        "red": 4
+      },
+      "P": {
+        "blue": 0,
+        "correct": 4,
+        "defer": 0,
+        "episodes": 8,
+        "failures": 0,
+        "protocol_invalid": 0,
+        "red": 8
+      }
+    },
+    "RB": {
+      "F": {
+        "blue": 4,
+        "correct": 8,
+        "defer": 0,
+        "episodes": 8,
+        "failures": 0,
+        "protocol_invalid": 0,
+        "red": 4
+      },
+      "P": {
+        "blue": 0,
+        "correct": 4,
+        "defer": 0,
+        "episodes": 8,
+        "failures": 0,
+        "protocol_invalid": 0,
+        "red": 8
+      }
+    }
+  },
+  "episodes": [
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "F",
+      "correct": true,
+      "episode_id": "p1-rb-s01-f",
+      "failure_class": null,
+      "hidden_state": "RED",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_DELIVERED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "schema_order": "RB",
+      "slot": 1,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "P",
+      "correct": true,
+      "episode_id": "p1-rb-s01-p",
+      "failure_class": null,
+      "hidden_state": "RED",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_WITHHELD",
+          "payload": {
+            "feedback_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "schema_order": "RB",
+      "slot": 1,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_BLUE",
+      "condition": "F",
+      "correct": true,
+      "episode_id": "p1-rb-s02-f",
+      "failure_class": null,
+      "hidden_state": "BLUE",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_DELIVERED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_BLUE",
+            "reason": null,
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_BLUE",
+      "schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "schema_order": "RB",
+      "slot": 2,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "P",
+      "correct": false,
+      "episode_id": "p1-rb-s02-p",
+      "failure_class": null,
+      "hidden_state": "BLUE",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_WITHHELD",
+          "payload": {
+            "feedback_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "schema_order": "RB",
+      "slot": 2,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_BLUE",
+      "condition": "F",
+      "correct": true,
+      "episode_id": "p1-rb-s03-f",
+      "failure_class": null,
+      "hidden_state": "BLUE",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_DELIVERED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_BLUE",
+            "reason": null,
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_BLUE",
+      "schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "schema_order": "RB",
+      "slot": 3,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "P",
+      "correct": false,
+      "episode_id": "p1-rb-s03-p",
+      "failure_class": null,
+      "hidden_state": "BLUE",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_WITHHELD",
+          "payload": {
+            "feedback_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "schema_order": "RB",
+      "slot": 3,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "F",
+      "correct": true,
+      "episode_id": "p1-rb-s04-f",
+      "failure_class": null,
+      "hidden_state": "RED",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_DELIVERED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "schema_order": "RB",
+      "slot": 4,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "P",
+      "correct": true,
+      "episode_id": "p1-rb-s04-p",
+      "failure_class": null,
+      "hidden_state": "RED",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_WITHHELD",
+          "payload": {
+            "feedback_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "schema_order": "RB",
+      "slot": 4,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_BLUE",
+      "condition": "F",
+      "correct": true,
+      "episode_id": "p1-rb-s05-f",
+      "failure_class": null,
+      "hidden_state": "BLUE",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_DELIVERED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_BLUE",
+            "reason": null,
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_BLUE",
+      "schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "schema_order": "RB",
+      "slot": 5,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "P",
+      "correct": false,
+      "episode_id": "p1-rb-s05-p",
+      "failure_class": null,
+      "hidden_state": "BLUE",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_WITHHELD",
+          "payload": {
+            "feedback_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "schema_order": "RB",
+      "slot": 5,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "F",
+      "correct": true,
+      "episode_id": "p1-rb-s06-f",
+      "failure_class": null,
+      "hidden_state": "RED",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_DELIVERED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "schema_order": "RB",
+      "slot": 6,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "P",
+      "correct": true,
+      "episode_id": "p1-rb-s06-p",
+      "failure_class": null,
+      "hidden_state": "RED",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_WITHHELD",
+          "payload": {
+            "feedback_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "schema_order": "RB",
+      "slot": 6,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "F",
+      "correct": true,
+      "episode_id": "p1-rb-s07-f",
+      "failure_class": null,
+      "hidden_state": "RED",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_DELIVERED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "schema_order": "RB",
+      "slot": 7,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "P",
+      "correct": true,
+      "episode_id": "p1-rb-s07-p",
+      "failure_class": null,
+      "hidden_state": "RED",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_WITHHELD",
+          "payload": {
+            "feedback_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "schema_order": "RB",
+      "slot": 7,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_BLUE",
+      "condition": "F",
+      "correct": true,
+      "episode_id": "p1-rb-s08-f",
+      "failure_class": null,
+      "hidden_state": "BLUE",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_DELIVERED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_BLUE",
+            "reason": null,
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_BLUE",
+      "schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "schema_order": "RB",
+      "slot": 8,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "P",
+      "correct": false,
+      "episode_id": "p1-rb-s08-p",
+      "failure_class": null,
+      "hidden_state": "BLUE",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_WITHHELD",
+          "payload": {
+            "feedback_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "schema_order": "RB",
+      "slot": 8,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "F",
+      "correct": true,
+      "episode_id": "p1-br-s01-f",
+      "failure_class": null,
+      "hidden_state": "RED",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_DELIVERED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:7d4c70a56d77acd790d4078b65c93ef22f43bdcb3a07cc8551612101319f00d0",
+      "schema_order": "BR",
+      "slot": 1,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "P",
+      "correct": true,
+      "episode_id": "p1-br-s01-p",
+      "failure_class": null,
+      "hidden_state": "RED",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_WITHHELD",
+          "payload": {
+            "feedback_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:7d4c70a56d77acd790d4078b65c93ef22f43bdcb3a07cc8551612101319f00d0",
+      "schema_order": "BR",
+      "slot": 1,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_BLUE",
+      "condition": "F",
+      "correct": true,
+      "episode_id": "p1-br-s02-f",
+      "failure_class": null,
+      "hidden_state": "BLUE",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_DELIVERED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_BLUE",
+            "reason": null,
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_BLUE",
+      "schema_hash": "sha256:7d4c70a56d77acd790d4078b65c93ef22f43bdcb3a07cc8551612101319f00d0",
+      "schema_order": "BR",
+      "slot": 2,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "P",
+      "correct": false,
+      "episode_id": "p1-br-s02-p",
+      "failure_class": null,
+      "hidden_state": "BLUE",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_WITHHELD",
+          "payload": {
+            "feedback_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:7d4c70a56d77acd790d4078b65c93ef22f43bdcb3a07cc8551612101319f00d0",
+      "schema_order": "BR",
+      "slot": 2,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_BLUE",
+      "condition": "F",
+      "correct": true,
+      "episode_id": "p1-br-s03-f",
+      "failure_class": null,
+      "hidden_state": "BLUE",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_DELIVERED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_BLUE",
+            "reason": null,
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_BLUE",
+      "schema_hash": "sha256:7d4c70a56d77acd790d4078b65c93ef22f43bdcb3a07cc8551612101319f00d0",
+      "schema_order": "BR",
+      "slot": 3,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "P",
+      "correct": false,
+      "episode_id": "p1-br-s03-p",
+      "failure_class": null,
+      "hidden_state": "BLUE",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_WITHHELD",
+          "payload": {
+            "feedback_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:7d4c70a56d77acd790d4078b65c93ef22f43bdcb3a07cc8551612101319f00d0",
+      "schema_order": "BR",
+      "slot": 3,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "F",
+      "correct": true,
+      "episode_id": "p1-br-s04-f",
+      "failure_class": null,
+      "hidden_state": "RED",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_DELIVERED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:7d4c70a56d77acd790d4078b65c93ef22f43bdcb3a07cc8551612101319f00d0",
+      "schema_order": "BR",
+      "slot": 4,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "P",
+      "correct": true,
+      "episode_id": "p1-br-s04-p",
+      "failure_class": null,
+      "hidden_state": "RED",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_WITHHELD",
+          "payload": {
+            "feedback_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:7d4c70a56d77acd790d4078b65c93ef22f43bdcb3a07cc8551612101319f00d0",
+      "schema_order": "BR",
+      "slot": 4,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_BLUE",
+      "condition": "F",
+      "correct": true,
+      "episode_id": "p1-br-s05-f",
+      "failure_class": null,
+      "hidden_state": "BLUE",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_DELIVERED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_BLUE",
+            "reason": null,
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_BLUE",
+      "schema_hash": "sha256:7d4c70a56d77acd790d4078b65c93ef22f43bdcb3a07cc8551612101319f00d0",
+      "schema_order": "BR",
+      "slot": 5,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "P",
+      "correct": false,
+      "episode_id": "p1-br-s05-p",
+      "failure_class": null,
+      "hidden_state": "BLUE",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_WITHHELD",
+          "payload": {
+            "feedback_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:7d4c70a56d77acd790d4078b65c93ef22f43bdcb3a07cc8551612101319f00d0",
+      "schema_order": "BR",
+      "slot": 5,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "F",
+      "correct": true,
+      "episode_id": "p1-br-s06-f",
+      "failure_class": null,
+      "hidden_state": "RED",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_DELIVERED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:7d4c70a56d77acd790d4078b65c93ef22f43bdcb3a07cc8551612101319f00d0",
+      "schema_order": "BR",
+      "slot": 6,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "P",
+      "correct": true,
+      "episode_id": "p1-br-s06-p",
+      "failure_class": null,
+      "hidden_state": "RED",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_WITHHELD",
+          "payload": {
+            "feedback_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:7d4c70a56d77acd790d4078b65c93ef22f43bdcb3a07cc8551612101319f00d0",
+      "schema_order": "BR",
+      "slot": 6,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "F",
+      "correct": true,
+      "episode_id": "p1-br-s07-f",
+      "failure_class": null,
+      "hidden_state": "RED",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_DELIVERED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:7d4c70a56d77acd790d4078b65c93ef22f43bdcb3a07cc8551612101319f00d0",
+      "schema_order": "BR",
+      "slot": 7,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "P",
+      "correct": true,
+      "episode_id": "p1-br-s07-p",
+      "failure_class": null,
+      "hidden_state": "RED",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_WITHHELD",
+          "payload": {
+            "feedback_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+          "payload": {
+            "feedback": "RED"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:7d4c70a56d77acd790d4078b65c93ef22f43bdcb3a07cc8551612101319f00d0",
+      "schema_order": "BR",
+      "slot": 7,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_BLUE",
+      "condition": "F",
+      "correct": true,
+      "episode_id": "p1-br-s08-f",
+      "failure_class": null,
+      "hidden_state": "BLUE",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_DELIVERED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_BLUE",
+            "reason": null,
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_BLUE",
+      "schema_hash": "sha256:7d4c70a56d77acd790d4078b65c93ef22f43bdcb3a07cc8551612101319f00d0",
+      "schema_order": "BR",
+      "slot": 8,
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "P",
+      "correct": false,
+      "episode_id": "p1-br-s08-p",
+      "failure_class": null,
+      "hidden_state": "BLUE",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "hidden_color": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "FEEDBACK_PRODUCED",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "FEEDBACK_WITHHELD",
+          "payload": {
+            "feedback_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+          "payload": {
+            "feedback": "BLUE"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "schema_hash": "sha256:7d4c70a56d77acd790d4078b65c93ef22f43bdcb3a07cc8551612101319f00d0",
+      "schema_order": "BR",
+      "slot": 8,
+      "valid": true
+    }
+  ],
+  "model_identifier": "hermes-3-llama-3.2-3b",
+  "pressure": "P1",
+  "protocol_version": "behavioral_coupling_characterization_v0",
+  "schedule_commitment": "sha256:6c442c4d81ed10024a1115b1ab9a8119d9690aa1683ec6de81011d460395b98f",
+  "scientific_adjudication": "NOT_PERFORMED",
+  "scoring_rule": "correct iff the accepted action matches the authoritative hidden color",
+  "validity": {
+    "calls_retained": 32,
+    "episodes_retained": 32,
+    "invalidity_wounds": [],
+    "status": "VALID",
+    "wrong_actions_are_behavior_not_invalidity": true
+  }
+}

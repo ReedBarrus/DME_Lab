@@ -1,0 +1,1037 @@
+{
+  "P3_status": "BLOCKED_AT_QUALIFICATION_NOT_EXECUTED",
+  "adapter_realization": "CONSTRAINED_TYPED_ACTION",
+  "adapter_repository_commit": "d60ce2044fb2215e58eec74de8e311ba42765bc0",
+  "artifact": "behavioral_coupling_p4_calls_v0",
+  "artifact_class": "EMPIRICAL_MODEL_CALL_EVIDENCE",
+  "battery_protocol_sha256": "sha256:fc4c1d8a32f1dd9c844bcaa12b4edb3057ae72d716be517a38c9d15ab5524b68",
+  "calls": [
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p4-s01-associated",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-kl7gloh3yqsc6a787cd78\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789304917,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 110,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 118,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"CONFLICTING_EVIDENCE_DELIVERED\\\",\\\"payload\\\":{\\\"evidence\\\":[{\\\"role\\\":\\\"CURRENT\\\",\\\"value\\\":\\\"RED\\\"},{\\\"role\\\":\\\"FOREIGN\\\",\\\"value\\\":\\\"BLUE\\\"}]}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"CONFLICTING_EVIDENCE_DELIVERED\",\"payload\":{\"evidence\":[{\"role\":\"CURRENT\",\"value\":\"RED\"},{\"role\":\"FOREIGN\",\"value\":\"BLUE\"}]}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p4-s01-unassociated",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-qn99va918kabtp67ftl84\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789304917,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 101,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 109,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"CONFLICTING_EVIDENCE_DELIVERED\\\",\\\"payload\\\":{\\\"evidence\\\":[{\\\"value\\\":\\\"RED\\\"},{\\\"value\\\":\\\"BLUE\\\"}]}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"CONFLICTING_EVIDENCE_DELIVERED\",\"payload\":{\"evidence\":[{\"value\":\"RED\"},{\"value\":\"BLUE\"}]}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p4-s02-associated",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-at47b8xy8cniqzhywfnii\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789304917,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 110,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 118,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"CONFLICTING_EVIDENCE_DELIVERED\\\",\\\"payload\\\":{\\\"evidence\\\":[{\\\"role\\\":\\\"FOREIGN\\\",\\\"value\\\":\\\"RED\\\"},{\\\"role\\\":\\\"CURRENT\\\",\\\"value\\\":\\\"BLUE\\\"}]}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"CONFLICTING_EVIDENCE_DELIVERED\",\"payload\":{\"evidence\":[{\"role\":\"FOREIGN\",\"value\":\"RED\"},{\"role\":\"CURRENT\",\"value\":\"BLUE\"}]}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p4-s02-unassociated",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-qrekbuw7wxcyhyr6dr10sh\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789304917,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 101,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 109,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"CONFLICTING_EVIDENCE_DELIVERED\\\",\\\"payload\\\":{\\\"evidence\\\":[{\\\"value\\\":\\\"RED\\\"},{\\\"value\\\":\\\"BLUE\\\"}]}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"CONFLICTING_EVIDENCE_DELIVERED\",\"payload\":{\"evidence\":[{\"value\":\"RED\"},{\"value\":\"BLUE\"}]}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p4-s03-associated",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-gf9nhf58z9v73cgawzavck\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789304918,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 110,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 118,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"CONFLICTING_EVIDENCE_DELIVERED\\\",\\\"payload\\\":{\\\"evidence\\\":[{\\\"role\\\":\\\"CURRENT\\\",\\\"value\\\":\\\"BLUE\\\"},{\\\"role\\\":\\\"FOREIGN\\\",\\\"value\\\":\\\"RED\\\"}]}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"CONFLICTING_EVIDENCE_DELIVERED\",\"payload\":{\"evidence\":[{\"role\":\"CURRENT\",\"value\":\"BLUE\"},{\"role\":\"FOREIGN\",\"value\":\"RED\"}]}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p4-s03-unassociated",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-ib87kdfye6afy01l1vmsxf\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789304918,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 101,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 109,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"CONFLICTING_EVIDENCE_DELIVERED\\\",\\\"payload\\\":{\\\"evidence\\\":[{\\\"value\\\":\\\"BLUE\\\"},{\\\"value\\\":\\\"RED\\\"}]}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"CONFLICTING_EVIDENCE_DELIVERED\",\"payload\":{\"evidence\":[{\"value\":\"BLUE\"},{\"value\":\"RED\"}]}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p4-s04-associated",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-f11os7iag3qmhye890bkh\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789304918,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 110,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 118,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"CONFLICTING_EVIDENCE_DELIVERED\\\",\\\"payload\\\":{\\\"evidence\\\":[{\\\"role\\\":\\\"FOREIGN\\\",\\\"value\\\":\\\"BLUE\\\"},{\\\"role\\\":\\\"CURRENT\\\",\\\"value\\\":\\\"RED\\\"}]}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"CONFLICTING_EVIDENCE_DELIVERED\",\"payload\":{\"evidence\":[{\"role\":\"FOREIGN\",\"value\":\"BLUE\"},{\"role\":\"CURRENT\",\"value\":\"RED\"}]}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p4-s04-unassociated",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-jlp1t3htedowls5pqbhkqo\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789304918,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 101,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 109,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"CONFLICTING_EVIDENCE_DELIVERED\\\",\\\"payload\\\":{\\\"evidence\\\":[{\\\"value\\\":\\\"BLUE\\\"},{\\\"value\\\":\\\"RED\\\"}]}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"CONFLICTING_EVIDENCE_DELIVERED\",\"payload\":{\"evidence\":[{\"value\":\"BLUE\"},{\"value\":\"RED\"}]}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p4-s05-associated",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-cc6ab45fsfio4f9f6ky8q\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789304918,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 110,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 118,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"CONFLICTING_EVIDENCE_DELIVERED\\\",\\\"payload\\\":{\\\"evidence\\\":[{\\\"role\\\":\\\"FOREIGN\\\",\\\"value\\\":\\\"RED\\\"},{\\\"role\\\":\\\"CURRENT\\\",\\\"value\\\":\\\"BLUE\\\"}]}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"CONFLICTING_EVIDENCE_DELIVERED\",\"payload\":{\"evidence\":[{\"role\":\"FOREIGN\",\"value\":\"RED\"},{\"role\":\"CURRENT\",\"value\":\"BLUE\"}]}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p4-s05-unassociated",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-nvotweeuiyjf488sptaehh\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789304918,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 101,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 109,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"CONFLICTING_EVIDENCE_DELIVERED\\\",\\\"payload\\\":{\\\"evidence\\\":[{\\\"value\\\":\\\"RED\\\"},{\\\"value\\\":\\\"BLUE\\\"}]}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"CONFLICTING_EVIDENCE_DELIVERED\",\"payload\":{\"evidence\":[{\"value\":\"RED\"},{\"value\":\"BLUE\"}]}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p4-s06-associated",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-pk154oqr3fixis50w4soz\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789304919,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 110,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 118,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"CONFLICTING_EVIDENCE_DELIVERED\\\",\\\"payload\\\":{\\\"evidence\\\":[{\\\"role\\\":\\\"CURRENT\\\",\\\"value\\\":\\\"RED\\\"},{\\\"role\\\":\\\"FOREIGN\\\",\\\"value\\\":\\\"BLUE\\\"}]}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"CONFLICTING_EVIDENCE_DELIVERED\",\"payload\":{\"evidence\":[{\"role\":\"CURRENT\",\"value\":\"RED\"},{\"role\":\"FOREIGN\",\"value\":\"BLUE\"}]}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p4-s06-unassociated",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-fopbomfi1tmzcuu2dvds1l\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789304919,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 101,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 109,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"CONFLICTING_EVIDENCE_DELIVERED\\\",\\\"payload\\\":{\\\"evidence\\\":[{\\\"value\\\":\\\"RED\\\"},{\\\"value\\\":\\\"BLUE\\\"}]}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"CONFLICTING_EVIDENCE_DELIVERED\",\"payload\":{\"evidence\":[{\"value\":\"RED\"},{\"value\":\"BLUE\"}]}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p4-s07-associated",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-k6ro5r2g80cscuxkekaq2n\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789304919,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 110,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 118,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"CONFLICTING_EVIDENCE_DELIVERED\\\",\\\"payload\\\":{\\\"evidence\\\":[{\\\"role\\\":\\\"FOREIGN\\\",\\\"value\\\":\\\"BLUE\\\"},{\\\"role\\\":\\\"CURRENT\\\",\\\"value\\\":\\\"RED\\\"}]}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"CONFLICTING_EVIDENCE_DELIVERED\",\"payload\":{\"evidence\":[{\"role\":\"FOREIGN\",\"value\":\"BLUE\"},{\"role\":\"CURRENT\",\"value\":\"RED\"}]}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p4-s07-unassociated",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-zzmezrp56rk1i9ukwt773c\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789304919,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 101,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 109,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"CONFLICTING_EVIDENCE_DELIVERED\\\",\\\"payload\\\":{\\\"evidence\\\":[{\\\"value\\\":\\\"BLUE\\\"},{\\\"value\\\":\\\"RED\\\"}]}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"CONFLICTING_EVIDENCE_DELIVERED\",\"payload\":{\"evidence\":[{\"value\":\"BLUE\"},{\"value\":\"RED\"}]}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p4-s08-associated",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-9gbbe0zygggbbxkezuvtl\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789304919,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 110,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 118,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"CONFLICTING_EVIDENCE_DELIVERED\\\",\\\"payload\\\":{\\\"evidence\\\":[{\\\"role\\\":\\\"CURRENT\\\",\\\"value\\\":\\\"BLUE\\\"},{\\\"role\\\":\\\"FOREIGN\\\",\\\"value\\\":\\\"RED\\\"}]}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"CONFLICTING_EVIDENCE_DELIVERED\",\"payload\":{\"evidence\":[{\"role\":\"CURRENT\",\"value\":\"BLUE\"},{\"role\":\"FOREIGN\",\"value\":\"RED\"}]}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p4-s08-unassociated",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-ps7yph3fhncqgo9g7dpx1r\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789304919,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 101,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 109,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"CONFLICTING_EVIDENCE_DELIVERED\\\",\\\"payload\\\":{\\\"evidence\\\":[{\\\"value\\\":\\\"BLUE\\\"},{\\\"value\\\":\\\"RED\\\"}]}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"CONFLICTING_EVIDENCE_DELIVERED\",\"payload\":{\"evidence\":[{\"value\":\"BLUE\"},{\"value\":\"RED\"}]}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    }
+  ],
+  "continuation_authorization": "docs/methods/Consequence_Surface/Behavioral_Coupling_Characterization_Continuation_v0.md",
+  "continuation_execution_commit": "95aed4c386efd40971300115b8ac9ef10942c24d",
+  "descriptive_summary": {
+    "ASSOCIATED": {
+      "blue": 0,
+      "correct": 4,
+      "current_first": {
+        "correct": 2,
+        "episodes": 4
+      },
+      "current_second": {
+        "correct": 2,
+        "episodes": 4
+      },
+      "defer": 0,
+      "episodes": 8,
+      "failures": 0,
+      "protocol_invalid": 0,
+      "red": 8
+    },
+    "UNASSOCIATED": {
+      "blue": 0,
+      "correct": 4,
+      "current_first": {
+        "correct": 2,
+        "episodes": 4
+      },
+      "current_second": {
+        "correct": 2,
+        "episodes": 4
+      },
+      "defer": 0,
+      "episodes": 8,
+      "failures": 0,
+      "protocol_invalid": 0,
+      "red": 8
+    }
+  },
+  "model_identifier": "hermes-3-llama-3.2-3b",
+  "pressure": "P4",
+  "protocol_version": "behavioral_coupling_characterization_v0",
+  "schedule_commitment": "sha256:f4168239b66f9cbed3e6553a71b9a6cdb49cb2cebb76f7e5d4637d8af0bb976c",
+  "scientific_adjudication": "NOT_PERFORMED",
+  "scoring_rule": "correct iff the accepted action matches CURRENT color",
+  "validity": {
+    "calls_retained": 16,
+    "episodes_retained": 16,
+    "invalidity_wounds": [],
+    "status": "VALID",
+    "wrong_actions_are_behavior_not_invalidity": true
+  }
+}
