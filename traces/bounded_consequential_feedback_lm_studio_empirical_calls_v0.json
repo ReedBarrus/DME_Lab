@@ -1,0 +1,1055 @@
+{
+  "artifact": "bounded_consequential_feedback_lm_studio_empirical_calls_v0",
+  "artifact_class": "EMPIRICAL_MODEL_CALL_EVIDENCE",
+  "calls": [
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "llm-s01-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-ykfckfk62wex4a1x3seyd\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789302484,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 86,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 95,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"FEEDBACK_DELIVERED\\\",\\\"payload\\\":{\\\"feedback\\\":\\\"RED\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"FEEDBACK_DELIVERED\",\"payload\":{\"feedback\":\"RED\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "llm-s01-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-1viymbut3cgmqo51252zrn\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789302484,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 69,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 78,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "llm-s02-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_BLUE",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"SUBMIT_BLUE\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-v89vh1ljqbarulh9oow13k\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789302484,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_BLUE\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 86,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 94,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_BLUE",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"FEEDBACK_DELIVERED\\\",\\\"payload\\\":{\\\"feedback\\\":\\\"BLUE\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"FEEDBACK_DELIVERED\",\"payload\":{\"feedback\":\"BLUE\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_BLUE"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "llm-s02-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-gz3d4m4qurujcmibip5bgl\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789302485,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 69,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 78,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "llm-s03-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_BLUE",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"SUBMIT_BLUE\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-d4l4bt7n1zvvypx305xih\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789302485,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_BLUE\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 86,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 94,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_BLUE",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"FEEDBACK_DELIVERED\\\",\\\"payload\\\":{\\\"feedback\\\":\\\"BLUE\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"FEEDBACK_DELIVERED\",\"payload\":{\"feedback\":\"BLUE\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_BLUE"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "llm-s03-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-r99t1xf0k7kusseoviw2\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789302485,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 69,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 78,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "llm-s04-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-atvuboir49ont2vi73nnbs\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789302485,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 86,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 95,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"FEEDBACK_DELIVERED\\\",\\\"payload\\\":{\\\"feedback\\\":\\\"RED\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"FEEDBACK_DELIVERED\",\"payload\":{\"feedback\":\"RED\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "llm-s04-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-mg5hlgpl6xszhhhje3q9p\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789302485,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 69,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 78,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "llm-s05-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_BLUE",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"SUBMIT_BLUE\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-j26r6qrmnymki8uhrvh3a\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789302485,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_BLUE\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 86,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 94,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_BLUE",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"FEEDBACK_DELIVERED\\\",\\\"payload\\\":{\\\"feedback\\\":\\\"BLUE\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"FEEDBACK_DELIVERED\",\"payload\":{\"feedback\":\"BLUE\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_BLUE"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "llm-s05-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-m53pwz97tq8pqkqrz4n0f\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789302486,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 69,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 78,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "llm-s06-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-dhpsoe2bkxssnyoh6yhq9g\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789302486,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 86,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 95,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"FEEDBACK_DELIVERED\\\",\\\"payload\\\":{\\\"feedback\\\":\\\"RED\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"FEEDBACK_DELIVERED\",\"payload\":{\"feedback\":\"RED\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "llm-s06-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-geayfuh3mggwgezdkp4rz9\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789302486,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 69,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 78,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "llm-s07-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-yqvh48fe8f3b0vzis4e8o\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789302486,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 86,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 95,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"FEEDBACK_DELIVERED\\\",\\\"payload\\\":{\\\"feedback\\\":\\\"RED\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"FEEDBACK_DELIVERED\",\"payload\":{\"feedback\":\"RED\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "llm-s07-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-tkhx8vfhgzfpj0ug7tlaid\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789302486,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 69,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 78,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "llm-s08-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_BLUE",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"SUBMIT_BLUE\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-7yaod1h7y1v1nmz2o6t8m\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789302487,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_BLUE\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 86,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 94,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_BLUE",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"FEEDBACK_DELIVERED\\\",\\\"payload\\\":{\\\"feedback\\\":\\\"BLUE\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"FEEDBACK_DELIVERED\",\"payload\":{\"feedback\":\"BLUE\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_BLUE"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "llm-s08-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-5fpf7z4bavh36j4lk1vby1\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789302487,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 69,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 78,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    }
+  ],
+  "descriptive_summary": {
+    "F": {
+      "actuation_failures": 0,
+      "correct": 8,
+      "episodes": 8,
+      "submit_blue": 4,
+      "submit_red": 4,
+      "valid_typed_actions": 8
+    },
+    "P": {
+      "actuation_failures": 0,
+      "correct": 4,
+      "episodes": 8,
+      "submit_blue": 0,
+      "submit_red": 8,
+      "valid_typed_actions": 8
+    },
+    "protocol_invalid_episodes": 0
+  },
+  "scientific_adjudication": "NOT_PERFORMED",
+  "specimen_freeze": {
+    "action_schema": {
+      "json_schema": {
+        "name": "bounded_terminal_action",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "action": {
+              "enum": [
+                "SUBMIT_RED",
+                "SUBMIT_BLUE"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "action"
+          ],
+          "type": "object"
+        },
+        "strict": true
+      },
+      "type": "json_schema"
+    },
+    "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+    "action_vocabulary": [
+      "INSPECT",
+      "SUBMIT_RED",
+      "SUBMIT_BLUE"
+    ],
+    "adapter_realization": "CONSTRAINED_TYPED_ACTION",
+    "adapter_repository_commit": "a9ca001d11a9fc73de08c16e4e1cdaccbac6e3e3",
+    "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+    "exact_task": "Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.",
+    "isolation_confirmations": {
+      "condition_identifier_supplied": false,
+      "filesystem_access_supplied": false,
+      "mcp_supplied": false,
+      "prior_episode_conversation_state_supplied": false,
+      "repository_context_supplied": false,
+      "schedule_metadata_supplied": false,
+      "semantic_output_interpreter_used": false,
+      "tools_supplied": false,
+      "withheld_P_feedback_supplied": false
+    },
+    "model_identifier": "hermes-3-llama-3.2-3b",
+    "provider_exposed_sampling_settings": {
+      "max_tokens": 16,
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "schedule_commitment": "sha256:7fec657bbd871259f146ec5cd45da03e30014c6a25ba23d53cb0e6ce62057035"
+  }
+}
