@@ -1,0 +1,1425 @@
+{
+  "action_schema_commitments": {
+    "BR": "sha256:7d4c70a56d77acd790d4078b65c93ef22f43bdcb3a07cc8551612101319f00d0",
+    "RB": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+    "RBD": "sha256:45971eaa1efa23c603c93769d27297b179265bbc1be757c7a696f3ff593643dd"
+  },
+  "adapter_realization": "CONSTRAINED_TYPED_ACTION",
+  "adapter_repository_commit": "d60ce2044fb2215e58eec74de8e311ba42765bc0",
+  "artifact": "behavioral_coupling_characterization_freeze_v0",
+  "battery_protocol": {
+    "baseline": {
+      "authority_commit": "a6a8bd5b7c59ed22d3504b3538ffc5e634684483",
+      "call_evidence": "traces/bounded_consequential_feedback_lm_studio_empirical_calls_v0.json",
+      "observed_counts": {
+        "F": {
+          "blue": 4,
+          "correct": 8,
+          "episodes": 8,
+          "red": 4
+        },
+        "P": {
+          "blue": 0,
+          "correct": 4,
+          "episodes": 8,
+          "red": 8
+        },
+        "actuation_failures": 0,
+        "protocol_invalid": 0
+      },
+      "world_trace": "traces/bounded_consequential_feedback_lm_studio_empirical_world_v0.json"
+    },
+    "common_invalidity": [
+      "undeclared hidden information enters policy visibility",
+      "observation condition delivered incorrectly",
+      "schema or action semantics mutate outside a predeclared intervention",
+      "schedule mutates after execution begins",
+      "prior episode information reaches the model",
+      "malformed output is repaired",
+      "semantic translator is introduced",
+      "world scoring derives from model narration",
+      "unsuccessful episode is omitted",
+      "retry replaces an empirical episode"
+    ],
+    "common_specimen": {
+      "adapter_realization": "CONSTRAINED_TYPED_ACTION",
+      "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+      "episode_requests_are_stateless": true,
+      "filesystem_exposure_supplied": false,
+      "mcp_supplied": false,
+      "model": "hermes-3-llama-3.2-3b",
+      "prior_episode_outcomes_supplied": false,
+      "repository_context_supplied": false,
+      "sampling": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "schedule_metadata_supplied": false,
+      "tools_supplied": false
+    },
+    "pressure_order": [
+      "P1",
+      "P2",
+      "P3",
+      "P4"
+    ],
+    "pressures": {
+      "P1": {
+        "cannot_earn": "a mechanism for any observed action preference",
+        "fixed_visible_action_vocabulary": [
+          "SUBMIT_RED",
+          "SUBMIT_BLUE"
+        ],
+        "intervention": "RB versus BR enum order only",
+        "may_earn": "literal order-conditioned action and outcome distributions",
+        "question": "whether action-schema enum order alters action selection",
+        "schedule": [
+          {
+            "condition": "F",
+            "episode_id": "p1-rb-s01-f",
+            "hidden_color": "RED",
+            "schema_order": "RB",
+            "slot": 1
+          },
+          {
+            "condition": "P",
+            "episode_id": "p1-rb-s01-p",
+            "hidden_color": "RED",
+            "schema_order": "RB",
+            "slot": 1
+          },
+          {
+            "condition": "F",
+            "episode_id": "p1-rb-s02-f",
+            "hidden_color": "BLUE",
+            "schema_order": "RB",
+            "slot": 2
+          },
+          {
+            "condition": "P",
+            "episode_id": "p1-rb-s02-p",
+            "hidden_color": "BLUE",
+            "schema_order": "RB",
+            "slot": 2
+          },
+          {
+            "condition": "F",
+            "episode_id": "p1-rb-s03-f",
+            "hidden_color": "BLUE",
+            "schema_order": "RB",
+            "slot": 3
+          },
+          {
+            "condition": "P",
+            "episode_id": "p1-rb-s03-p",
+            "hidden_color": "BLUE",
+            "schema_order": "RB",
+            "slot": 3
+          },
+          {
+            "condition": "F",
+            "episode_id": "p1-rb-s04-f",
+            "hidden_color": "RED",
+            "schema_order": "RB",
+            "slot": 4
+          },
+          {
+            "condition": "P",
+            "episode_id": "p1-rb-s04-p",
+            "hidden_color": "RED",
+            "schema_order": "RB",
+            "slot": 4
+          },
+          {
+            "condition": "F",
+            "episode_id": "p1-rb-s05-f",
+            "hidden_color": "BLUE",
+            "schema_order": "RB",
+            "slot": 5
+          },
+          {
+            "condition": "P",
+            "episode_id": "p1-rb-s05-p",
+            "hidden_color": "BLUE",
+            "schema_order": "RB",
+            "slot": 5
+          },
+          {
+            "condition": "F",
+            "episode_id": "p1-rb-s06-f",
+            "hidden_color": "RED",
+            "schema_order": "RB",
+            "slot": 6
+          },
+          {
+            "condition": "P",
+            "episode_id": "p1-rb-s06-p",
+            "hidden_color": "RED",
+            "schema_order": "RB",
+            "slot": 6
+          },
+          {
+            "condition": "F",
+            "episode_id": "p1-rb-s07-f",
+            "hidden_color": "RED",
+            "schema_order": "RB",
+            "slot": 7
+          },
+          {
+            "condition": "P",
+            "episode_id": "p1-rb-s07-p",
+            "hidden_color": "RED",
+            "schema_order": "RB",
+            "slot": 7
+          },
+          {
+            "condition": "F",
+            "episode_id": "p1-rb-s08-f",
+            "hidden_color": "BLUE",
+            "schema_order": "RB",
+            "slot": 8
+          },
+          {
+            "condition": "P",
+            "episode_id": "p1-rb-s08-p",
+            "hidden_color": "BLUE",
+            "schema_order": "RB",
+            "slot": 8
+          },
+          {
+            "condition": "F",
+            "episode_id": "p1-br-s01-f",
+            "hidden_color": "RED",
+            "schema_order": "BR",
+            "slot": 1
+          },
+          {
+            "condition": "P",
+            "episode_id": "p1-br-s01-p",
+            "hidden_color": "RED",
+            "schema_order": "BR",
+            "slot": 1
+          },
+          {
+            "condition": "F",
+            "episode_id": "p1-br-s02-f",
+            "hidden_color": "BLUE",
+            "schema_order": "BR",
+            "slot": 2
+          },
+          {
+            "condition": "P",
+            "episode_id": "p1-br-s02-p",
+            "hidden_color": "BLUE",
+            "schema_order": "BR",
+            "slot": 2
+          },
+          {
+            "condition": "F",
+            "episode_id": "p1-br-s03-f",
+            "hidden_color": "BLUE",
+            "schema_order": "BR",
+            "slot": 3
+          },
+          {
+            "condition": "P",
+            "episode_id": "p1-br-s03-p",
+            "hidden_color": "BLUE",
+            "schema_order": "BR",
+            "slot": 3
+          },
+          {
+            "condition": "F",
+            "episode_id": "p1-br-s04-f",
+            "hidden_color": "RED",
+            "schema_order": "BR",
+            "slot": 4
+          },
+          {
+            "condition": "P",
+            "episode_id": "p1-br-s04-p",
+            "hidden_color": "RED",
+            "schema_order": "BR",
+            "slot": 4
+          },
+          {
+            "condition": "F",
+            "episode_id": "p1-br-s05-f",
+            "hidden_color": "BLUE",
+            "schema_order": "BR",
+            "slot": 5
+          },
+          {
+            "condition": "P",
+            "episode_id": "p1-br-s05-p",
+            "hidden_color": "BLUE",
+            "schema_order": "BR",
+            "slot": 5
+          },
+          {
+            "condition": "F",
+            "episode_id": "p1-br-s06-f",
+            "hidden_color": "RED",
+            "schema_order": "BR",
+            "slot": 6
+          },
+          {
+            "condition": "P",
+            "episode_id": "p1-br-s06-p",
+            "hidden_color": "RED",
+            "schema_order": "BR",
+            "slot": 6
+          },
+          {
+            "condition": "F",
+            "episode_id": "p1-br-s07-f",
+            "hidden_color": "RED",
+            "schema_order": "BR",
+            "slot": 7
+          },
+          {
+            "condition": "P",
+            "episode_id": "p1-br-s07-p",
+            "hidden_color": "RED",
+            "schema_order": "BR",
+            "slot": 7
+          },
+          {
+            "condition": "F",
+            "episode_id": "p1-br-s08-f",
+            "hidden_color": "BLUE",
+            "schema_order": "BR",
+            "slot": 8
+          },
+          {
+            "condition": "P",
+            "episode_id": "p1-br-s08-p",
+            "hidden_color": "BLUE",
+            "schema_order": "BR",
+            "slot": 8
+          }
+        ],
+        "schemas": {
+          "BR": {
+            "json_schema": {
+              "name": "bounded_terminal_action",
+              "schema": {
+                "additionalProperties": false,
+                "properties": {
+                  "action": {
+                    "enum": [
+                      "SUBMIT_BLUE",
+                      "SUBMIT_RED"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "action"
+                ],
+                "type": "object"
+              },
+              "strict": true
+            },
+            "type": "json_schema"
+          },
+          "RB": {
+            "json_schema": {
+              "name": "bounded_terminal_action",
+              "schema": {
+                "additionalProperties": false,
+                "properties": {
+                  "action": {
+                    "enum": [
+                      "SUBMIT_RED",
+                      "SUBMIT_BLUE"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "action"
+                ],
+                "type": "object"
+              },
+              "strict": true
+            },
+            "type": "json_schema"
+          }
+        },
+        "scoring": "correct iff the accepted action matches the authoritative hidden color"
+      },
+      "P2": {
+        "cannot_earn": "general semantic reasoning",
+        "intervention": {
+          "M1": {
+            "ALPHA": "RED",
+            "BETA": "BLUE"
+          },
+          "M2": {
+            "ALPHA": "BLUE",
+            "BETA": "RED"
+          }
+        },
+        "may_earn": "mapping-conditioned action and outcome distributions",
+        "question": "whether selection follows a visible mutable symbol-to-color relation",
+        "schedule": [
+          {
+            "condition": "F",
+            "episode_id": "p2-s01-f",
+            "hidden_target_color": "RED",
+            "mapping": "M1",
+            "observation_symbol": "ALPHA",
+            "slot": 1
+          },
+          {
+            "condition": "P",
+            "episode_id": "p2-s01-p",
+            "hidden_target_color": "RED",
+            "mapping": "M1",
+            "observation_symbol": "ALPHA",
+            "slot": 1
+          },
+          {
+            "condition": "F",
+            "episode_id": "p2-s02-f",
+            "hidden_target_color": "BLUE",
+            "mapping": "M2",
+            "observation_symbol": "ALPHA",
+            "slot": 2
+          },
+          {
+            "condition": "P",
+            "episode_id": "p2-s02-p",
+            "hidden_target_color": "BLUE",
+            "mapping": "M2",
+            "observation_symbol": "ALPHA",
+            "slot": 2
+          },
+          {
+            "condition": "F",
+            "episode_id": "p2-s03-f",
+            "hidden_target_color": "BLUE",
+            "mapping": "M1",
+            "observation_symbol": "BETA",
+            "slot": 3
+          },
+          {
+            "condition": "P",
+            "episode_id": "p2-s03-p",
+            "hidden_target_color": "BLUE",
+            "mapping": "M1",
+            "observation_symbol": "BETA",
+            "slot": 3
+          },
+          {
+            "condition": "F",
+            "episode_id": "p2-s04-f",
+            "hidden_target_color": "RED",
+            "mapping": "M2",
+            "observation_symbol": "BETA",
+            "slot": 4
+          },
+          {
+            "condition": "P",
+            "episode_id": "p2-s04-p",
+            "hidden_target_color": "RED",
+            "mapping": "M2",
+            "observation_symbol": "BETA",
+            "slot": 4
+          },
+          {
+            "condition": "F",
+            "episode_id": "p2-s05-f",
+            "hidden_target_color": "RED",
+            "mapping": "M2",
+            "observation_symbol": "BETA",
+            "slot": 5
+          },
+          {
+            "condition": "P",
+            "episode_id": "p2-s05-p",
+            "hidden_target_color": "RED",
+            "mapping": "M2",
+            "observation_symbol": "BETA",
+            "slot": 5
+          },
+          {
+            "condition": "F",
+            "episode_id": "p2-s06-f",
+            "hidden_target_color": "BLUE",
+            "mapping": "M1",
+            "observation_symbol": "BETA",
+            "slot": 6
+          },
+          {
+            "condition": "P",
+            "episode_id": "p2-s06-p",
+            "hidden_target_color": "BLUE",
+            "mapping": "M1",
+            "observation_symbol": "BETA",
+            "slot": 6
+          },
+          {
+            "condition": "F",
+            "episode_id": "p2-s07-f",
+            "hidden_target_color": "BLUE",
+            "mapping": "M2",
+            "observation_symbol": "ALPHA",
+            "slot": 7
+          },
+          {
+            "condition": "P",
+            "episode_id": "p2-s07-p",
+            "hidden_target_color": "BLUE",
+            "mapping": "M2",
+            "observation_symbol": "ALPHA",
+            "slot": 7
+          },
+          {
+            "condition": "F",
+            "episode_id": "p2-s08-f",
+            "hidden_target_color": "RED",
+            "mapping": "M1",
+            "observation_symbol": "ALPHA",
+            "slot": 8
+          },
+          {
+            "condition": "P",
+            "episode_id": "p2-s08-p",
+            "hidden_target_color": "RED",
+            "mapping": "M1",
+            "observation_symbol": "ALPHA",
+            "slot": 8
+          }
+        ],
+        "schema": {
+          "json_schema": {
+            "name": "bounded_terminal_action",
+            "schema": {
+              "additionalProperties": false,
+              "properties": {
+                "action": {
+                  "enum": [
+                    "SUBMIT_RED",
+                    "SUBMIT_BLUE"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "action"
+              ],
+              "type": "object"
+            },
+            "strict": true
+          },
+          "type": "json_schema"
+        },
+        "scoring": "correct iff the accepted action matches the authoritative target color",
+        "tasks": {
+          "M1": "Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.",
+          "M2": "Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. Respond with exactly SUBMIT_RED or SUBMIT_BLUE."
+        }
+      },
+      "P3": {
+        "cannot_earn": "rationality, caution, uncertainty awareness, or agency",
+        "intervention": "add terminal DEFER under one evidence-availability rule",
+        "may_earn": "availability-conditioned commit/defer distributions",
+        "question": "whether legal noncommitment changes behavior when feedback is absent",
+        "schedule": [
+          {
+            "condition": "F",
+            "episode_id": "p3-s01-f",
+            "hidden_color": "RED",
+            "slot": 1
+          },
+          {
+            "condition": "P",
+            "episode_id": "p3-s01-p",
+            "hidden_color": "RED",
+            "slot": 1
+          },
+          {
+            "condition": "F",
+            "episode_id": "p3-s02-f",
+            "hidden_color": "BLUE",
+            "slot": 2
+          },
+          {
+            "condition": "P",
+            "episode_id": "p3-s02-p",
+            "hidden_color": "BLUE",
+            "slot": 2
+          },
+          {
+            "condition": "F",
+            "episode_id": "p3-s03-f",
+            "hidden_color": "BLUE",
+            "slot": 3
+          },
+          {
+            "condition": "P",
+            "episode_id": "p3-s03-p",
+            "hidden_color": "BLUE",
+            "slot": 3
+          },
+          {
+            "condition": "F",
+            "episode_id": "p3-s04-f",
+            "hidden_color": "RED",
+            "slot": 4
+          },
+          {
+            "condition": "P",
+            "episode_id": "p3-s04-p",
+            "hidden_color": "RED",
+            "slot": 4
+          },
+          {
+            "condition": "F",
+            "episode_id": "p3-s05-f",
+            "hidden_color": "BLUE",
+            "slot": 5
+          },
+          {
+            "condition": "P",
+            "episode_id": "p3-s05-p",
+            "hidden_color": "BLUE",
+            "slot": 5
+          },
+          {
+            "condition": "F",
+            "episode_id": "p3-s06-f",
+            "hidden_color": "RED",
+            "slot": 6
+          },
+          {
+            "condition": "P",
+            "episode_id": "p3-s06-p",
+            "hidden_color": "RED",
+            "slot": 6
+          },
+          {
+            "condition": "F",
+            "episode_id": "p3-s07-f",
+            "hidden_color": "RED",
+            "slot": 7
+          },
+          {
+            "condition": "P",
+            "episode_id": "p3-s07-p",
+            "hidden_color": "RED",
+            "slot": 7
+          },
+          {
+            "condition": "F",
+            "episode_id": "p3-s08-f",
+            "hidden_color": "BLUE",
+            "slot": 8
+          },
+          {
+            "condition": "P",
+            "episode_id": "p3-s08-p",
+            "hidden_color": "BLUE",
+            "slot": 8
+          }
+        ],
+        "schema": {
+          "json_schema": {
+            "name": "bounded_terminal_action",
+            "schema": {
+              "additionalProperties": false,
+              "properties": {
+                "action": {
+                  "enum": [
+                    "SUBMIT_RED",
+                    "SUBMIT_BLUE",
+                    "DEFER"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "action"
+              ],
+              "type": "object"
+            },
+            "strict": true
+          },
+          "type": "json_schema"
+        },
+        "scoring": "F correct iff accepted action matches hidden color; P correct iff accepted action is DEFER",
+        "task": "If distinguishing color feedback is present before commitment, submit the matching color. If no distinguishing color feedback is present before commitment, select DEFER. Respond with exactly SUBMIT_RED, SUBMIT_BLUE, or DEFER."
+      },
+      "P4": {
+        "cannot_earn": "general provenance reasoning or irrationality under missing association",
+        "intervention": "retain value order while removing CURRENT/FOREIGN labels",
+        "may_earn": "association-conditioned action and outcome distributions",
+        "question": "whether source-role association changes selection over conflicting values",
+        "schedule": [
+          {
+            "current_color": "RED",
+            "current_position": "FIRST",
+            "episode_id": "p4-s01-associated",
+            "foreign_color": "BLUE",
+            "regime": "ASSOCIATED",
+            "slot": 1
+          },
+          {
+            "current_color": "RED",
+            "current_position": "FIRST",
+            "episode_id": "p4-s01-unassociated",
+            "foreign_color": "BLUE",
+            "regime": "UNASSOCIATED",
+            "slot": 1
+          },
+          {
+            "current_color": "BLUE",
+            "current_position": "SECOND",
+            "episode_id": "p4-s02-associated",
+            "foreign_color": "RED",
+            "regime": "ASSOCIATED",
+            "slot": 2
+          },
+          {
+            "current_color": "BLUE",
+            "current_position": "SECOND",
+            "episode_id": "p4-s02-unassociated",
+            "foreign_color": "RED",
+            "regime": "UNASSOCIATED",
+            "slot": 2
+          },
+          {
+            "current_color": "BLUE",
+            "current_position": "FIRST",
+            "episode_id": "p4-s03-associated",
+            "foreign_color": "RED",
+            "regime": "ASSOCIATED",
+            "slot": 3
+          },
+          {
+            "current_color": "BLUE",
+            "current_position": "FIRST",
+            "episode_id": "p4-s03-unassociated",
+            "foreign_color": "RED",
+            "regime": "UNASSOCIATED",
+            "slot": 3
+          },
+          {
+            "current_color": "RED",
+            "current_position": "SECOND",
+            "episode_id": "p4-s04-associated",
+            "foreign_color": "BLUE",
+            "regime": "ASSOCIATED",
+            "slot": 4
+          },
+          {
+            "current_color": "RED",
+            "current_position": "SECOND",
+            "episode_id": "p4-s04-unassociated",
+            "foreign_color": "BLUE",
+            "regime": "UNASSOCIATED",
+            "slot": 4
+          },
+          {
+            "current_color": "BLUE",
+            "current_position": "SECOND",
+            "episode_id": "p4-s05-associated",
+            "foreign_color": "RED",
+            "regime": "ASSOCIATED",
+            "slot": 5
+          },
+          {
+            "current_color": "BLUE",
+            "current_position": "SECOND",
+            "episode_id": "p4-s05-unassociated",
+            "foreign_color": "RED",
+            "regime": "UNASSOCIATED",
+            "slot": 5
+          },
+          {
+            "current_color": "RED",
+            "current_position": "FIRST",
+            "episode_id": "p4-s06-associated",
+            "foreign_color": "BLUE",
+            "regime": "ASSOCIATED",
+            "slot": 6
+          },
+          {
+            "current_color": "RED",
+            "current_position": "FIRST",
+            "episode_id": "p4-s06-unassociated",
+            "foreign_color": "BLUE",
+            "regime": "UNASSOCIATED",
+            "slot": 6
+          },
+          {
+            "current_color": "RED",
+            "current_position": "SECOND",
+            "episode_id": "p4-s07-associated",
+            "foreign_color": "BLUE",
+            "regime": "ASSOCIATED",
+            "slot": 7
+          },
+          {
+            "current_color": "RED",
+            "current_position": "SECOND",
+            "episode_id": "p4-s07-unassociated",
+            "foreign_color": "BLUE",
+            "regime": "UNASSOCIATED",
+            "slot": 7
+          },
+          {
+            "current_color": "BLUE",
+            "current_position": "FIRST",
+            "episode_id": "p4-s08-associated",
+            "foreign_color": "RED",
+            "regime": "ASSOCIATED",
+            "slot": 8
+          },
+          {
+            "current_color": "BLUE",
+            "current_position": "FIRST",
+            "episode_id": "p4-s08-unassociated",
+            "foreign_color": "RED",
+            "regime": "UNASSOCIATED",
+            "slot": 8
+          }
+        ],
+        "schema": {
+          "json_schema": {
+            "name": "bounded_terminal_action",
+            "schema": {
+              "additionalProperties": false,
+              "properties": {
+                "action": {
+                  "enum": [
+                    "SUBMIT_RED",
+                    "SUBMIT_BLUE"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "action"
+              ],
+              "type": "object"
+            },
+            "strict": true
+          },
+          "type": "json_schema"
+        },
+        "scoring": "correct iff the accepted action matches CURRENT color",
+        "task": "Submit the color value associated with role CURRENT in the delivered evidence. Respond with exactly SUBMIT_RED or SUBMIT_BLUE."
+      }
+    },
+    "protocol_version": "behavioral_coupling_characterization_v0",
+    "scientific_adjudication": "NOT_PERFORMED",
+    "stop_rule": "qualify only new schemas; then execute P1, close traces, P2, close traces, P3, close traces, P4, close traces, and stop; any EXPERIMENT_INVALID stops the remaining battery"
+  },
+  "battery_protocol_sha256": "sha256:fc4c1d8a32f1dd9c844bcaa12b4edb3057ae72d716be517a38c9d15ab5524b68",
+  "empirical_model_calls_made": 0,
+  "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+  "model_identifier": "hermes-3-llama-3.2-3b",
+  "protocol_document": "docs/methods/Consequence_Surface/Behavioral_Coupling_Characterization_v0.md",
+  "provider_exposed_sampling_settings": {
+    "max_tokens": 16,
+    "temperature": 0.0,
+    "top_p": 1.0
+  },
+  "schedule_commitments": {
+    "P1": "sha256:6c442c4d81ed10024a1115b1ab9a8119d9690aa1683ec6de81011d460395b98f",
+    "P2": "sha256:3514df11e5a119ac36b8a787f5abd8a0d03d2ab1d270fab0c0ba29d9bc62fc3f",
+    "P3": "sha256:049938ca737f44f2455c7de3dd89cccb5358104eb1acd50ff6688fe07786cdc5",
+    "P4": "sha256:f4168239b66f9cbed3e6553a71b9a6cdb49cb2cebb76f7e5d4637d8af0bb976c"
+  },
+  "schedules": {
+    "P1": [
+      {
+        "condition": "F",
+        "episode_id": "p1-rb-s01-f",
+        "hidden_color": "RED",
+        "schema_order": "RB",
+        "slot": 1
+      },
+      {
+        "condition": "P",
+        "episode_id": "p1-rb-s01-p",
+        "hidden_color": "RED",
+        "schema_order": "RB",
+        "slot": 1
+      },
+      {
+        "condition": "F",
+        "episode_id": "p1-rb-s02-f",
+        "hidden_color": "BLUE",
+        "schema_order": "RB",
+        "slot": 2
+      },
+      {
+        "condition": "P",
+        "episode_id": "p1-rb-s02-p",
+        "hidden_color": "BLUE",
+        "schema_order": "RB",
+        "slot": 2
+      },
+      {
+        "condition": "F",
+        "episode_id": "p1-rb-s03-f",
+        "hidden_color": "BLUE",
+        "schema_order": "RB",
+        "slot": 3
+      },
+      {
+        "condition": "P",
+        "episode_id": "p1-rb-s03-p",
+        "hidden_color": "BLUE",
+        "schema_order": "RB",
+        "slot": 3
+      },
+      {
+        "condition": "F",
+        "episode_id": "p1-rb-s04-f",
+        "hidden_color": "RED",
+        "schema_order": "RB",
+        "slot": 4
+      },
+      {
+        "condition": "P",
+        "episode_id": "p1-rb-s04-p",
+        "hidden_color": "RED",
+        "schema_order": "RB",
+        "slot": 4
+      },
+      {
+        "condition": "F",
+        "episode_id": "p1-rb-s05-f",
+        "hidden_color": "BLUE",
+        "schema_order": "RB",
+        "slot": 5
+      },
+      {
+        "condition": "P",
+        "episode_id": "p1-rb-s05-p",
+        "hidden_color": "BLUE",
+        "schema_order": "RB",
+        "slot": 5
+      },
+      {
+        "condition": "F",
+        "episode_id": "p1-rb-s06-f",
+        "hidden_color": "RED",
+        "schema_order": "RB",
+        "slot": 6
+      },
+      {
+        "condition": "P",
+        "episode_id": "p1-rb-s06-p",
+        "hidden_color": "RED",
+        "schema_order": "RB",
+        "slot": 6
+      },
+      {
+        "condition": "F",
+        "episode_id": "p1-rb-s07-f",
+        "hidden_color": "RED",
+        "schema_order": "RB",
+        "slot": 7
+      },
+      {
+        "condition": "P",
+        "episode_id": "p1-rb-s07-p",
+        "hidden_color": "RED",
+        "schema_order": "RB",
+        "slot": 7
+      },
+      {
+        "condition": "F",
+        "episode_id": "p1-rb-s08-f",
+        "hidden_color": "BLUE",
+        "schema_order": "RB",
+        "slot": 8
+      },
+      {
+        "condition": "P",
+        "episode_id": "p1-rb-s08-p",
+        "hidden_color": "BLUE",
+        "schema_order": "RB",
+        "slot": 8
+      },
+      {
+        "condition": "F",
+        "episode_id": "p1-br-s01-f",
+        "hidden_color": "RED",
+        "schema_order": "BR",
+        "slot": 1
+      },
+      {
+        "condition": "P",
+        "episode_id": "p1-br-s01-p",
+        "hidden_color": "RED",
+        "schema_order": "BR",
+        "slot": 1
+      },
+      {
+        "condition": "F",
+        "episode_id": "p1-br-s02-f",
+        "hidden_color": "BLUE",
+        "schema_order": "BR",
+        "slot": 2
+      },
+      {
+        "condition": "P",
+        "episode_id": "p1-br-s02-p",
+        "hidden_color": "BLUE",
+        "schema_order": "BR",
+        "slot": 2
+      },
+      {
+        "condition": "F",
+        "episode_id": "p1-br-s03-f",
+        "hidden_color": "BLUE",
+        "schema_order": "BR",
+        "slot": 3
+      },
+      {
+        "condition": "P",
+        "episode_id": "p1-br-s03-p",
+        "hidden_color": "BLUE",
+        "schema_order": "BR",
+        "slot": 3
+      },
+      {
+        "condition": "F",
+        "episode_id": "p1-br-s04-f",
+        "hidden_color": "RED",
+        "schema_order": "BR",
+        "slot": 4
+      },
+      {
+        "condition": "P",
+        "episode_id": "p1-br-s04-p",
+        "hidden_color": "RED",
+        "schema_order": "BR",
+        "slot": 4
+      },
+      {
+        "condition": "F",
+        "episode_id": "p1-br-s05-f",
+        "hidden_color": "BLUE",
+        "schema_order": "BR",
+        "slot": 5
+      },
+      {
+        "condition": "P",
+        "episode_id": "p1-br-s05-p",
+        "hidden_color": "BLUE",
+        "schema_order": "BR",
+        "slot": 5
+      },
+      {
+        "condition": "F",
+        "episode_id": "p1-br-s06-f",
+        "hidden_color": "RED",
+        "schema_order": "BR",
+        "slot": 6
+      },
+      {
+        "condition": "P",
+        "episode_id": "p1-br-s06-p",
+        "hidden_color": "RED",
+        "schema_order": "BR",
+        "slot": 6
+      },
+      {
+        "condition": "F",
+        "episode_id": "p1-br-s07-f",
+        "hidden_color": "RED",
+        "schema_order": "BR",
+        "slot": 7
+      },
+      {
+        "condition": "P",
+        "episode_id": "p1-br-s07-p",
+        "hidden_color": "RED",
+        "schema_order": "BR",
+        "slot": 7
+      },
+      {
+        "condition": "F",
+        "episode_id": "p1-br-s08-f",
+        "hidden_color": "BLUE",
+        "schema_order": "BR",
+        "slot": 8
+      },
+      {
+        "condition": "P",
+        "episode_id": "p1-br-s08-p",
+        "hidden_color": "BLUE",
+        "schema_order": "BR",
+        "slot": 8
+      }
+    ],
+    "P2": [
+      {
+        "condition": "F",
+        "episode_id": "p2-s01-f",
+        "hidden_target_color": "RED",
+        "mapping": "M1",
+        "observation_symbol": "ALPHA",
+        "slot": 1
+      },
+      {
+        "condition": "P",
+        "episode_id": "p2-s01-p",
+        "hidden_target_color": "RED",
+        "mapping": "M1",
+        "observation_symbol": "ALPHA",
+        "slot": 1
+      },
+      {
+        "condition": "F",
+        "episode_id": "p2-s02-f",
+        "hidden_target_color": "BLUE",
+        "mapping": "M2",
+        "observation_symbol": "ALPHA",
+        "slot": 2
+      },
+      {
+        "condition": "P",
+        "episode_id": "p2-s02-p",
+        "hidden_target_color": "BLUE",
+        "mapping": "M2",
+        "observation_symbol": "ALPHA",
+        "slot": 2
+      },
+      {
+        "condition": "F",
+        "episode_id": "p2-s03-f",
+        "hidden_target_color": "BLUE",
+        "mapping": "M1",
+        "observation_symbol": "BETA",
+        "slot": 3
+      },
+      {
+        "condition": "P",
+        "episode_id": "p2-s03-p",
+        "hidden_target_color": "BLUE",
+        "mapping": "M1",
+        "observation_symbol": "BETA",
+        "slot": 3
+      },
+      {
+        "condition": "F",
+        "episode_id": "p2-s04-f",
+        "hidden_target_color": "RED",
+        "mapping": "M2",
+        "observation_symbol": "BETA",
+        "slot": 4
+      },
+      {
+        "condition": "P",
+        "episode_id": "p2-s04-p",
+        "hidden_target_color": "RED",
+        "mapping": "M2",
+        "observation_symbol": "BETA",
+        "slot": 4
+      },
+      {
+        "condition": "F",
+        "episode_id": "p2-s05-f",
+        "hidden_target_color": "RED",
+        "mapping": "M2",
+        "observation_symbol": "BETA",
+        "slot": 5
+      },
+      {
+        "condition": "P",
+        "episode_id": "p2-s05-p",
+        "hidden_target_color": "RED",
+        "mapping": "M2",
+        "observation_symbol": "BETA",
+        "slot": 5
+      },
+      {
+        "condition": "F",
+        "episode_id": "p2-s06-f",
+        "hidden_target_color": "BLUE",
+        "mapping": "M1",
+        "observation_symbol": "BETA",
+        "slot": 6
+      },
+      {
+        "condition": "P",
+        "episode_id": "p2-s06-p",
+        "hidden_target_color": "BLUE",
+        "mapping": "M1",
+        "observation_symbol": "BETA",
+        "slot": 6
+      },
+      {
+        "condition": "F",
+        "episode_id": "p2-s07-f",
+        "hidden_target_color": "BLUE",
+        "mapping": "M2",
+        "observation_symbol": "ALPHA",
+        "slot": 7
+      },
+      {
+        "condition": "P",
+        "episode_id": "p2-s07-p",
+        "hidden_target_color": "BLUE",
+        "mapping": "M2",
+        "observation_symbol": "ALPHA",
+        "slot": 7
+      },
+      {
+        "condition": "F",
+        "episode_id": "p2-s08-f",
+        "hidden_target_color": "RED",
+        "mapping": "M1",
+        "observation_symbol": "ALPHA",
+        "slot": 8
+      },
+      {
+        "condition": "P",
+        "episode_id": "p2-s08-p",
+        "hidden_target_color": "RED",
+        "mapping": "M1",
+        "observation_symbol": "ALPHA",
+        "slot": 8
+      }
+    ],
+    "P3": [
+      {
+        "condition": "F",
+        "episode_id": "p3-s01-f",
+        "hidden_color": "RED",
+        "slot": 1
+      },
+      {
+        "condition": "P",
+        "episode_id": "p3-s01-p",
+        "hidden_color": "RED",
+        "slot": 1
+      },
+      {
+        "condition": "F",
+        "episode_id": "p3-s02-f",
+        "hidden_color": "BLUE",
+        "slot": 2
+      },
+      {
+        "condition": "P",
+        "episode_id": "p3-s02-p",
+        "hidden_color": "BLUE",
+        "slot": 2
+      },
+      {
+        "condition": "F",
+        "episode_id": "p3-s03-f",
+        "hidden_color": "BLUE",
+        "slot": 3
+      },
+      {
+        "condition": "P",
+        "episode_id": "p3-s03-p",
+        "hidden_color": "BLUE",
+        "slot": 3
+      },
+      {
+        "condition": "F",
+        "episode_id": "p3-s04-f",
+        "hidden_color": "RED",
+        "slot": 4
+      },
+      {
+        "condition": "P",
+        "episode_id": "p3-s04-p",
+        "hidden_color": "RED",
+        "slot": 4
+      },
+      {
+        "condition": "F",
+        "episode_id": "p3-s05-f",
+        "hidden_color": "BLUE",
+        "slot": 5
+      },
+      {
+        "condition": "P",
+        "episode_id": "p3-s05-p",
+        "hidden_color": "BLUE",
+        "slot": 5
+      },
+      {
+        "condition": "F",
+        "episode_id": "p3-s06-f",
+        "hidden_color": "RED",
+        "slot": 6
+      },
+      {
+        "condition": "P",
+        "episode_id": "p3-s06-p",
+        "hidden_color": "RED",
+        "slot": 6
+      },
+      {
+        "condition": "F",
+        "episode_id": "p3-s07-f",
+        "hidden_color": "RED",
+        "slot": 7
+      },
+      {
+        "condition": "P",
+        "episode_id": "p3-s07-p",
+        "hidden_color": "RED",
+        "slot": 7
+      },
+      {
+        "condition": "F",
+        "episode_id": "p3-s08-f",
+        "hidden_color": "BLUE",
+        "slot": 8
+      },
+      {
+        "condition": "P",
+        "episode_id": "p3-s08-p",
+        "hidden_color": "BLUE",
+        "slot": 8
+      }
+    ],
+    "P4": [
+      {
+        "current_color": "RED",
+        "current_position": "FIRST",
+        "episode_id": "p4-s01-associated",
+        "foreign_color": "BLUE",
+        "regime": "ASSOCIATED",
+        "slot": 1
+      },
+      {
+        "current_color": "RED",
+        "current_position": "FIRST",
+        "episode_id": "p4-s01-unassociated",
+        "foreign_color": "BLUE",
+        "regime": "UNASSOCIATED",
+        "slot": 1
+      },
+      {
+        "current_color": "BLUE",
+        "current_position": "SECOND",
+        "episode_id": "p4-s02-associated",
+        "foreign_color": "RED",
+        "regime": "ASSOCIATED",
+        "slot": 2
+      },
+      {
+        "current_color": "BLUE",
+        "current_position": "SECOND",
+        "episode_id": "p4-s02-unassociated",
+        "foreign_color": "RED",
+        "regime": "UNASSOCIATED",
+        "slot": 2
+      },
+      {
+        "current_color": "BLUE",
+        "current_position": "FIRST",
+        "episode_id": "p4-s03-associated",
+        "foreign_color": "RED",
+        "regime": "ASSOCIATED",
+        "slot": 3
+      },
+      {
+        "current_color": "BLUE",
+        "current_position": "FIRST",
+        "episode_id": "p4-s03-unassociated",
+        "foreign_color": "RED",
+        "regime": "UNASSOCIATED",
+        "slot": 3
+      },
+      {
+        "current_color": "RED",
+        "current_position": "SECOND",
+        "episode_id": "p4-s04-associated",
+        "foreign_color": "BLUE",
+        "regime": "ASSOCIATED",
+        "slot": 4
+      },
+      {
+        "current_color": "RED",
+        "current_position": "SECOND",
+        "episode_id": "p4-s04-unassociated",
+        "foreign_color": "BLUE",
+        "regime": "UNASSOCIATED",
+        "slot": 4
+      },
+      {
+        "current_color": "BLUE",
+        "current_position": "SECOND",
+        "episode_id": "p4-s05-associated",
+        "foreign_color": "RED",
+        "regime": "ASSOCIATED",
+        "slot": 5
+      },
+      {
+        "current_color": "BLUE",
+        "current_position": "SECOND",
+        "episode_id": "p4-s05-unassociated",
+        "foreign_color": "RED",
+        "regime": "UNASSOCIATED",
+        "slot": 5
+      },
+      {
+        "current_color": "RED",
+        "current_position": "FIRST",
+        "episode_id": "p4-s06-associated",
+        "foreign_color": "BLUE",
+        "regime": "ASSOCIATED",
+        "slot": 6
+      },
+      {
+        "current_color": "RED",
+        "current_position": "FIRST",
+        "episode_id": "p4-s06-unassociated",
+        "foreign_color": "BLUE",
+        "regime": "UNASSOCIATED",
+        "slot": 6
+      },
+      {
+        "current_color": "RED",
+        "current_position": "SECOND",
+        "episode_id": "p4-s07-associated",
+        "foreign_color": "BLUE",
+        "regime": "ASSOCIATED",
+        "slot": 7
+      },
+      {
+        "current_color": "RED",
+        "current_position": "SECOND",
+        "episode_id": "p4-s07-unassociated",
+        "foreign_color": "BLUE",
+        "regime": "UNASSOCIATED",
+        "slot": 7
+      },
+      {
+        "current_color": "BLUE",
+        "current_position": "FIRST",
+        "episode_id": "p4-s08-associated",
+        "foreign_color": "RED",
+        "regime": "ASSOCIATED",
+        "slot": 8
+      },
+      {
+        "current_color": "BLUE",
+        "current_position": "FIRST",
+        "episode_id": "p4-s08-unassociated",
+        "foreign_color": "RED",
+        "regime": "UNASSOCIATED",
+        "slot": 8
+      }
+    ]
+  },
+  "status": "FROZEN_BEFORE_EMPIRICAL_EXECUTION"
+}
