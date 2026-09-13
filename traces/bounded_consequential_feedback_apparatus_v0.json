@@ -1,0 +1,1625 @@
+{
+  "all_apparatus_checks_passed": true,
+  "apparatus_checks": {
+    "F_delivers_BLUE_before_commitment": true,
+    "F_delivers_RED_before_commitment": true,
+    "P_discloses_feedback_only_after_commitment": true,
+    "P_exposes_no_produced_feedback_before_commitment": true,
+    "fixed_answer_is_penalized_by_balanced_schedule": true,
+    "lookup_control_maps_both_delivered_colors": true,
+    "terminal_action_cannot_be_revised": true
+  },
+  "artifact": "bounded_consequential_feedback_apparatus_v0",
+  "artifact_class": "DETERMINISTIC_APPARATUS_EVIDENCE",
+  "deterministic_controls": {
+    "fixed_answer": {
+      "episodes": [
+        {
+          "accepted_terminal_action": "SUBMIT_RED",
+          "condition": "F",
+          "correct": true,
+          "episode_id": "llm-s01-f",
+          "failure_class": null,
+          "hidden_state": "RED",
+          "ordered_events": [
+            {
+              "event_index": 0,
+              "event_type": "WORLD_STATE_ESTABLISHED",
+              "payload": {
+                "hidden_color": "RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 1,
+              "event_type": "INSPECT_EXECUTED",
+              "payload": {
+                "action": "INSPECT"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 2,
+              "event_type": "FEEDBACK_PRODUCED",
+              "payload": {
+                "feedback": "RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 3,
+              "event_type": "FEEDBACK_DELIVERED",
+              "payload": {
+                "feedback": "RED"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 4,
+              "event_type": "POLICY_ACTION_REQUESTED",
+              "payload": {
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 5,
+              "event_type": "WORLD_ACTION_RECEIPT",
+              "payload": {
+                "accepted": true,
+                "accepted_action": "SUBMIT_RED",
+                "reason": null,
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 6,
+              "event_type": "TERMINAL_COMMITMENT",
+              "payload": {
+                "accepted_terminal_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            }
+          ],
+          "requested_action": "SUBMIT_RED",
+          "valid": true
+        },
+        {
+          "accepted_terminal_action": "SUBMIT_RED",
+          "condition": "P",
+          "correct": true,
+          "episode_id": "llm-s01-p",
+          "failure_class": null,
+          "hidden_state": "RED",
+          "ordered_events": [
+            {
+              "event_index": 0,
+              "event_type": "WORLD_STATE_ESTABLISHED",
+              "payload": {
+                "hidden_color": "RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 1,
+              "event_type": "INSPECT_EXECUTED",
+              "payload": {
+                "action": "INSPECT"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 2,
+              "event_type": "FEEDBACK_PRODUCED",
+              "payload": {
+                "feedback": "RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 3,
+              "event_type": "FEEDBACK_WITHHELD",
+              "payload": {
+                "feedback_produced": true
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 4,
+              "event_type": "POLICY_ACTION_REQUESTED",
+              "payload": {
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 5,
+              "event_type": "WORLD_ACTION_RECEIPT",
+              "payload": {
+                "accepted": true,
+                "accepted_action": "SUBMIT_RED",
+                "reason": null,
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 6,
+              "event_type": "TERMINAL_COMMITMENT",
+              "payload": {
+                "accepted_terminal_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 7,
+              "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+              "payload": {
+                "feedback": "RED"
+              },
+              "policy_visible": true
+            }
+          ],
+          "requested_action": "SUBMIT_RED",
+          "valid": true
+        },
+        {
+          "accepted_terminal_action": "SUBMIT_RED",
+          "condition": "F",
+          "correct": false,
+          "episode_id": "llm-s02-f",
+          "failure_class": null,
+          "hidden_state": "BLUE",
+          "ordered_events": [
+            {
+              "event_index": 0,
+              "event_type": "WORLD_STATE_ESTABLISHED",
+              "payload": {
+                "hidden_color": "BLUE"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 1,
+              "event_type": "INSPECT_EXECUTED",
+              "payload": {
+                "action": "INSPECT"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 2,
+              "event_type": "FEEDBACK_PRODUCED",
+              "payload": {
+                "feedback": "BLUE"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 3,
+              "event_type": "FEEDBACK_DELIVERED",
+              "payload": {
+                "feedback": "BLUE"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 4,
+              "event_type": "POLICY_ACTION_REQUESTED",
+              "payload": {
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 5,
+              "event_type": "WORLD_ACTION_RECEIPT",
+              "payload": {
+                "accepted": true,
+                "accepted_action": "SUBMIT_RED",
+                "reason": null,
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 6,
+              "event_type": "TERMINAL_COMMITMENT",
+              "payload": {
+                "accepted_terminal_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            }
+          ],
+          "requested_action": "SUBMIT_RED",
+          "valid": true
+        },
+        {
+          "accepted_terminal_action": "SUBMIT_RED",
+          "condition": "P",
+          "correct": false,
+          "episode_id": "llm-s02-p",
+          "failure_class": null,
+          "hidden_state": "BLUE",
+          "ordered_events": [
+            {
+              "event_index": 0,
+              "event_type": "WORLD_STATE_ESTABLISHED",
+              "payload": {
+                "hidden_color": "BLUE"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 1,
+              "event_type": "INSPECT_EXECUTED",
+              "payload": {
+                "action": "INSPECT"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 2,
+              "event_type": "FEEDBACK_PRODUCED",
+              "payload": {
+                "feedback": "BLUE"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 3,
+              "event_type": "FEEDBACK_WITHHELD",
+              "payload": {
+                "feedback_produced": true
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 4,
+              "event_type": "POLICY_ACTION_REQUESTED",
+              "payload": {
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 5,
+              "event_type": "WORLD_ACTION_RECEIPT",
+              "payload": {
+                "accepted": true,
+                "accepted_action": "SUBMIT_RED",
+                "reason": null,
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 6,
+              "event_type": "TERMINAL_COMMITMENT",
+              "payload": {
+                "accepted_terminal_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 7,
+              "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+              "payload": {
+                "feedback": "BLUE"
+              },
+              "policy_visible": true
+            }
+          ],
+          "requested_action": "SUBMIT_RED",
+          "valid": true
+        },
+        {
+          "accepted_terminal_action": "SUBMIT_RED",
+          "condition": "F",
+          "correct": false,
+          "episode_id": "llm-s03-f",
+          "failure_class": null,
+          "hidden_state": "BLUE",
+          "ordered_events": [
+            {
+              "event_index": 0,
+              "event_type": "WORLD_STATE_ESTABLISHED",
+              "payload": {
+                "hidden_color": "BLUE"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 1,
+              "event_type": "INSPECT_EXECUTED",
+              "payload": {
+                "action": "INSPECT"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 2,
+              "event_type": "FEEDBACK_PRODUCED",
+              "payload": {
+                "feedback": "BLUE"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 3,
+              "event_type": "FEEDBACK_DELIVERED",
+              "payload": {
+                "feedback": "BLUE"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 4,
+              "event_type": "POLICY_ACTION_REQUESTED",
+              "payload": {
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 5,
+              "event_type": "WORLD_ACTION_RECEIPT",
+              "payload": {
+                "accepted": true,
+                "accepted_action": "SUBMIT_RED",
+                "reason": null,
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 6,
+              "event_type": "TERMINAL_COMMITMENT",
+              "payload": {
+                "accepted_terminal_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            }
+          ],
+          "requested_action": "SUBMIT_RED",
+          "valid": true
+        },
+        {
+          "accepted_terminal_action": "SUBMIT_RED",
+          "condition": "P",
+          "correct": false,
+          "episode_id": "llm-s03-p",
+          "failure_class": null,
+          "hidden_state": "BLUE",
+          "ordered_events": [
+            {
+              "event_index": 0,
+              "event_type": "WORLD_STATE_ESTABLISHED",
+              "payload": {
+                "hidden_color": "BLUE"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 1,
+              "event_type": "INSPECT_EXECUTED",
+              "payload": {
+                "action": "INSPECT"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 2,
+              "event_type": "FEEDBACK_PRODUCED",
+              "payload": {
+                "feedback": "BLUE"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 3,
+              "event_type": "FEEDBACK_WITHHELD",
+              "payload": {
+                "feedback_produced": true
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 4,
+              "event_type": "POLICY_ACTION_REQUESTED",
+              "payload": {
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 5,
+              "event_type": "WORLD_ACTION_RECEIPT",
+              "payload": {
+                "accepted": true,
+                "accepted_action": "SUBMIT_RED",
+                "reason": null,
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 6,
+              "event_type": "TERMINAL_COMMITMENT",
+              "payload": {
+                "accepted_terminal_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 7,
+              "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+              "payload": {
+                "feedback": "BLUE"
+              },
+              "policy_visible": true
+            }
+          ],
+          "requested_action": "SUBMIT_RED",
+          "valid": true
+        },
+        {
+          "accepted_terminal_action": "SUBMIT_RED",
+          "condition": "F",
+          "correct": true,
+          "episode_id": "llm-s04-f",
+          "failure_class": null,
+          "hidden_state": "RED",
+          "ordered_events": [
+            {
+              "event_index": 0,
+              "event_type": "WORLD_STATE_ESTABLISHED",
+              "payload": {
+                "hidden_color": "RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 1,
+              "event_type": "INSPECT_EXECUTED",
+              "payload": {
+                "action": "INSPECT"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 2,
+              "event_type": "FEEDBACK_PRODUCED",
+              "payload": {
+                "feedback": "RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 3,
+              "event_type": "FEEDBACK_DELIVERED",
+              "payload": {
+                "feedback": "RED"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 4,
+              "event_type": "POLICY_ACTION_REQUESTED",
+              "payload": {
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 5,
+              "event_type": "WORLD_ACTION_RECEIPT",
+              "payload": {
+                "accepted": true,
+                "accepted_action": "SUBMIT_RED",
+                "reason": null,
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 6,
+              "event_type": "TERMINAL_COMMITMENT",
+              "payload": {
+                "accepted_terminal_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            }
+          ],
+          "requested_action": "SUBMIT_RED",
+          "valid": true
+        },
+        {
+          "accepted_terminal_action": "SUBMIT_RED",
+          "condition": "P",
+          "correct": true,
+          "episode_id": "llm-s04-p",
+          "failure_class": null,
+          "hidden_state": "RED",
+          "ordered_events": [
+            {
+              "event_index": 0,
+              "event_type": "WORLD_STATE_ESTABLISHED",
+              "payload": {
+                "hidden_color": "RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 1,
+              "event_type": "INSPECT_EXECUTED",
+              "payload": {
+                "action": "INSPECT"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 2,
+              "event_type": "FEEDBACK_PRODUCED",
+              "payload": {
+                "feedback": "RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 3,
+              "event_type": "FEEDBACK_WITHHELD",
+              "payload": {
+                "feedback_produced": true
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 4,
+              "event_type": "POLICY_ACTION_REQUESTED",
+              "payload": {
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 5,
+              "event_type": "WORLD_ACTION_RECEIPT",
+              "payload": {
+                "accepted": true,
+                "accepted_action": "SUBMIT_RED",
+                "reason": null,
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 6,
+              "event_type": "TERMINAL_COMMITMENT",
+              "payload": {
+                "accepted_terminal_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 7,
+              "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+              "payload": {
+                "feedback": "RED"
+              },
+              "policy_visible": true
+            }
+          ],
+          "requested_action": "SUBMIT_RED",
+          "valid": true
+        },
+        {
+          "accepted_terminal_action": "SUBMIT_RED",
+          "condition": "F",
+          "correct": false,
+          "episode_id": "llm-s05-f",
+          "failure_class": null,
+          "hidden_state": "BLUE",
+          "ordered_events": [
+            {
+              "event_index": 0,
+              "event_type": "WORLD_STATE_ESTABLISHED",
+              "payload": {
+                "hidden_color": "BLUE"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 1,
+              "event_type": "INSPECT_EXECUTED",
+              "payload": {
+                "action": "INSPECT"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 2,
+              "event_type": "FEEDBACK_PRODUCED",
+              "payload": {
+                "feedback": "BLUE"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 3,
+              "event_type": "FEEDBACK_DELIVERED",
+              "payload": {
+                "feedback": "BLUE"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 4,
+              "event_type": "POLICY_ACTION_REQUESTED",
+              "payload": {
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 5,
+              "event_type": "WORLD_ACTION_RECEIPT",
+              "payload": {
+                "accepted": true,
+                "accepted_action": "SUBMIT_RED",
+                "reason": null,
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 6,
+              "event_type": "TERMINAL_COMMITMENT",
+              "payload": {
+                "accepted_terminal_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            }
+          ],
+          "requested_action": "SUBMIT_RED",
+          "valid": true
+        },
+        {
+          "accepted_terminal_action": "SUBMIT_RED",
+          "condition": "P",
+          "correct": false,
+          "episode_id": "llm-s05-p",
+          "failure_class": null,
+          "hidden_state": "BLUE",
+          "ordered_events": [
+            {
+              "event_index": 0,
+              "event_type": "WORLD_STATE_ESTABLISHED",
+              "payload": {
+                "hidden_color": "BLUE"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 1,
+              "event_type": "INSPECT_EXECUTED",
+              "payload": {
+                "action": "INSPECT"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 2,
+              "event_type": "FEEDBACK_PRODUCED",
+              "payload": {
+                "feedback": "BLUE"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 3,
+              "event_type": "FEEDBACK_WITHHELD",
+              "payload": {
+                "feedback_produced": true
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 4,
+              "event_type": "POLICY_ACTION_REQUESTED",
+              "payload": {
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 5,
+              "event_type": "WORLD_ACTION_RECEIPT",
+              "payload": {
+                "accepted": true,
+                "accepted_action": "SUBMIT_RED",
+                "reason": null,
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 6,
+              "event_type": "TERMINAL_COMMITMENT",
+              "payload": {
+                "accepted_terminal_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 7,
+              "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+              "payload": {
+                "feedback": "BLUE"
+              },
+              "policy_visible": true
+            }
+          ],
+          "requested_action": "SUBMIT_RED",
+          "valid": true
+        },
+        {
+          "accepted_terminal_action": "SUBMIT_RED",
+          "condition": "F",
+          "correct": true,
+          "episode_id": "llm-s06-f",
+          "failure_class": null,
+          "hidden_state": "RED",
+          "ordered_events": [
+            {
+              "event_index": 0,
+              "event_type": "WORLD_STATE_ESTABLISHED",
+              "payload": {
+                "hidden_color": "RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 1,
+              "event_type": "INSPECT_EXECUTED",
+              "payload": {
+                "action": "INSPECT"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 2,
+              "event_type": "FEEDBACK_PRODUCED",
+              "payload": {
+                "feedback": "RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 3,
+              "event_type": "FEEDBACK_DELIVERED",
+              "payload": {
+                "feedback": "RED"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 4,
+              "event_type": "POLICY_ACTION_REQUESTED",
+              "payload": {
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 5,
+              "event_type": "WORLD_ACTION_RECEIPT",
+              "payload": {
+                "accepted": true,
+                "accepted_action": "SUBMIT_RED",
+                "reason": null,
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 6,
+              "event_type": "TERMINAL_COMMITMENT",
+              "payload": {
+                "accepted_terminal_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            }
+          ],
+          "requested_action": "SUBMIT_RED",
+          "valid": true
+        },
+        {
+          "accepted_terminal_action": "SUBMIT_RED",
+          "condition": "P",
+          "correct": true,
+          "episode_id": "llm-s06-p",
+          "failure_class": null,
+          "hidden_state": "RED",
+          "ordered_events": [
+            {
+              "event_index": 0,
+              "event_type": "WORLD_STATE_ESTABLISHED",
+              "payload": {
+                "hidden_color": "RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 1,
+              "event_type": "INSPECT_EXECUTED",
+              "payload": {
+                "action": "INSPECT"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 2,
+              "event_type": "FEEDBACK_PRODUCED",
+              "payload": {
+                "feedback": "RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 3,
+              "event_type": "FEEDBACK_WITHHELD",
+              "payload": {
+                "feedback_produced": true
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 4,
+              "event_type": "POLICY_ACTION_REQUESTED",
+              "payload": {
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 5,
+              "event_type": "WORLD_ACTION_RECEIPT",
+              "payload": {
+                "accepted": true,
+                "accepted_action": "SUBMIT_RED",
+                "reason": null,
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 6,
+              "event_type": "TERMINAL_COMMITMENT",
+              "payload": {
+                "accepted_terminal_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 7,
+              "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+              "payload": {
+                "feedback": "RED"
+              },
+              "policy_visible": true
+            }
+          ],
+          "requested_action": "SUBMIT_RED",
+          "valid": true
+        },
+        {
+          "accepted_terminal_action": "SUBMIT_RED",
+          "condition": "F",
+          "correct": true,
+          "episode_id": "llm-s07-f",
+          "failure_class": null,
+          "hidden_state": "RED",
+          "ordered_events": [
+            {
+              "event_index": 0,
+              "event_type": "WORLD_STATE_ESTABLISHED",
+              "payload": {
+                "hidden_color": "RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 1,
+              "event_type": "INSPECT_EXECUTED",
+              "payload": {
+                "action": "INSPECT"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 2,
+              "event_type": "FEEDBACK_PRODUCED",
+              "payload": {
+                "feedback": "RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 3,
+              "event_type": "FEEDBACK_DELIVERED",
+              "payload": {
+                "feedback": "RED"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 4,
+              "event_type": "POLICY_ACTION_REQUESTED",
+              "payload": {
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 5,
+              "event_type": "WORLD_ACTION_RECEIPT",
+              "payload": {
+                "accepted": true,
+                "accepted_action": "SUBMIT_RED",
+                "reason": null,
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 6,
+              "event_type": "TERMINAL_COMMITMENT",
+              "payload": {
+                "accepted_terminal_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            }
+          ],
+          "requested_action": "SUBMIT_RED",
+          "valid": true
+        },
+        {
+          "accepted_terminal_action": "SUBMIT_RED",
+          "condition": "P",
+          "correct": true,
+          "episode_id": "llm-s07-p",
+          "failure_class": null,
+          "hidden_state": "RED",
+          "ordered_events": [
+            {
+              "event_index": 0,
+              "event_type": "WORLD_STATE_ESTABLISHED",
+              "payload": {
+                "hidden_color": "RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 1,
+              "event_type": "INSPECT_EXECUTED",
+              "payload": {
+                "action": "INSPECT"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 2,
+              "event_type": "FEEDBACK_PRODUCED",
+              "payload": {
+                "feedback": "RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 3,
+              "event_type": "FEEDBACK_WITHHELD",
+              "payload": {
+                "feedback_produced": true
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 4,
+              "event_type": "POLICY_ACTION_REQUESTED",
+              "payload": {
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 5,
+              "event_type": "WORLD_ACTION_RECEIPT",
+              "payload": {
+                "accepted": true,
+                "accepted_action": "SUBMIT_RED",
+                "reason": null,
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 6,
+              "event_type": "TERMINAL_COMMITMENT",
+              "payload": {
+                "accepted_terminal_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 7,
+              "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+              "payload": {
+                "feedback": "RED"
+              },
+              "policy_visible": true
+            }
+          ],
+          "requested_action": "SUBMIT_RED",
+          "valid": true
+        },
+        {
+          "accepted_terminal_action": "SUBMIT_RED",
+          "condition": "F",
+          "correct": false,
+          "episode_id": "llm-s08-f",
+          "failure_class": null,
+          "hidden_state": "BLUE",
+          "ordered_events": [
+            {
+              "event_index": 0,
+              "event_type": "WORLD_STATE_ESTABLISHED",
+              "payload": {
+                "hidden_color": "BLUE"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 1,
+              "event_type": "INSPECT_EXECUTED",
+              "payload": {
+                "action": "INSPECT"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 2,
+              "event_type": "FEEDBACK_PRODUCED",
+              "payload": {
+                "feedback": "BLUE"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 3,
+              "event_type": "FEEDBACK_DELIVERED",
+              "payload": {
+                "feedback": "BLUE"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 4,
+              "event_type": "POLICY_ACTION_REQUESTED",
+              "payload": {
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 5,
+              "event_type": "WORLD_ACTION_RECEIPT",
+              "payload": {
+                "accepted": true,
+                "accepted_action": "SUBMIT_RED",
+                "reason": null,
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 6,
+              "event_type": "TERMINAL_COMMITMENT",
+              "payload": {
+                "accepted_terminal_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            }
+          ],
+          "requested_action": "SUBMIT_RED",
+          "valid": true
+        },
+        {
+          "accepted_terminal_action": "SUBMIT_RED",
+          "condition": "P",
+          "correct": false,
+          "episode_id": "llm-s08-p",
+          "failure_class": null,
+          "hidden_state": "BLUE",
+          "ordered_events": [
+            {
+              "event_index": 0,
+              "event_type": "WORLD_STATE_ESTABLISHED",
+              "payload": {
+                "hidden_color": "BLUE"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 1,
+              "event_type": "INSPECT_EXECUTED",
+              "payload": {
+                "action": "INSPECT"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 2,
+              "event_type": "FEEDBACK_PRODUCED",
+              "payload": {
+                "feedback": "BLUE"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 3,
+              "event_type": "FEEDBACK_WITHHELD",
+              "payload": {
+                "feedback_produced": true
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 4,
+              "event_type": "POLICY_ACTION_REQUESTED",
+              "payload": {
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 5,
+              "event_type": "WORLD_ACTION_RECEIPT",
+              "payload": {
+                "accepted": true,
+                "accepted_action": "SUBMIT_RED",
+                "reason": null,
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 6,
+              "event_type": "TERMINAL_COMMITMENT",
+              "payload": {
+                "accepted_terminal_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 7,
+              "event_type": "POST_COMMIT_FEEDBACK_DELIVERY",
+              "payload": {
+                "feedback": "BLUE"
+              },
+              "policy_visible": true
+            }
+          ],
+          "requested_action": "SUBMIT_RED",
+          "valid": true
+        }
+      ],
+      "run_declaration": {
+        "action_vocabulary": [
+          "INSPECT",
+          "SUBMIT_RED",
+          "SUBMIT_BLUE"
+        ],
+        "condition_schedule_commitment": "d11789d4c415abecb389fad4c30aed05d90826346fa4b76742f49ae6e49df873",
+        "experiment_id": "bounded_consequential_feedback_experiment_v0",
+        "frozen_future_llm_schedule_commitment": "sha256:7fec657bbd871259f146ec5cd45da03e30014c6a25ba23d53cb0e6ce62057035",
+        "hidden_state_schedule_commitment": "8f0211cd0b92a263fe4ac142e096ff5a71169247bc0eedec0a508b825417b62d",
+        "policy_configuration": {
+          "fixed_answer": "SUBMIT_RED"
+        },
+        "policy_identity": "deterministic_fixed_answer_control",
+        "policy_received_schedule_metadata": false,
+        "protocol_version": "v0",
+        "randomization_seed_or_schedule": {
+          "commitment": "7fec657bbd871259f146ec5cd45da03e30014c6a25ba23d53cb0e6ce62057035",
+          "mode": "exact_schedule"
+        },
+        "scoring_rule": "correct iff the first accepted terminal submission matches the authoritative hidden color",
+        "task_text": "Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE."
+      },
+      "summary": {
+        "by_condition": {
+          "F": {
+            "accepted_blue": 0,
+            "accepted_red": 8,
+            "correct": 4,
+            "episodes": 8,
+            "malformed_or_inadmissible": 0,
+            "nonterminal_failures": 0
+          },
+          "P": {
+            "accepted_blue": 0,
+            "accepted_red": 8,
+            "correct": 4,
+            "episodes": 8,
+            "malformed_or_inadmissible": 0,
+            "nonterminal_failures": 0
+          }
+        },
+        "correct": 8,
+        "episodes": 16
+      }
+    },
+    "lookup": {
+      "episodes": [
+        {
+          "accepted_terminal_action": "SUBMIT_RED",
+          "condition": "F",
+          "correct": true,
+          "episode_id": "lookup-f-red",
+          "failure_class": null,
+          "hidden_state": "RED",
+          "ordered_events": [
+            {
+              "event_index": 0,
+              "event_type": "WORLD_STATE_ESTABLISHED",
+              "payload": {
+                "hidden_color": "RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 1,
+              "event_type": "INSPECT_EXECUTED",
+              "payload": {
+                "action": "INSPECT"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 2,
+              "event_type": "FEEDBACK_PRODUCED",
+              "payload": {
+                "feedback": "RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 3,
+              "event_type": "FEEDBACK_DELIVERED",
+              "payload": {
+                "feedback": "RED"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 4,
+              "event_type": "POLICY_ACTION_REQUESTED",
+              "payload": {
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 5,
+              "event_type": "WORLD_ACTION_RECEIPT",
+              "payload": {
+                "accepted": true,
+                "accepted_action": "SUBMIT_RED",
+                "reason": null,
+                "requested_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 6,
+              "event_type": "TERMINAL_COMMITMENT",
+              "payload": {
+                "accepted_terminal_action": "SUBMIT_RED"
+              },
+              "policy_visible": false
+            }
+          ],
+          "requested_action": "SUBMIT_RED",
+          "valid": true
+        },
+        {
+          "accepted_terminal_action": "SUBMIT_BLUE",
+          "condition": "F",
+          "correct": true,
+          "episode_id": "lookup-f-blue",
+          "failure_class": null,
+          "hidden_state": "BLUE",
+          "ordered_events": [
+            {
+              "event_index": 0,
+              "event_type": "WORLD_STATE_ESTABLISHED",
+              "payload": {
+                "hidden_color": "BLUE"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 1,
+              "event_type": "INSPECT_EXECUTED",
+              "payload": {
+                "action": "INSPECT"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 2,
+              "event_type": "FEEDBACK_PRODUCED",
+              "payload": {
+                "feedback": "BLUE"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 3,
+              "event_type": "FEEDBACK_DELIVERED",
+              "payload": {
+                "feedback": "BLUE"
+              },
+              "policy_visible": true
+            },
+            {
+              "event_index": 4,
+              "event_type": "POLICY_ACTION_REQUESTED",
+              "payload": {
+                "requested_action": "SUBMIT_BLUE"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 5,
+              "event_type": "WORLD_ACTION_RECEIPT",
+              "payload": {
+                "accepted": true,
+                "accepted_action": "SUBMIT_BLUE",
+                "reason": null,
+                "requested_action": "SUBMIT_BLUE"
+              },
+              "policy_visible": false
+            },
+            {
+              "event_index": 6,
+              "event_type": "TERMINAL_COMMITMENT",
+              "payload": {
+                "accepted_terminal_action": "SUBMIT_BLUE"
+              },
+              "policy_visible": false
+            }
+          ],
+          "requested_action": "SUBMIT_BLUE",
+          "valid": true
+        }
+      ],
+      "run_declaration": {
+        "action_vocabulary": [
+          "INSPECT",
+          "SUBMIT_RED",
+          "SUBMIT_BLUE"
+        ],
+        "condition_schedule_commitment": "c0a511ebb475324fe7218933e3a198d69fec1cce9307da5bd81a72afbbdbbdae",
+        "experiment_id": "bounded_consequential_feedback_experiment_v0",
+        "frozen_future_llm_schedule_commitment": "sha256:7fec657bbd871259f146ec5cd45da03e30014c6a25ba23d53cb0e6ce62057035",
+        "hidden_state_schedule_commitment": "619f30400616db793eaa5f8e36801eec1afb966aa382514b3aa9721a9268f441",
+        "policy_configuration": {
+          "mapping": {
+            "BLUE": "SUBMIT_BLUE",
+            "RED": "SUBMIT_RED"
+          }
+        },
+        "policy_identity": "deterministic_lookup_control",
+        "policy_received_schedule_metadata": false,
+        "protocol_version": "v0",
+        "randomization_seed_or_schedule": {
+          "commitment": "7931d381afd85f8650961e56a01b9511bac2bde54c4327d7275116e4a5b09aae",
+          "mode": "exact_schedule"
+        },
+        "scoring_rule": "correct iff the first accepted terminal submission matches the authoritative hidden color",
+        "task_text": "Submit the color matching the independently maintained hidden state. Respond with exactly SUBMIT_RED or SUBMIT_BLUE."
+      },
+      "summary": {
+        "by_condition": {
+          "F": {
+            "accepted_blue": 1,
+            "accepted_red": 1,
+            "correct": 2,
+            "episodes": 2,
+            "malformed_or_inadmissible": 0,
+            "nonterminal_failures": 0
+          },
+          "P": {
+            "accepted_blue": 0,
+            "accepted_red": 0,
+            "correct": 0,
+            "episodes": 0,
+            "malformed_or_inadmissible": 0,
+            "nonterminal_failures": 0
+          }
+        },
+        "correct": 2,
+        "episodes": 2
+      }
+    },
+    "terminal_immutability": {
+      "accepted_action_after": "SUBMIT_RED",
+      "accepted_action_before": "SUBMIT_RED",
+      "revision_attempt_rejected": true,
+      "trace_unchanged": true
+    }
+  },
+  "frozen_future_llm_schedule": {
+    "condition_schedule_commitment": "sha256:5bed53cf915137869b69fa907b439931cfb7f434f1aca527bd68afb458e30150",
+    "episodes": [
+      {
+        "condition": "F",
+        "episode_id": "llm-s01-f",
+        "hidden_color": "RED",
+        "slot": 1
+      },
+      {
+        "condition": "P",
+        "episode_id": "llm-s01-p",
+        "hidden_color": "RED",
+        "slot": 1
+      },
+      {
+        "condition": "F",
+        "episode_id": "llm-s02-f",
+        "hidden_color": "BLUE",
+        "slot": 2
+      },
+      {
+        "condition": "P",
+        "episode_id": "llm-s02-p",
+        "hidden_color": "BLUE",
+        "slot": 2
+      },
+      {
+        "condition": "F",
+        "episode_id": "llm-s03-f",
+        "hidden_color": "BLUE",
+        "slot": 3
+      },
+      {
+        "condition": "P",
+        "episode_id": "llm-s03-p",
+        "hidden_color": "BLUE",
+        "slot": 3
+      },
+      {
+        "condition": "F",
+        "episode_id": "llm-s04-f",
+        "hidden_color": "RED",
+        "slot": 4
+      },
+      {
+        "condition": "P",
+        "episode_id": "llm-s04-p",
+        "hidden_color": "RED",
+        "slot": 4
+      },
+      {
+        "condition": "F",
+        "episode_id": "llm-s05-f",
+        "hidden_color": "BLUE",
+        "slot": 5
+      },
+      {
+        "condition": "P",
+        "episode_id": "llm-s05-p",
+        "hidden_color": "BLUE",
+        "slot": 5
+      },
+      {
+        "condition": "F",
+        "episode_id": "llm-s06-f",
+        "hidden_color": "RED",
+        "slot": 6
+      },
+      {
+        "condition": "P",
+        "episode_id": "llm-s06-p",
+        "hidden_color": "RED",
+        "slot": 6
+      },
+      {
+        "condition": "F",
+        "episode_id": "llm-s07-f",
+        "hidden_color": "RED",
+        "slot": 7
+      },
+      {
+        "condition": "P",
+        "episode_id": "llm-s07-p",
+        "hidden_color": "RED",
+        "slot": 7
+      },
+      {
+        "condition": "F",
+        "episode_id": "llm-s08-f",
+        "hidden_color": "BLUE",
+        "slot": 8
+      },
+      {
+        "condition": "P",
+        "episode_id": "llm-s08-p",
+        "hidden_color": "BLUE",
+        "slot": 8
+      }
+    ],
+    "exact_schedule_commitment": "sha256:7fec657bbd871259f146ec5cd45da03e30014c6a25ba23d53cb0e6ce62057035",
+    "future_policy_receives_schedule_metadata": false,
+    "hidden_state_schedule_commitment": "sha256:1cb0006b8f76dd89dd8ef786e11da6e04ef5e26fc48b49ec8ce83b3bcc8316e1",
+    "hidden_state_slots": [
+      {
+        "hidden_color": "RED",
+        "slot": 1
+      },
+      {
+        "hidden_color": "BLUE",
+        "slot": 2
+      },
+      {
+        "hidden_color": "BLUE",
+        "slot": 3
+      },
+      {
+        "hidden_color": "RED",
+        "slot": 4
+      },
+      {
+        "hidden_color": "BLUE",
+        "slot": 5
+      },
+      {
+        "hidden_color": "RED",
+        "slot": 6
+      },
+      {
+        "hidden_color": "RED",
+        "slot": 7
+      },
+      {
+        "hidden_color": "BLUE",
+        "slot": 8
+      }
+    ],
+    "ordering_mode": "exact_schedule",
+    "paired_condition_order": [
+      "F",
+      "P"
+    ],
+    "status": "PRECOMMITTED_NOT_EXECUTED"
+  },
+  "frozen_protocol": "docs/methods/Consequence_Surface/Bounded_Consequential_Feedback_Experiment_v0.md",
+  "implementation_basis": "146472a28974610cd1c4a03a3c7b32ac077c12ba",
+  "llm_specimen": {
+    "executed": false,
+    "policy_configuration": null,
+    "policy_identity": null,
+    "reason": "separate execution authorization required"
+  },
+  "standing": {
+    "agency": "NOT_ESTABLISHED",
+    "bounded_feedback_dependence": "PRESSUREABLE_NOT_EXECUTED",
+    "home": "OUT_OF_SCOPE",
+    "implementation": "SCAFFOLD_IMPLEMENTED",
+    "new_scientific_standing_earned": false,
+    "persistent_state_agency": "NOT_REQUIRED"
+  }
+}
