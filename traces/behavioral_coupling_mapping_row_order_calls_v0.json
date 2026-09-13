@@ -1,0 +1,1252 @@
+{
+  "P1_revisited": false,
+  "P3_empirical_calls": 0,
+  "P3_status": "BLOCKED_NOT_EXECUTED",
+  "P4_revisited": false,
+  "adapter_realization": "CONSTRAINED_TYPED_ACTION",
+  "adapter_repository_commit": "d60ce2044fb2215e58eec74de8e311ba42765bc0",
+  "artifact": "behavioral_coupling_mapping_row_order_calls_v0",
+  "artifact_class": "EMPIRICAL_MODEL_CALL_EVIDENCE",
+  "calls": [
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-row-order-m1-ab-alpha-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-lbb3040m49rhp8n4vx4bt\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789330306,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 106,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 115,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"ALPHA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"ALPHA\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-row-order-m1-ab-alpha-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\n  \"action\": \"SUBMIT_RED\"\n}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-6j9y9hjz3pv6pbo8woxhi3\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789330306,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\n  \\\"action\\\": \\\"SUBMIT_RED\\\"\\n}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 86,\n    \"completion_tokens\": 12,\n    \"total_tokens\": 98,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-row-order-m1-ab-beta-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-p6i7ls3y0m93hgwb032amu\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789330306,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 106,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 115,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"BETA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"BETA\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-row-order-m1-ab-beta-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\n  \"action\": \"SUBMIT_RED\"\n}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-2tzy8smes1v5268bocvsos\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789330306,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\n  \\\"action\\\": \\\"SUBMIT_RED\\\"\\n}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 86,\n    \"completion_tokens\": 12,\n    \"total_tokens\": 98,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-row-order-m1-ba-alpha-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-gzjqs28lcfeqt7iga6wpbs\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789330307,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 106,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 115,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"ALPHA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"ALPHA\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-row-order-m1-ba-alpha-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_BLUE",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_BLUE\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-nj48j5d5pub5g4vj95fu\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789330307,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_BLUE\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 86,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 95,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_BLUE",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_BLUE"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-row-order-m1-ba-beta-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_BLUE",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_BLUE\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-g1u55tksfxpugfza6khdu\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789330307,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_BLUE\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 106,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 115,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_BLUE",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"BETA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"BETA\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_BLUE"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-row-order-m1-ba-beta-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_BLUE",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_BLUE\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-d71x6x8gu7tu5cxyrpf2yn\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789330307,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_BLUE\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 86,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 95,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_BLUE",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_BLUE"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-row-order-m2-ab-alpha-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_BLUE",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_BLUE\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-toj86bx65cg37dwa0v44ho\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789330307,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_BLUE\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 106,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 115,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_BLUE",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"ALPHA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"ALPHA\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_BLUE"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-row-order-m2-ab-alpha-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_BLUE",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_BLUE\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-6noa4eetd1lklb04dx7ko\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789330307,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_BLUE\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 86,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 95,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_BLUE",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_BLUE"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-row-order-m2-ab-beta-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-92v76s87ukriqezwf2w3\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789330308,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 106,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 115,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"BETA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"BETA\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-row-order-m2-ab-beta-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_BLUE",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_BLUE\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-yt6zbj2todrk9fmrgu613\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789330308,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_BLUE\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 86,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 95,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_BLUE",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_BLUE"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-row-order-m2-ba-alpha-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-rmn0mcd82vf715wqjgx5v4\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789330308,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 106,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 115,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"ALPHA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"ALPHA\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-row-order-m2-ba-alpha-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-iki9grbk3aqpy3if8xoef\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789330308,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 86,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 95,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-row-order-m2-ba-beta-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-k9jcpvf9censunznkqwm\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789330308,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 106,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 115,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"BETA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"BETA\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "SUBMIT_RED",
+                  "SUBMIT_BLUE"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-row-order-m2-ba-beta-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "SUBMIT_RED",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"SUBMIT_RED\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-ja0eyim03tpoz25v4ejhn9\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789330309,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 86,\n    \"completion_tokens\": 9,\n    \"total_tokens\": 95,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "SUBMIT_RED",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "SUBMIT_RED"
+      },
+      "tools_supplied": false
+    }
+  ],
+  "descriptive_summary": {
+    "mapping_declaration_order_condition": {
+      "M1": {
+        "AB": {
+          "F": {
+            "blue": 0,
+            "correct": 1,
+            "episodes": 2,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 2
+          },
+          "P": {
+            "blue": 0,
+            "correct": 1,
+            "episodes": 2,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 2
+          }
+        },
+        "BA": {
+          "F": {
+            "blue": 1,
+            "correct": 2,
+            "episodes": 2,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 1
+          },
+          "P": {
+            "blue": 2,
+            "correct": 1,
+            "episodes": 2,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 0
+          }
+        }
+      },
+      "M2": {
+        "AB": {
+          "F": {
+            "blue": 1,
+            "correct": 2,
+            "episodes": 2,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 1
+          },
+          "P": {
+            "blue": 2,
+            "correct": 1,
+            "episodes": 2,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 0
+          }
+        },
+        "BA": {
+          "F": {
+            "blue": 0,
+            "correct": 1,
+            "episodes": 2,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 2
+          },
+          "P": {
+            "blue": 0,
+            "correct": 1,
+            "episodes": 2,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 2
+          }
+        }
+      }
+    },
+    "mapping_declaration_order_symbol_condition": {
+      "M1": {
+        "AB": {
+          "ALPHA": {
+            "F": {
+              "blue": 0,
+              "correct": 1,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 1
+            },
+            "P": {
+              "blue": 0,
+              "correct": 1,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 1
+            }
+          },
+          "BETA": {
+            "F": {
+              "blue": 0,
+              "correct": 0,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 1
+            },
+            "P": {
+              "blue": 0,
+              "correct": 0,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 1
+            }
+          }
+        },
+        "BA": {
+          "ALPHA": {
+            "F": {
+              "blue": 0,
+              "correct": 1,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 1
+            },
+            "P": {
+              "blue": 1,
+              "correct": 0,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 0
+            }
+          },
+          "BETA": {
+            "F": {
+              "blue": 1,
+              "correct": 1,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 0
+            },
+            "P": {
+              "blue": 1,
+              "correct": 1,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 0
+            }
+          }
+        }
+      },
+      "M2": {
+        "AB": {
+          "ALPHA": {
+            "F": {
+              "blue": 1,
+              "correct": 1,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 0
+            },
+            "P": {
+              "blue": 1,
+              "correct": 1,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 0
+            }
+          },
+          "BETA": {
+            "F": {
+              "blue": 0,
+              "correct": 1,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 1
+            },
+            "P": {
+              "blue": 1,
+              "correct": 0,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 0
+            }
+          }
+        },
+        "BA": {
+          "ALPHA": {
+            "F": {
+              "blue": 0,
+              "correct": 0,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 1
+            },
+            "P": {
+              "blue": 0,
+              "correct": 0,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 1
+            }
+          },
+          "BETA": {
+            "F": {
+              "blue": 0,
+              "correct": 1,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 1
+            },
+            "P": {
+              "blue": 0,
+              "correct": 1,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 1
+            }
+          }
+        }
+      }
+    }
+  },
+  "empirical_call_count": 16,
+  "empirical_episode_count": 16,
+  "empirical_retry_count": 0,
+  "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+  "execution_basis_commit": "1ea1081dbd55066c66c589c637414a4fdbd19e2b",
+  "freeze_path": "traces/behavioral_coupling_mapping_row_order_freeze_v0.json",
+  "model_identifier": "hermes-3-llama-3.2-3b",
+  "pressure": "P2_MAPPING_ROW_ORDER",
+  "protocol_sha256": "sha256:65d22575306522e8c7b5706324b5b7a6b4ce68c35ec92b0c8db087068ea3e53b",
+  "protocol_version": "behavioral_coupling_mapping_row_order_v0",
+  "provider_exposed_sampling_settings": {
+    "max_tokens": 16,
+    "temperature": 0.0,
+    "top_p": 1.0
+  },
+  "schedule_sha256": "sha256:b0b9074e66d4e6deb8f1207eedcf41326724af5d123ee8c0afad1d99a57c3502",
+  "scientific_adjudication": "NOT_PERFORMED",
+  "scoring_rule": "correct iff the accepted action matches the authoritative target color",
+  "validity": {
+    "calls_retained": 16,
+    "empirical_retries": 0,
+    "episodes_retained": 16,
+    "invalidity_wounds": [],
+    "status": "VALID",
+    "wrong_actions_are_behavior_not_invalidity": true
+  }
+}

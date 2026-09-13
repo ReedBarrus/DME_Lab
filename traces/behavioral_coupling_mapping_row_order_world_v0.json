@@ -1,0 +1,1908 @@
+{
+  "P1_revisited": false,
+  "P3_empirical_calls": 0,
+  "P3_status": "BLOCKED_NOT_EXECUTED",
+  "P4_revisited": false,
+  "adapter_realization": "CONSTRAINED_TYPED_ACTION",
+  "adapter_repository_commit": "d60ce2044fb2215e58eec74de8e311ba42765bc0",
+  "artifact": "behavioral_coupling_mapping_row_order_world_v0",
+  "artifact_class": "EMPIRICAL_WORLD_TRACE",
+  "descriptive_summary": {
+    "mapping_declaration_order_condition": {
+      "M1": {
+        "AB": {
+          "F": {
+            "blue": 0,
+            "correct": 1,
+            "episodes": 2,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 2
+          },
+          "P": {
+            "blue": 0,
+            "correct": 1,
+            "episodes": 2,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 2
+          }
+        },
+        "BA": {
+          "F": {
+            "blue": 1,
+            "correct": 2,
+            "episodes": 2,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 1
+          },
+          "P": {
+            "blue": 2,
+            "correct": 1,
+            "episodes": 2,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 0
+          }
+        }
+      },
+      "M2": {
+        "AB": {
+          "F": {
+            "blue": 1,
+            "correct": 2,
+            "episodes": 2,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 1
+          },
+          "P": {
+            "blue": 2,
+            "correct": 1,
+            "episodes": 2,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 0
+          }
+        },
+        "BA": {
+          "F": {
+            "blue": 0,
+            "correct": 1,
+            "episodes": 2,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 2
+          },
+          "P": {
+            "blue": 0,
+            "correct": 1,
+            "episodes": 2,
+            "failures": 0,
+            "protocol_invalid": 0,
+            "red": 2
+          }
+        }
+      }
+    },
+    "mapping_declaration_order_symbol_condition": {
+      "M1": {
+        "AB": {
+          "ALPHA": {
+            "F": {
+              "blue": 0,
+              "correct": 1,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 1
+            },
+            "P": {
+              "blue": 0,
+              "correct": 1,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 1
+            }
+          },
+          "BETA": {
+            "F": {
+              "blue": 0,
+              "correct": 0,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 1
+            },
+            "P": {
+              "blue": 0,
+              "correct": 0,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 1
+            }
+          }
+        },
+        "BA": {
+          "ALPHA": {
+            "F": {
+              "blue": 0,
+              "correct": 1,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 1
+            },
+            "P": {
+              "blue": 1,
+              "correct": 0,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 0
+            }
+          },
+          "BETA": {
+            "F": {
+              "blue": 1,
+              "correct": 1,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 0
+            },
+            "P": {
+              "blue": 1,
+              "correct": 1,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 0
+            }
+          }
+        }
+      },
+      "M2": {
+        "AB": {
+          "ALPHA": {
+            "F": {
+              "blue": 1,
+              "correct": 1,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 0
+            },
+            "P": {
+              "blue": 1,
+              "correct": 1,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 0
+            }
+          },
+          "BETA": {
+            "F": {
+              "blue": 0,
+              "correct": 1,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 1
+            },
+            "P": {
+              "blue": 1,
+              "correct": 0,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 0
+            }
+          }
+        },
+        "BA": {
+          "ALPHA": {
+            "F": {
+              "blue": 0,
+              "correct": 0,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 1
+            },
+            "P": {
+              "blue": 0,
+              "correct": 0,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 1
+            }
+          },
+          "BETA": {
+            "F": {
+              "blue": 0,
+              "correct": 1,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 1
+            },
+            "P": {
+              "blue": 0,
+              "correct": 1,
+              "episodes": 1,
+              "failures": 0,
+              "protocol_invalid": 0,
+              "red": 1
+            }
+          }
+        }
+      }
+    }
+  },
+  "empirical_call_count": 16,
+  "empirical_episode_count": 16,
+  "empirical_retry_count": 0,
+  "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+  "episodes": [
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "F",
+      "correct": true,
+      "declaration_order": "AB",
+      "episode_id": "p2-row-order-m1-ab-alpha-f",
+      "failure_class": null,
+      "hidden_target_color": "RED",
+      "mapping": "M1",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "declaration_order": "AB",
+            "hidden_target_color": "RED",
+            "mapping": "M1",
+            "mapping_rows": [
+              {
+                "color": "RED",
+                "symbol": "ALPHA"
+              },
+              {
+                "color": "BLUE",
+                "symbol": "BETA"
+              }
+            ],
+            "serialized_mapping_text": "ALPHA -> RED; BETA -> BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "SYMBOL_OBSERVATION_PRODUCED",
+          "payload": {
+            "symbol": "ALPHA"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "SYMBOL_OBSERVATION_DELIVERED",
+          "payload": {
+            "symbol": "ALPHA"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "serialized_mapping_text": "ALPHA -> RED; BETA -> BLUE",
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "P",
+      "correct": true,
+      "declaration_order": "AB",
+      "episode_id": "p2-row-order-m1-ab-alpha-p",
+      "failure_class": null,
+      "hidden_target_color": "RED",
+      "mapping": "M1",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "declaration_order": "AB",
+            "hidden_target_color": "RED",
+            "mapping": "M1",
+            "mapping_rows": [
+              {
+                "color": "RED",
+                "symbol": "ALPHA"
+              },
+              {
+                "color": "BLUE",
+                "symbol": "BETA"
+              }
+            ],
+            "serialized_mapping_text": "ALPHA -> RED; BETA -> BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "SYMBOL_OBSERVATION_PRODUCED",
+          "payload": {
+            "symbol": "ALPHA"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "SYMBOL_OBSERVATION_WITHHELD",
+          "payload": {
+            "symbol_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_SYMBOL_DELIVERY",
+          "payload": {
+            "symbol": "ALPHA"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "serialized_mapping_text": "ALPHA -> RED; BETA -> BLUE",
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "F",
+      "correct": false,
+      "declaration_order": "AB",
+      "episode_id": "p2-row-order-m1-ab-beta-f",
+      "failure_class": null,
+      "hidden_target_color": "BLUE",
+      "mapping": "M1",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "declaration_order": "AB",
+            "hidden_target_color": "BLUE",
+            "mapping": "M1",
+            "mapping_rows": [
+              {
+                "color": "RED",
+                "symbol": "ALPHA"
+              },
+              {
+                "color": "BLUE",
+                "symbol": "BETA"
+              }
+            ],
+            "serialized_mapping_text": "ALPHA -> RED; BETA -> BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "SYMBOL_OBSERVATION_PRODUCED",
+          "payload": {
+            "symbol": "BETA"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "SYMBOL_OBSERVATION_DELIVERED",
+          "payload": {
+            "symbol": "BETA"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "serialized_mapping_text": "ALPHA -> RED; BETA -> BLUE",
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "P",
+      "correct": false,
+      "declaration_order": "AB",
+      "episode_id": "p2-row-order-m1-ab-beta-p",
+      "failure_class": null,
+      "hidden_target_color": "BLUE",
+      "mapping": "M1",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "declaration_order": "AB",
+            "hidden_target_color": "BLUE",
+            "mapping": "M1",
+            "mapping_rows": [
+              {
+                "color": "RED",
+                "symbol": "ALPHA"
+              },
+              {
+                "color": "BLUE",
+                "symbol": "BETA"
+              }
+            ],
+            "serialized_mapping_text": "ALPHA -> RED; BETA -> BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "SYMBOL_OBSERVATION_PRODUCED",
+          "payload": {
+            "symbol": "BETA"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "SYMBOL_OBSERVATION_WITHHELD",
+          "payload": {
+            "symbol_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_SYMBOL_DELIVERY",
+          "payload": {
+            "symbol": "BETA"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "serialized_mapping_text": "ALPHA -> RED; BETA -> BLUE",
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "F",
+      "correct": true,
+      "declaration_order": "BA",
+      "episode_id": "p2-row-order-m1-ba-alpha-f",
+      "failure_class": null,
+      "hidden_target_color": "RED",
+      "mapping": "M1",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        },
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "declaration_order": "BA",
+            "hidden_target_color": "RED",
+            "mapping": "M1",
+            "mapping_rows": [
+              {
+                "color": "BLUE",
+                "symbol": "BETA"
+              },
+              {
+                "color": "RED",
+                "symbol": "ALPHA"
+              }
+            ],
+            "serialized_mapping_text": "BETA -> BLUE; ALPHA -> RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "SYMBOL_OBSERVATION_PRODUCED",
+          "payload": {
+            "symbol": "ALPHA"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "SYMBOL_OBSERVATION_DELIVERED",
+          "payload": {
+            "symbol": "ALPHA"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "serialized_mapping_text": "BETA -> BLUE; ALPHA -> RED",
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_BLUE",
+      "condition": "P",
+      "correct": false,
+      "declaration_order": "BA",
+      "episode_id": "p2-row-order-m1-ba-alpha-p",
+      "failure_class": null,
+      "hidden_target_color": "RED",
+      "mapping": "M1",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        },
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "declaration_order": "BA",
+            "hidden_target_color": "RED",
+            "mapping": "M1",
+            "mapping_rows": [
+              {
+                "color": "BLUE",
+                "symbol": "BETA"
+              },
+              {
+                "color": "RED",
+                "symbol": "ALPHA"
+              }
+            ],
+            "serialized_mapping_text": "BETA -> BLUE; ALPHA -> RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "SYMBOL_OBSERVATION_PRODUCED",
+          "payload": {
+            "symbol": "ALPHA"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "SYMBOL_OBSERVATION_WITHHELD",
+          "payload": {
+            "symbol_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_BLUE",
+            "reason": null,
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_SYMBOL_DELIVERY",
+          "payload": {
+            "symbol": "ALPHA"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_BLUE",
+      "serialized_mapping_text": "BETA -> BLUE; ALPHA -> RED",
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_BLUE",
+      "condition": "F",
+      "correct": true,
+      "declaration_order": "BA",
+      "episode_id": "p2-row-order-m1-ba-beta-f",
+      "failure_class": null,
+      "hidden_target_color": "BLUE",
+      "mapping": "M1",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        },
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "declaration_order": "BA",
+            "hidden_target_color": "BLUE",
+            "mapping": "M1",
+            "mapping_rows": [
+              {
+                "color": "BLUE",
+                "symbol": "BETA"
+              },
+              {
+                "color": "RED",
+                "symbol": "ALPHA"
+              }
+            ],
+            "serialized_mapping_text": "BETA -> BLUE; ALPHA -> RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "SYMBOL_OBSERVATION_PRODUCED",
+          "payload": {
+            "symbol": "BETA"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "SYMBOL_OBSERVATION_DELIVERED",
+          "payload": {
+            "symbol": "BETA"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_BLUE",
+            "reason": null,
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_BLUE",
+      "serialized_mapping_text": "BETA -> BLUE; ALPHA -> RED",
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_BLUE",
+      "condition": "P",
+      "correct": true,
+      "declaration_order": "BA",
+      "episode_id": "p2-row-order-m1-ba-beta-p",
+      "failure_class": null,
+      "hidden_target_color": "BLUE",
+      "mapping": "M1",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        },
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "declaration_order": "BA",
+            "hidden_target_color": "BLUE",
+            "mapping": "M1",
+            "mapping_rows": [
+              {
+                "color": "BLUE",
+                "symbol": "BETA"
+              },
+              {
+                "color": "RED",
+                "symbol": "ALPHA"
+              }
+            ],
+            "serialized_mapping_text": "BETA -> BLUE; ALPHA -> RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "SYMBOL_OBSERVATION_PRODUCED",
+          "payload": {
+            "symbol": "BETA"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "SYMBOL_OBSERVATION_WITHHELD",
+          "payload": {
+            "symbol_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_BLUE",
+            "reason": null,
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_SYMBOL_DELIVERY",
+          "payload": {
+            "symbol": "BETA"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_BLUE",
+      "serialized_mapping_text": "BETA -> BLUE; ALPHA -> RED",
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_BLUE",
+      "condition": "F",
+      "correct": true,
+      "declaration_order": "AB",
+      "episode_id": "p2-row-order-m2-ab-alpha-f",
+      "failure_class": null,
+      "hidden_target_color": "BLUE",
+      "mapping": "M2",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "declaration_order": "AB",
+            "hidden_target_color": "BLUE",
+            "mapping": "M2",
+            "mapping_rows": [
+              {
+                "color": "BLUE",
+                "symbol": "ALPHA"
+              },
+              {
+                "color": "RED",
+                "symbol": "BETA"
+              }
+            ],
+            "serialized_mapping_text": "ALPHA -> BLUE; BETA -> RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "SYMBOL_OBSERVATION_PRODUCED",
+          "payload": {
+            "symbol": "ALPHA"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "SYMBOL_OBSERVATION_DELIVERED",
+          "payload": {
+            "symbol": "ALPHA"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_BLUE",
+            "reason": null,
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_BLUE",
+      "serialized_mapping_text": "ALPHA -> BLUE; BETA -> RED",
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_BLUE",
+      "condition": "P",
+      "correct": true,
+      "declaration_order": "AB",
+      "episode_id": "p2-row-order-m2-ab-alpha-p",
+      "failure_class": null,
+      "hidden_target_color": "BLUE",
+      "mapping": "M2",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "declaration_order": "AB",
+            "hidden_target_color": "BLUE",
+            "mapping": "M2",
+            "mapping_rows": [
+              {
+                "color": "BLUE",
+                "symbol": "ALPHA"
+              },
+              {
+                "color": "RED",
+                "symbol": "BETA"
+              }
+            ],
+            "serialized_mapping_text": "ALPHA -> BLUE; BETA -> RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "SYMBOL_OBSERVATION_PRODUCED",
+          "payload": {
+            "symbol": "ALPHA"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "SYMBOL_OBSERVATION_WITHHELD",
+          "payload": {
+            "symbol_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_BLUE",
+            "reason": null,
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_SYMBOL_DELIVERY",
+          "payload": {
+            "symbol": "ALPHA"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_BLUE",
+      "serialized_mapping_text": "ALPHA -> BLUE; BETA -> RED",
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "F",
+      "correct": true,
+      "declaration_order": "AB",
+      "episode_id": "p2-row-order-m2-ab-beta-f",
+      "failure_class": null,
+      "hidden_target_color": "RED",
+      "mapping": "M2",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "declaration_order": "AB",
+            "hidden_target_color": "RED",
+            "mapping": "M2",
+            "mapping_rows": [
+              {
+                "color": "BLUE",
+                "symbol": "ALPHA"
+              },
+              {
+                "color": "RED",
+                "symbol": "BETA"
+              }
+            ],
+            "serialized_mapping_text": "ALPHA -> BLUE; BETA -> RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "SYMBOL_OBSERVATION_PRODUCED",
+          "payload": {
+            "symbol": "BETA"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "SYMBOL_OBSERVATION_DELIVERED",
+          "payload": {
+            "symbol": "BETA"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "serialized_mapping_text": "ALPHA -> BLUE; BETA -> RED",
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_BLUE",
+      "condition": "P",
+      "correct": false,
+      "declaration_order": "AB",
+      "episode_id": "p2-row-order-m2-ab-beta-p",
+      "failure_class": null,
+      "hidden_target_color": "RED",
+      "mapping": "M2",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "declaration_order": "AB",
+            "hidden_target_color": "RED",
+            "mapping": "M2",
+            "mapping_rows": [
+              {
+                "color": "BLUE",
+                "symbol": "ALPHA"
+              },
+              {
+                "color": "RED",
+                "symbol": "BETA"
+              }
+            ],
+            "serialized_mapping_text": "ALPHA -> BLUE; BETA -> RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "SYMBOL_OBSERVATION_PRODUCED",
+          "payload": {
+            "symbol": "BETA"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "SYMBOL_OBSERVATION_WITHHELD",
+          "payload": {
+            "symbol_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_BLUE",
+            "reason": null,
+            "requested_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_SYMBOL_DELIVERY",
+          "payload": {
+            "symbol": "BETA"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_BLUE",
+      "serialized_mapping_text": "ALPHA -> BLUE; BETA -> RED",
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "F",
+      "correct": false,
+      "declaration_order": "BA",
+      "episode_id": "p2-row-order-m2-ba-alpha-f",
+      "failure_class": null,
+      "hidden_target_color": "BLUE",
+      "mapping": "M2",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "declaration_order": "BA",
+            "hidden_target_color": "BLUE",
+            "mapping": "M2",
+            "mapping_rows": [
+              {
+                "color": "RED",
+                "symbol": "BETA"
+              },
+              {
+                "color": "BLUE",
+                "symbol": "ALPHA"
+              }
+            ],
+            "serialized_mapping_text": "BETA -> RED; ALPHA -> BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "SYMBOL_OBSERVATION_PRODUCED",
+          "payload": {
+            "symbol": "ALPHA"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "SYMBOL_OBSERVATION_DELIVERED",
+          "payload": {
+            "symbol": "ALPHA"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "serialized_mapping_text": "BETA -> RED; ALPHA -> BLUE",
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "P",
+      "correct": false,
+      "declaration_order": "BA",
+      "episode_id": "p2-row-order-m2-ba-alpha-p",
+      "failure_class": null,
+      "hidden_target_color": "BLUE",
+      "mapping": "M2",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "declaration_order": "BA",
+            "hidden_target_color": "BLUE",
+            "mapping": "M2",
+            "mapping_rows": [
+              {
+                "color": "RED",
+                "symbol": "BETA"
+              },
+              {
+                "color": "BLUE",
+                "symbol": "ALPHA"
+              }
+            ],
+            "serialized_mapping_text": "BETA -> RED; ALPHA -> BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "SYMBOL_OBSERVATION_PRODUCED",
+          "payload": {
+            "symbol": "ALPHA"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "SYMBOL_OBSERVATION_WITHHELD",
+          "payload": {
+            "symbol_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_SYMBOL_DELIVERY",
+          "payload": {
+            "symbol": "ALPHA"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "serialized_mapping_text": "BETA -> RED; ALPHA -> BLUE",
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "F",
+      "correct": true,
+      "declaration_order": "BA",
+      "episode_id": "p2-row-order-m2-ba-beta-f",
+      "failure_class": null,
+      "hidden_target_color": "RED",
+      "mapping": "M2",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "declaration_order": "BA",
+            "hidden_target_color": "RED",
+            "mapping": "M2",
+            "mapping_rows": [
+              {
+                "color": "RED",
+                "symbol": "BETA"
+              },
+              {
+                "color": "BLUE",
+                "symbol": "ALPHA"
+              }
+            ],
+            "serialized_mapping_text": "BETA -> RED; ALPHA -> BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "SYMBOL_OBSERVATION_PRODUCED",
+          "payload": {
+            "symbol": "BETA"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "SYMBOL_OBSERVATION_DELIVERED",
+          "payload": {
+            "symbol": "BETA"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "serialized_mapping_text": "BETA -> RED; ALPHA -> BLUE",
+      "valid": true
+    },
+    {
+      "accepted_terminal_action": "SUBMIT_RED",
+      "condition": "P",
+      "correct": true,
+      "declaration_order": "BA",
+      "episode_id": "p2-row-order-m2-ba-beta-p",
+      "failure_class": null,
+      "hidden_target_color": "RED",
+      "mapping": "M2",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_STATE_ESTABLISHED",
+          "payload": {
+            "declaration_order": "BA",
+            "hidden_target_color": "RED",
+            "mapping": "M2",
+            "mapping_rows": [
+              {
+                "color": "RED",
+                "symbol": "BETA"
+              },
+              {
+                "color": "BLUE",
+                "symbol": "ALPHA"
+              }
+            ],
+            "serialized_mapping_text": "BETA -> RED; ALPHA -> BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "INSPECT_EXECUTED",
+          "payload": {
+            "action": "INSPECT"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "SYMBOL_OBSERVATION_PRODUCED",
+          "payload": {
+            "symbol": "BETA"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "SYMBOL_OBSERVATION_WITHHELD",
+          "payload": {
+            "symbol_produced": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "SUBMIT_RED",
+            "reason": null,
+            "requested_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "accepted_terminal_action": "SUBMIT_RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "POST_COMMIT_SYMBOL_DELIVERY",
+          "payload": {
+            "symbol": "BETA"
+          },
+          "policy_visible": true
+        }
+      ],
+      "requested_action": "SUBMIT_RED",
+      "serialized_mapping_text": "BETA -> RED; ALPHA -> BLUE",
+      "valid": true
+    }
+  ],
+  "execution_basis_commit": "1ea1081dbd55066c66c589c637414a4fdbd19e2b",
+  "freeze_path": "traces/behavioral_coupling_mapping_row_order_freeze_v0.json",
+  "model_identifier": "hermes-3-llama-3.2-3b",
+  "pressure": "P2_MAPPING_ROW_ORDER",
+  "protocol_sha256": "sha256:65d22575306522e8c7b5706324b5b7a6b4ce68c35ec92b0c8db087068ea3e53b",
+  "protocol_version": "behavioral_coupling_mapping_row_order_v0",
+  "provider_exposed_sampling_settings": {
+    "max_tokens": 16,
+    "temperature": 0.0,
+    "top_p": 1.0
+  },
+  "schedule_sha256": "sha256:b0b9074e66d4e6deb8f1207eedcf41326724af5d123ee8c0afad1d99a57c3502",
+  "scientific_adjudication": "NOT_PERFORMED",
+  "scoring_rule": "correct iff the accepted action matches the authoritative target color",
+  "validity": {
+    "calls_retained": 16,
+    "empirical_retries": 0,
+    "episodes_retained": 16,
+    "invalidity_wounds": [],
+    "status": "VALID",
+    "wrong_actions_are_behavior_not_invalidity": true
+  }
+}
