@@ -1,0 +1,489 @@
+{
+  "P1_revisited": false,
+  "P3_status": "BLOCKED_NOT_EXECUTED",
+  "P4_revisited": false,
+  "artifact": "behavioral_coupling_mapping_row_order_freeze_v0",
+  "artifact_class": "PRE_EXECUTION_PROTOCOL_AND_SCHEDULE_FREEZE",
+  "empirical_model_calls_made": 0,
+  "protocol": {
+    "conditions": {
+      "F": "symbol delivered before terminal commitment",
+      "P": "symbol withheld until after terminal commitment"
+    },
+    "factorial": {
+      "condition": [
+        "F",
+        "P"
+      ],
+      "declaration_order": [
+        "AB",
+        "BA"
+      ],
+      "episodes_per_cell": 1,
+      "mapping": [
+        "M1",
+        "M2"
+      ],
+      "symbol": [
+        "ALPHA",
+        "BETA"
+      ],
+      "total_episodes": 16
+    },
+    "held_fixed": {
+      "action_schema_hash": "sha256:653c01d220276aec999dca0e14c656232f1b2fd29c38007a1376d61eac16cda7",
+      "actuation": "CONSTRAINED_TYPED_ACTION",
+      "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+      "feedback_timing_semantics": "committed P2 F/P semantics",
+      "legal_actions": [
+        "SUBMIT_RED",
+        "SUBMIT_BLUE"
+      ],
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "repository_or_filesystem_supplied": false,
+      "sampling": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "stateless_episode_requests": true,
+      "symbol_alphabet": [
+        "ALPHA",
+        "BETA"
+      ],
+      "tools_or_mcp_supplied": false,
+      "world_scoring": "correct iff the accepted action matches the authoritative target color"
+    },
+    "intervention": {
+      "declaration_orders": {
+        "AB": [
+          "ALPHA",
+          "BETA"
+        ],
+        "BA": [
+          "BETA",
+          "ALPHA"
+        ]
+      },
+      "presentations": {
+        "M1": {
+          "AB": {
+            "fixed_task": "Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.",
+            "mapping_rows": [
+              {
+                "color": "RED",
+                "symbol": "ALPHA"
+              },
+              {
+                "color": "BLUE",
+                "symbol": "BETA"
+              }
+            ],
+            "serialized_mapping_text": "ALPHA -> RED; BETA -> BLUE"
+          },
+          "BA": {
+            "fixed_task": "Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.",
+            "mapping_rows": [
+              {
+                "color": "BLUE",
+                "symbol": "BETA"
+              },
+              {
+                "color": "RED",
+                "symbol": "ALPHA"
+              }
+            ],
+            "serialized_mapping_text": "BETA -> BLUE; ALPHA -> RED"
+          }
+        },
+        "M2": {
+          "AB": {
+            "fixed_task": "Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.",
+            "mapping_rows": [
+              {
+                "color": "BLUE",
+                "symbol": "ALPHA"
+              },
+              {
+                "color": "RED",
+                "symbol": "BETA"
+              }
+            ],
+            "serialized_mapping_text": "ALPHA -> BLUE; BETA -> RED"
+          },
+          "BA": {
+            "fixed_task": "Submit the color matching the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. Respond with exactly SUBMIT_RED or SUBMIT_BLUE.",
+            "mapping_rows": [
+              {
+                "color": "RED",
+                "symbol": "BETA"
+              },
+              {
+                "color": "BLUE",
+                "symbol": "ALPHA"
+              }
+            ],
+            "serialized_mapping_text": "BETA -> RED; ALPHA -> BLUE"
+          }
+        }
+      },
+      "semantic_mapping_is_not_declaration_order": true,
+      "semantic_mappings": {
+        "M1": {
+          "ALPHA": "RED",
+          "BETA": "BLUE"
+        },
+        "M2": {
+          "ALPHA": "BLUE",
+          "BETA": "RED"
+        }
+      }
+    },
+    "prior_p2_evidence": {
+      "calls": "traces/behavioral_coupling_p2_semantic_indirection_calls_v0.json",
+      "world": "traces/behavioral_coupling_p2_semantic_indirection_world_v0.json"
+    },
+    "protocol_version": "behavioral_coupling_mapping_row_order_v0",
+    "repository_authority_commit": "76ffb23f2f0826dbd0dc13302bcf93091f971d2a",
+    "research_question": "Holding symbol-to-color meaning fixed, does reversing mapping-row declaration order change accepted action selection, and holding row position fixed, does reversing mapping meaning change behavior?",
+    "scientific_boundary": {
+      "does_not_establish": [
+        "general relational reasoning",
+        "symbolic reasoning",
+        "agency",
+        "model-internal mechanism",
+        "stable cognitive bias",
+        "general coordinate invariance",
+        "distinction orchestrator"
+      ],
+      "may_establish": "bounded dependence or independence between declared relation meaning and declaration position/order for this coupled realization",
+      "scientific_adjudication": "NOT_PERFORMED"
+    },
+    "status": "FROZEN_BEFORE_EMPIRICAL_EXECUTION",
+    "stop_after_pressure": true,
+    "validity": {
+      "invalidity_conditions": [
+        "wrong mapping delivered",
+        "wrong row order serialized",
+        "hidden target leakage",
+        "F/P delivery error",
+        "schedule mutation",
+        "action-schema mutation",
+        "retry replacement",
+        "prior episode context leakage",
+        "semantic repair"
+      ],
+      "no_empirical_retries": true,
+      "wrong_actions_are_behavior_not_invalidity": true
+    }
+  },
+  "protocol_sha256": "sha256:65d22575306522e8c7b5706324b5b7a6b4ce68c35ec92b0c8db087068ea3e53b",
+  "schedule": [
+    {
+      "condition": "F",
+      "declaration_order": "AB",
+      "episode_id": "p2-row-order-m1-ab-alpha-f",
+      "hidden_target_color": "RED",
+      "mapping": "M1",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_mapping_text": "ALPHA -> RED; BETA -> BLUE"
+    },
+    {
+      "condition": "P",
+      "declaration_order": "AB",
+      "episode_id": "p2-row-order-m1-ab-alpha-p",
+      "hidden_target_color": "RED",
+      "mapping": "M1",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_mapping_text": "ALPHA -> RED; BETA -> BLUE"
+    },
+    {
+      "condition": "F",
+      "declaration_order": "AB",
+      "episode_id": "p2-row-order-m1-ab-beta-f",
+      "hidden_target_color": "BLUE",
+      "mapping": "M1",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_mapping_text": "ALPHA -> RED; BETA -> BLUE"
+    },
+    {
+      "condition": "P",
+      "declaration_order": "AB",
+      "episode_id": "p2-row-order-m1-ab-beta-p",
+      "hidden_target_color": "BLUE",
+      "mapping": "M1",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_mapping_text": "ALPHA -> RED; BETA -> BLUE"
+    },
+    {
+      "condition": "F",
+      "declaration_order": "BA",
+      "episode_id": "p2-row-order-m1-ba-alpha-f",
+      "hidden_target_color": "RED",
+      "mapping": "M1",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        },
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_mapping_text": "BETA -> BLUE; ALPHA -> RED"
+    },
+    {
+      "condition": "P",
+      "declaration_order": "BA",
+      "episode_id": "p2-row-order-m1-ba-alpha-p",
+      "hidden_target_color": "RED",
+      "mapping": "M1",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        },
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_mapping_text": "BETA -> BLUE; ALPHA -> RED"
+    },
+    {
+      "condition": "F",
+      "declaration_order": "BA",
+      "episode_id": "p2-row-order-m1-ba-beta-f",
+      "hidden_target_color": "BLUE",
+      "mapping": "M1",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        },
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_mapping_text": "BETA -> BLUE; ALPHA -> RED"
+    },
+    {
+      "condition": "P",
+      "declaration_order": "BA",
+      "episode_id": "p2-row-order-m1-ba-beta-p",
+      "hidden_target_color": "BLUE",
+      "mapping": "M1",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        },
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_mapping_text": "BETA -> BLUE; ALPHA -> RED"
+    },
+    {
+      "condition": "F",
+      "declaration_order": "AB",
+      "episode_id": "p2-row-order-m2-ab-alpha-f",
+      "hidden_target_color": "BLUE",
+      "mapping": "M2",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_mapping_text": "ALPHA -> BLUE; BETA -> RED"
+    },
+    {
+      "condition": "P",
+      "declaration_order": "AB",
+      "episode_id": "p2-row-order-m2-ab-alpha-p",
+      "hidden_target_color": "BLUE",
+      "mapping": "M2",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_mapping_text": "ALPHA -> BLUE; BETA -> RED"
+    },
+    {
+      "condition": "F",
+      "declaration_order": "AB",
+      "episode_id": "p2-row-order-m2-ab-beta-f",
+      "hidden_target_color": "RED",
+      "mapping": "M2",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_mapping_text": "ALPHA -> BLUE; BETA -> RED"
+    },
+    {
+      "condition": "P",
+      "declaration_order": "AB",
+      "episode_id": "p2-row-order-m2-ab-beta-p",
+      "hidden_target_color": "RED",
+      "mapping": "M2",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_mapping_text": "ALPHA -> BLUE; BETA -> RED"
+    },
+    {
+      "condition": "F",
+      "declaration_order": "BA",
+      "episode_id": "p2-row-order-m2-ba-alpha-f",
+      "hidden_target_color": "BLUE",
+      "mapping": "M2",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_mapping_text": "BETA -> RED; ALPHA -> BLUE"
+    },
+    {
+      "condition": "P",
+      "declaration_order": "BA",
+      "episode_id": "p2-row-order-m2-ba-alpha-p",
+      "hidden_target_color": "BLUE",
+      "mapping": "M2",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_mapping_text": "BETA -> RED; ALPHA -> BLUE"
+    },
+    {
+      "condition": "F",
+      "declaration_order": "BA",
+      "episode_id": "p2-row-order-m2-ba-beta-f",
+      "hidden_target_color": "RED",
+      "mapping": "M2",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_mapping_text": "BETA -> RED; ALPHA -> BLUE"
+    },
+    {
+      "condition": "P",
+      "declaration_order": "BA",
+      "episode_id": "p2-row-order-m2-ba-beta-p",
+      "hidden_target_color": "RED",
+      "mapping": "M2",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_mapping_text": "BETA -> RED; ALPHA -> BLUE"
+    }
+  ],
+  "schedule_sha256": "sha256:b0b9074e66d4e6deb8f1207eedcf41326724af5d123ee8c0afad1d99a57c3502",
+  "scientific_adjudication": "NOT_PERFORMED"
+}
