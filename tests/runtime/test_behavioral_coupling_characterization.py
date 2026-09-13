@@ -326,6 +326,48 @@ class BehavioralCouplingCharacterizationTest(unittest.TestCase):
             self.assertEqual(calls["validity"]["status"], "VALID")
             self.assertEqual(len(world["episodes"]), len(calls["calls"]))
 
+    def test_continuation_basis_preserves_qualified_subset_and_blocked_p3(self) -> None:
+        import src.runtime.behavioral_coupling_characterization_continuation as continuation
+
+        basis = continuation.validate_continuation_basis()
+        self.assertEqual(basis["eligible_pressures"], ["P1", "P2", "P4"])
+        self.assertEqual(basis["blocked_pressure"], "P3")
+        self.assertEqual(
+            {key: len(value) for key, value in basis["freeze"]["schedules"].items()},
+            {"P1": 32, "P2": 16, "P3": 16, "P4": 16},
+        )
+        self.assertTrue(basis["qualification"]["BR_passed"])
+        self.assertFalse(basis["qualification"]["RBD_passed"])
+
+    def test_continuation_executes_exact_64_episode_subset_offline(self) -> None:
+        import src.runtime.behavioral_coupling_characterization_continuation as continuation
+
+        written: dict[str, dict[str, object]] = {}
+
+        def retain(path: object, value: dict[str, object]) -> None:
+            written[str(path)] = value
+
+        with (
+            patch.object(
+                battery,
+                "LMStudioConstrainedActionPolicyAdapter",
+                DeterministicAdapter,
+            ),
+            patch.object(continuation, "_write_new_json", side_effect=retain),
+        ):
+            result = continuation.execute_qualified_subset_once(
+                "continuation-commit"
+            )
+
+        self.assertEqual(result["completed_pressures"], ["P1", "P2", "P4"])
+        self.assertEqual(result["empirical_episode_count"], 64)
+        self.assertEqual(result["empirical_call_count"], 64)
+        self.assertEqual(result["retry_calls"], 0)
+        self.assertEqual(result["new_qualification_calls"], 0)
+        self.assertEqual(result["P3"]["status"], "BLOCKED_NOT_EXECUTED")
+        self.assertEqual(result["P3"]["empirical_calls"], 0)
+        self.assertEqual(len(written), 8)
+
 
 if __name__ == "__main__":
     unittest.main()

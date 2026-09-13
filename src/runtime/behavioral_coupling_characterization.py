@@ -702,6 +702,7 @@ def _count_actions(episodes: Sequence[Mapping[str, Any]]) -> dict[str, int]:
         "defer": sum(e["accepted_terminal_action"] == DEFER for e in episodes),
         "correct": sum(bool(e["correct"]) for e in episodes),
         "failures": sum(e["accepted_terminal_action"] is None for e in episodes),
+        "protocol_invalid": sum(e.get("valid") is not True for e in episodes),
     }
 
 
@@ -958,8 +959,16 @@ def _pressure_artifacts(
     )
 
 
-def _run_p1(adapter_commit: str) -> tuple[dict[str, Any], dict[str, Any]]:
-    schedule = compile_p1_schedule()
+def _run_p1(
+    adapter_commit: str,
+    *,
+    frozen_schedule: Sequence[Mapping[str, Any]] | None = None,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    schedule = (
+        [deepcopy(dict(row)) for row in frozen_schedule]
+        if frozen_schedule is not None
+        else compile_p1_schedule()
+    )
     episodes: list[dict[str, Any]] = []
     calls: list[dict[str, Any]] = []
     adapters = {
