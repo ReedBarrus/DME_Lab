@@ -1,0 +1,368 @@
+{
+  "BR_passed": true,
+  "RBD_passed": false,
+  "adapter_repository_commit": "d60ce2044fb2215e58eec74de8e311ba42765bc0",
+  "artifact": "behavioral_coupling_schema_qualification_v0",
+  "artifact_class": "NON_SCIENTIFIC_ACTUATION_QUALIFICATION",
+  "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+  "existing_RB_qualification_evidence": "traces/bounded_consequential_feedback_lm_studio_constrained_qualification_v0.json",
+  "existing_RB_schema_requalified": false,
+  "frozen_schedule_entries_consumed": 0,
+  "model_identifier": "hermes-3-llama-3.2-3b",
+  "provider_exposed_sampling_settings": {
+    "max_tokens": 16,
+    "temperature": 0.0,
+    "top_p": 1.0
+  },
+  "qualification_calls_made": 5,
+  "qualification_passed": false,
+  "qualification_results": [
+    {
+      "call_evidence": {
+        "action_schema_hash": "sha256:7d4c70a56d77acd790d4078b65c93ef22f43bdcb3a07cc8551612101319f00d0",
+        "actuation_constraint": {
+          "json_schema": {
+            "name": "bounded_terminal_action",
+            "schema": {
+              "additionalProperties": false,
+              "properties": {
+                "action": {
+                  "enum": [
+                    "SUBMIT_BLUE",
+                    "SUBMIT_RED"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "action"
+              ],
+              "type": "object"
+            },
+            "strict": true
+          },
+          "type": "json_schema"
+        },
+        "actuation_failure": null,
+        "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+        "adapter_failure": null,
+        "conversation_state_supplied": false,
+        "endpoint_configuration": {
+          "authentication_configured": false,
+          "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+          "environment_proxies_allowed": false,
+          "host": "127.0.0.1",
+          "loopback_only": true,
+          "path": "/v1/chat/completions",
+          "port": 1234,
+          "redirects_allowed": false,
+          "scheme": "http",
+          "timeout_seconds": 120.0
+        },
+        "http_status": 200,
+        "model_identifier": "hermes-3-llama-3.2-3b",
+        "parsed_requested_action": "SUBMIT_BLUE",
+        "provider_exposed_sampling_settings": {
+          "max_tokens": 16,
+          "temperature": 0.0,
+          "top_p": 1.0
+        },
+        "raw_model_response": "{\"action\":\"SUBMIT_BLUE\"}",
+        "raw_response_body": "{\n  \"id\": \"chatcmpl-rwg784d9pgxofip06t6n\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789304118,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_BLUE\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 37,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 45,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+        "selected_action": "SUBMIT_BLUE",
+        "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_BLUE\",\"SUBMIT_RED\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+        "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_BLUE\",\"SUBMIT_RED\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+        "serialized_policy_visible_request": "{\"fixed_task\":\"Select SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[]}",
+        "structured_output": {
+          "action": "SUBMIT_BLUE"
+        },
+        "tools_supplied": false
+      },
+      "expected_action": "SUBMIT_BLUE",
+      "failure": null,
+      "passed": true,
+      "schema_realization": "BR",
+      "selected_action": "SUBMIT_BLUE",
+      "task": "Select SUBMIT_BLUE."
+    },
+    {
+      "call_evidence": {
+        "action_schema_hash": "sha256:7d4c70a56d77acd790d4078b65c93ef22f43bdcb3a07cc8551612101319f00d0",
+        "actuation_constraint": {
+          "json_schema": {
+            "name": "bounded_terminal_action",
+            "schema": {
+              "additionalProperties": false,
+              "properties": {
+                "action": {
+                  "enum": [
+                    "SUBMIT_BLUE",
+                    "SUBMIT_RED"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "action"
+              ],
+              "type": "object"
+            },
+            "strict": true
+          },
+          "type": "json_schema"
+        },
+        "actuation_failure": null,
+        "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+        "adapter_failure": null,
+        "conversation_state_supplied": false,
+        "endpoint_configuration": {
+          "authentication_configured": false,
+          "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+          "environment_proxies_allowed": false,
+          "host": "127.0.0.1",
+          "loopback_only": true,
+          "path": "/v1/chat/completions",
+          "port": 1234,
+          "redirects_allowed": false,
+          "scheme": "http",
+          "timeout_seconds": 120.0
+        },
+        "http_status": 200,
+        "model_identifier": "hermes-3-llama-3.2-3b",
+        "parsed_requested_action": "SUBMIT_RED",
+        "provider_exposed_sampling_settings": {
+          "max_tokens": 16,
+          "temperature": 0.0,
+          "top_p": 1.0
+        },
+        "raw_model_response": "{\"action\":\"SUBMIT_RED\"}\n",
+        "raw_response_body": "{\n  \"id\": \"chatcmpl-j6277hjhlcdzdpmxywoq5\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789304118,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_RED\\\"}\\n\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 37,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 45,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+        "selected_action": "SUBMIT_RED",
+        "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_BLUE\",\"SUBMIT_RED\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+        "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select SUBMIT_RED.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_BLUE\",\"SUBMIT_RED\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+        "serialized_policy_visible_request": "{\"fixed_task\":\"Select SUBMIT_RED.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[]}",
+        "structured_output": {
+          "action": "SUBMIT_RED"
+        },
+        "tools_supplied": false
+      },
+      "expected_action": "SUBMIT_RED",
+      "failure": null,
+      "passed": true,
+      "schema_realization": "BR",
+      "selected_action": "SUBMIT_RED",
+      "task": "Select SUBMIT_RED."
+    },
+    {
+      "call_evidence": {
+        "action_schema_hash": "sha256:45971eaa1efa23c603c93769d27297b179265bbc1be757c7a696f3ff593643dd",
+        "actuation_constraint": {
+          "json_schema": {
+            "name": "bounded_terminal_action",
+            "schema": {
+              "additionalProperties": false,
+              "properties": {
+                "action": {
+                  "enum": [
+                    "SUBMIT_RED",
+                    "SUBMIT_BLUE",
+                    "DEFER"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "action"
+              ],
+              "type": "object"
+            },
+            "strict": true
+          },
+          "type": "json_schema"
+        },
+        "actuation_failure": null,
+        "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+        "adapter_failure": null,
+        "conversation_state_supplied": false,
+        "endpoint_configuration": {
+          "authentication_configured": false,
+          "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+          "environment_proxies_allowed": false,
+          "host": "127.0.0.1",
+          "loopback_only": true,
+          "path": "/v1/chat/completions",
+          "port": 1234,
+          "redirects_allowed": false,
+          "scheme": "http",
+          "timeout_seconds": 120.0
+        },
+        "http_status": 200,
+        "model_identifier": "hermes-3-llama-3.2-3b",
+        "parsed_requested_action": "SUBMIT_RED",
+        "provider_exposed_sampling_settings": {
+          "max_tokens": 16,
+          "temperature": 0.0,
+          "top_p": 1.0
+        },
+        "raw_model_response": "{\n  \"action\": \"SUBMIT_RED\"\n}",
+        "raw_response_body": "{\n  \"id\": \"chatcmpl-qdw8g1m5jwxsi0qbpru3n\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789304118,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\n  \\\"action\\\": \\\"SUBMIT_RED\\\"\\n}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 40,\n    \"completion_tokens\": 12,\n    \"total_tokens\": 52,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+        "selected_action": "SUBMIT_RED",
+        "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\",\"DEFER\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+        "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select SUBMIT_RED.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\",\\\"DEFER\\\"],\\\"policy_visible_protocol_history\\\":[]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\",\"DEFER\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+        "serialized_policy_visible_request": "{\"fixed_task\":\"Select SUBMIT_RED.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\",\"DEFER\"],\"policy_visible_protocol_history\":[]}",
+        "structured_output": {
+          "action": "SUBMIT_RED"
+        },
+        "tools_supplied": false
+      },
+      "expected_action": "SUBMIT_RED",
+      "failure": null,
+      "passed": true,
+      "schema_realization": "RBD",
+      "selected_action": "SUBMIT_RED",
+      "task": "Select SUBMIT_RED."
+    },
+    {
+      "call_evidence": {
+        "action_schema_hash": "sha256:45971eaa1efa23c603c93769d27297b179265bbc1be757c7a696f3ff593643dd",
+        "actuation_constraint": {
+          "json_schema": {
+            "name": "bounded_terminal_action",
+            "schema": {
+              "additionalProperties": false,
+              "properties": {
+                "action": {
+                  "enum": [
+                    "SUBMIT_RED",
+                    "SUBMIT_BLUE",
+                    "DEFER"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "action"
+              ],
+              "type": "object"
+            },
+            "strict": true
+          },
+          "type": "json_schema"
+        },
+        "actuation_failure": null,
+        "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+        "adapter_failure": null,
+        "conversation_state_supplied": false,
+        "endpoint_configuration": {
+          "authentication_configured": false,
+          "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+          "environment_proxies_allowed": false,
+          "host": "127.0.0.1",
+          "loopback_only": true,
+          "path": "/v1/chat/completions",
+          "port": 1234,
+          "redirects_allowed": false,
+          "scheme": "http",
+          "timeout_seconds": 120.0
+        },
+        "http_status": 200,
+        "model_identifier": "hermes-3-llama-3.2-3b",
+        "parsed_requested_action": "SUBMIT_BLUE",
+        "provider_exposed_sampling_settings": {
+          "max_tokens": 16,
+          "temperature": 0.0,
+          "top_p": 1.0
+        },
+        "raw_model_response": "{\"action\":\"SUBMIT_BLUE\"}",
+        "raw_response_body": "{\n  \"id\": \"chatcmpl-8y3oilugr9f5geuvtxaeue\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789304119,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_BLUE\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 40,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 48,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+        "selected_action": "SUBMIT_BLUE",
+        "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\",\"DEFER\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+        "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select SUBMIT_BLUE.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\",\\\"DEFER\\\"],\\\"policy_visible_protocol_history\\\":[]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\",\"DEFER\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+        "serialized_policy_visible_request": "{\"fixed_task\":\"Select SUBMIT_BLUE.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\",\"DEFER\"],\"policy_visible_protocol_history\":[]}",
+        "structured_output": {
+          "action": "SUBMIT_BLUE"
+        },
+        "tools_supplied": false
+      },
+      "expected_action": "SUBMIT_BLUE",
+      "failure": null,
+      "passed": true,
+      "schema_realization": "RBD",
+      "selected_action": "SUBMIT_BLUE",
+      "task": "Select SUBMIT_BLUE."
+    },
+    {
+      "call_evidence": {
+        "action_schema_hash": "sha256:45971eaa1efa23c603c93769d27297b179265bbc1be757c7a696f3ff593643dd",
+        "actuation_constraint": {
+          "json_schema": {
+            "name": "bounded_terminal_action",
+            "schema": {
+              "additionalProperties": false,
+              "properties": {
+                "action": {
+                  "enum": [
+                    "SUBMIT_RED",
+                    "SUBMIT_BLUE",
+                    "DEFER"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "action"
+              ],
+              "type": "object"
+            },
+            "strict": true
+          },
+          "type": "json_schema"
+        },
+        "actuation_failure": null,
+        "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+        "adapter_failure": null,
+        "conversation_state_supplied": false,
+        "endpoint_configuration": {
+          "authentication_configured": false,
+          "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+          "environment_proxies_allowed": false,
+          "host": "127.0.0.1",
+          "loopback_only": true,
+          "path": "/v1/chat/completions",
+          "port": 1234,
+          "redirects_allowed": false,
+          "scheme": "http",
+          "timeout_seconds": 120.0
+        },
+        "http_status": 200,
+        "model_identifier": "hermes-3-llama-3.2-3b",
+        "parsed_requested_action": "SUBMIT_RED",
+        "provider_exposed_sampling_settings": {
+          "max_tokens": 16,
+          "temperature": 0.0,
+          "top_p": 1.0
+        },
+        "raw_model_response": "{\"action\":\"SUBMIT_RED\"}",
+        "raw_response_body": "{\n  \"id\": \"chatcmpl-khgkvgk3s4ck2es9lr059\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789304119,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"SUBMIT_RED\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 39,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 47,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+        "selected_action": "SUBMIT_RED",
+        "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\",\"DEFER\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+        "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select DEFER.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\",\\\"DEFER\\\"],\\\"policy_visible_protocol_history\\\":[]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\",\"DEFER\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+        "serialized_policy_visible_request": "{\"fixed_task\":\"Select DEFER.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\",\"DEFER\"],\"policy_visible_protocol_history\":[]}",
+        "structured_output": {
+          "action": "SUBMIT_RED"
+        },
+        "tools_supplied": false
+      },
+      "expected_action": "DEFER",
+      "failure": null,
+      "passed": false,
+      "schema_realization": "RBD",
+      "selected_action": "SUBMIT_RED",
+      "task": "Select DEFER."
+    }
+  ],
+  "schema_commitments": {
+    "BR": "sha256:7d4c70a56d77acd790d4078b65c93ef22f43bdcb3a07cc8551612101319f00d0",
+    "RBD": "sha256:45971eaa1efa23c603c93769d27297b179265bbc1be757c7a696f3ff593643dd"
+  }
+}
