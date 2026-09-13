@@ -25,6 +25,7 @@ from src.runtime.lm_studio_policy_adapter import (
     LMStudioPolicyAdapter,
     parse_structured_action,
     structured_action_response_format,
+    structured_action_schema_hash,
 )
 
 
@@ -264,6 +265,83 @@ class LMStudioConstrainedActionPolicyAdapterTest(unittest.TestCase):
                 endpoint=DEFAULT_ENDPOINT,
                 model_identifier="test/local-model",
                 sampling_settings={"response_format": {}},
+            )
+
+    def test_declared_enum_order_controls_schema_and_visible_vocabulary(self) -> None:
+        action_enum = (SUBMIT_BLUE, SUBMIT_RED)
+        transport = FakeTransport(['{"action":"SUBMIT_BLUE"}'])
+        adapter = LMStudioConstrainedActionPolicyAdapter(
+            config(), action_enum=action_enum, transport=transport
+        )
+        adapter("Select one action.", ())
+        body = json.loads(transport.calls[0]["body"])
+        visible = json.loads(body["messages"][0]["content"])
+
+        self.assertEqual(
+            body["response_format"]["json_schema"]["schema"]["properties"]
+            ["action"]["enum"],
+            [SUBMIT_BLUE, SUBMIT_RED],
+        )
+        self.assertEqual(
+            visible["legal_action_vocabulary"],
+            [SUBMIT_BLUE, SUBMIT_RED],
+        )
+        self.assertEqual(
+            adapter.call_records[0]["action_schema_hash"],
+            structured_action_schema_hash(action_enum),
+        )
+
+    def test_schema_order_can_change_while_visible_vocabulary_stays_fixed(self) -> None:
+        transport = FakeTransport(['{"action":"SUBMIT_BLUE"}'])
+        adapter = LMStudioConstrainedActionPolicyAdapter(
+            config(),
+            action_enum=(SUBMIT_BLUE, SUBMIT_RED),
+            visible_action_vocabulary=(SUBMIT_RED, SUBMIT_BLUE),
+            transport=transport,
+        )
+        adapter("Select one action.", ())
+        body = json.loads(transport.calls[0]["body"])
+        visible = json.loads(body["messages"][0]["content"])
+
+        self.assertEqual(
+            body["response_format"]["json_schema"]["schema"]["properties"]
+            ["action"]["enum"],
+            [SUBMIT_BLUE, SUBMIT_RED],
+        )
+        self.assertEqual(
+            visible["legal_action_vocabulary"],
+            [SUBMIT_RED, SUBMIT_BLUE],
+        )
+
+    def test_three_action_surface_accepts_defer_without_prose_interpretation(self) -> None:
+        actions = (SUBMIT_RED, SUBMIT_BLUE, "DEFER")
+        adapter = LMStudioConstrainedActionPolicyAdapter(
+            config(),
+            action_enum=actions,
+            transport=FakeTransport(['{"action":"DEFER"}']),
+        )
+        selected = adapter("Select one action.", ())
+
+        self.assertEqual(selected, "DEFER")
+        self.assertEqual(
+            parse_structured_action('{"action":"DEFER"}', actions),
+            ({"action": "DEFER"}, "DEFER"),
+        )
+        with self.assertRaises(LMStudioActuationError):
+            parse_structured_action('I choose DEFER', actions)
+
+    def test_action_enum_must_be_nonempty_unique_exact_strings(self) -> None:
+        invalid = ((), (SUBMIT_RED, SUBMIT_RED), (SUBMIT_RED, ""))
+        for action_enum in invalid:
+            with self.assertRaises(ValueError):
+                LMStudioConstrainedActionPolicyAdapter(
+                    config(), action_enum=action_enum
+                )
+        with self.assertRaises(ValueError):
+            LMStudioConstrainedActionPolicyAdapter(
+                config(),
+                action_enum=(SUBMIT_RED, SUBMIT_BLUE),
+                visible_action_vocabulary=(SUBMIT_RED,),
             )
 
     def test_typed_request_adds_only_fixed_response_format(self) -> None:

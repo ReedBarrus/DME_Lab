@@ -121,8 +121,23 @@ def _validate_sampling_settings(settings: Mapping[str, Any]) -> dict[str, Any]:
     return copied
 
 
-def structured_action_response_format() -> dict[str, Any]:
-    """Return a fresh copy of the fixed constrained terminal-action surface."""
+def _validate_action_enum(action_enum: tuple[str, ...]) -> tuple[str, ...]:
+    copied = tuple(action_enum)
+    if not copied:
+        raise ValueError("action enum must not be empty")
+    if any(type(action) is not str or not action for action in copied):
+        raise ValueError("action enum values must be non-empty strings")
+    if len(set(copied)) != len(copied):
+        raise ValueError("action enum values must be unique")
+    return copied
+
+
+def structured_action_response_format(
+    action_enum: tuple[str, ...] = TERMINAL_ACTIONS,
+) -> dict[str, Any]:
+    """Return the fixed one-field schema for a declared bounded action enum."""
+
+    validated = _validate_action_enum(action_enum)
 
     return {
         "type": "json_schema",
@@ -134,7 +149,7 @@ def structured_action_response_format() -> dict[str, Any]:
                 "properties": {
                     "action": {
                         "type": "string",
-                        "enum": list(TERMINAL_ACTIONS),
+                        "enum": list(validated),
                     }
                 },
                 "required": ["action"],
@@ -154,13 +169,24 @@ def _canonical_json(value: Any) -> str:
     )
 
 
-STRUCTURED_ACTION_SCHEMA_HASH = "sha256:" + hashlib.sha256(
-    _canonical_json(structured_action_response_format()).encode("utf-8")
-).hexdigest()
+def structured_action_schema_hash(
+    action_enum: tuple[str, ...] = TERMINAL_ACTIONS,
+) -> str:
+    return "sha256:" + hashlib.sha256(
+        _canonical_json(structured_action_response_format(action_enum)).encode("utf-8")
+    ).hexdigest()
 
 
-def parse_structured_action(raw_model_response: str) -> tuple[dict[str, Any], str]:
+STRUCTURED_ACTION_SCHEMA_HASH = structured_action_schema_hash()
+
+
+def parse_structured_action(
+    raw_model_response: str,
+    legal_actions: tuple[str, ...] = TERMINAL_ACTIONS,
+) -> tuple[dict[str, Any], str]:
     """Validate exact schema conformity without repairing provider output."""
+
+    validated_actions = _validate_action_enum(legal_actions)
 
     def unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
         parsed_object: dict[str, Any] = {}
@@ -194,7 +220,7 @@ def parse_structured_action(raw_model_response: str) -> tuple[dict[str, Any], st
             "structured output must contain only required field 'action'",
         )
     action = structured["action"]
-    if type(action) is not str or action not in TERMINAL_ACTIONS:
+    if type(action) is not str or action not in validated_actions:
         raise LMStudioActuationError(
             "SCHEMA_VALIDATION_FAILURE",
             "action must be one exact declared terminal enum value",
@@ -367,6 +393,46 @@ class LMStudioPolicyAdapter:
 class LMStudioConstrainedActionPolicyAdapter(LMStudioPolicyAdapter):
     """Typed action policy using LM Studio's fixed JSON-schema constraint."""
 
+    def __init__(
+        self,
+        config: LMStudioEndpointConfig,
+        *,
+        action_enum: tuple[str, ...] = TERMINAL_ACTIONS,
+        visible_action_vocabulary: tuple[str, ...] | None = None,
+        transport: Transport | None = None,
+    ) -> None:
+        super().__init__(config, transport=transport)
+        self._action_enum = _validate_action_enum(action_enum)
+        self._visible_action_vocabulary = _validate_action_enum(
+            visible_action_vocabulary
+            if visible_action_vocabulary is not None
+            else action_enum
+        )
+        if set(self._visible_action_vocabulary) != set(self._action_enum):
+            raise ValueError(
+                "visible action vocabulary and constrained enum must contain "
+                "the same legal actions"
+            )
+
+    def serialize_policy_visible_request(
+        self,
+        fixed_task: str,
+        policy_visible_protocol_history: tuple[dict[str, Any], ...],
+    ) -> str:
+        visible = {
+            "fixed_task": fixed_task,
+            "policy_visible_protocol_history": deepcopy(
+                list(policy_visible_protocol_history)
+            ),
+            "legal_action_vocabulary": list(self._visible_action_vocabulary),
+        }
+        try:
+            return _canonical_json(visible)
+        except (TypeError, ValueError) as exc:
+            raise LMStudioAdapterError(
+                "policy-visible input must be finite JSON data"
+            ) from exc
+
     def __call__(
         self,
         fixed_task: str,
@@ -376,7 +442,8 @@ class LMStudioConstrainedActionPolicyAdapter(LMStudioPolicyAdapter):
             fixed_task,
             policy_visible_protocol_history,
         )
-        response_format = structured_action_response_format()
+        response_format = structured_action_response_format(self._action_enum)
+        schema_hash = structured_action_schema_hash(self._action_enum)
         body = {
             "messages": [{"role": "user", "content": serialized_visible}],
             "model": self._config.model_identifier,
@@ -399,7 +466,7 @@ class LMStudioConstrainedActionPolicyAdapter(LMStudioPolicyAdapter):
             "serialized_policy_visible_request": serialized_visible,
             "actuation_constraint": deepcopy(response_format),
             "serialized_actuation_constraint": _canonical_json(response_format),
-            "action_schema_hash": STRUCTURED_ACTION_SCHEMA_HASH,
+            "action_schema_hash": schema_hash,
             "serialized_http_request": serialized_http,
             "conversation_state_supplied": False,
             "tools_supplied": False,
@@ -438,7 +505,8 @@ class LMStudioConstrainedActionPolicyAdapter(LMStudioPolicyAdapter):
 
         try:
             structured_output, selected_action = parse_structured_action(
-                raw_model_response
+                raw_model_response,
+                self._action_enum,
             )
         except LMStudioActuationError as exc:
             self._call_records.append(
