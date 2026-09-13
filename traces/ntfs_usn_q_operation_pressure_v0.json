@@ -1,0 +1,808 @@
+{
+  "experiment": "ntfs_usn_q_operation_pressure_v0",
+  "consumer_question": "Between equivalent endpoint captures, did the selected file undergo at least one qualifying NTFS unnamed-data overwrite-category operation?",
+  "Q_CONTENT_not_pressured": true,
+  "not_a_general_observer": true,
+  "repository": {
+    "HEAD": "2a0ae99e7ad5185c94ba50ab852fa18dccb90752",
+    "origin_main": "2a0ae99e7ad5185c94ba50ab852fa18dccb90752"
+  },
+  "preflight": {
+    "platform": "win32",
+    "elevated": true,
+    "volume_identity": {
+      "root": "C:\\",
+      "volume_guid_path": "\\\\?\\Volume{abad52c6-4927-4510-bb15-bf6efd1b3b16}\\",
+      "volume_label": "",
+      "volume_serial_number": {
+        "decimal": "1784814814",
+        "hex": "0x6A621CDE"
+      },
+      "filesystem": "NTFS",
+      "filesystem_flags": {
+        "decimal": "65482495",
+        "hex": "0x03E72EFF"
+      }
+    },
+    "journal_was_not_created_enabled_resized_or_deleted": true,
+    "journal_query": {
+      "bytes_returned": 80,
+      "UsnJournalID": {
+        "decimal": "133785890655403887",
+        "hex": "0x01DB4D8F08797F6F"
+      },
+      "FirstUsn": {
+        "decimal": "26298286080",
+        "hex_unsigned": "0x000000061F800000"
+      },
+      "NextUsn": {
+        "decimal": "26335277504",
+        "hex_unsigned": "0x0000000621B471C0"
+      },
+      "LowestValidUsn": {
+        "decimal": "0",
+        "hex_unsigned": "0x0000000000000000"
+      },
+      "MaxUsn": {
+        "decimal": "17592185978880",
+        "hex_unsigned": "0x00000FFFFFFF0000"
+      },
+      "MaximumSize": "33554432",
+      "AllocationDelta": "8388608",
+      "MinSupportedMajorVersion": 2,
+      "MaxSupportedMajorVersion": 4,
+      "Flags": {
+        "decimal": "0",
+        "hex": "0x00000000"
+      }
+    },
+    "qualified_read_mode_probe": {
+      "request": {
+        "StartUsn": {
+          "decimal": "26335277504",
+          "hex_unsigned": "0x0000000621B471C0"
+        },
+        "ReasonMask": "USN_REASON_CLOSE",
+        "ReturnOnlyOnClose": 1,
+        "Timeout": 0,
+        "BytesToWaitFor": 0,
+        "UsnJournalID": {
+          "decimal": "133785890655403887",
+          "hex": "0x01DB4D8F08797F6F"
+        },
+        "MinMajorVersion": 2,
+        "MaxMajorVersion": 2
+      },
+      "bytes_returned": 8,
+      "returned_continuation_usn": {
+        "decimal": "26335277504",
+        "hex_unsigned": "0x0000000621B471C0"
+      },
+      "records_returned": 0,
+      "records": [],
+      "device_io_completed": true
+    },
+    "qualified_to_mutate_fixture": true
+  },
+  "fixture": {
+    "directory": "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\dme_q_operation_ac5fed3r",
+    "same_selected_volume_as_repository": true,
+    "same_selected_file_object_between_arms_required": true,
+    "content_A_length": 4096,
+    "content_A_sha256": "6896d9ea3f73a4434f5832bc65714e7d066f177373f36f34dc8a6f735daa41b1",
+    "cross_arm_identity": {
+      "S_fileID64": {
+        "decimal": "6473924464516556",
+        "hex": "0x0017000000029DCC"
+      },
+      "O_fileID64": {
+        "decimal": "6473924464516556",
+        "hex": "0x0017000000029DCC"
+      },
+      "same_complete_fileID64": true
+    }
+  },
+  "arms": {
+    "S": {
+      "arm_identity": "S",
+      "controlled_history": {
+        "classification_basis": "controlled fixture declaration",
+        "declared_history": "A -------------------- A",
+        "selected_file_mutations_between_S_and_E": 0,
+        "write_issued": false,
+        "prohibited_mutations_issued": false
+      },
+      "endpoint_content_observation": {
+        "C0": {
+          "identity": {
+            "method": "BY_HANDLE_FILE_INFORMATION",
+            "volume_serial_number": {
+              "decimal": "1784814814",
+              "hex": "0x6A621CDE"
+            },
+            "nFileIndexHigh": "1507328",
+            "nFileIndexLow": "171468",
+            "fileID64": {
+              "decimal": "6473924464516556",
+              "hex": "0x0017000000029DCC"
+            }
+          },
+          "byte_length": 4096,
+          "sha256": "6896d9ea3f73a4434f5832bc65714e7d066f177373f36f34dc8a6f735daa41b1",
+          "all_bytes_equal_ascii": "A"
+        },
+        "C1": {
+          "identity": {
+            "method": "BY_HANDLE_FILE_INFORMATION",
+            "volume_serial_number": {
+              "decimal": "1784814814",
+              "hex": "0x6A621CDE"
+            },
+            "nFileIndexHigh": "1507328",
+            "nFileIndexLow": "171468",
+            "fileID64": {
+              "decimal": "6473924464516556",
+              "hex": "0x0017000000029DCC"
+            }
+          },
+          "byte_length": 4096,
+          "sha256": "6896d9ea3f73a4434f5832bc65714e7d066f177373f36f34dc8a6f735daa41b1",
+          "all_bytes_equal_ascii": "A"
+        },
+        "checks": {
+          "C0_is_A": true,
+          "C1_is_A": true,
+          "C0_equals_C1": true,
+          "length_preserved": true
+        },
+        "endpoint_equivalent": true
+      },
+      "file_identity": {
+        "C0": {
+          "method": "BY_HANDLE_FILE_INFORMATION",
+          "volume_serial_number": {
+            "decimal": "1784814814",
+            "hex": "0x6A621CDE"
+          },
+          "nFileIndexHigh": "1507328",
+          "nFileIndexLow": "171468",
+          "fileID64": {
+            "decimal": "6473924464516556",
+            "hex": "0x0017000000029DCC"
+          }
+        },
+        "C1": {
+          "method": "BY_HANDLE_FILE_INFORMATION",
+          "volume_serial_number": {
+            "decimal": "1784814814",
+            "hex": "0x6A621CDE"
+          },
+          "nFileIndexHigh": "1507328",
+          "nFileIndexLow": "171468",
+          "fileID64": {
+            "decimal": "6473924464516556",
+            "hex": "0x0017000000029DCC"
+          }
+        },
+        "checks": {
+          "C0_C1_complete_fileID64_equal": true,
+          "file_identity_volume_matches_selected_volume": true
+        },
+        "continuous": true
+      },
+      "volume_and_journal": {
+        "before_volume": {
+          "root": "C:\\",
+          "volume_guid_path": "\\\\?\\Volume{abad52c6-4927-4510-bb15-bf6efd1b3b16}\\",
+          "volume_label": "",
+          "volume_serial_number": {
+            "decimal": "1784814814",
+            "hex": "0x6A621CDE"
+          },
+          "filesystem": "NTFS",
+          "filesystem_flags": {
+            "decimal": "65482495",
+            "hex": "0x03E72EFF"
+          }
+        },
+        "after_volume": {
+          "root": "C:\\",
+          "volume_guid_path": "\\\\?\\Volume{abad52c6-4927-4510-bb15-bf6efd1b3b16}\\",
+          "volume_label": "",
+          "volume_serial_number": {
+            "decimal": "1784814814",
+            "hex": "0x6A621CDE"
+          },
+          "filesystem": "NTFS",
+          "filesystem_flags": {
+            "decimal": "65482495",
+            "hex": "0x03E72EFF"
+          }
+        },
+        "before_journal": {
+          "bytes_returned": 80,
+          "UsnJournalID": {
+            "decimal": "133785890655403887",
+            "hex": "0x01DB4D8F08797F6F"
+          },
+          "FirstUsn": {
+            "decimal": "26298286080",
+            "hex_unsigned": "0x000000061F800000"
+          },
+          "NextUsn": {
+            "decimal": "26335278016",
+            "hex_unsigned": "0x0000000621B473C0"
+          },
+          "LowestValidUsn": {
+            "decimal": "0",
+            "hex_unsigned": "0x0000000000000000"
+          },
+          "MaxUsn": {
+            "decimal": "17592185978880",
+            "hex_unsigned": "0x00000FFFFFFF0000"
+          },
+          "MaximumSize": "33554432",
+          "AllocationDelta": "8388608",
+          "MinSupportedMajorVersion": 2,
+          "MaxSupportedMajorVersion": 4,
+          "Flags": {
+            "decimal": "0",
+            "hex": "0x00000000"
+          }
+        },
+        "after_journal": {
+          "bytes_returned": 80,
+          "UsnJournalID": {
+            "decimal": "133785890655403887",
+            "hex": "0x01DB4D8F08797F6F"
+          },
+          "FirstUsn": {
+            "decimal": "26298286080",
+            "hex_unsigned": "0x000000061F800000"
+          },
+          "NextUsn": {
+            "decimal": "26335278016",
+            "hex_unsigned": "0x0000000621B473C0"
+          },
+          "LowestValidUsn": {
+            "decimal": "0",
+            "hex_unsigned": "0x0000000000000000"
+          },
+          "MaxUsn": {
+            "decimal": "17592185978880",
+            "hex_unsigned": "0x00000FFFFFFF0000"
+          },
+          "MaximumSize": "33554432",
+          "AllocationDelta": "8388608",
+          "MinSupportedMajorVersion": 2,
+          "MaxSupportedMajorVersion": 4,
+          "Flags": {
+            "decimal": "0",
+            "hex": "0x00000000"
+          }
+        },
+        "S": {
+          "decimal": "26335278016",
+          "hex_unsigned": "0x0000000621B473C0"
+        },
+        "E": {
+          "decimal": "26335278016",
+          "hex_unsigned": "0x0000000621B473C0"
+        },
+        "continuity": {
+          "same_volume_identity": true,
+          "filesystem_is_ntfs": true,
+          "same_UsnJournalID": true,
+          "S_not_below_final_FirstUsn": true,
+          "S_not_below_final_LowestValidUsn": true,
+          "valid_interval": true
+        }
+      },
+      "usn_operation_observation": {
+        "read_parameters": {
+          "request_structure": "READ_USN_JOURNAL_DATA_V1",
+          "ReasonMask": {
+            "decimal": "2147483648",
+            "hex": "0x80000000",
+            "name": "USN_REASON_CLOSE"
+          },
+          "ReturnOnlyOnClose": 1,
+          "Timeout": 0,
+          "BytesToWaitFor": 0,
+          "UsnJournalID": {
+            "decimal": "133785890655403887",
+            "hex": "0x01DB4D8F08797F6F"
+          },
+          "MinMajorVersion": 2,
+          "MaxMajorVersion": 2,
+          "acceptance_reason_conjunction": [
+            "USN_REASON_CLOSE",
+            "USN_REASON_DATA_OVERWRITE"
+          ],
+          "SourceInfo_policy": "SourceInfo == 0"
+        },
+        "acquisition": {
+          "interval": {
+            "S_inclusive": {
+              "decimal": "26335278016",
+              "hex_unsigned": "0x0000000621B473C0"
+            },
+            "E_exclusive": {
+              "decimal": "26335278016",
+              "hex_unsigned": "0x0000000621B473C0"
+            }
+          },
+          "read_mode": "READ_USN_JOURNAL_DATA_V1",
+          "calls": [],
+          "acquisition_complete": true,
+          "final_continuation_usn": {
+            "decimal": "26335278016",
+            "hex_unsigned": "0x0000000621B473C0"
+          },
+          "records": []
+        },
+        "continuation_cursors": [],
+        "candidate_records": [],
+        "qualifying_records": [],
+        "qualifying_record_observed": false
+      },
+      "lifecycle": {
+        "baseline_handles_closed_before_S": true,
+        "no_selected_file_mutation_between_S_and_E": true,
+        "bounded_read_completed": true,
+        "endpoint_observed_after_E": true,
+        "valid": true
+      },
+      "verdict": "NO QUALIFYING RECORD",
+      "verdict_reason": "No qualifying operation witness was observed; controlled stasis comes from fixture control, not absence."
+    },
+    "O": {
+      "arm_identity": "O",
+      "controlled_history": {
+        "classification_basis": "controlled fixture declaration",
+        "declared_history": "A ------ overwrite A ------ A",
+        "write_issued": true,
+        "write_calls": 1,
+        "same_length": true,
+        "synchronous": true,
+        "flushed": true,
+        "writer_closed_before_E": true
+      },
+      "verdict": "QUALIFYING RECORD",
+      "verdict_reason": "1 associated V2 record(s) satisfied every frozen acceptance check.",
+      "endpoint_content_observation": {
+        "C0": {
+          "identity": {
+            "method": "BY_HANDLE_FILE_INFORMATION",
+            "volume_serial_number": {
+              "decimal": "1784814814",
+              "hex": "0x6A621CDE"
+            },
+            "nFileIndexHigh": "1507328",
+            "nFileIndexLow": "171468",
+            "fileID64": {
+              "decimal": "6473924464516556",
+              "hex": "0x0017000000029DCC"
+            }
+          },
+          "byte_length": 4096,
+          "sha256": "6896d9ea3f73a4434f5832bc65714e7d066f177373f36f34dc8a6f735daa41b1",
+          "all_bytes_equal_ascii": "A"
+        },
+        "C1": {
+          "identity": {
+            "method": "BY_HANDLE_FILE_INFORMATION",
+            "volume_serial_number": {
+              "decimal": "1784814814",
+              "hex": "0x6A621CDE"
+            },
+            "nFileIndexHigh": "1507328",
+            "nFileIndexLow": "171468",
+            "fileID64": {
+              "decimal": "6473924464516556",
+              "hex": "0x0017000000029DCC"
+            }
+          },
+          "byte_length": 4096,
+          "sha256": "6896d9ea3f73a4434f5832bc65714e7d066f177373f36f34dc8a6f735daa41b1",
+          "all_bytes_equal_ascii": "A"
+        },
+        "checks": {
+          "C0_is_A": true,
+          "C1_is_A": true,
+          "C0_equals_C1": true
+        },
+        "endpoint_equivalent": true
+      },
+      "file_identity": {
+        "C0": {
+          "method": "BY_HANDLE_FILE_INFORMATION",
+          "volume_serial_number": {
+            "decimal": "1784814814",
+            "hex": "0x6A621CDE"
+          },
+          "nFileIndexHigh": "1507328",
+          "nFileIndexLow": "171468",
+          "fileID64": {
+            "decimal": "6473924464516556",
+            "hex": "0x0017000000029DCC"
+          }
+        },
+        "writer": {
+          "method": "BY_HANDLE_FILE_INFORMATION",
+          "volume_serial_number": {
+            "decimal": "1784814814",
+            "hex": "0x6A621CDE"
+          },
+          "nFileIndexHigh": "1507328",
+          "nFileIndexLow": "171468",
+          "fileID64": {
+            "decimal": "6473924464516556",
+            "hex": "0x0017000000029DCC"
+          }
+        },
+        "C1": {
+          "method": "BY_HANDLE_FILE_INFORMATION",
+          "volume_serial_number": {
+            "decimal": "1784814814",
+            "hex": "0x6A621CDE"
+          },
+          "nFileIndexHigh": "1507328",
+          "nFileIndexLow": "171468",
+          "fileID64": {
+            "decimal": "6473924464516556",
+            "hex": "0x0017000000029DCC"
+          }
+        },
+        "checks": {
+          "baseline_writer_final_fileID64_equal": true,
+          "file_identity_volume_matches_selected_volume": true,
+          "endpoint_bytes_match_declared_target": true,
+          "endpoint_length_preserved": true
+        },
+        "continuous": true
+      },
+      "volume_and_journal": {
+        "before_volume": {
+          "root": "C:\\",
+          "volume_guid_path": "\\\\?\\Volume{abad52c6-4927-4510-bb15-bf6efd1b3b16}\\",
+          "volume_label": "",
+          "volume_serial_number": {
+            "decimal": "1784814814",
+            "hex": "0x6A621CDE"
+          },
+          "filesystem": "NTFS",
+          "filesystem_flags": {
+            "decimal": "65482495",
+            "hex": "0x03E72EFF"
+          }
+        },
+        "after_volume": {
+          "root": "C:\\",
+          "volume_guid_path": "\\\\?\\Volume{abad52c6-4927-4510-bb15-bf6efd1b3b16}\\",
+          "volume_label": "",
+          "volume_serial_number": {
+            "decimal": "1784814814",
+            "hex": "0x6A621CDE"
+          },
+          "filesystem": "NTFS",
+          "filesystem_flags": {
+            "decimal": "65482495",
+            "hex": "0x03E72EFF"
+          }
+        },
+        "before_journal": {
+          "bytes_returned": 80,
+          "UsnJournalID": {
+            "decimal": "133785890655403887",
+            "hex": "0x01DB4D8F08797F6F"
+          },
+          "FirstUsn": {
+            "decimal": "26298286080",
+            "hex_unsigned": "0x000000061F800000"
+          },
+          "NextUsn": {
+            "decimal": "26335278560",
+            "hex_unsigned": "0x0000000621B475E0"
+          },
+          "LowestValidUsn": {
+            "decimal": "0",
+            "hex_unsigned": "0x0000000000000000"
+          },
+          "MaxUsn": {
+            "decimal": "17592185978880",
+            "hex_unsigned": "0x00000FFFFFFF0000"
+          },
+          "MaximumSize": "33554432",
+          "AllocationDelta": "8388608",
+          "MinSupportedMajorVersion": 2,
+          "MaxSupportedMajorVersion": 4,
+          "Flags": {
+            "decimal": "0",
+            "hex": "0x00000000"
+          }
+        },
+        "after_journal": {
+          "bytes_returned": 80,
+          "UsnJournalID": {
+            "decimal": "133785890655403887",
+            "hex": "0x01DB4D8F08797F6F"
+          },
+          "FirstUsn": {
+            "decimal": "26298286080",
+            "hex_unsigned": "0x000000061F800000"
+          },
+          "NextUsn": {
+            "decimal": "26335278752",
+            "hex_unsigned": "0x0000000621B476A0"
+          },
+          "LowestValidUsn": {
+            "decimal": "0",
+            "hex_unsigned": "0x0000000000000000"
+          },
+          "MaxUsn": {
+            "decimal": "17592185978880",
+            "hex_unsigned": "0x00000FFFFFFF0000"
+          },
+          "MaximumSize": "33554432",
+          "AllocationDelta": "8388608",
+          "MinSupportedMajorVersion": 2,
+          "MaxSupportedMajorVersion": 4,
+          "Flags": {
+            "decimal": "0",
+            "hex": "0x00000000"
+          }
+        },
+        "S": {
+          "decimal": "26335278560",
+          "hex_unsigned": "0x0000000621B475E0"
+        },
+        "E": {
+          "decimal": "26335278752",
+          "hex_unsigned": "0x0000000621B476A0"
+        },
+        "continuity": {
+          "same_volume_identity": true,
+          "filesystem_is_ntfs": true,
+          "same_UsnJournalID": true,
+          "S_not_below_final_FirstUsn": true,
+          "S_not_below_final_LowestValidUsn": true,
+          "nonempty_or_zero_width_valid_interval": true
+        }
+      },
+      "usn_operation_observation": {
+        "read_parameters": {
+          "request_structure": "READ_USN_JOURNAL_DATA_V1",
+          "ReasonMask": {
+            "decimal": "2147483648",
+            "hex": "0x80000000",
+            "name": "USN_REASON_CLOSE"
+          },
+          "ReturnOnlyOnClose": 1,
+          "Timeout": 0,
+          "BytesToWaitFor": 0,
+          "UsnJournalID": {
+            "decimal": "133785890655403887",
+            "hex": "0x01DB4D8F08797F6F"
+          },
+          "MinMajorVersion": 2,
+          "MaxMajorVersion": 2,
+          "acceptance_reason_conjunction": [
+            "USN_REASON_CLOSE",
+            "USN_REASON_DATA_OVERWRITE"
+          ],
+          "SourceInfo_policy": "SourceInfo == 0"
+        },
+        "acquisition": {
+          "interval": {
+            "S_inclusive": {
+              "decimal": "26335278560",
+              "hex_unsigned": "0x0000000621B475E0"
+            },
+            "E_exclusive": {
+              "decimal": "26335278752",
+              "hex_unsigned": "0x0000000621B476A0"
+            }
+          },
+          "read_mode": "READ_USN_JOURNAL_DATA_V1",
+          "calls": [
+            {
+              "request": {
+                "StartUsn": {
+                  "decimal": "26335278560",
+                  "hex_unsigned": "0x0000000621B475E0"
+                },
+                "ReasonMask": {
+                  "decimal": "2147483648",
+                  "hex": "0x80000000",
+                  "name": "USN_REASON_CLOSE"
+                },
+                "ReturnOnlyOnClose": 1,
+                "Timeout": 0,
+                "BytesToWaitFor": 0,
+                "UsnJournalID": {
+                  "decimal": "133785890655403887",
+                  "hex": "0x01DB4D8F08797F6F"
+                },
+                "MinMajorVersion": 2,
+                "MaxMajorVersion": 2
+              },
+              "bytes_returned": 104,
+              "returned_continuation_usn": {
+                "decimal": "26335278752",
+                "hex_unsigned": "0x0000000621B476A0"
+              },
+              "records_returned": 1
+            }
+          ],
+          "acquisition_complete": true,
+          "final_continuation_usn": {
+            "decimal": "26335278752",
+            "hex_unsigned": "0x0000000621B476A0"
+          },
+          "records": [
+            {
+              "record_length": 96,
+              "major_version": 2,
+              "minor_version": 0,
+              "file_reference_number": {
+                "decimal": "6473924464516556",
+                "hex": "0x0017000000029DCC"
+              },
+              "parent_file_reference_number": {
+                "decimal": "4222124650831055",
+                "hex": "0x000F000000029CCF"
+              },
+              "usn": {
+                "decimal": "26335278656",
+                "hex_unsigned": "0x0000000621B47640"
+              },
+              "timestamp": "134337445861217360",
+              "reason": {
+                "decimal": "2147483649",
+                "hex": "0x80000001",
+                "recognized_names": [
+                  "USN_REASON_DATA_OVERWRITE",
+                  "USN_REASON_CLOSE"
+                ]
+              },
+              "source_info": {
+                "decimal": "0",
+                "hex": "0x00000000"
+              },
+              "security_id": 0,
+              "file_attributes": {
+                "decimal": "32",
+                "hex": "0x00000020"
+              },
+              "file_name": "selected_file.bin"
+            }
+          ]
+        },
+        "continuation_cursors": [
+          {
+            "decimal": "26335278752",
+            "hex_unsigned": "0x0000000621B476A0"
+          }
+        ],
+        "candidate_records": [
+          {
+            "record_length": 96,
+            "major_version": 2,
+            "minor_version": 0,
+            "file_reference_number": {
+              "decimal": "6473924464516556",
+              "hex": "0x0017000000029DCC"
+            },
+            "parent_file_reference_number": {
+              "decimal": "4222124650831055",
+              "hex": "0x000F000000029CCF"
+            },
+            "usn": {
+              "decimal": "26335278656",
+              "hex_unsigned": "0x0000000621B47640"
+            },
+            "timestamp": "134337445861217360",
+            "reason": {
+              "decimal": "2147483649",
+              "hex": "0x80000001",
+              "recognized_names": [
+                "USN_REASON_DATA_OVERWRITE",
+                "USN_REASON_CLOSE"
+              ]
+            },
+            "source_info": {
+              "decimal": "0",
+              "hex": "0x00000000"
+            },
+            "security_id": 0,
+            "file_attributes": {
+              "decimal": "32",
+              "hex": "0x00000020"
+            },
+            "file_name": "selected_file.bin",
+            "acceptance": {
+              "accepted": true,
+              "checks": {
+                "major_version_is_2": true,
+                "within_frozen_interval": true,
+                "file_reference_matches_complete_file_id64": true,
+                "reason_contains_close": true,
+                "reason_contains_data_overwrite": true,
+                "source_info_policy_satisfied": true
+              }
+            }
+          }
+        ],
+        "qualifying_records": [
+          {
+            "record_length": 96,
+            "major_version": 2,
+            "minor_version": 0,
+            "file_reference_number": {
+              "decimal": "6473924464516556",
+              "hex": "0x0017000000029DCC"
+            },
+            "parent_file_reference_number": {
+              "decimal": "4222124650831055",
+              "hex": "0x000F000000029CCF"
+            },
+            "usn": {
+              "decimal": "26335278656",
+              "hex_unsigned": "0x0000000621B47640"
+            },
+            "timestamp": "134337445861217360",
+            "reason": {
+              "decimal": "2147483649",
+              "hex": "0x80000001",
+              "recognized_names": [
+                "USN_REASON_DATA_OVERWRITE",
+                "USN_REASON_CLOSE"
+              ]
+            },
+            "source_info": {
+              "decimal": "0",
+              "hex": "0x00000000"
+            },
+            "security_id": 0,
+            "file_attributes": {
+              "decimal": "32",
+              "hex": "0x00000020"
+            },
+            "file_name": "selected_file.bin",
+            "acceptance": {
+              "accepted": true,
+              "checks": {
+                "major_version_is_2": true,
+                "within_frozen_interval": true,
+                "file_reference_matches_complete_file_id64": true,
+                "reason_contains_close": true,
+                "reason_contains_data_overwrite": true,
+                "source_info_policy_satisfied": true
+              }
+            }
+          }
+        ],
+        "qualifying_record_observed": true
+      },
+      "lifecycle": {
+        "baseline_closed_before_S": true,
+        "selected_writer_opened_after_S": true,
+        "exactly_one_synchronous_write_call": true,
+        "controlled_final_close_before_E": true,
+        "bounded_read_completed": true,
+        "same_file_identity_through_arm": true,
+        "association_basis": "unique fixture object; baseline handle closed before S; exclusive selected-file writer opened after S; one synchronous write; controlled close before E; complete fileID64 match; endpoint re-observed after E"
+      }
+    }
+  },
+  "cross_arm": {
+    "endpoint_collision": true,
+    "usn_differential": true,
+    "distinction_recovery_verdict": "DISTINCTION RECOVERED"
+  },
+  "fixture_cleanup": {
+    "attempted": true,
+    "completed": true
+  }
+}
