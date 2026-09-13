@@ -56,13 +56,16 @@ not authorized or active.
 - **Resolution so far:** `snapshot != complete_transformation_history`. A real
   alpha -> beta -> alpha excursion and true stasis produced equivalent captured
   endpoints at distinct occurrences; an alpha -> beta control left at beta was
-  detected.
+  detected. The later bounded `Q_OPERATION` pressure showed that an added
+  qualified operation coordinate can positively expose overwrite activity that
+  the selected endpoint-content coordinate leaves invisible.
 - **Residue:** the authoritative endpoint history cannot distinguish stasis
   from the hidden round trip and contains no general recurrence model.
 - **Blocked by:** —
 - **Unlocks:** PR-006, PR-017
 - **Evidence:** [decision](docs/decisions/absent_interval_round_trip_pressure_v0.md),
-  [trace](traces/absent_interval_round_trip_pressure_v0.json)
+  [trace](traces/absent_interval_round_trip_pressure_v0.json),
+  [bounded operation recovery](docs/decisions/ntfs_usn_q_operation_distinction_recovery_v0.md)
 
 ### PR-002 — Coordinator lifetime versus historical continuity
 
@@ -134,34 +137,36 @@ not authorized or active.
 
 ### PR-006 — Scoped interval or change observation
 
-- **Pressure:** `Q_OPERATION` — Between equivalent endpoint captures, did the
-  selected file undergo at least one qualifying NTFS unnamed-data
-  overwrite-category operation?
+- **Pressure:** Would a narrowly selected source-relative change coordinate
+  discriminate hidden intervals, externally stale history, or sequential
+  source skew under a concrete consumer basis?
 - **Standing:** `OPEN`
-- **Missing discriminator:** an authorized and executed bounded `Q_OPERATION`
-  pressure. The consumer is selected, but no experiment is yet authorized or
-  executed.
+- **Missing discriminator:** `Q_CONTENT` remains unpressured and lacks a basis
+  capable of discriminating an A -> A overwrite from hidden A -> B -> A
+  logical-content traversal.
 - **Resolution so far:** PR-001, PR-004, and PR-005 partially converge on absent
-  source-relative change evidence. The qualified NTFS USN basis now supplies
-  the separately justified bounded operation-category basis for
-  `Q_OPERATION`. AA and AB empirically preserve
-  `endpoint logical-content state != NTFS overwrite-operation-category
-  evidence` and refute `DATA_OVERWRITE -> logical endpoint byte inequality`
-  within the qualified fixture.
-- **Residue:** `Q_CONTENT` remains unresolved: between equivalent endpoints,
-  the current USN basis cannot establish that logical content departed from A
-  and later returned to A. Endpoint-content plus operation evidence can expose
-  a qualifying overwrite despite equal endpoints, but cannot distinguish an
-  A -> A overwrite from hidden A -> B -> A content traversal. Repeat-run
-  stability also remains useful residue.
-- **Blocked by:** authorization and execution of the selected `Q_OPERATION`
-  pressure; the current basis remains insufficient for `Q_CONTENT`
+  source-relative change evidence. `Q_OPERATION` is now `BOUNDEDLY RESOLVED`
+  under Claim A: two controlled endpoint-equivalent histories were produced,
+  and the qualified USN coordinate positively exposed the overwrite history.
+  Endpoint-content observation, qualified operation evidence, and controlled-
+  history provenance recover equal endpoints with controlled no-intervention
+  provenance as distinct from equal endpoints with demonstrated overwrite-
+  category activity.
+- **Residue:** ARM S had `S == E`, so symmetric nontrivial quiet observation and
+  negative completeness remain `BASIS_INSUFFICIENT`; no qualifying witness does
+  not prove no operation occurred. `Q_CONTENT` remains `UNRESOLVED — NOT
+  PRESSURED`, and the current basis cannot distinguish an A -> A overwrite from
+  hidden A -> B -> A logical-content traversal.
+- **Blocked by:** a separately justified and authorized basis for any remaining
+  consumer question; none is currently selected
 - **Unlocks:** —
 - **Evidence:** [absent interval](docs/decisions/absent_interval_round_trip_pressure_v0.md),
   [stale reconstruction](docs/decisions/stale_current_result_pressure_v0.md),
   [timing skew](docs/decisions/intra_capture_timing_skew_pressure_v0.md),
   [USN basis qualification](docs/decisions/ntfs_usn_observation_basis_qualification_v0.md),
-  [qualification trace](traces/ntfs_usn_observation_basis_qualification_v0.json)
+  [qualification trace](traces/ntfs_usn_observation_basis_qualification_v0.json),
+  [Q_OPERATION decision](docs/decisions/ntfs_usn_q_operation_distinction_recovery_v0.md),
+  [Q_OPERATION trace](traces/ntfs_usn_q_operation_pressure_v0.json)
 
 ## B. Source success, admission, and consumer visibility
 

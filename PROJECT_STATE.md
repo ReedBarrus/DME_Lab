@@ -103,6 +103,9 @@ Independent source-side positional return replication completed in `docs/decisio
 Bounded NTFS USN observation-basis qualification adjudication completed in
 `docs/decisions/ntfs_usn_observation_basis_qualification_v0.md`.
 
+Bounded PR-006 `Q_OPERATION` distinction-recovery adjudication completed in
+`docs/decisions/ntfs_usn_q_operation_distinction_recovery_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -175,18 +178,20 @@ navigation
 committed evidence. It does not establish the standing it displays.
 
 - Active experimental pressure: none.
-- PR-006 remains `OPEN`. Its separately justified bounded observation basis is
-  now satisfied only for the selected `Q_OPERATION` consumer: whether at least
-  one qualifying NTFS unnamed-data overwrite-category operation occurred
-  between equivalent endpoint captures. No `Q_OPERATION` experiment has been
-  authorized or executed.
-- `Q_CONTENT` remains unresolved: the current USN basis cannot establish that
-  logical content departed from A and later returned to A.
+- `Q_OPERATION` was executed and adversarially adjudicated. Bounded distinction
+  recovery passed: endpoint content collided while the qualified USN coordinate
+  positively exposed the controlled overwrite history. `Q_OPERATION` is
+  `BOUNDEDLY RESOLVED` under Claim A.
+- ARM S had `S == E`; it did not demonstrate nontrivial quiet observation or
+  earn negative completeness. Its no-intervention history came from fixture
+  control.
+- PR-006 remains `OPEN` because `Q_CONTENT` remains `UNRESOLVED — NOT
+  PRESSURED`: the current USN basis cannot distinguish an A -> A overwrite from
+  hidden A -> B -> A logical-content traversal.
 - PR-018 remains `OPEN`; its exact status remains
   `cross_domain_prediction_not_earned` pending an antecedent mapping and
   independently authorized unseen target evidence.
-- `Q_OPERATION` is the selected next consumer question, but active experimental
-  pressure remains none.
+- No next experimental pressure has been selected.
 
 PR-019 preserves two independently retained specimens:
 
