@@ -1,0 +1,36 @@
+{
+  "adapter_failure": null,
+  "artifact": "bounded_consequential_feedback_lm_studio_smoke_v0",
+  "artifact_class": "NON_SCIENTIFIC_CONNECTIVITY_SMOKE",
+  "connectivity_succeeded": true,
+  "conversation_state_supplied": false,
+  "endpoint_configuration": {
+    "authentication_configured": false,
+    "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+    "environment_proxies_allowed": false,
+    "host": "127.0.0.1",
+    "loopback_only": true,
+    "path": "/v1/chat/completions",
+    "port": 1234,
+    "redirects_allowed": false,
+    "scheme": "http",
+    "timeout_seconds": 120.0
+  },
+  "frozen_schedule_episode": false,
+  "frozen_schedule_executed": false,
+  "http_status": 200,
+  "model_identifier": "hermes-3-llama-3.2-3b",
+  "parsed_requested_action": null,
+  "provider_exposed_sampling_settings": {
+    "max_tokens": 16,
+    "temperature": 0.0,
+    "top_p": 1.0
+  },
+  "raw_model_response": "The fixed task is a non-scientific connectivity smoke test that should return",
+  "repository_context_supplied": false,
+  "schedule_metadata_supplied": false,
+  "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Non-scientific connectivity smoke test. Return exactly SUBMIT_RED.\\\",\\\"legal_action_vocabulary\\\":[\\\"SUBMIT_RED\\\",\\\"SUBMIT_BLUE\\\"],\\\"policy_visible_protocol_history\\\":[]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+  "serialized_policy_visible_request": "{\"fixed_task\":\"Non-scientific connectivity smoke test. Return exactly SUBMIT_RED.\",\"legal_action_vocabulary\":[\"SUBMIT_RED\",\"SUBMIT_BLUE\"],\"policy_visible_protocol_history\":[]}",
+  "strict_action_handling_observed": "RAW_PROSE_RETAINED_PARSED_ACTION_ABSENT",
+  "tools_supplied": false
+}
