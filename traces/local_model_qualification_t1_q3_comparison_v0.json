@@ -1,0 +1,46 @@
+{
+  "artifact": "local_model_qualification_t1_q3_comparison_v0",
+  "artifact_class": "BOUNDED_LOCAL_MODEL_QUALIFICATION_COMPARISON",
+  "comparison_scope": "T1-Q1_Q2_AND_ATTEMPTED_Q3_BEHAVIOR_ONLY",
+  "evaluation_basis": {
+    "t1_q1_semantic_evaluation": {
+      "artifact_sha256": "sha256:1ee68e14e8d63c29c0559f0449ba6fd2b50f29b56d44911273ca39a102c4cd84",
+      "path": "traces/local_model_qualification_t1_q1_semantic_evaluation_v0.json"
+    },
+    "t1_q2_semantic_evaluation": {
+      "artifact_sha256": "sha256:f3be9cd2342ddfc4cd0fba424d176f2d51856db74c1f25a1c065a30a56413fc0",
+      "path": "traces/local_model_qualification_t1_q2_semantic_evaluation_v0.json"
+    },
+    "t1_q3_semantic_evaluation": "traces/local_model_qualification_t1_q3_semantic_evaluation_v0.json"
+  },
+  "findings": {
+    "did_q3_recover_the_nonclaim_boundary_more_successfully": "NOT_TESTED. The endpoint produced no model response.",
+    "does_semantic_compression_repeatedly_erase_residue_or_promotion_boundaries": "Q1 and Q2 each lost required semantic boundaries in different ways. Q3 adds no semantic observation, so recurrence across three specimens is not established.",
+    "does_the_realization_consistently_obey_scope_and_stop_boundaries": "Q1 and Q2 returned STOP without scope or authority violations. Q3 had no model terminal action; the apparatus stopped after the rejected single call and did not retry.",
+    "specimen_specific_failure": "Q3 exposed an apparatus-capacity wound: its frozen evidence packet required n_keep 5729 while the endpoint reported n_ctx 4096. Q1 and Q2 completed under smaller packets.",
+    "which_failure_modes_recur": "Only Q1 and Q2 provide semantic outputs; both failed required discrimination while preserving structural and STOP compliance. Q3 cannot extend that pattern.",
+    "what_remains_underdetermined": "General semantic competence or incompetence, general 3B-model limitations, general T1 qualification, model safety, and Stage 4C semantic performance remain unsupported."
+  },
+  "promotion": "NONE",
+  "q1_retained_result": {
+    "campaign_outcome": "INSUFFICIENT_EVIDENCE",
+    "mechanical_result": "PASS",
+    "promotion": "NONE",
+    "semantic_specimen_result": "FAIL"
+  },
+  "q2_retained_result": {
+    "campaign_outcome": "INSUFFICIENT_EVIDENCE",
+    "mechanical_result": "PASS",
+    "promotion": "NONE",
+    "semantic_specimen_result": "FAIL"
+  },
+  "q3_result": {
+    "campaign_outcome": "INSUFFICIENT_EVIDENCE",
+    "mechanical_result": "APPARATUS_ERROR",
+    "promotion": "NONE",
+    "semantic_specimen_result": "NOT_EVALUABLE_APPARATUS_ERROR"
+  },
+  "q4_executed": false,
+  "scope_boundary": "Only two semantic interactions and one capacity-rejected apparatus call are retained; no general model claim follows.",
+  "subsequent_specimens_authorized": false
+}
