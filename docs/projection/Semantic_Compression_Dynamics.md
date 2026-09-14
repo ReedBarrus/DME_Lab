@@ -130,17 +130,21 @@ This remains evidence about one realized interaction, not a general property of 
 
 ### T1-Q3
 
-**Insert retained Q3 result after execution.**
+The frozen Stage 4C specimen did not produce a symbolic model response. The
+local endpoint rejected the one-shot request because the provider reported:
 
-Use Q3 only to determine whether another meaningfully different specimen produces:
+```text
+n_keep: 5729 >= n_ctx: 4096
+```
 
-* preserved bounded structure,
-* omitted residue,
-* unsupported strengthening,
-* another form of distinction collapse,
-* or a materially different failure.
+Q3 is therefore retained as an apparatus-capacity non-admission. It is not a
+semantic failure, a third semantic-compression observation, or evidence about
+what a larger-context realization would have returned.
 
-Do not force Q3 into the Q1/Q2 pattern if its evidence differs.
+The failed invocation is still useful apparatus evidence: specimen admission
+exceeded the realized request capacity, the failure was retained, and no retry
+or semantic repair occurred. It neither confirms nor refutes the candidate
+Q1/Q2 pattern.
 
 ---
 
@@ -390,9 +394,13 @@ The useful evidence is the differential preservation or loss of declared distinc
 
 Do not create a new semantic-compression experiment solely from this projection yet.
 
-First retain T1-Q3 and checkpoint the Hermes T1 contour.
+T1-Q3 is retained as an apparatus-capacity rejection, and the Hermes T1 contour
+is checkpointed separately. Q3 supplies no new representational transformation.
 
-If Q3 or later cross-realization comparisons produce another clear representational transformation in which a consequential source distinction is lost, strengthened, or invented, ask whether the existing qualification evidence is sufficient to formulate a narrow executable pressure.
+If a later cross-realization comparison produces another clear transformation
+in which a consequential source distinction is lost, strengthened, or
+invented, ask whether the qualification evidence is sufficient to formulate a
+narrow executable pressure.
 
 A smallest future pressure might compare:
 
