@@ -1,0 +1,120 @@
+{
+  "artifact": "local_model_qualification_t1_q2_freeze_v0",
+  "artifact_class": "FROZEN_LOCAL_MODEL_QUALIFICATION_SPECIMEN",
+  "campaign_scope": "T1-Q2_ONLY",
+  "comparison_basis": {
+    "comparability_status": "BOUNDED_SAME_REALIZATION_REQUESTED",
+    "material_drift": [
+      "specimen source",
+      "task prompt",
+      "response schema"
+    ],
+    "not_inherited": [
+      "T1-Q1 mechanical result",
+      "T1-Q1 semantic result",
+      "general T1 qualification"
+    ],
+    "prior_specimen": "T1-Q1_BEHAVIORAL_COUPLING_CHECKPOINT"
+  },
+  "evaluation_separation": {
+    "mechanical_evaluation": "deterministic separate artifact",
+    "observation": "raw separate artifact",
+    "semantic_evaluation": "independent post-run artifact"
+  },
+  "leakage_boundary": {
+    "campaign_document_supplied_to_model": false,
+    "campaign_expected_answer_supplied_to_model": false,
+    "historical_adjudication_supplied_to_model": false,
+    "historical_classifications_supplied_to_model": false,
+    "historical_intended_discriminators_supplied_to_model": false,
+    "historical_rationales_supplied_to_model": false,
+    "prior_qualification_outputs_supplied_to_model": false,
+    "semantic_evaluator_supplied_to_model": false,
+    "unknown_pretraining_or_runtime_cache_excluded": false
+  },
+  "maximum_model_calls": 1,
+  "output_paths": {
+    "comparison": "traces/local_model_qualification_t1_q2_comparison_v0.json",
+    "mechanical_evaluation": "traces/local_model_qualification_t1_q2_mechanical_evaluation_v0.json",
+    "observation": "traces/local_model_qualification_t1_q2_observation_v0.json",
+    "semantic_evaluation": "traces/local_model_qualification_t1_q2_semantic_evaluation_v0.json"
+  },
+  "prompt_template_identity": "DME_Lab T1-Q2 evidence-state separation v0",
+  "prompt_template_sha256": "sha256:5ff91c3d48b23aa254fe506e644b86143edbb6e6c5b434285a346fbb8ec4a559",
+  "protected_surfaces": [
+    "PROJECT_STATE.md",
+    "PRESSURE_RESOLUTION_MAP.md",
+    "docs/decisions",
+    "docs/constraints",
+    "docs/contracts",
+    "docs/cockpit/PROJECTION_CONTRACT.md",
+    "src/cockpit/projection_adapter.py",
+    "src/runtime/cockpit_projection_adapter_pressure.py",
+    "traces/cockpit_projection_adapter_pressure_v0.json",
+    "traces/local_model_qualification_t1_q1_freeze_v0.json",
+    "traces/local_model_qualification_t1_q1_observation_v0.json",
+    "traces/local_model_qualification_t1_q1_mechanical_evaluation_v0.json",
+    "traces/local_model_qualification_t1_q1_execution_basis_correction_v0.json",
+    "traces/local_model_qualification_t1_q1_semantic_evaluation_v0.json"
+  ],
+  "realization": {
+    "context_limit": null,
+    "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+    "model_artifact_digest": null,
+    "provider_exposed_sampling_settings": {
+      "max_tokens": 1024,
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "quantization": null,
+    "requested_model_identifier": "hermes-3-llama-3.2-3b",
+    "runtime": "LM Studio OpenAI-compatible local endpoint",
+    "runtime_version": null,
+    "timeout_seconds": 120.0,
+    "tool_surface": []
+  },
+  "response_schema_sha256": "sha256:150b54245fdeacc26c5fa78a84669ee4e86ed21d7ed65685d3108b509fbfe525",
+  "source_specimen": {
+    "commit": "89a75124d8397b4772f5c387635225a40de35bc3",
+    "path": "traces/cockpit_projection_adapter_pressure_v0.json",
+    "selected_packet_sha256": "sha256:6a5c81927b254c447ba80b2d599b9191a2b98af253c8b0348ab396e5856e6a99",
+    "sha256": "sha256:832fbb63abec6eaae31aa33cc6ca635866b7302dc1b94e099cd9d15fda10e42b",
+    "visible_selection": {
+      "included_scenario_fields": [
+        "id",
+        "title",
+        "mutation",
+        "observed",
+        "diagnostics"
+      ],
+      "included_top_level_fields": [
+        "pressure_version",
+        "adapter_version",
+        "baseline",
+        "scenarios"
+      ],
+      "omitted_scenario_fields": [
+        "intended_discriminator",
+        "classification",
+        "rationale"
+      ],
+      "omitted_top_level_fields": [
+        "predeclared_semantic_rule",
+        "classification_counts",
+        "adjudication"
+      ]
+    }
+  },
+  "specimen_id": "T1-Q2_STAGE_3_PROJECTION_ADAPTER_PRESSURE",
+  "starting_repository_commit": "15adace6f23be75ecd17a849e83d1c595bf2d9e6",
+  "stop_boundary": {
+    "automatic_continuation": false,
+    "permitted_terminal_actions": [
+      "STOP",
+      "ESCALATE"
+    ],
+    "subsequent_specimens_authorized": false
+  },
+  "tier": "T1_INTERPRETATION_WITHOUT_PROMOTION",
+  "writable_output_location": "traces/local_model_qualification_t1_q2_*_v0.json"
+}
