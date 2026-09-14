@@ -1,0 +1,33 @@
+{
+  "artifact": "repo_scout_qwen3_coder_realization_comparison_mechanical_evaluation_v0",
+  "artifact_class": "REPO_SCOUT_INTERRUPTED_MECHANICAL_EVALUATION",
+  "evaluated_at_utc": "2026-09-14T23:37:00Z",
+  "apparatus_version": "repo_scout_v0.1",
+  "task_id": "repo-scout-single-source-coordinate-conservation-v0",
+  "mechanical_result": "APPARATUS_ERROR_CLIENT_INTERRUPTION",
+  "mechanical_checks": {
+    "exact_basis_admission": "PASS_PRE_CALL",
+    "apparatus_equivalence_to_hermes_b": "PASS_PRE_CALL",
+    "source_equivalence_to_hermes_b": "PASS_PRE_CALL",
+    "scope": "PASS_PRE_CALL",
+    "operations": "PASS_BY_APPARATUS_SEQUENCE_MODEL_CALL_WAS_REACHED",
+    "model_calls_exactly_one": "PASS",
+    "automatic_retries_zero": "PASS",
+    "complete_client_response_retained": "FAIL",
+    "strict_response_parse": "NOT_PERFORMED",
+    "source_id_validity": "NOT_EVALUABLE_FROM_TRUNCATED_PREFIX",
+    "mechanical_envelope_attachment": "NOT_PERFORMED",
+    "derived_terminal_action": "NOT_PERFORMED",
+    "repository_before_after_fingerprints": "NOT_RETAINED",
+    "tracked_repository_mutation_in_recovery_snapshot": "NOT_OBSERVED"
+  },
+  "partial_provider_log_prefix": {
+    "retained": true,
+    "strictly_parseable_as_model_proposal": false,
+    "semantic_repair_performed": false,
+    "used_as_completed_response": false
+  },
+  "terminal_state": "APPARATUS_ERROR",
+  "acceptance_authority": "EXTERNAL_CODEX_FRONTIER_HUMAN_REVIEW",
+  "qualification_or_promotion": "NONE"
+}

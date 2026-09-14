@@ -1,0 +1,30 @@
+{
+  "artifact": "repo_scout_qwen3_coder_realization_comparison_utility_assessment_v0",
+  "artifact_class": "BOUNDED_UTILITY_ASSESSMENT",
+  "task_id": "repo-scout-single-source-coordinate-conservation-v0",
+  "model_call_duration_seconds": null,
+  "server_observed_call_window_seconds": 84,
+  "total_scout_wall_clock_seconds": null,
+  "operation_count": 1,
+  "operation_count_basis": "The model-call boundary is reachable only after the sole frozen operation completes.",
+  "operation_output_bytes": null,
+  "source_artifacts_read_by_scout": 1,
+  "complete_raw_model_response_bytes": null,
+  "partial_server_log_content_bytes": 1072,
+  "provider_usage_complete": false,
+  "repository_artifacts_reopened_during_recovery": 3,
+  "repository_artifacts_reopened": [
+    "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md",
+    "docs/decisions/local_automation/repo_scout_hermes_contract_boundary_ab_result_v0.md",
+    "traces/repo_scout_hermes_contract_boundary_ab_b_semantic_evaluation_v0.json"
+  ],
+  "external_local_logs_inspected_during_recovery": 1,
+  "codex_could_verify_model_owned_packet_without_independent_source_reconstruction": false,
+  "codex_could_verify_model_owned_packet_at_all": false,
+  "utility_relative_to_direct_source_inspection": "INCREASED_BURDEN",
+  "frontier_burden_relative_to_hermes_b": "INCREASED",
+  "burden_basis": "The run produced no retained complete packet and required server-log recovery. The partial prefix cannot be strictly parsed or semantically evaluated.",
+  "scalar_utility_score": null,
+  "repo_scout_promotion": "NONE",
+  "realization_qualification": "NONE"
+}

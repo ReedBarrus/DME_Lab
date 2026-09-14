@@ -1,0 +1,155 @@
+{
+  "artifact": "repo_scout_qwen3_coder_realization_comparison_freeze_v0",
+  "artifact_class": "REPO_SCOUT_LIVE_PRESSURE_FREEZE",
+  "frozen_at_utc": "2026-09-14T23:21:10.8438928+00:00",
+  "comparison_role": "QWEN_REALIZATION",
+  "hermes_b_basis": {
+    "decision_path": "docs/decisions/local_automation/repo_scout_hermes_contract_boundary_ab_result_v0.md",
+    "freeze_path": "traces/repo_scout_hermes_contract_boundary_ab_b_freeze_v0.json",
+    "semantic_evaluation_path": "traces/repo_scout_hermes_contract_boundary_ab_b_semantic_evaluation_v0.json",
+    "comparison_path": "traces/repo_scout_hermes_contract_boundary_ab_b_comparison_v0.json",
+    "repository_basis": "a671bfe5f8d420ac61e0007f89c0141f258445de",
+    "rerun": false
+  },
+  "repository_basis": "d5f366cbe866386b81d4b6eb67b04c89c1b40e80",
+  "apparatus_version": "repo_scout_v0.1",
+  "apparatus_equivalence_gate": {
+    "status": "PASS",
+    "path": "src/runtime/repo_scout.py",
+    "hermes_b_git_blob": "90fc6509ad50355a43ec733251039bcd53108d8b",
+    "qwen_basis_git_blob": "90fc6509ad50355a43ec733251039bcd53108d8b",
+    "byte_equivalent": true
+  },
+  "task_id": "repo-scout-single-source-coordinate-conservation-v0",
+  "question": "Using only the supplied single source observation, return only the exact authoritative coordinates requested below. In bounded_interpretation, emit exactly six newline-separated key=value records in this order: source_artifact_location, repository_or_execution_basis, named_pressure_or_specimen, realized_model_identifier, recorded_operational_result_or_status, terminal_unresolved_question_or_residue. Copy exact source strings without paraphrase. If a coordinate is not explicitly present, use exactly MISSING. Do not synthesize across history, infer missing coordinates, repair values, summarize implications, or introduce information from another artifact. Evidence entries must cite the supplied source path and recoverable numbered line locations for present coordinates. Keep source residue distinct from Scout uncertainty.",
+  "question_sha256": "6341fb2bc5f62984603738cce60ad6d606e74fb50f43456feb910113180c3234",
+  "allowed_paths": [
+    "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md"
+  ],
+  "allowed_operations": [
+    "git_show"
+  ],
+  "inspection_plan": [
+    {
+      "operation": "git_show",
+      "path": "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md",
+      "start_line": 1,
+      "end_line": 94
+    }
+  ],
+  "execution_budget": {
+    "max_operations": 1,
+    "max_operation_output_bytes": 16384,
+    "max_model_response_bytes": 32768,
+    "max_model_calls": 1,
+    "wall_time_seconds": 600
+  },
+  "source_equivalence_gate": {
+    "status": "PASS",
+    "source_path": "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md",
+    "hermes_b_basis": "a671bfe5f8d420ac61e0007f89c0141f258445de",
+    "qwen_basis": "d5f366cbe866386b81d4b6eb67b04c89c1b40e80",
+    "hermes_b_git_blob": "865b73e0c0703831132cccb8478bf76a68d8b004",
+    "qwen_basis_git_blob": "865b73e0c0703831132cccb8478bf76a68d8b004",
+    "byte_equivalent": true
+  },
+  "model_owned_output_contract": {
+    "name": "repo_scout_model_proposal_v0.1",
+    "canonical_schema_sha256": "e7c36087222d5b5ff669548c292212194933d10db8ff028879c63e31bf0aedd3",
+    "relation_to_hermes_b": "EXACTLY_REUSED"
+  },
+  "semantic_evaluator": {
+    "basis_path": "traces/repo_scout_hermes_contract_boundary_ab_b_semantic_evaluation_v0.json",
+    "delegated_coordinates_evaluated": 5,
+    "relation_to_hermes_b": "EXACTLY_REUSED"
+  },
+  "authority_boundary_relation_to_hermes_b": "EXACTLY_REUSED",
+  "realization_basis": {
+    "identifier": "qwen/qwen3-coder-30b",
+    "provider_model_key": "qwen/qwen3-coder-30b",
+    "loaded_model_instance_identifier": "qwen/qwen3-coder-30b",
+    "display_name": "Qwen3 Coder 30B",
+    "publisher": "qwen",
+    "architecture": "qwen3moe",
+    "format": "gguf",
+    "quantization": {
+      "name": "Q4_K_M",
+      "bits_per_weight": 4
+    },
+    "params_string": "30B-A3B",
+    "size_bytes": 18632365388,
+    "indexed_model_artifact_path": "qwen/qwen3-coder-30b",
+    "selected_variant": "qwen/qwen3-coder-30b@q4_k_m",
+    "model_artifact_digest": null,
+    "model_supported_maximum_context": 262144,
+    "initial_load_configuration": {
+      "context_length": 16384,
+      "gpu_offload": "max",
+      "parallel": 1,
+      "speculative_draft_mtp": false
+    },
+    "loaded_instance_config": {
+      "context_length": 16384,
+      "eval_batch_size": 2048,
+      "physical_batch_size": 512,
+      "parallel": 1,
+      "flash_attention": true,
+      "context_checkpoints": 32,
+      "reasoning_budget_message": "",
+      "speculative_draft_mtp": false,
+      "speculative_draft_simple": false,
+      "speculative_draft_model": "",
+      "speculative_draft_max_tokens": 3,
+      "speculative_draft_min_tokens": 0,
+      "speculative_draft_min_continue_probability": 0,
+      "num_experts": 8,
+      "offload_kv_cache_to_gpu": true
+    },
+    "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+    "runtime_model_inventory_endpoint": "http://127.0.0.1:1234/api/v1/models",
+    "runtime": "LM Studio OpenAI-compatible local endpoint",
+    "lm_studio_app_file_version": "0.4.24+1",
+    "lm_studio_app_product_version": "0.4.24.0",
+    "lm_studio_cli_commit": "ff50809",
+    "runtime_engine": null,
+    "provider_exposed_sampling_settings": {
+      "temperature": 0.0,
+      "top_p": 1.0,
+      "max_tokens": 1024
+    },
+    "response_format": "repo_scout_model_proposal_v0.1 strict JSON schema",
+    "fresh_context": true,
+    "automatic_retries": 0,
+    "tool_surface": [],
+    "write_authority": "NONE"
+  },
+  "realization_availability_gate": {
+    "status": "PASS",
+    "artifact_local_before_load": true,
+    "resource_estimate_context_length": 16384,
+    "resource_estimate_gpu_offload_percent": 100,
+    "resource_estimate_gpu_memory_gib": 18.71,
+    "resource_estimate_total_memory_gib": 18.71,
+    "loaded_once": true,
+    "post_load_tuning": false,
+    "download_or_replacement": false
+  },
+  "intervention": {
+    "changed_coordinate": "model_realization",
+    "from": "hermes-3-llama-3.2-3b",
+    "to": "qwen/qwen3-coder-30b",
+    "other_declared_coordinates": "HELD_CONSTANT"
+  },
+  "issued_source_identity_expected": {
+    "source_id": "source-0001",
+    "canonical_source_path": "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md"
+  },
+  "output_contract": {
+    "name": "repo_scout_result",
+    "version": 0
+  },
+  "source_artifact_count": 1,
+  "model_calls_authorized": 1,
+  "automatic_retries": 0,
+  "qualification_or_promotion_authority": "NONE"
+}

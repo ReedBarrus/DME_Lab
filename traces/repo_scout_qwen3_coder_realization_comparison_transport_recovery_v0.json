@@ -1,0 +1,37 @@
+{
+  "artifact": "repo_scout_qwen3_coder_realization_comparison_transport_recovery_v0",
+  "artifact_class": "LOCAL_MODEL_CALL_RECOVERY_EVIDENCE",
+  "evidence_source": "LM Studio local server log",
+  "source_log_path_at_recovery": "C:/Users/Admin/.lmstudio/server-logs/2026-09/2026-09-14.1.log",
+  "log_timestamp_timezone": "America/Los_Angeles",
+  "attempts": 1,
+  "automatic_retries": 0,
+  "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+  "model": "qwen/qwen3-coder-30b",
+  "server_call_started_local": "2026-09-14T16:22:38-07:00",
+  "server_prompt_completed_local": "2026-09-14T16:22:49-07:00",
+  "server_client_disconnected_local": "2026-09-14T16:24:02-07:00",
+  "server_observed_call_window_seconds": 84,
+  "timestamp_resolution_seconds": 1,
+  "exact_client_duration_seconds": null,
+  "client_http_status": null,
+  "client_raw_http_response": null,
+  "client_model_response_content": null,
+  "response_id_in_server_log": "chatcmpl-ddvmyij1km7hostjzhbxb",
+  "server_logged_finish_reason": "stop",
+  "server_logged_tool_calls": [],
+  "server_logged_reasoning_content": "",
+  "server_logged_usage": {
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "server_logged_usage_complete": false,
+  "server_logged_content_complete": false,
+  "server_logged_content_utf8_bytes": 1072,
+  "server_logged_content_sha256": "sha256:366a3c789a4d36bd899c8375641c87c8d4e32f6a3cf49b354e72368624603183",
+  "server_logged_content": "{\n  \"bounded_interpretation\": \"source_artifact_location=docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md\\nrepository_or_execution_basis=d5f366cbe866386b81d4b6eb67b04c89c1b40e80\\nnamed_pressure_or_specimen=Q1-only `max_tokens: 1024 -> 2048`\\nrealized_model_identifier=Turbo T1\\nrecorded_operational_result_or_status=APPARATUS_ERROR\\nterminal_unresolved_question_or_residue=Completion-budget admission remains unresolved because there is no returned response from which to determine whether the 2,048-token allowance would have completed the JSON contract or itself reached `length`.\",\n  \"escalation\": {\n    \"reason\": null,\n    \"required\": false\n  },\n  \"evidence\": [\n    {\n      \"location\": \"docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md:3\",\n      \"observation\": \"**Status:** RETAINED BOUNDED PRESSURE RESULT\",\n      \"source_id\": \"source-0001\"\n    },\n    {\n      \"location\": \"docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md:4\",\n      \"observation\": \"**Pressure:** Q",
+  "strict_model_proposal_parse": "NOT_PERFORMED_INCOMPLETE_CONTENT",
+  "interpretation": "The outer server-log response is valid JSON, but its content field ends inside the second evidence observation. The logged prefix is not a complete model proposal and is not repaired.",
+  "failure": "CLIENT_PROCESS_INTERRUPTED_AFTER_REQUEST_BEFORE_RESPONSE_RETENTION"
+}

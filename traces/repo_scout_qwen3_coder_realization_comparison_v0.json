@@ -1,0 +1,62 @@
+{
+  "artifact": "repo_scout_qwen3_coder_realization_comparison_v0",
+  "artifact_class": "BOUNDED_CROSS_REALIZATION_COMPARISON",
+  "evaluated_at_utc": "2026-09-14T23:37:00Z",
+  "comparison_basis": {
+    "hermes_b": "docs/decisions/local_automation/repo_scout_hermes_contract_boundary_ab_result_v0.md",
+    "qwen_freeze": "traces/repo_scout_qwen3_coder_realization_comparison_freeze_v0.json",
+    "source_equivalence": "PASS",
+    "apparatus_equivalence": "PASS",
+    "declared_changed_coordinate": "model_realization"
+  },
+  "comparison_admission": "NON_ADMISSIBLE_APPARATUS_INTERRUPTION",
+  "hermes_b": {
+    "model": "hermes-3-llama-3.2-3b",
+    "mechanical_validity": "MECHANICALLY_VALID_ESCALATED",
+    "model_owned_conservation": "FAIL_0_OF_5_EXACT",
+    "model_duration_seconds": 3.8007878999924287,
+    "total_scout_duration_seconds": 3.837769699981436,
+    "raw_packet_bytes": 1125,
+    "frontier_verification_burden": "REDUCED_RELATIVE_TO_A_BUT_REMAINS"
+  },
+  "qwen": {
+    "model": "qwen/qwen3-coder-30b",
+    "mechanical_validity": "APPARATUS_ERROR_CLIENT_INTERRUPTION",
+    "model_owned_conservation": "NOT_EVALUABLE",
+    "model_duration_seconds": null,
+    "server_observed_call_window_seconds": 84,
+    "total_scout_duration_seconds": null,
+    "complete_packet_bytes": null,
+    "partial_server_log_content_bytes": 1072,
+    "frontier_verification_burden": "INCREASED_BY_RECOVERY_AND_MISSING_COMPLETE_PACKET"
+  },
+  "requested_comparisons": {
+    "source_supported_observation_fidelity": "UNRESOLVED",
+    "missingness_preservation": "UNRESOLVED",
+    "source_association": "UNRESOLVED",
+    "recoverable_location": "UNRESOLVED",
+    "distinction_preservation": "UNRESOLVED",
+    "unsupported_strengthening": "UNRESOLVED",
+    "escalation_quality": "UNRESOLVED",
+    "mechanical_validity": "HERMES_VALID_QWEN_INTERRUPTED",
+    "model_duration": "NOT_COMPARABLE",
+    "total_scout_duration": "NOT_COMPARABLE",
+    "packet_size": "NOT_COMPARABLE",
+    "frontier_verification_burden": "QWEN_RUN_GREATER_DUE_TO_APPARATUS_RECOVERY"
+  },
+  "bounded_interpretation": [
+    "The declared realization-controlled specimen passed source, apparatus, and realization preflight and reached exactly one Qwen model call.",
+    "The client process ended before the apparatus retained a response, mechanical envelope, or before/after repository fingerprints.",
+    "The LM Studio server log retains only a truncated content prefix after recording client disconnection.",
+    "The truncated prefix is not a complete strict proposal and cannot support a semantic Hermes/Qwen comparison.",
+    "realization capability != apparatus capability != task utility != qualification != authority"
+  ],
+  "realization_choice_materially_changed_conservation_or_utility": "UNRESOLVED",
+  "different_transformation_regime_warranted": false,
+  "different_transformation_regime_reason": "No complete Qwen result exists under the current transformation regime, so candidate-patch generation would broaden the task before the realization-controlled comparison is observable.",
+  "smallest_next_pressure": "Before another live realization comparison, run a no-model apparatus interruption-retention pressure proving that the frozen invocation, operation evidence, serialized request, call-attempt marker, and repository fingerprints survive client interruption. Any later Qwen call requires separate authorization and is not a retry of this result.",
+  "hermes_rerun": false,
+  "qwen_calls": 1,
+  "qwen_second_call": false,
+  "qualification_or_promotion": "NONE"
+}

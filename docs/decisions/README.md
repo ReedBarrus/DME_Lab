@@ -9,7 +9,7 @@ This index is navigational only. Artifact contents, repository evidence,
 `PROJECT_STATE.md`, and `PRESSURE_RESOLUTION_MAP.md` remain authoritative in
 their established roles.
 
-The index covers **68 committed Markdown artifacts** beneath
+The index covers **69 committed Markdown artifacts** beneath
 `docs/decisions/`, excluding this README. Each artifact appears once in the
 domain index. Function labels are navigation aids, not semantic classifications
 or standing.
@@ -21,12 +21,12 @@ or standing.
 | [Cross-cutting](cross_cutting/) | 1 |
 | [Cross-domain](cross_domain/) | 3 |
 | [Ledger](ledger/) | 15 |
-| [Local automation](local_automation/) | 10 |
+| [Local automation](local_automation/) | 11 |
 | [Projection](projection/) | 7 |
 | [Provenance](provenance/) | 7 |
 | [Reconstruction](reconstruction/) | 4 |
 | [Runtime](runtime/) | 11 |
-| **Total** | **68** |
+| **Total** | **69** |
 
 ## [Acoustic](acoustic/) (9)
 
@@ -72,11 +72,12 @@ or standing.
 - [`vocabulary_identity_pressure_v0.md`](ledger/vocabulary_identity_pressure_v0.md) — `pressure-result`
 - [`witness_content_ablation_pressure_v0.md`](ledger/witness_content_ablation_pressure_v0.md) — `pressure-result`
 
-## [Local automation](local_automation/) (10)
+## [Local automation](local_automation/) (11)
 
 - [`hermes_t1_qualification_checkpoint_v0.md`](local_automation/hermes_t1_qualification_checkpoint_v0.md) — `checkpoint`
 - [`repo_scout_corrected_responsibility_boundary_v0.md`](local_automation/repo_scout_corrected_responsibility_boundary_v0.md) — `remediation`
 - [`repo_scout_hermes_contract_boundary_ab_result_v0.md`](local_automation/repo_scout_hermes_contract_boundary_ab_result_v0.md) — `pressure-result`
+- [`repo_scout_hermes_qwen3_coder_realization_comparison_v0.md`](local_automation/repo_scout_hermes_qwen3_coder_realization_comparison_v0.md) — `comparison`
 - [`repo_scout_single_source_coordinate_conservation_result_v0.md`](local_automation/repo_scout_single_source_coordinate_conservation_result_v0.md) — `pressure-result`
 - [`repo_scout_turbo_admission_live_pressure_result_v0.md`](local_automation/repo_scout_turbo_admission_live_pressure_result_v0.md) — `pressure-result`
 - [`t1_hermes_turbo_cross_realization_comparison_v0.md`](local_automation/t1_hermes_turbo_cross_realization_comparison_v0.md) — `comparison`
@@ -138,7 +139,7 @@ relocating files.
 | Pressure results | 42 | All entries labeled `pressure-result` in the domain index |
 | Replications / re-pressure | 3 | [`acoustic replication`](acoustic/acoustic_replication_pressure_v0.md), [`source-side return replication`](acoustic/acoustic_source_side_positional_return_replication_v1.md), [`Cockpit adapter re-pressure`](projection/cockpit_projection_adapter_repressure_v0.md) |
 | Qualification / campaigns | 1 | [`NTFS USN observation-basis qualification`](provenance/ntfs_usn_observation_basis_qualification_v0.md) |
-| Comparisons / adjudications / audits | 7 | [`Astra consumer adjudication`](provenance/astra_consumer_pressure_adjudication_v0.md), [`constraint lineage audit`](cross_cutting/constraint_registry_lineage_audit_v0.md), [`cross-domain re-adjudication`](cross_domain/cross_domain_tomographic_readjudication_v0.md), [`history-association selection`](provenance/history_association_selection_adjudication_v0.md), [`public history association`](provenance/public_history_association_adjudication_v0.md), [`repository-acoustic comparison`](cross_domain/repository_acoustic_tomographic_comparison_pressure_v0.md), [`Hermes / Turbo comparison`](local_automation/t1_hermes_turbo_cross_realization_comparison_v0.md) |
+| Comparisons / adjudications / audits | 8 | [`Astra consumer adjudication`](provenance/astra_consumer_pressure_adjudication_v0.md), [`constraint lineage audit`](cross_cutting/constraint_registry_lineage_audit_v0.md), [`cross-domain re-adjudication`](cross_domain/cross_domain_tomographic_readjudication_v0.md), [`history-association selection`](provenance/history_association_selection_adjudication_v0.md), [`public history association`](provenance/public_history_association_adjudication_v0.md), [`repository-acoustic comparison`](cross_domain/repository_acoustic_tomographic_comparison_pressure_v0.md), [`Hermes / Turbo comparison`](local_automation/t1_hermes_turbo_cross_realization_comparison_v0.md), [`Repo Scout Hermes / Qwen comparison`](local_automation/repo_scout_hermes_qwen3_coder_realization_comparison_v0.md) |
 | Implementation / remediation | 7 | [`plain observer`](projection/cockpit_plain_observer_v0.md), [`adapter remediation`](projection/cockpit_projection_adapter_remediation_v0.md), [`bounded views`](projection/cockpit_projection_v1_bounded_views_v0.md), [`standing topology`](projection/cockpit_projection_v1_standing_topology_v0.md), [`ingest admission`](reconstruction/ingest_admission_pressure_v0.md), [`reconstruction`](reconstruction/reconstruction_pressure_v0.md), [`Repo Scout responsibility boundary`](local_automation/repo_scout_corrected_responsibility_boundary_v0.md) |
 | Unclassified / ambiguous | 0 | None |
 

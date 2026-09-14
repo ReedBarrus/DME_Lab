@@ -1,0 +1,27 @@
+{
+  "artifact": "repo_scout_qwen3_coder_realization_comparison_semantic_evaluation_v0",
+  "artifact_class": "MODEL_OWNED_CONSERVATION_EVALUATION",
+  "evaluated_at_utc": "2026-09-14T23:37:00Z",
+  "task_id": "repo-scout-single-source-coordinate-conservation-v0",
+  "result": "NOT_EVALUABLE_APPARATUS_ERROR",
+  "evaluation_basis": "No complete client response or complete model proposal was retained.",
+  "criteria": {
+    "source_supported_observation_fidelity": "NOT_EVALUATED",
+    "missingness_preservation": "NOT_EVALUATED",
+    "source_association": "NOT_EVALUATED",
+    "recoverable_location": "NOT_EVALUATED",
+    "distinction_preservation": "NOT_EVALUATED",
+    "unsupported_strengthening": "NOT_EVALUATED",
+    "escalation_quality": "NOT_EVALUATED"
+  },
+  "delegated_coordinates_exactly_preserved": null,
+  "delegated_coordinates_total": 5,
+  "partial_prefix_status": "RETAINED_BUT_NON_EVALUABLE",
+  "partial_prefix_reason": "The prefix ends inside an evidence observation and was never returned to or parsed by the strict apparatus. Completing, repairing, or selectively scoring it would change the observation.",
+  "semantic_repair_performed": false,
+  "realization_capability": "UNRESOLVED",
+  "apparatus_capability": "WOUNDED_FOR_INTERRUPTION_RETENTION",
+  "task_utility": "NOT_ESTABLISHED",
+  "qualification": "NONE",
+  "authority": "NONE"
+}
