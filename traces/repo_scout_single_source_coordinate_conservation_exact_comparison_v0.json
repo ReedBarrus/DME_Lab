@@ -1,0 +1,97 @@
+{
+  "artifact": "repo_scout_single_source_coordinate_conservation_exact_comparison_v0",
+  "artifact_class": "EXTERNAL_COORDINATE_COMPARISON",
+  "task_id": "repo-scout-single-source-coordinate-conservation-v0",
+  "repository_basis": "5d08eee91add15ac9e7453226cf61b3a522c8707",
+  "source_path": "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md",
+  "source_artifact_count": 1,
+  "source_artifacts_reopened_for_evaluation": 1,
+  "observation_path": "traces/repo_scout_single_source_coordinate_conservation_observation_v0.json",
+  "mechanical_evaluation_path": "traces/repo_scout_single_source_coordinate_conservation_mechanical_evaluation_v0.json",
+  "raw_json_decode_valid": true,
+  "strict_parsed_result": null,
+  "mechanical_result": "FAIL",
+  "mechanical_failure": "RepoScoutContractError: terminal_action and escalation.required must agree",
+  "coordinate_fidelity": "FAIL",
+  "missingness_preservation": "FAIL",
+  "source_location_fidelity": "FAIL",
+  "requested_coordinates": [
+    {
+      "coordinate": "source_artifact_location",
+      "expected": "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md",
+      "source_location": "apparatus-recorded path and lines 1-94",
+      "observed": "NOT_RETURNED; raw evidence source_path was the placeholder 'canonical repository-relative path'",
+      "result": "FAIL"
+    },
+    {
+      "coordinate": "repository_or_execution_basis",
+      "expected": "MISSING",
+      "source_location": "absent from lines 1-94",
+      "observed": "NOT_RETURNED; raw envelope execution_basis was the unsupported value 40E8EE91ADD15AC9E7453226CF61B3A522C8707E",
+      "result": "FAIL_MISSINGNESS_NOT_PRESERVED"
+    },
+    {
+      "coordinate": "named_pressure_or_specimen",
+      "expected": "Q1-only `max_tokens: 1024 -> 2048`",
+      "source_location": "line 4",
+      "observed": "NOT_RETURNED",
+      "result": "FAIL"
+    },
+    {
+      "coordinate": "realized_model_identifier",
+      "expected": "MISSING",
+      "source_location": "absent from lines 1-94; 'Turbo' and 'realization' do not identify a realized model",
+      "observed": "NOT_RETURNED",
+      "result": "FAIL_MISSINGNESS_NOT_PRESERVED"
+    },
+    {
+      "coordinate": "recorded_operational_result_or_status",
+      "expected": {
+        "status": "RETAINED BOUNDED PRESSURE RESULT",
+        "mechanical_result": "APPARATUS_ERROR",
+        "semantic_specimen_result": "NOT_EVALUABLE_APPARATUS_ERROR",
+        "t1_qualification": "NOT EARNED",
+        "promotion": "NONE"
+      },
+      "source_location": "lines 3-8",
+      "observed": "NOT_RETURNED",
+      "result": "FAIL"
+    },
+    {
+      "coordinate": "terminal_unresolved_question_or_residue",
+      "expected": "Completion-budget admission remains unresolved because there is no returned response from which to determine whether the 2,048-token allowance would have completed the JSON contract or itself reached `length`.",
+      "source_location": "lines 51-53",
+      "observed": "NOT_RETURNED",
+      "result": "FAIL"
+    }
+  ],
+  "raw_envelope_comparison": {
+    "task_id_expected": "repo-scout-single-source-coordinate-conservation-v0",
+    "task_id_observed": "non-empty string equal to the declared task_id",
+    "execution_basis_expected": "5d08eee91add15ac9e7453226cf61b3a522c8707",
+    "execution_basis_observed": "40E8EE91ADD15AC9E7453226CF61B3A522C8707E",
+    "scope_used_expected": [
+      "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md"
+    ],
+    "scope_used_observed": [
+      "exact apparatus-recorded paths in first-use order"
+    ],
+    "operations_used_expected": [
+      "git_show"
+    ],
+    "operations_used_observed": [
+      "exact apparatus-recorded operations in order"
+    ],
+    "terminal_action_observed": "STOP",
+    "escalation_required_observed": true,
+    "terminal_escalation_consistent": false
+  },
+  "unsupported_additions_or_substitutions": [
+    "An unsupported commit-like value replaced the exact execution basis supplied by the apparatus.",
+    "Descriptive result-contract placeholders replaced task, evidence, scope, operation, and interpretation values.",
+    "The packet requested escalation while selecting STOP and supplied no source-derived escalation reason."
+  ],
+  "source_only_boundary_preserved": false,
+  "authority_violation_observed": false,
+  "qualification_or_promotion": "NONE"
+}

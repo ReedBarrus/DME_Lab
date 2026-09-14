@@ -1,0 +1,29 @@
+{
+  "acceptance_authority": "EXTERNAL_CODEX_FRONTIER_HUMAN_REVIEW",
+  "apparatus_version": "repo_scout_v0",
+  "artifact": "repo_scout_mechanical_evaluation_v0",
+  "mechanical_checks": {
+    "evidence_paths_were_accessed": false,
+    "execution_basis_valid": true,
+    "model_calls_exactly_one": true,
+    "model_response_received": true,
+    "model_response_within_budget": true,
+    "operation_count_within_budget": true,
+    "operation_output_within_budget": true,
+    "operations_permitted": true,
+    "paths_in_scope": true,
+    "repository_state_unchanged": true,
+    "response_shape_valid": false,
+    "result_basis_matches": false,
+    "result_operations_match": false,
+    "result_scope_matches": false,
+    "result_task_matches": false,
+    "wall_time_within_budget": true
+  },
+  "observation_sha256": "sha256:3fc50228d71e7df9084ffb3eb4b094ea5924fa109d2c6d8c8e72f15f6263275e",
+  "parsed_result": null,
+  "response_error": "RepoScoutContractError: terminal_action and escalation.required must agree",
+  "semantic_evaluation": "NOT_PERFORMED",
+  "task_id": "repo-scout-single-source-coordinate-conservation-v0",
+  "terminal_state": "FAIL"
+}

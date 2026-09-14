@@ -1,0 +1,33 @@
+{
+  "artifact": "repo_scout_single_source_coordinate_conservation_utility_assessment_v0",
+  "artifact_class": "BOUNDED_UTILITY_ASSESSMENT",
+  "task_id": "repo-scout-single-source-coordinate-conservation-v0",
+  "total_scout_wall_clock_seconds": 3.080380100000184,
+  "model_call_duration_seconds": 3.0521020000160206,
+  "operations_executed": [
+    "git_show"
+  ],
+  "operation_count": 1,
+  "operation_output_bytes": 3942,
+  "source_artifacts_read_by_scout": 1,
+  "returned_packet_bytes": 692,
+  "provider_usage": {
+    "prompt_tokens": 1642,
+    "completion_tokens": 188,
+    "reasoning_tokens": 0,
+    "total_tokens": 1830
+  },
+  "source_artifacts_codex_reopened_to_verify_packet": 1,
+  "requested_coordinates_recovered": 0,
+  "direct_source_inspection_still_required": true,
+  "utility_relative_to_direct_source_inspection": "INCREASED_BURDEN",
+  "burden_basis": "The packet returned no requested source coordinate, failed strict parsing, and required direct inspection of the same single source for every comparison. Its review was additional work beyond direct source inspection.",
+  "useful_observations_despite_failure": [
+    "The smaller packet isolates a contract-placeholder echo rather than a multi-source synthesis error.",
+    "The strict apparatus rejected inconsistent terminal state without repair.",
+    "Repository fingerprints remained unchanged across the one-operation, one-call run."
+  ],
+  "scalar_utility_score": null,
+  "repo_scout_promotion": "NONE",
+  "realization_qualification": "NONE"
+}

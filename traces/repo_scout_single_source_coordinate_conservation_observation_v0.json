@@ -1,0 +1,211 @@
+{
+  "apparatus_version": "repo_scout_v0",
+  "artifact": "repo_scout_run_observation_v0",
+  "declared_invocation": {
+    "allowed_operations": [
+      "git_show"
+    ],
+    "allowed_paths": [
+      "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md"
+    ],
+    "execution_budget": {
+      "max_model_calls": 1,
+      "max_model_response_bytes": 32768,
+      "max_operation_output_bytes": 16384,
+      "max_operations": 1,
+      "wall_time_seconds": 600
+    },
+    "inspection_plan": [
+      {
+        "end_line": 94,
+        "operation": "git_show",
+        "path": "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md",
+        "start_line": 1
+      }
+    ],
+    "output_contract": {
+      "name": "repo_scout_result",
+      "version": 0
+    },
+    "question": "Using only the supplied single source observation, return only the exact authoritative coordinates requested below. In bounded_interpretation, emit exactly six newline-separated key=value records in this order: source_artifact_location, repository_or_execution_basis, named_pressure_or_specimen, realized_model_identifier, recorded_operational_result_or_status, terminal_unresolved_question_or_residue. Copy exact source strings without paraphrase. If a coordinate is not explicitly present, use exactly MISSING. Do not synthesize across history, infer missing coordinates, repair values, summarize implications, or introduce information from another artifact. Evidence entries must cite the supplied source path and recoverable numbered line locations for present coordinates. Keep source residue distinct from Scout uncertainty.",
+    "realization_basis": {
+      "architecture": "llama",
+      "automatic_retries": 0,
+      "display_name": "Hermes 3 Llama 3.2 3B",
+      "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+      "format": "gguf",
+      "fresh_context": true,
+      "identifier": "hermes-3-llama-3.2-3b",
+      "indexed_model_artifact_path": "NousResearch/Hermes-3-Llama-3.2-3B-GGUF/Hermes-3-Llama-3.2-3B.Q4_K_M.gguf",
+      "lm_studio_app_file_version": "0.4.24+1",
+      "lm_studio_app_product_version": "0.4.24.0",
+      "lm_studio_cli_commit": "ff50809",
+      "loaded_instance_config": {
+        "context_checkpoints": 32,
+        "context_length": 16384,
+        "eval_batch_size": 2048,
+        "flash_attention": true,
+        "offload_kv_cache_to_gpu": true,
+        "parallel": 1,
+        "physical_batch_size": 512,
+        "reasoning_budget_message": "",
+        "speculative_draft_max_tokens": 3,
+        "speculative_draft_min_continue_probability": 0,
+        "speculative_draft_min_tokens": 0,
+        "speculative_draft_model": "",
+        "speculative_draft_mtp": false,
+        "speculative_draft_simple": false
+      },
+      "loaded_model_instance_identifier": "hermes-3-llama-3.2-3b",
+      "model_artifact_digest": null,
+      "model_supported_maximum_context": 131072,
+      "params_string": "3B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 1024,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "provider_model_key": "hermes-3-llama-3.2-3b",
+      "publisher": "NousResearch",
+      "quantization": {
+        "bits_per_weight": 4,
+        "name": "Q4_K_M"
+      },
+      "requested_load_configuration": {
+        "context_length": 16384,
+        "gpu_offload": "max",
+        "parallel": 1,
+        "speculative_draft_mtp": false
+      },
+      "response_format": "repo_scout_result_v0 strict JSON schema",
+      "runtime": "LM Studio OpenAI-compatible local endpoint",
+      "runtime_engine": null,
+      "runtime_model_inventory_endpoint": "http://127.0.0.1:1234/api/v1/models",
+      "settings_relation_to_first_live_pressure": "EXACTLY_REUSED",
+      "size_bytes": 2019373888,
+      "tool_surface": [],
+      "write_authority": "NONE"
+    },
+    "repository_basis": "5d08eee91add15ac9e7453226cf61b3a522c8707",
+    "task_id": "repo-scout-single-source-coordinate-conservation-v0"
+  },
+  "execution_basis": {
+    "declared": "5d08eee91add15ac9e7453226cf61b3a522c8707",
+    "head_before": "5d08eee91add15ac9e7453226cf61b3a522c8707",
+    "resolved_commit": "5d08eee91add15ac9e7453226cf61b3a522c8707"
+  },
+  "execution_duration_seconds": 3.080380100000184,
+  "model_calls": 1,
+  "model_failure": null,
+  "operation_attempts": [
+    {
+      "command": [
+        "git",
+        "--no-pager",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.untrackedCache=false",
+        "show",
+        "5d08eee91add15ac9e7453226cf61b3a522c8707:docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md"
+      ],
+      "index": 0,
+      "observation_basis": "5d08eee91add15ac9e7453226cf61b3a522c8707",
+      "operation": "git_show",
+      "paths_accessed": [
+        "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md"
+      ],
+      "request": {
+        "end_line": 94,
+        "operation": "git_show",
+        "path": "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md",
+        "start_line": 1
+      },
+      "return_code": 0,
+      "stdout": "1:# Turbo T1-Q1 Completion-Budget Pressure Result v0\n2:\n3:**Status:** RETAINED BOUNDED PRESSURE RESULT\n4:**Pressure:** Q1-only `max_tokens: 1024 -> 2048`\n5:**Mechanical result:** `APPARATUS_ERROR`\n6:**Semantic specimen result:** `NOT_EVALUABLE_APPARATUS_ERROR`\n7:**T1 qualification:** NOT EARNED\n8:**Promotion:** `NONE`\n9:\n10:## Result\n11:\n12:This pressure changed exactly one declared coordinate from the preceding\n13:600-second Q1 pressure: `max_tokens` increased from 1,024 to 2,048. The same\n14:realization, loaded runtime configuration, 8,192-token context, policy-visible\n15:request, prompt, response schema, strict parser, temperature, top-p, 600-second\n16:client timeout, GPU split, permissions, and evaluator regime were retained.\n17:\n18:The exact Q1 request remained context-admissible:\n19:\n20:```text\n21:rendered input: 3705 tokens\n22:completion reserve: 2048 tokens\n23:total requirement: 5753 tokens\n24:configured context: 8192 tokens\n25:```\n26:\n27:One call was made. The client reached its frozen 600-second timeout after\n28:600.008093 seconds without receiving an HTTP response or provider usage record.\n29:No retry, continuation, repair, or configuration change occurred.\n30:\n31:## Bounded interpretation\n32:\n33:The previous 1,024-token call returned after 475.696185 seconds and ended at\n34:`finish_reason: length`. The 2,048-token call did not return inside the same\n35:600-second deadline.\n36:\n37:This supports only:\n38:\n39:```text\n40:more context-admissible completion reserve\n41:!=\n42:deadline completion\n43:```\n44:\n45:The intervention and observed deadline outcome expose a bounded interaction\n46:between completion allowance and the fixed execution deadline. They do not\n47:establish a causal latency law. Runtime scheduling, cache state, and other\n48:unobserved transient conditions were not controlled strongly enough to\n49:attribute the difference to token budget alone.\n50:\n51:Completion-budget admission remains unresolved because there is no returned\n52:response from which to determine whether the 2,048-token allowance would have\n53:completed the JSON contract or itself reached `length`.\n54:\n55:## Semantic standing\n56:\n57:No model response exists. Therefore promotion error, semantic violation,\n58:semantic completeness, scope behavior, authority behavior, and model STOP\n59:compliance are not evaluable. Absence inside the deadline is not a semantic\n60:failure.\n61:\n62:```text\n63:mechanical_success: false\n64:semantic result: NOT_EVALUABLE_APPARATUS_ERROR\n65:promotion: NONE\n66:```\n67:\n68:## Nonclaims\n69:\n70:This result does not establish:\n71:\n72:- that Turbo failed Q1 semantically;\n73:- that 2,048 tokens would or would not complete the response contract after\n74:  600 seconds;\n75:- that the model consumed 2,048 completion tokens;\n76:- that the expanded completion allowance caused the timeout;\n77:- a stable latency relationship between 1,024 and 2,048-token requests;\n78:- Turbo T1 qualification or a semantic comparison to Hermes;\n79:- authority to tune reasoning, output allowance, deadline, context, GPU split,\n80:  MTP, prompt, or response contract.\n81:\n82:## Stop\n83:\n84:The authorized completion-budget pressure is complete. One call was retained\n85:with zero retries. Q2, Q3, and Q4 were not executed. The realization was not\n86:tuned, reloaded, or replaced.\n87:\n88:## Evidence\n89:\n90:- [completion-budget checkpoint](turbo_t1_completion_budget_admission_checkpoint_v0.md)\n91:- [pressure freeze](../../../traces/local_model_qualification_t1_turbo_q1_completion_budget_pressure_freeze_v0.json)\n92:- [raw observation](../../../traces/local_model_qualification_t1_turbo_q1_completion_budget_pressure_observation_v0.json)\n93:- [mechanical evaluation](../../../traces/local_model_qualification_t1_turbo_q1_completion_budget_pressure_mechanical_evaluation_v0.json)\n94:- [semantic evaluation](../../../traces/local_model_qualification_t1_turbo_q1_completion_budget_pressure_semantic_evaluation_v0.json)"
+    }
+  ],
+  "operation_output_bytes": 3942,
+  "operations_used": [
+    "git_show"
+  ],
+  "raw_model_response": "{\n  \"bounded_interpretation\": \"non-empty string\",\n  \"escalation\": {\n    \"reason\": \"string or null\",\n    \"required\": true\n  },\n  \"evidence\": [\n    {\n      \"location\": \"non-empty recoverable source location\",\n      \"observation\": \"non-empty observed claim\",\n      \"source_path\": \"canonical repository-relative path\"\n    }\n  ],\n  \"execution_basis\": \"40E8EE91ADD15AC9E7453226CF61B3A522C8707E\",\n  \"operations_used\": [\n    \"exact apparatus-recorded operations in order\"\n  ],\n  \"scope_used\": [\n    \"exact apparatus-recorded paths in first-use order\"\n  ],\n  \"task_id\": \"non-empty string equal to the declared task_id\",\n  \"terminal_action\": \"STOP\",\n  \"unresolved\": [\"zero or more non-empty strings\"]\n}",
+  "realization_basis": {
+    "architecture": "llama",
+    "automatic_retries": 0,
+    "display_name": "Hermes 3 Llama 3.2 3B",
+    "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+    "format": "gguf",
+    "fresh_context": true,
+    "identifier": "hermes-3-llama-3.2-3b",
+    "indexed_model_artifact_path": "NousResearch/Hermes-3-Llama-3.2-3B-GGUF/Hermes-3-Llama-3.2-3B.Q4_K_M.gguf",
+    "lm_studio_app_file_version": "0.4.24+1",
+    "lm_studio_app_product_version": "0.4.24.0",
+    "lm_studio_cli_commit": "ff50809",
+    "loaded_instance_config": {
+      "context_checkpoints": 32,
+      "context_length": 16384,
+      "eval_batch_size": 2048,
+      "flash_attention": true,
+      "offload_kv_cache_to_gpu": true,
+      "parallel": 1,
+      "physical_batch_size": 512,
+      "reasoning_budget_message": "",
+      "speculative_draft_max_tokens": 3,
+      "speculative_draft_min_continue_probability": 0,
+      "speculative_draft_min_tokens": 0,
+      "speculative_draft_model": "",
+      "speculative_draft_mtp": false,
+      "speculative_draft_simple": false
+    },
+    "loaded_model_instance_identifier": "hermes-3-llama-3.2-3b",
+    "model_artifact_digest": null,
+    "model_supported_maximum_context": 131072,
+    "params_string": "3B",
+    "provider_exposed_sampling_settings": {
+      "max_tokens": 1024,
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "provider_model_key": "hermes-3-llama-3.2-3b",
+    "publisher": "NousResearch",
+    "quantization": {
+      "bits_per_weight": 4,
+      "name": "Q4_K_M"
+    },
+    "requested_load_configuration": {
+      "context_length": 16384,
+      "gpu_offload": "max",
+      "parallel": 1,
+      "speculative_draft_mtp": false
+    },
+    "response_format": "repo_scout_result_v0 strict JSON schema",
+    "runtime": "LM Studio OpenAI-compatible local endpoint",
+    "runtime_engine": null,
+    "runtime_model_inventory_endpoint": "http://127.0.0.1:1234/api/v1/models",
+    "settings_relation_to_first_live_pressure": "EXACTLY_REUSED",
+    "size_bytes": 2019373888,
+    "tool_surface": [],
+    "write_authority": "NONE"
+  },
+  "repository_state_after": {
+    "head": "5d08eee91add15ac9e7453226cf61b3a522c8707",
+    "staged_diff_sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status_sha256": "sha256:0c0abae77bbf354a4fce94cef7b2455416518735e9d27fd592c63834083569b5",
+    "untracked_manifest_sha256": "sha256:63174579f1e6133b23f5cddb7b479d3493f6d78c8c49c7dadf567d31161e843c",
+    "working_diff_sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "repository_state_before": {
+    "head": "5d08eee91add15ac9e7453226cf61b3a522c8707",
+    "staged_diff_sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status_sha256": "sha256:0c0abae77bbf354a4fce94cef7b2455416518735e9d27fd592c63834083569b5",
+    "untracked_manifest_sha256": "sha256:63174579f1e6133b23f5cddb7b479d3493f6d78c8c49c7dadf567d31161e843c",
+    "working_diff_sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "scope_used": [
+    "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md"
+  ],
+  "semantic_evaluation": "NOT_PERFORMED",
+  "serialized_policy_visible_request": "{\"authority\":{\"acceptance\":\"EXTERNAL_CODEX_FRONTIER_HUMAN_REVIEW\",\"attempt\":\"DECLARED_READ_ONLY_INSPECTION_ONLY\",\"commit\":\"NONE\",\"proposal\":\"CANDIDATE_EVIDENCE_PACKET_ONLY\"},\"declared_scope\":{\"allowed_operations\":[\"git_show\"],\"allowed_paths\":[\"docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md\"]},\"instructions\":[\"Use only the supplied repository observations.\",\"Keep observed evidence, bounded interpretation, and unresolved state distinct.\",\"Do not claim repository mutation, tool access, acceptance, scientific authority, or commit authority.\",\"Return exactly one object satisfying result_contract.\",\"Use STOP or ESCALATE as the terminal action; do not request continuation.\"],\"observed_inspection\":{\"observations\":[{\"index\":0,\"observation_basis\":\"5d08eee91add15ac9e7453226cf61b3a522c8707\",\"operation\":\"git_show\",\"paths_accessed\":[\"docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md\"],\"stdout\":\"1:# Turbo T1-Q1 Completion-Budget Pressure Result v0\\n2:\\n3:**Status:** RETAINED BOUNDED PRESSURE RESULT\\n4:**Pressure:** Q1-only `max_tokens: 1024 -> 2048`\\n5:**Mechanical result:** `APPARATUS_ERROR`\\n6:**Semantic specimen result:** `NOT_EVALUABLE_APPARATUS_ERROR`\\n7:**T1 qualification:** NOT EARNED\\n8:**Promotion:** `NONE`\\n9:\\n10:## Result\\n11:\\n12:This pressure changed exactly one declared coordinate from the preceding\\n13:600-second Q1 pressure: `max_tokens` increased from 1,024 to 2,048. The same\\n14:realization, loaded runtime configuration, 8,192-token context, policy-visible\\n15:request, prompt, response schema, strict parser, temperature, top-p, 600-second\\n16:client timeout, GPU split, permissions, and evaluator regime were retained.\\n17:\\n18:The exact Q1 request remained context-admissible:\\n19:\\n20:```text\\n21:rendered input: 3705 tokens\\n22:completion reserve: 2048 tokens\\n23:total requirement: 5753 tokens\\n24:configured context: 8192 tokens\\n25:```\\n26:\\n27:One call was made. The client reached its frozen 600-second timeout after\\n28:600.008093 seconds without receiving an HTTP response or provider usage record.\\n29:No retry, continuation, repair, or configuration change occurred.\\n30:\\n31:## Bounded interpretation\\n32:\\n33:The previous 1,024-token call returned after 475.696185 seconds and ended at\\n34:`finish_reason: length`. The 2,048-token call did not return inside the same\\n35:600-second deadline.\\n36:\\n37:This supports only:\\n38:\\n39:```text\\n40:more context-admissible completion reserve\\n41:!=\\n42:deadline completion\\n43:```\\n44:\\n45:The intervention and observed deadline outcome expose a bounded interaction\\n46:between completion allowance and the fixed execution deadline. They do not\\n47:establish a causal latency law. Runtime scheduling, cache state, and other\\n48:unobserved transient conditions were not controlled strongly enough to\\n49:attribute the difference to token budget alone.\\n50:\\n51:Completion-budget admission remains unresolved because there is no returned\\n52:response from which to determine whether the 2,048-token allowance would have\\n53:completed the JSON contract or itself reached `length`.\\n54:\\n55:## Semantic standing\\n56:\\n57:No model response exists. Therefore promotion error, semantic violation,\\n58:semantic completeness, scope behavior, authority behavior, and model STOP\\n59:compliance are not evaluable. Absence inside the deadline is not a semantic\\n60:failure.\\n61:\\n62:```text\\n63:mechanical_success: false\\n64:semantic result: NOT_EVALUABLE_APPARATUS_ERROR\\n65:promotion: NONE\\n66:```\\n67:\\n68:## Nonclaims\\n69:\\n70:This result does not establish:\\n71:\\n72:- that Turbo failed Q1 semantically;\\n73:- that 2,048 tokens would or would not complete the response contract after\\n74:  600 seconds;\\n75:- that the model consumed 2,048 completion tokens;\\n76:- that the expanded completion allowance caused the timeout;\\n77:- a stable latency relationship between 1,024 and 2,048-token requests;\\n78:- Turbo T1 qualification or a semantic comparison to Hermes;\\n79:- authority to tune reasoning, output allowance, deadline, context, GPU split,\\n80:  MTP, prompt, or response contract.\\n81:\\n82:## Stop\\n83:\\n84:The authorized completion-budget pressure is complete. One call was retained\\n85:with zero retries. Q2, Q3, and Q4 were not executed. The realization was not\\n86:tuned, reloaded, or replaced.\\n87:\\n88:## Evidence\\n89:\\n90:- [completion-budget checkpoint](turbo_t1_completion_budget_admission_checkpoint_v0.md)\\n91:- [pressure freeze](../../../traces/local_model_qualification_t1_turbo_q1_completion_budget_pressure_freeze_v0.json)\\n92:- [raw observation](../../../traces/local_model_qualification_t1_turbo_q1_completion_budget_pressure_observation_v0.json)\\n93:- [mechanical evaluation](../../../traces/local_model_qualification_t1_turbo_q1_completion_budget_pressure_mechanical_evaluation_v0.json)\\n94:- [semantic evaluation](../../../traces/local_model_qualification_t1_turbo_q1_completion_budget_pressure_semantic_evaluation_v0.json)\"}],\"operations_used\":[\"git_show\"],\"scope_used\":[\"docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md\"]},\"protocol\":\"repo_scout_v0\",\"result_contract\":{\"additional_properties\":false,\"properties\":{\"bounded_interpretation\":\"non-empty string\",\"escalation\":{\"reason\":\"string or null\",\"required\":\"boolean\"},\"evidence\":[{\"location\":\"non-empty recoverable source location\",\"observation\":\"non-empty observed claim\",\"source_path\":\"canonical repository-relative path\"}],\"execution_basis\":\"40-character commit equal to execution HEAD\",\"operations_used\":[\"exact apparatus-recorded operations in order\"],\"scope_used\":[\"exact apparatus-recorded paths in first-use order\"],\"task_id\":\"non-empty string equal to the declared task_id\",\"terminal_action\":[\"STOP\",\"ESCALATE\"],\"unresolved\":[\"zero or more non-empty strings\"]},\"required\":[\"task_id\",\"execution_basis\",\"evidence\",\"bounded_interpretation\",\"unresolved\",\"scope_used\",\"operations_used\",\"escalation\",\"terminal_action\"],\"type\":\"object\"},\"task\":{\"question\":\"Using only the supplied single source observation, return only the exact authoritative coordinates requested below. In bounded_interpretation, emit exactly six newline-separated key=value records in this order: source_artifact_location, repository_or_execution_basis, named_pressure_or_specimen, realized_model_identifier, recorded_operational_result_or_status, terminal_unresolved_question_or_residue. Copy exact source strings without paraphrase. If a coordinate is not explicitly present, use exactly MISSING. Do not synthesize across history, infer missing coordinates, repair values, summarize implications, or introduce information from another artifact. Evidence entries must cite the supplied source path and recoverable numbered line locations for present coordinates. Keep source residue distinct from Scout uncertainty.\",\"repository_basis\":\"5d08eee91add15ac9e7453226cf61b3a522c8707\",\"task_id\":\"repo-scout-single-source-coordinate-conservation-v0\"}}",
+  "task_id": "repo-scout-single-source-coordinate-conservation-v0"
+}
