@@ -14,6 +14,7 @@ from src.runtime.local_model_qualification_t1_cross_realization import (
     build_exact_policy_visible_input,
     execute_once,
 )
+from src.runtime.local_model_qualification_t1_q1 import _sha256_bytes
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -132,6 +133,48 @@ class TurboDeadlinePressureTest(unittest.TestCase):
             "local_model_qualification_t1_turbo_q1_deadline_pressure_observation_v0",
         )
         self.assertEqual(result["terminal_state"], "PASS")
+
+    def test_retained_pressure_result_reconstructs_without_semantic_repair(self):
+        outputs = self.pressure["specimens"]["Q1"]["output_paths"]
+        observation_path = REPO_ROOT / outputs["observation"]
+        mechanical_path = REPO_ROOT / outputs["mechanical_evaluation"]
+        semantic_path = REPO_ROOT / outputs["semantic_evaluation"]
+        observation = json.loads(observation_path.read_text(encoding="utf-8"))
+        mechanical = json.loads(mechanical_path.read_text(encoding="utf-8"))
+        semantic = json.loads(semantic_path.read_text(encoding="utf-8"))
+
+        self.assertIsNone(observation["adapter_failure"])
+        self.assertEqual(observation["http_status"], 200)
+        self.assertEqual(observation["finish_reason"], "length")
+        self.assertEqual(observation["model_calls_made"], 1)
+        self.assertEqual(observation["automatic_retries"], 0)
+        self.assertEqual(
+            observation["realization"]["provider_usage"]["completion_tokens"],
+            1024,
+        )
+        self.assertEqual(
+            observation["realization"]["provider_usage"]["completion_tokens_details"]["reasoning_tokens"],
+            940,
+        )
+        self.assertEqual(mechanical["terminal_state"], "FAIL")
+        self.assertIsNone(mechanical["parsed_response"])
+        self.assertIn("not one complete JSON value", mechanical["parse_failure"])
+        self.assertEqual(
+            semantic["evaluation_basis"]["observation"]["artifact_sha256"],
+            _sha256_bytes(observation_path.read_bytes()),
+        )
+        self.assertEqual(
+            semantic["evaluation_basis"]["mechanical_evaluation"]["artifact_sha256"],
+            _sha256_bytes(mechanical_path.read_bytes()),
+        )
+        self.assertEqual(semantic["semantic_specimen_result"], "FAIL_INCOMPLETE_RESPONSE")
+        self.assertFalse(semantic["dimensions"]["mechanical_success"])
+        self.assertFalse(semantic["dimensions"]["semantic_completeness"])
+        self.assertFalse(semantic["dimensions"]["stop_compliance"])
+        self.assertEqual(semantic["promotion"], "NONE")
+        self.assertFalse(semantic["q2_executed"])
+        self.assertFalse(semantic["q3_executed"])
+        self.assertFalse(semantic["q4_executed"])
 
 
 if __name__ == "__main__":
