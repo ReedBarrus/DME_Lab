@@ -1,0 +1,39 @@
+{
+  "artifact": "repo_scout_hermes_contract_boundary_ab_b_utility_assessment_v0",
+  "artifact_class": "BOUNDED_UTILITY_ASSESSMENT",
+  "task_id": "repo-scout-single-source-coordinate-conservation-v0",
+  "total_scout_wall_clock_seconds": 3.837769699981436,
+  "model_call_duration_seconds": 3.8007878999924287,
+  "operations_executed": [
+    "git_show"
+  ],
+  "operation_count": 1,
+  "operation_output_bytes": 3942,
+  "source_artifacts_read_by_scout": 1,
+  "raw_model_response_bytes": 1125,
+  "canonical_model_proposal_bytes": 1048,
+  "canonical_mechanically_attached_result_bytes": 1408,
+  "provider_usage": {
+    "prompt_tokens": 1722,
+    "completion_tokens": 276,
+    "reasoning_tokens": 0,
+    "total_tokens": 1998
+  },
+  "source_artifacts_codex_reopened_to_verify_model_owned_packet": 1,
+  "source_artifacts_codex_reopened": [
+    "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md"
+  ],
+  "codex_could_verify_without_independent_source_reconstruction": false,
+  "direct_source_inspection_still_required": true,
+  "utility_relative_to_direct_source_inspection": "INCREASED_BURDEN",
+  "frontier_burden_relative_to_a": "REDUCED_BUT_REMAINS",
+  "burden_basis": "The mechanical envelope and provenance coordinate no longer required model verification, reducing A's apparatus burden. Direct source inspection was still necessary to reject every incomplete, substituted, or wrongly located model-owned coordinate.",
+  "useful_observations_despite_failure": [
+    "The model selected the only issued source ID and the apparatus resolved it to the canonical path.",
+    "The model-owned proposal was strictly parseable, so conservation failures were independently evaluable rather than hidden behind an envelope failure.",
+    "Repository fingerprints remained unchanged across the one-operation, one-call run."
+  ],
+  "scalar_utility_score": null,
+  "repo_scout_promotion": "NONE",
+  "realization_qualification": "NONE"
+}

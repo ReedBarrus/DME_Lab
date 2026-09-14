@@ -1,0 +1,60 @@
+{
+  "artifact": "repo_scout_hermes_contract_boundary_ab_b_comparison_v0",
+  "artifact_class": "BOUNDED_APPARATUS_AB_COMPARISON",
+  "evaluated_at_utc": "2026-09-14T23:06:57.7827852+00:00",
+  "baseline_a_decision": "docs/decisions/local_automation/repo_scout_single_source_coordinate_conservation_result_v0.md",
+  "baseline_a_basis": "5d08eee91add15ac9e7453226cf61b3a522c8707",
+  "b_basis": "a671bfe5f8d420ac61e0007f89c0141f258445de",
+  "source_equivalence": {
+    "status": "PASS",
+    "git_blob_a": "865b73e0c0703831132cccb8478bf76a68d8b004",
+    "git_blob_b": "865b73e0c0703831132cccb8478bf76a68d8b004",
+    "byte_equivalent": true
+  },
+  "realization_equivalence": "PASS",
+  "declared_intervention": "MODEL_RUNTIME_RESPONSIBILITY_BOUNDARY_ONLY",
+  "a": {
+    "apparatus_version": "repo_scout_v0",
+    "mechanical_result": "FAIL",
+    "strict_response_shape": "FAIL",
+    "requested_coordinates_recovered": "0/6",
+    "model_generated_envelope": true,
+    "descriptive_placeholder_copying": true,
+    "source_association": "FAIL_FREE_FORM_PLACEHOLDER_PATH",
+    "terminal_state_consistency": "FAIL",
+    "model_owned_conservation": "NOT_SEPARABLY_EVALUABLE_FROM_REJECTED_PACKET",
+    "frontier_burden": "INCREASED"
+  },
+  "b": {
+    "apparatus_version": "repo_scout_v0.1",
+    "mechanical_result": "MECHANICALLY_VALID_ESCALATED",
+    "strict_response_shape": "PASS",
+    "delegated_coordinates_exactly_preserved": "0/5",
+    "mechanical_envelope_attached": true,
+    "descriptive_placeholder_copying": false,
+    "source_association": "PASS_ISSUED_SOURCE_ID_RESOLVED_MECHANICALLY",
+    "terminal_state_consistency": "PASS_DERIVED_MECHANICALLY",
+    "model_owned_conservation": "FAIL",
+    "frontier_burden": "REDUCED_RELATIVE_TO_A_BUT_REMAINS"
+  },
+  "bounded_interpretation": [
+    "The corrected contract materially improved mechanical validity for this realized specimen: the proposal parsed, the source selection resolved, and the envelope and terminal action no longer depended on model regeneration.",
+    "The corrected contract was insufficient for model-owned coordinate conservation in this realized specimen: no delegated requested coordinate was preserved completely and exactly.",
+    "B did not reproduce A's descriptive-placeholder copying, but this does not establish that placeholders uniquely caused A.",
+    "The inherited question still says evidence entries must cite the supplied source path while the corrected contract requires source-ID selection and a recoverable location. This retained wording residue may have contributed to the path-as-location response and must be held constant in any realization comparison.",
+    "apparatus defect != contract-design pressure != realization failure"
+  ],
+  "direct_numeric_coordinate_comparison": "NOT_VALID_BECAUSE_B_REMOVED_MECHANICALLY_OWNED_COORDINATES_FROM_MODEL_RESPONSIBILITY",
+  "realization_controlled_comparison_supported": "YES_BOUNDED",
+  "realization_controlled_comparison_basis": "B produced a strictly valid and independently evaluable model-owned proposal under an equivalent source and the retained Hermes realization. A single different realization can now receive this exact frozen B request to compare transformation behavior, while the inherited source-path wording residue is held constant.",
+  "nonclaims": [
+    "The evidence does not establish that placeholders uniquely caused A.",
+    "The evidence does not establish general Hermes capability or incapability.",
+    "The evidence does not establish general superiority of the corrected contract.",
+    "The evidence does not qualify Repo Scout.",
+    "No scientific standing or operational authority is promoted."
+  ],
+  "smallest_next_pressure": "Run exactly one Qwen3 Coder call against the exact retained B source, question, inspection plan, corrected contract, context and sampling coordinates where reproducible, with a fresh context, no tools, zero retries, and no prompt repair; compare only model-owned fields and retain the inherited wording residue as a controlled coordinate.",
+  "qwen_executed": false,
+  "qualification_or_promotion": "NONE"
+}

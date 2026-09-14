@@ -1,0 +1,75 @@
+{
+  "acceptance_authority": "EXTERNAL_CODEX_FRONTIER_HUMAN_REVIEW",
+  "apparatus_version": "repo_scout_v0.1",
+  "artifact": "repo_scout_mechanical_evaluation_v0",
+  "mechanical_checks": {
+    "evidence_paths_were_accessed": true,
+    "evidence_source_ids_were_issued": true,
+    "execution_basis_valid": true,
+    "final_result_fields_exact": true,
+    "model_calls_exactly_one": true,
+    "model_owned_fields_only": true,
+    "model_response_received": true,
+    "model_response_within_budget": true,
+    "operation_count_within_budget": true,
+    "operation_output_within_budget": true,
+    "operations_permitted": true,
+    "paths_in_scope": true,
+    "repository_state_unchanged": true,
+    "response_shape_valid": true,
+    "result_basis_attached": true,
+    "result_operations_attached": true,
+    "result_scope_attached": true,
+    "result_task_attached": true,
+    "terminal_action_derived": true,
+    "wall_time_within_budget": true
+  },
+  "observation_sha256": "sha256:e866d8ea103c2552a377379974acd9cec2befccb219c4d82a350d236c8e5c8ca",
+  "parsed_model_proposal": {
+    "bounded_interpretation": "source_artifact_location=docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md\nrepository_or_execution_basis=NONE\nnamed_pressure_or_specimen=Completion-Budget Pressure Result\nrealized_model_identifier=Turbo T1-Q1\nrecorded_operational_result_or_status=RETAINED BOUNDED PRESSURE RESULT\nterminal_unresolved_question_or_residue=```\nmore context-admissible completion reserve!=deadline completion\n```",
+    "escalation": {
+      "reason": "The authorized completion-budget pressure is complete. One call was retained with zero retries. Q2, Q3, and Q4 were not executed. The realization was not tuned, reloaded, or replaced.",
+      "required": true
+    },
+    "evidence": [
+      {
+        "location": "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md",
+        "observation": "This pressure changed exactly one declared coordinate from the preceding\n600-second Q1 pressure: max_tokens increased from 1,024 to 2,048.",
+        "source_id": "source-0001"
+      }
+    ],
+    "unresolved": [
+      "The exact Q1 request remained context-admissible:"
+    ]
+  },
+  "parsed_result": {
+    "bounded_interpretation": "source_artifact_location=docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md\nrepository_or_execution_basis=NONE\nnamed_pressure_or_specimen=Completion-Budget Pressure Result\nrealized_model_identifier=Turbo T1-Q1\nrecorded_operational_result_or_status=RETAINED BOUNDED PRESSURE RESULT\nterminal_unresolved_question_or_residue=```\nmore context-admissible completion reserve!=deadline completion\n```",
+    "escalation": {
+      "reason": "The authorized completion-budget pressure is complete. One call was retained with zero retries. Q2, Q3, and Q4 were not executed. The realization was not tuned, reloaded, or replaced.",
+      "required": true
+    },
+    "evidence": [
+      {
+        "location": "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md",
+        "observation": "This pressure changed exactly one declared coordinate from the preceding\n600-second Q1 pressure: max_tokens increased from 1,024 to 2,048.",
+        "source_path": "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md"
+      }
+    ],
+    "execution_basis": "a671bfe5f8d420ac61e0007f89c0141f258445de",
+    "operations_used": [
+      "git_show"
+    ],
+    "scope_used": [
+      "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md"
+    ],
+    "task_id": "repo-scout-single-source-coordinate-conservation-v0",
+    "terminal_action": "ESCALATE",
+    "unresolved": [
+      "The exact Q1 request remained context-admissible:"
+    ]
+  },
+  "response_error": null,
+  "semantic_evaluation": "NOT_PERFORMED",
+  "task_id": "repo-scout-single-source-coordinate-conservation-v0",
+  "terminal_state": "ESCALATED"
+}

@@ -1,0 +1,93 @@
+{
+  "artifact": "repo_scout_hermes_contract_boundary_ab_b_semantic_evaluation_v0",
+  "artifact_class": "EXTERNAL_MODEL_OWNED_CONSERVATION_EVALUATION",
+  "evaluated_at_utc": "2026-09-14T23:06:57.7827852+00:00",
+  "task_id": "repo-scout-single-source-coordinate-conservation-v0",
+  "repository_basis": "a671bfe5f8d420ac61e0007f89c0141f258445de",
+  "source_path": "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md",
+  "observation_path": "traces/repo_scout_hermes_contract_boundary_ab_b_observation_v0.json",
+  "mechanical_evaluation_path": "traces/repo_scout_hermes_contract_boundary_ab_b_mechanical_evaluation_v0.json",
+  "apparatus_result": "MECHANICALLY_VALID_ESCALATED",
+  "model_owned_conservation": "FAIL",
+  "mechanically_attached_coordinates_excluded_from_model_credit": [
+    "task_id",
+    "execution_basis",
+    "scope_used",
+    "operations_used",
+    "canonical source_path",
+    "terminal_action"
+  ],
+  "delegated_coordinate_summary": {
+    "evaluated": 5,
+    "exactly_preserved": 0,
+    "result": "FAIL"
+  },
+  "delegated_coordinates": [
+    {
+      "coordinate": "repository_or_execution_basis_recorded_by_source",
+      "expected": "MISSING",
+      "source_location": "absent from lines 1-94",
+      "observed": "NONE",
+      "result": "FAIL_MISSINGNESS_NOT_PRESERVED"
+    },
+    {
+      "coordinate": "named_pressure_or_specimen",
+      "expected": "Q1-only `max_tokens: 1024 -> 2048`",
+      "source_location": "line 4",
+      "observed": "Completion-Budget Pressure Result",
+      "result": "FAIL_NOT_EXACT"
+    },
+    {
+      "coordinate": "realized_model_identifier",
+      "expected": "MISSING",
+      "source_location": "absent from lines 1-94; `Turbo` and `realization` do not identify a realized model",
+      "observed": "Turbo T1-Q1",
+      "result": "FAIL_MISSINGNESS_NOT_PRESERVED_AND_UNSUPPORTED_SUBSTITUTION"
+    },
+    {
+      "coordinate": "recorded_operational_result_or_status",
+      "expected": {
+        "status": "RETAINED BOUNDED PRESSURE RESULT",
+        "mechanical_result": "APPARATUS_ERROR",
+        "semantic_specimen_result": "NOT_EVALUABLE_APPARATUS_ERROR",
+        "t1_qualification": "NOT EARNED",
+        "promotion": "NONE"
+      },
+      "source_location": "lines 3-8",
+      "observed": "RETAINED BOUNDED PRESSURE RESULT",
+      "result": "FAIL_INCOMPLETE_STATUS_COORDINATE"
+    },
+    {
+      "coordinate": "terminal_unresolved_question_or_residue",
+      "expected": "Completion-budget admission remains unresolved because there is no returned response from which to determine whether the 2,048-token allowance would have completed the JSON contract or itself reached `length`.",
+      "source_location": "lines 51-53",
+      "observed": "more context-admissible completion reserve!=deadline completion",
+      "result": "FAIL_DIFFERENT_SOURCE_PASSAGE"
+    }
+  ],
+  "model_owned_checks": {
+    "source_supported_observation_extraction": "PARTIAL_NOT_EXACT",
+    "explicit_missingness": "FAIL",
+    "source_association": "PASS_SELECTED_ISSUED_SOURCE_ID",
+    "recoverable_claim_location": "FAIL_PATH_IS_NOT_A_NUMBERED_LINE_LOCATION",
+    "status_wording_where_consequential": "FAIL_INCOMPLETE",
+    "evidence_distinct_from_bounded_interpretation": "PASS_STRUCTURAL_ONLY",
+    "source_residue_distinct_from_invented_certainty": "FAIL",
+    "unsupported_strengthening_or_substitution": "PRESENT",
+    "escalation_judgment_consistency": "FAIL_REQUIRED_TRUE_WHILE_REASON_STATES_COMPLETION",
+    "scope_violation": false,
+    "authority_violation": false
+  },
+  "unsupported_additions_or_substitutions": [
+    "`NONE` replaced the required explicit `MISSING` marker for a coordinate absent from the source.",
+    "`Turbo T1-Q1` was supplied as a realized model identifier although no realized model identifier appears in the source.",
+    "The pressure name was generalized instead of copied exactly.",
+    "A different bounded-interpretation passage replaced the explicit terminal residue.",
+    "The escalation reason states that the pressure is complete while escalation.required is true."
+  ],
+  "source_location_fidelity": "FAIL",
+  "missingness_preservation": "FAIL",
+  "coordinate_fidelity": "FAIL",
+  "semantic_repair_performed": false,
+  "qualification_or_promotion": "NONE"
+}
