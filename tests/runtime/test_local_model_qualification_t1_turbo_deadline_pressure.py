@@ -259,6 +259,47 @@ class TurboCompletionBudgetPressureTest(unittest.TestCase):
         self.assertNotIn("tools", transport.calls[0]["body"])
         self.assertEqual(result["terminal_state"], "PASS")
 
+    def test_retained_completion_budget_result_is_timeout_not_semantic_failure(self):
+        outputs = self.pressure["specimens"]["Q1"]["output_paths"]
+        observation_path = REPO_ROOT / outputs["observation"]
+        mechanical_path = REPO_ROOT / outputs["mechanical_evaluation"]
+        semantic_path = REPO_ROOT / outputs["semantic_evaluation"]
+        observation = json.loads(observation_path.read_text(encoding="utf-8"))
+        mechanical = json.loads(mechanical_path.read_text(encoding="utf-8"))
+        semantic = json.loads(semantic_path.read_text(encoding="utf-8"))
+
+        self.assertEqual(observation["adapter_failure"], "TimeoutError: timed out")
+        self.assertIsNone(observation["http_status"])
+        self.assertIsNone(observation["raw_model_response"])
+        self.assertEqual(observation["model_calls_made"], 1)
+        self.assertEqual(observation["automatic_retries"], 0)
+        request = json.loads(observation["serialized_http_request"])
+        self.assertEqual(request["max_tokens"], 2048)
+        self.assertEqual(mechanical["terminal_state"], "APPARATUS_ERROR")
+        self.assertTrue(mechanical["mechanical_checks"]["context_admitted_before_call"])
+        self.assertTrue(mechanical["mechanical_checks"]["protected_surfaces_unchanged"])
+        self.assertEqual(
+            semantic["evaluation_basis"]["observation"]["artifact_sha256"],
+            _sha256_bytes(observation_path.read_bytes()),
+        )
+        self.assertEqual(
+            semantic["evaluation_basis"]["mechanical_evaluation"]["artifact_sha256"],
+            _sha256_bytes(mechanical_path.read_bytes()),
+        )
+        self.assertEqual(
+            semantic["semantic_specimen_result"],
+            "NOT_EVALUABLE_APPARATUS_ERROR",
+        )
+        self.assertEqual(
+            semantic["completion_budget_pressure_result"]["completion_budget_admission"],
+            "UNRESOLVED_NO_RESPONSE",
+        )
+        self.assertFalse(semantic["dimensions"]["mechanical_success"])
+        self.assertEqual(semantic["promotion"], "NONE")
+        self.assertFalse(semantic["q2_executed"])
+        self.assertFalse(semantic["q3_executed"])
+        self.assertFalse(semantic["q4_executed"])
+
 
 if __name__ == "__main__":
     unittest.main()
