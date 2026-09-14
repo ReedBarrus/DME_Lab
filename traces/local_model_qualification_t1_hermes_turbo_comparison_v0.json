@@ -1,0 +1,91 @@
+{
+  "artifact": "local_model_qualification_t1_hermes_turbo_comparison_v0",
+  "artifact_class": "BOUNDED_T1_CROSS_REALIZATION_COMPARISON",
+  "campaign_outcome": "INSUFFICIENT_EVIDENCE",
+  "comparison_basis": {
+    "held_constant": [
+      "T1 task family",
+      "Q1-Q3 source evidence",
+      "specimen-specific prompt templates",
+      "specimen-specific strict response schemas and parsers",
+      "temperature 0.0, top_p 1.0, max_tokens 1024",
+      "one-call policy",
+      "fresh-context requirement",
+      "no-tools and no-write authority",
+      "semantic evaluator regime"
+    ],
+    "intervention": "identified local realization",
+    "material_non_model_coordinate_differences": [
+      "Turbo realization identity is substantially more completely exposed than the retained Hermes identity.",
+      "Turbo context was explicitly frozen at 8192 before scientific inference; Hermes Q3 exposed 4096 only through rejection and Q1/Q2 context remains unknown.",
+      "Turbo calls exposed a 120-second completion-time wound after admission; Hermes Q1/Q2 returned within their apparatus boundary."
+    ],
+    "not_a_general_model_benchmark": true
+  },
+  "hermes_basis": {
+    "checkpoint": "docs/decisions/hermes_t1_qualification_checkpoint_v0.md",
+    "campaign_outcome": "INSUFFICIENT_EVIDENCE",
+    "promotion": "NONE",
+    "q1": {
+      "mechanical": "PASS",
+      "semantic": "FAIL",
+      "bounded_contour": "Useful bounded extraction with incomplete promotion-boundary preservation."
+    },
+    "q2": {
+      "mechanical": "PASS",
+      "semantic": "FAIL",
+      "bounded_contour": "Material semantic misrepresentation, unsupported strengthening, and distinction loss around P8/P11."
+    },
+    "q3": {
+      "admission": "REJECTED_AT_4096",
+      "mechanical": "APPARATUS_ERROR",
+      "semantic": "NOT_EVALUABLE_APPARATUS_ERROR"
+    }
+  },
+  "turbo_basis": {
+    "configured_context_length": 8192,
+    "freeze": "traces/local_model_qualification_t1_turbo_freeze_v0.json",
+    "model_identifier": "qwen3.8-27b-turbo-fable-cold-fusion-735-882-heretic-uncensored-neo-coder-max-mtp",
+    "q1": {
+      "admission": "ADMITTED",
+      "mechanical": "APPARATUS_ERROR",
+      "observation_sha256": "sha256:eeba69bf8b51f0922079adc61a761db62c911e22bcc9e427ba481d3ca1f9a9d7",
+      "semantic": "NOT_EVALUABLE_APPARATUS_ERROR",
+      "semantic_evaluation_sha256": "sha256:521f33efb78165030f0fcb3d65183d4d9ce917a983336d5809c03f94f6725ed6"
+    },
+    "q2": {
+      "admission": "ADMITTED",
+      "mechanical": "APPARATUS_ERROR",
+      "observation_sha256": "sha256:8d313c338fc69120639492773a76f01fd91d073298ddc52b0d9f951688d1d234",
+      "semantic": "NOT_EVALUABLE_APPARATUS_ERROR",
+      "semantic_evaluation_sha256": "sha256:8e43a322b5e33875ad2071a287295966904b3030a83235386fae5d4ba59265fe"
+    },
+    "q3": {
+      "admission": "ADMITTED_AT_8192",
+      "mechanical": "APPARATUS_ERROR",
+      "observation_sha256": "sha256:984c23d62226c62ba0deb34f1379a922be6fcc311ae99d422bb589c4580b996d",
+      "semantic": "NOT_EVALUABLE_APPARATUS_ERROR",
+      "semantic_evaluation_sha256": "sha256:b36455a3e50643fecb420dff76286f3fdcc5b5bceac45f19cd689f049dba8ee0"
+    }
+  },
+  "bounded_comparison": {
+    "distinctions_preserved_by_both": "NOT_COMPARABLE: Turbo produced no semantic response in Q1-Q3.",
+    "distinctions_lost_by_hermes_but_preserved_by_turbo": "NONE_ESTABLISHED",
+    "distinctions_lost_by_both": "NONE_ESTABLISHED: absence of a Turbo response is not distinction loss.",
+    "material_semantic_transformation_difference": "NOT_EVALUABLE: only Hermes produced symbolic responses.",
+    "scope_authority_stop_difference": "Hermes Q1/Q2 model responses complied; Turbo model behavior is unobserved. Both apparatuses stopped without retry or mutation.",
+    "turbo_q3_capacity_difference": "The fixed Turbo configuration admitted the exact Q3 request plus output reserve at 8192, whereas the retained Hermes Q3 configuration rejected its request at 4096.",
+    "unsupported_strengthening": "Hermes Q2 introduced unsupported strengthening; Turbo strengthening is unobserved, not absent."
+  },
+  "nonclaims": [
+    "The admission difference does not establish that model identity caused it.",
+    "The timeout does not establish semantic failure or incompetence.",
+    "No parameter-count, model-family, or general competence conclusion is warranted.",
+    "No T1 transfer or routing eligibility is earned.",
+    "No scientific standing is changed."
+  ],
+  "promotion": "NONE",
+  "q4_executed": false,
+  "semantic_compression_observation": "No Turbo symbolic response exists, so no cross-realization semantic transformation pattern can be compared and the projection receives no new standing.",
+  "t1_qualification": "NOT_EARNED"
+}

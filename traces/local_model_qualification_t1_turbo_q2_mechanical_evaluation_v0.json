@@ -1,0 +1,30 @@
+{
+  "apparatus_version": "local_model_qualification_t1_cross_realization_v0",
+  "artifact": "local_model_qualification_t1_turbo_q2_mechanical_evaluation_v0",
+  "artifact_class": "LOCAL_MODEL_QUALIFICATION_MECHANICAL_EVALUATION",
+  "freeze_path": "traces/local_model_qualification_t1_turbo_freeze_v0.json",
+  "mechanical_checks": {
+    "context_admitted_before_call": true,
+    "declared_response_shape_satisfied": false,
+    "exactly_one_call": true,
+    "execution_basis_valid": true,
+    "fresh_context_and_no_authority": true,
+    "inference_completed": false,
+    "no_automatic_retry": true,
+    "observation_and_evaluation_separate": true,
+    "protected_surfaces_unchanged": true,
+    "provider_reported_termination": false,
+    "raw_interaction_retained_and_reconstructable": false,
+    "source_basis_matched": true,
+    "terminal_action_valid": false
+  },
+  "observation_path": "traces/local_model_qualification_t1_turbo_q2_observation_v0.json",
+  "observation_sha256": "sha256:8d313c338fc69120639492773a76f01fd91d073298ddc52b0d9f951688d1d234",
+  "parse_failure": "QualificationResponseError: response is not one complete JSON value",
+  "parsed_response": null,
+  "qualification_promotion": "NOT_EVALUATED",
+  "semantic_success": "NOT_EVALUATED",
+  "specimen_id": "T1-Q2_STAGE_3_PROJECTION_ADAPTER_PRESSURE",
+  "specimen_key": "Q2",
+  "terminal_state": "APPARATUS_ERROR"
+}

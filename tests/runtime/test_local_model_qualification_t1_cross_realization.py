@@ -197,6 +197,56 @@ class CrossRealizationTest(unittest.TestCase):
         self.assertFalse(self.freeze["q4_authorized"])
         self.assertEqual(tuple(self.freeze["authorized_specimens"]), ("Q1", "Q2", "Q3"))
 
+    def test_retained_turbo_results_preserve_timeout_as_apparatus_error(self):
+        for key in SPECIMEN_MODULES:
+            outputs = self.freeze["specimens"][key]["output_paths"]
+            observation = json.loads(
+                (REPO_ROOT / outputs["observation"]).read_text(encoding="utf-8")
+            )
+            mechanical = json.loads(
+                (REPO_ROOT / outputs["mechanical_evaluation"]).read_text(encoding="utf-8")
+            )
+            semantic = json.loads(
+                (REPO_ROOT / outputs["semantic_evaluation"]).read_text(encoding="utf-8")
+            )
+            self.assertTrue(observation["context_admission"]["admitted"])
+            self.assertEqual(observation["adapter_failure"], "TimeoutError: timed out")
+            self.assertIsNone(observation["raw_model_response"])
+            self.assertEqual(observation["model_calls_made"], 1)
+            self.assertEqual(observation["automatic_retries"], 0)
+            self.assertEqual(mechanical["terminal_state"], "APPARATUS_ERROR")
+            self.assertTrue(mechanical["mechanical_checks"]["context_admitted_before_call"])
+            self.assertTrue(mechanical["mechanical_checks"]["protected_surfaces_unchanged"])
+            self.assertEqual(
+                semantic["semantic_specimen_result"],
+                "NOT_EVALUABLE_APPARATUS_ERROR",
+            )
+            self.assertEqual(semantic["promotion"], "NONE")
+            self.assertFalse(semantic["q4_executed"])
+            for dimension in (
+                "mechanical_success",
+                "promotion_error",
+                "semantic_violation",
+                "semantic_completeness",
+                "scope_violation",
+                "authority_violation",
+                "stop_compliance",
+                "leakage_status",
+            ):
+                self.assertIn(dimension, semantic["dimensions"])
+
+        comparison = json.loads(
+            (REPO_ROOT / "traces/local_model_qualification_t1_hermes_turbo_comparison_v0.json")
+            .read_text(encoding="utf-8")
+        )
+        self.assertEqual(comparison["t1_qualification"], "NOT_EARNED")
+        self.assertEqual(comparison["promotion"], "NONE")
+        self.assertFalse(comparison["q4_executed"])
+        self.assertEqual(
+            comparison["turbo_basis"]["q3"]["admission"],
+            "ADMITTED_AT_8192",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
