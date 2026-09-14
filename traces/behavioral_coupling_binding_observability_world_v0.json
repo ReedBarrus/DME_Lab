@@ -1,0 +1,2030 @@
+{
+  "P1_revisited": false,
+  "P3_empirical_calls": 0,
+  "P3_status": "BLOCKED_NOT_EXECUTED",
+  "P4_revisited": false,
+  "action_schema_sha256": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+  "adapter_realization": "CONSTRAINED_TYPED_ACTION",
+  "adapter_repository_commit": "d60ce2044fb2215e58eec74de8e311ba42765bc0",
+  "artifact": "behavioral_coupling_binding_observability_world_v0",
+  "artifact_class": "EMPIRICAL_WORLD_TRACE",
+  "consequence_timing_varied": false,
+  "descriptive_summary": {
+    "C0": {
+      "EARLY": {
+        "ACT_A": 4,
+        "ACT_B": 0,
+        "BLUE_produced": 0,
+        "RED_produced": 4,
+        "episodes": 4,
+        "failures": 0,
+        "protocol_invalid": 0,
+        "success": 4
+      },
+      "LATE": {
+        "ACT_A": 4,
+        "ACT_B": 0,
+        "BLUE_produced": 0,
+        "RED_produced": 4,
+        "episodes": 4,
+        "failures": 0,
+        "protocol_invalid": 0,
+        "success": 4
+      }
+    },
+    "C1": {
+      "EARLY": {
+        "ACT_A": 0,
+        "ACT_B": 4,
+        "BLUE_produced": 0,
+        "RED_produced": 4,
+        "episodes": 4,
+        "failures": 0,
+        "protocol_invalid": 0,
+        "success": 4
+      },
+      "LATE": {
+        "ACT_A": 4,
+        "ACT_B": 0,
+        "BLUE_produced": 4,
+        "RED_produced": 0,
+        "episodes": 4,
+        "failures": 0,
+        "protocol_invalid": 0,
+        "success": 0
+      }
+    }
+  },
+  "empirical_call_count": 16,
+  "empirical_episode_count": 16,
+  "empirical_retry_count": 0,
+  "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+  "episodes": [
+    {
+      "authoritative_produced_color": "RED",
+      "binding_policy_visible_before_commitment": true,
+      "committed_action": "ACT_A",
+      "disclosure_timing": "EARLY",
+      "episode_id": "binding-c0-early-r01",
+      "exact_precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"BINDING_DISCLOSED\",\"payload\":{\"binding_rows\":[{\"action\":\"ACT_A\",\"produced_color\":\"RED\"},{\"action\":\"ACT_B\",\"produced_color\":\"BLUE\"}],\"serialized_binding_text\":\"ACT_A -> RED; ACT_B -> BLUE\"}}]}",
+      "failure_class": null,
+      "observed_precommitment_input_sha256": "sha256:89f2d1b1b4c5c29a7e97220b6e7994f8992a189ac73f66011398ef96db9e85ac",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_CONTRACT_ESTABLISHED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "RED"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "BLUE"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> RED; ACT_B -> BLUE",
+            "world_contract": "C0"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "BINDING_DISCLOSED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "RED"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "BLUE"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> RED; ACT_B -> BLUE"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_CONSEQUENCE",
+          "payload": {
+            "committed_action": "ACT_A",
+            "produced_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "SCORE",
+          "payload": {
+            "produced_color": "RED",
+            "success": true,
+            "target_color": "RED"
+          },
+          "policy_visible": false
+        }
+      ],
+      "precommitment_input_sha256": "sha256:89f2d1b1b4c5c29a7e97220b6e7994f8992a189ac73f66011398ef96db9e85ac",
+      "precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"BINDING_DISCLOSED\",\"payload\":{\"binding_rows\":[{\"action\":\"ACT_A\",\"produced_color\":\"RED\"},{\"action\":\"ACT_B\",\"produced_color\":\"BLUE\"}],\"serialized_binding_text\":\"ACT_A -> RED; ACT_B -> BLUE\"}}]}",
+      "repetition_index": 1,
+      "requested_action": "ACT_A",
+      "serialized_world_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "success": true,
+      "valid": true,
+      "visible_target": "RED",
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      },
+      "world_contract": "C0",
+      "world_contract_rows": [
+        {
+          "action": "ACT_A",
+          "produced_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "produced_color": "BLUE"
+        }
+      ]
+    },
+    {
+      "authoritative_produced_color": "RED",
+      "binding_policy_visible_before_commitment": true,
+      "committed_action": "ACT_A",
+      "disclosure_timing": "EARLY",
+      "episode_id": "binding-c0-early-r02",
+      "exact_precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"BINDING_DISCLOSED\",\"payload\":{\"binding_rows\":[{\"action\":\"ACT_A\",\"produced_color\":\"RED\"},{\"action\":\"ACT_B\",\"produced_color\":\"BLUE\"}],\"serialized_binding_text\":\"ACT_A -> RED; ACT_B -> BLUE\"}}]}",
+      "failure_class": null,
+      "observed_precommitment_input_sha256": "sha256:89f2d1b1b4c5c29a7e97220b6e7994f8992a189ac73f66011398ef96db9e85ac",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_CONTRACT_ESTABLISHED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "RED"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "BLUE"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> RED; ACT_B -> BLUE",
+            "world_contract": "C0"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "BINDING_DISCLOSED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "RED"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "BLUE"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> RED; ACT_B -> BLUE"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_CONSEQUENCE",
+          "payload": {
+            "committed_action": "ACT_A",
+            "produced_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "SCORE",
+          "payload": {
+            "produced_color": "RED",
+            "success": true,
+            "target_color": "RED"
+          },
+          "policy_visible": false
+        }
+      ],
+      "precommitment_input_sha256": "sha256:89f2d1b1b4c5c29a7e97220b6e7994f8992a189ac73f66011398ef96db9e85ac",
+      "precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"BINDING_DISCLOSED\",\"payload\":{\"binding_rows\":[{\"action\":\"ACT_A\",\"produced_color\":\"RED\"},{\"action\":\"ACT_B\",\"produced_color\":\"BLUE\"}],\"serialized_binding_text\":\"ACT_A -> RED; ACT_B -> BLUE\"}}]}",
+      "repetition_index": 2,
+      "requested_action": "ACT_A",
+      "serialized_world_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "success": true,
+      "valid": true,
+      "visible_target": "RED",
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      },
+      "world_contract": "C0",
+      "world_contract_rows": [
+        {
+          "action": "ACT_A",
+          "produced_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "produced_color": "BLUE"
+        }
+      ]
+    },
+    {
+      "authoritative_produced_color": "RED",
+      "binding_policy_visible_before_commitment": true,
+      "committed_action": "ACT_A",
+      "disclosure_timing": "EARLY",
+      "episode_id": "binding-c0-early-r03",
+      "exact_precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"BINDING_DISCLOSED\",\"payload\":{\"binding_rows\":[{\"action\":\"ACT_A\",\"produced_color\":\"RED\"},{\"action\":\"ACT_B\",\"produced_color\":\"BLUE\"}],\"serialized_binding_text\":\"ACT_A -> RED; ACT_B -> BLUE\"}}]}",
+      "failure_class": null,
+      "observed_precommitment_input_sha256": "sha256:89f2d1b1b4c5c29a7e97220b6e7994f8992a189ac73f66011398ef96db9e85ac",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_CONTRACT_ESTABLISHED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "RED"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "BLUE"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> RED; ACT_B -> BLUE",
+            "world_contract": "C0"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "BINDING_DISCLOSED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "RED"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "BLUE"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> RED; ACT_B -> BLUE"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_CONSEQUENCE",
+          "payload": {
+            "committed_action": "ACT_A",
+            "produced_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "SCORE",
+          "payload": {
+            "produced_color": "RED",
+            "success": true,
+            "target_color": "RED"
+          },
+          "policy_visible": false
+        }
+      ],
+      "precommitment_input_sha256": "sha256:89f2d1b1b4c5c29a7e97220b6e7994f8992a189ac73f66011398ef96db9e85ac",
+      "precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"BINDING_DISCLOSED\",\"payload\":{\"binding_rows\":[{\"action\":\"ACT_A\",\"produced_color\":\"RED\"},{\"action\":\"ACT_B\",\"produced_color\":\"BLUE\"}],\"serialized_binding_text\":\"ACT_A -> RED; ACT_B -> BLUE\"}}]}",
+      "repetition_index": 3,
+      "requested_action": "ACT_A",
+      "serialized_world_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "success": true,
+      "valid": true,
+      "visible_target": "RED",
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      },
+      "world_contract": "C0",
+      "world_contract_rows": [
+        {
+          "action": "ACT_A",
+          "produced_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "produced_color": "BLUE"
+        }
+      ]
+    },
+    {
+      "authoritative_produced_color": "RED",
+      "binding_policy_visible_before_commitment": true,
+      "committed_action": "ACT_A",
+      "disclosure_timing": "EARLY",
+      "episode_id": "binding-c0-early-r04",
+      "exact_precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"BINDING_DISCLOSED\",\"payload\":{\"binding_rows\":[{\"action\":\"ACT_A\",\"produced_color\":\"RED\"},{\"action\":\"ACT_B\",\"produced_color\":\"BLUE\"}],\"serialized_binding_text\":\"ACT_A -> RED; ACT_B -> BLUE\"}}]}",
+      "failure_class": null,
+      "observed_precommitment_input_sha256": "sha256:89f2d1b1b4c5c29a7e97220b6e7994f8992a189ac73f66011398ef96db9e85ac",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_CONTRACT_ESTABLISHED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "RED"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "BLUE"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> RED; ACT_B -> BLUE",
+            "world_contract": "C0"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "BINDING_DISCLOSED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "RED"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "BLUE"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> RED; ACT_B -> BLUE"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_CONSEQUENCE",
+          "payload": {
+            "committed_action": "ACT_A",
+            "produced_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "SCORE",
+          "payload": {
+            "produced_color": "RED",
+            "success": true,
+            "target_color": "RED"
+          },
+          "policy_visible": false
+        }
+      ],
+      "precommitment_input_sha256": "sha256:89f2d1b1b4c5c29a7e97220b6e7994f8992a189ac73f66011398ef96db9e85ac",
+      "precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"BINDING_DISCLOSED\",\"payload\":{\"binding_rows\":[{\"action\":\"ACT_A\",\"produced_color\":\"RED\"},{\"action\":\"ACT_B\",\"produced_color\":\"BLUE\"}],\"serialized_binding_text\":\"ACT_A -> RED; ACT_B -> BLUE\"}}]}",
+      "repetition_index": 4,
+      "requested_action": "ACT_A",
+      "serialized_world_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "success": true,
+      "valid": true,
+      "visible_target": "RED",
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      },
+      "world_contract": "C0",
+      "world_contract_rows": [
+        {
+          "action": "ACT_A",
+          "produced_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "produced_color": "BLUE"
+        }
+      ]
+    },
+    {
+      "authoritative_produced_color": "RED",
+      "binding_policy_visible_before_commitment": false,
+      "committed_action": "ACT_A",
+      "disclosure_timing": "LATE",
+      "episode_id": "binding-c0-late-r01",
+      "exact_precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "failure_class": null,
+      "observed_precommitment_input_sha256": "sha256:f80e9c2fb3759cc0c45c545b62b7e364d048e440960414205e09002bdc469d1e",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_CONTRACT_ESTABLISHED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "RED"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "BLUE"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> RED; ACT_B -> BLUE",
+            "world_contract": "C0"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "WORLD_CONSEQUENCE",
+          "payload": {
+            "committed_action": "ACT_A",
+            "produced_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "SCORE",
+          "payload": {
+            "produced_color": "RED",
+            "success": true,
+            "target_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "BINDING_DISCLOSED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "RED"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "BLUE"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> RED; ACT_B -> BLUE"
+          },
+          "policy_visible": true
+        }
+      ],
+      "precommitment_input_sha256": "sha256:f80e9c2fb3759cc0c45c545b62b7e364d048e440960414205e09002bdc469d1e",
+      "precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "repetition_index": 1,
+      "requested_action": "ACT_A",
+      "serialized_world_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "success": true,
+      "valid": true,
+      "visible_target": "RED",
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      },
+      "world_contract": "C0",
+      "world_contract_rows": [
+        {
+          "action": "ACT_A",
+          "produced_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "produced_color": "BLUE"
+        }
+      ]
+    },
+    {
+      "authoritative_produced_color": "RED",
+      "binding_policy_visible_before_commitment": false,
+      "committed_action": "ACT_A",
+      "disclosure_timing": "LATE",
+      "episode_id": "binding-c0-late-r02",
+      "exact_precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "failure_class": null,
+      "observed_precommitment_input_sha256": "sha256:f80e9c2fb3759cc0c45c545b62b7e364d048e440960414205e09002bdc469d1e",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_CONTRACT_ESTABLISHED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "RED"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "BLUE"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> RED; ACT_B -> BLUE",
+            "world_contract": "C0"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "WORLD_CONSEQUENCE",
+          "payload": {
+            "committed_action": "ACT_A",
+            "produced_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "SCORE",
+          "payload": {
+            "produced_color": "RED",
+            "success": true,
+            "target_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "BINDING_DISCLOSED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "RED"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "BLUE"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> RED; ACT_B -> BLUE"
+          },
+          "policy_visible": true
+        }
+      ],
+      "precommitment_input_sha256": "sha256:f80e9c2fb3759cc0c45c545b62b7e364d048e440960414205e09002bdc469d1e",
+      "precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "repetition_index": 2,
+      "requested_action": "ACT_A",
+      "serialized_world_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "success": true,
+      "valid": true,
+      "visible_target": "RED",
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      },
+      "world_contract": "C0",
+      "world_contract_rows": [
+        {
+          "action": "ACT_A",
+          "produced_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "produced_color": "BLUE"
+        }
+      ]
+    },
+    {
+      "authoritative_produced_color": "RED",
+      "binding_policy_visible_before_commitment": false,
+      "committed_action": "ACT_A",
+      "disclosure_timing": "LATE",
+      "episode_id": "binding-c0-late-r03",
+      "exact_precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "failure_class": null,
+      "observed_precommitment_input_sha256": "sha256:f80e9c2fb3759cc0c45c545b62b7e364d048e440960414205e09002bdc469d1e",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_CONTRACT_ESTABLISHED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "RED"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "BLUE"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> RED; ACT_B -> BLUE",
+            "world_contract": "C0"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "WORLD_CONSEQUENCE",
+          "payload": {
+            "committed_action": "ACT_A",
+            "produced_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "SCORE",
+          "payload": {
+            "produced_color": "RED",
+            "success": true,
+            "target_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "BINDING_DISCLOSED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "RED"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "BLUE"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> RED; ACT_B -> BLUE"
+          },
+          "policy_visible": true
+        }
+      ],
+      "precommitment_input_sha256": "sha256:f80e9c2fb3759cc0c45c545b62b7e364d048e440960414205e09002bdc469d1e",
+      "precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "repetition_index": 3,
+      "requested_action": "ACT_A",
+      "serialized_world_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "success": true,
+      "valid": true,
+      "visible_target": "RED",
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      },
+      "world_contract": "C0",
+      "world_contract_rows": [
+        {
+          "action": "ACT_A",
+          "produced_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "produced_color": "BLUE"
+        }
+      ]
+    },
+    {
+      "authoritative_produced_color": "RED",
+      "binding_policy_visible_before_commitment": false,
+      "committed_action": "ACT_A",
+      "disclosure_timing": "LATE",
+      "episode_id": "binding-c0-late-r04",
+      "exact_precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "failure_class": null,
+      "observed_precommitment_input_sha256": "sha256:f80e9c2fb3759cc0c45c545b62b7e364d048e440960414205e09002bdc469d1e",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_CONTRACT_ESTABLISHED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "RED"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "BLUE"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> RED; ACT_B -> BLUE",
+            "world_contract": "C0"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "WORLD_CONSEQUENCE",
+          "payload": {
+            "committed_action": "ACT_A",
+            "produced_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "SCORE",
+          "payload": {
+            "produced_color": "RED",
+            "success": true,
+            "target_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "BINDING_DISCLOSED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "RED"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "BLUE"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> RED; ACT_B -> BLUE"
+          },
+          "policy_visible": true
+        }
+      ],
+      "precommitment_input_sha256": "sha256:f80e9c2fb3759cc0c45c545b62b7e364d048e440960414205e09002bdc469d1e",
+      "precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "repetition_index": 4,
+      "requested_action": "ACT_A",
+      "serialized_world_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "success": true,
+      "valid": true,
+      "visible_target": "RED",
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      },
+      "world_contract": "C0",
+      "world_contract_rows": [
+        {
+          "action": "ACT_A",
+          "produced_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "produced_color": "BLUE"
+        }
+      ]
+    },
+    {
+      "authoritative_produced_color": "RED",
+      "binding_policy_visible_before_commitment": true,
+      "committed_action": "ACT_B",
+      "disclosure_timing": "EARLY",
+      "episode_id": "binding-c1-early-r01",
+      "exact_precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"BINDING_DISCLOSED\",\"payload\":{\"binding_rows\":[{\"action\":\"ACT_A\",\"produced_color\":\"BLUE\"},{\"action\":\"ACT_B\",\"produced_color\":\"RED\"}],\"serialized_binding_text\":\"ACT_A -> BLUE; ACT_B -> RED\"}}]}",
+      "failure_class": null,
+      "observed_precommitment_input_sha256": "sha256:2b9d44977e86953d6487df9128b7d02050aa78d4fdecaaab61056edbcfb1812c",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_CONTRACT_ESTABLISHED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "BLUE"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "RED"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> BLUE; ACT_B -> RED",
+            "world_contract": "C1"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "BINDING_DISCLOSED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "BLUE"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "RED"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> BLUE; ACT_B -> RED"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_B",
+            "reason": null,
+            "requested_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_CONSEQUENCE",
+          "payload": {
+            "committed_action": "ACT_B",
+            "produced_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "SCORE",
+          "payload": {
+            "produced_color": "RED",
+            "success": true,
+            "target_color": "RED"
+          },
+          "policy_visible": false
+        }
+      ],
+      "precommitment_input_sha256": "sha256:2b9d44977e86953d6487df9128b7d02050aa78d4fdecaaab61056edbcfb1812c",
+      "precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"BINDING_DISCLOSED\",\"payload\":{\"binding_rows\":[{\"action\":\"ACT_A\",\"produced_color\":\"BLUE\"},{\"action\":\"ACT_B\",\"produced_color\":\"RED\"}],\"serialized_binding_text\":\"ACT_A -> BLUE; ACT_B -> RED\"}}]}",
+      "repetition_index": 1,
+      "requested_action": "ACT_B",
+      "serialized_world_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "success": true,
+      "valid": true,
+      "visible_target": "RED",
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_B",
+        "reason": null,
+        "requested_action": "ACT_B"
+      },
+      "world_contract": "C1",
+      "world_contract_rows": [
+        {
+          "action": "ACT_A",
+          "produced_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "produced_color": "RED"
+        }
+      ]
+    },
+    {
+      "authoritative_produced_color": "RED",
+      "binding_policy_visible_before_commitment": true,
+      "committed_action": "ACT_B",
+      "disclosure_timing": "EARLY",
+      "episode_id": "binding-c1-early-r02",
+      "exact_precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"BINDING_DISCLOSED\",\"payload\":{\"binding_rows\":[{\"action\":\"ACT_A\",\"produced_color\":\"BLUE\"},{\"action\":\"ACT_B\",\"produced_color\":\"RED\"}],\"serialized_binding_text\":\"ACT_A -> BLUE; ACT_B -> RED\"}}]}",
+      "failure_class": null,
+      "observed_precommitment_input_sha256": "sha256:2b9d44977e86953d6487df9128b7d02050aa78d4fdecaaab61056edbcfb1812c",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_CONTRACT_ESTABLISHED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "BLUE"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "RED"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> BLUE; ACT_B -> RED",
+            "world_contract": "C1"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "BINDING_DISCLOSED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "BLUE"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "RED"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> BLUE; ACT_B -> RED"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_B",
+            "reason": null,
+            "requested_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_CONSEQUENCE",
+          "payload": {
+            "committed_action": "ACT_B",
+            "produced_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "SCORE",
+          "payload": {
+            "produced_color": "RED",
+            "success": true,
+            "target_color": "RED"
+          },
+          "policy_visible": false
+        }
+      ],
+      "precommitment_input_sha256": "sha256:2b9d44977e86953d6487df9128b7d02050aa78d4fdecaaab61056edbcfb1812c",
+      "precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"BINDING_DISCLOSED\",\"payload\":{\"binding_rows\":[{\"action\":\"ACT_A\",\"produced_color\":\"BLUE\"},{\"action\":\"ACT_B\",\"produced_color\":\"RED\"}],\"serialized_binding_text\":\"ACT_A -> BLUE; ACT_B -> RED\"}}]}",
+      "repetition_index": 2,
+      "requested_action": "ACT_B",
+      "serialized_world_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "success": true,
+      "valid": true,
+      "visible_target": "RED",
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_B",
+        "reason": null,
+        "requested_action": "ACT_B"
+      },
+      "world_contract": "C1",
+      "world_contract_rows": [
+        {
+          "action": "ACT_A",
+          "produced_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "produced_color": "RED"
+        }
+      ]
+    },
+    {
+      "authoritative_produced_color": "RED",
+      "binding_policy_visible_before_commitment": true,
+      "committed_action": "ACT_B",
+      "disclosure_timing": "EARLY",
+      "episode_id": "binding-c1-early-r03",
+      "exact_precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"BINDING_DISCLOSED\",\"payload\":{\"binding_rows\":[{\"action\":\"ACT_A\",\"produced_color\":\"BLUE\"},{\"action\":\"ACT_B\",\"produced_color\":\"RED\"}],\"serialized_binding_text\":\"ACT_A -> BLUE; ACT_B -> RED\"}}]}",
+      "failure_class": null,
+      "observed_precommitment_input_sha256": "sha256:2b9d44977e86953d6487df9128b7d02050aa78d4fdecaaab61056edbcfb1812c",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_CONTRACT_ESTABLISHED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "BLUE"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "RED"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> BLUE; ACT_B -> RED",
+            "world_contract": "C1"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "BINDING_DISCLOSED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "BLUE"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "RED"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> BLUE; ACT_B -> RED"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_B",
+            "reason": null,
+            "requested_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_CONSEQUENCE",
+          "payload": {
+            "committed_action": "ACT_B",
+            "produced_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "SCORE",
+          "payload": {
+            "produced_color": "RED",
+            "success": true,
+            "target_color": "RED"
+          },
+          "policy_visible": false
+        }
+      ],
+      "precommitment_input_sha256": "sha256:2b9d44977e86953d6487df9128b7d02050aa78d4fdecaaab61056edbcfb1812c",
+      "precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"BINDING_DISCLOSED\",\"payload\":{\"binding_rows\":[{\"action\":\"ACT_A\",\"produced_color\":\"BLUE\"},{\"action\":\"ACT_B\",\"produced_color\":\"RED\"}],\"serialized_binding_text\":\"ACT_A -> BLUE; ACT_B -> RED\"}}]}",
+      "repetition_index": 3,
+      "requested_action": "ACT_B",
+      "serialized_world_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "success": true,
+      "valid": true,
+      "visible_target": "RED",
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_B",
+        "reason": null,
+        "requested_action": "ACT_B"
+      },
+      "world_contract": "C1",
+      "world_contract_rows": [
+        {
+          "action": "ACT_A",
+          "produced_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "produced_color": "RED"
+        }
+      ]
+    },
+    {
+      "authoritative_produced_color": "RED",
+      "binding_policy_visible_before_commitment": true,
+      "committed_action": "ACT_B",
+      "disclosure_timing": "EARLY",
+      "episode_id": "binding-c1-early-r04",
+      "exact_precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"BINDING_DISCLOSED\",\"payload\":{\"binding_rows\":[{\"action\":\"ACT_A\",\"produced_color\":\"BLUE\"},{\"action\":\"ACT_B\",\"produced_color\":\"RED\"}],\"serialized_binding_text\":\"ACT_A -> BLUE; ACT_B -> RED\"}}]}",
+      "failure_class": null,
+      "observed_precommitment_input_sha256": "sha256:2b9d44977e86953d6487df9128b7d02050aa78d4fdecaaab61056edbcfb1812c",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_CONTRACT_ESTABLISHED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "BLUE"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "RED"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> BLUE; ACT_B -> RED",
+            "world_contract": "C1"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "BINDING_DISCLOSED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "BLUE"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "RED"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> BLUE; ACT_B -> RED"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 2,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_B",
+            "reason": null,
+            "requested_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_CONSEQUENCE",
+          "payload": {
+            "committed_action": "ACT_B",
+            "produced_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "SCORE",
+          "payload": {
+            "produced_color": "RED",
+            "success": true,
+            "target_color": "RED"
+          },
+          "policy_visible": false
+        }
+      ],
+      "precommitment_input_sha256": "sha256:2b9d44977e86953d6487df9128b7d02050aa78d4fdecaaab61056edbcfb1812c",
+      "precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"BINDING_DISCLOSED\",\"payload\":{\"binding_rows\":[{\"action\":\"ACT_A\",\"produced_color\":\"BLUE\"},{\"action\":\"ACT_B\",\"produced_color\":\"RED\"}],\"serialized_binding_text\":\"ACT_A -> BLUE; ACT_B -> RED\"}}]}",
+      "repetition_index": 4,
+      "requested_action": "ACT_B",
+      "serialized_world_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "success": true,
+      "valid": true,
+      "visible_target": "RED",
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_B",
+        "reason": null,
+        "requested_action": "ACT_B"
+      },
+      "world_contract": "C1",
+      "world_contract_rows": [
+        {
+          "action": "ACT_A",
+          "produced_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "produced_color": "RED"
+        }
+      ]
+    },
+    {
+      "authoritative_produced_color": "BLUE",
+      "binding_policy_visible_before_commitment": false,
+      "committed_action": "ACT_A",
+      "disclosure_timing": "LATE",
+      "episode_id": "binding-c1-late-r01",
+      "exact_precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "failure_class": null,
+      "observed_precommitment_input_sha256": "sha256:f80e9c2fb3759cc0c45c545b62b7e364d048e440960414205e09002bdc469d1e",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_CONTRACT_ESTABLISHED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "BLUE"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "RED"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> BLUE; ACT_B -> RED",
+            "world_contract": "C1"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "WORLD_CONSEQUENCE",
+          "payload": {
+            "committed_action": "ACT_A",
+            "produced_color": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "SCORE",
+          "payload": {
+            "produced_color": "BLUE",
+            "success": false,
+            "target_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "BINDING_DISCLOSED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "BLUE"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "RED"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> BLUE; ACT_B -> RED"
+          },
+          "policy_visible": true
+        }
+      ],
+      "precommitment_input_sha256": "sha256:f80e9c2fb3759cc0c45c545b62b7e364d048e440960414205e09002bdc469d1e",
+      "precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "repetition_index": 1,
+      "requested_action": "ACT_A",
+      "serialized_world_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "success": false,
+      "valid": true,
+      "visible_target": "RED",
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      },
+      "world_contract": "C1",
+      "world_contract_rows": [
+        {
+          "action": "ACT_A",
+          "produced_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "produced_color": "RED"
+        }
+      ]
+    },
+    {
+      "authoritative_produced_color": "BLUE",
+      "binding_policy_visible_before_commitment": false,
+      "committed_action": "ACT_A",
+      "disclosure_timing": "LATE",
+      "episode_id": "binding-c1-late-r02",
+      "exact_precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "failure_class": null,
+      "observed_precommitment_input_sha256": "sha256:f80e9c2fb3759cc0c45c545b62b7e364d048e440960414205e09002bdc469d1e",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_CONTRACT_ESTABLISHED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "BLUE"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "RED"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> BLUE; ACT_B -> RED",
+            "world_contract": "C1"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "WORLD_CONSEQUENCE",
+          "payload": {
+            "committed_action": "ACT_A",
+            "produced_color": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "SCORE",
+          "payload": {
+            "produced_color": "BLUE",
+            "success": false,
+            "target_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "BINDING_DISCLOSED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "BLUE"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "RED"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> BLUE; ACT_B -> RED"
+          },
+          "policy_visible": true
+        }
+      ],
+      "precommitment_input_sha256": "sha256:f80e9c2fb3759cc0c45c545b62b7e364d048e440960414205e09002bdc469d1e",
+      "precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "repetition_index": 2,
+      "requested_action": "ACT_A",
+      "serialized_world_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "success": false,
+      "valid": true,
+      "visible_target": "RED",
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      },
+      "world_contract": "C1",
+      "world_contract_rows": [
+        {
+          "action": "ACT_A",
+          "produced_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "produced_color": "RED"
+        }
+      ]
+    },
+    {
+      "authoritative_produced_color": "BLUE",
+      "binding_policy_visible_before_commitment": false,
+      "committed_action": "ACT_A",
+      "disclosure_timing": "LATE",
+      "episode_id": "binding-c1-late-r03",
+      "exact_precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "failure_class": null,
+      "observed_precommitment_input_sha256": "sha256:f80e9c2fb3759cc0c45c545b62b7e364d048e440960414205e09002bdc469d1e",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_CONTRACT_ESTABLISHED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "BLUE"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "RED"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> BLUE; ACT_B -> RED",
+            "world_contract": "C1"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "WORLD_CONSEQUENCE",
+          "payload": {
+            "committed_action": "ACT_A",
+            "produced_color": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "SCORE",
+          "payload": {
+            "produced_color": "BLUE",
+            "success": false,
+            "target_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "BINDING_DISCLOSED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "BLUE"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "RED"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> BLUE; ACT_B -> RED"
+          },
+          "policy_visible": true
+        }
+      ],
+      "precommitment_input_sha256": "sha256:f80e9c2fb3759cc0c45c545b62b7e364d048e440960414205e09002bdc469d1e",
+      "precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "repetition_index": 3,
+      "requested_action": "ACT_A",
+      "serialized_world_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "success": false,
+      "valid": true,
+      "visible_target": "RED",
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      },
+      "world_contract": "C1",
+      "world_contract_rows": [
+        {
+          "action": "ACT_A",
+          "produced_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "produced_color": "RED"
+        }
+      ]
+    },
+    {
+      "authoritative_produced_color": "BLUE",
+      "binding_policy_visible_before_commitment": false,
+      "committed_action": "ACT_A",
+      "disclosure_timing": "LATE",
+      "episode_id": "binding-c1-late-r04",
+      "exact_precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "failure_class": null,
+      "observed_precommitment_input_sha256": "sha256:f80e9c2fb3759cc0c45c545b62b7e364d048e440960414205e09002bdc469d1e",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "WORLD_CONTRACT_ESTABLISHED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "BLUE"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "RED"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> BLUE; ACT_B -> RED",
+            "world_contract": "C1"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "POLICY_ACTION_REQUESTED",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "WORLD_ACTION_RECEIPT",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "WORLD_CONSEQUENCE",
+          "payload": {
+            "committed_action": "ACT_A",
+            "produced_color": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "SCORE",
+          "payload": {
+            "produced_color": "BLUE",
+            "success": false,
+            "target_color": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "BINDING_DISCLOSED",
+          "payload": {
+            "binding_rows": [
+              {
+                "action": "ACT_A",
+                "produced_color": "BLUE"
+              },
+              {
+                "action": "ACT_B",
+                "produced_color": "RED"
+              }
+            ],
+            "serialized_binding_text": "ACT_A -> BLUE; ACT_B -> RED"
+          },
+          "policy_visible": true
+        }
+      ],
+      "precommitment_input_sha256": "sha256:f80e9c2fb3759cc0c45c545b62b7e364d048e440960414205e09002bdc469d1e",
+      "precommitment_policy_visible_serialization": "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "repetition_index": 4,
+      "requested_action": "ACT_A",
+      "serialized_world_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "success": false,
+      "valid": true,
+      "visible_target": "RED",
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      },
+      "world_contract": "C1",
+      "world_contract_rows": [
+        {
+          "action": "ACT_A",
+          "produced_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "produced_color": "RED"
+        }
+      ]
+    }
+  ],
+  "execution_basis_commit": "39829adbdf74513a6fa248ce00233228b30d542e",
+  "freeze_path": "traces/behavioral_coupling_binding_observability_freeze_v0.json",
+  "model_identifier": "hermes-3-llama-3.2-3b",
+  "new_qualification_call_count": 0,
+  "pressure": "LATENT_WORLD_BINDING_PRECOMMITMENT_OBSERVABILITY",
+  "protocol_sha256": "sha256:df154a1d6fc3ff660285888f7a5a30d2c0efaa113d1adaa6173094dd9f5c88f0",
+  "protocol_version": "behavioral_coupling_binding_observability_v0",
+  "provider_exposed_sampling_settings": {
+    "max_tokens": 16,
+    "temperature": 0.0,
+    "top_p": 1.0
+  },
+  "reused_action_qualification_path": "traces/behavioral_coupling_action_delexicalization_qualification_v0.json",
+  "reused_action_qualification_result": {
+    "calls_retained": 2,
+    "scientific_schedule_entries_consumed": 0,
+    "status": "PASS",
+    "wounds": []
+  },
+  "schedule_sha256": "sha256:3c613b0917b523f692889d49dde5f2757911ddfefc2cfbc6bfb57609f50ea3e3",
+  "scientific_adjudication": "NOT_PERFORMED",
+  "scoring_rule": "authoritative produced color is obtained by applying the active hidden world contract to the committed ACT token; success iff produced color is RED",
+  "validity": {
+    "calls_retained": 16,
+    "empirical_retries": 0,
+    "episodes_retained": 16,
+    "invalidity_wounds": [],
+    "late_input_equivalence": {
+      "C0_LATE_hashes": [
+        "sha256:f80e9c2fb3759cc0c45c545b62b7e364d048e440960414205e09002bdc469d1e"
+      ],
+      "C0_LATE_serializations": [
+        "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}"
+      ],
+      "C1_LATE_hashes": [
+        "sha256:f80e9c2fb3759cc0c45c545b62b7e364d048e440960414205e09002bdc469d1e"
+      ],
+      "C1_LATE_serializations": [
+        "{\"fixed_task\":\"Select the legal action whose authoritative world consequence is RED. ACT_A and ACT_B are the only legal actions. The world uses one fixed bijection between ACT_A / ACT_B and RED / BLUE; exactly one legal action produces RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}"
+      ],
+      "match": true
+    },
+    "status": "VALID",
+    "wrong_legal_actions_are_behavior_not_invalidity": true
+  },
+  "visible_target": "RED"
+}
