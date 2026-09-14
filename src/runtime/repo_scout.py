@@ -20,7 +20,7 @@ from time import monotonic
 from typing import Any
 
 
-APPARATUS_VERSION = "repo_scout_v0"
+APPARATUS_VERSION = "repo_scout_v0.1"
 OUTPUT_CONTRACT = {"name": "repo_scout_result", "version": 0}
 TERMINAL_ACTIONS = ("STOP", "ESCALATE")
 PERMITTED_OPERATIONS = (
@@ -49,6 +49,12 @@ RESULT_FIELDS = (
     "operations_used",
     "escalation",
     "terminal_action",
+)
+MODEL_PROPOSAL_FIELDS = (
+    "evidence",
+    "bounded_interpretation",
+    "unresolved",
+    "escalation",
 )
 INVOCATION_FIELDS = (
     "task_id",
@@ -108,35 +114,55 @@ def canonical_json(value: Any) -> str:
     )
 
 
-def result_contract() -> dict[str, Any]:
-    """Return the exact model-visible v0 result schema."""
+def model_proposal_contract(source_ids: Sequence[str]) -> dict[str, Any]:
+    """Return the exact schema for the model-owned transformation surface."""
 
     return {
         "type": "object",
-        "required": list(RESULT_FIELDS),
-        "additional_properties": False,
+        "required": list(MODEL_PROPOSAL_FIELDS),
+        "additionalProperties": False,
         "properties": {
-            "task_id": "non-empty string equal to the declared task_id",
-            "execution_basis": "40-character commit equal to execution HEAD",
-            "evidence": [
-                {
-                    "source_path": "canonical repository-relative path",
-                    "location": "non-empty recoverable source location",
-                    "observation": "non-empty observed claim",
-                }
-            ],
-            "bounded_interpretation": "non-empty string",
-            "unresolved": ["zero or more non-empty strings"],
-            "scope_used": ["exact apparatus-recorded paths in first-use order"],
-            "operations_used": ["exact apparatus-recorded operations in order"],
-            "escalation": {"required": "boolean", "reason": "string or null"},
-            "terminal_action": list(TERMINAL_ACTIONS),
+            "evidence": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                    "type": "object",
+                    "required": ["source_id", "location", "observation"],
+                    "additionalProperties": False,
+                    "properties": {
+                        "source_id": {
+                            "type": "string",
+                            "enum": list(source_ids),
+                        },
+                        "location": {"type": "string", "minLength": 1},
+                        "observation": {"type": "string", "minLength": 1},
+                    },
+                },
+            },
+            "bounded_interpretation": {"type": "string", "minLength": 1},
+            "unresolved": {
+                "type": "array",
+                "items": {"type": "string", "minLength": 1},
+            },
+            "escalation": {
+                "type": "object",
+                "required": ["required", "reason"],
+                "additionalProperties": False,
+                "properties": {
+                    "required": {"type": "boolean"},
+                    "reason": {"type": ["string", "null"]},
+                },
+            },
         },
     }
 
 
-def parse_result(raw_model_response: str) -> dict[str, Any]:
-    """Parse one complete result object without prose extraction or repair."""
+def parse_model_proposal(
+    raw_model_response: str,
+    *,
+    issued_source_ids: Sequence[str],
+) -> dict[str, Any]:
+    """Parse model-owned content without prose extraction or repair."""
 
     def unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
         value: dict[str, Any] = {}
@@ -156,37 +182,34 @@ def parse_result(raw_model_response: str) -> dict[str, Any]:
         ) from exc
     if type(parsed) is not dict:
         raise RepoScoutContractError("model response must be an object")
-    if set(parsed) != set(RESULT_FIELDS):
+    if set(parsed) != set(MODEL_PROPOSAL_FIELDS):
         raise RepoScoutContractError(
-            "model response must contain exactly the required fields"
+            "model proposal must contain exactly the model-owned fields"
         )
-    _require_nonempty_string(parsed["task_id"], "task_id")
-    execution_basis = _require_nonempty_string(
-        parsed["execution_basis"], "execution_basis"
-    )
-    if not _EXACT_COMMIT.fullmatch(execution_basis):
-        raise RepoScoutContractError("execution_basis must be an exact commit")
     _require_nonempty_string(
         parsed["bounded_interpretation"], "bounded_interpretation"
     )
     _validate_string_list(parsed["unresolved"], "unresolved", allow_empty=True)
-    _validate_string_list(parsed["scope_used"], "scope_used", allow_empty=True)
-    _validate_string_list(
-        parsed["operations_used"], "operations_used", allow_empty=True
-    )
     evidence = parsed["evidence"]
     if type(evidence) is not list or not evidence:
         raise RepoScoutContractError("evidence must be a non-empty list")
+    issued = set(issued_source_ids)
     for index, entry in enumerate(evidence):
         if type(entry) is not dict or set(entry) != {
-            "source_path",
+            "source_id",
             "location",
             "observation",
         }:
             raise RepoScoutContractError(
                 f"evidence[{index}] must contain exactly the required fields"
             )
-        _canonical_path(entry["source_path"], f"evidence[{index}].source_path")
+        source_id = _require_nonempty_string(
+            entry["source_id"], f"evidence[{index}].source_id"
+        )
+        if source_id not in issued:
+            raise RepoScoutContractError(
+                f"evidence[{index}].source_id was not issued by the apparatus"
+            )
         _require_nonempty_string(entry["location"], f"evidence[{index}].location")
         _require_nonempty_string(
             entry["observation"], f"evidence[{index}].observation"
@@ -205,13 +228,45 @@ def parse_result(raw_model_response: str) -> dict[str, Any]:
         raise RepoScoutContractError(
             "escalation.reason must be null when escalation is not required"
         )
-    if parsed["terminal_action"] not in TERMINAL_ACTIONS:
-        raise RepoScoutContractError("terminal_action must be STOP or ESCALATE")
-    if (parsed["terminal_action"] == "ESCALATE") != escalation["required"]:
-        raise RepoScoutContractError(
-            "terminal_action and escalation.required must agree"
-        )
     return parsed
+
+
+def _attach_mechanical_result(
+    *,
+    proposal: Mapping[str, Any],
+    task_id: str,
+    execution_basis: str,
+    scope_used: Sequence[str],
+    operations_used: Sequence[str],
+    source_catalog: Sequence[Mapping[str, str]],
+) -> dict[str, Any]:
+    """Attach authoritative envelope fields and resolve selected source IDs."""
+
+    path_by_id = {
+        item["source_id"]: item["canonical_source_path"]
+        for item in source_catalog
+    }
+    evidence = [
+        {
+            "source_path": path_by_id[item["source_id"]],
+            "location": item["location"],
+            "observation": item["observation"],
+        }
+        for item in proposal["evidence"]
+    ]
+    escalation = deepcopy(proposal["escalation"])
+    terminal_action = "ESCALATE" if escalation["required"] else "STOP"
+    return {
+        "task_id": task_id,
+        "execution_basis": execution_basis,
+        "evidence": evidence,
+        "bounded_interpretation": proposal["bounded_interpretation"],
+        "unresolved": deepcopy(proposal["unresolved"]),
+        "scope_used": list(scope_used),
+        "operations_used": list(operations_used),
+        "escalation": escalation,
+        "terminal_action": terminal_action,
+    }
 
 
 def run_repo_scout(
@@ -265,12 +320,14 @@ def run_repo_scout(
         path for attempt in attempts for path in attempt["paths_accessed"]
     )
     operations_used = [attempt["operation"] for attempt in attempts]
+    source_catalog = _build_source_catalog(scope_used)
     policy_visible_request = _build_policy_visible_request(
         invocation=declared,
         execution_basis=execution_basis,
         attempts=attempts,
         scope_used=scope_used,
         operations_used=operations_used,
+        source_catalog=source_catalog,
     )
     serialized_request = canonical_json(policy_visible_request)
     remaining = _remaining_seconds(started, budget["wall_time_seconds"])
@@ -302,6 +359,7 @@ def run_repo_scout(
         },
         "realization_basis": deepcopy(declared["realization_basis"]),
         "operation_attempts": attempts,
+        "issued_source_catalog": source_catalog,
         "scope_used": scope_used,
         "operations_used": operations_used,
         "operation_output_bytes": output_bytes_used,
@@ -568,6 +626,16 @@ def _execute_operation(
     }
 
 
+def _build_source_catalog(scope_used: Sequence[str]) -> list[dict[str, str]]:
+    return [
+        {
+            "source_id": f"source-{index:04d}",
+            "canonical_source_path": path,
+        }
+        for index, path in enumerate(scope_used, start=1)
+    ]
+
+
 def _build_policy_visible_request(
     *,
     invocation: Mapping[str, Any],
@@ -575,12 +643,19 @@ def _build_policy_visible_request(
     attempts: Sequence[Mapping[str, Any]],
     scope_used: Sequence[str],
     operations_used: Sequence[str],
+    source_catalog: Sequence[Mapping[str, str]],
 ) -> dict[str, Any]:
+    source_id_by_path = {
+        item["canonical_source_path"]: item["source_id"]
+        for item in source_catalog
+    }
     observations = [
         {
             "index": attempt["index"],
             "operation": attempt["operation"],
-            "paths_accessed": deepcopy(attempt["paths_accessed"]),
+            "source_ids": [
+                source_id_by_path[path] for path in attempt["paths_accessed"]
+            ],
             "observation_basis": attempt["observation_basis"],
             "stdout": attempt["stdout"],
         }
@@ -606,16 +681,21 @@ def _build_policy_visible_request(
         "observed_inspection": {
             "scope_used": list(scope_used),
             "operations_used": list(operations_used),
+            "issued_source_catalog": deepcopy(list(source_catalog)),
             "observations": observations,
         },
         "instructions": [
             "Use only the supplied repository observations.",
             "Keep observed evidence, bounded interpretation, and unresolved state distinct.",
             "Do not claim repository mutation, tool access, acceptance, scientific authority, or commit authority.",
-            "Return exactly one object satisfying result_contract.",
-            "Use STOP or ESCALATE as the terminal action; do not request continuation.",
+            "For each evidence claim, select one source_id from issued_source_catalog; do not return a source path.",
+            "Return exactly one object satisfying model_proposal_contract.",
+            "Do not return task_id, execution_basis, scope_used, operations_used, or terminal_action; the apparatus owns those fields.",
+            "Set escalation.required and escalation.reason consistently; the apparatus derives terminal_action.",
         ],
-        "result_contract": result_contract(),
+        "model_proposal_contract": model_proposal_contract(
+            [item["source_id"] for item in source_catalog]
+        ),
     }
 
 
@@ -631,11 +711,24 @@ def _mechanical_evaluation(
     response_within_budget = response_received and (
         len(raw.encode("utf-8")) <= execution_budget["max_model_response_bytes"]
     )
-    parsed: dict[str, Any] | None = None
+    proposal: dict[str, Any] | None = None
+    parsed_result: dict[str, Any] | None = None
     response_error: str | None = None
     if response_within_budget:
         try:
-            parsed = parse_result(raw)
+            source_catalog = observation["issued_source_catalog"]
+            proposal = parse_model_proposal(
+                raw,
+                issued_source_ids=[item["source_id"] for item in source_catalog],
+            )
+            parsed_result = _attach_mechanical_result(
+                proposal=proposal,
+                task_id=observation["task_id"],
+                execution_basis=observation["execution_basis"]["resolved_commit"],
+                scope_used=observation["scope_used"],
+                operations_used=observation["operations_used"],
+                source_catalog=source_catalog,
+            )
         except RepoScoutError as exc:
             response_error = f"{type(exc).__name__}: {exc}"
     elif not response_received:
@@ -675,25 +768,35 @@ def _mechanical_evaluation(
         ),
         "model_response_received": response_received,
         "model_response_within_budget": response_within_budget,
-        "response_shape_valid": parsed is not None,
-        "result_task_matches": parsed is not None
-        and parsed["task_id"] == observation["task_id"],
-        "result_basis_matches": parsed is not None
-        and parsed["execution_basis"]
+        "response_shape_valid": proposal is not None,
+        "model_owned_fields_only": proposal is not None
+        and set(proposal) == set(MODEL_PROPOSAL_FIELDS),
+        "evidence_source_ids_were_issued": proposal is not None,
+        "final_result_fields_exact": parsed_result is not None
+        and set(parsed_result) == set(RESULT_FIELDS),
+        "result_task_attached": parsed_result is not None
+        and parsed_result["task_id"] == observation["task_id"],
+        "result_basis_attached": parsed_result is not None
+        and parsed_result["execution_basis"]
         == observation["execution_basis"]["resolved_commit"],
-        "result_scope_matches": parsed is not None
-        and parsed["scope_used"] == scope_used,
-        "result_operations_match": parsed is not None
-        and parsed["operations_used"] == operations_used,
-        "evidence_paths_were_accessed": parsed is not None
+        "result_scope_attached": parsed_result is not None
+        and parsed_result["scope_used"] == scope_used,
+        "result_operations_attached": parsed_result is not None
+        and parsed_result["operations_used"] == operations_used,
+        "terminal_action_derived": parsed_result is not None
+        and parsed_result["terminal_action"]
+        == ("ESCALATE" if proposal["escalation"]["required"] else "STOP"),
+        "evidence_paths_were_accessed": parsed_result is not None
         and all(
-            _is_within_any_scope(item["source_path"], scope_used)
-            for item in parsed["evidence"]
+            item["source_path"] in scope_used
+            for item in parsed_result["evidence"]
         ),
     }
     if all(checks.values()):
         terminal_state = (
-            "ESCALATED" if parsed["terminal_action"] == "ESCALATE" else "PASS"
+            "ESCALATED"
+            if parsed_result["terminal_action"] == "ESCALATE"
+            else "PASS"
         )
     else:
         terminal_state = "FAIL"
@@ -703,7 +806,8 @@ def _mechanical_evaluation(
         "task_id": observation["task_id"],
         "observation_sha256": "sha256:"
         + hashlib.sha256(canonical_json(observation).encode("utf-8")).hexdigest(),
-        "parsed_result": parsed,
+        "parsed_model_proposal": proposal,
+        "parsed_result": parsed_result,
         "response_error": response_error,
         "mechanical_checks": checks,
         "terminal_state": terminal_state,

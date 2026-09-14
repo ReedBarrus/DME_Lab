@@ -20,8 +20,10 @@ declared invocation
 → exact HEAD basis guard
 → operation / path / budget preflight
 → bounded read-only Git observations
-→ one serialized model request
+→ mechanically issued source identities
+→ one serialized model-proposal request
 → raw response retention
+→ source resolution / authoritative envelope attachment
 → separate strict mechanical evaluation
 → external acceptance or rejection
 ```
@@ -121,7 +123,7 @@ The injected model receives one canonical JSON request containing only:
 - the declared path and operation scope;
 - the observations produced by the predeclared inspection plan;
 - explicit attempt, proposal, commit, and acceptance boundaries;
-- the exact result contract.
+- the exact model-proposal contract and issued source identities.
 
 It receives no repository handle, filesystem handle, Git executable, shell,
 tool/MCP surface, network surface, prior conversation, retry channel, or
@@ -133,38 +135,58 @@ The model/runtime interface is injected as:
 model_call(serialized_request, remaining_timeout_seconds) -> raw_response
 ```
 
-This keeps deterministic apparatus tests independent of live inference. A
-specific live transport is intentionally not selected or invoked in this
-pass.
+This keeps deterministic apparatus tests independent of any particular live
+transport.
 
-## Result contract
+## Model proposal contract
 
 The raw response must be one complete JSON object containing exactly:
 
 ```text
-task_id
-execution_basis
 evidence
 bounded_interpretation
 unresolved
-scope_used
-operations_used
 escalation
-terminal_action
 ```
 
 Each evidence entry contains exactly:
 
 ```text
-source_path
+source_id
 location
 observation
 ```
 
-The source path must fall within an actually accessed scope. `scope_used` and
-`operations_used` must exactly reproduce the apparatus record. The terminal
-action is `STOP` or `ESCALATE`; escalation requires a reason and must agree
-with the terminal action.
+The apparatus issues each `source_id` with its canonical source path before the
+model call. The model selects an issued identity for each evidence claim; it
+does not regenerate a path. Unknown or unissued identities are rejected.
+
+The model-visible contract is a JSON-schema-shaped constraint object. It does
+not place descriptive placeholder strings in candidate value positions.
+
+## Mechanically attached result
+
+After a valid model proposal, the apparatus constructs the final
+`repo_scout_result` v0 packet. It attaches:
+
+```text
+task_id
+execution_basis
+scope_used
+operations_used
+```
+
+It resolves each selected `source_id` to final `evidence[].source_path` and
+derives:
+
+```text
+terminal_action = ESCALATE when escalation.required is true
+terminal_action = STOP otherwise
+```
+
+The final retained result keeps its existing fields while the model owns only
+source-supported observation extraction, source association, recoverable
+location, bounded interpretation, unresolved residue, and escalation content.
 
 No prose extraction, duplicate-field collapse, missing-field completion,
 token repair, or semantic correction is performed.
@@ -184,10 +206,11 @@ operation attempts, commands, accessed paths, outputs, exact serialized model
 request, raw response, call count, duration, and before/after repository
 fingerprints. It performs no semantic evaluation.
 
-The mechanical evaluation retains the parsed result when valid, parse or
-budget failure otherwise, individual contract checks, and a terminal state of
-`PASS`, `ESCALATED`, or `FAIL`. Mechanical success does not establish semantic
-validity, usefulness, qualification, or acceptance.
+The mechanical evaluation retains the parsed model proposal and attached final
+result when valid, or the parse/budget failure otherwise. It records individual
+contract checks and a terminal state of `PASS`, `ESCALATED`, or `FAIL`.
+Mechanical success does not establish semantic validity, usefulness,
+qualification, or acceptance.
 
 ## Rejection boundary
 
@@ -200,8 +223,9 @@ Repo Scout v0 rejects or fails closed on:
 - operation-count, output, response, or wall-time budget excess;
 - failed or binary operation output;
 - malformed, incomplete, duplicate-field, or extra-field model response;
-- missing or inconsistent `STOP` / `ESCALATE` state;
-- result basis, task, scope, operation, or evidence-path mismatch;
+- model attempts to return mechanically owned result fields;
+- unknown or unissued evidence source identity;
+- malformed or inconsistent escalation content;
 - any detected repository-state change across the run.
 
 An escalation is a candidate packet state only. It performs no authoritative

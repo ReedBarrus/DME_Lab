@@ -51,24 +51,24 @@ class StubModel:
         if self.raw_response is not None:
             return self.raw_response
         observed = request["observed_inspection"]
-        result = {
-            "task_id": request["task"]["task_id"],
-            "execution_basis": request["task"]["repository_basis"],
+        source_id = next(
+            item["source_id"]
+            for item in observed["issued_source_catalog"]
+            if item["canonical_source_path"] == "note.txt"
+        )
+        proposal = {
             "evidence": [
                 {
-                    "source_path": "note.txt",
+                    "source_id": source_id,
                     "location": "note.txt:1",
                     "observation": "The committed specimen contains bounded evidence.",
                 }
             ],
             "bounded_interpretation": "The observation supports only this repository basis.",
             "unresolved": [],
-            "scope_used": observed["scope_used"],
-            "operations_used": observed["operations_used"],
             "escalation": {"required": False, "reason": None},
-            "terminal_action": "STOP",
         }
-        return json.dumps(result, separators=(",", ":"))
+        return json.dumps(proposal, separators=(",", ":"))
 
 
 class RepoScoutTest(unittest.TestCase):
@@ -168,6 +168,25 @@ class RepoScoutTest(unittest.TestCase):
         self.assertEqual(mechanical["terminal_state"], "PASS")
         self.assertTrue(all(mechanical["mechanical_checks"].values()))
         self.assertEqual(mechanical["semantic_evaluation"], "NOT_PERFORMED")
+        proposal = mechanical["parsed_model_proposal"]
+        attached = mechanical["parsed_result"]
+        for field in (
+            "task_id",
+            "execution_basis",
+            "scope_used",
+            "operations_used",
+            "terminal_action",
+        ):
+            self.assertNotIn(field, proposal)
+        self.assertEqual(attached["task_id"], self.invocation()["task_id"])
+        self.assertEqual(attached["execution_basis"], self.head)
+        self.assertEqual(attached["scope_used"], [".", "note.txt"])
+        self.assertEqual(
+            attached["operations_used"],
+            [item["operation"] for item in self.invocation()["inspection_plan"]],
+        )
+        self.assertEqual(attached["terminal_action"], "STOP")
+        self.assertEqual(attached["evidence"][0]["source_path"], "note.txt")
 
     def test_stale_basis_is_rejected_before_worker_execution(self) -> None:
         invocation = self.narrow_invocation()
@@ -246,9 +265,9 @@ class RepoScoutTest(unittest.TestCase):
         self.assertIsNone(mechanical["parsed_result"])
         self.assertFalse(mechanical["mechanical_checks"]["response_shape_valid"])
 
-    def test_missing_terminal_action_fails_exact_contract(self) -> None:
+    def test_model_cannot_regenerate_terminal_action(self) -> None:
         valid = json.loads(StubModel()(self.serialized_request(), 10))
-        del valid["terminal_action"]
+        valid["terminal_action"] = "STOP"
         result = run_repo_scout(
             repo_root=self.repo,
             invocation=self.narrow_invocation(),
@@ -257,11 +276,33 @@ class RepoScoutTest(unittest.TestCase):
 
         mechanical = result["mechanical_evaluation"]
         self.assertEqual(mechanical["terminal_state"], "FAIL")
-        self.assertIn("exactly the required fields", mechanical["response_error"])
+        self.assertIn("exactly the model-owned fields", mechanical["response_error"])
 
-    def test_recorded_operations_must_match_apparatus_operations(self) -> None:
+    def test_model_cannot_regenerate_mechanical_envelope_fields(self) -> None:
+        additions = {
+            "task_id": "invented-task",
+            "execution_basis": "0" * 40,
+            "scope_used": ["invented.txt"],
+            "operations_used": ["git_log"],
+        }
+        for field, value in additions.items():
+            with self.subTest(field=field):
+                proposal = json.loads(StubModel()(self.serialized_request(), 10))
+                proposal[field] = value
+                result = run_repo_scout(
+                    repo_root=self.repo,
+                    invocation=self.narrow_invocation(),
+                    model_call=StubModel(json.dumps(proposal)),
+                )
+                mechanical = result["mechanical_evaluation"]
+                self.assertEqual(mechanical["terminal_state"], "FAIL")
+                self.assertIn(
+                    "exactly the model-owned fields", mechanical["response_error"]
+                )
+
+    def test_unknown_source_id_is_rejected(self) -> None:
         valid = json.loads(StubModel()(self.serialized_request(), 10))
-        valid["operations_used"] = ["git_log"]
+        valid["evidence"][0]["source_id"] = "source-9999"
         result = run_repo_scout(
             repo_root=self.repo,
             invocation=self.narrow_invocation(),
@@ -270,8 +311,54 @@ class RepoScoutTest(unittest.TestCase):
 
         mechanical = result["mechanical_evaluation"]
         self.assertEqual(mechanical["terminal_state"], "FAIL")
-        self.assertFalse(
-            mechanical["mechanical_checks"]["result_operations_match"]
+        self.assertIn(
+            "source_id was not issued",
+            mechanical["response_error"],
+        )
+
+    def test_free_form_source_path_is_rejected(self) -> None:
+        valid = json.loads(StubModel()(self.serialized_request(), 10))
+        valid["evidence"][0]["source_path"] = "invented.txt"
+        result = run_repo_scout(
+            repo_root=self.repo,
+            invocation=self.narrow_invocation(),
+            model_call=StubModel(json.dumps(valid)),
+        )
+
+        mechanical = result["mechanical_evaluation"]
+        self.assertEqual(mechanical["terminal_state"], "FAIL")
+        self.assertIn("evidence[0]", mechanical["response_error"])
+
+    def test_issued_source_id_resolves_to_canonical_path(self) -> None:
+        result = run_repo_scout(
+            repo_root=self.repo,
+            invocation=self.narrow_invocation(),
+            model_call=StubModel(),
+        )
+
+        mechanical = result["mechanical_evaluation"]
+        proposal = mechanical["parsed_model_proposal"]
+        attached = mechanical["parsed_result"]
+        self.assertEqual(proposal["evidence"][0]["source_id"], "source-0001")
+        self.assertNotIn("source_path", proposal["evidence"][0])
+        self.assertEqual(attached["evidence"][0]["source_path"], "note.txt")
+
+    def test_escalation_required_derives_terminal_action(self) -> None:
+        proposal = json.loads(StubModel()(self.serialized_request(), 10))
+        proposal["escalation"] = {
+            "required": True,
+            "reason": "The supplied observation leaves a bounded residue.",
+        }
+        result = run_repo_scout(
+            repo_root=self.repo,
+            invocation=self.narrow_invocation(),
+            model_call=StubModel(json.dumps(proposal)),
+        )
+
+        mechanical = result["mechanical_evaluation"]
+        self.assertEqual(mechanical["terminal_state"], "ESCALATED")
+        self.assertEqual(
+            mechanical["parsed_result"]["terminal_action"], "ESCALATE"
         )
 
     def test_repository_state_remains_unchanged_across_read_only_run(self) -> None:
@@ -337,6 +424,44 @@ class RepoScoutTest(unittest.TestCase):
         self.assertNotIn("repo_root", serialized)
         self.assertNotIn(str(self.repo), serialized)
         self.assertIn("1:beta", serialized)
+
+    def test_model_contract_contains_only_transformation_fields(self) -> None:
+        model = StubModel()
+        run_repo_scout(
+            repo_root=self.repo,
+            invocation=self.narrow_invocation(),
+            model_call=model,
+        )
+        request = model.calls[0]["request"]
+        serialized = model.calls[0]["serialized_request"]
+        contract = request["model_proposal_contract"]
+
+        self.assertNotIn("result_contract", request)
+        self.assertEqual(
+            set(contract["properties"]),
+            {"evidence", "bounded_interpretation", "unresolved", "escalation"},
+        )
+        for mechanical_field in (
+            "task_id",
+            "execution_basis",
+            "scope_used",
+            "operations_used",
+            "terminal_action",
+        ):
+            self.assertNotIn(mechanical_field, contract["properties"])
+        self.assertNotIn("non-empty string equal to the declared task_id", serialized)
+        self.assertNotIn("canonical repository-relative path", serialized)
+        self.assertNotIn(
+            "exact apparatus-recorded operations in order", serialized
+        )
+        evidence_schema = contract["properties"]["evidence"]["items"]
+        self.assertIn(
+            "source-0001",
+            evidence_schema["properties"]["source_id"]["enum"],
+        )
+        observation = request["observed_inspection"]["observations"][0]
+        self.assertEqual(observation["source_ids"], ["source-0001"])
+        self.assertNotIn("paths_accessed", observation)
 
     def serialized_request(self) -> str:
         """Build the result echo basis used by malformed-result tests."""
