@@ -1,0 +1,68 @@
+{
+  "artifact": "local_model_qualification_t1_q1_freeze_v0",
+  "artifact_class": "FROZEN_LOCAL_MODEL_QUALIFICATION_SPECIMEN",
+  "campaign_scope": "T1-Q1_ONLY",
+  "evaluation_separation": {
+    "mechanical_evaluation": "deterministic separate artifact",
+    "observation": "raw separate artifact",
+    "semantic_evaluation": "separate frontier or human artifact"
+  },
+  "leakage_boundary": {
+    "campaign_document_supplied_to_model": false,
+    "campaign_expected_answer_supplied_to_model": false,
+    "future_specimens_supplied_to_model": false,
+    "prior_qualification_outputs_supplied_to_model": false,
+    "semantic_evaluator_supplied_to_model": false,
+    "source_packet_contains_authoritative_checkpoint_conclusions": true,
+    "unknown_pretraining_or_runtime_cache_excluded": false
+  },
+  "maximum_model_calls": 1,
+  "output_paths": {
+    "mechanical_evaluation": "traces/local_model_qualification_t1_q1_mechanical_evaluation_v0.json",
+    "observation": "traces/local_model_qualification_t1_q1_observation_v0.json",
+    "semantic_evaluation": "traces/local_model_qualification_t1_q1_semantic_evaluation_v0.json"
+  },
+  "prompt_template_identity": "DME_Lab T1-Q1 evidence-state separation v0",
+  "prompt_template_sha256": "sha256:33eac0e81c0ae608a9c8d377e9e27df1ca20c6ad183e79155560e54772fb196a",
+  "protected_surfaces": [
+    "PROJECT_STATE.md",
+    "PRESSURE_RESOLUTION_MAP.md",
+    "docs/decisions",
+    "docs/constraints",
+    "docs/contracts",
+    "docs/cockpit/PROJECTION_CONTRACT.md"
+  ],
+  "realization": {
+    "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+    "model_artifact_digest": null,
+    "provider_exposed_sampling_settings": {
+      "max_tokens": 1024,
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "quantization": null,
+    "requested_model_identifier": "hermes-3-llama-3.2-3b",
+    "runtime": "LM Studio OpenAI-compatible local endpoint",
+    "runtime_version": null,
+    "timeout_seconds": 120.0,
+    "tool_surface": []
+  },
+  "response_schema_sha256": "sha256:60a3b4227539951b4e6baf72ca05c0aff2d5411b66ddf7110658295fedd5acfd",
+  "source_specimen": {
+    "commit": "4a7d0cabb664c2bd977cd1dafe90d72c41bf4305",
+    "path": "docs/decisions/behavioral_coupling_observation_commitment_consequence_checkpoint_v0.md",
+    "sha256": "sha256:461738df46f15139a2d5ab6a00ae8b9dd10e2461ece4a8b158ff3a26305ef91c"
+  },
+  "specimen_id": "T1-Q1_BEHAVIORAL_COUPLING_CHECKPOINT",
+  "starting_repository_commit": "4a7d0cabb664c2bd977cd1dafe90d72c41bf4305",
+  "stop_boundary": {
+    "automatic_continuation": false,
+    "permitted_terminal_actions": [
+      "STOP",
+      "ESCALATE"
+    ],
+    "subsequent_specimens_authorized": false
+  },
+  "tier": "T1_INTERPRETATION_WITHOUT_PROMOTION",
+  "writable_output_location": "traces/local_model_qualification_t1_q1_*_v0.json"
+}
