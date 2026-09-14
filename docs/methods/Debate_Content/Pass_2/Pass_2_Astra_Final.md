@@ -5,7 +5,7 @@ Authority or role identified by content	File
 Workflow and classification rules	[WORKFLOW.md](C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/WORKFLOW.md)
 PR-001 / PR-006 standing	[PRESSURE_RESOLUTION_MAP.md](C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/PRESSURE_RESOLUTION_MAP.md)
 Current experimental standing	[PROJECT_STATE.md (line 169)](/C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/PROJECT_STATE.md:169)
-Authoritative hidden-traversal specimen	[docs/decisions/absent_interval_round_trip_pressure_v0.md](C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/docs/decisions/absent_interval_round_trip_pressure_v0.md)
+Authoritative hidden-traversal specimen	[docs/decisions/reconstruction/absent_interval_round_trip_pressure_v0.md](C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/docs/decisions/reconstruction/absent_interval_round_trip_pressure_v0.md)
 Candidate A	[docs/projection/consequential_geometry_A.md](C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/docs/projection/consequential_geometry_A.md)
 Candidate B	[docs/projection/Consequence_Formal_B.md](C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/docs/projection/Consequence_Formal_B.md)
 Debate protocol	[docs/methods/Candidate_Pressure_Debate_Protocol_v0.md](C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/docs/methods/Candidate_Pressure_Debate_Protocol_v0.md)

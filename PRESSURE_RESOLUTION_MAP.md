@@ -63,9 +63,9 @@ not authorized or active.
   from the hidden round trip and contains no general recurrence model.
 - **Blocked by:** —
 - **Unlocks:** PR-006, PR-017
-- **Evidence:** [decision](docs/decisions/absent_interval_round_trip_pressure_v0.md),
+- **Evidence:** [decision](docs/decisions/reconstruction/absent_interval_round_trip_pressure_v0.md),
   [trace](traces/absent_interval_round_trip_pressure_v0.json),
-  [bounded operation recovery](docs/decisions/ntfs_usn_q_operation_distinction_recovery_v0.md)
+  [bounded operation recovery](docs/decisions/provenance/ntfs_usn_q_operation_distinction_recovery_v0.md)
 
 ### PR-002 — Coordinator lifetime versus historical continuity
 
@@ -80,7 +80,7 @@ not authorized or active.
   participant identity, or complete observation of the interval.
 - **Blocked by:** —
 - **Unlocks:** PR-003
-- **Evidence:** [decision](docs/decisions/foreground_persistent_coordinator_pressure_v0.md),
+- **Evidence:** [decision](docs/decisions/runtime/foreground_persistent_coordinator_pressure_v0.md),
   [trace](traces/foreground_persistent_coordinator_pressure_v0.json)
 
 ### PR-003 — Caller outcome versus durable partial-round state
@@ -98,7 +98,7 @@ not authorized or active.
   policy; no atomic-round guarantee was earned.
 - **Blocked by:** —
 - **Unlocks:** —
-- **Evidence:** [decision](docs/decisions/partial_round_completion_pressure_v0.md),
+- **Evidence:** [decision](docs/decisions/runtime/partial_round_completion_pressure_v0.md),
   [trace](traces/partial_round_completion_pressure_v0.json)
 
 ### PR-004 — Reconstructed history versus current external configuration
@@ -115,7 +115,7 @@ not authorized or active.
   a fresh process is not a fresh observation.
 - **Blocked by:** —
 - **Unlocks:** PR-006
-- **Evidence:** [decision](docs/decisions/stale_current_result_pressure_v0.md),
+- **Evidence:** [decision](docs/decisions/runtime/stale_current_result_pressure_v0.md),
   [trace](traces/stale_current_result_pressure_v0.json)
 
 ### PR-005 — One capture request versus one coherent repository world
@@ -132,7 +132,7 @@ not authorized or active.
   or a globally coherent present.
 - **Blocked by:** —
 - **Unlocks:** PR-006
-- **Evidence:** [decision](docs/decisions/intra_capture_timing_skew_pressure_v0.md),
+- **Evidence:** [decision](docs/decisions/runtime/intra_capture_timing_skew_pressure_v0.md),
   [trace](traces/intra_capture_timing_skew_pressure_v0.json)
 
 ### PR-006 — Scoped interval or change observation
@@ -160,12 +160,12 @@ not authorized or active.
 - **Blocked by:** a separately justified and authorized basis for any remaining
   consumer question; none is currently selected
 - **Unlocks:** —
-- **Evidence:** [absent interval](docs/decisions/absent_interval_round_trip_pressure_v0.md),
-  [stale reconstruction](docs/decisions/stale_current_result_pressure_v0.md),
-  [timing skew](docs/decisions/intra_capture_timing_skew_pressure_v0.md),
-  [USN basis qualification](docs/decisions/ntfs_usn_observation_basis_qualification_v0.md),
+- **Evidence:** [absent interval](docs/decisions/reconstruction/absent_interval_round_trip_pressure_v0.md),
+  [stale reconstruction](docs/decisions/runtime/stale_current_result_pressure_v0.md),
+  [timing skew](docs/decisions/runtime/intra_capture_timing_skew_pressure_v0.md),
+  [USN basis qualification](docs/decisions/provenance/ntfs_usn_observation_basis_qualification_v0.md),
   [qualification trace](traces/ntfs_usn_observation_basis_qualification_v0.json),
-  [Q_OPERATION decision](docs/decisions/ntfs_usn_q_operation_distinction_recovery_v0.md),
+  [Q_OPERATION decision](docs/decisions/provenance/ntfs_usn_q_operation_distinction_recovery_v0.md),
   [Q_OPERATION trace](traces/ntfs_usn_q_operation_pressure_v0.json)
 
 ## B. Source success, admission, and consumer visibility
@@ -184,7 +184,7 @@ not authorized or active.
   ranking policy.
 - **Blocked by:** —
 - **Unlocks:** PR-008
-- **Evidence:** [decision](docs/decisions/degraded_git_admission_pressure_v0.md),
+- **Evidence:** [decision](docs/decisions/runtime/degraded_git_admission_pressure_v0.md),
   [trace](traces/degraded_git_admission_pressure_v0.json)
 
 ### PR-008 — Recoverable source-quality evidence versus consumer-visible result
@@ -202,7 +202,7 @@ not authorized or active.
   not established; direct source-quality exposure is not automatically needed.
 - **Blocked by:** —
 - **Unlocks:** PR-009
-- **Evidence:** [decision](docs/decisions/astra_consumer_pressure_adjudication_v0.md),
+- **Evidence:** [decision](docs/decisions/provenance/astra_consumer_pressure_adjudication_v0.md),
   [trace](traces/consumer_git_acquisition_pressure_v0.json)
 
 ### PR-009 — Detached result versus publicly resolvable history association
@@ -220,7 +220,7 @@ not authorized or active.
   but the detached result cannot discover or authenticate that association.
 - **Blocked by:** —
 - **Unlocks:** PR-010
-- **Evidence:** [decision](docs/decisions/public_history_association_adjudication_v0.md)
+- **Evidence:** [decision](docs/decisions/provenance/public_history_association_adjudication_v0.md)
 
 ### PR-010 — History-association carrier selection
 
@@ -238,7 +238,7 @@ not authorized or active.
   unique current tail, freshness, or source truth was established.
 - **Blocked by:** discriminating consumer or contractual need
 - **Unlocks:** —
-- **Evidence:** [decision](docs/decisions/history_association_selection_adjudication_v0.md)
+- **Evidence:** [decision](docs/decisions/provenance/history_association_selection_adjudication_v0.md)
 
 ## C. Acoustic source-coordinate chain
 
@@ -255,7 +255,7 @@ not authorized or active.
   mechanism, complete room field, and general acoustics remain unlicensed.
 - **Blocked by:** —
 - **Unlocks:** PR-012
-- **Evidence:** [decision](docs/decisions/acoustic_replication_pressure_v0.md),
+- **Evidence:** [decision](docs/decisions/acoustic/acoustic_replication_pressure_v0.md),
   [trace](traces/acoustic_replication_pressure_v0.json)
 
 ### PR-012 — Relational recurrence across fresh acquisition process
@@ -271,7 +271,7 @@ not authorized or active.
   hardware, driver, routing, or Windows audio state.
 - **Blocked by:** PR-011
 - **Unlocks:** PR-013
-- **Evidence:** [decision](docs/decisions/acoustic_relational_recurrence_pressure_v0.md),
+- **Evidence:** [decision](docs/decisions/acoustic/acoustic_relational_recurrence_pressure_v0.md),
   [trace](traces/acoustic_relational_recurrence_pressure_v0.json)
 
 ### PR-013 — Repository/acoustic comparison without an acoustic source witness
@@ -288,8 +288,8 @@ not authorized or active.
   prediction remained separate questions.
 - **Blocked by:** —
 - **Unlocks:** PR-014, PR-017
-- **Evidence:** [initial comparison](docs/decisions/repository_acoustic_tomographic_comparison_pressure_v0.md),
-  [later witness](docs/decisions/wasapi_loopback_witness_validation_v0.md)
+- **Evidence:** [initial comparison](docs/decisions/cross_domain/repository_acoustic_tomographic_comparison_pressure_v0.md),
+  [later witness](docs/decisions/acoustic/wasapi_loopback_witness_validation_v0.md)
 
 #### PR-013 — Resolution history
 
@@ -312,7 +312,7 @@ not authorized or active.
   driver receipt, electrical output, transducer motion, or airborne sound.
 - **Blocked by:** —
 - **Unlocks:** PR-015
-- **Evidence:** [decision](docs/decisions/acoustic_source_coordinate_witness_selection_pressure_v0.md)
+- **Evidence:** [decision](docs/decisions/acoustic/acoustic_source_coordinate_witness_selection_pressure_v0.md)
 
 ### PR-015 — Independent post-mix endpoint coordinate
 
@@ -328,7 +328,7 @@ not authorized or active.
   physical stages.
 - **Blocked by:** PR-014
 - **Unlocks:** PR-016, PR-017
-- **Evidence:** [decision](docs/decisions/wasapi_loopback_witness_validation_v0.md),
+- **Evidence:** [decision](docs/decisions/acoustic/wasapi_loopback_witness_validation_v0.md),
   [trace](traces/wasapi_loopback_witness_validation_v0.json)
 
 ### PR-016 — Position-conditioned microphone return recurrence
@@ -346,7 +346,7 @@ not authorized or active.
   earned.
 - **Blocked by:** PR-015
 - **Unlocks:** PR-017, PR-019
-- **Evidence:** [decision](docs/decisions/acoustic_positional_transformation_pressure_v0.md),
+- **Evidence:** [decision](docs/decisions/acoustic/acoustic_positional_transformation_pressure_v0.md),
   [trace](traces/acoustic_positional_transformation_pressure_v0.json)
 
 ### PR-019 — Source-side positional return under a fixed microphone
@@ -366,11 +366,11 @@ not authorized or active.
   semantics, and prospective cross-domain prediction remain unearned.
 - **Blocked by:** —
 - **Unlocks:** —
-- **Evidence:** [replication decision](docs/decisions/acoustic_source_side_positional_return_replication_v1.md),
+- **Evidence:** [replication decision](docs/decisions/acoustic/acoustic_source_side_positional_return_replication_v1.md),
   [replication trace](traces/acoustic_source_side_positional_return_replication_v1.json),
-  [original decision](docs/decisions/acoustic_source_side_positional_return_pressure_v0.md),
+  [original decision](docs/decisions/acoustic/acoustic_source_side_positional_return_pressure_v0.md),
   [original trace](traces/acoustic_source_side_positional_return_pressure_v0.json),
-  [selection dwell](docs/decisions/acoustic_prediction_bridge_dwell_v0.md)
+  [selection dwell](docs/decisions/acoustic/acoustic_prediction_bridge_dwell_v0.md)
 
 #### PR-019 — Resolution history
 
@@ -404,9 +404,9 @@ not authorized or active.
   source/observer scale, and persistence do not transfer.
 - **Blocked by:** —
 - **Unlocks:** PR-018
-- **Evidence:** [re-adjudication](docs/decisions/cross_domain_tomographic_readjudication_v0.md),
-  [repository round trip](docs/decisions/absent_interval_round_trip_pressure_v0.md),
-  [acoustic return](docs/decisions/acoustic_positional_transformation_pressure_v0.md)
+- **Evidence:** [re-adjudication](docs/decisions/cross_domain/cross_domain_tomographic_readjudication_v0.md),
+  [repository round trip](docs/decisions/reconstruction/absent_interval_round_trip_pressure_v0.md),
+  [acoustic return](docs/decisions/acoustic/acoustic_positional_transformation_pressure_v0.md)
 
 #### PR-017 — Resolution history
 
@@ -439,8 +439,8 @@ not authorized or active.
 - **Blocked by:** a predeclared mapping and independently authorized unseen
   target evidence
 - **Unlocks:** —
-- **Evidence:** [prediction selection](docs/decisions/cross_domain_predictive_transformation_selection_pressure_v0.md),
-  [re-adjudication](docs/decisions/cross_domain_tomographic_readjudication_v0.md)
+- **Evidence:** [prediction selection](docs/decisions/cross_domain/cross_domain_predictive_transformation_selection_pressure_v0.md),
+  [re-adjudication](docs/decisions/cross_domain/cross_domain_tomographic_readjudication_v0.md)
 
 ## E. Bounded behavioral coupling
 
@@ -468,7 +468,7 @@ not authorized or active.
   no experiment or participant architecture is selected.
 - **Blocked by:** —
 - **Unlocks:** —
-- **Evidence:** [checkpoint](docs/decisions/behavioral_coupling_observation_commitment_consequence_checkpoint_v0.md),
+- **Evidence:** [checkpoint](docs/decisions/behavioral_coupling/behavioral_coupling_observation_commitment_consequence_checkpoint_v0.md),
   [feedback trace](traces/bounded_consequential_feedback_lm_studio_empirical_world_v0.json),
   [P1 trace](traces/behavioral_coupling_p1_actuation_prior_world_v0.json),
   [P2 trace](traces/behavioral_coupling_p2_semantic_indirection_world_v0.json),

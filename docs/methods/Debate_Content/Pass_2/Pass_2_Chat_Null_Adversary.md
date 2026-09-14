@@ -4,7 +4,7 @@ Repository evidence and debate artifacts used:
 
 WORKFLOW.md
 PRESSURE_RESOLUTION_MAP.md
-docs/decisions/absent_interval_round_trip_pressure_v0.md
+docs/decisions/reconstruction/absent_interval_round_trip_pressure_v0.md
 docs/projection/consequential_geometry_A.md
 docs/projection/Consequence_Formal_B.md
 docs/methods/Candidate_Pressure_Debate_Protocol_v0.md

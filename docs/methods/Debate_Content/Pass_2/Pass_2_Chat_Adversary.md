@@ -10,7 +10,7 @@ Codex Adversary B: docs/methods/Debate_Content/Pass_2/Pass_2_Codex_Adversary.md 
 Authoritative PR evidence:
 WORKFLOW.md
 PRESSURE_RESOLUTION_MAP.md
-docs/decisions/absent_interval_round_trip_pressure_v0.md
+docs/decisions/reconstruction/absent_interval_round_trip_pressure_v0.md
 
 PR-001 establishes that true stasis and an unobserved round trip can have equivalent captured endpoint configurations, and that neither “nothing happened” nor “something happened” is inferable from those endpoints alone. PR-006 remains OPEN and asks for a bounded source-relative change discriminator rather than a general observer architecture.
 

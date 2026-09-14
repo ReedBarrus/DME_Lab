@@ -14,7 +14,7 @@ INPUT ARTIFACTS USED
 - Authoritative PR evidence:
   - WORKFLOW.md
   - PRESSURE_RESOLUTION_MAP.md
-  - docs/decisions/absent_interval_round_trip_pressure_v0.md
+  - docs/decisions/reconstruction/absent_interval_round_trip_pressure_v0.md
 STRONGEST NULL CLAIM
 For the single bounded question—
 Did the selected repository source undergo at least one relevant source-relative change between endpoint captures?

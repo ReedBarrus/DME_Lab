@@ -166,37 +166,37 @@ Its JSON output is derived and read-only. The adapter resolves the requested
 source ref to an exact commit before reading allowlisted files from that
 committed tree. Generated JSON is not repository authority.
 
-The first [bounded adversarial pressure pass](../decisions/cockpit_projection_adapter_pressure_v0.md)
+The first [bounded adversarial pressure pass](../decisions/projection/cockpit_projection_adapter_pressure_v0.md)
 preserved nine named source wounds but exposed one unresolved silent
 resolution-history loss and one duplicate-pressure-ID contract ambiguity. This
 does not establish general adapter reliability.
 
-The [bounded Adapter v0 remediation](../decisions/cockpit_projection_adapter_remediation_v0.md)
+The [bounded Adapter v0 remediation](../decisions/projection/cockpit_projection_adapter_remediation_v0.md)
 now makes strongly structured but unsupported history residue visible instead
 of silently dropping it. It also preserves every duplicate pressure occurrence
 with occurrence-local provenance, emits identity ambiguity, and leaves an
 explicit relation to a duplicated target unresolved rather than selecting a
 winner. Unsupported history is not promoted into valid resolution history.
 
-The [bounded independent re-pressure](../decisions/cockpit_projection_adapter_repressure_v0.md)
+The [bounded independent re-pressure](../decisions/projection/cockpit_projection_adapter_repressure_v0.md)
 then exercised the original and nearby P8/P11 wounds, healthy controls, their
 combined form, and a three-way duplicate. All named specimens survived without
 silent loss, winner selection, or healthy-source regression. This still does
 not establish general Markdown robustness or general projection safety.
 
-The [first plain observer implementation](../decisions/cockpit_plain_observer_v0.md)
+The [first plain observer implementation](../decisions/projection/cockpit_plain_observer_v0.md)
 renders the bounded normalized model without frontend repository parsing. It is
 an implementation specimen, not a usability, visual-safety, production,
 authority, or Controller result.
 
-The [first Projection v1 human-use refinement](../decisions/cockpit_projection_v1_standing_topology_v0.md)
+The [first Projection v1 human-use refinement](../decisions/projection/cockpit_projection_v1_standing_topology_v0.md)
 compresses the map, preserves exact standing forms, and separates scientific
 basis insufficiency from typed projection diagnostics. Its basis/scope audit
 found no structured current-standing basis in the normalized pressure model,
 so the observer reports that limitation instead of reparsing repository prose.
 Projection v1 remains in progress.
 
-The [Projection v1 P2 bounded-view implementation](../decisions/cockpit_projection_v1_bounded_views_v0.md)
+The [Projection v1 P2 bounded-view implementation](../decisions/projection/cockpit_projection_v1_bounded_views_v0.md)
 adds MAP, CONSTRAINTS, LINEAGE, HORIZON, and SOURCE as discrete lenses over the
 same normalized JSON. View transitions change foreground only; object traversal
 is available only through emitted pressure relations, resolution history,
@@ -204,7 +204,7 @@ evidence IDs, and source paths. No lens or transition invokes Controller,
 changes standing, mutates the repository, executes an experiment, or creates
 an external effect.
 
-The [Projection v1 P3 adversarial navigation pass](../decisions/cockpit_projection_v1_adversarial_navigation_v0.md)
+The [Projection v1 P3 adversarial navigation pass](../decisions/projection/cockpit_projection_v1_adversarial_navigation_v0.md)
 withheld occurrence-level activity for an ambiguous active pressure ID and
 removed last-write-wins behavior for ambiguous evidence IDs. After those two
 bounded repairs, Projection v1 is boundedly closed as the current read-only

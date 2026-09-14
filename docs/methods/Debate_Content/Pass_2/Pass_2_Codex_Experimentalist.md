@@ -11,7 +11,7 @@ INPUT ARTIFACTS USED
 - Authoritative PR evidence:
   - WORKFLOW.md
   - PRESSURE_RESOLUTION_MAP.md
-  - docs/decisions/absent_interval_round_trip_pressure_v0.md
+  - docs/decisions/reconstruction/absent_interval_round_trip_pressure_v0.md
 FAIR RECONSTRUCTION OF B
 B’s strongest local claim is:
 A witness warrants a definite answer only when every source history compatible with its valid, jointly associated result agrees on whether at least one relevant change occurred.

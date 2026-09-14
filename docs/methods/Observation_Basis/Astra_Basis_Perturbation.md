@@ -3,7 +3,7 @@ Repository authority:
 - [PROJECT_STATE.md](C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/PROJECT_STATE.md)
 - [WORKFLOW.md](C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/WORKFLOW.md)
 - [PRESSURE_RESOLUTION_MAP.md — PR-001 and PR-006](C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/PRESSURE_RESOLUTION_MAP.md)
-- [absent_interval_round_trip_pressure_v0.md](C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/docs/decisions/absent_interval_round_trip_pressure_v0.md)
+- [absent_interval_round_trip_pressure_v0.md](C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/docs/decisions/reconstruction/absent_interval_round_trip_pressure_v0.md)
 - [Candidate_Pressure_Debate_Protocol_v0.md](C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/docs/methods/Candidate_Pressure_Debate_Protocol_v0.md)
 - [Candidate A](C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/docs/projection/consequential_geometry_A.md) and [Candidate B](C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/docs/projection/Consequence_Formal_B.md).
 Completed debate artifacts, identified by content:

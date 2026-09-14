@@ -22,7 +22,7 @@ records P8 as a contract violation and P11 as a contract ambiguity. Its compact
 trace remains unchanged historical evidence.
 
 Stage 4A tightened the existing
-[`PROJECTION_CONTRACT.md`](../cockpit/PROJECTION_CONTRACT.md): duplicate current
+[`PROJECTION_CONTRACT.md`](../../cockpit/PROJECTION_CONTRACT.md): duplicate current
 pressure occurrences must all survive with local provenance and no canonical
 winner, while an explicit relation to a duplicated ID must remain uniquely
 unresolved.

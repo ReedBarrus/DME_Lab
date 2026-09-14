@@ -43,7 +43,7 @@ Changed paths:
 - `docs/contracts/README.md`
 - `docs/contracts/ingest.md`
 - `docs/contracts/provenance.md`
-- `docs/decisions/repo_provenance_pressure_v0.md`
+- `docs/decisions/provenance/repo_provenance_pressure_v0.md`
 
 ## Git Transition
 

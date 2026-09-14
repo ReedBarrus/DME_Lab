@@ -57,12 +57,12 @@ Bounded admission relationship reconstruction evidence:
 - `tests/reconstruction/test_admission_reconstruction.py`
 - `src/runtime/reconstruction_pressure.py`
 - `traces/reconstruction_pressure_v0.json`
-- `docs/decisions/reconstruction_pressure_v0.md`
+- `docs/decisions/reconstruction/reconstruction_pressure_v0.md`
 - `traces/live_ingest_ledger_v0.jsonl`
 - `traces/live_vertical_probe_v0.json`
-- `docs/decisions/live_vertical_probe_v0.md`
-- `docs/decisions/live_ingest_ledger_extraction_v0.md`
+- `docs/decisions/runtime/live_vertical_probe_v0.md`
+- `docs/decisions/runtime/live_ingest_ledger_extraction_v0.md`
 - `traces/live_ingest_continuation_v0.json`
-- `docs/decisions/live_ingest_continuation_v0.md`
+- `docs/decisions/runtime/live_ingest_continuation_v0.md`
 
 This evidence does not validate generalized topology, indexing, projection engines, or OS event reconstruction.

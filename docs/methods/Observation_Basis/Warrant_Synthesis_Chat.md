@@ -5,7 +5,7 @@ Repository artifacts used:
 PROJECT_STATE.md
 WORKFLOW.md
 PRESSURE_RESOLUTION_MAP.md, especially PR-001 and PR-006
-docs/decisions/absent_interval_round_trip_pressure_v0.md
+docs/decisions/reconstruction/absent_interval_round_trip_pressure_v0.md
 docs/methods/Candidate_Pressure_Debate_Protocol_v0.md
 all completed debate artifacts under docs/methods/Debate_Content/Pass_1/ and Pass_2/
 docs/methods/Observation_Basis/NTSF_USN_observation_basis_proposal.md

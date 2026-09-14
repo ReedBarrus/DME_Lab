@@ -122,7 +122,7 @@ These sources may be read only for the stated use:
 
 ### Optional or future sources
 
-- additional `docs/decisions/*` semantic fields;
+- additional semantic fields from artifacts beneath `docs/decisions/`;
 - additional `docs/projection/*` documents;
 - selected trace summaries;
 - selected test identifiers and outcomes;

@@ -55,7 +55,7 @@ At least one relevant change occurred in this selected source during this associ
 
 A sound positive witness can establish that claim even if other parts of the interval were not covered. Complete coverage is unnecessary for establishing at least one change.
 Conversely, an unchanged witness establishes scoped absence only when the observation conditions exclude undetected relevant changes.
-Equivalent endpoint observations alone leave both stasis and hidden traversal possible. PR-001 already established that boundary; B formalizes it without adding a new empirical result. [PR-001 evidence (line 150)](/C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/docs/decisions/absent_interval_round_trip_pressure_v0.md:150)
+Equivalent endpoint observations alone leave both stasis and hidden traversal possible. PR-001 already established that boundary; B formalizes it without adding a new empirical result. [PR-001 evidence (line 150)](/C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/docs/decisions/reconstruction/absent_interval_round_trip_pressure_v0.md:150)
 UNSUPPORTED CLAIMS
 The witness does not establish:
 - The intermediate state \(B\), exact path, or number of changes.

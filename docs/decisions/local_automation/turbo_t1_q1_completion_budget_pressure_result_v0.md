@@ -88,7 +88,7 @@ tuned, reloaded, or replaced.
 ## Evidence
 
 - [completion-budget checkpoint](turbo_t1_completion_budget_admission_checkpoint_v0.md)
-- [pressure freeze](../../traces/local_model_qualification_t1_turbo_q1_completion_budget_pressure_freeze_v0.json)
-- [raw observation](../../traces/local_model_qualification_t1_turbo_q1_completion_budget_pressure_observation_v0.json)
-- [mechanical evaluation](../../traces/local_model_qualification_t1_turbo_q1_completion_budget_pressure_mechanical_evaluation_v0.json)
-- [semantic evaluation](../../traces/local_model_qualification_t1_turbo_q1_completion_budget_pressure_semantic_evaluation_v0.json)
+- [pressure freeze](../../../traces/local_model_qualification_t1_turbo_q1_completion_budget_pressure_freeze_v0.json)
+- [raw observation](../../../traces/local_model_qualification_t1_turbo_q1_completion_budget_pressure_observation_v0.json)
+- [mechanical evaluation](../../../traces/local_model_qualification_t1_turbo_q1_completion_budget_pressure_mechanical_evaluation_v0.json)
+- [semantic evaluation](../../../traces/local_model_qualification_t1_turbo_q1_completion_budget_pressure_semantic_evaluation_v0.json)

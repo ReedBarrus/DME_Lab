@@ -235,30 +235,30 @@ No participant count, architecture, protocol, or execution is authorized.
 
 ### Baseline and characterization
 
-- [bounded feedback protocol](../methods/Consequence_Surface/Bounded_Consequential_Feedback_Experiment_v0.md)
-- [bounded feedback world trace](../../traces/bounded_consequential_feedback_lm_studio_empirical_world_v0.json)
-- [characterization protocol](../methods/Consequence_Surface/Behavioral_Coupling_Characterization_v0.md)
-- [qualified continuation](../methods/Consequence_Surface/Behavioral_Coupling_Characterization_Continuation_v0.md)
-- [P1 world trace](../../traces/behavioral_coupling_p1_actuation_prior_world_v0.json)
-- [P2 world trace](../../traces/behavioral_coupling_p2_semantic_indirection_world_v0.json)
-- [P4 world trace](../../traces/behavioral_coupling_p4_association_world_v0.json)
+- [bounded feedback protocol](../../methods/Consequence_Surface/Bounded_Consequential_Feedback_Experiment_v0.md)
+- [bounded feedback world trace](../../../traces/bounded_consequential_feedback_lm_studio_empirical_world_v0.json)
+- [characterization protocol](../../methods/Consequence_Surface/Behavioral_Coupling_Characterization_v0.md)
+- [qualified continuation](../../methods/Consequence_Surface/Behavioral_Coupling_Characterization_Continuation_v0.md)
+- [P1 world trace](../../../traces/behavioral_coupling_p1_actuation_prior_world_v0.json)
+- [P2 world trace](../../../traces/behavioral_coupling_p2_semantic_indirection_world_v0.json)
+- [P4 world trace](../../../traces/behavioral_coupling_p4_association_world_v0.json)
 
 ### Representation pressures
 
-- [mapping-row-order protocol](../methods/Consequence_Surface/Behavioral_Coupling_Mapping_Row_Order_v0.md)
-- [mapping-row-order world trace](../../traces/behavioral_coupling_mapping_row_order_world_v0.json)
-- [action-delexicalization protocol](../methods/Consequence_Surface/Behavioral_Coupling_Action_Delexicalization_v0.md)
-- [action-interface qualification](../../traces/behavioral_coupling_action_delexicalization_qualification_v0.json)
-- [action-delexicalization world trace](../../traces/behavioral_coupling_action_delexicalization_world_v0.json)
+- [mapping-row-order protocol](../../methods/Consequence_Surface/Behavioral_Coupling_Mapping_Row_Order_v0.md)
+- [mapping-row-order world trace](../../../traces/behavioral_coupling_mapping_row_order_world_v0.json)
+- [action-delexicalization protocol](../../methods/Consequence_Surface/Behavioral_Coupling_Action_Delexicalization_v0.md)
+- [action-interface qualification](../../../traces/behavioral_coupling_action_delexicalization_qualification_v0.json)
+- [action-delexicalization world trace](../../../traces/behavioral_coupling_action_delexicalization_world_v0.json)
 
 ### Binding and consequence pressures
 
-- [binding-observability protocol](../methods/Consequence_Surface/Behavioral_Coupling_Binding_Observability_v0.md)
-- [binding call evidence](../../traces/behavioral_coupling_binding_observability_calls_v0.json)
-- [binding world trace](../../traces/behavioral_coupling_binding_observability_world_v0.json)
-- [consequence-observability protocol](../methods/Consequence_Surface/Behavioral_Coupling_Consequence_Observability_v0.md)
-- [consequence call evidence](../../traces/behavioral_coupling_consequence_observability_calls_v0.json)
-- [consequence world trace](../../traces/behavioral_coupling_consequence_observability_world_v0.json)
+- [binding-observability protocol](../../methods/Consequence_Surface/Behavioral_Coupling_Binding_Observability_v0.md)
+- [binding call evidence](../../../traces/behavioral_coupling_binding_observability_calls_v0.json)
+- [binding world trace](../../../traces/behavioral_coupling_binding_observability_world_v0.json)
+- [consequence-observability protocol](../../methods/Consequence_Surface/Behavioral_Coupling_Consequence_Observability_v0.md)
+- [consequence call evidence](../../../traces/behavioral_coupling_consequence_observability_calls_v0.json)
+- [consequence world trace](../../../traces/behavioral_coupling_consequence_observability_world_v0.json)
 
 The corresponding empirical evidence commits are
 `a6a8bd5b7c59ed22d3504b3538ffc5e634684483`,

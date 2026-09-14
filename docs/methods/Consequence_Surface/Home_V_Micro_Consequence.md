@@ -1,7 +1,7 @@
 HOME / MICRO-WORLD COLLISION
 They target different distinctions. The micro-world asks whether feedback affects an executed decision within an episode. Home asks whether consequences survive an inactive interval and can legitimately condition a recurrent interpreter.
 Neither entails the other. A temporary feedback controller can satisfy the micro-world without durable history. A recurring script can preserve history while ignoring feedback.
-I checked repository authority at e4449c92d3ddd7b7d8fb34061221056429ee6413. Existing coordinator work already distinguishes historical continuity from coordinator lifetime without asserting persistent participant identity. That boundary remains applicable. [Coordinator decision (line 191)](C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/docs/decisions/foreground_persistent_coordinator_pressure_v0.md:191)
+I checked repository authority at e4449c92d3ddd7b7d8fb34061221056429ee6413. Existing coordinator work already distinguishes historical continuity from coordinator lifetime without asserting persistent participant identity. That boundary remains applicable. [Coordinator decision (line 191)](C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/docs/decisions/runtime/foreground_persistent_coordinator_pressure_v0.md:191)
 Home explicitly remains a shelved projection. The micro-world could inform it, but passing this pressure would neither activate Home nor establish a necessary developmental ladder toward it. [Home (line 4)](C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/docs/projection/Home.md:4)
 CANDIDATE A ATTACK
 STRONGEST FORM:
@@ -134,7 +134,7 @@ This is a projected sequence. No implementation or execution is authorized by th
 WHAT THIS COULD EARN
 A positive result could establish that a specified LLM-driven process used interaction-produced information to select a successful executed action within this bounded task, subject to the stated evaluation strength.
 It would also establish a useful future perturbation target: feedback can be withheld, delayed, or altered to test consequences for behavior.
-That is a legitimate experimental distinction even while A and Null remain equivalent under current pressure. Existing DME adjudication similarly preserves bounded positive findings without promoting them into broader closure. [Current distinction-recovery decision (line 106)](C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/docs/decisions/ntfs_usn_q_operation_distinction_recovery_v0.md:106)
+That is a legitimate experimental distinction even while A and Null remain equivalent under current pressure. Existing DME adjudication similarly preserves bounded positive findings without promoting them into broader closure. [Current distinction-recovery decision (line 106)](C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/docs/decisions/provenance/ntfs_usn_q_operation_distinction_recovery_v0.md:106)
 WHAT THIS CANNOT EARN
 It cannot establish persistent identity, continuity across disappearance, learning, general autonomy, planning, self-generated goals, internal belief, or a necessary persistent-state architecture.
 It cannot demonstrate chosen information acquisition while INSPECT is forced, or goal sensitivity while the goal is fixed.

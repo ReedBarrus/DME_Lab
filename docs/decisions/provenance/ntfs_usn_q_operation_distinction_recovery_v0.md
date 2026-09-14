@@ -127,4 +127,4 @@ general observer is earned.
 - `src/runtime/ntfs_usn_q_operation_pressure.py`
 - `tests/runtime/test_ntfs_usn_q_operation_pressure.py`
 - `docs/methods/Observation_Basis/Astra_Q_OPERATION_Adjudication.md`
-- `docs/decisions/ntfs_usn_observation_basis_qualification_v0.md`
+- `docs/decisions/provenance/ntfs_usn_observation_basis_qualification_v0.md`

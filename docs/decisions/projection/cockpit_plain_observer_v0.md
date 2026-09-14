@@ -18,7 +18,7 @@ generated UI specimen. The working tree was clean at entry.
 
 Stage 4C had already recorded a successful bounded adversarial re-pressure of
 the remediated adapter. The committed
-[`V0_PAGE_SPEC.md`](../cockpit/V0_PAGE_SPEC.md) supplied the implementation
+[`V0_PAGE_SPEC.md`](../../cockpit/V0_PAGE_SPEC.md) supplied the implementation
 boundary. This pass did not re-adjudicate Stage 4C, modify the adapter or
 projection contract, or begin observer usability pressure.
 

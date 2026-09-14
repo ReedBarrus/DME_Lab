@@ -109,7 +109,7 @@ run Q2, Q3, or Q4. Do not tune or load another realization.
 ## Evidence
 
 - [Turbo cross-realization comparison](t1_hermes_turbo_cross_realization_comparison_v0.md)
-- [Turbo realization freeze](../../traces/local_model_qualification_t1_turbo_freeze_v0.json)
-- [Turbo Q1 observation](../../traces/local_model_qualification_t1_turbo_q1_observation_v0.json)
-- [Turbo Q2 observation](../../traces/local_model_qualification_t1_turbo_q2_observation_v0.json)
-- [Turbo Q3 observation](../../traces/local_model_qualification_t1_turbo_q3_observation_v0.json)
+- [Turbo realization freeze](../../../traces/local_model_qualification_t1_turbo_freeze_v0.json)
+- [Turbo Q1 observation](../../../traces/local_model_qualification_t1_turbo_q1_observation_v0.json)
+- [Turbo Q2 observation](../../../traces/local_model_qualification_t1_turbo_q2_observation_v0.json)
+- [Turbo Q3 observation](../../../traces/local_model_qualification_t1_turbo_q3_observation_v0.json)

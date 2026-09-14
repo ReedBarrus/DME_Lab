@@ -231,7 +231,7 @@ Such environments could pressure whether provenance, authority, commitment, cons
 
 DME_Lab may encounter resource-allocation questions internally before any explicit financial application exists.
 
-Current local-model qualification evidence has exposed bounded apparatus coordinates including configured context capacity, client deadline, completion allowance, response-contract completion, qualification standing, and human review. It has not established a scheduler or an economic mechanism. The retained [deadline-admission checkpoint](../decisions/turbo_t1_deadline_admission_checkpoint_v0.md) and [completion-budget result](../decisions/turbo_t1_q1_completion_budget_pressure_result_v0.md) are motivating evidence for those apparatus distinctions only.
+Current local-model qualification evidence has exposed bounded apparatus coordinates including configured context capacity, client deadline, completion allowance, response-contract completion, qualification standing, and human review. It has not established a scheduler or an economic mechanism. The retained [deadline-admission checkpoint](../decisions/local_automation/turbo_t1_deadline_admission_checkpoint_v0.md) and [completion-budget result](../decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md) are motivating evidence for those apparatus distinctions only.
 
 A projected scheduler would face candidate quantities such as:
 

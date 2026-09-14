@@ -52,20 +52,20 @@ A live repository snapshot candidate envelope has been constructed and compared 
 
 - `src/runtime/repo_provenance_pressure.py`
 - `traces/repo_provenance_pressure_v0.json`
-- `docs/decisions/repo_provenance_pressure_v0.md`
+- `docs/decisions/provenance/repo_provenance_pressure_v0.md`
 - `src/runtime/repo_transition_pressure.py`
 - `traces/repo_transition_pressure_v0.json`
-- `docs/decisions/repo_transition_pressure_v0.md`
+- `docs/decisions/provenance/repo_transition_pressure_v0.md`
 - `src/ingest/admission.py`
 - `tests/ingest/test_admission.py`
 - `src/runtime/ingest_admission_pressure.py`
 - `traces/ingest_admission_pressure_v0.json`
-- `docs/decisions/ingest_admission_pressure_v0.md`
+- `docs/decisions/reconstruction/ingest_admission_pressure_v0.md`
 - `traces/live_ingest_ledger_v0.jsonl`
 - `traces/live_vertical_probe_v0.json`
-- `docs/decisions/live_vertical_probe_v0.md`
-- `docs/decisions/live_ingest_ledger_extraction_v0.md`
+- `docs/decisions/runtime/live_vertical_probe_v0.md`
+- `docs/decisions/runtime/live_ingest_ledger_extraction_v0.md`
 - `traces/live_ingest_continuation_v0.json`
-- `docs/decisions/live_ingest_continuation_v0.md`
+- `docs/decisions/runtime/live_ingest_continuation_v0.md`
 
 The live vertical and continuation probes route bounded live observations through the current admission mechanism. This does not define final ingest rules, a generalized policy engine, enforced admission, or a durable admitted store.

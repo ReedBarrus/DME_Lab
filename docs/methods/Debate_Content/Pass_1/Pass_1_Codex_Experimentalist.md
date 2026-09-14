@@ -7,7 +7,7 @@ INPUT ARTIFACTS USED
 - Authoritative PR evidence:
   - WORKFLOW.md
   - PRESSURE_RESOLUTION_MAP.md
-  - docs/decisions/absent_interval_round_trip_pressure_v0.md
+  - docs/decisions/reconstruction/absent_interval_round_trip_pressure_v0.md
 The two Round A artifacts are currently untracked. No competing Round A advocate/adversary pair was found.
 SURVIVING A CLAIM
 A persistent traversal-sensitive coordinate can distinguish endpoint equivalence from relevant source-relative change when all of the following are declared:

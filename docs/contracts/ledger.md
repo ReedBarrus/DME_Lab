@@ -285,7 +285,7 @@ Synthetic v0 evidence:
 * `src/ledger/jsonl.py`
 * `tests/replay/test_ledger_harness.py`
 * `traces/ledger_runtime_pressure_v0.json`
-* `docs/decisions/ledger_runtime_pressure_v0.md`
+* `docs/decisions/ledger/ledger_runtime_pressure_v0.md`
 
 Bounded live vertical-chain evidence:
 
@@ -295,9 +295,9 @@ Bounded live vertical-chain evidence:
 * `traces/ledger_continuity_pressure_v0.json`
 * `tests/runtime/test_live_vertical_probe.py`
 * `tests/replay/test_ledger_continuity.py`
-* `docs/decisions/live_ingest_ledger_extraction_v0.md`
-* `docs/decisions/live_ingest_continuation_v0.md`
-* `docs/decisions/ledger_continuity_pressure_v0.md`
+* `docs/decisions/runtime/live_ingest_ledger_extraction_v0.md`
+* `docs/decisions/runtime/live_ingest_continuation_v0.md`
+* `docs/decisions/ledger/ledger_continuity_pressure_v0.md`
 
 This evidence does not validate live OS capture, distributed append, history-level integrity, or schema permanence.
 

@@ -6,7 +6,7 @@ Primary fast-entry working memory for DME_Lab.
 
 Repository scaffold initialized.
 
-Ledger pressure pass completed in `docs/decisions/ledger_pressure_pass_v0.md`.
+Ledger pressure pass completed in `docs/decisions/ledger/ledger_pressure_pass_v0.md`.
 
 Synthetic ledger append/replay/integrity harness implemented and tested.
 
@@ -22,93 +22,93 @@ First live repository baseline captured in `traces/repo_snapshot_v0_baseline.jso
 
 Second live repository observations captured in `traces/repo_snapshot_v0_post_cleanup.json` and `traces/git_state_v0_post_cleanup.json`.
 
-Repository transition pressure completed in `docs/decisions/repo_transition_pressure_v0.md`.
+Repository transition pressure completed in `docs/decisions/provenance/repo_transition_pressure_v0.md`.
 
-Bounded v0 ingest admission pressure completed in `docs/decisions/ingest_admission_pressure_v0.md`.
+Bounded v0 ingest admission pressure completed in `docs/decisions/reconstruction/ingest_admission_pressure_v0.md`.
 
-Bounded v0 reconstruction pressure completed in `docs/decisions/reconstruction_pressure_v0.md`.
+Bounded v0 reconstruction pressure completed in `docs/decisions/reconstruction/reconstruction_pressure_v0.md`.
 
-First bounded live vertical-chain probe completed in `docs/decisions/live_vertical_probe_v0.md`.
+First bounded live vertical-chain probe completed in `docs/decisions/runtime/live_vertical_probe_v0.md`.
 
-Canonical bounded live ingest ledger extraction completed in `docs/decisions/live_ingest_ledger_extraction_v0.md`.
+Canonical bounded live ingest ledger extraction completed in `docs/decisions/runtime/live_ingest_ledger_extraction_v0.md`.
 
-Canonical bounded live ingest ledger continuation completed in `docs/decisions/live_ingest_continuation_v0.md`.
+Canonical bounded live ingest ledger continuation completed in `docs/decisions/runtime/live_ingest_continuation_v0.md`.
 
-Ledger continuity pressure completed in `docs/decisions/ledger_continuity_pressure_v0.md`.
+Ledger continuity pressure completed in `docs/decisions/ledger/ledger_continuity_pressure_v0.md`.
 
-History extent witness pressure completed in `docs/decisions/history_extent_witness_pressure_v0.md`.
+History extent witness pressure completed in `docs/decisions/ledger/history_extent_witness_pressure_v0.md`.
 
-Historical relation pressure completed in `docs/decisions/historical_relation_pressure_v0.md`.
+Historical relation pressure completed in `docs/decisions/ledger/historical_relation_pressure_v0.md`.
 
-Witness content ablation pressure completed in `docs/decisions/witness_content_ablation_pressure_v0.md`.
+Witness content ablation pressure completed in `docs/decisions/ledger/witness_content_ablation_pressure_v0.md`.
 
-Provenance recovery pressure completed in `docs/decisions/provenance_recovery_pressure_v0.md`.
+Provenance recovery pressure completed in `docs/decisions/ledger/provenance_recovery_pressure_v0.md`.
 
-Declarative commitment semantics pressure completed in `docs/decisions/declarative_commitment_semantics_pressure_v0.md`.
+Declarative commitment semantics pressure completed in `docs/decisions/ledger/declarative_commitment_semantics_pressure_v0.md`.
 
-Vocabulary identity pressure completed in `docs/decisions/vocabulary_identity_pressure_v0.md`.
+Vocabulary identity pressure completed in `docs/decisions/ledger/vocabulary_identity_pressure_v0.md`.
 
-Operation identity pressure completed in `docs/decisions/operation_identity_pressure_v0.md`.
+Operation identity pressure completed in `docs/decisions/ledger/operation_identity_pressure_v0.md`.
 
-Candidate set expansion pressure completed in `docs/decisions/candidate_set_expansion_pressure_v0.md`.
+Candidate set expansion pressure completed in `docs/decisions/ledger/candidate_set_expansion_pressure_v0.md`.
 
-Admissible history discriminator pressure completed in `docs/decisions/admissible_history_discriminator_pressure_v0.md`.
+Admissible history discriminator pressure completed in `docs/decisions/ledger/admissible_history_discriminator_pressure_v0.md`.
 
-History constraint ablation pressure completed in `docs/decisions/history_constraint_ablation_pressure_v0.md`.
+History constraint ablation pressure completed in `docs/decisions/ledger/history_constraint_ablation_pressure_v0.md`.
 
-Tie-order invariance pressure completed in `docs/decisions/tie_order_invariance_pressure_v0.md`.
+Tie-order invariance pressure completed in `docs/decisions/ledger/tie_order_invariance_pressure_v0.md`.
 
-First bounded vertical composition pressure completed in `docs/decisions/vertical_composition_pressure_v0.md`.
+First bounded vertical composition pressure completed in `docs/decisions/runtime/vertical_composition_pressure_v0.md`.
 
-Admission disagreement exposure pressure completed in `docs/decisions/admission_disagreement_exposure_pressure_v0.md`.
+Admission disagreement exposure pressure completed in `docs/decisions/reconstruction/admission_disagreement_exposure_pressure_v0.md`.
 
-Persistent observational field pressure completed in `docs/decisions/persistent_observational_field_pressure_v0.md`.
+Persistent observational field pressure completed in `docs/decisions/runtime/persistent_observational_field_pressure_v0.md`.
 
-Foreground persistent coordinator pressure completed in `docs/decisions/foreground_persistent_coordinator_pressure_v0.md`.
+Foreground persistent coordinator pressure completed in `docs/decisions/runtime/foreground_persistent_coordinator_pressure_v0.md`.
 
-Partial-round and ambiguous-completion pressure completed in `docs/decisions/partial_round_completion_pressure_v0.md`.
+Partial-round and ambiguous-completion pressure completed in `docs/decisions/runtime/partial_round_completion_pressure_v0.md`.
 
-Foreground repository horizontal pressure capstone completed in `docs/decisions/foreground_repository_horizontal_capstone_v0.md`.
+Foreground repository horizontal pressure capstone completed in `docs/decisions/runtime/foreground_repository_horizontal_capstone_v0.md`.
 
-Bounded acoustic basis-entry pressure completed in `docs/decisions/acoustic_basis_entry_pressure_v0.md`.
+Bounded acoustic basis-entry pressure completed in `docs/decisions/acoustic/acoustic_basis_entry_pressure_v0.md`.
 
-Bounded acoustic replication pressure completed in `docs/decisions/acoustic_replication_pressure_v0.md`.
+Bounded acoustic replication pressure completed in `docs/decisions/acoustic/acoustic_replication_pressure_v0.md`.
 
-Bounded acoustic relational-recurrence pressure completed in `docs/decisions/acoustic_relational_recurrence_pressure_v0.md`.
+Bounded acoustic relational-recurrence pressure completed in `docs/decisions/acoustic/acoustic_relational_recurrence_pressure_v0.md`.
 
-First repository-acoustic tomographic comparison pressure completed in `docs/decisions/repository_acoustic_tomographic_comparison_pressure_v0.md`.
+First repository-acoustic tomographic comparison pressure completed in `docs/decisions/cross_domain/repository_acoustic_tomographic_comparison_pressure_v0.md`.
 
-Cross-domain predictive-transformation selection pressure completed in `docs/decisions/cross_domain_predictive_transformation_selection_pressure_v0.md`.
+Cross-domain predictive-transformation selection pressure completed in `docs/decisions/cross_domain/cross_domain_predictive_transformation_selection_pressure_v0.md`.
 
-Acoustic source-coordinate witness selection pressure completed in `docs/decisions/acoustic_source_coordinate_witness_selection_pressure_v0.md`.
+Acoustic source-coordinate witness selection pressure completed in `docs/decisions/acoustic/acoustic_source_coordinate_witness_selection_pressure_v0.md`.
 
-WASAPI loopback witness validation completed in `docs/decisions/wasapi_loopback_witness_validation_v0.md`.
+WASAPI loopback witness validation completed in `docs/decisions/acoustic/wasapi_loopback_witness_validation_v0.md`.
 
-Acoustic positional transformation pressure completed in `docs/decisions/acoustic_positional_transformation_pressure_v0.md`.
+Acoustic positional transformation pressure completed in `docs/decisions/acoustic/acoustic_positional_transformation_pressure_v0.md`.
 
-Astra consumer-pressure adjudication and independent reproduction completed in `docs/decisions/astra_consumer_pressure_adjudication_v0.md`.
+Astra consumer-pressure adjudication and independent reproduction completed in `docs/decisions/provenance/astra_consumer_pressure_adjudication_v0.md`.
 
-Public history-association adjudication completed in `docs/decisions/public_history_association_adjudication_v0.md`.
+Public history-association adjudication completed in `docs/decisions/provenance/public_history_association_adjudication_v0.md`.
 
-History-association selection adjudication completed in `docs/decisions/history_association_selection_adjudication_v0.md`.
+History-association selection adjudication completed in `docs/decisions/provenance/history_association_selection_adjudication_v0.md`.
 
-Constraint Registry lineage audit completed in `docs/decisions/constraint_registry_lineage_audit_v0.md`.
+Constraint Registry lineage audit completed in `docs/decisions/cross_cutting/constraint_registry_lineage_audit_v0.md`.
 
-Acoustic prediction bridge dwell completed in `docs/decisions/acoustic_prediction_bridge_dwell_v0.md`.
+Acoustic prediction bridge dwell completed in `docs/decisions/acoustic/acoustic_prediction_bridge_dwell_v0.md`.
 
-Source-side positional return pressure completed in `docs/decisions/acoustic_source_side_positional_return_pressure_v0.md`.
+Source-side positional return pressure completed in `docs/decisions/acoustic/acoustic_source_side_positional_return_pressure_v0.md`.
 
-Independent source-side positional return replication completed in `docs/decisions/acoustic_source_side_positional_return_replication_v1.md`.
+Independent source-side positional return replication completed in `docs/decisions/acoustic/acoustic_source_side_positional_return_replication_v1.md`.
 
 Bounded NTFS USN observation-basis qualification adjudication completed in
-`docs/decisions/ntfs_usn_observation_basis_qualification_v0.md`.
+`docs/decisions/provenance/ntfs_usn_observation_basis_qualification_v0.md`.
 
 Bounded PR-006 `Q_OPERATION` distinction-recovery adjudication completed in
-`docs/decisions/ntfs_usn_q_operation_distinction_recovery_v0.md`.
+`docs/decisions/provenance/ntfs_usn_q_operation_distinction_recovery_v0.md`.
 
 Behavioral Coupling observation / commitment / consequence checkpoint
 completed in
-`docs/decisions/behavioral_coupling_observation_commitment_consequence_checkpoint_v0.md`.
+`docs/decisions/behavioral_coupling/behavioral_coupling_observation_commitment_consequence_checkpoint_v0.md`.
 
 ## Objective
 
@@ -201,7 +201,7 @@ The single-policy Behavioral Coupling lineage is checkpointed through binding
 evidence commit `65f1e881b114a07cafb46fef8875d4b11aeb990b` and consequence
 evidence commit `2e118f05118f427aa50742f7e037ef68d07e3691`, with its bounded
 adjudication recorded in
-`docs/decisions/behavioral_coupling_observation_commitment_consequence_checkpoint_v0.md`.
+`docs/decisions/behavioral_coupling/behavioral_coupling_observation_commitment_consequence_checkpoint_v0.md`.
 The strongest licensed result is representation-sensitive selection under
 restricted predecision inputs, separately from authoritative fixture
 evaluation: exact late policy requests could remain identical while hidden
