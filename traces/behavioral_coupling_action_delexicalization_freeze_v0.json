@@ -1,0 +1,1287 @@
+{
+  "P1_revisited": false,
+  "P3_status": "BLOCKED_NOT_EXECUTED",
+  "P4_revisited": false,
+  "action_contracts": {
+    "C1": {
+      "ACT_A": "RED",
+      "ACT_B": "BLUE"
+    },
+    "C2": {
+      "ACT_A": "BLUE",
+      "ACT_B": "RED"
+    }
+  },
+  "action_schema": {
+    "json_schema": {
+      "name": "bounded_terminal_action",
+      "schema": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "enum": [
+              "ACT_A",
+              "ACT_B"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "type": "object"
+      },
+      "strict": true
+    },
+    "type": "json_schema"
+  },
+  "action_schema_sha256": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+  "artifact": "behavioral_coupling_action_delexicalization_freeze_v0",
+  "artifact_class": "PRE_EXECUTION_PROTOCOL_AND_SCHEDULE_FREEZE",
+  "empirical_model_calls_made": 0,
+  "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+  "model_identifier": "hermes-3-llama-3.2-3b",
+  "observation_mappings": {
+    "M1": {
+      "ALPHA": "RED",
+      "BETA": "BLUE"
+    },
+    "M2": {
+      "ALPHA": "BLUE",
+      "BETA": "RED"
+    }
+  },
+  "protocol": {
+    "conditions": {
+      "F": "symbol delivered before terminal commitment",
+      "P": "symbol withheld until after terminal commitment"
+    },
+    "earned_residue": [
+      "first-row target predicted the no-symbol P action",
+      "delivered symbol could override a BLUE-first default",
+      "delivered symbol did not override a RED-first default",
+      "earlier P1 enum reversal did not remove the RED collapse"
+    ],
+    "factorial": {
+      "action_contract": [
+        "C1",
+        "C2"
+      ],
+      "condition": [
+        "F",
+        "P"
+      ],
+      "episodes_per_cell": 1,
+      "mapping_presentations": [
+        "M1-AB",
+        "M1-BA",
+        "M2-AB",
+        "M2-BA"
+      ],
+      "symbol": [
+        "ALPHA",
+        "BETA"
+      ],
+      "total_empirical_episodes": 32
+    },
+    "held_fixed": {
+      "action_contract_row_order": [
+        "ACT_A",
+        "ACT_B"
+      ],
+      "action_enum_order": [
+        "ACT_A",
+        "ACT_B"
+      ],
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "adapter_realization": "CONSTRAINED_TYPED_ACTION",
+      "empirical_retries": 0,
+      "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "observation_symbols": [
+        "ALPHA",
+        "BETA"
+      ],
+      "repository_or_filesystem_supplied": false,
+      "sampling": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "scoring": "accepted ACT token -> frozen action-contract target -> authoritative hidden target; correct iff the two target colors match",
+      "stateless_episode_requests": true,
+      "tools_or_mcp_supplied": false,
+      "world_targets": [
+        "RED",
+        "BLUE"
+      ]
+    },
+    "intervention": {
+      "action_contract_declaration_order": [
+        "ACT_A",
+        "ACT_B"
+      ],
+      "action_contracts": {
+        "C1": {
+          "ACT_A": "RED",
+          "ACT_B": "BLUE"
+        },
+        "C2": {
+          "ACT_A": "BLUE",
+          "ACT_B": "RED"
+        }
+      },
+      "distinctions": [
+        "observation symbol != target color",
+        "target color != typed action",
+        "typed action != world consequence"
+      ],
+      "mapping_declaration_orders": {
+        "AB": [
+          "ALPHA",
+          "BETA"
+        ],
+        "BA": [
+          "BETA",
+          "ALPHA"
+        ]
+      },
+      "observation_mappings": {
+        "M1": {
+          "ALPHA": "RED",
+          "BETA": "BLUE"
+        },
+        "M2": {
+          "ALPHA": "BLUE",
+          "BETA": "RED"
+        }
+      },
+      "typed_action_tokens": [
+        "ACT_A",
+        "ACT_B"
+      ]
+    },
+    "pre_execution_qualification": {
+      "action_enum": [
+        "ACT_A",
+        "ACT_B"
+      ],
+      "calls": 2,
+      "pass_requires_exact_typed_traversal": true,
+      "protocol_history": [],
+      "scientific_schedule_entries_consumed": 0,
+      "stop_on_failure": true,
+      "tasks": {
+        "ACT_A": "Select ACT_A.",
+        "ACT_B": "Select ACT_B."
+      }
+    },
+    "prior_evidence": {
+      "P2_calls": "traces/behavioral_coupling_p2_semantic_indirection_calls_v0.json",
+      "P2_world": "traces/behavioral_coupling_p2_semantic_indirection_world_v0.json",
+      "mapping_row_order_calls": "traces/behavioral_coupling_mapping_row_order_calls_v0.json",
+      "mapping_row_order_freeze": "traces/behavioral_coupling_mapping_row_order_freeze_v0.json",
+      "mapping_row_order_world": "traces/behavioral_coupling_mapping_row_order_world_v0.json"
+    },
+    "protocol_version": "behavioral_coupling_action_delexicalization_v0",
+    "repository_authority_commit": "4b7b7bbe724380993845ac72ad67a241aeeb47ce",
+    "research_question": "Does the observed directional asymmetry follow RED/BLUE target identity, ACT_A/ACT_B token identity, the declared target-to-action relation, or an interaction among these surfaces?",
+    "scientific_boundary": {
+      "does_not_establish": [
+        "internal semantic representation",
+        "symbolic reasoning",
+        "agency",
+        "general abstraction",
+        "stable model bias",
+        "causal neural mechanism",
+        "general symbolic coordinate system"
+      ],
+      "may_establish": "bounded action distributions over target identity, typed token identity, and declared action contract for this realization",
+      "scientific_adjudication": "NOT_PERFORMED"
+    },
+    "status": "FROZEN_BEFORE_QUALIFICATION_AND_EMPIRICAL_EXECUTION",
+    "stop_after_pressure": true,
+    "validity": {
+      "invalidity_conditions": [
+        "wrong action contract serialized",
+        "wrong mapping serialized",
+        "wrong symbol delivered",
+        "hidden target leakage",
+        "F/P timing error",
+        "schema mutation",
+        "schedule mutation",
+        "retry replacement",
+        "prior-episode context leakage",
+        "scoring ignores frozen action contract"
+      ],
+      "wrong_policy_actions_are_behavior_not_invalidity": true
+    }
+  },
+  "protocol_sha256": "sha256:83bb637cde6ac3b38945f6d1685d91c2cf678bc7ceff92167086f41618d589e6",
+  "provider_exposed_sampling_settings": {
+    "max_tokens": 16,
+    "temperature": 0.0,
+    "top_p": 1.0
+  },
+  "qualification_model_calls_made": 0,
+  "schedule": [
+    {
+      "action_contract": "C1",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "BLUE"
+        }
+      ],
+      "condition": "F",
+      "correct_typed_action": "ACT_A",
+      "episode_id": "p2-delex-m1-ab-c1-alpha-f",
+      "first_mapping_row_target_color": "RED",
+      "hidden_target_color": "RED",
+      "mapping": "M1",
+      "mapping_declaration_order": "AB",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_action_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "serialized_mapping_text": "ALPHA -> RED; BETA -> BLUE"
+    },
+    {
+      "action_contract": "C1",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "BLUE"
+        }
+      ],
+      "condition": "P",
+      "correct_typed_action": "ACT_A",
+      "episode_id": "p2-delex-m1-ab-c1-alpha-p",
+      "first_mapping_row_target_color": "RED",
+      "hidden_target_color": "RED",
+      "mapping": "M1",
+      "mapping_declaration_order": "AB",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_action_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "serialized_mapping_text": "ALPHA -> RED; BETA -> BLUE"
+    },
+    {
+      "action_contract": "C1",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "BLUE"
+        }
+      ],
+      "condition": "F",
+      "correct_typed_action": "ACT_B",
+      "episode_id": "p2-delex-m1-ab-c1-beta-f",
+      "first_mapping_row_target_color": "RED",
+      "hidden_target_color": "BLUE",
+      "mapping": "M1",
+      "mapping_declaration_order": "AB",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_action_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "serialized_mapping_text": "ALPHA -> RED; BETA -> BLUE"
+    },
+    {
+      "action_contract": "C1",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "BLUE"
+        }
+      ],
+      "condition": "P",
+      "correct_typed_action": "ACT_B",
+      "episode_id": "p2-delex-m1-ab-c1-beta-p",
+      "first_mapping_row_target_color": "RED",
+      "hidden_target_color": "BLUE",
+      "mapping": "M1",
+      "mapping_declaration_order": "AB",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_action_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "serialized_mapping_text": "ALPHA -> RED; BETA -> BLUE"
+    },
+    {
+      "action_contract": "C2",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "RED"
+        }
+      ],
+      "condition": "F",
+      "correct_typed_action": "ACT_B",
+      "episode_id": "p2-delex-m1-ab-c2-alpha-f",
+      "first_mapping_row_target_color": "RED",
+      "hidden_target_color": "RED",
+      "mapping": "M1",
+      "mapping_declaration_order": "AB",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_action_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "serialized_mapping_text": "ALPHA -> RED; BETA -> BLUE"
+    },
+    {
+      "action_contract": "C2",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "RED"
+        }
+      ],
+      "condition": "P",
+      "correct_typed_action": "ACT_B",
+      "episode_id": "p2-delex-m1-ab-c2-alpha-p",
+      "first_mapping_row_target_color": "RED",
+      "hidden_target_color": "RED",
+      "mapping": "M1",
+      "mapping_declaration_order": "AB",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_action_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "serialized_mapping_text": "ALPHA -> RED; BETA -> BLUE"
+    },
+    {
+      "action_contract": "C2",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "RED"
+        }
+      ],
+      "condition": "F",
+      "correct_typed_action": "ACT_A",
+      "episode_id": "p2-delex-m1-ab-c2-beta-f",
+      "first_mapping_row_target_color": "RED",
+      "hidden_target_color": "BLUE",
+      "mapping": "M1",
+      "mapping_declaration_order": "AB",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_action_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "serialized_mapping_text": "ALPHA -> RED; BETA -> BLUE"
+    },
+    {
+      "action_contract": "C2",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "RED"
+        }
+      ],
+      "condition": "P",
+      "correct_typed_action": "ACT_A",
+      "episode_id": "p2-delex-m1-ab-c2-beta-p",
+      "first_mapping_row_target_color": "RED",
+      "hidden_target_color": "BLUE",
+      "mapping": "M1",
+      "mapping_declaration_order": "AB",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_action_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "serialized_mapping_text": "ALPHA -> RED; BETA -> BLUE"
+    },
+    {
+      "action_contract": "C1",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "BLUE"
+        }
+      ],
+      "condition": "F",
+      "correct_typed_action": "ACT_A",
+      "episode_id": "p2-delex-m1-ba-c1-alpha-f",
+      "first_mapping_row_target_color": "BLUE",
+      "hidden_target_color": "RED",
+      "mapping": "M1",
+      "mapping_declaration_order": "BA",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        },
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_action_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "serialized_mapping_text": "BETA -> BLUE; ALPHA -> RED"
+    },
+    {
+      "action_contract": "C1",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "BLUE"
+        }
+      ],
+      "condition": "P",
+      "correct_typed_action": "ACT_A",
+      "episode_id": "p2-delex-m1-ba-c1-alpha-p",
+      "first_mapping_row_target_color": "BLUE",
+      "hidden_target_color": "RED",
+      "mapping": "M1",
+      "mapping_declaration_order": "BA",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        },
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_action_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "serialized_mapping_text": "BETA -> BLUE; ALPHA -> RED"
+    },
+    {
+      "action_contract": "C1",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "BLUE"
+        }
+      ],
+      "condition": "F",
+      "correct_typed_action": "ACT_B",
+      "episode_id": "p2-delex-m1-ba-c1-beta-f",
+      "first_mapping_row_target_color": "BLUE",
+      "hidden_target_color": "BLUE",
+      "mapping": "M1",
+      "mapping_declaration_order": "BA",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        },
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_action_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "serialized_mapping_text": "BETA -> BLUE; ALPHA -> RED"
+    },
+    {
+      "action_contract": "C1",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "BLUE"
+        }
+      ],
+      "condition": "P",
+      "correct_typed_action": "ACT_B",
+      "episode_id": "p2-delex-m1-ba-c1-beta-p",
+      "first_mapping_row_target_color": "BLUE",
+      "hidden_target_color": "BLUE",
+      "mapping": "M1",
+      "mapping_declaration_order": "BA",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        },
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_action_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "serialized_mapping_text": "BETA -> BLUE; ALPHA -> RED"
+    },
+    {
+      "action_contract": "C2",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "RED"
+        }
+      ],
+      "condition": "F",
+      "correct_typed_action": "ACT_B",
+      "episode_id": "p2-delex-m1-ba-c2-alpha-f",
+      "first_mapping_row_target_color": "BLUE",
+      "hidden_target_color": "RED",
+      "mapping": "M1",
+      "mapping_declaration_order": "BA",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        },
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_action_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "serialized_mapping_text": "BETA -> BLUE; ALPHA -> RED"
+    },
+    {
+      "action_contract": "C2",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "RED"
+        }
+      ],
+      "condition": "P",
+      "correct_typed_action": "ACT_B",
+      "episode_id": "p2-delex-m1-ba-c2-alpha-p",
+      "first_mapping_row_target_color": "BLUE",
+      "hidden_target_color": "RED",
+      "mapping": "M1",
+      "mapping_declaration_order": "BA",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        },
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_action_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "serialized_mapping_text": "BETA -> BLUE; ALPHA -> RED"
+    },
+    {
+      "action_contract": "C2",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "RED"
+        }
+      ],
+      "condition": "F",
+      "correct_typed_action": "ACT_A",
+      "episode_id": "p2-delex-m1-ba-c2-beta-f",
+      "first_mapping_row_target_color": "BLUE",
+      "hidden_target_color": "BLUE",
+      "mapping": "M1",
+      "mapping_declaration_order": "BA",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        },
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_action_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "serialized_mapping_text": "BETA -> BLUE; ALPHA -> RED"
+    },
+    {
+      "action_contract": "C2",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "RED"
+        }
+      ],
+      "condition": "P",
+      "correct_typed_action": "ACT_A",
+      "episode_id": "p2-delex-m1-ba-c2-beta-p",
+      "first_mapping_row_target_color": "BLUE",
+      "hidden_target_color": "BLUE",
+      "mapping": "M1",
+      "mapping_declaration_order": "BA",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "BETA"
+        },
+        {
+          "color": "RED",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_action_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "serialized_mapping_text": "BETA -> BLUE; ALPHA -> RED"
+    },
+    {
+      "action_contract": "C1",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "BLUE"
+        }
+      ],
+      "condition": "F",
+      "correct_typed_action": "ACT_B",
+      "episode_id": "p2-delex-m2-ab-c1-alpha-f",
+      "first_mapping_row_target_color": "BLUE",
+      "hidden_target_color": "BLUE",
+      "mapping": "M2",
+      "mapping_declaration_order": "AB",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_action_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "serialized_mapping_text": "ALPHA -> BLUE; BETA -> RED"
+    },
+    {
+      "action_contract": "C1",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "BLUE"
+        }
+      ],
+      "condition": "P",
+      "correct_typed_action": "ACT_B",
+      "episode_id": "p2-delex-m2-ab-c1-alpha-p",
+      "first_mapping_row_target_color": "BLUE",
+      "hidden_target_color": "BLUE",
+      "mapping": "M2",
+      "mapping_declaration_order": "AB",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_action_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "serialized_mapping_text": "ALPHA -> BLUE; BETA -> RED"
+    },
+    {
+      "action_contract": "C1",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "BLUE"
+        }
+      ],
+      "condition": "F",
+      "correct_typed_action": "ACT_A",
+      "episode_id": "p2-delex-m2-ab-c1-beta-f",
+      "first_mapping_row_target_color": "BLUE",
+      "hidden_target_color": "RED",
+      "mapping": "M2",
+      "mapping_declaration_order": "AB",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_action_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "serialized_mapping_text": "ALPHA -> BLUE; BETA -> RED"
+    },
+    {
+      "action_contract": "C1",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "BLUE"
+        }
+      ],
+      "condition": "P",
+      "correct_typed_action": "ACT_A",
+      "episode_id": "p2-delex-m2-ab-c1-beta-p",
+      "first_mapping_row_target_color": "BLUE",
+      "hidden_target_color": "RED",
+      "mapping": "M2",
+      "mapping_declaration_order": "AB",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_action_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "serialized_mapping_text": "ALPHA -> BLUE; BETA -> RED"
+    },
+    {
+      "action_contract": "C2",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "RED"
+        }
+      ],
+      "condition": "F",
+      "correct_typed_action": "ACT_A",
+      "episode_id": "p2-delex-m2-ab-c2-alpha-f",
+      "first_mapping_row_target_color": "BLUE",
+      "hidden_target_color": "BLUE",
+      "mapping": "M2",
+      "mapping_declaration_order": "AB",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_action_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "serialized_mapping_text": "ALPHA -> BLUE; BETA -> RED"
+    },
+    {
+      "action_contract": "C2",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "RED"
+        }
+      ],
+      "condition": "P",
+      "correct_typed_action": "ACT_A",
+      "episode_id": "p2-delex-m2-ab-c2-alpha-p",
+      "first_mapping_row_target_color": "BLUE",
+      "hidden_target_color": "BLUE",
+      "mapping": "M2",
+      "mapping_declaration_order": "AB",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_action_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "serialized_mapping_text": "ALPHA -> BLUE; BETA -> RED"
+    },
+    {
+      "action_contract": "C2",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "RED"
+        }
+      ],
+      "condition": "F",
+      "correct_typed_action": "ACT_B",
+      "episode_id": "p2-delex-m2-ab-c2-beta-f",
+      "first_mapping_row_target_color": "BLUE",
+      "hidden_target_color": "RED",
+      "mapping": "M2",
+      "mapping_declaration_order": "AB",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_action_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "serialized_mapping_text": "ALPHA -> BLUE; BETA -> RED"
+    },
+    {
+      "action_contract": "C2",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "RED"
+        }
+      ],
+      "condition": "P",
+      "correct_typed_action": "ACT_B",
+      "episode_id": "p2-delex-m2-ab-c2-beta-p",
+      "first_mapping_row_target_color": "BLUE",
+      "hidden_target_color": "RED",
+      "mapping": "M2",
+      "mapping_declaration_order": "AB",
+      "mapping_rows": [
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        },
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_action_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "serialized_mapping_text": "ALPHA -> BLUE; BETA -> RED"
+    },
+    {
+      "action_contract": "C1",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "BLUE"
+        }
+      ],
+      "condition": "F",
+      "correct_typed_action": "ACT_B",
+      "episode_id": "p2-delex-m2-ba-c1-alpha-f",
+      "first_mapping_row_target_color": "RED",
+      "hidden_target_color": "BLUE",
+      "mapping": "M2",
+      "mapping_declaration_order": "BA",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_action_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "serialized_mapping_text": "BETA -> RED; ALPHA -> BLUE"
+    },
+    {
+      "action_contract": "C1",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "BLUE"
+        }
+      ],
+      "condition": "P",
+      "correct_typed_action": "ACT_B",
+      "episode_id": "p2-delex-m2-ba-c1-alpha-p",
+      "first_mapping_row_target_color": "RED",
+      "hidden_target_color": "BLUE",
+      "mapping": "M2",
+      "mapping_declaration_order": "BA",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_action_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "serialized_mapping_text": "BETA -> RED; ALPHA -> BLUE"
+    },
+    {
+      "action_contract": "C1",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "BLUE"
+        }
+      ],
+      "condition": "F",
+      "correct_typed_action": "ACT_A",
+      "episode_id": "p2-delex-m2-ba-c1-beta-f",
+      "first_mapping_row_target_color": "RED",
+      "hidden_target_color": "RED",
+      "mapping": "M2",
+      "mapping_declaration_order": "BA",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_action_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "serialized_mapping_text": "BETA -> RED; ALPHA -> BLUE"
+    },
+    {
+      "action_contract": "C1",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "BLUE"
+        }
+      ],
+      "condition": "P",
+      "correct_typed_action": "ACT_A",
+      "episode_id": "p2-delex-m2-ba-c1-beta-p",
+      "first_mapping_row_target_color": "RED",
+      "hidden_target_color": "RED",
+      "mapping": "M2",
+      "mapping_declaration_order": "BA",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_action_contract_text": "ACT_A -> RED; ACT_B -> BLUE",
+      "serialized_mapping_text": "BETA -> RED; ALPHA -> BLUE"
+    },
+    {
+      "action_contract": "C2",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "RED"
+        }
+      ],
+      "condition": "F",
+      "correct_typed_action": "ACT_A",
+      "episode_id": "p2-delex-m2-ba-c2-alpha-f",
+      "first_mapping_row_target_color": "RED",
+      "hidden_target_color": "BLUE",
+      "mapping": "M2",
+      "mapping_declaration_order": "BA",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_action_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "serialized_mapping_text": "BETA -> RED; ALPHA -> BLUE"
+    },
+    {
+      "action_contract": "C2",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "RED"
+        }
+      ],
+      "condition": "P",
+      "correct_typed_action": "ACT_A",
+      "episode_id": "p2-delex-m2-ba-c2-alpha-p",
+      "first_mapping_row_target_color": "RED",
+      "hidden_target_color": "BLUE",
+      "mapping": "M2",
+      "mapping_declaration_order": "BA",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "ALPHA",
+      "serialized_action_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "serialized_mapping_text": "BETA -> RED; ALPHA -> BLUE"
+    },
+    {
+      "action_contract": "C2",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "RED"
+        }
+      ],
+      "condition": "F",
+      "correct_typed_action": "ACT_B",
+      "episode_id": "p2-delex-m2-ba-c2-beta-f",
+      "first_mapping_row_target_color": "RED",
+      "hidden_target_color": "RED",
+      "mapping": "M2",
+      "mapping_declaration_order": "BA",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_action_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "serialized_mapping_text": "BETA -> RED; ALPHA -> BLUE"
+    },
+    {
+      "action_contract": "C2",
+      "action_contract_rows": [
+        {
+          "action": "ACT_A",
+          "target_color": "BLUE"
+        },
+        {
+          "action": "ACT_B",
+          "target_color": "RED"
+        }
+      ],
+      "condition": "P",
+      "correct_typed_action": "ACT_B",
+      "episode_id": "p2-delex-m2-ba-c2-beta-p",
+      "first_mapping_row_target_color": "RED",
+      "hidden_target_color": "RED",
+      "mapping": "M2",
+      "mapping_declaration_order": "BA",
+      "mapping_rows": [
+        {
+          "color": "RED",
+          "symbol": "BETA"
+        },
+        {
+          "color": "BLUE",
+          "symbol": "ALPHA"
+        }
+      ],
+      "observation_symbol": "BETA",
+      "serialized_action_contract_text": "ACT_A -> BLUE; ACT_B -> RED",
+      "serialized_mapping_text": "BETA -> RED; ALPHA -> BLUE"
+    }
+  ],
+  "schedule_sha256": "sha256:9d5783045adb7e7d2a6958b3dcf4cc798f0fcc8ff581f242015a9c1b3da245d0",
+  "scientific_adjudication": "NOT_PERFORMED"
+}
