@@ -8,6 +8,7 @@ import tempfile
 import unittest
 
 from src.runtime.local_model_qualification_t1_cross_realization import (
+    COMPLETION_BUDGET_PRESSURE_FREEZE_PATH,
     DEADLINE_PRESSURE_FREEZE_PATH,
     DEFAULT_FREEZE_PATH,
     _load_freeze,
@@ -175,6 +176,88 @@ class TurboDeadlinePressureTest(unittest.TestCase):
         self.assertFalse(semantic["q2_executed"])
         self.assertFalse(semantic["q3_executed"])
         self.assertFalse(semantic["q4_executed"])
+
+
+class TurboCompletionBudgetPressureTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.deadline = _load_freeze(REPO_ROOT / DEADLINE_PRESSURE_FREEZE_PATH)
+        self.pressure = _load_freeze(
+            REPO_ROOT / COMPLETION_BUDGET_PRESSURE_FREEZE_PATH
+        )
+
+    def runtime_payload(self):
+        realization = self.pressure["realization"]
+        return {"models": [{
+            "key": realization["requested_model_identifier"],
+            "display_name": realization["display_name"],
+            "architecture": realization["architecture"],
+            "quantization": realization["quantization"],
+            "size_bytes": realization["size_bytes"],
+            "params_string": realization["params_string"],
+            "format": realization["format"],
+            "max_context_length": realization["model_supported_maximum_context"],
+            "loaded_instances": [{
+                "id": realization["loaded_model_instance_identifier"],
+                "config": deepcopy(realization["loaded_instance_config"]),
+            }],
+        }]}
+
+    def test_only_completion_budget_changes_from_deadline_pressure(self):
+        before = deepcopy(self.deadline["realization"])
+        after = deepcopy(self.pressure["realization"])
+        before_sampling = before.pop("provider_exposed_sampling_settings")
+        after_sampling = after.pop("provider_exposed_sampling_settings")
+        self.assertEqual(before, after)
+        self.assertEqual(before_sampling.pop("max_tokens"), 1024)
+        self.assertEqual(after_sampling.pop("max_tokens"), 2048)
+        self.assertEqual(before_sampling, after_sampling)
+        self.assertEqual(tuple(self.pressure["authorized_specimens"]), ("Q1",))
+        self.assertTrue(self.pressure["comparison_boundary"]["new_pressure_not_retry"])
+        self.assertFalse(self.pressure["q4_authorized"])
+
+    def test_policy_visible_request_is_identical_and_reserve_is_admitted(self):
+        _, before_serialized, _ = build_exact_policy_visible_input(
+            repo_root=REPO_ROOT, cross_freeze=self.deadline, specimen_key="Q1"
+        )
+        _, after_serialized, _ = build_exact_policy_visible_input(
+            repo_root=REPO_ROOT, cross_freeze=self.pressure, specimen_key="Q1"
+        )
+        self.assertEqual(after_serialized, before_serialized)
+        before_q1 = self.deadline["specimens"]["Q1"]
+        after_q1 = self.pressure["specimens"]["Q1"]
+        for field in (
+            "source_specimen",
+            "prompt_template_sha256",
+            "response_schema_sha256",
+            "specimen_id",
+            "historical_freeze_path",
+        ):
+            self.assertEqual(after_q1[field], before_q1[field])
+        admission = after_q1["context_admission"]
+        self.assertEqual(admission["rendered_input_tokens"], 3705)
+        self.assertEqual(admission["reserved_output_tokens"], 2048)
+        self.assertEqual(admission["total_required_tokens"], 5753)
+        self.assertLessEqual(admission["total_required_tokens"], 8192)
+
+    def test_fake_execution_uses_2048_tokens_one_call_and_same_deadline(self):
+        transport = FakeTransport()
+        with tempfile.TemporaryDirectory() as temporary:
+            result = execute_once(
+                repo_root=REPO_ROOT,
+                freeze_path=REPO_ROOT / COMPLETION_BUDGET_PRESSURE_FREEZE_PATH,
+                specimen_key="Q1",
+                observation_path=Path(temporary) / "observation.json",
+                mechanical_path=Path(temporary) / "mechanical.json",
+                execution_basis_commit=HEAD,
+                transport=transport,
+                runtime_inspector=lambda endpoint, timeout: self.runtime_payload(),
+            )
+        self.assertEqual(len(transport.calls), 1)
+        self.assertEqual(transport.calls[0]["timeout_seconds"], 600.0)
+        self.assertEqual(transport.calls[0]["body"]["max_tokens"], 2048)
+        self.assertEqual(len(transport.calls[0]["body"]["messages"]), 1)
+        self.assertNotIn("tools", transport.calls[0]["body"])
+        self.assertEqual(result["terminal_state"], "PASS")
 
 
 if __name__ == "__main__":

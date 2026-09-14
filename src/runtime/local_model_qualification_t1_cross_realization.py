@@ -32,10 +32,14 @@ DEFAULT_FREEZE_PATH = Path(
 DEADLINE_PRESSURE_FREEZE_PATH = Path(
     "traces/local_model_qualification_t1_turbo_q1_deadline_pressure_freeze_v0.json"
 )
+COMPLETION_BUDGET_PRESSURE_FREEZE_PATH = Path(
+    "traces/local_model_qualification_t1_turbo_q1_completion_budget_pressure_freeze_v0.json"
+)
 SPECIMEN_MODULES = {"Q1": q1, "Q2": q2, "Q3": q3}
 FREEZE_AUTHORIZATIONS = {
     "local_model_qualification_t1_turbo_freeze_v0": ("Q1", "Q2", "Q3"),
     "local_model_qualification_t1_turbo_q1_deadline_pressure_freeze_v0": ("Q1",),
+    "local_model_qualification_t1_turbo_q1_completion_budget_pressure_freeze_v0": ("Q1",),
 }
 RuntimeInspector = Callable[[str, float], Mapping[str, Any]]
 
