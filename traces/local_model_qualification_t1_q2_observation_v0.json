@@ -1,0 +1,652 @@
+{
+  "adapter_failure": null,
+  "apparatus_version": "local_model_qualification_t1_q2_v0",
+  "artifact": "local_model_qualification_t1_q2_observation_v0",
+  "artifact_class": "LOCAL_MODEL_QUALIFICATION_RUN_OBSERVATION",
+  "declared_interface": {
+    "conversation_state_supplied": false,
+    "external_network_access_supplied_to_model": false,
+    "filesystem_access_supplied_to_model": false,
+    "mcp_surface": [],
+    "message_count": 1,
+    "model_tool_surface": [],
+    "prompt_template_identity": "DME_Lab T1-Q2 evidence-state separation v0",
+    "prompt_template_sha256": "sha256:5ff91c3d48b23aa254fe506e644b86143edbb6e6c5b434285a346fbb8ec4a559",
+    "repository_access_supplied_to_model": false,
+    "response_schema": {
+      "json_schema": {
+        "name": "t1_q2_evidence_state_separation",
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "apparatus_execution_state": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "bounded_system_interpretation": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "p11_evidence_state": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "p8_evidence_state": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "terminal_action": {
+              "enum": [
+                "STOP",
+                "ESCALATE"
+              ],
+              "type": "string"
+            },
+            "unresolved_and_unauthorized": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "apparatus_execution_state",
+            "p8_evidence_state",
+            "p11_evidence_state",
+            "bounded_system_interpretation",
+            "unresolved_and_unauthorized",
+            "terminal_action"
+          ],
+          "type": "object"
+        },
+        "strict": true
+      },
+      "type": "json_schema"
+    },
+    "response_schema_sha256": "sha256:150b54245fdeacc26c5fa78a84669ee4e86ed21d7ed65685d3108b509fbfe525"
+  },
+  "execution_basis": {
+    "argument": "3da3ca35a700896a57772648137302967d102b32",
+    "head_at_preflight": "3da3ca35a700896a57772648137302967d102b32",
+    "resolved_commit": "3da3ca35a700896a57772648137302967d102b32",
+    "valid": true
+  },
+  "finish_reason": "stop",
+  "freeze_path": "traces/local_model_qualification_t1_q2_freeze_v0.json",
+  "http_status": 200,
+  "leakage_observation": {
+    "campaign_document_supplied_to_model": false,
+    "campaign_expected_answer_supplied_to_model": false,
+    "historical_adjudication_supplied_to_model": false,
+    "historical_classifications_supplied_to_model": false,
+    "historical_intended_discriminators_supplied_to_model": false,
+    "historical_rationales_supplied_to_model": false,
+    "prior_qualification_outputs_supplied_to_model": false,
+    "semantic_evaluator_supplied_to_model": false,
+    "unknown_pretraining_or_runtime_cache_excluded": false
+  },
+  "model_calls_made": 1,
+  "raw_input_supplied": {
+    "prompt_template": {
+      "authority": "READ_ONLY",
+      "identity": "DME_Lab T1-Q2 evidence-state separation v0",
+      "instructions": [
+        "Use only the supplied packet; do not claim repository or tool access.",
+        "Keep execution of the apparatus separate from semantic behavior of the system under test.",
+        "Address the retained observations for P8 and P11 independently.",
+        "Distinguish direct observations from bounded interpretation and unresolved or unauthorized claims.",
+        "Do not propose, execute, or request follow-up work.",
+        "Use terminal_action STOP when the separation is complete.",
+        "Use terminal_action ESCALATE only if the packet cannot support the requested separation.",
+        "Return exactly one object conforming to the declared response schema."
+      ],
+      "objective": "Inspect only the supplied historical pressure-run evidence packet and state the bounded evidentiary status it supports."
+    },
+    "source_packet": {
+      "content": {
+        "baseline": {
+          "active_pressure": {
+            "declarations": [
+              {
+                "provenance": {
+                  "source_anchor": "Current Navigation / Active pressure",
+                  "source_commit": "c4256e077c69d03b1461755dbaa20c2ff5f1c15f",
+                  "source_kind": "pressure_map",
+                  "source_path": "PRESSURE_RESOLUTION_MAP.md"
+                },
+                "raw_value": "none",
+                "status": "explicit_none",
+                "value": null
+              },
+              {
+                "provenance": {
+                  "source_anchor": "Current Navigation and Development Standing / active pressure",
+                  "source_commit": "c4256e077c69d03b1461755dbaa20c2ff5f1c15f",
+                  "source_kind": "project_state",
+                  "source_path": "PROJECT_STATE.md"
+                },
+                "raw_value": "none",
+                "status": "explicit_none",
+                "value": null
+              }
+            ],
+            "semantic_status": "explicit_none",
+            "status": "agreement",
+            "value": null
+          },
+          "constraint_count": 46,
+          "controller": {
+            "classification": "projection_document",
+            "standing": {
+              "raw_value": "PARKED.",
+              "source_heading": "Standing",
+              "status": "known_value",
+              "value": "PARKED"
+            }
+          },
+          "diagnostic_counts": {},
+          "evidence_reference_count": 214,
+          "freshness": {
+            "check_time": "2026-09-09T20:00:00Z",
+            "freshness_ref": "origin/main",
+            "observed_tail": "c4256e077c69d03b1461755dbaa20c2ff5f1c15f",
+            "status": "current"
+          },
+          "pr018": {
+            "active": false,
+            "standing": {
+              "raw_value": "`OPEN`",
+              "status": "known_value",
+              "value": "OPEN"
+            }
+          },
+          "pr019": {
+            "resolution_history": [
+              {
+                "id": "R0",
+                "standing": {
+                  "raw_value": "BASIS_INSUFFICIENT",
+                  "status": "known_value",
+                  "value": "BASIS_INSUFFICIENT"
+                }
+              },
+              {
+                "id": "R1",
+                "standing": {
+                  "raw_value": "BOUNDED_RESOLUTION",
+                  "status": "known_value",
+                  "value": "BOUNDED_RESOLUTION"
+                }
+              }
+            ],
+            "standing": {
+              "raw_value": "`BOUNDED_RESOLUTION`",
+              "status": "known_value",
+              "value": "BOUNDED_RESOLUTION"
+            }
+          },
+          "pressure_node_count": 19,
+          "pressure_relation_count": 24,
+          "projection_document_count": 3,
+          "source_commit": "c4256e077c69d03b1461755dbaa20c2ff5f1c15f"
+        },
+        "historical_trace_metadata": {
+          "adapter_version": "cockpit_projection_adapter_v0",
+          "pressure_version": "cockpit_projection_adapter_pressure_v0"
+        },
+        "scenario_observations": [
+          {
+            "diagnostics": [
+              {
+                "affected": {
+                  "source_path": "PRESSURE_RESOLUTION_MAP.md"
+                },
+                "kind": "missing_required_source",
+                "message": "required committed source is unavailable: fatal: path 'PRESSURE_RESOLUTION_MAP.md' does not exist in 'b9eeb73eebcca3d3c7b93dae5229b88d6e1f4f43'"
+              },
+              {
+                "affected": {
+                  "field": "newly_reachable_open",
+                  "source_path": "PRESSURE_RESOLUTION_MAP.md"
+                },
+                "kind": "source_conflict",
+                "message": "Pressure Map and PROJECT_STATE open-pressure declarations disagree",
+                "raw_value": {
+                  "pressure_map": [],
+                  "project_state": [
+                    "PR-018"
+                  ]
+                }
+              }
+            ],
+            "id": "P1",
+            "mutation": "Omitted PRESSURE_RESOLUTION_MAP.md from the committed tree.",
+            "observed": {
+              "pressure_nodes": 0,
+              "projection_status": "partial",
+              "source_commit": "b9eeb73eebcca3d3c7b93dae5229b88d6e1f4f43",
+              "source_surfaces": [
+                {
+                  "source_path": "PROJECT_STATE.md",
+                  "status": "available"
+                },
+                {
+                  "source_path": "PRESSURE_RESOLUTION_MAP.md",
+                  "status": "missing"
+                },
+                {
+                  "source_path": "docs/constraints/README.md",
+                  "status": "available"
+                },
+                {
+                  "source_path": "docs/constraints/registry.jsonl",
+                  "status": "available"
+                }
+              ]
+            },
+            "title": "missing required source"
+          },
+          {
+            "diagnostics": [
+              {
+                "affected": {
+                  "field": "standing",
+                  "object_id": "PR-001",
+                  "source_path": "PRESSURE_RESOLUTION_MAP.md"
+                },
+                "kind": "unknown_standing",
+                "message": "unrecognized pressure standing 'GOBLIN_PENDING' was preserved",
+                "raw_value": "`GOBLIN_PENDING`"
+              }
+            ],
+            "id": "P2",
+            "mutation": "Set PR-001 standing to the unrecognized token GOBLIN_PENDING.",
+            "observed": {
+              "standing": {
+                "raw_value": "`GOBLIN_PENDING`",
+                "status": "unknown_standing",
+                "value": "GOBLIN_PENDING"
+              }
+            },
+            "title": "unknown pressure standing"
+          },
+          {
+            "diagnostics": [
+              {
+                "affected": {
+                  "field": "evidence_reference",
+                  "object_id": "PR-001",
+                  "source_path": "PRESSURE_RESOLUTION_MAP.md"
+                },
+                "kind": "broken_reference",
+                "message": "committed evidence target 'docs/decisions/not-present.md' does not exist",
+                "raw_value": "docs/decisions/not-present.md"
+              }
+            ],
+            "id": "P3",
+            "mutation": "Pointed PR-001 Evidence to a nonexistent committed decision path.",
+            "observed": {
+              "matching_references": [
+                {
+                  "committed_path_checked": "docs/decisions/not-present.md",
+                  "id": "evidence-a09d067a2e521b66",
+                  "label": "missing",
+                  "origin": {
+                    "id": "PR-001",
+                    "kind": "pressure_node"
+                  },
+                  "original_target": "docs/decisions/not-present.md",
+                  "provenance": {
+                    "source_anchor": "PR-001 — Bounded specimen / evidence",
+                    "source_commit": "d3a5b3ac76e5ffe76971b2a11f928d212597c4e0",
+                    "source_kind": "pressure_node",
+                    "source_path": "PRESSURE_RESOLUTION_MAP.md"
+                  },
+                  "resolution_status": "broken",
+                  "target_kind": "decision"
+                }
+              ]
+            },
+            "title": "broken evidence reference"
+          },
+          {
+            "diagnostics": [
+              {
+                "affected": {
+                  "field": "active_pressure",
+                  "source_path": "PRESSURE_RESOLUTION_MAP.md"
+                },
+                "kind": "source_conflict",
+                "message": "Pressure Map and PROJECT_STATE active-pressure declarations disagree",
+                "raw_value": [
+                  "none",
+                  "PR-018"
+                ]
+              }
+            ],
+            "id": "P4",
+            "mutation": "Map declared no active pressure while PROJECT_STATE declared PR-018 active.",
+            "observed": {
+              "active_pressure": {
+                "declarations": [
+                  {
+                    "provenance": {
+                      "source_anchor": "Current Navigation / Active pressure",
+                      "source_commit": "8fe8bacf2c0eab7ca57e5a6cac4fc0f239f7670f",
+                      "source_kind": "pressure_map",
+                      "source_path": "PRESSURE_RESOLUTION_MAP.md"
+                    },
+                    "raw_value": "none",
+                    "status": "explicit_none",
+                    "value": null
+                  },
+                  {
+                    "provenance": {
+                      "source_anchor": "Current Navigation and Development Standing / active pressure",
+                      "source_commit": "8fe8bacf2c0eab7ca57e5a6cac4fc0f239f7670f",
+                      "source_kind": "project_state",
+                      "source_path": "PROJECT_STATE.md"
+                    },
+                    "raw_value": "PR-018",
+                    "status": "known_value",
+                    "value": "PR-018"
+                  }
+                ],
+                "semantic_status": "conflicting",
+                "status": "conflicting",
+                "value": null
+              }
+            },
+            "title": "source conflict"
+          },
+          {
+            "diagnostics": [],
+            "id": "P5",
+            "mutation": "Mentioned PR-002 in Pressure prose with absent relation fields, then committed an explicit Blocked by control.",
+            "observed": {
+              "explicit_control_relations": [
+                {
+                  "condition_text": null,
+                  "provenance": {
+                    "source_anchor": "PR-001 — Bounded specimen / blocked_by",
+                    "source_commit": "2fa24b9e6197b13db05ab1c682803f16f9d6a703",
+                    "source_kind": "pressure_map",
+                    "source_path": "PRESSURE_RESOLUTION_MAP.md"
+                  },
+                  "raw_source_field": "PR-002",
+                  "relation_kind": "blocked_by",
+                  "source_pressure_id": "PR-001",
+                  "target_kind": "pressure",
+                  "target_pressure_id": "PR-002"
+                }
+              ],
+              "prose_specimen_relations": []
+            },
+            "title": "relation-looking prose"
+          },
+          {
+            "diagnostics": [
+              {
+                "affected": {
+                  "field": "standing",
+                  "object_id": "PR-001",
+                  "source_path": "PRESSURE_RESOLUTION_MAP.md"
+                },
+                "kind": "parse_failure",
+                "message": "required pressure field 'standing' is missing"
+              }
+            ],
+            "id": "P6",
+            "mutation": "Removed the required colon from the PR-001 Standing field marker.",
+            "observed": {
+              "other_node_standing": {
+                "raw_value": "`BOUNDED_RESOLUTION`",
+                "status": "known_value",
+                "value": "BOUNDED_RESOLUTION"
+              },
+              "projection_status": "partial",
+              "wounded_standing": {
+                "raw_value": null,
+                "status": "missing",
+                "value": null
+              }
+            },
+            "title": "malformed pressure structure"
+          },
+          {
+            "diagnostics": [
+              {
+                "affected": {
+                  "object_id": "line-2",
+                  "source_path": "docs/constraints/registry.jsonl"
+                },
+                "kind": "parse_failure",
+                "message": "malformed constraint JSONL record: Expecting property name enclosed in double quotes",
+                "raw_value": "{malformed"
+              }
+            ],
+            "id": "P7",
+            "mutation": "Committed valid D-0001, malformed JSON, then valid D-0002.",
+            "observed": {
+              "constraint_ids": [
+                "D-0001",
+                "D-0002"
+              ],
+              "projection_status": "partial"
+            },
+            "title": "malformed constraint among valid records"
+          },
+          {
+            "diagnostics": [],
+            "id": "P8",
+            "mutation": "Renamed only the recognized Resolution history heading to Prior resolutions; retained both visible R entries.",
+            "observed": {
+              "damaged_current_standing": {
+                "raw_value": "`BOUNDED_RESOLUTION`",
+                "status": "known_value",
+                "value": "BOUNDED_RESOLUTION"
+              },
+              "damaged_history": [],
+              "healthy_current_standing": {
+                "raw_value": "`BOUNDED_RESOLUTION`",
+                "status": "known_value",
+                "value": "BOUNDED_RESOLUTION"
+              },
+              "healthy_history": [
+                {
+                  "id": "R0",
+                  "standing": "BASIS_INSUFFICIENT"
+                },
+                {
+                  "id": "R1",
+                  "standing": "BOUNDED_RESOLUTION"
+                }
+              ]
+            },
+            "title": "resolution-history wound"
+          },
+          {
+            "diagnostics": [],
+            "id": "P9",
+            "mutation": "Projected commit A after a later commit B changed PR-001 on the freshness ref.",
+            "observed": {
+              "freshness_status": "stale",
+              "observed_tail": "2d70ffdd3eca89d7593e96cf6b8910edab676044",
+              "projected_pr001_standing": "BOUNDED_RESOLUTION",
+              "source_commit": "f06efc5ebe13f7b52c1e94a16bc316620c5fb891"
+            },
+            "title": "stale projection basis"
+          },
+          {
+            "diagnostics": [],
+            "id": "P10",
+            "mutation": "Inserted PR-999, ACTIVE PIPELINE, SUPER_CONTROLLER, and RUNNING prose into the non-authoritative Controller projection.",
+            "observed": {
+              "active_pressure": {
+                "declarations": [
+                  {
+                    "provenance": {
+                      "source_anchor": "Current Navigation / Active pressure",
+                      "source_commit": "49f0e9e1f1132f8307a79351b764f820d6cecd78",
+                      "source_kind": "pressure_map",
+                      "source_path": "PRESSURE_RESOLUTION_MAP.md"
+                    },
+                    "raw_value": "none",
+                    "status": "explicit_none",
+                    "value": null
+                  },
+                  {
+                    "provenance": {
+                      "source_anchor": "Current Navigation and Development Standing / active pressure",
+                      "source_commit": "49f0e9e1f1132f8307a79351b764f820d6cecd78",
+                      "source_kind": "project_state",
+                      "source_path": "PROJECT_STATE.md"
+                    },
+                    "raw_value": "none",
+                    "status": "explicit_none",
+                    "value": null
+                  }
+                ],
+                "semantic_status": "explicit_none",
+                "status": "agreement",
+                "value": null
+              },
+              "controller_classification": "projection_document",
+              "controller_standing": {
+                "raw_value": "PARKED.",
+                "source_heading": "Standing",
+                "status": "known_value",
+                "value": "PARKED"
+              },
+              "pr999_node_created": false,
+              "pr999_relation_created": false
+            },
+            "title": "projection document containment"
+          },
+          {
+            "diagnostics": [],
+            "id": "P11",
+            "mutation": "Committed two explicit PR-001 headings with different titles and standings.",
+            "observed": {
+              "matching_node_count": 2,
+              "matching_nodes": [
+                {
+                  "standing": {
+                    "raw_value": "`BOUNDED_RESOLUTION`",
+                    "status": "known_value",
+                    "value": "BOUNDED_RESOLUTION"
+                  },
+                  "title": "Bounded specimen"
+                },
+                {
+                  "standing": {
+                    "raw_value": "`OPEN`",
+                    "status": "known_value",
+                    "value": "OPEN"
+                  },
+                  "title": "Conflicting duplicate"
+                }
+              ]
+            },
+            "title": "duplicate pressure ID"
+          }
+        ]
+      },
+      "raw_source_sha256": "sha256:832fbb63abec6eaae31aa33cc6ca635866b7302dc1b94e099cd9d15fda10e42b",
+      "selected_packet_sha256": "sha256:6a5c81927b254c447ba80b2d599b9191a2b98af253c8b0348ab396e5856e6a99",
+      "source_commit": "89a75124d8397b4772f5c387635225a40de35bc3",
+      "source_path": "traces/cockpit_projection_adapter_pressure_v0.json"
+    },
+    "specimen_id": "T1-Q2_STAGE_3_PROJECTION_ADAPTER_PRESSURE",
+    "tier": "T1_INTERPRETATION_WITHOUT_PROMOTION"
+  },
+  "raw_model_response": "{\n  \"apparatus_execution_state\": \"READ_ONLY\",\n  \"bounded_system_interpretation\": \"The historical pressure-run evidence packet supports a bounded evidentiary status.\",\n  \"p11_evidence_state\": \"OPEN\",\n  \"p8_evidence_state\": \"CLOSED\"\n  ,\n  \"terminal_action\": \"STOP\"\n  ,\n  \"unresolved_and_unauthorized\": \"No unresolved or unauthorized claims were found in the historical pressure-run evidence packet.\"\n}",
+  "raw_response_body": "{\n  \"id\": \"chatcmpl-40yqnwp3lr6fjjugedmgi6\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789370460,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\n  \\\"apparatus_execution_state\\\": \\\"READ_ONLY\\\",\\n  \\\"bounded_system_interpretation\\\": \\\"The historical pressure-run evidence packet supports a bounded evidentiary status.\\\",\\n  \\\"p11_evidence_state\\\": \\\"OPEN\\\",\\n  \\\"p8_evidence_state\\\": \\\"CLOSED\\\"\\n  ,\\n  \\\"terminal_action\\\": \\\"STOP\\\"\\n  ,\\n  \\\"unresolved_and_unauthorized\\\": \\\"No unresolved or unauthorized claims were found in the historical pressure-run evidence packet.\\\"\\n}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 2634,\n    \"completion_tokens\": 100,\n    \"total_tokens\": 2734,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+  "realization": {
+    "context_limit": null,
+    "endpoint_configuration": {
+      "authentication_configured": false,
+      "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+      "environment_proxies_allowed": false,
+      "host": "127.0.0.1",
+      "loopback_only": true,
+      "path": "/v1/chat/completions",
+      "port": 1234,
+      "redirects_allowed": false,
+      "scheme": "http",
+      "timeout_seconds": 120.0
+    },
+    "model_artifact_digest": null,
+    "provider_exposed_sampling_settings": {
+      "max_tokens": 1024,
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "provider_reported_model": "hermes-3-llama-3.2-3b",
+    "provider_system_fingerprint": "hermes-3-llama-3.2-3b",
+    "provider_usage": {
+      "completion_tokens": 100,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "prompt_tokens": 2634,
+      "total_tokens": 2734
+    },
+    "quantization": null,
+    "requested_model_identifier": "hermes-3-llama-3.2-3b",
+    "runtime": "LM Studio OpenAI-compatible local endpoint",
+    "runtime_version": null
+  },
+  "repository_observation": {
+    "protected_manifest_after": {
+      "file_count": 80,
+      "manifest_sha256": "sha256:28fb8f034816c6de721478896014d523e879dca398504b206b806b0ab78a9332"
+    },
+    "protected_manifest_before": {
+      "file_count": 80,
+      "manifest_sha256": "sha256:28fb8f034816c6de721478896014d523e879dca398504b206b806b0ab78a9332"
+    },
+    "status_after_inference": "",
+    "status_before_inference": ""
+  },
+  "run_timing": {
+    "finished_at_utc": "2026-09-14T07:21:06.497793Z",
+    "started_at_utc": "2026-09-14T07:21:00.134602Z"
+  },
+  "semantic_evaluation": "NOT_PERFORMED_IN_OBSERVATION",
+  "serialized_http_request": "{\"max_tokens\":1024,\"messages\":[{\"content\":\"{\\\"prompt_template\\\":{\\\"authority\\\":\\\"READ_ONLY\\\",\\\"identity\\\":\\\"DME_Lab T1-Q2 evidence-state separation v0\\\",\\\"instructions\\\":[\\\"Use only the supplied packet; do not claim repository or tool access.\\\",\\\"Keep execution of the apparatus separate from semantic behavior of the system under test.\\\",\\\"Address the retained observations for P8 and P11 independently.\\\",\\\"Distinguish direct observations from bounded interpretation and unresolved or unauthorized claims.\\\",\\\"Do not propose, execute, or request follow-up work.\\\",\\\"Use terminal_action STOP when the separation is complete.\\\",\\\"Use terminal_action ESCALATE only if the packet cannot support the requested separation.\\\",\\\"Return exactly one object conforming to the declared response schema.\\\"],\\\"objective\\\":\\\"Inspect only the supplied historical pressure-run evidence packet and state the bounded evidentiary status it supports.\\\"},\\\"source_packet\\\":{\\\"content\\\":{\\\"baseline\\\":{\\\"active_pressure\\\":{\\\"declarations\\\":[{\\\"provenance\\\":{\\\"source_anchor\\\":\\\"Current Navigation / Active pressure\\\",\\\"source_commit\\\":\\\"c4256e077c69d03b1461755dbaa20c2ff5f1c15f\\\",\\\"source_kind\\\":\\\"pressure_map\\\",\\\"source_path\\\":\\\"PRESSURE_RESOLUTION_MAP.md\\\"},\\\"raw_value\\\":\\\"none\\\",\\\"status\\\":\\\"explicit_none\\\",\\\"value\\\":null},{\\\"provenance\\\":{\\\"source_anchor\\\":\\\"Current Navigation and Development Standing / active pressure\\\",\\\"source_commit\\\":\\\"c4256e077c69d03b1461755dbaa20c2ff5f1c15f\\\",\\\"source_kind\\\":\\\"project_state\\\",\\\"source_path\\\":\\\"PROJECT_STATE.md\\\"},\\\"raw_value\\\":\\\"none\\\",\\\"status\\\":\\\"explicit_none\\\",\\\"value\\\":null}],\\\"semantic_status\\\":\\\"explicit_none\\\",\\\"status\\\":\\\"agreement\\\",\\\"value\\\":null},\\\"constraint_count\\\":46,\\\"controller\\\":{\\\"classification\\\":\\\"projection_document\\\",\\\"standing\\\":{\\\"raw_value\\\":\\\"PARKED.\\\",\\\"source_heading\\\":\\\"Standing\\\",\\\"status\\\":\\\"known_value\\\",\\\"value\\\":\\\"PARKED\\\"}},\\\"diagnostic_counts\\\":{},\\\"evidence_reference_count\\\":214,\\\"freshness\\\":{\\\"check_time\\\":\\\"2026-09-09T20:00:00Z\\\",\\\"freshness_ref\\\":\\\"origin/main\\\",\\\"observed_tail\\\":\\\"c4256e077c69d03b1461755dbaa20c2ff5f1c15f\\\",\\\"status\\\":\\\"current\\\"},\\\"pr018\\\":{\\\"active\\\":false,\\\"standing\\\":{\\\"raw_value\\\":\\\"`OPEN`\\\",\\\"status\\\":\\\"known_value\\\",\\\"value\\\":\\\"OPEN\\\"}},\\\"pr019\\\":{\\\"resolution_history\\\":[{\\\"id\\\":\\\"R0\\\",\\\"standing\\\":{\\\"raw_value\\\":\\\"BASIS_INSUFFICIENT\\\",\\\"status\\\":\\\"known_value\\\",\\\"value\\\":\\\"BASIS_INSUFFICIENT\\\"}},{\\\"id\\\":\\\"R1\\\",\\\"standing\\\":{\\\"raw_value\\\":\\\"BOUNDED_RESOLUTION\\\",\\\"status\\\":\\\"known_value\\\",\\\"value\\\":\\\"BOUNDED_RESOLUTION\\\"}}],\\\"standing\\\":{\\\"raw_value\\\":\\\"`BOUNDED_RESOLUTION`\\\",\\\"status\\\":\\\"known_value\\\",\\\"value\\\":\\\"BOUNDED_RESOLUTION\\\"}},\\\"pressure_node_count\\\":19,\\\"pressure_relation_count\\\":24,\\\"projection_document_count\\\":3,\\\"source_commit\\\":\\\"c4256e077c69d03b1461755dbaa20c2ff5f1c15f\\\"},\\\"historical_trace_metadata\\\":{\\\"adapter_version\\\":\\\"cockpit_projection_adapter_v0\\\",\\\"pressure_version\\\":\\\"cockpit_projection_adapter_pressure_v0\\\"},\\\"scenario_observations\\\":[{\\\"diagnostics\\\":[{\\\"affected\\\":{\\\"source_path\\\":\\\"PRESSURE_RESOLUTION_MAP.md\\\"},\\\"kind\\\":\\\"missing_required_source\\\",\\\"message\\\":\\\"required committed source is unavailable: fatal: path 'PRESSURE_RESOLUTION_MAP.md' does not exist in 'b9eeb73eebcca3d3c7b93dae5229b88d6e1f4f43'\\\"},{\\\"affected\\\":{\\\"field\\\":\\\"newly_reachable_open\\\",\\\"source_path\\\":\\\"PRESSURE_RESOLUTION_MAP.md\\\"},\\\"kind\\\":\\\"source_conflict\\\",\\\"message\\\":\\\"Pressure Map and PROJECT_STATE open-pressure declarations disagree\\\",\\\"raw_value\\\":{\\\"pressure_map\\\":[],\\\"project_state\\\":[\\\"PR-018\\\"]}}],\\\"id\\\":\\\"P1\\\",\\\"mutation\\\":\\\"Omitted PRESSURE_RESOLUTION_MAP.md from the committed tree.\\\",\\\"observed\\\":{\\\"pressure_nodes\\\":0,\\\"projection_status\\\":\\\"partial\\\",\\\"source_commit\\\":\\\"b9eeb73eebcca3d3c7b93dae5229b88d6e1f4f43\\\",\\\"source_surfaces\\\":[{\\\"source_path\\\":\\\"PROJECT_STATE.md\\\",\\\"status\\\":\\\"available\\\"},{\\\"source_path\\\":\\\"PRESSURE_RESOLUTION_MAP.md\\\",\\\"status\\\":\\\"missing\\\"},{\\\"source_path\\\":\\\"docs/constraints/README.md\\\",\\\"status\\\":\\\"available\\\"},{\\\"source_path\\\":\\\"docs/constraints/registry.jsonl\\\",\\\"status\\\":\\\"available\\\"}]},\\\"title\\\":\\\"missing required source\\\"},{\\\"diagnostics\\\":[{\\\"affected\\\":{\\\"field\\\":\\\"standing\\\",\\\"object_id\\\":\\\"PR-001\\\",\\\"source_path\\\":\\\"PRESSURE_RESOLUTION_MAP.md\\\"},\\\"kind\\\":\\\"unknown_standing\\\",\\\"message\\\":\\\"unrecognized pressure standing 'GOBLIN_PENDING' was preserved\\\",\\\"raw_value\\\":\\\"`GOBLIN_PENDING`\\\"}],\\\"id\\\":\\\"P2\\\",\\\"mutation\\\":\\\"Set PR-001 standing to the unrecognized token GOBLIN_PENDING.\\\",\\\"observed\\\":{\\\"standing\\\":{\\\"raw_value\\\":\\\"`GOBLIN_PENDING`\\\",\\\"status\\\":\\\"unknown_standing\\\",\\\"value\\\":\\\"GOBLIN_PENDING\\\"}},\\\"title\\\":\\\"unknown pressure standing\\\"},{\\\"diagnostics\\\":[{\\\"affected\\\":{\\\"field\\\":\\\"evidence_reference\\\",\\\"object_id\\\":\\\"PR-001\\\",\\\"source_path\\\":\\\"PRESSURE_RESOLUTION_MAP.md\\\"},\\\"kind\\\":\\\"broken_reference\\\",\\\"message\\\":\\\"committed evidence target 'docs/decisions/not-present.md' does not exist\\\",\\\"raw_value\\\":\\\"docs/decisions/not-present.md\\\"}],\\\"id\\\":\\\"P3\\\",\\\"mutation\\\":\\\"Pointed PR-001 Evidence to a nonexistent committed decision path.\\\",\\\"observed\\\":{\\\"matching_references\\\":[{\\\"committed_path_checked\\\":\\\"docs/decisions/not-present.md\\\",\\\"id\\\":\\\"evidence-a09d067a2e521b66\\\",\\\"label\\\":\\\"missing\\\",\\\"origin\\\":{\\\"id\\\":\\\"PR-001\\\",\\\"kind\\\":\\\"pressure_node\\\"},\\\"original_target\\\":\\\"docs/decisions/not-present.md\\\",\\\"provenance\\\":{\\\"source_anchor\\\":\\\"PR-001 — Bounded specimen / evidence\\\",\\\"source_commit\\\":\\\"d3a5b3ac76e5ffe76971b2a11f928d212597c4e0\\\",\\\"source_kind\\\":\\\"pressure_node\\\",\\\"source_path\\\":\\\"PRESSURE_RESOLUTION_MAP.md\\\"},\\\"resolution_status\\\":\\\"broken\\\",\\\"target_kind\\\":\\\"decision\\\"}]},\\\"title\\\":\\\"broken evidence reference\\\"},{\\\"diagnostics\\\":[{\\\"affected\\\":{\\\"field\\\":\\\"active_pressure\\\",\\\"source_path\\\":\\\"PRESSURE_RESOLUTION_MAP.md\\\"},\\\"kind\\\":\\\"source_conflict\\\",\\\"message\\\":\\\"Pressure Map and PROJECT_STATE active-pressure declarations disagree\\\",\\\"raw_value\\\":[\\\"none\\\",\\\"PR-018\\\"]}],\\\"id\\\":\\\"P4\\\",\\\"mutation\\\":\\\"Map declared no active pressure while PROJECT_STATE declared PR-018 active.\\\",\\\"observed\\\":{\\\"active_pressure\\\":{\\\"declarations\\\":[{\\\"provenance\\\":{\\\"source_anchor\\\":\\\"Current Navigation / Active pressure\\\",\\\"source_commit\\\":\\\"8fe8bacf2c0eab7ca57e5a6cac4fc0f239f7670f\\\",\\\"source_kind\\\":\\\"pressure_map\\\",\\\"source_path\\\":\\\"PRESSURE_RESOLUTION_MAP.md\\\"},\\\"raw_value\\\":\\\"none\\\",\\\"status\\\":\\\"explicit_none\\\",\\\"value\\\":null},{\\\"provenance\\\":{\\\"source_anchor\\\":\\\"Current Navigation and Development Standing / active pressure\\\",\\\"source_commit\\\":\\\"8fe8bacf2c0eab7ca57e5a6cac4fc0f239f7670f\\\",\\\"source_kind\\\":\\\"project_state\\\",\\\"source_path\\\":\\\"PROJECT_STATE.md\\\"},\\\"raw_value\\\":\\\"PR-018\\\",\\\"status\\\":\\\"known_value\\\",\\\"value\\\":\\\"PR-018\\\"}],\\\"semantic_status\\\":\\\"conflicting\\\",\\\"status\\\":\\\"conflicting\\\",\\\"value\\\":null}},\\\"title\\\":\\\"source conflict\\\"},{\\\"diagnostics\\\":[],\\\"id\\\":\\\"P5\\\",\\\"mutation\\\":\\\"Mentioned PR-002 in Pressure prose with absent relation fields, then committed an explicit Blocked by control.\\\",\\\"observed\\\":{\\\"explicit_control_relations\\\":[{\\\"condition_text\\\":null,\\\"provenance\\\":{\\\"source_anchor\\\":\\\"PR-001 — Bounded specimen / blocked_by\\\",\\\"source_commit\\\":\\\"2fa24b9e6197b13db05ab1c682803f16f9d6a703\\\",\\\"source_kind\\\":\\\"pressure_map\\\",\\\"source_path\\\":\\\"PRESSURE_RESOLUTION_MAP.md\\\"},\\\"raw_source_field\\\":\\\"PR-002\\\",\\\"relation_kind\\\":\\\"blocked_by\\\",\\\"source_pressure_id\\\":\\\"PR-001\\\",\\\"target_kind\\\":\\\"pressure\\\",\\\"target_pressure_id\\\":\\\"PR-002\\\"}],\\\"prose_specimen_relations\\\":[]},\\\"title\\\":\\\"relation-looking prose\\\"},{\\\"diagnostics\\\":[{\\\"affected\\\":{\\\"field\\\":\\\"standing\\\",\\\"object_id\\\":\\\"PR-001\\\",\\\"source_path\\\":\\\"PRESSURE_RESOLUTION_MAP.md\\\"},\\\"kind\\\":\\\"parse_failure\\\",\\\"message\\\":\\\"required pressure field 'standing' is missing\\\"}],\\\"id\\\":\\\"P6\\\",\\\"mutation\\\":\\\"Removed the required colon from the PR-001 Standing field marker.\\\",\\\"observed\\\":{\\\"other_node_standing\\\":{\\\"raw_value\\\":\\\"`BOUNDED_RESOLUTION`\\\",\\\"status\\\":\\\"known_value\\\",\\\"value\\\":\\\"BOUNDED_RESOLUTION\\\"},\\\"projection_status\\\":\\\"partial\\\",\\\"wounded_standing\\\":{\\\"raw_value\\\":null,\\\"status\\\":\\\"missing\\\",\\\"value\\\":null}},\\\"title\\\":\\\"malformed pressure structure\\\"},{\\\"diagnostics\\\":[{\\\"affected\\\":{\\\"object_id\\\":\\\"line-2\\\",\\\"source_path\\\":\\\"docs/constraints/registry.jsonl\\\"},\\\"kind\\\":\\\"parse_failure\\\",\\\"message\\\":\\\"malformed constraint JSONL record: Expecting property name enclosed in double quotes\\\",\\\"raw_value\\\":\\\"{malformed\\\"}],\\\"id\\\":\\\"P7\\\",\\\"mutation\\\":\\\"Committed valid D-0001, malformed JSON, then valid D-0002.\\\",\\\"observed\\\":{\\\"constraint_ids\\\":[\\\"D-0001\\\",\\\"D-0002\\\"],\\\"projection_status\\\":\\\"partial\\\"},\\\"title\\\":\\\"malformed constraint among valid records\\\"},{\\\"diagnostics\\\":[],\\\"id\\\":\\\"P8\\\",\\\"mutation\\\":\\\"Renamed only the recognized Resolution history heading to Prior resolutions; retained both visible R entries.\\\",\\\"observed\\\":{\\\"damaged_current_standing\\\":{\\\"raw_value\\\":\\\"`BOUNDED_RESOLUTION`\\\",\\\"status\\\":\\\"known_value\\\",\\\"value\\\":\\\"BOUNDED_RESOLUTION\\\"},\\\"damaged_history\\\":[],\\\"healthy_current_standing\\\":{\\\"raw_value\\\":\\\"`BOUNDED_RESOLUTION`\\\",\\\"status\\\":\\\"known_value\\\",\\\"value\\\":\\\"BOUNDED_RESOLUTION\\\"},\\\"healthy_history\\\":[{\\\"id\\\":\\\"R0\\\",\\\"standing\\\":\\\"BASIS_INSUFFICIENT\\\"},{\\\"id\\\":\\\"R1\\\",\\\"standing\\\":\\\"BOUNDED_RESOLUTION\\\"}]},\\\"title\\\":\\\"resolution-history wound\\\"},{\\\"diagnostics\\\":[],\\\"id\\\":\\\"P9\\\",\\\"mutation\\\":\\\"Projected commit A after a later commit B changed PR-001 on the freshness ref.\\\",\\\"observed\\\":{\\\"freshness_status\\\":\\\"stale\\\",\\\"observed_tail\\\":\\\"2d70ffdd3eca89d7593e96cf6b8910edab676044\\\",\\\"projected_pr001_standing\\\":\\\"BOUNDED_RESOLUTION\\\",\\\"source_commit\\\":\\\"f06efc5ebe13f7b52c1e94a16bc316620c5fb891\\\"},\\\"title\\\":\\\"stale projection basis\\\"},{\\\"diagnostics\\\":[],\\\"id\\\":\\\"P10\\\",\\\"mutation\\\":\\\"Inserted PR-999, ACTIVE PIPELINE, SUPER_CONTROLLER, and RUNNING prose into the non-authoritative Controller projection.\\\",\\\"observed\\\":{\\\"active_pressure\\\":{\\\"declarations\\\":[{\\\"provenance\\\":{\\\"source_anchor\\\":\\\"Current Navigation / Active pressure\\\",\\\"source_commit\\\":\\\"49f0e9e1f1132f8307a79351b764f820d6cecd78\\\",\\\"source_kind\\\":\\\"pressure_map\\\",\\\"source_path\\\":\\\"PRESSURE_RESOLUTION_MAP.md\\\"},\\\"raw_value\\\":\\\"none\\\",\\\"status\\\":\\\"explicit_none\\\",\\\"value\\\":null},{\\\"provenance\\\":{\\\"source_anchor\\\":\\\"Current Navigation and Development Standing / active pressure\\\",\\\"source_commit\\\":\\\"49f0e9e1f1132f8307a79351b764f820d6cecd78\\\",\\\"source_kind\\\":\\\"project_state\\\",\\\"source_path\\\":\\\"PROJECT_STATE.md\\\"},\\\"raw_value\\\":\\\"none\\\",\\\"status\\\":\\\"explicit_none\\\",\\\"value\\\":null}],\\\"semantic_status\\\":\\\"explicit_none\\\",\\\"status\\\":\\\"agreement\\\",\\\"value\\\":null},\\\"controller_classification\\\":\\\"projection_document\\\",\\\"controller_standing\\\":{\\\"raw_value\\\":\\\"PARKED.\\\",\\\"source_heading\\\":\\\"Standing\\\",\\\"status\\\":\\\"known_value\\\",\\\"value\\\":\\\"PARKED\\\"},\\\"pr999_node_created\\\":false,\\\"pr999_relation_created\\\":false},\\\"title\\\":\\\"projection document containment\\\"},{\\\"diagnostics\\\":[],\\\"id\\\":\\\"P11\\\",\\\"mutation\\\":\\\"Committed two explicit PR-001 headings with different titles and standings.\\\",\\\"observed\\\":{\\\"matching_node_count\\\":2,\\\"matching_nodes\\\":[{\\\"standing\\\":{\\\"raw_value\\\":\\\"`BOUNDED_RESOLUTION`\\\",\\\"status\\\":\\\"known_value\\\",\\\"value\\\":\\\"BOUNDED_RESOLUTION\\\"},\\\"title\\\":\\\"Bounded specimen\\\"},{\\\"standing\\\":{\\\"raw_value\\\":\\\"`OPEN`\\\",\\\"status\\\":\\\"known_value\\\",\\\"value\\\":\\\"OPEN\\\"},\\\"title\\\":\\\"Conflicting duplicate\\\"}]},\\\"title\\\":\\\"duplicate pressure ID\\\"}]},\\\"raw_source_sha256\\\":\\\"sha256:832fbb63abec6eaae31aa33cc6ca635866b7302dc1b94e099cd9d15fda10e42b\\\",\\\"selected_packet_sha256\\\":\\\"sha256:6a5c81927b254c447ba80b2d599b9191a2b98af253c8b0348ab396e5856e6a99\\\",\\\"source_commit\\\":\\\"89a75124d8397b4772f5c387635225a40de35bc3\\\",\\\"source_path\\\":\\\"traces/cockpit_projection_adapter_pressure_v0.json\\\"},\\\"specimen_id\\\":\\\"T1-Q2_STAGE_3_PROJECTION_ADAPTER_PRESSURE\\\",\\\"tier\\\":\\\"T1_INTERPRETATION_WITHOUT_PROMOTION\\\"}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"t1_q2_evidence_state_separation\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"apparatus_execution_state\":{\"minLength\":1,\"type\":\"string\"},\"bounded_system_interpretation\":{\"minLength\":1,\"type\":\"string\"},\"p11_evidence_state\":{\"minLength\":1,\"type\":\"string\"},\"p8_evidence_state\":{\"minLength\":1,\"type\":\"string\"},\"terminal_action\":{\"enum\":[\"STOP\",\"ESCALATE\"],\"type\":\"string\"},\"unresolved_and_unauthorized\":{\"minLength\":1,\"type\":\"string\"}},\"required\":[\"apparatus_execution_state\",\"p8_evidence_state\",\"p11_evidence_state\",\"bounded_system_interpretation\",\"unresolved_and_unauthorized\",\"terminal_action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+  "serialized_policy_visible_input": "{\"prompt_template\":{\"authority\":\"READ_ONLY\",\"identity\":\"DME_Lab T1-Q2 evidence-state separation v0\",\"instructions\":[\"Use only the supplied packet; do not claim repository or tool access.\",\"Keep execution of the apparatus separate from semantic behavior of the system under test.\",\"Address the retained observations for P8 and P11 independently.\",\"Distinguish direct observations from bounded interpretation and unresolved or unauthorized claims.\",\"Do not propose, execute, or request follow-up work.\",\"Use terminal_action STOP when the separation is complete.\",\"Use terminal_action ESCALATE only if the packet cannot support the requested separation.\",\"Return exactly one object conforming to the declared response schema.\"],\"objective\":\"Inspect only the supplied historical pressure-run evidence packet and state the bounded evidentiary status it supports.\"},\"source_packet\":{\"content\":{\"baseline\":{\"active_pressure\":{\"declarations\":[{\"provenance\":{\"source_anchor\":\"Current Navigation / Active pressure\",\"source_commit\":\"c4256e077c69d03b1461755dbaa20c2ff5f1c15f\",\"source_kind\":\"pressure_map\",\"source_path\":\"PRESSURE_RESOLUTION_MAP.md\"},\"raw_value\":\"none\",\"status\":\"explicit_none\",\"value\":null},{\"provenance\":{\"source_anchor\":\"Current Navigation and Development Standing / active pressure\",\"source_commit\":\"c4256e077c69d03b1461755dbaa20c2ff5f1c15f\",\"source_kind\":\"project_state\",\"source_path\":\"PROJECT_STATE.md\"},\"raw_value\":\"none\",\"status\":\"explicit_none\",\"value\":null}],\"semantic_status\":\"explicit_none\",\"status\":\"agreement\",\"value\":null},\"constraint_count\":46,\"controller\":{\"classification\":\"projection_document\",\"standing\":{\"raw_value\":\"PARKED.\",\"source_heading\":\"Standing\",\"status\":\"known_value\",\"value\":\"PARKED\"}},\"diagnostic_counts\":{},\"evidence_reference_count\":214,\"freshness\":{\"check_time\":\"2026-09-09T20:00:00Z\",\"freshness_ref\":\"origin/main\",\"observed_tail\":\"c4256e077c69d03b1461755dbaa20c2ff5f1c15f\",\"status\":\"current\"},\"pr018\":{\"active\":false,\"standing\":{\"raw_value\":\"`OPEN`\",\"status\":\"known_value\",\"value\":\"OPEN\"}},\"pr019\":{\"resolution_history\":[{\"id\":\"R0\",\"standing\":{\"raw_value\":\"BASIS_INSUFFICIENT\",\"status\":\"known_value\",\"value\":\"BASIS_INSUFFICIENT\"}},{\"id\":\"R1\",\"standing\":{\"raw_value\":\"BOUNDED_RESOLUTION\",\"status\":\"known_value\",\"value\":\"BOUNDED_RESOLUTION\"}}],\"standing\":{\"raw_value\":\"`BOUNDED_RESOLUTION`\",\"status\":\"known_value\",\"value\":\"BOUNDED_RESOLUTION\"}},\"pressure_node_count\":19,\"pressure_relation_count\":24,\"projection_document_count\":3,\"source_commit\":\"c4256e077c69d03b1461755dbaa20c2ff5f1c15f\"},\"historical_trace_metadata\":{\"adapter_version\":\"cockpit_projection_adapter_v0\",\"pressure_version\":\"cockpit_projection_adapter_pressure_v0\"},\"scenario_observations\":[{\"diagnostics\":[{\"affected\":{\"source_path\":\"PRESSURE_RESOLUTION_MAP.md\"},\"kind\":\"missing_required_source\",\"message\":\"required committed source is unavailable: fatal: path 'PRESSURE_RESOLUTION_MAP.md' does not exist in 'b9eeb73eebcca3d3c7b93dae5229b88d6e1f4f43'\"},{\"affected\":{\"field\":\"newly_reachable_open\",\"source_path\":\"PRESSURE_RESOLUTION_MAP.md\"},\"kind\":\"source_conflict\",\"message\":\"Pressure Map and PROJECT_STATE open-pressure declarations disagree\",\"raw_value\":{\"pressure_map\":[],\"project_state\":[\"PR-018\"]}}],\"id\":\"P1\",\"mutation\":\"Omitted PRESSURE_RESOLUTION_MAP.md from the committed tree.\",\"observed\":{\"pressure_nodes\":0,\"projection_status\":\"partial\",\"source_commit\":\"b9eeb73eebcca3d3c7b93dae5229b88d6e1f4f43\",\"source_surfaces\":[{\"source_path\":\"PROJECT_STATE.md\",\"status\":\"available\"},{\"source_path\":\"PRESSURE_RESOLUTION_MAP.md\",\"status\":\"missing\"},{\"source_path\":\"docs/constraints/README.md\",\"status\":\"available\"},{\"source_path\":\"docs/constraints/registry.jsonl\",\"status\":\"available\"}]},\"title\":\"missing required source\"},{\"diagnostics\":[{\"affected\":{\"field\":\"standing\",\"object_id\":\"PR-001\",\"source_path\":\"PRESSURE_RESOLUTION_MAP.md\"},\"kind\":\"unknown_standing\",\"message\":\"unrecognized pressure standing 'GOBLIN_PENDING' was preserved\",\"raw_value\":\"`GOBLIN_PENDING`\"}],\"id\":\"P2\",\"mutation\":\"Set PR-001 standing to the unrecognized token GOBLIN_PENDING.\",\"observed\":{\"standing\":{\"raw_value\":\"`GOBLIN_PENDING`\",\"status\":\"unknown_standing\",\"value\":\"GOBLIN_PENDING\"}},\"title\":\"unknown pressure standing\"},{\"diagnostics\":[{\"affected\":{\"field\":\"evidence_reference\",\"object_id\":\"PR-001\",\"source_path\":\"PRESSURE_RESOLUTION_MAP.md\"},\"kind\":\"broken_reference\",\"message\":\"committed evidence target 'docs/decisions/not-present.md' does not exist\",\"raw_value\":\"docs/decisions/not-present.md\"}],\"id\":\"P3\",\"mutation\":\"Pointed PR-001 Evidence to a nonexistent committed decision path.\",\"observed\":{\"matching_references\":[{\"committed_path_checked\":\"docs/decisions/not-present.md\",\"id\":\"evidence-a09d067a2e521b66\",\"label\":\"missing\",\"origin\":{\"id\":\"PR-001\",\"kind\":\"pressure_node\"},\"original_target\":\"docs/decisions/not-present.md\",\"provenance\":{\"source_anchor\":\"PR-001 — Bounded specimen / evidence\",\"source_commit\":\"d3a5b3ac76e5ffe76971b2a11f928d212597c4e0\",\"source_kind\":\"pressure_node\",\"source_path\":\"PRESSURE_RESOLUTION_MAP.md\"},\"resolution_status\":\"broken\",\"target_kind\":\"decision\"}]},\"title\":\"broken evidence reference\"},{\"diagnostics\":[{\"affected\":{\"field\":\"active_pressure\",\"source_path\":\"PRESSURE_RESOLUTION_MAP.md\"},\"kind\":\"source_conflict\",\"message\":\"Pressure Map and PROJECT_STATE active-pressure declarations disagree\",\"raw_value\":[\"none\",\"PR-018\"]}],\"id\":\"P4\",\"mutation\":\"Map declared no active pressure while PROJECT_STATE declared PR-018 active.\",\"observed\":{\"active_pressure\":{\"declarations\":[{\"provenance\":{\"source_anchor\":\"Current Navigation / Active pressure\",\"source_commit\":\"8fe8bacf2c0eab7ca57e5a6cac4fc0f239f7670f\",\"source_kind\":\"pressure_map\",\"source_path\":\"PRESSURE_RESOLUTION_MAP.md\"},\"raw_value\":\"none\",\"status\":\"explicit_none\",\"value\":null},{\"provenance\":{\"source_anchor\":\"Current Navigation and Development Standing / active pressure\",\"source_commit\":\"8fe8bacf2c0eab7ca57e5a6cac4fc0f239f7670f\",\"source_kind\":\"project_state\",\"source_path\":\"PROJECT_STATE.md\"},\"raw_value\":\"PR-018\",\"status\":\"known_value\",\"value\":\"PR-018\"}],\"semantic_status\":\"conflicting\",\"status\":\"conflicting\",\"value\":null}},\"title\":\"source conflict\"},{\"diagnostics\":[],\"id\":\"P5\",\"mutation\":\"Mentioned PR-002 in Pressure prose with absent relation fields, then committed an explicit Blocked by control.\",\"observed\":{\"explicit_control_relations\":[{\"condition_text\":null,\"provenance\":{\"source_anchor\":\"PR-001 — Bounded specimen / blocked_by\",\"source_commit\":\"2fa24b9e6197b13db05ab1c682803f16f9d6a703\",\"source_kind\":\"pressure_map\",\"source_path\":\"PRESSURE_RESOLUTION_MAP.md\"},\"raw_source_field\":\"PR-002\",\"relation_kind\":\"blocked_by\",\"source_pressure_id\":\"PR-001\",\"target_kind\":\"pressure\",\"target_pressure_id\":\"PR-002\"}],\"prose_specimen_relations\":[]},\"title\":\"relation-looking prose\"},{\"diagnostics\":[{\"affected\":{\"field\":\"standing\",\"object_id\":\"PR-001\",\"source_path\":\"PRESSURE_RESOLUTION_MAP.md\"},\"kind\":\"parse_failure\",\"message\":\"required pressure field 'standing' is missing\"}],\"id\":\"P6\",\"mutation\":\"Removed the required colon from the PR-001 Standing field marker.\",\"observed\":{\"other_node_standing\":{\"raw_value\":\"`BOUNDED_RESOLUTION`\",\"status\":\"known_value\",\"value\":\"BOUNDED_RESOLUTION\"},\"projection_status\":\"partial\",\"wounded_standing\":{\"raw_value\":null,\"status\":\"missing\",\"value\":null}},\"title\":\"malformed pressure structure\"},{\"diagnostics\":[{\"affected\":{\"object_id\":\"line-2\",\"source_path\":\"docs/constraints/registry.jsonl\"},\"kind\":\"parse_failure\",\"message\":\"malformed constraint JSONL record: Expecting property name enclosed in double quotes\",\"raw_value\":\"{malformed\"}],\"id\":\"P7\",\"mutation\":\"Committed valid D-0001, malformed JSON, then valid D-0002.\",\"observed\":{\"constraint_ids\":[\"D-0001\",\"D-0002\"],\"projection_status\":\"partial\"},\"title\":\"malformed constraint among valid records\"},{\"diagnostics\":[],\"id\":\"P8\",\"mutation\":\"Renamed only the recognized Resolution history heading to Prior resolutions; retained both visible R entries.\",\"observed\":{\"damaged_current_standing\":{\"raw_value\":\"`BOUNDED_RESOLUTION`\",\"status\":\"known_value\",\"value\":\"BOUNDED_RESOLUTION\"},\"damaged_history\":[],\"healthy_current_standing\":{\"raw_value\":\"`BOUNDED_RESOLUTION`\",\"status\":\"known_value\",\"value\":\"BOUNDED_RESOLUTION\"},\"healthy_history\":[{\"id\":\"R0\",\"standing\":\"BASIS_INSUFFICIENT\"},{\"id\":\"R1\",\"standing\":\"BOUNDED_RESOLUTION\"}]},\"title\":\"resolution-history wound\"},{\"diagnostics\":[],\"id\":\"P9\",\"mutation\":\"Projected commit A after a later commit B changed PR-001 on the freshness ref.\",\"observed\":{\"freshness_status\":\"stale\",\"observed_tail\":\"2d70ffdd3eca89d7593e96cf6b8910edab676044\",\"projected_pr001_standing\":\"BOUNDED_RESOLUTION\",\"source_commit\":\"f06efc5ebe13f7b52c1e94a16bc316620c5fb891\"},\"title\":\"stale projection basis\"},{\"diagnostics\":[],\"id\":\"P10\",\"mutation\":\"Inserted PR-999, ACTIVE PIPELINE, SUPER_CONTROLLER, and RUNNING prose into the non-authoritative Controller projection.\",\"observed\":{\"active_pressure\":{\"declarations\":[{\"provenance\":{\"source_anchor\":\"Current Navigation / Active pressure\",\"source_commit\":\"49f0e9e1f1132f8307a79351b764f820d6cecd78\",\"source_kind\":\"pressure_map\",\"source_path\":\"PRESSURE_RESOLUTION_MAP.md\"},\"raw_value\":\"none\",\"status\":\"explicit_none\",\"value\":null},{\"provenance\":{\"source_anchor\":\"Current Navigation and Development Standing / active pressure\",\"source_commit\":\"49f0e9e1f1132f8307a79351b764f820d6cecd78\",\"source_kind\":\"project_state\",\"source_path\":\"PROJECT_STATE.md\"},\"raw_value\":\"none\",\"status\":\"explicit_none\",\"value\":null}],\"semantic_status\":\"explicit_none\",\"status\":\"agreement\",\"value\":null},\"controller_classification\":\"projection_document\",\"controller_standing\":{\"raw_value\":\"PARKED.\",\"source_heading\":\"Standing\",\"status\":\"known_value\",\"value\":\"PARKED\"},\"pr999_node_created\":false,\"pr999_relation_created\":false},\"title\":\"projection document containment\"},{\"diagnostics\":[],\"id\":\"P11\",\"mutation\":\"Committed two explicit PR-001 headings with different titles and standings.\",\"observed\":{\"matching_node_count\":2,\"matching_nodes\":[{\"standing\":{\"raw_value\":\"`BOUNDED_RESOLUTION`\",\"status\":\"known_value\",\"value\":\"BOUNDED_RESOLUTION\"},\"title\":\"Bounded specimen\"},{\"standing\":{\"raw_value\":\"`OPEN`\",\"status\":\"known_value\",\"value\":\"OPEN\"},\"title\":\"Conflicting duplicate\"}]},\"title\":\"duplicate pressure ID\"}]},\"raw_source_sha256\":\"sha256:832fbb63abec6eaae31aa33cc6ca635866b7302dc1b94e099cd9d15fda10e42b\",\"selected_packet_sha256\":\"sha256:6a5c81927b254c447ba80b2d599b9191a2b98af253c8b0348ab396e5856e6a99\",\"source_commit\":\"89a75124d8397b4772f5c387635225a40de35bc3\",\"source_path\":\"traces/cockpit_projection_adapter_pressure_v0.json\"},\"specimen_id\":\"T1-Q2_STAGE_3_PROJECTION_ADAPTER_PRESSURE\",\"tier\":\"T1_INTERPRETATION_WITHOUT_PROMOTION\"}",
+  "source_specimen": {
+    "commit": "89a75124d8397b4772f5c387635225a40de35bc3",
+    "observed_selected_packet_sha256": "sha256:6a5c81927b254c447ba80b2d599b9191a2b98af253c8b0348ab396e5856e6a99",
+    "observed_sha256": "sha256:832fbb63abec6eaae31aa33cc6ca635866b7302dc1b94e099cd9d15fda10e42b",
+    "path": "traces/cockpit_projection_adapter_pressure_v0.json",
+    "selected_packet_sha256": "sha256:6a5c81927b254c447ba80b2d599b9191a2b98af253c8b0348ab396e5856e6a99",
+    "sha256": "sha256:832fbb63abec6eaae31aa33cc6ca635866b7302dc1b94e099cd9d15fda10e42b",
+    "visible_selection": {
+      "included_scenario_fields": [
+        "id",
+        "title",
+        "mutation",
+        "observed",
+        "diagnostics"
+      ],
+      "included_top_level_fields": [
+        "pressure_version",
+        "adapter_version",
+        "baseline",
+        "scenarios"
+      ],
+      "omitted_scenario_fields": [
+        "intended_discriminator",
+        "classification",
+        "rationale"
+      ],
+      "omitted_top_level_fields": [
+        "predeclared_semantic_rule",
+        "classification_counts",
+        "adjudication"
+      ]
+    }
+  },
+  "specimen_id": "T1-Q2_STAGE_3_PROJECTION_ADAPTER_PRESSURE",
+  "tier": "T1_INTERPRETATION_WITHOUT_PROMOTION"
+}

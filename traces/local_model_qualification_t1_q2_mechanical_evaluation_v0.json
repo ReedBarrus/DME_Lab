@@ -1,0 +1,36 @@
+{
+  "apparatus_version": "local_model_qualification_t1_q2_v0",
+  "artifact": "local_model_qualification_t1_q2_mechanical_evaluation_v0",
+  "artifact_class": "LOCAL_MODEL_QUALIFICATION_MECHANICAL_EVALUATION",
+  "campaign_scope": "T1-Q2_ONLY",
+  "freeze_path": "traces/local_model_qualification_t1_q2_freeze_v0.json",
+  "mechanical_checks": {
+    "declared_response_shape_satisfied": true,
+    "exactly_one_call": true,
+    "execution_basis_valid": true,
+    "fresh_context_and_no_authority": true,
+    "inference_completed": true,
+    "observation_and_evaluation_separate": true,
+    "protected_surfaces_unchanged": true,
+    "provider_reported_termination": true,
+    "raw_interaction_retained_and_reconstructable": true,
+    "raw_source_basis_matched": true,
+    "selected_source_basis_matched": true,
+    "terminal_action_valid": true
+  },
+  "observation_path": "traces/local_model_qualification_t1_q2_observation_v0.json",
+  "observation_sha256": "sha256:c613a9fb6522bb866102489660afdef47031cfcf8cfa1348be02215cf34324d3",
+  "parse_failure": null,
+  "parsed_response": {
+    "apparatus_execution_state": "READ_ONLY",
+    "bounded_system_interpretation": "The historical pressure-run evidence packet supports a bounded evidentiary status.",
+    "p11_evidence_state": "OPEN",
+    "p8_evidence_state": "CLOSED",
+    "terminal_action": "STOP",
+    "unresolved_and_unauthorized": "No unresolved or unauthorized claims were found in the historical pressure-run evidence packet."
+  },
+  "qualification_promotion": "NOT_EVALUATED",
+  "semantic_success": "NOT_EVALUATED",
+  "specimen_id": "T1-Q2_STAGE_3_PROJECTION_ADAPTER_PRESSURE",
+  "terminal_state": "PASS"
+}

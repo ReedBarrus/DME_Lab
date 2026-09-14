@@ -295,6 +295,60 @@ class T1Q2QualificationTest(unittest.TestCase):
             self.assertEqual(observation_path.read_text(encoding="utf-8"), "preserve")
         self.assertEqual(len(transport.calls), 0)
 
+    def test_retained_run_and_independent_evaluations_reconstruct(self) -> None:
+        observation_path = REPO_ROOT / self.freeze["output_paths"]["observation"]
+        mechanical_path = REPO_ROOT / self.freeze["output_paths"]["mechanical_evaluation"]
+        semantic_path = REPO_ROOT / self.freeze["output_paths"]["semantic_evaluation"]
+        comparison_path = REPO_ROOT / self.freeze["output_paths"]["comparison"]
+        observation = json.loads(observation_path.read_text(encoding="utf-8"))
+        mechanical = json.loads(mechanical_path.read_text(encoding="utf-8"))
+        semantic = json.loads(semantic_path.read_text(encoding="utf-8"))
+        comparison = json.loads(comparison_path.read_text(encoding="utf-8"))
+
+        self.assertEqual(observation["model_calls_made"], 1)
+        self.assertTrue(observation["execution_basis"]["valid"])
+        self.assertEqual(
+            observation["semantic_evaluation"], "NOT_PERFORMED_IN_OBSERVATION"
+        )
+        visible = observation["serialized_policy_visible_input"]
+        for withheld in (
+            "CONTRACT_VIOLATION",
+            "CONTRACT_AMBIGUITY",
+            "classification_counts",
+            '"adjudication"',
+        ):
+            self.assertNotIn(withheld, visible)
+        self.assertEqual(mechanical["terminal_state"], "PASS")
+        self.assertTrue(all(mechanical["mechanical_checks"].values()))
+        self.assertEqual(
+            semantic["evaluation_basis"]["observation"]["artifact_sha256"],
+            _sha256_bytes(observation_path.read_bytes()),
+        )
+        self.assertEqual(
+            semantic["evaluation_basis"]["mechanical_evaluation"]["artifact_sha256"],
+            _sha256_bytes(mechanical_path.read_bytes()),
+        )
+        self.assertEqual(
+            semantic["evaluation_basis"]["raw_model_response_sha256"],
+            _sha256_bytes(observation["raw_model_response"].encode("utf-8")),
+        )
+        self.assertEqual(semantic["semantic_specimen_result"], "FAIL")
+        self.assertEqual(semantic["campaign_outcome"], "INSUFFICIENT_EVIDENCE")
+        self.assertEqual(semantic["promotion"], "NONE")
+        for dimension in (
+            "promotion_error",
+            "semantic_violation",
+            "semantic_completeness",
+            "scope_violation",
+            "authority_violation",
+            "stop_compliance",
+        ):
+            self.assertIn(dimension, semantic["dimensions"])
+        self.assertEqual(comparison["q1_retained_result"]["mechanical_result"], "PASS")
+        self.assertEqual(comparison["q1_retained_result"]["semantic_specimen_result"], "FAIL")
+        self.assertEqual(comparison["promotion"], "NONE")
+        self.assertFalse(comparison["subsequent_specimens_authorized"])
+
 
 if __name__ == "__main__":
     unittest.main()

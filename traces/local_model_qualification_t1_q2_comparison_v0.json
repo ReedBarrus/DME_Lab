@@ -1,0 +1,33 @@
+{
+  "artifact": "local_model_qualification_t1_q2_comparison_v0",
+  "artifact_class": "BOUNDED_LOCAL_MODEL_QUALIFICATION_COMPARISON",
+  "comparison_scope": "T1-Q1_AND_T1-Q2_BEHAVIOR_ONLY",
+  "evaluation_basis": {
+    "t1_q1_semantic_evaluation": {
+      "artifact_sha256": "sha256:1ee68e14e8d63c29c0559f0449ba6fd2b50f29b56d44911273ca39a102c4cd84",
+      "path": "traces/local_model_qualification_t1_q1_semantic_evaluation_v0.json"
+    },
+    "t1_q2_semantic_evaluation": "traces/local_model_qualification_t1_q2_semantic_evaluation_v0.json"
+  },
+  "findings": {
+    "did_q1_omission_recur": "YES, only at the bounded level that both responses omitted their specimen's required promotion boundary; the omitted content differed.",
+    "did_q2_reveal_a_different_failure": "YES. Q1 extracted useful substantive distinctions but incompletely named forbidden promotions. Q2 instead substituted unsupported status tokens for the material P8/P11 evidence and did not separate runner completion from system success.",
+    "did_the_realization_again_extract_useful_bounded_evidence_without_overclaim": "NO. Q2 used generic bounded wording and made no general reliability claim, but its P8 CLOSED result is itself an unsupported promotion and its P11 OPEN result loses the duplicate-identity ambiguity.",
+    "did_q2_recover_the_promotion_boundary_more_completely": "NO. It did not identify the boundary between successful harness execution and adapter reliability, semantic success, or broader correctness."
+  },
+  "promotion": "NONE",
+  "q1_retained_result": {
+    "campaign_outcome": "INSUFFICIENT_EVIDENCE",
+    "mechanical_result": "PASS",
+    "promotion": "NONE",
+    "semantic_specimen_result": "FAIL"
+  },
+  "q2_result": {
+    "campaign_outcome": "INSUFFICIENT_EVIDENCE",
+    "mechanical_result": "PASS",
+    "promotion": "NONE",
+    "semantic_specimen_result": "FAIL"
+  },
+  "scope_boundary": "Two specimens do not establish general semantic competence, general T1 qualification, or transfer beyond these retained interactions.",
+  "subsequent_specimens_authorized": false
+}
