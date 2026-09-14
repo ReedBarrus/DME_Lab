@@ -1,0 +1,155 @@
+{
+  "P3_status": "BLOCKED_NOT_EXECUTED",
+  "action_schema_sha256": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+  "artifact": "behavioral_coupling_action_delexicalization_qualification_v0",
+  "artifact_class": "NON_SCIENTIFIC_INTERFACE_QUALIFICATION",
+  "calls": [
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "qualification_failure": null,
+      "qualification_id": "non-scientific-act-a",
+      "raw_model_response": "{\"action\":\"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-6j8j9bf8qr4ekpvkruyip9\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347692,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 34,\n    \"completion_tokens\": 7,\n    \"total_tokens\": 41,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "requested_token": "ACT_A",
+      "selected_action": "ACT_A",
+      "selected_token": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select ACT_A.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select ACT_A.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "qualification_failure": null,
+      "qualification_id": "non-scientific-act-b",
+      "raw_model_response": "{\"action\":\"ACT_B\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-u5x48sul2a52qm8ckxlf9\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347692,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"ACT_B\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 34,\n    \"completion_tokens\": 7,\n    \"total_tokens\": 41,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "requested_token": "ACT_B",
+      "selected_action": "ACT_B",
+      "selected_token": "ACT_B",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "structured_output": {
+        "action": "ACT_B"
+      },
+      "tools_supplied": false
+    }
+  ],
+  "empirical_model_calls_made": 0,
+  "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+  "execution_basis_commit": "d329b305c4a64b8560c04bcebdc58645320c5486",
+  "model_identifier": "hermes-3-llama-3.2-3b",
+  "protocol_sha256": "sha256:83bb637cde6ac3b38945f6d1685d91c2cf678bc7ceff92167086f41618d589e6",
+  "provider_exposed_sampling_settings": {
+    "max_tokens": 16,
+    "temperature": 0.0,
+    "top_p": 1.0
+  },
+  "result": {
+    "calls_retained": 2,
+    "scientific_schedule_entries_consumed": 0,
+    "status": "PASS",
+    "wounds": []
+  },
+  "schedule_sha256": "sha256:9d5783045adb7e7d2a6958b3dcf4cc798f0fcc8ff581f242015a9c1b3da245d0",
+  "scientific_adjudication": "NOT_PERFORMED",
+  "scientific_schedule_entries_consumed": 0
+}
