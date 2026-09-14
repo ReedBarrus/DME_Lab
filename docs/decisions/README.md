@@ -9,7 +9,7 @@ This index is navigational only. Artifact contents, repository evidence,
 `PROJECT_STATE.md`, and `PRESSURE_RESOLUTION_MAP.md` remain authoritative in
 their established roles.
 
-The index covers **64 committed Markdown artifacts** beneath
+The index covers **65 committed Markdown artifacts** beneath
 `docs/decisions/`, excluding this README. Each artifact appears once in the
 domain index. Function labels are navigation aids, not semantic classifications
 or standing.
@@ -21,12 +21,12 @@ or standing.
 | [Cross-cutting](cross_cutting/) | 1 |
 | [Cross-domain](cross_domain/) | 3 |
 | [Ledger](ledger/) | 15 |
-| [Local automation](local_automation/) | 6 |
+| [Local automation](local_automation/) | 7 |
 | [Projection](projection/) | 7 |
 | [Provenance](provenance/) | 7 |
 | [Reconstruction](reconstruction/) | 4 |
 | [Runtime](runtime/) | 11 |
-| **Total** | **64** |
+| **Total** | **65** |
 
 ## [Acoustic](acoustic/) (9)
 
@@ -72,9 +72,10 @@ or standing.
 - [`vocabulary_identity_pressure_v0.md`](ledger/vocabulary_identity_pressure_v0.md) — `pressure-result`
 - [`witness_content_ablation_pressure_v0.md`](ledger/witness_content_ablation_pressure_v0.md) — `pressure-result`
 
-## [Local automation](local_automation/) (6)
+## [Local automation](local_automation/) (7)
 
 - [`hermes_t1_qualification_checkpoint_v0.md`](local_automation/hermes_t1_qualification_checkpoint_v0.md) — `checkpoint`
+- [`repo_scout_turbo_admission_live_pressure_result_v0.md`](local_automation/repo_scout_turbo_admission_live_pressure_result_v0.md) — `pressure-result`
 - [`t1_hermes_turbo_cross_realization_comparison_v0.md`](local_automation/t1_hermes_turbo_cross_realization_comparison_v0.md) — `comparison`
 - [`turbo_t1_completion_budget_admission_checkpoint_v0.md`](local_automation/turbo_t1_completion_budget_admission_checkpoint_v0.md) — `checkpoint`
 - [`turbo_t1_deadline_admission_checkpoint_v0.md`](local_automation/turbo_t1_deadline_admission_checkpoint_v0.md) — `checkpoint`
@@ -131,7 +132,7 @@ relocating files.
 | --- | ---: | --- |
 | Checkpoints / capstones | 5 | [`behavioral coupling checkpoint`](behavioral_coupling/behavioral_coupling_observation_commitment_consequence_checkpoint_v0.md), [`foreground repository capstone`](runtime/foreground_repository_horizontal_capstone_v0.md), [`Hermes qualification checkpoint`](local_automation/hermes_t1_qualification_checkpoint_v0.md), [`Turbo completion-budget checkpoint`](local_automation/turbo_t1_completion_budget_admission_checkpoint_v0.md), [`Turbo deadline checkpoint`](local_automation/turbo_t1_deadline_admission_checkpoint_v0.md) |
 | Pressure designs / dwell / selection | 3 | [`acoustic prediction dwell`](acoustic/acoustic_prediction_bridge_dwell_v0.md), [`acoustic witness selection`](acoustic/acoustic_source_coordinate_witness_selection_pressure_v0.md), [`ledger pressure pass`](ledger/ledger_pressure_pass_v0.md) |
-| Pressure results | 39 | All entries labeled `pressure-result` in the domain index |
+| Pressure results | 40 | All entries labeled `pressure-result` in the domain index |
 | Replications / re-pressure | 3 | [`acoustic replication`](acoustic/acoustic_replication_pressure_v0.md), [`source-side return replication`](acoustic/acoustic_source_side_positional_return_replication_v1.md), [`Cockpit adapter re-pressure`](projection/cockpit_projection_adapter_repressure_v0.md) |
 | Qualification / campaigns | 1 | [`NTFS USN observation-basis qualification`](provenance/ntfs_usn_observation_basis_qualification_v0.md) |
 | Comparisons / adjudications / audits | 7 | [`Astra consumer adjudication`](provenance/astra_consumer_pressure_adjudication_v0.md), [`constraint lineage audit`](cross_cutting/constraint_registry_lineage_audit_v0.md), [`cross-domain re-adjudication`](cross_domain/cross_domain_tomographic_readjudication_v0.md), [`history-association selection`](provenance/history_association_selection_adjudication_v0.md), [`public history association`](provenance/public_history_association_adjudication_v0.md), [`repository-acoustic comparison`](cross_domain/repository_acoustic_tomographic_comparison_pressure_v0.md), [`Hermes / Turbo comparison`](local_automation/t1_hermes_turbo_cross_realization_comparison_v0.md) |

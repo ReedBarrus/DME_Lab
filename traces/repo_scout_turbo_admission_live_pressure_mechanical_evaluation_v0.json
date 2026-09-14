@@ -1,0 +1,66 @@
+{
+  "acceptance_authority": "EXTERNAL_CODEX_FRONTIER_HUMAN_REVIEW",
+  "apparatus_version": "repo_scout_v0",
+  "artifact": "repo_scout_mechanical_evaluation_v0",
+  "mechanical_checks": {
+    "evidence_paths_were_accessed": true,
+    "execution_basis_valid": true,
+    "model_calls_exactly_one": true,
+    "model_response_received": true,
+    "model_response_within_budget": true,
+    "operation_count_within_budget": true,
+    "operation_output_within_budget": true,
+    "operations_permitted": true,
+    "paths_in_scope": true,
+    "repository_state_unchanged": true,
+    "response_shape_valid": true,
+    "result_basis_matches": false,
+    "result_operations_match": true,
+    "result_scope_matches": true,
+    "result_task_matches": true,
+    "wall_time_within_budget": true
+  },
+  "observation_sha256": "sha256:39f8447012eda5918b4cc21b6373655b85d9c7986b9f37dc1c9a0742cd532fd9",
+  "parsed_result": {
+    "bounded_interpretation": "The retained Turbo T1 local-automation decision evidence exposes the following operational admission boundaries:\n\nContext admission: The realization was context-admissible at 8,192 tokens.\nDeadline admission: The deadline returned successfully inside its declared 600-second boundary.\nCompletion-budget admission: The completion allowance increased from 1,024 to 2,048 tokens. However, no response was returned within the same 600-second deadline.\nResponse-contract completion: No response contract was completed because the 2,048-token allowance exhausted before a valid response could be returned.\nSemantic qualification: No semantic specimen or model response exists from which to evaluate promotion error, semantic violation, completeness, scope behavior, authority behavior, or model STOP compliance.",
+    "escalation": {
+      "reason": "The evidence does not establish a stable relationship between 1,024 and 2,048-token requests. The completion-budget admission remains unresolved because there is no returned response from which to determine whether the 2,048-token allowance would have completed the JSON contract or itself reached 'length'.",
+      "required": true
+    },
+    "evidence": [
+      {
+        "location": "The evidence now supports the finer bounded separation:\n\ncontext admitted at 8192\n!=\nHTTP response returned inside 600-second deadline\n!=\ndeclared response contract completed\n!=\nsemantically qualified\n",
+        "observation": "The previous 1,024-token call returned after 475.696185 seconds and ended at finish_reason: length. The 2,048-token call did not return inside the same 600-second deadline.",
+        "source_path": "docs/decisions/local_automation/turbo_t1_q1_deadline_pressure_result_v0.md"
+      }
+    ],
+    "execution_basis": "b1ed9e80bcb55e2ff6d35aff63cefb9e73aa514d",
+    "operations_used": [
+      "git_grep",
+      "git_show",
+      "git_show",
+      "git_show",
+      "git_show"
+    ],
+    "scope_used": [
+      "docs/decisions/local_automation",
+      "docs/decisions/local_automation/t1_hermes_turbo_cross_realization_comparison_v0.md",
+      "docs/decisions/local_automation/turbo_t1_q1_deadline_pressure_result_v0.md",
+      "docs/decisions/local_automation/turbo_t1_completion_budget_admission_checkpoint_v0.md",
+      "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md"
+    ],
+    "task_id": "repo-scout-turbo-admission-live-pressure-v0",
+    "terminal_action": "ESCALATE",
+    "unresolved": [
+      "context admission",
+      "deadline admission",
+      "completion-budget admission",
+      "response-contract completion",
+      "semantic qualification"
+    ]
+  },
+  "response_error": null,
+  "semantic_evaluation": "NOT_PERFORMED",
+  "task_id": "repo-scout-turbo-admission-live-pressure-v0",
+  "terminal_state": "FAIL"
+}

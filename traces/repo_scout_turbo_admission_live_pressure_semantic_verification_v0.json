@@ -1,0 +1,100 @@
+{
+  "artifact": "repo_scout_turbo_admission_live_pressure_semantic_verification_v0",
+  "artifact_class": "EXTERNAL_SEMANTIC_VERIFICATION",
+  "task_id": "repo-scout-turbo-admission-live-pressure-v0",
+  "repository_basis": "c76f64cbaefb0ae38a317e4423e5e0bc35720b91",
+  "observation_path": "traces/repo_scout_turbo_admission_live_pressure_observation_v0.json",
+  "mechanical_evaluation_path": "traces/repo_scout_turbo_admission_live_pressure_mechanical_evaluation_v0.json",
+  "mechanical_terminal_state": "FAIL",
+  "response_shape_completed": true,
+  "complete_apparatus_contract_satisfied": false,
+  "terminal_action_valid": true,
+  "terminal_action_observed": "ESCALATE",
+  "basis_verification": {
+    "expected": "c76f64cbaefb0ae38a317e4423e5e0bc35720b91",
+    "observed": "b1ed9e80bcb55e2ff6d35aff63cefb9e73aa514d",
+    "preserved": false
+  },
+  "scope_and_mutation_verification": {
+    "all_operations_within_declared_scope": true,
+    "only_permitted_read_operations_occurred": true,
+    "repository_fingerprints_unchanged": true,
+    "scope_expansion_observed": false,
+    "authority_violation_observed": false
+  },
+  "source_artifacts_reopened_for_verification": [
+    "docs/decisions/local_automation/t1_hermes_turbo_cross_realization_comparison_v0.md",
+    "docs/decisions/local_automation/turbo_t1_q1_deadline_pressure_result_v0.md",
+    "docs/decisions/local_automation/turbo_t1_completion_budget_admission_checkpoint_v0.md",
+    "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md"
+  ],
+  "required_distinction_verification": [
+    {
+      "requirement": "Turbo Q1-Q3 at 8192 were context-admitted in the cross-realization run",
+      "status": "PARTIAL",
+      "finding": "The packet says the realization was context-admissible at 8192 but omits that Q1, Q2, and Q3 were each admitted and each made one call.",
+      "source": "docs/decisions/local_automation/t1_hermes_turbo_cross_realization_comparison_v0.md:51-57"
+    },
+    {
+      "requirement": "the original 120-second calls were apparatus timeouts rather than semantic failures",
+      "status": "OMITTED",
+      "finding": "The packet does not retain the three original 120-second apparatus timeouts or their non-semantic standing.",
+      "source": "docs/decisions/local_automation/t1_hermes_turbo_cross_realization_comparison_v0.md:67-74"
+    },
+    {
+      "requirement": "Q1 at 600 seconds and 1024 max tokens returned HTTP 200 at the length boundary with an incomplete response",
+      "status": "PARTIAL",
+      "finding": "The packet mentions the 475.696185-second return and length finish in its evidence, but does not preserve the exact HTTP 200 plus FAIL_INCOMPLETE_RESPONSE classification as one bounded result.",
+      "source": "docs/decisions/local_automation/turbo_t1_q1_deadline_pressure_result_v0.md:18-27"
+    },
+    {
+      "requirement": "Q1 at 600 seconds and 2048 max tokens produced no HTTP response before deadline",
+      "status": "PRESERVED",
+      "finding": "The packet states that the 2048-token call did not return within the same 600-second deadline.",
+      "source": "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md:27-35"
+    },
+    {
+      "requirement": "increasing completion reserve does not establish that the reserve caused the later timeout",
+      "status": "CONTRADICTED",
+      "finding": "Although its escalation notes no stable relationship, the bounded interpretation also claims the 2048-token allowance exhausted. No response exists to establish exhaustion or cause.",
+      "source": "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md:51-53,72-77"
+    },
+    {
+      "requirement": "response-contract completion remains distinct from transport and deadline completion",
+      "status": "PARTIAL",
+      "finding": "The packet names the distinction, but then conflates the later deadline timeout with completion-budget exhaustion. The retained 1024-token result is the actual HTTP-complete and contract-incomplete witness.",
+      "source": "docs/decisions/local_automation/turbo_t1_q1_deadline_pressure_result_v0.md:18-27,40-56"
+    },
+    {
+      "requirement": "no Turbo semantic qualification was earned",
+      "status": "PARTIAL",
+      "finding": "The packet says no semantic qualification exists, but does not preserve the explicit NOT EARNED standing and lists semantic qualification among generically unresolved items.",
+      "source": "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md:55-64,72-78"
+    },
+    {
+      "requirement": "completion-budget admission remains unresolved",
+      "status": "PRESERVED_WITH_CONTRADICTORY_STRENGTHENING",
+      "finding": "The escalation preserves the unresolved state, but the bounded interpretation separately claims the 2048-token allowance exhausted.",
+      "source": "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md:51-53"
+    }
+  ],
+  "unsupported_strengthening": [
+    "The packet claims that the 2048-token allowance exhausted before a valid response could be returned. The retained observation establishes only that no HTTP response arrived before the 600-second deadline."
+  ],
+  "omitted_material_distinctions": [
+    "Q1, Q2, and Q3 were each context-admitted at 8192 in the original run.",
+    "All three original calls were 120-second apparatus timeouts, not semantic failures.",
+    "FAIL_INCOMPLETE_RESPONSE for the returned 1024-token call is distinct from APPARATUS_ERROR for the unreturned 2048-token call."
+  ],
+  "status_substitution": [
+    "The packet lists all five boundary labels as unresolved instead of separating established apparatus observations from the specifically unresolved completion-budget admission and absent semantic qualification.",
+    "The returned execution basis is an unrelated unsupported commit rather than the supplied execution basis."
+  ],
+  "evidence_navigation": {
+    "status": "UNRELIABLE",
+    "finding": "The sole evidence entry cites the 1024-token deadline result while its observation also asserts the later 2048-token timeout, which is retained in a different artifact. Its location field is not a recoverable heading or line location."
+  },
+  "semantic_packet_result": "NOT_ACCEPTED",
+  "usefulness_is_independent": true,
+  "qualification_or_promotion": "NONE"
+}

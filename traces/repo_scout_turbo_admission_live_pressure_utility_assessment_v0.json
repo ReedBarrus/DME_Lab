@@ -1,0 +1,44 @@
+{
+  "artifact": "repo_scout_turbo_admission_live_pressure_utility_assessment_v0",
+  "artifact_class": "BOUNDED_UTILITY_ASSESSMENT",
+  "task_id": "repo-scout-turbo-admission-live-pressure-v0",
+  "total_scout_wall_clock_seconds": 9.3587110999797,
+  "model_call_duration_seconds": 9.207362700020894,
+  "operations_executed": [
+    "git_grep",
+    "git_show",
+    "git_show",
+    "git_show",
+    "git_show"
+  ],
+  "operation_count": 5,
+  "operation_output_bytes": 20537,
+  "scope_used": [
+    "docs/decisions/local_automation",
+    "docs/decisions/local_automation/t1_hermes_turbo_cross_realization_comparison_v0.md",
+    "docs/decisions/local_automation/turbo_t1_q1_deadline_pressure_result_v0.md",
+    "docs/decisions/local_automation/turbo_t1_completion_budget_admission_checkpoint_v0.md",
+    "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md"
+  ],
+  "discovery_grep_returned_artifact_count": 5,
+  "full_artifacts_read_by_scout": 4,
+  "returned_packet_bytes": 2494,
+  "provider_usage": {
+    "prompt_tokens": 6620,
+    "completion_tokens": 572,
+    "reasoning_tokens": 0,
+    "total_tokens": 7192
+  },
+  "source_artifacts_codex_reopened_to_verify_packet": 4,
+  "relevant_state_recoverable_from_packet_without_independent_full_bounded_reconstruction": false,
+  "frontier_review_burden": "INCREASED",
+  "burden_basis": "The packet compressed the source material, but its invented basis, omitted 120-second contour, cross-artifact citation error, and unsupported completion-exhaustion claim required Codex to reopen and reconcile every full source artifact used by the frozen plan. Reviewing the packet added work rather than replacing bounded source reconstruction.",
+  "useful_observations_despite_failure": [
+    "The apparatus rejected a parseable response that failed the exact basis check.",
+    "The model preserved the later 2048-token no-response observation and the unresolved completion-budget question in part.",
+    "The live pressure exposed evidence-locality and status-separation weaknesses in the candidate packet without repository mutation."
+  ],
+  "scalar_utility_score": null,
+  "repo_scout_promotion": "NONE",
+  "realization_qualification": "NONE"
+}

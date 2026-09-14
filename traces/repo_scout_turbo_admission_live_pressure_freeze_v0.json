@@ -1,0 +1,119 @@
+{
+  "artifact": "repo_scout_turbo_admission_live_pressure_freeze_v0",
+  "artifact_class": "REPO_SCOUT_LIVE_PRESSURE_FREEZE",
+  "frozen_at_utc": "2026-09-14T22:07:08.5242315+00:00",
+  "repository_basis": "c76f64cbaefb0ae38a317e4423e5e0bc35720b91",
+  "apparatus_version": "repo_scout_v0",
+  "task_id": "repo-scout-turbo-admission-live-pressure-v0",
+  "question": "From the retained Turbo T1 local-automation decision evidence, reconstruct the sequence of operational admission boundaries exposed by the Turbo realization and state precisely what remains unresolved. Preserve the distinctions among context admission, deadline admission, completion-budget admission, response-contract completion, and semantic qualification. Do not infer unobserved model behavior. Distinguish apparatus errors, incomplete responses, and semantic evidence. Identify recoverable repository sources for claims. Keep observed evidence, bounded interpretation, and unresolved residue distinct.",
+  "allowed_paths": [
+    "docs/decisions/local_automation"
+  ],
+  "allowed_operations": [
+    "git_grep",
+    "git_show"
+  ],
+  "inspection_plan": [
+    {
+      "operation": "git_grep",
+      "pattern": "Turbo T1",
+      "path": "docs/decisions/local_automation",
+      "max_matches_per_file": 3
+    },
+    {
+      "operation": "git_show",
+      "path": "docs/decisions/local_automation/t1_hermes_turbo_cross_realization_comparison_v0.md",
+      "start_line": 1,
+      "end_line": 142
+    },
+    {
+      "operation": "git_show",
+      "path": "docs/decisions/local_automation/turbo_t1_q1_deadline_pressure_result_v0.md",
+      "start_line": 1,
+      "end_line": 108
+    },
+    {
+      "operation": "git_show",
+      "path": "docs/decisions/local_automation/turbo_t1_completion_budget_admission_checkpoint_v0.md",
+      "start_line": 1,
+      "end_line": 122
+    },
+    {
+      "operation": "git_show",
+      "path": "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md",
+      "start_line": 1,
+      "end_line": 94
+    }
+  ],
+  "execution_budget": {
+    "max_operations": 5,
+    "max_operation_output_bytes": 65536,
+    "max_model_response_bytes": 32768,
+    "max_model_calls": 1,
+    "wall_time_seconds": 600
+  },
+  "realization_basis": {
+    "identifier": "hermes-3-llama-3.2-3b",
+    "provider_model_key": "hermes-3-llama-3.2-3b",
+    "loaded_model_instance_identifier": "hermes-3-llama-3.2-3b",
+    "display_name": "Hermes 3 Llama 3.2 3B",
+    "publisher": "NousResearch",
+    "architecture": "llama",
+    "format": "gguf",
+    "quantization": {
+      "name": "Q4_K_M",
+      "bits_per_weight": 4
+    },
+    "params_string": "3B",
+    "size_bytes": 2019373888,
+    "indexed_model_artifact_path": "NousResearch/Hermes-3-Llama-3.2-3B-GGUF/Hermes-3-Llama-3.2-3B.Q4_K_M.gguf",
+    "model_artifact_digest": null,
+    "model_supported_maximum_context": 131072,
+    "requested_load_configuration": {
+      "context_length": 16384,
+      "gpu_offload": "max",
+      "parallel": 1,
+      "speculative_draft_mtp": false
+    },
+    "loaded_instance_config": {
+      "context_length": 16384,
+      "eval_batch_size": 2048,
+      "physical_batch_size": 512,
+      "parallel": 1,
+      "flash_attention": true,
+      "context_checkpoints": 32,
+      "reasoning_budget_message": "",
+      "speculative_draft_mtp": false,
+      "speculative_draft_simple": false,
+      "speculative_draft_model": "",
+      "speculative_draft_max_tokens": 3,
+      "speculative_draft_min_tokens": 0,
+      "speculative_draft_min_continue_probability": 0,
+      "offload_kv_cache_to_gpu": true
+    },
+    "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+    "runtime_model_inventory_endpoint": "http://127.0.0.1:1234/api/v1/models",
+    "runtime": "LM Studio OpenAI-compatible local endpoint",
+    "lm_studio_app_file_version": "0.4.24+1",
+    "lm_studio_app_product_version": "0.4.24.0",
+    "lm_studio_cli_commit": "ff50809",
+    "runtime_engine": null,
+    "provider_exposed_sampling_settings": {
+      "temperature": 0.0,
+      "top_p": 1.0,
+      "max_tokens": 1024
+    },
+    "response_format": "repo_scout_result_v0 strict JSON schema",
+    "fresh_context": true,
+    "automatic_retries": 0,
+    "tool_surface": [],
+    "write_authority": "NONE",
+    "historical_comparability": "NOT_INHERITED; this live pressure explicitly realizes a 16384-token context"
+  },
+  "output_contract": {
+    "name": "repo_scout_result",
+    "version": 0
+  },
+  "additional_evidence_scope_required": false,
+  "qualification_or_promotion_authority": "NONE"
+}
