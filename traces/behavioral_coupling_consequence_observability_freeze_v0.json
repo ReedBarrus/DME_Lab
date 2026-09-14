@@ -1,0 +1,566 @@
+{
+  "P1_revisited": false,
+  "P3_status": "BLOCKED_NOT_EXECUTED",
+  "P4_revisited": false,
+  "actual_consequence_timing_varied": false,
+  "artifact": "behavioral_coupling_consequence_observability_freeze_v0",
+  "artifact_class": "PRE_EXECUTION_PROTOCOL_AND_SCHEDULE_FREEZE",
+  "empirical_model_calls_made": 0,
+  "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+  "event_order": {
+    "EARLY": [
+      "FIRST_INTERACTION_COMMITTED",
+      "WORLD_CONSEQUENCE_OCCURRED",
+      "CONSEQUENCE_RECEIPT_GENERATED",
+      "CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY",
+      "STAGE_2_POLICY_REQUEST",
+      "WORLD_ACCEPTANCE",
+      "STAGE_2_TERMINAL_COMMITMENT",
+      "STAGE_2_ACTION_COLOR_DERIVED",
+      "SCORE"
+    ],
+    "LATE": [
+      "FIRST_INTERACTION_COMMITTED",
+      "WORLD_CONSEQUENCE_OCCURRED",
+      "CONSEQUENCE_RECEIPT_GENERATED",
+      "CONSEQUENCE_RECEIPT_WITHHELD",
+      "STAGE_2_POLICY_REQUEST",
+      "WORLD_ACCEPTANCE",
+      "STAGE_2_TERMINAL_COMMITMENT",
+      "STAGE_2_ACTION_COLOR_DERIVED",
+      "SCORE",
+      "CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY"
+    ]
+  },
+  "existing_action_qualification": "traces/behavioral_coupling_action_delexicalization_qualification_v0.json",
+  "fixed_stage_2_response_contract": {
+    "ACT_A": "RED",
+    "ACT_B": "BLUE"
+  },
+  "late_precommitment_input_equivalence": {
+    "BLUE_LATE_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+    "BLUE_LATE_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+    "RED_LATE_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+    "RED_LATE_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+    "hashes_match": true,
+    "required": true,
+    "serializations_match": true
+  },
+  "model_identifier": "hermes-3-llama-3.2-3b",
+  "new_qualification_model_calls_made": 0,
+  "protocol": {
+    "actual_consequence_timing_varied": false,
+    "critical_distinction": [
+      "consequence occurred != consequence receipt exists",
+      "receipt exists != receipt is policy-visible",
+      "receipt is policy-visible != receipt is visible before commitment",
+      "precommitment receipt visibility != changed later selection"
+    ],
+    "critical_late_input_equivalence": {
+      "BLUE_LATE_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "BLUE_LATE_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "RED_LATE_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "RED_LATE_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "hashes_match": true,
+      "required": true,
+      "serializations_match": true
+    },
+    "design": {
+      "execution_order": "RED/EARLY repetitions 1-4; RED/LATE repetitions 1-4; BLUE/EARLY repetitions 1-4; BLUE/LATE repetitions 1-4",
+      "logical_cells": [
+        "RED/EARLY",
+        "RED/LATE",
+        "BLUE/EARLY",
+        "BLUE/LATE"
+      ],
+      "repetitions_per_logical_cell": 4,
+      "total_stage_2_policy_decisions": 16
+    },
+    "fixed_stage_2_response_contract": {
+      "ACT_A": "RED",
+      "ACT_B": "BLUE"
+    },
+    "fixed_stage_2_task": "The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.",
+    "held_fixed": {
+      "action_enum_order": [
+        "ACT_A",
+        "ACT_B"
+      ],
+      "action_schema_sha256": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "adapter_realization": "CONSTRAINED_TYPED_ACTION",
+      "empirical_retries": 0,
+      "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "prior_episode_results_supplied": false,
+      "repository_or_filesystem_supplied": false,
+      "sampling": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "stage_1_consequence_occurrence_position": "before Stage-2 inference",
+      "stage_2_response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "stateless_stage_2_requests": true,
+      "tools_or_mcp_supplied": false
+    },
+    "new_qualification_calls": 0,
+    "prior_evidence": {
+      "calls": "traces/behavioral_coupling_binding_observability_calls_v0.json",
+      "freeze": "traces/behavioral_coupling_binding_observability_freeze_v0.json",
+      "protocol": "docs/methods/Consequence_Surface/Behavioral_Coupling_Binding_Observability_v0.md",
+      "qualified_action_surface": "traces/behavioral_coupling_action_delexicalization_qualification_v0.json",
+      "world": "traces/behavioral_coupling_binding_observability_world_v0.json"
+    },
+    "protocol_version": "behavioral_coupling_consequence_observability_v0",
+    "receipt_timings": {
+      "EARLY": "consequence occurs, receipt is delivered, then Stage-2 policy request and commitment",
+      "LATE": "consequence occurs, receipt is withheld through Stage-2 commitment and score, then delivered"
+    },
+    "repository_authority_commit": "65f1e881b114a07cafb46fef8875d4b11aeb990b",
+    "research_question": [
+      "Holding Stage-1 consequence occurrence fixed before Stage 2, does precommitment receipt visibility change accepted Stage-2 action selection?",
+      "Can a consequence exist before Stage 2 while remaining behaviorally unavailable because its receipt has not crossed the observation boundary?"
+    ],
+    "reuse_existing_action_qualification": true,
+    "scientific_boundary": {
+      "does_not_establish": [
+        "reinforcement learning",
+        "memory architecture",
+        "general temporal cognition",
+        "causal understanding",
+        "agency",
+        "learning across episodes",
+        "general consequence geometry",
+        "generalized feedback control"
+      ],
+      "may_establish": [
+        "bounded association between precommitment evidence of an already-occurred consequence and useful later action discrimination",
+        "bounded existence of an authoritative consequence before a policy decision without behavioral availability before its receipt crosses the observation boundary"
+      ],
+      "scientific_adjudication": "NOT_PERFORMED"
+    },
+    "scoring": {
+      "rule": "apply the fixed visible response contract to the committed Stage-2 ACT token; success iff action-implied color equals the authoritative Stage-1 consequence",
+      "separate_values": [
+        "authoritative Stage-1 consequence",
+        "Stage-2 requested action",
+        "Stage-2 action-implied color",
+        "success"
+      ]
+    },
+    "serialized_stage_2_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+    "stage_1": {
+      "consequence_cases": {
+        "K_BLUE": "BLUE",
+        "K_RED": "RED"
+      },
+      "consequence_occurs_before_stage_2_inference_in_all_conditions": true,
+      "interaction": "FIRST_INTERACTION_COMMITTED",
+      "model_selectable_action": false
+    },
+    "status": "FROZEN_BEFORE_EMPIRICAL_EXECUTION",
+    "stop_after_pressure": true,
+    "validity": {
+      "invalidity_conditions": [
+        "RED/LATE and BLUE/LATE policy-input mismatch",
+        "consequence identity leaks before commitment in LATE",
+        "consequence does not occur before Stage-2 inference",
+        "EARLY receipt contains wrong consequence",
+        "response-contract mutation",
+        "action-schema mutation",
+        "retry or replacement",
+        "prior-episode leakage",
+        "schedule mutation",
+        "late receipt changes commitment or score",
+        "score ignores authoritative Stage-1 consequence"
+      ],
+      "wrong_legal_stage_2_actions_are_behavior_not_invalidity": true
+    }
+  },
+  "protocol_sha256": "sha256:fd1d12c3d893465e71200230dbc2997efcc7fe8df659065dd935becc400282b8",
+  "provider_exposed_sampling_settings": {
+    "max_tokens": 16,
+    "temperature": 0.0,
+    "top_p": 1.0
+  },
+  "repetitions_per_logical_cell": 4,
+  "response_action_schema": {
+    "json_schema": {
+      "name": "bounded_terminal_action",
+      "schema": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "enum": [
+              "ACT_A",
+              "ACT_B"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "type": "object"
+      },
+      "strict": true
+    },
+    "type": "json_schema"
+  },
+  "response_action_schema_sha256": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+  "schedule": [
+    {
+      "authoritative_stage_1_consequence": "RED",
+      "episode_id": "consequence-k_red-early-r01",
+      "receipt_policy_visible_before_stage_2_commitment": true,
+      "receipt_timing": "EARLY",
+      "repetition_index": 1,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_RED",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"RED\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:c586c77f46c4f2b0a3984972d45b67eb1ac546e7cec7b0720f4243bb8299585a"
+    },
+    {
+      "authoritative_stage_1_consequence": "RED",
+      "episode_id": "consequence-k_red-early-r02",
+      "receipt_policy_visible_before_stage_2_commitment": true,
+      "receipt_timing": "EARLY",
+      "repetition_index": 2,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_RED",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"RED\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:c586c77f46c4f2b0a3984972d45b67eb1ac546e7cec7b0720f4243bb8299585a"
+    },
+    {
+      "authoritative_stage_1_consequence": "RED",
+      "episode_id": "consequence-k_red-early-r03",
+      "receipt_policy_visible_before_stage_2_commitment": true,
+      "receipt_timing": "EARLY",
+      "repetition_index": 3,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_RED",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"RED\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:c586c77f46c4f2b0a3984972d45b67eb1ac546e7cec7b0720f4243bb8299585a"
+    },
+    {
+      "authoritative_stage_1_consequence": "RED",
+      "episode_id": "consequence-k_red-early-r04",
+      "receipt_policy_visible_before_stage_2_commitment": true,
+      "receipt_timing": "EARLY",
+      "repetition_index": 4,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_RED",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"RED\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:c586c77f46c4f2b0a3984972d45b67eb1ac546e7cec7b0720f4243bb8299585a"
+    },
+    {
+      "authoritative_stage_1_consequence": "RED",
+      "episode_id": "consequence-k_red-late-r01",
+      "receipt_policy_visible_before_stage_2_commitment": false,
+      "receipt_timing": "LATE",
+      "repetition_index": 1,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_RED",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5"
+    },
+    {
+      "authoritative_stage_1_consequence": "RED",
+      "episode_id": "consequence-k_red-late-r02",
+      "receipt_policy_visible_before_stage_2_commitment": false,
+      "receipt_timing": "LATE",
+      "repetition_index": 2,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_RED",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5"
+    },
+    {
+      "authoritative_stage_1_consequence": "RED",
+      "episode_id": "consequence-k_red-late-r03",
+      "receipt_policy_visible_before_stage_2_commitment": false,
+      "receipt_timing": "LATE",
+      "repetition_index": 3,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_RED",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5"
+    },
+    {
+      "authoritative_stage_1_consequence": "RED",
+      "episode_id": "consequence-k_red-late-r04",
+      "receipt_policy_visible_before_stage_2_commitment": false,
+      "receipt_timing": "LATE",
+      "repetition_index": 4,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_RED",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5"
+    },
+    {
+      "authoritative_stage_1_consequence": "BLUE",
+      "episode_id": "consequence-k_blue-early-r01",
+      "receipt_policy_visible_before_stage_2_commitment": true,
+      "receipt_timing": "EARLY",
+      "repetition_index": 1,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_BLUE",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"BLUE\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:9d591992531a57e686c362054c550a228d73c179ffe604170d9097a2235713cf"
+    },
+    {
+      "authoritative_stage_1_consequence": "BLUE",
+      "episode_id": "consequence-k_blue-early-r02",
+      "receipt_policy_visible_before_stage_2_commitment": true,
+      "receipt_timing": "EARLY",
+      "repetition_index": 2,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_BLUE",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"BLUE\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:9d591992531a57e686c362054c550a228d73c179ffe604170d9097a2235713cf"
+    },
+    {
+      "authoritative_stage_1_consequence": "BLUE",
+      "episode_id": "consequence-k_blue-early-r03",
+      "receipt_policy_visible_before_stage_2_commitment": true,
+      "receipt_timing": "EARLY",
+      "repetition_index": 3,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_BLUE",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"BLUE\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:9d591992531a57e686c362054c550a228d73c179ffe604170d9097a2235713cf"
+    },
+    {
+      "authoritative_stage_1_consequence": "BLUE",
+      "episode_id": "consequence-k_blue-early-r04",
+      "receipt_policy_visible_before_stage_2_commitment": true,
+      "receipt_timing": "EARLY",
+      "repetition_index": 4,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_BLUE",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"BLUE\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:9d591992531a57e686c362054c550a228d73c179ffe604170d9097a2235713cf"
+    },
+    {
+      "authoritative_stage_1_consequence": "BLUE",
+      "episode_id": "consequence-k_blue-late-r01",
+      "receipt_policy_visible_before_stage_2_commitment": false,
+      "receipt_timing": "LATE",
+      "repetition_index": 1,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_BLUE",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5"
+    },
+    {
+      "authoritative_stage_1_consequence": "BLUE",
+      "episode_id": "consequence-k_blue-late-r02",
+      "receipt_policy_visible_before_stage_2_commitment": false,
+      "receipt_timing": "LATE",
+      "repetition_index": 2,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_BLUE",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5"
+    },
+    {
+      "authoritative_stage_1_consequence": "BLUE",
+      "episode_id": "consequence-k_blue-late-r03",
+      "receipt_policy_visible_before_stage_2_commitment": false,
+      "receipt_timing": "LATE",
+      "repetition_index": 3,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_BLUE",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5"
+    },
+    {
+      "authoritative_stage_1_consequence": "BLUE",
+      "episode_id": "consequence-k_blue-late-r04",
+      "receipt_policy_visible_before_stage_2_commitment": false,
+      "receipt_timing": "LATE",
+      "repetition_index": 4,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_BLUE",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5"
+    }
+  ],
+  "schedule_sha256": "sha256:7402aed6eddee81f4528388b842e61310328fcb9a29cd58c65628aa8cfdbff02",
+  "scientific_adjudication": "NOT_PERFORMED",
+  "scoring_rule": "apply the fixed visible response contract to the committed Stage-2 ACT token; success iff action-implied color equals the authoritative Stage-1 consequence",
+  "serialized_stage_2_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+  "stage_1_consequence_schedule": {
+    "K_BLUE": "BLUE",
+    "K_RED": "RED"
+  }
+}
