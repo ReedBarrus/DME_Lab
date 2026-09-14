@@ -18,12 +18,14 @@ qualification calls:
 - 16 in the binding-observability pressure; and
 - 16 Stage-2 decisions in the consequence-observability pressure.
 
-All cited world traces report valid execution. Wrong legal selections remain
-behavioral evidence rather than protocol invalidity. The common retained
-realization used `hermes-3-llama-3.2-3b`, an LM Studio constrained typed-output
-interface, `temperature=0`, `top_p=1`, `max_tokens=16`, stateless requests,
-frozen schedules, and no empirical retry or semantic repair. These conditions
-do not establish deterministic model behavior.
+All seven continuation world traces report valid execution. The baseline
+retains all 16 episodes with no malformed / inadmissible or nonterminal
+failures. Wrong legal selections remain behavioral evidence rather than
+protocol invalidity. The common retained realization used
+`hermes-3-llama-3.2-3b`, an LM Studio constrained typed-output interface,
+`temperature=0`, `top_p=1`, `max_tokens=16`, stateless requests, frozen
+schedules, and no empirical retry or semantic repair. These conditions do not
+establish deterministic model behavior.
 
 The supplied Astra adversarial review was used to challenge and compress the
 interpretation. It is analysis input only: it introduces no empirical evidence
