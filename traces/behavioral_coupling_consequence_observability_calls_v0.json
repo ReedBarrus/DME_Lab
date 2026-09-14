@@ -1,0 +1,1128 @@
+{
+  "P1_revisited": false,
+  "P3_empirical_calls": 0,
+  "P3_status": "BLOCKED_NOT_EXECUTED",
+  "P4_revisited": false,
+  "action_schema_sha256": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+  "actual_consequence_timing_varied": false,
+  "adapter_realization": "CONSTRAINED_TYPED_ACTION",
+  "adapter_repository_commit": "d60ce2044fb2215e58eec74de8e311ba42765bc0",
+  "artifact": "behavioral_coupling_consequence_observability_calls_v0",
+  "artifact_class": "EMPIRICAL_MODEL_CALL_EVIDENCE",
+  "calls": [
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "consequence-k_red-early-r01",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-h5y55etgosqgme64acjz7d\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789350697,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 103,\n    \"completion_tokens\": 7,\n    \"total_tokens\": 110,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\\\",\\\"payload\\\":{\\\"authoritative_consequence\\\":\\\"RED\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"RED\"}}]}",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"RED\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:c586c77f46c4f2b0a3984972d45b67eb1ac546e7cec7b0720f4243bb8299585a",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "consequence-k_red-early-r02",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-xt7mtwdm8pbui16xym90i\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789350697,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 103,\n    \"completion_tokens\": 7,\n    \"total_tokens\": 110,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\\\",\\\"payload\\\":{\\\"authoritative_consequence\\\":\\\"RED\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"RED\"}}]}",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"RED\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:c586c77f46c4f2b0a3984972d45b67eb1ac546e7cec7b0720f4243bb8299585a",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "consequence-k_red-early-r03",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-l4mmve6s2oavzg6xl5j1oj\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789350697,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 103,\n    \"completion_tokens\": 7,\n    \"total_tokens\": 110,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\\\",\\\"payload\\\":{\\\"authoritative_consequence\\\":\\\"RED\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"RED\"}}]}",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"RED\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:c586c77f46c4f2b0a3984972d45b67eb1ac546e7cec7b0720f4243bb8299585a",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "consequence-k_red-early-r04",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-2pxtfuxeu3qbg4s5hbba2t\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789350697,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 103,\n    \"completion_tokens\": 7,\n    \"total_tokens\": 110,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\\\",\\\"payload\\\":{\\\"authoritative_consequence\\\":\\\"RED\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"RED\"}}]}",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"RED\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:c586c77f46c4f2b0a3984972d45b67eb1ac546e7cec7b0720f4243bb8299585a",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "consequence-k_red-late-r01",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-m50wt4ivygqkvpdggta4qn\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789350698,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 79,\n    \"completion_tokens\": 7,\n    \"total_tokens\": 86,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "consequence-k_red-late-r02",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-26jg0c9pk9s4s2mo3ildfd\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789350698,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 79,\n    \"completion_tokens\": 7,\n    \"total_tokens\": 86,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "consequence-k_red-late-r03",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-ygu7c9xj2zi0p62yart2cdd\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789350698,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 79,\n    \"completion_tokens\": 7,\n    \"total_tokens\": 86,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "consequence-k_red-late-r04",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-xiumig9vlfer7si0trsr3f\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789350698,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 79,\n    \"completion_tokens\": 7,\n    \"total_tokens\": 86,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "consequence-k_blue-early-r01",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"ACT_B\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-cg3a2wpnmiblyahprl7xq\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789350698,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"ACT_B\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 103,\n    \"completion_tokens\": 7,\n    \"total_tokens\": 110,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_B",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\\\",\\\"payload\\\":{\\\"authoritative_consequence\\\":\\\"BLUE\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"BLUE\"}}]}",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"BLUE\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:9d591992531a57e686c362054c550a228d73c179ffe604170d9097a2235713cf",
+      "structured_output": {
+        "action": "ACT_B"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "consequence-k_blue-early-r02",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"ACT_B\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-ffqzwxjhebbboqg3t07re\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789350698,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"ACT_B\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 103,\n    \"completion_tokens\": 7,\n    \"total_tokens\": 110,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_B",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\\\",\\\"payload\\\":{\\\"authoritative_consequence\\\":\\\"BLUE\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"BLUE\"}}]}",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"BLUE\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:9d591992531a57e686c362054c550a228d73c179ffe604170d9097a2235713cf",
+      "structured_output": {
+        "action": "ACT_B"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "consequence-k_blue-early-r03",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"ACT_B\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-53hrfqw7ksup67echzxj\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789350698,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"ACT_B\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 103,\n    \"completion_tokens\": 7,\n    \"total_tokens\": 110,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_B",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\\\",\\\"payload\\\":{\\\"authoritative_consequence\\\":\\\"BLUE\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"BLUE\"}}]}",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"BLUE\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:9d591992531a57e686c362054c550a228d73c179ffe604170d9097a2235713cf",
+      "structured_output": {
+        "action": "ACT_B"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "consequence-k_blue-early-r04",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"ACT_B\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-2w0ufr7rlygltinhbpdjao\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789350699,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"ACT_B\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 103,\n    \"completion_tokens\": 7,\n    \"total_tokens\": 110,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_B",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\\\",\\\"payload\\\":{\\\"authoritative_consequence\\\":\\\"BLUE\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"BLUE\"}}]}",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"BLUE\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:9d591992531a57e686c362054c550a228d73c179ffe604170d9097a2235713cf",
+      "structured_output": {
+        "action": "ACT_B"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "consequence-k_blue-late-r01",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-retobv2iuyqxdewvrmic3\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789350699,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 79,\n    \"completion_tokens\": 7,\n    \"total_tokens\": 86,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "consequence-k_blue-late-r02",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-u4716zll6nobngjth2x1\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789350699,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 79,\n    \"completion_tokens\": 7,\n    \"total_tokens\": 86,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "consequence-k_blue-late-r03",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-ndyjxyz2kobxgj3bdl2ia\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789350699,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 79,\n    \"completion_tokens\": 7,\n    \"total_tokens\": 86,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "consequence-k_blue-late-r04",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-7pf20ahhas4gh3xi0ni3hs\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789350699,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 79,\n    \"completion_tokens\": 7,\n    \"total_tokens\": 86,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    }
+  ],
+  "descriptive_summary": {
+    "BLUE": {
+      "EARLY": {
+        "ACT_A": 0,
+        "ACT_B": 4,
+        "BLUE_implied": 4,
+        "RED_implied": 0,
+        "episodes": 4,
+        "failures": 0,
+        "protocol_invalid": 0,
+        "success": 4
+      },
+      "LATE": {
+        "ACT_A": 4,
+        "ACT_B": 0,
+        "BLUE_implied": 0,
+        "RED_implied": 4,
+        "episodes": 4,
+        "failures": 0,
+        "protocol_invalid": 0,
+        "success": 0
+      }
+    },
+    "RED": {
+      "EARLY": {
+        "ACT_A": 4,
+        "ACT_B": 0,
+        "BLUE_implied": 0,
+        "RED_implied": 4,
+        "episodes": 4,
+        "failures": 0,
+        "protocol_invalid": 0,
+        "success": 4
+      },
+      "LATE": {
+        "ACT_A": 4,
+        "ACT_B": 0,
+        "BLUE_implied": 0,
+        "RED_implied": 4,
+        "episodes": 4,
+        "failures": 0,
+        "protocol_invalid": 0,
+        "success": 4
+      }
+    }
+  },
+  "empirical_call_count": 16,
+  "empirical_episode_count": 16,
+  "empirical_retry_count": 0,
+  "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+  "execution_basis_commit": "998e3c15b394706c275056c976e834a49b6d152d",
+  "fixed_stage_2_response_contract": {
+    "ACT_A": "RED",
+    "ACT_B": "BLUE"
+  },
+  "freeze_path": "traces/behavioral_coupling_consequence_observability_freeze_v0.json",
+  "model_identifier": "hermes-3-llama-3.2-3b",
+  "new_qualification_call_count": 0,
+  "pressure": "CONSEQUENCE_OCCURRENCE_VS_PRECOMMITMENT_OBSERVABILITY",
+  "protocol_sha256": "sha256:fd1d12c3d893465e71200230dbc2997efcc7fe8df659065dd935becc400282b8",
+  "protocol_version": "behavioral_coupling_consequence_observability_v0",
+  "provider_exposed_sampling_settings": {
+    "max_tokens": 16,
+    "temperature": 0.0,
+    "top_p": 1.0
+  },
+  "reused_action_qualification_path": "traces/behavioral_coupling_action_delexicalization_qualification_v0.json",
+  "reused_action_qualification_result": {
+    "calls_retained": 2,
+    "scientific_schedule_entries_consumed": 0,
+    "status": "PASS",
+    "wounds": []
+  },
+  "schedule_sha256": "sha256:7402aed6eddee81f4528388b842e61310328fcb9a29cd58c65628aa8cfdbff02",
+  "scientific_adjudication": "NOT_PERFORMED",
+  "scoring_rule": "apply the fixed visible response contract to the committed Stage-2 ACT token; success iff action-implied color equals the authoritative Stage-1 consequence",
+  "serialized_stage_2_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+  "stage_1_policy_decision_count": 0,
+  "stage_2_policy_decision_count": 16,
+  "validity": {
+    "calls_retained": 16,
+    "empirical_retries": 0,
+    "episodes_retained": 16,
+    "event_order_validation": {
+      "EARLY_consequence_before_receipt_before_commitment": true,
+      "LATE_consequence_before_commitment_before_receipt": true
+    },
+    "invalidity_wounds": [],
+    "late_input_equivalence": {
+      "BLUE_LATE_hashes": [
+        "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5"
+      ],
+      "BLUE_LATE_serializations": [
+        "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}"
+      ],
+      "RED_LATE_hashes": [
+        "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5"
+      ],
+      "RED_LATE_serializations": [
+        "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}"
+      ],
+      "match": true
+    },
+    "status": "VALID",
+    "wrong_legal_stage_2_actions_are_behavior_not_invalidity": true
+  }
+}

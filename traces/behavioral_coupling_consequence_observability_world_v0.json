@@ -1,0 +1,2152 @@
+{
+  "P1_revisited": false,
+  "P3_empirical_calls": 0,
+  "P3_status": "BLOCKED_NOT_EXECUTED",
+  "P4_revisited": false,
+  "action_schema_sha256": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+  "actual_consequence_timing_varied": false,
+  "adapter_realization": "CONSTRAINED_TYPED_ACTION",
+  "adapter_repository_commit": "d60ce2044fb2215e58eec74de8e311ba42765bc0",
+  "artifact": "behavioral_coupling_consequence_observability_world_v0",
+  "artifact_class": "EMPIRICAL_WORLD_TRACE",
+  "descriptive_summary": {
+    "BLUE": {
+      "EARLY": {
+        "ACT_A": 0,
+        "ACT_B": 4,
+        "BLUE_implied": 4,
+        "RED_implied": 0,
+        "episodes": 4,
+        "failures": 0,
+        "protocol_invalid": 0,
+        "success": 4
+      },
+      "LATE": {
+        "ACT_A": 4,
+        "ACT_B": 0,
+        "BLUE_implied": 0,
+        "RED_implied": 4,
+        "episodes": 4,
+        "failures": 0,
+        "protocol_invalid": 0,
+        "success": 0
+      }
+    },
+    "RED": {
+      "EARLY": {
+        "ACT_A": 4,
+        "ACT_B": 0,
+        "BLUE_implied": 0,
+        "RED_implied": 4,
+        "episodes": 4,
+        "failures": 0,
+        "protocol_invalid": 0,
+        "success": 4
+      },
+      "LATE": {
+        "ACT_A": 4,
+        "ACT_B": 0,
+        "BLUE_implied": 0,
+        "RED_implied": 4,
+        "episodes": 4,
+        "failures": 0,
+        "protocol_invalid": 0,
+        "success": 4
+      }
+    }
+  },
+  "empirical_call_count": 16,
+  "empirical_episode_count": 16,
+  "empirical_retry_count": 0,
+  "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+  "episodes": [
+    {
+      "authoritative_stage_1_consequence": "RED",
+      "consequence_occurrence_event_index": 1,
+      "episode_id": "consequence-k_red-early-r01",
+      "exact_stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"RED\"}}]}",
+      "failure_class": null,
+      "observed_stage_2_precommitment_sha256": "sha256:c586c77f46c4f2b0a3984972d45b67eb1ac546e7cec7b0720f4243bb8299585a",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "FIRST_INTERACTION_COMMITTED",
+          "payload": {
+            "apparatus_controlled": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "WORLD_CONSEQUENCE_OCCURRED",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "CONSEQUENCE_RECEIPT_GENERATED",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "STAGE_2_POLICY_REQUEST",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACCEPTANCE",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "STAGE_2_TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "STAGE_2_ACTION_COLOR_DERIVED",
+          "payload": {
+            "action_implied_color": "RED",
+            "committed_action": "ACT_A",
+            "response_contract": {
+              "ACT_A": "RED",
+              "ACT_B": "BLUE"
+            }
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 8,
+          "event_type": "SCORE",
+          "payload": {
+            "action_implied_color": "RED",
+            "authoritative_stage_1_consequence": "RED",
+            "success": true
+          },
+          "policy_visible": false
+        }
+      ],
+      "receipt_delivery_event_index": 3,
+      "receipt_generation_event_index": 2,
+      "receipt_policy_visible_before_stage_2_commitment": true,
+      "receipt_timing": "EARLY",
+      "repetition_index": 1,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_RED",
+      "stage_2_action_implied_color": "RED",
+      "stage_2_commitment_event_index": 6,
+      "stage_2_committed_action": "ACT_A",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"RED\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:c586c77f46c4f2b0a3984972d45b67eb1ac546e7cec7b0720f4243bb8299585a",
+      "stage_2_requested_action": "ACT_A",
+      "success": true,
+      "valid": true,
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      }
+    },
+    {
+      "authoritative_stage_1_consequence": "RED",
+      "consequence_occurrence_event_index": 1,
+      "episode_id": "consequence-k_red-early-r02",
+      "exact_stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"RED\"}}]}",
+      "failure_class": null,
+      "observed_stage_2_precommitment_sha256": "sha256:c586c77f46c4f2b0a3984972d45b67eb1ac546e7cec7b0720f4243bb8299585a",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "FIRST_INTERACTION_COMMITTED",
+          "payload": {
+            "apparatus_controlled": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "WORLD_CONSEQUENCE_OCCURRED",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "CONSEQUENCE_RECEIPT_GENERATED",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "STAGE_2_POLICY_REQUEST",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACCEPTANCE",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "STAGE_2_TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "STAGE_2_ACTION_COLOR_DERIVED",
+          "payload": {
+            "action_implied_color": "RED",
+            "committed_action": "ACT_A",
+            "response_contract": {
+              "ACT_A": "RED",
+              "ACT_B": "BLUE"
+            }
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 8,
+          "event_type": "SCORE",
+          "payload": {
+            "action_implied_color": "RED",
+            "authoritative_stage_1_consequence": "RED",
+            "success": true
+          },
+          "policy_visible": false
+        }
+      ],
+      "receipt_delivery_event_index": 3,
+      "receipt_generation_event_index": 2,
+      "receipt_policy_visible_before_stage_2_commitment": true,
+      "receipt_timing": "EARLY",
+      "repetition_index": 2,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_RED",
+      "stage_2_action_implied_color": "RED",
+      "stage_2_commitment_event_index": 6,
+      "stage_2_committed_action": "ACT_A",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"RED\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:c586c77f46c4f2b0a3984972d45b67eb1ac546e7cec7b0720f4243bb8299585a",
+      "stage_2_requested_action": "ACT_A",
+      "success": true,
+      "valid": true,
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      }
+    },
+    {
+      "authoritative_stage_1_consequence": "RED",
+      "consequence_occurrence_event_index": 1,
+      "episode_id": "consequence-k_red-early-r03",
+      "exact_stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"RED\"}}]}",
+      "failure_class": null,
+      "observed_stage_2_precommitment_sha256": "sha256:c586c77f46c4f2b0a3984972d45b67eb1ac546e7cec7b0720f4243bb8299585a",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "FIRST_INTERACTION_COMMITTED",
+          "payload": {
+            "apparatus_controlled": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "WORLD_CONSEQUENCE_OCCURRED",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "CONSEQUENCE_RECEIPT_GENERATED",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "STAGE_2_POLICY_REQUEST",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACCEPTANCE",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "STAGE_2_TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "STAGE_2_ACTION_COLOR_DERIVED",
+          "payload": {
+            "action_implied_color": "RED",
+            "committed_action": "ACT_A",
+            "response_contract": {
+              "ACT_A": "RED",
+              "ACT_B": "BLUE"
+            }
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 8,
+          "event_type": "SCORE",
+          "payload": {
+            "action_implied_color": "RED",
+            "authoritative_stage_1_consequence": "RED",
+            "success": true
+          },
+          "policy_visible": false
+        }
+      ],
+      "receipt_delivery_event_index": 3,
+      "receipt_generation_event_index": 2,
+      "receipt_policy_visible_before_stage_2_commitment": true,
+      "receipt_timing": "EARLY",
+      "repetition_index": 3,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_RED",
+      "stage_2_action_implied_color": "RED",
+      "stage_2_commitment_event_index": 6,
+      "stage_2_committed_action": "ACT_A",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"RED\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:c586c77f46c4f2b0a3984972d45b67eb1ac546e7cec7b0720f4243bb8299585a",
+      "stage_2_requested_action": "ACT_A",
+      "success": true,
+      "valid": true,
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      }
+    },
+    {
+      "authoritative_stage_1_consequence": "RED",
+      "consequence_occurrence_event_index": 1,
+      "episode_id": "consequence-k_red-early-r04",
+      "exact_stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"RED\"}}]}",
+      "failure_class": null,
+      "observed_stage_2_precommitment_sha256": "sha256:c586c77f46c4f2b0a3984972d45b67eb1ac546e7cec7b0720f4243bb8299585a",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "FIRST_INTERACTION_COMMITTED",
+          "payload": {
+            "apparatus_controlled": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "WORLD_CONSEQUENCE_OCCURRED",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "CONSEQUENCE_RECEIPT_GENERATED",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "STAGE_2_POLICY_REQUEST",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACCEPTANCE",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "STAGE_2_TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "STAGE_2_ACTION_COLOR_DERIVED",
+          "payload": {
+            "action_implied_color": "RED",
+            "committed_action": "ACT_A",
+            "response_contract": {
+              "ACT_A": "RED",
+              "ACT_B": "BLUE"
+            }
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 8,
+          "event_type": "SCORE",
+          "payload": {
+            "action_implied_color": "RED",
+            "authoritative_stage_1_consequence": "RED",
+            "success": true
+          },
+          "policy_visible": false
+        }
+      ],
+      "receipt_delivery_event_index": 3,
+      "receipt_generation_event_index": 2,
+      "receipt_policy_visible_before_stage_2_commitment": true,
+      "receipt_timing": "EARLY",
+      "repetition_index": 4,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_RED",
+      "stage_2_action_implied_color": "RED",
+      "stage_2_commitment_event_index": 6,
+      "stage_2_committed_action": "ACT_A",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"RED\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:c586c77f46c4f2b0a3984972d45b67eb1ac546e7cec7b0720f4243bb8299585a",
+      "stage_2_requested_action": "ACT_A",
+      "success": true,
+      "valid": true,
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      }
+    },
+    {
+      "authoritative_stage_1_consequence": "RED",
+      "consequence_occurrence_event_index": 1,
+      "episode_id": "consequence-k_red-late-r01",
+      "exact_stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "failure_class": null,
+      "observed_stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "FIRST_INTERACTION_COMMITTED",
+          "payload": {
+            "apparatus_controlled": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "WORLD_CONSEQUENCE_OCCURRED",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "CONSEQUENCE_RECEIPT_GENERATED",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "CONSEQUENCE_RECEIPT_WITHHELD",
+          "payload": {
+            "receipt_generated": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "STAGE_2_POLICY_REQUEST",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACCEPTANCE",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "STAGE_2_TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "STAGE_2_ACTION_COLOR_DERIVED",
+          "payload": {
+            "action_implied_color": "RED",
+            "committed_action": "ACT_A",
+            "response_contract": {
+              "ACT_A": "RED",
+              "ACT_B": "BLUE"
+            }
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 8,
+          "event_type": "SCORE",
+          "payload": {
+            "action_implied_color": "RED",
+            "authoritative_stage_1_consequence": "RED",
+            "success": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 9,
+          "event_type": "CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": true
+        }
+      ],
+      "receipt_delivery_event_index": 9,
+      "receipt_generation_event_index": 2,
+      "receipt_policy_visible_before_stage_2_commitment": false,
+      "receipt_timing": "LATE",
+      "repetition_index": 1,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_RED",
+      "stage_2_action_implied_color": "RED",
+      "stage_2_commitment_event_index": 6,
+      "stage_2_committed_action": "ACT_A",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "stage_2_requested_action": "ACT_A",
+      "success": true,
+      "valid": true,
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      }
+    },
+    {
+      "authoritative_stage_1_consequence": "RED",
+      "consequence_occurrence_event_index": 1,
+      "episode_id": "consequence-k_red-late-r02",
+      "exact_stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "failure_class": null,
+      "observed_stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "FIRST_INTERACTION_COMMITTED",
+          "payload": {
+            "apparatus_controlled": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "WORLD_CONSEQUENCE_OCCURRED",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "CONSEQUENCE_RECEIPT_GENERATED",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "CONSEQUENCE_RECEIPT_WITHHELD",
+          "payload": {
+            "receipt_generated": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "STAGE_2_POLICY_REQUEST",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACCEPTANCE",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "STAGE_2_TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "STAGE_2_ACTION_COLOR_DERIVED",
+          "payload": {
+            "action_implied_color": "RED",
+            "committed_action": "ACT_A",
+            "response_contract": {
+              "ACT_A": "RED",
+              "ACT_B": "BLUE"
+            }
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 8,
+          "event_type": "SCORE",
+          "payload": {
+            "action_implied_color": "RED",
+            "authoritative_stage_1_consequence": "RED",
+            "success": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 9,
+          "event_type": "CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": true
+        }
+      ],
+      "receipt_delivery_event_index": 9,
+      "receipt_generation_event_index": 2,
+      "receipt_policy_visible_before_stage_2_commitment": false,
+      "receipt_timing": "LATE",
+      "repetition_index": 2,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_RED",
+      "stage_2_action_implied_color": "RED",
+      "stage_2_commitment_event_index": 6,
+      "stage_2_committed_action": "ACT_A",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "stage_2_requested_action": "ACT_A",
+      "success": true,
+      "valid": true,
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      }
+    },
+    {
+      "authoritative_stage_1_consequence": "RED",
+      "consequence_occurrence_event_index": 1,
+      "episode_id": "consequence-k_red-late-r03",
+      "exact_stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "failure_class": null,
+      "observed_stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "FIRST_INTERACTION_COMMITTED",
+          "payload": {
+            "apparatus_controlled": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "WORLD_CONSEQUENCE_OCCURRED",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "CONSEQUENCE_RECEIPT_GENERATED",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "CONSEQUENCE_RECEIPT_WITHHELD",
+          "payload": {
+            "receipt_generated": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "STAGE_2_POLICY_REQUEST",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACCEPTANCE",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "STAGE_2_TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "STAGE_2_ACTION_COLOR_DERIVED",
+          "payload": {
+            "action_implied_color": "RED",
+            "committed_action": "ACT_A",
+            "response_contract": {
+              "ACT_A": "RED",
+              "ACT_B": "BLUE"
+            }
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 8,
+          "event_type": "SCORE",
+          "payload": {
+            "action_implied_color": "RED",
+            "authoritative_stage_1_consequence": "RED",
+            "success": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 9,
+          "event_type": "CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": true
+        }
+      ],
+      "receipt_delivery_event_index": 9,
+      "receipt_generation_event_index": 2,
+      "receipt_policy_visible_before_stage_2_commitment": false,
+      "receipt_timing": "LATE",
+      "repetition_index": 3,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_RED",
+      "stage_2_action_implied_color": "RED",
+      "stage_2_commitment_event_index": 6,
+      "stage_2_committed_action": "ACT_A",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "stage_2_requested_action": "ACT_A",
+      "success": true,
+      "valid": true,
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      }
+    },
+    {
+      "authoritative_stage_1_consequence": "RED",
+      "consequence_occurrence_event_index": 1,
+      "episode_id": "consequence-k_red-late-r04",
+      "exact_stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "failure_class": null,
+      "observed_stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "FIRST_INTERACTION_COMMITTED",
+          "payload": {
+            "apparatus_controlled": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "WORLD_CONSEQUENCE_OCCURRED",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "CONSEQUENCE_RECEIPT_GENERATED",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "CONSEQUENCE_RECEIPT_WITHHELD",
+          "payload": {
+            "receipt_generated": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "STAGE_2_POLICY_REQUEST",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACCEPTANCE",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "STAGE_2_TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "STAGE_2_ACTION_COLOR_DERIVED",
+          "payload": {
+            "action_implied_color": "RED",
+            "committed_action": "ACT_A",
+            "response_contract": {
+              "ACT_A": "RED",
+              "ACT_B": "BLUE"
+            }
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 8,
+          "event_type": "SCORE",
+          "payload": {
+            "action_implied_color": "RED",
+            "authoritative_stage_1_consequence": "RED",
+            "success": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 9,
+          "event_type": "CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY",
+          "payload": {
+            "authoritative_consequence": "RED"
+          },
+          "policy_visible": true
+        }
+      ],
+      "receipt_delivery_event_index": 9,
+      "receipt_generation_event_index": 2,
+      "receipt_policy_visible_before_stage_2_commitment": false,
+      "receipt_timing": "LATE",
+      "repetition_index": 4,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_RED",
+      "stage_2_action_implied_color": "RED",
+      "stage_2_commitment_event_index": 6,
+      "stage_2_committed_action": "ACT_A",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "stage_2_requested_action": "ACT_A",
+      "success": true,
+      "valid": true,
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      }
+    },
+    {
+      "authoritative_stage_1_consequence": "BLUE",
+      "consequence_occurrence_event_index": 1,
+      "episode_id": "consequence-k_blue-early-r01",
+      "exact_stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"BLUE\"}}]}",
+      "failure_class": null,
+      "observed_stage_2_precommitment_sha256": "sha256:9d591992531a57e686c362054c550a228d73c179ffe604170d9097a2235713cf",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "FIRST_INTERACTION_COMMITTED",
+          "payload": {
+            "apparatus_controlled": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "WORLD_CONSEQUENCE_OCCURRED",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "CONSEQUENCE_RECEIPT_GENERATED",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "STAGE_2_POLICY_REQUEST",
+          "payload": {
+            "requested_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACCEPTANCE",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_B",
+            "reason": null,
+            "requested_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "STAGE_2_TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "STAGE_2_ACTION_COLOR_DERIVED",
+          "payload": {
+            "action_implied_color": "BLUE",
+            "committed_action": "ACT_B",
+            "response_contract": {
+              "ACT_A": "RED",
+              "ACT_B": "BLUE"
+            }
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 8,
+          "event_type": "SCORE",
+          "payload": {
+            "action_implied_color": "BLUE",
+            "authoritative_stage_1_consequence": "BLUE",
+            "success": true
+          },
+          "policy_visible": false
+        }
+      ],
+      "receipt_delivery_event_index": 3,
+      "receipt_generation_event_index": 2,
+      "receipt_policy_visible_before_stage_2_commitment": true,
+      "receipt_timing": "EARLY",
+      "repetition_index": 1,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_BLUE",
+      "stage_2_action_implied_color": "BLUE",
+      "stage_2_commitment_event_index": 6,
+      "stage_2_committed_action": "ACT_B",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"BLUE\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:9d591992531a57e686c362054c550a228d73c179ffe604170d9097a2235713cf",
+      "stage_2_requested_action": "ACT_B",
+      "success": true,
+      "valid": true,
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_B",
+        "reason": null,
+        "requested_action": "ACT_B"
+      }
+    },
+    {
+      "authoritative_stage_1_consequence": "BLUE",
+      "consequence_occurrence_event_index": 1,
+      "episode_id": "consequence-k_blue-early-r02",
+      "exact_stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"BLUE\"}}]}",
+      "failure_class": null,
+      "observed_stage_2_precommitment_sha256": "sha256:9d591992531a57e686c362054c550a228d73c179ffe604170d9097a2235713cf",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "FIRST_INTERACTION_COMMITTED",
+          "payload": {
+            "apparatus_controlled": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "WORLD_CONSEQUENCE_OCCURRED",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "CONSEQUENCE_RECEIPT_GENERATED",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "STAGE_2_POLICY_REQUEST",
+          "payload": {
+            "requested_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACCEPTANCE",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_B",
+            "reason": null,
+            "requested_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "STAGE_2_TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "STAGE_2_ACTION_COLOR_DERIVED",
+          "payload": {
+            "action_implied_color": "BLUE",
+            "committed_action": "ACT_B",
+            "response_contract": {
+              "ACT_A": "RED",
+              "ACT_B": "BLUE"
+            }
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 8,
+          "event_type": "SCORE",
+          "payload": {
+            "action_implied_color": "BLUE",
+            "authoritative_stage_1_consequence": "BLUE",
+            "success": true
+          },
+          "policy_visible": false
+        }
+      ],
+      "receipt_delivery_event_index": 3,
+      "receipt_generation_event_index": 2,
+      "receipt_policy_visible_before_stage_2_commitment": true,
+      "receipt_timing": "EARLY",
+      "repetition_index": 2,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_BLUE",
+      "stage_2_action_implied_color": "BLUE",
+      "stage_2_commitment_event_index": 6,
+      "stage_2_committed_action": "ACT_B",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"BLUE\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:9d591992531a57e686c362054c550a228d73c179ffe604170d9097a2235713cf",
+      "stage_2_requested_action": "ACT_B",
+      "success": true,
+      "valid": true,
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_B",
+        "reason": null,
+        "requested_action": "ACT_B"
+      }
+    },
+    {
+      "authoritative_stage_1_consequence": "BLUE",
+      "consequence_occurrence_event_index": 1,
+      "episode_id": "consequence-k_blue-early-r03",
+      "exact_stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"BLUE\"}}]}",
+      "failure_class": null,
+      "observed_stage_2_precommitment_sha256": "sha256:9d591992531a57e686c362054c550a228d73c179ffe604170d9097a2235713cf",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "FIRST_INTERACTION_COMMITTED",
+          "payload": {
+            "apparatus_controlled": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "WORLD_CONSEQUENCE_OCCURRED",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "CONSEQUENCE_RECEIPT_GENERATED",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "STAGE_2_POLICY_REQUEST",
+          "payload": {
+            "requested_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACCEPTANCE",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_B",
+            "reason": null,
+            "requested_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "STAGE_2_TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "STAGE_2_ACTION_COLOR_DERIVED",
+          "payload": {
+            "action_implied_color": "BLUE",
+            "committed_action": "ACT_B",
+            "response_contract": {
+              "ACT_A": "RED",
+              "ACT_B": "BLUE"
+            }
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 8,
+          "event_type": "SCORE",
+          "payload": {
+            "action_implied_color": "BLUE",
+            "authoritative_stage_1_consequence": "BLUE",
+            "success": true
+          },
+          "policy_visible": false
+        }
+      ],
+      "receipt_delivery_event_index": 3,
+      "receipt_generation_event_index": 2,
+      "receipt_policy_visible_before_stage_2_commitment": true,
+      "receipt_timing": "EARLY",
+      "repetition_index": 3,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_BLUE",
+      "stage_2_action_implied_color": "BLUE",
+      "stage_2_commitment_event_index": 6,
+      "stage_2_committed_action": "ACT_B",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"BLUE\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:9d591992531a57e686c362054c550a228d73c179ffe604170d9097a2235713cf",
+      "stage_2_requested_action": "ACT_B",
+      "success": true,
+      "valid": true,
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_B",
+        "reason": null,
+        "requested_action": "ACT_B"
+      }
+    },
+    {
+      "authoritative_stage_1_consequence": "BLUE",
+      "consequence_occurrence_event_index": 1,
+      "episode_id": "consequence-k_blue-early-r04",
+      "exact_stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"BLUE\"}}]}",
+      "failure_class": null,
+      "observed_stage_2_precommitment_sha256": "sha256:9d591992531a57e686c362054c550a228d73c179ffe604170d9097a2235713cf",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "FIRST_INTERACTION_COMMITTED",
+          "payload": {
+            "apparatus_controlled": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "WORLD_CONSEQUENCE_OCCURRED",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "CONSEQUENCE_RECEIPT_GENERATED",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": true
+        },
+        {
+          "event_index": 4,
+          "event_type": "STAGE_2_POLICY_REQUEST",
+          "payload": {
+            "requested_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACCEPTANCE",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_B",
+            "reason": null,
+            "requested_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "STAGE_2_TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_B"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "STAGE_2_ACTION_COLOR_DERIVED",
+          "payload": {
+            "action_implied_color": "BLUE",
+            "committed_action": "ACT_B",
+            "response_contract": {
+              "ACT_A": "RED",
+              "ACT_B": "BLUE"
+            }
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 8,
+          "event_type": "SCORE",
+          "payload": {
+            "action_implied_color": "BLUE",
+            "authoritative_stage_1_consequence": "BLUE",
+            "success": true
+          },
+          "policy_visible": false
+        }
+      ],
+      "receipt_delivery_event_index": 3,
+      "receipt_generation_event_index": 2,
+      "receipt_policy_visible_before_stage_2_commitment": true,
+      "receipt_timing": "EARLY",
+      "repetition_index": 4,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_BLUE",
+      "stage_2_action_implied_color": "BLUE",
+      "stage_2_commitment_event_index": 6,
+      "stage_2_committed_action": "ACT_B",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY\",\"payload\":{\"authoritative_consequence\":\"BLUE\"}}]}",
+      "stage_2_precommitment_sha256": "sha256:9d591992531a57e686c362054c550a228d73c179ffe604170d9097a2235713cf",
+      "stage_2_requested_action": "ACT_B",
+      "success": true,
+      "valid": true,
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_B",
+        "reason": null,
+        "requested_action": "ACT_B"
+      }
+    },
+    {
+      "authoritative_stage_1_consequence": "BLUE",
+      "consequence_occurrence_event_index": 1,
+      "episode_id": "consequence-k_blue-late-r01",
+      "exact_stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "failure_class": null,
+      "observed_stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "FIRST_INTERACTION_COMMITTED",
+          "payload": {
+            "apparatus_controlled": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "WORLD_CONSEQUENCE_OCCURRED",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "CONSEQUENCE_RECEIPT_GENERATED",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "CONSEQUENCE_RECEIPT_WITHHELD",
+          "payload": {
+            "receipt_generated": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "STAGE_2_POLICY_REQUEST",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACCEPTANCE",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "STAGE_2_TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "STAGE_2_ACTION_COLOR_DERIVED",
+          "payload": {
+            "action_implied_color": "RED",
+            "committed_action": "ACT_A",
+            "response_contract": {
+              "ACT_A": "RED",
+              "ACT_B": "BLUE"
+            }
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 8,
+          "event_type": "SCORE",
+          "payload": {
+            "action_implied_color": "RED",
+            "authoritative_stage_1_consequence": "BLUE",
+            "success": false
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 9,
+          "event_type": "CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": true
+        }
+      ],
+      "receipt_delivery_event_index": 9,
+      "receipt_generation_event_index": 2,
+      "receipt_policy_visible_before_stage_2_commitment": false,
+      "receipt_timing": "LATE",
+      "repetition_index": 1,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_BLUE",
+      "stage_2_action_implied_color": "RED",
+      "stage_2_commitment_event_index": 6,
+      "stage_2_committed_action": "ACT_A",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "stage_2_requested_action": "ACT_A",
+      "success": false,
+      "valid": true,
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      }
+    },
+    {
+      "authoritative_stage_1_consequence": "BLUE",
+      "consequence_occurrence_event_index": 1,
+      "episode_id": "consequence-k_blue-late-r02",
+      "exact_stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "failure_class": null,
+      "observed_stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "FIRST_INTERACTION_COMMITTED",
+          "payload": {
+            "apparatus_controlled": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "WORLD_CONSEQUENCE_OCCURRED",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "CONSEQUENCE_RECEIPT_GENERATED",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "CONSEQUENCE_RECEIPT_WITHHELD",
+          "payload": {
+            "receipt_generated": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "STAGE_2_POLICY_REQUEST",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACCEPTANCE",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "STAGE_2_TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "STAGE_2_ACTION_COLOR_DERIVED",
+          "payload": {
+            "action_implied_color": "RED",
+            "committed_action": "ACT_A",
+            "response_contract": {
+              "ACT_A": "RED",
+              "ACT_B": "BLUE"
+            }
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 8,
+          "event_type": "SCORE",
+          "payload": {
+            "action_implied_color": "RED",
+            "authoritative_stage_1_consequence": "BLUE",
+            "success": false
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 9,
+          "event_type": "CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": true
+        }
+      ],
+      "receipt_delivery_event_index": 9,
+      "receipt_generation_event_index": 2,
+      "receipt_policy_visible_before_stage_2_commitment": false,
+      "receipt_timing": "LATE",
+      "repetition_index": 2,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_BLUE",
+      "stage_2_action_implied_color": "RED",
+      "stage_2_commitment_event_index": 6,
+      "stage_2_committed_action": "ACT_A",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "stage_2_requested_action": "ACT_A",
+      "success": false,
+      "valid": true,
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      }
+    },
+    {
+      "authoritative_stage_1_consequence": "BLUE",
+      "consequence_occurrence_event_index": 1,
+      "episode_id": "consequence-k_blue-late-r03",
+      "exact_stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "failure_class": null,
+      "observed_stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "FIRST_INTERACTION_COMMITTED",
+          "payload": {
+            "apparatus_controlled": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "WORLD_CONSEQUENCE_OCCURRED",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "CONSEQUENCE_RECEIPT_GENERATED",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "CONSEQUENCE_RECEIPT_WITHHELD",
+          "payload": {
+            "receipt_generated": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "STAGE_2_POLICY_REQUEST",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACCEPTANCE",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "STAGE_2_TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "STAGE_2_ACTION_COLOR_DERIVED",
+          "payload": {
+            "action_implied_color": "RED",
+            "committed_action": "ACT_A",
+            "response_contract": {
+              "ACT_A": "RED",
+              "ACT_B": "BLUE"
+            }
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 8,
+          "event_type": "SCORE",
+          "payload": {
+            "action_implied_color": "RED",
+            "authoritative_stage_1_consequence": "BLUE",
+            "success": false
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 9,
+          "event_type": "CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": true
+        }
+      ],
+      "receipt_delivery_event_index": 9,
+      "receipt_generation_event_index": 2,
+      "receipt_policy_visible_before_stage_2_commitment": false,
+      "receipt_timing": "LATE",
+      "repetition_index": 3,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_BLUE",
+      "stage_2_action_implied_color": "RED",
+      "stage_2_commitment_event_index": 6,
+      "stage_2_committed_action": "ACT_A",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "stage_2_requested_action": "ACT_A",
+      "success": false,
+      "valid": true,
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      }
+    },
+    {
+      "authoritative_stage_1_consequence": "BLUE",
+      "consequence_occurrence_event_index": 1,
+      "episode_id": "consequence-k_blue-late-r04",
+      "exact_stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "failure_class": null,
+      "observed_stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "ordered_events": [
+        {
+          "event_index": 0,
+          "event_type": "FIRST_INTERACTION_COMMITTED",
+          "payload": {
+            "apparatus_controlled": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 1,
+          "event_type": "WORLD_CONSEQUENCE_OCCURRED",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 2,
+          "event_type": "CONSEQUENCE_RECEIPT_GENERATED",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 3,
+          "event_type": "CONSEQUENCE_RECEIPT_WITHHELD",
+          "payload": {
+            "receipt_generated": true
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 4,
+          "event_type": "STAGE_2_POLICY_REQUEST",
+          "payload": {
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 5,
+          "event_type": "WORLD_ACCEPTANCE",
+          "payload": {
+            "accepted": true,
+            "accepted_action": "ACT_A",
+            "reason": null,
+            "requested_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 6,
+          "event_type": "STAGE_2_TERMINAL_COMMITMENT",
+          "payload": {
+            "committed_action": "ACT_A"
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 7,
+          "event_type": "STAGE_2_ACTION_COLOR_DERIVED",
+          "payload": {
+            "action_implied_color": "RED",
+            "committed_action": "ACT_A",
+            "response_contract": {
+              "ACT_A": "RED",
+              "ACT_B": "BLUE"
+            }
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 8,
+          "event_type": "SCORE",
+          "payload": {
+            "action_implied_color": "RED",
+            "authoritative_stage_1_consequence": "BLUE",
+            "success": false
+          },
+          "policy_visible": false
+        },
+        {
+          "event_index": 9,
+          "event_type": "CONSEQUENCE_RECEIPT_DELIVERED_TO_POLICY",
+          "payload": {
+            "authoritative_consequence": "BLUE"
+          },
+          "policy_visible": true
+        }
+      ],
+      "receipt_delivery_event_index": 9,
+      "receipt_generation_event_index": 2,
+      "receipt_policy_visible_before_stage_2_commitment": false,
+      "receipt_timing": "LATE",
+      "repetition_index": 4,
+      "response_contract_rows": [
+        {
+          "action": "ACT_A",
+          "implied_color": "RED"
+        },
+        {
+          "action": "ACT_B",
+          "implied_color": "BLUE"
+        }
+      ],
+      "serialized_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+      "stage_1_consequence_schedule_identity": "K_BLUE",
+      "stage_2_action_implied_color": "RED",
+      "stage_2_commitment_event_index": 6,
+      "stage_2_committed_action": "ACT_A",
+      "stage_2_precommitment_policy_serialization": "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}",
+      "stage_2_precommitment_sha256": "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5",
+      "stage_2_requested_action": "ACT_A",
+      "success": false,
+      "valid": true,
+      "world_acceptance_receipt": {
+        "accepted": true,
+        "accepted_action": "ACT_A",
+        "reason": null,
+        "requested_action": "ACT_A"
+      }
+    }
+  ],
+  "execution_basis_commit": "998e3c15b394706c275056c976e834a49b6d152d",
+  "fixed_stage_2_response_contract": {
+    "ACT_A": "RED",
+    "ACT_B": "BLUE"
+  },
+  "freeze_path": "traces/behavioral_coupling_consequence_observability_freeze_v0.json",
+  "model_identifier": "hermes-3-llama-3.2-3b",
+  "new_qualification_call_count": 0,
+  "pressure": "CONSEQUENCE_OCCURRENCE_VS_PRECOMMITMENT_OBSERVABILITY",
+  "protocol_sha256": "sha256:fd1d12c3d893465e71200230dbc2997efcc7fe8df659065dd935becc400282b8",
+  "protocol_version": "behavioral_coupling_consequence_observability_v0",
+  "provider_exposed_sampling_settings": {
+    "max_tokens": 16,
+    "temperature": 0.0,
+    "top_p": 1.0
+  },
+  "reused_action_qualification_path": "traces/behavioral_coupling_action_delexicalization_qualification_v0.json",
+  "reused_action_qualification_result": {
+    "calls_retained": 2,
+    "scientific_schedule_entries_consumed": 0,
+    "status": "PASS",
+    "wounds": []
+  },
+  "schedule_sha256": "sha256:7402aed6eddee81f4528388b842e61310328fcb9a29cd58c65628aa8cfdbff02",
+  "scientific_adjudication": "NOT_PERFORMED",
+  "scoring_rule": "apply the fixed visible response contract to the committed Stage-2 ACT token; success iff action-implied color equals the authoritative Stage-1 consequence",
+  "serialized_stage_2_response_contract": "ACT_A -> RED; ACT_B -> BLUE",
+  "stage_1_policy_decision_count": 0,
+  "stage_2_policy_decision_count": 16,
+  "validity": {
+    "calls_retained": 16,
+    "empirical_retries": 0,
+    "episodes_retained": 16,
+    "event_order_validation": {
+      "EARLY_consequence_before_receipt_before_commitment": true,
+      "LATE_consequence_before_commitment_before_receipt": true
+    },
+    "invalidity_wounds": [],
+    "late_input_equivalence": {
+      "BLUE_LATE_hashes": [
+        "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5"
+      ],
+      "BLUE_LATE_serializations": [
+        "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}"
+      ],
+      "RED_LATE_hashes": [
+        "sha256:ca26a943bac50881f46ebad271ccaad0b21cff250a5fb924938018bb558865a5"
+      ],
+      "RED_LATE_serializations": [
+        "{\"fixed_task\":\"The previous committed world interaction has already produced one authoritative consequence: RED or BLUE. Select the legal action corresponding to that consequence under the fixed response contract: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[]}"
+      ],
+      "match": true
+    },
+    "status": "VALID",
+    "wrong_legal_stage_2_actions_are_behavior_not_invalidity": true
+  }
+}
