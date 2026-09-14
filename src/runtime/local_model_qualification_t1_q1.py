@@ -195,6 +195,20 @@ def _git_status(repo_root: Path) -> str:
     return completed.stdout.decode("utf-8")
 
 
+def _resolve_commit(repo_root: Path, ref: str) -> str:
+    completed = subprocess.run(
+        ["git", "rev-parse", "--verify", f"{ref}^{{commit}}"],
+        cwd=repo_root,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=False,
+    )
+    if completed.returncode != 0:
+        detail = completed.stderr.decode("utf-8", errors="replace").strip()
+        raise RuntimeError(f"cannot resolve execution-basis commit {ref!r}: {detail}")
+    return completed.stdout.decode("ascii").strip()
+
+
 def _protected_manifest(repo_root: Path, protected_surfaces: list[str]) -> dict[str, Any]:
     records: list[dict[str, str]] = []
     for declared in protected_surfaces:
@@ -282,6 +296,12 @@ def capture_observation(
 
     if output_path.exists():
         raise RuntimeError(f"refusing to overwrite one-shot observation: {output_path}")
+    resolved_execution_basis = _resolve_commit(repo_root, execution_basis_commit)
+    current_head = _resolve_commit(repo_root, "HEAD")
+    if resolved_execution_basis != current_head:
+        raise RuntimeError(
+            "execution-basis commit must resolve to the current committed HEAD"
+        )
     freeze = _load_freeze(freeze_path)
     source_bytes = _read_committed_bytes(
         repo_root,
@@ -350,7 +370,8 @@ def capture_observation(
         "specimen_id": SPECIMEN_ID,
         "tier": "T1_INTERPRETATION_WITHOUT_PROMOTION",
         "freeze_path": freeze_path.relative_to(repo_root).as_posix(),
-        "execution_basis_commit": execution_basis_commit,
+        "execution_basis_commit_argument": execution_basis_commit,
+        "execution_basis_commit": resolved_execution_basis,
         "source_specimen": {
             **deepcopy(freeze["source_specimen"]),
             "observed_sha256": observed_source_hash,
@@ -523,8 +544,8 @@ def mechanical_evaluation(
         "artifact_class": "LOCAL_MODEL_QUALIFICATION_MECHANICAL_EVALUATION",
         "apparatus_version": APPARATUS_VERSION,
         "specimen_id": SPECIMEN_ID,
-        "freeze_path": str(freeze_path).replace("\\", "/"),
-        "observation_path": str(observation_path).replace("\\", "/"),
+        "freeze_path": observation["freeze_path"],
+        "observation_path": freeze["output_paths"]["observation"],
         "observation_sha256": _sha256_bytes(observation_path.read_bytes()),
         "mechanical_checks": checks,
         "parsed_response": parsed_response,

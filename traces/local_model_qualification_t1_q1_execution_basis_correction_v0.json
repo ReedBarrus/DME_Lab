@@ -1,0 +1,45 @@
+{
+  "artifact": "local_model_qualification_t1_q1_execution_basis_correction_v0",
+  "artifact_class": "LOCAL_MODEL_QUALIFICATION_APPARATUS_CORRECTION",
+  "correction_recorded_at_utc": "2026-09-14T06:41:41.9285556Z",
+  "corrective_change": {
+    "description": "The apparatus now resolves the supplied execution-basis commit and requires it to equal current committed HEAD before any model call.",
+    "model_calls_added": 0,
+    "raw_observation_modified": false,
+    "raw_response_modified": false
+  },
+  "execution_basis": {
+    "actual_commit": "09b25a10fcc1d66926d45227272aa91e71c76824",
+    "actual_commit_time": "2026-09-13T23:38:54-07:00",
+    "actual_commit_subject": "Freeze local qualification T1-Q1 apparatus",
+    "recorded_argument": "09b25a1b699eec5e1e52acdf887d9c250281a6bd",
+    "recorded_argument_resolves_to_commit": false
+  },
+  "finding": "The single inference ran from the committed apparatus at actual_commit, but the caller supplied a mistyped non-resolving full SHA as descriptive execution-basis metadata. The original mechanical evaluator did not verify that coordinate and therefore reported PASS with an incomplete check set.",
+  "mechanical_evaluation": {
+    "original_artifact_sha256": "sha256:6c62169862f5f8b72d225d4e8f993f0413bb13b707b1a043e38f5638b5b089f5",
+    "original_terminal_state": "PASS",
+    "original_terminal_state_status": "INCOMPLETE_CHECK_SET",
+    "reassessment": "PASS",
+    "reassessment_basis": "All retained mechanical checks passed; actual execution basis is recovered explicitly; the raw request and response are unchanged; the new pre-call gate prevents recurrence."
+  },
+  "model_calls": {
+    "additional_calls": 0,
+    "original_call_count": 1,
+    "rerun_performed": false
+  },
+  "path_portability_correction": {
+    "canonical_freeze_path": "traces/local_model_qualification_t1_q1_freeze_v0.json",
+    "canonical_observation_path": "traces/local_model_qualification_t1_q1_observation_v0.json",
+    "finding": "The original mechanical artifact retained workstation-absolute path strings. The referenced artifact hashes and these repository-relative paths preserve portable lookup; future evaluations emit the frozen repository-relative paths.",
+    "original_mechanical_artifact_modified": false
+  },
+  "observation": {
+    "artifact_sha256": "sha256:081125d1f1a130ee2c212b94ea7adfb5a46886db454408c5f4632502453e8685",
+    "finished_at_utc": "2026-09-14T06:39:19.175555Z",
+    "path": "traces/local_model_qualification_t1_q1_observation_v0.json",
+    "started_at_utc": "2026-09-14T06:39:02.619018Z"
+  },
+  "provenance_wound": "RETAINED_AND_CORRECTED",
+  "specimen_id": "T1-Q1_BEHAVIORAL_COUPLING_CHECKPOINT"
+}

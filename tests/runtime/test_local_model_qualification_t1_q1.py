@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import json
+import hashlib
 from pathlib import Path
+import subprocess
 import tempfile
 import unittest
 
@@ -21,6 +23,13 @@ from src.runtime.local_model_qualification_t1_q1 import (
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
+HEAD_COMMIT = subprocess.run(
+    ["git", "rev-parse", "HEAD"],
+    cwd=REPO_ROOT,
+    text=True,
+    stdout=subprocess.PIPE,
+    check=True,
+).stdout.strip()
 VALID_RESPONSE = {
     "established": "A bounded result is retained.",
     "bounded_interpretation": "The result is realization-specific.",
@@ -139,7 +148,7 @@ class T1Q1QualificationTest(unittest.TestCase):
                 freeze_path=self.freeze_path,
                 observation_path=observation_path,
                 mechanical_path=mechanical_path,
-                execution_basis_commit="a" * 40,
+                execution_basis_commit=HEAD_COMMIT,
                 transport=transport,
             )
 
@@ -172,7 +181,7 @@ class T1Q1QualificationTest(unittest.TestCase):
                 freeze_path=self.freeze_path,
                 observation_path=Path(temporary) / "observation.json",
                 mechanical_path=Path(temporary) / "mechanical.json",
-                execution_basis_commit="b" * 40,
+                execution_basis_commit=HEAD_COMMIT,
                 transport=transport,
             )
         self.assertEqual(result["terminal_state"], "ESCALATED")
@@ -186,7 +195,7 @@ class T1Q1QualificationTest(unittest.TestCase):
                 freeze_path=self.freeze_path,
                 observation_path=observation_path,
                 mechanical_path=Path(temporary) / "mechanical.json",
-                execution_basis_commit="c" * 40,
+                execution_basis_commit=HEAD_COMMIT,
                 transport=transport,
             )
             observation = json.loads(observation_path.read_text(encoding="utf-8"))
@@ -204,7 +213,7 @@ class T1Q1QualificationTest(unittest.TestCase):
                 freeze_path=self.freeze_path,
                 observation_path=observation_path,
                 mechanical_path=Path(temporary) / "mechanical.json",
-                execution_basis_commit="e" * 40,
+                execution_basis_commit=HEAD_COMMIT,
                 transport=transport,
             )
             observation = json.loads(observation_path.read_text(encoding="utf-8"))
@@ -229,6 +238,66 @@ class T1Q1QualificationTest(unittest.TestCase):
                 )
             self.assertEqual(observation_path.read_text(encoding="utf-8"), "preserve")
         self.assertEqual(len(transport.calls), 0)
+
+    def test_invalid_execution_basis_is_rejected_before_model_call(self) -> None:
+        transport = FakeTransport(json.dumps(VALID_RESPONSE))
+        with tempfile.TemporaryDirectory() as temporary:
+            observation_path = Path(temporary) / "observation.json"
+            with self.assertRaisesRegex(RuntimeError, "cannot resolve"):
+                execute_once(
+                    repo_root=REPO_ROOT,
+                    freeze_path=self.freeze_path,
+                    observation_path=observation_path,
+                    mechanical_path=Path(temporary) / "mechanical.json",
+                    execution_basis_commit="f" * 40,
+                    transport=transport,
+                )
+            self.assertFalse(observation_path.exists())
+        self.assertEqual(len(transport.calls), 0)
+
+    def test_retained_run_and_separate_evaluations_reconstruct(self) -> None:
+        observation_path = (
+            REPO_ROOT / "traces/local_model_qualification_t1_q1_observation_v0.json"
+        )
+        mechanical_path = REPO_ROOT / (
+            "traces/local_model_qualification_t1_q1_mechanical_evaluation_v0.json"
+        )
+        correction_path = REPO_ROOT / (
+            "traces/local_model_qualification_t1_q1_execution_basis_correction_v0.json"
+        )
+        semantic_path = REPO_ROOT / (
+            "traces/local_model_qualification_t1_q1_semantic_evaluation_v0.json"
+        )
+        observation = json.loads(observation_path.read_text(encoding="utf-8"))
+        mechanical = json.loads(mechanical_path.read_text(encoding="utf-8"))
+        correction = json.loads(correction_path.read_text(encoding="utf-8"))
+        semantic = json.loads(semantic_path.read_text(encoding="utf-8"))
+
+        observation_hash = "sha256:" + hashlib.sha256(
+            observation_path.read_bytes()
+        ).hexdigest()
+        mechanical_hash = "sha256:" + hashlib.sha256(
+            mechanical_path.read_bytes()
+        ).hexdigest()
+        raw_hash = "sha256:" + hashlib.sha256(
+            observation["raw_model_response"].encode("utf-8")
+        ).hexdigest()
+
+        self.assertEqual(observation["model_calls_made"], 1)
+        self.assertEqual(observation["semantic_evaluation"], "NOT_PERFORMED_IN_OBSERVATION")
+        self.assertEqual(mechanical["terminal_state"], "PASS")
+        self.assertTrue(all(mechanical["mechanical_checks"].values()))
+        self.assertEqual(correction["observation"]["artifact_sha256"], observation_hash)
+        self.assertEqual(
+            correction["mechanical_evaluation"]["original_artifact_sha256"],
+            mechanical_hash,
+        )
+        self.assertEqual(correction["model_calls"]["additional_calls"], 0)
+        self.assertFalse(correction["execution_basis"]["recorded_argument_resolves_to_commit"])
+        self.assertEqual(semantic["evaluation_basis"]["raw_model_response_sha256"], raw_hash)
+        self.assertEqual(semantic["semantic_specimen_result"], "FAIL")
+        self.assertEqual(semantic["campaign_outcome"], "INSUFFICIENT_EVIDENCE")
+        self.assertEqual(semantic["promotion"], "NONE")
 
 
 if __name__ == "__main__":

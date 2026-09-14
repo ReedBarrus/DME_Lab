@@ -1,0 +1,35 @@
+{
+  "apparatus_version": "local_model_qualification_t1_q1_v0",
+  "artifact": "local_model_qualification_t1_q1_mechanical_evaluation_v0",
+  "artifact_class": "LOCAL_MODEL_QUALIFICATION_MECHANICAL_EVALUATION",
+  "campaign_scope": "T1-Q1_ONLY",
+  "freeze_path": "C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/traces/local_model_qualification_t1_q1_freeze_v0.json",
+  "mechanical_checks": {
+    "declared_interface_only": true,
+    "invocation_completed": true,
+    "no_model_tools_or_repository_authority": true,
+    "observation_output_retained": true,
+    "one_fresh_request": true,
+    "protected_surfaces_unchanged_during_inference": true,
+    "provider_reported_termination": true,
+    "raw_interaction_reconstructable": true,
+    "repository_status_unchanged_during_inference": true,
+    "response_shape_valid": true,
+    "semantic_evaluation_absent_from_observation": true,
+    "source_specimen_hash_matched": true
+  },
+  "observation_path": "C:/Users/Admin/OneDrive/Desktop/Dynamical_Project/Dynamical_Memory_Engine/Lab/DME_Lab/traces/local_model_qualification_t1_q1_observation_v0.json",
+  "observation_sha256": "sha256:081125d1f1a130ee2c212b94ea7adfb5a46886db454408c5f4632502453e8685",
+  "parse_failure": null,
+  "parsed_response": {
+    "bounded_interpretation": "The lineage has established that representation and predecision availability can matter under the retained coupled apparatus, and that authoritative fixture relations can change consequences without changing selection.",
+    "established": "The following bounded distinctions survive the full lineage:\n\n1. **Authoritative evaluation != policy-visible input.** In binding LATE,\n   identical complete policy requests produced the same selected action while\n   a hidden contract reversal changed the authoritative color and success.\n2. **Predecision availability != retained but unavailable evidence.** The\n   latest pressures retained the distinguishing world value while excluding it\n   from LATE requests; the respective EARLY requests supported the appropriate\n   A/B discrimination.\n3. **Representation != declared relation.** Mapping-row reordering preserved\n   the declared mapping while accompanying different selections.\n4. **Availability != useful discrimination.** Visible association labels did\n   not improve selection, and some visible mapping / delexicalization cells\n   failed.\n5. **Action token != evaluated color.** Reversed action contracts made that\n   separation consequential.",
+    "terminal_action": "STOP",
+    "unauthorized_next_claim_or_action": "No new experiment is selected or authorized by this checkpoint.",
+    "unresolved": "Requested action and accepted commitment also remain separate recorded roles,\nalthough every valid request in this empirical lineage was accepted unchanged.\nThat safeguard is operationally conserved; admission disagreement was not\nindependently pressured here."
+  },
+  "qualification_promotion": "NOT_EVALUATED",
+  "semantic_success": "NOT_EVALUATED",
+  "specimen_id": "T1-Q1_BEHAVIORAL_COUPLING_CHECKPOINT",
+  "terminal_state": "PASS"
+}
