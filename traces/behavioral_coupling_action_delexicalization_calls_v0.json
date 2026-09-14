@@ -1,0 +1,2655 @@
+{
+  "P1_revisited": false,
+  "P3_empirical_calls": 0,
+  "P3_status": "BLOCKED_NOT_EXECUTED",
+  "P4_revisited": false,
+  "action_schema_sha256": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+  "adapter_realization": "CONSTRAINED_TYPED_ACTION",
+  "adapter_repository_commit": "d60ce2044fb2215e58eec74de8e311ba42765bc0",
+  "artifact": "behavioral_coupling_action_delexicalization_calls_v0",
+  "artifact_class": "EMPIRICAL_MODEL_CALL_EVIDENCE",
+  "calls": [
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m1-ab-c1-alpha-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-6f5egb0mohibg9g32amdd\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347730,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 124,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 132,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"ALPHA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"ALPHA\"}}]}",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m1-ab-c1-alpha-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-64b4asolp0xpb0of3byt1s\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347731,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 104,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 112,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m1-ab-c1-beta-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_B\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-ejcgzmjv66jbvc2qyw0b3r\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347731,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_B\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 124,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 132,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_B",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"BETA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"BETA\"}}]}",
+      "structured_output": {
+        "action": "ACT_B"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m1-ab-c1-beta-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-wfkhfonqeobe6csyvbbf0p\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347731,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 104,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 112,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m1-ab-c2-alpha-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-o346bizp6cphwaeba48wwl\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347731,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 124,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 132,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"ALPHA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"ALPHA\"}}]}",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m1-ab-c2-alpha-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-blttgfp9fqh6saq4bxa3xa\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347732,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 104,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 112,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m1-ab-c2-beta-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-zn0jjlevwudot1a851y1t\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347732,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 124,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 132,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"BETA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"BETA\"}}]}",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m1-ab-c2-beta-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-zqjenay31z069bo7pmfgti\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347732,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 104,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 112,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> RED; BETA -> BLUE. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m1-ba-c1-alpha-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_B\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-v7ku6zxux3gqzzaukh3ujs\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347732,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_B\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 124,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 132,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_B",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"ALPHA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"ALPHA\"}}]}",
+      "structured_output": {
+        "action": "ACT_B"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m1-ba-c1-alpha-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"ACT_B\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-hr0y3s0admw3h7as5xfoxz\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347732,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"ACT_B\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 104,\n    \"completion_tokens\": 7,\n    \"total_tokens\": 111,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_B",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "ACT_B"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m1-ba-c1-beta-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_B\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-b3bcisfndqmwyhuteh8v\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347732,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_B\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 124,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 132,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_B",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"BETA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"BETA\"}}]}",
+      "structured_output": {
+        "action": "ACT_B"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m1-ba-c1-beta-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"ACT_B\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-wee9d1rwhx8mr0q7q7c0e\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347733,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"ACT_B\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 104,\n    \"completion_tokens\": 7,\n    \"total_tokens\": 111,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_B",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "ACT_B"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m1-ba-c2-alpha-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_B\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-cb6fpt0s7mc6xg7i059scx\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347733,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_B\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 124,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 132,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_B",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"ALPHA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"ALPHA\"}}]}",
+      "structured_output": {
+        "action": "ACT_B"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m1-ba-c2-alpha-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_B\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-ds5cu6qoix7bjbwauktwns\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347733,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_B\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 104,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 112,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_B",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "ACT_B"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m1-ba-c2-beta-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_B\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-v0uiigh7llbgy9i15y642h\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347733,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_B\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 124,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 132,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_B",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"BETA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"BETA\"}}]}",
+      "structured_output": {
+        "action": "ACT_B"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m1-ba-c2-beta-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_B\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-utfqsmw0wtosg3gfl3nz9p\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347733,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_B\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 104,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 112,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_B",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> BLUE; ALPHA -> RED. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "ACT_B"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m2-ab-c1-alpha-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-17dbtda2weqx5pvxb01fge\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347734,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 124,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 132,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"ALPHA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"ALPHA\"}}]}",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m2-ab-c1-alpha-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_B\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-kqayzdcpyro7p05a6pks\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347734,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_B\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 104,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 112,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_B",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "ACT_B"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m2-ab-c1-beta-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_B\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-ctx0oc22fg5wwn6nadv2k\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347734,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_B\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 124,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 132,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_B",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"BETA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"BETA\"}}]}",
+      "structured_output": {
+        "action": "ACT_B"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m2-ab-c1-beta-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_B\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-ubhtlkzsr6irpmbw6senu\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347734,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_B\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 104,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 112,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_B",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "ACT_B"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m2-ab-c2-alpha-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-np118q3bc7b69vz1e29c8v\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347734,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 124,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 132,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"ALPHA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"ALPHA\"}}]}",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m2-ab-c2-alpha-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-xjyy0aos3hafu3od6wr3c\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347735,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 104,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 112,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m2-ab-c2-beta-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-uw8mw3wdgrsa727pp3ckrk\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347735,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 124,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 132,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"BETA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"BETA\"}}]}",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m2-ab-c2-beta-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-in3bkmtl2uszk7jygocmvf\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347735,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 104,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 112,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: ALPHA -> BLUE; BETA -> RED. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m2-ba-c1-alpha-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_B\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-gudcymw3ful21dqd8ujn1t\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347735,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_B\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 124,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 132,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_B",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"ALPHA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"ALPHA\"}}]}",
+      "structured_output": {
+        "action": "ACT_B"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m2-ba-c1-alpha-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-k6z6z67ppepnpst4pwp87\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347735,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 104,\n    \"completion_tokens\": 7,\n    \"total_tokens\": 111,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m2-ba-c1-beta-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_B\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-vhe338k8c9n9537o5dftwl\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347735,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_B\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 124,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 132,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_B",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"BETA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"BETA\"}}]}",
+      "structured_output": {
+        "action": "ACT_B"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m2-ba-c1-beta-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\":\"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-gx9w6a8minbnu1rnwu8zf\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347736,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\":\\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 104,\n    \"completion_tokens\": 7,\n    \"total_tokens\": 111,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. The declared action contract is: ACT_A -> RED; ACT_B -> BLUE. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m2-ba-c2-alpha-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_A",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_A\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-9qxcuheqm5kebdc0r4z9uo\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347736,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_A\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 124,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 132,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_A",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"ALPHA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"ALPHA\"}}]}",
+      "structured_output": {
+        "action": "ACT_A"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m2-ba-c2-alpha-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_B\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-f8t9obpfiq0remo57i3ot\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347736,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_B\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 104,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 112,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_B",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "ACT_B"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m2-ba-c2-beta-f",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_B\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-ciwkqkhoe7tdzrsfebwes\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347736,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_B\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 124,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 132,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_B",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}},{\\\"event_type\\\":\\\"SYMBOL_OBSERVATION_DELIVERED\\\",\\\"payload\\\":{\\\"symbol\\\":\\\"BETA\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}},{\"event_type\":\"SYMBOL_OBSERVATION_DELIVERED\",\"payload\":{\"symbol\":\"BETA\"}}]}",
+      "structured_output": {
+        "action": "ACT_B"
+      },
+      "tools_supplied": false
+    },
+    {
+      "action_schema_hash": "sha256:956828af4f81fdb72da1252d72c5fac1c81250e7cea261b947bd6fa526aa1293",
+      "actuation_constraint": {
+        "json_schema": {
+          "name": "bounded_terminal_action",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "action": {
+                "enum": [
+                  "ACT_A",
+                  "ACT_B"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "type": "object"
+          },
+          "strict": true
+        },
+        "type": "json_schema"
+      },
+      "actuation_failure": null,
+      "actuation_realization": "CONSTRAINED_TYPED_ACTION",
+      "adapter_failure": null,
+      "conversation_state_supplied": false,
+      "endpoint_configuration": {
+        "authentication_configured": false,
+        "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+        "environment_proxies_allowed": false,
+        "host": "127.0.0.1",
+        "loopback_only": true,
+        "path": "/v1/chat/completions",
+        "port": 1234,
+        "redirects_allowed": false,
+        "scheme": "http",
+        "timeout_seconds": 120.0
+      },
+      "episode_id": "p2-delex-m2-ba-c2-beta-p",
+      "http_status": 200,
+      "model_identifier": "hermes-3-llama-3.2-3b",
+      "parsed_requested_action": "ACT_B",
+      "provider_exposed_sampling_settings": {
+        "max_tokens": 16,
+        "temperature": 0.0,
+        "top_p": 1.0
+      },
+      "raw_model_response": "{\"action\": \"ACT_B\"}",
+      "raw_response_body": "{\n  \"id\": \"chatcmpl-eatsm1sh81v6pk5brv7rwe\",\n  \"object\": \"chat.completion\",\n  \"created\": 1789347736,\n  \"model\": \"hermes-3-llama-3.2-3b\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"action\\\": \\\"ACT_B\\\"}\",\n        \"reasoning_content\": \"\",\n        \"tool_calls\": []\n      },\n      \"logprobs\": null,\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 104,\n    \"completion_tokens\": 8,\n    \"total_tokens\": 112,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  },\n  \"stats\": {},\n  \"system_fingerprint\": \"hermes-3-llama-3.2-3b\"\n}",
+      "selected_action": "ACT_B",
+      "serialized_actuation_constraint": "{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"}",
+      "serialized_http_request": "{\"max_tokens\":16,\"messages\":[{\"content\":\"{\\\"fixed_task\\\":\\\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\\\",\\\"legal_action_vocabulary\\\":[\\\"ACT_A\\\",\\\"ACT_B\\\"],\\\"policy_visible_protocol_history\\\":[{\\\"event_type\\\":\\\"INSPECT_EXECUTED\\\",\\\"payload\\\":{\\\"action\\\":\\\"INSPECT\\\"}}]}\",\"role\":\"user\"}],\"model\":\"hermes-3-llama-3.2-3b\",\"response_format\":{\"json_schema\":{\"name\":\"bounded_terminal_action\",\"schema\":{\"additionalProperties\":false,\"properties\":{\"action\":{\"enum\":[\"ACT_A\",\"ACT_B\"],\"type\":\"string\"}},\"required\":[\"action\"],\"type\":\"object\"},\"strict\":true},\"type\":\"json_schema\"},\"stream\":false,\"temperature\":0.0,\"top_p\":1.0}",
+      "serialized_policy_visible_request": "{\"fixed_task\":\"Select the typed action whose declared action contract maps to the authoritative target. INSPECT reports a symbol under this declared mapping: BETA -> RED; ALPHA -> BLUE. The declared action contract is: ACT_A -> BLUE; ACT_B -> RED. Respond with exactly ACT_A or ACT_B.\",\"legal_action_vocabulary\":[\"ACT_A\",\"ACT_B\"],\"policy_visible_protocol_history\":[{\"event_type\":\"INSPECT_EXECUTED\",\"payload\":{\"action\":\"INSPECT\"}}]}",
+      "structured_output": {
+        "action": "ACT_B"
+      },
+      "tools_supplied": false
+    }
+  ],
+  "descriptive_summary": {
+    "by_first_mapping_row_target_color_action_contract_condition": {
+      "BLUE": {
+        "C1": {
+          "F": {
+            "ACT_A": 1,
+            "ACT_B": 3,
+            "correct": 1,
+            "episodes": 4,
+            "failures": 0,
+            "protocol_invalid": 0
+          },
+          "P": {
+            "ACT_A": 0,
+            "ACT_B": 4,
+            "correct": 2,
+            "episodes": 4,
+            "failures": 0,
+            "protocol_invalid": 0
+          }
+        },
+        "C2": {
+          "F": {
+            "ACT_A": 2,
+            "ACT_B": 2,
+            "correct": 2,
+            "episodes": 4,
+            "failures": 0,
+            "protocol_invalid": 0
+          },
+          "P": {
+            "ACT_A": 2,
+            "ACT_B": 2,
+            "correct": 2,
+            "episodes": 4,
+            "failures": 0,
+            "protocol_invalid": 0
+          }
+        }
+      },
+      "RED": {
+        "C1": {
+          "F": {
+            "ACT_A": 1,
+            "ACT_B": 3,
+            "correct": 3,
+            "episodes": 4,
+            "failures": 0,
+            "protocol_invalid": 0
+          },
+          "P": {
+            "ACT_A": 4,
+            "ACT_B": 0,
+            "correct": 2,
+            "episodes": 4,
+            "failures": 0,
+            "protocol_invalid": 0
+          }
+        },
+        "C2": {
+          "F": {
+            "ACT_A": 3,
+            "ACT_B": 1,
+            "correct": 3,
+            "episodes": 4,
+            "failures": 0,
+            "protocol_invalid": 0
+          },
+          "P": {
+            "ACT_A": 2,
+            "ACT_B": 2,
+            "correct": 2,
+            "episodes": 4,
+            "failures": 0,
+            "protocol_invalid": 0
+          }
+        }
+      }
+    },
+    "by_mapping_presentation_action_contract_condition": {
+      "M1": {
+        "AB": {
+          "C1": {
+            "F": {
+              "ACT_A": 1,
+              "ACT_B": 1,
+              "correct": 2,
+              "episodes": 2,
+              "failures": 0,
+              "protocol_invalid": 0
+            },
+            "P": {
+              "ACT_A": 2,
+              "ACT_B": 0,
+              "correct": 1,
+              "episodes": 2,
+              "failures": 0,
+              "protocol_invalid": 0
+            }
+          },
+          "C2": {
+            "F": {
+              "ACT_A": 2,
+              "ACT_B": 0,
+              "correct": 1,
+              "episodes": 2,
+              "failures": 0,
+              "protocol_invalid": 0
+            },
+            "P": {
+              "ACT_A": 2,
+              "ACT_B": 0,
+              "correct": 1,
+              "episodes": 2,
+              "failures": 0,
+              "protocol_invalid": 0
+            }
+          }
+        },
+        "BA": {
+          "C1": {
+            "F": {
+              "ACT_A": 0,
+              "ACT_B": 2,
+              "correct": 1,
+              "episodes": 2,
+              "failures": 0,
+              "protocol_invalid": 0
+            },
+            "P": {
+              "ACT_A": 0,
+              "ACT_B": 2,
+              "correct": 1,
+              "episodes": 2,
+              "failures": 0,
+              "protocol_invalid": 0
+            }
+          },
+          "C2": {
+            "F": {
+              "ACT_A": 0,
+              "ACT_B": 2,
+              "correct": 1,
+              "episodes": 2,
+              "failures": 0,
+              "protocol_invalid": 0
+            },
+            "P": {
+              "ACT_A": 0,
+              "ACT_B": 2,
+              "correct": 1,
+              "episodes": 2,
+              "failures": 0,
+              "protocol_invalid": 0
+            }
+          }
+        }
+      },
+      "M2": {
+        "AB": {
+          "C1": {
+            "F": {
+              "ACT_A": 1,
+              "ACT_B": 1,
+              "correct": 0,
+              "episodes": 2,
+              "failures": 0,
+              "protocol_invalid": 0
+            },
+            "P": {
+              "ACT_A": 0,
+              "ACT_B": 2,
+              "correct": 1,
+              "episodes": 2,
+              "failures": 0,
+              "protocol_invalid": 0
+            }
+          },
+          "C2": {
+            "F": {
+              "ACT_A": 2,
+              "ACT_B": 0,
+              "correct": 1,
+              "episodes": 2,
+              "failures": 0,
+              "protocol_invalid": 0
+            },
+            "P": {
+              "ACT_A": 2,
+              "ACT_B": 0,
+              "correct": 1,
+              "episodes": 2,
+              "failures": 0,
+              "protocol_invalid": 0
+            }
+          }
+        },
+        "BA": {
+          "C1": {
+            "F": {
+              "ACT_A": 0,
+              "ACT_B": 2,
+              "correct": 1,
+              "episodes": 2,
+              "failures": 0,
+              "protocol_invalid": 0
+            },
+            "P": {
+              "ACT_A": 2,
+              "ACT_B": 0,
+              "correct": 1,
+              "episodes": 2,
+              "failures": 0,
+              "protocol_invalid": 0
+            }
+          },
+          "C2": {
+            "F": {
+              "ACT_A": 1,
+              "ACT_B": 1,
+              "correct": 2,
+              "episodes": 2,
+              "failures": 0,
+              "protocol_invalid": 0
+            },
+            "P": {
+              "ACT_A": 0,
+              "ACT_B": 2,
+              "correct": 1,
+              "episodes": 2,
+              "failures": 0,
+              "protocol_invalid": 0
+            }
+          }
+        }
+      }
+    },
+    "by_typed_action_identity_condition": {
+      "ACT_A": {
+        "F": {
+          "correct": 4,
+          "selected": 7
+        },
+        "P": {
+          "correct": 4,
+          "selected": 8
+        }
+      },
+      "ACT_B": {
+        "F": {
+          "correct": 5,
+          "selected": 9
+        },
+        "P": {
+          "correct": 4,
+          "selected": 8
+        }
+      }
+    },
+    "by_world_target_color_action_contract_condition": {
+      "BLUE": {
+        "C1": {
+          "F": {
+            "ACT_A": 1,
+            "ACT_B": 3,
+            "correct": 3,
+            "episodes": 4,
+            "failures": 0,
+            "protocol_invalid": 0
+          },
+          "P": {
+            "ACT_A": 2,
+            "ACT_B": 2,
+            "correct": 2,
+            "episodes": 4,
+            "failures": 0,
+            "protocol_invalid": 0
+          }
+        },
+        "C2": {
+          "F": {
+            "ACT_A": 3,
+            "ACT_B": 1,
+            "correct": 3,
+            "episodes": 4,
+            "failures": 0,
+            "protocol_invalid": 0
+          },
+          "P": {
+            "ACT_A": 2,
+            "ACT_B": 2,
+            "correct": 2,
+            "episodes": 4,
+            "failures": 0,
+            "protocol_invalid": 0
+          }
+        }
+      },
+      "RED": {
+        "C1": {
+          "F": {
+            "ACT_A": 1,
+            "ACT_B": 3,
+            "correct": 1,
+            "episodes": 4,
+            "failures": 0,
+            "protocol_invalid": 0
+          },
+          "P": {
+            "ACT_A": 2,
+            "ACT_B": 2,
+            "correct": 2,
+            "episodes": 4,
+            "failures": 0,
+            "protocol_invalid": 0
+          }
+        },
+        "C2": {
+          "F": {
+            "ACT_A": 2,
+            "ACT_B": 2,
+            "correct": 2,
+            "episodes": 4,
+            "failures": 0,
+            "protocol_invalid": 0
+          },
+          "P": {
+            "ACT_A": 2,
+            "ACT_B": 2,
+            "correct": 2,
+            "episodes": 4,
+            "failures": 0,
+            "protocol_invalid": 0
+          }
+        }
+      }
+    },
+    "individual_cells": {
+      "M1": {
+        "AB": {
+          "C1": {
+            "ALPHA": {
+              "F": {
+                "action_implied_target_color": "RED",
+                "correct": true,
+                "failure_class": null,
+                "target_color": "RED",
+                "typed_action": "ACT_A",
+                "valid": true
+              },
+              "P": {
+                "action_implied_target_color": "RED",
+                "correct": true,
+                "failure_class": null,
+                "target_color": "RED",
+                "typed_action": "ACT_A",
+                "valid": true
+              }
+            },
+            "BETA": {
+              "F": {
+                "action_implied_target_color": "BLUE",
+                "correct": true,
+                "failure_class": null,
+                "target_color": "BLUE",
+                "typed_action": "ACT_B",
+                "valid": true
+              },
+              "P": {
+                "action_implied_target_color": "RED",
+                "correct": false,
+                "failure_class": null,
+                "target_color": "BLUE",
+                "typed_action": "ACT_A",
+                "valid": true
+              }
+            }
+          },
+          "C2": {
+            "ALPHA": {
+              "F": {
+                "action_implied_target_color": "BLUE",
+                "correct": false,
+                "failure_class": null,
+                "target_color": "RED",
+                "typed_action": "ACT_A",
+                "valid": true
+              },
+              "P": {
+                "action_implied_target_color": "BLUE",
+                "correct": false,
+                "failure_class": null,
+                "target_color": "RED",
+                "typed_action": "ACT_A",
+                "valid": true
+              }
+            },
+            "BETA": {
+              "F": {
+                "action_implied_target_color": "BLUE",
+                "correct": true,
+                "failure_class": null,
+                "target_color": "BLUE",
+                "typed_action": "ACT_A",
+                "valid": true
+              },
+              "P": {
+                "action_implied_target_color": "BLUE",
+                "correct": true,
+                "failure_class": null,
+                "target_color": "BLUE",
+                "typed_action": "ACT_A",
+                "valid": true
+              }
+            }
+          }
+        },
+        "BA": {
+          "C1": {
+            "ALPHA": {
+              "F": {
+                "action_implied_target_color": "BLUE",
+                "correct": false,
+                "failure_class": null,
+                "target_color": "RED",
+                "typed_action": "ACT_B",
+                "valid": true
+              },
+              "P": {
+                "action_implied_target_color": "BLUE",
+                "correct": false,
+                "failure_class": null,
+                "target_color": "RED",
+                "typed_action": "ACT_B",
+                "valid": true
+              }
+            },
+            "BETA": {
+              "F": {
+                "action_implied_target_color": "BLUE",
+                "correct": true,
+                "failure_class": null,
+                "target_color": "BLUE",
+                "typed_action": "ACT_B",
+                "valid": true
+              },
+              "P": {
+                "action_implied_target_color": "BLUE",
+                "correct": true,
+                "failure_class": null,
+                "target_color": "BLUE",
+                "typed_action": "ACT_B",
+                "valid": true
+              }
+            }
+          },
+          "C2": {
+            "ALPHA": {
+              "F": {
+                "action_implied_target_color": "RED",
+                "correct": true,
+                "failure_class": null,
+                "target_color": "RED",
+                "typed_action": "ACT_B",
+                "valid": true
+              },
+              "P": {
+                "action_implied_target_color": "RED",
+                "correct": true,
+                "failure_class": null,
+                "target_color": "RED",
+                "typed_action": "ACT_B",
+                "valid": true
+              }
+            },
+            "BETA": {
+              "F": {
+                "action_implied_target_color": "RED",
+                "correct": false,
+                "failure_class": null,
+                "target_color": "BLUE",
+                "typed_action": "ACT_B",
+                "valid": true
+              },
+              "P": {
+                "action_implied_target_color": "RED",
+                "correct": false,
+                "failure_class": null,
+                "target_color": "BLUE",
+                "typed_action": "ACT_B",
+                "valid": true
+              }
+            }
+          }
+        }
+      },
+      "M2": {
+        "AB": {
+          "C1": {
+            "ALPHA": {
+              "F": {
+                "action_implied_target_color": "RED",
+                "correct": false,
+                "failure_class": null,
+                "target_color": "BLUE",
+                "typed_action": "ACT_A",
+                "valid": true
+              },
+              "P": {
+                "action_implied_target_color": "BLUE",
+                "correct": true,
+                "failure_class": null,
+                "target_color": "BLUE",
+                "typed_action": "ACT_B",
+                "valid": true
+              }
+            },
+            "BETA": {
+              "F": {
+                "action_implied_target_color": "BLUE",
+                "correct": false,
+                "failure_class": null,
+                "target_color": "RED",
+                "typed_action": "ACT_B",
+                "valid": true
+              },
+              "P": {
+                "action_implied_target_color": "BLUE",
+                "correct": false,
+                "failure_class": null,
+                "target_color": "RED",
+                "typed_action": "ACT_B",
+                "valid": true
+              }
+            }
+          },
+          "C2": {
+            "ALPHA": {
+              "F": {
+                "action_implied_target_color": "BLUE",
+                "correct": true,
+                "failure_class": null,
+                "target_color": "BLUE",
+                "typed_action": "ACT_A",
+                "valid": true
+              },
+              "P": {
+                "action_implied_target_color": "BLUE",
+                "correct": true,
+                "failure_class": null,
+                "target_color": "BLUE",
+                "typed_action": "ACT_A",
+                "valid": true
+              }
+            },
+            "BETA": {
+              "F": {
+                "action_implied_target_color": "BLUE",
+                "correct": false,
+                "failure_class": null,
+                "target_color": "RED",
+                "typed_action": "ACT_A",
+                "valid": true
+              },
+              "P": {
+                "action_implied_target_color": "BLUE",
+                "correct": false,
+                "failure_class": null,
+                "target_color": "RED",
+                "typed_action": "ACT_A",
+                "valid": true
+              }
+            }
+          }
+        },
+        "BA": {
+          "C1": {
+            "ALPHA": {
+              "F": {
+                "action_implied_target_color": "BLUE",
+                "correct": true,
+                "failure_class": null,
+                "target_color": "BLUE",
+                "typed_action": "ACT_B",
+                "valid": true
+              },
+              "P": {
+                "action_implied_target_color": "RED",
+                "correct": false,
+                "failure_class": null,
+                "target_color": "BLUE",
+                "typed_action": "ACT_A",
+                "valid": true
+              }
+            },
+            "BETA": {
+              "F": {
+                "action_implied_target_color": "BLUE",
+                "correct": false,
+                "failure_class": null,
+                "target_color": "RED",
+                "typed_action": "ACT_B",
+                "valid": true
+              },
+              "P": {
+                "action_implied_target_color": "RED",
+                "correct": true,
+                "failure_class": null,
+                "target_color": "RED",
+                "typed_action": "ACT_A",
+                "valid": true
+              }
+            }
+          },
+          "C2": {
+            "ALPHA": {
+              "F": {
+                "action_implied_target_color": "BLUE",
+                "correct": true,
+                "failure_class": null,
+                "target_color": "BLUE",
+                "typed_action": "ACT_A",
+                "valid": true
+              },
+              "P": {
+                "action_implied_target_color": "RED",
+                "correct": false,
+                "failure_class": null,
+                "target_color": "BLUE",
+                "typed_action": "ACT_B",
+                "valid": true
+              }
+            },
+            "BETA": {
+              "F": {
+                "action_implied_target_color": "RED",
+                "correct": true,
+                "failure_class": null,
+                "target_color": "RED",
+                "typed_action": "ACT_B",
+                "valid": true
+              },
+              "P": {
+                "action_implied_target_color": "RED",
+                "correct": true,
+                "failure_class": null,
+                "target_color": "RED",
+                "typed_action": "ACT_B",
+                "valid": true
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "empirical_call_count": 32,
+  "empirical_episode_count": 32,
+  "empirical_retry_count": 0,
+  "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+  "execution_basis_commit": "18da726403de3cc06def306e8f6d63d48899116d",
+  "freeze_path": "traces/behavioral_coupling_action_delexicalization_freeze_v0.json",
+  "model_identifier": "hermes-3-llama-3.2-3b",
+  "pressure": "P2_ACTION_DELEXICALIZATION",
+  "protocol_sha256": "sha256:83bb637cde6ac3b38945f6d1685d91c2cf678bc7ceff92167086f41618d589e6",
+  "protocol_version": "behavioral_coupling_action_delexicalization_v0",
+  "provider_exposed_sampling_settings": {
+    "max_tokens": 16,
+    "temperature": 0.0,
+    "top_p": 1.0
+  },
+  "qualification_call_count": 2,
+  "qualification_path": "traces/behavioral_coupling_action_delexicalization_qualification_v0.json",
+  "qualification_result": {
+    "calls_retained": 2,
+    "scientific_schedule_entries_consumed": 0,
+    "status": "PASS",
+    "wounds": []
+  },
+  "schedule_sha256": "sha256:9d5783045adb7e7d2a6958b3dcf4cc798f0fcc8ff581f242015a9c1b3da245d0",
+  "scientific_adjudication": "NOT_PERFORMED",
+  "scoring_rule": "accepted ACT token -> frozen action-contract target -> authoritative hidden target; correct iff the two target colors match",
+  "validity": {
+    "calls_retained": 32,
+    "empirical_retries": 0,
+    "episodes_retained": 32,
+    "invalidity_wounds": [],
+    "status": "VALID",
+    "wrong_actions_are_behavior_not_invalidity": true
+  }
+}
