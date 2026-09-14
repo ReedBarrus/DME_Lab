@@ -5,20 +5,25 @@
 **Architecture authority:** NONE
 **Implementation authority:** NONE
 **Governance authority:** NONE
+**Operational authority:** NONE
+**Pressure-map / constraint-registry authority:** NONE
 
 This document preserves candidate constitutional pressures emerging from DME_Lab discussion.
 
+“Meta-Constitution” is a working projection label. It does not assert that
+DME_Lab currently has or needs a constitution.
+
 Repository evidence outranks this projection.
 
-These are **registered projection pressures** only. They are not scientific findings, repository pressure-resolution entries, runtime requirements, policy commitments, legal rules, or implementation mandates.
+These are projection-local candidate questions and normative hypotheses only. They are not registered repository pressures, scientific findings, constraint-registry entries, runtime requirements, policy commitments, legal rules, or implementation mandates.
 
-Their purpose is to constrain future proposals conceptually without selecting architecture in advance.
+Their purpose is to make possible failure questions visible during later review without selecting architecture, imposing a gate, or constraining a future proposal by their own authority.
 
-The governing meta-rule is:
+The projection-local review rule is:
 
-> These pressures constrain future proposals; they do not select architecture.
+> Ask future proposals how they treat these candidate pressures; do not treat the pressures as architecture or authority.
 
-Any pressure below may later be refined, split, contradicted, rejected, or promoted only through repository evidence and explicit decision.
+Any candidate question below may later be refined, split, contradicted, rejected, or promoted only through repository evidence and explicit decision.
 
 Conversation is not empirical evidence.
 
@@ -74,7 +79,7 @@ escalate unrecoverable residue
 
 This does not require that every consequence be reversible.
 
-It preserves the stronger requirement that irreversible consequence should not erase the ability to reconstruct why it occurred and what depended on the broken basis.
+It preserves a candidate preference that irreversible consequence should not erase the ability to reconstruct why it occurred and what depended on the broken basis. No general conservation or recoverability requirement has been earned.
 
 ---
 
@@ -100,7 +105,7 @@ I was qualified for one task family
 → therefore I am trusted generally
 ```
 
-Authority should arise from an external, legible basis appropriate to the consequence being attempted.
+This candidate pressure would require authority to arise from an external, legible basis appropriate to the consequence being attempted.
 
 The exact authority mechanism is not specified here.
 
@@ -167,7 +172,7 @@ Candidate pressure:
 
 > Observation should generally be easier to scale than consequence. Consequence should generally be easier to scale than authority. Authority should not be self-issued.
 
-A projected safe asymmetry is:
+A hypothesized asymmetry to pressure is:
 
 ```text
 many observers
@@ -223,7 +228,7 @@ source observation
 → downstream state
 ```
 
-If the source observation is later invalidated, a mature system should ideally be able to distinguish:
+If the source observation is later invalidated, this projection asks whether a later system can distinguish:
 
 ```text
 which descendants merely displayed the claim
@@ -264,7 +269,7 @@ repair resistance
 authority laundering through delegation
 ```
 
-A future security regime should therefore distinguish at least:
+One candidate future security separation is:
 
 ```text
 source known
@@ -356,11 +361,11 @@ The pressure is to preserve these distinctions rather than collapsing them into 
 
 Candidate pressure:
 
-> Governance itself must remain inspectable, amendable, and repairable.
+> Ask whether any future governance remains inspectable, amendable, and repairable.
 
 A constitution that cannot evolve under evidence can become another source of rupture.
 
-Therefore these registered projection pressures should not be treated as immutable axioms.
+Therefore these projection-local hypotheses should not be treated as immutable axioms.
 
 Future repository evidence may show that a pressure is:
 
@@ -373,7 +378,7 @@ impossible to satisfy simultaneously with another pressure
 already implied by a stronger distinction
 ```
 
-When that occurs, the correct response is amendment, not ritual preservation.
+Within this projection, the candidate response would be amendment rather than ritual preservation.
 
 ---
 
@@ -409,7 +414,7 @@ qualification
 ↔ bounded acceptance
 ```
 
-These relations do not imply a unified architecture.
+These relations do not imply a unified architecture, normalized dependency, or Pressure / Resolution Map edge.
 
 They identify areas where optimizing one dimension may silently damage another.
 
@@ -417,7 +422,7 @@ They identify areas where optimizing one dimension may silently damage another.
 
 # Candidate Security Ordering
 
-If future development approaches persistent, self-scaling, or externally consequential agents, one projected ordering is:
+If future development approaches persistent, self-scaling, or externally consequential agents, one illustrative candidate ordering is:
 
 ```text
 retain rupture
@@ -434,7 +439,7 @@ increase persistence
 → increase consequence authority
 ```
 
-The intent is to avoid perfecting propagation before establishing repair.
+This sequence is not a roadmap, active-pressure order, or implementation gate. Its intent is to expose the risk of perfecting propagation before establishing repair.
 
 Every newly earned consequential capability may warrant renewed rupture pressure.
 
@@ -442,7 +447,7 @@ Every newly earned consequential capability may warrant renewed rupture pressure
 
 # Candidate Human-Agency Ordering
 
-A parallel projected ordering is:
+A parallel illustrative candidate ordering is:
 
 ```text
 make state legible
@@ -458,9 +463,46 @@ increase autonomous duration
 → increase economic or external consequence
 ```
 
-This does not require permanent human micromanagement.
+This sequence is not a roadmap, active-pressure order, or implementation gate. It does not require permanent human micromanagement.
 
 The goal is that increased autonomy should not depend on making human control fictional.
+
+---
+
+# Conflict and Redundancy Ledger
+
+The following overlap and tension remain explicit:
+
+- `Controller.md` already projects capability/admissibility separation,
+  bounded authority, retry safety, and an external action boundary. MC-03 and
+  MC-11 overlap that material. The Controller remains `PARKED`; this document
+  neither reopens it nor turns its projected rules into governance requirements.
+- `local_automation/Local_Model_Workshop.md` already projects realization-bound
+  qualification, revocable routing eligibility, attempt/proposal/commit
+  authority, and runtime drift. MC-03, MC-04, and MC-11 are partly redundant
+  with that projection. Neither document is a qualification authority.
+- `Persistent_Research_Autonomy.md`, `Persistent_Ecology.md`, and `Home.md`
+  project recurrence, delegation, dependency, human participation, and repair.
+  MC-01, MC-02, MC-04, MC-06, MC-08, and MC-12 do not supersede those documents
+  or settle their differing architecture vocabularies.
+- `Semantic_Compression_Dynamics.md`, `consequential_geometry_A.md`, and
+  `Consequence_Formal_B.md` already project transformation fidelity,
+  recoverability, dependency, and consequence conservation. MC-02, MC-08, and
+  MC-10 preserve review questions only; they do not establish a conservation
+  law or adopt either formal seed as canonical.
+- `Consequential_Economic_Coordination_Network.md` repeats economic non-capture
+  and adversarial-participation themes from MC-07 and MC-09. Neither wording is
+  canonical. Any later divergence is a conflict to retain, not silently merge.
+
+MC-06's fewer-interpreters/fewer-executors sketch may conflict with distributed
+or peer coordination projected elsewhere. The text does not decide between a
+hierarchy, federation, peer network, or centralized boundary.
+
+The `MC-*` labels are not `D-*` constraints and are not `PR-*` pressure
+identities. They do not alter current navigation, select an active pressure, or
+become eligible merely because they are named. File presence under
+`docs/projection/` also does not add this document to the Cockpit's explicit v0
+projection allowlist.
 
 ---
 
@@ -482,14 +524,18 @@ This projection does not establish:
 - that the listed pressures are mutually sufficient;
 - that the listed pressures are mutually compatible;
 - that any pressure has been empirically satisfied.
+- that these clauses currently constrain repository decisions or future
+  proposals;
+- that any `MC-*` label is a repository pressure, constraint, policy, or
+  constitutional rule.
 
-No mechanism should be introduced merely because it appears to satisfy language in this document.
+This document does not warrant introducing a mechanism merely because that mechanism appears to satisfy one of its clauses.
 
 The machinery must still be earned through executable pressure.
 
 ---
 
-# Registered Projection Pressure Status
+# Projection-Local Label Status
 
 The `MC-*` identifiers in this file are local labels for discussion and future comparison.
 
@@ -498,15 +544,16 @@ They are **not** entries in `PRESSURE_RESOLUTION_MAP.md` and do not acquire scie
 Their current status is:
 
 ```text
-registered in projection
-→ available for future pressure selection
+named inside this projection
+→ available as a later question surface if independently selected
 → not empirically established
+→ not a repository pressure or constraint
 → not architecture authority
 → not implementation authority
 → not governance authority
 ```
 
-If a later experiment or operational failure materially pressures one of these clauses, the repository should record the evidence independently and decide explicitly whether any promotion is warranted.
+If a later experiment or operational failure materially bears on one of these clauses, the repository can record the evidence independently and decide explicitly whether any new pressure or promotion is warranted. The label alone supplies neither.
 
 ---
 
@@ -540,4 +587,4 @@ establish minimal working regime
 → repeat
 ```
 
-The meta-constitution succeeds only if it remains subordinate to evidence while still making it harder for future capability growth to silently erase the agency, authority, repair, and consequence distinctions the Lab is attempting to conserve.
+This projection is useful only while it remains subordinate to evidence and helps reviewers notice possible loss of agency, authority, repair, and consequence distinctions. Usefulness would not give it governance authority.

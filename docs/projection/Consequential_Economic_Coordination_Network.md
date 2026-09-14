@@ -4,9 +4,14 @@
 **Scientific standing:** NONE
 **Architecture authority:** NONE
 **Implementation authority:** NONE
+**Operational authority:** NONE
+**Product authority:** NONE
 **Economic / trading authority:** NONE
 
 This document preserves a candidate product and research horizon emerging from DME_Lab discussion.
+
+“Network” is a horizon label. It does not assert that a network, protocol,
+economic substrate, participant ecology, or product currently exists.
 
 Repository evidence outranks this projection.
 
@@ -14,15 +19,15 @@ Nothing here authorizes connection of DME_Lab to real financial accounts, broker
 
 The purpose of this note is narrower:
 
-> Preserve the possibility that provenance-bearing consequence coordination may become a useful common medium for heterogeneous human and machine economic actors.
+> Preserve the question of whether provenance-bearing consequence coordination could become a useful common medium for heterogeneous human and machine economic actors.
 
-The hypothesis is not that one model, agent, institution, or DME instance should control an economy. The projected value is interoperability at the level of observed state, claims, authority, commitment, execution, and consequence while participants retain independent cognition, ownership, and governance.
+The candidate is not that one model, agent, institution, or DME instance should control an economy. The projected question is whether interoperability at the level of observed state, claims, authority, commitment, execution, and consequence could be useful while participants retain independent cognition, ownership, and governance. No such interoperability or value has been demonstrated.
 
 ---
 
 ## 1. Motivation
 
-Contemporary economic software usually separates several layers:
+Economic activity can be described using several conceptually distinct layers:
 
 ```text
 human objective
@@ -90,7 +95,7 @@ Observed consequence I changes what is currently admissible next.
 
 The exact grammar is not specified here.
 
-The projection is only that economic coordination becomes safer and more interoperable when the system can preserve distinctions between:
+The projection asks whether economic coordination could become more inspectable and less collapse-prone when a system preserves distinctions between:
 
 ```text
 source
@@ -107,7 +112,7 @@ consequence
 repair
 ```
 
-Participants should not need to share the same model architecture, reasoning process, organization, or objective function. They need only enough shared structure for consequence-bearing relations to remain legible across handoff.
+A candidate medium would seek to avoid requiring participants to share the same model architecture, reasoning process, organization, or objective function. Whether a smaller shared structure is sufficient to keep consequence-bearing relations legible across handoff remains untested.
 
 This suggests a candidate principle:
 
@@ -187,7 +192,7 @@ Later economic experiments could test whether these distinctions survive repeate
 
 ## 5. Synthetic Economies Before Real Consequence
 
-The safest projected development path is not to connect an immature system directly to real capital.
+This projection does not establish a safe development path. It does identify a lower-consequence ordering in which synthetic surfaces would be pressured before any real capital is placed at risk.
 
 A candidate progression is:
 
@@ -224,9 +229,11 @@ Such environments could pressure whether provenance, authority, commitment, cons
 
 ## 6. Resource Scheduling as a Proto-Economic Surface
 
-DME_Lab may encounter primitive economic structure internally before any explicit financial application exists.
+DME_Lab may encounter resource-allocation questions internally before any explicit financial application exists.
 
-A local automation scheduler already faces candidate quantities such as:
+Current local-model qualification evidence has exposed bounded apparatus coordinates including configured context capacity, client deadline, completion allowance, response-contract completion, qualification standing, and human review. It has not established a scheduler or an economic mechanism. The retained [deadline-admission checkpoint](../decisions/turbo_t1_deadline_admission_checkpoint_v0.md) and [completion-budget result](../decisions/turbo_t1_q1_completion_budget_pressure_result_v0.md) are motivating evidence for those apparatus distinctions only.
+
+A projected scheduler would face candidate quantities such as:
 
 ```text
 worker capacity
@@ -241,17 +248,17 @@ frontier-review cost
 human-attention cost
 ```
 
-Routing scarce work across heterogeneous realizations creates a resource-allocation problem even if no currency is present.
+If routing across heterogeneous realizations is later earned, allocating scarce work would create a resource-allocation problem even if no currency were present.
 
 A future scheduler could therefore become a bounded experimental surface for economic coordination before external monetary settlement is introduced.
 
-This does not establish that market mechanisms are the correct scheduler architecture. It only identifies resource scarcity and competing consequence budgets as a potential empirical bridge between local automation and later economic systems.
+This does not establish that a scheduler should be built or that market mechanisms are an appropriate scheduler architecture. `Local_Model_Workshop.md` retains routing and scheduling only as non-authoritative projection material. The recent admission results are motivating apparatus evidence, not evidence for an economy.
 
 ---
 
-## 7. Candidate Network Effect
+## 7. Candidate Multi-Participant Value Question
 
-If multiple independent systems can exchange provenance-bearing consequence state, value may increase nonlinearly.
+No network effect, adoption dynamic, or nonlinear value relation has been observed. A later question is whether usefulness changes when multiple independent systems exchange provenance-bearing consequence state.
 
 A simple projected interaction could look like:
 
@@ -269,7 +276,7 @@ Settlement occurs.
 Observed consequence updates both parties' retained state.
 ```
 
-The important property is that neither participant must surrender internal autonomy merely to coordinate externally.
+The candidate aim is to test whether participants can coordinate externally without surrendering internal autonomy. This property has not been demonstrated.
 
 This could allow the same substrate to mediate relationships among:
 
@@ -322,13 +329,13 @@ repair / amendment if required
 
 No arrow should be assumed to follow automatically from the previous stage.
 
-This projection is coupled to the candidate constitutional pressures preserved separately in `Proto_Meta_Constitution.md`, especially human agency conservation, authority non-self-escalation, rupture/repair conservation, economic non-capture, and recoverable dependency.
+This projection overlaps with candidate themes preserved separately in `Proto_Meta_Constitution.md`, especially human agency, authority non-self-escalation, rupture/repair, economic non-capture, and recoverable dependency. Neither projection governs the other, and the overlap does not create an implemented relation.
 
 ---
 
 ## 9. Adversarial Economic Pressure
 
-Economic systems should be expected to contain participants that are:
+Any later adversarial pressure would need to consider participants that are:
 
 ```text
 mistaken
@@ -369,13 +376,53 @@ A stronger candidate pressure is:
 
 This does not define a business model.
 
-It preserves a question future product work must answer:
+It preserves a question that later product work could ask if independently selected:
 
 > Can the system sustain itself economically while increasing rather than absorbing the practical agency of its participants?
 
 ---
 
-## 11. What This Projection Does Not Establish
+## 11. Conflict and Redundancy Ledger
+
+The following overlap is retained rather than silently reconciled:
+
+- `Proto_Meta_Constitution.md` contains an `MC-07` economic non-capture clause
+  substantially overlapping Section 10 and an `MC-09` adversarial-participation
+  clause overlapping Section 9. Neither wording is canonical, and divergence
+  between them should remain visible until explicit evidence and decision
+  justify consolidation.
+- `Local_Model_Workshop.md` projects qualification, routing, resource scarcity,
+  and scheduling. The current repository contains bounded one-call
+  qualification apparatus, not the generalized scheduler described here or in
+  that projection.
+- `Controller.md` projects a separate action and authorization boundary and is
+  explicitly `PARKED`. Economic execution, commitment, and settlement language
+  in this file does not reopen Controller development or resolve whether a
+  shared medium, a thin Controller plus domain adapters, or another arrangement
+  is appropriate.
+- `Persistent_Ecology.md`, `Persistent_Research_Autonomy.md`, and `Home.md`
+  already project multi-participant continuity, resource allocation, and
+  recurrent agents. This file adds an economic question surface; it does not
+  supersede those projections or establish their architecture.
+- `consequential_geometry_A.md`, `Consequence_Formal_B.md`, and
+  `Semantic_Compression_Dynamics.md` overlap this file's transformation,
+  provenance, dependency, and consequence vocabulary. This projection neither
+  imports their candidate formalisms as established nor supplies evidence for
+  their claims. `Semantic_Compression_Dynamics.md` also predates the retained
+  Turbo deadline/completion-budget results; its statements about current local
+  qualification evidence are not a substitute for current repository review.
+
+There is also an unresolved architectural tension between shared-medium
+language in this document and the domain-adapter boundary projected in
+`Controller.md`. Both remain candidates. This document selects neither.
+
+File presence under `docs/projection/` does not place this document in the
+Cockpit's v0 projection-document allowlist. It creates no Cockpit node, graph
+edge, current navigation state, or evidence relation.
+
+---
+
+## 12. What This Projection Does Not Establish
 
 This document does not establish:
 
@@ -393,9 +440,11 @@ Any future implementation must earn its mechanisms through narrower executable p
 
 ---
 
-## 12. Candidate Questions for Later Pressure
+## 13. Candidate Questions for Later Pressure
 
-If this horizon becomes operationally relevant, useful questions may include:
+If repository evidence later makes this horizon operationally relevant, useful
+questions may include. Listing them does not select an active or reachable
+pressure:
 
 1. What minimum distinctions must survive an economic handoff for another actor to commit safely?
 2. Can proposal, commitment, authorization, execution, and settlement remain mechanically and semantically separate under repeated automation?
@@ -410,7 +459,7 @@ If this horizon becomes operationally relevant, useful questions may include:
 
 ---
 
-## 13. Promotion Rule
+## 14. Promotion Rule
 
 This document is a seed projection only.
 
