@@ -106,6 +106,10 @@ Bounded NTFS USN observation-basis qualification adjudication completed in
 Bounded PR-006 `Q_OPERATION` distinction-recovery adjudication completed in
 `docs/decisions/ntfs_usn_q_operation_distinction_recovery_v0.md`.
 
+Behavioral Coupling observation / commitment / consequence checkpoint
+completed in
+`docs/decisions/behavioral_coupling_observation_commitment_consequence_checkpoint_v0.md`.
+
 ## Objective
 
 Build toward deterministic reconstruction of OS-derived event history while preserving provenance.
@@ -192,6 +196,28 @@ committed evidence. It does not establish the standing it displays.
   `cross_domain_prediction_not_earned` pending an antecedent mapping and
   independently authorized unseen target evidence.
 - No next experimental pressure has been selected.
+
+The single-policy Behavioral Coupling lineage is checkpointed through binding
+evidence commit `65f1e881b114a07cafb46fef8875d4b11aeb990b` and consequence
+evidence commit `2e118f05118f427aa50742f7e037ef68d07e3691`, with its bounded
+adjudication recorded in
+`docs/decisions/behavioral_coupling_observation_commitment_consequence_checkpoint_v0.md`.
+The strongest licensed result is representation-sensitive selection under
+restricted predecision inputs, separately from authoritative fixture
+evaluation: exact late policy requests could remain identical while hidden
+world relations changed the resulting consequence, and selected early
+disclosures supported useful discrimination in the retained binding and
+consequence comparisons. Visible information was not generally sufficient.
+This does not establish agency, learning, planning, temporal cognition,
+persistent memory, general semantics, geometry, coordination architecture, or
+a consequence engine. P3 remains blocked and unexecuted; Home and Controller
+remain parked.
+
+The method verdict is `CHECKPOINT_AND_DWELL`. The smallest reachable consumer
+question asks whether a detached receipt warrants a recipient's present action
+when its source association or the world configuration may no longer apply.
+That question is available for dwell only: no experiment, participant count,
+agent implementation, or new consumer regime is authorized.
 
 PR-019 preserves two independently retained specimens:
 

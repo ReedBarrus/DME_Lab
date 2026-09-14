@@ -442,6 +442,42 @@ not authorized or active.
 - **Evidence:** [prediction selection](docs/decisions/cross_domain_predictive_transformation_selection_pressure_v0.md),
   [re-adjudication](docs/decisions/cross_domain_tomographic_readjudication_v0.md)
 
+## E. Bounded behavioral coupling
+
+### PR-020 — Policy-visible discrimination versus authoritative consequence
+
+- **Pressure:** Under frozen single-policy coupled realizations, can a
+  policy-visible distinction support useful terminal selection while remaining
+  separate from the authoritative fixture relation that evaluates the selected
+  action?
+- **Standing:** `BOUNDED_RESOLUTION`
+- **Missing discriminator:** post-inference but pre-acceptance delivery,
+  demonstrated later receipt consumption, independently warranted source
+  association, and behavior preserved under a declared representation change
+  were not separately tested.
+- **Resolution so far:** exact predecision action-binding or consequence-receipt
+  disclosure supported the appropriate A/B discrimination in the retained
+  EARLY comparisons. In the LATE comparisons, byte-identical policy requests
+  produced unchanged `ACT_A` selections while hidden fixture differences
+  changed authoritative consequence and success. Other visible representations
+  did not reliably support useful selection.
+- **Residue:** representation sensitivity remains realization-specific and its
+  internal mechanism is unknown. The smallest reachable question is whether a
+  detached receipt warrants a recipient's present action when source
+  association or world configuration may no longer apply. It is dwell-only;
+  no experiment or participant architecture is selected.
+- **Blocked by:** —
+- **Unlocks:** —
+- **Evidence:** [checkpoint](docs/decisions/behavioral_coupling_observation_commitment_consequence_checkpoint_v0.md),
+  [feedback trace](traces/bounded_consequential_feedback_lm_studio_empirical_world_v0.json),
+  [P1 trace](traces/behavioral_coupling_p1_actuation_prior_world_v0.json),
+  [P2 trace](traces/behavioral_coupling_p2_semantic_indirection_world_v0.json),
+  [P4 trace](traces/behavioral_coupling_p4_association_world_v0.json),
+  [row-order trace](traces/behavioral_coupling_mapping_row_order_world_v0.json),
+  [delexicalization trace](traces/behavioral_coupling_action_delexicalization_world_v0.json),
+  [binding trace](traces/behavioral_coupling_binding_observability_world_v0.json),
+  [consequence trace](traces/behavioral_coupling_consequence_observability_world_v0.json)
+
 ## Operating convention
 
 Reed selects and authorizes an active pressure and supplies operator provenance
