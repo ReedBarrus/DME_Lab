@@ -29,7 +29,14 @@ APPARATUS_VERSION = "local_model_qualification_t1_cross_realization_v0"
 DEFAULT_FREEZE_PATH = Path(
     "traces/local_model_qualification_t1_turbo_freeze_v0.json"
 )
+DEADLINE_PRESSURE_FREEZE_PATH = Path(
+    "traces/local_model_qualification_t1_turbo_q1_deadline_pressure_freeze_v0.json"
+)
 SPECIMEN_MODULES = {"Q1": q1, "Q2": q2, "Q3": q3}
+FREEZE_AUTHORIZATIONS = {
+    "local_model_qualification_t1_turbo_freeze_v0": ("Q1", "Q2", "Q3"),
+    "local_model_qualification_t1_turbo_q1_deadline_pressure_freeze_v0": ("Q1",),
+}
 RuntimeInspector = Callable[[str, float], Mapping[str, Any]]
 
 
@@ -41,15 +48,20 @@ def _local_runtime_inspector(endpoint: str, timeout_seconds: float) -> Mapping[s
 
 def _load_freeze(path: Path) -> dict[str, Any]:
     freeze = json.loads(path.read_text(encoding="utf-8"))
-    if freeze.get("artifact") != "local_model_qualification_t1_turbo_freeze_v0":
+    artifact = freeze.get("artifact")
+    if artifact not in FREEZE_AUTHORIZATIONS:
         raise RuntimeError("unexpected cross-realization freeze artifact")
     if freeze.get("maximum_model_calls_per_specimen") != 1:
         raise RuntimeError("cross-realization freeze must permit one call per specimen")
-    if tuple(freeze.get("authorized_specimens", ())) != ("Q1", "Q2", "Q3"):
-        raise RuntimeError("authorized specimen set must be exactly Q1-Q3")
+    authorized = FREEZE_AUTHORIZATIONS[artifact]
+    if tuple(freeze.get("authorized_specimens", ())) != authorized:
+        raise RuntimeError("authorized specimen set does not match the freeze type")
+    if set(freeze.get("specimens", {})) != set(authorized):
+        raise RuntimeError("freeze contains an unauthorized specimen definition")
     if freeze.get("q4_authorized") is not False:
         raise RuntimeError("Q4 must remain held out")
-    for key, module in SPECIMEN_MODULES.items():
+    for key in authorized:
+        module = SPECIMEN_MODULES[key]
         specimen = freeze["specimens"][key]
         if specimen["specimen_id"] != module.SPECIMEN_ID:
             raise RuntimeError(f"{key} specimen identity drift")
@@ -255,7 +267,10 @@ def capture_observation(
     protected_after = q1._protected_manifest(repo_root, protected_surfaces)
     status_after = q1._git_status(repo_root)
     observation = {
-        "artifact": f"local_model_qualification_t1_turbo_{specimen_key.lower()}_observation_v0",
+        "artifact": specimen.get(
+            "observation_artifact",
+            f"local_model_qualification_t1_turbo_{specimen_key.lower()}_observation_v0",
+        ),
         "artifact_class": "LOCAL_MODEL_QUALIFICATION_RUN_OBSERVATION",
         "apparatus_version": APPARATUS_VERSION,
         "specimen_key": specimen_key,
@@ -403,7 +418,10 @@ def mechanical_evaluation(
     else:
         terminal_state = "FAIL"
     evaluation = {
-        "artifact": f"local_model_qualification_t1_turbo_{specimen_key.lower()}_mechanical_evaluation_v0",
+        "artifact": specimen.get(
+            "mechanical_evaluation_artifact",
+            f"local_model_qualification_t1_turbo_{specimen_key.lower()}_mechanical_evaluation_v0",
+        ),
         "artifact_class": "LOCAL_MODEL_QUALIFICATION_MECHANICAL_EVALUATION",
         "apparatus_version": APPARATUS_VERSION,
         "specimen_key": specimen_key,

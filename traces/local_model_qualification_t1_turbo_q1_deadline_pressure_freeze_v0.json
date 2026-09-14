@@ -1,0 +1,160 @@
+{
+  "artifact": "local_model_qualification_t1_turbo_q1_deadline_pressure_freeze_v0",
+  "artifact_class": "FROZEN_T1_DEADLINE_ADMISSION_PRESSURE",
+  "authorized_specimens": [
+    "Q1"
+  ],
+  "basis_checkpoint": "docs/decisions/turbo_t1_deadline_admission_checkpoint_v0.md",
+  "comparison_boundary": {
+    "changed_coordinate": {
+      "client_timeout_seconds_after": 600.0,
+      "client_timeout_seconds_before": 120.0
+    },
+    "new_pressure_not_retry": true,
+    "unchanged_coordinates": [
+      "requested and loaded model identity",
+      "loaded runtime configuration",
+      "configured context length 8192",
+      "Q1 source packet and policy-visible serialization",
+      "Q1 prompt template",
+      "Q1 response schema and strict parser",
+      "temperature 0.0",
+      "top_p 1.0",
+      "max_tokens 1024",
+      "GPU offload request 0.25",
+      "speculative MTP disabled",
+      "one fresh context",
+      "no tools, MCP, repository, filesystem, or write authority",
+      "semantic evaluator regime"
+    ]
+  },
+  "maximum_model_calls_per_specimen": 1,
+  "protected_surfaces": [
+    "PROJECT_STATE.md",
+    "PRESSURE_RESOLUTION_MAP.md",
+    "docs/constraints",
+    "docs/contracts",
+    "docs/methods/local_automation/Local_Model_Qualification_Campaign_v0.md",
+    "docs/cockpit/PROJECTION_CONTRACT.md",
+    "src/cockpit/projection_adapter.py",
+    "src/runtime/cockpit_projection_adapter_pressure.py",
+    "src/runtime/cockpit_projection_adapter_repressure.py",
+    "traces/cockpit_projection_adapter_pressure_v0.json",
+    "traces/cockpit_projection_adapter_repressure_v0.json",
+    "traces/local_model_qualification_t1_turbo_freeze_v0.json",
+    "traces/local_model_qualification_t1_turbo_q1_observation_v0.json",
+    "traces/local_model_qualification_t1_turbo_q1_mechanical_evaluation_v0.json",
+    "traces/local_model_qualification_t1_turbo_q1_semantic_evaluation_v0.json",
+    "traces/local_model_qualification_t1_turbo_q2_observation_v0.json",
+    "traces/local_model_qualification_t1_turbo_q2_mechanical_evaluation_v0.json",
+    "traces/local_model_qualification_t1_turbo_q2_semantic_evaluation_v0.json",
+    "traces/local_model_qualification_t1_turbo_q3_observation_v0.json",
+    "traces/local_model_qualification_t1_turbo_q3_mechanical_evaluation_v0.json",
+    "traces/local_model_qualification_t1_turbo_q3_semantic_evaluation_v0.json",
+    "traces/local_model_qualification_t1_hermes_turbo_comparison_v0.json",
+    "docs/decisions/hermes_t1_qualification_checkpoint_v0.md",
+    "docs/decisions/t1_hermes_turbo_cross_realization_comparison_v0.md",
+    "docs/decisions/turbo_t1_deadline_admission_checkpoint_v0.md"
+  ],
+  "q4_authorized": false,
+  "realization": {
+    "architecture": "qwen35",
+    "configured_context_length": 8192,
+    "display_name": "Qwen3.8 27B TurboFCFusion 735 882 Here Uncen NEO CODER MAX",
+    "endpoint": "http://127.0.0.1:1234/v1/chat/completions",
+    "format": "gguf",
+    "indexed_model_artifact_path": "DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF/Qwen3.8-27B-TurboFCFusion-735-882-Here-Uncen-NEO-CODER-MAX-Q4_K_M.gguf",
+    "lm_studio_app_file_version": "0.4.24+1",
+    "lm_studio_app_product_version": "0.4.24.0",
+    "lm_studio_cli_commit": "ff50809",
+    "lm_studio_python_sdk_version_used_for_preflight": "1.5.0",
+    "loaded_instance_config": {
+      "context_checkpoints": 0,
+      "context_length": 8192,
+      "eval_batch_size": 2048,
+      "flash_attention": true,
+      "offload_kv_cache_to_gpu": false,
+      "parallel": 1,
+      "physical_batch_size": 512,
+      "reasoning_budget_message": "",
+      "speculative_draft_max_tokens": 3,
+      "speculative_draft_min_continue_probability": 0,
+      "speculative_draft_min_tokens": 0,
+      "speculative_draft_model": "",
+      "speculative_draft_mtp": false,
+      "speculative_draft_simple": false
+    },
+    "loaded_model_instance_identifier": "qwen3.8-27b-turbo-fable-cold-fusion-735-882-heretic-uncensored-neo-coder-max-mtp",
+    "model_artifact_digest": null,
+    "model_supported_maximum_context": 262144,
+    "params_string": "27B",
+    "provider_exposed_capabilities": {
+      "reasoning": {
+        "allowed_options": [
+          "off",
+          "on"
+        ],
+        "default": "on"
+      },
+      "trained_for_tool_use": true,
+      "vision": true
+    },
+    "provider_exposed_sampling_settings": {
+      "max_tokens": 1024,
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "quantization": {
+      "bits_per_weight": 4,
+      "name": "Q4_K_M"
+    },
+    "requested_gpu_offload_ratio": 0.25,
+    "requested_model_identifier": "qwen3.8-27b-turbo-fable-cold-fusion-735-882-heretic-uncensored-neo-coder-max-mtp",
+    "runtime": "LM Studio OpenAI-compatible local endpoint",
+    "runtime_engine": "llama.cpp-win-x86_64-nvidia-cuda12-avx2@2.37.0",
+    "runtime_model_inventory_endpoint": "http://127.0.0.1:1234/api/v1/models",
+    "size_bytes": 19890193184,
+    "timeout_seconds": 600.0,
+    "tool_surface": []
+  },
+  "specimens": {
+    "Q1": {
+      "context_admission": {
+        "admitted": true,
+        "configured_context_length": 8192,
+        "measurement_method": "LM Studio Python SDK apply_prompt_template followed by model tokenize",
+        "rendered_input_tokens": 3705,
+        "rendered_prompt_bytes": 16544,
+        "rendered_prompt_sha256": "sha256:70f8362f6cccde8a0e61e5a56d217b7a924d7a0306b8620e6b82d43e6c46cbcd",
+        "reserved_output_tokens": 1024,
+        "serialized_policy_visible_input_bytes": 16249,
+        "serialized_policy_visible_input_sha256": "sha256:4697b44be5ff07df1955b515518a222f3e4dcdee5dd208fd5bbed9e9886d0b43",
+        "total_required_tokens": 4729
+      },
+      "historical_freeze_path": "traces/local_model_qualification_t1_q1_freeze_v0.json",
+      "leakage_boundary": {
+        "campaign_answer_supplied": false,
+        "hermes_outputs_supplied": false,
+        "prior_turbo_outputs_supplied": false,
+        "prior_qualification_outputs_supplied": false,
+        "semantic_evaluator_supplied": false,
+        "unknown_pretraining_or_runtime_cache_excluded": false
+      },
+      "mechanical_evaluation_artifact": "local_model_qualification_t1_turbo_q1_deadline_pressure_mechanical_evaluation_v0",
+      "observation_artifact": "local_model_qualification_t1_turbo_q1_deadline_pressure_observation_v0",
+      "output_paths": {
+        "mechanical_evaluation": "traces/local_model_qualification_t1_turbo_q1_deadline_pressure_mechanical_evaluation_v0.json",
+        "observation": "traces/local_model_qualification_t1_turbo_q1_deadline_pressure_observation_v0.json",
+        "semantic_evaluation": "traces/local_model_qualification_t1_turbo_q1_deadline_pressure_semantic_evaluation_v0.json"
+      },
+      "prompt_template_sha256": "sha256:33eac0e81c0ae608a9c8d377e9e27df1ca20c6ad183e79155560e54772fb196a",
+      "response_schema_sha256": "sha256:60a3b4227539951b4e6baf72ca05c0aff2d5411b66ddf7110658295fedd5acfd",
+      "source_specimen": {
+        "commit": "4a7d0cabb664c2bd977cd1dafe90d72c41bf4305",
+        "path": "docs/decisions/behavioral_coupling_observation_commitment_consequence_checkpoint_v0.md",
+        "sha256": "sha256:461738df46f15139a2d5ab6a00ae8b9dd10e2461ece4a8b158ff3a26305ef91c"
+      },
+      "specimen_id": "T1-Q1_BEHAVIORAL_COUPLING_CHECKPOINT"
+    }
+  }
+}
