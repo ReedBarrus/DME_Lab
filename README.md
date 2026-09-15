@@ -117,6 +117,19 @@ expose unique non-admitted decision states for projected subjects. Neither
 surface is authoritative history, a complete reconstruction, conflict
 resolution, source-quality certification, or a general projection engine.
 
+### Local automation
+
+Repo Scout is implemented as a caller-bounded, read-only repository inspection
+apparatus. Investigator Continuation can construct and mechanically admit a
+finalized packet against an exact clean committed basis, and `basis_report_v0`
+can report local/remote Git relation without integrating either history.
+
+These surfaces do not establish model qualification, semantic correctness,
+write authority, routing, scheduling, autonomous science, or a generalized
+agent architecture. The first continuation A/B checkpoint observed successful
+packet admission and bounded prior-standing reuse, but did not establish lower
+total continuation cost or a clean causal efficiency comparison.
+
 ### Acoustic experimental lineage
 
 The acoustic branch is an executed pressure lineage over a declared Windows
@@ -129,8 +142,15 @@ audio setup, not a promoted production subsystem:
   evidence;
 - a fresh-process recurrence pass reproduced that relational verdict while
   numerical magnitudes changed;
+- a separate-process WASAPI loopback witness observed bounded post-mix endpoint
+  PCM and preserved the boundary between render-path observation and physical
+  realization;
+- a positional A1-to-B-to-A2 pressure retained a recurrent position-conditioned
+  microphone relation under its declared operator intervention;
 - repository/acoustic comparison found only partial source correspondences and
-  one shared software-pipeline correspondence inherited by construction;
+  one shared software-pipeline correspondence inherited by construction, while
+  later re-adjudication retained one bounded retrospective return-transformation
+  candidate;
 - prediction-first selection earned no novel cross-domain prediction.
 
 Commanded playback, constructed buffers, microphone samples, physical speaker
@@ -180,29 +200,26 @@ it only for a concrete consumer demand, an independent contradiction, a
 qualitatively new observation basis, or a separately scoped
 durability/concurrency regime.
 
-### Acoustic render-path witness candidate
+### Acoustic witness and positional return checkpointed
 
-The smallest legitimate candidate for a new acoustic source coordinate is a
-separate-process WASAPI shared-mode loopback observer on the selected Realtek
-render endpoint. It could provide independently observed, post-system-mix PCM
-with endpoint and device-clock coordinates downstream of command submission.
+The separate-process WASAPI pressure observed bounded post-mix PCM on the
+selected Realtek render endpoint. Subsequent positional and cross-domain work
+retained a recurrent A1-to-B-to-A2 microphone relation and one inexact,
+basis-relative retrospective return-transformation candidate.
 
-This is a frozen witness proposal with result `candidate_requires_new_basis`.
-The host exposes the required APIs, but DME_Lab contains no such observer and
-no render-path witness has been executed. Even a successful witness would not
-by itself prove electrical output, speaker actuation, airborne sound, or causal
-attribution of microphone measurements.
+These results do not establish electrical output, speaker actuation, airborne
+causality, exact geometry, a transfer function, tomography, or prospective
+cross-domain prediction. No next acoustic transformation is selected.
 
-### Consumer/navigation pressure entering experimentally
+### Consumer/navigation and local automation in dwell
 
-A bounded consumer-pressure handoff is testing whether the recovered
-`current_result()` surface is sufficient for a historical Git-acquisition
-question. Its reported specimens make opposite source-acquisition outcomes
-indistinguishable at that selected surface while existing reconstruction retains
-the distinguishing source fields and errors. This pressures evidence navigation,
-not automatic surface expansion: it is experimental activity, not a merged
-consumer runtime, navigation system, production-contract change, or new
-distinction.
+The bounded consumer-pressure lineage is adjudicated rather than entering
+experimentally. It established that a derived historical surface can omit
+source-success evidence still recoverable through authoritative reconstruction.
+Repo Scout and Investigator Continuation now supply bounded read-only inspection
+and mechanical handoff surfaces, but neither is qualified for generalized agent
+work, routing, scheduling, autonomous continuation, or write authority. The
+continuation A/B result remains checkpointed with efficiency unresolved.
 
 ## Explicitly NOT implemented
 
@@ -210,6 +227,7 @@ DME_Lab does not currently implement:
 
 - a generalized consequence engine, consequence space, or feedback economy;
 - an agent architecture, autonomous observer, planner, or adaptive behavior;
+- a model router, scheduler, autonomous research loop, or model write authority;
 - a world model or globally coherent present-state representation;
 - an atlas runtime, chart graph, translation engine, or generalized topology;
 - a generalized Windows observer or general OS capture adapter.

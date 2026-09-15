@@ -9,7 +9,7 @@ This index is navigational only. Artifact contents, repository evidence,
 `PROJECT_STATE.md`, and `PRESSURE_RESOLUTION_MAP.md` remain authoritative in
 their established roles.
 
-The index covers **71 committed Markdown artifacts** beneath
+The index covers **73 committed Markdown artifacts** beneath
 `docs/decisions/`, excluding this README. Each artifact appears once in the
 domain index. Function labels are navigation aids, not semantic classifications
 or standing.
@@ -21,12 +21,13 @@ or standing.
 | [Cross-cutting](cross_cutting/) | 1 |
 | [Cross-domain](cross_domain/) | 3 |
 | [Ledger](ledger/) | 15 |
-| [Local automation](local_automation/) | 13 |
+| [Local automation](local_automation/) | 14 |
+| [Root-retained / other](#root-retained--other) | 1 |
 | [Projection](projection/) | 7 |
 | [Provenance](provenance/) | 7 |
 | [Reconstruction](reconstruction/) | 4 |
 | [Runtime](runtime/) | 11 |
-| **Total** | **71** |
+| **Total** | **73** |
 
 ## [Acoustic](acoustic/) (9)
 
@@ -72,8 +73,9 @@ or standing.
 - [`vocabulary_identity_pressure_v0.md`](ledger/vocabulary_identity_pressure_v0.md) — `pressure-result`
 - [`witness_content_ablation_pressure_v0.md`](ledger/witness_content_ablation_pressure_v0.md) — `pressure-result`
 
-## [Local automation](local_automation/) (13)
+## [Local automation](local_automation/) (14)
 
+- [`basis_report_v0.md`](local_automation/basis_report_v0.md) — `implementation`
 - [`hermes_t1_qualification_checkpoint_v0.md`](local_automation/hermes_t1_qualification_checkpoint_v0.md) — `checkpoint`
 - [`investigator_continuation_clean_ab_checkpoint_v0.md`](local_automation/investigator_continuation_clean_ab_checkpoint_v0.md) — `checkpoint`
 - [`repo_scout_corrected_responsibility_boundary_v0.md`](local_automation/repo_scout_corrected_responsibility_boundary_v0.md) — `remediation`
@@ -87,6 +89,10 @@ or standing.
 - [`turbo_t1_deadline_admission_checkpoint_v0.md`](local_automation/turbo_t1_deadline_admission_checkpoint_v0.md) — `checkpoint`
 - [`turbo_t1_q1_completion_budget_pressure_result_v0.md`](local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md) — `pressure-result`
 - [`turbo_t1_q1_deadline_pressure_result_v0.md`](local_automation/turbo_t1_q1_deadline_pressure_result_v0.md) — `pressure-result`
+
+## Root-retained / other (1)
+
+- [`ProjectionSeedContext-HandoffRepair.md`](ProjectionSeedContext-HandoffRepair.md) — `repair`
 
 ## [Projection](projection/) (7)
 
@@ -142,9 +148,10 @@ relocating files.
 | Replications / re-pressure | 3 | [`acoustic replication`](acoustic/acoustic_replication_pressure_v0.md), [`source-side return replication`](acoustic/acoustic_source_side_positional_return_replication_v1.md), [`Cockpit adapter re-pressure`](projection/cockpit_projection_adapter_repressure_v0.md) |
 | Qualification / campaigns | 1 | [`NTFS USN observation-basis qualification`](provenance/ntfs_usn_observation_basis_qualification_v0.md) |
 | Comparisons / adjudications / audits | 8 | [`Astra consumer adjudication`](provenance/astra_consumer_pressure_adjudication_v0.md), [`constraint lineage audit`](cross_cutting/constraint_registry_lineage_audit_v0.md), [`cross-domain re-adjudication`](cross_domain/cross_domain_tomographic_readjudication_v0.md), [`history-association selection`](provenance/history_association_selection_adjudication_v0.md), [`public history association`](provenance/public_history_association_adjudication_v0.md), [`repository-acoustic comparison`](cross_domain/repository_acoustic_tomographic_comparison_pressure_v0.md), [`Hermes / Turbo comparison`](local_automation/t1_hermes_turbo_cross_realization_comparison_v0.md), [`Repo Scout Hermes / Qwen comparison`](local_automation/repo_scout_hermes_qwen3_coder_realization_comparison_v0.md) |
-| Implementation / remediation | 7 | [`plain observer`](projection/cockpit_plain_observer_v0.md), [`adapter remediation`](projection/cockpit_projection_adapter_remediation_v0.md), [`bounded views`](projection/cockpit_projection_v1_bounded_views_v0.md), [`standing topology`](projection/cockpit_projection_v1_standing_topology_v0.md), [`ingest admission`](reconstruction/ingest_admission_pressure_v0.md), [`reconstruction`](reconstruction/reconstruction_pressure_v0.md), [`Repo Scout responsibility boundary`](local_automation/repo_scout_corrected_responsibility_boundary_v0.md) |
+| Implementation / remediation | 9 | [`basis report`](local_automation/basis_report_v0.md), [`projection-seed handoff repair`](ProjectionSeedContext-HandoffRepair.md), [`plain observer`](projection/cockpit_plain_observer_v0.md), [`adapter remediation`](projection/cockpit_projection_adapter_remediation_v0.md), [`bounded views`](projection/cockpit_projection_v1_bounded_views_v0.md), [`standing topology`](projection/cockpit_projection_v1_standing_topology_v0.md), [`ingest admission`](reconstruction/ingest_admission_pressure_v0.md), [`reconstruction`](reconstruction/reconstruction_pressure_v0.md), [`Repo Scout responsibility boundary`](local_automation/repo_scout_corrected_responsibility_boundary_v0.md) |
 | Unclassified / ambiguous | 0 | None |
 
-No artifact was duplicated by function. Physical paths now follow the shallow
-domain taxonomy above; further subdivision is unresolved and is not authorized
-by this migration.
+No artifact was duplicated by function. Physical paths follow the shallow
+domain taxonomy above except for the pre-existing root-retained handoff repair,
+whose path remains unchanged. Further subdivision is unresolved and is not
+authorized by this index.

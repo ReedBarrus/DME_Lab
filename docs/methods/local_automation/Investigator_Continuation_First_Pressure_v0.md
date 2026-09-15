@@ -256,7 +256,29 @@ The packet may retain prior standing needed to navigate toward the relevant
 method/decision evidence, but it may not contain a current-authority declaration
 or a pre-written final answer.
 
-## 10. A/B conditions
+## 10. Information-value preflight
+
+Before either condition begins, freeze an explicit information-value preflight.
+The packet intervention must:
+
+```text
+contain consequential prior standing whose reuse is expected to remove real
+  historical reconstruction work
+identify the reconstruction work expected to be avoided
+contain more than navigation bookmarks
+not place the same retained standing broadly back under must_revalidate
+exclude the current task answer or a pre-written equivalent
+permit mechanical provenance admission without re-proving the retained
+  semantic claims
+leave current applicability and current authority unresolved for the new
+  investigator
+```
+
+If those conditions cannot be established before A or B starts, stop rather
+than revise the intervention after observing one condition. Passing this
+preflight does not establish packet usefulness, correctness, or efficiency.
+
+## 11. A/B conditions
 
 Create two isolated fresh worktrees or equivalent clean repository copies from
 one exact frozen commit. Do not run A and then reuse its mutated state for B.
@@ -283,7 +305,7 @@ frontier realization, and evaluator, plus:
 
 The packet is the only intended informational intervention.
 
-## 11. Correctness gate
+## 12. Correctness gate
 
 Efficiency is not evaluated until both conditions are independently checked
 against authoritative repository evidence.
@@ -303,9 +325,10 @@ The continuation packet must not serve as its own answer key.
 
 A faster wrong answer is a failed continuation specimen.
 
-## 12. Cost accounting
+## 13. Cost accounting
 
-Record continuation costs separately; do not collapse them into one score.
+Record continuation work on separate surfaces; do not collapse them into one
+score or infer that reconstruction displacement is an established mechanism.
 
 Condition A:
 
@@ -326,25 +349,31 @@ Do **not** charge ordinary predecessor research to B merely because it happened
 before handoff. Do charge extra source reading, summarization, serialization,
 manual correction, or adjudication performed only to manufacture the packet.
 
-Observe where feasible:
+Observe and retain separately where feasible:
 
 ```text
-wall time
-frontier token / attention burden
-files or source bytes examined
-Git operations
-tool calls
-tests rerun only for orientation
-human clarification
-duplicate work
-stale assumptions
+historical reconstruction burden
+packet-production burden
+packet-admission burden
+duplicated reconstruction
+current-task adjudication
+frontier work / newly inspected consequential residue
+total wall time / tool and attention cost
+correctness
+boundedness
 ```
+
+Each surface may retain its own supporting coordinates, including files or
+source bytes examined, Git operations, tool calls, orientation tests, human
+clarification, duplicate work, and stale assumptions. Movement from historical
+reconstruction into frontier work is trajectory evidence, not by itself a cost
+reduction or continuation benefit.
 
 A positive first result requires competent continuation first, then a meaningful
 reduction in at least one scarce continuation coordinate without hidden offsetting
 cost being ignored.
 
-## 13. Stop conditions
+## 14. Stop conditions
 
 Stop and retain the result rather than widening the apparatus if:
 
@@ -361,7 +390,7 @@ Stop and retain the result rather than widening the apparatus if:
 Any of those outcomes is useful evidence against the current mechanism or
 specimen.
 
-## 14. Explicitly deferred
+## 15. Explicitly deferred
 
 This first pressure does not test or authorize:
 

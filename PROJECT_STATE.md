@@ -285,6 +285,31 @@ visual semantic safety, production readiness, observational geometry,
 Controller integration, and external action authority remain unestablished.
 The Controller remains `PARKED`.
 
+### Local automation standing
+
+Repo Scout v0.2 is an implemented caller-bounded, read-only inspection
+apparatus. Retained Hermes/Turbo pressures do not establish general model
+qualification, and no realization has repository write, acceptance, routing,
+scheduling, or scientific authority.
+
+Investigator Continuation v0 can deterministically construct, finalize, verify,
+and admit a prior-standing packet against one exact clean committed basis. Its
+first clean-basis A/B checkpoint observed successful Condition B admission and reuse
+of six prior-standing entries without semantic re-proof. Continuation
+efficiency, amortized benefit, and a clean causal A/B comparison remain
+unestablished because the intervention changed after A began and packet-
+production cost was not measured.
+
+`basis_report_v0` is a mechanical changed-world reporter. It distinguishes a
+clean worktree from synchronized history and reports synchronized, behind,
+ahead, diverged, absent-remote-ref, and failed-observation states. An explicitly
+requested fetch may update the declared remote-tracking ref; the operator never
+pulls, merges, rebases, checks out, resets, stashes, cleans, commits, pushes, or
+assigns semantic standing.
+
+No generalized agent architecture, model qualification, router, scheduler,
+daemon, autonomous science, automatic retry, or model write authority is earned.
+
 ## Contract Surface Status
 
 - projected: signal, provenance, general ingest envelope, generalized reconstruction, generalized exposed projection
