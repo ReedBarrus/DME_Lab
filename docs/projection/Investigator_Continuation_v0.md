@@ -1,8 +1,8 @@
 # Investigator Continuation v0
 
-**Status:** PROJECTION
-**Scientific standing:** NONE
-**Architecture authority:** NONE
+**Status:** PROJECTION  
+**Scientific standing:** NONE  
+**Architecture authority:** NONE  
 **Implementation authority:** NONE
 
 Repository evidence outranks this projection.
@@ -12,9 +12,9 @@ This note preserves a candidate continuation surface for replacing one bounded i
 It is motivated by two concrete pressures already present in the Lab:
 
 1. repeated frontier-model reconstruction cost before useful work can begin;
-2. observed client interruption during a consequential model invocation, where an authorized attempt may have occurred even though the coordinating investigator did not retain a complete result.
+2. observed client interruption during a consequential model invocation, where execution crossed an external boundary even though the coordinating investigator did not retain a complete result.
 
-This projection does **not** authorize a scheduler, daemon, autonomous research loop, persistent subjective agent, unrestricted retry system, or self-selecting research program.
+This projection does **not** authorize a scheduler, daemon, autonomous research loop, persistent subjective agent, unrestricted retry system, self-selecting research program, or generalized worker router.
 
 ---
 
@@ -24,37 +24,37 @@ Can a fresh investigator recover enough current footing to continue legitimate w
 
 - replaying the full project history;
 - silently inheriting stale assumptions;
-- treating a prior interpretation as current authority;
+- treating prior interpretation as current authority;
 - duplicating a consequence that may already have occurred;
 - losing explicit missingness or unresolved residue;
 - silently expanding worker authority;
-- or reconstructing all available evidence when only a bounded subset changed?
+- or hiding reconstruction cost upstream in packet production?
 
 The projected target is:
 
 ```text
 investigator episode N
         ↓
-retained continuation surface
+retained continuation packet
         ↓
 interruption / replacement
         ↓
-current-basis verification
+packet integrity check
+        ↓
+current-basis admission
         ↓
 selective reconstruction
         ↓
 investigator episode N+1
 ```
 
-The continuity belongs to the retained consequence lineage, not to one uninterrupted model context.
+The continuity belongs to retained consequence lineage, not to one uninterrupted model context.
 
 ---
 
-## 2. Governing Rule
+## 2. Governing Rules
 
 > **The continuation packet is a navigation projection over authoritative state, not a replacement authority for that state.**
-
-A continuation claim is therefore not accepted merely because the previous investigator emitted it.
 
 ```text
 prior continuation claim
@@ -62,23 +62,25 @@ prior continuation claim
 current admissible state
 ```
 
-A fresh investigator must compare the packet against current repository and runtime evidence before relying on it.
-
-Two additional candidate invariants are load-bearing:
-
 > **Continuation preserves addressability to prior consequence; it does not convert prior interpretation into current authority.**
 
 > **Replacement of the investigator must not imply replacement, repetition, or completion of the consequence.**
 
+> **Observed attempt facts should survive replacement more strongly than the predecessor's interpretation of those facts.**
+
+A fresh investigator must admit the packet against current repository and relevant runtime evidence before relying on it.
+
 ---
 
-## 3. Mechanical and Semantic Continuity
+## 3. Three Continuation Surfaces
 
-The current Repo Scout pressure suggests a useful separation.
+The first projection used a broad mechanical/semantic split. Pressure revealed that this was too coarse because exact references can be mechanical while the meaning attached to them remains prior interpretation.
 
-### Mechanical continuity
+The sharper candidate split is:
 
-Exact coordinates already available deterministically should remain mechanically owned.
+### 3.1 Mechanical basis
+
+Exact reproducible coordinates already available to the apparatus.
 
 Candidate examples:
 
@@ -86,117 +88,140 @@ Candidate examples:
 repository identity
 basis commit
 branch
-worktree fingerprint
-source paths / blobs
-attempt identities
-operation records
-worker contract references
+packet identity
+packet digest
+source path + Git blob identity
+attempt identifier
+retained request / operation evidence references
 ```
 
-These coordinates should not be probabilistically regenerated when the runtime already knows them exactly.
+These coordinates should not be probabilistically regenerated when they are already mechanically available.
 
-### Semantic continuity
+### 3.2 Prior projected standing
 
-The previous investigator may project bounded semantic state over the mechanical basis.
+What investigator N believed, concluded, or relied upon at packet generation time.
 
 Candidate examples:
 
 ```text
-active objective
-established bounded conclusions
+prior objective projection
+prior established conclusions
 unresolved residue
-missing basis
-currently warranted next pressure
-coordinates requiring revalidation
+prior pressure references
+prior authority-source references
+prior retry interpretation
+coordinates believed to require revalidation
 ```
 
-These remain claims linked to evidence, not mechanically authoritative facts.
+These are retained claims, not current authority.
 
-The fresh investigator verifies the mechanical basis first, then consumes only the semantic projection that remains admissible under the current state.
+### 3.3 Current admission
+
+What investigator N+1 verifies now.
+
+Candidate checks include:
+
+```text
+current HEAD / branch / worktree condition
+cited source identity
+whether prior authority still applies
+whether a prior objective remains current
+whether external or runtime coordinates changed
+whether in-flight consequence needs reconciliation
+```
+
+Current admission is performed by the replacement investigator or deterministic apparatus. It is not inherited from packet prose.
 
 ---
 
-## 4. Candidate Continuation Surfaces
+## 4. Minimal v0 Continuation Surface
 
-A minimal continuation packet should preserve five surfaces.
+The first executable pressure should remain smaller than the original candidate schema.
 
-### 4.1 BASIS
+### 4.1 Packet identity and integrity
 
-Where exactly did the previous episode stop?
+The packet needs enough structure to distinguish a complete continuation artifact from an interrupted or stale write.
 
 Candidate coordinates:
 
-- repository;
-- branch;
-- basis commit;
-- worktree fingerprint;
-- generation time;
-- source manifest;
-- authority references;
-- active pressure references.
-
-### 4.2 STANDING
-
-What has actually been established or completed?
-
-Each retained statement should remain linked to authoritative repository evidence and preserve its standing.
-
-### 4.3 RESIDUE
-
-What remains unresolved, missing, stale, unacknowledged, or blocked?
-
-Residue should not be converted into closure for convenience.
-
-### 4.4 REACHABILITY
-
-What is the next currently warranted pressure, if any?
-
-A candidate next pressure does not become active merely because it is recorded.
-
 ```text
-reachable pressure
-!=
-selected pressure
-!=
-authorized pressure
+schema/version
+continuation_id
+predecessor_id (optional)
+packet_status = COMPLETE
+packet_digest
+generated_at (diagnostic only)
 ```
 
-### 4.5 CAPABILITY SURFACE
+`generated_at` is provenance, not freshness.
 
-What bounded workers or realized tools are currently addressable, and under what existing contracts?
+A packet lacking valid finalization or integrity should not be admitted.
 
-The packet may reference worker capability and known task-family evidence, but it must not mint new authority or qualification.
+Where feasible, implementation should use atomic finalize/rename or an equivalent write boundary so partial generation does not masquerade as a complete packet.
 
-```text
-worker exists
-!=
-worker qualified
-!=
-worker authorized
-```
+### 4.2 Repository basis
 
----
-
-## 5. In-Flight Consequence
-
-The observed Qwen comparison interruption makes in-flight consequence a first-class continuation pressure.
-
-A continuation mechanism that preserves only a "next task" but loses whether an external attempt already crossed its action boundary can create duplicate consequence.
-
-Candidate attempt states include:
+For the first pressure, prefer a deliberately constrained basis:
 
 ```text
-NOT_INVOKED
-INVOKED_UNACKNOWLEDGED
-INVOKED_STILL_RUNNING
-INVOKED_COMPLETED_RESPONSE_RECOVERABLE
-INVOKED_COMPLETED_RESPONSE_LOST
-INVOCATION_STATE_UNKNOWN
+repository
+basis_commit
+branch
+clean_worktree_required = true
 ```
 
-These names are provisional and do not establish a runtime taxonomy.
+A dirty worktree is not solved in v0. It should force packet rejection or explicit reconstruction.
 
-The important distinction is:
+This avoids prematurely designing a generalized worktree fingerprint.
+
+### 4.3 Exact source identity
+
+Continuation claims should point to exact committed source identities:
+
+```text
+source_id
+path
+git_blob
+```
+
+For v0, if a cited source is dirty, the packet should not pretend the committed blob identifies the observed bytes. The source must be treated as stale or outside the first pressure.
+
+Descriptive source roles may be retained for presentation later, but they do not determine authority.
+
+### 4.4 Prior projected standing
+
+The packet may retain:
+
+```text
+prior_objective_projection
+prior_established[]
+unresolved[]
+must_revalidate[]
+```
+
+Each consequential projected claim should retain evidence/source references.
+
+Names should preserve prior ownership. Avoid field names such as `active_objective` or `ALREADY_WARRANTED` that can look like transferable current authority.
+
+### 4.5 Optional in-flight attempt evidence
+
+If the selected continuation specimen contains an interrupted or externally consequential action, the packet should retain observed attempt coordinates rather than one synthesized lifecycle enum.
+
+Candidate minimal evidence surface:
+
+```text
+attempt_id
+operation / contract reference
+realization reference, when consequential
+request retained? + evidence ref
+client invocation observed? + evidence ref
+provider acceptance/start observed? + evidence ref
+provider completion/stop observed? + evidence ref
+complete response retained? + evidence ref
+external consequence observed? + evidence ref, when applicable
+```
+
+The important distinction remains:
 
 ```text
 attempt authorized
@@ -210,15 +235,17 @@ execution completed
 response acknowledged
 !=
 result retained
+!=
+external consequence observed
 ```
 
-A replacement investigator must reconcile the strongest available attempt evidence before retry becomes admissible.
+`retry_admissibility` is derived standing. It should not substitute for the retained observations from which retry standing is reconstructed.
 
 ---
 
-## 6. Candidate Schema
+## 5. Candidate Schema
 
-The following schema is a projection only. It is intentionally small enough to pressure directly before generalized persistence machinery is introduced.
+The following schema is a projection only and is intentionally narrow.
 
 ```json
 {
@@ -226,57 +253,37 @@ The following schema is a projection only. It is intentionally small enough to p
   "continuation_id": "...",
   "predecessor_id": null,
 
-  "mechanical_envelope": {
+  "integrity": {
+    "packet_status": "COMPLETE",
+    "packet_digest": "...",
+    "generated_at": "..."
+  },
+
+  "mechanical_basis": {
     "repository": "ReedBarrus/DME_Lab",
     "basis_commit": "...",
     "branch": "main",
-    "worktree_fingerprint": "...",
-    "generated_at": "...",
-
-    "authority_refs": [],
-    "active_pressure_refs": [],
+    "clean_worktree_required": true,
 
     "source_manifest": [
       {
         "source_id": "source-0001",
         "path": "...",
-        "blob": "...",
-        "role": "decision|method|projection|trace|contract"
-      }
-    ],
-
-    "inflight_attempts": [
-      {
-        "attempt_id": "...",
-        "operation": "...",
-        "standing": "INVOKED_UNACKNOWLEDGED",
-        "evidence_refs": [],
-        "retry_admissibility": "RECONCILIATION_REQUIRED"
-      }
-    ],
-
-    "worker_surface": [
-      {
-        "worker_id": "repo_scout_v0",
-        "contract_ref": "...",
-        "authority": "READ_ONLY",
-        "task_family": "...",
-        "standing": "...",
-        "known_limits_refs": []
+        "git_blob": "..."
       }
     ]
   },
 
-  "continuation_projection": {
-    "active_objective": {
+  "prior_projected_standing": {
+    "prior_objective_projection": {
       "statement": "...",
       "source_refs": []
     },
 
-    "established": [
+    "prior_established": [
       {
         "statement": "...",
-        "standing": "...",
+        "standing_at_generation": "...",
         "source_refs": []
       }
     ],
@@ -290,12 +297,6 @@ The following schema is a projection only. It is intentionally small enough to p
       }
     ],
 
-    "candidate_next_pressure": {
-      "statement": "...",
-      "basis_refs": [],
-      "authorization": "REQUIRES_SELECTION|ALREADY_WARRANTED"
-    },
-
     "must_revalidate": [
       {
         "coordinate": "...",
@@ -304,106 +305,134 @@ The following schema is a projection only. It is intentionally small enough to p
       }
     ],
 
-    "known_omissions": []
+    "inflight_attempts": []
   }
 }
 ```
 
-No field above is yet authoritative merely because it appears in this projection.
+No field becomes current authority merely because it is present in the packet.
 
 ---
 
-## 7. Admission of a Continuation Packet
+## 6. Admission and Missingness
 
 A fresh investigator should not merely read the packet and trust it.
 
 Candidate admission flow:
 
 ```text
-load continuation packet
+load packet
+        ↓
+verify schema + finalization + digest
         ↓
 resolve current repository state
         ↓
-compare HEAD / branch / worktree
+require / verify clean worktree for v0
         ↓
-resolve cited sources
+compare HEAD + branch
         ↓
-reconcile in-flight attempts
+resolve cited source blobs
         ↓
-check must-revalidate coordinates
+revalidate explicitly named coordinates
         ↓
-continuation admissible?
+reconcile in-flight attempts when present
+        ↓
+packet admissible for bounded use?
 ```
+
+For checks that can change the next legitimate action, v0 should preserve more than Boolean success/failure.
+
+Candidate observation outcomes:
+
+```text
+MATCH / OBSERVED
+MISMATCH
+CHECKED_ABSENT / OBSERVED_ABSENT
+CHECK_FAILED / OBSERVATION_FAILED
+NOT_CHECKED / NOT_OBSERVED
+```
+
+Exact naming is not yet authoritative. The required distinction is that absence, failed observation, and unobserved state do not collapse into one another.
 
 If admissible:
 
 ```text
-consume bounded continuation projection
+consume bounded prior projection
         ↓
 inspect only consequential cited residue
         ↓
-perform next legitimate work
+reach next legitimate action or abstention
 ```
 
 If not admissible:
 
 ```text
-identify changed coordinates
+identify changed / failed coordinates
         ↓
-reconstruct affected state
+reconstruct only affected state where possible
         ↓
-replace or amend continuation projection
+replace or amend continuation standing
 ```
 
-The intended optimization is selective reconstruction, not blind trust and not automatic full-project replay.
-
-A generalized dependency graph is not required for v0. If one cited source changes, v0 may conservatively mark the dependent continuation claim for reinspection.
+A generalized dependency graph is not required for v0. A changed cited source may conservatively invalidate the dependent continuation claim for reinspection.
 
 ---
 
-## 8. Worker Surface and Realization References
+## 7. Continuation Lineage
 
-The continuation packet may make bounded capabilities addressable without granting them new power.
+`predecessor_id` identifies the packet directly consumed when generating a successor packet.
 
-For example, it may retain that:
-
-```text
-Repo Scout v0
-→ contract reference
-→ READ_ONLY authority
-→ retained failure / utility evidence
-```
-
-or that a realized local model has retained evidence under one transformation regime.
-
-The packet must not infer:
+For v0:
 
 ```text
-available worker
-→ qualified worker
-
-known realization
-→ generally suitable realization
-
-prior authorization
-→ current authorization
+multiple packets may share one predecessor_id
+newer packet != authoritative packet
+latest timestamp != winner
 ```
 
-Any worker invocation remains governed by its own current contract, authority boundary, and realized basis.
+No branch machinery is earned yet. A continuation packet must be explicitly selected and admitted; lineage alone does not select authority.
+
+---
+
+## 8. Deferred Capability Surface
+
+The original projection included `worker_surface` in the first schema. Audit pressure showed that this risks conflating:
+
+```text
+worker exists
+!=
+worker addressable
+!=
+worker operational
+!=
+worker qualified
+!=
+worker authorized
+!=
+worker currently admissible
+```
+
+Therefore generalized worker/capability routing is **deferred from the first continuation pressure** unless the selected test task concretely requires it.
+
+If later pressure requires retained worker references, the minimal candidate surface should preserve exact worker, contract, realization, qualification-evidence, authorization-evidence, and known-limit references without asserting current admissibility.
+
+Worker routing should be earned by a later delegated-continuation pressure rather than smuggled into v0.
 
 ---
 
 ## 9. Deliberate Omissions
 
-Investigator Continuation v0 should not attempt to preserve:
+Investigator Continuation v0 should not attempt to preserve or solve:
 
 - hidden chain of thought;
-- model weights or subjective state;
+- model subjective state;
 - complete conversation history;
 - every repository fact;
+- dirty-worktree continuation;
 - a generalized dependency graph;
 - autonomous objective selection;
 - unrestricted retry state;
+- generalized worker routing;
 - implicit worker qualification;
 - a universal scheduler;
 - a persistent daemon;
@@ -413,94 +442,144 @@ The continuation surface should remain smaller than the authoritative state it p
 
 ---
 
-## 10. First Executable Pressure
+## 10. First Executable Pressure — Clean Continuation Efficiency
 
-The first legitimate implementation pressure should compare a normal fresh-start investigator against a continuation-assisted fresh investigator on the same bounded next task.
+The first implementation pressure should answer only:
+
+> Can a finalized, basis-checked continuation packet reduce fresh-investigator reconstruction burden on one bounded task without degrading competent continuation?
+
+Use one frozen predecessor episode and one real bounded next task.
+
+Create two equivalent fresh-start conditions from the same repository basis.
 
 ### Condition A — ordinary reconstruction
 
-A fresh investigator receives normal repository access and must orient using the current startup protocol.
+A fresh investigator receives normal repository access and the normal startup protocol.
 
 ### Condition B — continuation-assisted reconstruction
 
-A fresh investigator receives normal repository access plus one committed `investigator_continuation_v0` packet and is instructed to verify and use it rather than independently reconstruct the entire project unless packet admission fails.
+A fresh investigator receives the same repository access and task instruction plus one finalized continuation packet.
 
-The task should be real, bounded, and already reachable from current repository standing.
+Neither condition receives inherited chat context or extra human hints.
 
-Measure where observable:
+The packet must be the only intended informational intervention.
+
+### Correctness gate before efficiency
+
+Do not compare cost until both conditions are independently adjudicated against authoritative repository evidence.
+
+At minimum, a competent continuation should preserve:
 
 ```text
-wall time before first legitimate action
-files opened
-Git operations
-tests rerun only for orientation
-human clarification required
-duplicate work
-stale assumptions reused
-unreconciled prior attempts
-frontier token / attention burden
+current basis identified correctly
+no stale authority silently inherited
+no consequential unresolved residue silently dropped
+no missingness collapsed into certainty
+same legitimate next action / abstention reached,
+or an independently acceptable bounded equivalent
 ```
 
-Do not collapse these into a scalar score.
+A faster wrong continuation is failure, not efficiency.
+
+### Cost accounting
+
+Do not hide continuation work upstream.
+
+For Condition A:
+
+```text
+C_A = ordinary fresh reconstruction cost
+```
+
+For Condition B:
+
+```text
+C_B =
+packet-production overhead attributable to continuation
++ packet admission / revalidation
++ selective reconstruction
+```
+
+The predecessor episode's substantive research work is not charged to B merely because it happened earlier. Additional summarization, source inspection, serialization, or adjudication performed specifically to produce the packet is continuation cost and must not be treated as free.
+
+Measure separately where observable:
+
+```text
+wall time
+frontier token / attention burden
+files / source bytes examined
+Git operations
+tool calls
+tests rerun only for orientation
+human clarification
+duplicate work
+stale assumptions
+```
+
+Do not collapse these into one scalar.
+
+A first positive result would support only the narrow claim that continuation changed reconstruction burden without degrading correctness under one frozen specimen.
 
 ---
 
-## 11. Required Failure Pressures
+## 11. Second Executable Pressure — Interrupted Consequence Recovery
 
-A continuation apparatus should eventually survive at least the following bounded cases:
+Interrupted-consequence recovery should remain a separate pressure so failure can be localized.
+
+Use an already-earned Qwen-shaped specimen or an equivalent no-model fixture where authoritative evidence preserves:
 
 ```text
-HEAD unchanged
-→ cheap successful continuation
-
-HEAD changed after packet
-→ stale basis detected
-
-one cited source changed
-→ affected projection not silently reused
-
-prior action unacknowledged
-→ retry not automatically admitted
-
-worker contract changed
-→ old authority not inherited
-
-missing interval
-→ missingness retained explicitly
+attempt occurred
+!=
+complete result retained
+!=
+retry authorized
 ```
 
-These are candidate pressures, not a mandate to implement all cases in one pass.
+Condition A reconstructs that standing through ordinary authoritative evidence.
+
+Condition B admits a continuation packet carrying the observed attempt coordinates and selectively revalidates them.
+
+The pressure should require both conditions to determine the legitimate next action **without issuing another consequential model call**.
+
+Primary discriminator:
+
+```text
+does replacement preserve the consequence boundary
+without false closure or automatic retry?
+```
+
+Efficiency is secondary to correct reconciliation.
 
 ---
 
 ## 12. Candidate Success Threshold
 
-A boundedly useful continuation mechanism would allow a fresh investigator to:
+A boundedly useful v0 continuation mechanism would allow a fresh investigator to:
 
-1. verify the current basis;
-2. recover the active objective;
-3. recover established standing and unresolved residue;
-4. detect or reconcile any in-flight consequence relevant to retry;
-5. discover currently addressable bounded workers without expanding their authority;
-6. reach the next legitimate action without independently reconstructing the full prior episode.
+1. verify packet integrity;
+2. verify the current repository basis under the declared v0 constraints;
+3. recover prior objective, established standing, and unresolved residue as prior projections rather than current authority;
+4. selectively revalidate consequential coordinates;
+5. preserve observation failure and missingness distinctions;
+6. reach the next legitimate action or abstention without independently reconstructing the full prior episode;
+7. reduce at least one meaningful continuation burden after packet-production cost is included.
 
-The mechanism should also measurably reduce at least one meaningful reconstruction burden without increasing stale-state or duplicate-action risk.
+Interrupted-consequence recovery is a distinct later success condition unless the chosen first specimen naturally contains it.
 
 ---
 
 ## 13. Relationship to Persistent Research Autonomy
 
-This projection is a narrower candidate mechanism beneath `Persistent_Research_Autonomy.md`.
+This projection remains a narrow candidate mechanism beneath `Persistent_Research_Autonomy.md`.
 
 It does not establish persistent autonomy.
 
 It pressures only whether replaceable investigator episodes can conserve enough basis, residue, and consequence state to continue bounded work correctly and cheaply.
 
-If successful, later scheduling could invoke fresh episodes over retained continuation state.
+Only after continuation itself pays rent should later pressure consider delegated worker resumption, scheduling, or repeated autonomous invocation.
 
-That later possibility does not authorize a scheduler now.
-
-Projected later shape:
+Projected later shape remains merely prospective:
 
 ```text
 tick / meaningful state change
@@ -521,7 +600,7 @@ retain consequence + new continuation
 episode ends
 ```
 
-The persistent identity, if useful to describe at all, belongs to the recoverable work lineage rather than one uninterrupted context window.
+The persistent identity, if useful to describe at all, belongs to recoverable work lineage rather than one uninterrupted context window.
 
 ---
 
@@ -533,10 +612,11 @@ Implementation is warranted only to test whether it reduces the already-observed
 
 Further persistence machinery should be earned only by recurrence, including pressure such as:
 
-- repeated continuation across investigator replacement;
+- repeated successful continuation across investigator replacement;
 - repeated in-flight consequence reconciliation;
 - measured reconstruction cost remaining consequential;
 - repeated bounded worker allocation from recovered state;
+- dirty-worktree continuation becoming necessary;
 - scheduling becoming the dominant remaining manual operation.
 
 Until then:
@@ -544,5 +624,6 @@ Until then:
 ```text
 preserve the continuation question
 implement only the smallest pressureable surface
-measure whether it pays rent
+measure total continuation cost
+promote nothing that has not paid rent
 ```
