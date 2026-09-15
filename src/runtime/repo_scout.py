@@ -20,7 +20,7 @@ from time import monotonic
 from typing import Any
 
 
-APPARATUS_VERSION = "repo_scout_v0.1"
+APPARATUS_VERSION = "repo_scout_v0.2"
 OUTPUT_CONTRACT = {"name": "repo_scout_result", "version": 0}
 TERMINAL_ACTIONS = ("STOP", "ESCALATE")
 PERMITTED_OPERATIONS = (
@@ -78,6 +78,7 @@ _EXACT_COMMIT = re.compile(r"[0-9a-fA-F]{40}")
 
 
 ModelCall = Callable[[str, float], str]
+AttemptRecorder = Callable[[Mapping[str, Any]], None]
 
 
 class RepoScoutError(RuntimeError):
@@ -274,6 +275,7 @@ def run_repo_scout(
     repo_root: Path,
     invocation: Mapping[str, Any],
     model_call: ModelCall,
+    attempt_recorder: AttemptRecorder | None = None,
 ) -> dict[str, Any]:
     """Execute one declared read-only inspection plan and one model call.
 
@@ -333,6 +335,52 @@ def run_repo_scout(
     remaining = _remaining_seconds(started, budget["wall_time_seconds"])
     if remaining <= 0:
         raise RepoScoutBudgetError("wall_time_seconds exhausted before model call")
+
+    if attempt_recorder is not None:
+        state_pre_call = _repository_state_fingerprint(root)
+        request_sha256 = "sha256:" + hashlib.sha256(
+            serialized_request.encode("utf-8")
+        ).hexdigest()
+        attempt_id = hashlib.sha256(
+            (
+                declared["task_id"]
+                + "\0"
+                + execution_basis
+                + "\0"
+                + request_sha256
+            ).encode("utf-8")
+        ).hexdigest()
+        attempt_recorder(
+            {
+                "artifact": "repo_scout_pre_call_record_v0",
+                "apparatus_version": APPARATUS_VERSION,
+                "event": "PRE_CALL_FROZEN",
+                "attempt_id": attempt_id,
+                "task_id": declared["task_id"],
+                "declared_invocation": deepcopy(declared),
+                "execution_basis": {
+                    "declared": declared["repository_basis"],
+                    "resolved_commit": execution_basis,
+                    "head_before": head_before,
+                },
+                "operation_attempts": deepcopy(attempts),
+                "issued_source_catalog": deepcopy(source_catalog),
+                "scope_used": list(scope_used),
+                "operations_used": list(operations_used),
+                "operation_output_bytes": output_bytes_used,
+                "serialized_policy_visible_request": serialized_request,
+                "serialized_policy_visible_request_sha256": request_sha256,
+                "repository_state_before": state_before,
+                "repository_state_pre_call": state_pre_call,
+                "call_marker": "NOT_YET_ENTERED",
+                "automatic_retries_authorized": 0,
+            }
+        )
+        remaining = _remaining_seconds(started, budget["wall_time_seconds"])
+        if remaining <= 0:
+            raise RepoScoutBudgetError(
+                "wall_time_seconds exhausted during pre-call retention"
+            )
 
     raw_model_response: str | None = None
     model_failure: str | None = None
