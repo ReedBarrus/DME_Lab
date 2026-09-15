@@ -382,6 +382,39 @@ class RepoScoutTest(unittest.TestCase):
             ]
         )
 
+    def test_optional_attempt_recorder_receives_complete_pre_call_evidence(self) -> None:
+        records: list[dict] = []
+        model = StubModel()
+
+        result = run_repo_scout(
+            repo_root=self.repo,
+            invocation=self.narrow_invocation(),
+            model_call=model,
+            attempt_recorder=lambda record: records.append(deepcopy(record)),
+        )
+
+        self.assertEqual(len(records), 1)
+        record = records[0]
+        self.assertEqual(record["event"], "PRE_CALL_FROZEN")
+        self.assertEqual(record["call_marker"], "NOT_YET_ENTERED")
+        self.assertEqual(record["automatic_retries_authorized"], 0)
+        self.assertEqual(record["task_id"], self.narrow_invocation()["task_id"])
+        self.assertEqual(record["execution_basis"]["resolved_commit"], self.head)
+        self.assertEqual(record["operations_used"], ["git_show"])
+        self.assertEqual(record["scope_used"], ["note.txt"])
+        self.assertEqual(len(record["operation_attempts"]), 1)
+        self.assertEqual(record["operation_attempts"][0]["return_code"], 0)
+        self.assertIn("1:beta", record["operation_attempts"][0]["stdout"])
+        self.assertEqual(
+            record["serialized_policy_visible_request"],
+            model.calls[0]["serialized_request"],
+        )
+        self.assertEqual(
+            record["repository_state_before"],
+            record["repository_state_pre_call"],
+        )
+        self.assertEqual(result["mechanical_evaluation"]["terminal_state"], "PASS")
+
     def test_model_side_mutation_is_detected_and_not_accepted(self) -> None:
         changed = self.repo / "model-created.txt"
         model = StubModel(mutate=lambda: changed.write_text("mutation", encoding="utf-8"))

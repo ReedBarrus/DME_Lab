@@ -28,6 +28,12 @@ declared invocation
 → external acceptance or rejection
 ```
 
+Version `repo_scout_v0.2` adds one optional caller-owned pre-call recorder. It
+receives the frozen invocation, completed operation evidence, exact serialized
+request, and repository fingerprints immediately before the injected model
+interface is entered. The recorder is not model-visible and grants no retry,
+continuation, or repository authority.
+
 It is not a scheduler, router, planner, daemon, persistent worker, retry
 engine, Controller, autonomous research loop, or qualification authority.
 `Persistent_Research_Autonomy.md` and `Local_Model_Workshop.md` remain
@@ -137,6 +143,12 @@ model_call(serialized_request, remaining_timeout_seconds) -> raw_response
 
 This keeps deterministic apparatus tests independent of any particular live
 transport.
+
+An optional `attempt_recorder(pre_call_record)` may durably retain the exact
+pre-call boundary. The apparatus itself does not choose its storage location or
+infer a completed call from that record. A pre-call record states
+`call_marker: NOT_YET_ENTERED`; a transport or pressure-specific caller must
+separately retain evidence that its consequence boundary was actually entered.
 
 ## Model proposal contract
 
