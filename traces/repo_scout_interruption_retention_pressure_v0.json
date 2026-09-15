@@ -1,0 +1,243 @@
+{
+  "apparatus_version": "repo_scout_v0.2",
+  "artifact": "repo_scout_interruption_retention_pressure_v0",
+  "bounded_result": "The retained call-entry marker and its request association establish that the synthetic consequence boundary was attempted. No retained response establishes completion, so completion remains unknown and a second invocation is not automatically admissible.",
+  "checks": {
+    "attempt_reconstructable_after_restart": true,
+    "call_marker_retained": true,
+    "executor_stopped_at_synthetic_interruption": true,
+    "fingerprints_retained": true,
+    "investigator_did_not_mutate_journal": true,
+    "no_live_model_contact": true,
+    "operation_evidence_retained": true,
+    "outcome_not_invented": true,
+    "pre_call_record_retained": true,
+    "repository_fingerprint_conserved": true,
+    "second_invocation_not_automatically_admissible": true,
+    "serialized_request_retained": true
+  },
+  "distinctions": [
+    "pre_call_frozen != consequence_attempted",
+    "consequence_attempted != response_observed",
+    "response_absent != consequence_not_completed",
+    "unknown_outcome_after_attempt != authority_to_repeat"
+  ],
+  "duration_seconds": 1.129831,
+  "journal_sha256_after_restart": "afc76428bc2b61a7a85e01bc5bb28104a6983de0352e935214fdfe2db235558a",
+  "journal_sha256_before_restart": "afc76428bc2b61a7a85e01bc5bb28104a6983de0352e935214fdfe2db235558a",
+  "model_calls": {
+    "automatic_retries": 0,
+    "live": 0,
+    "second_invocation": 0,
+    "synthetic_call_entries": 1
+  },
+  "process_boundary": {
+    "distinct_executor_and_investigator": true,
+    "executor_pid": 15624,
+    "executor_return_code": 75,
+    "executor_stderr": "",
+    "investigator_pid": 26052,
+    "parent_pid": 23884
+  },
+  "qualification_or_promotion": "NONE",
+  "repository_basis": "94830a8b40a264e2630adf7a9ab654e6619e7e29",
+  "repository_state_after": {
+    "head": "94830a8b40a264e2630adf7a9ab654e6619e7e29",
+    "staged_diff_sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status_sha256": "sha256:1d69b949e52302ddf5b90d80028957fd30852768b76c40c367bc36c365f6adb9",
+    "untracked_manifest_sha256": "sha256:cb313040d43a0a9996e85c8f7d5f8debbe1b4f7c898e678f4dea2fdd27fb587c",
+    "working_diff_sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "repository_state_before": {
+    "head": "94830a8b40a264e2630adf7a9ab654e6619e7e29",
+    "staged_diff_sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status_sha256": "sha256:1d69b949e52302ddf5b90d80028957fd30852768b76c40c367bc36c365f6adb9",
+    "untracked_manifest_sha256": "sha256:cb313040d43a0a9996e85c8f7d5f8debbe1b4f7c898e678f4dea2fdd27fb587c",
+    "working_diff_sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "restart_investigation": {
+    "artifact": "repo_scout_interruption_restart_investigation_v0",
+    "attempt_association_valid": true,
+    "automatic_second_invocation_admissible": false,
+    "call_marker_valid": true,
+    "consequence_attempted": true,
+    "consequence_completed": "UNKNOWN",
+    "fingerprints_recoverable": true,
+    "investigation_is_read_only": true,
+    "investigator_pid": 26052,
+    "journal_event_count": 2,
+    "live_model_calls": 0,
+    "model_call_attempts_reconstructed": 1,
+    "non_admission_basis": "A retained call-entry marker establishes an attempted consequence, but absence of a response does not establish that the consequence did not complete. Unknown outcome after attempt cannot authorize repetition.",
+    "operation_evidence_recoverable": true,
+    "pre_call_record_valid": true,
+    "repository_fingerprints_conserved_at_restart": true,
+    "repository_state_at_restart": {
+      "head": "94830a8b40a264e2630adf7a9ab654e6619e7e29",
+      "staged_diff_sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status_sha256": "sha256:1d69b949e52302ddf5b90d80028957fd30852768b76c40c367bc36c365f6adb9",
+      "untracked_manifest_sha256": "sha256:cb313040d43a0a9996e85c8f7d5f8debbe1b4f7c898e678f4dea2fdd27fb587c",
+      "working_diff_sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "response_observed": false,
+    "second_invocation_requires_separate_authorization": true,
+    "serialized_request_recoverable": true
+  },
+  "retained_journal_events": [
+    {
+      "apparatus_version": "repo_scout_v0.2",
+      "artifact": "repo_scout_pre_call_record_v0",
+      "attempt_id": "41e0515c60ac13341fda1cfe1222b27bb9f76aca623fd789c7b66b1ce6b01cb7",
+      "automatic_retries_authorized": 0,
+      "call_marker": "NOT_YET_ENTERED",
+      "declared_invocation": {
+        "allowed_operations": [
+          "git_show"
+        ],
+        "allowed_paths": [
+          "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md"
+        ],
+        "execution_budget": {
+          "max_model_calls": 1,
+          "max_model_response_bytes": 32768,
+          "max_operation_output_bytes": 16384,
+          "max_operations": 1,
+          "wall_time_seconds": 30
+        },
+        "inspection_plan": [
+          {
+            "end_line": 20,
+            "operation": "git_show",
+            "path": "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md",
+            "start_line": 1
+          }
+        ],
+        "output_contract": {
+          "name": "repo_scout_result",
+          "version": 0
+        },
+        "question": "Synthetic interruption-retention pressure. Use only the supplied source observation and return one candidate evidence packet under the exact model-proposal contract.",
+        "realization_basis": {
+          "identifier": "synthetic-client-interruption-v0",
+          "live_model": false,
+          "runtime": "deterministic-no-live-model"
+        },
+        "repository_basis": "94830a8b40a264e2630adf7a9ab654e6619e7e29",
+        "task_id": "repo-scout-synthetic-interruption-retention-v0"
+      },
+      "event": "PRE_CALL_FROZEN",
+      "event_index": 0,
+      "execution_basis": {
+        "declared": "94830a8b40a264e2630adf7a9ab654e6619e7e29",
+        "head_before": "94830a8b40a264e2630adf7a9ab654e6619e7e29",
+        "resolved_commit": "94830a8b40a264e2630adf7a9ab654e6619e7e29"
+      },
+      "issued_source_catalog": [
+        {
+          "canonical_source_path": "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md",
+          "source_id": "source-0001"
+        }
+      ],
+      "operation_attempts": [
+        {
+          "command": [
+            "git",
+            "--no-pager",
+            "-c",
+            "core.fsmonitor=false",
+            "-c",
+            "core.untrackedCache=false",
+            "show",
+            "94830a8b40a264e2630adf7a9ab654e6619e7e29:docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md"
+          ],
+          "index": 0,
+          "observation_basis": "94830a8b40a264e2630adf7a9ab654e6619e7e29",
+          "operation": "git_show",
+          "paths_accessed": [
+            "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md"
+          ],
+          "request": {
+            "end_line": 20,
+            "operation": "git_show",
+            "path": "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md",
+            "start_line": 1
+          },
+          "return_code": 0,
+          "stdout": "1:# Turbo T1-Q1 Completion-Budget Pressure Result v0\n2:\n3:**Status:** RETAINED BOUNDED PRESSURE RESULT\n4:**Pressure:** Q1-only `max_tokens: 1024 -> 2048`\n5:**Mechanical result:** `APPARATUS_ERROR`\n6:**Semantic specimen result:** `NOT_EVALUABLE_APPARATUS_ERROR`\n7:**T1 qualification:** NOT EARNED\n8:**Promotion:** `NONE`\n9:\n10:## Result\n11:\n12:This pressure changed exactly one declared coordinate from the preceding\n13:600-second Q1 pressure: `max_tokens` increased from 1,024 to 2,048. The same\n14:realization, loaded runtime configuration, 8,192-token context, policy-visible\n15:request, prompt, response schema, strict parser, temperature, top-p, 600-second\n16:client timeout, GPU split, permissions, and evaluator regime were retained.\n17:\n18:The exact Q1 request remained context-admissible:\n19:\n20:```text"
+        }
+      ],
+      "operation_output_bytes": 811,
+      "operations_used": [
+        "git_show"
+      ],
+      "repository_state_before": {
+        "head": "94830a8b40a264e2630adf7a9ab654e6619e7e29",
+        "staged_diff_sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status_sha256": "sha256:1d69b949e52302ddf5b90d80028957fd30852768b76c40c367bc36c365f6adb9",
+        "untracked_manifest_sha256": "sha256:cb313040d43a0a9996e85c8f7d5f8debbe1b4f7c898e678f4dea2fdd27fb587c",
+        "working_diff_sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "repository_state_pre_call": {
+        "head": "94830a8b40a264e2630adf7a9ab654e6619e7e29",
+        "staged_diff_sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "status_sha256": "sha256:1d69b949e52302ddf5b90d80028957fd30852768b76c40c367bc36c365f6adb9",
+        "untracked_manifest_sha256": "sha256:cb313040d43a0a9996e85c8f7d5f8debbe1b4f7c898e678f4dea2fdd27fb587c",
+        "working_diff_sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "scope_used": [
+        "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md"
+      ],
+      "serialized_policy_visible_request": "{\"authority\":{\"acceptance\":\"EXTERNAL_CODEX_FRONTIER_HUMAN_REVIEW\",\"attempt\":\"DECLARED_READ_ONLY_INSPECTION_ONLY\",\"commit\":\"NONE\",\"proposal\":\"CANDIDATE_EVIDENCE_PACKET_ONLY\"},\"declared_scope\":{\"allowed_operations\":[\"git_show\"],\"allowed_paths\":[\"docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md\"]},\"instructions\":[\"Use only the supplied repository observations.\",\"Keep observed evidence, bounded interpretation, and unresolved state distinct.\",\"Do not claim repository mutation, tool access, acceptance, scientific authority, or commit authority.\",\"For each evidence claim, select one source_id from issued_source_catalog; do not return a source path.\",\"Return exactly one object satisfying model_proposal_contract.\",\"Do not return task_id, execution_basis, scope_used, operations_used, or terminal_action; the apparatus owns those fields.\",\"Set escalation.required and escalation.reason consistently; the apparatus derives terminal_action.\"],\"model_proposal_contract\":{\"additionalProperties\":false,\"properties\":{\"bounded_interpretation\":{\"minLength\":1,\"type\":\"string\"},\"escalation\":{\"additionalProperties\":false,\"properties\":{\"reason\":{\"type\":[\"string\",\"null\"]},\"required\":{\"type\":\"boolean\"}},\"required\":[\"required\",\"reason\"],\"type\":\"object\"},\"evidence\":{\"items\":{\"additionalProperties\":false,\"properties\":{\"location\":{\"minLength\":1,\"type\":\"string\"},\"observation\":{\"minLength\":1,\"type\":\"string\"},\"source_id\":{\"enum\":[\"source-0001\"],\"type\":\"string\"}},\"required\":[\"source_id\",\"location\",\"observation\"],\"type\":\"object\"},\"minItems\":1,\"type\":\"array\"},\"unresolved\":{\"items\":{\"minLength\":1,\"type\":\"string\"},\"type\":\"array\"}},\"required\":[\"evidence\",\"bounded_interpretation\",\"unresolved\",\"escalation\"],\"type\":\"object\"},\"observed_inspection\":{\"issued_source_catalog\":[{\"canonical_source_path\":\"docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md\",\"source_id\":\"source-0001\"}],\"observations\":[{\"index\":0,\"observation_basis\":\"94830a8b40a264e2630adf7a9ab654e6619e7e29\",\"operation\":\"git_show\",\"source_ids\":[\"source-0001\"],\"stdout\":\"1:# Turbo T1-Q1 Completion-Budget Pressure Result v0\\n2:\\n3:**Status:** RETAINED BOUNDED PRESSURE RESULT\\n4:**Pressure:** Q1-only `max_tokens: 1024 -> 2048`\\n5:**Mechanical result:** `APPARATUS_ERROR`\\n6:**Semantic specimen result:** `NOT_EVALUABLE_APPARATUS_ERROR`\\n7:**T1 qualification:** NOT EARNED\\n8:**Promotion:** `NONE`\\n9:\\n10:## Result\\n11:\\n12:This pressure changed exactly one declared coordinate from the preceding\\n13:600-second Q1 pressure: `max_tokens` increased from 1,024 to 2,048. The same\\n14:realization, loaded runtime configuration, 8,192-token context, policy-visible\\n15:request, prompt, response schema, strict parser, temperature, top-p, 600-second\\n16:client timeout, GPU split, permissions, and evaluator regime were retained.\\n17:\\n18:The exact Q1 request remained context-admissible:\\n19:\\n20:```text\"}],\"operations_used\":[\"git_show\"],\"scope_used\":[\"docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md\"]},\"protocol\":\"repo_scout_v0.2\",\"task\":{\"question\":\"Synthetic interruption-retention pressure. Use only the supplied source observation and return one candidate evidence packet under the exact model-proposal contract.\",\"repository_basis\":\"94830a8b40a264e2630adf7a9ab654e6619e7e29\",\"task_id\":\"repo-scout-synthetic-interruption-retention-v0\"}}",
+      "serialized_policy_visible_request_sha256": "sha256:f285ae905ed6802e331a08bf01f0b8fa0a92d3e6224ef9185e0d9cd8246c1185",
+      "task_id": "repo-scout-synthetic-interruption-retention-v0"
+    },
+    {
+      "artifact": "repo_scout_synthetic_call_marker_v0",
+      "attempt_id": "41e0515c60ac13341fda1cfe1222b27bb9f76aca623fd789c7b66b1ce6b01cb7",
+      "automatic_retry_authorized": false,
+      "consequence_attempted": true,
+      "event": "CALL_ENTERED",
+      "event_index": 1,
+      "live_model_contacted": false,
+      "response_observed": false,
+      "serialized_policy_visible_request_sha256": "sha256:f285ae905ed6802e331a08bf01f0b8fa0a92d3e6224ef9185e0d9cd8246c1185"
+    }
+  ],
+  "scientific_standing": "NONE",
+  "status": "PASS",
+  "synthetic_invocation": {
+    "allowed_operations": [
+      "git_show"
+    ],
+    "allowed_paths": [
+      "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md"
+    ],
+    "execution_budget": {
+      "max_model_calls": 1,
+      "max_model_response_bytes": 32768,
+      "max_operation_output_bytes": 16384,
+      "max_operations": 1,
+      "wall_time_seconds": 30
+    },
+    "inspection_plan": [
+      {
+        "end_line": 20,
+        "operation": "git_show",
+        "path": "docs/decisions/local_automation/turbo_t1_q1_completion_budget_pressure_result_v0.md",
+        "start_line": 1
+      }
+    ],
+    "output_contract": {
+      "name": "repo_scout_result",
+      "version": 0
+    },
+    "question": "Synthetic interruption-retention pressure. Use only the supplied source observation and return one candidate evidence packet under the exact model-proposal contract.",
+    "realization_basis": {
+      "identifier": "synthetic-client-interruption-v0",
+      "live_model": false,
+      "runtime": "deterministic-no-live-model"
+    },
+    "repository_basis": "94830a8b40a264e2630adf7a9ab654e6619e7e29",
+    "task_id": "repo-scout-synthetic-interruption-retention-v0"
+  }
+}
