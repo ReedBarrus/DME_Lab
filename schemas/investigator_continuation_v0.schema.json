@@ -1,0 +1,239 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/investigator_continuation_v0.schema.json",
+  "title": "Investigator Continuation Packet v0",
+  "description": "A finalized navigation projection over one clean committed repository basis. Packet claims remain prior projected standing until current admission.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "continuation_id",
+    "predecessor_id",
+    "integrity",
+    "mechanical_basis",
+    "prior_projected_standing"
+  ],
+  "properties": {
+    "schema": {
+      "const": "investigator_continuation_v0"
+    },
+    "continuation_id": {
+      "$ref": "#/$defs/nonempty_string"
+    },
+    "predecessor_id": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/nonempty_string"
+        }
+      ]
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "packet_status",
+        "packet_digest",
+        "generated_at"
+      ],
+      "properties": {
+        "packet_status": {
+          "const": "COMPLETE"
+        },
+        "packet_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "generated_at": {
+          "$ref": "#/$defs/nonempty_string"
+        }
+      }
+    },
+    "mechanical_basis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "basis_commit",
+        "branch",
+        "clean_worktree_required",
+        "source_manifest"
+      ],
+      "properties": {
+        "repository": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "basis_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "branch": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "clean_worktree_required": {
+          "const": true
+        },
+        "source_manifest": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source"
+          }
+        }
+      }
+    },
+    "prior_projected_standing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "prior_objective_projection",
+        "prior_established",
+        "unresolved",
+        "must_revalidate",
+        "inflight_attempts"
+      ],
+      "properties": {
+        "prior_objective_projection": {
+          "$ref": "#/$defs/objective"
+        },
+        "prior_established": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/established"
+          }
+        },
+        "unresolved": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/unresolved"
+          }
+        },
+        "must_revalidate": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/revalidation"
+          }
+        },
+        "inflight_attempts": {
+          "type": "array",
+          "maxItems": 0
+        }
+      }
+    }
+  },
+  "$defs": {
+    "nonempty_string": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reference_list": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonempty_string"
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "path",
+        "git_blob"
+      ],
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "pattern": "^source-[0-9]{4}$"
+        },
+        "path": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "git_blob": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        }
+      }
+    },
+    "objective": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "statement",
+        "source_refs"
+      ],
+      "properties": {
+        "statement": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "source_refs": {
+          "$ref": "#/$defs/reference_list"
+        }
+      }
+    },
+    "established": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "statement",
+        "standing_at_generation",
+        "source_refs"
+      ],
+      "properties": {
+        "statement": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "standing_at_generation": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "source_refs": {
+          "$ref": "#/$defs/reference_list"
+        }
+      }
+    },
+    "unresolved": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "statement",
+        "source_refs",
+        "missing_basis",
+        "next_discriminator"
+      ],
+      "properties": {
+        "statement": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "source_refs": {
+          "$ref": "#/$defs/reference_list"
+        },
+        "missing_basis": {
+          "$ref": "#/$defs/reference_list"
+        },
+        "next_discriminator": {
+          "$ref": "#/$defs/nonempty_string"
+        }
+      }
+    },
+    "revalidation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "coordinate",
+        "reason",
+        "evidence_refs"
+      ],
+      "properties": {
+        "coordinate": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "reason": {
+          "$ref": "#/$defs/nonempty_string"
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/reference_list"
+        }
+      }
+    }
+  }
+}
