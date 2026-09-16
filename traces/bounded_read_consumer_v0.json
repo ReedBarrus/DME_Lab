@@ -1,0 +1,85 @@
+{
+  "experiment": "bounded_read_consumer_v0",
+  "repository_basis": "5f49130a26ae4b6b8711b0df8bd3d452cf30335e",
+  "consumer_input_surface": [
+    "data/agent_bridge/chat_now.json",
+    "data/agent_bridge/due_events.json"
+  ],
+  "consumer_hidden_source_access": false,
+  "live_read": {
+    "projection_generated_at": "2026-09-16T14:15:58.192704+00:00",
+    "projection_authority": "DERIVED_FROM_HOME",
+    "semantic_freshness": "CURRENT_AT_GENERATION_FOR_RELEVANT_SOURCE_REVISION",
+    "source_instance_id": "home:source-instance:687951ab-5e59-4877-8dee-a6a51c9f3156",
+    "source_instance_match": true,
+    "projection_relevant_source_revision": 0,
+    "home_relevant_source_revision_at_read": 0,
+    "source_revision_match_at_read": true,
+    "legitimate_freshness_statement": "projection corresponds to the current relevant source revision at the moment checked",
+    "detached_future_freshness_claimed": false,
+    "live_event_count": 0,
+    "execution_authority_inferred": false,
+    "reconstructed": {
+      "source_surface": "home_capture.sqlite3",
+      "source_schema_version": 7,
+      "projected_events": []
+    },
+    "commitment_lineage": "UNKNOWN_NOT_PROJECTED",
+    "unknown_not_projected": [
+      "commitment_specification_history",
+      "amendment_kinds",
+      "prior_specification_links",
+      "historical_weekday_coordinates"
+    ],
+    "incorrect_inferences": [],
+    "authoritative_comparison_only": {
+      "stable_commitment_id": "home:commitment:b1fd812d-7510-4712-83c5-355767e7f346",
+      "initial_specification_id": "home:commitment-specification:5140c7af-f22a-5ea9-8220-a81341d80754",
+      "initial_weekdays": [
+        "THU",
+        "SAT"
+      ],
+      "current_specification_id": "home:commitment-specification:520752fb-c014-448c-a9c5-219c97102c4a",
+      "current_amendment_kind": "RECORDING_CORRECTION",
+      "current_weekdays": [
+        "WED",
+        "FRI"
+      ],
+      "supplied_to_consumer": false
+    },
+    "database_sha256_before": "0063143385C6B6E884A23BA2916FBB0B633610E748054A9E05BEB40675C29F01",
+    "database_sha256_after": "0063143385C6B6E884A23BA2916FBB0B633610E748054A9E05BEB40675C29F01",
+    "live_database_unchanged": true
+  },
+  "isolated_fixture": {
+    "database": "temporary",
+    "ordinary_event_route": "/api/chat-home/future-note",
+    "model_or_agent_invocation": false,
+    "event_standing_sequence": [
+      "CURRENT",
+      "SPECIFICATION_SUPERSEDED",
+      "COMMITMENT_CLOSED"
+    ],
+    "relevant_source_revision_sequence": [
+      1,
+      2,
+      3
+    ],
+    "event_id_retained": true,
+    "original_specification_id_retained": true,
+    "raw_instruction_unchanged": true,
+    "event_status_after_commitment_close": "SCHEDULED",
+    "event_cancelled": false,
+    "event_acknowledged": false,
+    "event_executed": false,
+    "current_applicability_requires_adjudication": true,
+    "due_grants_execution_authority": false
+  },
+  "semantic_pass": true,
+  "verdict": "PASS_BOUNDED_SEMANTIC_READ",
+  "notes": [
+    "The consumer reconstructed projection envelope and event fields only.",
+    "The live recurring amendment lineage was used only by the evaluator after consumption.",
+    "No live event was created and no live authoritative row changed."
+  ]
+}

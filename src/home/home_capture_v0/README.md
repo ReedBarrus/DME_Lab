@@ -33,7 +33,11 @@ through `SUN` and may carry one optional coarse placement: `ANYTIME`,
 A recurring commitment keeps one stable commitment ID across every expected
 local day. An occurrence report records that ID, its intended local date, the
 report timestamp, optional `MET`, `PARTIAL`, `NOT_MET`, or `NOT_APPLICABLE`,
-and optional exact raw feedback. Reporting an occurrence never closes the
+and optional exact raw feedback. New local reports mechanically retain
+`reporting_actor=Reed` and `report_origin=HOME_LOCAL_RECURRING_REPORT_ROUTE`;
+caller-supplied actor fields are rejected. This is route provenance inside an
+unauthenticated local application, not cryptographic identity or remote-user
+authentication. Reporting an occurrence never closes the
 parent. Only the existing explicit commitment-resolution operation can do so.
 Missing reports project as `NO_REPORT`; Home does not translate missingness or
 `NOT_MET` into bypass, forgetting, release, completion, cause, or failure.
@@ -52,10 +56,25 @@ therefore cannot silently change which specification a retained report was
 made under. The old commitment columns remain migration-era compatibility
 snapshots only; versioned specifications are the current configuration source.
 
+Recurring occurrence admission follows one bounded causal rule: the effective
+occurrence boundary is the later of the specification's append time
+(`effective_at`) and its retained `start_at`, when supplied. A past start may
+remain as an exact historical reference, but it cannot make a newly adopted
+commitment effective before creation. A future start remains visible on the
+commitment while weekly/today occurrence projections and occurrence-report
+admission remain closed until that boundary. This does not establish a
+historical-commitment creation mode or generalized timezone semantics.
+
 The UI separates active one-shot commitments, the seven-day Regular Week,
 today's low-interaction report pass, and chronological recurrence history.
 The week is a navigational load projection only: there are no streaks, scores,
 percentages, compliance metrics, trend claims, or automatic rebalancing.
+The Recurrence History selector lists active recurring commitments and exposes
+the same single specification-amendment flow beside the selected commitment.
+Closed recurring commitments expose specification history only; they are not
+made active or amendable by that navigation. Regular Week remains an uncluttered
+current-occurrence projection rather than repeating the same edit action on
+every selected weekday.
 
 ## Ordinary Windows use
 
@@ -131,8 +150,24 @@ means the event was seen, not that its requested consequence succeeded.
 Chat Home is a separately attributed continuation surface for current pressure,
 recommendations, unresolved questions, continuation references, future notes,
 and executable agent commitments. It is not Reed Home. Recommendations and
-future notes are not commitments. The API accepts an agent commitment only when
-the record includes a non-empty explicit execution path.
+future notes are not commitments. A described execution path is not an admitted
+capability. The server owns a bounded execution-capability allowlist; it is
+currently empty because Home has no external Chat execution capability. As a
+result, no new item can currently be labeled an executable Chat commitment.
+
+The general local event route mechanically records `author=Reed` and its route
+origin; the Chat future-note route mechanically records `author=Chat`,
+`target_actor=Chat`, and its route origin. Caller text cannot override those
+route-owned actor coordinates. This guarantee is local route attribution only;
+the application remains unauthenticated.
+
+An event may retain a typed commitment reference and the specification that was
+current when the event was created, alongside generic context references. Its
+raw instruction is an immutable scheduling snapshot. Reads derive one of
+`CURRENT`, `SPECIFICATION_SUPERSEDED`, `COMMITMENT_CLOSED`, or
+`REFERENCE_UNRESOLVED`, and expose the current specification separately. They
+never rewrite the event, modify commitment meaning, or treat `DUE` as execution
+authority. A stale or closed reference requires fresh applicability judgment.
 
 The authoritative event and Chat records remain in SQLite. Home regenerates
 the following bounded, non-authoritative projections atomically:
@@ -144,7 +179,15 @@ data/agent_bridge/due_events.json
 
 They are also readable locally at `/agent_bridge/chat_now.json` and
 `/agent_bridge/due_events.json`. They contain Chat continuation state and due
-Chat-targeted events only; unrelated capture history is excluded. Nothing in
+Chat-targeted events only; unrelated capture history is excluded. Each file
+declares `DERIVED_FROM_HOME`, its generation time, a persisted local source
+instance identity/schema, and
+a persisted monotonically comparable `relevant_source_revision`. Relevant Chat
+state, event lifecycle, and referenced commitment/specification changes advance
+that revision transactionally; unrelated capture writes do not. `generated_at`
+is projection production time, not evidence time. A copied projection can only
+report the revision it observed and cannot know that its source later changed.
+Nothing in
 this version transports or executes a due instruction, exposes Home publicly,
 or connects to ChatGPT task scheduling.
 

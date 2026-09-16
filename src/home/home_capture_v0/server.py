@@ -26,7 +26,7 @@ ALLOWED_LANES = {"care", "commit", "develop"}
 RESOLUTION_MODES = {"COMPLETED", "REVISED", "RELEASED", "BYPASSED", "FORGOTTEN"}
 MAX_CAPTURE_BYTES = 256_000
 MAX_HISTORY_ROWS = 2_000
-SCHEMA_VERSION = 5
+SCHEMA_VERSION = 7
 LEGACY_NAMESPACE = uuid.UUID("597b99c4-48ef-4f48-8ad0-ce69b86dc26e")
 EVENT_STATUSES = {"SCHEDULED", "DUE", "ACKNOWLEDGED", "CANCELLED"}
 RECURRENCE_TYPES = {"NONE", "WEEKLY_PATTERN"}
@@ -34,6 +34,11 @@ WEEKDAYS = ("MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN")
 TEMPORAL_PLACEMENTS = {"ANYTIME", "MORNING", "AFTERNOON", "EVENING"}
 OCCURRENCE_OUTCOMES = {"MET", "PARTIAL", "NOT_MET", "NOT_APPLICABLE"}
 AMENDMENT_KINDS = {"INITIAL", "RECORDING_CORRECTION", "INTENTION_CHANGE"}
+COMMITMENT_ACTOR = "Reed"
+BRIDGE_AUTHORITY = "DERIVED_FROM_HOME"
+BRIDGE_SOURCE_IDENTITY = "home_capture.sqlite3"
+# Empty by design: Home currently has no admitted external Chat execution capability.
+ADMITTED_EXECUTION_CAPABILITIES: frozenset[str] = frozenset()
 
 
 def now_utc_iso() -> str:
@@ -237,12 +242,15 @@ class HomeStore:
                 CREATE TABLE IF NOT EXISTS scheduled_events(
                   event_id TEXT PRIMARY KEY,
                   author TEXT NOT NULL,
+                  origin TEXT NOT NULL,
                   target_actor TEXT NOT NULL,
                   created_at TEXT NOT NULL,
                   due_at TEXT NOT NULL,
                   kind TEXT NOT NULL,
                   raw_instruction TEXT NOT NULL,
                   context_refs_json TEXT NOT NULL,
+                  commitment_id TEXT,
+                  specification_id TEXT,
                   status TEXT NOT NULL CHECK(status IN
                     ('SCHEDULED','DUE','ACKNOWLEDGED','CANCELLED')),
                   triggered_at TEXT,
@@ -259,6 +267,8 @@ class HomeStore:
                   outcome TEXT CHECK(outcome IS NULL OR outcome IN
                     ('MET','PARTIAL','NOT_MET','NOT_APPLICABLE')),
                   raw_feedback TEXT,
+                  reporting_actor TEXT NOT NULL,
+                  report_origin TEXT NOT NULL,
                   UNIQUE(commitment_id,intended_local_date)
                 );
                 CREATE INDEX IF NOT EXISTS idx_occurrence_reports_commitment
@@ -272,6 +282,11 @@ class HomeStore:
                   executable_agent_commitments_json TEXT NOT NULL,
                   generated_at_utc TEXT NOT NULL,
                   updated_at_utc TEXT NOT NULL
+                );
+                CREATE TABLE IF NOT EXISTS bridge_source_state(
+                  surface TEXT PRIMARY KEY CHECK(surface='agent_bridge'),
+                  revision INTEGER NOT NULL CHECK(revision>=0),
+                  source_instance_id TEXT NOT NULL
                 );
                 """
             )
@@ -347,23 +362,80 @@ class HomeStore:
                 connection.execute(
                     "ALTER TABLE commitment_occurrence_reports ADD COLUMN specification_id TEXT"
                 )
+            if "reporting_actor" not in report_columns:
+                connection.execute(
+                    "ALTER TABLE commitment_occurrence_reports ADD COLUMN reporting_actor TEXT"
+                )
+            if "report_origin" not in report_columns:
+                connection.execute(
+                    "ALTER TABLE commitment_occurrence_reports ADD COLUMN report_origin TEXT"
+                )
+            event_columns = {
+                row["name"] for row in connection.execute("PRAGMA table_info(scheduled_events)")
+            }
+            if "origin" not in event_columns:
+                connection.execute("ALTER TABLE scheduled_events ADD COLUMN origin TEXT")
+                connection.execute(
+                    "UPDATE scheduled_events SET origin='LEGACY_CALLER_SUPPLIED_AUTHOR' "
+                    "WHERE origin IS NULL"
+                )
+            if "commitment_id" not in event_columns:
+                connection.execute("ALTER TABLE scheduled_events ADD COLUMN commitment_id TEXT")
+            if "specification_id" not in event_columns:
+                connection.execute("ALTER TABLE scheduled_events ADD COLUMN specification_id TEXT")
             connection.execute(
                 "UPDATE commitment_occurrence_reports SET specification_id=("
                 "SELECT current_specification_id FROM commitments c "
                 "WHERE c.commitment_id=commitment_occurrence_reports.commitment_id) "
                 "WHERE specification_id IS NULL"
             )
+            bridge_columns = {
+                row["name"] for row in connection.execute("PRAGMA table_info(bridge_source_state)")
+            }
+            if "source_instance_id" not in bridge_columns:
+                connection.execute("ALTER TABLE bridge_source_state ADD COLUMN source_instance_id TEXT")
+                connection.execute(
+                    "UPDATE bridge_source_state SET source_instance_id=? "
+                    "WHERE source_instance_id IS NULL",
+                    (f"home:source-instance:{uuid.uuid4()}",),
+                )
             connection.execute(f"PRAGMA user_version={SCHEMA_VERSION}")
             timestamp = now_utc_iso()
             connection.execute(
                 "INSERT OR IGNORE INTO chat_home_state VALUES"
                 "('chat',NULL,'[]','[]','[]','[]',?,?)", (timestamp, timestamp)
             )
+            connection.execute(
+                "INSERT OR IGNORE INTO bridge_source_state(surface,revision,source_instance_id) "
+                "VALUES('agent_bridge',0,?)", (f"home:source-instance:{uuid.uuid4()}",)
+            )
         self.generate_bridge()
 
     def count(self) -> int:
         with self.connection() as connection:
             return int(connection.execute("SELECT COUNT(*) FROM captures").fetchone()[0])
+
+    @staticmethod
+    def _advance_bridge_revision(connection: sqlite3.Connection) -> int:
+        connection.execute(
+            "UPDATE bridge_source_state SET revision=revision+1 WHERE surface='agent_bridge'"
+        )
+        return int(connection.execute(
+            "SELECT revision FROM bridge_source_state WHERE surface='agent_bridge'"
+        ).fetchone()[0])
+
+    def bridge_revision(self) -> int:
+        with self.connection() as connection:
+            return int(connection.execute(
+                "SELECT revision FROM bridge_source_state WHERE surface='agent_bridge'"
+            ).fetchone()[0])
+
+    @staticmethod
+    def _has_referenced_event(connection: sqlite3.Connection, commitment_id: str) -> bool:
+        return connection.execute(
+            "SELECT 1 FROM scheduled_events WHERE commitment_id=? AND target_actor='Chat' "
+            "AND status IN ('SCHEDULED','DUE') LIMIT 1", (commitment_id,)
+        ).fetchone() is not None
 
     @staticmethod
     def _capture(lane: str, text: str, client_time: object) -> dict[str, object]:
@@ -427,6 +499,9 @@ class HomeStore:
             "amendment_kind": "INITIAL",
             "prior_specification_id": None,
             "raw_amendment_reason": None,
+            "occurrence_effective_at": HomeStore._occurrence_effective_at({
+                "effective_at": record["created_at_utc"], "start_at": record["start_at"],
+            }),
         })
         return record
 
@@ -507,6 +582,7 @@ class HomeStore:
                 item["current_status"] == "ACTIVE" and item["report_at"] and
                 datetime.fromisoformat(item["report_at"]) <= datetime.fromisoformat(observed)
             )
+            item["occurrence_effective_at"] = self._occurrence_effective_at(item)
         return [item for item in result if item["report_due"]] if view == "report_due" else result
 
     @staticmethod
@@ -515,7 +591,19 @@ class HomeStore:
         item["weekly_days"] = (
             json.loads(item.pop("weekly_days_json")) if item.get("weekly_days_json") else []
         )
+        item["occurrence_effective_at"] = HomeStore._occurrence_effective_at(item)
         return item
+
+    @staticmethod
+    def _occurrence_effective_at(specification: dict[str, object]) -> str:
+        values = [
+            datetime.fromisoformat(str(value))
+            for value in (specification.get("effective_at"), specification.get("start_at"))
+            if value
+        ]
+        if not values:
+            raise ValueError("specification_has_no_effective_boundary")
+        return max(values).astimezone(timezone.utc).isoformat()
 
     def specifications(self, commitment_id: str) -> list[dict[str, object]]:
         with self.connection() as connection:
@@ -543,6 +631,7 @@ class HomeStore:
             raise ValueError("invalid_raw_amendment_reason")
         created = now_utc_iso()
         specification_id = f"home:commitment-specification:{uuid.uuid4()}"
+        bridge_changed = False
         with self.connection() as connection:
             current = connection.execute(
                 "SELECT current_status,current_specification_id FROM commitments "
@@ -567,6 +656,11 @@ class HomeStore:
                 "UPDATE commitments SET current_specification_id=? WHERE commitment_id=?",
                 (specification_id, commitment_id),
             )
+            bridge_changed = self._has_referenced_event(connection, commitment_id)
+            if bridge_changed:
+                self._advance_bridge_revision(connection)
+        if bridge_changed:
+            self.generate_bridge()
         return {"commitment": self.commitment(commitment_id),
                 "specification": self.specifications(commitment_id)[-1]}
 
@@ -583,8 +677,11 @@ class HomeStore:
 
     def regular_week(self) -> dict[str, list[dict[str, object]]]:
         week = {day: [] for day in WEEKDAYS}
+        observed = datetime.now(timezone.utc)
         for item in self.commitments("active"):
             if item["recurrence_type"] != "WEEKLY_PATTERN":
+                continue
+            if datetime.fromisoformat(item["occurrence_effective_at"]) > observed:
                 continue
             for day in item["weekly_days"]:
                 week[day].append(item)
@@ -601,7 +698,7 @@ class HomeStore:
         with self.connection() as connection:
             rows = connection.execute(
                 "SELECT report_id,commitment_id,specification_id,intended_local_date,reported_at,"
-                "outcome,raw_feedback "
+                "outcome,raw_feedback,reporting_actor,report_origin "
                 "FROM commitment_occurrence_reports WHERE commitment_id=? "
                 "ORDER BY intended_local_date,reported_at", (commitment_id,)
             ).fetchall()
@@ -626,6 +723,9 @@ class HomeStore:
         specification = self.specification_for_date(commitment_id, intended)
         if specification is None or specification["recurrence_type"] != "WEEKLY_PATTERN":
             raise ValueError("occurrence_report_requires_recurring_commitment")
+        boundary = datetime.fromisoformat(specification["occurrence_effective_at"])
+        if intended < boundary.astimezone().date() or datetime.now(timezone.utc) < boundary:
+            raise ValueError("occurrence_precedes_effective_boundary")
         days = specification["weekly_days"]
         if WEEKDAYS[intended.weekday()] not in days:
             raise ValueError("date_is_not_expected_occurrence")
@@ -642,6 +742,8 @@ class HomeStore:
         with self.connection() as connection:
             for value in reports:
                 if not isinstance(value, dict): raise ValueError("invalid_occurrence_report")
+                if any(name in value for name in ("author", "reporting_actor", "report_origin")):
+                    raise ValueError("report_actor_is_mechanically_attached")
                 commitment_id = value.get("commitment_id")
                 if not isinstance(commitment_id, str) or not commitment_id:
                     raise ValueError("invalid_commitment_id")
@@ -665,14 +767,16 @@ class HomeStore:
                     "intended_local_date": intended.isoformat(),
                     "reported_at": now_utc_iso(), "outcome": outcome,
                     "raw_feedback": feedback,
+                    "reporting_actor": COMMITMENT_ACTOR,
+                    "report_origin": "HOME_LOCAL_RECURRING_REPORT_ROUTE",
                 })
             try:
                 connection.executemany(
                     "INSERT INTO commitment_occurrence_reports("
                     "report_id,commitment_id,specification_id,intended_local_date,reported_at,"
-                    "outcome,raw_feedback) VALUES("
+                    "outcome,raw_feedback,reporting_actor,report_origin) VALUES("
                     ":report_id,:commitment_id,:specification_id,:intended_local_date,:reported_at,"
-                    ":outcome,:raw_feedback)",
+                    ":outcome,:raw_feedback,:reporting_actor,:report_origin)",
                     prepared,
                 )
             except sqlite3.IntegrityError as exc:
@@ -686,12 +790,19 @@ class HomeStore:
         )
         day = WEEKDAYS[intended.weekday()]
         expected = []
+        observed = datetime.now(timezone.utc)
+        actual_today = observed.astimezone().date()
         for item in self.commitments("active"):
             if intended < self._local_day(item["created_at_utc"]):
                 continue
             specification = self.specification_for_date(item["commitment_id"], intended)
             if (specification is None or specification["recurrence_type"] != "WEEKLY_PATTERN"
                     or day not in specification["weekly_days"]):
+                continue
+            boundary = datetime.fromisoformat(specification["occurrence_effective_at"])
+            if intended < boundary.astimezone().date():
+                continue
+            if intended == actual_today and observed < boundary:
                 continue
             item = dict(item)
             item.update({
@@ -708,6 +819,7 @@ class HomeStore:
                 "prior_specification_id": specification["prior_specification_id"],
                 "amendment_kind": specification["amendment_kind"],
                 "raw_amendment_reason": specification["raw_amendment_reason"],
+                "occurrence_effective_at": specification["occurrence_effective_at"],
             })
             reports = self.occurrence_reports(item["commitment_id"])
             item["occurrence_report"] = next(
@@ -732,10 +844,21 @@ class HomeStore:
         reports = {value["intended_local_date"]: value for value in self.occurrence_reports(commitment_id)}
         occurrences = []
         cursor = start
+        observed = datetime.now(timezone.utc)
+        actual_today = observed.astimezone().date()
         while cursor <= through:
             specification = self.specification_for_date(commitment_id, cursor)
             if (specification is not None
                     and specification["recurrence_type"] == "WEEKLY_PATTERN"
+                    and cursor >= datetime.fromisoformat(
+                        specification["occurrence_effective_at"]
+                    ).astimezone().date()
+                    and not (
+                        cursor == actual_today
+                        and observed < datetime.fromisoformat(
+                            specification["occurrence_effective_at"]
+                        )
+                    )
                     and WEEKDAYS[cursor.weekday()] in specification["weekly_days"]):
                 report = reports.get(cursor.isoformat())
                 occurrences.append({
@@ -764,6 +887,7 @@ class HomeStore:
         if mode == "REVISED" and not isinstance(replacement, dict):
             raise ValueError("revised_requires_replacement")
         replacement_capture = replacement_commitment = None
+        bridge_changed = False
         with self.connection() as connection:
             current = connection.execute(
                 "SELECT current_status FROM commitments WHERE commitment_id=?", (commitment_id,)
@@ -803,16 +927,50 @@ class HomeStore:
             connection.execute(
                 "UPDATE commitments SET current_status='CLOSED' WHERE commitment_id=?", (commitment_id,)
             )
+            bridge_changed = self._has_referenced_event(connection, commitment_id)
+            if bridge_changed:
+                self._advance_bridge_revision(connection)
+        if bridge_changed:
+            self.generate_bridge()
         return {"resolution": resolution, "replacement_capture": replacement_capture,
                 "replacement_commitment": replacement_commitment}
 
     @staticmethod
-    def _event_row(row: sqlite3.Row) -> dict[str, object]:
+    def _event_row(row: sqlite3.Row, connection: sqlite3.Connection) -> dict[str, object]:
         item = dict(row)
         item["context_refs"] = json.loads(item.pop("context_refs_json"))
+        item["due_grants_execution_authority"] = False
+        item["reference_standing"] = None
+        item["current_specification_id"] = None
+        item["current_commitment_status"] = None
+        item["current_applicability_requires_adjudication"] = False
+        if item.get("commitment_id"):
+            commitment = connection.execute(
+                "SELECT current_status,current_specification_id FROM commitments "
+                "WHERE commitment_id=?", (item["commitment_id"],)
+            ).fetchone()
+            specification = connection.execute(
+                "SELECT commitment_id FROM commitment_specifications WHERE specification_id=?",
+                (item.get("specification_id"),),
+            ).fetchone() if item.get("specification_id") else None
+            if (commitment is None or specification is None
+                    or specification["commitment_id"] != item["commitment_id"]):
+                standing = "REFERENCE_UNRESOLVED"
+            elif commitment["current_status"] == "CLOSED":
+                standing = "COMMITMENT_CLOSED"
+            elif commitment["current_specification_id"] != item["specification_id"]:
+                standing = "SPECIFICATION_SUPERSEDED"
+            else:
+                standing = "CURRENT"
+            item["reference_standing"] = standing
+            if commitment is not None:
+                item["current_specification_id"] = commitment["current_specification_id"]
+                item["current_commitment_status"] = commitment["current_status"]
+            item["current_applicability_requires_adjudication"] = standing != "CURRENT"
         return item
 
-    def events(self, view="all", target_actor=None) -> list[dict[str, object]]:
+    @staticmethod
+    def _event_query(view="all", target_actor=None):
         clauses, parameters = [], []
         if view == "due": clauses.append("status='DUE'")
         elif view == "scheduled": clauses.append("status='SCHEDULED'")
@@ -821,16 +979,20 @@ class HomeStore:
         elif view != "all": raise ValueError("invalid_event_view")
         if target_actor:
             clauses.append("target_actor=?"); parameters.append(target_actor)
-        where = f"WHERE {' AND '.join(clauses)}" if clauses else ""
+        return (f"WHERE {' AND '.join(clauses)}" if clauses else ""), parameters
+
+    def events(self, view="all", target_actor=None) -> list[dict[str, object]]:
+        where, parameters = self._event_query(view, target_actor)
         with self.connection() as connection:
             rows = connection.execute(
                 f"SELECT * FROM scheduled_events {where} ORDER BY due_at,event_id", parameters
             ).fetchall()
-        return [self._event_row(row) for row in rows]
+            return [self._event_row(row, connection) for row in rows]
 
-    def create_event(self, author, target_actor, due_at, kind, instruction, context_refs):
+    def create_event(self, author, target_actor, due_at, kind, instruction, context_refs,
+                     commitment_id=None, specification_id=None, origin="INTERNAL_EXPLICIT"):
         fields = {"author": author, "target_actor": target_actor, "kind": kind,
-                  "raw_instruction": instruction}
+                  "raw_instruction": instruction, "origin": origin}
         for name, value in fields.items():
             if not isinstance(value, str) or not value.strip():
                 raise ValueError(f"invalid_{name}")
@@ -840,24 +1002,47 @@ class HomeStore:
             raise ValueError("invalid_context_refs")
         canonical_due = parse_time(due_at, "due_at")
         if not canonical_due: raise ValueError("due_at_required")
+        if specification_id and not commitment_id:
+            raise ValueError("specification_reference_requires_commitment_reference")
+        if commitment_id is not None and (not isinstance(commitment_id, str) or not commitment_id):
+            raise ValueError("invalid_commitment_id")
+        if specification_id is not None and (
+            not isinstance(specification_id, str) or not specification_id
+        ):
+            raise ValueError("invalid_specification_id")
         record = {
             "event_id": f"home:event:{uuid.uuid4()}", "author": author,
-            "target_actor": target_actor, "created_at": now_utc_iso(),
+            "origin": origin, "target_actor": target_actor, "created_at": now_utc_iso(),
             "due_at": canonical_due, "kind": kind, "raw_instruction": instruction,
             "context_refs_json": json.dumps(context_refs, ensure_ascii=False, separators=(",", ":")),
+            "commitment_id": commitment_id, "specification_id": specification_id,
             "status": "SCHEDULED", "triggered_at": None, "acknowledged_at": None,
         }
         with self.connection() as connection:
+            if commitment_id:
+                commitment = connection.execute(
+                    "SELECT current_specification_id FROM commitments WHERE commitment_id=?",
+                    (commitment_id,),
+                ).fetchone()
+                if commitment is not None:
+                    current = commitment["current_specification_id"]
+                    if specification_id is not None and specification_id != current:
+                        raise ValueError("specification_not_current_at_event_creation")
+                    record["specification_id"] = current
             connection.execute(
-                "INSERT INTO scheduled_events VALUES(:event_id,:author,:target_actor,:created_at,"
-                ":due_at,:kind,:raw_instruction,:context_refs_json,:status,:triggered_at,"
-                ":acknowledged_at)", record
+                "INSERT INTO scheduled_events(event_id,author,origin,target_actor,created_at,due_at,"
+                "kind,raw_instruction,context_refs_json,commitment_id,specification_id,status,"
+                "triggered_at,acknowledged_at) VALUES(:event_id,:author,:origin,:target_actor,"
+                ":created_at,:due_at,:kind,:raw_instruction,:context_refs_json,:commitment_id,"
+                ":specification_id,:status,:triggered_at,:acknowledged_at)", record
             )
+            self._advance_bridge_revision(connection)
         self.generate_bridge()
-        return {
-            **{key: value for key, value in record.items() if key != "context_refs_json"},
-            "context_refs": list(context_refs),
-        }
+        with self.connection() as connection:
+            row = connection.execute(
+                "SELECT * FROM scheduled_events WHERE event_id=?", (record["event_id"],)
+            ).fetchone()
+            return self._event_row(row, connection)
 
     def mark_due(self, observed_at=None) -> list[dict[str, object]]:
         observed = parse_time(observed_at or now_utc_iso(), "observed_at")
@@ -872,11 +1057,13 @@ class HomeStore:
                     "UPDATE scheduled_events SET status='DUE',triggered_at=? "
                     "WHERE event_id=? AND status='SCHEDULED'", [(observed, item) for item in identities]
                 )
+                self._advance_bridge_revision(connection)
             rows = [connection.execute(
                 "SELECT * FROM scheduled_events WHERE event_id=?", (item,)
             ).fetchone() for item in identities]
+            result = [self._event_row(row, connection) for row in rows if row is not None]
         if identities: self.generate_bridge()
-        return [self._event_row(row) for row in rows if row is not None]
+        return result
 
     def transition_event(self, event_id, action):
         target = {"acknowledge": "ACKNOWLEDGED", "cancel": "CANCELLED"}.get(action)
@@ -895,11 +1082,13 @@ class HomeStore:
                 "UPDATE scheduled_events SET status=?,acknowledged_at=? WHERE event_id=?",
                 (target, acknowledged, event_id),
             )
+            self._advance_bridge_revision(connection)
             result = connection.execute(
                 "SELECT * FROM scheduled_events WHERE event_id=?", (event_id,)
             ).fetchone()
+            event = self._event_row(result, connection)
         self.generate_bridge()
-        return self._event_row(result)
+        return event
 
     @staticmethod
     def _json_array(value, field):
@@ -907,9 +1096,14 @@ class HomeStore:
             raise ValueError(f"invalid_{field}")
         return json.dumps(value, ensure_ascii=False, separators=(",", ":"))
 
-    def chat_state(self) -> dict[str, object]:
-        with self.connection() as connection:
-            row = connection.execute("SELECT * FROM chat_home_state WHERE state_id='chat'").fetchone()
+    @staticmethod
+    def _chat_state_row(row: sqlite3.Row) -> dict[str, object]:
+        retained = json.loads(row["executable_agent_commitments_json"])
+        admitted = [item for item in retained if (
+            isinstance(item, dict)
+            and item.get("execution_capability") in ADMITTED_EXECUTION_CAPABILITIES
+        )]
+        unadmitted = [item for item in retained if item not in admitted]
         return {
             "attribution": "Chat", "current_pressure": (
                 json.loads(row["current_pressure_json"]) if row["current_pressure_json"] else None
@@ -917,9 +1111,16 @@ class HomeStore:
             "active_recommendations": json.loads(row["active_recommendations_json"]),
             "unresolved_questions": json.loads(row["unresolved_questions_json"]),
             "continuation_refs": json.loads(row["continuation_refs_json"]),
-            "explicit_executable_agent_commitments": json.loads(row["executable_agent_commitments_json"]),
+            "explicit_executable_agent_commitments": admitted,
+            "unadmitted_execution_descriptions": unadmitted,
+            "admitted_execution_capabilities": sorted(ADMITTED_EXECUTION_CAPABILITIES),
             "generated_at": row["generated_at_utc"], "updated_at": row["updated_at_utc"],
         }
+
+    def chat_state(self) -> dict[str, object]:
+        with self.connection() as connection:
+            row = connection.execute("SELECT * FROM chat_home_state WHERE state_id='chat'").fetchone()
+        return self._chat_state_row(row)
 
     def update_chat_state(self, data):
         current = data.get("current_pressure")
@@ -927,11 +1128,16 @@ class HomeStore:
         questions = self._json_array(data.get("unresolved_questions", []), "unresolved_questions")
         refs = self._json_array(data.get("continuation_refs", []), "continuation_refs")
         commitments = data.get("explicit_executable_agent_commitments", [])
-        if not isinstance(commitments, list) or any(
-            not isinstance(item, dict) or not isinstance(item.get("execution_path"), str)
-            or not item["execution_path"].strip() for item in commitments
-        ):
-            raise ValueError("agent_commitment_requires_execution_path")
+        if not isinstance(commitments, list):
+            raise ValueError("invalid_executable_agent_commitments")
+        for item in commitments:
+            if not isinstance(item, dict):
+                raise ValueError("invalid_executable_agent_commitment")
+            capability = item.get("execution_capability")
+            if not isinstance(capability, str) or capability not in ADMITTED_EXECUTION_CAPABILITIES:
+                raise ValueError("execution_capability_not_admitted")
+            if not isinstance(item.get("execution_path"), str) or not item["execution_path"].strip():
+                raise ValueError("agent_commitment_requires_execution_path")
         commitment_json = json.dumps(commitments, ensure_ascii=False, separators=(",", ":"))
         updated = now_utc_iso()
         with self.connection() as connection:
@@ -942,19 +1148,53 @@ class HomeStore:
                 (json.dumps(current, ensure_ascii=False, separators=(",", ":")), recommendations,
                  questions, refs, commitment_json, updated),
             )
+            self._advance_bridge_revision(connection)
         self.generate_bridge()
         return self.chat_state()
 
     def generate_bridge(self) -> None:
         generated = now_utc_iso()
-        chat = self.chat_state()
-        chat["future_notes"] = [item for item in self.events("open", "Chat") if item["author"] == "Chat"]
+        with self.connection() as connection:
+            chat_row = connection.execute(
+                "SELECT * FROM chat_home_state WHERE state_id='chat'"
+            ).fetchone()
+            chat = self._chat_state_row(chat_row)
+            open_where, open_parameters = self._event_query("open", "Chat")
+            open_rows = connection.execute(
+                f"SELECT * FROM scheduled_events {open_where} ORDER BY due_at,event_id",
+                open_parameters,
+            ).fetchall()
+            future_notes = [
+                self._event_row(item, connection) for item in open_rows if item["author"] == "Chat"
+            ]
+            due_where, due_parameters = self._event_query("due", "Chat")
+            due_rows = connection.execute(
+                f"SELECT * FROM scheduled_events {due_where} ORDER BY due_at,event_id",
+                due_parameters,
+            ).fetchall()
+            due_events = [self._event_row(item, connection) for item in due_rows]
+            bridge_source = connection.execute(
+                "SELECT revision,source_instance_id FROM bridge_source_state "
+                "WHERE surface='agent_bridge'"
+            ).fetchone()
+            revision = int(bridge_source["revision"])
+        chat["future_notes"] = future_notes
         chat["state_generated_at"] = chat.pop("generated_at")
+        envelope = {
+            "authority": BRIDGE_AUTHORITY,
+            "generated_at": generated,
+            "relevant_source_revision": revision,
+            "semantic_freshness": "CURRENT_AT_GENERATION_FOR_RELEVANT_SOURCE_REVISION",
+            "source_identity": {
+                "system": "HOME_CAPTURE", "surface": BRIDGE_SOURCE_IDENTITY,
+                "schema_version": SCHEMA_VERSION,
+                "source_instance_id": bridge_source["source_instance_id"],
+            },
+        }
         chat_packet = {"projection_kind": "CHAT_HOME_DERIVED_PROJECTION",
-                       "authority": "DERIVED_FROM_HOME", "generated_at": generated, **chat}
+                       **envelope, **chat}
         due_packet = {"projection_kind": "DUE_AGENT_EVENTS_DERIVED_PROJECTION",
-                      "authority": "DERIVED_FROM_HOME", "generated_at": generated,
-                      "events": self.events("due", "Chat")}
+                      **envelope, "events": due_events}
         for name, packet in (("chat_now.json", chat_packet), ("due_events.json", due_packet)):
             destination = self.agent_bridge_dir / name
             temporary = destination.with_name(f".{name}.{uuid.uuid4().hex}.tmp")
@@ -1135,6 +1375,7 @@ class HomeHandler(BaseHTTPRequestHandler):
                         "report_due_count":sum(bool(x["report_due"]) for x in active),
                         "due_event_count":len(due_events),
                         "active_recurring_commitment_count":recurring_count,
+                        "agent_bridge_source_revision":self.server.store.bridge_revision(),
                         "scheduler_last_sweep_at":self.server.scheduler.last_sweep_at,
                         "scheduler_error":self.server.scheduler.last_error,
                         "access_mode":self.server.access_mode, "phone_url":self.server.advertised_url,
@@ -1232,12 +1473,15 @@ class HomeHandler(BaseHTTPRequestHandler):
             if data is None: return
             if path == "/api/chat-home/future-note":
                 author, target, kind = "Chat", "Chat", "FUTURE_CHAT_NOTE"
+                origin = "HOME_LOCAL_CHAT_HOME_ROUTE"
             else:
-                author, target, kind = data.get("author"), data.get("target_actor"), data.get("kind")
+                author, target, kind = COMMITMENT_ACTOR, data.get("target_actor"), data.get("kind")
+                origin = "HOME_LOCAL_REED_EVENT_ROUTE"
             try:
                 event = self.server.store.create_event(
                     author, target, data.get("due_at"), kind,
                     data.get("raw_instruction"), data.get("context_refs", []),
+                    data.get("commitment_id"), data.get("specification_id"), origin,
                 )
                 self.server.scheduler.sweep_once()
                 event = next(item for item in self.server.store.events("all")

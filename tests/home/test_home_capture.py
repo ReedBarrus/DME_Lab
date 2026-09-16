@@ -7,7 +7,7 @@ import tempfile
 import threading
 import time
 import unittest
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from unittest import mock
 from urllib.error import HTTPError
@@ -96,6 +96,7 @@ class HomeCaptureServerTest(unittest.TestCase):
         self.assertEqual(health["service"], "home_capture_v0")
         self.assertEqual(health["status"], "operational")
         self.assertEqual(health["capture_count"], 0)
+        self.assertEqual(health["agent_bridge_source_revision"], 0)
         self.assertEqual(health["access_mode"], "desktop")
         self.assertIsNone(health["phone_url"])
         self.assertFalse(health["public_internet_supported"])
@@ -419,7 +420,9 @@ class HomeCaptureServerTest(unittest.TestCase):
         html = (APP_DIR / "index.html").read_text(encoding="utf-8")
         self.assertIn(".weekday-picks input[type=checkbox]{min-width:0;width:1.1rem", html)
         self.assertIn(".schedule input:not([type=checkbox])", html)
-        self.assertIn("SELECTED DAYS: NONE", html)
+        self.assertIn("PERSISTED RECURRENCE: WEEKLY_PATTERN", html)
+        self.assertIn("DAYS ${days.length?days.join(' / '):'NONE'}", html)
+        self.assertIn("PLACEMENT ${placement}", html)
         self.assertIn("weekly_days:selectedDays('weeklyDays')", html)
         status, created = self.post_json(
             "/api/capture",
@@ -429,6 +432,92 @@ class HomeCaptureServerTest(unittest.TestCase):
         )
         self.assertEqual(status, 201)
         self.assertEqual(created["commitment"]["weekly_days"], ["WED", "FRI"])
+
+    def test_served_recurring_surfaces_expose_existing_amendment_flow(self) -> None:
+        _, created = self.create_recurring(
+            "reachable recurring amendment", ["WED", "FRI"], "EVENING"
+        )
+        identity = created["commitment"]["commitment_id"]
+        _, _, active_body = self.get("/api/commitments?view=active")
+        active = json.loads(active_body)["commitments"]
+        self.assertIn(identity, {item["commitment_id"] for item in active})
+
+        _, _, served_body = self.get("/")
+        html = served_body.decode()
+        self.assertIn('id="amendSelectedRecurrence"', html)
+        self.assertIn("AMEND CURRENT SPECIFICATION", html)
+        self.assertIn("$('amendSelectedRecurrence').onclick=openSelectedRecurrence", html)
+        self.assertIn("recurringCommitments=items.filter", html)
+        self.assertIn("item.current_status!=='ACTIVE'", html)
+        self.assertEqual(html.count('id="amendDialog"'), 1)
+
+    def test_closed_recurring_commitment_is_history_only_and_not_amendable(self) -> None:
+        _, created = self.create_recurring(
+            "closed recurring", list(SERVER.WEEKDAYS), "MORNING"
+        )
+        identity = created["commitment"]["commitment_id"]
+        self.post_json(
+            f"/api/commitments/{quote(identity, safe='')}/resolve",
+            {"mode": "RELEASED", "raw_feedback": "closed explicitly"},
+        )
+        with self.assertRaises(HTTPError) as caught:
+            self.post_json(
+                f"/api/commitments/{quote(identity, safe='')}/amend",
+                {"amendment_kind": "INTENTION_CHANGE", "raw_text": "must not become active",
+                 "recurrence_type": "WEEKLY_PATTERN", "weekly_days": ["WED", "FRI"],
+                 "temporal_placement": "EVENING"},
+            )
+        self.assertEqual(caught.exception.code, 409)
+        self.assertIn("commitment_already_closed", caught.exception.read().decode())
+        caught.exception.close()
+        self.assertEqual(len(self.server.store.specifications(identity)), 1)
+
+    def test_occurrence_effective_boundary_never_precedes_live_creation(self) -> None:
+        past_start = (datetime.now(timezone.utc) - timedelta(days=2)).isoformat()
+        _, created = self.post_json(
+            "/api/capture",
+            {"mode": "commit", "raw_text": "past reference is not retroactive adoption",
+             "start_at": past_start, "recurrence_type": "WEEKLY_PATTERN",
+             "weekly_days": list(SERVER.WEEKDAYS), "temporal_placement": "ANYTIME"},
+        )
+        commitment = created["commitment"]
+        self.assertGreaterEqual(
+            datetime.fromisoformat(commitment["effective_at"]),
+            datetime.fromisoformat(commitment["created_at_utc"]),
+        )
+        self.assertEqual(commitment["occurrence_effective_at"], commitment["created_at_utc"])
+
+    def test_future_start_does_not_project_or_admit_report_before_boundary(self) -> None:
+        today = datetime.now().astimezone().date()
+        future = datetime.now(timezone.utc) + timedelta(days=2)
+        _, created = self.post_json(
+            "/api/capture",
+            {"mode": "commit", "raw_text": "future recurring boundary",
+             "start_at": future.isoformat(), "recurrence_type": "WEEKLY_PATTERN",
+             "weekly_days": list(SERVER.WEEKDAYS), "temporal_placement": "MORNING"},
+        )
+        identity = created["commitment"]["commitment_id"]
+        self.assertEqual(created["commitment"]["occurrence_effective_at"],
+                         future.astimezone(timezone.utc).isoformat())
+        _, _, today_body = self.get(f"/api/today-recurring?local_date={today.isoformat()}")
+        self.assertNotIn(identity, {
+            item["commitment_id"] for item in json.loads(today_body)["commitments"]
+        })
+        _, _, week_body = self.get("/api/regular-week")
+        self.assertFalse(any(
+            item["commitment_id"] == identity
+            for items in json.loads(week_body)["days"].values() for item in items
+        ))
+        with self.assertRaises(HTTPError) as caught:
+            self.post_json(
+                "/api/recurring-reports",
+                {"reports": [{"commitment_id": identity,
+                               "intended_local_date": today.isoformat(),
+                               "outcome": "MET", "raw_feedback": "too early"}]},
+            )
+        self.assertEqual(caught.exception.code, 400)
+        self.assertIn("occurrence_precedes_effective_boundary", caught.exception.read().decode())
+        caught.exception.close()
 
     def test_unscheduled_and_scheduled_commitments_have_stable_active_projection(self) -> None:
         _, unscheduled = self.post_capture("commit", "unscheduled")
@@ -605,24 +694,26 @@ class HomeCaptureServerTest(unittest.TestCase):
         retained = self.server.store.events("scheduled", "Chat")
         self.assertEqual(retained[0]["raw_instruction"], "future Chat instruction")
 
-    def test_chat_state_is_attributed_and_agent_commitments_require_execution_path(self) -> None:
+    def test_chat_state_is_attributed_and_false_execution_path_is_not_admitted(self) -> None:
         payload = {"current_pressure": "bounded pressure", "active_recommendations": ["inspect"],
                    "unresolved_questions": ["what survives?"], "continuation_refs": ["ref:1"],
-                   "explicit_executable_agent_commitments": [
-                       {"instruction": "run bounded check", "execution_path": "api:/bounded/check"}
-                   ]}
+                   "explicit_executable_agent_commitments": []}
         status, state = self.post_json("/api/chat-home", payload)
         self.assertEqual(status, 201)
         self.assertEqual(state["attribution"], "Chat")
         self.assertEqual(state["current_pressure"], "bounded pressure")
         self.assertEqual(state["continuation_refs"], ["ref:1"])
-        self.assertEqual(state["explicit_executable_agent_commitments"][0]["execution_path"],
-                         "api:/bounded/check")
+        self.assertEqual(state["explicit_executable_agent_commitments"], [])
+        self.assertEqual(state["admitted_execution_capabilities"], [])
         with self.assertRaises(HTTPError) as caught:
             self.post_json("/api/chat-home", {
-                **payload, "explicit_executable_agent_commitments": [{"instruction": "no path"}]
+                **payload, "explicit_executable_agent_commitments": [
+                    {"instruction": "not executable", "execution_path": "api:/bounded/check",
+                     "execution_capability": "bounded-check"}
+                ]
             })
         self.assertEqual(caught.exception.code, 400)
+        self.assertIn("execution_capability_not_admitted", caught.exception.read().decode())
         caught.exception.close()
 
     def test_bridge_projections_are_derived_bounded_and_preserve_context_refs(self) -> None:
@@ -637,6 +728,10 @@ class HomeCaptureServerTest(unittest.TestCase):
         self.assertEqual(due["authority"], "DERIVED_FROM_HOME")
         self.assertEqual(due["projection_kind"], "DUE_AGENT_EVENTS_DERIVED_PROJECTION")
         self.assertTrue(due["generated_at"])
+        self.assertIsInstance(due["relevant_source_revision"], int)
+        self.assertEqual(due["semantic_freshness"],
+                         "CURRENT_AT_GENERATION_FOR_RELEVANT_SOURCE_REVISION")
+        self.assertEqual(due["source_identity"]["system"], "HOME_CAPTURE")
         projected = next(item for item in due["events"] if item["event_id"] == event["event_id"])
         self.assertEqual(projected["context_refs"], ["decision:one", "commitment:two"])
         self.assertNotIn("unrelated personal history", due_body.decode())
@@ -644,6 +739,160 @@ class HomeCaptureServerTest(unittest.TestCase):
         chat = json.loads(chat_body)
         self.assertEqual(chat["attribution"], "Chat")
         self.assertEqual(chat["authority"], "DERIVED_FROM_HOME")
+
+    def test_typed_event_reference_tracks_current_superseded_and_raw_snapshot(self) -> None:
+        _, created = self.create_recurring("typed source A", ["WED", "FRI"], "MORNING")
+        commitment = created["commitment"]
+        _, event = self.post_json(
+            "/api/chat-home/future-note",
+            {"due_at": "2035-01-01T00:00:00Z", "raw_instruction": "instruction under A",
+             "context_refs": ["decision:bounded"],
+             "commitment_id": commitment["commitment_id"]},
+        )
+        self.assertEqual(event["specification_id"], commitment["current_specification_id"])
+        self.assertEqual(event["reference_standing"], "CURRENT")
+        _, amended = self.post_json(
+            f"/api/commitments/{quote(commitment['commitment_id'], safe='')}/amend",
+            {"amendment_kind": "INTENTION_CHANGE", "raw_text": "typed source B",
+             "recurrence_type": "WEEKLY_PATTERN", "weekly_days": ["MON"],
+             "temporal_placement": "EVENING"},
+        )
+        retained = next(item for item in self.server.store.events("all")
+                        if item["event_id"] == event["event_id"])
+        self.assertEqual(retained["reference_standing"], "SPECIFICATION_SUPERSEDED")
+        self.assertEqual(retained["specification_id"], commitment["current_specification_id"])
+        self.assertEqual(retained["current_specification_id"],
+                         amended["specification"]["specification_id"])
+        self.assertEqual(retained["raw_instruction"], "instruction under A")
+        self.assertTrue(retained["current_applicability_requires_adjudication"])
+        self.assertFalse(retained["due_grants_execution_authority"])
+
+    def test_typed_event_reference_exposes_closed_and_unresolved_standing(self) -> None:
+        _, created = self.post_capture("commit", "typed close source")
+        commitment = created["commitment"]
+        _, event = self.post_json(
+            "/api/events",
+            {"author": "forged author", "target_actor": "Chat", "kind": "FOLLOW_UP",
+             "due_at": "2035-01-01T00:00:00Z", "raw_instruction": "retained close note",
+             "context_refs": [], "commitment_id": commitment["commitment_id"]},
+        )
+        self.assertEqual(event["author"], "Reed")
+        self.assertEqual(event["origin"], "HOME_LOCAL_REED_EVENT_ROUTE")
+        self.post_json(
+            f"/api/commitments/{quote(commitment['commitment_id'], safe='')}/resolve",
+            {"mode": "RELEASED", "raw_feedback": "closed before due"},
+        )
+        closed = next(item for item in self.server.store.events("all")
+                      if item["event_id"] == event["event_id"])
+        self.assertEqual(closed["reference_standing"], "COMMITMENT_CLOSED")
+        self.assertEqual(closed["raw_instruction"], "retained close note")
+
+        _, unresolved = self.post_json(
+            "/api/chat-home/future-note",
+            {"due_at": "2035-01-02T00:00:00Z", "raw_instruction": "unknown stays unknown",
+             "context_refs": [], "commitment_id": "home:commitment:absent",
+             "specification_id": "home:commitment-specification:absent"},
+        )
+        self.assertEqual(unresolved["reference_standing"], "REFERENCE_UNRESOLVED")
+
+    def test_due_and_acknowledgement_do_not_change_typed_commitment(self) -> None:
+        _, created = self.post_capture("commit", "due is attention only")
+        identity = created["commitment"]["commitment_id"]
+        _, due = self.post_json(
+            "/api/chat-home/future-note",
+            {"due_at": "2020-01-01T00:00:00Z", "raw_instruction": "inspect only",
+             "context_refs": [], "commitment_id": identity},
+        )
+        self.assertEqual(due["status"], "DUE")
+        self.assertFalse(due["due_grants_execution_authority"])
+        self.assertEqual(self.server.store.commitment(identity)["current_status"], "ACTIVE")
+        _, acknowledged = self.post_json(
+            f"/api/events/{quote(due['event_id'], safe='')}/acknowledge", {}
+        )
+        self.assertEqual(acknowledged["status"], "ACKNOWLEDGED")
+        self.assertEqual(self.server.store.commitment(identity)["current_status"], "ACTIVE")
+
+    def test_occurrence_report_actor_and_origin_are_mechanically_attached(self) -> None:
+        today = date.today()
+        weekday = SERVER.WEEKDAYS[today.weekday()]
+        _, created = self.create_recurring("actor provenance", [weekday], "ANYTIME")
+        identity = created["commitment"]["commitment_id"]
+        self.backdate_commitment(identity, (datetime.now(timezone.utc) - timedelta(days=1)).isoformat())
+        with self.assertRaises(HTTPError) as caught:
+            self.post_json(
+                "/api/recurring-reports",
+                {"reports": [{"commitment_id": identity,
+                               "intended_local_date": today.isoformat(),
+                               "outcome": "MET", "reporting_actor": "Chat"}]},
+            )
+        self.assertEqual(caught.exception.code, 400)
+        caught.exception.close()
+        _, result = self.post_json(
+            "/api/recurring-reports",
+            {"reports": [{"commitment_id": identity,
+                           "intended_local_date": today.isoformat(), "outcome": "MET"}]},
+        )
+        report = result["reports"][0]
+        self.assertEqual(report["reporting_actor"], "Reed")
+        self.assertEqual(report["report_origin"], "HOME_LOCAL_RECURRING_REPORT_ROUTE")
+
+    def test_bridge_revision_advances_only_for_relevant_mutations(self) -> None:
+        start = self.server.store.bridge_revision()
+        self.post_capture("care", "irrelevant to bridge revision")
+        self.assertEqual(self.server.store.bridge_revision(), start)
+        self.post_json(
+            "/api/chat-home",
+            {"current_pressure": "revision pressure", "active_recommendations": [],
+             "unresolved_questions": [], "continuation_refs": [],
+             "explicit_executable_agent_commitments": []},
+        )
+        after_chat = self.server.store.bridge_revision()
+        self.assertEqual(after_chat, start + 1)
+        _, event = self.post_json(
+            "/api/chat-home/future-note",
+            {"due_at": "2035-01-01T00:00:00Z", "raw_instruction": "revision event",
+             "context_refs": []},
+        )
+        self.assertEqual(self.server.store.bridge_revision(), after_chat + 1)
+        self.post_json(f"/api/events/{quote(event['event_id'], safe='')}/cancel", {})
+        self.assertEqual(self.server.store.bridge_revision(), after_chat + 2)
+        _, _, body = self.get("/agent_bridge/chat_now.json")
+        packet = json.loads(body)
+        self.assertEqual(packet["authority"], "DERIVED_FROM_HOME")
+        self.assertEqual(packet["relevant_source_revision"], after_chat + 2)
+        self.assertEqual(packet["source_identity"]["schema_version"], SERVER.SCHEMA_VERSION)
+        self.assertNotIn("irrelevant to bridge revision", body.decode())
+
+    def test_restart_preserves_bridge_revision_and_reference_standing(self) -> None:
+        _, created = self.create_recurring("restart A", ["WED"], "MORNING")
+        identity = created["commitment"]["commitment_id"]
+        _, event = self.post_json(
+            "/api/chat-home/future-note",
+            {"due_at": "2035-01-01T00:00:00Z", "raw_instruction": "restart snapshot",
+             "context_refs": [], "commitment_id": identity},
+        )
+        self.post_json(
+            f"/api/commitments/{quote(identity, safe='')}/amend",
+            {"amendment_kind": "INTENTION_CHANGE", "raw_text": "restart B",
+             "recurrence_type": "WEEKLY_PATTERN", "weekly_days": ["FRI"],
+             "temporal_placement": "EVENING"},
+        )
+        revision = self.server.store.bridge_revision()
+        _, _, before_body = self.get("/agent_bridge/chat_now.json")
+        source_instance = json.loads(before_body)["source_identity"]["source_instance_id"]
+        self.server.shutdown(); self.server.server_close(); self.thread.join(timeout=5)
+        self.server = SERVER.create_server(
+            "127.0.0.1", 0, self.data_dir, desktop_notifications=False
+        )
+        self.thread = threading.Thread(target=self.server.serve_forever, daemon=True)
+        self.thread.start(); self.base_url = f"http://127.0.0.1:{self.server.server_port}"
+        retained = next(item for item in self.server.store.events("all")
+                        if item["event_id"] == event["event_id"])
+        self.assertEqual(retained["reference_standing"], "SPECIFICATION_SUPERSEDED")
+        self.assertEqual(self.server.store.bridge_revision(), revision)
+        _, _, after_body = self.get("/agent_bridge/chat_now.json")
+        self.assertEqual(json.loads(after_body)["source_identity"]["source_instance_id"],
+                         source_instance)
 
     def test_cancel_and_acknowledge_do_not_change_referenced_state_or_imply_consequence(self) -> None:
         _, care = self.post_capture("care", "reference remains exact")
