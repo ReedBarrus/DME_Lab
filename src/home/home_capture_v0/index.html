@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home Capture v0</title>
+  <style>
+    :root { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color-scheme: light dark; }
+    body { max-width: 980px; margin: 0 auto; padding: 20px; }
+    h1 { margin-bottom: 4px; }
+    h2 { margin-bottom: 10px; }
+    .sub, .muted { opacity: .72; }
+    .service { border: 1px solid #8886; padding: 12px 14px; margin: 18px 0; }
+    .service.error { border-color: #c44; background: #c442; }
+    .service.ok { border-color: #4a6; }
+    .modes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0 12px; }
+    button, input, select { font: inherit; }
+    button { padding: 12px 14px; border: 1px solid #8886; cursor: pointer; }
+    button.active { outline: 3px solid currentColor; font-weight: 700; }
+    button:disabled, textarea:disabled, input:disabled, select:disabled { cursor: not-allowed; opacity: .48; }
+    textarea { width: 100%; box-sizing: border-box; min-height: 160px; padding: 14px; font: inherit; resize: vertical; }
+    .hint { min-height: 2.5em; opacity: .76; margin: 8px 0; }
+    .actions, .filters { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0; align-items: center; }
+    .save { font-weight: 700; }
+    .status { min-height: 1.5em; margin-top: 10px; }
+    .status.error { color: #d65; font-weight: 700; }
+    .status.success { color: #4a6; font-weight: 700; }
+    .history { margin-top: 30px; border-top: 2px solid #8885; padding-top: 12px; }
+    .history-grid { display: grid; grid-template-columns: minmax(280px, 1fr) minmax(300px, 1fr); gap: 18px; }
+    .history-list { border: 1px solid #8885; max-height: 480px; overflow: auto; }
+    .entry { width: 100%; display: block; text-align: left; border: 0; border-bottom: 1px solid #8884; padding: 12px; background: transparent; }
+    .entry.selected { outline: 2px solid currentColor; outline-offset: -3px; }
+    .entry-text { margin-top: 5px; overflow-wrap: anywhere; }
+    .meta { font-size: .84rem; opacity: .72; }
+    .badge { font-weight: 750; }
+    .detail { border: 1px solid #8885; padding: 14px; min-height: 160px; overflow-wrap: anywhere; }
+    .detail pre { white-space: pre-wrap; font: inherit; }
+    .detail dl { display: grid; grid-template-columns: max-content 1fr; gap: 7px 12px; }
+    .detail dt { font-weight: 700; }
+    .detail dd { margin: 0; }
+    #search { flex: 1; min-width: 180px; padding: 9px; }
+    #offlineNotice { display: none; }
+    @media (max-width: 700px) {
+      .history-grid { grid-template-columns: 1fr; }
+      .modes { grid-template-columns: 1fr; }
+      button { min-height: 44px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Home Capture v0</h1>
+  <p class="sub">Raw user-authored evidence. No interpretation is created here.</p>
+
+  <div class="service" id="serviceStatus" role="status">Checking Home service…</div>
+  <div class="service error" id="offlineNotice" role="alert">
+    <strong>Home is not running.</strong><br />
+    This file is only the interface source. SAVE, history, and export are disabled because they cannot persist anything here.
+    Launch <strong>Home Capture</strong> using the Home Capture launcher, then use the window it opens.
+  </div>
+
+  <main id="operationalSurface">
+    <div class="modes">
+      <button data-mode="care">CARE</button>
+      <button data-mode="commit">COMMIT</button>
+      <button data-mode="develop">DEVELOP</button>
+    </div>
+
+    <div class="hint" id="hint">Choose a lane. Explore stays outside Home v0.</div>
+    <textarea id="text" placeholder="Choose CARE, COMMIT, or DEVELOP first."></textarea>
+    <div class="actions">
+      <button class="save" id="save">SAVE CAPTURE</button>
+      <button id="copyPacket">COPY RECENT FOR CHATGPT</button>
+      <button id="download">DOWNLOAD JSONL</button>
+    </div>
+    <div class="status" id="status" aria-live="polite"></div>
+
+    <section class="history">
+      <h2>History</h2>
+      <div class="filters">
+        <select id="laneFilter" aria-label="Filter history by lane">
+          <option value="all">ALL</option>
+          <option value="care">CARE</option>
+          <option value="commit">COMMIT</option>
+          <option value="develop">DEVELOP</option>
+        </select>
+        <input id="search" type="search" placeholder="Search raw capture text" />
+        <select id="order" aria-label="History order">
+          <option value="desc">NEWEST FIRST</option>
+          <option value="asc">OLDEST FIRST</option>
+        </select>
+      </div>
+      <div class="history-grid">
+        <div class="history-list" id="historyList" aria-label="Retained captures"></div>
+        <div class="detail" id="detail">
+          <span class="muted">Select a retained capture to inspect its unmodified fields.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<script>
+const isFileAccess = window.location.protocol === 'file:';
+let mode = null;
+let operational = false;
+let selectedRef = null;
+let refreshTimer = null;
+let searchTimer = null;
+
+const hints = {
+  care: 'CARE records what is happening and what needs protection/restoration. It creates no commitment.',
+  commit: 'COMMIT is deliberate adoption. Saving here is the explicit act that marks this statement as a commitment capture.',
+  develop: 'DEVELOP records explicit build / DME work / experiment activity. It does not become project standing or personal commitment by itself.'
+};
+const placeholders = {
+  care: 'What is happening? What needs care? What would help?',
+  commit: 'What are you deliberately committing to? What does done mean?',
+  develop: 'What are you building, testing, or working on right now?'
+};
+
+function setControlsEnabled(enabled) {
+  document.querySelectorAll('#operationalSurface button, #operationalSurface textarea, #operationalSurface input, #operationalSurface select')
+    .forEach(el => { el.disabled = !enabled; });
+}
+
+function showStatus(message, kind = '') {
+  const status = document.getElementById('status');
+  status.textContent = message;
+  status.className = `status ${kind}`.trim();
+}
+
+function showUnavailable(message) {
+  operational = false;
+  setControlsEnabled(false);
+  const service = document.getElementById('serviceStatus');
+  service.className = 'service error';
+  service.textContent = message;
+  document.getElementById('offlineNotice').style.display = 'block';
+}
+
+async function checkHealth() {
+  if (isFileAccess) {
+    showUnavailable('OFFLINE SOURCE VIEW — persistence is unavailable.');
+    return false;
+  }
+  try {
+    const response = await fetch('/api/health', {cache: 'no-store'});
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const health = await response.json();
+    if (health.service !== 'home_capture_v0' || health.status !== 'operational') {
+      throw new Error('unexpected service response');
+    }
+    operational = true;
+    setControlsEnabled(true);
+    document.getElementById('offlineNotice').style.display = 'none';
+    const service = document.getElementById('serviceStatus');
+    service.className = 'service ok';
+    const retained = `${health.capture_count} capture${health.capture_count === 1 ? '' : 's'} retained`;
+    if (health.access_mode === 'lan') {
+      const phone = health.phone_url || 'LAN address unavailable';
+      service.textContent = `HOME OPERATIONAL — ${retained} — trusted-LAN phone URL: ${phone} — public internet exposure is not supported.`;
+    } else {
+      service.textContent = `HOME OPERATIONAL — ${retained} — desktop-only mode. Use the Home Capture LAN launcher for trusted-LAN phone access.`;
+    }
+    return true;
+  } catch (error) {
+    showUnavailable(`HOME UNAVAILABLE — ${error.message}`);
+    return false;
+  }
+}
+
+document.querySelectorAll('[data-mode]').forEach(button => {
+  button.addEventListener('click', () => {
+    if (!operational) return;
+    mode = button.dataset.mode;
+    document.querySelectorAll('[data-mode]').forEach(other => other.classList.toggle('active', other === button));
+    document.getElementById('hint').textContent = hints[mode];
+    document.getElementById('text').placeholder = placeholders[mode];
+    document.getElementById('text').focus();
+  });
+});
+
+async function saveCapture() {
+  const textArea = document.getElementById('text');
+  const rawText = textArea.value;
+  if (!operational) { showStatus('Home is not running. Nothing was saved.', 'error'); return; }
+  if (!mode) { showStatus('Choose CARE, COMMIT, or DEVELOP first.', 'error'); return; }
+  if (!rawText.trim()) { showStatus('Nothing to save.', 'error'); return; }
+  const save = document.getElementById('save');
+  save.disabled = true;
+  showStatus('Saving…');
+  try {
+    const response = await fetch('/api/capture', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({mode, raw_text: rawText, client_time: new Date().toISOString()})
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(result.error || `HTTP ${response.status}`);
+    textArea.value = '';
+    selectedRef = result.id;
+    showStatus(`Saved ${result.mode.toUpperCase()} — ${result.id}`, 'success');
+    await Promise.all([loadHistory(), checkHealth()]);
+  } catch (error) {
+    showStatus(`Save failed — ${error.message}. The text remains in the field.`, 'error');
+  } finally {
+    save.disabled = !operational;
+  }
+}
+
+document.getElementById('save').addEventListener('click', saveCapture);
+
+document.getElementById('download').addEventListener('click', async () => {
+  if (!operational) return;
+  try {
+    const response = await fetch('/api/export.jsonl');
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const blob = await response.blob();
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'home-captures.jsonl';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+    showStatus('Downloaded retained raw captures as JSONL.', 'success');
+  } catch (error) {
+    showStatus(`Export failed — ${error.message}`, 'error');
+  }
+});
+
+document.getElementById('copyPacket').addEventListener('click', async () => {
+  if (!operational) return;
+  try {
+    const response = await fetch('/api/export.md');
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const packet = await response.text();
+    await navigator.clipboard.writeText(packet);
+    showStatus('Copied recent raw captures. Paste them into ChatGPT when wanted.', 'success');
+  } catch (error) {
+    showStatus(`Copy failed — ${error.message}`, 'error');
+  }
+});
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>'"]/g, character => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+  }[character]));
+}
+
+function renderDetail(record) {
+  const detail = document.getElementById('detail');
+  if (!record) {
+    detail.innerHTML = '<span class="muted">Select a retained capture to inspect its unmodified fields.</span>';
+    return;
+  }
+  detail.innerHTML = `
+    <div class="badge">${escapeHtml(record.mode.toUpperCase())}</div>
+    <pre>${escapeHtml(record.raw_text)}</pre>
+    <dl>
+      <dt>Stable ref</dt><dd>${escapeHtml(record.id)}</dd>
+      <dt>Client time</dt><dd>${escapeHtml(record.client_time || 'missing')}</dd>
+      <dt>Server UTC</dt><dd>${escapeHtml(record.created_at_utc)}</dd>
+      <dt>Origin</dt><dd>${escapeHtml(record.origin)}</dd>
+    </dl>`;
+}
+
+async function loadHistory() {
+  if (!operational) return;
+  const lane = document.getElementById('laneFilter').value;
+  const query = document.getElementById('search').value;
+  const order = document.getElementById('order').value;
+  const parameters = new URLSearchParams({lane, q: query, order, limit: '2000'});
+  try {
+    const response = await fetch(`/api/captures?${parameters}`);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const payload = await response.json();
+    const list = document.getElementById('historyList');
+    list.innerHTML = '';
+    if (!payload.captures.length) {
+      list.innerHTML = '<div class="entry muted">No retained captures match this view.</div>';
+      renderDetail(null);
+      return;
+    }
+    let selected = null;
+    payload.captures.forEach(record => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = `entry${record.id === selectedRef ? ' selected' : ''}`;
+      const when = record.client_time || record.created_at_utc;
+      button.innerHTML = `<div class="meta"><span class="badge">${escapeHtml(record.mode.toUpperCase())}</span> · ${escapeHtml(when)}</div><div class="entry-text">${escapeHtml(record.raw_text)}</div>`;
+      button.addEventListener('click', () => {
+        selectedRef = record.id;
+        document.querySelectorAll('.entry').forEach(item => item.classList.toggle('selected', item === button));
+        renderDetail(record);
+      });
+      list.appendChild(button);
+      if (record.id === selectedRef) selected = record;
+    });
+    renderDetail(selected);
+  } catch (error) {
+    showStatus(`History unavailable — ${error.message}`, 'error');
+  }
+}
+
+document.getElementById('laneFilter').addEventListener('change', loadHistory);
+document.getElementById('order').addEventListener('change', loadHistory);
+document.getElementById('search').addEventListener('input', () => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(loadHistory, 180);
+});
+
+async function initialize() {
+  setControlsEnabled(false);
+  if (await checkHealth()) {
+    await loadHistory();
+    refreshTimer = setInterval(async () => {
+      if (!document.hidden && await checkHealth()) await loadHistory();
+    }, 5000);
+  }
+}
+
+window.addEventListener('beforeunload', () => clearInterval(refreshTimer));
+initialize();
+</script>
+</body>
+</html>
