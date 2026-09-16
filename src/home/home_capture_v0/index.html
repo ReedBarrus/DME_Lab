@@ -1,327 +1,72 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home Capture v0</title>
-  <style>
-    :root { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color-scheme: light dark; }
-    body { max-width: 980px; margin: 0 auto; padding: 20px; }
-    h1 { margin-bottom: 4px; }
-    h2 { margin-bottom: 10px; }
-    .sub, .muted { opacity: .72; }
-    .service { border: 1px solid #8886; padding: 12px 14px; margin: 18px 0; }
-    .service.error { border-color: #c44; background: #c442; }
-    .service.ok { border-color: #4a6; }
-    .modes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0 12px; }
-    button, input, select { font: inherit; }
-    button { padding: 12px 14px; border: 1px solid #8886; cursor: pointer; }
-    button.active { outline: 3px solid currentColor; font-weight: 700; }
-    button:disabled, textarea:disabled, input:disabled, select:disabled { cursor: not-allowed; opacity: .48; }
-    textarea { width: 100%; box-sizing: border-box; min-height: 160px; padding: 14px; font: inherit; resize: vertical; }
-    .hint { min-height: 2.5em; opacity: .76; margin: 8px 0; }
-    .actions, .filters { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0; align-items: center; }
-    .save { font-weight: 700; }
-    .status { min-height: 1.5em; margin-top: 10px; }
-    .status.error { color: #d65; font-weight: 700; }
-    .status.success { color: #4a6; font-weight: 700; }
-    .history { margin-top: 30px; border-top: 2px solid #8885; padding-top: 12px; }
-    .history-grid { display: grid; grid-template-columns: minmax(280px, 1fr) minmax(300px, 1fr); gap: 18px; }
-    .history-list { border: 1px solid #8885; max-height: 480px; overflow: auto; }
-    .entry { width: 100%; display: block; text-align: left; border: 0; border-bottom: 1px solid #8884; padding: 12px; background: transparent; }
-    .entry.selected { outline: 2px solid currentColor; outline-offset: -3px; }
-    .entry-text { margin-top: 5px; overflow-wrap: anywhere; }
-    .meta { font-size: .84rem; opacity: .72; }
-    .badge { font-weight: 750; }
-    .detail { border: 1px solid #8885; padding: 14px; min-height: 160px; overflow-wrap: anywhere; }
-    .detail pre { white-space: pre-wrap; font: inherit; }
-    .detail dl { display: grid; grid-template-columns: max-content 1fr; gap: 7px 12px; }
-    .detail dt { font-weight: 700; }
-    .detail dd { margin: 0; }
-    #search { flex: 1; min-width: 180px; padding: 9px; }
-    #offlineNotice { display: none; }
-    @media (max-width: 700px) {
-      .history-grid { grid-template-columns: 1fr; }
-      .modes { grid-template-columns: 1fr; }
-      button { min-height: 44px; }
-    }
-  </style>
-</head>
-<body>
-  <h1>Home Capture v0</h1>
-  <p class="sub">Raw user-authored evidence. No interpretation is created here.</p>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Home Capture v0</title>
+<style>
+:root{color-scheme:light dark;--line:#8886;--muted:#888;--due:#b54;--ok:#287a4b}*{box-sizing:border-box}
+body{font:15px/1.45 system-ui,sans-serif;max-width:1100px;margin:0 auto;padding:18px}h1{margin:0;font-size:1.5rem}h2{font-size:1rem;letter-spacing:.08em;margin:0 0 10px}h3{font-size:.9rem;margin:18px 0 7px}.muted{color:var(--muted)}.top{display:flex;justify-content:space-between;gap:12px;align-items:start}.status{min-height:24px;margin:9px 0;padding:5px 8px;border-left:3px solid var(--line)}.status.success{border-color:var(--ok)}.status.error{border-color:#c44}.lan{font-family:ui-monospace,monospace;font-size:.78rem}section{border-top:1px solid var(--line);padding-top:15px;margin-top:22px}.lanes,.actions,.schedule,.review{display:flex;gap:8px;flex-wrap:wrap;align-items:end}button,select,input,textarea{font:inherit;border:1px solid var(--line);background:transparent;padding:8px}button{cursor:pointer}button.active{outline:2px solid currentColor}textarea{width:100%;min-height:100px;margin:10px 0;resize:vertical}.schedule{padding:10px;border:1px solid var(--line);margin:8px 0}.schedule label,.review label{display:grid;gap:3px;font-size:.78rem}.schedule input:not([type=checkbox]),.review input{min-width:190px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.list{border:1px solid var(--line);max-height:390px;overflow:auto}.entry{padding:10px;border-bottom:1px solid var(--line);white-space:pre-wrap;overflow-wrap:anywhere}.entry:last-child{border-bottom:0}.entry.due{border-left:4px solid var(--due)}.meta{font:11px/1.5 ui-monospace,monospace;color:var(--muted);margin-top:6px}.badge{display:inline-block;border:1px solid currentColor;padding:1px 5px;margin-right:5px;font:11px ui-monospace,monospace}.raw{white-space:pre-wrap}.entry .actions{margin-top:8px}.entry button{padding:4px 7px;font-size:.78rem}dialog{max-width:620px;width:calc(100% - 24px);border:1px solid var(--line);padding:18px}dialog::backdrop{background:#0009}.hidden{display:none!important}.empty{padding:13px;color:var(--muted)}
+.week-grid{display:grid;grid-template-columns:repeat(7,minmax(140px,1fr));gap:6px;overflow-x:auto}.week-day{border:1px solid var(--line);min-height:120px}.week-day h3{padding:7px;margin:0;border-bottom:1px solid var(--line)}.weekday-picks{display:flex;gap:6px;flex-wrap:wrap}.weekday-picks label{display:flex;align-items:center;gap:5px;padding:6px 8px;border:1px solid var(--line);cursor:pointer}.weekday-picks input[type=checkbox]{min-width:0;width:1.1rem;height:1.1rem;margin:0;padding:0}.weekday-summary{flex-basis:100%;font-family:ui-monospace,monospace}.today-row{border:1px solid var(--line);padding:10px;margin:8px 0}.today-row textarea{min-height:62px}.history-state{font-family:ui-monospace,monospace}
+@media(max-width:720px){body{padding:12px}.grid{grid-template-columns:1fr}.top{display:block}.schedule{display:grid;grid-template-columns:1fr}.schedule input:not([type=checkbox]){width:100%}.list{max-height:none}.week-grid{grid-template-columns:repeat(7,minmax(175px,1fr))}button{min-height:42px}}
+</style></head><body>
+<div id="fileWarning" class="status error hidden"><strong>Home is not running.</strong> This file is only the interface source. SAVE, history, and export are disabled because they cannot persist anything here.</div>
+<div class="top"><div><h1>HOME</h1><div class="muted">Raw capture → explicit commitment → temporal projection → explicit feedback.</div></div><div id="health" class="lan muted">checking…</div></div>
+<div id="status" class="status" role="status" aria-live="polite"></div>
 
-  <div class="service" id="serviceStatus" role="status">Checking Home service…</div>
-  <div class="service error" id="offlineNotice" role="alert">
-    <strong>Home is not running.</strong><br />
-    This file is only the interface source. SAVE, history, and export are disabled because they cannot persist anything here.
-    Launch <strong>Home Capture</strong> using the Home Capture launcher, then use the window it opens.
-  </div>
+<section class="due-now"><h2>DUE NOW</h2><div class="muted">Due means the scheduled note returned to attention. It does not mean executed or successful.</div><div id="eventDueList" class="list"></div></section>
 
-  <main id="operationalSurface">
-    <div class="modes">
-      <button data-mode="care">CARE</button>
-      <button data-mode="commit">COMMIT</button>
-      <button data-mode="develop">DEVELOP</button>
-    </div>
+<section><h2>CAPTURE</h2><div class="lanes" id="lanes"><button data-lane="care">CARE</button><button data-lane="commit">COMMIT</button><button data-lane="develop">DEVELOP</button></div><div id="hint" class="muted"></div><textarea id="captureText" placeholder="Write exactly what should be retained."></textarea>
+<div id="captureSchedule" class="schedule hidden"><label>Start (optional)<input id="startAt" type="datetime-local"></label><label>End (optional)<input id="endAt" type="datetime-local"></label><label>Report after (optional)<input id="reportAt" type="datetime-local"></label><label>Recurrence<select id="recurrenceType"><option value="NONE">ONE-SHOT</option><option value="WEEKLY_PATTERN">WEEKLY PATTERN</option></select></label><div id="weeklyPattern" class="hidden"><div class="weekday-picks" id="weeklyDays"><label><input type="checkbox" value="MON">MON</label><label><input type="checkbox" value="TUE">TUE</label><label><input type="checkbox" value="WED">WED</label><label><input type="checkbox" value="THU">THU</label><label><input type="checkbox" value="FRI">FRI</label><label><input type="checkbox" value="SAT">SAT</label><label><input type="checkbox" value="SUN">SUN</label></div><div id="weeklyDaysSummary" class="weekday-summary">SELECTED DAYS: NONE</div><label>Placement<select id="temporalPlacement"><option value="">UNSPECIFIED</option><option>ANYTIME</option><option>MORNING</option><option>AFTERNOON</option><option>EVENING</option></select></label></div></div>
+<div class="actions"><button id="save">SAVE</button><button id="download">DOWNLOAD RAW JSONL</button><button id="copyPacket">COPY RECENT RAW</button></div></section>
 
-    <div class="hint" id="hint">Choose a lane. Explore stays outside Home v0.</div>
-    <textarea id="text" placeholder="Choose CARE, COMMIT, or DEVELOP first."></textarea>
-    <div class="actions">
-      <button class="save" id="save">SAVE CAPTURE</button>
-      <button id="copyPacket">COPY RECENT FOR CHATGPT</button>
-      <button id="download">DOWNLOAD JSONL</button>
-    </div>
-    <div class="status" id="status" aria-live="polite"></div>
+<div class="grid"><section><h2>REPORT DUE</h2><div class="muted">Time creates a request for explicit feedback. It does not create a resolution.</div><div id="dueList" class="list"></div></section><section><h2>ACTIVE ONE-SHOT COMMITMENTS</h2><div class="muted">Unresolved non-recurring commitments retain the existing terminal lifecycle.</div><div id="activeList" class="list"></div></section></div>
+<section><h2>REGULAR WEEK</h2><div class="muted">A projection of active weekly commitments. Density is visible but is not scored, judged, or rebalanced.</div><div id="weekGrid" class="week-grid"></div></section>
+<section><h2>TODAY / DAILY REPORT</h2><div id="todayMeta" class="muted"></div><div id="todayReports"></div><button id="submitTodayReports">SUBMIT ENTERED REPORTS</button></section>
+<section><h2>RECURRENCE HISTORY</h2><div class="actions"><label>Recurring commitment <select id="recurrenceHistorySelect"><option value="">SELECT</option></select></label></div><div id="recurrenceHistory" class="list"><div class="empty">Select a recurring commitment.</div></div></section>
+<div class="grid"><section><h2>CARE HISTORY</h2><div id="careList" class="list"></div></section><section><h2>COMMITMENT HISTORY</h2><div class="actions"><label>Resolution <select id="resolutionFilter"><option value="">ALL</option><option>COMPLETED</option><option>REVISED</option><option>RELEASED</option><option>BYPASSED</option><option>FORGOTTEN</option></select></label></div><div id="historyList" class="list"></div></section></div>
+<section><h2>DEVELOP HISTORY</h2><div id="developList" class="list"></div></section>
+<div class="grid"><section><h2>FUTURE CHAT NOTE</h2><div class="muted">Creates an authoritative Home event from Chat to Chat. It does not create a Reed commitment and will not execute automatically.</div><label>Due at<input id="chatNoteDue" type="datetime-local"></label><textarea id="chatNoteInstruction" placeholder="Raw instruction for future Chat"></textarea><label>Context refs, one per line<textarea id="chatNoteRefs" placeholder="home:commitment:…"></textarea></label><button id="createChatNote">SCHEDULE CHAT NOTE</button><h3>SCHEDULED EVENTS</h3><div id="eventScheduledList" class="list"></div><h3>EVENT HISTORY</h3><div id="eventHistoryList" class="list"></div></section><section><h2>CHAT HOME</h2><div class="muted"><strong>Chat Home is not Reed Home.</strong> Recommendations are not commitments. Agent commitments require an actual execution path.</div><label>Current pressure<textarea id="chatPressure"></textarea></label><label>Active recommendations, one per line<textarea id="chatRecommendations"></textarea></label><label>Unresolved questions, one per line<textarea id="chatQuestions"></textarea></label><label>Continuation refs, one per line<textarea id="chatRefs"></textarea></label><button id="saveChatHome">SAVE CHAT HOME</button><div id="chatMeta" class="meta"></div><div class="actions"><a href="/agent_bridge/chat_now.json">chat_now.json</a><a href="/agent_bridge/due_events.json">due_events.json</a></div></section></div>
+<section><h2>CALENDAR PROJECTION</h2><div class="muted">Calendar is a reminder projection only. Home remains authoritative for commitment standing and resolution.</div><div class="review"><label>First daily review<input id="reviewStart" type="datetime-local"></label><label>Minutes<input id="reviewDuration" type="number" min="1" max="1440" value="15"></label><button id="reviewCalendar">DOWNLOAD DAILY REVIEW .ICS</button></div></section>
 
-    <section class="history">
-      <h2>History</h2>
-      <div class="filters">
-        <select id="laneFilter" aria-label="Filter history by lane">
-          <option value="all">ALL</option>
-          <option value="care">CARE</option>
-          <option value="commit">COMMIT</option>
-          <option value="develop">DEVELOP</option>
-        </select>
-        <input id="search" type="search" placeholder="Search raw capture text" />
-        <select id="order" aria-label="History order">
-          <option value="desc">NEWEST FIRST</option>
-          <option value="asc">OLDEST FIRST</option>
-        </select>
-      </div>
-      <div class="history-grid">
-        <div class="history-list" id="historyList" aria-label="Retained captures"></div>
-        <div class="detail" id="detail">
-          <span class="muted">Select a retained capture to inspect its unmodified fields.</span>
-        </div>
-      </div>
-    </section>
-  </main>
-
+<dialog id="resolveDialog"><form method="dialog" id="resolveForm"><h2>REPORT COMMITMENT</h2><div id="resolveRef" class="meta"></div><div id="resolveText" class="raw"></div><label>Resolution <select id="resolveMode" required><option>COMPLETED</option><option>REVISED</option><option>RELEASED</option><option>BYPASSED</option><option>FORGOTTEN</option></select></label><label><div>What happened? (optional, preserved exactly)</div><textarea id="feedback"></textarea></label><div id="replacementFields" class="hidden"><h3>REPLACEMENT COMMITMENT</h3><textarea id="replacementText" placeholder="New explicit commitment"></textarea><div class="schedule"><label>Start<input id="replacementStart" type="datetime-local"></label><label>End<input id="replacementEnd" type="datetime-local"></label><label>Report after<input id="replacementReport" type="datetime-local"></label><label>Recurrence<select id="replacementRecurrence"><option value="NONE">ONE-SHOT</option><option value="WEEKLY_PATTERN">WEEKLY PATTERN</option></select></label><div id="replacementWeekly" class="hidden"><div class="weekday-picks" id="replacementDays"><label><input type="checkbox" value="MON">MON</label><label><input type="checkbox" value="TUE">TUE</label><label><input type="checkbox" value="WED">WED</label><label><input type="checkbox" value="THU">THU</label><label><input type="checkbox" value="FRI">FRI</label><label><input type="checkbox" value="SAT">SAT</label><label><input type="checkbox" value="SUN">SUN</label></div><label>Placement<select id="replacementPlacement"><option value="">UNSPECIFIED</option><option>ANYTIME</option><option>MORNING</option><option>AFTERNOON</option><option>EVENING</option></select></label></div></div></div><div class="actions"><button id="cancelResolution" type="button">CANCEL</button><button id="confirmResolution" type="submit">RECORD RESOLUTION</button></div></form></dialog>
+<dialog id="amendDialog"><form method="dialog" id="amendForm"><h2>AMEND COMMITMENT SPECIFICATION</h2><div id="amendRef" class="meta"></div><h3>CURRENT SPECIFICATION</h3><div id="amendCurrent" class="entry"></div><h3>PROPOSED SPECIFICATION</h3><label>Amendment kind<select id="amendKind" required><option>RECORDING_CORRECTION</option><option>INTENTION_CHANGE</option></select></label><label>Statement<textarea id="amendText" required></textarea></label><label>Exact reason (optional)<textarea id="amendReason"></textarea></label><div class="schedule"><label>Start<input id="amendStart" type="datetime-local"></label><label>End<input id="amendEnd" type="datetime-local"></label><label>Report after<input id="amendReport" type="datetime-local"></label><label>Recurrence<select id="amendRecurrence"><option value="NONE">ONE-SHOT</option><option value="WEEKLY_PATTERN">WEEKLY PATTERN</option></select></label><div id="amendWeekly" class="hidden"><div class="weekday-picks" id="amendDays"><label><input type="checkbox" value="MON">MON</label><label><input type="checkbox" value="TUE">TUE</label><label><input type="checkbox" value="WED">WED</label><label><input type="checkbox" value="THU">THU</label><label><input type="checkbox" value="FRI">FRI</label><label><input type="checkbox" value="SAT">SAT</label><label><input type="checkbox" value="SUN">SUN</label></div><div id="amendDaysSummary" class="weekday-summary">SELECTED DAYS: NONE</div><label>Placement<select id="amendPlacement"><option value="">UNSPECIFIED</option><option>ANYTIME</option><option>MORNING</option><option>AFTERNOON</option><option>EVENING</option></select></label></div></div><h3>SPECIFICATION HISTORY</h3><div id="amendHistory" class="list"></div><div class="actions"><button id="cancelAmendment" type="button">CANCEL</button><button id="confirmAmendment" type="submit">RECORD AMENDMENT</button></div></form></dialog>
 <script>
-const isFileAccess = window.location.protocol === 'file:';
-let mode = null;
-let operational = false;
-let selectedRef = null;
-let refreshTimer = null;
-let searchTimer = null;
-
-const hints = {
-  care: 'CARE records what is happening and what needs protection/restoration. It creates no commitment.',
-  commit: 'COMMIT is deliberate adoption. Saving here is the explicit act that marks this statement as a commitment capture.',
-  develop: 'DEVELOP records explicit build / DME work / experiment activity. It does not become project standing or personal commitment by itself.'
-};
-const placeholders = {
-  care: 'What is happening? What needs care? What would help?',
-  commit: 'What are you deliberately committing to? What does done mean?',
-  develop: 'What are you building, testing, or working on right now?'
-};
-
-function setControlsEnabled(enabled) {
-  document.querySelectorAll('#operationalSurface button, #operationalSurface textarea, #operationalSurface input, #operationalSurface select')
-    .forEach(el => { el.disabled = !enabled; });
-}
-
-function showStatus(message, kind = '') {
-  const status = document.getElementById('status');
-  status.textContent = message;
-  status.className = `status ${kind}`.trim();
-}
-
-function showUnavailable(message) {
-  operational = false;
-  setControlsEnabled(false);
-  const service = document.getElementById('serviceStatus');
-  service.className = 'service error';
-  service.textContent = message;
-  document.getElementById('offlineNotice').style.display = 'block';
-}
-
-async function checkHealth() {
-  if (isFileAccess) {
-    showUnavailable('OFFLINE SOURCE VIEW — persistence is unavailable.');
-    return false;
-  }
-  try {
-    const response = await fetch('/api/health', {cache: 'no-store'});
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const health = await response.json();
-    if (health.service !== 'home_capture_v0' || health.status !== 'operational') {
-      throw new Error('unexpected service response');
-    }
-    operational = true;
-    setControlsEnabled(true);
-    document.getElementById('offlineNotice').style.display = 'none';
-    const service = document.getElementById('serviceStatus');
-    service.className = 'service ok';
-    const retained = `${health.capture_count} capture${health.capture_count === 1 ? '' : 's'} retained`;
-    if (health.access_mode === 'lan') {
-      const phone = health.phone_url || 'LAN address unavailable';
-      service.textContent = `HOME OPERATIONAL — ${retained} — trusted-LAN phone URL: ${phone} — public internet exposure is not supported.`;
-    } else {
-      service.textContent = `HOME OPERATIONAL — ${retained} — desktop-only mode. Use the Home Capture LAN launcher for trusted-LAN phone access.`;
-    }
-    return true;
-  } catch (error) {
-    showUnavailable(`HOME UNAVAILABLE — ${error.message}`);
-    return false;
-  }
-}
-
-document.querySelectorAll('[data-mode]').forEach(button => {
-  button.addEventListener('click', () => {
-    if (!operational) return;
-    mode = button.dataset.mode;
-    document.querySelectorAll('[data-mode]').forEach(other => other.classList.toggle('active', other === button));
-    document.getElementById('hint').textContent = hints[mode];
-    document.getElementById('text').placeholder = placeholders[mode];
-    document.getElementById('text').focus();
-  });
-});
-
-async function saveCapture() {
-  const textArea = document.getElementById('text');
-  const rawText = textArea.value;
-  if (!operational) { showStatus('Home is not running. Nothing was saved.', 'error'); return; }
-  if (!mode) { showStatus('Choose CARE, COMMIT, or DEVELOP first.', 'error'); return; }
-  if (!rawText.trim()) { showStatus('Nothing to save.', 'error'); return; }
-  const save = document.getElementById('save');
-  save.disabled = true;
-  showStatus('Saving…');
-  try {
-    const response = await fetch('/api/capture', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({mode, raw_text: rawText, client_time: new Date().toISOString()})
-    });
-    const result = await response.json().catch(() => ({}));
-    if (!response.ok) throw new Error(result.error || `HTTP ${response.status}`);
-    textArea.value = '';
-    selectedRef = result.id;
-    showStatus(`Saved ${result.mode.toUpperCase()} — ${result.id}`, 'success');
-    await Promise.all([loadHistory(), checkHealth()]);
-  } catch (error) {
-    showStatus(`Save failed — ${error.message}. The text remains in the field.`, 'error');
-  } finally {
-    save.disabled = !operational;
-  }
-}
-
-document.getElementById('save').addEventListener('click', saveCapture);
-
-document.getElementById('download').addEventListener('click', async () => {
-  if (!operational) return;
-  try {
-    const response = await fetch('/api/export.jsonl');
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const blob = await response.blob();
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'home-captures.jsonl';
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    URL.revokeObjectURL(url);
-    showStatus('Downloaded retained raw captures as JSONL.', 'success');
-  } catch (error) {
-    showStatus(`Export failed — ${error.message}`, 'error');
-  }
-});
-
-document.getElementById('copyPacket').addEventListener('click', async () => {
-  if (!operational) return;
-  try {
-    const response = await fetch('/api/export.md');
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const packet = await response.text();
-    await navigator.clipboard.writeText(packet);
-    showStatus('Copied recent raw captures. Paste them into ChatGPT when wanted.', 'success');
-  } catch (error) {
-    showStatus(`Copy failed — ${error.message}`, 'error');
-  }
-});
-
-function escapeHtml(value) {
-  return String(value).replace(/[&<>'"]/g, character => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
-  }[character]));
-}
-
-function renderDetail(record) {
-  const detail = document.getElementById('detail');
-  if (!record) {
-    detail.innerHTML = '<span class="muted">Select a retained capture to inspect its unmodified fields.</span>';
-    return;
-  }
-  detail.innerHTML = `
-    <div class="badge">${escapeHtml(record.mode.toUpperCase())}</div>
-    <pre>${escapeHtml(record.raw_text)}</pre>
-    <dl>
-      <dt>Stable ref</dt><dd>${escapeHtml(record.id)}</dd>
-      <dt>Client time</dt><dd>${escapeHtml(record.client_time || 'missing')}</dd>
-      <dt>Server UTC</dt><dd>${escapeHtml(record.created_at_utc)}</dd>
-      <dt>Origin</dt><dd>${escapeHtml(record.origin)}</dd>
-    </dl>`;
-}
-
-async function loadHistory() {
-  if (!operational) return;
-  const lane = document.getElementById('laneFilter').value;
-  const query = document.getElementById('search').value;
-  const order = document.getElementById('order').value;
-  const parameters = new URLSearchParams({lane, q: query, order, limit: '2000'});
-  try {
-    const response = await fetch(`/api/captures?${parameters}`);
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const payload = await response.json();
-    const list = document.getElementById('historyList');
-    list.innerHTML = '';
-    if (!payload.captures.length) {
-      list.innerHTML = '<div class="entry muted">No retained captures match this view.</div>';
-      renderDetail(null);
-      return;
-    }
-    let selected = null;
-    payload.captures.forEach(record => {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = `entry${record.id === selectedRef ? ' selected' : ''}`;
-      const when = record.client_time || record.created_at_utc;
-      button.innerHTML = `<div class="meta"><span class="badge">${escapeHtml(record.mode.toUpperCase())}</span> · ${escapeHtml(when)}</div><div class="entry-text">${escapeHtml(record.raw_text)}</div>`;
-      button.addEventListener('click', () => {
-        selectedRef = record.id;
-        document.querySelectorAll('.entry').forEach(item => item.classList.toggle('selected', item === button));
-        renderDetail(record);
-      });
-      list.appendChild(button);
-      if (record.id === selectedRef) selected = record;
-    });
-    renderDetail(selected);
-  } catch (error) {
-    showStatus(`History unavailable — ${error.message}`, 'error');
-  }
-}
-
-document.getElementById('laneFilter').addEventListener('change', loadHistory);
-document.getElementById('order').addEventListener('change', loadHistory);
-document.getElementById('search').addEventListener('input', () => {
-  clearTimeout(searchTimer);
-  searchTimer = setTimeout(loadHistory, 180);
-});
-
-async function initialize() {
-  setControlsEnabled(false);
-  if (await checkHealth()) {
-    await loadHistory();
-    refreshTimer = setInterval(async () => {
-      if (!document.hidden && await checkHealth()) await loadHistory();
-    }, 5000);
-  }
-}
-
-window.addEventListener('beforeunload', () => clearInterval(refreshTimer));
-initialize();
-</script>
-</body>
-</html>
+const $=id=>document.getElementById(id);let lane='care',activeCommitment=null,activeAmendment=null,refreshTimer=null,chatState=null,chatDirty=false,todayDirty=false;
+const hints={care:'CARE retains an experienced need, constraint, or pressure. It creates no commitment automatically.',commit:'COMMIT is the explicit adoption action. Scheduling remains optional.',develop:'DEVELOP retains build or experiment evidence. It creates no DME standing or commitment.'};
+function setControlsEnabled(on){document.querySelectorAll('button,input,select,textarea').forEach(x=>x.disabled=!on)}
+function showStatus(message,kind=''){const el=$('status');el.textContent=message;el.className=`status ${kind}`}
+function chooseLane(next){lane=next;document.querySelectorAll('[data-lane]').forEach(b=>b.classList.toggle('active',b.dataset.lane===lane));$('hint').textContent=hints[lane];$('captureSchedule').classList.toggle('hidden',lane!=='commit')}
+function selectedDays(id){return [...document.querySelectorAll(`#${id} input:checked`)].map(input=>input.value)}
+function updateWeekdaySummary(groupId,summaryId){const days=selectedDays(groupId);$(summaryId).textContent=`SELECTED DAYS: ${days.length?days.join(' / '):'NONE'}`}
+function iso(id){const value=$(id).value;if(!value)return null;const parsed=new Date(value);if(Number.isNaN(parsed.valueOf()))throw new Error(`Invalid time: ${id}`);return parsed.toISOString()}
+function localInput(value){if(!value)return '';const date=new Date(value);const local=new Date(date.getTime()-date.getTimezoneOffset()*60000);return local.toISOString().slice(0,16)}
+function fmt(value){return value?new Date(value).toLocaleString():'—'}
+function escapeHtml(value){const node=document.createElement('div');node.textContent=value??'';return node.innerHTML}
+async function api(path,options){const response=await fetch(path,{cache:'no-store',...options});const type=response.headers.get('content-type')||'';const payload=type.includes('json')?await response.json():await response.blob();if(!response.ok)throw new Error(payload.error||`HTTP ${response.status}`);return payload}
+async function checkHealth(){try{const health=await api('/api/health');$('health').textContent=`${health.capture_count} captures · ${health.active_commitment_count} commitments · ${health.report_due_count} reports due · ${health.due_event_count} events due · ${health.access_mode}`;if(health.scheduler_error)showStatus(`Scheduler wounded: ${health.scheduler_error}`,'error');return true}catch(error){showStatus(`Home unavailable: ${error.message}`,'error');return false}}
+async function saveCapture(){try{const body={mode:lane,raw_text:$('captureText').value,client_time:new Date().toISOString()};if(lane==='commit')Object.assign(body,{start_at:iso('startAt'),end_at:iso('endAt'),report_at:iso('reportAt'),recurrence_type:$('recurrenceType').value,weekly_days:selectedDays('weeklyDays'),temporal_placement:$('temporalPlacement').value||null});const record=await api('/api/capture',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});$('captureText').value='';['startAt','endAt','reportAt'].forEach(id=>$(id).value='');$('recurrenceType').value='NONE';$('weeklyPattern').classList.add('hidden');document.querySelectorAll('#weeklyDays input').forEach(input=>input.checked=false);updateWeekdaySummary('weeklyDays','weeklyDaysSummary');$('temporalPlacement').value='';showStatus(record.commitment?`Commitment durably created: ${record.commitment.commitment_id}`:`${lane.toUpperCase()} capture durably saved.`,'success');await loadAll()}catch(error){showStatus(`Save failed: ${error.message}`,'error')}}
+function scheduleMeta(item){return `created ${fmt(item.created_at_utc)} · start ${fmt(item.start_at)} · end ${fmt(item.end_at)} · report ${fmt(item.report_at)}`}
+function commitmentEntry(item,closed=false){const div=document.createElement('div');div.className=`entry ${item.report_due?'due':''}`;let badges=`<span class="badge">${closed?escapeHtml(item.resolution_mode):item.report_due?'REPORT_DUE':'ACTIVE'}</span><span class="badge">${escapeHtml(item.recurrence_type)}</span><span class="badge">${escapeHtml(item.amendment_kind)}</span>`;let recurrence=item.recurrence_type==='WEEKLY_PATTERN'?`<br>${escapeHtml(item.weekly_days.join(' '))} · ${escapeHtml(item.temporal_placement||'UNSPECIFIED')}`:'';let footer=closed?`resolved ${fmt(item.resolved_at_utc)}${item.replacement_commitment_id?` · revised_by ${escapeHtml(item.replacement_commitment_id)}`:''}`:scheduleMeta(item);div.innerHTML=`${badges}<div class="raw">${escapeHtml(item.raw_text)}</div><div class="meta">${escapeHtml(item.commitment_id)}<br>spec ${escapeHtml(item.specification_id)}<br>${footer}${recurrence}</div>${closed&&item.raw_feedback!==null?`<div class="raw"><strong>What happened:</strong> ${escapeHtml(item.raw_feedback)}</div>`:''}`;const actions=document.createElement('div');actions.className='actions';const specs=document.createElement('button');specs.textContent=closed?'SPECIFICATION HISTORY':'AMEND / HISTORY';specs.onclick=()=>openAmendment(item,closed);actions.append(specs);if(!closed){const report=document.createElement('button');report.textContent='REPORT / RESOLVE';report.onclick=()=>openResolution(item);actions.append(report);if(item.recurrence_type==='WEEKLY_PATTERN'){const history=document.createElement('button');history.textContent='RECURRENCE HISTORY';history.onclick=()=>selectRecurrenceHistory(item.commitment_id);actions.append(history)}if(item.start_at){const calendar=document.createElement('button');calendar.textContent='ADD TO CALENDAR';calendar.onclick=()=>download(`/api/commitments/${encodeURIComponent(item.commitment_id)}/calendar.ics`,'home-commitment.ics','Calendar projection downloaded.');actions.append(calendar)}}div.append(actions);return div}
+function rawEntry(item){const div=document.createElement('div');div.className='entry';div.innerHTML=`<div class="raw">${escapeHtml(item.raw_text)}</div><div class="meta">${escapeHtml(item.id)} · ${fmt(item.created_at_utc)}</div>`;return div}
+function eventEntry(item){const div=document.createElement('div');div.className=`entry ${item.status==='DUE'?'due':''}`;div.innerHTML=`<span class="badge">${escapeHtml(item.status)}</span><div class="raw">${escapeHtml(item.raw_instruction)}</div><div class="meta">author ${escapeHtml(item.author)} · target ${escapeHtml(item.target_actor)}<br>due ${fmt(item.due_at)} · triggered ${fmt(item.triggered_at)} · acknowledged ${fmt(item.acknowledged_at)}<br>${escapeHtml(item.event_id)}<br>refs: ${escapeHtml(item.context_refs.join(', ')||'none')}</div>`;if(item.status==='DUE'||item.status==='SCHEDULED'){const actions=document.createElement('div');actions.className='actions';if(item.status==='DUE'){const ack=document.createElement('button');ack.textContent='ACKNOWLEDGE';ack.onclick=()=>transitionEvent(item.event_id,'acknowledge');actions.append(ack)}const cancel=document.createElement('button');cancel.textContent='CANCEL';cancel.onclick=()=>transitionEvent(item.event_id,'cancel');actions.append(cancel);div.append(actions)}return div}
+function renderList(id,items,builder,empty){const list=$(id);list.replaceChildren();if(!items.length){const div=document.createElement('div');div.className='empty';div.textContent=empty;list.append(div);return}items.forEach(item=>list.append(builder(item)))}
+function renderChat(state){chatState=state;if(!chatDirty){$('chatPressure').value=typeof state.current_pressure==='string'?state.current_pressure:state.current_pressure?JSON.stringify(state.current_pressure):'';$('chatRecommendations').value=state.active_recommendations.join('\n');$('chatQuestions').value=state.unresolved_questions.join('\n');$('chatRefs').value=state.continuation_refs.join('\n')}$('chatMeta').textContent=`attribution Chat · generated ${fmt(state.generated_at)} · updated ${fmt(state.updated_at)} · ${state.explicit_executable_agent_commitments.length} executable agent commitment(s)`}
+function renderWeek(days){const grid=$('weekGrid');grid.replaceChildren();Object.entries(days).forEach(([day,items])=>{const column=document.createElement('div');column.className='week-day';const title=document.createElement('h3');title.textContent=day;column.append(title);if(!items.length){const empty=document.createElement('div');empty.className='empty';empty.textContent='—';column.append(empty)}items.forEach(item=>{const entry=document.createElement('div');entry.className='entry';entry.innerHTML=`<span class="badge">${escapeHtml(item.temporal_placement||'UNSPECIFIED')}</span><div class="raw">${escapeHtml(item.raw_text)}</div><div class="meta">${escapeHtml(item.commitment_id)}</div>`;column.append(entry)});grid.append(column)})}
+function renderToday(today){$('todayMeta').textContent=`${today.weekday} ${today.local_date} · unanswered occurrences remain NO_REPORT`;$('todayReports').dataset.localDate=today.local_date;if(todayDirty)return;const surface=$('todayReports');surface.replaceChildren();if(!today.commitments.length){const empty=document.createElement('div');empty.className='empty';empty.textContent='No recurring commitments are expected today.';surface.append(empty);return}today.commitments.forEach(item=>{const row=document.createElement('div');row.className='today-row';row.dataset.commitmentId=item.commitment_id;const report=item.occurrence_report;row.dataset.reported=report?'true':'false';row.innerHTML=`<span class="badge">${escapeHtml(item.temporal_placement||'UNSPECIFIED')}</span><div class="raw">${escapeHtml(item.raw_text)}</div><div class="meta">${escapeHtml(item.commitment_id)}</div><label>Outcome (optional)<select class="today-outcome" ${report?'disabled':''}><option value="">NO CATEGORY</option><option>MET</option><option>PARTIAL</option><option>NOT_MET</option><option>NOT_APPLICABLE</option></select></label><label>Raw feedback (optional)<textarea class="today-feedback" ${report?'disabled':''}></textarea></label>${report?`<div class="meta">reported ${fmt(report.reported_at)} · ${escapeHtml(report.outcome||'NO STRUCTURED OUTCOME')}</div>`:''}`;if(report){row.querySelector('.today-outcome').value=report.outcome||'';row.querySelector('.today-feedback').value=report.raw_feedback??''}else{row.querySelectorAll('select,textarea').forEach(control=>control.addEventListener('input',()=>todayDirty=true))}surface.append(row)})}
+function updateRecurrenceChoices(items){const select=$('recurrenceHistorySelect');const selected=select.value;const recurring=items.filter(item=>item.recurrence_type==='WEEKLY_PATTERN');select.innerHTML='<option value="">SELECT</option>';recurring.forEach(item=>{const option=document.createElement('option');option.value=item.commitment_id;option.textContent=`${item.current_status} · ${item.raw_text.slice(0,70)}`;select.append(option)});if(recurring.some(item=>item.commitment_id===selected))select.value=selected}
+async function loadRecurrenceHistory(){const identity=$('recurrenceHistorySelect').value;if(!identity){$('recurrenceHistory').innerHTML='<div class="empty">Select a recurring commitment.</div>';return}try{const result=await api(`/api/recurrence-history?commitment_id=${encodeURIComponent(identity)}`);const list=$('recurrenceHistory');list.replaceChildren();if(!result.occurrences.length){list.innerHTML='<div class="empty">No expected occurrences yet.</div>';return}result.occurrences.forEach(item=>{const entry=document.createElement('div');entry.className='entry';entry.innerHTML=`<span class="badge history-state">${escapeHtml(item.state)}</span><strong>${escapeHtml(item.intended_local_date)}</strong>${item.report&&item.report.raw_feedback!==null?`<div class="raw">${escapeHtml(item.report.raw_feedback)}</div>`:''}`;list.append(entry)})}catch(error){showStatus(`History failed: ${error.message}`,'error')}}
+function selectRecurrenceHistory(identity){$('recurrenceHistorySelect').value=identity;loadRecurrenceHistory();$('recurrenceHistorySelect').scrollIntoView({behavior:'smooth',block:'center'})}
+async function submitTodayReports(){const reports=[];document.querySelectorAll('#todayReports .today-row').forEach(row=>{if(row.dataset.reported==='true')return;const outcome=row.querySelector('.today-outcome').value;const feedback=row.querySelector('.today-feedback').value;if(outcome||feedback!=='')reports.push({commitment_id:row.dataset.commitmentId,intended_local_date:$('todayReports').dataset.localDate,outcome:outcome||null,raw_feedback:feedback})});if(!reports.length){showStatus('No new daily reports were entered.','error');return}try{const result=await api('/api/recurring-reports',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({reports})});todayDirty=false;showStatus(`${result.reports.length} recurring report(s) durably retained. Parent commitments remain active.`,'success');await loadAll();await loadRecurrenceHistory()}catch(error){showStatus(`Daily report failed: ${error.message}`,'error')}}
+async function loadAll(){try{const filter=$('resolutionFilter').value;const [active,due,history,care,develop,eventDue,eventOpen,eventHistory,chat,week,today]=await Promise.all([api('/api/commitments?view=active'),api('/api/commitments?view=report_due'),api(`/api/commitments?view=history${filter?`&resolution=${filter}`:''}`),api('/api/captures?lane=care&limit=2000'),api('/api/captures?lane=develop&limit=2000'),api('/api/events?view=due'),api('/api/events?view=scheduled'),api('/api/events?view=history'),api('/api/chat-home'),api('/api/regular-week'),api('/api/today-recurring')]);renderList('activeList',active.commitments.filter(item=>item.recurrence_type==='NONE'),x=>commitmentEntry(x),'No active one-shot commitments.');renderList('dueList',due.commitments,x=>commitmentEntry(x),'No commitments currently require a report.');renderList('historyList',history.commitments,x=>commitmentEntry(x,true),'No closed commitments match this view.');renderList('careList',care.captures,rawEntry,'No CARE captures.');renderList('developList',develop.captures,rawEntry,'No DEVELOP captures.');renderList('eventDueList',eventDue.events,eventEntry,'No scheduled events are due now.');renderList('eventScheduledList',eventOpen.events,eventEntry,'No future scheduled events.');renderList('eventHistoryList',eventHistory.events,eventEntry,'No acknowledged or cancelled events.');renderWeek(week.days);renderToday(today);updateRecurrenceChoices([...active.commitments,...history.commitments]);renderChat(chat);await checkHealth()}catch(error){showStatus(`Refresh failed: ${error.message}`,'error')}}
+function textLines(id){return $(id).value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean)}
+async function createChatNote(){try{const event=await api('/api/chat-home/future-note',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({due_at:iso('chatNoteDue'),raw_instruction:$('chatNoteInstruction').value,context_refs:textLines('chatNoteRefs')})});$('chatNoteInstruction').value='';$('chatNoteRefs').value='';$('chatNoteDue').value='';showStatus(`Future Chat note durably scheduled: ${event.event_id}`,'success');await loadAll()}catch(error){showStatus(`Scheduling failed: ${error.message}`,'error')}}
+async function transitionEvent(identity,action){try{const event=await api(`/api/events/${encodeURIComponent(identity)}/${action}`,{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});showStatus(action==='acknowledge'?`Event acknowledged. No consequence inferred: ${event.event_id}`:`Event cancelled. Referenced state was not changed: ${event.event_id}`,'success');await loadAll()}catch(error){showStatus(`Event ${action} failed: ${error.message}`,'error')}}
+async function saveChatHome(){try{const state=await api('/api/chat-home',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({current_pressure:$('chatPressure').value||null,active_recommendations:textLines('chatRecommendations'),unresolved_questions:textLines('chatQuestions'),continuation_refs:textLines('chatRefs'),explicit_executable_agent_commitments:chatState?.explicit_executable_agent_commitments||[]})});chatDirty=false;renderChat(state);showStatus('Chat Home durably updated. Reed Home was not changed.','success')}catch(error){showStatus(`Chat Home save failed: ${error.message}`,'error')}}
+function specificationHtml(item){const days=item.recurrence_type==='WEEKLY_PATTERN'?`${item.weekly_days.join(' ')} · ${item.temporal_placement||'UNSPECIFIED'}`:'ONE-SHOT';return `<span class="badge">${escapeHtml(item.amendment_kind)}</span><div class="raw">${escapeHtml(item.statement)}</div><div class="meta">${escapeHtml(item.specification_id)}<br>effective ${fmt(item.effective_at)} · ${escapeHtml(days)}${item.raw_amendment_reason!==null?`<br>reason: ${escapeHtml(item.raw_amendment_reason)}`:''}</div>`}
+async function openAmendment(item,readOnly=false){try{activeAmendment=item;const result=await api(`/api/commitments/${encodeURIComponent(item.commitment_id)}/specifications`);$('amendRef').textContent=`commitment ${item.commitment_id} · current spec ${item.specification_id}`;$('amendCurrent').innerHTML=specificationHtml({...item,statement:item.raw_text});$('amendText').value=item.raw_text;$('amendReason').value='';$('amendKind').value='RECORDING_CORRECTION';$('amendStart').value=localInput(item.start_at);$('amendEnd').value=localInput(item.end_at);$('amendReport').value=localInput(item.report_at);$('amendRecurrence').value=item.recurrence_type;$('amendWeekly').classList.toggle('hidden',item.recurrence_type!=='WEEKLY_PATTERN');document.querySelectorAll('#amendDays input').forEach(input=>input.checked=item.weekly_days.includes(input.value));updateWeekdaySummary('amendDays','amendDaysSummary');$('amendPlacement').value=item.temporal_placement||'';const history=$('amendHistory');history.replaceChildren();result.specifications.forEach(spec=>{const entry=document.createElement('div');entry.className='entry';entry.innerHTML=specificationHtml(spec);history.append(entry)});['amendKind','amendText','amendReason','amendStart','amendEnd','amendReport','amendRecurrence','amendPlacement'].forEach(id=>$(id).disabled=readOnly);document.querySelectorAll('#amendDays input').forEach(input=>input.disabled=readOnly);$('confirmAmendment').classList.toggle('hidden',readOnly);$('amendDialog').showModal()}catch(error){showStatus(`Specification history failed: ${error.message}`,'error')}}
+async function amendCommitment(event){event.preventDefault();if(!activeAmendment)return;const body={amendment_kind:$('amendKind').value,raw_text:$('amendText').value,raw_amendment_reason:$('amendReason').value||null,start_at:iso('amendStart'),end_at:iso('amendEnd'),report_at:iso('amendReport'),recurrence_type:$('amendRecurrence').value,weekly_days:selectedDays('amendDays'),temporal_placement:$('amendPlacement').value||null};try{const result=await api(`/api/commitments/${encodeURIComponent(activeAmendment.commitment_id)}/amend`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});$('amendDialog').close();showStatus(`Specification amended; commitment identity preserved: ${result.commitment.commitment_id}`,'success');await loadAll()}catch(error){showStatus(`Amendment failed: ${error.message}`,'error')}}
+function openResolution(item){activeCommitment=item;$('resolveRef').textContent=item.commitment_id;$('resolveText').textContent=item.raw_text;$('feedback').value='';$('resolveMode').value='COMPLETED';$('replacementText').value='';['replacementStart','replacementEnd','replacementReport'].forEach(id=>$(id).value='');$('replacementRecurrence').value='NONE';$('replacementWeekly').classList.add('hidden');document.querySelectorAll('#replacementDays input').forEach(input=>input.checked=false);$('replacementPlacement').value='';$('replacementFields').classList.add('hidden');$('resolveDialog').showModal()}
+async function resolveCommitment(event){event.preventDefault();if(!activeCommitment)return;const mode=$('resolveMode').value;const body={mode,raw_feedback:$('feedback').value};if(mode==='REVISED')body.replacement={raw_text:$('replacementText').value,client_time:new Date().toISOString(),start_at:iso('replacementStart'),end_at:iso('replacementEnd'),report_at:iso('replacementReport'),recurrence_type:$('replacementRecurrence').value,weekly_days:selectedDays('replacementDays'),temporal_placement:$('replacementPlacement').value||null};try{const result=await api(`/api/commitments/${encodeURIComponent(activeCommitment.commitment_id)}/resolve`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});$('resolveDialog').close();showStatus(mode==='REVISED'?`Original closed as REVISED; replacement created: ${result.replacement_commitment.commitment_id}`:`Commitment durably closed as ${mode}.`,'success');await loadAll()}catch(error){showStatus(`Resolution failed: ${error.message}`,'error')}}
+async function download(path,name,success){try{const response=await fetch(path,{cache:'no-store'});if(!response.ok){const value=await response.json();throw new Error(value.error||`HTTP ${response.status}`)}const blob=await response.blob();const link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download=name;link.click();setTimeout(()=>URL.revokeObjectURL(link.href),1000);showStatus(success,'success')}catch(error){showStatus(`Export failed: ${error.message}`,'error')}}
+$('recurrenceType').onchange=()=>$('weeklyPattern').classList.toggle('hidden',$('recurrenceType').value!=='WEEKLY_PATTERN');$('replacementRecurrence').onchange=()=>$('replacementWeekly').classList.toggle('hidden',$('replacementRecurrence').value!=='WEEKLY_PATTERN');$('amendRecurrence').onchange=()=>$('amendWeekly').classList.toggle('hidden',$('amendRecurrence').value!=='WEEKLY_PATTERN');document.querySelectorAll('#weeklyDays input').forEach(input=>input.addEventListener('change',()=>updateWeekdaySummary('weeklyDays','weeklyDaysSummary')));document.querySelectorAll('#amendDays input').forEach(input=>input.addEventListener('change',()=>updateWeekdaySummary('amendDays','amendDaysSummary')));$('submitTodayReports').onclick=submitTodayReports;$('recurrenceHistorySelect').onchange=loadRecurrenceHistory;
+document.querySelectorAll('[data-lane]').forEach(button=>button.onclick=()=>chooseLane(button.dataset.lane));$('save').onclick=saveCapture;$('resolutionFilter').onchange=loadAll;$('resolveMode').onchange=()=>$('replacementFields').classList.toggle('hidden',$('resolveMode').value!=='REVISED');$('cancelResolution').onclick=()=>$('resolveDialog').close();$('resolveForm').onsubmit=resolveCommitment;$('cancelAmendment').onclick=()=>$('amendDialog').close();$('amendForm').onsubmit=amendCommitment;$('createChatNote').onclick=createChatNote;$('saveChatHome').onclick=saveChatHome;['chatPressure','chatRecommendations','chatQuestions','chatRefs'].forEach(id=>$(id).addEventListener('input',()=>chatDirty=true));$('download').onclick=()=>download('/api/export.jsonl','home-captures.jsonl','Raw capture export downloaded.');$('copyPacket').onclick=async()=>{try{const response=await fetch('/api/export.md');if(!response.ok)throw new Error(`HTTP ${response.status}`);await navigator.clipboard.writeText(await response.text());showStatus('Recent raw captures copied.','success')}catch(error){showStatus(`Copy failed: ${error.message}`,'error')}};$('reviewCalendar').onclick=()=>{try{const start=iso('reviewStart');if(!start)throw new Error('Choose the first review time.');download(`/api/calendar/review.ics?start_at=${encodeURIComponent(start)}&duration_minutes=${encodeURIComponent($('reviewDuration').value)}`,'home-commitment-report.ics','Daily review calendar projection downloaded.')}catch(error){showStatus(`Export failed: ${error.message}`,'error')}};
+async function initialize(){chooseLane('care');if (window.location.protocol === 'file:'){$('fileWarning').classList.remove('hidden');setControlsEnabled(false);return}if(await checkHealth()){showStatus('Home is ready.');await loadAll();refreshTimer=setInterval(loadAll,5000)}}initialize();
+</script></body></html>
