@@ -36,8 +36,39 @@ FRONTIER_CHANGED
 
 - `events.jsonl` — append-only continuity events.
 - `cursors/<consumer>.json` — consumer-relative last-seen event coordinate.
+- `tools/continuity.py` — minimal local CLI for reading deltas, appending activity, and advancing a cursor.
 
 The initial consumers are `codex`, `chatgpt`, and `grep-kitty`.
+
+## Local CLI
+
+From the repository root:
+
+```text
+python tools/continuity.py delta --consumer codex
+python tools/continuity.py delta --consumer grep-kitty
+```
+
+Append one recorded activity event:
+
+```text
+python tools/continuity.py append \
+  --actor codex \
+  --surface vscode-cli \
+  --kind EXECUTION_RESULT \
+  --summary "bounded task completed" \
+  --ref commit:abc123
+```
+
+After a consumer has actually consumed through an event:
+
+```text
+python tools/continuity.py ack --consumer codex --event-id CE-000001
+```
+
+`--event-id latest` is the default, but consumers should not advance past events they have not actually consumed.
+
+The CLI is intentionally file-backed and single-writer-naive. It is a probe surface, not a synchronization service.
 
 ## Event record v0
 
