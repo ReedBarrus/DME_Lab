@@ -12,13 +12,17 @@ DME_Theory is lineage, not authority.
 
 Do not begin by reconstructing the entire project from a fixed document precedence chain.
 
-Begin from the consumer-relative continuity delta:
+Before consequential work, perform the synchronization ritual in `continuity/SYNC_RITUAL.md`.
+
+Then begin from the consumer-relative continuity delta:
 
 ```text
-read continuity/cursors/<consumer>.json
+identify consumer
+-> read continuity/cursors/<consumer>.json
 -> read continuity/events.jsonl after last_seen_event_id
--> identify what occurred since the consumer last participated
+-> orient to the bounded delta
 -> follow only authoritative refs required by the present operation
+-> declare local continuity
 -> work
 -> append consequential activity
 -> advance the consumer cursor after consumption
@@ -67,7 +71,7 @@ Build a provenance-preserving observability system that begins with bounded even
 
 The current continuity pressure is narrower:
 
-> Test whether consumer-relative delta recovery can reduce cross-invocation reconstruction burden while preserving equal or better standing fidelity.
+> Test whether consumer-relative delta recovery can reduce cross-invocation reconstruction burden while preserving equal or better standing fidelity, and whether that durable state is reliably instantiated without Reed manually transporting it.
 
 ## Development posture
 
