@@ -1,0 +1,21 @@
+{
+  "council": "MULTI-ROUND-DELIBERATION-001",
+  "round": "CHATGPT-2",
+  "POSITION": "Replace the inspect-command proposal with a narrower startup intervention candidate: a root AGENTS.md that points Codex to the existing AGENT_CONTEXT.md continuity ritual before consequential repository work.",
+  "ATTACK": "The repository currently has no root AGENTS.md, so AGENT_CONTEXT.md is durable documentation but not shown to be an automatically injected Codex startup surface. Adding AGENTS.md still would not establish ChatGPT delivery or compliance and must be pressure-tested rather than assumed effective.",
+  "WHAT_SURVIVES": "A tiny platform-recognized pointer could target the observed invocation boundary without duplicating delta, ref inspection, semantic application, or acknowledgement logic.",
+  "WHAT_FRACTURES": "The read-only inspect implementation is displaced; any claim of cross-agent automatic delivery, universal startup, or reliable compliance remains unsupported.",
+  "NEW_DISTINCTION_IF_ANY": "repository-documented protocol != runtime-injected startup instruction != observed startup compliance",
+  "SMALLEST_EXECUTABLE_DISCRIMINATOR": "Add only a root AGENTS.md pointer to the existing ritual, then start one fresh Codex invocation with a pending continuity event and no explicit continuity reminder; pass only if Codex identifies itself, reads its cursor and delta, resolves required refs, and withholds acknowledgement until application.",
+  "ARCHITECTURE_NOT_EARNED": [
+    "inspect command",
+    "automatic delivery service",
+    "ChatGPT transport",
+    "manager",
+    "daemon",
+    "semantic engine"
+  ],
+  "AUTHORITY_IMPACT": "NONE",
+  "STANDING_IMPACT": "NONE",
+  "repository_evidence": "No root AGENTS.md exists at this council round; AGENT_CONTEXT.md contains the established ritual."
+}

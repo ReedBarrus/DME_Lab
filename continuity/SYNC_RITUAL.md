@@ -46,9 +46,15 @@ Read `continuity/cursors/<consumer>.json`.
 
 If missing, malformed, or ahead of the event stream, report continuity state as unresolved before consequential work.
 
+If `cursor_state` is `UNINITIALIZED`, do not read ordinary delta. Report
+`BOOTSTRAP_REQUIRED`, the current stream head, and the legal explicit modes:
+`FROM_ORIGIN`, `FROM_HEAD`, or `AFTER_EVENT <event_id>`. Bootstrap must establish
+`POSITIONED` before synchronization continues; null alone is not a coordinate.
+
 ### 3. READ_DELTA
 
-Read all continuity events strictly after `last_seen_event_id`.
+For a `POSITIONED` cursor, read all continuity events strictly after its
+explicitly established coordinate.
 
 If no events exist, state that no recorded continuity delta is present. Do not infer that no activity occurred outside the stream.
 
@@ -119,6 +125,7 @@ Pressure at least these failures:
 
 ```text
 cursor missing
+cursor uninitialized / bootstrap required
 cursor stale
 cursor ahead of stream
 event stream unavailable

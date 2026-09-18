@@ -1,0 +1,20 @@
+{
+  "council": "MULTI-ROUND-DELIBERATION-001",
+  "round": "CHATGPT-1",
+  "POSITION": "The smallest candidate implementation is one read-only inspect operation that emits the named consumer cursor, ordered unread events, and mechanical availability of repository-path refs without acknowledging or interpreting them.",
+  "ATTACK": "A convenience read does not establish automatic delivery, semantic application, or repeated reliability; if it merely renames delta it adds no consequential leverage.",
+  "WHAT_SURVIVES": "A single mechanically bounded observation could reduce separate cursor, delta, and ref-existence reconstruction steps while preserving missingness.",
+  "WHAT_FRACTURES": "Automatic acknowledgement, semantic materialization, background capture, routing, and generalized handoff schemas are not earned.",
+  "NEW_DISTINCTION_IF_ANY": "retrieval bundling != automatic delivery != semantic application",
+  "SMALLEST_EXECUTABLE_DISCRIMINATOR": "In an isolated fixture, compare current manual cursor-plus-delta-plus-ref checks with one read-only inspect result; require exact ordered events, explicit missing refs, and byte-identical cursor and stream.",
+  "ARCHITECTURE_NOT_EARNED": [
+    "service",
+    "daemon",
+    "manager",
+    "router",
+    "background loop",
+    "automatic semantic application"
+  ],
+  "AUTHORITY_IMPACT": "NONE",
+  "STANDING_IMPACT": "NONE"
+}

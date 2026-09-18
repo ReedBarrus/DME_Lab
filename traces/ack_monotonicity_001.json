@@ -1,0 +1,30 @@
+{
+  "experiment": "ACK-MONOTONICITY-001",
+  "observed_at": "2026-09-17T15:49:21.1984624-07:00",
+  "repository_basis": "7b5cb3edc14d91d4407e9a850717aadcc8381f63",
+  "consumer": "chatgpt",
+  "current_cursor": {
+    "consumer": "chatgpt",
+    "cursor_state": "POSITIONED",
+    "last_seen_event_id": "CE-000002",
+    "bootstrap_mode": "FROM_HEAD"
+  },
+  "retained_event_order": [
+    "CE-000001",
+    "CE-000002"
+  ],
+  "acknowledgement_operation": {
+    "command": "python tools/continuity.py ack --consumer chatgpt --event-id CE-000001",
+    "requested_event_id": "CE-000001",
+    "exit_code": 1,
+    "rejection_reason": "cannot acknowledge backward from 'CE-000002' to 'CE-000001'; acknowledgement is monotonic"
+  },
+  "monotonicity_violation": true,
+  "cursor_sha256_before": "A60FDE8A179F2CBC7FBE96E91C4B885F92949EE4E11115B54B16713DAD41A5E8",
+  "cursor_sha256_after": "A60FDE8A179F2CBC7FBE96E91C4B885F92949EE4E11115B54B16713DAD41A5E8",
+  "cursor_unchanged": true,
+  "events_sha256_before": "3207B4E77117C5059714F997BC62CA4BEF5BF55C5DCCF50C31BE434995F42E69",
+  "events_sha256_after": "3207B4E77117C5059714F997BC62CA4BEF5BF55C5DCCF50C31BE434995F42E69",
+  "event_stream_unchanged": true,
+  "result": "PASS_REJECTED_BACKWARD_ACKNOWLEDGEMENT"
+}

@@ -19,7 +19,8 @@ Then begin from the consumer-relative continuity delta:
 ```text
 identify consumer
 -> read continuity/cursors/<consumer>.json
--> read continuity/events.jsonl after last_seen_event_id
+-> if UNINITIALIZED, stop ordinary delta and explicitly bootstrap
+-> if POSITIONED, read continuity/events.jsonl after the established coordinate
 -> orient to the bounded delta
 -> follow only authoritative refs required by the present operation
 -> declare local continuity

@@ -1,0 +1,72 @@
+{
+  "COUNCIL_RESULT": "PASS",
+  "ROUNDS_COMPLETED": {
+    "codex_response_rounds": 2,
+    "chatgpt_proposal_turns": 2,
+    "stop_reason": "A repository-local, reversible, measurable proposal emerged and was smaller than the displaced alternatives."
+  },
+  "FRONTIER_BEFORE": "Choose the smallest next implementation that improves real ChatGPT-Codex semantic continuity after one successful bounded roundtrip without prematurely building coordination architecture.",
+  "FRONTIER_AFTER": "Pressure whether one root AGENTS.md pointer to the existing continuity ritual causes a fresh Codex invocation to perform that ritual before work when no human continuity reminder is supplied.",
+  "PROPOSALS_CONSIDERED": [
+    "Implement a read-only inspect operation bundling cursor, ordered delta, and ref availability.",
+    "Defer implementation and first A/B-test a candidate inspect envelope against ordinary reads.",
+    "Add only a root AGENTS.md pointer to the existing ritual and pressure one fresh Codex invocation."
+  ],
+  "SURVIVING_PROPOSAL": "A minimal root AGENTS.md pointer to AGENT_CONTEXT.md and the existing synchronization ritual, followed by one fresh Codex startup-compliance pressure.",
+  "WHY_IT_SURVIVED": [
+    "It targets the observed discoverability and invocation boundary rather than duplicating the existing delta path.",
+    "It reuses the current ritual and adds no acknowledgement, semantic, transport, or coordination machinery.",
+    "Its effect is falsifiable in one fresh invocation and its repository change is reversible."
+  ],
+  "FRACTURED_PROPOSALS": [
+    {
+      "proposal": "read-only inspect command",
+      "result": "DISPLACED",
+      "reason": "Existing delta and startup documentation already provide its core observations; no retained evidence shows read bundling is the consequential wound."
+    },
+    {
+      "proposal": "cross-agent automatic startup or delivery",
+      "result": "NOT_EARNED",
+      "reason": "A root Codex instruction cannot establish ChatGPT transport, automatic delivery, or repeated compliance."
+    }
+  ],
+  "NEW_EARNED_DISTINCTIONS": [
+    "startup invocation failure != multi-read reconstruction burden != reference-integrity failure",
+    "repository-documented protocol != runtime-injected startup instruction != observed startup compliance",
+    "instruction installed != instruction injected != ritual performed != event semantically applied"
+  ],
+  "UNRESOLVED": [
+    "Whether a root AGENTS.md is injected and obeyed in a fresh Codex invocation.",
+    "ChatGPT-side startup integration.",
+    "Repeated delivery reliability.",
+    "Automatic capture, project-level current state, thread/model association, and visibility.",
+    "No council proposal has been implemented."
+  ],
+  "AUTHORITY_CHANGED": false,
+  "STANDING_CHANGED": false,
+  "HUMAN_RELAY_REQUIRED": false,
+  "ARCHITECTURE_ADDED": false,
+  "RECOMMENDED_NEXT_PRESSURE": "CODEX-STARTUP-DISCOVERABILITY-001: add only the root pointer, place one bounded pending event after the Codex cursor, then launch one fresh Codex task without continuity wording and observe ritual performance before work.",
+  "EVIDENCE_REFS": [
+    "continuity/council/multi_round_001_chatgpt_round_1.json",
+    "continuity/council/multi_round_001_codex_round_1.json",
+    "continuity/council/multi_round_001_chatgpt_round_2.json",
+    "continuity/council/multi_round_001_codex_round_2.json",
+    "AGENT_CONTEXT.md",
+    "continuity/events.jsonl",
+    "continuity/cursors/chatgpt.json",
+    "continuity/cursors/codex.json"
+  ],
+  "MEASUREMENTS": {
+    "wall_clock_seconds": 161.1142071,
+    "deliberation_events_exchanged_before_checkpoint": 4,
+    "council_artifact_bytes": 6608,
+    "repeated_agent_context_read_bytes": 4124,
+    "human_relay_messages_required": 0,
+    "proposals_generated": 3,
+    "proposals_rejected_or_narrowed": 2,
+    "new_distinctions": 3,
+    "standing_errors": 0,
+    "authority_errors": 0
+  }
+}

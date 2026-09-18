@@ -1,0 +1,59 @@
+{
+  "experiment": "LIVE-BOOTSTRAP-001",
+  "repository_basis": "7b5cb3edc14d91d4407e9a850717aadcc8381f63",
+  "consumer": "chatgpt",
+  "bootstrap_mode": "FROM_HEAD",
+  "cursor_before_bootstrap": {
+    "consumer": "chatgpt",
+    "cursor_state": "UNINITIALIZED",
+    "last_seen_event_id": null
+  },
+  "stream_head_before_append": "CE-000001",
+  "cursor_after_bootstrap": {
+    "consumer": "chatgpt",
+    "cursor_state": "POSITIONED",
+    "last_seen_event_id": "CE-000001",
+    "bootstrap_mode": "FROM_HEAD"
+  },
+  "appended_event": {
+    "event_id": "CE-000002",
+    "observed_at": "2026-09-17T22:41:19.297271+00:00",
+    "actor": "codex",
+    "surface": "vscode-cli",
+    "kind": "LIVE_BOOTSTRAP_VERIFICATION",
+    "summary": "LIVE-BOOTSTRAP-001 appended exactly one event after chatgpt established FROM_HEAD at CE-000001; this event exists only to verify unread-delta repeatability without acknowledgement.",
+    "refs": [
+      "continuity/README.md",
+      "continuity/cursors/chatgpt.json",
+      "tools/continuity.py"
+    ],
+    "parent_refs": [
+      "CE-000001"
+    ],
+    "reported_standing_delta": null,
+    "reported_frontier_delta": null
+  },
+  "first_delta_event_ids": [
+    "CE-000002"
+  ],
+  "second_delta_event_ids": [
+    "CE-000002"
+  ],
+  "cursor_after_both_reads": {
+    "consumer": "chatgpt",
+    "cursor_state": "POSITIONED",
+    "last_seen_event_id": "CE-000001",
+    "bootstrap_mode": "FROM_HEAD"
+  },
+  "cursor_sha256_before_reads": "B51F703D27A558876ACB3112D9EF82596C1D8AC403E7CF18B1D23804BCE81B5A",
+  "cursor_sha256_after_first_read": "B51F703D27A558876ACB3112D9EF82596C1D8AC403E7CF18B1D23804BCE81B5A",
+  "cursor_sha256_after_second_read": "B51F703D27A558876ACB3112D9EF82596C1D8AC403E7CF18B1D23804BCE81B5A",
+  "cursor_unchanged_across_reads": true,
+  "event_count_before_append": 1,
+  "event_count_after_append": 2,
+  "events_sha256_before_append": "ABC23DA46E2FBAA62C00937E24D83EC55FD59C40265ED4F4D1E8D97ADF3EA3EA",
+  "events_sha256_after_append": "3207B4E77117C5059714F997BC62CA4BEF5BF55C5DCCF50C31BE434995F42E69",
+  "acknowledgement_invoked": false,
+  "expected_ack_gap_observed": true,
+  "result": "PASS"
+}
