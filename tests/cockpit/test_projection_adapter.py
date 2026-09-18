@@ -5,7 +5,9 @@ from pathlib import Path
 import subprocess
 from tempfile import TemporaryDirectory
 import unittest
+from unittest.mock import Mock, patch
 
+from src.cockpit import projection_adapter
 from src.cockpit.projection_adapter import ADAPTER_VERSION, build_projection
 
 
@@ -128,6 +130,25 @@ Shelved:
             freshness_ref="HEAD",
             projection_time=PROJECTION_TIME,
         )
+
+    def test_git_subprocess_receives_window_suppression_flags(self) -> None:
+        completed = Mock(returncode=0, stdout=b"", stderr=b"")
+        with (
+            patch.object(
+                projection_adapter,
+                "_subprocess_creationflags",
+                return_value=0x08000000,
+            ),
+            patch.object(
+                projection_adapter.subprocess,
+                "run",
+                return_value=completed,
+            ) as run,
+        ):
+            returned = projection_adapter._git(Path("C:/repo"), "status", "--short")
+
+        self.assertIs(returned, completed)
+        self.assertEqual(run.call_args.kwargs["creationflags"], 0x08000000)
 
     def test_committed_tree_boundary_ignores_dirty_working_tree(self) -> None:
         root = self.make_repo(standing="BOUNDED_RESOLUTION")

@@ -7,6 +7,7 @@ from collections import Counter
 from datetime import datetime, timezone
 import hashlib
 import json
+import os
 from pathlib import Path, PurePosixPath
 import re
 import subprocess
@@ -55,12 +56,20 @@ class ProjectionAdapterError(RuntimeError):
     """Raised when no exact committed projection basis can be established."""
 
 
+def _subprocess_creationflags() -> int:
+    """Suppress Git child console windows under a windowed Windows executable."""
+    if os.name != "nt":
+        return 0
+    return int(getattr(subprocess, "CREATE_NO_WINDOW", 0))
+
+
 def _git(repo_root: Path, *args: str) -> subprocess.CompletedProcess[bytes]:
     return subprocess.run(
         ["git", "-C", str(repo_root), *args],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         check=False,
+        creationflags=_subprocess_creationflags(),
     )
 
 
