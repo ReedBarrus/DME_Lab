@@ -121,8 +121,12 @@ synchronization ritual. The later transplant commit contains a different
 `AGENT_CONTEXT.md` blob, so same-path post-handoff resolution is not a valid
 substitute.
 
-A minimal continuity-dependency basis envelope is now under targeted repair
-verification. No new invariant or method amendment is promoted yet.
+The minimal continuity-dependency basis envelope received two independent
+targeted verification passes.
+
+MM-003 now returns the repaired carrier to a fresh cold open-ended audit with no
+enumerated repair checklist. No new invariant or method amendment is promoted
+yet.
 
 
 

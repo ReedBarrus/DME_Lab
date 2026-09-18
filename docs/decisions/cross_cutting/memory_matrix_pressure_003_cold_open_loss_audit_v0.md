@@ -141,3 +141,43 @@ Then run:
 
 After targeted repair verification, rerun a fresh cold open-ended audit before
 any new invariant or method rule is promoted.
+
+
+## Targeted dependency repair verification 001
+
+The minimal dependency-basis repair received two independent passes.
+
+Both observers recovered the frozen pre-handoff continuity basis, exact
+historical `AGENT_CONTEXT.md`, the detailed ritual owner and minimum ritual
+relation, the frozen event/cursor artifacts, the transplant non-equivalence,
+and the repair's nonclaims without guessing.
+
+Result:
+
+```text
+MM003 DEPENDENCY REPAIR PASSES
+MM003 DEPENDENCY REPAIR PASSES
+```
+
+The repair is therefore verified in its targeted scope.
+
+### Cold audit 002
+
+No invariant is promoted yet.
+
+The repaired carrier now returns to an unscaffolded cold audit:
+
+```text
+checkpoint
++
+MM-002 basis envelope
++
+MM-002 causal-lineage envelope
++
+MM-003 continuity-dependency basis envelope
+```
+
+Prompt:
+`docs/candidates/memory_matrix_v0/COLD_OPEN_LOSS_AUDIT_PROMPT_003_ROUND_2.md`
+
+Previous audit outputs and targeted verification questions must not be supplied.
