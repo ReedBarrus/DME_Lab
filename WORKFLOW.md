@@ -487,6 +487,187 @@ warrant, changes the relevant authority boundary, or requires a new semantic
 assumption, the run should stop or return the condition rather than silently
 opening a new pressure.
 
+### Council -> Workshop: execution packet
+
+Before a persistent workshop run begins, the authorized pressure should be
+expressed as a bounded execution packet. The packet transfers operational
+authority without transferring semantic promotion authority.
+
+A minimal `EXECUTION_PACKET_v0` contains:
+
+```text
+CURRENT PRESSURE
+PRIOR AUTHORIZED STANDING
+ADMITTED EVIDENCE BASIS
+UNRESOLVED DISTINCTIONS
+AUTHORIZED OPERATIONS
+EXPLICITLY UNAUTHORIZED EXTRAPOLATIONS
+REQUIRED OBSERVATIONS / ARTIFACTS
+STOP / ESCALATION CONDITIONS
+QUESTIONS EXECUTION MAY ANSWER
+REPOSITORY BASIS / COMMIT COORDINATE
+```
+
+The packet is an operational warrant, not a prediction of what the run will
+establish.
+
+Within the declared packet, the workshop may choose implementation details
+necessary to execute the pressure. It may not silently widen the research
+question, promote candidate semantics, or convert convenient assumptions into
+repository standing.
+
+```text
+execution authorization
+!=
+semantic promotion authorization
+```
+
+If the packet is insufficient to determine whether an operation is authorized,
+that ambiguity is itself a returnable condition. The workshop should not repair
+an authority gap by guessing.
+
+### Workshop -> Council: evidence return
+
+The workshop should return evidence rather than a completion narrative.
+
+A minimal `EVIDENCE_RETURN_v0` contains:
+
+```text
+WHAT CHANGED
+WHAT ACTUALLY EXECUTED
+TEST / RUNTIME RESULTS
+REPOSITORY / TRACE EVIDENCE
+UNEXPECTED OBSERVATIONS
+ASSUMPTIONS REQUIRED DURING EXECUTION
+DECISIONS MADE UNDER DELEGATED AUTHORITY
+DECISIONS REFUSED OR ESCALATED
+SURVIVING FAILURES / MISSINGNESS
+NEW CANDIDATE PRESSURES
+EXECUTOR CLAIMS
+```
+
+Executor claims remain separate from the evidence that supports them.
+
+A return such as "completed" or "all tests passed" is insufficient when the
+authorized pressure requires recoverable evidence about what happened, what
+remained unresolved, or where the packet boundary was exercised.
+
+The council metabolizes the return as:
+
+```text
+raw execution evidence
+-> surviving claims
+-> fractures
+-> candidate distinctions
+-> surviving uncertainty
+-> next admissible pressures
+```
+
+No step in this transformation is automatic.
+
+### Authority-transfer rules
+
+The current bounded authority topology is:
+
+```text
+Workshop
+  may execute within the authorized packet
+  may make delegated implementation decisions
+  may refuse or escalate ambiguous authority
+  may not promote semantic standing
+
+Council
+  may reconstruct, challenge, compare, and propose pressures
+  may preserve disagreement and identify unsupported promotion
+  may not silently authorize execution
+
+Executive
+  may authorize, continue, stop, redirect, or dwell
+  should not rewrite repository/runtime evidence to force coherence
+
+repository + runtime
+  remain the evidence surface against which all participant claims are checked
+```
+
+A participant may occupy more than one practical interface during a run, but
+the authority distinctions remain separate.
+
+```text
+interpretation
+!=
+authorization
+
+authorization
+!=
+execution
+
+execution
+!=
+adjudication
+```
+
+### Workshop counsel and protocol pressure
+
+The workshop is not treated as a passive actuator.
+
+During or after execution, Astra, Codex, another agent, a script, or a human
+operator may report friction in the packet itself, including:
+
+- authority boundaries that were difficult to interpret;
+- information repeatedly guessed or reconstructed;
+- required evidence that was expensive, unavailable, or ambiguous;
+- stop conditions that were unclear;
+- decisions repeatedly escalated;
+- packet fields that did not affect execution;
+- observations that would have materially improved the run.
+
+This feedback is evidence about the development protocol, not automatic warrant
+to redesign it.
+
+Two coupled learning loops may therefore coexist:
+
+```text
+DEVELOPMENT LOOP
+Council interpretation
+-> Executive authorization
+-> Workshop execution
+-> evidence return
+-> Council interpretation
+
+PROTOCOL-LEARNING LOOP
+packet design
+-> workshop friction
+-> retained protocol evidence
+-> bounded workflow revision
+```
+
+The protocol-learning loop must not silently become a generalized agent
+architecture project.
+
+### Portability hypothesis
+
+The current working hypothesis is that a workshop role may eventually be
+portable when different implementations can consume the same bounded execution
+packet and return the evidence required by the same authority surface.
+
+This is not yet established.
+
+A future executable pressure may give the same packet independently to two
+workshop implementations and ask whether each can correctly determine:
+
+- what it may change;
+- what it may not infer;
+- what evidence it owes;
+- when it must stop or escalate.
+
+Successful execution under one workshop implementation does not establish
+portable operational authority.
+
+Do not type or generalize these packet surfaces merely because their prose is
+stable. Earn schemas, validators, routers, or automated handoff machinery only
+when repeated execution demonstrates that prose ambiguity or manual transfer is
+a consequential failure surface.
+
 ### Conservation rule for twinning
 
 Do not conserve twin commentary merely because two models said the same thing.
