@@ -170,3 +170,40 @@ The envelope adds only immutable source closure.
 
 Round 2 prompt:
 `docs/candidates/memory_matrix_v0/ROUND_TRIP_PROMPT_002_ROUND_2.md`.
+
+
+## Round 2 result
+
+Round 2 used the unchanged checkpoint plus the immutable basis envelope.
+
+Two independent observers (Claude and Gemini) confirmed that exact historical
+source closure was restored, then independently failed on the same next
+consequential loss:
+
+```text
+decision-level outcome topology
+!=
+actor/round causal topology
+```
+
+The checkpoint preserves pooled outcomes but not which actor/round introduced,
+attacked, displaced, accepted, or narrowed each consequential proposal
+transition.
+
+### Round 3 candidate
+
+Use:
+
+```text
+traces/multi_round_deliberation_001_checkpoint.json
++
+docs/candidates/memory_matrix_v0/MM002_CHECKPOINT_BASIS_ENVELOPE_v0.md
++
+docs/candidates/memory_matrix_v0/MM002_COUNCIL_CAUSAL_LINEAGE_ENVELOPE_v0.md
+```
+
+The causal envelope adds only the actor/round transition relations exposed by
+Round 2.
+
+Round 3 prompt:
+`docs/candidates/memory_matrix_v0/ROUND_TRIP_PROMPT_002_ROUND_3.md`.

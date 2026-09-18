@@ -154,9 +154,13 @@ memory. Two independent observers failed it on the same smallest loss: the
 checkpoint names its source round artifacts only by repository-relative path,
 without immutable historical coordinates.
 
-Round 2 is now active using the unchanged checkpoint plus a minimal immutable
-basis envelope. Per-actor/per-round causal attribution remains intentionally
-unrepaired so the next round can determine whether it is genuinely load-bearing.
+Round 2 used the unchanged checkpoint plus a minimal immutable basis envelope.
+Two independent observers confirmed historical source closure was repaired and
+then failed on the same next loss: per-actor/per-round causal attribution.
+
+Round 3 is now active using the unchanged checkpoint, immutable basis envelope,
+and a minimal causal-lineage envelope. Exact raw round prose remains omitted and
+recoverable through pinned blobs.
 
 Round-trip prompt:
 `docs/candidates/memory_matrix_v0/ROUND_TRIP_PROMPT_002.md`.
