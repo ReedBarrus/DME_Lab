@@ -217,3 +217,22 @@ the smallest missing dimension over rewriting or duplicating the artifact.
 
 A later failure should expose a new missing relation; do not preemptively merge
 all possible dimensions into one schema.
+
+
+## Earned invariant ledger
+
+Pressure-earned conservation relations are retained separately in:
+
+`docs/methods/EARNED_MEMORY_INVARIANTS_v0.md`
+
+The ledger contains only relations that became consequential under actual
+memory pressure. Candidate semantic dimensions do not enter it by plausibility
+alone.
+
+```text
+method
+= how to pressure / compile / qualify memory
+
+invariant ledger
+= what pressure has shown must remain distinguishable
+```

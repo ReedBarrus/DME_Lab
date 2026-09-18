@@ -186,6 +186,14 @@ later user commit restored the imported Astra Constitution Seed copy from blob
 post-qualification source-lineage change, not a retroactive rewrite of the
 MM-001 specimen.
 
+A tiny pressure-earned invariant ledger now lives at
+`docs/methods/EARNED_MEMORY_INVARIANTS_v0.md`.
+
+Its initial five entries record only relations exposed or confirmed by MM-001 /
+MM-002: historical artifact identity, source-identity topology, causal
+deliberation topology, supersession versus falsification, and omission versus
+consequential loss.
+
 No graph ontology, generalized memory schema, automatic capture pipeline,
 source-deletion rule, or generalized semantic-continuity checker is earned.
 
