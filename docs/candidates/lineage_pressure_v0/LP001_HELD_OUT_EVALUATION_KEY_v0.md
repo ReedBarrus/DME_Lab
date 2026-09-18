@@ -62,5 +62,7 @@ The following are unsupported because the fixture already supplies them:
 - the current rule version is unknown;
 - owner acknowledgement value is unknown.
 
-Additional speculative failures not grounded in the fixture count as
-unsupported fractures.
+Only the enumerated false-fracture examples above, or an explicit
+contradiction of this frozen key, count as unsupported fractures for primary
+scoring. Non-enumerated novel concerns remain exploratory and non-class-bearing
+unless this key affirmatively supplies or negates the claimed relation.
