@@ -149,8 +149,14 @@ Candidate hot-memory carrier:
 `traces/multi_round_deliberation_001_checkpoint.json`
 (blob `0cad066f48de2a42a45017487ec2bcde855fbaa6`).
 
-MM-002 first tests whether the existing checkpoint is already sufficient hot
-memory. It does not assume another compiled packet is needed.
+MM-002 Round 1 tested whether the existing checkpoint alone was sufficient hot
+memory. Two independent observers failed it on the same smallest loss: the
+checkpoint names its source round artifacts only by repository-relative path,
+without immutable historical coordinates.
+
+Round 2 is now active using the unchanged checkpoint plus a minimal immutable
+basis envelope. Per-actor/per-round causal attribution remains intentionally
+unrepaired so the next round can determine whether it is genuinely load-bearing.
 
 Round-trip prompt:
 `docs/candidates/memory_matrix_v0/ROUND_TRIP_PROMPT_002.md`.

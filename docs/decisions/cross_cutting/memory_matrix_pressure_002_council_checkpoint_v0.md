@@ -136,3 +136,37 @@ MM-002 is active on `main`.
 
 No cursor topology, continuity event, or live project standing changes merely
 because this pressure is staged.
+
+
+## Round 1 result
+
+Checkpoint-only Round 1 produced two independent failures (Claude and Gemini)
+with the same smallest consequential loss:
+
+```text
+EVIDENCE_REFS path
+!=
+immutable historical source coordinate
+```
+
+Both observers otherwise reconstructed the checkpoint's frontier shift,
+proposal narrowing, distinctions, unresolvedness, authority/standing boundary,
+non-implementation status, next pressure, and measurements.
+
+A secondary possible loss—per-actor/per-round causal attribution—was also
+identified but is intentionally left unrepaired for Round 2.
+
+### Round 2 candidate
+
+Use:
+
+```text
+traces/multi_round_deliberation_001_checkpoint.json
++
+docs/candidates/memory_matrix_v0/MM002_CHECKPOINT_BASIS_ENVELOPE_v0.md
+```
+
+The envelope adds only immutable source closure.
+
+Round 2 prompt:
+`docs/candidates/memory_matrix_v0/ROUND_TRIP_PROMPT_002_ROUND_2.md`.
