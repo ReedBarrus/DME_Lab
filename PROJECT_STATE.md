@@ -145,7 +145,6 @@ Relevant decisions:
 - `docs/decisions/cross_cutting/independent_authority_reconstruction_v0.md`
 - `docs/decisions/cross_cutting/four_root_authority_spine_compression_candidate_v0.md`
 - `docs/decisions/cross_cutting/four_root_round_trip_basis_failure_v0.md`
-- `docs/decisions/cross_cutting/four_root_authority_spine_live_migration_v0.md`
 
 ## Current navigation
 
