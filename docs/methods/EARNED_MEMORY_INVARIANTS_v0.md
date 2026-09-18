@@ -1,7 +1,7 @@
 # Earned Memory Invariants v0
 
 **Status:** OPERABLE_V0 — pressure-earned invariant ledger  
-**Scope:** relations demonstrated as consequential by MM-001 / MM-002  
+**Scope:** relations demonstrated as consequential by MM-001 / MM-002 / MM-003  
 **Adjacent method:** `docs/methods/MEMORY_COMPILATION_METHOD_v0.md`
 
 ## Purpose
@@ -139,12 +139,38 @@ preserved.
 
 ---
 
-## Current nonclaim
-
-These five entries are the current bounded invariant bank.
+## EMI-006 — Primary carrier source closure is not operational dependency closure
 
 ```text
-five earned invariants
+exact identity of the primary carrier and its immediate source artifacts
+!=
+exact historical identity of every consequential dependency the carrier relies on
+```
+
+**Earned by:** MM-003 cold audit 001, targeted repair verification, and cold
+audit 002.
+
+**Witness:** the MM-002 carrier correctly pinned the checkpoint and four Council
+round artifacts, yet the historical `AGENT_CONTEXT.md` governing the
+continuity dependency belonged to the frozen pre-handoff basis at blob
+`416b2aaa6469d4e201860836399b8989c95dcaff`. The later transplant commit
+contained a different blob at the same path:
+`5b1102a7b619985fbbcff7034acc92e2800bd71f`.
+
+**Consequence:** provenance closure is instance- and dependency-relative.
+Closing one sibling reference set does not license assuming that other
+consequential references are closed. When a carrier's meaning or legitimate use
+depends on another artifact, resolve that dependency against the basis that
+actually governed it.
+
+---
+
+## Current nonclaim
+
+These six entries are the current bounded invariant bank.
+
+```text
+six earned invariants
 !=
 complete coordinate system of semantic memory
 ```

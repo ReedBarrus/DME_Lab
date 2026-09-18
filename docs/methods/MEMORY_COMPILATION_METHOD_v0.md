@@ -27,8 +27,10 @@ authorize source deletion.
 9. ROUND-TRIP RECONSTRUCT
 10. LOSS AUDIT
 11. MINIMALLY REPAIR REAL LOSSES
-12. RERUN ON THE SAME IMMUTABLE PACKET BASIS
-13. QUALIFY ONLY AFTER THE DECLARED SAME-BASIS BAR IS MET
+12. RERUN TARGETED VERIFICATION ON THE SAME IMMUTABLE BASIS
+13. RUN A COLD OPEN-ENDED LOSS AUDIT WITHOUT THE TARGETED CHECKLIST
+14. IF A NEW LOSS APPEARS, RETURN TO STEP 11
+15. QUALIFY ONLY AFTER THE DECLARED TARGETED + COLD-AUDIT BAR IS MET
 ```
 
 ## Required conservation boundaries
@@ -236,3 +238,65 @@ method
 invariant ledger
 = what pressure has shown must remain distinguishable
 ```
+
+
+## MM-003 refinement — cold audit and dependency closure
+
+MM-003 tested whether the targeted reconstruction questions themselves had
+become a ceiling on detectable loss.
+
+The first cold audit produced one PASS and one FAIL. Immutable-history
+verification confirmed the FAIL: the carrier had closed source identity for its
+checkpoint and Council rounds but had not closed the historical basis of its
+operational continuity dependencies.
+
+The repaired carrier then received:
+
+```text
+targeted dependency verification
+→ two independent passes
+
+fresh unscaffolded cold audit
+→ two independent passes
+```
+
+This earns:
+
+```text
+targeted reconstruction success
+!=
+open-ended loss-audit success
+```
+
+and reinforces:
+
+```text
+primary carrier source closure
+!=
+operational dependency closure
+```
+
+### Cold-audit discipline
+
+After known losses are repaired and targeted verification passes, give an
+independent observer the candidate carrier without the targeted reconstruction
+checklist.
+
+Ask only what consequential information is missing.
+
+If the cold observer finds a candidate loss:
+
+```text
+observer disagreement or surprise
+→ verify against owning immutable evidence
+→ adjudicate the loss
+→ repair minimally if real
+→ targeted verification
+→ fresh cold audit
+```
+
+Observer agreement is not truth by vote. Observer disagreement is pressure to
+find the basis that can discriminate the competing reconstructions.
+
+A cold-audit pass adds bounded confidence only. It is not proof of semantic
+completeness.

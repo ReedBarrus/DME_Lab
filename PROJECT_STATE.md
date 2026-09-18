@@ -107,26 +107,31 @@ Schemas, routers, schedulers, and autonomous research loops remain unauthorized.
 
 ## Memory compilation standing
 
-Memory Matrix Pressure 003 (**MM-003**) is **ACTIVE**.
+Memory Matrix Pressure 003 (**MM-003**) is **PASSED IN TESTED SCOPE**.
 
-MM-003 cold audit 001 produced divergent independent results: one PASS and one
-FAIL. The FAIL was verified against immutable repository history and exposed a
-real operational-dependency basis wound.
+Cold audit 001 produced one PASS and one verified FAIL. The FAIL exposed that
+source closure for the checkpoint and Council rounds did not also close the
+historical basis of consequential operational dependencies.
 
-The Council's frozen continuity source basis is
-`f28187306d3282a66d95b9d85e764f75751e812d`, where
-`AGENT_CONTEXT.md` is blob
-`416b2aaa6469d4e201860836399b8989c95dcaff` and routes to the detailed
-synchronization ritual. The later transplant commit contains a different
-`AGENT_CONTEXT.md` blob, so same-path post-handoff resolution is not a valid
-substitute.
+A minimal continuity-dependency basis envelope repaired that wound. It then
+received two independent targeted verification passes, followed by two
+independent fresh cold-open audit passes.
 
-The minimal continuity-dependency basis envelope received two independent
-targeted verification passes.
+MM-003 therefore earns:
 
-MM-003 now returns the repaired carrier to a fresh cold open-ended audit with no
-enumerated repair checklist. No new invariant or method amendment is promoted
-yet.
+```text
+primary carrier source closure
+!=
+operational dependency closure
+
+targeted reconstruction success
+!=
+open-ended loss-audit success
+```
+
+The first relation is now retained in the earned memory invariant ledger. The
+second is incorporated into the memory compilation method as a cold-audit step
+after targeted repair verification and before bounded stability qualification.
 
 
 
@@ -163,7 +168,7 @@ another bounded specimen.
 The Astra bundle is a **cold-retention candidate**, not deletion-authorized.
 The repaired packet is a **qualified hot-memory candidate** for this specimen.
 
-Memory Matrix Pressure 002 (**MM-002**) is now **ACTIVE**.
+Memory Matrix Pressure 002 (**MM-002**) is **PASSED IN TESTED SCOPE**.
 
 Specimen class: multi-round Council deliberation / proposal narrowing /
 checkpoint.
@@ -212,10 +217,11 @@ MM-001 specimen.
 A tiny pressure-earned invariant ledger now lives at
 `docs/methods/EARNED_MEMORY_INVARIANTS_v0.md`.
 
-Its initial five entries record only relations exposed or confirmed by MM-001 /
-MM-002: historical artifact identity, source-identity topology, causal
-deliberation topology, supersession versus falsification, and omission versus
-consequential loss.
+Its initial six entries record only relations exposed or confirmed by MM-001 /
+MM-002 / MM-003: historical artifact identity, source-identity topology, causal
+deliberation topology, supersession versus falsification, omission versus
+consequential loss, and primary-carrier closure versus operational-dependency
+closure.
 
 No graph ontology, generalized memory schema, automatic capture pipeline,
 source-deletion rule, or generalized semantic-continuity checker is earned.

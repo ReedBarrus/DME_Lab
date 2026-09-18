@@ -1,6 +1,6 @@
 # Memory Matrix Pressure 003 — Cold Open Loss Audit
 
-**Status:** ACTIVE PRESSURE  
+**Status:** PASSED IN TESTED SCOPE  
 **Pressure ID:** MM-003  
 **Specimen:** the qualified MM-002 compositional hot-memory carrier  
 **Purpose:** test whether an observer can expose a consequential loss that the
@@ -181,3 +181,31 @@ Prompt:
 `docs/candidates/memory_matrix_v0/COLD_OPEN_LOSS_AUDIT_PROMPT_003_ROUND_2.md`
 
 Previous audit outputs and targeted verification questions must not be supplied.
+
+
+## Cold audit 002 result
+
+The repaired carrier received two independent fresh cold-open audit passes.
+
+Both observers reconstructed the deliberation, its source and causal topology,
+the corrected historical operational-dependency basis, and the minimal ritual
+relation without identifying another consequential omission.
+
+Result:
+
+```text
+COLD OPEN LOSS AUDIT PASSES
+COLD OPEN LOSS AUDIT PASSES
+```
+
+MM-003 therefore closes as **PASSED IN TESTED SCOPE**.
+
+The pressure earns two bounded promotions:
+
+1. add the cold open-ended audit step to
+   `docs/methods/MEMORY_COMPILATION_METHOD_v0.md`;
+2. add operational dependency closure as a distinct pressure-earned invariant in
+   `docs/methods/EARNED_MEMORY_INVARIANTS_v0.md`.
+
+No universal completeness, automatic dependency discovery, generalized
+dependency graph, or source deletion rule is earned.
