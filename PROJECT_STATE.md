@@ -105,36 +105,49 @@ Portable two-Workshop recovery: **DEFERRED_UNTIL_REAL_PACKET_EVIDENCE**.
 
 Schemas, routers, schedulers, and autonomous research loops remain unauthorized.
 
-## Active development pressure
+## Memory compilation standing
 
-Memory Matrix Pressure 001 (**MM-001**) is **ACTIVE**.
+Memory Matrix Pressure 001 (**MM-001**) is **PASSED IN TESTED SCOPE**.
 
 Specimen:
 `docs/Evidence_Arc/Astra_Reconstruction/`.
 
-Candidate compiled memory:
-`docs/candidates/memory_matrix_v0/ASTRA_RECONSTRUCTION_PACKET_001.md`.
+Repaired compiled packet:
+`docs/candidates/memory_matrix_v0/ASTRA_RECONSTRUCTION_PACKET_001.md`
+(blob `3b210b5f7698eba8d3ecea7c07f5503cd97a0c09`).
 
-Question: can the high-entropy Astra reconstruction bundle be reduced to a
-substantially smaller relational memory packet while preserving source role,
-basis, dependency, unresolvedness, and authority boundaries under independent
-round-trip reconstruction?
+Observed sequence:
 
-Round 1: **FAIL**. The smallest loss was historical source-version closure: the
-packet routed to a later imported Constitution Seed copy rather than preserving
-the exact historical root source state carrying XXI and, later, XXII.
+```text
+pre-repair packet
+→ valid failure
+→ historical source-version closure loss exposed
 
-Repaired Packet 001 (blob
-`3b210b5f7698eba8d3ecea7c07f5503cd97a0c09`) now has **VALID PASS 1** under the
-revised same-basis round-trip. A second independent observer over that exact
-packet/prompt basis remains pending.
+minimal repair
+→ exact historical XXI / XXII lineage preserved
+
+repaired packet
+→ independent pass 1
+→ independent pass 2
+```
+
+No consequential loss was found by either repaired-packet observer in the tested
+scope.
+
+`docs/methods/MEMORY_COMPILATION_METHOD_v0.md` is now **OPERABLE_V0** for
+another bounded specimen.
+
+The Astra bundle is a **cold-retention candidate**, not deletion-authorized.
+The repaired packet is a **qualified hot-memory candidate** for this specimen.
+
+No next memory specimen is selected yet.
 
 No graph ontology, generalized memory schema, automatic capture pipeline,
-source deletion, or generalized memory method is earned by MM-001 yet.
+source-deletion rule, or generalized semantic-continuity checker is earned.
 
-`docs/projection/Continuity_Filter_Stack_v0.md` is parked as a non-authoritative
-projection while MM-001 tests whether the relations needed by higher-order
-continuity checks can be retained compactly.
+`docs/projection/Continuity_Filter_Stack_v0.md` remains parked as a
+non-authoritative projection until a concrete relational surface makes a higher
+continuity discriminator executable.
 
 ## Constitutional / compression standing
 
