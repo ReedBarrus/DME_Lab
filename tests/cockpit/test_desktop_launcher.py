@@ -22,6 +22,7 @@ from src.cockpit.desktop_launcher import (
 
 
 def make_repo(root: Path) -> Path:
+    root.mkdir(parents=True, exist_ok=True)
     (root / ".git").mkdir()
     (root / "src" / "cockpit" / "observer").mkdir(parents=True)
     (root / "src" / "cockpit" / "observer" / "index.html").write_text(
