@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import subprocess
 from tempfile import TemporaryDirectory
 import unittest
 from unittest.mock import Mock, patch
@@ -12,6 +13,8 @@ from src.cockpit.desktop_launcher import (
     choose_freshness_ref,
     is_repo_root,
     launch_edge_app,
+    _ref_exists,
+    _subprocess_creationflags,
     resolve_repo_root,
     run_cockpit,
     start_loopback_server,
@@ -57,6 +60,34 @@ class DesktopCockpitLauncherTest(unittest.TestCase):
                     allow_picker=False,
                     saved_config_path=Path(temporary) / "config.json",
                 )
+
+    def test_windows_creationflags_suppress_child_console(self) -> None:
+        with (
+            patch("src.cockpit.desktop_launcher.os.name", "nt"),
+            patch.object(
+                subprocess,
+                "CREATE_NO_WINDOW",
+                0x08000000,
+                create=True,
+            ),
+        ):
+            self.assertEqual(_subprocess_creationflags(), 0x08000000)
+
+    def test_ref_probe_passes_creationflags_to_git(self) -> None:
+        completed = Mock(returncode=0)
+        with (
+            patch(
+                "src.cockpit.desktop_launcher._subprocess_creationflags",
+                return_value=0x08000000,
+            ),
+            patch(
+                "src.cockpit.desktop_launcher.subprocess.run",
+                return_value=completed,
+            ) as run,
+        ):
+            self.assertTrue(_ref_exists(Path("C:/repo"), "main"))
+
+        self.assertEqual(run.call_args.kwargs["creationflags"], 0x08000000)
 
     def test_auto_freshness_prefers_origin_main_then_main(self) -> None:
         repo = Path(".").resolve()

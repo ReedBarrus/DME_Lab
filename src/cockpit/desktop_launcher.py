@@ -166,6 +166,13 @@ def resolve_repo_root(
     )
 
 
+def _subprocess_creationflags() -> int:
+    """Suppress child console windows when the windowed launcher runs on Windows."""
+    if os.name != "nt":
+        return 0
+    return int(getattr(subprocess, "CREATE_NO_WINDOW", 0))
+
+
 def _ref_exists(repo_root: Path, ref: str) -> bool:
     completed = subprocess.run(
         [
@@ -179,6 +186,7 @@ def _ref_exists(repo_root: Path, ref: str) -> bool:
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
         check=False,
+        creationflags=_subprocess_creationflags(),
     )
     return completed.returncode == 0
 

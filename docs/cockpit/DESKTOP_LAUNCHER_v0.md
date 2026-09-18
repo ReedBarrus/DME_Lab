@@ -113,8 +113,40 @@ fails with an explicit instruction if the dependency is absent.
 After one launch with the repository resolved, the executable can be pinned to
 the Windows taskbar and reopened without VS Code.
 
-No claim is made yet that the packaged executable has been built or tested on a
-real Windows host.
+The packaged executable has now been built and launched once on a real Windows
+host. That first launch exposed the terminal-window flashing wound documented
+below. Successful post-repair desktop launch remains unverified.
+
+---
+
+## Observed Windows packaging wound
+
+The first user-run packaged Windows executable produced rapid terminal-window
+flashing while the Cockpit launcher was starting. The same projection flow had
+been usable from an existing developer terminal.
+
+Repository inspection localized a plausible carrier-specific dependency:
+noninteractive Git subprocesses in both the launcher freshness probe and the
+projection adapter inherited the default Windows console-creation behavior.
+Under a PyInstaller `--windowed` executable, those child Git processes can
+surface their own transient console windows instead of being absorbed by an
+already-open developer console.
+
+Candidate repair:
+
+    packaged GUI launcher
+    -> Git child subprocesses
+    -> CREATE_NO_WINDOW on Windows only
+
+This repair does not hide Git failures: stdout/stderr capture and return codes
+remain unchanged. It changes only child-window creation behavior.
+
+**Observed:** packaged executable caused rapid terminal-window flashing on the
+user's Windows machine.
+
+**Not yet verified:** that this containment repair eliminates the flashing on a
+rebuilt executable. That requires a fresh Windows rebuild and relaunch after
+merge.
 
 ---
 
