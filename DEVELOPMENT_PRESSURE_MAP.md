@@ -149,10 +149,18 @@ Workshop may not silently widen the pressure or promote semantic standing.
 - **Resolution criterion:** the object is small enough to reconstruct current
   development reachability and strict enough that the next packet can cite it
   without gaining authority from it.
-- **Current pressure result:** independent reconstruction split between
-  `YES` and `UNRESOLVED` on whether map existence already satisfies
-  `REACHABLE_AFTER_MAP`; one additional response was non-admissible because
-  it substituted the scientific PR map for the requested development map.
+- **Initial pressure result:** independent reconstruction split between
+  `YES` and `UNRESOLVED` on whether map existence already satisfied the
+  prior `REACHABLE_AFTER_MAP` wording; one additional response was
+  non-admissible because it substituted the scientific PR map for the requested
+  development map.
+- **Repair verification:** after replacing the ambiguous gate with explicit
+  DP-001-resolution semantics, two independent Council observers both returned
+  `NO` to whether DP-002 is currently reachable while DP-001 remains
+  `ACTIVE_CONSTRUCTION`, and both recovered the same basis relation.
+- **Repair standing:** the specific reachability-gate ambiguity is
+  **CLOSED_IN_TESTED_SCOPE**. This does not by itself adjudicate all of DP-001
+  sufficient.
 - **Unlock semantics:** DP-002 becomes reachable for packet formation only
   after DP-001 is explicitly adjudicated sufficient under this resolution
   criterion. Mere existence of `DEVELOPMENT_PRESSURE_MAP.md` does not satisfy

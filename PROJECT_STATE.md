@@ -102,6 +102,12 @@ First real Astra packet: **GATED_BY_DP001_RESOLUTION**. It is not currently
 reachable for packet formation merely because the development map exists; DP-001
 must first be explicitly resolved sufficient.
 
+The DP-001 gate repair has now received two independent Council verification
+passes. Both returned `NO` to current DP-002 packet-formation reachability and
+recovered the same explicit DP-001-resolution gate. The specific ambiguity is
+closed in tested scope; DP-001 itself remains `ACTIVE_CONSTRUCTION` until a
+separate bounded sufficiency adjudication.
+
 Portable two-Workshop recovery: **DEFERRED_UNTIL_REAL_PACKET_EVIDENCE**.
 
 Schemas, routers, schedulers, and autonomous research loops remain unauthorized.
