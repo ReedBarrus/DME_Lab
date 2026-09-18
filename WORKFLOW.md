@@ -256,3 +256,258 @@ Standing:
 - globally compatible?
 - unresolved?
 - overbuilt?
+
+## Twinning Protocol
+
+Twinning is a bounded interpretation and development-control method for periods
+when implementation can advance faster than one participant can safely
+metabolize the resulting evidence.
+
+It does not create a new source of authority, a model quorum, or an autonomous
+research loop.
+
+The purpose is to keep:
+
+```text
+execution capacity
+!=
+interpretive capacity
+
+development throughput
+!=
+epistemic throughput
+
+artifact accumulation
+!=
+earned state advancement
+```
+
+visible when persistent operators or coding agents can produce large changes
+between human review points.
+
+### Current role topology
+
+The present working arrangement may be instantiated as:
+
+```text
+Reed
+  -> authorization, synthesis, and pressure selection
+
+Twin A
+  -> strongest bounded reconstruction supported by the evidence
+
+Twin B
+  -> adversarial reconstruction, unsupported-claim detection, and
+     counter-interpretation
+
+Astra
+  -> persistent operator / development coordinator within the authorized scope
+
+Codex
+  -> bounded implementation and execution surface
+
+repository + runtime
+  -> evidence surface that outranks every participant's narrative
+```
+
+These are operational roles, not permanent identities or architectural
+commitments. Another participant may occupy a role if the same boundaries are
+preserved.
+
+### Entry condition
+
+Twinning is useful after a meaningful execution interval, especially when a
+persistent development run produced enough change that immediate continuation
+would risk interpreting implementation volume as semantic progress.
+
+The common cycle is:
+
+```text
+DECLARED PRESSURE
+-> bounded persistent execution
+-> repository / runtime evidence
+-> independent Twin A interpretation
+-> independent Twin B interpretation
+-> Reed synthesis / adjudication
+-> explicit authorization
+-> next pressure or continued dwell
+```
+
+Persistent execution may continue for as long as its existing authorization and
+pressure remain valid. Crossing into a new semantic pressure is not automatic.
+
+### Evidence packet
+
+Both twins should receive the same evidence basis when practical.
+
+A minimal packet is:
+
+```text
+CURRENT PRESSURE
+PRIOR AUTHORIZED STANDING
+REPOSITORY BASIS / COMMIT COORDINATE
+DIFFS OR FILE CHANGES
+TEST / RUNTIME RESULTS
+TRACES OR OTHER DIRECT EVIDENCE
+EXECUTOR CLAIMS
+KNOWN FAILURES / MISSINGNESS
+```
+
+Executor summaries are claims about the run, not substitutes for the repository
+or runtime evidence they describe.
+
+If the twins receive materially different evidence, that difference must remain
+visible during synthesis.
+
+### Independent twin pass
+
+The twins should interpret before seeing or adopting each other's conclusion
+whenever independent pressure is desired.
+
+Twin A asks primarily:
+
+```text
+What is the strongest bounded consequence this evidence actually establishes?
+What prior standing survives?
+What newly forced distinction, if any, is reusable?
+What is the smallest next pressure with high information gain?
+```
+
+Twin B asks primarily:
+
+```text
+What would be illegitimate to conclude from this evidence?
+What fractured, remained unresolved, or became ambiguous?
+What distinction may be false or merely representational?
+What implementation or architecture outran its warrant?
+What smallest executable pressure could falsify the leading interpretation?
+```
+
+Either twin may reach the other's kind of conclusion. The split is intended to
+create useful independent pressure, not to force agreement or opposition.
+
+### Required interpretation surface
+
+A twin result should distinguish at least:
+
+- established consequences;
+- surviving prior standing;
+- surviving uncertainty / missingness;
+- fractures or regressions;
+- genuinely forced candidate distinctions;
+- false or unsupported distinctions;
+- unsupported architecture inflation;
+- executor claims that lack direct evidence;
+- smallest executable next pressures;
+- any claim that cannot be adjudicated on the supplied basis.
+
+A large successful diff is not itself evidence that the semantic frontier
+advanced.
+
+### Disagreement
+
+Twin agreement does not prove correctness.
+
+Twin disagreement is not a failure to average away.
+
+When the twins diverge, preserve the disagreement long enough to determine
+whether it comes from:
+
+- different evidence access;
+- different reconstruction of the same evidence;
+- hidden assumptions;
+- different claimed observational basis;
+- an actually unresolved repository state.
+
+If the disagreement affects the next consequential decision and cannot be
+settled from retained evidence, the legitimate standing is unresolved and the
+next pressure should target the discriminating gap.
+
+### Synthesis and authorization
+
+Reed remains the present authorization and synthesis point.
+
+Synthesis may:
+
+- accept a bounded result;
+- retain competing interpretations;
+- reject an unsupported promotion;
+- request a narrower reconstruction;
+- authorize another pressure;
+- continue the existing pressure;
+- stop or dwell.
+
+Neither twin may promote a candidate distinction, activate a new pressure, or
+convert executor output into repository standing merely by agreement.
+
+Likewise, Astra or Codex completing a requested implementation does not itself
+authorize the next development campaign.
+
+```text
+represented instruction
+!=
+authorized instruction
+
+successful execution
+!=
+adjudicated consequence
+
+available next action
+!=
+authorized next pressure
+```
+
+### Persistent-development boundary
+
+Long execution intervals are allowed to accumulate implementation work inside a
+declared scope, but interpretation remains the clock for semantic advancement.
+
+Prefer:
+
+```text
+pressure_n
+-> execute within pressure_n
+-> evidence_n
+-> twin reconstruction / challenge
+-> human synthesis
+-> authorize pressure_n+1
+```
+
+over:
+
+```text
+run
+-> run
+-> run
+-> retrospectively invent one story for the accumulated changes
+```
+
+If execution discovers an unexpected condition that invalidates the current
+warrant, changes the relevant authority boundary, or requires a new semantic
+assumption, the run should stop or return the condition rather than silently
+opening a new pressure.
+
+### Conservation rule for twinning
+
+Do not conserve twin commentary merely because two models said the same thing.
+
+Conserve only the evidence-backed distinction, constraint, decision, or method
+that survives ordinary DME_Lab adjudication.
+
+Twinning is therefore a pressure surface over interpretation itself:
+
+```text
+same evidence
++
+independent reconstruction
++
+explicit disagreement preservation
+-> sharper adjudication
+```
+
+It is not evidence for generalized multi-agent intelligence, consensus truth,
+agent governance, automatic routing, or autonomous scientific authority.
+
+If later runtime pressure demonstrates that parts of this method should be
+typed, automated, or exposed as projections, earn those structures separately.
+
