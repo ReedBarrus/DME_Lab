@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import subprocess
 from tempfile import TemporaryDirectory
 import unittest
 from unittest.mock import Mock, patch
@@ -64,7 +65,7 @@ class DesktopCockpitLauncherTest(unittest.TestCase):
         with (
             patch("src.cockpit.desktop_launcher.os.name", "nt"),
             patch.object(
-                __import__("src.cockpit.desktop_launcher", fromlist=["subprocess"]).subprocess,
+                subprocess,
                 "CREATE_NO_WINDOW",
                 0x08000000,
                 create=True,

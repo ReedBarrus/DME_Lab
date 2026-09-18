@@ -113,8 +113,9 @@ fails with an explicit instruction if the dependency is absent.
 After one launch with the repository resolved, the executable can be pinned to
 the Windows taskbar and reopened without VS Code.
 
-No claim is made yet that the packaged executable has been built or tested on a
-real Windows host.
+The packaged executable has now been built and launched once on a real Windows
+host. That first launch exposed the terminal-window flashing wound documented
+below. Successful post-repair desktop launch remains unverified.
 
 ---
 
