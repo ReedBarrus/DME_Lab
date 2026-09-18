@@ -140,7 +140,27 @@ another bounded specimen.
 The Astra bundle is a **cold-retention candidate**, not deletion-authorized.
 The repaired packet is a **qualified hot-memory candidate** for this specimen.
 
-No next memory specimen is selected yet.
+Memory Matrix Pressure 002 (**MM-002**) is now **ACTIVE**.
+
+Specimen class: multi-round Council deliberation / proposal narrowing /
+checkpoint.
+
+Candidate hot-memory carrier:
+`traces/multi_round_deliberation_001_checkpoint.json`
+(blob `0cad066f48de2a42a45017487ec2bcde855fbaa6`).
+
+MM-002 first tests whether the existing checkpoint is already sufficient hot
+memory. It does not assume another compiled packet is needed.
+
+Round-trip prompt:
+`docs/candidates/memory_matrix_v0/ROUND_TRIP_PROMPT_002.md`.
+
+The qualified MM-001 packet remains pinned to its tested historical basis. A
+later user commit restored the imported Astra Constitution Seed copy from blob
+`a25260c5e1cb039c28549ebfbf89d92d6774c57f` (through Article XX) to blob
+`4f8261a3ab5103db0d113f053d58928216e53ba7` (retaining XXI + XXII). This is a
+post-qualification source-lineage change, not a retroactive rewrite of the
+MM-001 specimen.
 
 No graph ontology, generalized memory schema, automatic capture pipeline,
 source-deletion rule, or generalized semantic-continuity checker is earned.
