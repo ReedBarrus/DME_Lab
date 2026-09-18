@@ -105,6 +105,28 @@ Portable two-Workshop recovery: **DEFERRED_UNTIL_REAL_PACKET_EVIDENCE**.
 
 Schemas, routers, schedulers, and autonomous research loops remain unauthorized.
 
+## Active development pressure
+
+Memory Matrix Pressure 001 (**MM-001**) is **ACTIVE**.
+
+Specimen:
+`docs/Evidence_Arc/Astra_Reconstruction/`.
+
+Candidate compiled memory:
+`docs/candidates/memory_matrix_v0/ASTRA_RECONSTRUCTION_PACKET_001.md`.
+
+Question: can the high-entropy Astra reconstruction bundle be reduced to a
+substantially smaller relational memory packet while preserving source role,
+basis, dependency, unresolvedness, and authority boundaries under independent
+round-trip reconstruction?
+
+No graph ontology, generalized memory schema, automatic capture pipeline, or
+source deletion is earned by activation of MM-001.
+
+`docs/projection/Continuity_Filter_Stack_v0.md` is parked as a non-authoritative
+projection while MM-001 tests whether the relations needed by higher-order
+continuity checks can be retained compactly.
+
 ## Constitutional / compression standing
 
 The bounded-evidence objective and non-strengthening discipline survived the
