@@ -1,6 +1,6 @@
 # Memory Matrix Pressure 002 — Council Deliberation Checkpoint
 
-**Status:** ACTIVE PRESSURE  
+**Status:** PASSED — COMPOSITIONAL CARRIER QUALIFIED  
 **Pressure ID:** MM-002  
 **Specimen class:** deliberation / proposal narrowing / checkpoint  
 **Candidate hot-memory carrier:** existing
@@ -207,3 +207,30 @@ Round 2.
 
 Round 3 prompt:
 `docs/candidates/memory_matrix_v0/ROUND_TRIP_PROMPT_002_ROUND_3.md`.
+
+
+## Round 3 result
+
+Round 3 used the unchanged checkpoint plus the immutable-basis and causal-lineage
+envelopes.
+
+Two independent same-basis observers returned:
+
+`CHECKPOINT MEMORY ROUND-TRIP PASSES`
+
+No further consequential loss was found in the tested scope.
+
+MM-002 therefore closes as **PASSED IN TESTED SCOPE**.
+
+Earned carrier form:
+
+```text
+existing checkpoint
++
+immutable basis envelope
++
+causal lineage envelope
+→ qualified hot-memory composition
+```
+
+Raw Council rounds remain retained and are not deletion-authorized.

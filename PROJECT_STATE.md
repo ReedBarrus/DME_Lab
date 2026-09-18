@@ -158,9 +158,23 @@ Round 2 used the unchanged checkpoint plus a minimal immutable basis envelope.
 Two independent observers confirmed historical source closure was repaired and
 then failed on the same next loss: per-actor/per-round causal attribution.
 
-Round 3 is now active using the unchanged checkpoint, immutable basis envelope,
-and a minimal causal-lineage envelope. Exact raw round prose remains omitted and
-recoverable through pinned blobs.
+Round 3 **PASSED IN TESTED SCOPE** under two independent same-basis observers.
+
+The qualified hot-memory composition is:
+
+```text
+existing Council checkpoint
++
+immutable basis envelope
++
+causal-lineage envelope
+```
+
+This preserves decision topology, exact historical source identity, and
+actor/round causal topology without rewriting the original checkpoint.
+
+The raw Council rounds remain retained and are only cold-retention candidates;
+deletion is not authorized.
 
 Round-trip prompt:
 `docs/candidates/memory_matrix_v0/ROUND_TRIP_PROMPT_002.md`.

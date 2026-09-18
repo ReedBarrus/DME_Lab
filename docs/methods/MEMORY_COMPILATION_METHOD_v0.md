@@ -170,3 +170,50 @@ MM-001 does not establish:
 - cross-domain reliability.
 
 Those require further specimens and pressure.
+
+## MM-002 refinement — compositional carrier sufficiency
+
+MM-002 added a second bounded specimen class: multi-round deliberation.
+
+The existing decision checkpoint preserved most consequential outcome structure
+but failed twice under independent reconstruction before qualifying:
+
+```text
+checkpoint only
+→ missing immutable source closure
+
+checkpoint + basis envelope
+→ missing actor/round causal topology
+
+checkpoint + basis envelope + causal-lineage envelope
+→ two independent same-basis passes
+```
+
+This earns the additional rules:
+
+```text
+decision topology
+!=
+immutable source-identity topology
+!=
+actor/round causal topology
+```
+
+and:
+
+```text
+memory compilation
+!=
+always create a new packet
+
+existing artifact
++
+minimal orthogonal repair envelopes
+may qualify as the hot-memory carrier
+```
+
+When a retained artifact already preserves consequential content, prefer adding
+the smallest missing dimension over rewriting or duplicating the artifact.
+
+A later failure should expose a new missing relation; do not preemptively merge
+all possible dimensions into one schema.
