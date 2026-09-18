@@ -3,3 +3,7 @@ __pycache__/
 
 # Derived Cockpit build output. Regenerate from an exact committed source.
 generated/
+
+# Local desktop packaging output.
+build/cockpit_pyinstaller/
+dist/cockpit/

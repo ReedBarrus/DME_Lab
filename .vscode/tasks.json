@@ -1,0 +1,57 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "DME: Launch Cockpit",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        "-m",
+        "src.cockpit.desktop_launcher",
+        "--repo",
+        "${workspaceFolder}"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "group": "build"
+    },
+    {
+      "label": "DME: Test Cockpit Launcher",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        "-m",
+        "unittest",
+        "tests.cockpit.test_desktop_launcher"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "group": "test"
+    },
+    {
+      "label": "DME: Build Cockpit EXE",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}\\tools\\build_cockpit_windows.ps1"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    }
+  ]
+}
