@@ -1,0 +1,25 @@
+{
+  "task_id": "CAMPAIGN-LEG-1A",
+  "requested_task": "Run the focused continuity test module, compile the continuity tool and test module, and run git diff --check; retain the bounded results without changing scientific standing.",
+  "required_basis_refs": [
+    "continuity/README.md",
+    "continuity/SYNC_RITUAL.md",
+    "tools/continuity.py",
+    "tests/runtime/test_continuity_bootstrap.py"
+  ],
+  "request_standing": "AUTHORIZED_BOUNDED_REPOSITORY_LOCAL_EXECUTION",
+  "must_not_assume": [
+    "test success establishes scientific standing",
+    "activity recording verifies semantic or external consequence",
+    "authority extends beyond this bounded repository-local validation"
+  ],
+  "expected_result": {
+    "task_id": "CAMPAIGN-LEG-1A",
+    "commands_attempted": "list",
+    "validation_results": "list",
+    "result_artifact_refs": "list",
+    "authority_changed": false,
+    "standing_changed": false,
+    "unresolved": "list"
+  }
+}
