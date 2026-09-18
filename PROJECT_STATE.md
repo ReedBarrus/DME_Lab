@@ -98,8 +98,9 @@ packet.
 
 Development Pressure Map: **ACTIVE_CONSTRUCTION**.
 
-First real Astra packet: **REACHABLE_AFTER_MAP** under the current development
-map, not automatically authorized.
+First real Astra packet: **GATED_BY_DP001_RESOLUTION**. It is not currently
+reachable for packet formation merely because the development map exists; DP-001
+must first be explicitly resolved sufficient.
 
 Portable two-Workshop recovery: **DEFERRED_UNTIL_REAL_PACKET_EVIDENCE**.
 

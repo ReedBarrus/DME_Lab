@@ -47,7 +47,7 @@ Development-control standing:
 - Twinning workflow: **OPERABLE_V0**
 - Reciprocal handoff contract: **OPERABLE_V0**
 - Development pressure map: **ACTIVE_CONSTRUCTION**
-- First real Astra packet: **REACHABLE_AFTER_MAP**
+- First real Astra packet: **GATED_BY_DP001_RESOLUTION**
 - Portable two-Workshop pressure: **DEFERRED_UNTIL_REAL_PACKET_EVIDENCE**
 - Schemas / routers / schedulers / autonomous research loop: **UNAUTHORIZED**
 
@@ -149,6 +149,14 @@ Workshop may not silently widen the pressure or promote semantic standing.
 - **Resolution criterion:** the object is small enough to reconstruct current
   development reachability and strict enough that the next packet can cite it
   without gaining authority from it.
+- **Current pressure result:** independent reconstruction split between
+  `YES` and `UNRESOLVED` on whether map existence already satisfies
+  `REACHABLE_AFTER_MAP`; one additional response was non-admissible because
+  it substituted the scientific PR map for the requested development map.
+- **Unlock semantics:** DP-002 becomes reachable for packet formation only
+  after DP-001 is explicitly adjudicated sufficient under this resolution
+  criterion. Mere existence of `DEVELOPMENT_PRESSURE_MAP.md` does not satisfy
+  the unlock.
 - **Unlocks:** DP-002
 
 ### DP-002 — First real Astra execution packet
@@ -156,7 +164,11 @@ Workshop may not silently widen the pressure or promote semantic standing.
 - **Pressure:** Can one real repository/runtime development question be
   expressed as a pressure envelope that gives Astra/Codex useful search freedom
   while preserving evidence debt, stop conditions, and semantic limits?
-- **Standing:** `REACHABLE_AFTER_MAP`
+- **Standing:** `GATED_BY_DP001_RESOLUTION`
+- **Reachability condition:** this node may become reachable for packet
+  formation only after explicit bounded resolution of DP-001. Map-file
+  existence alone is insufficient, and reachability still would not authorize
+  execution.
 - **Basis required:** exact repository/runtime coordinate plus the relevant
   current evidence surface for the selected development question
 - **Council obligation:**
