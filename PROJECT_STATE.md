@@ -107,10 +107,17 @@ Portable two-Workshop recovery: **DEFERRED_UNTIL_REAL_PACKET_EVIDENCE**.
 Schemas, routers, schedulers, and autonomous research loops remain unauthorized.
 
 Continuity Seat Pressure 001 is **ACTIVE EXPERIMENTAL PRESSURE**. Two
-independent cursor-bearing consumers, `sol` and `pulse`, are positioned
-FROM_HEAD at CE-000026. They are not added to the two-seat v0 registry. The
-pressure tests cursor isolation and actual consume/ack behavior before any
-registry-seat expansion.
+independent cursor-bearing consumers, `sol` and `pulse`, remain outside the
+two-seat v0 registry.
+
+Sol has now consumed and acknowledged through CE-000029. This demonstrates that
+consumer-local delta/ack operation does not require registry membership while
+also exposing a fresh-occupant question: a consumed cursor coordinate does not
+by itself retain the semantic working state produced by earlier consumption.
+
+The current registry still makes only `chatgpt-main` and `codex-main`
+discoverable. The next bounded pressure separates self-continuity capability
+from registry-mediated participant discovery before any registry-seat expansion.
 
 ## Memory compilation standing
 
