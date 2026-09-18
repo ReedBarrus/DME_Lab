@@ -107,6 +107,18 @@ Schemas, routers, schedulers, and autonomous research loops remain unauthorized.
 
 ## Memory compilation standing
 
+Memory Matrix Pressure 003 (**MM-003**) is **ACTIVE**.
+
+MM-003 is a cold open-ended loss audit over the already-qualified MM-002
+compositional carrier. It deliberately removes the enumerated reconstruction
+checklist used during MM-002 and asks an independent observer only what
+consequential information is missing.
+
+The carrier itself is unchanged. No new memory invariant or method amendment is
+assumed before the audit produces evidence.
+
+
+
 Memory Matrix Pressure 001 (**MM-001**) is **PASSED IN TESTED SCOPE**.
 
 Specimen:
