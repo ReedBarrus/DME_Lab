@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/workshop_cell_receipt_v0.schema.json",
+  "title": "Workshop Cell Receipt v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema","cell_id","manifest_sha256","authorization_ref","terminal","execution_status","state_trace","verified_inputs","assembled_payload_sha256","invocation_surface","execution","output","deviations"],
+  "properties": {
+    "schema": {"const": "workshop_cell_receipt_v0"},
+    "cell_id": {"type": "string", "minLength": 1},
+    "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "authorization_ref": {"type": "string", "minLength": 1},
+    "terminal": {"const": true},
+    "execution_status": {"const": "COMPLETED"},
+    "state_trace": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "verified_inputs": {
+      "type": "object",
+      "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+    },
+    "assembled_payload_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "invocation_surface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["declared","observed","unverified","unobservable"],
+      "properties": {
+        "declared": {"type": "object"},
+        "observed": {"type": "object"},
+        "unverified": {"type": "array", "items": {"type": "string"}},
+        "unobservable": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["model_invoked","invocation_count"],
+      "properties": {
+        "model_invoked": {"const": true},
+        "invocation_count": {"const": 1}
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["raw_sha256","raw_ref"],
+      "properties": {
+        "raw_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "raw_ref": {"type": "string", "minLength": 1}
+      }
+    },
+    "deviations": {"type": "array", "maxItems": 0}
+  }
+}
