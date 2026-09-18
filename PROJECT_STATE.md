@@ -106,6 +106,12 @@ Portable two-Workshop recovery: **DEFERRED_UNTIL_REAL_PACKET_EVIDENCE**.
 
 Schemas, routers, schedulers, and autonomous research loops remain unauthorized.
 
+Continuity Seat Pressure 001 is **ACTIVE EXPERIMENTAL PRESSURE**. Two
+independent cursor-bearing consumers, `sol` and `pulse`, are positioned
+FROM_HEAD at CE-000026. They are not added to the two-seat v0 registry. The
+pressure tests cursor isolation and actual consume/ack behavior before any
+registry-seat expansion.
+
 ## Memory compilation standing
 
 Memory Matrix Pressure 003 (**MM-003**) is **PASSED IN TESTED SCOPE**.
