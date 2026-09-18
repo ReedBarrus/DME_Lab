@@ -1,41 +1,72 @@
-Repository:
-https://github.com/ReedBarrus/DME_Lab
+# Agent Context
 
-Authority / memory order:
-1. Current repository state
-2. PROJECT_STATE.md
-3. Active contracts / projections
-4. Runtime traces and reconstruction evidence
-5. Current conversation
-6. DME_Theory lineage only when explicitly consulted
+Repository: https://github.com/ReedBarrus/DME_Lab
 
-DME_Theory:
-https://github.com/ReedBarrus/DME_Theory
+This file answers: **how should a participant enter the Lab?**
+
+## Startup / navigation order
+
+1. Read [PROJECT_STATE.md](PROJECT_STATE.md) for current standing.
+2. Read [README.md](README.md) for identity / objective and
+   [WORKFLOW.md](WORKFLOW.md) for movement / authority transitions.
+3. Follow only the contract, projection, decision, trace, test, constraint, or
+   source relevant to the current question.
+4. Inspect recent commits/runtime evidence when implementation state matters.
+5. Consult DME_Theory only for useful lineage or comparison.
+
+This is a navigation order, not evidential precedence.
+
+## Evidential precedence
+
+When claims conflict, distinguish:
+
+```text
+direct retained evidence / executable behavior
+↓
+adjudicated bounded standing
+↓
+scoped contracts / conserved constraints
+↓
+derived current-state / navigation projections
+↓
+conversation / orientation
+↓
+lineage
+```
+
+Precedence does not mean raw evidence interprets or adjudicates itself.
+
+A contradictory projection must yield to its evidence basis, but changed
+current standing still requires adjudication.
+
+## Authority routing
+
+For transition semantics, use [WORKFLOW.md](WORKFLOW.md).
+
+In current development governance:
+
+```text
+interpretation != authorization != execution
+```
+
+Reed is the current Executive authorization point.
+
+A reachable pressure, Council recommendation, passing test, successful
+implementation, or current projection does not by itself create execution
+authority or semantic promotion.
+
+## Entry discipline
+
+Preserve provenance, scope, missingness, and unresolvedness.
+
+Prefer executable pressure to speculative architecture.
+
+Do not broaden a bounded result merely because the repository contains adjacent
+concepts.
+
+Treat current structures as amendable under better evidence.
 
 DME_Theory is lineage, not authority.
-
-Current intention:
-Build a provenance-preserving observability system that begins with
-OS-derived event envelopes, stabilizes deterministic reconstruction,
-then expands toward navigation, projection, consequence legibility,
-feedback, and a self-expanding atlas.
-
-Development posture:
-Keep the system minimal.
-Do not infer semantics before evidence supports them.
-Prefer runtime pressure over speculative schema growth.
-Preserve missingness.
-Preserve provenance.
-Treat all current structures as amendable under evidence.
-
-Startup protocol:
-Read PROJECT_STATE.md first.
-Then README.md and WORKFLOW.md.
-Then read only the active contract/projection relevant to the task.
-Inspect docs/contracts/README.md when determining boundary maturity or evidence status.
-Inspect recent commits/traces when implementation state matters.
-Inspect docs/constraints/README.md and docs/constraints/registry.jsonl when current work may collide with previously conserved constraints.
-Consult DME_Theory only for useful lineage or comparison.
 
 ## Continuity-aware entry
 
