@@ -109,13 +109,20 @@ Schemas, routers, schedulers, and autonomous research loops remain unauthorized.
 
 Memory Matrix Pressure 003 (**MM-003**) is **ACTIVE**.
 
-MM-003 is a cold open-ended loss audit over the already-qualified MM-002
-compositional carrier. It deliberately removes the enumerated reconstruction
-checklist used during MM-002 and asks an independent observer only what
-consequential information is missing.
+MM-003 cold audit 001 produced divergent independent results: one PASS and one
+FAIL. The FAIL was verified against immutable repository history and exposed a
+real operational-dependency basis wound.
 
-The carrier itself is unchanged. No new memory invariant or method amendment is
-assumed before the audit produces evidence.
+The Council's frozen continuity source basis is
+`f28187306d3282a66d95b9d85e764f75751e812d`, where
+`AGENT_CONTEXT.md` is blob
+`416b2aaa6469d4e201860836399b8989c95dcaff` and routes to the detailed
+synchronization ritual. The later transplant commit contains a different
+`AGENT_CONTEXT.md` blob, so same-path post-handoff resolution is not a valid
+substitute.
+
+A minimal continuity-dependency basis envelope is now under targeted repair
+verification. No new invariant or method amendment is promoted yet.
 
 
 

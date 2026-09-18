@@ -91,3 +91,53 @@ qualified carrier and evaluate whether the cold-audit step belongs in the
 memory method.
 
 No method amendment is earned merely by staging MM-003.
+
+
+## Cold audit 001 result
+
+Two independent open-ended observers diverged:
+
+- one returned `COLD OPEN LOSS AUDIT FAILS`;
+- one returned `COLD OPEN LOSS AUDIT PASSES`.
+
+The FAIL was verified against immutable repository history and is valid.
+
+The exposed wound is:
+
+```text
+deliberation source closure
+!=
+operational dependency closure
+```
+
+The checkpoint's non-round evidence refs were not explicitly pinned by the
+MM-002 envelopes. More importantly, the historical
+`AGENT_CONTEXT.md` used by the continuity source lineage differs from the
+same path at the later transplant commit.
+
+Frozen source:
+
+`f28187306d3282a66d95b9d85e764f75751e812d:AGENT_CONTEXT.md`
+→ `416b2aaa6469d4e201860836399b8989c95dcaff`
+
+Later transplant:
+
+`cd4375dda09a2dfe5ba297de99bbef6bba38e9c9:AGENT_CONTEXT.md`
+→ `5b1102a7b619985fbbcff7034acc92e2800bd71f`
+
+The retained handoff rule already says inherited CE-000001 through CE-000010
+relative refs must resolve through the frozen source lineage, not the
+post-handoff branch.
+
+### Minimal repair
+
+Add only:
+
+`docs/candidates/memory_matrix_v0/MM003_CONTINUITY_DEPENDENCY_BASIS_ENVELOPE_v0.md`
+
+Then run:
+
+`docs/candidates/memory_matrix_v0/MM003_TARGETED_REPAIR_PROMPT_001.md`
+
+After targeted repair verification, rerun a fresh cold open-ended audit before
+any new invariant or method rule is promoted.
