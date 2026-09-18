@@ -18,8 +18,7 @@ The first completed capture block was later reported by the operator to have ove
 
 The first block was retained and explicitly excluded from the primary comparison rather than discarded. Its broad overlapping measurements were compatible with the reported confound but did not prove what caused the contamination.
 
-The report remained attached to the retained block before any replacement acquisition occurred.
-The report did not establish the contamination source.
+The report remained attached to the retained block before any replacement acquisition occurred. The report did not establish the contamination source.
 
 ## Minimal repair
 

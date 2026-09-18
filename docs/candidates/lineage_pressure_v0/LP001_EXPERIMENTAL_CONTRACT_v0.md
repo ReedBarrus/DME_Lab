@@ -1,6 +1,6 @@
 # Lineage Pressure 001 — Behavioral Materiality — Repaired Experimental Contract v0
 
-**Status:** CANDIDATE CONTRACT — REPAIRED AFTER COMMANDER PREFLIGHT
+**Status:** CANDIDATE CONTRACT — REPAIRED AFTER COMMANDER PREFLIGHT ROUND 2
 **Pressure ID:** LP-001
 **Execution status:** NOT AUTHORIZED / NO CELLS RUN
 **Standing sought:** bounded behavioral materiality only
@@ -25,21 +25,21 @@ Where:
 
 - M = model/invocation model label;
 - R = role/task contract;
-- B = evidence basis;
+- B = frozen current/non-lineage evidence basis excluding `CONDITION_PACKET`;
 - P = current pressure;
 - W = working-state condition;
 - tau = realization topology;
 - A = authority boundary;
 - S = held-out specimen;
 - Q = task wording and response contract;
-- L = lineage condition;
+- L = exact `CONDITION_PACKET` carrier bytes, including their lexical and token realization;
 - T = consequential transformation class.
 
 The maximum positive claim is:
 
 ```text
-retained lineage can be behaviorally material
-within this declared tested scope
+the exact frozen target historical packet can be behaviorally material
+relative to the declared controls within this tested scope
 ```
 
 ## 2. Frozen condition carriers
@@ -54,7 +54,7 @@ L1 target MM-003 historical episode
 blob 43dbc28ae5befe0c803d74f00847b4ff10c80516
 
 LC matched irrelevant acoustic historical episode
-blob ae1e7a749bd6a9472880dc2e2e5fdb9cd1fcd633
+blob 187f3352c85cbc1e92f479ab5012e770763275d9
 ```
 
 No cell may receive a regenerated summary of these episodes.
@@ -90,16 +90,20 @@ blob:
 
 Neither packet states a generalized invariant as a command.
 
-Critical anti-coaching rule:
+Anti-coaching is frozen mechanically before any cell output exists under:
 
-```text
-historical episode description
-MUST NOT
-contain imperative advice, held-out terminology, the held-out answer,
-a scoring criterion, or an instruction to search for an analogous wound
-```
+`LP001_PREEXECUTION_QUALIFICATION_v0.md`
 
-Any violation invalidates the batch.
+blob:
+
+`5d176b0284ef6fdfd38aa4ab2aaffba288c39676`
+
+That artifact defines the exact prohibited literals, prohibited directive-line
+prefixes, normalization rule, and pre-run scan result for L1 and LC.
+
+The scan passed with zero prohibited hits for both exact packet blobs. Generic
+historical vocabulary may not be reclassified as coaching after outcomes are
+visible. Anti-coaching therefore cannot become a post-hoc batch-rescue rule.
 
 ## 4. Frozen held-out specimen
 
@@ -117,7 +121,7 @@ The evaluator-only key is exactly:
 
 blob:
 
-`6afa2b80c78cfaa3daf0c9ca8e5c5d3a9dce77d2`
+`14ac6827898f66c1e3aa0868a8cc55bd25349f18`
 
 The specimen was fixed before any LP-001 cell output existed.
 
@@ -176,20 +180,23 @@ manifest exactly.
 
 ### RECOVERABLE
 
-Before LP-001 cells begin, L1 and LC must each receive two fresh packet-only
-reconstruction checks using the same model class. Both observers for each
-packet must recover:
+RECOVERABLE qualification is frozen completely by:
 
-- initial posture;
-- observed fracture/confound;
-- adjudication basis;
-- minimal repair;
-- verification outcome;
-- preserved nonclaim.
+`LP001_PREEXECUTION_QUALIFICATION_v0.md`
 
-No held-out specimen is supplied during this qualification.
+blob:
 
-Failure of either packet to pass 2/2 makes LP-001 not ready to execute.
+`5d176b0284ef6fdfd38aa4ab2aaffba288c39676`
+
+It fixes the qualification prompt, response contract, invocation surface,
+exact four-attempt order, two-attempt-per-packet/no-replacement rule,
+deterministic literal-anchor rubric, and required frozen qualification record.
+
+No held-out specimen, evaluator key, LP-001 task, prior qualification output, or
+cross-attempt output is supplied during qualification.
+
+Both L1 attempts and both LC attempts must pass all six required reconstruction
+fields. Anything else leaves LP-001 `NOT_READY` before RUN01.
 
 ### APPLICABLE
 
@@ -241,6 +248,13 @@ Backend revision, decoding seed, and other provider-internal state that are not
 observable or controllable remain residual nuisance variables. They may not be
 claimed fixed. The balanced run order below limits systematic correlation with
 condition but does not eliminate hidden backend variance.
+
+Exact provider tokenizer identity and model-token count are also not exposed on
+the selected surface and are not claimed equal across L1 and LC. The packets are
+matched on section sequence, line count, whitespace-word count, placement, and
+near-equal UTF-8 byte mass only. Any residual tokenizer/token-mass difference is
+part of the exact varied carrier L and remains an admitted causal-mechanism
+nuisance.
 
 If the observable model label or reasoning configuration changes during the
 batch, the entire batch is invalid.
@@ -363,37 +377,70 @@ No early stopping is permitted.
 A failed/inconvenient cell is retained under the codebook; it is not selectively
 replaced.
 
-## 13. Blind administration and scoring
+## 13. Assignment-blind administration and scoring
 
 The realization receives the packet content but not the labels L0/L1/LC.
 
 Prompt assembly must be scripted or mechanically copied from the frozen files;
 the administrator may not alter wording between cells.
 
-Scoring is condition-blind.
+The scorer-assignment artifact is frozen before cells:
 
-Before labels are revealed, all outputs must be anonymized, scored, and frozen
-under `LP001_SCORING_CODEBOOK_v0.md`.
+`LP001_SCORER_ASSIGNMENT_MAP_v0.md`
 
-Condition labels are revealed only after scoring is frozen.
+blob:
+
+`547d187981ebae09658e38878baabbf5c5babd51`
+
+The RUN-to-scorer-ID and RUN-to-condition maps remain unavailable to the scorer
+until scoring is frozen. Scorer-visible outputs are renamed to opaque IDs,
+stripped of run-order/condition/timestamp/request metadata, and presented in the
+frozen lexicographic scorer-ID order.
+
+Before assignment reveal, all outputs must be scored and frozen under
+`LP001_SCORING_CODEBOOK_v0.md`.
+
+The response text itself is preserved byte-for-byte and may permit condition
+inference. That residual expectancy leakage is admitted. The experiment claims
+assignment blindness, not full condition-content blindness.
+
+Assignment is revealed only after all primary classes, secondary codes, format
+flags, annotations, and output hashes are frozen.
 
 ## 14. Primary discriminator
 
-The one frozen primary outcome is the categorical
-`PRIMARY_TRANSFORMATION_CLASS` defined by the codebook:
+Administration validity is evaluated first from retained apparatus evidence and
+is outside realization scoring.
+
+`ADMINISTRATION_INVALID` is not a transformation class.
+
+Every administratively valid realization receives exactly one frozen primary
+class under `LP001_SCORING_CODEBOOK_v0.md`:
 
 ```text
+C LINEAGE_OVERREACH_OR_FALSE_ANALOGY
 A TARGET_FRACTURE_PRESERVED
 B TARGET_FRACTURE_NOT_PRESERVED
-C LINEAGE_OVERREACH_OR_FALSE_ANALOGY
-D INVALID_UNSCORABLE
 ```
+
+Precedence is fixed:
+
+```text
+C overrides A
+A overrides B
+otherwise B
+```
+
+A successfully returned malformed, contradictory, strange, empty, or
+refusal-style realization remains behavioral evidence; it cannot be converted
+into administration failure merely because its behavior is inconvenient.
 
 Materiality and valence are separate.
 
 The repetition threshold is exactly the threshold in the frozen codebook.
 
-No other response feature may be promoted into the primary discriminator after
+No B-only redistribution, A suppression, format-failure pattern, or other
+unlisted response feature may be promoted into the primary discriminator after
 outputs exist.
 
 ## 15. Current-evidence override
@@ -419,11 +466,29 @@ The following are MUST requirements:
 - LC cannot be rematched after any cell output exists;
 - no task wording may change between cells;
 - scoring criteria cannot change after any cell output exists;
-- primary scoring must remain blind to condition labels;
+- scoring must remain blind to the assignment map until codes are frozen;
+- verified administration failure must remain distinct from realization-generated behavior;
+- a completed administratively valid batch cannot be replaced because its result is unfavorable;
 - no result from Fresh Sol, Pulse, Registry A/B, DP-001, or another experiment
   may rescue, reinterpret, or modify an LP-001 cell during this batch.
 
-## 17. Qualification rule
+## 17. Qualification and batch rule
+
+Before RUN01, L1 and LC must both be RECOVERABLE at 2/2 under the frozen
+pre-execution qualification artifact and its four-attempt result record must be
+frozen.
+
+The first batch that preserves all frozen administration coordinates, returns
+exactly 18 completed realization responses, contains no
+`ADMINISTRATION_INVALID` cell, and reaches scoring with the assignment map
+sealed is the sole confirmatory LP-001 batch.
+
+A batch containing an objectively documented administration failure may be
+rerun only as a whole. The failed batch remains retained.
+
+A completed administratively valid batch cannot be replaced because its result
+is unfavorable, surprising, weak, or inconvenient. Any later batch is
+replication evidence and cannot erase or redefine the first confirmatory batch.
 
 LP-001 may be marked `PASSED_IN_TESTED_SCOPE` only if:
 
@@ -434,9 +499,9 @@ L1 and LC both RECOVERABLE at 2/2 prequalification
 +
 predeclared applicability retained
 +
-18-cell batch completed
+first administratively valid 18-cell confirmatory batch completed
 +
-blind scoring frozen before condition reveal
+assignment-blind scoring frozen before assignment reveal
 +
 one same non-baseline primary class (A or C)
 reaches >=5/6 in L1
@@ -446,11 +511,13 @@ that same class remains <=2/6 in L0
 that same class remains <=2/6 in LC
 ```
 
-If the qualifying class is A, valence is beneficial.
-If it is C, valence is harmful.
+If the qualifying class is A, valence is `BENEFICIAL`.
+If it is C, valence is `HARMFUL`.
+If neither A nor C satisfies the frozen rule, materiality/valence is
+`UNRESOLVED` and LP-001 does not pass.
 
 A positive L1/L0 difference without L1/LC separation cannot establish target
-lineage content materiality.
+packet materiality.
 
 ## 18. Explicitly unearned
 
@@ -467,7 +534,10 @@ Even a positive LP-001 result does not establish:
 - general learning;
 - automatic lineage extraction;
 - a universal lineage schema;
-- lineage as a separate storage substrate.
+- lineage as a separate storage substrate;
+- a unique causal mechanism separating historical-lineage status from semantic/analogical in-context priming by the exact packet;
+- behavioral materiality of an abstract lineage independent of the packet's wording;
+- equal provider tokenizer identity or equal model-token mass across conditions.
 
 ## 19. Follow-on pressures
 
@@ -485,7 +555,9 @@ deferred to a later pressure.
 
 ## 20. Core gate
 
-Before execution, fresh Commander preflight asks only:
+Before execution, a fresh Commander preflight reviews the repaired contract,
+codebook, packets, fixture/key, pre-execution qualification artifact, and
+scorer-assignment artifact, and asks only:
 
 ```text
 Can a surprising LP-001 result still be rescued post hoc
