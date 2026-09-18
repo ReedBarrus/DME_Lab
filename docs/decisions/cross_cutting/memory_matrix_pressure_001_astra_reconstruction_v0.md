@@ -180,5 +180,13 @@ route to retained source
 historical basis closure
 ```
 
+After minimal repair, the revised packet at blob
+`3b210b5f7698eba8d3ecea7c07f5503cd97a0c09` received **VALID PASS 1** from an
+independent operator-supplied observer using revised prompt blob
+`3d7f4ab08a70ddba10f3e4e2d0d9403330a53742`.
+
+A second independent observer over the same packet/prompt basis is pending.
+The earlier pre-repair Claude pass is not counted toward that bar.
+
 No memory method, packet schema, graph ontology, automatic capture pipeline, or
 source deletion is yet earned.

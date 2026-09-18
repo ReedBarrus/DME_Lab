@@ -120,13 +120,17 @@ substantially smaller relational memory packet while preserving source role,
 basis, dependency, unresolvedness, and authority boundaries under independent
 round-trip reconstruction?
 
-Round 1: **FAIL** under a local Qwen 3 Coder observer. The smallest loss was
-historical source-version closure: the packet routed to a later imported
-Constitution Seed copy rather than preserving the exact historical root source
-state carrying XXI and, later, XXII. Candidate repair is active.
+Round 1: **FAIL**. The smallest loss was historical source-version closure: the
+packet routed to a later imported Constitution Seed copy rather than preserving
+the exact historical root source state carrying XXI and, later, XXII.
 
-No graph ontology, generalized memory schema, automatic capture pipeline, or
-source deletion is earned by MM-001.
+Repaired Packet 001 (blob
+`3b210b5f7698eba8d3ecea7c07f5503cd97a0c09`) now has **VALID PASS 1** under the
+revised same-basis round-trip. A second independent observer over that exact
+packet/prompt basis remains pending.
+
+No graph ontology, generalized memory schema, automatic capture pipeline,
+source deletion, or generalized memory method is earned by MM-001 yet.
 
 `docs/projection/Continuity_Filter_Stack_v0.md` is parked as a non-authoritative
 projection while MM-001 tests whether the relations needed by higher-order
