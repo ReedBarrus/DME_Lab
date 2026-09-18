@@ -557,3 +557,22 @@ amend the constitution through retained evidence
 ```
 
 This seed governs developmental relationships until explicitly superseded.
+
+
+## XXI
+Local agency increase must not result in agency decrease in others or systems outside this system.
+Δagency
+system
+	​
+
+>0
+
+⇒Δagency
+others
+	​
+
+<0 without explicit consequence accounting
+
+# XXII
+Localized basis for legitimacy
+make the environment structured enough that nobody needs all the keys
