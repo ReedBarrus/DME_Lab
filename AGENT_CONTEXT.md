@@ -36,3 +36,20 @@ Inspect docs/contracts/README.md when determining boundary maturity or evidence 
 Inspect recent commits/traces when implementation state matters.
 Inspect docs/constraints/README.md and docs/constraints/registry.jsonl when current work may collide with previously conserved constraints.
 Consult DME_Theory only for useful lineage or comparison.
+
+## Continuity-aware entry
+
+If the participant occupies a retained continuity consumer identity and the
+current task depends on prior retained activity, follow
+`continuity/SYNC_RITUAL.md` before consequential work.
+
+Continuity transports recorded activity and consumer-relative position. It does
+not replace repository evidence, adjudicated standing, or authority routing.
+
+continuity available
+!=
+continuity consumed
+!=
+semantic application
+!=
+acknowledgement
