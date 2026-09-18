@@ -668,6 +668,60 @@ stable. Earn schemas, validators, routers, or automated handoff machinery only
 when repeated execution demonstrates that prose ambiguity or manual transfer is
 a consequential failure surface.
 
+### Council / Executive / Workshop handoff
+
+The operational handoff is defined in
+[`docs/methods/TWINNING_PROTOCOL_v0.md`](docs/methods/TWINNING_PROTOCOL_v0.md).
+
+The development-control loop is:
+
+```text
+Council interpretation
+-> Executive authorization
+-> EXECUTION_PACKET_v0
+-> Workshop execution
+-> EVIDENCE_RETURN_v0
+-> independent Council metabolization
+-> Executive adjudication
+```
+
+The packet boundary is reciprocal.
+
+Council-to-Workshop packets must state the current pressure, admitted evidence,
+surviving uncertainty, authorized operations, forbidden extrapolations, required
+return evidence, and stop/escalation conditions.
+
+Workshop-to-Council returns must report what actually executed, what changed,
+tests/runtime results, direct evidence, unexpected observations, assumptions,
+delegated decisions, refused/escalated decisions, surviving unknowns, Workshop
+claims, candidate pressures, and protocol friction.
+
+A Workshop completion report such as `done`, `implemented`, or passing tests is
+not sufficient by itself to advance campaign standing.
+
+```text
+completion report
+!=
+evidence return
+```
+
+Workshop occupants are replaceable only at the protocol boundary and only to the
+extent demonstrated by pressure. The existence of a common packet format does
+not establish behavioral equivalence among Astra, Codex, local models, scripts,
+or humans.
+
+Two coupled learning loops are therefore allowed:
+
+```text
+development:
+Council -> Executive -> Workshop -> evidence -> Council
+
+method:
+packet design -> Workshop friction -> review -> bounded protocol amendment
+```
+
+Neither loop may silently authorize the other.
+
 ### Conservation rule for twinning
 
 Do not conserve twin commentary merely because two models said the same thing.
