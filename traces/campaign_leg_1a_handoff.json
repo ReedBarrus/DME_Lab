@@ -1,0 +1,68 @@
+{
+  "campaign": "CAMPAIGN-LEG-1A",
+  "HANDOFF_EVENT": {
+    "event_id": "CE-000003",
+    "actor": "chatgpt",
+    "kind": "TASK_HANDOFF",
+    "task_ref": "continuity/handoffs/campaign_leg_1a_task.json"
+  },
+  "CODEX_CURSOR_BEFORE": {
+    "consumer": "codex",
+    "cursor_state": "POSITIONED",
+    "last_seen_event_id": "CE-000002",
+    "bootstrap_mode": "FROM_HEAD"
+  },
+  "DELTA_CONSUMED": [
+    "CE-000003"
+  ],
+  "REFS_RESOLVED": [
+    "continuity/handoffs/campaign_leg_1a_task.json",
+    "continuity/README.md",
+    "continuity/SYNC_RITUAL.md",
+    "tools/continuity.py",
+    "tests/runtime/test_continuity_bootstrap.py"
+  ],
+  "SEMANTIC_APPLICATION": {
+    "result": "SUCCESS",
+    "task_understood_without_human_restatement": true,
+    "request_standing_preserved": "AUTHORIZED_BOUNDED_REPOSITORY_LOCAL_EXECUTION",
+    "nonclaims_preserved": true
+  },
+  "TASK_PERFORMED": {
+    "description": "Focused continuity validation requested by the handoff",
+    "result": "PASS"
+  },
+  "RESULT_ARTIFACTS": [
+    "traces/campaign_leg_1a_task_result.json",
+    "traces/campaign_leg_1a_handoff.json"
+  ],
+  "RESULT_EVENT": {
+    "event_id": "CE-000004",
+    "actor": "codex",
+    "kind": "EXECUTION_RESULT",
+    "parent_refs": [
+      "CE-000003"
+    ]
+  },
+  "CODEX_CURSOR_AFTER": {
+    "consumer": "codex",
+    "cursor_state": "POSITIONED",
+    "last_seen_event_id": "CE-000003",
+    "bootstrap_mode": "FROM_HEAD"
+  },
+  "AUTHORITY_CHANGED": false,
+  "STANDING_CHANGED": false,
+  "HUMAN_RECONSTRUCTION_REQUIRED": false,
+  "return_path": {
+    "chatgpt_cursor_before_future_sync": "CE-000002",
+    "expected_unread_events": [
+      "CE-000003",
+      "CE-000004"
+    ],
+    "fresh_chatgpt_answer_simulated": false
+  },
+  "unresolved": [
+    "Fresh ChatGPT return-path consumption has not yet been executed.",
+    "This single handoff does not establish reliable repeated delivery or generalized coordination."
+  ]
+}

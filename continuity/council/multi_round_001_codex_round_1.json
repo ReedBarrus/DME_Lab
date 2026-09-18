@@ -1,0 +1,19 @@
+{
+  "council": "MULTI-ROUND-DELIBERATION-001",
+  "round": "CODEX-1",
+  "POSITION": "Do not yet implement inspect. AGENT_CONTEXT.md and the existing delta command already require consumer identification, cursor admission, ordered unread retrieval, and selective ref resolution.",
+  "ATTACK": "The proposal bundles existing reads but does not address the unresolved failure most relevant to real continuity: whether a fresh invocation performs the startup ritual without a human prompt. No retained measurement shows separate cursor and ref checks are consequential cost.",
+  "WHAT_SURVIVES": "The proposed immutable observation envelope is a valid candidate for an isolated utility comparison, especially for preserving missing refs and event order.",
+  "WHAT_FRACTURES": "Calling retrieval bundling the next implementation is premature; it risks duplicating delta while leaving invocation reliability unchanged.",
+  "NEW_DISTINCTION_IF_ANY": "startup invocation failure != multi-read reconstruction burden != reference-integrity failure",
+  "SMALLEST_EXECUTABLE_DISCRIMINATOR": "On the next frozen handoff specimen, compare ordinary cursor-plus-delta-plus-required-ref inspection with a frozen candidate inspect envelope for the same evidence; measure reads, missing coordinates, standing errors, and mutations before adding a command.",
+  "ARCHITECTURE_NOT_EARNED": [
+    "new production command",
+    "automatic startup",
+    "semantic application engine",
+    "manager or service"
+  ],
+  "AUTHORITY_IMPACT": "NONE",
+  "STANDING_IMPACT": "NONE",
+  "repository_contradiction": "AGENT_CONTEXT.md already installs the startup ritual and continuity/README.md already defines delta plus selective ref resolution."
+}
