@@ -198,3 +198,29 @@ reachability.
 development reachability.
 
 Neither map is evidence for itself.
+
+## Local and compositional pressure
+
+Every active research pressure is evaluated on two independent dimensions:
+
+LOCAL SUFFICIENCY
+What is the smallest mechanism that resolves or sharpens the present pressure?
+
+COMPOSITIONAL COMPATIBILITY
+If preserved, can that mechanism coexist with already-earned structure without
+unsupported collapse, contradiction, or silent strengthening?
+
+global compatibility != local necessity
+local sufficiency != global architecture
+
+Possible bounded outcomes include:
+
+LOCAL-ONLY SURVIVOR
+COMPOSITIONALLY COMPATIBLE
+LOCALLY + COMPOSITIONALLY EARNED
+OVERBUILT
+INCOMPATIBLE
+BASIS INSUFFICIENT
+
+If either dimension is unresolved, preserve that unresolvedness rather than
+promoting the mechanism.

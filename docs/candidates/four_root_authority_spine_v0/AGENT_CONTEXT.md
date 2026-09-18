@@ -67,3 +67,20 @@ concepts.
 Treat current structures as amendable under better evidence.
 
 DME_Theory is lineage, not authority.
+
+## Continuity-aware entry
+
+If the participant occupies a retained continuity consumer identity and the
+current task depends on prior retained activity, follow
+`continuity/SYNC_RITUAL.md` before consequential work.
+
+Continuity transports recorded activity and consumer-relative position. It does
+not replace repository evidence, adjudicated standing, or authority routing.
+
+continuity available
+!=
+continuity consumed
+!=
+semantic application
+!=
+acknowledgement
