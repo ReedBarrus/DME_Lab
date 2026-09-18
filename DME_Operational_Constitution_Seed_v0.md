@@ -572,3 +572,7 @@ others
 	​
 
 <0 without explicit consequence accounting
+
+# XXII
+Localized basis for legitimacy
+make the environment structured enough that nobody needs all the keys
