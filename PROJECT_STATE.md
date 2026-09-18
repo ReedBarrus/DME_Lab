@@ -120,8 +120,13 @@ substantially smaller relational memory packet while preserving source role,
 basis, dependency, unresolvedness, and authority boundaries under independent
 round-trip reconstruction?
 
+Round 1: **FAIL** under a local Qwen 3 Coder observer. The smallest loss was
+historical source-version closure: the packet routed to a later imported
+Constitution Seed copy rather than preserving the exact historical root source
+state carrying XXI and, later, XXII. Candidate repair is active.
+
 No graph ontology, generalized memory schema, automatic capture pipeline, or
-source deletion is earned by activation of MM-001.
+source deletion is earned by MM-001.
 
 `docs/projection/Continuity_Filter_Stack_v0.md` is parked as a non-authoritative
 projection while MM-001 tests whether the relations needed by higher-order

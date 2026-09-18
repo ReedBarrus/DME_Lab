@@ -59,7 +59,21 @@ artifact describes current main
 historical source horizon
 !=
 present repository state
+
+later/copied artifact at same logical role
+!=
+historical source content
 ```
+
+### Historical source closure
+
+If a compiled claim depends on what a source contained at a historical basis,
+the packet must resolve that source at the immutable historical coordinate when
+available. A later copied artifact is not a substitute merely because it has the
+same title or role.
+
+For the Constitution Seed, the relevant historical root path is
+`DME_Operational_Constitution_Seed_v0.md`, resolved under exact commits below.
 
 ## Semantic ownership recovered by the reconstruction
 
@@ -197,22 +211,78 @@ This packet does **not** infer that importing the historical seed into current
 `main` automatically makes every historical article current live authority.
 Current authority is resolved through the live root/decision regime.
 
-### Preserved source conflict
+### Historical constitutional lineage recovered after Round 1 failure
 
-`AstraSemanticReconstruction001.md` states that an agency/sovereignty concern
-appears as **Article XXI** in the current seed.
+The first compiled packet compared the reconstruction claim only against the
+later imported copy under `docs/Evidence_Arc/Astra_Reconstruction/`, which ends
+at Article XX. A local Qwen 3 Coder observer correctly treated the missing later
+constitutional content as a consequential loss.
 
-The retained
-`DME_Operational_Constitution_Seed_v0.md` inspected at this compilation basis
-ends at **Article XX — Minimal Constitutional Law**.
-
-This packet does not repair the conflict. It preserves:
+Following the reconstruction's immutable historical basis resolves more of the
+lineage:
 
 ```text
-reconstruction claim: Article XXI exists
-retained seed artifact: ends at Article XX
-current relation: UNRESOLVED / source mismatch
+reconstruction basis:
+ef685e224b5e068aebc7f0f48a6543fe6da201b8
+root source:
+DME_Operational_Constitution_Seed_v0.md
+blob:
+8fc0f1b9d87a20cfb6d6fc9cb7654367183de8dd
+contains:
+XXI
+does not yet contain:
+XXII
+
+later continuity freeze:
+f28187306d3282a66d95b9d85e764f75751e812d
+same root source path
+blob:
+4f8261a3ab5103db0d113f053d58928216e53ba7
+contains:
+XXI + XXII
+
+later imported Astra copy on main:
+docs/Evidence_Arc/Astra_Reconstruction/DME_Operational_Constitution_Seed_v0.md
+blob:
+a25260c5e1cb039c28549ebfbf89d92d6774c57f
+ends at:
+Article XX
 ```
+
+The historically retained additions are:
+
+```text
+XXI
+Local agency increase must not result in agency decrease in others or systems
+outside this system.
+
+Δagency_system > 0
+must not imply
+Δagency_others < 0
+without explicit consequence accounting.
+
+XXII
+Localized basis for legitimacy:
+make the environment structured enough that nobody needs all the keys.
+```
+
+The important memory relation is therefore not an unresolved claim-versus-source
+contradiction. It is a versioned source-lineage relation:
+
+```text
+historical source at ef685e...
+→ XXI present
+
+historical source at f281873...
+→ XXI + XXII present
+
+later imported copy
+→ truncates after XX
+```
+
+The compiler must preserve the historical source state when the historical claim
+depends on it. It must not silently treat the later incomplete copy as the
+earlier source basis.
 
 ## Dynamic semantic-basis proposal memory
 
@@ -331,7 +401,10 @@ Dynamic_Semantic_Basis_Proposal_v0.2_Audit_Surface
 - historical registry/topology descriptions must not be promoted into current
   repository state;
 - exact old-thread intention not retained in source evidence remains unavailable;
-- the Article XXI claim conflicts with the retained seed artifact;
+- the imported Astra seed copy truncates a historical constitutional lineage:
+  XXI is present at the reconstruction basis, and XXII appears by the later
+  continuity freeze; historical claims therefore require immutable source-basis
+  closure rather than substitution by the later copy;
 - semantic-basis mutation, identity, lifecycle, portability, and autonomous
   factorization remain pressure territory.
 
@@ -347,8 +420,10 @@ This packet does not reproduce:
 - raw conversation;
 - every historical event body.
 
-Those remain recoverable from the retained source artifacts when a task requires
-their exact detail.
+Those remain recoverable from retained source artifacts and Git history when a
+task requires their exact detail. Historical claims must use the immutable
+version that actually carried the claimed content; a later copied artifact may
+be insufficient.
 
 ## Compression claim under test
 

@@ -32,7 +32,9 @@ Recover:
    promotion?
 7. What is the Constitution Seed's role and minimal law, and may the packet
    treat the historical seed as automatically current authority?
-8. What source conflict involving "Article XXI" must remain unresolved?
+8. What happened to Articles XXI and XXII across the reconstruction basis,
+   later continuity freeze, and later imported Astra copy, and what memory rule
+   follows from that versioned difference?
 9. What is the Dynamic Semantic Basis proposal's status, smallest proposed
    basis, strongest memory claim, and important unearned/open pressures?
 10. What are the important dependency relations among the six source artifacts?
@@ -56,8 +58,9 @@ commits. What coordinate is required before treating the reference as stable?
 D. A coherent semantic proposal contains a plausible memory architecture.
 Does coherence promote it into schema/runtime standing?
 
-E. The compiled packet says a source claim conflicts with the retained source
-artifact. May the compiler repair the contradiction?
+E. A later imported source copy ends at Article XX, while an immutable
+historical basis shows XXI and a later historical basis shows XXI + XXII. May
+the compiler substitute the later copy for the historical source state?
 
 ## Loss audit
 

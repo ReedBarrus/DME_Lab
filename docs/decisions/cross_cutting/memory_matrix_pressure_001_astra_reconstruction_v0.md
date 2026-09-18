@@ -30,8 +30,9 @@ The Astra reconstruction bundle is intentionally messy in useful ways:
 - several artifacts describe an older branch / continuity horizon;
 - the reconstruction is explicitly not adjudicated success;
 - the bundle contains claims that require checking against source owners;
-- at least one internal source conflict is retained (Article XXI claim versus a
-  seed artifact ending at Article XX);
+- the first round-trip exposed a versioned-source wound: the imported seed copy
+  ends at Article XX while immutable historical root versions retain XXI and,
+  later, XXII;
 - the Dynamic Semantic Basis proposal already contains a lineage-compression
   pressure and a candidate dynamic-memory model.
 
@@ -160,5 +161,24 @@ Deletion remains separately unauthorized.
 
 MM-001 is active.
 
-No memory method, packet schema, graph ontology, or automatic capture pipeline
-is yet earned.
+Round 1 used a local Qwen 3 Coder observer and **FAILED**. The smallest
+consequential loss was historical constitutional source closure: Packet 001
+routed to a later imported seed copy ending at Article XX rather than following
+the reconstruction's immutable historical source basis, where XXI existed and
+a later continuity-freeze basis also retained XXII.
+
+The candidate packet and round-trip prompt are being minimally repaired around
+this earned distinction:
+
+```text
+source role/path
+!=
+source version
+
+route to retained source
+!=
+historical basis closure
+```
+
+No memory method, packet schema, graph ontology, automatic capture pipeline, or
+source deletion is yet earned.
