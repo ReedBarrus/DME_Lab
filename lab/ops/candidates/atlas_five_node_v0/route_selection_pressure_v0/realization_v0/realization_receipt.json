@@ -1,0 +1,22 @@
+{
+  "A_manifest_blob_sha1": "af8b1cc3139dcfece37996f7a420fa10d6bc55d8",
+  "A_manifest_sha256": "8f953cd1611d95e4a3eeb87c10acf49e67fbbb318a760c6c281077707f65db57",
+  "B_manifest_blob_sha1": "f761a391c232c1532418c27ab3ca77603377d02d",
+  "B_manifest_sha256": "3014440b1cb95d1f12bd3d004ecd60465eae388e14dd4f27b71408096b7d721a",
+  "apparatus_blob_sha1": "15624c5b8a1a42546471fc64d0f7d85ada6d1791",
+  "apparatus_commit": "6910b137a772cc7228671b76e4e50c7c165520a5",
+  "apparatus_sha256": "97f7b0d83e891692a1d1b7dcc64ececeadc7748615a29ba18d1aaeafb920c352",
+  "contract_freeze_commit": "df824eac2bb54c53e104d9287eb3e099bf9d62a8",
+  "invocation": "PYTHONPATH=. python lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/run_pressure.py",
+  "mechanical_result_sha256": "a71f9d8d9abf3cc5a98f9e493749b9d2f236b5a06d8d27ed2eb56aca7728bfc4",
+  "mechanical_verdict": "FRACTURE",
+  "merge_authority": "NONE",
+  "pressure_id": "ATLAS_ROUTE_SELECTION_001",
+  "producer_blob_sha1": "8d133fc5356cadf6ca53f506b01c6a8494cbc18b",
+  "producer_sha256": "9364fc4c6ef30b35d581bbe25d1f018bb0611b1d5c35f4e9b6d2782d4d207a15",
+  "python_version": "3.13.5",
+  "raw_observation_sha256": "472f2d8c20d4e71bd8942432826ab0b7adfdf4c70fda249e3b58bdc757c7d687",
+  "runtime": "python",
+  "schema_version": "atlas_route_selection_realization_receipt_v0",
+  "scientific_promotion": "NONE"
+}
