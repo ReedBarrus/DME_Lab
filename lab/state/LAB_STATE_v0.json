@@ -1,0 +1,6 @@
+{
+  "schema_version": "lab_state_v0",
+  "projection_kind": "PROCESS_ROUTING",
+  "projection_warning": "Process position only. This file is not scientific standing, evidence adjudication, or universal Lab state.",
+  "processes": {}
+}
