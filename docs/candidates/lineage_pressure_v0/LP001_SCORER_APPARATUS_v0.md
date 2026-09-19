@@ -10,7 +10,7 @@ The scorer performs only assignment-blind classification under the exact frozen 
 
 ```text
 LP001_SCORING_CODEBOOK_v0.md
-blob 7488d0018b7616e030832d11760cc3b247553de2
+blob b993791df3b3c33496f0927982c92107aa0b7a24
 
 LP001_HELD_OUT_SPECIMEN_v0.md
 blob 1cef786b6e797356a3dfc256c2167717752785d5
@@ -215,17 +215,42 @@ Scorer uncertainty is retained as annotation only.
 
 ## 8. Scorer administration failure
 
-A scorer invocation may be declared `SCORER_ADMINISTRATION_INVALID` only from mechanically documented external execution failure, including:
+A scorer invocation is `SCORER_ADMINISTRATION_INVALID` **if and only if**
+one or more of the following frozen predicates is mechanically documented:
 
 ```text
-wrong codebook/specimen/evaluator-key identity
-wrong scorer-bundle identity or order
-assignment-map or condition metadata leakage
-forbidden contextual exposure
-wrong observable model label or reasoning configuration
-provider/transport failure with no completed scorer response
-raw scorer-output capture or retained-output identity failure
+SAI-01 SCORER_INPUT_IDENTITY_MISMATCH
+wrong scoring-codebook, held-out-specimen, or evaluator-key identity
+
+SAI-02 SCORER_BUNDLE_IDENTITY_OR_ORDER_MISMATCH
+wrong scorer-bundle identity, missing/duplicate scorer artifact, or wrong frozen order
+
+SAI-03 ASSIGNMENT_METADATA_LEAK
+assignment map, condition label, RUN mapping, or other prohibited assignment metadata exposed
+
+SAI-04 FORBIDDEN_SCORER_CONTEXT_EXPOSURE
+conversation, account/personal memory, tools, web, repository retrieval,
+cross-experiment context, prior scoring output, or other forbidden context exposed
+
+SAI-05 SCORER_INVOCATION_SURFACE_MISMATCH
+observable model label or reasoning configuration differs from the frozen surface,
+or another required observable scorer-surface coordinate cannot be obtained
+
+SAI-06 NO_COMPLETED_SCORER_RESPONSE
+provider/transport failure produces no completed scorer response
+
+SAI-07 SCORER_OUTPUT_IDENTITY_FAILURE
+raw scorer output cannot be retained with a checkable identity
 ```
+
+This set is closed and exhaustive for LP-001 v0.
+
+A newly noticed irregularity that does not satisfy at least one predicate above
+cannot create `SCORER_ADMINISTRATION_INVALID`, cannot create a rescoring right,
+and cannot replace a completed scorer invocation. It remains retained evidence.
+If such an irregularity prevents legitimate use of the frozen scoring vector,
+`SCORING_RESULT` may remain `UNRESOLVED`; the irregularity still does not
+authorize rescoring or replacement.
 
 A completed scorer response that misclassifies, misunderstands, omits requested fields, violates the requested schema, or produces unexpected judgments is scorer behavior, not scorer administration failure.
 
@@ -237,9 +262,14 @@ scorer error
 scorer administration failure
 ```
 
-If a scorer invocation is mechanically `SCORER_ADMINISTRATION_INVALID`, that failed invocation and all receipts remain retained.
+If a scorer invocation satisfies one or more frozen `SAI-01` through `SAI-07`
+predicates, that failed invocation and all receipts remain retained.
 
-A new scorer invocation may occur only because of such documented administration invalidity and must use this same frozen apparatus and the same frozen scorer bundle. The first administratively valid completed scorer invocation remains the sole confirmatory scorer output.
+A new scorer invocation may occur only because at least one of those frozen
+predicates is satisfied and mechanically documented. No other anomaly creates a
+rescoring right. Any new scorer invocation must use this same frozen apparatus
+and the same frozen scorer bundle. The first administratively valid completed
+scorer invocation remains the sole confirmatory scorer output.
 
 No realization cell is rerun because of scorer failure.
 
