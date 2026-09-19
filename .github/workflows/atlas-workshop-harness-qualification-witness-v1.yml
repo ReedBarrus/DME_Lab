@@ -37,11 +37,15 @@ jobs:
       - name: Run exact bounded qualification test
         run: |
           set -o pipefail
-          python -S tests/lab/test_atlas_route_selection_execution_evidence_harness.py 2>&1 | tee /tmp/atlas_workshop_harness_qualification.log
+          PYTHONPATH=. python -S tests/lab/test_atlas_route_selection_execution_evidence_harness.py 2>&1 | tee /tmp/atlas_workshop_harness_qualification.log
       - name: Hash captured qualification log
+        if: always()
         run: |
           python - <<'PY'
           import hashlib, pathlib
           p = pathlib.Path('/tmp/atlas_workshop_harness_qualification.log')
-          print('qualification_log_sha256=' + hashlib.sha256(p.read_bytes()).hexdigest())
+          if p.exists():
+              print('qualification_log_sha256=' + hashlib.sha256(p.read_bytes()).hexdigest())
+          else:
+              print('qualification_log_missing=true')
           PY
