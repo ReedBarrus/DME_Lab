@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import importlib.util
 import json
+import sys
 from pathlib import Path
 
 
@@ -19,6 +20,7 @@ def _load_wrong_apparatus():
     if spec is None or spec.loader is None:
         raise RuntimeError("cannot load wrong qualification apparatus")
     module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
     spec.loader.exec_module(module)
     return module
 
