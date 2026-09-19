@@ -1,20 +1,36 @@
 from __future__ import annotations
 
 import hashlib
+import importlib.util
 import json
 from pathlib import Path
-
-from qualification_wrong_apparatus import parse_manifest, route
 
 
 ROOT = Path(__file__).resolve().parent
 A_PATH = ROOT / "A_manifest.json"
 B_PATH = ROOT / "B_manifest.json"
+WRONG_APPARATUS_PATH = ROOT / "qualification_wrong_apparatus.py"
+
+
+def _load_wrong_apparatus():
+    spec = importlib.util.spec_from_file_location(
+        "qualification_wrong_apparatus", WRONG_APPARATUS_PATH
+    )
+    if spec is None or spec.loader is None:
+        raise RuntimeError("cannot load wrong qualification apparatus")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+APPARATUS = _load_wrong_apparatus()
 
 
 def _observe(path: Path) -> dict:
     raw = json.loads(path.read_text(encoding="utf-8"))
-    selected = route(parse_manifest(raw), "NODE_01", "NODE_04")
+    selected = APPARATUS.route(
+        APPARATUS.parse_manifest(raw), "NODE_01", "NODE_04"
+    )
     return {"node_path": list(selected.node_path), "hop_count": len(selected.edge_path)}
 
 
