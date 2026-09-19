@@ -1,0 +1,272 @@
+{
+  "schema_version": "atlas_route_selection_recovery_contract_v0",
+  "pressure_id": "ATLAS_ROUTE_SELECTION_001",
+  "recovery_contract_id": "ATLAS_ROUTE_SELECTION_001_RECOVERY_V0",
+  "recovery_realization_id": "c8ccfe6e-7aea-4577-b3ee-66dcdd40c98e",
+  "scientific_question": "Under multiple equal-hop declared routes between the same source and target, is selected route_node_path invariant under a pure permutation of edge identifiers that preserves the directed endpoint relation?",
+  "freshness_basis_commit": "364a0f210d7fd9efe75a8006ca6602549489bcf3",
+  "second_wound_basis_commit": "4423f532d25fe659030119b3b3fde06ef7fbd8bd",
+  "scientific_basis": {
+    "atlas_implementation_commit": "6910b137a772cc7228671b76e4e50c7c165520a5",
+    "original_pressure_contract_blob": "97ce26145b12d0d216302695890fbb6bc0636d76",
+    "source_node_id": "NODE_01",
+    "target_node_id": "NODE_04",
+    "shortest_path_alternatives": 2,
+    "shortest_path_hops": 2
+  },
+  "frozen_identities": {
+    "atlas": {
+      "path": "lab/ops/candidates/atlas_five_node_v0/atlas.py",
+      "blob_sha1": "15624c5b8a1a42546471fc64d0f7d85ada6d1791",
+      "sha256": "97f7b0d83e891692a1d1b7dcc64ececeadc7748615a29ba18d1aaeafb920c352"
+    },
+    "producer": {
+      "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/run_pressure.py",
+      "blob_sha1": "8d133fc5356cadf6ca53f506b01c6a8494cbc18b",
+      "sha256": "9364fc4c6ef30b35d581bbe25d1f018bb0611b1d5c35f4e9b6d2782d4d207a15"
+    },
+    "harness": {
+      "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/execution_evidence_harness.py",
+      "blob_sha1": "0f9697cb8a38b317c0a7324f751bcbfbea401b2f",
+      "sha256": "94bbaef2792aa2f4f7fc94c368e89f61698e89986e51496e28f801ee5fd6735c"
+    },
+    "child_wrapper": {
+      "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/execution_evidence_child.py",
+      "blob_sha1": "d36603eaa494d83c726487bf3536e8fd4b3e7655",
+      "sha256": "664ecbf2c2d79d24683eb7de066cc419a6bc714fb373f752a626d56ad8fc4914"
+    },
+    "qualification_test": {
+      "path": "tests/lab/test_atlas_route_selection_execution_evidence_harness.py",
+      "blob_sha1": "d92b4b39d08a4a6dd1b688b31f7e6814db3a180b",
+      "sha256": "81b4704ba94d81eda9dcfcc4763d228f5fbf8303160778fb960df10d9e586fa3"
+    },
+    "original_contract": {
+      "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/contract_v0.json",
+      "blob_sha1": "97ce26145b12d0d216302695890fbb6bc0636d76"
+    },
+    "second_wound_evidence": {
+      "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/realization_v1/execution_evidence_scar.md",
+      "blob_sha1": "ea893cb01f7df46ea13484525c1b06e3c68cbf4c"
+    }
+  },
+  "historical_cells": {
+    "A": {
+      "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/A_manifest.json",
+      "blob_sha1": "af8b1cc3139dcfece37996f7a420fa10d6bc55d8",
+      "sha256": "8f953cd1611d95e4a3eeb87c10acf49e67fbbb318a760c6c281077707f65db57",
+      "standing": "HISTORICAL_ONLY_NOT_RECOVERY_CELL"
+    },
+    "B": {
+      "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/B_manifest.json",
+      "blob_sha1": "f761a391c232c1532418c27ab3ca77603377d02d",
+      "sha256": "3014440b1cb95d1f12bd3d004ecd60465eae388e14dd4f27b71408096b7d721a",
+      "standing": "HISTORICAL_ONLY_NOT_RECOVERY_CELL"
+    }
+  },
+  "recovery_cells": {
+    "A2": {
+      "cell_id": "f51050c7-fbc0-44f6-8570-39756f382bbe",
+      "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/recovery_v0/A2_manifest.json",
+      "blob_sha1": "30350aea95ff995d029c09cb5db9bd63a08c6f0e",
+      "sha256": "6dd83edbab294af3cc1b79d42fd561bd1841ef91dd8156a3dc22298a992eb3f7",
+      "standing": "PROSPECTIVE_UNCONSUMED"
+    },
+    "B2": {
+      "cell_id": "4b16b260-26e0-46d5-beed-3dacefad7488",
+      "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/recovery_v0/B2_manifest.json",
+      "blob_sha1": "8775a109b189e6d0a7bacf37368ab9be921de22a",
+      "sha256": "df29c64cb807e476a4dff76d14ebe0f7d4b8308ea1571924eb83a8d9d5bde515",
+      "standing": "PROSPECTIVE_UNCONSUMED"
+    }
+  },
+  "manipulated_relation": "edge_id assignment on the two competing first-hop edges only",
+  "protected_geometry": {
+    "same_schema_version": true,
+    "same_manifest_id": true,
+    "same_five_node_records": true,
+    "same_node_order": true,
+    "same_edge_array_positions": true,
+    "same_directed_endpoint_pair_set": true,
+    "same_transition_kind": true,
+    "same_authority_effect": true,
+    "same_execution_effect": true,
+    "source_node_id": "NODE_01",
+    "target_node_id": "NODE_04",
+    "shortest_path_alternatives": 2,
+    "shortest_path_hops": 2,
+    "runtime_instantiation": "NONE",
+    "role_binding": "NONE",
+    "network_access": "NONE",
+    "authority_effect": "NONE"
+  },
+  "observation_surface": [
+    "A_SELECTED_NODE_PATH",
+    "A_HOP_COUNT",
+    "B_SELECTED_NODE_PATH",
+    "B_HOP_COUNT"
+  ],
+  "mechanical_criterion": "A_SELECTED_NODE_PATH == B_SELECTED_NODE_PATH",
+  "mechanical_outcomes": {
+    "PASS": "A_SELECTED_NODE_PATH == B_SELECTED_NODE_PATH",
+    "FRACTURE": "A_SELECTED_NODE_PATH != B_SELECTED_NODE_PATH with protected relational invariants preserved"
+  },
+  "do_not_score": [
+    "manifest_digest",
+    "transfer_id",
+    "edge_path identifier equality",
+    "edge_id equality"
+  ],
+  "claim_ceiling": "Within the tested five-node equal-shortest-route recovery specimen, determine only whether selected coordinate path is sensitive to edge_id representation despite conservation of the directed endpoint relation.",
+  "qualification_witness": {
+    "harness_implementation_commit": "364a0f210d7fd9efe75a8006ca6602549489bcf3",
+    "first_witness_attempt": {
+      "run_id": 35461391822,
+      "conclusion": "failure",
+      "standing": "ADMINISTRATION_FAILURE_BEFORE_QUALIFICATION_IMPORT"
+    },
+    "successful_witness": {
+      "workflow_commit": "6c346d3d4d9abb10279090c5a6213d7a82ee6360",
+      "run_id": 35461430111,
+      "job_id": 105945884236,
+      "conclusion": "success",
+      "runtime": {
+        "implementation": "cpython",
+        "version": [
+          3,
+          13,
+          5
+        ],
+        "cache_tag": "cpython-313"
+      },
+      "tests_run": 10,
+      "result": "PASS",
+      "qualification_log_sha256": "6d7bc459e94d85c24c4dae438736bc9acef643ba8dedeca7c37aaa700d3cf876"
+    },
+    "receipt": {
+      "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/qualification_witness_receipt_v1.json",
+      "blob_sha1": "9f6a6f2b31c462b00d532e3bffe96e5084089ce7"
+    }
+  },
+  "runtime_requirement": {
+    "implementation": "cpython",
+    "version": [
+      3,
+      13,
+      5
+    ],
+    "cache_tag": "cpython-313",
+    "subprocess_flags": [
+      "-I",
+      "-S"
+    ]
+  },
+  "realization_staging_plan": {
+    "source_basis_commit": "364a0f210d7fd9efe75a8006ca6602549489bcf3",
+    "stage_exact_files": [
+      "harness",
+      "child_wrapper",
+      "producer",
+      "atlas"
+    ],
+    "materialize_A2_bytes_at": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/A_manifest.json",
+    "materialize_B2_bytes_at": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/B_manifest.json",
+    "invoke_qualified_surface": "execution_evidence_harness._execute",
+    "input_coordinate_binding": "InputCoordinates(A2_blob,A2_sha256,B2_blob,B2_sha256)",
+    "forbidden_inputs": [
+      "expected observation vector",
+      "expected selected path",
+      "expected mechanical verdict",
+      "caller-authored raw observation",
+      "caller-authored mechanical result"
+    ]
+  },
+  "required_execution_chain": [
+    "verify exact harness identity",
+    "verify exact child-wrapper identity",
+    "verify exact producer identity",
+    "verify exact atlas.py identity",
+    "verify exact A2 identity",
+    "verify exact B2 identity",
+    "verify exact Python runtime coordinate",
+    "reconstruct isolated execution tree",
+    "materialize A2/B2 only into frozen producer input coordinates",
+    "launch exact frozen producer under exact child wrapper",
+    "witness parse_manifest and route calls into exact atlas.py",
+    "capture stdout stderr exit status and call witness",
+    "require exit status 0",
+    "parse raw observation only from captured stdout",
+    "bind observation fields to witnessed route return values",
+    "independently recompute frozen mechanical predicate",
+    "serialize raw observation",
+    "serialize mechanical result",
+    "serialize receipt last"
+  ],
+  "administration_wounds": [
+    "QUALIFIED HARNESS EXISTS != THIS REALIZATION USED QUALIFIED HARNESS",
+    "SUBPROCESS OCCURRED != FROZEN PRODUCER RAN",
+    "FROZEN PRODUCER RAN != FROZEN APPARATUS WAS INVOKED",
+    "APPARATUS INVOKED != OBSERVATION CAME FROM RETURN VALUES",
+    "OBSERVATION CAPTURED != MECHANICAL VERDICT VALID",
+    "MECHANICAL VERDICT != SCIENTIFIC ADJUDICATION",
+    "FRESH CELL IDENTITY != NEW SCIENTIFIC QUESTION",
+    "FRESH CELL BYTES != ALTERED PRESSURE GEOMETRY"
+  ],
+  "prospective_realization_artifacts": {
+    "process_capture": {
+      "artifact_id": "2ddeb8ba-9d89-40d6-9e3d-3083d7640dec",
+      "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/recovery_v0/realization_v0/process_capture.json"
+    },
+    "apparatus_call_witness": {
+      "artifact_id": "2ee68bb3-c636-4574-8278-933a572048f3",
+      "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/recovery_v0/realization_v0/apparatus_call_witness.json"
+    },
+    "captured_stdout": {
+      "artifact_id": "47115720-5acd-4e6c-9ddc-28e93beafb1d",
+      "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/recovery_v0/realization_v0/capture_stdout.bin"
+    },
+    "captured_stderr": {
+      "artifact_id": "01ebfdfb-d807-4165-88f6-321898c385b3",
+      "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/recovery_v0/realization_v0/capture_stderr.bin"
+    },
+    "raw_observation": {
+      "artifact_id": "2b0daeee-31c7-46c3-8130-9ba62b4c5c51",
+      "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/recovery_v0/realization_v0/raw_observation.json"
+    },
+    "mechanical_result": {
+      "artifact_id": "e21608aa-8cbc-43a5-b1a9-8697565e3acc",
+      "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/recovery_v0/realization_v0/mechanical_result.json"
+    },
+    "runtime_receipt": {
+      "artifact_id": "c33c95bd-d654-4e96-aeaf-117ad4987c1f",
+      "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/recovery_v0/realization_v0/runtime_receipt.json"
+    }
+  },
+  "preflight_tooling": {
+    "script": {
+      "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/recovery_v0/preflight.py",
+      "blob_sha1": "a6c120fecf8789b6730c114c5900bc9439815a5d"
+    },
+    "workflow": {
+      "path": ".github/workflows/atlas-route-selection-recovery-preflight-v0.yml",
+      "blob_sha1": "10c0b01fa9e1e8365a194000bd1a32cc8f17dd81"
+    }
+  },
+  "authority": {
+    "contract_freeze": "AUTHORIZED_BY_USER",
+    "preflight": "AUTHORIZED_BY_USER",
+    "scientific_realization": "NONE",
+    "scientific_promotion": "NONE",
+    "merge_to_main": "NONE"
+  },
+  "explicit_not_authorized": [
+    "scientific realization",
+    "Atlas route-policy repair",
+    "runtime-node instantiation",
+    "role binding",
+    "network activation",
+    "scientific promotion",
+    "merge to main",
+    "generalized routing policy"
+  ],
+  "post_preflight_state": "STOP_FOR_HUMAN_REALIZATION_AUTHORIZATION"
+}
