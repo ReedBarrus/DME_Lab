@@ -1,0 +1,20 @@
+{
+  "A_HOP_COUNT": 2,
+  "A_SELECTED_NODE_PATH": [
+    "NODE_01",
+    "NODE_02",
+    "NODE_04"
+  ],
+  "A_manifest_sha256": "8f953cd1611d95e4a3eeb87c10acf49e67fbbb318a760c6c281077707f65db57",
+  "B_HOP_COUNT": 2,
+  "B_SELECTED_NODE_PATH": [
+    "NODE_01",
+    "NODE_03",
+    "NODE_04"
+  ],
+  "B_manifest_sha256": "3014440b1cb95d1f12bd3d004ecd60465eae388e14dd4f27b71408096b7d721a",
+  "apparatus_invoked": "parse_manifest + route",
+  "schema_version": "atlas_route_selection_raw_observation_v0",
+  "source_node_id": "NODE_01",
+  "target_node_id": "NODE_04"
+}
