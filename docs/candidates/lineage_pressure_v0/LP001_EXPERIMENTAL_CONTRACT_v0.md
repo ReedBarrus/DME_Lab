@@ -398,7 +398,7 @@ The semantic scoring apparatus is also frozen before any LP-001 realization outp
 
 blob:
 
-`ca0b447ed296d925bad2cbf731d6edfbc8e568d4`
+`1f6a5a2d0f7a9405f7debc57a5f4903c402413ef`
 
 That artifact fixes the scorer model/configuration/topology/context boundary, exact scorer inputs, presentation order, scoring prompt, scorer response schema, first-valid-scorer rule, scorer administration-invalidity boundary, and scoring-record requirements.
 
