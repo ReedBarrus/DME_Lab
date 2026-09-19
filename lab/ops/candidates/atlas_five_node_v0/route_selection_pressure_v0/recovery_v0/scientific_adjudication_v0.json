@@ -1,0 +1,35 @@
+{
+  "schema_version": "atlas_route_selection_scientific_adjudication_v0",
+  "pressure_id": "ATLAS_ROUTE_SELECTION_001",
+  "decision": "ADMIT",
+  "authority": {
+    "source": "explicit_human_adjudication_in_session",
+    "machine_generated_authority": false
+  },
+  "basis": {
+    "realization_branch": "atlas-route-selection-recovery-realization-v0",
+    "realization_head": "d16121c56bdaed592c1aab6dda5980f3bec18c32",
+    "event_witness_run_id": 35462035690,
+    "event_witness_job_id": 105947496868,
+    "execution_witness_receipt_blob_sha1": "1f69fbc858fa4021736a8deecaf6cf7fd5773826",
+    "mechanical_verdict": "FRACTURE",
+    "adversarial_review": "SURVIVES"
+  },
+  "exact_admitted_claim": "Within the tested five-node equal-shortest-route specimen, permuting competing first-hop edge_id labels while preserving the tested directed endpoint relation can change the selected coordinate path. Equivalently: EDGE_ID LABELING IS BEHAVIORALLY MATERIAL TO ROUTE SELECTION WITHIN THE TESTED APPARATUS.",
+  "exact_claim_ceiling": "This admission establishes only bounded behavioral materiality of edge_id labeling under the realized specimen and frozen apparatus. It does not establish that edge IDs are inherently semantic, that routing should be permutation-invariant, that Atlas is globally defective, that the behavior generalizes beyond the tested equal-shortest-route geometry, or that any replacement tie-break/routing policy is preferable.",
+  "unresolved_consequence": "Any downstream use that requires the selected coordinate path to remain invariant under otherwise topology-preserving edge_id relabeling now has an unresolved dependency: whether that representation sensitivity is acceptable intended behavior or a property requiring a separately designed pressure and policy decision.",
+  "surviving_relation": "edge-id permutation can alter selected equal-hop coordinate path in the tested producer",
+  "new_distinctions_retained": [
+    "DETERMINISTIC != REPRESENTATION_INVARIANT",
+    "DECLARED_TOPOLOGY != ROUTE_SELECTION_POLICY"
+  ],
+  "implementation_repair": "NONE",
+  "route_policy_selection": "NONE",
+  "runtime_node_instantiation": "NONE",
+  "role_binding": "NONE",
+  "network_activation": "NONE",
+  "merge_to_main": "NONE",
+  "next_research_state": "ROUTE_POLICY_PRESSURE_DESIGN",
+  "repair_authority": "NONE",
+  "promotion_scope": "BOUNDED_CLAIM_ONLY"
+}
