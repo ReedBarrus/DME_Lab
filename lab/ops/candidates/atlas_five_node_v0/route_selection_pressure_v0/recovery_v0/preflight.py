@@ -197,9 +197,10 @@ def main() -> int:
     checks.append("no_expected_vector_and_frozen_scoring_surface")
 
     qual = contract["qualification_witness"]
-    require(qual["run_id"] == 35461430111, "qualification witness run mismatch")
-    require(qual["job_id"] == 105945884236, "qualification witness job mismatch")
-    require(qual["conclusion"] == "success", "qualification witness not successful")
+    successful = qual["successful_witness"]
+    require(successful["run_id"] == 35461430111, "qualification witness run mismatch")
+    require(successful["job_id"] == 105945884236, "qualification witness job mismatch")
+    require(successful["conclusion"] == "success", "qualification witness not successful")
     verify_file_identity(qual["receipt"], "qualification witness receipt")
     checks.append("qualified_harness_witness_bound")
 
