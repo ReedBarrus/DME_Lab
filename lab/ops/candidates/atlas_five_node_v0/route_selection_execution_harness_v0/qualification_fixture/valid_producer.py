@@ -1,15 +1,27 @@
 from __future__ import annotations
 
 import hashlib
+import importlib.util
 import json
 from pathlib import Path
-
-from qualification_apparatus import parse_manifest, route
 
 
 ROOT = Path(__file__).resolve().parent
 A_PATH = ROOT / "A_manifest.json"
 B_PATH = ROOT / "B_manifest.json"
+APPARATUS_PATH = ROOT / "qualification_apparatus.py"
+
+
+def _load_apparatus():
+    spec = importlib.util.spec_from_file_location("qualification_apparatus", APPARATUS_PATH)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("cannot load qualification apparatus")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+APPARATUS = _load_apparatus()
 
 
 def _load(path: Path) -> dict:
@@ -21,8 +33,8 @@ def _sha256(path: Path) -> str:
 
 
 def _observe(path: Path) -> dict:
-    manifest = parse_manifest(_load(path))
-    selected = route(manifest, "NODE_01", "NODE_04")
+    manifest = APPARATUS.parse_manifest(_load(path))
+    selected = APPARATUS.route(manifest, "NODE_01", "NODE_04")
     return {
         "node_path": list(selected.node_path),
         "hop_count": len(selected.edge_path),
