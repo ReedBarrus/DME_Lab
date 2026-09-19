@@ -1,0 +1,80 @@
+{
+  "schema_version": "atlas_five_node_manifest_v0",
+  "manifest_id": "ATLAS_ROUTE_SELECTION_RECOVERY_001",
+  "nodes": [
+    {
+      "node_id": "NODE_01",
+      "coordinate_ref": "atlas://local/NODE_01",
+      "role_id": null,
+      "binding_state": "UNBOUND",
+      "runtime_state": "NOT_INSTANTIATED",
+      "authority_ref": null
+    },
+    {
+      "node_id": "NODE_02",
+      "coordinate_ref": "atlas://local/NODE_02",
+      "role_id": null,
+      "binding_state": "UNBOUND",
+      "runtime_state": "NOT_INSTANTIATED",
+      "authority_ref": null
+    },
+    {
+      "node_id": "NODE_03",
+      "coordinate_ref": "atlas://local/NODE_03",
+      "role_id": null,
+      "binding_state": "UNBOUND",
+      "runtime_state": "NOT_INSTANTIATED",
+      "authority_ref": null
+    },
+    {
+      "node_id": "NODE_04",
+      "coordinate_ref": "atlas://local/NODE_04",
+      "role_id": null,
+      "binding_state": "UNBOUND",
+      "runtime_state": "NOT_INSTANTIATED",
+      "authority_ref": null
+    },
+    {
+      "node_id": "NODE_05",
+      "coordinate_ref": "atlas://local/NODE_05",
+      "role_id": null,
+      "binding_state": "UNBOUND",
+      "runtime_state": "NOT_INSTANTIATED",
+      "authority_ref": null
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "EDGE_B",
+      "source_node_id": "NODE_01",
+      "target_node_id": "NODE_02",
+      "transition_kind": "TRANSFER_ONLY",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    },
+    {
+      "edge_id": "EDGE_A",
+      "source_node_id": "NODE_01",
+      "target_node_id": "NODE_03",
+      "transition_kind": "TRANSFER_ONLY",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    },
+    {
+      "edge_id": "EDGE_C",
+      "source_node_id": "NODE_02",
+      "target_node_id": "NODE_04",
+      "transition_kind": "TRANSFER_ONLY",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    },
+    {
+      "edge_id": "EDGE_D",
+      "source_node_id": "NODE_03",
+      "target_node_id": "NODE_04",
+      "transition_kind": "TRANSFER_ONLY",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    }
+  ]
+}
