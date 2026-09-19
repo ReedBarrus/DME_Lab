@@ -1,0 +1,7 @@
+{
+  "schema": "ROLE_REGISTRY_v0",
+  "roles": [
+    "COMMANDER",
+    "WORKSHOP"
+  ]
+}
