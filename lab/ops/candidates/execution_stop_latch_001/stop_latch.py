@@ -5,8 +5,10 @@ Enforces only:
     TERMINAL_STOP(E) -> STOPPED(E)
     STOPPED(E) !-> ACTIVE(E)
 
-This module does not decide what deserves a terminal stop, issue authority,
-repair defects, authorize retries, or mutate scientific standing.
+Initial ACTIVE authority must already have been declared upstream and materialized
+by the specimen-local setup surface. This module does not create authority from
+absence, decide what deserves a terminal stop, repair defects, authorize retries,
+or mutate scientific standing.
 """
 from __future__ import annotations
 
@@ -60,33 +62,6 @@ class ExecutionStopLatch:
         self.state_path = (
             self.store_root / "execution_envelopes" / f"{identity_key}.json"
         )
-
-    def materialize_active(self) -> dict[str, Any]:
-        """Materialize an already-authorized ACTIVE envelope without overwriting state."""
-        if self.state_path.exists():
-            return self._read_state()
-
-        state = {
-            "schema_version": SCHEMA_VERSION,
-            "execution_envelope_id": self.execution_envelope_id,
-            "state": ACTIVE,
-        }
-        self.state_path.parent.mkdir(parents=True, exist_ok=True)
-        payload = _canonical_bytes(state)
-        try:
-            fd = os.open(
-                self.state_path,
-                os.O_WRONLY | os.O_CREAT | os.O_EXCL,
-                0o600,
-            )
-        except FileExistsError:
-            return self._read_state()
-
-        with os.fdopen(fd, "wb") as fh:
-            fh.write(payload)
-            fh.flush()
-            os.fsync(fh.fileno())
-        return state
 
     def consume_terminal_stop(self) -> dict[str, Any]:
         """Consume TERMINAL_STOP(E) without interpreting its cause."""
