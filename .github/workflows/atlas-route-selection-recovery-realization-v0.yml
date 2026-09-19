@@ -1,0 +1,54 @@
+name: Atlas Route Selection Recovery Realization v0
+
+on:
+  push:
+    branches:
+      - atlas-route-selection-recovery-realization-v0
+    paths:
+      - lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/recovery_v0/REALIZATION_TRIGGER_v0.txt
+
+permissions:
+  contents: read
+
+jobs:
+  realize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact realization administration
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up exact CPython 3.13.5
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.5'
+      - name: Execute exactly one authorized A2/B2 realization
+        run: |
+          set -o pipefail
+          python -S lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/recovery_v0/recovery_realization_runner_v0.py /tmp/atlas_route_selection_recovery_realization_v0 | tee /tmp/atlas_route_selection_recovery_summary_v0.json
+      - name: Hash realized evidence
+        if: always()
+        run: |
+          python - <<'PY'
+          import hashlib, pathlib
+          root = pathlib.Path('/tmp/atlas_route_selection_recovery_realization_v0')
+          if not root.exists():
+              print('realization_output_missing=true')
+          else:
+              for p in sorted(root.iterdir()):
+                  if p.is_file():
+                      print(f'{p.name}_sha256=' + hashlib.sha256(p.read_bytes()).hexdigest())
+          s = pathlib.Path('/tmp/atlas_route_selection_recovery_summary_v0.json')
+          if s.exists():
+              print('runner_summary_sha256=' + hashlib.sha256(s.read_bytes()).hexdigest())
+          PY
+      - name: Retain exact realization evidence artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-route-selection-recovery-realization-v0
+          path: |
+            /tmp/atlas_route_selection_recovery_realization_v0
+            /tmp/atlas_route_selection_recovery_summary_v0.json
+          if-no-files-found: warn
+          retention-days: 90
