@@ -1,0 +1,72 @@
+{
+  "schema_version": "atlas_route_selection_held_out_contract_v0",
+  "pressure_id": "ATLAS_ROUTE_SELECTION_001",
+  "scientific_question": "Under multiple equal-hop declared routes between the same source and target, is selected route_node_path invariant under a pure permutation of edge identifiers that preserves the directed endpoint relation?",
+  "apparatus": {
+    "repository": "ReedBarrus/DME_Lab",
+    "implementation_commit": "6910b137a772cc7228671b76e4e50c7c165520a5",
+    "implementation_path": "lab/ops/candidates/atlas_five_node_v0/atlas.py",
+    "implementation_blob_sha1": "15624c5b8a1a42546471fc64d0f7d85ada6d1791",
+    "invocation": ["parse_manifest", "route"]
+  },
+  "cells": {
+    "A": {
+      "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/A_manifest.json",
+      "sha256": "8f953cd1611d95e4a3eeb87c10acf49e67fbbb318a760c6c281077707f65db57"
+    },
+    "B": {
+      "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/B_manifest.json",
+      "sha256": "3014440b1cb95d1f12bd3d004ecd60465eae388e14dd4f27b71408096b7d721a"
+    }
+  },
+  "producer": {
+    "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/run_pressure.py",
+    "sha256": "9364fc4c6ef30b35d581bbe25d1f018bb0611b1d5c35f4e9b6d2782d4d207a15"
+  },
+  "manipulated_relation": "edge_id assignment on the two competing first-hop edges only",
+  "protected": {
+    "schema_version_equal": true,
+    "manifest_id_equal": true,
+    "five_node_records_equal": true,
+    "node_order_equal": true,
+    "edge_array_positions_equal": true,
+    "directed_endpoint_pair_set_equal": true,
+    "transition_kind_equal": true,
+    "authority_effect_equal": true,
+    "execution_effect_equal": true,
+    "source_node_id": "NODE_01",
+    "target_node_id": "NODE_04",
+    "shortest_path_alternatives": 2,
+    "shortest_path_hops": 2,
+    "runtime_instantiation": "NONE",
+    "role_binding": "NONE",
+    "network_access": "NONE",
+    "execution_effect": "NONE"
+  },
+  "observation_surface": [
+    "A_SELECTED_NODE_PATH",
+    "A_HOP_COUNT",
+    "B_SELECTED_NODE_PATH",
+    "B_HOP_COUNT"
+  ],
+  "do_not_score": [
+    "manifest_digest",
+    "transfer_id",
+    "edge_path identifier equality",
+    "edge_id equality"
+  ],
+  "mechanical_criterion": {
+    "PASS": "A_SELECTED_NODE_PATH == B_SELECTED_NODE_PATH",
+    "FRACTURE": "A_SELECTED_NODE_PATH != B_SELECTED_NODE_PATH with protected relational invariants preserved"
+  },
+  "claim_ceiling": "Within the tested five-node equal-shortest-route specimen, determine only whether route selection is sensitive to edge_id representation despite conservation of the directed endpoint relation.",
+  "explicitly_not_authorized": [
+    "implementation repair",
+    "runtime-node instantiation",
+    "role binding",
+    "network activation",
+    "scientific promotion",
+    "merge to main",
+    "generalized routing policy"
+  ]
+}
