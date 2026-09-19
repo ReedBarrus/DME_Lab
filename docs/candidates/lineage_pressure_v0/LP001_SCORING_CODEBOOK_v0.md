@@ -32,11 +32,13 @@ following frozen predicates is mechanically documented:
 - `AI-07 NO_COMPLETED_REALIZATION`: provider/transport failure produces no
   completed realization response;
 - `AI-08 RAW_OUTPUT_IDENTITY_FAILURE`: raw realization output cannot be retained
-  with a checkable identity;
-- `AI-09 SCORER_BUNDLE_METADATA_LEAK`: scorer-bundle construction exposes
-  run/condition metadata forbidden by the frozen scoring surface.
+  with a checkable identity.
 
 This set is closed and exhaustive for LP-001 v0.
+
+This realization-administration set ends before scorer-bundle construction.
+
+Scorer-bundle construction, scorer-bundle identity/order defects, and assignment-metadata leakage are scoring-side apparatus events governed only by the frozen `SAI-*` predicates in `LP001_SCORER_APPARATUS_v0.md`. They cannot create `ADMINISTRATION_INVALID` for any realization cell or batch and cannot create a realization-batch rerun right.
 
 A newly noticed irregularity that does not satisfy at least one predicate above
 cannot create `ADMINISTRATION_INVALID`, cannot invalidate a completed cell or
@@ -62,7 +64,7 @@ realization behavior
 ```
 
 A batch containing any cell satisfying one or more frozen `AI-01` through
-`AI-09` predicates is not an administratively valid completed batch and may
+`AI-08` predicates is not an administratively valid completed batch and may
 be rerun only as a whole. No other anomaly creates a batch-rerun right. The
 failed batch and its evidence remain retained.
 
