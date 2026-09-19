@@ -1,0 +1,24 @@
+{
+  "authority_ceiling": "ROUTE_ONE_DECLARED_EDGE_ONLY",
+  "description": "Synthetic specimen-local process for COUNTERFEIT_WARRANT_001.",
+  "initial_phase": "OUTPUT_READY",
+  "process_id": "CONDUCTOR-ROLE-HANDOFF-001-FIXTURE",
+  "schema_version": "counterfeit_warrant_process_fixture_v0",
+  "scientific_standing": {
+    "tracked": false,
+    "value": null
+  },
+  "transitions": {
+    "HANDOFF_ROUTED": {
+      "kind": "TERMINAL",
+      "transition_id": "NONE"
+    },
+    "OUTPUT_READY": {
+      "kind": "SPECIMEN_ROLE_HANDOFF",
+      "recipient_role": "SOL_A",
+      "sender_role": "SOL_B",
+      "to_phase": "HANDOFF_ROUTED",
+      "transition_id": "ROUTE_SOL_B_TO_SOL_A"
+    }
+  }
+}
