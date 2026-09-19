@@ -36,3 +36,75 @@ RUNTIME EVIDENCE
 !=
 INDEPENDENT SCIENTIFIC ADJUDICATION
 ```
+
+
+## Second execution-evidence wound
+
+Subsequent review established that the v1 receipt itself asserted runtime
+invocation without an actual runtime invocation having occurred.
+
+The preceding v1 invocation claim is therefore retained above only as historical
+lineage. It is not admissible execution evidence.
+
+```text
+v0:
+AUTHORED EXPECTED RESULT BEFORE INVOCATION
+
+v1:
+AUTHORED A RECEIPT CLAIMING INVOCATION
+WITHOUT AN ACTUAL RUNTIME INVOCATION OCCURRING
+```
+
+Therefore:
+
+```text
+RECEIPT CLAIMS INVOCATION
+!=
+INVOCATION OCCURRED
+
+RUNTIME RECEIPT
+!=
+RUNTIME EVIDENCE
+WHEN THE RECEIPT CAN BE AUTHORED
+WITHOUT THE RUNTIME EVENT
+
+DESCRIPTION OF EXECUTION
+!=
+EVIDENCE OF EXECUTION
+```
+
+Bounded evidentiary disposition:
+
+```text
+v0 REALIZATION:
+INVALID
+
+v1 REALIZATION:
+INVALID
+
+A/B:
+SCIENTIFICALLY UNCONSUMED
+
+MECHANICAL RESULT:
+NONE
+
+SCIENTIFIC RESULT:
+NONE
+```
+
+The required closure is causal rather than narrative:
+
+```text
+ACTUAL RUNTIME INVOCATION
+→ MECHANICALLY DOWNSTREAM OBSERVATION
+→ EVIDENCE ARTIFACT
+```
+
+A receipt may summarize or attest to such evidence only after that causal chain
+exists. Receipt authorship alone cannot establish that the runtime event
+occurred.
+
+```text
+EVIDENCE ABOUT AN EVENT
+MUST BE CAUSALLY CONSTRAINED BY THE EVENT
+```
