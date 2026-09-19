@@ -1,0 +1,5 @@
+{
+  "criterion": "A_SELECTED_NODE_PATH == B_SELECTED_NODE_PATH",
+  "schema_version": "atlas_route_selection_mechanical_result_v0",
+  "verdict": "FRACTURE"
+}
