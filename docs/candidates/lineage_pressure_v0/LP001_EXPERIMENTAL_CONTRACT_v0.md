@@ -1,6 +1,6 @@
 # Lineage Pressure 001 — Behavioral Materiality — Repaired Experimental Contract v0
 
-**Status:** CANDIDATE CONTRACT — REPAIRED AFTER COMMANDER PREFLIGHT ROUND 2
+**Status:** CANDIDATE CONTRACT — REPAIRED AFTER COMMANDER PREFLIGHT ROUND 3
 **Pressure ID:** LP-001
 **Execution status:** NOT AUTHORIZED / NO CELLS RUN
 **Standing sought:** bounded behavioral materiality only
@@ -392,13 +392,24 @@ blob:
 
 `547d187981ebae09658e38878baabbf5c5babd51`
 
+The semantic scoring apparatus is also frozen before any LP-001 realization output exists:
+
+`LP001_SCORER_APPARATUS_v0.md`
+
+blob:
+
+`b64943668804de3cc1e79f1ff6cb2c6fef7b45ec`
+
+That artifact fixes the scorer model/configuration/topology/context boundary, exact scorer inputs, presentation order, scoring prompt, scorer response schema, first-valid-scorer rule, scorer administration-invalidity boundary, and scoring-record requirements.
+
 The RUN-to-scorer-ID and RUN-to-condition maps remain unavailable to the scorer
 until scoring is frozen. Scorer-visible outputs are renamed to opaque IDs,
 stripped of run-order/condition/timestamp/request metadata, and presented in the
 frozen lexicographic scorer-ID order.
 
 Before assignment reveal, all outputs must be scored and frozen under
-`LP001_SCORING_CODEBOOK_v0.md`.
+`LP001_SCORING_CODEBOOK_v0.md` through the exact scorer realization fixed by
+`LP001_SCORER_APPARATUS_v0.md`.
 
 The response text itself is preserved byte-for-byte and may permit condition
 inference. That residual expectancy leakage is admitted. The experiment claims
@@ -466,6 +477,7 @@ The following are MUST requirements:
 - LC cannot be rematched after any cell output exists;
 - no task wording may change between cells;
 - scoring criteria cannot change after any cell output exists;
+- the scorer apparatus cannot be replaced, widened, or re-instantiated under a different model/configuration after any LP-001 realization output exists;
 - scoring must remain blind to the assignment map until codes are frozen;
 - verified administration failure must remain distinct from realization-generated behavior;
 - a completed administratively valid batch cannot be replaced because its result is unfavorable;
@@ -500,6 +512,8 @@ L1 and LC both RECOVERABLE at 2/2 prequalification
 predeclared applicability retained
 +
 first administratively valid 18-cell confirmatory batch completed
++
+first administratively valid completed scorer invocation under the frozen scorer apparatus
 +
 assignment-blind scoring frozen before assignment reveal
 +
@@ -556,8 +570,8 @@ deferred to a later pressure.
 ## 20. Core gate
 
 Before execution, a fresh Commander preflight reviews the repaired contract,
-codebook, packets, fixture/key, pre-execution qualification artifact, and
-scorer-assignment artifact, and asks only:
+codebook, packets, fixture/key, pre-execution qualification artifact,
+scorer-assignment artifact, and scorer-apparatus artifact, and asks only:
 
 ```text
 Can a surprising LP-001 result still be rescued post hoc
