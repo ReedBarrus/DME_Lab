@@ -10,7 +10,7 @@ The scorer performs only assignment-blind classification under the exact frozen 
 
 ```text
 LP001_SCORING_CODEBOOK_v0.md
-blob b993791df3b3c33496f0927982c92107aa0b7a24
+blob e868379f22bc15f2d55095d182c91e4d52e15033
 
 LP001_HELD_OUT_SPECIMEN_v0.md
 blob 1cef786b6e797356a3dfc256c2167717752785d5
@@ -226,7 +226,7 @@ SAI-02 SCORER_BUNDLE_IDENTITY_OR_ORDER_MISMATCH
 wrong scorer-bundle identity, missing/duplicate scorer artifact, or wrong frozen order
 
 SAI-03 ASSIGNMENT_METADATA_LEAK
-assignment map, condition label, RUN mapping, or other prohibited assignment metadata exposed
+assignment map, condition label, RUN mapping, or other prohibited assignment metadata exposed during scorer-bundle construction or scorer invocation
 
 SAI-04 FORBIDDEN_SCORER_CONTEXT_EXPOSURE
 conversation, account/personal memory, tools, web, repository retrieval,
@@ -267,8 +267,19 @@ predicates, that failed invocation and all receipts remain retained.
 
 A new scorer invocation may occur only because at least one of those frozen
 predicates is satisfied and mechanically documented. No other anomaly creates a
-rescoring right. Any new scorer invocation must use this same frozen apparatus
-and the same frozen scorer bundle. The first administratively valid completed
+rescoring right.
+
+For `SAI-02` or `SAI-03`, the scorer bundle may be reconstructed only by
+reapplying the frozen mechanical construction rule to the exact same retained
+18 realization outputs and the same frozen assignment map. No realization
+output may be replaced, regenerated, rerun, edited, or omitted.
+
+For all scorer-side invalidity, the realization batch remains fixed and cannot
+be invalidated or rerun because of scorer-bundle construction or scorer
+invocation failure.
+
+Any new scorer invocation must use this same frozen scorer apparatus and the
+same retained 18 realization outputs. The first administratively valid completed
 scorer invocation remains the sole confirmatory scorer output.
 
 No realization cell is rerun because of scorer failure.
