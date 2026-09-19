@@ -1,0 +1,33 @@
+name: Atlas Route Selection Harness Qualification v1
+
+on:
+  push:
+    branches:
+      - atlas-route-selection-harness-qualification-run-v1
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact branch
+        uses: actions/checkout@v4
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Show Python version
+        run: python --version
+      - name: Run bounded harness qualification
+        run: |
+          set -o pipefail
+          python -S lab/ops/candidates/atlas_five_node_v0/route_selection_execution_harness_v0/qualification.py | tee /tmp/atlas_harness_qualification.json
+      - name: Show qualification output digest
+        run: |
+          python - <<'PY'
+          import hashlib, pathlib
+          p = pathlib.Path('/tmp/atlas_harness_qualification.json')
+          print('sha256=' + hashlib.sha256(p.read_bytes()).hexdigest())
+          PY
