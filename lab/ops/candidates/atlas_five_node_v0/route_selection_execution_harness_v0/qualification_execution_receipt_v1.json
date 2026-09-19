@@ -1,0 +1,38 @@
+{
+  "schema_version": "atlas_route_selection_execution_harness_qualification_execution_receipt_v1",
+  "qualification_scope": "execution-evidence mechanics only; scientific ATLAS_ROUTE_SELECTION_001 A/B cells were not invoked",
+  "implementation_basis_commit": "9f43e02d2e4f01dceb227db34a8d5cb653e9f8fd",
+  "workflow_commit": "001ad4d86306564a3f4de4b46a12e3e8173862be",
+  "workflow_path": ".github/workflows/atlas-harness-qualification-v1.yml",
+  "github_actions": {
+    "run_id": 35460500889,
+    "job_id": 105943373003,
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "runner_image": "ubuntu-24.04",
+    "python_version": "3.13.15",
+    "invocation": "python -S lab/ops/candidates/atlas_five_node_v0/route_selection_execution_harness_v0/qualification.py"
+  },
+  "qualification_output_sha256": "1d0776d3cb49125d9c7642364119c37c7f44e5d4223ee3e3131759ce9575c25a",
+  "qualification": {
+    "passed": 10,
+    "total": 10,
+    "all_pass": true,
+    "Q1_wrong_apparatus_bytes": "PASS",
+    "Q2_wrong_producer_or_harness_bytes": "PASS",
+    "Q3_wrong_A_or_B_bytes": "PASS",
+    "Q4_expected_vector_without_invocation": "PASS",
+    "Q5_real_subprocess_without_apparatus_invocation": "PASS",
+    "Q6_wrong_or_substituted_apparatus": "PASS",
+    "Q7_nonzero_process_exit": "PASS",
+    "Q8_captured_output_hash_mismatch": "PASS",
+    "Q9_mechanical_result_content_mismatch": "PASS",
+    "Q10_valid_witnessed_apparatus_execution": "PASS"
+  },
+  "scientific_A_B_consumed": false,
+  "scientific_result": "NONE",
+  "scientific_promotion": "NONE",
+  "runtime_node_instantiation": "NONE",
+  "merge_authority": "NONE"
+}
