@@ -1,0 +1,70 @@
+{
+  "schema_version": "atlas_route_selection_recovery_preflight_execution_receipt_v0",
+  "pressure_id": "ATLAS_ROUTE_SELECTION_001",
+  "recovery_realization_id": "c8ccfe6e-7aea-4577-b3ee-66dcdd40c98e",
+  "contract_freeze_commit": "414d76421fdc6c61334a6bd3a35c5ab37245ef23",
+  "contract_blob_sha1": "b46362586324b8902d0f53a5e67cd219b4d3ea74",
+  "fresh_cells": {
+    "A2": {
+      "cell_id": "f51050c7-fbc0-44f6-8570-39756f382bbe",
+      "blob_sha1": "30350aea95ff995d029c09cb5db9bd63a08c6f0e",
+      "sha256": "6dd83edbab294af3cc1b79d42fd561bd1841ef91dd8156a3dc22298a992eb3f7"
+    },
+    "B2": {
+      "cell_id": "4b16b260-26e0-46d5-beed-3dacefad7488",
+      "blob_sha1": "8775a109b189e6d0a7bacf37368ab9be921de22a",
+      "sha256": "df29c64cb807e476a4dff76d14ebe0f7d4b8308ea1571924eb83a8d9d5bde515"
+    }
+  },
+  "qualified_harness": {
+    "implementation_commit": "364a0f210d7fd9efe75a8006ca6602549489bcf3",
+    "harness_blob_sha1": "0f9697cb8a38b317c0a7324f751bcbfbea401b2f",
+    "child_wrapper_blob_sha1": "d36603eaa494d83c726487bf3536e8fd4b3e7655",
+    "qualification_test_blob_sha1": "d92b4b39d08a4a6dd1b688b31f7e6814db3a180b",
+    "qualification_witness_run_id": 35461430111,
+    "qualification_witness_job_id": 105945884236,
+    "qualification_witness_receipt_blob_sha1": "9f6a6f2b31c462b00d532e3bffe96e5084089ce7"
+  },
+  "preflight_tooling": {
+    "preflight_blob_sha1": "311714a67459e3210d116874a3fcab148b0aafbd",
+    "workflow_blob_sha1": "10c0b01fa9e1e8365a194000bd1a32cc8f17dd81",
+    "trigger_blob_sha1": "71eb1c5852fc62b8d438ea611606d9571c5c0b79"
+  },
+  "preflight_witness": {
+    "github_actions_run_id": 35461683184,
+    "github_actions_job_id": 105946561317,
+    "head_sha": "414d76421fdc6c61334a6bd3a35c5ab37245ef23",
+    "status": "completed",
+    "conclusion": "success",
+    "preflight_output_sha256": "8c139eba1b600e78256d016465b0fcb8bf381cbc116329975044112d499e2179"
+  },
+  "preflight_result": {
+    "status": "PASS",
+    "checks": [
+      "contract_schema_and_pressure",
+      "frozen_mechanical_identities",
+      "fresh_cell_byte_identities",
+      "fresh_cell_paths_absent_at_basis",
+      "node_geometry_and_nonbinding",
+      "matched_route_selection_pressure_geometry",
+      "no_expected_vector_and_frozen_scoring_surface",
+      "qualified_harness_witness_bound",
+      "authority_wall",
+      "prospective_realization_outputs_absent"
+    ],
+    "scientific_A2_B2_consumed": false,
+    "scientific_result": "NONE",
+    "scientific_promotion": "NONE",
+    "execution_authority": "NONE",
+    "next_state": "STOP_FOR_HUMAN_REALIZATION_AUTHORIZATION"
+  },
+  "prior_preflight_administration_failure": {
+    "run_id": 35461627162,
+    "job_id": 105946414575,
+    "standing": "RETAINED_NON_REALIZING_SCAR",
+    "scar_blob_sha1": "dfc41e520c48bd8e62f86fe75985b61f62b6ad69"
+  },
+  "scientific_realization": "NONE",
+  "scientific_promotion": "NONE",
+  "merge_authority": "NONE"
+}
