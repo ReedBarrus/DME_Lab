@@ -16,6 +16,11 @@ import json
 from pathlib import Path
 from typing import Any, Mapping, Protocol
 
+from lab.ops.candidates.execution_stop_latch_001.stop_latch import (
+    ExecutionStopLatch,
+    ExecutionStopLatchError,
+)
+
 
 MANIFEST_SCHEMA = "workshop_frozen_cell_manifest_v0"
 RECEIPT_SCHEMA = "workshop_cell_receipt_v0"
@@ -30,6 +35,7 @@ STATE_LOADED = "LOADED"
 STATE_MANIFEST_VERIFIED = "MANIFEST_VERIFIED"
 STATE_INPUTS_VERIFIED = "INPUTS_VERIFIED"
 STATE_PAYLOAD_VERIFIED = "PAYLOAD_VERIFIED"
+STATE_AUTHORITY_ADMITTED = "AUTHORITY_ADMITTED"
 STATE_INVOCATION_VERIFIED = "INVOCATION_VERIFIED"
 STATE_INVOKED = "INVOKED"
 STATE_OUTPUT_CAPTURED = "OUTPUT_CAPTURED"
@@ -173,6 +179,7 @@ def run_frozen_cell(
     root: Path,
     adapter: InvocationAdapter,
     output_sink: OutputSink,
+    execution_stop_latch: ExecutionStopLatch | None = None,
 ) -> dict[str, Any]:
     """Run one frozen cell or return one terminal fault.
 
@@ -303,6 +310,48 @@ def run_frozen_cell(
             expected={"invocation_count": 0},
             observed={"invocation_count": adapter.invocation_count},
         )
+
+    if execution_stop_latch is not None:
+        try:
+            execution_stop_latch.require_active(
+                "run_frozen_cell.adapter_dispatch"
+            )
+        except ExecutionStopLatchError as exc:
+            return _fault(
+                code=E015,
+                stage=STATE_PAYLOAD_VERIFIED,
+                transition_blocked=STATE_INVOCATION_VERIFIED,
+                trace=trace,
+                manifest_sha256=actual_manifest_sha,
+                cell_id=cell_id,
+                adapter=adapter,
+                expected={
+                    "execution_authority_state": "ACTIVE",
+                    "execution_envelope_id": execution_stop_latch.execution_envelope_id,
+                },
+                observed={
+                    "execution_authority_state": "BLOCKED",
+                    "execution_envelope_id": execution_stop_latch.execution_envelope_id,
+                    "error_type": type(exc).__name__,
+                    "error": str(exc),
+                },
+            )
+        except Exception as exc:
+            return _fault(
+                code=E017,
+                stage=STATE_PAYLOAD_VERIFIED,
+                transition_blocked=STATE_INVOCATION_VERIFIED,
+                trace=trace,
+                manifest_sha256=actual_manifest_sha,
+                cell_id=cell_id,
+                adapter=adapter,
+                observed={
+                    "execution_envelope_id": execution_stop_latch.execution_envelope_id,
+                    "error_type": type(exc).__name__,
+                    "error": str(exc),
+                },
+            )
+        trace.append(STATE_AUTHORITY_ADMITTED)
 
     try:
         observed_surface = dict(adapter.observe_surface())
