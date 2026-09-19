@@ -1,6 +1,6 @@
 # Lineage Pressure 001 — Behavioral Materiality — Repaired Experimental Contract v0
 
-**Status:** CANDIDATE CONTRACT — REPAIRED AFTER COMMANDER PREFLIGHT ROUND 3
+**Status:** CANDIDATE CONTRACT — REPAIRED AFTER COMMANDER PREFLIGHT ROUND 4
 **Pressure ID:** LP-001
 **Execution status:** NOT AUTHORIZED / NO CELLS RUN
 **Standing sought:** bounded behavioral materiality only
@@ -398,7 +398,7 @@ The semantic scoring apparatus is also frozen before any LP-001 realization outp
 
 blob:
 
-`1f6a5a2d0f7a9405f7debc57a5f4903c402413ef`
+`8e0bf18e8c6a5494574524bc33ecfbf43481d49a`
 
 That artifact fixes the scorer model/configuration/topology/context boundary, exact scorer inputs, presentation order, scoring prompt, scorer response schema, first-valid-scorer rule, scorer administration-invalidity boundary, and scoring-record requirements.
 
@@ -479,7 +479,9 @@ The following are MUST requirements:
 - scoring criteria cannot change after any cell output exists;
 - the scorer apparatus cannot be replaced, widened, or re-instantiated under a different model/configuration after any LP-001 realization output exists;
 - scoring must remain blind to the assignment map until codes are frozen;
-- verified administration failure must remain distinct from realization-generated behavior;
+- realization administration invalidity exists only when one or more frozen `AI-01` through `AI-09` predicates in `LP001_SCORING_CODEBOOK_v0.md` are mechanically satisfied;
+- scorer administration invalidity exists only when one or more frozen `SAI-01` through `SAI-07` predicates in `LP001_SCORER_APPARATUS_v0.md` are mechanically satisfied;
+- any other newly noticed anomaly remains retained evidence and cannot create invalidation, batch rerun, rescoring, or replacement rights;
 - a completed administratively valid batch cannot be replaced because its result is unfavorable;
 - no result from Fresh Sol, Pulse, Registry A/B, DP-001, or another experiment
   may rescue, reinterpret, or modify an LP-001 cell during this batch.
@@ -495,8 +497,15 @@ exactly 18 completed realization responses, contains no
 `ADMINISTRATION_INVALID` cell, and reaches scoring with the assignment map
 sealed is the sole confirmatory LP-001 batch.
 
-A batch containing an objectively documented administration failure may be
-rerun only as a whole. The failed batch remains retained.
+A batch may be rerun only as a whole and only when at least one frozen
+`AI-01` through `AI-09` administration-invalidity predicate is mechanically
+satisfied. No other anomaly creates a batch-rerun right. The failed batch
+remains retained.
+
+A scorer invocation may be repeated only when at least one frozen `SAI-01`
+through `SAI-07` scorer-administration-invalidity predicate is mechanically
+satisfied. No other anomaly creates a rescoring right. The failed scorer
+invocation remains retained.
 
 A completed administratively valid batch cannot be replaced because its result
 is unfavorable, surprising, weak, or inconvenient. Any later batch is
@@ -576,7 +585,7 @@ scorer-assignment artifact, and scorer-apparatus artifact, and asks only:
 ```text
 Can a surprising LP-001 result still be rescued post hoc
 by changing the manipulation, comparison, applicability,
-scoring, or interpretation rules?
+administration-invalidity, rerun, scoring, or interpretation rules?
 ```
 
 If YES: repair again.
