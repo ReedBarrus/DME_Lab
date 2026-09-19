@@ -1,0 +1,52 @@
+{
+  "schema_version": "atlas_route_selection_execution_harness_qualification_receipt_v0",
+  "branch": "atlas-route-selection-execution-harness-v0",
+  "implementation_basis_commit": "9f43e02d2e4f01dceb227db34a8d5cb653e9f8fd",
+  "contract_freeze_commit": "df824eac2bb54c53e104d9287eb3e099bf9d62a8",
+  "runtime": {
+    "engine": "python",
+    "version": "3.13.5",
+    "invocation": "python -S qualification.py",
+    "exit_code": 0
+  },
+  "verified_branch_blobs": {
+    "harness.py": "5a799ea0fcacb564b3fbca2ee9aeccdd2349d63e",
+    "child_wrapper.py": "5a7a8e1527d07854f4d78269963794391ddb8487",
+    "qualification.py": "283c88d1d74dcbf08dc6e846856e96cbdf04fd58",
+    "frozen_identities_v0.json": "2b87384fc85f3b9986e74d05a1ee3aa6f747b4b4",
+    "qualification_fixture/qualification_apparatus.py": "fa5173401fb430b23d8a138301e8032ed212fb27",
+    "qualification_fixture/A_manifest.json": "2eaebe198fcb01ab67be83851645e420fbbf6995",
+    "qualification_fixture/B_manifest.json": "fa4e8d36bf77ea61bc515dc31866ce6aadf85a41",
+    "qualification_fixture/valid_producer.py": "840b2ef0f87b83b806ff4ef2569d8e54aaebf611",
+    "qualification_fixture/counterfeit_producer.py": "fbad3d556ede8c2dc09d110267f717a1f2d497ec",
+    "qualification_fixture/qualification_wrong_apparatus.py": "f194167f40210574449c1a42c592280af935c5ce",
+    "qualification_fixture/wrong_apparatus_producer.py": "6462a01e5c7454db7222e2c2ca2f1ba280a0ae06",
+    "qualification_fixture/nonzero_producer.py": "0dc507fa637dcc6c80d6dd6047dd7b7377a310d7"
+  },
+  "qualification_output": {
+    "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_execution_harness_v0/qualification_output_v0.json",
+    "blob_sha1": "3d94f84782ad3ca8360a1fb1ac81afe836469a96",
+    "sha256": "1d0776d3cb49125d9c7642364119c37c7f44e5d4223ee3e3131759ce9575c25a"
+  },
+  "qualification": {
+    "passed": 10,
+    "total": 10,
+    "all_pass": true,
+    "Q1_wrong_apparatus_bytes": "PASS",
+    "Q2_wrong_producer_or_harness_bytes": "PASS",
+    "Q3_wrong_A_or_B_bytes": "PASS",
+    "Q4_expected_vector_without_invocation": "PASS",
+    "Q5_real_subprocess_without_apparatus_invocation": "PASS",
+    "Q6_wrong_or_substituted_apparatus": "PASS",
+    "Q7_nonzero_process_exit": "PASS",
+    "Q8_captured_output_hash_mismatch": "PASS",
+    "Q9_mechanical_result_content_mismatch": "PASS",
+    "Q10_valid_witnessed_apparatus_execution": "PASS"
+  },
+  "qualification_scope": "Execution-evidence mechanics only. Q10 used dedicated qualification fixtures and did not invoke the scientific ATLAS_ROUTE_SELECTION_001 A/B cells.",
+  "scientific_A_B_consumed": false,
+  "scientific_result": "NONE",
+  "scientific_promotion": "NONE",
+  "runtime_node_instantiation": "NONE",
+  "merge_authority": "NONE"
+}
