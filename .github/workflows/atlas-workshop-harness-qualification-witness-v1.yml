@@ -1,0 +1,47 @@
+name: Atlas Workshop Harness Qualification Witness v1
+
+on:
+  push:
+    branches:
+      - atlas-workshop-harness-qualification-witness-v1
+    paths:
+      - .github/workflows/atlas-workshop-harness-qualification-witness-v1.yml
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Set up CPython 3.13.5
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.5'
+      - name: Show runtime coordinate
+        run: |
+          python - <<'PY'
+          import json, platform, sys
+          print(json.dumps({
+            "implementation": sys.implementation.name,
+            "version": [sys.version_info.major, sys.version_info.minor, sys.version_info.micro],
+            "cache_tag": sys.implementation.cache_tag,
+            "python_executable": sys.executable,
+            "platform": platform.platform(),
+          }, sort_keys=True))
+          PY
+      - name: Run exact bounded qualification test
+        run: |
+          set -o pipefail
+          python -S tests/lab/test_atlas_route_selection_execution_evidence_harness.py 2>&1 | tee /tmp/atlas_workshop_harness_qualification.log
+      - name: Hash captured qualification log
+        run: |
+          python - <<'PY'
+          import hashlib, pathlib
+          p = pathlib.Path('/tmp/atlas_workshop_harness_qualification.log')
+          print('qualification_log_sha256=' + hashlib.sha256(p.read_bytes()).hexdigest())
+          PY
