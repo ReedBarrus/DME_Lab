@@ -1,7 +1,7 @@
 # ADDRESSING_001 — bounded role-local availability apparatus
 
 **Basis:** `e0b17587f29a2f66711544f839283ea1ec43cd64`  
-**Status:** APPARATUS ONLY — scientific matched pair not realized; A/B identity treatment not yet frozen  
+**Status:** APPARATUS ONLY — identity geometry repaired; held-out A/B not realized  
 **Execution authority:** NONE  
 **Scientific standing:** unchanged
 
@@ -32,106 +32,174 @@ CURRENT SEAT INSTANCE
 AVAILABLE_TO_ROLE
 !=
 AUTHORIZED_TO_EXECUTE
+
+DURABLE RECORD IDENTITY
+!=
+MANIPULATED WORK PAYLOAD
 ```
 
-## Candidate surface
+## Identity geometry
 
-`role_registry_v0.json` names exactly two role identities:
+The repaired candidate separates durable coexistence identity from the scientific
+work payload:
+
+```text
+DURABLE_WORK_RECORD_v0
+  record_id
+  work_payload
+
+ADDRESSED_WORK_v0
+  source_role
+  target_role
+  created_against_basis
+  task_type
+  payload_refs
+  authority_ceiling
+  required_output_type
+  depends_on
+  supersedes
+```
+
+`record_id` is required for distinct durable records and global audit identity.
+It is outside the compared work payload.
+
+The later matched pair may therefore use:
+
+```text
+record_A.record_id != record_B.record_id
+
+record_A.work_payload
+==
+record_B.work_payload
+
+except:
+
+record_A.work_payload.target_role = WORKSHOP
+record_B.work_payload.target_role = COMMANDER
+```
+
+No held-out A/B record is materialized by this apparatus.
+
+## Role registry
+
+`role_registry_v0.json` names exactly:
 
 ```text
 COMMANDER
 WORKSHOP
 ```
 
-An `AddressedWork` is an immutable value with exactly:
+No hierarchy, aliasing, permissions, personality inference, or seat-instance
+identity is part of role resolution.
 
-```text
-work_id
-source_role
-target_role
-created_against_basis
-task_type
-payload_refs
-authority_ceiling
-required_output_type
-depends_on
-supersedes
-```
+## Causal firewall
 
-The global registry loader reads all durable work objects without target-role filtering.
+The global registry loader reads every durable record without target-role
+filtering.
+
 The role-local projection is exactly:
 
 ```text
 AVAILABLE_WORK(role_id)
 =
 {
-  work |
-  work.target_role == role_id
+  record |
+  record.work_payload.target_role == role_id
 }
 ```
 
-No seat-instance identity is an input to the projection.
-
-The projection is read-only. It does not mutate work, interpret `authority_ceiling`,
-claim work, acknowledge work, execute work, or hide non-target work from the global registry.
-
-## Intended later matched pressure
-
-The scientific A/B objects are **not materialized or realized by this implementation**.
-A later frozen pressure must first close one identity seam: two coexisting durable records
-need distinct record identity somewhere, while the scientific discriminator is intended to
-be only `TARGET_ROLE`. This apparatus does not silently decide whether that identity is
-inside `work_id` or carried by an external experimental/registry coordinate.
-
-The intended semantic cut remains:
+The projection may read:
 
 ```text
-A.target_role = WORKSHOP
-B.target_role = COMMANDER
-
-all non-administrative matched content:
-identical
+work_payload.target_role
 ```
 
-For one `ROLE_ID = WORKSHOP` projection, the bounded discriminator is:
+It must not read:
 
 ```text
-GLOBAL REGISTRY:
-A = EXISTS
-B = EXISTS
-
-WORKSHOP ROLE-LOCAL PROJECTION:
-A = AVAILABLE_TO_ROLE
-B = NOT_AVAILABLE_TO_ROLE
+record_id
+filename
+registry key
+insertion order
+path
+timestamp
+serialization position
+seat-instance identity
 ```
 
-## Qualification
+The projection is read-only. It does not mutate work, interpret
+`authority_ceiling`, acknowledge work, claim work, execute work, or hide
+non-target records from the global registry.
+
+## Qualification pressures
+
+```text
+Q1 — RECORD IDENTITY FIREWALL
+
+same work payload
+different record_id only
+→ same role-local availability
+```
+
+```text
+Q2 — TARGET ROLE DISCRIMINATION
+
+same administrative record geometry
+same work payload except target_role
+→ different role-local availability
+```
+
+Qualification command:
 
 ```bash
 python -m unittest tests.lab.test_addressing_001_apparatus -v
 ```
 
-Qualification uses dummy work identities and does not instantiate the later held-out A/B pair.
-It checks:
+Current local qualification:
+
+```text
+9 tests
+PASS
+```
+
+Qualification uses dummy values only and does not instantiate the held-out A/B
+pair.
+
+It additionally checks:
 
 - the role registry is explicit and exact;
+- `record_id` is outside `work_payload`;
 - global existence is preserved before and after role-local projection;
-- exact target-role identity controls the dummy role-local projection while dummy durable identities remain distinct;
 - non-target work remains present globally;
 - projection accepts `role_id`, not seat-instance identity;
+- the projection implementation contains no read of `record_id` or the frozen
+  forbidden administrative coordinates;
 - projection does not strengthen `authority_ceiling`;
+- records and work payloads are immutable after validation;
 - unknown roles and injected authority flags are rejected;
-- work objects are immutable after validation;
-- duplicate global work identities are rejected.
+- duplicate global `record_id` values are rejected.
 
 ## Claim ceiling
 
-Successful apparatus qualification can establish only that this candidate implementation
-provides a bounded surface on which a later, separately frozen pressure can test whether exact
-`TARGET_ROLE` identity is behaviorally material to role-local work availability while global
-work existence remains visible. Qualification does not close the later A/B identity geometry.
+Successful apparatus qualification establishes only that this candidate
+implementation supplies a bounded surface in which:
 
-It does **not** establish:
+```text
+RECORD_IDENTITY
+→ durable coexistence / audit distinction
+
+RECORD_IDENTITY
+↛ role-local availability
+
+TARGET_ROLE
+→ role-local availability
+```
+
+for the dummy qualification surface.
+
+It does not establish the held-out scientific `ADDRESSING_001` result.
+
+It also does **not** establish:
 
 ```text
 seat-replacement continuity
@@ -144,5 +212,4 @@ permissions / secrecy
 scheduler behavior
 cursor semantics
 autonomous execution
-scientific ADDRESSING_001 result
 ```

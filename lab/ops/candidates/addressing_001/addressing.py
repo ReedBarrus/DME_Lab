@@ -7,8 +7,8 @@ from typing import Any, Iterable, Mapping
 import json
 
 ROLE_REGISTRY_SCHEMA = "ROLE_REGISTRY_v0"
+RECORD_FIELDS = {"record_id", "work_payload"}
 WORK_FIELDS = {
-    "work_id",
     "source_role",
     "target_role",
     "created_against_basis",
@@ -22,7 +22,7 @@ WORK_FIELDS = {
 
 
 class AddressingShapeError(ValueError):
-    """Raised when role or work artifacts do not match the bounded v0 shape."""
+    """Raised when role, record, or work artifacts do not match the bounded v0 shape."""
 
 
 @dataclass(frozen=True, slots=True)
@@ -53,7 +53,6 @@ class RoleRegistry:
 
 @dataclass(frozen=True, slots=True)
 class AddressedWork:
-    work_id: str
     source_role: str
     target_role: str
     created_against_basis: str
@@ -75,7 +74,6 @@ class AddressedWork:
             raise AddressingShapeError("unexpected addressed-work fields")
 
         for key in (
-            "work_id",
             "source_role",
             "target_role",
             "created_against_basis",
@@ -96,7 +94,6 @@ class AddressedWork:
             raise AddressingShapeError("supersedes must be null or a non-empty string")
 
         return cls(
-            work_id=value["work_id"],
             source_role=value["source_role"],
             target_role=value["target_role"],
             created_against_basis=value["created_against_basis"],
@@ -110,7 +107,6 @@ class AddressedWork:
 
     def as_mapping(self) -> dict[str, Any]:
         return {
-            "work_id": self.work_id,
             "source_role": self.source_role,
             "target_role": self.target_role,
             "created_against_basis": self.created_against_basis,
@@ -121,6 +117,35 @@ class AddressedWork:
             "depends_on": list(self.depends_on),
             "supersedes": self.supersedes,
         }
+
+
+@dataclass(frozen=True, slots=True)
+class DurableWorkRecord:
+    record_id: str
+    work_payload: AddressedWork
+
+    @classmethod
+    def from_mapping(
+        cls,
+        value: Mapping[str, Any],
+        *,
+        role_registry: RoleRegistry,
+    ) -> "DurableWorkRecord":
+        if not isinstance(value, Mapping) or set(value) != RECORD_FIELDS:
+            raise AddressingShapeError("unexpected durable-work-record fields")
+        record_id = value["record_id"]
+        if not isinstance(record_id, str) or not record_id:
+            raise AddressingShapeError("record_id must be a non-empty string")
+        work_payload = value["work_payload"]
+        if not isinstance(work_payload, Mapping):
+            raise AddressingShapeError("work_payload must be an object")
+        return cls(
+            record_id=record_id,
+            work_payload=AddressedWork.from_mapping(work_payload, role_registry=role_registry),
+        )
+
+    def as_mapping(self) -> dict[str, Any]:
+        return {"record_id": self.record_id, "work_payload": self.work_payload.as_mapping()}
 
 
 def _string_tuple(value: Any, label: str) -> tuple[str, ...]:
@@ -142,31 +167,31 @@ def load_global_work_registry(
     work_root: Path,
     *,
     role_registry: RoleRegistry,
-) -> tuple[AddressedWork, ...]:
-    """Read every durable work object; no target-role filtering occurs here."""
+) -> tuple[DurableWorkRecord, ...]:
+    """Read every durable record; no target-role filtering occurs here."""
     root = Path(work_root)
-    items: list[AddressedWork] = []
+    records: list[DurableWorkRecord] = []
     for path in sorted(root.glob("*.json"), key=lambda item: item.name):
         value = json.loads(path.read_text(encoding="utf-8"))
-        items.append(AddressedWork.from_mapping(value, role_registry=role_registry))
+        records.append(DurableWorkRecord.from_mapping(value, role_registry=role_registry))
 
-    ids = [item.work_id for item in items]
-    if len(set(ids)) != len(ids):
-        raise AddressingShapeError("work_id values must be globally unique")
-    return tuple(items)
+    record_ids = [record.record_id for record in records]
+    if len(set(record_ids)) != len(record_ids):
+        raise AddressingShapeError("record_id values must be globally unique")
+    return tuple(records)
 
 
 def project_available_to_role(
-    work_items: Iterable[AddressedWork],
+    records: Iterable[DurableWorkRecord],
     role_id: str,
     role_registry: RoleRegistry,
-) -> tuple[AddressedWork, ...]:
-    """Pure role-local projection: exact TARGET_ROLE equality only."""
+) -> tuple[DurableWorkRecord, ...]:
+    """Pure role-local projection: exact work_payload.target_role equality only."""
     role_registry.require(role_id)
-    items = tuple(work_items)
-    return tuple(item for item in items if item.target_role == role_id)
+    materialized = tuple(records)
+    return tuple(record for record in materialized if record.work_payload.target_role == role_id)
 
 
-def global_work_ids(work_items: Iterable[AddressedWork]) -> tuple[str, ...]:
-    """Audit/global existence projection, independent of TARGET_ROLE."""
-    return tuple(item.work_id for item in work_items)
+def global_record_ids(records: Iterable[DurableWorkRecord]) -> tuple[str, ...]:
+    """Audit/global durable identity projection, independent of TARGET_ROLE."""
+    return tuple(record.record_id for record in records)
