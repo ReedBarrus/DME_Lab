@@ -1,0 +1,93 @@
+{
+  "schema_version": "atlas_route_selection_recovery_realization_execution_witness_receipt_v0",
+  "pressure_id": "ATLAS_ROUTE_SELECTION_001",
+  "recovery_realization_id": "c8ccfe6e-7aea-4577-b3ee-66dcdd40c98e",
+  "authorization_scope": "exactly one A2/B2 recovery realization; no repair, promotion, node instantiation, role binding, network activation, or merge",
+  "contract": {
+    "freeze_commit": "414d76421fdc6c61334a6bd3a35c5ab37245ef23",
+    "blob_sha1": "b46362586324b8902d0f53a5e67cd219b4d3ea74"
+  },
+  "administration": {
+    "realization_trigger_commit": "4b7c54eced062036ba2d70a732752d959de62472",
+    "runner_blob_sha1": "aa413100f450af21f03e7f330269d5659255decb",
+    "workflow_blob_sha1": "000e274195641ca773dc47585b0299700b1e8478",
+    "authorization_trigger_blob_sha1": "7828a24261aec210d7962726b35f04545b57d12d"
+  },
+  "event_witness": {
+    "github_actions_run_id": 35462035690,
+    "github_actions_job_id": 105947496868,
+    "head_sha": "4b7c54eced062036ba2d70a732752d959de62472",
+    "status": "completed",
+    "conclusion": "success",
+    "run_number": 1,
+    "artifact": {
+      "artifact_id": 10590465650,
+      "name": "atlas-route-selection-recovery-realization-v0",
+      "digest": "sha256:6f95c3f8a35b27c8531a8620ee1d8d399afcd06d7033cc507f029b6b918b54d0"
+    }
+  },
+  "qualified_execution_chain": {
+    "harness_implementation_commit": "364a0f210d7fd9efe75a8006ca6602549489bcf3",
+    "harness_blob_sha1": "0f9697cb8a38b317c0a7324f751bcbfbea401b2f",
+    "child_wrapper_blob_sha1": "d36603eaa494d83c726487bf3536e8fd4b3e7655",
+    "producer_blob_sha1": "8d133fc5356cadf6ca53f506b01c6a8494cbc18b",
+    "atlas_blob_sha1": "15624c5b8a1a42546471fc64d0f7d85ada6d1791",
+    "A2_blob_sha1": "30350aea95ff995d029c09cb5db9bd63a08c6f0e",
+    "A2_sha256": "6dd83edbab294af3cc1b79d42fd561bd1841ef91dd8156a3dc22298a992eb3f7",
+    "B2_blob_sha1": "8775a109b189e6d0a7bacf37368ab9be921de22a",
+    "B2_sha256": "df29c64cb807e476a4dff76d14ebe0f7d4b8308ea1571924eb83a8d9d5bde515",
+    "runtime_receipt_status": "MECHANICALLY_ADMISSIBLE_EXECUTION_EVIDENCE"
+  },
+  "realized_evidence": {
+    "process_capture.json": {
+      "git_blob_sha1": "f97a23effe0d3a27530c7b3288b7e918f6b6fdbf",
+      "sha256": "a4a9e1cbfb25b6824aa534d87466420a0bbfe0150d260392b93517ef87d2522d"
+    },
+    "apparatus_call_witness.json": {
+      "git_blob_sha1": "c1bc282b27ffcdb8465a71e8ad33e476928dcf35",
+      "sha256": "673a100e42a02fd81bde3cbb466c9bc8e7bd1a4d891a9f4b05a0b62b20bb7270"
+    },
+    "capture_stdout.bin": {
+      "git_blob_sha1": "670f331af61e1bbc6d78791d2345b30c9b5632be",
+      "sha256": "22c1ee451b87f793e5d17daacd5cc9d324e93f36ab9e3652f9e43bd5444a9094"
+    },
+    "capture_stderr.bin": {
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "raw_observation.json": {
+      "git_blob_sha1": "bd45329e0c8ba1db2fc7e6c4d3e32074722e0f89",
+      "sha256": "291bf48582ac3f5f8f7f2804b6d0ad63ff6af55e2aeefdf1d1458d11e993f1c2"
+    },
+    "mechanical_result.json": {
+      "git_blob_sha1": "c0d52a29810ab66bec557f182528318d562b9942",
+      "sha256": "e3ca4329520d76ea6cf7a54d4c9d1e91f79dae377e97a4d33a721e957af335f7"
+    },
+    "runtime_receipt.json": {
+      "git_blob_sha1": "2a7ebae6991719a96e2f38377482090b27937bd9",
+      "sha256": "348373659cfbc86262ba29ca31ccd4bde4673b129365e408a766e9dfe40527b5"
+    },
+    "runner_summary_v0.json": {
+      "git_blob_sha1": "ffaa34789d15b3a9de338e29132e465012e0b010",
+      "sha256": "23e7e99d1d25ce91e28f4e75201798c4a98d4837f8e520cd98adf3cc9726ccc7"
+    }
+  },
+  "raw_observation": {
+    "A_SELECTED_NODE_PATH": ["NODE_01", "NODE_02", "NODE_04"],
+    "A_HOP_COUNT": 2,
+    "B_SELECTED_NODE_PATH": ["NODE_01", "NODE_03", "NODE_04"],
+    "B_HOP_COUNT": 2
+  },
+  "mechanical_result": {
+    "criterion": "A_SELECTED_NODE_PATH == B_SELECTED_NODE_PATH",
+    "verdict": "FRACTURE"
+  },
+  "scientific_adjudication": "NOT_PERFORMED",
+  "scientific_promotion": "NONE",
+  "atlas_repair": "NONE",
+  "runtime_node_instantiation": "NONE",
+  "role_binding": "NONE",
+  "network_activation": "NONE",
+  "merge_authority": "NONE",
+  "stop_state": "REALIZATION_COMPLETE_AWAIT_ADVERSARIAL_INFERENCE_REVIEW"
+}
