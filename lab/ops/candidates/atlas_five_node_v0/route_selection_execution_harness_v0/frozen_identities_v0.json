@@ -1,0 +1,29 @@
+{
+  "schema_version": "atlas_route_selection_execution_identities_v0",
+  "identity_manifest_id": "ATLAS_ROUTE_SELECTION_EXECUTION_HARNESS_IDENTITIES_001",
+  "contract_freeze_commit": "df824eac2bb54c53e104d9287eb3e099bf9d62a8",
+  "harness": {
+    "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_execution_harness_v0/harness.py",
+    "blob_sha1": "5a799ea0fcacb564b3fbca2ee9aeccdd2349d63e"
+  },
+  "child_wrapper": {
+    "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_execution_harness_v0/child_wrapper.py",
+    "blob_sha1": "5a7a8e1527d07854f4d78269963794391ddb8487"
+  },
+  "apparatus": {
+    "path": "lab/ops/candidates/atlas_five_node_v0/atlas.py",
+    "blob_sha1": "15624c5b8a1a42546471fc64d0f7d85ada6d1791"
+  },
+  "producer": {
+    "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/run_pressure.py",
+    "blob_sha1": "8d133fc5356cadf6ca53f506b01c6a8494cbc18b"
+  },
+  "A": {
+    "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/A_manifest.json",
+    "blob_sha1": "af8b1cc3139dcfece37996f7a420fa10d6bc55d8"
+  },
+  "B": {
+    "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/B_manifest.json",
+    "blob_sha1": "f761a391c232c1532418c27ab3ca77603377d02d"
+  }
+}
