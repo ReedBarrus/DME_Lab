@@ -1,0 +1,39 @@
+name: Atlas Route Selection Recovery Preflight v0
+
+on:
+  push:
+    branches:
+      - atlas-route-selection-recovery-contract-v0
+    paths:
+      - lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/recovery_v0/PREFLIGHT_TRIGGER_v0.txt
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact frozen trial
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up CPython 3.13.5
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.5'
+      - name: Run non-realizing recovery preflight
+        run: |
+          set -o pipefail
+          python -S lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/recovery_v0/preflight.py | tee /tmp/atlas_recovery_preflight.json
+      - name: Hash preflight output
+        if: always()
+        run: |
+          python - <<'PY'
+          import hashlib, pathlib
+          p = pathlib.Path('/tmp/atlas_recovery_preflight.json')
+          if p.exists():
+              print('preflight_output_sha256=' + hashlib.sha256(p.read_bytes()).hexdigest())
+          else:
+              print('preflight_output_missing=true')
+          PY
