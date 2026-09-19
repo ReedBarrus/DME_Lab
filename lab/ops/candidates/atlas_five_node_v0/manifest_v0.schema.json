@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "atlas_five_node_manifest_v0.schema.json",
+  "title": "DME Lab candidate Atlas five-node manifest v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "manifest_id", "nodes", "edges"],
+  "properties": {
+    "schema_version": {
+      "const": "atlas_five_node_manifest_v0"
+    },
+    "manifest_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "node_id",
+          "coordinate_ref",
+          "role_id",
+          "binding_state",
+          "runtime_state",
+          "authority_ref"
+        ],
+        "properties": {
+          "node_id": {"type": "string", "minLength": 1},
+          "coordinate_ref": {"type": "string", "minLength": 1},
+          "role_id": {"type": "null"},
+          "binding_state": {"const": "UNBOUND"},
+          "runtime_state": {"const": "NOT_INSTANTIATED"},
+          "authority_ref": {"type": "null"}
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "edge_id",
+          "source_node_id",
+          "target_node_id",
+          "transition_kind",
+          "authority_effect",
+          "execution_effect"
+        ],
+        "properties": {
+          "edge_id": {"type": "string", "minLength": 1},
+          "source_node_id": {"type": "string", "minLength": 1},
+          "target_node_id": {"type": "string", "minLength": 1},
+          "transition_kind": {"const": "TRANSFER_ONLY"},
+          "authority_effect": {"const": "NONE"},
+          "execution_effect": {"const": "NONE"}
+        }
+      }
+    }
+  }
+}
