@@ -244,7 +244,7 @@
   "preflight_tooling": {
     "script": {
       "path": "lab/ops/candidates/atlas_five_node_v0/route_selection_pressure_v0/recovery_v0/preflight.py",
-      "blob_sha1": "a6c120fecf8789b6730c114c5900bc9439815a5d"
+      "blob_sha1": "311714a67459e3210d116874a3fcab148b0aafbd"
     },
     "workflow": {
       "path": ".github/workflows/atlas-route-selection-recovery-preflight-v0.yml",
