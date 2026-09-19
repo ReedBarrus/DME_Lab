@@ -52,6 +52,10 @@ none
 
 CROSS-EXPERIMENT CONTEXT:
 none
+
+FILES:
+exactly the frozen scoring codebook, held-out specimen, evaluator key,
+and eighteen opaque scorer artifacts; no other files
 ```
 
 If this scorer surface cannot guarantee the declared conversation/account-memory/tool isolation, scoring is inadmissible under this apparatus version.
@@ -86,9 +90,26 @@ other experiment results
 prior scoring attempts or outputs
 ```
 
-## 4. Frozen presentation order
+## 4. Frozen scorer invocation geometry
+
+The scorer invocation contains exactly one user-text instruction: the exact scoring task in Section 5.
+
+No preamble, commentary, condition description, run description, or other user text is supplied.
+
+Exactly twenty-one files are supplied to that invocation in this order:
+
+```text
+01 LP001_SCORING_CODEBOOK_v0.md
+02 LP001_HELD_OUT_SPECIMEN_v0.md
+03 LP001_HELD_OUT_EVALUATION_KEY_v0.md
+04 first scorer artifact in frozen lexicographic SCORER_ID order
+...
+21 eighteenth scorer artifact in frozen lexicographic SCORER_ID order
+```
 
 The eighteen scorer artifacts are presented exactly once in the lexicographic `SCORER_ID` order frozen by `LP001_SCORER_ASSIGNMENT_MAP_v0.md`.
+
+All text artifacts use their retained UTF-8 bytes and LF newlines.
 
 No artifact may be omitted, duplicated, replaced, reordered, summarized, or rewritten.
 
