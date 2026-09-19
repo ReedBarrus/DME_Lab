@@ -1,0 +1,43 @@
+{
+  "schema_version": "atlas_workshop_execution_evidence_harness_qualification_witness_receipt_v1",
+  "pressure_id": "ATLAS_ROUTE_SELECTION_001",
+  "harness_implementation_commit": "364a0f210d7fd9efe75a8006ca6602549489bcf3",
+  "witness_workflow_commit": "6c346d3d4d9abb10279090c5a6213d7a82ee6360",
+  "witness_workflow_path": ".github/workflows/atlas-workshop-harness-qualification-witness-v1.yml",
+  "github_actions": {
+    "run_id": 35461430111,
+    "job_id": 105945884236,
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "invocation": "PYTHONPATH=. python -S tests/lab/test_atlas_route_selection_execution_evidence_harness.py",
+    "runtime": {
+      "implementation": "cpython",
+      "version": [3, 13, 5],
+      "cache_tag": "cpython-313",
+      "python_executable": "/opt/hostedtoolcache/Python/3.13.5/x64/bin/python",
+      "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39"
+    }
+  },
+  "qualified_exact_blobs": {
+    "harness": "0f9697cb8a38b317c0a7324f751bcbfbea401b2f",
+    "child_wrapper": "d36603eaa494d83c726487bf3536e8fd4b3e7655",
+    "qualification_test": "d92b4b39d08a4a6dd1b688b31f7e6814db3a180b",
+    "producer": "8d133fc5356cadf6ca53f506b01c6a8494cbc18b",
+    "atlas": "15624c5b8a1a42546471fc64d0f7d85ada6d1791",
+    "scientific_A": "af8b1cc3139dcfece37996f7a420fa10d6bc55d8",
+    "scientific_B": "f761a391c232c1532418c27ab3ca77603377d02d",
+    "contract": "97ce26145b12d0d216302695890fbb6bc0636d76"
+  },
+  "qualification": {
+    "tests_run": 10,
+    "result": "PASS",
+    "runner_text": "Ran 10 tests in 1.298s / OK",
+    "captured_log_sha256": "6d7bc459e94d85c24c4dae438736bc9acef643ba8dedeca7c37aaa700d3cf876"
+  },
+  "scientific_A_B_consumed": false,
+  "scientific_result": "NONE",
+  "scientific_promotion": "NONE",
+  "execution_authority": "NONE",
+  "merge_authority": "NONE"
+}
