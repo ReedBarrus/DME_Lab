@@ -12,20 +12,38 @@
 Before any A/B/C class is assigned, the batch administrator determines whether
 the cell was administratively valid from retained apparatus evidence.
 
-A cell is `ADMINISTRATION_INVALID` only when an external execution fact is
-mechanically documented, including one of:
+A cell is `ADMINISTRATION_INVALID` **if and only if** one or more of the
+following frozen predicates is mechanically documented:
 
-- condition-packet identity mismatch;
-- frozen wrapper/specimen/task/response-schema identity mismatch;
-- assembled-payload identity mismatch;
-- required observable invocation-surface mismatch or required observation
-  unavailable;
-- forbidden tool, repository, web, memory, conversation, or cross-run context
-  actually exposed by the administration surface;
-- duplicate, skipped, or out-of-order invocation;
-- provider/transport failure that produced no completed realization response;
-- raw-output capture or retained-output identity failure;
-- scorer-bundle construction that exposes forbidden run/condition metadata.
+- `AI-01 CONDITION_IDENTITY_MISMATCH`: administered condition-packet identity
+  does not equal the frozen condition identity for that RUN;
+- `AI-02 WRAPPER_IDENTITY_MISMATCH`: frozen role header, specimen, task wording,
+  or response-schema identity does not equal the required frozen identity;
+- `AI-03 ASSEMBLED_PAYLOAD_IDENTITY_MISMATCH`: retained assembled-payload
+  identity does not equal the payload identity required by the frozen assembly;
+- `AI-04 INVOCATION_SURFACE_MISMATCH`: a required observable invocation-surface
+  coordinate differs from the frozen surface, or a required observable
+  coordinate cannot be obtained;
+- `AI-05 FORBIDDEN_CONTEXT_EXPOSURE`: tool, repository, web, memory,
+  conversation, or cross-run context forbidden by the contract is actually
+  exposed by the administration surface;
+- `AI-06 INVOCATION_ORDER_VIOLATION`: a RUN invocation is duplicated, skipped,
+  or executed out of the frozen order;
+- `AI-07 NO_COMPLETED_REALIZATION`: provider/transport failure produces no
+  completed realization response;
+- `AI-08 RAW_OUTPUT_IDENTITY_FAILURE`: raw realization output cannot be retained
+  with a checkable identity;
+- `AI-09 SCORER_BUNDLE_METADATA_LEAK`: scorer-bundle construction exposes
+  run/condition metadata forbidden by the frozen scoring surface.
+
+This set is closed and exhaustive for LP-001 v0.
+
+A newly noticed irregularity that does not satisfy at least one predicate above
+cannot create `ADMINISTRATION_INVALID`, cannot invalidate a completed cell or
+batch, and cannot create a rerun right. It remains retained evidence. If such an
+irregularity prevents legitimate application of the frozen discriminator, the
+result may remain `UNRESOLVED`; the irregularity still does not authorize
+replacement or rerun.
 
 `ADMINISTRATION_INVALID` is not a transformation class and is never assigned
 because a realization's answer is strange, malformed, contradictory,
@@ -43,8 +61,9 @@ apparatus failure
 realization behavior
 ```
 
-A batch containing any `ADMINISTRATION_INVALID` cell is not an
-administratively valid completed batch and may be rerun only as a whole. The
+A batch containing any cell satisfying one or more frozen `AI-01` through
+`AI-09` predicates is not an administratively valid completed batch and may
+be rerun only as a whole. No other anomaly creates a batch-rerun right. The
 failed batch and its evidence remain retained.
 
 ## 2. Frozen response contract and format flag
