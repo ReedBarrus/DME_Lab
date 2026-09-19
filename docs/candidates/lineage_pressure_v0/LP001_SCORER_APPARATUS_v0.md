@@ -170,6 +170,22 @@ Return exactly eighteen records in the frozen lexicographic scorer-ID order.
 
 No experiment-level summary, condition inference, threshold calculation, materiality conclusion, valence conclusion, or standing recommendation is permitted in the scorer output.
 
+### Scorer-output completeness rule
+
+The confirmatory scoring vector exists only if the completed scorer response is mechanically parseable into exactly eighteen records, one for every frozen `SCORER_ID`, in the frozen order, with exactly one parseable `PRIMARY_CLASS: A | B | C` per record.
+
+No human or downstream seat may infer, repair, normalize, or fill a missing/ambiguous primary class.
+
+If the first administratively valid completed scorer invocation does not yield that complete parseable vector:
+
+```text
+SCORING_RESULT: UNRESOLVED
+```
+
+The scorer output remains retained evidence.
+
+This does not create a rescoring right and does not permit replacement of the completed valid scorer invocation.
+
 ## 7. Confirmatory scoring invocation rule
 
 The first administratively valid completed scorer invocation under this frozen apparatus is the sole confirmatory LP-001 scoring result.
