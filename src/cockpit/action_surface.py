@@ -37,6 +37,21 @@ def _git(repo: Path, *args: str) -> subprocess.CompletedProcess[bytes]:
     )
 
 
+def _resolve_commit(repo: Path, source_ref: str) -> str:
+    result = _git(repo, "rev-parse", "--verify", f"{source_ref}^{commit}")
+    if result.returncode != 0:
+        detail = result.stderr.decode("utf-8", errors="replace").strip()
+        raise ActionSurfaceError(
+            f"cannot resolve action-surface source ref {source_ref!r}: {detail}"
+        )
+    commit = result.stdout.decode("utf-8").strip().lower()
+    if len(commit) != 40 or any(ch not in "0123456789abcdef" for ch in commit):
+        raise ActionSurfaceError(
+            f"action-surface source ref did not resolve to exact commit: {source_ref!r}"
+        )
+    return commit
+
+
 def _text(repo: Path, commit: str, path: str) -> str | None:
     result = _git(repo, "show", f"{commit}:{path}")
     if result.returncode != 0:
@@ -288,8 +303,9 @@ def build_action_surfaces(
 ) -> list[dict[str, Any]]:
     """Project declared next actions without executing or authorizing them."""
     repo = Path(repo_root).resolve()
-    all_events = _events(repo, source_commit)
-    loaded_specs = _load_specs(repo, source_commit)
+    exact_commit = _resolve_commit(repo, source_commit)
+    all_events = _events(repo, exact_commit)
+    loaded_specs = _load_specs(repo, exact_commit)
     known_process_ids = {spec["process_id"] for _, spec in loaded_specs}
 
     unknown_event_processes = sorted(
@@ -351,7 +367,7 @@ def build_action_surfaces(
                 "provenance": {
                     "process_spec_path": process_path,
                     "event_stream_path": EVENT_PATH,
-                    "source_commit": source_commit,
+                    "source_commit": exact_commit,
                 },
             }
         )
