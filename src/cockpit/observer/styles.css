@@ -1245,3 +1245,85 @@ footer {
 .runtime-horizon-objective {
   margin: 0.35rem 0 0.55rem;
 }
+
+
+/* COCKPIT_CONTROL_ADAPTER_001 */
+.control-panel {
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--candidate);
+  border-radius: 0.5rem;
+  background: #11161b;
+}
+.control-unavailable {
+  opacity: 0.72;
+}
+.control-subtitle {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+.control-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+.control-field {
+  display: grid;
+  gap: 0.3rem;
+}
+.control-field-label {
+  color: var(--quiet);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.control-field input,
+.control-field select {
+  width: 100%;
+  padding: 0.5rem 0.55rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 0;
+  background: #0b0e12;
+  color: var(--text);
+  font: 0.78rem "Cascadia Code", Consolas, monospace;
+}
+.control-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  padding-top: 0.35rem;
+}
+.control-actions button {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--border-strong);
+  background: var(--panel-raised);
+  color: var(--text);
+  cursor: pointer;
+  font: 0.74rem "Cascadia Code", Consolas, monospace;
+}
+.control-actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+.control-confirm-button:not(:disabled) {
+  border-color: var(--current);
+}
+.control-handles,
+.control-preview,
+.control-result {
+  margin-top: 0.8rem;
+  padding: 0.7rem;
+  border: 1px solid var(--border);
+  background: #0b0e12;
+  max-height: 24rem;
+  overflow: auto;
+}
+.control-preview {
+  border-color: var(--candidate);
+}
+.control-result {
+  border-color: var(--current);
+}
