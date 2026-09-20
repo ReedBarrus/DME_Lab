@@ -12,80 +12,80 @@
     {
       "name": "main",
       "class": "PRIMARY",
-      "head": "ce205ca6e6052e5a08d227d7f663f4a7cbd88c94",
-      "reason": "canonical integration branch"
+      "reason": "canonical integration branch",
+      "observed_head_at_registration": "ce205ca6e6052e5a08d227d7f663f4a7cbd88c94"
     },
     {
       "name": "concordance-cockpit-edge-source-standing-held-out-contract-v0",
       "class": "ACTIVE_FRONTIER",
-      "head": "0fefefe5bf530c25415724d72146236d03bef158",
-      "reason": "current Concordance held-out contract frontier; fresh-claim rematerialization retained"
+      "reason": "current Concordance held-out contract frontier; fresh-claim rematerialization retained",
+      "observed_head_at_registration": "0fefefe5bf530c25415724d72146236d03bef158"
     },
     {
       "name": "dme-warranted-delta-001-apparatus-v0",
       "class": "ACTIVE_FRONTIER",
-      "head": "f73fbdb3fcffb511108a83fa2f0b6518177c7300",
-      "reason": "current warranted-delta apparatus frontier"
+      "reason": "current warranted-delta apparatus frontier",
+      "observed_head_at_registration": "f73fbdb3fcffb511108a83fa2f0b6518177c7300"
     },
     {
       "name": "handling-001-runtime-evidence-harness",
       "class": "ACTIVE_FRONTIER",
-      "head": "7e9ec428301e87faa6be506da211bcb4234b3fc8",
-      "reason": "current HANDLING lineage tip containing prior handling branches"
+      "reason": "current HANDLING lineage tip containing prior handling branches",
+      "observed_head_at_registration": "7e9ec428301e87faa6be506da211bcb4234b3fc8"
     },
     {
       "name": "continuity-delta-v0",
       "class": "OPEN_PR_DURABLE",
-      "head": "f28187306d3282a66d95b9d85e764f75751e812d",
-      "reason": "open PR #1 head; unique divergent continuity work"
+      "reason": "open PR #1 head; unique divergent continuity work",
+      "observed_head_at_registration": "f28187306d3282a66d95b9d85e764f75751e812d"
     },
     {
       "name": "atlas-route-policy-candidate-admissibility-v0",
       "class": "ACTIVE_FRONTIER",
-      "head": "f6f6dabab2149ae3aa2e849fee8d339edc7d08c4",
-      "reason": "current Atlas policy/admissibility lineage tip"
+      "reason": "current Atlas policy/admissibility lineage tip",
+      "observed_head_at_registration": "f6f6dabab2149ae3aa2e849fee8d339edc7d08c4"
     },
     {
       "name": "atlas-route-selection-execution-harness-v0",
       "class": "EVIDENCE_ANCHOR",
-      "head": "3e36e88911570821801ccb9a5381ab9d5ef9a5f6",
-      "reason": "genuinely divergent Atlas execution-harness evidence"
+      "reason": "genuinely divergent Atlas execution-harness evidence",
+      "observed_head_at_registration": "3e36e88911570821801ccb9a5381ab9d5ef9a5f6"
     },
     {
       "name": "atlas-route-selection-harness-qualification-run-v1",
       "class": "EVIDENCE_ANCHOR",
-      "head": "a05d56cb36a6b8740e6a278551186128904e1d36",
-      "reason": "genuinely divergent Atlas harness-qualification evidence"
+      "reason": "genuinely divergent Atlas harness-qualification evidence",
+      "observed_head_at_registration": "a05d56cb36a6b8740e6a278551186128904e1d36"
     },
     {
       "name": "atlas-route-selection-realization-v0",
       "class": "EVIDENCE_ANCHOR",
-      "head": "7e74265165cd87aaabafda0033ec18d09f9260b3",
-      "reason": "genuinely divergent Atlas realization evidence"
+      "reason": "genuinely divergent Atlas realization evidence",
+      "observed_head_at_registration": "7e74265165cd87aaabafda0033ec18d09f9260b3"
     },
     {
       "name": "atlas-workshop-harness-qualification-witness-v1",
       "class": "EVIDENCE_ANCHOR",
-      "head": "ef9727d2df1d360fa553ee6f08edebd52b4e34b0",
-      "reason": "genuinely divergent Atlas Workshop witness evidence"
+      "reason": "genuinely divergent Atlas Workshop witness evidence",
+      "observed_head_at_registration": "ef9727d2df1d360fa553ee6f08edebd52b4e34b0"
     },
     {
       "name": "addressing-seat-replacement-001",
       "class": "EVIDENCE_ANCHOR",
-      "head": "bb6067dfa4cf9c4585fa5f8e1a7e4e92f8da69a6",
-      "reason": "unique divergent ADDRESSING seat-replacement residue"
+      "reason": "unique divergent ADDRESSING seat-replacement residue",
+      "observed_head_at_registration": "bb6067dfa4cf9c4585fa5f8e1a7e4e92f8da69a6"
     },
     {
       "name": "authorization-to-active-001-apparatus",
       "class": "EVIDENCE_ANCHOR",
-      "head": "e2bbadac620e25072916476f048a78cc47bfc1b5",
-      "reason": "unique divergent authorization-to-active apparatus residue"
+      "reason": "unique divergent authorization-to-active apparatus residue",
+      "observed_head_at_registration": "e2bbadac620e25072916476f048a78cc47bfc1b5"
     },
     {
       "name": "memory-matrix-mm002",
       "class": "EVIDENCE_ANCHOR",
-      "head": "dd86a8529acdffb3d3e9f10e97b5582f12df8515",
-      "reason": "unique divergent MM-002 residue"
+      "reason": "unique divergent MM-002 residue",
+      "observed_head_at_registration": "dd86a8529acdffb3d3e9f10e97b5582f12df8515"
     }
   ],
   "transient_work_ref_rule": {
@@ -119,5 +119,10 @@
     "maintenance_branch": "branch-registry-v0",
     "maintenance_branch_is_durable": false,
     "expected_post_merge_and_cleanup_branch_count": 13
+  },
+  "ref_identity_semantics": {
+    "registered_object": "branch ref name plus class",
+    "observed_head_at_registration": "informational snapshot only; a registered ref may advance without losing registration",
+    "self_reference_rule": "main cannot normatively pin its own post-merge head inside the commit that advances main"
   }
 }

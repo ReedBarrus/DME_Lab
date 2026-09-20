@@ -48,6 +48,18 @@ EVIDENCE_ANCHOR
 
 Registration does not establish scientific standing, merge authority, execution authority, or process activeness.
 
+## Ref identity versus observed head
+
+Registration attaches to the intentional branch ref, not to an eternally fixed tip SHA.
+
+```text
+REGISTERED REF IDENTITY
+!=
+OBSERVED HEAD AT REGISTRATION
+```
+
+The recorded SHA is an audit snapshot. A retained frontier may advance without losing registration. This is especially necessary for `main`: the commit that updates the registry necessarily changes `main`'s own head, so treating the embedded pre-merge SHA as normative would create an impossible self-reference.
+
 ## Transient work refs
 
 A branch may exist temporarily without becoming a durable registered ref when it is:
