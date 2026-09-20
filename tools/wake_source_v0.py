@@ -214,6 +214,14 @@ class WakeSourceStore:
             raise WakeSourceError(
                 "manual bell identity must remain distinct from wake opportunity identity"
             )
+        if bell["bell_basis_refs"] != current_basis_refs:
+            raise WakeSourceError(
+                "bell basis must equal basis used for current assignment projection"
+            )
+        if f"git:{opportunity_basis}" not in current_basis_refs:
+            raise WakeSourceError(
+                "wake opportunity Git basis must be present in exact bell basis"
+            )
 
         projection = self.assignment_store.projection(
             bell["campaign_id"],
