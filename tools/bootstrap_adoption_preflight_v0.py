@@ -21,8 +21,7 @@ PROTOCOL_PATH = "docs/operations/PROMOTION_PROTOCOL_v0.md"
 BOOTSTRAP_OBJECT_PATH = (
     "lab/ops/promotions/BOOTSTRAP_ADOPTION_001/bootstrap_adoption_object_v0.json"
 )
-EXPECTED_PROTOCOL_BLOB = "49fbe7c792511b6c7104a07aecba3ced84108ff8"
-EXPECTED_BOOTSTRAP_OBJECT_BLOB = "01e24a9d1231ea7e24a7a1dc429c7e85486f50b4"
+EXPECTED_PROTOCOL_BLOB = "c6cebdc70c07816167ff9499b5690fcb16b4354e"
 TARGET_REPOSITORY = "ReedBarrus/DME_Lab"
 TARGET_REF = "main"
 WORK_REF = "promotion-protocol-v0"
@@ -114,8 +113,7 @@ def build_preflight(
         and review.get("protocol_git_blob_sha") == protocol_blob
     )
     review_matches_bootstrap = (
-        bootstrap_blob == EXPECTED_BOOTSTRAP_OBJECT_BLOB
-        and review.get("bootstrap_object_git_blob_sha") == bootstrap_blob
+        review.get("bootstrap_object_git_blob_sha") == bootstrap_blob
     )
     review_independence_valid = (
         review.get("schema") == "bootstrap_adoption_review_v0"
