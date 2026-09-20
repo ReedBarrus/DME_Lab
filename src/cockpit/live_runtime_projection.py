@@ -30,6 +30,7 @@ class RuntimeSources:
     selection_db: Path | None = None
     preparation_db: Path | None = None
     semantic_db: Path | None = None
+    reentry_db: Path | None = None
     comparison_basis_refs: tuple[str, ...] = ()
 
 
@@ -348,6 +349,25 @@ def build_runtime_state(sources: RuntimeSources) -> dict[str, Any]:
         },
     )
 
+    reentry, reentry_status = _read_source(
+        "reentry",
+        sources.reentry_db,
+        {
+            "opportunities": "SELECT * FROM wake_opportunities ORDER BY seq",
+            "events": "SELECT * FROM reentry_events ORDER BY seq",
+            "receipts": "SELECT * FROM reentry_receipts ORDER BY seq",
+        },
+    )
+    reentry["opportunities"] = _decode_json_fields(
+        reentry.get("opportunities", []), ("opportunity_json",)
+    )
+    reentry["events"] = _decode_json_fields(
+        reentry.get("events", []), ("payload_json",)
+    )
+    reentry["receipts"] = _decode_json_fields(
+        reentry.get("receipts", []), ("receipt_json",)
+    )
+
     active_seats = [
         seat for seat in controller.get("seats", [])
         if seat.get("occupancy_state") == "OCCUPIED"
@@ -386,11 +406,11 @@ def build_runtime_state(sources: RuntimeSources) -> dict[str, Any]:
         selection_status,
         preparation_status,
         semantic_status,
+        reentry_status,
     ]
     overall_status = (
         "AVAILABLE"
         if all(item["status"] in {"AVAILABLE", "NOT_CONFIGURED"} for item in source_status)
-        and all(item["status"] == "AVAILABLE" for item in source_status if item["source"] != "semantic" or sources.semantic_db is not None)
         else "PARTIAL"
     )
 
@@ -435,6 +455,9 @@ def build_runtime_state(sources: RuntimeSources) -> dict[str, Any]:
         "model_leases": semantic.get("leases", []),
         "active_model_leases": active_leases,
         "semantic_runs": semantic.get("runs", []),
+        "reentry_opportunities": reentry.get("opportunities", []),
+        "reentry_events": reentry.get("events", []),
+        "reentry_receipts": reentry.get("receipts", []),
         "standing_movement_history": {
             "status": "UNAVAILABLE_IN_CURRENT_CAMPAIGN_STORE",
             "current_standing_only": True,
@@ -570,6 +593,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--selection-db")
     parser.add_argument("--preparation-db")
     parser.add_argument("--semantic-db")
+    parser.add_argument("--reentry-db")
     parser.add_argument("--comparison-basis-ref", action="append", default=[])
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8765)
@@ -584,6 +608,7 @@ def main(argv: list[str] | None = None) -> int:
         selection_db=_optional_path(args.selection_db),
         preparation_db=_optional_path(args.preparation_db),
         semantic_db=_optional_path(args.semantic_db),
+        reentry_db=_optional_path(args.reentry_db),
         comparison_basis_refs=tuple(args.comparison_basis_ref),
     )
 
