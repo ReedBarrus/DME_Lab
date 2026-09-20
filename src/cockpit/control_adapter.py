@@ -16,6 +16,8 @@ from typing import Any
 from urllib.parse import urlparse
 
 from tools.bounded_reentry_v0 import ReentryStore, build_wake_opportunity
+from tools.campaign_applicability_projection_v0 import CampaignApplicabilityProjector
+from tools.campaign_basis_revalidation_v0 import CampaignBasisRevalidationStore
 from tools.development_campaign_v0 import CampaignStore, object_sha256
 from tools.envelope_selection_v0 import (
     SELECT,
@@ -52,6 +54,7 @@ class ControlSources:
     reentry_db: Path
     wake_source_db: Path
     comparison_basis_refs: tuple[str, ...]
+    revalidation_db: Path | None = None
 
 
 def _canonical(value: Any) -> str:
@@ -133,10 +136,29 @@ class CockpitControlAdapter:
                     f"control source must already exist: {path}"
                 )
 
+        if sources.revalidation_db is not None and not sources.revalidation_db.exists():
+            raise CockpitControlError(
+                f"control source must already exist: {sources.revalidation_db}"
+            )
+
         self.campaign_store = CampaignStore(sources.campaign_db)
+        self.revalidation_store = (
+            CampaignBasisRevalidationStore(sources.revalidation_db)
+            if sources.revalidation_db is not None
+            else None
+        )
+        self.applicability_projector = (
+            CampaignApplicabilityProjector(
+                self.campaign_store,
+                self.revalidation_store,
+            )
+            if self.revalidation_store is not None
+            else None
+        )
         self.selection_store = SelectionStore(
             self.campaign_store,
             sources.selection_db,
+            applicability_projector=self.applicability_projector,
         )
         self.preparation_store = PreparationStore(
             self.campaign_store,
@@ -749,6 +771,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--assignment-db", required=True)
     parser.add_argument("--reentry-db", required=True)
     parser.add_argument("--wake-source-db", required=True)
+    parser.add_argument("--revalidation-db")
     parser.add_argument("--basis-ref", action="append", required=True)
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8770)
@@ -763,6 +786,11 @@ def main(argv: list[str] | None = None) -> int:
         reentry_db=Path(args.reentry_db).resolve(),
         wake_source_db=Path(args.wake_source_db).resolve(),
         comparison_basis_refs=tuple(args.basis_ref),
+        revalidation_db=(
+            Path(args.revalidation_db).resolve()
+            if args.revalidation_db
+            else None
+        ),
     )
     adapter = CockpitControlAdapter(sources)
     server = ThreadingHTTPServer(
