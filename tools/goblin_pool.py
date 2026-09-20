@@ -1124,6 +1124,47 @@ class GoblinPool:
         finally:
             conn.close()
 
+    def mark_semantic_request_terminal(
+        self,
+        request_id: str,
+        status: str,
+    ) -> dict[str, Any]:
+        allowed = {"PROVIDER_FAILED", "INVALID_RESPONSE"}
+        if status not in allowed:
+            raise GoblinPoolError("unsupported semantic terminal status")
+        conn = self._connect()
+        try:
+            self._begin(conn)
+            request = conn.execute(
+                "SELECT * FROM semantic_requests WHERE request_id = ?",
+                (request_id,),
+            ).fetchone()
+            if request is None:
+                raise GoblinPoolError(f"unknown semantic request {request_id!r}")
+            if request["status"] != "PENDING":
+                raise GoblinPoolError(
+                    "semantic request is no longer pending"
+                )
+            conn.execute(
+                """
+                UPDATE semantic_requests SET status = ?
+                WHERE request_id = ?
+                """,
+                (status, request_id),
+            )
+            conn.commit()
+            return {
+                "request_id": request_id,
+                "status": status,
+                "seat_state_changed": False,
+            }
+        except Exception:
+            if conn.in_transaction:
+                conn.rollback()
+            raise
+        finally:
+            conn.close()
+
     def submit_semantic_proposal(
         self,
         request_id: str,
