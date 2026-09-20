@@ -1,0 +1,106 @@
+{
+  "schema": "development_campaign_v0",
+  "campaign_id": "COCKPIT_PERCEPTUAL_INSTRUMENT_001",
+  "title": "Cockpit Perceptual Instrument",
+  "basis_refs": [
+    "git:d3ac2b0c683ae1602166dd652e028806efe444aa",
+    "git:d7ae8134cf7b41610b6fc3da57ecd93c9bb53986"
+  ],
+  "objective": "Turn the Cockpit from a read-heavy archive/projection viewer into a geometric perceptual and operating instrument over one ecology, with CONSEQUENCE and TOPOLOGY as two primary projections, persistent cross-projection addressing, directly addressable seats/agents, campaign planning, and chat as an operation from selected coordinates.",
+  "claim_ceiling": "This campaign may only pressure representation, addressing, navigation, contextual chat, agent/seat visibility, campaign-planning ergonomics, and the use of already-qualified control membranes. It does not establish new scheduler authority, new execution authority, automatic priority, automatic assignment, automatic wake, semantic truth from geometry, or direct controller mutation.",
+  "target_objects": [
+    "COCKPIT_CONSEQUENCE_VIEW",
+    "COCKPIT_TOPOLOGY_VIEW",
+    "COCKPIT_SHARED_ADDRESS_SPACE",
+    "COCKPIT_ADDRESSED_CHAT",
+    "COCKPIT_AGENT_SEAT_SURFACE",
+    "COCKPIT_CAMPAIGN_PLANNING_SURFACE",
+    "COCKPIT_CONTEXTUAL_AFFORDANCE_SURFACE",
+    "COCKPIT_SCALE_NAVIGATION"
+  ],
+  "unresolved_relations": [
+    {
+      "relation_id": "CPI-R1",
+      "statement": "ONE_ECOLOGY != ONE_REPRESENTATION"
+    },
+    {
+      "relation_id": "CPI-R2",
+      "statement": "CONSEQUENCE_PROJECTION != TOPOLOGY_PROJECTION"
+    },
+    {
+      "relation_id": "CPI-R3",
+      "statement": "REPRESENTATION_SWITCH != ADDRESS_LOSS"
+    },
+    {
+      "relation_id": "CPI-R4",
+      "statement": "GEOMETRIC_CONFIGURATION != TEXTUAL_ARCHIVE"
+    },
+    {
+      "relation_id": "CPI-R5",
+      "statement": "ADDRESSED_CHAT != GENERIC_CHAT_WITH_CONTEXT_PREAMBLE"
+    },
+    {
+      "relation_id": "CPI-R6",
+      "statement": "VISIBLE_AGENT_OR_SEAT != INFERRED_IDENTITY_OR_AUTHORITY"
+    },
+    {
+      "relation_id": "CPI-R7",
+      "statement": "CONTEXTUAL_AFFORDANCE != UNDERLYING_AUTHORITY"
+    },
+    {
+      "relation_id": "CPI-R8",
+      "statement": "INFORMATION_DENSITY != SITUATIONAL_AWARENESS"
+    }
+  ],
+  "pressure_points": [
+    "Pressure a default CONSEQUENCE projection that makes live campaigns, requests, attention, seats, assignments, bells, occupants, receipts, incidents, and consequence boundaries legible as geometric configuration rather than a text-heavy archive.",
+    "Pressure a TOPOLOGY projection over the same address space so dependencies, distinctions, lineage, provenance, basis, evidence, standing, pressure history, residue, and scars become inspectable without losing the selected coordinate.",
+    "Pressure cross-projection address persistence by selecting the same campaign, relation, seat, assignment, receipt, and incident specimens before switching representation and verifying that identity is retained or explicit loss is reported.",
+    "Pressure addressed chat so a conversation can be opened from exact selected objects / seats / campaigns with inspectable injected coordinates and no hidden strengthening of claims or authority.",
+    "Pressure direct seat/agent inspection and campaign planning in the consequence world without visually collapsing seat, occupant, model, role, assignment, or authority distinctions.",
+    "Pressure contextual affordances so FOCUS, ASSIGN, RELEASE, RING, REVIEW, COMPARE, and CHAT appear only when the selected objects and qualified membranes support them, while presentation order and proximity remain non-semantic."
+  ],
+  "dependency_edges": [],
+  "proposal_allowance": {
+    "max_candidates": 5,
+    "max_model_calls": 0,
+    "allowed_resource_classes": [
+      "DETERMINISTIC"
+    ],
+    "external_effects": "NONE",
+    "authority_effect": "NONE"
+  },
+  "completion_criteria": [
+    "The default Cockpit view is a geometric CONSEQUENCE world from which Reed can identify what is live, what is moving, who or what is engaged, what is blocked, and what exact operations are currently available without reconstructing the state from prose.",
+    "A selected address survives switching between CONSEQUENCE and TOPOLOGY for representative campaign, relation, seat, assignment, receipt, and incident objects, or an explicit failure state explains why it cannot.",
+    "The TOPOLOGY view exposes semantic dependency, provenance, evidence, standing, historical pressure, and residue for the selected object without becoming the default operating surface.",
+    "Reed can select an addressable seat/agent surface and inspect only mechanically earned seat, occupancy, assignment, cursor, working-state, model-lease, receipt, and incident information without identity collapse.",
+    "Addressed chat can be opened from one or more selected coordinates with the exact injected addressing context visible and inspectable.",
+    "Campaign planning can begin from the CONSEQUENCE projection while adoption, selection, assignment, bell, wake, authority, and execution remain mediated by their existing qualified membranes.",
+    "The old pressure / resolution map remains available as a science/topology lens but is no longer the primary home representation for operating the ecology.",
+    "In repeated dogfood, Reed preferentially uses Cockpit rather than a generic chat thread for orientation, addressing, selection, composition, coordination, comparison, handoff, control, observation, and revisit."
+  ],
+  "stop_conditions": [
+    "The default operating view again reduces primarily to words, cards, or archive lists rather than geometric operational configuration.",
+    "Switching CONSEQUENCE / TOPOLOGY silently loses selected object identity or silently selects a replacement.",
+    "Visual position, proximity, size, animation, or ordering implies a relation, priority, standing, identity, or authority not established by the underlying model.",
+    "Seat or agent visualization collapses seat, occupant, role, model, cursor, assignment, or authority into one inferred identity.",
+    "Addressed chat cannot expose the exact object / seat / campaign coordinates supplied to it.",
+    "A contextual UI affordance bypasses an existing qualified selection, assignment, bell, authority, or execution membrane.",
+    "Operating the current campaign still requires leaving Cockpit to reconstruct basic situational state in generic chat."
+  ],
+  "explicit_non_authorizations": [
+    "NO_DIRECT_CONTROLLER_MUTATION",
+    "NO_AUTOMATIC_PRIORITY",
+    "NO_AUTOMATIC_ASSIGNMENT",
+    "NO_AUTOMATIC_WAKE",
+    "NO_SCHEDULER_AUTHORITY",
+    "NO_STANDING_AUTHORITY",
+    "NO_GEOMETRY_INFERRED_RELATION",
+    "NO_AGENT_IDENTITY_INFERENCE"
+  ],
+  "status": "CANDIDATE",
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "adoption_effect": "NONE"
+}
