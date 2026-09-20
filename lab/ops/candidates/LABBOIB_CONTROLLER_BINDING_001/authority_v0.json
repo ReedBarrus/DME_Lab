@@ -1,0 +1,32 @@
+{
+  "schema_version": "labboib_controller_binding_authority_v0",
+  "binding_id": "LABBOIB_CONTROLLER_BINDING_001",
+  "authority_source": {
+    "kind": "EXPLICIT_HUMAN_INSTRUCTION_IN_CURRENT_CONVERSATION",
+    "standing": "DECLARED_BASIS",
+    "summary": "User authorized execution of the next bounded LABBOIB controller-binding experiment after GOBLIN_POOL_001, with the first real hand limited to read/test operators."
+  },
+  "seat_id": "LABBOIB",
+  "authorized_effect": "EXECUTE_BOUNDED_LOCAL_READ_AND_DECLARED_TEST_OPERATORS_FOR_BINDING_QUALIFICATION",
+  "allowed_operators": [
+    "READ_REPO_STATE",
+    "RUN_DECLARED_TEST"
+  ],
+  "forbidden_operators": [
+    "WRITE_PACKET",
+    "ARBITRARY_SHELL"
+  ],
+  "forbidden_effects": [
+    "repository mutation by controller operator",
+    "pull request merge",
+    "scientific standing promotion",
+    "scheduler binding",
+    "model occupant binding",
+    "authority synthesis",
+    "Git LABBOIB cursor or working-state mutation"
+  ],
+  "horizon": {
+    "kind": "TASK_BOUND",
+    "expires_on": "RETURN_FROM_LABBOIB_CONTROLLER_BINDING_001_BOUNDED_EXCURSION"
+  }
+}
