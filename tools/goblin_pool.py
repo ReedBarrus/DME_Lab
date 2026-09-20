@@ -196,6 +196,213 @@ class GoblinPool:
         finally:
             conn.close()
 
+    def bind_external_seat(
+        self,
+        *,
+        seat_id: str,
+        cursor_event_id: str,
+        working_state: dict[str, Any],
+        source_events: list[dict[str, Any]],
+        policy_ref: str,
+        operator_profile_ref: str,
+        authority_profile_ref: str,
+    ) -> dict[str, Any]:
+        """Bind one externally reconstructed seat without claiming identity collapse."""
+        conn = self._connect()
+        try:
+            self._begin(conn)
+
+            for event in source_events:
+                event_id = event.get("event_id")
+                if not isinstance(event_id, str) or not event_id:
+                    raise GoblinPoolError("external seat event missing event_id")
+                retained = conn.execute(
+                    "SELECT seat_id, event_kind, payload_json FROM events WHERE event_id = ?",
+                    (event_id,),
+                ).fetchone()
+                payload_json = _json(event)
+                if retained is None:
+                    conn.execute(
+                        """
+                        INSERT INTO events(event_id, seat_id, event_kind, payload_json)
+                        VALUES(?,?,?,?)
+                        """,
+                        (
+                            event_id,
+                            seat_id,
+                            str(event.get("kind") or "EXTERNAL_EVENT"),
+                            payload_json,
+                        ),
+                    )
+                elif (
+                    retained["seat_id"] != seat_id
+                    or retained["payload_json"] != payload_json
+                ):
+                    raise GoblinPoolError(
+                        f"event identity {event_id!r} already names different bytes/binding"
+                    )
+
+            if conn.execute(
+                "SELECT 1 FROM events WHERE event_id = ?",
+                (cursor_event_id,),
+            ).fetchone() is None:
+                raise GoblinPoolError(
+                    f"external seat cursor {cursor_event_id!r} is not present in imported events"
+                )
+
+            existing = conn.execute(
+                "SELECT * FROM seats WHERE seat_id = ?",
+                (seat_id,),
+            ).fetchone()
+            desired = {
+                "cursor_event_id": cursor_event_id,
+                "working_state_json": _json(working_state),
+                "state_version": 0,
+                "status": "BOUND",
+                "occupancy_state": "AVAILABLE",
+                "current_wake_id": None,
+                "policy_ref": policy_ref,
+                "operator_profile_ref": operator_profile_ref,
+                "authority_profile_ref": authority_profile_ref,
+            }
+            if existing is not None:
+                for key, value in desired.items():
+                    if existing[key] != value:
+                        raise GoblinPoolError(
+                            f"existing seat {seat_id!r} disagrees on {key}"
+                        )
+                conn.commit()
+                return {
+                    "status": "ALREADY_BOUND",
+                    "seat_id": seat_id,
+                    "cursor_event_id": cursor_event_id,
+                    "state_version": 0,
+                }
+
+            conn.execute(
+                """
+                INSERT INTO seats(
+                    seat_id, cursor_event_id, working_state_json, state_version,
+                    status, occupancy_state, current_wake_id, policy_ref,
+                    operator_profile_ref, authority_profile_ref
+                ) VALUES(?,?,?,?,?,?,?,?,?,?)
+                """,
+                (
+                    seat_id,
+                    cursor_event_id,
+                    desired["working_state_json"],
+                    0,
+                    "BOUND",
+                    "AVAILABLE",
+                    None,
+                    policy_ref,
+                    operator_profile_ref,
+                    authority_profile_ref,
+                ),
+            )
+            conn.commit()
+            return {
+                "status": "BOUND",
+                "seat_id": seat_id,
+                "cursor_event_id": cursor_event_id,
+                "state_version": 0,
+            }
+        except Exception:
+            if conn.in_transaction:
+                conn.rollback()
+            raise
+        finally:
+            conn.close()
+
+    def configure_seat_operator(
+        self,
+        seat_id: str,
+        operator_id: str,
+        *,
+        eligible: bool,
+        authorized: bool,
+        authority_ref: str | None,
+    ) -> None:
+        conn = self._connect()
+        try:
+            self._begin(conn)
+            if conn.execute(
+                "SELECT 1 FROM seats WHERE seat_id = ?",
+                (seat_id,),
+            ).fetchone() is None:
+                raise GoblinPoolError(f"unknown seat {seat_id!r}")
+            if conn.execute(
+                "SELECT 1 FROM operators WHERE operator_id = ?",
+                (operator_id,),
+            ).fetchone() is None:
+                raise GoblinPoolError(f"unknown operator {operator_id!r}")
+            if authorized and not eligible:
+                raise GoblinPoolError(
+                    "operator cannot be authorized for a seat while ineligible"
+                )
+            if authorized and not authority_ref:
+                raise GoblinPoolError(
+                    "authorized seat operator requires explicit authority_ref"
+                )
+            conn.execute(
+                """
+                INSERT OR REPLACE INTO seat_operator_eligibility(
+                    seat_id, operator_id, eligible
+                ) VALUES(?,?,?)
+                """,
+                (seat_id, operator_id, 1 if eligible else 0),
+            )
+            conn.execute(
+                """
+                INSERT OR REPLACE INTO seat_operator_authority(
+                    seat_id, operator_id, authorized, authority_ref
+                ) VALUES(?,?,?,?)
+                """,
+                (
+                    seat_id,
+                    operator_id,
+                    1 if authorized else 0,
+                    authority_ref,
+                ),
+            )
+            conn.commit()
+        except Exception:
+            if conn.in_transaction:
+                conn.rollback()
+            raise
+        finally:
+            conn.close()
+
+    def register_declared_test(self, test_id: str, argv: list[str]) -> None:
+        if not test_id or not argv or not all(isinstance(item, str) and item for item in argv):
+            raise GoblinPoolError("declared test requires non-empty test_id and argv")
+        conn = self._connect()
+        try:
+            self._begin(conn)
+            retained = conn.execute(
+                "SELECT argv_json FROM declared_tests WHERE test_id = ?",
+                (test_id,),
+            ).fetchone()
+            argv_json = _json(argv)
+            if retained is not None and retained["argv_json"] != argv_json:
+                raise GoblinPoolError(
+                    f"declared test {test_id!r} already names different argv"
+                )
+            conn.execute(
+                """
+                INSERT OR IGNORE INTO declared_tests(test_id, argv_json)
+                VALUES(?,?)
+                """,
+                (test_id, argv_json),
+            )
+            conn.commit()
+        except Exception:
+            if conn.in_transaction:
+                conn.rollback()
+            raise
+        finally:
+            conn.close()
+
     def append_event(
         self,
         event_id: str,
