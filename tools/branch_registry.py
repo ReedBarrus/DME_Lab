@@ -126,12 +126,14 @@ def github_safety(repo: str) -> tuple[set[str], set[str]]:
     }
 
     branches = run(
-        "gh", "api", "--paginate",
+        "gh", "api", "--paginate", "--slurp",
         f"repos/{repo}/branches?per_page=100",
     )
+    pages = json.loads(branches.stdout)
     protected = {
         row["name"]
-        for row in json.loads(branches.stdout)
+        for page in pages
+        for row in page
         if row.get("protected") is True
     }
     return open_heads, protected
