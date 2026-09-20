@@ -27,6 +27,7 @@ TARGET_REPOSITORY = "ReedBarrus/DME_Lab"
 TARGET_REF = "main"
 WORK_REF = "promotion-protocol-v0"
 PULL_REQUEST = 30
+PREFLIGHT_IMPLEMENTATION_PATH = "tools/bootstrap_adoption_preflight_v0.py"
 
 
 def git_blob_sha(data: bytes) -> str:
@@ -75,11 +76,13 @@ def build_preflight(
     bootstrap_bytes = read_bytes(root, BOOTSTRAP_OBJECT_PATH)
     review_bytes = read_bytes(root, review_path)
     authorization_bytes = read_bytes(root, authorization_path)
+    preflight_implementation_bytes = read_bytes(root, PREFLIGHT_IMPLEMENTATION_PATH)
 
     protocol_blob = git_blob_sha(protocol_bytes)
     bootstrap_blob = git_blob_sha(bootstrap_bytes)
     review_blob = git_blob_sha(review_bytes)
     authorization_blob = git_blob_sha(authorization_bytes)
+    preflight_implementation_blob = git_blob_sha(preflight_implementation_bytes)
 
     bootstrap = json.loads(bootstrap_bytes.decode("utf-8"))
     review = json.loads(review_bytes.decode("utf-8"))
@@ -88,6 +91,13 @@ def build_preflight(
     observed_target_head = git_head(root, target_ref)
     observed_pr_head = git_head(root, work_ref)
     protocol_present_on_target = path_present_at_ref(root, target_ref, PROTOCOL_PATH)
+
+    preflight_implementation_matches_bootstrap = (
+        bootstrap.get("preflight", {}).get("implementation_path")
+        == PREFLIGHT_IMPLEMENTATION_PATH
+        and bootstrap.get("preflight", {}).get("implementation_git_blob_sha")
+        == preflight_implementation_blob
+    )
 
     protocol_matches_bootstrap = (
         protocol_blob == EXPECTED_PROTOCOL_BLOB
@@ -150,6 +160,7 @@ def build_preflight(
     )
 
     identity_checks = {
+        "preflight_implementation_matches_bootstrap_object": pf(preflight_implementation_matches_bootstrap),
         "protocol_matches_bootstrap_object": pf(protocol_matches_bootstrap),
         "review_matches_protocol": pf(review_matches_protocol),
         "review_matches_bootstrap_object": pf(review_matches_bootstrap),
@@ -187,6 +198,7 @@ def build_preflight(
         "bootstrap_object_git_blob_sha": bootstrap_blob,
         "review_git_blob_sha": review_blob,
         "authorization_git_blob_sha": authorization_blob,
+        "preflight_implementation_git_blob_sha": preflight_implementation_blob,
         "review_disposition": review.get("disposition", "HOLD"),
         "authorization_decision": authorization.get("decision", "DENY"),
         "target": {
