@@ -1,0 +1,55 @@
+name: LABBOIB Temporal Seat v0
+
+on:
+  pull_request:
+    paths:
+      - "continuity/seats/labboib.json"
+      - "continuity/cursors/labboib.json"
+      - "continuity/current_state/labboib_working_state_v0.json"
+      - "continuity/queues/labboib/**"
+      - "tools/labboib_seat.py"
+      - "schemas/temporal_seat_*"
+      - "tests/runtime/test_labboib_temporal_seat.py"
+      - "docs/candidates/labboib_temporal_seat_v0/**"
+      - ".github/workflows/labboib-temporal-seat-v0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  focused-qualification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile seat runtime
+        run: |
+          python -m py_compile tools/labboib_seat.py tests/runtime/test_labboib_temporal_seat.py
+      - name: Run focused temporal-seat tests
+        run: |
+          python -m unittest tests.runtime.test_labboib_temporal_seat -v
+      - name: Exercise candidate wake
+        run: |
+          python tools/labboib_seat.py --repo . wake --source-ref HEAD > /tmp/labboib-wake.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          wake = json.loads(Path("/tmp/labboib-wake.json").read_text())
+          assert wake["schema_version"] == "temporal_seat_wake_v0"
+          assert wake["seat_id"] == "LABBOIB"
+          assert wake["status"] == "READY"
+          assert wake["cursor"]["last_seen_event_id"] == "CE-000033"
+          assert wake["continuity_head"] == "CE-000033"
+          assert wake["unread_continuity_events"] == []
+          assert wake["pending_injections"] == []
+          assert wake["authority_effect"] == "NONE_BY_WAKE"
+          assert wake["execution_effect"] == "NONE_BY_WAKE"
+          assert wake["seat_manifest"]["trigger"]["state"] == "UNBOUND"
+          assert wake["seat_manifest"]["occupant"]["binding"] == "UNBOUND"
+          print("LABBOIB_WAKE_CANDIDATE_PASS")
+          PY
