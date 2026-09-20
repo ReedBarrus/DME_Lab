@@ -1221,3 +1221,27 @@ footer {
 .runtime-diagnostics {
   margin-top: 1rem;
 }
+
+
+/* DEVELOPMENT_HORIZON_PROJECTION_001 */
+.runtime-horizons {
+  grid-column: 1 / -1;
+}
+.runtime-horizon-card {
+  border-top: 1px solid currentColor;
+  padding: 0.65rem 0;
+}
+.runtime-horizon-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+}
+.runtime-horizon-state {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.runtime-horizon-objective {
+  margin: 0.35rem 0 0.55rem;
+}
