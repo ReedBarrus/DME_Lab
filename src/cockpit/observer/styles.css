@@ -1155,3 +1155,60 @@ footer {
     min-height: 600px;
   }
 }
+
+
+/* Action Surface v0 — read-only operational legibility */
+.action-list {
+  gap: 10px;
+}
+
+.action-card {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.action-card:hover,
+.action-card.is-selected {
+  border-color: var(--border-strong);
+  background: var(--panel-raised);
+}
+
+.action-card.is-selected {
+  box-shadow: inset 3px 0 0 var(--selected);
+}
+
+.action-card .object-heading,
+.action-transition {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.action-card .object-heading strong {
+  color: var(--candidate);
+  font-size: 11px;
+}
+
+.action-transition {
+  margin: 9px 0 7px;
+}
+
+.action-transition em {
+  color: var(--muted);
+  font-style: normal;
+  font-size: 11px;
+}
+
+.action-card small {
+  color: var(--quiet);
+}
+
+.action-inspector .current-standing strong {
+  color: var(--candidate);
+}
