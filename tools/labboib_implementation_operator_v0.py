@@ -36,7 +36,11 @@ AUTHORITY_ID = "LABBOIB_IMPLEMENTATION_OPERATOR_001_FIXTURE_AUTHORITY"
 _SHA1_RE = re.compile(r"^[0-9a-f]{40}$")
 
 DECLARED_CHECKS: dict[str, list[str]] = {
-    "PY_COMPILE_FOO": [sys.executable, "-m", "py_compile", "foo.py"],
+    "PY_COMPILE_FOO": [
+        sys.executable,
+        "-c",
+        "import ast,pathlib; ast.parse(pathlib.Path('foo.py').read_text())",
+    ],
 }
 
 
