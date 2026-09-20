@@ -1,0 +1,149 @@
+{
+  "schema_version": "atlas_route_policy_candidate_admissibility_contract_v0",
+  "pressure_id": "ATLAS_ROUTE_POLICY_001",
+  "status": "PRESSURE_DESIGN_OBJECT",
+  "purpose": "Define the minimum causal and observational requirements that any future declared route-selection relation must satisfy before it may be scientifically tested as a policy candidate.",
+  "not": [
+    "POLICY",
+    "IMPLEMENTATION",
+    "REPAIR",
+    "REALIZATION",
+    "ARCHITECTURAL_PROMOTION"
+  ],
+  "basis": {
+    "prior_pressure_id": "ATLAS_ROUTE_SELECTION_001",
+    "prior_scientific_adjudication_branch": "atlas-route-selection-scientific-adjudication-v0",
+    "prior_scientific_adjudication_commit": "e5d0621ece9ddc11ac072d231da97d716aa2a315",
+    "prior_scientific_adjudication_blob_sha1": "30f185bb63e482c467d8ce33ecac8b747fa1a57d",
+    "prior_scientific_standing": "BOUNDED_ADMISSION",
+    "prior_surviving_relation": "Within the tested five-node equal-shortest-route specimen, permuting competing first-hop edge_id labels while preserving the tested directed endpoint relation can change the selected coordinate path.",
+    "prior_claim_ceiling": "No replacement route-selection policy has been selected, justified, repaired, or architecturally promoted."
+  },
+  "scientific_target": {
+    "positive": "EXPLICIT_DECLARED_SELECTION_RELATION",
+    "negative": "INCIDENTAL_REPRESENTATION_DEPENDENT_SELECTION",
+    "question": "Can an explicit declared selection relation control choice among equal-hop alternatives while route outcome remains invariant to incidental representation changes outside that declared relation?"
+  },
+  "required_causal_signature": [
+    {
+      "condition": "REPRESENTATION_CHANGE_OUTSIDE_DECLARED_POLICY",
+      "required_consequence": "SELECTED_ROUTE_INVARIANT"
+    },
+    {
+      "condition": "DECLARED_POLICY_CHANGE",
+      "required_consequence": "SELECTED_ROUTE_CHANGES_IN_ACCORDANCE_WITH_DECLARED_POLICY"
+    },
+    {
+      "condition": "NO_VALID_DECLARED_POLICY_AND_MULTIPLE_EQUAL_HOP_CANDIDATES",
+      "required_consequence": "NO_SILENT_SELECTION"
+    }
+  ],
+  "prospective_candidate_primitive": {
+    "name": "SATISFIES_DECLARED_POLICY",
+    "signature": "SATISFIES_DECLARED_POLICY(candidate_path, declared_selection_relation) -> true | false",
+    "requirements": {
+      "declared_before_realization": true,
+      "mechanically_inspectable": true,
+      "post_hoc_interpretation_admissible": false
+    }
+  },
+  "candidate_admissibility_requirements": {
+    "C1_EXPLICIT_RELATION": {
+      "requirement": "The candidate selection relation is explicitly represented and mechanically identifiable.",
+      "scar": "DECLARED_POLICY != IMPLICIT_IMPLEMENTATION_BEHAVIOR"
+    },
+    "C2_INDEPENDENT_SATISFACTION_TEST": {
+      "requirement": "For any selected candidate path, the experiment can independently determine whether that path satisfies the declared relation.",
+      "scar": "ROUTE_CHANGED != ROUTE_SATISFIES_POLICY"
+    },
+    "C3_REPRESENTATION_INVARIANCE": {
+      "geometry": [
+        "VALID_POLICY_P1 + REPRESENTATION_R1 -> ROUTE_X",
+        "VALID_POLICY_P1 + REPRESENTATION_R2 -> ROUTE_X",
+        "R1 != R2 only in coordinates declared irrelevant by P1",
+        "SATISFIES_DECLARED_POLICY(X, P1) == true"
+      ]
+    },
+    "C4_POLICY_SENSITIVITY": {
+      "geometry": [
+        "VALID_POLICY_P1 + REPRESENTATION_R1 -> ROUTE_X -> SATISFIES(P1, X)",
+        "VALID_POLICY_P2 + REPRESENTATION_R1 -> ROUTE_Y -> SATISFIES(P2, Y)",
+        "P1 != P2",
+        "X != Y"
+      ],
+      "requirement": "Policy intervention must alter selection through the declared relation, not merely correlate with a route change.",
+      "scar": "POLICY_CHANGED_THEN_ROUTE_CHANGED != ROUTE_CHANGED_IN_ACCORDANCE_WITH_POLICY"
+    },
+    "C5_POLICY_ABSENT": {
+      "condition": "MULTIPLE_EQUAL_HOP_CANDIDATES + NO_DECLARED_POLICY",
+      "required_consequence": "NO_SILENT_SELECTION"
+    },
+    "C6_POLICY_INVALID": {
+      "condition": "MULTIPLE_EQUAL_HOP_CANDIDATES + DECLARED_POLICY_INVALID",
+      "required_consequence": [
+        "NO_SILENT_SELECTION",
+        "INVALIDITY_LEGIBLE"
+      ],
+      "scar": "POLICY_ABSENT != POLICY_INVALID"
+    },
+    "C7_LEGACY_NON_DOMINANCE": {
+      "condition": "VALID_DECLARED_POLICY_P",
+      "hostile_permutations": [
+        "edge_id_labels",
+        "edge_declaration_order",
+        "any_other_coordinates_explicitly_outside_P"
+      ],
+      "required_consequence": "NO_SELECTION_OUTSIDE_P",
+      "scar": "LEGACY_REPRESENTATION_DEPENDENT_SELECTION_MUST_NOT_OVERRIDE_VALID_DECLARED_POLICY"
+    }
+  },
+  "anti_smuggling_distinctions": [
+    "POLICY_FIELD_PRESENT != POLICY_FIELD_EFFECTIVE",
+    "POLICY_DETERMINES_SELECTION != POLICY_DIRECTLY_NAMES_PATH",
+    "STABLE_OUTPUT != LEGIBLE_POLICY",
+    "LEGIBLE_POLICY != JUSTIFIED_POLICY",
+    "CANDIDATE_SURVIVES_PRESSURE != CANDIDATE_SELECTED_AS_POLICY",
+    "CANDIDATE_DEFINES_WHAT_COUNTS_AS_SATISFACTION != CANDIDATE_MAY_DEFINE_SATISFACTION_AFTER_SEEING_RESULT",
+    "ROUTE_POLICY != ROUTE_IMPLEMENTATION",
+    "DECLARED_CONTROL_SURFACE != CAUSALLY_EFFECTIVE_CONTROL_SURFACE"
+  ],
+  "policy_family_constraints": {
+    "selected_family": "NONE",
+    "contract_is_family_agnostic": true,
+    "candidate_may_express": [
+      "cost",
+      "ordering",
+      "admissibility",
+      "equivalence_classes",
+      "multi_result_selection",
+      "other_future_declared_relation"
+    ]
+  },
+  "full_causal_geometry": [
+    "VALID_P1 + R1 -> X -> SATISFIES(P1, X)",
+    "VALID_P1 + R2 -> X -> SATISFIES(P1, X)",
+    "VALID_P2 + R1 -> Y -> SATISFIES(P2, Y)",
+    "P1 != P2",
+    "X != Y",
+    "ABSENT_POLICY -> NO_SILENT_COLLAPSE",
+    "INVALID_POLICY -> NO_SILENT_COLLAPSE + INVALIDITY_LEGIBLE"
+  ],
+  "claim_ceiling": {
+    "maximum_future_surviving_claim": "THIS DECLARED RELATION CAN CAUSALLY GOVERN THE TESTED EQUAL-HOP SELECTION UNDER THE TESTED PRESSURES",
+    "explicit_non_claim": "THIS IS THE POLICY ATLAS SHOULD USE"
+  },
+  "gate_separation": [
+    "CAUSALLY_EFFECTIVE != SCIENTIFICALLY_SURVIVING",
+    "SCIENTIFICALLY_SURVIVING != NORMATIVELY_OR_ARCHITECTURALLY_SELECTED"
+  ],
+  "authority": {
+    "contract_freeze": "AUTHORIZED_BY_USER",
+    "policy_family_selection": "NONE",
+    "implementation": "NONE",
+    "repair": "NONE",
+    "realization": "NONE",
+    "scientific_promotion": "NONE",
+    "merge_to_main": "NONE"
+  },
+  "next_state": "STOP_FOR_FUTURE_POLICY_CANDIDATE_DESIGN"
+}
