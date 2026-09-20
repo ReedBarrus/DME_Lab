@@ -1,0 +1,60 @@
+name: GOBLIN_POOL_001
+
+on:
+  pull_request:
+    paths:
+      - "schemas/goblin_pool_v0.sql"
+      - "tools/goblin_pool.py"
+      - "tests/runtime/test_goblin_pool.py"
+      - "docs/candidates/goblin_pool_v0/**"
+      - ".github/workflows/goblin-pool-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile controller
+        run: |
+          python -m py_compile tools/goblin_pool.py tests/runtime/test_goblin_pool.py
+      - name: Run GOBLIN_POOL_001 pressure cells
+        run: |
+          python -m unittest tests.runtime.test_goblin_pool -v
+      - name: Exercise fixture CLI
+        run: |
+          TMP_DB="$(mktemp -u).sqlite3"
+          python tools/goblin_pool.py --db "$TMP_DB" --workspace . init > /tmp/goblin-init.json
+          python tools/goblin_pool.py --db "$TMP_DB" --workspace . posture GOB_B RUN_DECLARED_TEST > /tmp/goblin-posture.json
+          python tools/goblin_pool.py --db "$TMP_DB" --workspace . wake GOB_A W-CI-001 > /tmp/goblin-wake.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          init = json.loads(Path("/tmp/goblin-init.json").read_text())
+          posture = json.loads(Path("/tmp/goblin-posture.json").read_text())
+          wake = json.loads(Path("/tmp/goblin-wake.json").read_text())
+
+          assert init["status"] == "INITIALIZED"
+          assert [seat["seat_id"] for seat in init["seats"]] == ["GOB_A","GOB_B","GOB_C"]
+
+          assert posture["registered"] is True
+          assert posture["available"] is True
+          assert posture["eligible"] is True
+          assert posture["authorized"] is True
+
+          assert wake["seat_id"] == "GOB_A"
+          assert wake["wake_id"] == "W-CI-001"
+          assert wake["status"] == "STARTED"
+          assert wake["basis_version"] == 0
+          assert wake["basis_cursor_event_id"] == "EV-000001"
+
+          print("GOBLIN_POOL_001_CLI_PASS")
+          PY
