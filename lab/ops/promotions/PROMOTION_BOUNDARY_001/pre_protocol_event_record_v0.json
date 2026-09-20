@@ -1,0 +1,33 @@
+{
+  "record_kind": "PRE_PROTOCOL_PROMOTION_EVENT_RECORD",
+  "promotion_id": "PROMOTION_BOUNDARY_001",
+  "observed_original_path": [
+    "HUMAN_AUTHORIZATION_IN_CONVERSATION",
+    "MATERIALIZATION_ON_promotion-boundary-constitutional-v0",
+    "PR_29_OPENED",
+    "PR_29_MERGED_TO_main"
+  ],
+  "repository_evidence": {
+    "pr_number": 29,
+    "pr_head": "9c79ad37522f58e2fa615324bdab681e21bf9501",
+    "merge_commit": "759eca8c3f3c2d3e37d8031207742290f1fb8b6b",
+    "constitution_blob": "f25f9ec41120bdf763082d0e340efcb1f6de98be",
+    "decision_blob": "c205075b6e83983c85c35e45dd604b12fe35d32b",
+    "constraint_registry_blob": "7be5f7b4faeca4be1be0930739f11280c1f800ce"
+  },
+  "typed_stages_absent_before_original_merge": [
+    "PROMOTION_CANDIDATE",
+    "FRESH_PROMOTION_REVIEW",
+    "PROMOTION_ADJUDICATION",
+    "NON_SELF_AUTHORIZING_PROMOTION_ENVELOPE",
+    "TYPED_PROMOTION_RECEIPT"
+  ],
+  "current_reality": "ARTICLE_0_BYTES_ARE_DURABLE_ON_main",
+  "protocol_status": "NOT_YET_RATIFIED_UNDER_PROMOTION_PROTOCOL_v0",
+  "non_claims": [
+    "This record does not claim the missing stages occurred.",
+    "This record does not revoke or ratify Article 0.",
+    "This record does not authorize retroactive ratification.",
+    "This record does not rewrite the original merge as a later event."
+  ]
+}
