@@ -1,9 +1,12 @@
 from __future__ import annotations
 
 import copy
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+import json
 from pathlib import Path
 import sqlite3
 import tempfile
+import threading
 import unittest
 
 from tools.goblin_pool import GoblinPool
@@ -12,6 +15,7 @@ from tools.local_semantic_operator_v0 import (
     AUTHORITY_PATH,
     LocalSemanticHarness,
     fixture_provider,
+    lm_studio_chat_completion,
 )
 
 
@@ -285,6 +289,73 @@ class LocalSemanticOperatorPressure(unittest.TestCase):
         self.assertTrue(outcome["seat_state_unchanged"])
         self.assertEqual(outcome["proposal"]["environment_basis"], self.head)
         self.assert_resource_released()
+
+    def test_s9_lm_studio_http_transport_shape(self) -> None:
+        observed = {}
+
+        class Handler(BaseHTTPRequestHandler):
+            def do_POST(self):
+                length = int(self.headers.get("Content-Length", "0"))
+                payload = json.loads(self.rfile.read(length).decode("utf-8"))
+                observed["path"] = self.path
+                observed["payload"] = payload
+
+                content = json.dumps(
+                    {
+                        "summary": "Transport contract reached provider.",
+                        "anomaly_flags": [],
+                        "suggested_next_step": "NONE",
+                        "evidence_refs": ["realization://D1"],
+                    }
+                )
+                body = json.dumps(
+                    {
+                        "choices": [
+                            {
+                                "message": {
+                                    "role": "assistant",
+                                    "content": content,
+                                }
+                            }
+                        ]
+                    }
+                ).encode("utf-8")
+
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json")
+                self.send_header("Content-Length", str(len(body)))
+                self.end_headers()
+                self.wfile.write(body)
+
+            def log_message(self, format, *args):
+                return
+
+        server = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
+        thread = threading.Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        try:
+            base_url = f"http://127.0.0.1:{server.server_port}/v1"
+            result = lm_studio_chat_completion(
+                base_url=base_url,
+                model_id="qwen-exact-model-id",
+                request=self.request("SR-S9"),
+                timeout_seconds=5,
+            )
+        finally:
+            server.shutdown()
+            server.server_close()
+            thread.join(timeout=5)
+
+        self.assertEqual(observed["path"], "/v1/chat/completions")
+        self.assertEqual(observed["payload"]["model"], "qwen-exact-model-id")
+        self.assertFalse(observed["payload"]["stream"])
+        self.assertEqual(
+            observed["payload"]["response_format"]["type"],
+            "json_schema",
+        )
+        self.assertEqual(result["provider_http_status"], 200)
+        decoded = json.loads(result["model_content"])
+        self.assertEqual(decoded["suggested_next_step"], "NONE")
 
 
 if __name__ == "__main__":
