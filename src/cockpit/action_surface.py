@@ -125,8 +125,14 @@ def _action_for(spec: dict[str, Any], state: dict[str, Any]) -> dict[str, Any]:
             "eligibility": "UNRESOLVED",
             "transition_id": None,
             "transition_kind": None,
-            "reason": "no declared transition for reconstructed phase",
+            "to_phase": None,
+            "requires_capability": None,
+            "recipient_role": None,
+            "decision": None,
+            "authority_effect": "NONE_BY_ACTION_SURFACE",
+            "execution_effect": "NONE_BY_ACTION_SURFACE",
             "authority_required": None,
+            "reason": "no declared transition for reconstructed phase",
         }
 
     kind = transition.get("kind")
