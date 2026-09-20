@@ -285,7 +285,7 @@ function renderSnapshot(root, snapshot) {
   root.append(diagnostics);
 }
 
-export function startRuntimeProjection(root) {
+export function startRuntimeProjection(root, onSnapshot = null) {
   if (!root) return null;
 
   const params = new URL(window.location.href).searchParams;
@@ -303,7 +303,9 @@ export function startRuntimeProjection(root) {
 
   source.addEventListener('runtime_projection', (event) => {
     try {
-      renderSnapshot(root, JSON.parse(event.data));
+      const snapshot = JSON.parse(event.data);
+      renderSnapshot(root, snapshot);
+      if (typeof onSnapshot === 'function') onSnapshot(snapshot);
       root.dataset.runtimeState = 'live';
     } catch (error) {
       renderUnavailable(root, `Runtime projection parse failure: ${error}`);

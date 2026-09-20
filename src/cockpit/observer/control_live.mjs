@@ -226,6 +226,19 @@ export function startControlAdapter(root) {
     }
   }
 
+  const prefillHandler = (event) => {
+    const detail = event?.detail || {};
+    if (!VERBS.includes(detail.verb)) return;
+    verb.value = detail.verb;
+    campaign.value = detail.campaign_id || '';
+    request.value = detail.request_id || '';
+    assignment.value = detail.assignment_id || '';
+    seat.value = detail.seat_id || '';
+    updateFields();
+    root.scrollIntoView({behavior: 'smooth', block: 'start'});
+  };
+
+  window.addEventListener('cockpit-control-prefill', prefillHandler);
   verb.addEventListener('change', updateFields);
   refreshButton.addEventListener('click', refreshHandles);
 

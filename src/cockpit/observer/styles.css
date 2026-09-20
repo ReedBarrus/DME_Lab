@@ -1327,3 +1327,341 @@ footer {
 .control-result {
   border-color: var(--current);
 }
+
+/* COCKPIT_PERCEPTUAL_INSTRUMENT_001 */
+.perceptual-instrument {
+  margin: 16px 18px;
+  border: 1px solid var(--border-strong);
+  background: #0d1116;
+}
+.instrument-header,
+.instrument-body,
+.instrument-projection-toggle,
+.instrument-actions {
+  display: flex;
+}
+.instrument-header {
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 16px 18px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.instrument-header h1 {
+  margin-top: 4px;
+  font-size: 18px;
+}
+.instrument-kicker,
+.instrument-node-kind {
+  color: var(--quiet);
+  font: 700 9px "Cascadia Code", Consolas, monospace;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.instrument-toggle {
+  display: flex;
+  border: 1px solid var(--border-strong);
+}
+.instrument-toggle-button,
+.instrument-action,
+.instrument-node {
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font-family: "Cascadia Code", Consolas, monospace;
+}
+.instrument-toggle-button {
+  padding: 9px 12px;
+  border-left: 1px solid var(--border-strong);
+}
+.instrument-toggle-button:first-child {
+  border-left: 0;
+}
+.instrument-toggle-button[data-active="true"] {
+  background: var(--panel-raised);
+  color: var(--selected);
+  box-shadow: inset 0 -3px 0 var(--selected);
+}
+.instrument-law-primary,
+.instrument-law {
+  color: var(--muted);
+  font-size: 11px;
+}
+.instrument-law-primary {
+  margin: 0;
+  padding: 9px 18px;
+  border-bottom: 1px solid var(--border);
+}
+.instrument-body {
+  align-items: start;
+  gap: 14px;
+  padding: 14px;
+}
+.instrument-field {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+.instrument-world {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  gap: 10px;
+  min-height: 420px;
+}
+.instrument-lane,
+.instrument-relations,
+.instrument-topology-card,
+.instrument-chat,
+.instrument-plan {
+  border: 1px solid var(--border);
+  background: var(--panel);
+}
+.instrument-lane {
+  min-width: 0;
+  padding: 9px;
+}
+.instrument-lane h3,
+.instrument-relations h3,
+.instrument-topology-card h3,
+.instrument-topology-card h4,
+.instrument-chat h3,
+.instrument-plan h3 {
+  margin: 0 0 8px;
+}
+.instrument-node {
+  width: 100%;
+  margin-top: 7px;
+  padding: 9px;
+  border: 1px solid var(--border-strong);
+  background: #11161b;
+  text-align: left;
+}
+.instrument-node:hover,
+.instrument-node:focus-visible,
+.instrument-node[data-selected="true"] {
+  outline: 2px solid var(--selected);
+  outline-offset: 1px;
+}
+.instrument-node strong,
+.instrument-node-state,
+.instrument-node-kind {
+  display: block;
+}
+.instrument-node strong {
+  margin: 5px 0;
+  overflow-wrap: anywhere;
+}
+.instrument-node-state {
+  color: var(--muted);
+  font-size: 10px;
+}
+.instrument-relations {
+  margin-top: 10px;
+  padding: 11px;
+}
+.instrument-edge {
+  margin-top: 5px;
+  padding: 5px 7px;
+  border-left: 2px solid var(--border-strong);
+  color: var(--muted);
+  font: 10px "Cascadia Code", Consolas, monospace;
+  overflow-wrap: anywhere;
+}
+.instrument-rail {
+  position: sticky;
+  top: 10px;
+  flex: 0 0 min(24rem, 32vw);
+  max-height: calc(100vh - 20px);
+  overflow: auto;
+  padding: 12px;
+  border: 1px solid var(--border);
+  background: #11161b;
+}
+.instrument-chip {
+  display: block;
+  margin-top: 7px;
+  padding: 6px 7px;
+  border: 1px solid var(--border-strong);
+  overflow-wrap: anywhere;
+}
+.instrument-actions {
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+.instrument-action {
+  padding: 7px 9px;
+  border: 1px solid var(--border-strong);
+  background: var(--panel-raised);
+}
+.instrument-action:hover,
+.instrument-action:focus-visible {
+  border-color: var(--selected);
+}
+.instrument-topology-grid {
+  display: grid;
+  gap: 10px;
+}
+.instrument-topology-card {
+  padding: 12px;
+}
+.instrument-raw,
+.instrument-packet {
+  max-height: 26rem;
+  overflow: auto;
+  padding: 8px;
+  background: #080b0e;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font: 10px "Cascadia Code", Consolas, monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.instrument-chat,
+.instrument-plan {
+  margin-top: 12px;
+  padding: 10px;
+}
+.instrument-chat textarea,
+.instrument-plan textarea {
+  width: 100%;
+  min-height: 86px;
+  margin: 8px 0;
+  padding: 8px;
+  border: 1px solid var(--border-strong);
+  background: #080b0e;
+  color: var(--text);
+  resize: vertical;
+  font: 12px "Cascadia Code", Consolas, monospace;
+}
+.instrument-warning {
+  margin-bottom: 9px;
+  padding: 8px;
+  border: 1px solid var(--alert);
+  color: var(--alert);
+}
+.instrument-empty {
+  color: var(--quiet);
+  font-size: 11px;
+}
+body.instrument-active #runtime-root {
+  display: none;
+}
+body.instrument-active[data-instrument-projection="CONSEQUENCE"] #navigation-root,
+body.instrument-active[data-instrument-projection="CONSEQUENCE"] #view-navigation-root,
+body.instrument-active[data-instrument-projection="CONSEQUENCE"] main {
+  display: none;
+}
+body.instrument-active[data-instrument-projection="TOPOLOGY"] #view-navigation-root {
+  margin-top: 8px;
+}
+
+@media (max-width: 980px) {
+  .instrument-body {
+    display: block;
+  }
+  .instrument-world {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .instrument-rail {
+    position: relative;
+    top: auto;
+    max-height: none;
+    margin-top: 12px;
+  }
+}
+@media (max-width: 620px) {
+  .instrument-header {
+    display: block;
+  }
+  .instrument-toggle {
+    margin-top: 10px;
+  }
+  .instrument-world {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* COCKPIT_PERCEPTUAL_INSTRUMENT_001 — geometric consequence map */
+.instrument-scale {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 18px;
+  border-bottom: 1px solid var(--border);
+}
+.instrument-scale-button {
+  padding: 5px 7px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font: 10px "Cascadia Code", Consolas, monospace;
+}
+.instrument-scale-button[data-active="true"] {
+  border-color: var(--selected);
+  color: var(--selected);
+  background: var(--panel-raised);
+}
+.instrument-scale > .instrument-law {
+  margin-left: auto;
+}
+.instrument-map-scroll {
+  overflow: auto;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px),
+    #0a0e12;
+  background-size: 32px 32px;
+}
+.instrument-map {
+  position: relative;
+  min-width: 1080px;
+  min-height: 420px;
+}
+.instrument-map-lane-label {
+  position: absolute;
+  top: 18px;
+  width: 188px;
+  color: var(--quiet);
+  font: 700 9px "Cascadia Code", Consolas, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+.instrument-map .instrument-node {
+  position: absolute;
+  width: 188px;
+  min-height: 76px;
+  margin: 0;
+  z-index: 3;
+}
+.instrument-graph-edges {
+  position: absolute;
+  inset: 0;
+  width: 1080px;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+}
+.instrument-graph-edge {
+  stroke: #55616d;
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+}
+.instrument-graph-edge.is-selected {
+  stroke: var(--selected);
+  stroke-width: 2;
+}
+.instrument-graph-edges marker path {
+  fill: #6d7782;
+}
+.instrument-map-empty {
+  position: absolute;
+  left: 35px;
+  top: 74px;
+  color: var(--quiet);
+  font: 12px "Cascadia Code", Consolas, monospace;
+}
