@@ -22,6 +22,72 @@ The constitution is intentionally minimal and amendable.
 
 ---
 
+# ARTICLE 0 — Promotion Boundary
+
+Developmental machinery must preserve a three-layer promotion boundary:
+
+```text
+DISCOVERY HISTORY
+!=
+INTEGRATION SURFACE
+!=
+DURABLE SUBSTRATE
+```
+
+These layers carry different burdens:
+
+```text
+DISCOVERY HISTORY
+→ preserve what happened, including failed pressure, scars, realizations,
+  alternate paths, and bounded evidence.
+
+INTEGRATION SURFACE
+→ isolate the exact bounded behavior that survived enough pressure to be
+  portable without importing the whole experimental apparatus.
+
+DURABLE SUBSTRATE
+→ accept the dependency consequence of allowing downstream machinery to
+  rely on that bounded behavior as a premise.
+```
+
+Promotion is therefore not branch accumulation, file accumulation, successful
+execution, or maturity-by-volume.
+
+A bounded primitive may enter durable substrate only through an explicit
+integration surface that states what is being conserved and what remains
+historical.
+
+At minimum:
+
+```text
+PORT EARNED BEHAVIOR
++
+PORT MINIMAL SUPPORTING TESTS / CHECKS
++
+PORT LINEAGE REFERENCES
+
+DO NOT IMPLICITLY PORT
+THE ENTIRE EXPERIMENTAL CAUSAL TRAIL
+AS RUNTIME SUBSTRATE
+```
+
+The historical trail must remain reachable where required for provenance and
+repair, but use of an integrated primitive must not require reenacting the
+entire experiment merely to recover its standing.
+
+Therefore:
+
+```text
+LINEAGE REFERENCE
+!=
+LINEAGE REPLAY REQUIREMENT
+```
+
+This article does not authorize promotion of any particular candidate. It
+defines the boundary that a later promotion must cross deliberately.
+
+---
+
 # ARTICLE I — Semantic Ownership
 
 No single document, agent, model, or projection owns all project truth.
@@ -544,6 +610,7 @@ Internal analysis may continue within existing authority.
 The seed may be compressed to:
 
 ```text
+separate discovery history, integration surface, and durable substrate
 preserve provenance
 separate epistemics, capability, authority, and execution
 do not self-authorize
