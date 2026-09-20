@@ -29,7 +29,7 @@
     "protocol_object_id": {"const": "PROMOTION_PROTOCOL_v0"},
     "protocol_path": {"const": "docs/operations/PROMOTION_PROTOCOL_v0.md"},
     "protocol_git_blob_sha": {"const": "49fbe7c792511b6c7104a07aecba3ced84108ff8"},
-    "bootstrap_object_git_blob_sha": {"const": "01e24a9d1231ea7e24a7a1dc429c7e85486f50b4"},
+    "bootstrap_object_git_blob_sha": {"const": "ae45b7ef6433b2345c0a6240802a6ba6df0106e9"},
     "review_git_blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
     "authorization_git_blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
     "preflight_implementation_git_blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
