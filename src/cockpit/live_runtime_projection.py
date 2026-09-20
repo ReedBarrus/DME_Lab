@@ -450,7 +450,7 @@ def build_runtime_state(sources: RuntimeSources) -> dict[str, Any]:
         else "PARTIAL"
     )
 
-    return {
+    state = {
         "schema": "live_runtime_projection_v0",
         "projection_status": overall_status,
         "projection_effect": "NONE",
