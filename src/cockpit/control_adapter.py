@@ -183,6 +183,26 @@ class CockpitControlAdapter:
             raise CockpitControlError(
                 "v0 control verb must be one of FOCUS/ASSIGN/RELEASE/RING"
             )
+        allowed = {
+            "FOCUS": {"verb", "gesture_id", "campaign_id", "request_id", "reason"},
+            "ASSIGN": {
+                "verb", "gesture_id", "campaign_id", "request_id",
+                "seat_id", "preparation_kind", "reason",
+            },
+            "RELEASE": {
+                "verb", "gesture_id", "campaign_id", "assignment_id", "reason",
+            },
+            "RING": {
+                "verb", "gesture_id", "campaign_id", "assignment_id", "reason",
+            },
+        }[str(verb)]
+        extras = set(intent) - allowed
+        required = allowed - {"reason"}
+        missing = required - set(intent)
+        if extras or missing:
+            raise CockpitControlError(
+                f"{verb} intent fields not exact; missing={sorted(missing)} extras={sorted(extras)}"
+            )
         return str(verb)
 
     def _current_selection_for_request(
