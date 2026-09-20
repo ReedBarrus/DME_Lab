@@ -31,6 +31,8 @@ jobs:
           tests/runtime/test_cockpit_operating_space_adoption.py
 
       - name: Verify exact Cockpit campaign adoption
+        env:
+          DME_CURRENT_GIT_BASIS: ${{ github.event.pull_request.head.sha || github.sha }}
         run: python -m unittest tests.runtime.test_cockpit_operating_space_adoption -v
 
       - name: Campaign adoption regression
