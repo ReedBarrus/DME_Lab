@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/local_semantic_proposal_v0.schema.json",
+  "title": "Local Semantic Proposal v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "proposal_id",
+    "request_id",
+    "seat_id",
+    "seat_basis_version",
+    "environment_basis",
+    "summary",
+    "anomaly_flags",
+    "suggested_next_step",
+    "evidence_refs",
+    "authority_effect",
+    "action_selection_effect",
+    "seat_state_effect"
+  ],
+  "properties": {
+    "schema": {"const": "local_semantic_proposal_v0"},
+    "proposal_id": {"type": "string", "minLength": 1},
+    "request_id": {"type": "string", "minLength": 1},
+    "seat_id": {"const": "LABBOIB"},
+    "seat_basis_version": {"type": "integer", "minimum": 0},
+    "environment_basis": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "summary": {"type": "string", "minLength": 1},
+    "anomaly_flags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "suggested_next_step": {
+      "enum": ["NONE", "REVALIDATE", "REPRESSURE", "DISCARD", "REQUEST_REVIEW"]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "authority_effect": {"const": "NONE"},
+    "action_selection_effect": {"const": "NONE"},
+    "seat_state_effect": {"const": "NONE"}
+  }
+}
