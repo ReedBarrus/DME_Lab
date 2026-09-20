@@ -438,6 +438,7 @@ schemas/bootstrap_adoption_review_v0.schema.json
 schemas/bootstrap_adoption_authorization_v0.schema.json
 schemas/bootstrap_adoption_preflight_v0.schema.json
 schemas/bootstrap_adoption_receipt_v0.schema.json
+schemas/bootstrap_adoption_receipt_verification_v0.schema.json
 ```
 
 Schema validity establishes object-shape validity only.
@@ -531,7 +532,21 @@ REFERENCE CONSISTENT
 ```
 
 Cross-object equality is therefore checked by bootstrap preflight before
-execution can be admitted.
+execution can be admitted and by the terminal-chain verifier before a receipt
+is accepted as chain-consistent.
+
+Content-address dependencies must remain acyclic:
+
+```text
+ONE-WAY CONTENT ADDRESSING
+!=
+MUTUAL CONTENT-ADDRESS CYCLE
+```
+
+A bootstrap object may pin the exact implementation that consumes it. That
+implementation must derive the bootstrap object's identity from the supplied
+bytes rather than embedding the bootstrap object's content hash in its own
+bytes.
 
 ### 13.2 Fresh bootstrap review
 
@@ -613,6 +628,25 @@ EXTERNAL HISTORICAL TRUTH
 Schema shapes require and constrain the witness/result. The preflight mechanism
 must derive the repository-state result.
 
+The bootstrap object pins the exact preflight implementation. The preflight
+implementation derives the actual bootstrap-object Git blob from supplied
+bytes and compares review and authorization bindings against that derived
+identity. It must not hardcode the bootstrap-object content hash.
+
+```text
+BOOTSTRAP OBJECT
+→ pins PREFLIGHT IMPLEMENTATION
+
+PREFLIGHT IMPLEMENTATION
+→ derives BOOTSTRAP OBJECT IDENTITY
+
+NOT:
+
+BOOTSTRAP OBJECT HASH
+↔
+PREFLIGHT IMPLEMENTATION HASH
+```
+
 Execution is admitted only when the typed preflight result is `PASS`.
 
 ```text
@@ -676,7 +710,69 @@ FAILURE
 UNIFORM ELIGIBILITY CONSEQUENCE
 ```
 
-### 13.6 Self-extinguishing genesis
+### 13.6 Terminal chain verification
+
+Schema-valid receipt references are not sufficient evidence that the receipt
+belongs to the exact administration chain.
+
+```text
+REFERENCE PRESENT
+!=
+REFERENCE CONSERVED
+```
+
+The bootstrap object pins one exact terminal-chain verifier implementation.
+That verifier consumes the actual:
+
+```text
+protocol bytes
+bootstrap-object bytes
+review bytes
+authorization bytes
+preflight bytes
+receipt bytes
+```
+
+and derives each Git blob identity from those supplied bytes.
+
+It must verify at minimum:
+
+```text
+protocol identity matches bootstrap object
+review identity matches bootstrap object + protocol
+authorization identity matches review + bootstrap object + protocol
+preflight identity matches authorization + review + bootstrap object + protocol
+receipt identity references match actual review + authorization + preflight bytes
+receipt protocol/bootstrap references match actual protocol/bootstrap bytes
+receipt preflight_result matches the consumed preflight result
+```
+
+The verifier must not hardcode the content hash of a downstream receipt or
+bootstrap object whose bytes also pin the verifier. Its implementation identity
+is distinct from the validity of the chain it checks.
+
+```text
+RECEIPT VERIFIER IDENTITY
+!=
+RECEIPT CHAIN VALIDITY
+```
+
+A bootstrap receipt is administratively chain-valid only when:
+
+```text
+RECEIPT SCHEMA:
+VALID
+
+AND
+
+PINNED TERMINAL-CHAIN VERIFIER:
+PASS
+```
+
+The verifier does not create authority, perform execution, adopt the protocol,
+or rewrite the receipt.
+
+### 13.7 Self-extinguishing genesis
 
 The bootstrap exception self-extinguishes by succeeding:
 
