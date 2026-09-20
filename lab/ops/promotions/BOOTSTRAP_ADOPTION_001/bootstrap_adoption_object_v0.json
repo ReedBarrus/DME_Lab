@@ -41,7 +41,9 @@
     ],
     "status": "NOT_RUN",
     "required_schema": "bootstrap_adoption_preflight_v0",
-    "preflight_ref": null
+    "preflight_ref": null,
+    "implementation_path": "tools/bootstrap_adoption_preflight_v0.py",
+    "implementation_git_blob_sha": "d773670948fb19ed43eeaaddb4abe8eb0c73de6b"
   },
   "execution": {
     "authorized_effect_only": [
