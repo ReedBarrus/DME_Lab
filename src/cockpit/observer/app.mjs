@@ -1,3 +1,4 @@
+import { startRuntimeProjection } from './runtime_live.mjs';
 import {
   buildObserverModel,
   followEvidence,
@@ -164,3 +165,5 @@ async function start() {
 }
 
 start();
+
+startRuntimeProjection(document.querySelector('#runtime-root'));
