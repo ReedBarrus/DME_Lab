@@ -38,11 +38,12 @@
     "target": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["repository", "target_ref", "pull_request", "authorized_pr_head"],
+      "required": ["repository", "target_ref", "pull_request", "authorized_target_head", "authorized_pr_head"],
       "properties": {
         "repository": {"const": "ReedBarrus/DME_Lab"},
         "target_ref": {"const": "main"},
         "pull_request": {"const": 30},
+        "authorized_target_head": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
         "authorized_pr_head": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
       }
     },
