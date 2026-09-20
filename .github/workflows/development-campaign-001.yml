@@ -9,6 +9,7 @@ on:
       - "schemas/execution_envelope_request_v0.schema.json"
       - "schemas/campaign_standing_update_v0.schema.json"
       - "docs/candidates/development_campaign_v0/**"
+      - "docs/campaigns/candidates/**"
       - ".github/workflows/development-campaign-001.yml"
   workflow_dispatch:
 
