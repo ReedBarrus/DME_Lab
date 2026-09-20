@@ -107,9 +107,15 @@ def build_preflight(
         bootstrap_blob == EXPECTED_BOOTSTRAP_OBJECT_BLOB
         and review.get("bootstrap_object_git_blob_sha") == bootstrap_blob
     )
+    review_independence_valid = (
+        review.get("schema") == "bootstrap_adoption_review_v0"
+        and review.get("independence", {}).get("protocol_author") is False
+        and review.get("independence", {}).get("bootstrap_object_author") is False
+    )
 
     authorization_matches_protocol = (
-        authorization.get("event_id") == EVENT_ID
+        authorization.get("schema") == "bootstrap_adoption_authorization_v0"
+        and authorization.get("event_id") == EVENT_ID
         and authorization.get("protocol_object_id") == PROTOCOL_OBJECT_ID
         and authorization.get("protocol_path") == PROTOCOL_PATH
         and authorization.get("protocol_git_blob_sha") == protocol_blob
@@ -121,6 +127,11 @@ def build_preflight(
         authorization.get("review_git_blob_sha") == review_blob
         and authorization.get("review_disposition") == review.get("disposition")
         and review.get("disposition") == "ADMIT"
+    )
+
+    authorization_effect_matches = (
+        authorization.get("authorized_effect")
+        == "ADOPT_EXACT_PROMOTION_PROTOCOL_v0_AS_DURABLE_OPERATING_PROCEDURE"
     )
 
     target = authorization.get("target", {})
@@ -142,9 +153,11 @@ def build_preflight(
         "protocol_matches_bootstrap_object": pf(protocol_matches_bootstrap),
         "review_matches_protocol": pf(review_matches_protocol),
         "review_matches_bootstrap_object": pf(review_matches_bootstrap),
+        "review_independence_valid": pf(review_independence_valid),
         "authorization_matches_protocol": pf(authorization_matches_protocol),
         "authorization_matches_bootstrap_object": pf(authorization_matches_bootstrap),
         "authorization_matches_review": pf(authorization_matches_review),
+        "authorization_effect_matches": pf(authorization_effect_matches),
         "target_matches_authorization": pf(target_matches_authorization),
         "target_head_matches_authorization": pf(target_head_matches_authorization),
         "pr_head_matches_authorization": pf(pr_head_matches_authorization),
