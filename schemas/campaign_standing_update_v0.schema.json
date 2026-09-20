@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/campaign_standing_update_v0.schema.json",
+  "title": "Campaign Standing Update v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "campaign_id",
+    "relation_id",
+    "standing",
+    "adjudication_ref",
+    "basis_ref"
+  ],
+  "properties": {
+    "schema": {"const": "campaign_standing_update_v0"},
+    "campaign_id": {"type": "string", "minLength": 1},
+    "relation_id": {"type": "string", "minLength": 1},
+    "standing": {"enum": ["OPEN", "EARNED", "FRACTURED"]},
+    "adjudication_ref": {"type": "string", "minLength": 1},
+    "basis_ref": {"type": "string", "minLength": 1}
+  }
+}
