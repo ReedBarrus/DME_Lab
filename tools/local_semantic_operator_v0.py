@@ -603,6 +603,21 @@ class LocalSemanticHarness:
                 durable_proposal["proposal_id"],
                 durable_proposal,
             )
+        elif provider_error is not None:
+            terminal_status = (
+                "INVALID_RESPONSE"
+                if provider_error == "MODEL_CONTENT_NOT_JSON"
+                else "PROVIDER_FAILED"
+            )
+            self.pool.mark_semantic_request_terminal(
+                request["request_id"],
+                terminal_status,
+            )
+        else:
+            self.pool.mark_semantic_request_terminal(
+                request["request_id"],
+                "INVALID_RESPONSE",
+            )
 
         seat_after = self.pool.seat_snapshot(request["seat_id"])
         seat_state_unchanged = (
