@@ -14,6 +14,7 @@
     "authority",
     "preflight",
     "execution",
+    "terminal_chain_verifier",
     "postcondition_on_success",
     "failure_semantics",
     "nonclaims",
@@ -31,7 +32,7 @@
         "object_id": {"const": "PROMOTION_PROTOCOL_v0"},
         "repository": {"const": "ReedBarrus/DME_Lab"},
         "path": {"const": "docs/operations/PROMOTION_PROTOCOL_v0.md"},
-        "git_blob_sha": {"const": "49fbe7c792511b6c7104a07aecba3ced84108ff8"},
+        "git_blob_sha": {"const": "c6cebdc70c07816167ff9499b5690fcb16b4354e"},
         "carrier_branch": {"const": "promotion-protocol-v0"},
         "pull_request": {"const": 30}
       }
@@ -93,7 +94,7 @@
         },
         "required_schema": {"const": "bootstrap_adoption_preflight_v0"},
         "implementation_path": {"const": "tools/bootstrap_adoption_preflight_v0.py"},
-        "implementation_git_blob_sha": {"const": "d773670948fb19ed43eeaaddb4abe8eb0c73de6b"},
+        "implementation_git_blob_sha": {"const": "fc506070475e6e506f144f8652ff4ffeb000eebd"},
         "status": {"const": "NOT_RUN"},
         "preflight_ref": {"type": "null"}
       }
@@ -122,6 +123,24 @@
         },
         "requires_preflight_result": {"const": "PASS"},
         "status": {"const": "NOT_EXECUTED"}
+      }
+    },
+    "terminal_chain_verifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required",
+        "implementation_path",
+        "implementation_git_blob_sha",
+        "required_schema",
+        "status"
+      ],
+      "properties": {
+        "required": {"const": true},
+        "implementation_path": {"const": "tools/bootstrap_adoption_receipt_verifier_v0.py"},
+        "implementation_git_blob_sha": {"const": "7aa3bbeff12b79facf1b6faecf825609772776f4"},
+        "required_schema": {"const": "bootstrap_adoption_receipt_verification_v0"},
+        "status": {"const": "NOT_RUN"}
       }
     },
     "postcondition_on_success": {
@@ -161,6 +180,7 @@
         "authority",
         "preflight",
         "execution",
+        "receipt_verification",
         "adoption",
         "bootstrap_consumed"
       ],
@@ -171,6 +191,7 @@
         "authority": {"const": "NONE"},
         "preflight": {"const": "NOT_RUN"},
         "execution": {"const": "NO"},
+        "receipt_verification": {"const": "NOT_RUN"},
         "adoption": {"const": "NO"},
         "bootstrap_consumed": {"const": false}
       }
