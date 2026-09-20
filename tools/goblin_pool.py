@@ -781,6 +781,21 @@ class GoblinPool:
             raise GoblinPoolError("wake is not the active occupant of its seat")
         return wake, seat
 
+    def _repo_head(self) -> str:
+        result = subprocess.run(
+            ["git", "-C", str(self.workspace), "rev-parse", "HEAD"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            check=False,
+            timeout=10,
+        )
+        if result.returncode != 0:
+            raise GoblinPoolError(
+                "repository HEAD unavailable: " + result.stderr.strip()
+            )
+        return result.stdout.strip()
+
     def _run_adapter(
         self,
         adapter_kind: str,
@@ -788,21 +803,23 @@ class GoblinPool:
         args: dict[str, Any],
     ) -> dict[str, Any]:
         if adapter_kind == "READ_REPO_STATE":
-            result = subprocess.run(
-                ["git", "-C", str(self.workspace), "rev-parse", "HEAD"],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                text=True,
-                check=False,
-                timeout=10,
-            )
-            if result.returncode != 0:
-                raise GoblinPoolError(
-                    "READ_REPO_STATE failed: " + result.stderr.strip()
-                )
+            head_before = self._repo_head()
+            expected_head = args.get("expected_repo_head")
+            head_after = self._repo_head()
             return {
-                "head": result.stdout.strip(),
                 "adapter_kind": adapter_kind,
+                "repo_head_at_start": head_before,
+                "repo_head_at_return": head_after,
+                "expected_repo_head": expected_head,
+                "expected_basis_match_at_start": (
+                    expected_head is None or expected_head == head_before
+                ),
+                "basis_stable_during_operator": head_before == head_after,
+                "current_basis_applicability": (
+                    (expected_head is None or expected_head == head_before)
+                    and head_before == head_after
+                ),
+                "mutation_effect": "NONE_BY_READ_REPO_STATE",
             }
 
         if adapter_kind == "RUN_DECLARED_TEST":
@@ -820,6 +837,8 @@ class GoblinPool:
             if row is None:
                 raise GoblinPoolError(f"undeclared test {test_id!r}")
             argv = _unjson(row["argv_json"])
+            expected_head = args.get("expected_repo_head")
+            head_before = self._repo_head()
             result = subprocess.run(
                 argv,
                 cwd=self.workspace,
@@ -829,14 +848,28 @@ class GoblinPool:
                 check=False,
                 timeout=30,
             )
+            head_after = self._repo_head()
             return {
                 "adapter_kind": adapter_kind,
                 "test_id": test_id,
                 "argv": argv,
-                "returncode": result.returncode,
+                "process_returncode": result.returncode,
                 "stdout": result.stdout,
                 "stderr": result.stderr,
+                "mechanical_result": "PASS" if result.returncode == 0 else "FAIL",
                 "passed": result.returncode == 0,
+                "scientific_standing_effect": "NONE",
+                "repo_head_at_start": head_before,
+                "repo_head_at_return": head_after,
+                "expected_repo_head": expected_head,
+                "expected_basis_match_at_start": (
+                    expected_head is None or expected_head == head_before
+                ),
+                "basis_stable_during_operator": head_before == head_after,
+                "current_basis_applicability": (
+                    (expected_head is None or expected_head == head_before)
+                    and head_before == head_after
+                ),
             }
 
         if adapter_kind == "WRITE_PACKET":
@@ -1178,6 +1211,12 @@ class GoblinPool:
                 raise GoblinPoolError(
                     f"operator invocation {invocation_id!r} is not an executed "
                     "invocation of this wake"
+                )
+            result = _unjson(row["result_json"]) if row["result_json"] else {}
+            if result.get("current_basis_applicability") is False:
+                raise GoblinPoolError(
+                    f"operator invocation {invocation_id!r} executed but is not "
+                    "applicable to the current repository basis"
                 )
 
     def commit_transition(
