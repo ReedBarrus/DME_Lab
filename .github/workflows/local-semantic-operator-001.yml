@@ -1,0 +1,55 @@
+name: LOCAL_SEMANTIC_OPERATOR_001
+
+on:
+  pull_request:
+    paths:
+      - "tools/local_semantic_operator_v0.py"
+      - "tools/goblin_pool.py"
+      - "tests/runtime/test_local_semantic_operator.py"
+      - "schemas/local_semantic_*_v0.schema.json"
+      - "lab/ops/candidates/LOCAL_SEMANTIC_OPERATOR_001/**"
+      - "docs/candidates/local_semantic_operator_v0/**"
+      - ".github/workflows/local-semantic-operator-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile semantic membrane
+        run: |
+          python -m py_compile \
+            tools/local_semantic_operator_v0.py \
+            tests/runtime/test_local_semantic_operator.py
+
+      - name: Run LOCAL_SEMANTIC_OPERATOR_001 pressure
+        run: |
+          python -m unittest tests.runtime.test_local_semantic_operator -v
+
+      - name: Re-run implementation-operator regression
+        run: |
+          python -m unittest tests.runtime.test_labboib_implementation_operator -v
+
+      - name: Re-run causal-applicability regression
+        run: |
+          python -m unittest tests.runtime.test_causal_applicability -v
+
+      - name: Re-run controller-binding regression
+        run: |
+          python -m unittest tests.runtime.test_labboib_controller_binding -v
+
+      - name: Re-run goblin-pool regression
+        run: |
+          python -m unittest tests.runtime.test_goblin_pool -v
