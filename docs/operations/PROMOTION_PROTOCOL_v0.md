@@ -449,18 +449,110 @@ EXECUTED
 
 This protocol itself is a proposed operational process, not a promotion result.
 
-Its first repository adoption is not allowed to claim that it passed a process
-which did not yet exist durably.
-
-The bootstrap requirement is therefore:
+Its first repository adoption is governed by a one-time, historically typed
+bootstrap event rather than by this protocol's ordinary promotion sequence.
 
 ```text
-explicit human review of this PR
-+
-explicit merge authority
+PROTOCOL ADOPTION EVENT
+!=
+OBJECT PROMOTION UNDER PROTOCOL
 ```
 
-After adoption, future promotion events -- including the retroactive
-formalization of PROMOTION_BOUNDARY_001 -- use this protocol.
+The bootstrap path is available only while:
+
+```text
+NO DURABLE PROMOTION PROTOCOL EXISTS
+```
+
+The bootstrap event must bind the exact protocol object reviewed and authorized.
+
+Required bootstrap sequence:
+
+```text
+BOOTSTRAP_ADOPTION_001
+→ HUMAN REVIEW OF EXACT PROTOCOL
+→ EXPLICIT HUMAN ADOPTION AUTHORITY FOR EXACT PROTOCOL
+→ PREFLIGHT
+→ EXECUTION
+→ BOOTSTRAP ADOPTION RECEIPT
+```
+
+Preflight must verify at minimum:
+
+```text
+reviewed protocol identity unchanged
+bootstrap precondition still true
+authorization binds exact reviewed protocol object
+target carrier / exact repository consequence unchanged
+```
+
+Successful terminal adoption must establish:
+
+```text
+protocol_adopted = true
+bootstrap_consumed = true
+bootstrap_adoption_eligible = false
+```
+
+Any terminal bootstrap failure must preserve:
+
+```text
+protocol_adopted = false
+bootstrap_consumed = false
+```
+
+Therefore, for terminal bootstrap administration:
+
+```text
+protocol_adopted
+IFF
+bootstrap_consumed
+```
+
+and specifically:
+
+```text
+false / true
+→ INVALID: genesis consumed without durable protocol
+
+true / false
+→ INVALID: durable protocol with reusable bootstrap bypass
+```
+
+The bootstrap exception self-extinguishes by succeeding:
+
+```text
+BOOTSTRAP LEGITIMACY BASIS:
+NO DURABLE PROMOTION PROCEDURE EXISTS
+
+BOOTSTRAP EFFECT:
+CREATE FIRST DURABLE PROMOTION PROCEDURE
+
+AFTER SUCCESS:
+BOOTSTRAP LEGITIMACY BASIS = FALSE
+```
+
+The bootstrap receipt is not a promotion receipt:
+
+```text
+BOOTSTRAP RECEIPT
+!=
+PROMOTION RECEIPT
+```
+
+The bootstrap event must not claim:
+
+```text
+PROMOTION_PROTOCOL_v0
+PASSED
+PROMOTION_PROTOCOL_v0
+```
+
+It records instead that explicit human review and explicit human bootstrap
+adoption authority caused the first durable adoption of the exact protocol
+while no durable promotion protocol yet existed.
+
+After successful adoption, future promotion events -- including the retroactive
+formalization of PROMOTION_BOUNDARY_001 -- use PROMOTION_PROTOCOL_v0.
 
 No object on this branch may self-adjudicate or self-authorize that adoption.
