@@ -6,7 +6,7 @@ import subprocess
 from tempfile import TemporaryDirectory
 import unittest
 
-from src.cockpit.action_surface import build_action_surfaces
+from src.cockpit.action_surface import ActionSurfaceError, build_action_surfaces
 
 
 PROCESS = {
@@ -81,6 +81,10 @@ class ActionSurfaceTest(unittest.TestCase):
         )
         self.assertFalse(surface["projection_boundary"]["creates_authority"])
         self.assertFalse(surface["projection_boundary"]["performs_execution"])
+        self.assertRegex(
+            surface["provenance"]["source_commit"],
+            r"^[0-9a-f]{40}$",
+        )
 
     def test_committed_events_reconstruct_human_decision_gate_without_authorizing_it(self) -> None:
         temporary, root = self.make_repo()
@@ -128,6 +132,30 @@ class ActionSurfaceTest(unittest.TestCase):
             "NONE_BY_ACTION_SURFACE",
         )
         self.assertEqual(surface["event_count_consumed"], 3)
+
+    def test_unknown_routing_event_fails_legibly(self) -> None:
+        temporary, root = self.make_repo()
+        self.addCleanup(temporary.cleanup)
+
+        event_path = root / "lab" / "events" / "events.jsonl"
+        event_path.write_text(
+            json.dumps(
+                {
+                    "event_type": "MAGICAL_AUTO_EXECUTE",
+                    "process_id": "P-ACTION-SURFACE-TEST",
+                }
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+        run_git(root, "add", str(event_path.relative_to(root)))
+        run_git(root, "commit", "-m", "invalid routing event")
+
+        with self.assertRaisesRegex(
+            ActionSurfaceError,
+            "unknown conductor event_type",
+        ):
+            build_action_surfaces(root, "HEAD")
 
 
 if __name__ == "__main__":
