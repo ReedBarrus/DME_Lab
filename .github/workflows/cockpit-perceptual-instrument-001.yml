@@ -12,6 +12,7 @@ on:
       - "tests/cockpit/test_perceptual_instrument.mjs"
       - ".github/workflows/cockpit-perceptual-instrument-001.yml"
       - "docs/candidates/cockpit_perceptual_instrument_v0/QUALIFICATION_001.md"
+      - "docs/candidates/cockpit_perceptual_instrument_v0/COCKPIT_PROJECTION_GEOMETRY_NOTES_001.md"
   workflow_dispatch:
 
 permissions:
