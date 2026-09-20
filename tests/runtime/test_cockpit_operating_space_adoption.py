@@ -109,6 +109,16 @@ class CockpitOperatingSpaceAdoptionDogfood(unittest.TestCase):
                     ),
                 }
             )
+            retained_revalidation = json.loads(
+                (
+                    ROOT
+                    / "docs"
+                    / "dogfood"
+                    / "cockpit_operating_space_001"
+                    / "REVALIDATION_001.json"
+                ).read_text(encoding="utf-8")
+            )
+            self.assertEqual(revalidation, retained_revalidation)
             self.assertEqual(
                 revalidation["disposition"],
                 CURRENTLY_APPLICABLE,
