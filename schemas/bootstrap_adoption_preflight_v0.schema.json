@@ -13,6 +13,7 @@
     "bootstrap_object_git_blob_sha",
     "review_git_blob_sha",
     "authorization_git_blob_sha",
+    "preflight_implementation_git_blob_sha",
     "review_disposition",
     "authorization_decision",
     "target",
@@ -31,6 +32,7 @@
     "bootstrap_object_git_blob_sha": {"const": "01e24a9d1231ea7e24a7a1dc429c7e85486f50b4"},
     "review_git_blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
     "authorization_git_blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "preflight_implementation_git_blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
     "review_disposition": {"enum": ["ADMIT", "HOLD", "REJECT", "REQUIRE_REPRESSURE"]},
     "authorization_decision": {"enum": ["AUTHORIZE", "DENY"]},
     "target": {
@@ -60,6 +62,7 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
+        "preflight_implementation_matches_bootstrap_object",
         "protocol_matches_bootstrap_object",
         "review_matches_protocol",
         "review_matches_bootstrap_object",
@@ -73,6 +76,7 @@
         "pr_head_matches_authorization"
       ],
       "properties": {
+        "preflight_implementation_matches_bootstrap_object": {"enum": ["PASS", "FAIL"]},
         "protocol_matches_bootstrap_object": {"enum": ["PASS", "FAIL"]},
         "review_matches_protocol": {"enum": ["PASS", "FAIL"]},
         "review_matches_bootstrap_object": {"enum": ["PASS", "FAIL"]},
@@ -113,6 +117,7 @@
           "observed_precondition": {"const": "TRUE"},
           "identity_checks": {
             "properties": {
+              "preflight_implementation_matches_bootstrap_object": {"const": "PASS"},
               "protocol_matches_bootstrap_object": {"const": "PASS"},
               "review_matches_protocol": {"const": "PASS"},
               "review_matches_bootstrap_object": {"const": "PASS"},
