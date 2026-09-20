@@ -20,7 +20,7 @@
   },
   "binding_implementation": {
     "path": "tools/labboib_controller_binding.py",
-    "git_blob_sha": "a9e6eed5bdbe8dc549dbe383c912ba4585bec4ac"
+    "git_blob_sha": "8b60dc11d022ad58fc918e2b92f8b7a1f60aed3b"
   },
   "authority": {
     "path": "lab/ops/candidates/LABBOIB_CONTROLLER_BINDING_001/authority_v0.json",
