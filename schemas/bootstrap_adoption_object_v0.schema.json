@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/bootstrap_adoption_object_v0.schema.json",
+  "title": "Bootstrap Adoption Object v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "event_id",
+    "event_family",
+    "object",
+    "precondition",
+    "review",
+    "authority",
+    "preflight",
+    "execution",
+    "postcondition_on_success",
+    "failure_semantics",
+    "nonclaims",
+    "current_state"
+  ],
+  "properties": {
+    "schema_version": {"const": "bootstrap_adoption_object_v0"},
+    "event_id": {"const": "BOOTSTRAP_ADOPTION_001"},
+    "event_family": {"const": "PROTOCOL_ADOPTION_EVENT"},
+    "object": {
+      "type": "object",
+      "required": ["object_id","repository","path","git_blob_sha","carrier_branch","pull_request"],
+      "additionalProperties": false,
+      "properties": {
+        "object_id": {"const": "PROMOTION_PROTOCOL_v0"},
+        "repository": {"type":"string","minLength":1},
+        "path": {"type":"string","minLength":1},
+        "git_blob_sha": {"type":"string","pattern":"^[0-9a-f]{40}$"},
+        "carrier_branch": {"type":"string","minLength":1},
+        "pull_request": {"type":"integer","minimum":1}
+      }
+    },
+    "precondition": {
+      "type":"object",
+      "required":["required","basis","must_be_reverified_immediately_before_execution"],
+      "additionalProperties":false,
+      "properties":{
+        "required":{"const":"NO_DURABLE_PROMOTION_PROTOCOL_EXISTS"},
+        "basis":{"type":"object"},
+        "must_be_reverified_immediately_before_execution":{"const":true}
+      }
+    },
+    "review": {"type":"object"},
+    "authority": {"type":"object"},
+    "preflight": {"type":"object"},
+    "execution": {"type":"object"},
+    "postcondition_on_success": {
+      "type":"object",
+      "required":["durable_promotion_protocol_exists","bootstrap_adoption_eligible","bootstrap_consumed","future_rule"],
+      "additionalProperties":false,
+      "properties":{
+        "durable_promotion_protocol_exists":{"const":true},
+        "bootstrap_adoption_eligible":{"const":false},
+        "bootstrap_consumed":{"const":true},
+        "future_rule":{"type":"string","minLength":1}
+      }
+    },
+    "failure_semantics": {
+      "type":"object",
+      "required":["on_preflight_failure","on_object_drift","on_precondition_false","on_execution_failure"],
+      "additionalProperties":false,
+      "properties":{
+        "on_preflight_failure":{"$ref":"#/$defs/failure"},
+        "on_object_drift":{"$ref":"#/$defs/failure"},
+        "on_precondition_false":{"$ref":"#/$defs/failure"},
+        "on_execution_failure":{"$ref":"#/$defs/failure"}
+      }
+    },
+    "nonclaims":{"type":"array","minItems":1,"items":{"type":"string","minLength":1}},
+    "current_state":{"type":"object"}
+  },
+  "$defs":{
+    "failure":{
+      "type":"object",
+      "required":["protocol_adopted","bootstrap_consumed","failure_receipt_required"],
+      "additionalProperties":false,
+      "properties":{
+        "protocol_adopted":{"const":false},
+        "bootstrap_consumed":{"const":false},
+        "failure_receipt_required":{"const":true}
+      }
+    }
+  }
+}
