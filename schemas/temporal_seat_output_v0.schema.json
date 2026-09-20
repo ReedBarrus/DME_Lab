@@ -1,0 +1,25 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://dme-lab.invalid/schemas/temporal_seat_output_v0.schema.json",
+  "title":"Temporal Seat Output v0",
+  "type":"object",
+  "additionalProperties":false,
+  "required":[
+    "schema_version","output_id","seat_id","output_kind","basis_commit",
+    "consumed_continuity_through","consumed_injection_through","summary",
+    "refs","authority_effect","execution_effect"
+  ],
+  "properties":{
+    "schema_version":{"const":"temporal_seat_output_v0"},
+    "output_id":{"type":"string","pattern":"^LO-[0-9]{6}$"},
+    "seat_id":{"const":"LABBOIB"},
+    "output_kind":{"enum":["STATUS","HANDOFF","REVIEW_REQUEST","ACTION_REQUEST","WAKE_RECEIPT"]},
+    "basis_commit":{"type":"string","pattern":"^[0-9a-f]{40}$"},
+    "consumed_continuity_through":{"type":["string","null"]},
+    "consumed_injection_through":{"type":["string","null"]},
+    "summary":{"type":"string","minLength":1},
+    "refs":{"type":"array","items":{"type":"string","minLength":1}},
+    "authority_effect":{"const":"NONE_BY_OUTPUT"},
+    "execution_effect":{"const":"NONE_BY_OUTPUT"}
+  }
+}
