@@ -99,6 +99,7 @@ class CampaignApplicabilityProjector:
             "matching_warrants": [],
             "diagnostics": [],
             "warrant_selection_rule": "NONE",
+            "live_developmental_contract": "NOT_ESTABLISHED",
             "authority_effect": "NONE",
             "adoption_effect": "NONE",
             "selection_effect": "NONE",
