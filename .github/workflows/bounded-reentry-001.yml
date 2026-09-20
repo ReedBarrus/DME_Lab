@@ -1,0 +1,49 @@
+name: BOUNDED_REENTRY_001
+
+on:
+  pull_request:
+    paths:
+      - "tools/bounded_reentry_v0.py"
+      - "schemas/bounded_reentry_v0.sql"
+      - "tests/runtime/test_bounded_reentry.py"
+      - "src/cockpit/live_runtime_projection.py"
+      - "src/cockpit/observer/runtime_live.mjs"
+      - "docs/candidates/bounded_reentry_v0/**"
+      - ".github/workflows/bounded-reentry-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Compile bounded reentry
+        run: python -m py_compile tools/bounded_reentry_v0.py tests/runtime/test_bounded_reentry.py src/cockpit/live_runtime_projection.py
+      - name: Check live Cockpit module
+        run: node --check src/cockpit/observer/runtime_live.mjs
+      - name: Bounded reentry pressure
+        run: python -m unittest tests.runtime.test_bounded_reentry -v
+      - name: Live runtime projection regression
+        run: python -m unittest tests.runtime.test_live_runtime_projection -v
+      - name: Existing Cockpit observer regression
+        run: node --test tests/cockpit/test_observer.mjs
+      - name: Preparation regression
+        run: python -m unittest tests.runtime.test_preparation -v
+      - name: Selection regression
+        run: python -m unittest tests.runtime.test_envelope_selection -v
+      - name: Campaign regression
+        run: python -m unittest tests.runtime.test_development_campaign -v
+      - name: Goblin pool regression
+        run: python -m unittest tests.runtime.test_goblin_pool -v

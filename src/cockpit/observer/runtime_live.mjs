@@ -130,6 +130,26 @@ function renderSnapshot(root, snapshot) {
   }
   grid.append(gear);
 
+  const reentry = document.createElement('section');
+  reentry.className = 'runtime-block';
+  reentry.append(text('h3', 'REENTRY'));
+  const recentEvents = (state.reentry_events || []).slice(-6);
+  if (!recentEvents.length) {
+    reentry.append(text('p', 'No projected bounded reentry lifecycle.'));
+  } else {
+    recentEvents.forEach((event) => {
+      reentry.append(
+        row([
+          event.seat_id,
+          event.wake_id,
+          event.event_kind,
+          event.opportunity_id,
+        ]),
+      );
+    });
+  }
+  grid.append(reentry);
+
   const consequence = document.createElement('section');
   consequence.className = 'runtime-block';
   consequence.append(text('h3', 'ACTIVE CONSEQUENCE / AUTHORITY'));
