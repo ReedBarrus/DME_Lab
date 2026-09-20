@@ -6,7 +6,7 @@
     "object_id": "PROMOTION_PROTOCOL_v0",
     "repository": "ReedBarrus/DME_Lab",
     "path": "docs/operations/PROMOTION_PROTOCOL_v0.md",
-    "git_blob_sha": "49fbe7c792511b6c7104a07aecba3ced84108ff8",
+    "git_blob_sha": "c6cebdc70c07816167ff9499b5690fcb16b4354e",
     "carrier_branch": "promotion-protocol-v0",
     "pull_request": 30
   },
@@ -43,7 +43,7 @@
     "required_schema": "bootstrap_adoption_preflight_v0",
     "preflight_ref": null,
     "implementation_path": "tools/bootstrap_adoption_preflight_v0.py",
-    "implementation_git_blob_sha": "d773670948fb19ed43eeaaddb4abe8eb0c73de6b"
+    "implementation_git_blob_sha": "fc506070475e6e506f144f8652ff4ffeb000eebd"
   },
   "execution": {
     "authorized_effect_only": [
@@ -107,6 +107,14 @@
     "preflight": "NOT_RUN",
     "execution": "NO",
     "adoption": "NO",
-    "bootstrap_consumed": false
+    "bootstrap_consumed": false,
+    "receipt_verification": "NOT_RUN"
+  },
+  "terminal_chain_verifier": {
+    "required": true,
+    "implementation_path": "tools/bootstrap_adoption_receipt_verifier_v0.py",
+    "implementation_git_blob_sha": "7aa3bbeff12b79facf1b6faecf825609772776f4",
+    "required_schema": "bootstrap_adoption_receipt_verification_v0",
+    "status": "NOT_RUN"
   }
 }
