@@ -1,0 +1,62 @@
+{
+  "schema": "development_campaign_v0",
+  "campaign_id": "RUNTIME_SANITY_GATE_001",
+  "title": "Unattended Runtime Sanity Gate Horizon",
+  "basis_refs": [
+    "git:2ee939453651da741769ea07210fcdeaec9da971",
+    "qualification:docs/candidates/wake_source_v0/QUALIFICATION_001.md@ee721faebb5f2a3e6780d20b7a558043e164a5b3"
+  ],
+  "objective": "Establish the minimum mechanically evidenced containment posture required before unattended bells may be enabled.",
+  "claim_ceiling": "Only bounded evidence for exact capability admission, finite runtime budgets, credential posture, external stop, reconstruction, and durable incidents. No unattended wake or scheduler authority.",
+  "target_objects": [
+    "CAPABILITY_ADMISSION_001",
+    "HARD_RUNTIME_BUDGET_001",
+    "CREDENTIAL_POSTURE_001",
+    "EXTERNAL_RUNTIME_STOP_001",
+    "RUNTIME_BACKUP_RECONSTRUCTION_001",
+    "INCIDENT_RECEIPT_001"
+  ],
+  "unresolved_relations": [
+    {"relation_id": "RSG-R1", "statement": "SANITY_POLICY_DECLARED != SANITY_POSTURE_MECHANICALLY_PRESENT"},
+    {"relation_id": "RSG-R2", "statement": "CODE_MERGED != CAPABILITY_ADMITTED"},
+    {"relation_id": "RSG-R3", "statement": "BUDGET_DECLARED != BUDGET_ENFORCED"},
+    {"relation_id": "RSG-R4", "statement": "STOP_CONTROL_VISIBLE != STOP_CONTROL_EXTERNALLY_EFFECTIVE"},
+    {"relation_id": "RSG-R5", "statement": "BACKUP_EXISTS != RUNTIME_STATE_RECONSTRUCTABLE"},
+    {"relation_id": "RSG-R6", "statement": "ANOMALY_LOGGED != INCIDENT_DURABLY_RETAINED"}
+  ],
+  "pressure_points": [
+    "Pressure exact capability admission independently of ordinary implementation writes.",
+    "Pressure finite runtime budgets and bounded credential posture at the actual runtime boundary.",
+    "Pressure external stop, reconstruction, and durable incident evidence."
+  ],
+  "dependency_edges": [],
+  "proposal_allowance": {
+    "max_candidates": 6,
+    "max_model_calls": 0,
+    "allowed_resource_classes": ["DETERMINISTIC"],
+    "external_effects": "NONE",
+    "authority_effect": "NONE"
+  },
+  "completion_criteria": [
+    "Unattended runtime can invoke only admitted exact capability identities.",
+    "Finite wake, unit, retry, and time ceilings are mechanically enforced.",
+    "External stop, reconstruction, and incident evidence survive tested failure cases."
+  ],
+  "stop_conditions": [
+    "Ordinary implementation code can self-admit capability.",
+    "Declared policy is accepted without runtime evidence.",
+    "The specimen requires unbounded runtime access."
+  ],
+  "explicit_non_authorizations": [
+    "NO_UNATTENDED_WAKE_ENABLEMENT",
+    "NO_SCHEDULER_AUTHORITY",
+    "NO_CAPABILITY_SELF_ADMISSION",
+    "NO_DEPLOYMENT_AUTHORITY",
+    "NO_MODEL_ESCALATION",
+    "NO_CONSEQUENCE_AUTHORITY"
+  ],
+  "status": "CANDIDATE",
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "adoption_effect": "NONE"
+}
