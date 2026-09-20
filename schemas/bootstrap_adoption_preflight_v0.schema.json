@@ -40,6 +40,8 @@
         "repository",
         "target_ref",
         "pull_request",
+        "authorized_target_head",
+        "observed_target_head",
         "authorized_pr_head",
         "observed_pr_head"
       ],
@@ -47,6 +49,8 @@
         "repository": {"const": "ReedBarrus/DME_Lab"},
         "target_ref": {"const": "main"},
         "pull_request": {"const": 30},
+        "authorized_target_head": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "observed_target_head": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
         "authorized_pr_head": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
         "observed_pr_head": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
       }
@@ -63,6 +67,7 @@
         "authorization_matches_bootstrap_object",
         "authorization_matches_review",
         "target_matches_authorization",
+        "target_head_matches_authorization",
         "pr_head_matches_authorization"
       ],
       "properties": {
@@ -73,6 +78,7 @@
         "authorization_matches_bootstrap_object": {"enum": ["PASS", "FAIL"]},
         "authorization_matches_review": {"enum": ["PASS", "FAIL"]},
         "target_matches_authorization": {"enum": ["PASS", "FAIL"]},
+        "target_head_matches_authorization": {"enum": ["PASS", "FAIL"]},
         "pr_head_matches_authorization": {"enum": ["PASS", "FAIL"]}
       }
     },
@@ -110,6 +116,7 @@
               "authorization_matches_bootstrap_object": {"const": "PASS"},
               "authorization_matches_review": {"const": "PASS"},
               "target_matches_authorization": {"const": "PASS"},
+              "target_head_matches_authorization": {"const": "PASS"},
               "pr_head_matches_authorization": {"const": "PASS"}
             }
           },
