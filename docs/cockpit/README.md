@@ -198,7 +198,22 @@ Projection v1 remains in progress.
 
 The [Projection v1 P2 bounded-view implementation](../decisions/projection/cockpit_projection_v1_bounded_views_v0.md)
 adds MAP, CONSTRAINTS, LINEAGE, HORIZON, and SOURCE as discrete lenses over the
-same normalized JSON. View transitions change foreground only; object traversal
+same normalized JSON. The `action-surface-v0` candidate branch adds a sixth
+`ACTIONS` lens over committed Conductor process specifications and routing
+events. That candidate exposes routing posture only:
+
+```text
+ACTION VISIBLE
+!=
+ACTION SELECTED
+!=
+ACTION AUTHORIZED
+!=
+ACTION EXECUTED
+```
+
+Its bounded contract is
+`docs/candidates/action_surface_v0/ACTION_SURFACE_CONTRACT_v0.md`. View transitions change foreground only; object traversal
 is available only through emitted pressure relations, resolution history,
 evidence IDs, and source paths. No lens or transition invokes Controller,
 changes standing, mutates the repository, executes an experiment, or creates

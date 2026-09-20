@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/workshop_frozen_cell_manifest_v0.schema.json",
+  "title": "Workshop Frozen Cell Manifest v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema","manifest_id","experiment_id","cell_id","basis","inputs","assembly","invocation","execution","output"],
+  "properties": {
+    "schema": {"const": "workshop_frozen_cell_manifest_v0"},
+    "manifest_id": {"type": "string", "minLength": 1},
+    "experiment_id": {"type": "string", "minLength": 1},
+    "cell_id": {"type": "string", "minLength": 1},
+    "basis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contract_commit","authorization_ref"],
+      "properties": {
+        "contract_commit": {"type": "string", "minLength": 1},
+        "authorization_ref": {"type": "string", "minLength": 1}
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"$ref": "#/$defs/input"}
+    },
+    "assembly": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["encoding","newline","separator","order","expected_payload_sha256"],
+      "properties": {
+        "encoding": {"const": "utf-8"},
+        "newline": {"const": "lf"},
+        "separator": {"type": "string"},
+        "order": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "expected_payload_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "invocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["adapter","surface"],
+      "properties": {
+        "adapter": {"type": "string", "minLength": 1},
+        "surface": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {"$ref": "#/$defs/invocation_field"}
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_invocations","retry_allowed","repair_allowed","skip_allowed","best_effort_allowed"],
+      "properties": {
+        "max_invocations": {"const": 1},
+        "retry_allowed": {"const": false},
+        "repair_allowed": {"const": false},
+        "skip_allowed": {"const": false},
+        "best_effort_allowed": {"const": false}
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["retain_raw","hash_raw","anonymize"],
+      "properties": {
+        "retain_raw": {"const": true},
+        "hash_raw": {"const": true},
+        "anonymize": {"type": "boolean"}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path","sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "invocation_field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["expected","verification"],
+      "properties": {
+        "expected": {},
+        "verification": {
+          "enum": ["VERIFIABLE_REQUIRED","DECLARED_ONLY","UNOBSERVABLE"]
+        }
+      }
+    }
+  }
+}

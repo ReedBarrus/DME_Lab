@@ -145,6 +145,28 @@ null != stream coordinate
 BOOTSTRAP_REQUIRED != unread delta
 ```
 
+## Experimental cursor consumers
+
+Two additional cursor-bearing consumers are currently under bounded pressure:
+
+- `sol` → `continuity/cursors/sol.json`
+- `pulse` → `continuity/cursors/pulse.json`
+
+They are **not** registry-listed semantic seats in v0.
+
+```text
+cursor-bearing consumer
+!=
+registry-listed seat
+!=
+invocation identity
+!=
+scheduled automation
+```
+
+Their existence does not widen authority or standing. Each may advance only its
+own cursor and only after actual consumption.
+
 ## Two-consumer registry v0
 
 `registry.json` stores only the two intended semantic consumer identities,

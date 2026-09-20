@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lab_packet_v0.schema.json",
+  "title": "DME Lab conserved role packet v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "packet_id", "packet_type", "process_id",
+    "sender_role", "recipient_role", "basis", "requested_transition",
+    "authority", "status", "payload", "receipts", "claim_status"
+  ],
+  "properties": {
+    "schema_version": {"const": "lab_packet_v0"},
+    "packet_id": {"type": "string", "minLength": 1},
+    "packet_type": {"type": "string", "minLength": 1},
+    "process_id": {"type": "string", "minLength": 1},
+    "sender_role": {"type": "string", "minLength": 1},
+    "recipient_role": {"type": "string", "minLength": 1},
+    "executor_receipt": {
+      "type": ["object", "null"],
+      "additionalProperties": true,
+      "description": "Invocation/occupant metadata only; never defines the role."
+    },
+    "basis": {
+      "type": "object",
+      "required": ["repo", "ref"],
+      "additionalProperties": false,
+      "properties": {
+        "repo": {"type": "string", "minLength": 1},
+        "ref": {"type": "string", "minLength": 1},
+        "inputs": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "requested_transition": {"type": "string", "minLength": 1},
+    "authority": {
+      "type": "object",
+      "required": ["required", "present"],
+      "additionalProperties": false,
+      "properties": {
+        "required": {"type": "boolean"},
+        "present": {"type": "boolean"},
+        "decision_id": {"type": ["string", "null"]}
+      }
+    },
+    "status": {
+      "enum": ["PROPOSED", "ACCEPTED_FOR_TRANSPORT", "REJECTED_FOR_TRANSPORT", "CONSUMED"]
+    },
+    "claim_status": {
+      "const": "UNADJUDICATED",
+      "description": "Transport acceptance never accepts the packet's substantive claim."
+    },
+    "payload": {},
+    "receipts": {"type": "array", "items": {"type": "object"}}
+  }
+}

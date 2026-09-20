@@ -4,6 +4,7 @@ import {
   followPressureRelation,
   loadProjection,
   openLineage,
+  selectAction,
   selectConstraint,
   selectEvidence,
   selectOccurrence,
@@ -74,6 +75,13 @@ function render() {
         button.dataset.followRelationKey,
         button.dataset.fromOccurrenceKey,
       );
+      render();
+    });
+  });
+
+  document.querySelectorAll('[data-action-key]').forEach((button) => {
+    button.addEventListener('click', () => {
+      viewModel = selectAction(viewModel, button.dataset.actionKey);
       render();
     });
   });

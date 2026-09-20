@@ -90,6 +90,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                 "constraints": len(model["constraints"]),
                 "evidence_refs": len(model["evidence_refs"]),
                 "projection_documents": len(model["projection_documents"]),
+                "action_surfaces": len(model.get("action_surfaces", [])),
                 "projection_diagnostics": len(model["projection_diagnostics"]),
             },
             sort_keys=True,

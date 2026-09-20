@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "routing_warrant.valid": [
+      "edge.admissible"
+    ]
+  },
+  "does_not_govern": [
+    "semantic_payload",
+    "role_output_packet_identity",
+    "task_identity",
+    "process_id",
+    "process_topology",
+    "transition_identity",
+    "source_phase",
+    "target_phase",
+    "sender_role",
+    "recipient_role",
+    "basis_repo",
+    "basis_ref",
+    "authority_ceiling",
+    "packet_transport_validity",
+    "scientific_standing",
+    "blocker_state",
+    "pending_decision_state",
+    "unrelated_process_properties",
+    "registry_contents"
+  ],
+  "schema_version": "property_dependency_map_fixture_v0",
+  "specimen_id": "COUNTERFEIT_WARRANT_001"
+}

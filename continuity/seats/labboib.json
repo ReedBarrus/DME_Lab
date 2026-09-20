@@ -1,0 +1,50 @@
+{
+  "schema_version": "temporal_seat_manifest_v0",
+  "seat_id": "LABBOIB",
+  "consumer_id": "labboib",
+  "seat_class": "TEMPORAL_REENTRY_SEAT_CANDIDATE",
+  "role": "bounded semantic integrator, implementation collaborator, and continuity consumer",
+  "cursor_ref": "continuity/cursors/labboib.json",
+  "working_state_ref": "continuity/current_state/labboib_working_state_v0.json",
+  "inbox_ref": "continuity/queues/labboib/inbox.jsonl",
+  "outbox_ref": "continuity/queues/labboib/outbox.jsonl",
+  "trigger": {
+    "state": "UNBOUND",
+    "kind": null,
+    "schedule_ref": null
+  },
+  "occupant": {
+    "binding": "UNBOUND",
+    "model_family": null,
+    "invocation_ref": null
+  },
+  "allowed_wake_effects": [
+    "read exact durable basis",
+    "consume unread continuity events after own cursor",
+    "consume pending injections addressed to LABBOIB",
+    "resolve task-required durable refs",
+    "derive task-local orientation",
+    "package status, handoff, review request, or action request",
+    "emit a wake receipt"
+  ],
+  "forbidden_wake_effects": [
+    "infer authority from schedule or liveness",
+    "borrow another consumer cursor",
+    "advance cursor over unconsumed events",
+    "execute external consequence without separate authority",
+    "merge pull requests",
+    "promote scientific standing",
+    "claim continuous process identity between wakes",
+    "claim model instance identity is the seat"
+  ],
+  "noncollapses": [
+    "SEAT_CONTINUITY != MODEL_CONTINUITY",
+    "MODEL_INSTANCE != SEAT",
+    "SCHEDULED_REENTRY != CONTINUOUS_PROCESS_IDENTITY",
+    "PERSISTENT_ATTENTION != PERSISTENT_EXECUTION_AUTHORITY",
+    "MESSAGE_DELIVERED != MESSAGE_ACCEPTED",
+    "ACTION_REQUESTED != ACTION_AUTHORIZED != ACTION_EXECUTED"
+  ],
+  "authority_effect": "NONE_BY_MANIFEST",
+  "execution_effect": "NONE_BY_MANIFEST"
+}

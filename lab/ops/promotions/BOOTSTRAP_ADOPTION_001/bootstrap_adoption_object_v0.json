@@ -1,0 +1,120 @@
+{
+  "schema_version": "bootstrap_adoption_object_v0",
+  "event_id": "BOOTSTRAP_ADOPTION_001",
+  "event_family": "PROTOCOL_ADOPTION_EVENT",
+  "object": {
+    "object_id": "PROMOTION_PROTOCOL_v0",
+    "repository": "ReedBarrus/DME_Lab",
+    "path": "docs/operations/PROMOTION_PROTOCOL_v0.md",
+    "git_blob_sha": "c6cebdc70c07816167ff9499b5690fcb16b4354e",
+    "carrier_branch": "promotion-protocol-v0",
+    "pull_request": 30
+  },
+  "precondition": {
+    "required": "NO_DURABLE_PROMOTION_PROTOCOL_EXISTS",
+    "basis": {
+      "main_head_observed": "759eca8c3f3c2d3e37d8031207742290f1fb8b6b",
+      "protocol_path_present_on_main_at_observed_head": false
+    },
+    "must_be_reverified_immediately_before_execution": true
+  },
+  "review": {
+    "required": true,
+    "question": "Does this exact PROMOTION_PROTOCOL_v0 object satisfy the bounded burden for first durable adoption as the lab promotion operating procedure?",
+    "must_bind_exact_protocol_identity": true,
+    "status": "PENDING",
+    "review_ref": null
+  },
+  "authority": {
+    "required": "EXPLICIT_HUMAN_BOOTSTRAP_ADOPTION_OF_EXACT_OBJECT",
+    "must_bind_exact_protocol_identity": true,
+    "status": "NONE",
+    "required_schema": "bootstrap_adoption_authorization_v0",
+    "authorization_ref": null
+  },
+  "preflight": {
+    "required_checks": [
+      "protocol object identity unchanged from reviewed identity",
+      "bootstrap precondition still true",
+      "authorization binds exact reviewed object",
+      "target carrier and exact repository consequence unchanged"
+    ],
+    "status": "NOT_RUN",
+    "required_schema": "bootstrap_adoption_preflight_v0",
+    "preflight_ref": null,
+    "implementation_path": "tools/bootstrap_adoption_preflight_v0.py",
+    "implementation_git_blob_sha": "fc506070475e6e506f144f8652ff4ffeb000eebd"
+  },
+  "execution": {
+    "authorized_effect_only": [
+      "adopt exact PROMOTION_PROTOCOL_v0 as durable operating procedure",
+      "record resulting durable carrier",
+      "write bootstrap adoption receipt",
+      "set bootstrap_consumed=true only after successful adoption"
+    ],
+    "forbidden_effects": [
+      "claim PROMOTION_PROTOCOL_v0 governed its own adoption",
+      "ratify PROMOTION_BOUNDARY_001",
+      "execute any ordinary promotion chain",
+      "infer scientific standing",
+      "create a permanent bootstrap bypass"
+    ],
+    "status": "NOT_EXECUTED",
+    "requires_preflight_result": "PASS"
+  },
+  "postcondition_on_success": {
+    "durable_promotion_protocol_exists": true,
+    "bootstrap_adoption_eligible": false,
+    "bootstrap_consumed": true,
+    "future_rule": "Subsequent promotion chains use PROMOTION_PROTOCOL_v0."
+  },
+  "failure_semantics": {
+    "on_preflight_failure": {
+      "protocol_adopted": false,
+      "bootstrap_consumed": false,
+      "failure_receipt_required": true
+    },
+    "on_object_drift": {
+      "protocol_adopted": false,
+      "bootstrap_consumed": false,
+      "failure_receipt_required": true
+    },
+    "on_precondition_false": {
+      "protocol_adopted": false,
+      "bootstrap_consumed": false,
+      "failure_receipt_required": true
+    },
+    "on_execution_failure": {
+      "protocol_adopted": false,
+      "bootstrap_consumed": false,
+      "failure_receipt_required": true
+    }
+  },
+  "nonclaims": [
+    "BOOTSTRAP_ADOPTION_001 is not an object promotion under PROMOTION_PROTOCOL_v0.",
+    "PROMOTION_PROTOCOL_v0 has not governed its own adoption.",
+    "Materialization of this object is not review.",
+    "Materialization of this object is not adoption authority.",
+    "Materialization of this object is not execution.",
+    "Materialization of this object does not consume bootstrap eligibility.",
+    "Bootstrap receipt is not a promotion receipt."
+  ],
+  "current_state": {
+    "bootstrap_object": "MATERIALIZED",
+    "exact_protocol": "PINNED",
+    "review": "PENDING",
+    "authority": "NONE",
+    "preflight": "NOT_RUN",
+    "execution": "NO",
+    "adoption": "NO",
+    "bootstrap_consumed": false,
+    "receipt_verification": "NOT_RUN"
+  },
+  "terminal_chain_verifier": {
+    "required": true,
+    "implementation_path": "tools/bootstrap_adoption_receipt_verifier_v0.py",
+    "implementation_git_blob_sha": "7aa3bbeff12b79facf1b6faecf825609772776f4",
+    "required_schema": "bootstrap_adoption_receipt_verification_v0",
+    "status": "NOT_RUN"
+  }
+}

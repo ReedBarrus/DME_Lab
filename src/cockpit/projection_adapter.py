@@ -7,10 +7,13 @@ from collections import Counter
 from datetime import datetime, timezone
 import hashlib
 import json
+import os
 from pathlib import Path, PurePosixPath
 import re
 import subprocess
 from typing import Any
+
+from src.cockpit.action_surface import ActionSurfaceError, build_action_surfaces
 
 
 ADAPTER_VERSION = "cockpit_projection_adapter_v0"
@@ -55,12 +58,20 @@ class ProjectionAdapterError(RuntimeError):
     """Raised when no exact committed projection basis can be established."""
 
 
+def _subprocess_creationflags() -> int:
+    """Suppress Git child console windows under a windowed Windows executable."""
+    if os.name != "nt":
+        return 0
+    return int(getattr(subprocess, "CREATE_NO_WINDOW", 0))
+
+
 def _git(repo_root: Path, *args: str) -> subprocess.CompletedProcess[bytes]:
     return subprocess.run(
         ["git", "-C", str(repo_root), *args],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         check=False,
+        creationflags=_subprocess_creationflags(),
     )
 
 
@@ -1530,6 +1541,20 @@ def build_projection(
         check_time=runtime_time,
         diagnostics=diagnostics,
     )
+    try:
+        action_surfaces = build_action_surfaces(root, source_commit)
+    except ActionSurfaceError as exc:
+        action_surfaces = []
+        _diagnostic(
+            diagnostics,
+            kind="action_surface_projection_failure",
+            source_commit=source_commit,
+            source_path="lab/events/events.jsonl",
+            source_kind="action_surface",
+            message=str(exc),
+            severity="error",
+        )
+
     missing_required = sum(
         1 for item in source_surfaces if item["status"] == "missing"
     )
@@ -1566,6 +1591,7 @@ def build_projection(
         "constraints": constraints,
         "evidence_refs": evidence_refs,
         "projection_documents": projection_documents,
+        "action_surfaces": action_surfaces,
         "projection_diagnostics": diagnostics,
     }
 

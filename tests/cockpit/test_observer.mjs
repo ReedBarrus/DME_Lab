@@ -13,17 +13,20 @@ import {
   loadProjection,
   navigationPresentation,
   openLineage,
+  selectAction,
   selectConstraint,
   selectEvidence,
   selectOccurrence,
   selectProjectionDocument,
   selectView,
+  selectedAction,
   selectedConstraint,
   selectedEvidence,
   selectedOccurrence,
   selectedProjectionDocument,
 } from '../../src/cockpit/observer/model.mjs';
 import {
+  renderActionsView,
   renderActiveView,
   renderConstraintsView,
   renderDiagnostics,
@@ -231,6 +234,66 @@ function p2Model() {
   ];
   return raw;
 }
+
+test('ACTIONS lens exposes routing posture without creating authority or execution', () => {
+  const raw = healthyModel();
+  raw.action_surfaces = [
+    {
+      surface_version: 'action_surface_v0',
+      process_id: 'P-ACTION-001',
+      description: 'Synthetic action surface',
+      runtime_registration: 'ABSENT',
+      phase: 'SEEDED',
+      routing_status: 'UNREGISTERED',
+      scientific_standing: { tracked: false, value: null },
+      declared_next_action: {
+        eligibility: 'SPEC_ONLY_UNREGISTERED',
+        transition_id: 'LOAD',
+        transition_kind: 'MECHANICAL',
+        to_phase: 'READY',
+        requires_capability: null,
+        recipient_role: null,
+        decision: null,
+        authority_effect: 'NONE_BY_ACTION_SURFACE',
+        execution_effect: 'NONE_BY_ACTION_SURFACE',
+        authority_required: false,
+        reason: 'specification exists without a runtime registration event',
+      },
+      blocker: null,
+      pending_role: null,
+      pending_decision: null,
+      event_count_consumed: 0,
+      last_event_type: null,
+      projection_boundary: {
+        read_only: true,
+        creates_authority: false,
+        performs_execution: false,
+        selects_action: false,
+        advances_cursor: false,
+      },
+      provenance: {
+        process_spec_path: 'lab/processes/test.json',
+        event_stream_path: 'lab/events/events.jsonl',
+        source_commit: 'a'.repeat(40),
+      },
+    },
+  ];
+
+  const initial = buildObserverModel(raw);
+  const action = initial.actionOccurrences[0];
+  const selected = selectAction(initial, action.key);
+  const markup = renderActionsView(selected);
+
+  assert.equal(selectedAction(selected).surface.process_id, 'P-ACTION-001');
+  assert.equal(
+    selectedAction(selected).surface.declared_next_action.eligibility,
+    'SPEC_ONLY_UNREGISTERED',
+  );
+  assert.match(markup, /visible action != selected action != authorized action != executed action/);
+  assert.match(markup, /NONE_BY_ACTION_SURFACE/);
+  assert.doesNotMatch(markup, />Run</);
+  assert.doesNotMatch(markup, />Execute</);
+});
 
 test('normalized JSON loads through the supplied URL without repository access', async () => {
   const raw = healthyModel();

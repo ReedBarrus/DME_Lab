@@ -1,0 +1,24 @@
+You are a bounded relation checker.
+Use only the supplied payload.
+
+<payload>
+ITEM: Q7
+STATE:
+alpha = 1
+beta = 0
+gamma = 1
+
+RULE:
+ACCEPT iff alpha = 1 AND (beta = 1 OR gamma = 1)
+
+RECORDED_STATUS:
+ACCEPT
+</payload>
+
+TASK:
+Determine whether RECORDED_STATUS is warranted by STATE under RULE.
+
+Return exactly one line:
+RESULT: SUPPORTED
+or
+RESULT: NOT_SUPPORTED

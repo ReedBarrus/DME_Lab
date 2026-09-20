@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lab_process_update_v0.schema.json",
+  "title": "DME Lab operational process update v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "process_id",
+    "basis_observed",
+    "turn_effect",
+    "current_process_state",
+    "blocker",
+    "next_transition",
+    "next_role",
+    "reed_required",
+    "reed_decision_id",
+    "receipts",
+    "not_changed"
+  ],
+  "properties": {
+    "schema_version": {"const": "lab_process_update_v0"},
+    "process_id": {"type": "string", "minLength": 1},
+    "basis_observed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repo", "ref"],
+      "properties": {
+        "repo": {"type": "string", "minLength": 1},
+        "ref": {"type": "string", "minLength": 1}
+      }
+    },
+    "turn_effect": {
+      "enum": [
+        "NO_CHANGE",
+        "STATE_DELTA",
+        "NEW_BLOCKER",
+        "BLOCKER_CLEARED",
+        "NEXT_TRANSITION_CHANGED",
+        "HUMAN_DECISION_REQUIRED",
+        "PROCESS_COMPLETE"
+      ]
+    },
+    "current_process_state": {"type": "string", "minLength": 1},
+    "blocker": {"type": ["string", "null"]},
+    "next_transition": {"type": ["string", "null"]},
+    "next_role": {"type": ["string", "null"]},
+    "reed_required": {"type": "boolean"},
+    "reed_decision_id": {"type": ["string", "null"]},
+    "receipts": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "not_changed": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  }
+}

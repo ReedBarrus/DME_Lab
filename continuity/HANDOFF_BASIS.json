@@ -1,0 +1,30 @@
+{
+    "handoff_version": "continuity-basis-handoff-v0",
+    "source_branch": "continuity-delta-v0",
+    "source_commit": "f28187306d3282a66d95b9d85e764f75751e812d",
+    "source_tree": "da96f8a5b5cd208d69094f4a4bf7e8271e421102",
+    "inherited_event_range": {
+        "first": "CE-000001",
+        "last": "CE-000010"
+    },
+    "inherited_cursors": {
+        "chatgpt": {
+            "cursor_state": "POSITIONED",
+            "last_seen_event_id": "CE-000006",
+            "bootstrap_mode": "FROM_HEAD"
+        },
+        "codex": {
+            "cursor_state": "POSITIONED",
+            "last_seen_event_id": "CE-000010",
+            "bootstrap_mode": "FROM_HEAD"
+        },
+        "grep-kitty": {
+            "cursor_state": "UNINITIALIZED",
+            "last_seen_event_id": null
+        }
+    },
+    "legacy_ref_rule": "Repository-relative refs in inherited CE-000001 through CE-000010 must not be assumed to resolve against the post-handoff branch. Use the frozen source lineage and preserve unresolved event-time basis where exact content cannot be recovered.",
+    "post_handoff_ref_rule": "For new continuity events, include an immutable commit coordinate whenever a claim depends on exact repository content.",
+    "authority_changed": false,
+    "standing_changed": false
+}

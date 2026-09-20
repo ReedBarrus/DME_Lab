@@ -1,0 +1,302 @@
+# Memory Compilation Method v0
+
+**Status:** OPERABLE_V0 — bounded method earned by MM-001  
+**Scope:** compilation of retained repository/history material into a smaller
+non-authoritative semantic memory packet  
+**Origin pressure:** MM-001 / Astra Reconstruction
+
+## Purpose
+
+Reduce the carrying cost of rich retained history while preserving the
+relations required for correct reconstruction.
+
+The method does not decide current scientific standing, grant authority, or
+authorize source deletion.
+
+## Method
+
+```text
+1. SELECT BOUNDED SPECIMEN
+2. PIN STORAGE BASIS
+3. PIN HISTORICAL SOURCE BASES REQUIRED BY CLAIMS
+4. CLASSIFY SOURCE ROLES / DECLARED STANDING
+5. EXTRACT CONSEQUENTIAL DISTINCTIONS + RELATIONS
+6. PRESERVE UNRESOLVEDNESS + NONCLAIMS
+7. COMPILE CANDIDATE HOT-MEMORY PACKET
+8. HIDE RAW SOURCE FROM INDEPENDENT OBSERVER
+9. ROUND-TRIP RECONSTRUCT
+10. LOSS AUDIT
+11. MINIMALLY REPAIR REAL LOSSES
+12. RERUN TARGETED VERIFICATION ON THE SAME IMMUTABLE BASIS
+13. RUN A COLD OPEN-ENDED LOSS AUDIT WITHOUT THE TARGETED CHECKLIST
+14. IF A NEW LOSS APPEARS, RETURN TO STEP 11
+15. QUALIFY ONLY AFTER THE DECLARED TARGETED + COLD-AUDIT BAR IS MET
+```
+
+## Required conservation boundaries
+
+A compiled packet must not silently collapse:
+
+```text
+artifact path / logical role
+!=
+artifact version / immutable basis
+
+stored-on-current-main
+!=
+describes-current-main
+
+summary / transfer bundle
+!=
+source ownership
+
+interpretation
+!=
+adjudicated standing
+
+recorded activity
+!=
+verified result
+
+historical authority declaration
+!=
+current live authority
+
+proposal coherence
+!=
+schema / runtime promotion
+
+source retained
+!=
+source safely discardable
+```
+
+## Historical source closure rule
+
+If a compiled claim depends on what an artifact contained at a historical
+coordinate, resolve that artifact at the immutable historical basis when
+available.
+
+A later copy with the same path, title, or semantic role is not a substitute for
+the historical source version.
+
+MM-001 earned this rule when the later imported Constitution Seed ended at
+Article XX while immutable historical root versions retained Article XXI and,
+later, Article XXII.
+
+## What belongs in hot compiled memory
+
+Only what is needed to preserve consequential reconstruction, such as:
+
+- immutable source coordinates;
+- source role / declared standing;
+- consequential claims and distinctions;
+- dependency / derivation relations;
+- relevant historical transitions;
+- unresolved conflicts / missingness;
+- authority and non-promotion boundaries;
+- explicit routes back to exact raw sources for omitted detail.
+
+Do not inline raw prose merely because it exists.
+
+## Loss discipline
+
+A round-trip failure is evidence about the packet, not permission to inflate a
+general ontology.
+
+On failure:
+
+```text
+retain source
+→ identify smallest consequential loss
+→ recover exact source basis
+→ repair packet minimally
+→ rerun
+```
+
+Omitted detail is not a loss when:
+
+1. the governing consequence survives;
+2. the packet retains the exact route back to the required source version; and
+3. correct action/reconstruction does not depend on that detail being inline.
+
+## Qualification result from MM-001
+
+The Astra specimen produced:
+
+```text
+pre-repair:
+1 valid failure
+→ historical source-version closure loss
+
+repaired packet:
+2 independent same-basis passes
+→ no consequential loss found in tested scope
+```
+
+Therefore the method is **OPERABLE_V0** for another bounded specimen.
+
+## Retention states
+
+The method may justify evaluation of:
+
+```text
+RAW SOURCE
+HOT / REQUIRED
+→
+COLD-RETENTION CANDIDATE
+```
+
+and:
+
+```text
+COMPILED PACKET
+CANDIDATE
+→
+QUALIFIED HOT-MEMORY CANDIDATE
+```
+
+It does not authorize deletion.
+
+## Explicitly unearned
+
+MM-001 does not establish:
+
+- a universal memory packet schema;
+- automatic source classification;
+- automatic semantic extraction;
+- graph database boundaries;
+- embeddings or similarity metrics as identity tests;
+- generalized semantic-continuity verification;
+- safe deletion thresholds;
+- cross-domain reliability.
+
+Those require further specimens and pressure.
+
+## MM-002 refinement — compositional carrier sufficiency
+
+MM-002 added a second bounded specimen class: multi-round deliberation.
+
+The existing decision checkpoint preserved most consequential outcome structure
+but failed twice under independent reconstruction before qualifying:
+
+```text
+checkpoint only
+→ missing immutable source closure
+
+checkpoint + basis envelope
+→ missing actor/round causal topology
+
+checkpoint + basis envelope + causal-lineage envelope
+→ two independent same-basis passes
+```
+
+This earns the additional rules:
+
+```text
+decision topology
+!=
+immutable source-identity topology
+!=
+actor/round causal topology
+```
+
+and:
+
+```text
+memory compilation
+!=
+always create a new packet
+
+existing artifact
++
+minimal orthogonal repair envelopes
+may qualify as the hot-memory carrier
+```
+
+When a retained artifact already preserves consequential content, prefer adding
+the smallest missing dimension over rewriting or duplicating the artifact.
+
+A later failure should expose a new missing relation; do not preemptively merge
+all possible dimensions into one schema.
+
+
+## Earned invariant ledger
+
+Pressure-earned conservation relations are retained separately in:
+
+`docs/methods/EARNED_MEMORY_INVARIANTS_v0.md`
+
+The ledger contains only relations that became consequential under actual
+memory pressure. Candidate semantic dimensions do not enter it by plausibility
+alone.
+
+```text
+method
+= how to pressure / compile / qualify memory
+
+invariant ledger
+= what pressure has shown must remain distinguishable
+```
+
+
+## MM-003 refinement — cold audit and dependency closure
+
+MM-003 tested whether the targeted reconstruction questions themselves had
+become a ceiling on detectable loss.
+
+The first cold audit produced one PASS and one FAIL. Immutable-history
+verification confirmed the FAIL: the carrier had closed source identity for its
+checkpoint and Council rounds but had not closed the historical basis of its
+operational continuity dependencies.
+
+The repaired carrier then received:
+
+```text
+targeted dependency verification
+→ two independent passes
+
+fresh unscaffolded cold audit
+→ two independent passes
+```
+
+This earns:
+
+```text
+targeted reconstruction success
+!=
+open-ended loss-audit success
+```
+
+and reinforces:
+
+```text
+primary carrier source closure
+!=
+operational dependency closure
+```
+
+### Cold-audit discipline
+
+After known losses are repaired and targeted verification passes, give an
+independent observer the candidate carrier without the targeted reconstruction
+checklist.
+
+Ask only what consequential information is missing.
+
+If the cold observer finds a candidate loss:
+
+```text
+observer disagreement or surprise
+→ verify against owning immutable evidence
+→ adjudicate the loss
+→ repair minimally if real
+→ targeted verification
+→ fresh cold audit
+```
+
+Observer agreement is not truth by vote. Observer disagreement is pressure to
+find the basis that can discriminate the competing reconstructions.
+
+A cold-audit pass adds bounded confidence only. It is not proof of semantic
+completeness.

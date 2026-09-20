@@ -1,0 +1,87 @@
+{
+  "schema_version": "lab_ops_registry_v0",
+  "projection_kind": "OPERATIONAL_PROCESS_REGISTRY",
+  "projection_warning": "Operational position only. This object is not scientific standing, execution authority, or a universal semantic state.",
+  "operator_rule": "If it is not represented here, Reed is not responsible for remembering it as active operational state.",
+  "processes": {
+    "LP-001": {
+      "basis": {
+        "repo": "ReedBarrus/DME_Lab",
+        "ref": "79eaaedc6b4f5009d3292f22f0f1efd83121560c"
+      },
+      "current_state": "REPAIR_REQUIRED",
+      "last_admitted_event": null,
+      "blocker": "Scorer-bundle construction still crosses the realization/scorer administration-invalidity boundary at the reviewed basis.",
+      "next_enabled_transition": "Repair the exact scorer-bundle / realization invalidity boundary, then return to Commander preflight.",
+      "next_required_role": "REPAIR_WORKFLOW",
+      "human_decision_required": false,
+      "authority_status": "EXECUTION_NOT_AUTHORIZED",
+      "receipts": [
+        "Commander final LP-001 preflight at 79eaaedc6b4f5009d3292f22f0f1efd83121560c"
+      ],
+      "explicitly_not_authorized": [
+        "LP-001 execution",
+        "qualification attempt consumption",
+        "realization batch execution",
+        "scientific standing change"
+      ],
+      "depends_on": [],
+      "supersedes": []
+    },
+    "PULSE-CONTINUITY": {
+      "basis": {
+        "repo": "ReedBarrus/DME_Lab",
+        "ref": "continuity cursor pulse@CE-000029"
+      },
+      "current_state": "BLOCKED",
+      "last_admitted_event": "CE-000029",
+      "blocker": "Pulse can resolve CE-000030 and its judgment-relevant basis, but pulse-only durable acknowledgement is rejected by the pull-request-only repository write rule.",
+      "next_enabled_transition": "Create a bounded acknowledgement proposal for CE-000029 -> CE-000030, preserving proposal != canonical admission.",
+      "next_required_role": "WORKSHOP",
+      "human_decision_required": false,
+      "authority_status": "ACK_PROPOSAL_NOT_YET_ADMITTED",
+      "receipts": [
+        "Repeated Pulse continuity faults with CE-000030 readable but unacknowledged"
+      ],
+      "explicitly_not_authorized": [
+        "direct main mutation",
+        "cursor advancement beyond CE-000030",
+        "automatic merge",
+        "continuity architecture widening"
+      ],
+      "depends_on": [],
+      "supersedes": []
+    },
+    "CONDUCTOR-V0": {
+      "basis": {
+        "repo": "ReedBarrus/DME_Lab",
+        "ref": "f7578bac7b97d47b8cf893e943a5987860e1e438"
+      },
+      "current_state": "PRESSURE_RESULTS_AVAILABLE",
+      "last_admitted_event": null,
+      "blocker": null,
+      "next_enabled_transition": "Conserve the P1/P2/P3 pressure results and determine the smallest warranted repair pressure without widening capability.",
+      "next_required_role": "SOL_A",
+      "human_decision_required": false,
+      "authority_status": "REPAIR_NOT_AUTHORIZED",
+      "receipts": [
+        "P1 REPLAY BASIS STABILITY: PASS",
+        "P2 EVENT CONSEQUENCE ADMISSION: FAIL",
+        "P3 LIVE / REPLAY PROJECTION EQUIVALENCE: FAIL"
+      ],
+      "explicitly_not_authorized": [
+        "Conductor repair",
+        "cursor integration",
+        "automatic role invocation",
+        "cockpit control actions",
+        "scientific agenda selection"
+      ],
+      "depends_on": [],
+      "supersedes": []
+    }
+  },
+  "reed_attention": {
+    "open_decisions": 0,
+    "decision_ids": []
+  }
+}

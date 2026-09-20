@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/workshop_fault_v0.schema.json",
+  "title": "Workshop Fault v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema","fault_id","code","stage","terminal","cell_id","manifest_sha256","expected","observed","transition_blocked","execution_started","model_invoked","invocation_count","state_trace"],
+  "properties": {
+    "schema": {"const": "workshop_fault_v0"},
+    "fault_id": {"type": "string", "minLength": 1},
+    "code": {"type": "string", "pattern": "^E0(0[1-9]|1[0-7])_[A-Z0-9_]+$"},
+    "stage": {"type": "string", "minLength": 1},
+    "terminal": {"const": true},
+    "cell_id": {"type": ["string","null"]},
+    "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "expected": {"type": "object"},
+    "observed": {"type": "object"},
+    "transition_blocked": {"type": "string", "minLength": 1},
+    "execution_started": {"type": "boolean"},
+    "model_invoked": {"type": "boolean"},
+    "invocation_count": {"type": "integer", "minimum": 0},
+    "state_trace": {
+      "type": "array",
+      "minItems": 2,
+      "items": {"type": "string", "minLength": 1},
+      "contains": {"const": "HALTED"}
+    }
+  }
+}

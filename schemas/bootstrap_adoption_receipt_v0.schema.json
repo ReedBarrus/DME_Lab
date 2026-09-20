@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/bootstrap_adoption_receipt_v0.schema.json",
+  "title": "Bootstrap Adoption Receipt v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "event_id",
+    "protocol_object_id",
+    "protocol_path",
+    "protocol_git_blob_sha",
+    "bootstrap_object_git_blob_sha",
+    "review_git_blob_sha",
+    "authorization_git_blob_sha",
+    "preflight_git_blob_sha",
+    "preflight_result",
+    "terminal_chain_verification_required",
+    "terminal_chain_verifier_git_blob_sha",
+    "observed_precondition",
+    "terminal_result",
+    "protocol_adopted",
+    "bootstrap_consumed",
+    "bootstrap_adoption_eligibility",
+    "resulting_carrier",
+    "deviations"
+  ],
+  "properties": {
+    "schema": {"const": "bootstrap_adoption_receipt_v0"},
+    "event_id": {"const": "BOOTSTRAP_ADOPTION_001"},
+    "protocol_object_id": {"const": "PROMOTION_PROTOCOL_v0"},
+    "protocol_path": {"const": "docs/operations/PROMOTION_PROTOCOL_v0.md"},
+    "protocol_git_blob_sha": {"const": "c6cebdc70c07816167ff9499b5690fcb16b4354e"},
+    "bootstrap_object_git_blob_sha": {"const": "982b471694d6e0c218ebd60b2f22db2466626780"},
+    "review_git_blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "authorization_git_blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "preflight_git_blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "preflight_result": {"enum": ["PASS", "FAIL"]},
+    "terminal_chain_verification_required": {"const": true},
+    "terminal_chain_verifier_git_blob_sha": {
+      "const": "7aa3bbeff12b79facf1b6faecf825609772776f4"
+    },
+    "observed_precondition": {"enum": ["TRUE", "FALSE", "UNRESOLVED"]},
+    "terminal_result": {
+      "enum": [
+        "ADOPTED",
+        "PREFLIGHT_FAILED",
+        "OBJECT_DRIFT",
+        "PRECONDITION_FALSE",
+        "AUTHORITY_INVALID",
+        "EXECUTION_FAILED"
+      ]
+    },
+    "protocol_adopted": {"type": "boolean"},
+    "bootstrap_consumed": {"type": "boolean"},
+    "bootstrap_adoption_eligibility": {
+      "enum": ["ELIGIBLE", "INELIGIBLE", "UNRESOLVED"]
+    },
+    "resulting_carrier": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ref","observed_head"],
+          "properties": {
+            "ref": {"type": "string", "minLength": 1},
+            "observed_head": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+          }
+        }
+      ]
+    },
+    "deviations": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"terminal_result": {"const": "ADOPTED"}}},
+      "then": {
+        "properties": {
+          "preflight_result": {"const": "PASS"},
+          "observed_precondition": {"const": "TRUE"},
+          "protocol_adopted": {"const": true},
+          "bootstrap_consumed": {"const": true},
+          "bootstrap_adoption_eligibility": {"const": "INELIGIBLE"},
+          "resulting_carrier": {"type": "object"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"terminal_result": {"const": "PRECONDITION_FALSE"}}},
+      "then": {
+        "properties": {
+          "preflight_result": {"const": "FAIL"},
+          "observed_precondition": {"const": "FALSE"},
+          "protocol_adopted": {"const": false},
+          "bootstrap_consumed": {"const": false},
+          "bootstrap_adoption_eligibility": {"const": "INELIGIBLE"},
+          "resulting_carrier": {"type": "null"}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "terminal_result": {
+            "enum": ["PREFLIGHT_FAILED","OBJECT_DRIFT","AUTHORITY_INVALID"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "preflight_result": {"const": "FAIL"},
+          "protocol_adopted": {"const": false},
+          "bootstrap_consumed": {"const": false},
+          "resulting_carrier": {"type": "null"},
+          "observed_precondition": {"enum": ["TRUE","UNRESOLVED"]}
+        },
+        "allOf": [
+          {
+            "if": {"properties": {"observed_precondition": {"const": "TRUE"}}},
+            "then": {
+              "properties": {
+                "bootstrap_adoption_eligibility": {"const": "ELIGIBLE"}
+              }
+            }
+          },
+          {
+            "if": {"properties": {"observed_precondition": {"const": "UNRESOLVED"}}},
+            "then": {
+              "properties": {
+                "bootstrap_adoption_eligibility": {"const": "UNRESOLVED"}
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "if": {"properties": {"terminal_result": {"const": "EXECUTION_FAILED"}}},
+      "then": {
+        "properties": {
+          "preflight_result": {"const": "PASS"},
+          "observed_precondition": {"const": "TRUE"},
+          "protocol_adopted": {"const": false},
+          "bootstrap_consumed": {"const": false},
+          "bootstrap_adoption_eligibility": {"const": "ELIGIBLE"},
+          "resulting_carrier": {"type": "null"}
+        }
+      }
+    }
+  ]
+}

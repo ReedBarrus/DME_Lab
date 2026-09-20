@@ -1,0 +1,47 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://dme-lab.invalid/schemas/temporal_seat_wake_v0.schema.json",
+  "title":"Temporal Seat Wake v0",
+  "type":"object",
+  "additionalProperties":false,
+  "required":[
+    "schema_version","seat_id","source_commit","status","seat_manifest",
+    "cursor","continuity_head","unread_continuity_events","working_state",
+    "pending_injections","orientation_contract","allowed_outputs",
+    "stop_conditions","authority_effect","execution_effect"
+  ],
+  "properties":{
+    "schema_version":{"const":"temporal_seat_wake_v0"},
+    "seat_id":{"const":"LABBOIB"},
+    "source_commit":{"type":"string","pattern":"^[0-9a-f]{40}$"},
+    "status":{"enum":["READY","BOOTSTRAP_REQUIRED","BLOCKED"]},
+    "seat_manifest":{"type":"object"},
+    "cursor":{"type":"object"},
+    "continuity_head":{"type":["string","null"]},
+    "unread_continuity_events":{"type":"array","items":{"type":"object"}},
+    "working_state":{"type":"object"},
+    "pending_injections":{"type":"array","items":{"type":"object"}},
+    "orientation_contract":{
+      "const":[
+        "SINCE_LAST_SEEN",
+        "CURRENTLY_RELEVANT",
+        "MUST_NOT_ASSUME",
+        "MISSING_FOR_THIS_TASK"
+      ]
+    },
+    "allowed_outputs":{
+      "const":[
+        "STATUS",
+        "HANDOFF",
+        "REVIEW_REQUEST",
+        "ACTION_REQUEST",
+        "WAKE_RECEIPT"
+      ]
+    },
+    "stop_conditions":{
+      "type":"array","minItems":1,"items":{"type":"string","minLength":1}
+    },
+    "authority_effect":{"const":"NONE_BY_WAKE"},
+    "execution_effect":{"const":"NONE_BY_WAKE"}
+  }
+}

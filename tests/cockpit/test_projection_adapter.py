@@ -5,7 +5,10 @@ from pathlib import Path
 import subprocess
 from tempfile import TemporaryDirectory
 import unittest
+from unittest.mock import Mock, patch
 
+from src.cockpit import projection_adapter
+from src.cockpit.action_surface import ActionSurfaceError
 from src.cockpit.projection_adapter import ADAPTER_VERSION, build_projection
 
 
@@ -128,6 +131,45 @@ Shelved:
             freshness_ref="HEAD",
             projection_time=PROJECTION_TIME,
         )
+
+    def test_action_surface_failure_is_visible_and_downgrades_projection(self) -> None:
+        root = self.make_repo()
+
+        with patch.object(
+            projection_adapter,
+            "build_action_surfaces",
+            side_effect=ActionSurfaceError("synthetic routing fracture"),
+        ):
+            model = self.project(root)
+
+        self.assertEqual(model["action_surfaces"], [])
+        self.assertEqual(model["repository_state"]["projection_status"], "partial")
+        diagnostic = next(
+            item
+            for item in model["projection_diagnostics"]
+            if item["kind"] == "action_surface_projection_failure"
+        )
+        self.assertEqual(diagnostic["severity"], "error")
+        self.assertIn("synthetic routing fracture", diagnostic["message"])
+
+    def test_git_subprocess_receives_window_suppression_flags(self) -> None:
+        completed = Mock(returncode=0, stdout=b"", stderr=b"")
+        with (
+            patch.object(
+                projection_adapter,
+                "_subprocess_creationflags",
+                return_value=0x08000000,
+            ),
+            patch.object(
+                projection_adapter.subprocess,
+                "run",
+                return_value=completed,
+            ) as run,
+        ):
+            returned = projection_adapter._git(Path("C:/repo"), "status", "--short")
+
+        self.assertIs(returned, completed)
+        self.assertEqual(run.call_args.kwargs["creationflags"], 0x08000000)
 
     def test_committed_tree_boundary_ignores_dirty_working_tree(self) -> None:
         root = self.make_repo(standing="BOUNDED_RESOLUTION")

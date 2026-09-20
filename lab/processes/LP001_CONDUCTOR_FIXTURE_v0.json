@@ -1,0 +1,54 @@
+{
+  "schema_version": "lab_process_v0",
+  "process_id": "LP-001-CONDUCTOR-FIXTURE",
+  "description": "Non-scientific routing fixture modeled on LP-001 process boundaries. It does not execute or adjudicate LP-001.",
+  "scientific_standing": {"tracked": false, "value": null},
+  "initial_phase": "SEEDED",
+  "transitions": {
+    "SEEDED": {
+      "transition_id": "LOAD_FROZEN_CONTRACT",
+      "kind": "MECHANICAL",
+      "to_phase": "CONTRACT_AVAILABLE"
+    },
+    "CONTRACT_AVAILABLE": {
+      "transition_id": "COMMANDER_FREEZE_REVIEW",
+      "kind": "ROLE_JUDGMENT",
+      "recipient_role": "COMMANDER"
+    },
+    "READY_FOR_AUTHORIZATION": {
+      "transition_id": "AUTHORIZE_EXECUTION_ENVELOPE",
+      "kind": "HUMAN_DECISION",
+      "decision": {
+        "decision_id": "DEC-LP001-FIXTURE-EXECUTION",
+        "question": "Authorize the already-frozen fixture execution envelope?",
+        "allowed_choices": ["APPROVE", "REJECT"],
+        "authority_requested": "EXECUTE_FROZEN_FIXTURE_ENVELOPE",
+        "consequences": {
+          "APPROVE": "Marks the fixture execution transition enabled; performs no external execution.",
+          "REJECT": "Leaves fixture execution unauthorized."
+        },
+        "unchanged": [
+          "scientific standing",
+          "live LP-001 experiment",
+          "repository main",
+          "continuity cursors"
+        ]
+      }
+    },
+    "AUTHORIZED": {
+      "transition_id": "EXECUTE_Q01",
+      "kind": "MECHANICAL",
+      "requires_capability": "isolated_gpt_5_6_sol_high",
+      "to_phase": "Q01_READY"
+    },
+    "Q01_READY": {
+      "transition_id": "WORKSHOP_EXECUTION",
+      "kind": "ROLE_JUDGMENT",
+      "recipient_role": "WORKSHOP"
+    },
+    "COMPLETE": {
+      "transition_id": "NONE",
+      "kind": "TERMINAL"
+    }
+  }
+}
