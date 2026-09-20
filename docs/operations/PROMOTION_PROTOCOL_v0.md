@@ -428,7 +428,16 @@ schemas/promotion_candidate_v0.schema.json
 schemas/promotion_review_v0.schema.json
 schemas/promotion_adjudication_v0.schema.json
 schemas/promotion_envelope_v0.schema.json
+schemas/promotion_authorization_v0.schema.json
 schemas/promotion_receipt_v0.schema.json
+
+bootstrap-specific first-adoption shapes:
+
+schemas/bootstrap_adoption_object_v0.schema.json
+schemas/bootstrap_adoption_review_v0.schema.json
+schemas/bootstrap_adoption_authorization_v0.schema.json
+schemas/bootstrap_adoption_preflight_v0.schema.json
+schemas/bootstrap_adoption_receipt_v0.schema.json
 ```
 
 Schema validity establishes object-shape validity only.
@@ -464,60 +473,210 @@ The bootstrap path is available only while:
 NO DURABLE PROMOTION PROTOCOL EXISTS
 ```
 
-The bootstrap event must bind the exact protocol object reviewed and authorized.
+The bootstrap event must bind one exact protocol object end-to-end.
 
-Required bootstrap sequence:
+### 13.1 Bootstrap-specific object family
+
+The first-adoption chain is:
 
 ```text
-BOOTSTRAP_ADOPTION_001
-→ HUMAN REVIEW OF EXACT PROTOCOL
-→ EXPLICIT HUMAN ADOPTION AUTHORITY FOR EXACT PROTOCOL
-→ PREFLIGHT
+BOOTSTRAP_ADOPTION_001 OBJECT
+→ FRESH BOOTSTRAP REVIEW
+→ BOOTSTRAP-SPECIFIC HUMAN AUTHORIZATION
+→ BOOTSTRAP PREFLIGHT
 → EXECUTION
 → BOOTSTRAP ADOPTION RECEIPT
 ```
 
-Preflight must verify at minimum:
+The ordinary:
+
+```text
+promotion_authorization_v0
+```
+
+shape is not valid bootstrap authority.
+
+Bootstrap authority uses:
+
+```text
+bootstrap_adoption_authorization_v0
+```
+
+because:
+
+```text
+PROTOCOL ADOPTION EVENT
+!=
+OBJECT PROMOTION UNDER PROTOCOL
+```
+
+The bootstrap review, authority, preflight, and receipt must all carry the same:
+
+```text
+event_id = BOOTSTRAP_ADOPTION_001
+protocol_object_id = PROMOTION_PROTOCOL_v0
+protocol_path = docs/operations/PROMOTION_PROTOCOL_v0.md
+protocol_git_blob_sha = exact reviewed protocol blob
+```
+
+Every artifact after the bootstrap object must also bind the exact bootstrap
+object identity it consumes.
+
+Reference presence alone is insufficient:
+
+```text
+REFERENCE PRESENT
+!=
+REFERENCE CONSISTENT
+```
+
+Cross-object equality is therefore checked by bootstrap preflight before
+execution can be admitted.
+
+### 13.2 Fresh bootstrap review
+
+The fresh review must bind:
+
+```text
+exact protocol Git blob
+exact bootstrap-object Git blob
+review disposition
+reviewer independence
+bounded review basis
+```
+
+The protocol/candidate materializer may not supply an admitting fresh review
+when the bootstrap review declares that materializer as the relevant author.
+
+An admitting review does not create adoption authority.
+
+```text
+REVIEW ADMIT
+!=
+BOOTSTRAP AUTHORITY
+```
+
+### 13.3 Bootstrap-specific human authority
+
+Human bootstrap authority must be represented by a typed
+`bootstrap_adoption_authorization_v0` object.
+
+It must bind at minimum:
+
+```text
+BOOTSTRAP_ADOPTION_001
+exact protocol Git blob
+exact bootstrap-object Git blob
+exact admitting review identity
+exact authorized adoption effect
+target repository / target ref / pull request
+explicit non-authorizations
+```
+
+Bootstrap authority does not arise from an ordinary promotion envelope and does
+not use ordinary promotion authorization semantics.
+
+```text
+BOOTSTRAP ADOPTION AUTHORITY
+!=
+BOOTSTRAP ADOPTION SUCCESS
+```
+
+### 13.4 Bootstrap preflight
+
+Preflight is the mechanical administration gate.
+
+It must verify from actual supplied artifacts and repository state:
 
 ```text
 reviewed protocol identity unchanged
+bootstrap-object protocol identity unchanged
+review binds the exact bootstrap object
+authorization binds the exact review
+authorization binds the exact protocol object
+authorization binds the exact bootstrap object
 bootstrap precondition still true
-authorization binds exact reviewed protocol object
-target carrier / exact repository consequence unchanged
+target repository / ref / PR consequence unchanged
+PR head matches the authorized head
+all required identities are mutually consistent
 ```
 
-Successful terminal adoption must establish:
+The precondition is external repository truth, not a fact manufactured by
+schema validity.
 
 ```text
-protocol_adopted = true
-bootstrap_consumed = true
-bootstrap_adoption_eligible = false
+SCHEMA-LOCAL STATE CLOSURE
+!=
+EXTERNAL HISTORICAL TRUTH
 ```
 
-Any terminal bootstrap failure must preserve:
+Schema shapes require and constrain the witness/result. The preflight mechanism
+must derive the repository-state result.
+
+Execution is admitted only when the typed preflight result is `PASS`.
+
+```text
+PREFLIGHT PASS
+IS NECESSARY
+BEFORE
+BOOTSTRAP EXECUTION
+```
+
+A failed or unresolved preflight does not authorize execution.
+
+### 13.5 Terminal geometry
+
+Successful adoption must establish all of:
+
+```text
+terminal_result = ADOPTED
+observed_precondition = TRUE
+protocol_adopted = true
+bootstrap_consumed = true
+bootstrap_adoption_eligibility = INELIGIBLE
+resulting_carrier = present
+preflight_result = PASS
+```
+
+Failure must never produce a durable-adoption claim or consume genesis:
 
 ```text
 protocol_adopted = false
 bootstrap_consumed = false
+resulting_carrier = null
 ```
 
-Therefore, for terminal bootstrap administration:
+Failure does not have one uniform eligibility consequence.
+
+If the actual precondition is false:
 
 ```text
-protocol_adopted
-IFF
-bootstrap_consumed
+terminal_result = PRECONDITION_FALSE
+bootstrap_adoption_eligibility = INELIGIBLE
 ```
 
-and specifically:
+For failures where the precondition was verified true and no protocol was
+adopted:
 
 ```text
-false / true
-→ INVALID: genesis consumed without durable protocol
-
-true / false
-→ INVALID: durable protocol with reusable bootstrap bypass
+bootstrap_adoption_eligibility = ELIGIBLE
 ```
+
+If the administration cannot establish whether the precondition still holds:
+
+```text
+bootstrap_adoption_eligibility = UNRESOLVED
+```
+
+Therefore:
+
+```text
+FAILURE
+!=
+UNIFORM ELIGIBILITY CONSEQUENCE
+```
+
+### 13.6 Self-extinguishing genesis
 
 The bootstrap exception self-extinguishes by succeeding:
 
@@ -531,6 +690,16 @@ CREATE FIRST DURABLE PROMOTION PROCEDURE
 AFTER SUCCESS:
 BOOTSTRAP LEGITIMACY BASIS = FALSE
 ```
+
+For a successful terminal bootstrap event:
+
+```text
+protocol_adopted = true
+bootstrap_consumed = true
+bootstrap_adoption_eligibility = INELIGIBLE
+```
+
+A successful receipt with any different combination is invalid.
 
 The bootstrap receipt is not a promotion receipt:
 
@@ -555,4 +724,5 @@ while no durable promotion protocol yet existed.
 After successful adoption, future promotion events -- including the retroactive
 formalization of PROMOTION_BOUNDARY_001 -- use PROMOTION_PROTOCOL_v0.
 
-No object on this branch may self-adjudicate or self-authorize that adoption.
+No bootstrap object, review, authorization, preflight, or receipt may
+self-adjudicate or self-authorize adoption.
