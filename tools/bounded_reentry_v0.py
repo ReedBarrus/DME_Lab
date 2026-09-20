@@ -16,6 +16,7 @@ from tools.development_campaign_v0 import CampaignStore, object_sha256
 from tools.envelope_selection_v0 import SelectionStore
 from tools.goblin_pool import GoblinPool
 from tools.preparation_v0 import PreparationStore, build_receipt
+from tools.preparation_assignment_v0 import AssignmentStore
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA_PATH = ROOT / "schemas" / "bounded_reentry_v0.sql"
@@ -108,6 +109,9 @@ def build_wake_opportunity(
     request: dict[str, Any] | None = None,
     selection: dict[str, Any] | None = None,
     preparation_kind: str | None = None,
+    assignment: dict[str, Any] | None = None,
+    manual_bell: dict[str, Any] | None = None,
+    wake_source_kind: str = "DIRECT_TEST",
 ) -> dict[str, Any]:
     if not opportunity_id or not seat_id:
         raise BoundedReentryError("opportunity_id and seat_id are required")
@@ -115,10 +119,21 @@ def build_wake_opportunity(
         raise BoundedReentryError("opportunity_basis must be a 40-hex Git commit")
     if not isinstance(max_consumed_events, int) or not 0 <= max_consumed_events <= 32:
         raise BoundedReentryError("max_consumed_events must be 0..32")
+    if wake_source_kind not in {"DIRECT_TEST", "MANUAL_BELL"}:
+        raise BoundedReentryError("unsupported wake source kind")
     if request is None:
-        if selection is not None or preparation_kind is not None:
-            raise BoundedReentryError("no-target opportunity cannot bind selection/preparation")
+        if (
+            selection is not None
+            or preparation_kind is not None
+            or assignment is not None
+            or manual_bell is not None
+            or wake_source_kind != "DIRECT_TEST"
+        ):
+            raise BoundedReentryError(
+                "no-target opportunity cannot bind selection/assignment/bell"
+            )
         request_id = request_sha = selection_ref = selection_sha = None
+        assignment_id = assignment_sha = manual_bell_id = manual_bell_sha = None
     else:
         if selection is None or preparation_kind != "RESOLVE_REFS":
             raise BoundedReentryError("targeted v0 opportunity requires selection + RESOLVE_REFS")
@@ -132,6 +147,48 @@ def build_wake_opportunity(
         request_sha = object_sha256(request)
         selection_ref = selection["selection_id"]
         selection_sha = object_sha256(selection)
+
+        if assignment is None:
+            if manual_bell is not None or wake_source_kind != "DIRECT_TEST":
+                raise BoundedReentryError(
+                    "manual-bell wake opportunity requires exact assignment"
+                )
+            assignment_id = assignment_sha = manual_bell_id = manual_bell_sha = None
+        else:
+            if assignment["assignment_kind"] != "ASSIGNED":
+                raise BoundedReentryError("wake opportunity requires ASSIGNED event")
+            if (
+                assignment["campaign_id"] != campaign["campaign_id"]
+                or assignment["request_id"] != request_id
+                or assignment["request_sha256"] != request_sha
+                or assignment["selection_ref"] != selection_ref
+                or assignment["selection_sha256"] != selection_sha
+                or assignment["seat_id"] != seat_id
+                or assignment["preparation_kind"] != preparation_kind
+            ):
+                raise BoundedReentryError(
+                    "wake opportunity assignment binding does not match unit"
+                )
+            assignment_id = assignment["assignment_id"]
+            assignment_sha = object_sha256(assignment)
+            if wake_source_kind == "MANUAL_BELL":
+                if manual_bell is None:
+                    raise BoundedReentryError("MANUAL_BELL opportunity requires bell")
+                if (
+                    manual_bell["assignment_id"] != assignment_id
+                    or manual_bell["assignment_sha256"] != assignment_sha
+                    or manual_bell["seat_id"] != seat_id
+                    or manual_bell["request_id"] != request_id
+                    or manual_bell["request_sha256"] != request_sha
+                    or manual_bell["preparation_kind"] != preparation_kind
+                ):
+                    raise BoundedReentryError("manual bell does not bind exact assignment")
+                manual_bell_id = manual_bell["bell_id"]
+                manual_bell_sha = object_sha256(manual_bell)
+            else:
+                if manual_bell is not None:
+                    raise BoundedReentryError("DIRECT_TEST opportunity cannot bind bell")
+                manual_bell_id = manual_bell_sha = None
     return {
         "schema": "wake_opportunity_v0",
         "opportunity_id": opportunity_id,
@@ -143,6 +200,11 @@ def build_wake_opportunity(
         "selection_ref": selection_ref,
         "selection_sha256": selection_sha,
         "preparation_kind": preparation_kind,
+        "assignment_id": assignment_id,
+        "assignment_sha256": assignment_sha,
+        "manual_bell_id": manual_bell_id,
+        "manual_bell_sha256": manual_bell_sha,
+        "wake_source_kind": wake_source_kind,
         "opportunity_basis": opportunity_basis,
         "max_consumed_events": max_consumed_events,
         "authority_effect": "NONE",
@@ -171,7 +233,9 @@ class ReentryStore:
         required = {
             "schema","opportunity_id","seat_id","campaign_id","campaign_sha256",
             "request_id","request_sha256","selection_ref","selection_sha256",
-            "preparation_kind","opportunity_basis","max_consumed_events",
+            "preparation_kind","assignment_id","assignment_sha256",
+            "manual_bell_id","manual_bell_sha256","wake_source_kind",
+            "opportunity_basis","max_consumed_events",
             "authority_effect","execution_effect","scheduler_effect",
         }
         if set(opportunity) != required or opportunity["schema"] != "wake_opportunity_v0":
@@ -330,6 +394,7 @@ class BoundedReentryRunner:
         selection_store: SelectionStore,
         preparation_store: PreparationStore,
         reentry_store: ReentryStore,
+        assignment_store: AssignmentStore | None = None,
     ):
         self.repo = Path(repo).resolve()
         self.pool = pool
@@ -337,6 +402,7 @@ class BoundedReentryRunner:
         self.selection_store = selection_store
         self.preparation_store = preparation_store
         self.reentry_store = reentry_store
+        self.assignment_store = assignment_store
 
     def _terminal(
         self,
@@ -450,6 +516,90 @@ class BoundedReentryRunner:
                 raise BoundedReentryError("wake opportunity selection identity mismatch")
 
         wake_id = f"W-{opportunity_id}"
+
+        prevalidated_head: str | None = None
+        if opportunity.get("assignment_id") is not None:
+            if self.assignment_store is None:
+                raise BoundedReentryError(
+                    "assignment-bound wake requires AssignmentStore"
+                )
+
+            assignment = self.assignment_store._load_assignment(
+                opportunity["assignment_id"]
+            )
+            if opportunity["assignment_sha256"] != object_sha256(assignment):
+                raise BoundedReentryError("wake assignment identity mismatch")
+            if (
+                assignment["campaign_id"] != campaign["campaign_id"]
+                or request is None
+                or selection is None
+                or assignment["request_id"] != request["request_id"]
+                or assignment["request_sha256"] != object_sha256(request)
+                or assignment["selection_ref"] != selection["selection_id"]
+                or assignment["selection_sha256"] != object_sha256(selection)
+                or assignment["seat_id"] != opportunity["seat_id"]
+                or assignment["preparation_kind"] != opportunity["preparation_kind"]
+            ):
+                raise BoundedReentryError(
+                    "wake opportunity does not conserve exact assignment binding"
+                )
+            if opportunity.get("wake_source_kind") == "MANUAL_BELL":
+                if (
+                    not opportunity.get("manual_bell_id")
+                    or not opportunity.get("manual_bell_sha256")
+                ):
+                    raise BoundedReentryError(
+                        "manual-bell wake lacks exact bell identity"
+                    )
+
+            prevalidated_head = _git_head(self.repo)
+            prevalidated_basis = _current_basis(campaign, prevalidated_head)
+            assignment_projection = self.assignment_store.projection(
+                campaign["campaign_id"],
+                current_basis_refs=prevalidated_basis,
+            )
+            assignment_row = next(
+                (
+                    row
+                    for row in assignment_projection["assignment_projection"]
+                    if row["assignment_id"] == opportunity["assignment_id"]
+                    and row["assignment_sha256"]
+                    == opportunity["assignment_sha256"]
+                ),
+                None,
+            )
+            if (
+                assignment_row is None
+                or assignment_row["assignment_state"] != "OUTSTANDING"
+                or assignment_row["wake_eligible"] is not True
+            ):
+                state = (
+                    assignment_row["assignment_state"]
+                    if assignment_row is not None
+                    else "MISSING"
+                )
+                self.reentry_store.append_event(
+                    opportunity_id=opportunity_id,
+                    wake_id=wake_id,
+                    seat_id=opportunity["seat_id"],
+                    kind="WAKE_BLOCKED",
+                    payload={
+                        "classification": "ASSIGNMENT_NOT_WAKE_ELIGIBLE",
+                        "assignment_id": opportunity["assignment_id"],
+                        "assignment_state": state,
+                        "revalidated_before_occupancy": True,
+                    },
+                )
+                return self._terminal(
+                    opportunity=opportunity,
+                    wake_id=wake_id,
+                    outcome=f"BLOCKED_ASSIGNMENT_{state}",
+                    preparation_receipt_id=None,
+                    controller_receipt_id=None,
+                    work_units=0,
+                    occupancy_released=True,
+                )
+
         start = self.pool.start_wake(opportunity["seat_id"], wake_id)
         if start["status"] == "OCCUPANCY_CONFLICT":
             self.reentry_store.append_event(
@@ -484,7 +634,7 @@ class BoundedReentryRunner:
         if phase_hook:
             phase_hook("WAKE_ACCEPTED", {"wake_id": wake_id, "start": start})
 
-        current_head = _git_head(self.repo)
+        current_head = prevalidated_head or _git_head(self.repo)
         eligible_events = self.pool.eligible_events(opportunity["seat_id"])
         consumed = [
             event["event_id"]
