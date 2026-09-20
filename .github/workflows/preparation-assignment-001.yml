@@ -1,0 +1,39 @@
+name: PREPARATION_ASSIGNMENT_001
+
+on:
+  pull_request:
+    paths:
+      - "tools/preparation_assignment_v0.py"
+      - "tests/runtime/test_preparation_assignment.py"
+      - "schemas/preparation_assignment_v0.schema.json"
+      - "schemas/assignment_satisfaction_v0.schema.json"
+      - "docs/candidates/preparation_assignment_v0/**"
+      - ".github/workflows/preparation-assignment-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile assignment candidate
+        run: python -m py_compile tools/preparation_assignment_v0.py tests/runtime/test_preparation_assignment.py
+      - name: Preparation assignment pressure
+        run: python -m unittest tests.runtime.test_preparation_assignment -v
+      - name: Preparation regression
+        run: python -m unittest tests.runtime.test_preparation -v
+      - name: Selection regression
+        run: python -m unittest tests.runtime.test_envelope_selection -v
+      - name: Campaign regression
+        run: python -m unittest tests.runtime.test_development_campaign -v
+      - name: Bounded reentry regression
+        run: python -m unittest tests.runtime.test_bounded_reentry -v

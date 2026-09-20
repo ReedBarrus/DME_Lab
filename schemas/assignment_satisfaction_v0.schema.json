@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "assignment_satisfaction_v0.schema.json",
+  "title": "ASSIGNMENT_SATISFACTION_v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "satisfaction_id",
+    "assignment_id",
+    "assignment_sha256",
+    "preparation_receipt_id",
+    "preparation_receipt_sha256",
+    "request_id",
+    "request_sha256",
+    "seat_id",
+    "preparation_kind",
+    "satisfaction_effect",
+    "authority_effect",
+    "execution_effect",
+    "standing_effect",
+    "priority_effect",
+    "wake_effect"
+  ],
+  "properties": {
+    "schema": {"const": "assignment_satisfaction_v0"},
+    "satisfaction_id": {"type": "string", "minLength": 1},
+    "assignment_id": {"type": "string", "minLength": 1},
+    "assignment_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "preparation_receipt_id": {"type": "string", "minLength": 1},
+    "preparation_receipt_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "request_id": {"type": "string", "minLength": 1},
+    "request_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "seat_id": {"type": "string", "minLength": 1},
+    "preparation_kind": {
+      "enum": [
+        "RESOLVE_REFS",
+        "REVALIDATE_BASIS",
+        "ASSEMBLE_EVIDENCE",
+        "DRAFT_PACKET",
+        "REQUEST_REVIEW",
+        "REVIEW_RESULT",
+        "ESTIMATE_RESOURCES",
+        "DETECT_CONFLICTS",
+        "DERIVE_STOP_CONDITIONS"
+      ]
+    },
+    "satisfaction_effect": {"const": "SATISFIES_EXACT_ASSIGNMENT"},
+    "authority_effect": {"const": "NONE"},
+    "execution_effect": {"const": "NONE"},
+    "standing_effect": {"const": "NONE"},
+    "priority_effect": {"const": "NONE"},
+    "wake_effect": {"const": "NONE"}
+  }
+}
