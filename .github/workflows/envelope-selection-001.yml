@@ -1,0 +1,32 @@
+name: ENVELOPE_SELECTION_001
+
+on:
+  pull_request:
+    paths:
+      - "tools/envelope_selection_v0.py"
+      - "tests/runtime/test_envelope_selection.py"
+      - "schemas/envelope_selection_v0.schema.json"
+      - "docs/candidates/envelope_selection_v0/**"
+      - ".github/workflows/envelope-selection-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile
+        run: python -m py_compile tools/envelope_selection_v0.py tests/runtime/test_envelope_selection.py
+      - name: Selection pressure
+        run: python -m unittest tests.runtime.test_envelope_selection -v
+      - name: Campaign regression
+        run: python -m unittest tests.runtime.test_development_campaign -v
