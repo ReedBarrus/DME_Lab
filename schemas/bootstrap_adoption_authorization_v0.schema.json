@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/bootstrap_adoption_authorization_v0.schema.json",
+  "title": "Bootstrap Adoption Authorization v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "authorization_id",
+    "event_id",
+    "protocol_object_id",
+    "protocol_path",
+    "protocol_git_blob_sha",
+    "bootstrap_object_git_blob_sha",
+    "review_git_blob_sha",
+    "review_disposition",
+    "decision",
+    "authority_ref",
+    "authorized_effect",
+    "target",
+    "explicit_non_authorizations"
+  ],
+  "properties": {
+    "schema": {"const": "bootstrap_adoption_authorization_v0"},
+    "authorization_id": {"type": "string", "minLength": 1},
+    "event_id": {"const": "BOOTSTRAP_ADOPTION_001"},
+    "protocol_object_id": {"const": "PROMOTION_PROTOCOL_v0"},
+    "protocol_path": {"const": "docs/operations/PROMOTION_PROTOCOL_v0.md"},
+    "protocol_git_blob_sha": {"const": "49fbe7c792511b6c7104a07aecba3ced84108ff8"},
+    "bootstrap_object_git_blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "review_git_blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "review_disposition": {"const": "ADMIT"},
+    "decision": {"enum": ["AUTHORIZE", "DENY"]},
+    "authority_ref": {"type": "string", "minLength": 1},
+    "authorized_effect": {
+      "const": "ADOPT_EXACT_PROMOTION_PROTOCOL_v0_AS_DURABLE_OPERATING_PROCEDURE"
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "target_ref", "pull_request", "authorized_pr_head"],
+      "properties": {
+        "repository": {"const": "ReedBarrus/DME_Lab"},
+        "target_ref": {"const": "main"},
+        "pull_request": {"const": 30},
+        "authorized_pr_head": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+      }
+    },
+    "explicit_non_authorizations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    }
+  }
+}
