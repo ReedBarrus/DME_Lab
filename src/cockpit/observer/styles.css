@@ -1155,3 +1155,69 @@ footer {
     min-height: 600px;
   }
 }
+
+
+/* LIVE_RUNTIME_PROJECTION_001 */
+.runtime-panel {
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid currentColor;
+  border-radius: 0.5rem;
+}
+.runtime-unavailable {
+  opacity: 0.72;
+}
+.runtime-header,
+.runtime-metrics,
+.runtime-grid,
+.runtime-row {
+  display: grid;
+  gap: 0.65rem;
+}
+.runtime-header {
+  grid-template-columns: 1fr auto;
+  align-items: end;
+}
+.runtime-metrics {
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  margin: 1rem 0;
+}
+.runtime-metric {
+  border-top: 1px solid currentColor;
+  padding-top: 0.5rem;
+}
+.runtime-metric-label,
+.runtime-footnote,
+.runtime-subtitle {
+  font-size: 0.78rem;
+  opacity: 0.72;
+}
+.runtime-metric-value {
+  display: block;
+  margin-top: 0.2rem;
+}
+.runtime-grid {
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
+.runtime-block {
+  min-width: 0;
+}
+.runtime-block h3 {
+  margin-bottom: 0.5rem;
+}
+.runtime-row {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid currentColor;
+  padding: 0.35rem 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.78rem;
+}
+.runtime-row span {
+  overflow-wrap: anywhere;
+}
+.runtime-warning {
+  font-weight: 700;
+}
+.runtime-diagnostics {
+  margin-top: 1rem;
+}
