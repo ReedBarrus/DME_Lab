@@ -3,56 +3,44 @@
 ## STATUS
 
 ```text
-FROZEN SEMANTIC CONTRACT
-PRESSURE-DESIGN AUTHORIZED
+FROZEN SEMANTIC CONTRACT — CORRECTED CONTINUITY SEMANTICS
 IMPLEMENTATION:
-NOT AUTHORIZED BY THIS CONTRACT
+AUTHORIZED BY HUMAN GESTURE, BUT MUST QUALIFY BEFORE USE
 
 DOGFOOD_001 RETRY:
-HELD
+HELD UNTIL ADOPTION IS DURABLY MATERIALIZED
 
 COS-R2:
 UNCHANGED
-
-SYMBOLIC MEMORY:
-OUTSIDE THIS MEMBRANE
 ```
 
-## Qualified prerequisite
+## Qualified prerequisites
 
-This contract is stacked on the reported qualified result of:
+This contract sits after:
 
 ```text
 CAMPAIGN_BASIS_REVALIDATION_001
+→ basis-relative warrant
+
+CAMPAIGN_APPLICABILITY_PROJECTION_001
+→ operationally visible current applicability
 ```
 
-at:
-
-```text
-campaign-basis-revalidation-v0
-85414790834bf25446477514165403e7d34829e4
-```
-
-The prerequisite relation is:
-
-```text
-ONE EXACT HISTORICAL CAMPAIGN
-CAN RECEIVE ONE BASIS-RELATIVE
-CURRENTLY_APPLICABLE JUDGMENT
-AGAINST ONE EXACT CURRENT BASIS
-
-WITHOUT ADOPTION OR OTHER DOWNSTREAM CONTROL EFFECTS
-```
-
-This contract does not broaden that claim.
+The adoption membrane does not revalidate, reinterpret, or weaken either relation.
 
 ## Sole question
 
 ```text
-CAN REED EXPLICITLY ADOPT
-ONE EXACT CURRENTLY-APPLICABLE CAMPAIGN
+CAN REED EXPLICITLY DECLARE
+ONE EXACT CAMPAIGN ADOPTED
 
-AS A LIVE DEVELOPMENTAL CONTRACT
+AS AN UNRELEASED DEVELOPMENTAL COMMITMENT
+
+SUCH THAT CURRENT LIVE STATUS IS DERIVED FROM:
+
+UNRELEASED ADOPTION
+×
+CURRENT EFFECTIVE APPLICABILITY
 
 WITHOUT:
 
@@ -81,6 +69,18 @@ ADOPTED
 
 ADOPTED
 !=
+CURRENTLY LIVE
+
+UNRELEASED ADOPTION
+!=
+CURRENT INTERNAL HUMAN DESIRE
+
+HISTORICAL HUMAN DECLARATION
+!=
+MODEL INFERENCE ABOUT PRESENT INTENT
+
+ADOPTED
+!=
 EXCLUSIVE
 
 ADOPTED
@@ -98,14 +98,6 @@ EXECUTION AUTHORITY
 ADOPTION HISTORY
 !=
 CURRENT ADOPTION STATE
-
-HISTORICAL HUMAN INTENT
-!=
-CURRENT HUMAN INTENT
-
-ADOPTED AT B2
-!=
-HUMAN INTENT AUTOMATICALLY VALID AT B3
 
 ADOPTION_RELEASED
 !=
@@ -126,25 +118,29 @@ PRIORITY ORDER
 ADOPTION ORDER
 !=
 DEVELOPMENTAL PRIORITY
+
+CURRENT APPLICABILITY LOST
+!=
+ADOPTION RELEASED
+
+CURRENT APPLICABILITY RESTORED
+!=
+NEW ADOPTION REQUIRED
 ```
 
-## Adoption is a durable relation
+## Adoption is a durable human declaration
 
 The historical campaign object remains immutable.
 
-A valid adoption binds:
+The adoption relation records only:
 
 ```text
-exact campaign identity
-+
-exact successful applicability judgment
-+
-exact basis on which that judgment is current
-+
-explicit human adoption gesture
-```
+REED DECLARED:
+this exact campaign is adopted
 
-It must not mutate the historical campaign or the revalidation result.
+UNTIL:
+an exact release event ends that declaration
+```
 
 Conceptual target object:
 
@@ -156,13 +152,7 @@ adoption_id
 campaign_id
 campaign_sha256
 
-revalidation_id
-revalidation_sha256
-
 actor_id = REED
-
-adoption_basis_refs
-adoption_basis_sha256
 
 adoption_kind:
     ADOPTED
@@ -171,12 +161,13 @@ adoption_kind:
 target_adoption_id
 target_adoption_sha256
 
+gesture_ref
 reason
 
 adoption_effect:
-    LIVE_DEVELOPMENTAL_CONTRACT
+    DECLARES_DEVELOPMENTAL_COMMITMENT
     or
-    RELEASES_LIVE_DEVELOPMENTAL_CONTRACT
+    RELEASES_DEVELOPMENTAL_COMMITMENT
 
 selection_effect = NONE
 assignment_effect = NONE
@@ -188,22 +179,21 @@ wake_effect = NONE
 execution_effect = NONE
 ```
 
-This shape is a semantic contract target, not implementation authorization.
-
-For `ADOPTED` events:
+For `ADOPTED`:
 
 ```text
 target_adoption_id = null
 target_adoption_sha256 = null
 ```
 
-For `ADOPTION_RELEASED` events:
+For `ADOPTION_RELEASED`:
 
 ```text
 target_adoption_id
 target_adoption_sha256
 
 MUST bind one exact prior ADOPTED event
+for the same exact campaign identity.
 ```
 
 Scar:
@@ -214,46 +204,57 @@ RELEASE CAMPAIGN LABEL
 RELEASE EXACT ADOPTION RELATION
 ```
 
-## Exact applicability binding
+## Adoption does not contain applicability
 
-Adoption must bind the exact durable revalidation object, not merely the campaign label.
-
-A valid adoption requires:
+The adoption event MUST NOT embed or freeze:
 
 ```text
-adoption.campaign_sha256
-=
-revalidation.campaign_sha256
-
-AND
-
-adoption.revalidation_sha256
-=
-exact durable revalidation object identity
-
-AND
-
-revalidation.disposition
-=
-CURRENTLY_APPLICABLE
-
-AND
-
-adoption.adoption_basis_sha256
-=
-revalidation.candidate_current_basis_sha256
+revalidation_id
+revalidation_sha256
+current_basis_refs
+current_basis_sha256
+effective_applicability
 ```
 
-No adoption is admitted against:
+as the condition that defines continuing human commitment.
+
+Those belong to the applicability membrane.
+
+Scar:
 
 ```text
-NOT_APPLICABLE
-INSUFFICIENT_BASIS
-NOT_ESTABLISHED
-stale / non-current revalidation basis
-wrong campaign identity
-wrong revalidation identity
+ADOPTION DECLARATION
+!=
+APPLICABILITY WARRANT
 ```
+
+A human may adopt only when the campaign is currently applicable at the time of
+the adoption gesture, but the durable declaration itself remains a separate
+historical relation after the world moves.
+
+## Admission rule for a new ADOPTED event
+
+A new adoption event is admitted only when the operating projection establishes:
+
+```text
+exact campaign identity
+
+AND
+
+effective_applicability ∈ {
+    CURRENT_BY_HISTORICAL_BASIS,
+    CURRENT_BY_REVALIDATION
+}
+```
+
+at the exact gesture-time basis.
+
+This is an admission precondition, not a field that turns adoption into a
+basis-bound object.
+
+The admission receipt SHOULD retain a raw reference to the applicability
+projection/evidence inspected for audit, but that reference does not redefine
+the identity or lifetime of the human declaration.
 
 ## Current live developmental contract is derived
 
@@ -266,105 +267,127 @@ campaign["live"] = true
 
 is permitted.
 
-Current live state is a projection over preserved history.
+Two projections remain independent:
 
-At minimum:
+```text
+CURRENT_ADOPTION_STATE(C)
+
+requires:
+
+one or more valid ADOPTED events for exact C
+minus exact valid releases
+```
+
+and:
 
 ```text
 LIVE_DEVELOPMENTAL_CONTRACT(C, B)
 
 requires:
 
-valid exact campaign C
+CURRENT_ADOPTION_STATE(C) = ADOPTED
 +
-valid CURRENTLY_APPLICABLE revalidation R for exact basis B
-+
-valid ADOPTED event A bound to C + R + B
-+
-no valid ADOPTION_RELEASED event targeting A
+EFFECTIVE_APPLICABILITY(C, B) is current
 ```
 
 Therefore:
 
 ```text
-WORLD B2
-+
-R1 CURRENTLY_APPLICABLE @ B2
-+
-A1 ADOPTED against R1
-
-→ LIVE @ B2
+B2:
+campaign applicable
+A1 unreleased
+→ LIVE
 ```
 
-but:
+If world moves to B3 and applicability is not established:
 
 ```text
-WORLD MOVES TO B3
-
-R1:
-historical applicability at B2
-
 A1:
-historical adoption at B2
+STILL UNRELEASED ADOPTION
 
-CURRENT LIVE CONTRACT @ B3:
-NOT_ESTABLISHED
+effective applicability:
+NOT_CURRENT
+
+→ NOT LIVE / BLOCKED
 ```
 
-A later:
+If a later revalidation establishes current applicability at B3:
 
 ```text
-R2 CURRENTLY_APPLICABLE @ B3
+A1:
+STILL UNRELEASED
+
+effective applicability:
+CURRENT_BY_REVALIDATION
+
+→ LIVE AGAIN
 ```
 
-does not transfer A1.
+without inventing a second human declaration.
 
-Scar:
+This preserves:
 
 ```text
-NEW REVALIDATION
+CURRENT APPLICABILITY LOST
 !=
-RENEWED HUMAN INTENT
+HUMAN WITHDREW COMMITMENT
+```
+
+and:
+
+```text
+CURRENT APPLICABILITY RESTORED
+!=
+HUMAN RE-ADOPTED
 ```
 
 ## Explicit human gesture
 
-The v0 question is scoped only to an explicit human adoption by:
+The first tested actor is:
 
 ```text
 REED
 ```
 
-This contract does not claim a general identity-authentication system.
+This contract does not establish general human identity authentication.
 
-The apparatus must preserve enough raw adoption input / confirmation evidence to distinguish:
+The apparatus must preserve enough raw gesture provenance to distinguish:
 
 ```text
 EXPLICIT HUMAN ADOPTION GESTURE
 !=
-SYSTEM INFERENCE THAT REED PROBABLY STILL WANTS IT
+SYSTEM INFERENCE THAT REED PROBABLY WANTS IT
 ```
 
-No scheduler, model, seat, campaign object, or revalidation result may self-adopt.
+No scheduler, model, seat, campaign, revalidation result, projection, or UI order
+may self-adopt.
 
-## Coexisting live campaigns
-
-More than one exact campaign may be live simultaneously.
-
-Projection order, insertion order, event order, row order, and UI order must not create priority.
+The user statement authorizing:
 
 ```text
-C1 LIVE
+COCKPIT_OPERATING_SPACE_001
+```
+
+is sufficient human intent to attempt materialization once this membrane is
+mechanically qualified and exact current applicability is established.
+
+## Coexisting campaigns
+
+More than one exact campaign may be adopted/live simultaneously.
+
+Projection order, insertion order, event order, row order, and UI order must
+not create priority.
+
+```text
+C1 ADOPTED
 +
-C2 LIVE
+C2 ADOPTED
 
 !=
 C1 > C2
 !=
 C2 > C1
 ```
-
-Any future prioritization relation is outside this membrane.
 
 ## Claim ceiling
 
@@ -373,11 +396,18 @@ A passing implementation may establish only:
 ```text
 ONE EXACT CURRENTLY-APPLICABLE CAMPAIGN
 
-CAN BE EXPLICITLY ADOPTED BY REED
+CAN RECEIVE ONE EXPLICIT,
+DURABLE HUMAN ADOPTION DECLARATION
 
-AS ONE BASIS-RELATIVE LIVE DEVELOPMENTAL CONTRACT
+WHOSE UNRELEASED STATE PERSISTS
+INDEPENDENTLY OF LATER BASIS DRIFT,
 
-WITH DURABLE ADOPTION / RELEASE HISTORY
+WHILE CURRENT LIVE STATUS REMAINS
+THE PRODUCT OF:
+
+UNRELEASED ADOPTION
+×
+CURRENT EFFECTIVE APPLICABILITY
 
 WITHOUT CREATING:
 
@@ -396,8 +426,8 @@ OR EXECUTION
 This contract does not establish:
 
 ```text
-automatic campaign activation
-automatic re-adoption after revalidation
+automatic campaign activation without human adoption
+automatic applicability
 priority among live campaigns
 exclusive campaign ownership
 request selection
@@ -413,7 +443,7 @@ DOGFOOD_001 completion
 
 ## Experimental discipline
 
-The dogfood target remains unchanged:
+Dogfood target remains:
 
 ```text
 COCKPIT_OPERATING_SPACE_001
@@ -421,27 +451,7 @@ COS-R2
 HUMAN_READABLE_ASSIGNMENT_DISPLAY != QUEUE_SEMANTICS
 ```
 
-The intended causal sequence remains:
-
-```text
-DOGFOOD_001
-↓
-BLOCKED AT APPLICABILITY
-
-CAMPAIGN_BASIS_REVALIDATION_001
-↓
-QUALIFIED CURRENT APPLICABILITY
-
-CAMPAIGN_ADOPTION_001
-↓
-EXPLICIT CURRENT HUMAN INTENT
-
-DOGFOOD_001 RETRY
-↓
-SAME COS-R2 TARGET
-```
-
-No change to COS-R2 is authorized by this contract.
+Only the missing human-intent relation is repaired here.
 
 ## Continuity stack retained
 
@@ -452,8 +462,11 @@ HISTORY
 REVALIDATION
 → does it still apply here?
 
+APPLICABILITY PROJECTION
+→ is that warrant current here?
+
 ADOPTION
-→ does Reed still want it live here?
+→ has Reed declared this campaign adopted and not released it?
 
 SELECTION
 → what is Reed focusing on?
