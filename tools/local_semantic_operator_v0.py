@@ -494,6 +494,18 @@ class LocalSemanticHarness:
 
         prior = self._prior_outcome(request)
         if prior is not None:
+            current_seat_version, current_environment_basis = current_basis()
+            prior["current_basis_status"] = (
+                "CURRENT"
+                if current_seat_version == request["seat_basis_version"]
+                and current_environment_basis == request["environment_basis"]
+                else "STALE"
+            )
+            prior["accepted"] = bool(
+                prior.get("proposal_valid")
+                and prior.get("proposal") is not None
+                and prior["current_basis_status"] == "CURRENT"
+            )
             return prior
 
         authority = _load_authority()
