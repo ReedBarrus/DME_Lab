@@ -29,61 +29,160 @@
       "additionalProperties": false,
       "properties": {
         "object_id": {"const": "PROMOTION_PROTOCOL_v0"},
-        "repository": {"type":"string","minLength":1},
-        "path": {"type":"string","minLength":1},
-        "git_blob_sha": {"type":"string","pattern":"^[0-9a-f]{40}$"},
-        "carrier_branch": {"type":"string","minLength":1},
-        "pull_request": {"type":"integer","minimum":1}
+        "repository": {"const": "ReedBarrus/DME_Lab"},
+        "path": {"const": "docs/operations/PROMOTION_PROTOCOL_v0.md"},
+        "git_blob_sha": {"const": "49fbe7c792511b6c7104a07aecba3ced84108ff8"},
+        "carrier_branch": {"const": "promotion-protocol-v0"},
+        "pull_request": {"const": 30}
       }
     },
     "precondition": {
-      "type":"object",
-      "required":["required","basis","must_be_reverified_immediately_before_execution"],
-      "additionalProperties":false,
-      "properties":{
-        "required":{"const":"NO_DURABLE_PROMOTION_PROTOCOL_EXISTS"},
-        "basis":{"type":"object"},
-        "must_be_reverified_immediately_before_execution":{"const":true}
+      "type": "object",
+      "required": ["required","basis","must_be_reverified_immediately_before_execution"],
+      "additionalProperties": false,
+      "properties": {
+        "required": {"const": "NO_DURABLE_PROMOTION_PROTOCOL_EXISTS"},
+        "basis": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["main_head_observed","protocol_path_present_on_main_at_observed_head"],
+          "properties": {
+            "main_head_observed": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+            "protocol_path_present_on_main_at_observed_head": {"const": false}
+          }
+        },
+        "must_be_reverified_immediately_before_execution": {"const": true}
       }
     },
-    "review": {"type":"object"},
-    "authority": {"type":"object"},
-    "preflight": {"type":"object"},
-    "execution": {"type":"object"},
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required","question","must_bind_exact_protocol_identity","status","review_ref"],
+      "properties": {
+        "required": {"const": true},
+        "question": {"type": "string", "minLength": 1},
+        "must_bind_exact_protocol_identity": {"const": true},
+        "status": {"const": "PENDING"},
+        "review_ref": {"type": "null"}
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required","must_bind_exact_protocol_identity","required_schema","status","authorization_ref"],
+      "properties": {
+        "required": {"const": "EXPLICIT_HUMAN_BOOTSTRAP_ADOPTION_OF_EXACT_OBJECT"},
+        "must_bind_exact_protocol_identity": {"const": true},
+        "required_schema": {"const": "bootstrap_adoption_authorization_v0"},
+        "status": {"const": "NONE"},
+        "authorization_ref": {"type": "null"}
+      }
+    },
+    "preflight": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required_checks","required_schema","status","preflight_ref"],
+      "properties": {
+        "required_checks": {
+          "const": [
+            "protocol object identity unchanged from reviewed identity",
+            "bootstrap precondition still true",
+            "authorization binds exact reviewed object",
+            "target carrier and exact repository consequence unchanged"
+          ]
+        },
+        "required_schema": {"const": "bootstrap_adoption_preflight_v0"},
+        "status": {"const": "NOT_RUN"},
+        "preflight_ref": {"type": "null"}
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorized_effect_only","forbidden_effects","requires_preflight_result","status"],
+      "properties": {
+        "authorized_effect_only": {
+          "const": [
+            "adopt exact PROMOTION_PROTOCOL_v0 as durable operating procedure",
+            "record resulting durable carrier",
+            "write bootstrap adoption receipt",
+            "set bootstrap_consumed=true only after successful adoption"
+          ]
+        },
+        "forbidden_effects": {
+          "const": [
+            "claim PROMOTION_PROTOCOL_v0 governed its own adoption",
+            "ratify PROMOTION_BOUNDARY_001",
+            "execute any ordinary promotion chain",
+            "infer scientific standing",
+            "create a permanent bootstrap bypass"
+          ]
+        },
+        "requires_preflight_result": {"const": "PASS"},
+        "status": {"const": "NOT_EXECUTED"}
+      }
+    },
     "postcondition_on_success": {
-      "type":"object",
-      "required":["durable_promotion_protocol_exists","bootstrap_adoption_eligible","bootstrap_consumed","future_rule"],
-      "additionalProperties":false,
-      "properties":{
-        "durable_promotion_protocol_exists":{"const":true},
-        "bootstrap_adoption_eligible":{"const":false},
-        "bootstrap_consumed":{"const":true},
-        "future_rule":{"type":"string","minLength":1}
+      "type": "object",
+      "required": ["durable_promotion_protocol_exists","bootstrap_adoption_eligible","bootstrap_consumed","future_rule"],
+      "additionalProperties": false,
+      "properties": {
+        "durable_promotion_protocol_exists": {"const": true},
+        "bootstrap_adoption_eligible": {"const": false},
+        "bootstrap_consumed": {"const": true},
+        "future_rule": {"type": "string","minLength":1}
       }
     },
     "failure_semantics": {
-      "type":"object",
-      "required":["on_preflight_failure","on_object_drift","on_precondition_false","on_execution_failure"],
-      "additionalProperties":false,
-      "properties":{
-        "on_preflight_failure":{"$ref":"#/$defs/failure"},
-        "on_object_drift":{"$ref":"#/$defs/failure"},
-        "on_precondition_false":{"$ref":"#/$defs/failure"},
-        "on_execution_failure":{"$ref":"#/$defs/failure"}
+      "type": "object",
+      "required": ["on_preflight_failure","on_object_drift","on_precondition_false","on_execution_failure"],
+      "additionalProperties": false,
+      "properties": {
+        "on_preflight_failure": {"$ref":"#/$defs/failure"},
+        "on_object_drift": {"$ref":"#/$defs/failure"},
+        "on_precondition_false": {"$ref":"#/$defs/failure"},
+        "on_execution_failure": {"$ref":"#/$defs/failure"}
       }
     },
-    "nonclaims":{"type":"array","minItems":1,"items":{"type":"string","minLength":1}},
-    "current_state":{"type":"object"}
+    "nonclaims": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string","minLength":1}
+    },
+    "current_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bootstrap_object",
+        "exact_protocol",
+        "review",
+        "authority",
+        "preflight",
+        "execution",
+        "adoption",
+        "bootstrap_consumed"
+      ],
+      "properties": {
+        "bootstrap_object": {"const": "MATERIALIZED"},
+        "exact_protocol": {"const": "PINNED"},
+        "review": {"const": "PENDING"},
+        "authority": {"const": "NONE"},
+        "preflight": {"const": "NOT_RUN"},
+        "execution": {"const": "NO"},
+        "adoption": {"const": "NO"},
+        "bootstrap_consumed": {"const": false}
+      }
+    }
   },
-  "$defs":{
-    "failure":{
-      "type":"object",
-      "required":["protocol_adopted","bootstrap_consumed","failure_receipt_required"],
-      "additionalProperties":false,
-      "properties":{
-        "protocol_adopted":{"const":false},
-        "bootstrap_consumed":{"const":false},
-        "failure_receipt_required":{"const":true}
+  "$defs": {
+    "failure": {
+      "type": "object",
+      "required": ["protocol_adopted","bootstrap_consumed","failure_receipt_required"],
+      "additionalProperties": false,
+      "properties": {
+        "protocol_adopted": {"const": false},
+        "bootstrap_consumed": {"const": false},
+        "failure_receipt_required": {"const": true}
       }
     }
   }
