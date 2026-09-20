@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/local_semantic_request_v0.schema.json",
+  "title": "Local Semantic Request v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "request_id",
+    "seat_id",
+    "task_type",
+    "seat_basis_version",
+    "environment_basis",
+    "evidence_refs",
+    "input",
+    "authority_ref"
+  ],
+  "properties": {
+    "schema": {"const": "local_semantic_request_v0"},
+    "request_id": {"type": "string", "minLength": 1},
+    "seat_id": {"const": "LABBOIB"},
+    "task_type": {"const": "TRIAGE_IMPLEMENTATION_RESULT"},
+    "seat_basis_version": {"type": "integer", "minimum": 0},
+    "environment_basis": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "evidence_refs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "input": {
+      "type": "object",
+      "required": [
+        "realization",
+        "applicability",
+        "mechanical_checks",
+        "scope_status"
+      ],
+      "properties": {
+        "realization": {"type": "object"},
+        "applicability": {"type": "object"},
+        "mechanical_checks": {"type": "array"},
+        "scope_status": {"type": "string"}
+      }
+    },
+    "authority_ref": {"type": "string", "minLength": 1}
+  }
+}
