@@ -1,0 +1,48 @@
+name: LIVE_RUNTIME_PROJECTION_001
+
+on:
+  pull_request:
+    paths:
+      - "src/cockpit/live_runtime_projection.py"
+      - "src/cockpit/observer/app.mjs"
+      - "src/cockpit/observer/index.html"
+      - "src/cockpit/observer/runtime_live.mjs"
+      - "src/cockpit/observer/styles.css"
+      - "tests/runtime/test_live_runtime_projection.py"
+      - "docs/candidates/live_runtime_projection_v0/**"
+      - ".github/workflows/live-runtime-projection-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Compile runtime sidecar
+        run: python -m py_compile src/cockpit/live_runtime_projection.py tests/runtime/test_live_runtime_projection.py
+      - name: Check observer modules
+        run: |
+          node --check src/cockpit/observer/app.mjs
+          node --check src/cockpit/observer/runtime_live.mjs
+      - name: Live runtime pressure
+        run: python -m unittest tests.runtime.test_live_runtime_projection -v
+      - name: Existing Cockpit observer regression
+        run: node --test tests/cockpit/test_observer.mjs
+      - name: Preparation regression
+        run: python -m unittest tests.runtime.test_preparation -v
+      - name: Selection regression
+        run: python -m unittest tests.runtime.test_envelope_selection -v
+      - name: Campaign regression
+        run: python -m unittest tests.runtime.test_development_campaign -v
