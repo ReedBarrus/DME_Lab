@@ -1,0 +1,59 @@
+name: WAKE_SOURCE_001
+
+on:
+  pull_request:
+    paths:
+      - "tools/wake_source_v0.py"
+      - "tools/bounded_reentry_v0.py"
+      - "schemas/manual_bell_v0.schema.json"
+      - "tests/runtime/test_wake_source.py"
+      - "docs/candidates/wake_source_v0/**"
+      - ".github/workflows/wake-source-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile
+        run: |
+          python -m py_compile \
+            tools/wake_source_v0.py \
+            tools/bounded_reentry_v0.py \
+            tests/runtime/test_wake_source.py
+
+      - name: Wake source pressure
+        run: python -m unittest tests.runtime.test_wake_source -v
+
+      - name: Preparation assignment regression
+        run: python -m unittest tests.runtime.test_preparation_assignment -v
+
+      - name: Bounded reentry regression
+        run: python -m unittest tests.runtime.test_bounded_reentry -v
+
+      - name: Live runtime regression
+        run: python -m unittest tests.runtime.test_live_runtime_projection -v
+
+      - name: Preparation regression
+        run: python -m unittest tests.runtime.test_preparation -v
+
+      - name: Selection regression
+        run: python -m unittest tests.runtime.test_envelope_selection -v
+
+      - name: Campaign regression
+        run: python -m unittest tests.runtime.test_development_campaign -v
+
+      - name: Goblin pool regression
+        run: python -m unittest tests.runtime.test_goblin_pool -v
