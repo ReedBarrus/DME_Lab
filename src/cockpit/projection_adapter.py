@@ -1541,19 +1541,6 @@ def build_projection(
         check_time=runtime_time,
         diagnostics=diagnostics,
     )
-    missing_required = sum(
-        1 for item in source_surfaces if item["status"] == "missing"
-    )
-    has_operational_error = any(
-        item["severity"] == "error" for item in diagnostics
-    )
-    if missing_required == len(REQUIRED_SOURCE_PATHS):
-        projection_status = "failed"
-    elif missing_required or has_operational_error:
-        projection_status = "partial"
-    else:
-        projection_status = "complete"
-
     try:
         action_surfaces = build_action_surfaces(root, source_commit)
     except ActionSurfaceError as exc:
@@ -1567,6 +1554,19 @@ def build_projection(
             message=str(exc),
             severity="error",
         )
+
+    missing_required = sum(
+        1 for item in source_surfaces if item["status"] == "missing"
+    )
+    has_operational_error = any(
+        item["severity"] == "error" for item in diagnostics
+    )
+    if missing_required == len(REQUIRED_SOURCE_PATHS):
+        projection_status = "failed"
+    elif missing_required or has_operational_error:
+        projection_status = "partial"
+    else:
+        projection_status = "complete"
 
     repository_state = {
         "projection_classification": "derived_read_only",
