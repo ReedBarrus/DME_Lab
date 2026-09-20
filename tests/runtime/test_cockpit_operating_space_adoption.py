@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 import tempfile
 import unittest
@@ -176,6 +177,79 @@ class CockpitOperatingSpaceAdoptionDogfood(unittest.TestCase):
                 CURRENT_BY_REVALIDATION,
             )
 
+            # The adoption declaration persists after repository movement, but
+            # LIVE must be re-earned against the exact current head. The final
+            # workflow supplies the PR head SHA explicitly so we do not confuse
+            # a pull-request merge ref with the candidate branch identity.
+            current_git_basis = os.environ.get(
+                "DME_CURRENT_GIT_BASIS",
+                ADMISSION_GIT_BASIS,
+            )
+            self.assertRegex(current_git_basis, r"^[0-9a-f]{40}$")
+            adoption_history_before = list(
+                adoption_store.history(campaign["campaign_id"])
+            )
+
+            current_basis = [
+                "git:" + current_git_basis,
+                qualification_ref,
+            ]
+            if current_git_basis != ADMISSION_GIT_BASIS:
+                current_revalidation = build_revalidation(
+                    {
+                        "schema": "campaign_basis_revalidation_request_v0",
+                        "revalidation_id": (
+                            "COS-REVALIDATION-CURRENT-"
+                            + current_git_basis[:12]
+                        ),
+                        "campaign_bytes": (
+                            json.dumps(
+                                campaign,
+                                sort_keys=True,
+                                separators=(",", ":"),
+                                ensure_ascii=False,
+                            )
+                            + "\n"
+                        ),
+                        "candidate_current_basis_refs": current_basis,
+                        "raw_evidence": raw_evidence,
+                        "adjudication_ref": (
+                            "dogfood:COCKPIT_OPERATING_SPACE_001:"
+                            "CURRENT_LIVE_PROJECTION"
+                        ),
+                    }
+                )
+                self.assertEqual(
+                    current_revalidation["disposition"],
+                    CURRENTLY_APPLICABLE,
+                )
+                revalidation_store.append(
+                    current_revalidation,
+                    campaign=campaign,
+                )
+
+            current_live = adoption_store.live_projection(
+                campaign,
+                current_basis_refs=current_basis,
+                applicability_projector=projector,
+            )
+            self.assertEqual(
+                current_live["current_adoption_state"],
+                CURRENT_ADOPTED,
+            )
+            self.assertEqual(
+                current_live["live_developmental_contract"],
+                LIVE,
+            )
+            self.assertEqual(
+                current_live["effective_applicability"],
+                CURRENT_BY_REVALIDATION,
+            )
+            self.assertEqual(
+                adoption_store.history(campaign["campaign_id"]),
+                adoption_history_before,
+            )
+
             for field in (
                 "selection_effect",
                 "assignment_effect",
@@ -205,6 +279,15 @@ class CockpitOperatingSpaceAdoptionDogfood(unittest.TestCase):
             print(
                 "DOGFOOD_LIVE_STATE="
                 + live["live_developmental_contract"]
+            )
+            print("DOGFOOD_CURRENT_GIT_BASIS=" + current_git_basis)
+            print(
+                "DOGFOOD_CURRENT_LIVE_STATE="
+                + current_live["live_developmental_contract"]
+            )
+            print(
+                "DOGFOOD_ADOPTION_HISTORY_COUNT="
+                + str(len(adoption_history_before))
             )
 
 
