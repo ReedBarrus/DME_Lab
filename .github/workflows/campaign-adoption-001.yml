@@ -1,0 +1,58 @@
+name: CAMPAIGN_ADOPTION_001
+
+on:
+  pull_request:
+    paths:
+      - "tools/campaign_adoption_v0.py"
+      - "tests/runtime/test_campaign_adoption.py"
+      - "docs/candidates/campaign_adoption_v0/**"
+      - ".github/workflows/campaign-adoption-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile adoption membrane
+        run: >-
+          python -m py_compile
+          tools/campaign_adoption_v0.py
+          tests/runtime/test_campaign_adoption.py
+
+      - name: Campaign adoption pressure
+        run: python -m unittest tests.runtime.test_campaign_adoption -v
+
+      - name: Campaign applicability projection regression
+        run: python -m unittest tests.runtime.test_campaign_applicability_projection -v
+
+      - name: Campaign basis revalidation regression
+        run: python -m unittest tests.runtime.test_campaign_basis_revalidation -v
+
+      - name: Envelope selection regression
+        run: python -m unittest tests.runtime.test_envelope_selection -v
+
+      - name: Preparation regression
+        run: python -m unittest tests.runtime.test_preparation -v
+
+      - name: Preparation assignment regression
+        run: python -m unittest tests.runtime.test_preparation_assignment -v
+
+      - name: Wake source regression
+        run: python -m unittest tests.runtime.test_wake_source -v
+
+      - name: Bounded reentry regression
+        run: python -m unittest tests.runtime.test_bounded_reentry -v
+
+      - name: Cockpit control adapter regression
+        run: python -m unittest tests.runtime.test_cockpit_control_adapter -v
