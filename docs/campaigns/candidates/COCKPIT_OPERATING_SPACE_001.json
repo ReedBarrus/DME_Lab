@@ -1,0 +1,77 @@
+{
+  "schema": "development_campaign_v0",
+  "campaign_id": "COCKPIT_OPERATING_SPACE_001",
+  "title": "Cockpit Operating Space Horizon",
+  "basis_refs": [
+    "git:2ee939453651da741769ea07210fcdeaec9da971",
+    "qualification:docs/candidates/wake_source_v0/QUALIFICATION_001.md@ee721faebb5f2a3e6780d20b7a558043e164a5b3"
+  ],
+  "objective": "Make the already-earned causal handles ergonomic enough for Reed to steer real DME development through the Cockpit without making the Cockpit a direct controller or source of truth.",
+  "claim_ceiling": "This horizon may only advance read-oriented and typed-control Cockpit ergonomics over already-earned selection, assignment, bell, authority, incident, and runtime relations. It does not establish scheduler authority, direct controller mutation, or new consequence authority.",
+  "target_objects": [
+    "COCKPIT_SELECTION_CONTROL",
+    "COCKPIT_ASSIGNMENT_CONTROL",
+    "COCKPIT_MANUAL_BELL_CONTROL",
+    "COCKPIT_INCIDENT_SURFACE",
+    "COCKPIT_EXTERNAL_STOP_SURFACE"
+  ],
+  "unresolved_relations": [
+    {
+      "relation_id": "COS-R1",
+      "statement": "COCKPIT_INTERACTION != DIRECT_CONTROLLER_MUTATION"
+    },
+    {
+      "relation_id": "COS-R2",
+      "statement": "HUMAN_READABLE_ASSIGNMENT_DISPLAY != QUEUE_SEMANTICS"
+    },
+    {
+      "relation_id": "COS-R3",
+      "statement": "INCIDENT_VISIBLE != INCIDENT_ADJUDICATED"
+    },
+    {
+      "relation_id": "COS-R4",
+      "statement": "MASTER_STOP_VISIBLE != MASTER_STOP_CONTROLLED_BY_COCKPIT_PROCESS"
+    },
+    {
+      "relation_id": "COS-R5",
+      "statement": "RUNTIME_CAPABILITY_SHOWN != RUNTIME_CAPABILITY_GRANTED"
+    }
+  ],
+  "pressure_points": [
+    "Pressure typed Cockpit actions so each action previews the exact durable object and declared non-effects before creation.",
+    "Pressure assignment and horizon presentation so screen position and list order cannot silently become queue or priority semantics.",
+    "Pressure incident and stop controls so visibility remains separate from adjudication and the emergency stop remains externally controlled."
+  ],
+  "dependency_edges": [],
+  "proposal_allowance": {
+    "max_candidates": 5,
+    "max_model_calls": 0,
+    "allowed_resource_classes": [
+      "DETERMINISTIC"
+    ],
+    "external_effects": "NONE",
+    "authority_effect": "NONE"
+  },
+  "completion_criteria": [
+    "Reed can inspect current horizons, selected work, assignments, bells, runtime state, authority posture, receipts, and incidents from one operating surface without the projection becoming source truth.",
+    "At least one real DME development campaign can be steered through typed selection, assignment, and manual-bell controls with exact previewed effects.",
+    "No Cockpit interaction silently creates priority, scheduler authority, direct controller mutation, or standing."
+  ],
+  "stop_conditions": [
+    "A proposed Cockpit action bypasses the existing durable object boundary.",
+    "The UI requires direct mutation of controller internals to function.",
+    "Display order or convenience behavior silently becomes priority or queue semantics."
+  ],
+  "explicit_non_authorizations": [
+    "NO_DIRECT_CONTROLLER_MUTATION",
+    "NO_AUTOMATIC_PRIORITY",
+    "NO_AUTOMATIC_ASSIGNMENT",
+    "NO_AUTOMATIC_WAKE",
+    "NO_SCHEDULER_AUTHORITY",
+    "NO_STANDING_AUTHORITY"
+  ],
+  "status": "CANDIDATE",
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "adoption_effect": "NONE"
+}
