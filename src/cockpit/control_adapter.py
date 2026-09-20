@@ -243,7 +243,11 @@ class CockpitControlAdapter:
             raise CockpitControlError(
                 f"assignment {assignment_id!r} is not exactly one current allocation"
             )
-        return matches[0]
+        return {
+            key: value
+            for key, value in matches[0].items()
+            if key != "_seq"
+        }
 
     def _git_basis(self, basis_refs: list[str]) -> str:
         git_refs = [
