@@ -1581,3 +1581,87 @@ body.instrument-active[data-instrument-projection="TOPOLOGY"] #view-navigation-r
     grid-template-columns: 1fr;
   }
 }
+
+/* COCKPIT_PERCEPTUAL_INSTRUMENT_001 — geometric consequence map */
+.instrument-scale {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 18px;
+  border-bottom: 1px solid var(--border);
+}
+.instrument-scale-button {
+  padding: 5px 7px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font: 10px "Cascadia Code", Consolas, monospace;
+}
+.instrument-scale-button[data-active="true"] {
+  border-color: var(--selected);
+  color: var(--selected);
+  background: var(--panel-raised);
+}
+.instrument-scale > .instrument-law {
+  margin-left: auto;
+}
+.instrument-map-scroll {
+  overflow: auto;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px),
+    #0a0e12;
+  background-size: 32px 32px;
+}
+.instrument-map {
+  position: relative;
+  min-width: 1080px;
+  min-height: 420px;
+}
+.instrument-map-lane-label {
+  position: absolute;
+  top: 18px;
+  width: 188px;
+  color: var(--quiet);
+  font: 700 9px "Cascadia Code", Consolas, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+.instrument-map .instrument-node {
+  position: absolute;
+  width: 188px;
+  min-height: 76px;
+  margin: 0;
+  z-index: 3;
+}
+.instrument-graph-edges {
+  position: absolute;
+  inset: 0;
+  width: 1080px;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+}
+.instrument-graph-edge {
+  stroke: #55616d;
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+}
+.instrument-graph-edge.is-selected {
+  stroke: var(--selected);
+  stroke-width: 2;
+}
+.instrument-graph-edges marker path {
+  fill: #6d7782;
+}
+.instrument-map-empty {
+  position: absolute;
+  left: 35px;
+  top: 74px;
+  color: var(--quiet);
+  font: 12px "Cascadia Code", Consolas, monospace;
+}
