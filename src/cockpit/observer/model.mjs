@@ -4,6 +4,7 @@ const KNOWN_ARRAY_SURFACES = [
   'constraints',
   'evidence_refs',
   'projection_documents',
+  'action_surfaces',
   'projection_diagnostics',
 ];
 
@@ -22,6 +23,7 @@ export const VIEW_NAMES = Object.freeze([
   'CONSTRAINTS',
   'LINEAGE',
   'HORIZON',
+  'ACTIONS',
   'SOURCE',
 ]);
 
@@ -272,6 +274,15 @@ export function buildObserverModel(rawModel) {
     document,
     diagnostics: objectDiagnostics(diagnostics, document, ['object_id', 'document_id']),
   }));
+  const actionSurfaces = surfaceAvailability.action_surfaces
+    ? rawModel.action_surfaces
+    : [];
+  const actionOccurrences = actionSurfaces.map((surface, index) => ({
+    key: normalizedObjectKey('action', { id: surface?.process_id }, index),
+    index,
+    surface,
+    diagnostics: objectDiagnostics(diagnostics, surface, ['object_id', 'process_id']),
+  }));
 
   return {
     rawModel,
@@ -283,6 +294,7 @@ export function buildObserverModel(rawModel) {
     evidenceRefs,
     evidenceOccurrences,
     projectionDocumentOccurrences,
+    actionOccurrences,
     diagnostics: {
       available: surfaceAvailability.projection_diagnostics,
       items: diagnostics,
@@ -292,6 +304,7 @@ export function buildObserverModel(rawModel) {
     selectedConstraintKey: constraintOccurrences[0]?.key ?? null,
     selectedEvidenceKey: evidenceOccurrences[0]?.key ?? null,
     selectedProjectionDocumentKey: projectionDocumentOccurrences[0]?.key ?? null,
+    selectedActionKey: actionOccurrences[0]?.key ?? null,
     lastTransition: {
       type: TRANSITION_TYPES.VIEW,
       from: null,
@@ -429,6 +442,24 @@ export function selectProjectionDocument(viewModel, key) {
 export function selectedProjectionDocument(viewModel) {
   return viewModel.projectionDocumentOccurrences.find(
     (occurrence) => occurrence.key === viewModel.selectedProjectionDocumentKey,
+  ) ?? null;
+}
+
+export function selectAction(viewModel, key) {
+  if (!viewModel.actionOccurrences.some((occurrence) => occurrence.key === key)) {
+    return viewModel;
+  }
+  return transition(viewModel, { selectedActionKey: key }, {
+    type: TRANSITION_TYPES.SELECTION,
+    from: viewModel.selectedActionKey,
+    to: key,
+    coordinate: 'action_surface',
+  });
+}
+
+export function selectedAction(viewModel) {
+  return viewModel.actionOccurrences.find(
+    (occurrence) => occurrence.key === viewModel.selectedActionKey,
   ) ?? null;
 }
 
