@@ -81,7 +81,7 @@
     "preflight": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["required_checks","required_schema","status","preflight_ref"],
+      "required": ["required_checks","required_schema","implementation_path","implementation_git_blob_sha","status","preflight_ref"],
       "properties": {
         "required_checks": {
           "const": [
@@ -92,6 +92,8 @@
           ]
         },
         "required_schema": {"const": "bootstrap_adoption_preflight_v0"},
+        "implementation_path": {"const": "tools/bootstrap_adoption_preflight_v0.py"},
+        "implementation_git_blob_sha": {"const": "d773670948fb19ed43eeaaddb4abe8eb0c73de6b"},
         "status": {"const": "NOT_RUN"},
         "preflight_ref": {"type": "null"}
       }
