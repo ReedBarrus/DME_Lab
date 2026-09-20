@@ -154,6 +154,12 @@ def reconstruct_seat_basis(
             "LABBOIB durable artifact identity drifted from the authorized binding basis"
         )
 
+    observed_authority_blob = _blob_sha(repo, commit, AUTHORITY_PATH)
+    if observed_authority_blob != AUTHORITY_BLOB:
+        raise LabboibBindingError(
+            "LABBOIB controller authority object drifted from the authorized binding basis"
+        )
+
     manifest = _read_json(repo, commit, MANIFEST_PATH)
     cursor = _read_json(repo, commit, CURSOR_PATH)
     working_state = _read_json(repo, commit, WORKING_STATE_PATH)
@@ -389,16 +395,14 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "bind":
         result = bind_labboib(pool, args.workspace, args.seat_source_ref)
+    elif args.command == "wake":
+        result = pool.start_wake(SEAT_ID, args.wake_id)
+    elif args.command == "read":
+        result = execute_read(pool, args.wake_id, args.invocation_id)
+    elif args.command == "test":
+        result = execute_declared_test(pool, args.wake_id, args.invocation_id)
     else:
-        bind_labboib(pool, args.workspace, args.seat_source_ref)
-        if args.command == "wake":
-            result = pool.start_wake(SEAT_ID, args.wake_id)
-        elif args.command == "read":
-            result = execute_read(pool, args.wake_id, args.invocation_id)
-        elif args.command == "test":
-            result = execute_declared_test(pool, args.wake_id, args.invocation_id)
-        else:
-            raise AssertionError(args.command)
+        raise AssertionError(args.command)
 
     print(json.dumps(result, indent=2, sort_keys=True))
     return 0
