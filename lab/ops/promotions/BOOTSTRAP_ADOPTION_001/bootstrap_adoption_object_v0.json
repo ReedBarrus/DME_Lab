@@ -6,7 +6,7 @@
     "object_id": "PROMOTION_PROTOCOL_v0",
     "repository": "ReedBarrus/DME_Lab",
     "path": "docs/operations/PROMOTION_PROTOCOL_v0.md",
-    "git_blob_sha": "7b2f04aa4f683c069a40977905b298837a5f1d75",
+    "git_blob_sha": "49fbe7c792511b6c7104a07aecba3ced84108ff8",
     "carrier_branch": "promotion-protocol-v0",
     "pull_request": 30
   },
@@ -22,12 +22,15 @@
     "required": true,
     "question": "Does this exact PROMOTION_PROTOCOL_v0 object satisfy the bounded burden for first durable adoption as the lab promotion operating procedure?",
     "must_bind_exact_protocol_identity": true,
-    "status": "PENDING"
+    "status": "PENDING",
+    "review_ref": null
   },
   "authority": {
     "required": "EXPLICIT_HUMAN_BOOTSTRAP_ADOPTION_OF_EXACT_OBJECT",
     "must_bind_exact_protocol_identity": true,
-    "status": "NONE"
+    "status": "NONE",
+    "required_schema": "bootstrap_adoption_authorization_v0",
+    "authorization_ref": null
   },
   "preflight": {
     "required_checks": [
@@ -36,7 +39,9 @@
       "authorization binds exact reviewed object",
       "target carrier and exact repository consequence unchanged"
     ],
-    "status": "NOT_RUN"
+    "status": "NOT_RUN",
+    "required_schema": "bootstrap_adoption_preflight_v0",
+    "preflight_ref": null
   },
   "execution": {
     "authorized_effect_only": [
@@ -52,7 +57,8 @@
       "infer scientific standing",
       "create a permanent bootstrap bypass"
     ],
-    "status": "NOT_EXECUTED"
+    "status": "NOT_EXECUTED",
+    "requires_preflight_result": "PASS"
   },
   "postcondition_on_success": {
     "durable_promotion_protocol_exists": true,
