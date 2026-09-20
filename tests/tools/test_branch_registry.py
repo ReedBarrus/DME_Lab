@@ -9,6 +9,7 @@ MODULE_PATH = Path(__file__).resolve().parents[2] / "tools" / "branch_registry.p
 SPEC = importlib.util.spec_from_file_location("branch_registry", MODULE_PATH)
 assert SPEC is not None and SPEC.loader is not None
 branch_registry = importlib.util.module_from_spec(SPEC)
+sys.modules["branch_registry"] = branch_registry
 SPEC.loader.exec_module(branch_registry)
 
 BranchInfo = branch_registry.BranchInfo
