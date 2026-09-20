@@ -1,0 +1,34 @@
+name: PREPARATION_001
+
+on:
+  pull_request:
+    paths:
+      - "tools/preparation_v0.py"
+      - "tests/runtime/test_preparation.py"
+      - "schemas/preparation_receipt_v0.schema.json"
+      - "docs/candidates/preparation_v0/**"
+      - ".github/workflows/preparation-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile
+        run: python -m py_compile tools/preparation_v0.py tests/runtime/test_preparation.py
+      - name: Preparation pressure
+        run: python -m unittest tests.runtime.test_preparation -v
+      - name: Selection regression
+        run: python -m unittest tests.runtime.test_envelope_selection -v
+      - name: Campaign regression
+        run: python -m unittest tests.runtime.test_development_campaign -v
