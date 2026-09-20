@@ -410,7 +410,7 @@ class CockpitControlAdapterPressure(unittest.TestCase):
         self.assertEqual(result["verb"], "RING")
         self.assertEqual(self.file_sha(self.controller_db), controller_before)
         self.assertEqual(
-            self.pool.get_seat("MAYA")["occupancy_state"],
+            self.pool.seat_snapshot("MAYA")["occupancy_state"],
             "AVAILABLE",
         )
         self.assertEqual(len(self.reentry_store.events("CCA-W-C4-RING")), 0)
@@ -579,7 +579,7 @@ class CockpitControlAdapterPressure(unittest.TestCase):
         )
 
         self.assertEqual(
-            self.pool.get_seat("MAYA")["occupancy_state"],
+            self.pool.seat_snapshot("MAYA")["occupancy_state"],
             "AVAILABLE",
         )
         self.assertEqual(
@@ -590,7 +590,7 @@ class CockpitControlAdapterPressure(unittest.TestCase):
         reentry = self.runner.run_once(opportunity_id)
         self.assertEqual(reentry["work_units_performed"], 1)
         self.assertEqual(
-            self.pool.get_seat("MAYA")["occupancy_state"],
+            self.pool.seat_snapshot("MAYA")["occupancy_state"],
             "AVAILABLE",
         )
         receipt = self.prep_receipt(reentry["preparation_receipt_id"])
