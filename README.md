@@ -93,8 +93,9 @@ DME_Lab is **source-available for noncommercial use** under the
 [PolyForm Noncommercial License 1.0.0](LICENSE.md), except where a file carries
 a separate license or notice.
 
-Commercial use of covered DME_Lab / ATLAS implementation code requires a
-separate license from the repository owner.
+Commercial use of covered DME_Lab software, including any ATLAS implementation
+distributed under these terms, requires a separate license from the repository
+owner.
 
 The project is intentionally open to study of its public research, techniques,
 and methods. Independent implementation of ideas is distinct from copying,
