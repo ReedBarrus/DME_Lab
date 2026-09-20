@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/causal_applicability_judgment_v0.schema.json",
+  "title": "Causal Applicability Judgment v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "judgment_id",
+    "realization_id",
+    "realization_sha256",
+    "realization_basis",
+    "comparison_basis",
+    "rule",
+    "result",
+    "authority_effect",
+    "admission_effect"
+  ],
+  "properties": {
+    "schema": {"const": "causal_applicability_judgment_v0"},
+    "judgment_id": {"type": "string", "minLength": 1},
+    "realization_id": {"type": "string", "minLength": 1},
+    "realization_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "realization_basis": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "comparison_basis": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "rule": {"const": "EXACT_GIT_HEAD_EQUALITY_v0"},
+    "result": {"enum": ["APPLICABLE", "STALE"]},
+    "authority_effect": {"const": "NONE"},
+    "admission_effect": {"const": "NONE"}
+  }
+}
