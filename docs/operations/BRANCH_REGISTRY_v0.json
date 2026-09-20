@@ -1,0 +1,123 @@
+{
+  "schema_version": "branch_registry_v0",
+  "projection_kind": "GIT_REF_RETENTION_REGISTRY",
+  "warning": "Branch registration is repository hygiene, not scientific standing or execution authority.",
+  "distinctions": [
+    "DURABLE_REGISTERED_REF != TRANSIENT_WORK_REF",
+    "DURABLE_REGISTERED_REF != TRAILING_CACHE_REF",
+    "COMMIT_HISTORY != BRANCH_NAME",
+    "EVIDENCE_RETENTION != REF_SPRAWL"
+  ],
+  "durable_registered_refs": [
+    {
+      "name": "main",
+      "class": "PRIMARY",
+      "head": "ce205ca6e6052e5a08d227d7f663f4a7cbd88c94",
+      "reason": "canonical integration branch"
+    },
+    {
+      "name": "concordance-cockpit-edge-source-standing-held-out-contract-v0",
+      "class": "ACTIVE_FRONTIER",
+      "head": "0fefefe5bf530c25415724d72146236d03bef158",
+      "reason": "current Concordance held-out contract frontier; fresh-claim rematerialization retained"
+    },
+    {
+      "name": "dme-warranted-delta-001-apparatus-v0",
+      "class": "ACTIVE_FRONTIER",
+      "head": "f73fbdb3fcffb511108a83fa2f0b6518177c7300",
+      "reason": "current warranted-delta apparatus frontier"
+    },
+    {
+      "name": "handling-001-runtime-evidence-harness",
+      "class": "ACTIVE_FRONTIER",
+      "head": "7e9ec428301e87faa6be506da211bcb4234b3fc8",
+      "reason": "current HANDLING lineage tip containing prior handling branches"
+    },
+    {
+      "name": "continuity-delta-v0",
+      "class": "OPEN_PR_DURABLE",
+      "head": "f28187306d3282a66d95b9d85e764f75751e812d",
+      "reason": "open PR #1 head; unique divergent continuity work"
+    },
+    {
+      "name": "atlas-route-policy-candidate-admissibility-v0",
+      "class": "ACTIVE_FRONTIER",
+      "head": "f6f6dabab2149ae3aa2e849fee8d339edc7d08c4",
+      "reason": "current Atlas policy/admissibility lineage tip"
+    },
+    {
+      "name": "atlas-route-selection-execution-harness-v0",
+      "class": "EVIDENCE_ANCHOR",
+      "head": "3e36e88911570821801ccb9a5381ab9d5ef9a5f6",
+      "reason": "genuinely divergent Atlas execution-harness evidence"
+    },
+    {
+      "name": "atlas-route-selection-harness-qualification-run-v1",
+      "class": "EVIDENCE_ANCHOR",
+      "head": "a05d56cb36a6b8740e6a278551186128904e1d36",
+      "reason": "genuinely divergent Atlas harness-qualification evidence"
+    },
+    {
+      "name": "atlas-route-selection-realization-v0",
+      "class": "EVIDENCE_ANCHOR",
+      "head": "7e74265165cd87aaabafda0033ec18d09f9260b3",
+      "reason": "genuinely divergent Atlas realization evidence"
+    },
+    {
+      "name": "atlas-workshop-harness-qualification-witness-v1",
+      "class": "EVIDENCE_ANCHOR",
+      "head": "ef9727d2df1d360fa553ee6f08edebd52b4e34b0",
+      "reason": "genuinely divergent Atlas Workshop witness evidence"
+    },
+    {
+      "name": "addressing-seat-replacement-001",
+      "class": "EVIDENCE_ANCHOR",
+      "head": "bb6067dfa4cf9c4585fa5f8e1a7e4e92f8da69a6",
+      "reason": "unique divergent ADDRESSING seat-replacement residue"
+    },
+    {
+      "name": "authorization-to-active-001-apparatus",
+      "class": "EVIDENCE_ANCHOR",
+      "head": "e2bbadac620e25072916476f048a78cc47bfc1b5",
+      "reason": "unique divergent authorization-to-active apparatus residue"
+    },
+    {
+      "name": "memory-matrix-mm002",
+      "class": "EVIDENCE_ANCHOR",
+      "head": "dd86a8529acdffb3d3e9f10e97b5582f12df8515",
+      "reason": "unique divergent MM-002 residue"
+    }
+  ],
+  "transient_work_ref_rule": {
+    "retain_when": "open pull request or explicitly active maintenance operation",
+    "durable_registration": false,
+    "disposition": "delete after merge/closure when its tip is reachable from a durable registered ref"
+  },
+  "trailing_cache": {
+    "steady_state_enabled_after_bootstrap_cleanup": true,
+    "max_refs": 5,
+    "ttl_hours": 72,
+    "eligibility": "unregistered, non-protected, non-open-PR branch whose tip is reachable from at least one durable registered ref",
+    "overflow_disposition": "delete oldest eligible cache refs first",
+    "unique_commit_rule": "an unregistered ref with commits not reachable from durable refs is ORPHAN_UNIQUE and must not be deleted"
+  },
+  "deletion_gate": {
+    "all_required": [
+      "not durable_registered",
+      "not protected",
+      "not open_pr_head",
+      "tip reachable from at least one durable registered ref",
+      "outside active trailing cache"
+    ],
+    "on_unique_unreachable_commit": "STOP_AND_REGISTER_OR_CONSERVE"
+  },
+  "bootstrap_cleanup": {
+    "observed_branch_count_before_registry_branch": 59,
+    "durable_target_count": 13,
+    "deletion_eligible_existing_ref_count": 46,
+    "trailing_cache_during_bootstrap": false,
+    "maintenance_branch": "branch-registry-v0",
+    "maintenance_branch_is_durable": false,
+    "expected_post_merge_and_cleanup_branch_count": 13
+  }
+}
