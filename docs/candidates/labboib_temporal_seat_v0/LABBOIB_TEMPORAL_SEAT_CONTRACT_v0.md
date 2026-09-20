@@ -299,28 +299,42 @@ schemas/temporal_seat_output_v0.schema.json
 tests/runtime/test_labboib_temporal_seat.py
 ```
 
-## Qualification ceiling
+## Qualification standing
 
-At initial candidate materialization:
+Focused candidate qualification is retained in:
 
 ```text
-IMPLEMENTATION:
-MATERIALIZED
+docs/candidates/labboib_temporal_seat_v0/QUALIFICATION_001.md
+```
 
-TESTS:
-MATERIALIZED
+GitHub Actions externally observed on tested head
+`f929176fd2bd2abf9af8384533098bd537a29f3d`:
 
-TEST EXECUTION:
-NOT YET OBSERVED
+```text
+COMPILE SEAT RUNTIME:
+PASS
 
-SCHEMA / JSON STATIC SWEEP:
-AVAILABLE
+FOCUSED TEMPORAL-SEAT TESTS:
+PASS
+
+EXERCISE CANDIDATE WAKE:
+PASS
+```
+
+Therefore:
+
+```text
+RECONSTRUCTABLE TEMPORAL SEAT:
+SUPPORTED IN FOCUSED CANDIDATE SCOPE
 
 SCHEDULER:
 UNBOUND
 
 CLOUD OCCUPANT:
 UNBOUND
+
+CHAT BUS:
+NOT ESTABLISHED
 
 MAIN INTEGRATION:
 NONE
@@ -332,4 +346,4 @@ EXTERNAL EXECUTION:
 NONE
 ```
 
-No later standing is inferred from this contract.
+This does not authorize merge, scheduling, occupant binding, or consequence.
