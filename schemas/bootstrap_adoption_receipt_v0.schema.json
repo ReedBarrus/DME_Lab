@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/bootstrap_adoption_receipt_v0.schema.json",
+  "title": "Bootstrap Adoption Receipt v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "event_id",
+    "protocol_object_sha",
+    "review_ref",
+    "authority_ref",
+    "observed_precondition",
+    "terminal_result",
+    "protocol_adopted",
+    "bootstrap_consumed",
+    "bootstrap_adoption_eligible",
+    "resulting_carrier",
+    "deviations"
+  ],
+  "properties": {
+    "schema": {"const": "bootstrap_adoption_receipt_v0"},
+    "event_id": {"const": "BOOTSTRAP_ADOPTION_001"},
+    "protocol_object_sha": {"type":"string","pattern":"^[0-9a-f]{40}$"},
+    "review_ref": {"type":"string","minLength":1},
+    "authority_ref": {"type":"string","minLength":1},
+    "observed_precondition": {
+      "enum":["TRUE","FALSE","UNRESOLVED"]
+    },
+    "terminal_result": {
+      "enum":[
+        "ADOPTED",
+        "PREFLIGHT_FAILED",
+        "OBJECT_DRIFT",
+        "PRECONDITION_FALSE",
+        "AUTHORITY_INVALID",
+        "EXECUTION_FAILED"
+      ]
+    },
+    "protocol_adopted": {"type":"boolean"},
+    "bootstrap_consumed": {"type":"boolean"},
+    "bootstrap_adoption_eligible": {"type":"boolean"},
+    "resulting_carrier": {
+      "type":["object","null"],
+      "additionalProperties":false,
+      "required":["ref","observed_head"],
+      "properties":{
+        "ref":{"type":"string","minLength":1},
+        "observed_head":{"type":"string","pattern":"^[0-9a-f]{40}$"}
+      }
+    },
+    "deviations":{"type":"array","items":{"type":"string","minLength":1}}
+  },
+  "allOf":[
+    {
+      "if":{"properties":{"terminal_result":{"const":"ADOPTED"}}},
+      "then":{
+        "properties":{
+          "observed_precondition":{"const":"TRUE"},
+          "protocol_adopted":{"const":true},
+          "bootstrap_consumed":{"const":true},
+          "bootstrap_adoption_eligible":{"const":false},
+          "resulting_carrier":{"type":"object"}
+        }
+      }
+    },
+    {
+      "if":{"properties":{"terminal_result":{"enum":["PREFLIGHT_FAILED","OBJECT_DRIFT","PRECONDITION_FALSE","AUTHORITY_INVALID","EXECUTION_FAILED"]}}},
+      "then":{
+        "properties":{
+          "protocol_adopted":{"const":false},
+          "bootstrap_consumed":{"const":false}
+        }
+      }
+    }
+  ]
+}
