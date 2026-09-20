@@ -1,18 +1,15 @@
-# CAMPAIGN_ADOPTION_001 — PRESSURE DESIGN 001
+# CAMPAIGN_ADOPTION_001 — PRESSURE DESIGN 002
 
 ## STATUS
 
 ```text
-PRESSURE DESIGN FROZEN
+CORRECTED PRESSURE DESIGN FROZEN
 
 IMPLEMENTATION:
-NONE
-
-EXECUTION:
-NONE
+AUTHORIZED AFTER THIS FREEZE
 
 DOGFOOD_001 RETRY:
-HELD
+HELD UNTIL DURABLE ADOPTION EXISTS
 
 COS-R2:
 UNCHANGED
@@ -24,97 +21,74 @@ UNCHANGED
 campaign:
 COCKPIT_OPERATING_SPACE_001
 
-prerequisite:
-one exact CAMPAIGN_BASIS_REVALIDATION_v0 result
-with disposition CURRENTLY_APPLICABLE
-for one exact current basis
-```
+adopter:
+REED
 
-The realization must pin exact campaign and revalidation identities at execution time.
+admission prerequisite:
+effective_applicability is current
+via CAMPAIGN_APPLICABILITY_PROJECTION_001
+```
 
 ## Required cells
 
-### A1 — valid applicable revalidation + explicit adoption
+### A1 — applicable + explicit Reed adoption
 
 ```text
 exact campaign
 +
-exact CURRENTLY_APPLICABLE revalidation
+effective_applicability CURRENT
 +
-exact current basis
-+
-explicit Reed adoption gesture
+explicit Reed gesture
 
 EXPECTED:
-LIVE_DEVELOPMENTAL_CONTRACT
+current_adoption_state = ADOPTED
+live_developmental_contract = LIVE
 ```
-
-No downstream control effects.
 
 ### A2 — applicable but not adopted
 
 ```text
-campaign:
-CURRENTLY_APPLICABLE
-
-adoption:
-NONE
+effective_applicability CURRENT
+adoption history EMPTY
 
 EXPECTED:
-NOT_LIVE
+current_adoption_state = NOT_ADOPTED
+live = NOT_LIVE
 ```
 
-Proves:
+### A3 — adoption attempted while applicability not current
 
 ```text
-APPLICABLE
-!=
-ADOPTED
-```
-
-### A3 — adoption against failed / insufficient applicability
-
-```text
-revalidation disposition:
-INSUFFICIENT_BASIS
-or
-NOT_APPLICABLE
+effective_applicability NOT_CURRENT
 
 EXPECTED:
-REJECT
+REJECT NEW ADOPTION EVENT
 ```
+
+Adoption cannot create its own applicability.
 
 ### A4 — wrong campaign identity
 
-```text
-campaign_id may match label
+Same campaign label with different campaign bytes:
 
-campaign_sha256 does not match
-revalidation.campaign_sha256
+```text
+EXPECTED:
+REJECT
+```
+
+### A5 — explicit gesture provenance absent
+
+```text
+actor_id = REED
+but no admissible explicit gesture reference
 
 EXPECTED:
 REJECT
 ```
 
-### A5 — wrong revalidation identity
+### A6 — same adoption ID + same bytes
 
 ```text
-revalidation_id label may match
-
-revalidation_sha256 does not match
-exact durable result bytes
-
-EXPECTED:
-REJECT
-```
-
-### A6 — idempotent adoption replay
-
-```text
-same adoption_id
-+
-same durable adoption bytes
-
 EXPECTED:
 IDEMPOTENT
 ```
@@ -122,10 +96,6 @@ IDEMPOTENT
 ### A7 — same adoption ID + changed bytes
 
 ```text
-same adoption_id
-+
-different durable bytes
-
 EXPECTED:
 REJECT
 ```
@@ -133,9 +103,6 @@ REJECT
 ### A8 — successful adoption has no neighboring effects
 
 ```text
-ADOPTED
-
-EXPECTED:
 selection NONE
 assignment NONE
 priority NONE
@@ -146,185 +113,224 @@ wake NONE
 execution NONE
 ```
 
-Operational stores outside the adoption store should remain byte-for-byte unchanged where inspectable.
-
-### A9 — explicit release ends exact adoption
+### A9 — explicit release targets exact adoption
 
 ```text
-A1:
-ADOPTED
+A1 ADOPTED
 
-A2:
-ADOPTION_RELEASED
-targeting exact A1 identity
+A2 ADOPTION_RELEASED
+target_adoption_id = A1.id
+target_adoption_sha256 = exact A1 durable identity
 
 EXPECTED:
 A1 remains historical
-current live contract from A1 ends
-campaign identity unchanged
-revalidation identity unchanged
-standing unchanged
+current_adoption_state = NOT_ADOPTED
+live = NOT_LIVE
 ```
 
 ### A10 — world moves after adoption
 
 ```text
-R1:
-CURRENTLY_APPLICABLE @ B2
+B2:
+A1 unreleased
+effective applicability CURRENT
+→ LIVE
 
-A1:
-ADOPTED against R1 @ B2
-
-world → B3
-
-EXPECTED:
-R1 remains historical
-A1 remains historical
-CURRENT LIVE STATE @ B3:
-NOT_ESTABLISHED
-```
-
-### A11 — new revalidation does not inherit old adoption
-
-```text
-R2:
-CURRENTLY_APPLICABLE @ B3
-
-prior:
-A1 ADOPTED against R1 @ B2
+world → B3:
+effective applicability NOT_CURRENT
 
 EXPECTED:
-R2 does not become live from A1
-
-new explicit adoption required
+A1 remains unreleased
+current_adoption_state = ADOPTED
+live = BLOCKED_NOT_CURRENT / NOT_LIVE
 ```
 
 Proves:
 
 ```text
-NEW REVALIDATION
+CURRENT APPLICABILITY LOST
 !=
-RENEWED HUMAN INTENT
+ADOPTION RELEASED
 ```
 
-### A12 — simultaneous live campaigns do not create priority
+### A11 — applicability later restored without re-adoption
 
 ```text
-C1:
-valid applicable revalidation + valid adoption
+same unreleased A1
 
-C2:
-valid applicable revalidation + valid adoption
+B3 later receives valid current warrant
 
 EXPECTED:
-both may be LIVE
+current_adoption_state = ADOPTED
+live = LIVE
+
+new adoption event:
+NONE
+```
+
+Proves:
+
+```text
+CURRENT APPLICABILITY RESTORED
+!=
+NEW ADOPTION REQUIRED
+```
+
+### A12 — two campaigns adopted simultaneously
+
+```text
+C1 adopted
+C2 adopted
+
+EXPECTED:
+both current adoption states = ADOPTED
 
 priority:
 NONE
 
-ordering:
+event order:
 NON-SEMANTIC
 ```
 
-## Additional adversarial cells
+## Adversarial cells
 
-### X1 — release targets wrong adoption bytes
+### X1 — release wrong adoption SHA
+
+Matching adoption ID, wrong durable SHA:
 
 ```text
-release target_adoption_id matches
-but target_adoption_sha256 differs
-
 EXPECTED:
 REJECT
 ```
 
-### X2 — release without exact target
+### X2 — release by campaign label only
 
 ```text
-ADOPTION_RELEASED
-with only campaign_id / campaign_sha256
-
 EXPECTED:
 REJECT
 ```
 
-Proves:
+### X3 — release already released adoption
 
 ```text
-RELEASE CAMPAIGN
-!=
-RELEASE EXACT ADOPTION RELATION
+EXPECTED:
+REJECT
+or exact idempotent replay only if same release event ID + same bytes
 ```
 
-### X3 — second independent adoption does not imply priority
-
-If the implementation permits a second adoption event for another campaign or another separately current relation:
-
-```text
-event insertion order
-!=
-priority
-```
-
-If v0 instead enforces one current adoption per exact campaign+revalidation relation, that constraint must be explicit and tested; it must not be inferred from row uniqueness accidentally.
-
-### X4 — storage metadata excluded from durable adoption identity
+### X4 — storage metadata excluded from adoption identity
 
 ```text
 _seq
 _rowid
 _inserted_at
 projection annotations
-
 !=
 durable adoption bytes
 ```
 
-### X5 — caller cannot smuggle downstream state
+### X5 — downstream state smuggling rejected
 
-Reject input fields such as:
+Reject fields such as:
 
 ```text
-priority = 1
-selected = true
-authority_granted = true
-standing = EARNED
-wake_now = true
-execute = true
+priority
+selected
+assignment
+authority_granted
+standing
+wake_now
+execute
 ```
 
-### X6 — adoption cannot revalidate
+### X6 — adoption cannot provide or override applicability
 
-Supply a stale / non-current revalidation relation plus otherwise valid adoption bytes.
+Reject caller attempts to set:
+
+```text
+effective_applicability
+historical_basis_status
+revalidation_status
+```
+
+The apparatus consumes the read-only applicability projection.
+
+### X7 — inferred intent is not adoption
+
+Applicable campaign, recent activity, top UI position, or old chat context with
+no durable adoption event:
 
 ```text
 EXPECTED:
-REJECT
-
-ADOPTION
-!=
-REVALIDATION
+NOT_ADOPTED
 ```
 
-### X7 — inferred intent is not explicit adoption
+### X8 — row / retrieval order does not create priority
 
-No explicit Reed adoption event exists.
-
-The campaign is applicable, recently used, previously adopted, or appears at top of the UI.
+Reverse history retrieval ordering for two campaigns:
 
 ```text
-EXPECTED:
-NOT_LIVE
-```
-
-### X8 — projection order is non-semantic
-
-Reverse retrieval / row / UI ordering of multiple live campaigns.
-
-```text
-EXPECTED:
-same live set
+same adoption set
 priority NONE
+```
+
+### X9 — applicability source unavailable
+
+New adoption attempt when applicability projector/source is unavailable:
+
+```text
+EXPECTED:
+FAIL CLOSED
+NO ADOPTION WRITE
+```
+
+Existing historical adoption remains history; live state cannot become true
+without current applicability.
+
+### X10 — release does not alter applicability or standing
+
+Before/after exact release:
+
+```text
+campaign applicability projection:
+UNCHANGED
+
+relation standing:
+UNCHANGED
+```
+
+### X11 — operational stores unchanged
+
+Around an adoption/release write, inspect:
+
+```text
+campaign
+revalidation
+selection
+preparation
+assignment
+wake
+reentry
+controller
+```
+
+EXPECTED:
+UNCHANGED
+```
+
+### X12 — applicability restoration does not emit adoption
+
+Transition:
+
+```text
+NOT_CURRENT → CURRENT_BY_REVALIDATION
+```
+
+with an existing unreleased adoption.
+
+EXPECTED:
+live projection changes
+adoption history count unchanged
 ```
 
 ## Smallest apparatus boundary
@@ -334,25 +340,24 @@ The first executable apparatus should do no more than:
 ```text
 1. load exact campaign identity
 
-2. load exact durable revalidation identity
+2. consume read-only effective applicability
 
-3. verify the revalidation is CURRENTLY_APPLICABLE
-   for the exact adoption basis
+3. validate explicit REED gesture for new ADOPTED event
 
-4. accept one explicit Reed adoption or release gesture
+4. retain exact append-only adoption/release event
 
-5. retain one exact durable adoption event
+5. derive current adoption state
 
-6. derive current live developmental-contract state
-   from adoption history + current applicability
+6. derive current live state as:
+   current adoption × current applicability
 ```
 
 It must not:
 
 ```text
 rewrite campaign
-rewrite revalidation
-derive semantic equivalence
+create or alter revalidation
+override applicability
 draft requests
 select work
 assign seats
@@ -367,36 +372,31 @@ execute consequences
 
 ## Success boundary
 
-A green pressure result would support only:
+A green result supports only:
 
 ```text
-EXPLICIT HUMAN DEVELOPMENTAL INTENT
+EXPLICIT HUMAN DEVELOPMENTAL COMMITMENT
+CAN BE DURABLY RETAINED AS ITS OWN RELATION
 
-CAN BE REPRESENTED AS A SEPARATE,
-DURABLE,
-BASIS-RELATIVE ADOPTION RELATION
+AND CURRENT LIVE STATUS CAN BE DERIVED FROM:
 
-BOUND TO AN EXACT CURRENTLY-APPLICABLE
-CAMPAIGN JUDGMENT
+UNRELEASED ADOPTION
+×
+CURRENT EFFECTIVE APPLICABILITY
 
-WITHOUT BECOMING PRIORITY,
-AUTHORITY,
-SELECTION,
-OR EXECUTION.
+WITHOUT TURNING ADOPTION INTO
+APPLICABILITY, PRIORITY, AUTHORITY,
+SELECTION, OR EXECUTION.
 ```
 
 ## Held next step
 
-Only after mechanical qualification of this membrane may the exact same dogfood specimen be retried:
+After qualification and one durable adoption of:
 
 ```text
 COCKPIT_OPERATING_SPACE_001
-COS-R2
-
-FOCUS
-→ ASSIGN
-→ RING
-→ MAYA
 ```
 
-No change to the target is authorized here.
+the exact same DOGFOOD_001 / COS-R2 specimen may proceed to its next transition.
+
+No change to COS-R2 is authorized.
