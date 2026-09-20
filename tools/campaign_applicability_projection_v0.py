@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import json
+import sqlite3
 from typing import Any
 
 from tools.campaign_basis_revalidation_v0 import (
@@ -117,19 +119,64 @@ class CampaignApplicabilityProjector:
             result["diagnostics"].append("REVALIDATION_SOURCE_UNAVAILABLE")
             return result
 
+        if not self.revalidation_store.db_path.exists():
+            result["revalidation_status"] = REVALIDATION_UNAVAILABLE
+            result["diagnostics"].append("REVALIDATION_SOURCE_UNAVAILABLE:MISSING_DB")
+            return result
+
         try:
-            history = self.revalidation_store.history(campaign_id)
+            conn = sqlite3.connect(self.revalidation_store.db_path)
+            conn.row_factory = sqlite3.Row
+            rows = conn.execute(
+                """
+                SELECT
+                    seq,
+                    revalidation_id,
+                    result_sha256,
+                    campaign_id,
+                    campaign_sha256,
+                    candidate_current_basis_sha256,
+                    disposition,
+                    result_json
+                FROM campaign_basis_revalidations
+                WHERE campaign_id=?
+                ORDER BY seq
+                """,
+                (campaign_id,),
+            ).fetchall()
         except Exception as exc:
             result["revalidation_status"] = REVALIDATION_UNAVAILABLE
             result["diagnostics"].append(
                 f"REVALIDATION_SOURCE_UNAVAILABLE:{type(exc).__name__}"
             )
             return result
+        finally:
+            try:
+                conn.close()
+            except Exception:
+                pass
 
         valid_rows: list[dict[str, Any]] = []
         invalid_rows: list[str] = []
-        for history_row in history:
-            durable = self.revalidation_store.durable_object(history_row)
+        for row in rows:
+            try:
+                durable = json.loads(row["result_json"])
+            except Exception:
+                invalid_rows.append(str(row["revalidation_id"]))
+                continue
+            durable_sha = object_sha256(durable)
+            columns_match = (
+                row["result_sha256"] == durable_sha
+                and row["revalidation_id"] == durable.get("revalidation_id")
+                and row["campaign_id"] == durable.get("campaign_id")
+                and row["campaign_sha256"] == durable.get("campaign_sha256")
+                and row["candidate_current_basis_sha256"]
+                    == durable.get("candidate_current_basis_sha256")
+                and row["disposition"] == durable.get("disposition")
+            )
+            if not columns_match:
+                invalid_rows.append(str(row["revalidation_id"]))
+                continue
             try:
                 validate_revalidation(durable, campaign)
             except CampaignBasisRevalidationError:
