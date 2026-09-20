@@ -1,0 +1,67 @@
+name: DEVELOPMENT_HORIZON_PROJECTION_001
+
+on:
+  pull_request:
+    paths:
+      - "src/cockpit/development_horizon_projection.py"
+      - "src/cockpit/live_runtime_projection.py"
+      - "src/cockpit/observer/runtime_live.mjs"
+      - "src/cockpit/observer/styles.css"
+      - "tests/runtime/test_development_horizon_projection.py"
+      - "docs/candidates/development_horizon_projection_v0/**"
+      - "docs/campaigns/candidates/COCKPIT_OPERATING_SPACE_001.json"
+      - "docs/campaigns/candidates/RUNTIME_SANITY_GATE_001.json"
+      - "docs/campaigns/candidates/WAKE_POLICY_001.json"
+      - ".github/workflows/development-horizon-projection-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Compile
+        run: |
+          python -m py_compile \
+            src/cockpit/development_horizon_projection.py \
+            src/cockpit/live_runtime_projection.py \
+            tests/runtime/test_development_horizon_projection.py
+
+      - name: Check Cockpit module
+        run: node --check src/cockpit/observer/runtime_live.mjs
+
+      - name: Horizon projection pressure
+        run: python -m unittest tests.runtime.test_development_horizon_projection -v
+
+      - name: Live runtime regression
+        run: python -m unittest tests.runtime.test_live_runtime_projection -v
+
+      - name: Existing Cockpit observer regression
+        run: node --test tests/cockpit/test_observer.mjs
+
+      - name: Wake source regression
+        run: python -m unittest tests.runtime.test_wake_source -v
+
+      - name: Preparation assignment regression
+        run: python -m unittest tests.runtime.test_preparation_assignment -v
+
+      - name: Bounded reentry regression
+        run: python -m unittest tests.runtime.test_bounded_reentry -v
+
+      - name: Development campaign regression
+        run: python -m unittest tests.runtime.test_development_campaign -v
