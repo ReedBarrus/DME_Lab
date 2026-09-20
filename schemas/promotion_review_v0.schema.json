@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/promotion_review_v0.schema.json",
+  "title": "Promotion Review v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "promotion_id",
+    "candidate_sha256",
+    "reviewer",
+    "independence",
+    "checks",
+    "disposition",
+    "basis",
+    "authority_effect"
+  ],
+  "properties": {
+    "schema": {"const": "promotion_review_v0"},
+    "promotion_id": {"type": "string", "minLength": 1},
+    "candidate_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "reviewer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["seat", "identity"],
+      "properties": {
+        "seat": {"type": "string", "minLength": 1},
+        "identity": {"type": "string", "minLength": 1}
+      }
+    },
+    "independence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate_author", "proposed_delta_author"],
+      "properties": {
+        "candidate_author": {"type": "boolean"},
+        "proposed_delta_author": {"type": "boolean"}
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "subject_identity",
+        "source_status",
+        "target_status",
+        "surviving_bounded_behavior",
+        "evidence_sufficiency",
+        "claim_ceiling",
+        "dependency_consequence",
+        "integration_minimality",
+        "lineage_recoverability",
+        "known_debt",
+        "non_promotions"
+      ],
+      "properties": {
+        "subject_identity": {"enum": ["PASS", "HOLD", "FAIL"]},
+        "source_status": {"enum": ["PASS", "HOLD", "FAIL"]},
+        "target_status": {"enum": ["PASS", "HOLD", "FAIL"]},
+        "surviving_bounded_behavior": {"enum": ["PASS", "HOLD", "FAIL"]},
+        "evidence_sufficiency": {"enum": ["PASS", "HOLD", "FAIL"]},
+        "claim_ceiling": {"enum": ["PASS", "HOLD", "FAIL"]},
+        "dependency_consequence": {"enum": ["PASS", "HOLD", "FAIL"]},
+        "integration_minimality": {"enum": ["PASS", "HOLD", "FAIL"]},
+        "lineage_recoverability": {"enum": ["PASS", "HOLD", "FAIL"]},
+        "known_debt": {"enum": ["PASS", "HOLD", "FAIL"]},
+        "non_promotions": {"enum": ["PASS", "HOLD", "FAIL"]}
+      }
+    },
+    "disposition": {
+      "enum": ["ADMIT", "HOLD", "REJECT", "REQUIRE_REPRESSURE"]
+    },
+    "basis": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "authority_effect": {"const": "NONE"}
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "disposition": {"const": "ADMIT"}
+        }
+      },
+      "then": {
+        "properties": {
+          "independence": {
+            "properties": {
+              "candidate_author": {"const": false},
+              "proposed_delta_author": {"const": false}
+            }
+          },
+          "checks": {
+            "properties": {
+              "subject_identity": {"const": "PASS"},
+              "source_status": {"const": "PASS"},
+              "target_status": {"const": "PASS"},
+              "surviving_bounded_behavior": {"const": "PASS"},
+              "evidence_sufficiency": {"const": "PASS"},
+              "claim_ceiling": {"const": "PASS"},
+              "dependency_consequence": {"const": "PASS"},
+              "integration_minimality": {"const": "PASS"},
+              "lineage_recoverability": {"const": "PASS"},
+              "known_debt": {"const": "PASS"},
+              "non_promotions": {"const": "PASS"}
+            }
+          }
+        }
+      }
+    }
+  ]
+}
