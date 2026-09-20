@@ -86,3 +86,24 @@ Detailed evidence lives in:
 Do not infer generalized consequence machinery, agent architecture, autonomous
 science, global world state, or other broad architecture merely from the
 existence of bounded experimental or development surfaces.
+
+## License and commercial use
+
+DME_Lab is **source-available for noncommercial use** under the
+[PolyForm Noncommercial License 1.0.0](LICENSE.md), except where a file carries
+a separate license or notice.
+
+Commercial use of covered DME_Lab / ATLAS implementation code requires a
+separate license from the repository owner.
+
+The project is intentionally open to study of its public research, techniques,
+and methods. Independent implementation of ideas is distinct from copying,
+adapting, hosting, redistributing, or commercially exploiting protected
+repository software.
+
+See:
+
+- [COMMERCIAL_USE.md](COMMERCIAL_USE.md) for the plain-language boundary;
+- [TRADEMARKS.md](TRADEMARKS.md) for names and branding;
+- [CONTRIBUTING.md](CONTRIBUTING.md) for contribution-rights policy; and
+- [NOTICE](NOTICE) for required notices.
