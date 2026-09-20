@@ -1,0 +1,49 @@
+name: COCKPIT_PERCEPTUAL_INSTRUMENT_001
+
+on:
+  pull_request:
+    paths:
+      - "src/cockpit/observer/perceptual_instrument.mjs"
+      - "src/cockpit/observer/app.mjs"
+      - "src/cockpit/observer/runtime_live.mjs"
+      - "src/cockpit/observer/control_live.mjs"
+      - "src/cockpit/observer/index.html"
+      - "src/cockpit/observer/styles.css"
+      - "tests/cockpit/test_perceptual_instrument.mjs"
+      - ".github/workflows/cockpit-perceptual-instrument-001.yml"
+      - "docs/candidates/cockpit_perceptual_instrument_v0/QUALIFICATION_001.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Perceptual instrument pressure
+        run: node --test tests/cockpit/test_perceptual_instrument.mjs
+
+      - name: Observer regression
+        run: node --test tests/cockpit/test_observer.mjs
+
+      - name: Control UI regression
+        run: node --test tests/cockpit/test_control_adapter.mjs
+
+      - name: Control membrane regression
+        run: python -m unittest tests.runtime.test_cockpit_control_adapter -v
+
+      - name: Live runtime regression
+        run: python -m unittest tests.runtime.test_live_runtime_projection -v
+
+      - name: Development horizon regression
+        run: python -m unittest tests.runtime.test_development_horizon_projection -v
