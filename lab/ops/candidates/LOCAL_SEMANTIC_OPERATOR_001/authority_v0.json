@@ -1,0 +1,15 @@
+{
+  "schema": "local_semantic_operator_authority_v0",
+  "authority_id": "LOCAL_SEMANTIC_OPERATOR_001_AUTHORITY",
+  "seat_id": "LABBOIB",
+  "task_type": "TRIAGE_IMPLEMENTATION_RESULT",
+  "provider_family": "LM_STUDIO",
+  "model_family": "QWEN",
+  "semantic_invocation_authorized": true,
+  "seat_state_transition_authorized": false,
+  "action_selection_authorized": false,
+  "operator_execution_authorized": false,
+  "repository_write_authorized": false,
+  "scientific_promotion_authorized": false,
+  "purpose": "Bounded proposal-only semantic transformation pressure."
+}
