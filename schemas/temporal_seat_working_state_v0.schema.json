@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/temporal_seat_working_state_v0.schema.json",
+  "title": "Temporal Seat Working State v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version","seat_id","state_id","campaign","continuity",
+    "injection_coordinate","current_frontier","unresolved","authority",
+    "last_wake_receipt_ref","standing_effect","authority_effect"
+  ],
+  "properties": {
+    "schema_version": {"const": "temporal_seat_working_state_v0"},
+    "seat_id": {"const": "LABBOIB"},
+    "state_id": {"type":"string","minLength":1},
+    "campaign": {
+      "type":"object",
+      "additionalProperties": false,
+      "required":["campaign_id","title","status","objective","branch","base_ref","base_commit"],
+      "properties":{
+        "campaign_id":{"type":"string","minLength":1},
+        "title":{"type":"string","minLength":1},
+        "status":{"type":"string","minLength":1},
+        "objective":{"type":"string","minLength":1},
+        "branch":{"type":"string","minLength":1},
+        "base_ref":{"type":"string","minLength":1},
+        "base_commit":{"type":"string","pattern":"^[0-9a-f]{40}$"}
+      }
+    },
+    "continuity": {
+      "type":"object",
+      "additionalProperties": false,
+      "required":["consumer","synchronized_through","historical_chat_imported"],
+      "properties":{
+        "consumer":{"const":"labboib"},
+        "synchronized_through":{"type":["string","null"]},
+        "historical_chat_imported":{"type":"boolean"}
+      }
+    },
+    "injection_coordinate": {
+      "type":"object",
+      "additionalProperties": false,
+      "required":["last_consumed_injection_id"],
+      "properties":{
+        "last_consumed_injection_id":{"type":["string","null"]}
+      }
+    },
+    "current_frontier":{"type":"string","minLength":1},
+    "unresolved":{"type":"array","items":{"type":"string","minLength":1}},
+    "authority":{
+      "type":"object",
+      "additionalProperties": false,
+      "required":["standing","source"],
+      "properties":{
+        "standing":{"const":"NONE"},
+        "source":{"type":["string","null"]}
+      }
+    },
+    "last_wake_receipt_ref":{"type":["string","null"]},
+    "standing_effect":{"const":"NONE_BY_WORKING_STATE"},
+    "authority_effect":{"const":"NONE_BY_WORKING_STATE"}
+  }
+}
