@@ -1,5 +1,6 @@
 import { startRuntimeProjection } from './runtime_live.mjs';
 import { startControlAdapter } from './control_live.mjs';
+import { createPerceptualInstrument } from './perceptual_instrument.mjs';
 import {
   buildObserverModel,
   followEvidence,
@@ -31,6 +32,7 @@ const roots = {
 };
 
 let viewModel = null;
+const instrument = createPerceptualInstrument(document.querySelector('#instrument-root'));
 
 function projectionUrl() {
   const requested = new URL(window.location.href).searchParams.get('model');
@@ -160,6 +162,7 @@ async function start() {
     document.body.dataset.projectionState =
       viewModel.repositoryState?.projection_status || 'missing';
     render();
+    instrument?.setObserverModel(viewModel);
   } catch (error) {
     renderFailure(error);
   }
@@ -167,5 +170,8 @@ async function start() {
 
 start();
 
-startRuntimeProjection(document.querySelector('#runtime-root'));
+startRuntimeProjection(
+  document.querySelector('#runtime-root'),
+  (snapshot) => instrument?.setRuntimeSnapshot(snapshot),
+);
 startControlAdapter(document.querySelector('#control-root'));
