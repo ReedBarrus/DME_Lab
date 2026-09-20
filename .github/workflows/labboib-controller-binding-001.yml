@@ -1,0 +1,90 @@
+name: LABBOIB_CONTROLLER_BINDING_001
+
+on:
+  pull_request:
+    paths:
+      - "tools/goblin_pool.py"
+      - "tools/labboib_controller_binding.py"
+      - "tests/runtime/test_labboib_controller_binding.py"
+      - "lab/ops/candidates/LABBOIB_CONTROLLER_BINDING_001/**"
+      - "docs/candidates/labboib_controller_binding_v0/**"
+      - ".github/workflows/labboib-controller-binding-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile binding runtime
+        run: |
+          python -m py_compile             tools/goblin_pool.py             tools/labboib_controller_binding.py             tests/runtime/test_labboib_controller_binding.py
+
+      - name: Re-run LABBOIB temporal-seat qualification
+        run: |
+          python -m unittest tests.runtime.test_labboib_temporal_seat -v
+
+      - name: Re-run GOBLIN_POOL_001 qualification
+        run: |
+          python -m unittest tests.runtime.test_goblin_pool -v
+
+      - name: Run LABBOIB controller-binding pressure
+        run: |
+          python -m unittest tests.runtime.test_labboib_controller_binding -v
+
+      - name: Exercise real binding CLI
+        run: |
+          DB="$(mktemp -u).sqlite3"
+
+          python tools/labboib_controller_binding.py             --db "$DB"             --workspace .             --seat-source-ref HEAD             bind > /tmp/labboib-binding.json
+
+          python tools/labboib_controller_binding.py             --db "$DB"             --workspace .             wake W-CI-BIND > /tmp/labboib-wake.json
+
+          python tools/labboib_controller_binding.py             --db "$DB"             --workspace .             read W-CI-BIND OI-CI-READ > /tmp/labboib-read.json
+
+          python tools/labboib_controller_binding.py             --db "$DB"             --workspace .             test W-CI-BIND OI-CI-TEST > /tmp/labboib-test.json
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          binding = json.loads(Path("/tmp/labboib-binding.json").read_text())
+          wake = json.loads(Path("/tmp/labboib-wake.json").read_text())
+          read = json.loads(Path("/tmp/labboib-read.json").read_text())
+          test = json.loads(Path("/tmp/labboib-test.json").read_text())
+
+          assert binding["binding_id"] == "LABBOIB_CONTROLLER_BINDING_001"
+          assert binding["seat_id"] == "LABBOIB"
+          assert binding["seat_basis"]["cursor_event_id"] == "CE-000033"
+          assert binding["seat_basis"]["continuity_head"] == "CE-000033"
+
+          assert binding["operator_postures"]["READ_REPO_STATE"]["authorized"] is True
+          assert binding["operator_postures"]["RUN_DECLARED_TEST"]["authorized"] is True
+          assert binding["operator_postures"]["WRITE_PACKET"]["eligible"] is False
+          assert binding["operator_postures"]["WRITE_PACKET"]["authorized"] is False
+
+          assert wake["status"] == "STARTED"
+          assert wake["seat_id"] == "LABBOIB"
+
+          assert read["status"] == "EXECUTED"
+          assert read["result"]["mutation_effect"] == "NONE_BY_READ_REPO_STATE"
+          assert read["result"]["current_basis_applicability"] is True
+
+          assert test["status"] == "EXECUTED"
+          assert test["result"]["mechanical_result"] == "PASS"
+          assert test["result"]["scientific_standing_effect"] == "NONE"
+          assert test["result"]["current_basis_applicability"] is True
+
+          print("LABBOIB_CONTROLLER_BINDING_001_CLI_PASS")
+          PY

@@ -1,0 +1,59 @@
+{
+  "schema_version": "labboib_controller_binding_v0",
+  "binding_id": "LABBOIB_CONTROLLER_BINDING_001",
+  "seat_id": "LABBOIB",
+  "status": "MATERIALIZED_CANDIDATE",
+  "merged_seat_basis": {
+    "canonical_main_commit": "e6b56d12352f9594b25d1db3036afc3d1d0d7ef6",
+    "continuity_head": "CE-000033",
+    "artifacts": {
+      "continuity/events.jsonl": "e7b49a380ae85caf7922ccfa9172464f1ecda49f",
+      "continuity/seats/labboib.json": "0e147e9d08e5cf611995d3206c2644cf32fe6e08",
+      "continuity/cursors/labboib.json": "256974c906f5d3876f2bf09e0df800470adaa99d",
+      "continuity/current_state/labboib_working_state_v0.json": "2fc78b6bb5063dabba98a6f05c3bb65082dc42d7"
+    }
+  },
+  "controller_basis": {
+    "goblin_pool_qualification_head": "88bc5a3daa6e36306da939738e453ac7a29679fb",
+    "implementation_path": "tools/goblin_pool.py",
+    "implementation_git_blob_sha": "b030b18c7ba38f9f28bff8eddf63997fd0e4108b"
+  },
+  "binding_implementation": {
+    "path": "tools/labboib_controller_binding.py",
+    "git_blob_sha": "8b60dc11d022ad58fc918e2b92f8b7a1f60aed3b"
+  },
+  "authority": {
+    "path": "lab/ops/candidates/LABBOIB_CONTROLLER_BINDING_001/authority_v0.json",
+    "git_blob_sha": "e23595fe63116001720760e6c25eeb9dbdc877e3"
+  },
+  "pressure_test": {
+    "path": "tests/runtime/test_labboib_controller_binding.py",
+    "git_blob_sha": "5b9aaba23ffc2b7dd555f60780ef211ce0c07ab3"
+  },
+  "operator_profile": {
+    "READ_REPO_STATE": {
+      "registered": true,
+      "eligible": true,
+      "authorized": true
+    },
+    "RUN_DECLARED_TEST": {
+      "registered": true,
+      "eligible": true,
+      "authorized": true
+    },
+    "WRITE_PACKET": {
+      "registered": true,
+      "eligible": false,
+      "authorized": false
+    }
+  },
+  "declared_test_id": "LABBOIB_TEMPORAL_SEAT_FOCUSED",
+  "nonclaims": [
+    "controller runtime record is not identical to Git LABBOIB seat",
+    "operator process exit does not create scientific standing",
+    "operator execution does not imply current-basis applicability",
+    "binding does not mutate Git LABBOIB cursor or working-state artifacts",
+    "binding does not authorize scheduler or model occupant",
+    "binding does not authorize arbitrary shell or repository mutation"
+  ]
+}
