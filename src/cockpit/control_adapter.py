@@ -219,7 +219,11 @@ class CockpitControlAdapter:
             raise CockpitControlError(
                 f"request {request_id!r} has {len(matches)} current selections"
             )
-        return matches[0]
+        return {
+            key: value
+            for key, value in matches[0].items()
+            if key != "_seq"
+        }
 
     def _current_assignment(
         self,
