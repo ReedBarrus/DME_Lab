@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/temporal_seat_manifest_v0.schema.json",
+  "title": "Temporal Seat Manifest v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version","seat_id","consumer_id","seat_class","role",
+    "cursor_ref","working_state_ref","inbox_ref","outbox_ref",
+    "trigger","occupant","allowed_wake_effects","forbidden_wake_effects",
+    "noncollapses","authority_effect","execution_effect"
+  ],
+  "properties": {
+    "schema_version": {"const": "temporal_seat_manifest_v0"},
+    "seat_id": {"const": "LABBOIB"},
+    "consumer_id": {"const": "labboib"},
+    "seat_class": {"const": "TEMPORAL_REENTRY_SEAT_CANDIDATE"},
+    "role": {"type": "string", "minLength": 1},
+    "cursor_ref": {"const": "continuity/cursors/labboib.json"},
+    "working_state_ref": {"const": "continuity/current_state/labboib_working_state_v0.json"},
+    "inbox_ref": {"const": "continuity/queues/labboib/inbox.jsonl"},
+    "outbox_ref": {"const": "continuity/queues/labboib/outbox.jsonl"},
+    "trigger": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state","kind","schedule_ref"],
+      "properties": {
+        "state": {"enum": ["UNBOUND","BOUND"]},
+        "kind": {"type": ["string","null"]},
+        "schedule_ref": {"type": ["string","null"]}
+      }
+    },
+    "occupant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["binding","model_family","invocation_ref"],
+      "properties": {
+        "binding": {"enum": ["UNBOUND","BOUND"]},
+        "model_family": {"type": ["string","null"]},
+        "invocation_ref": {"type": ["string","null"]}
+      }
+    },
+    "allowed_wake_effects": {
+      "type": "array","minItems":1,"items":{"type":"string","minLength":1}
+    },
+    "forbidden_wake_effects": {
+      "type": "array","minItems":1,"items":{"type":"string","minLength":1}
+    },
+    "noncollapses": {
+      "type": "array","minItems":1,"items":{"type":"string","minLength":1}
+    },
+    "authority_effect": {"const": "NONE_BY_MANIFEST"},
+    "execution_effect": {"const": "NONE_BY_MANIFEST"}
+  }
+}
