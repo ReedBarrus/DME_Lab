@@ -10,6 +10,18 @@ from typing import Any
 
 PROCESS_DIR = "lab/processes"
 EVENT_PATH = "lab/events/events.jsonl"
+EVENT_TYPES = {
+    "PROCESS_REGISTERED",
+    "TRANSITION_REQUESTED",
+    "TRANSITION_STARTED",
+    "TRANSITION_SUCCEEDED",
+    "TRANSITION_FAILED",
+    "ROLE_JUDGMENT_REQUIRED",
+    "HUMAN_DECISION_REQUIRED",
+    "HUMAN_DECISION_RECORDED",
+    "BLOCKED",
+    "PACKET_ACCEPTED_FOR_TRANSPORT",
+}
 
 
 class ActionSurfaceError(RuntimeError):
@@ -60,6 +72,11 @@ def _events(repo: Path, commit: str) -> list[dict[str, Any]]:
         if not isinstance(event, dict):
             raise ActionSurfaceError(
                 f"non-object conductor event at {EVENT_PATH}:{line_number}"
+            )
+        if event.get("event_type") not in EVENT_TYPES:
+            raise ActionSurfaceError(
+                f"unknown conductor event_type at {EVENT_PATH}:{line_number}: "
+                f"{event.get('event_type')!r}"
             )
         rows.append(event)
     return rows
@@ -229,15 +246,37 @@ def build_action_surfaces(
         raw = _text(repo, source_commit, process_path)
         if raw is None:
             continue
-        spec = json.loads(raw)
-        if not isinstance(spec, dict) or not spec.get("process_id"):
-            continue
+        try:
+            spec = json.loads(raw)
+        except json.JSONDecodeError as exc:
+            raise ActionSurfaceError(
+                f"malformed process specification at {process_path}: {exc.msg}"
+            ) from exc
+        if not isinstance(spec, dict):
+            raise ActionSurfaceError(
+                f"process specification is not an object: {process_path}"
+            )
+        required = {"process_id", "initial_phase", "transitions"}
+        missing = sorted(required - spec.keys())
+        if missing:
+            raise ActionSurfaceError(
+                f"process specification {process_path} is missing: "
+                + ", ".join(missing)
+            )
+        if not isinstance(spec["transitions"], dict):
+            raise ActionSurfaceError(
+                f"process specification transitions are not an object: {process_path}"
+            )
 
         pid = spec["process_id"]
         state = _initial(spec)
         consumed_events = [
             event for event in all_events if event.get("process_id") == pid
         ]
+        if consumed_events and consumed_events[0].get("event_type") != "PROCESS_REGISTERED":
+            raise ActionSurfaceError(
+                f"process {pid} has routing events before PROCESS_REGISTERED"
+            )
         for event in consumed_events:
             _apply(state, event)
 
