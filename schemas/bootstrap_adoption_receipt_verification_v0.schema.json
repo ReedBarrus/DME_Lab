@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/bootstrap_adoption_receipt_verification_v0.schema.json",
+  "title": "Bootstrap Adoption Receipt Verification v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "event_id",
+    "protocol_object_id",
+    "protocol_path",
+    "derived",
+    "checks",
+    "result",
+    "authority_effect",
+    "execution_effect"
+  ],
+  "properties": {
+    "schema": {"const": "bootstrap_adoption_receipt_verification_v0"},
+    "event_id": {"const": "BOOTSTRAP_ADOPTION_001"},
+    "protocol_object_id": {"const": "PROMOTION_PROTOCOL_v0"},
+    "protocol_path": {"const": "docs/operations/PROMOTION_PROTOCOL_v0.md"},
+    "derived": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocol_git_blob_sha",
+        "bootstrap_object_git_blob_sha",
+        "review_git_blob_sha",
+        "authorization_git_blob_sha",
+        "preflight_git_blob_sha",
+        "receipt_git_blob_sha",
+        "preflight_implementation_git_blob_sha",
+        "verifier_implementation_git_blob_sha"
+      ],
+      "properties": {
+        "protocol_git_blob_sha": {"const": "c6cebdc70c07816167ff9499b5690fcb16b4354e"},
+        "bootstrap_object_git_blob_sha": {"const": "982b471694d6e0c218ebd60b2f22db2466626780"},
+        "review_git_blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "authorization_git_blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "preflight_git_blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "receipt_git_blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "preflight_implementation_git_blob_sha": {"const": "fc506070475e6e506f144f8652ff4ffeb000eebd"},
+        "verifier_implementation_git_blob_sha": {"const": "7aa3bbeff12b79facf1b6faecf825609772776f4"}
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocol_matches_bootstrap_object",
+        "preflight_implementation_matches_bootstrap_object",
+        "verifier_implementation_matches_bootstrap_object",
+        "review_matches_protocol_and_bootstrap_object",
+        "authorization_matches_review_protocol_and_bootstrap_object",
+        "preflight_matches_authorization_review_protocol_and_bootstrap_object",
+        "receipt_matches_exact_administration_chain"
+      ],
+      "properties": {
+        "protocol_matches_bootstrap_object": {"enum": ["PASS","FAIL"]},
+        "preflight_implementation_matches_bootstrap_object": {"enum": ["PASS","FAIL"]},
+        "verifier_implementation_matches_bootstrap_object": {"enum": ["PASS","FAIL"]},
+        "review_matches_protocol_and_bootstrap_object": {"enum": ["PASS","FAIL"]},
+        "authorization_matches_review_protocol_and_bootstrap_object": {"enum": ["PASS","FAIL"]},
+        "preflight_matches_authorization_review_protocol_and_bootstrap_object": {"enum": ["PASS","FAIL"]},
+        "receipt_matches_exact_administration_chain": {"enum": ["PASS","FAIL"]}
+      }
+    },
+    "result": {"enum": ["PASS","FAIL"]},
+    "authority_effect": {"const": "NONE"},
+    "execution_effect": {"const": "NONE"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"result": {"const": "PASS"}}},
+      "then": {
+        "properties": {
+          "checks": {
+            "properties": {
+              "protocol_matches_bootstrap_object": {"const": "PASS"},
+              "preflight_implementation_matches_bootstrap_object": {"const": "PASS"},
+              "verifier_implementation_matches_bootstrap_object": {"const": "PASS"},
+              "review_matches_protocol_and_bootstrap_object": {"const": "PASS"},
+              "authorization_matches_review_protocol_and_bootstrap_object": {"const": "PASS"},
+              "preflight_matches_authorization_review_protocol_and_bootstrap_object": {"const": "PASS"},
+              "receipt_matches_exact_administration_chain": {"const": "PASS"}
+            }
+          }
+        }
+      }
+    }
+  ]
+}
