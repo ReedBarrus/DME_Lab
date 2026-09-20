@@ -13,6 +13,8 @@ import re
 import subprocess
 from typing import Any
 
+from src.cockpit.action_surface import ActionSurfaceError, build_action_surfaces
+
 
 ADAPTER_VERSION = "cockpit_projection_adapter_v0"
 
@@ -1552,6 +1554,20 @@ def build_projection(
     else:
         projection_status = "complete"
 
+    try:
+        action_surfaces = build_action_surfaces(root, source_commit)
+    except ActionSurfaceError as exc:
+        action_surfaces = []
+        _diagnostic(
+            diagnostics,
+            kind="action_surface_projection_failure",
+            source_commit=source_commit,
+            source_path="lab/events/events.jsonl",
+            source_kind="action_surface",
+            message=str(exc),
+            severity="error",
+        )
+
     repository_state = {
         "projection_classification": "derived_read_only",
         "projection_status": projection_status,
@@ -1575,6 +1591,7 @@ def build_projection(
         "constraints": constraints,
         "evidence_refs": evidence_refs,
         "projection_documents": projection_documents,
+        "action_surfaces": action_surfaces,
         "projection_diagnostics": diagnostics,
     }
 
