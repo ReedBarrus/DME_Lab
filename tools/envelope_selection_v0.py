@@ -7,6 +7,7 @@ import sqlite3
 from typing import Any
 
 from tools.development_campaign_v0 import CampaignStore, object_sha256
+from tools.campaign_applicability_projection_v0 import CampaignApplicabilityProjector
 
 SELECTION_SCHEMA = "envelope_selection_v0"
 SELECT = "SELECTED_FOR_PACKET_FORMATION"
@@ -74,8 +75,14 @@ def build_selection_event(
 
 
 class SelectionStore:
-    def __init__(self, campaign_store: CampaignStore, db_path: str | Path):
+    def __init__(
+        self,
+        campaign_store: CampaignStore,
+        db_path: str | Path,
+        applicability_projector: CampaignApplicabilityProjector | None = None,
+    ):
         self.campaign_store = campaign_store
+        self.applicability_projector = applicability_projector
         self.db_path = Path(db_path)
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         conn = self._connect()
@@ -208,13 +215,31 @@ class SelectionStore:
             campaign_id,
             current_basis_refs=current_basis_refs,
         )
+        applicability_projection = (
+            self.applicability_projector.project(
+                campaign_id,
+                current_basis_refs=current_basis_refs,
+            )
+            if self.applicability_projector is not None
+            else None
+        )
         result = []
         for selection in self.current_set(campaign_id):
             request = _load_request(self.campaign_store, selection["request_id"])
             if object_sha256(request) != selection["request_sha256"]:
                 raise EnvelopeSelectionError("selected request bytes changed")
             standing = snap["standing"][request["unresolved_relation_id"]]["standing"]
-            applicability = "CURRENT" if snap["basis_status"] == "CURRENT" else "STALE"
+            if applicability_projection is None:
+                applicability = (
+                    "CURRENT" if snap["basis_status"] == "CURRENT" else "STALE"
+                )
+            else:
+                effective = applicability_projection["effective_applicability"]
+                applicability = {
+                    "CURRENT_BY_HISTORICAL_BASIS": "CURRENT",
+                    "CURRENT_BY_REVALIDATION": "CURRENT_BY_REVALIDATION",
+                    "NOT_CURRENT": "STALE",
+                }[effective]
             relevance = {
                 "OPEN": "OPEN",
                 "EARNED": "RESOLVED_EARNED",
@@ -247,6 +272,7 @@ class SelectionStore:
             "campaign_sha256": object_sha256(campaign),
             "current_selection_set": result,
             "selection_count": len(result),
+            "campaign_applicability": applicability_projection,
             "priority_effect": "NONE",
             "authorization_effect": "NONE",
             "execution_effect": "NONE",
