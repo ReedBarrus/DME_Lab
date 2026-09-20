@@ -202,7 +202,7 @@ class CampaignApplicabilityProjectionPressure(unittest.TestCase):
             {
                 "schema": "campaign_basis_revalidation_request_v0",
                 "revalidation_id": revalidation_id,
-                "campaign_bytes": campaign,
+                "campaign_bytes": json.dumps(campaign, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\\n",
                 "candidate_current_basis_refs": basis,
                 "raw_evidence": self.raw_evidence(
                     omit_qualification=omit_qualification,
