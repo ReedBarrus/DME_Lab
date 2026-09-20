@@ -1,0 +1,86 @@
+{
+  "schema": "development_campaign_v0",
+  "campaign_id": "LOCAL_COGNITION_001",
+  "title": "Local Cognition Gear and Sourcing Horizon",
+  "basis_refs": [
+    "git:0b35fa02e475ba3729d2b8e39ab0e63cce5cdd91",
+    "qualification:docs/candidates/local_semantic_operator_v0/QUALIFICATION_001.md@71a26a810c4314c0b1d647964478d29efa28f417"
+  ],
+  "objective": "Make local cognition resources legible, temporarily leaseable, and pressureable without making model identity, resource availability, selection, lease, invocation, seat identity, or execution authority collapse into one relation.",
+  "claim_ceiling": "This horizon may only advance bounded model-resource registry, lease, and source-selection distinctions. It does not establish adaptive routing, scheduling, autonomous escalation, or model authority.",
+  "target_objects": [
+    "MODEL_RESOURCE_REGISTRY_001",
+    "MODEL_LEASE_001",
+    "MODEL_SOURCE_SELECTION_001"
+  ],
+  "unresolved_relations": [
+    {
+      "relation_id": "LC-R1",
+      "statement": "MODEL_REGISTERED != MODEL_AVAILABLE"
+    },
+    {
+      "relation_id": "LC-R2",
+      "statement": "MODEL_AVAILABLE != MODEL_ELIGIBLE_FOR_REQUEST"
+    },
+    {
+      "relation_id": "LC-R3",
+      "statement": "MODEL_ELIGIBLE != MODEL_SELECTED"
+    },
+    {
+      "relation_id": "LC-R4",
+      "statement": "MODEL_SELECTED != MODEL_LEASED"
+    },
+    {
+      "relation_id": "LC-R5",
+      "statement": "MODEL_LEASED != MODEL_SUCCESSFULLY_INVOKED"
+    }
+  ],
+  "pressure_points": [
+    "Pressure durable resource legibility independently of seat identity or permanent assignment.",
+    "Pressure temporary lease exclusivity and release without granting the seat ownership of the model.",
+    "Pressure deterministic source selection so model list order cannot silently become routing policy."
+  ],
+  "dependency_edges": [
+    {
+      "from": "MODEL_RESOURCE_REGISTRY_001",
+      "to": "MODEL_LEASE_001"
+    },
+    {
+      "from": "MODEL_LEASE_001",
+      "to": "MODEL_SOURCE_SELECTION_001"
+    }
+  ],
+  "proposal_allowance": {
+    "max_candidates": 3,
+    "max_model_calls": 1,
+    "allowed_resource_classes": [
+      "DETERMINISTIC",
+      "LOCAL_CHEAP"
+    ],
+    "external_effects": "NONE",
+    "authority_effect": "NONE"
+  },
+  "completion_criteria": [
+    "Each retained unresolved relation has explicit adjudicated standing or is superseded by a pressure-earned fracture that makes the relation unnecessary.",
+    "No retained result requires permanent seat-model identity or model-owned action authority.",
+    "Any future source-selection relation remains explicitly separate from availability, eligibility, lease, and invocation."
+  ],
+  "stop_conditions": [
+    "The campaign basis cannot be reconstructed.",
+    "A proposed pressure requires automatic execution or authorization.",
+    "A proposed pressure silently introduces scheduling or autonomous model escalation.",
+    "A proposed selection mechanism cannot make its policy basis explicit."
+  ],
+  "explicit_non_authorizations": [
+    "NO_AUTOMATIC_EXECUTION",
+    "NO_AUTOMATIC_AUTHORIZATION",
+    "NO_AUTOMATIC_SCHEDULING",
+    "NO_AUTOMATIC_MODEL_ESCALATION",
+    "NO_PERMANENT_SEAT_MODEL_BINDING",
+    "NO_SCIENTIFIC_PROMOTION"
+  ],
+  "status": "CANDIDATE",
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "adoption_effect": "NONE"
+}
