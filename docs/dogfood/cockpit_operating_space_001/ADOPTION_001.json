@@ -1,0 +1,21 @@
+{
+  "actor_id": "REED",
+  "adoption_effect": "DECLARES_DEVELOPMENTAL_COMMITMENT",
+  "adoption_id": "COS-ADOPTION-001",
+  "adoption_kind": "ADOPTED",
+  "assignment_effect": "NONE",
+  "authority_effect": "NONE",
+  "campaign_id": "COCKPIT_OPERATING_SPACE_001",
+  "campaign_sha256": "92b67855b553c727928bf45be5ea6206c177d5c4e93416987795f94d3d11406b",
+  "execution_effect": "NONE",
+  "gesture_ref": "conversation:current:explicit-user-authorization:COCKPIT_OPERATING_SPACE_001",
+  "priority_effect": "NONE",
+  "reason": "Reed explicitly authorized COCKPIT_OPERATING_SPACE_001 for live developmental use.",
+  "scheduler_effect": "NONE",
+  "schema": "CAMPAIGN_ADOPTION_v0",
+  "selection_effect": "NONE",
+  "standing_effect": "NONE",
+  "target_adoption_id": null,
+  "target_adoption_sha256": null,
+  "wake_effect": "NONE"
+}
