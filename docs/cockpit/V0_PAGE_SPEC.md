@@ -67,6 +67,7 @@ pressure_relations
 constraints
 evidence_refs
 projection_documents
+action_surfaces
 projection_diagnostics
 ```
 
@@ -115,7 +116,7 @@ Use one persistent observer shell. Its initial desktop composition is:
 │ primary visual object                                 │ INSPECTOR        │
 │                                                       │                  │
 ├───────────────────────────────────────────────────────┴──────────────────┤
-│ BOUNDED VIEW SURFACE: CONSTRAINTS / LINEAGE / HORIZON / SOURCE           │
+│ BOUNDED VIEW: CONSTRAINTS / LINEAGE / HORIZON / ACTIONS / SOURCE         │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -188,6 +189,35 @@ none selected
 
 Selecting, hovering, centering, or inspecting an open pressure must not give it
 the ACTIVE form.
+
+### Candidate ACTIONS lens
+
+The `action-surface-v0` candidate adds one read-only `ACTIONS` lens to this
+same observer shell. Its input is only the normalized `action_surfaces`
+array. The browser must not replay `lab/events/events.jsonl` itself.
+
+The lens answers:
+
+```text
+WHAT DECLARED ROUTING OPERATION IS NEXT?
+WHAT GATE DOES IT REQUIRE?
+WHAT BASIS PRODUCED THIS VIEW?
+```
+
+It must also keep this boundary visually explicit:
+
+```text
+ACTION VISIBLE
+!=
+ACTION SELECTED
+!=
+ACTION AUTHORIZED
+!=
+ACTION EXECUTED
+```
+
+The candidate contains no Run, Execute, Approve, or role-invocation control.
+Selection only foregrounds an emitted action-surface object.
 
 ## 3. Pressure / Resolution Map
 
