@@ -233,15 +233,12 @@ def _action_for(spec: dict[str, Any], state: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def build_action_surfaces(
-    repo_root: str | Path,
+def _load_specs(
+    repo: Path,
     source_commit: str,
-) -> list[dict[str, Any]]:
-    """Project declared next actions without executing or authorizing them."""
-    repo = Path(repo_root).resolve()
-    all_events = _events(repo, source_commit)
-    surfaces: list[dict[str, Any]] = []
-
+) -> list[tuple[str, dict[str, Any]]]:
+    loaded: list[tuple[str, dict[str, Any]]] = []
+    seen: dict[str, str] = {}
     for process_path in _process_paths(repo, source_commit):
         raw = _text(repo, source_commit, process_path)
         if raw is None:
@@ -263,11 +260,55 @@ def build_action_surfaces(
                 f"process specification {process_path} is missing: "
                 + ", ".join(missing)
             )
+        if not isinstance(spec["process_id"], str) or not spec["process_id"]:
+            raise ActionSurfaceError(
+                f"process specification has invalid process_id: {process_path}"
+            )
+        if not isinstance(spec["initial_phase"], str) or not spec["initial_phase"]:
+            raise ActionSurfaceError(
+                f"process specification has invalid initial_phase: {process_path}"
+            )
         if not isinstance(spec["transitions"], dict):
             raise ActionSurfaceError(
                 f"process specification transitions are not an object: {process_path}"
             )
+        pid = spec["process_id"]
+        if pid in seen:
+            raise ActionSurfaceError(
+                f"duplicate process_id {pid!r}: {seen[pid]} and {process_path}"
+            )
+        seen[pid] = process_path
+        loaded.append((process_path, spec))
+    return loaded
 
+
+def build_action_surfaces(
+    repo_root: str | Path,
+    source_commit: str,
+) -> list[dict[str, Any]]:
+    """Project declared next actions without executing or authorizing them."""
+    repo = Path(repo_root).resolve()
+    all_events = _events(repo, source_commit)
+    loaded_specs = _load_specs(repo, source_commit)
+    known_process_ids = {spec["process_id"] for _, spec in loaded_specs}
+
+    unknown_event_processes = sorted(
+        {
+            str(event.get("process_id"))
+            for event in all_events
+            if event.get("process_id") is not None
+            and event.get("process_id") not in known_process_ids
+        }
+    )
+    if unknown_event_processes:
+        raise ActionSurfaceError(
+            "routing events reference process IDs without a unique committed "
+            "process specification: "
+            + ", ".join(unknown_event_processes)
+        )
+
+    surfaces: list[dict[str, Any]] = []
+    for process_path, spec in loaded_specs:
         pid = spec["process_id"]
         state = _initial(spec)
         consumed_events = [
