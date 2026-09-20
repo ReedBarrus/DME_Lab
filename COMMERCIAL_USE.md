@@ -16,9 +16,10 @@ It does **not** grant a general commercial-use license.
 
 ## Commercial use
 
-Commercial use of DME_Lab, ATLAS implementation code, or modified/new works
-based on covered repository software requires separate permission from the
-repository owner.
+Commercial use of DME_Lab software, including any ATLAS implementation that is
+distributed in this repository or expressly under these terms, or of modified/new
+works based on covered repository software, requires separate permission from
+the repository owner.
 
 Examples that should be treated as requiring a separate commercial license
 include:
