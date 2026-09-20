@@ -1,0 +1,92 @@
+{
+  "adjudication_ref": "dogfood:COCKPIT_OPERATING_SPACE_001:ADOPTION_001",
+  "adoption_effect": "NONE",
+  "authority_effect": "NONE",
+  "campaign_id": "COCKPIT_OPERATING_SPACE_001",
+  "campaign_sha256": "92b67855b553c727928bf45be5ea6206c177d5c4e93416987795f94d3d11406b",
+  "candidate_current_basis_refs": [
+    "git:d644f22efdd164dafc1104b20a77e3e157ba5f32",
+    "qualification:docs/candidates/wake_source_v0/QUALIFICATION_001.md@ee721faebb5f2a3e6780d20b7a558043e164a5b3"
+  ],
+  "candidate_current_basis_sha256": "e1fdb7f0b5f325682444d81f1be8da0d71234cb3f6e9b1fb7ba1633f25aa50a8",
+  "derived_continuity_requirements": [
+    {
+      "campaign_relevance_basis": "explicit_non_authorizations:NO_AUTOMATIC_ASSIGNMENT",
+      "historical_identity_or_relation": "AUTOMATIC_ASSIGNMENT_EVENT_COUNT == 0",
+      "observed_result": "ESTABLISHED",
+      "raw_current_evidence_inspected": "evidence:campaign_effect_trace_v0:AUTOMATIC_ASSIGNMENT:sha256:a1c1fcdaeddd2cf7ab4243e577eff835034172a4a93d43eaf11a526e45018364;event_count:0",
+      "requirement_id": "NONAUTH::AUTOMATIC_ASSIGNMENT",
+      "test_relation": "len(raw_event_refs[AUTOMATIC_ASSIGNMENT]) == 0"
+    },
+    {
+      "campaign_relevance_basis": "explicit_non_authorizations:NO_AUTOMATIC_PRIORITY",
+      "historical_identity_or_relation": "AUTOMATIC_PRIORITY_EVENT_COUNT == 0",
+      "observed_result": "ESTABLISHED",
+      "raw_current_evidence_inspected": "evidence:campaign_effect_trace_v0:AUTOMATIC_PRIORITY:sha256:4158c647480c5d4e6cf3fbd4d718b13c7d5efcdfde252cff3a133af3da0c7957;event_count:0",
+      "requirement_id": "NONAUTH::AUTOMATIC_PRIORITY",
+      "test_relation": "len(raw_event_refs[AUTOMATIC_PRIORITY]) == 0"
+    },
+    {
+      "campaign_relevance_basis": "explicit_non_authorizations:NO_AUTOMATIC_WAKE",
+      "historical_identity_or_relation": "AUTOMATIC_WAKE_EVENT_COUNT == 0",
+      "observed_result": "ESTABLISHED",
+      "raw_current_evidence_inspected": "evidence:campaign_effect_trace_v0:AUTOMATIC_WAKE:sha256:c0f874430c592ef868375fc4dffe9d6da9f273b3823e24f53dfd8d84de90ef95;event_count:0",
+      "requirement_id": "NONAUTH::AUTOMATIC_WAKE",
+      "test_relation": "len(raw_event_refs[AUTOMATIC_WAKE]) == 0"
+    },
+    {
+      "campaign_relevance_basis": "explicit_non_authorizations:NO_DIRECT_CONTROLLER_MUTATION",
+      "historical_identity_or_relation": "DIRECT_CONTROLLER_MUTATION_EVENT_COUNT == 0",
+      "observed_result": "ESTABLISHED",
+      "raw_current_evidence_inspected": "evidence:campaign_effect_trace_v0:DIRECT_CONTROLLER_MUTATION:sha256:209037b37bc8a8338a8d31746dc9619a6a7bb27998f77ef2c6439a71b370191a;event_count:0",
+      "requirement_id": "NONAUTH::DIRECT_CONTROLLER_MUTATION",
+      "test_relation": "len(raw_event_refs[DIRECT_CONTROLLER_MUTATION]) == 0"
+    },
+    {
+      "campaign_relevance_basis": "explicit_non_authorizations:NO_SCHEDULER_AUTHORITY",
+      "historical_identity_or_relation": "SCHEDULER_AUTHORITY_EVENT_COUNT == 0",
+      "observed_result": "ESTABLISHED",
+      "raw_current_evidence_inspected": "evidence:campaign_effect_trace_v0:SCHEDULER_AUTHORITY:sha256:0c708ee013acf7f24a1e27a8ddf72141e7e9100e367b8622ce1e4bfb7c59a043;event_count:0",
+      "requirement_id": "NONAUTH::SCHEDULER_AUTHORITY",
+      "test_relation": "len(raw_event_refs[SCHEDULER_AUTHORITY]) == 0"
+    },
+    {
+      "campaign_relevance_basis": "explicit_non_authorizations:NO_STANDING_AUTHORITY",
+      "historical_identity_or_relation": "STANDING_AUTHORITY_EVENT_COUNT == 0",
+      "observed_result": "ESTABLISHED",
+      "raw_current_evidence_inspected": "evidence:campaign_effect_trace_v0:STANDING_AUTHORITY:sha256:312371fc0b3a0d5bc700b9983e45be89f56fc1ce51f66795a7a80b99d30678cc;event_count:0",
+      "requirement_id": "NONAUTH::STANDING_AUTHORITY",
+      "test_relation": "len(raw_event_refs[STANDING_AUTHORITY]) == 0"
+    },
+    {
+      "campaign_relevance_basis": "qualification:docs/candidates/wake_source_v0/QUALIFICATION_001.md@ee721faebb5f2a3e6780d20b7a558043e164a5b3",
+      "historical_identity_or_relation": "git_blob_sha1:ee721faebb5f2a3e6780d20b7a558043e164a5b3",
+      "observed_result": "ESTABLISHED",
+      "raw_current_evidence_inspected": "evidence:campaign_artifact_evidence_v0:docs/candidates/wake_source_v0/QUALIFICATION_001.md:sha256:e3d05692fae04535c967025173d614735f13234634a342fe91a01b1d3ab483a1;git_blob_sha1:ee721faebb5f2a3e6780d20b7a558043e164a5b3;basis_declared:True",
+      "requirement_id": "QUALIFICATION::docs/candidates/wake_source_v0/QUALIFICATION_001.md",
+      "test_relation": "CURRENT_QUALIFICATION_GIT_BLOB_SHA1 == HISTORICAL_QUALIFICATION_GIT_BLOB_SHA1"
+    }
+  ],
+  "disposition": "CURRENTLY_APPLICABLE",
+  "evidence_refs": [
+    "evidence:campaign_artifact_evidence_v0:docs/candidates/wake_source_v0/QUALIFICATION_001.md:sha256:e3d05692fae04535c967025173d614735f13234634a342fe91a01b1d3ab483a1",
+    "evidence:campaign_effect_trace_v0:AUTOMATIC_ASSIGNMENT:sha256:a1c1fcdaeddd2cf7ab4243e577eff835034172a4a93d43eaf11a526e45018364",
+    "evidence:campaign_effect_trace_v0:AUTOMATIC_PRIORITY:sha256:4158c647480c5d4e6cf3fbd4d718b13c7d5efcdfde252cff3a133af3da0c7957",
+    "evidence:campaign_effect_trace_v0:AUTOMATIC_WAKE:sha256:c0f874430c592ef868375fc4dffe9d6da9f273b3823e24f53dfd8d84de90ef95",
+    "evidence:campaign_effect_trace_v0:DIRECT_CONTROLLER_MUTATION:sha256:209037b37bc8a8338a8d31746dc9619a6a7bb27998f77ef2c6439a71b370191a",
+    "evidence:campaign_effect_trace_v0:SCHEDULER_AUTHORITY:sha256:0c708ee013acf7f24a1e27a8ddf72141e7e9100e367b8622ce1e4bfb7c59a043",
+    "evidence:campaign_effect_trace_v0:STANDING_AUTHORITY:sha256:312371fc0b3a0d5bc700b9983e45be89f56fc1ce51f66795a7a80b99d30678cc"
+  ],
+  "execution_effect": "NONE",
+  "historical_basis_refs": [
+    "git:2ee939453651da741769ea07210fcdeaec9da971",
+    "qualification:docs/candidates/wake_source_v0/QUALIFICATION_001.md@ee721faebb5f2a3e6780d20b7a558043e164a5b3"
+  ],
+  "historical_basis_sha256": "dd0eecfad8dfb879743781efff031be5676405a5e2cd1fb7975a1085059586d0",
+  "priority_effect": "NONE",
+  "revalidation_id": "COS-REVALIDATION-ADOPTION-001",
+  "scheduler_effect": "NONE",
+  "schema": "CAMPAIGN_BASIS_REVALIDATION_v0",
+  "selection_effect": "NONE",
+  "standing_effect": "NONE"
+}
