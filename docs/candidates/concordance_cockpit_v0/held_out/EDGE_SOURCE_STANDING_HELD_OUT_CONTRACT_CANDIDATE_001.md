@@ -434,6 +434,80 @@ NOT TO BE MATERIALIZED OR EXECUTED
 
 ---
 
+## 7A. PROSPECTIVE REALIZATION HARNESS
+
+The prospective realization procedure is now materialized as an exact,
+separately reviewable harness:
+
+```text
+tools/edge_source_standing_held_out_realization_v0.py
+
+Git blob:
+cc860622782dba1a430db31ced75a59017e33b86
+```
+
+Non-consuming administrative/static pressure is materialized at:
+
+```text
+tests/cockpit/test_edge_source_standing_held_out_realization_v0.py
+
+Git blob:
+acface1be90f1556ff107bc38d998e16aeafb5d5
+```
+
+The prospective exact invocation is:
+
+```text
+python tools/edge_source_standing_held_out_realization_v0.py --repo-root .
+```
+
+The harness mechanically requires, before evaluator import or invocation:
+
+```text
+cryptography == 46.0.4
+
+edge_entitlement_v0.py Git blob
+=
+ac3abb625c2a4a005bb5e9a324e77afc9b88ddb6
+
+source_standing_v0.py Git blob
+=
+a0f26f7190971dbf4bdfa1046de4cb189bf79827
+
+held-out fixture Git blob
+=
+4f1d49b2ad1e39f122a0e23ba3ddaf27eb745047
+
+held-out fixture content SHA-256
+=
+16a0bae80c33c7ebd04a52cdc8370dfe427a50be1ca43a87d12c7e8b1422b6c2
+```
+
+The harness contains no scientific expected-result vector. It:
+
+1. performs administration preflight without importing the evaluator;
+2. loads the already-pinned evaluator only after exact local identities pass;
+3. constructs only the raw evaluator input surface already declared here;
+4. calls `derive()` once for each of P1/H1/H2/H3/H4/H5 with no retry loop;
+5. retains the completed six-cell observations in memory;
+6. emits no partial scientific vector if any invocation fails;
+7. emits only `status`, `reason`, and `standing_sha256` per cell on success.
+
+Any preflight or incomplete-evaluation failure is administration-invalid and
+does not produce a scientific vector.
+
+The harness does not contain or apply the post-observation PASS predicate.
+
+```text
+REALIZATION HARNESS MATERIALIZED
+!=
+CONTRACT FROZEN
+
+HARNESS IDENTITY PINNED
+!=
+EXECUTION AUTHORIZED
+```
+
 ## 8. FUTURE REALIZATION PROCEDURE
 
 A future separately authorized realization must:
