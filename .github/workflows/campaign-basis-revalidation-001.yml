@@ -1,0 +1,74 @@
+name: CAMPAIGN_BASIS_REVALIDATION_001
+
+on:
+  pull_request:
+    paths:
+      - "tools/campaign_basis_revalidation_v0.py"
+      - "tests/runtime/test_campaign_basis_revalidation.py"
+      - "docs/candidates/campaign_basis_revalidation_v0/**"
+      - "docs/campaigns/candidates/COCKPIT_OPERATING_SPACE_001.json"
+      - "docs/candidates/wake_source_v0/QUALIFICATION_001.md"
+      - ".github/workflows/campaign-basis-revalidation-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Compile campaign basis revalidation apparatus
+        run: |
+          python -m py_compile \
+            tools/campaign_basis_revalidation_v0.py \
+            tests/runtime/test_campaign_basis_revalidation.py
+
+      - name: CAMPAIGN_BASIS_REVALIDATION_001 pressure
+        run: |
+          python -m unittest tests.runtime.test_campaign_basis_revalidation -v
+
+      - name: Development campaign regression
+        run: |
+          python -m unittest tests.runtime.test_development_campaign -v
+
+      - name: Envelope selection regression
+        run: |
+          python -m unittest tests.runtime.test_envelope_selection -v
+
+      - name: Preparation regression
+        run: |
+          python -m unittest tests.runtime.test_preparation -v
+
+      - name: Preparation assignment regression
+        run: |
+          python -m unittest tests.runtime.test_preparation_assignment -v
+
+      - name: Wake source regression
+        run: |
+          python -m unittest tests.runtime.test_wake_source -v
+
+      - name: Bounded reentry regression
+        run: |
+          python -m unittest tests.runtime.test_bounded_reentry -v
+
+      - name: Cockpit control adapter regression
+        run: |
+          python -m unittest tests.runtime.test_cockpit_control_adapter -v
+
+      - name: Cockpit control UI regression
+        run: |
+          node --test tests/cockpit/test_control_adapter.mjs
