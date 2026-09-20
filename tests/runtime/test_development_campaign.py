@@ -10,6 +10,7 @@ from tools.development_campaign_v0 import (
     DevelopmentCampaignError,
     build_campaign,
     object_sha256,
+    validate_campaign,
 )
 
 
@@ -291,6 +292,25 @@ class DevelopmentCampaignPressure(unittest.TestCase):
         changed["expected_information_gain"] = "Different bytes under same ID."
         with self.assertRaises(DevelopmentCampaignError):
             self.store.lodge_request(changed)
+
+    def test_c10_posted_local_cognition_specimen_is_valid_candidate(self) -> None:
+        specimen_path = (
+            Path(__file__).resolve().parents[2]
+            / "docs"
+            / "campaigns"
+            / "candidates"
+            / "LOCAL_COGNITION_001.json"
+        )
+        specimen = __import__("json").loads(specimen_path.read_text(encoding="utf-8"))
+        validate_campaign(specimen)
+        self.assertEqual(specimen["status"], "CANDIDATE")
+        self.assertEqual(specimen["authority_effect"], "NONE")
+        self.assertEqual(specimen["execution_effect"], "NONE")
+        self.assertEqual(specimen["adoption_effect"], "NONE")
+        self.assertIn(
+            "MODEL_ELIGIBLE != MODEL_SELECTED",
+            [item["statement"] for item in specimen["unresolved_relations"]],
+        )
 
 
 if __name__ == "__main__":
