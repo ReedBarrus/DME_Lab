@@ -301,7 +301,7 @@ puppet issuer:
 I*
 
 source key fingerprint:
-f9f18d143f28166ddcc523d909b661b149759e515cd2c92a10373c413bb5bb9d
+07339ff4206c658f9d9da8beb2729893b1e95f8320a9a6885d31d576f9f5c671
 
 puppet key fingerprint:
 2f16c37bc2efffdafd0cec32758741f4365a03a5101ba220ef9a5ca9af5a7726
