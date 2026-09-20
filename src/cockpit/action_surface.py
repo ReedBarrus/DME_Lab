@@ -38,7 +38,7 @@ def _git(repo: Path, *args: str) -> subprocess.CompletedProcess[bytes]:
 
 
 def _resolve_commit(repo: Path, source_ref: str) -> str:
-    result = _git(repo, "rev-parse", "--verify", f"{source_ref}^{commit}")
+    result = _git(repo, "rev-parse", "--verify", f"{source_ref}^{{commit}}")
     if result.returncode != 0:
         detail = result.stderr.decode("utf-8", errors="replace").strip()
         raise ActionSurfaceError(
