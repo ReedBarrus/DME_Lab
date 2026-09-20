@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
   PROJECTION_NAMES,
+  SCALE_NAMES,
   addressKey,
   buildOperationalGraph,
   toggleAddressSelection,
@@ -9,6 +10,9 @@ import {
   buildAddressedChatPacket,
   deriveContextualAffordances,
   buildCampaignPlanDraft,
+  visibleGraphForScale,
+  observerAddressObject,
+  observerAddressRelations,
 } from '../../src/cockpit/observer/perceptual_instrument.mjs';
 
 function snapshot() {
@@ -110,4 +114,50 @@ test('campaign planning remains a local draft with zero consequence effects', ()
   assert.equal(draft.assignment_effect,'NONE');
   assert.equal(draft.authority_effect,'NONE');
   assert.equal(draft.execution_effect,'NONE');
+});
+
+
+test('scale filtering preserves selected coordinates without inventing priority', () => {
+  const graph = buildOperationalGraph(snapshot());
+  const objectView = visibleGraphForScale(
+    graph,
+    'OBJECT',
+    [{kind:'request',id:'R1'}],
+  );
+  assert.ok(objectView.nodes.some((node)=>node.key === 'request:R1'));
+  assert.ok(objectView.nodes.some((node)=>node.key === 'campaign:C1'));
+  assert.equal(objectView.nodes.some((node)=>node.meta?.priority), false);
+  assert.deepEqual(SCALE_NAMES, ['WORLD','CAMPAIGN','SEAT_PROCESS','OBJECT']);
+});
+
+test('semantic observer coordinates are exact topology addresses, not nearby substitutions', () => {
+  const observer = {
+    occurrences:[{
+      key:'pressure-001-PR-1-line-10',
+      node:{id:'PR-1',title:'Pressure one'},
+    }],
+    constraintOccurrences:[],
+    evidenceOccurrences:[],
+    projectionDocumentOccurrences:[],
+    semanticEdges:[{
+      relation:{relation_kind:'blocked_by'},
+      sourceCandidates:[{key:'pressure-001-PR-1-line-10'}],
+      targetCandidates:[{key:'pressure-002-PR-2-line-20'}],
+      drawable:true,
+      ambiguous:false,
+    }],
+  };
+  const exact = {kind:'pressure_occurrence',id:'pressure-001-PR-1-line-10'};
+  assert.equal(observerAddressObject(observer, exact).label, 'Pressure one');
+  assert.equal(
+    observerAddressObject(observer, {kind:'pressure_occurrence',id:'PR-1'}),
+    null,
+  );
+  assert.deepEqual(observerAddressRelations(observer, exact), [{
+    relation:'blocked_by',
+    source:'pressure-001-PR-1-line-10',
+    target:'pressure-002-PR-2-line-20',
+    drawable:true,
+    ambiguous:false,
+  }]);
 });
