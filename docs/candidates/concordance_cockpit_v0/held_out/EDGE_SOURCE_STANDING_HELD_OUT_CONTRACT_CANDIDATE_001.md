@@ -109,13 +109,13 @@ docs/candidates/concordance_cockpit_v0/held_out/
 EDGE_SOURCE_STANDING_HELD_OUT_FIXTURES_001.json
 
 Git blob:
-45850b0b37d072e7b894ecb1dbeb0299ca504f37
+4f1d49b2ad1e39f122a0e23ba3ddaf27eb745047
 ```
 
 The fixture content SHA-256 is:
 
 ```text
-6d3fb573eefcb75bfebb4462021c218be4554b5ccb8d0d2496081b6f9f28444d
+16a0bae80c33c7ebd04a52cdc8370dfe427a50be1ca43a87d12c7e8b1422b6c2
 ```
 
 ---
@@ -126,7 +126,7 @@ Across every scientific cell:
 
 ```text
 SOURCE:
-S*
+S_HO
 
 SOURCE IDENTITY VALIDITY:
 VALID
@@ -134,22 +134,22 @@ VALID
 not a source-standing conclusion)
 
 CLAIM ARTIFACT ID:
-CLAIM-C*
+CLAIM_HO
 
 CLAIM:
-FROM* MOTIVATED TO*
+FROM_HO CONSTRAINS TO_HO
 
 CLAIM SHA-256:
-39857ce13f93d4ba2bc471992f28681658be56dba9df33cdb8df77a478c652b2
+29e6c8a409b59c405ac7190a9532c713be491237c96241315d66b3a1db9b1dd4
 
 FROM:
-FROM*
+FROM_HO
 
 RELATION CLASS:
-MOTIVATED
+CONSTRAINS
 
 TO:
-TO*
+TO_HO
 ```
 
 The exact claim bytes are stored once in the fixture and MUST be reused
@@ -185,7 +185,7 @@ The prospective fixture pins:
 
 ```text
 grounding public-key fingerprint:
-0c8175cbbf17b67500b7722af24ccdf4fc825ed8ac0203dba56aa9a1e5a70634
+31a6404b748800f07cf1a5c0899fcbd83a2700829230ed315ef4f6683f2c43ad
 ```
 
 The corresponding private grounding key was used only to materialize the
@@ -211,16 +211,16 @@ claimant-held private signing capabilities:
 
 ```text
 source key fingerprint:
-1103780840ba8c0035cad138c3b6a90e2b6fa5448d90581a49e0bdd510893617
+55e04d920b76ea9bb13d477a4a06ab92f60daec622fee5be5c45cdabcfd379db
 
 puppet key fingerprint:
-6e7b42b16a883c5aba000a792f0406548cab0249e9c51e583a8a5897f8a92306
+987b5cca81de1d623420aa007755f829bfe0d201900598abc8c41283dac4c5ea
 ```
 
 and a single fixed challenge:
 
 ```text
-EDGE_SOURCE_STANDING_HELD_OUT_001_CONTROL_CHALLENGE
+EDGE_SOURCE_STANDING_HELD_OUT_001_FRESH_CONTROL_CHALLENGE
 ```
 
 with signatures under both keys.
@@ -246,7 +246,7 @@ All non-H1 standing specimens use:
 
 ```text
 grant_id:
-GRANT-HELD-OUT-001
+GRANT-HELD-OUT-001-FRESH
 ```
 
 unless a coordinate below necessarily differs.
@@ -259,25 +259,25 @@ Signed by the protected grounding root.
 
 ```text
 source_ref:
-S*
+S_HO
 
 issuer_ref:
-GROUNDING_ROOT*
+GROUNDING_ROOT_HO
 
 jurisdiction:
 DEVELOPMENTAL_RELATION_ISSUANCE
 
 relation_classes:
-[MOTIVATED]
+[CONSTRAINS]
 
 endpoint_pairs:
-[(FROM*, TO*)]
+[(FROM_HO, TO_HO)]
 ```
 
 Standing-basis SHA-256:
 
 ```text
-46669adfc072827bdce855e30e15b87bf7774e9c7c836a175ffca9c36b1613c3
+21ab2da850df09b683076842c6052ff02bc9cb538fdb447fd8505c486bd5db28
 ```
 
 Required eventual observation:
@@ -311,13 +311,13 @@ Only the intended relation-coverage coordinate changes:
 
 ```text
 relation_classes:
-[REFERENCED_BY]
+[MOTIVATED]
 ```
 
 Standing-basis SHA-256:
 
 ```text
-63e40584860fd3c9b3aa94d7cb4de9d4b9b9de2fab6cd1857c0f9983b462d216
+c23188d693a23984fbe2c89b3d5a12fd2a8dd668bf377ed8df75db7fd183f6f9
 ```
 
 Required eventual observation:
@@ -328,25 +328,25 @@ NOT_ESTABLISHED
 
 ### H3 — ENDPOINT-SCOPE NEAR MISS
 
-Same protected root, source, jurisdiction, MOTIVATED relation coverage,
+Same protected root, source, jurisdiction, CONSTRAINS relation coverage,
 grant_id, and standing mechanism as P1.
 
 P1 endpoint scope:
 
 ```text
-[(FROM*, TO*)]
+[(FROM_HO, TO_HO)]
 ```
 
 H3 endpoint scope:
 
 ```text
-[(FROM*, TO_NEAR*)]
+[(FROM_HO, TO_HO_NEAR)]
 ```
 
 Standing-basis SHA-256:
 
 ```text
-a8525c81b0551e3f19245f639107ac06461b566f624a71d1459f5a3ca581b2d3
+8565af115631835fcec112650a9a88a5a6eaaedbec0a0608d85872ce117b722c
 ```
 
 The changed detached signature is a deterministic consequence of changed
@@ -360,14 +360,14 @@ NOT_ESTABLISHED
 
 ### H4 — PUPPET SELF-GRANT
 
-Same source, developmental-relation jurisdiction, MOTIVATED relation coverage,
+Same source, developmental-relation jurisdiction, CONSTRAINS relation coverage,
 exact endpoint pair, and grant_id.
 
 The standing bytes instead name:
 
 ```text
 issuer_ref:
-I*
+I_HO
 ```
 
 and pin the claimant-held puppet key fingerprint. The standing specimen is
@@ -376,10 +376,10 @@ signed by that puppet key, not by the protected grounding root.
 Standing-basis SHA-256:
 
 ```text
-671d662244c89c3bbcee04361837fb21a72ccb7e6f60d379821f596b11f8ed3a
+f20c1693f760612508160f35f89595adec0eb4b789413abcd1013a60e0cb292f
 ```
 
-The claimant-control bundle prospectively contains both S* and I* signing
+The claimant-control bundle prospectively contains both S_HO and I_HO signing
 capabilities.
 
 Required eventual observation:
@@ -398,20 +398,20 @@ INDEPENDENT GROUNDING
 
 ### H5 — REAL BUT WRONG JURISDICTION
 
-Same protected root, source, MOTIVATED relation coverage, exact endpoint pair,
+Same protected root, source, CONSTRAINS relation coverage, exact endpoint pair,
 grant_id, and standing mechanism as P1.
 
 Only the intended jurisdiction coordinate changes:
 
 ```text
 jurisdiction:
-OTHER_LEGITIMATE_JURISDICTION
+OTHER_HO_JURISDICTION
 ```
 
 Standing-basis SHA-256:
 
 ```text
-cce3bf71682a76fd74938de9f580b2475f87655e4c2b450415892999ab009052
+e7e5fd64ad4f50566657f81f540db7517768b068816e553b0be8b89aaa55b4b7
 ```
 
 Required eventual observation:
@@ -553,14 +553,14 @@ UNDER THE TESTED THREAT MODEL,
 THE EXACT PINNED PROTECTED-GROUNDING-KEY CANDIDATE
 MECHANICALLY DISTINGUISHES
 
-SOURCE S*
+SOURCE S_HO
 
 WITH THE PROSPECTIVELY MATERIALIZED
 ROOT-GROUNDED STANDING
 
 FOR DEVELOPMENTAL_RELATION_ISSUANCE,
-RELATION CLASS MOTIVATED,
-AND EXACT ORDERED ENDPOINT PAIR (FROM*, TO*)
+RELATION CLASS CONSTRAINS,
+AND EXACT ORDERED ENDPOINT PAIR (FROM_HO, TO_HO)
 
 FROM THE FIVE PROSPECTIVELY MATERIALIZED
 NON-STANDING / WRONG-RELATION /
@@ -612,3 +612,32 @@ NO
 MERGE:
 NO
 ```
+
+---
+
+## REMATERIALIZATION CONFORMANCE NOTE
+
+This candidate supersedes only the prospective bytes previously materialized on this branch. The prior commits and PRE-FREEZE PREFLIGHT RECEIPT 001 remain historical evidence of the conformance fracture:
+
+```text
+FRESH STANDING SPECIMENS
+!=
+FRESH HELD-OUT CLAIM
+
+INTERNAL CONTRACT CONSISTENCY
+!=
+DESIGN CONFORMANCE
+```
+
+The current prospective claim coordinates are now the Commander-reviewed fresh family:
+
+```text
+S_HO
+CLAIM_HO
+FROM_HO
+CONSTRAINS
+TO_HO
+TO_HO_NEAR
+```
+
+No held-out evaluator invocation is authorized or performed by this rematerialization.
