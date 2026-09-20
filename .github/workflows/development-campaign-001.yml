@@ -1,0 +1,135 @@
+name: DEVELOPMENT_CAMPAIGN_001
+
+on:
+  pull_request:
+    paths:
+      - "tools/development_campaign_v0.py"
+      - "tests/runtime/test_development_campaign.py"
+      - "schemas/development_campaign_v0.schema.json"
+      - "schemas/execution_envelope_request_v0.schema.json"
+      - "schemas/campaign_standing_update_v0.schema.json"
+      - "docs/candidates/development_campaign_v0/**"
+      - ".github/workflows/development-campaign-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile campaign membrane
+        run: |
+          python -m py_compile \
+            tools/development_campaign_v0.py \
+            tests/runtime/test_development_campaign.py
+
+      - name: Run DEVELOPMENT_CAMPAIGN_001 pressure
+        run: |
+          python -m unittest tests.runtime.test_development_campaign -v
+
+      - name: Re-run local semantic regression
+        run: |
+          python -m unittest tests.runtime.test_local_semantic_operator -v
+
+      - name: Re-run implementation-operator regression
+        run: |
+          python -m unittest tests.runtime.test_labboib_implementation_operator -v
+
+      - name: Re-run causal-applicability regression
+        run: |
+          python -m unittest tests.runtime.test_causal_applicability -v
+
+      - name: Re-run controller-binding regression
+        run: |
+          python -m unittest tests.runtime.test_labboib_controller_binding -v
+
+      - name: Re-run goblin-pool regression
+        run: |
+          python -m unittest tests.runtime.test_goblin_pool -v
+
+      - name: Exercise build / post / draft CLI
+        run: |
+          STATE="$(mktemp -d)"
+          HEAD="$(git rev-parse HEAD)"
+
+          cat > /tmp/campaign-spec.json <<EOF
+          {
+            "campaign_id": "CI_LOCAL_COGNITION_001",
+            "title": "CI local cognition horizon",
+            "basis_refs": ["git:$HEAD"],
+            "objective": "Pressure proposal-only local cognition development.",
+            "claim_ceiling": "No execution or adoption authority.",
+            "target_objects": ["LOCAL_SEMANTIC_OPERATOR_001", "MODEL_LEASE_001"],
+            "unresolved_relations": [
+              {"relation_id": "R1", "statement": "MODEL_AVAILABLE != MODEL_ELIGIBLE"},
+              {"relation_id": "R2", "statement": "MODEL_SELECTED != MODEL_LEASED"}
+            ],
+            "pressure_points": [
+              "Pressure availability versus eligibility.",
+              "Pressure selection versus lease."
+            ],
+            "dependency_edges": [],
+            "proposal_allowance": {
+              "max_candidates": 2,
+              "max_model_calls": 1,
+              "allowed_resource_classes": ["DETERMINISTIC", "LOCAL_CHEAP"]
+            },
+            "completion_criteria": ["Both relations receive explicit standing."],
+            "stop_conditions": ["Basis cannot be reconstructed."],
+            "explicit_non_authorizations": [
+              "NO_AUTOMATIC_EXECUTION",
+              "NO_AUTOMATIC_AUTHORIZATION"
+            ]
+          }
+          EOF
+
+          python tools/development_campaign_v0.py build \
+            --spec /tmp/campaign-spec.json \
+            > /tmp/campaign.json
+
+          python tools/development_campaign_v0.py post \
+            --db "$STATE/campaign.sqlite3" \
+            --campaign /tmp/campaign.json \
+            > /tmp/post.json
+
+          python tools/development_campaign_v0.py draft \
+            --db "$STATE/campaign.sqlite3" \
+            --campaign-id CI_LOCAL_COGNITION_001 \
+            --seat-id LABBOIB \
+            > /tmp/drafts.json
+
+          python tools/development_campaign_v0.py snapshot \
+            --db "$STATE/campaign.sqlite3" \
+            --campaign-id CI_LOCAL_COGNITION_001 \
+            --current-basis-ref "git:$HEAD" \
+            > /tmp/snapshot.json
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          campaign = json.loads(Path("/tmp/campaign.json").read_text())
+          drafts = json.loads(Path("/tmp/drafts.json").read_text())
+          snap = json.loads(Path("/tmp/snapshot.json").read_text())
+
+          assert campaign["status"] == "CANDIDATE"
+          assert campaign["authority_effect"] == "NONE"
+          assert campaign["execution_effect"] == "NONE"
+          assert len(drafts) == 2
+          assert all(d["packet_status"] == "CANDIDATE_REQUEST" for d in drafts)
+          assert all(d["authorization_effect"] == "NONE" for d in drafts)
+          assert snap["frontier_status"] == "OPEN"
+          assert snap["basis_status"] == "CURRENT"
+          print("DEVELOPMENT_CAMPAIGN_001_CLI_PASS")
+          PY
