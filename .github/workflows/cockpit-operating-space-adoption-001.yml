@@ -1,0 +1,45 @@
+name: COCKPIT_OPERATING_SPACE_ADOPTION_001
+
+on:
+  pull_request:
+    paths:
+      - "docs/dogfood/cockpit_operating_space_001/ADOPTION_001.json"
+      - "docs/dogfood/cockpit_operating_space_001/REVALIDATION_001.json"
+      - "docs/dogfood/cockpit_operating_space_001/ADOPTION_RECEIPT_001.md"
+      - "tests/runtime/test_cockpit_operating_space_adoption.py"
+      - ".github/workflows/cockpit-operating-space-adoption-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile adoption dogfood verifier
+        run: >-
+          python -m py_compile
+          tests/runtime/test_cockpit_operating_space_adoption.py
+
+      - name: Verify exact Cockpit campaign adoption
+        env:
+          DME_CURRENT_GIT_BASIS: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: python -m unittest tests.runtime.test_cockpit_operating_space_adoption -v
+
+      - name: Campaign adoption regression
+        run: python -m unittest tests.runtime.test_campaign_adoption -v
+
+      - name: Campaign applicability projection regression
+        run: python -m unittest tests.runtime.test_campaign_applicability_projection -v
+
+      - name: Campaign basis revalidation regression
+        run: python -m unittest tests.runtime.test_campaign_basis_revalidation -v
