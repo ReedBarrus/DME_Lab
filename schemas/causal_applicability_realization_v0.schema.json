@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/causal_applicability_realization_v0.schema.json",
+  "title": "Causal Applicability Realization v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "realization_id",
+    "realization_kind",
+    "realization_basis",
+    "mechanical_result",
+    "payload_ref"
+  ],
+  "properties": {
+    "schema": {"const": "causal_applicability_realization_v0"},
+    "realization_id": {"type": "string", "minLength": 1},
+    "realization_kind": {"type": "string", "minLength": 1},
+    "realization_basis": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "mechanical_result": {"enum": ["PASS", "FAIL"]},
+    "payload_ref": {"type": "string", "minLength": 1}
+  }
+}

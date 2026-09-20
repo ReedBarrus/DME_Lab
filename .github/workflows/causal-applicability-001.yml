@@ -1,0 +1,71 @@
+name: CAUSAL_APPLICABILITY_001
+
+on:
+  pull_request:
+    paths:
+      - "tools/causal_applicability_v0.py"
+      - "tests/runtime/test_causal_applicability.py"
+      - "schemas/causal_applicability_*_v0.schema.json"
+      - "docs/candidates/causal_applicability_v0/**"
+      - "docs/methods/CAUSAL_DISTINCTION_METHOD_v0.md"
+      - ".github/workflows/causal-applicability-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile evaluator and pressure
+        run: |
+          python -m py_compile             tools/causal_applicability_v0.py             tests/runtime/test_causal_applicability.py
+
+      - name: Run CAUSAL_APPLICABILITY_001 pressure
+        run: |
+          python -m unittest tests.runtime.test_causal_applicability -v
+
+      - name: Re-run controller-binding regression
+        run: |
+          python -m unittest tests.runtime.test_labboib_controller_binding -v
+
+      - name: Re-run GOBLIN_POOL_001 regression
+        run: |
+          python -m unittest tests.runtime.test_goblin_pool -v
+
+      - name: Exercise direct evaluator CLI
+        run: |
+          H1="$(git rev-parse HEAD)"
+          cat > /tmp/D1.json <<EOF
+          {
+            "schema": "causal_applicability_realization_v0",
+            "realization_id": "D1-CLI",
+            "realization_kind": "OPERATOR_RESULT",
+            "realization_basis": "$H1",
+            "mechanical_result": "PASS",
+            "payload_ref": "fixture://D1-CLI"
+          }
+          EOF
+
+          python tools/causal_applicability_v0.py             --realization /tmp/D1.json             --comparison-basis "$H1"             --judgment-id J1-CLI             > /tmp/J1.json
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          j = json.loads(Path("/tmp/J1.json").read_text())
+          assert j["result"] == "APPLICABLE"
+          assert j["authority_effect"] == "NONE"
+          assert j["admission_effect"] == "NONE"
+          print("CAUSAL_APPLICABILITY_001_CLI_PASS")
+          PY
