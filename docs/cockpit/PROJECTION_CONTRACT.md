@@ -112,6 +112,12 @@ These sources may be read only for the stated use:
   documents with their explicit status and source path;
 - `docs/cockpit/README.md` and this contract may be exposed as Cockpit design
   documentation, not project evidence;
+- `lab/processes/*.json` and `lab/events/events.jsonl` may be read only for
+  the bounded `action_surfaces` projection defined by
+  `docs/candidates/action_surface_v0/ACTION_SURFACE_CONTRACT_v0.md`; this
+  source extension reconstructs declared routing position only and must not
+  replay consequence, infer process liveness from a specification, or create
+  authority;
 - selected files in `docs/contracts/` may later populate an earned-system or
   contract-maturity view, but only after the adapter declares an explicit
   allowlist and parser for their headings and status vocabulary;
@@ -144,6 +150,7 @@ pressure_relations
 constraints
 evidence_refs
 projection_documents
+action_surfaces
 projection_diagnostics
 ```
 
@@ -181,6 +188,35 @@ This is a local representation discipline, not a universal value algebra.
 
 `projection_time` describes when the projection was produced. It is not an
 observation time for the represented evidence.
+
+## Action Surfaces — bounded candidate extension
+
+`action_surfaces` is a read-only operational-legibility surface over committed
+Conductor process specifications and routing events.
+
+| Contract aspect | Requirement |
+| --- | --- |
+| Purpose | Show the next declared routing operation and its gate without selecting, authorizing, or executing it. |
+| Sources | `lab/processes/*.json`; `lab/events/events.jsonl` at the exact Cockpit source commit. |
+| Copied or normalized | Process ID, description, registration presence, phase, routing status, next declared transition, transition kind, capability requirement, role/human gate, blocker, pending decision, event count, and source provenance. |
+| Derived | Routing position may be replayed only from the declared Conductor event vocabulary. When no registration event exists, the surface may show the specification's initial transition only as `SPEC_ONLY_UNREGISTERED`. |
+| Prohibited inference | Process liveness from spec presence, capability availability, role acceptance, human authority, action selection, execution, scientific standing, cursor advancement, or external consequence. |
+| Missingness | Missing or malformed routing basis remains unresolved or diagnostic; it is not replaced by a plausible action. |
+| Provenance | Process spec path, routing event-stream path, and exact source commit are required. |
+
+The governing boundary is:
+
+```text
+ACTION VISIBLE
+!=
+ACTION SELECTED
+!=
+ACTION AUTHORIZED
+!=
+ACTION EXECUTED
+```
+
+The Action lens is not an execution surface in v0.
 
 ## Pressure Nodes
 

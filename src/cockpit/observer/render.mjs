@@ -1,6 +1,7 @@
 import {
   navigationPresentation,
   normalizedField,
+  selectedAction,
   selectedConstraint,
   selectedEvidence,
   selectedOccurrence,
@@ -130,6 +131,12 @@ function selectedContext(viewModel) {
     const occurrence = selectedProjectionDocument(viewModel);
     return occurrence
       ? escapeHtml(occurrence.document?.title ?? 'missing title')
+      : '<span class="missing">none available</span>';
+  }
+  if (viewModel.activeView === 'ACTIONS') {
+    const occurrence = selectedAction(viewModel);
+    return occurrence
+      ? '<code>' + escapeHtml(occurrence.surface?.process_id ?? 'missing process') + '</code>'
       : '<span class="missing">none available</span>';
   }
   const occurrence = selectedEvidence(viewModel);
@@ -790,6 +797,77 @@ export function renderHorizonView(viewModel) {
     + inspector + '</div></section>';
 }
 
+
+function renderActionCard(occurrence, selectedKey) {
+  const surface = occurrence.surface ?? {};
+  const action = surface.declared_next_action ?? {};
+  return '<button type="button" class="action-card'
+    + (occurrence.key === selectedKey ? ' is-selected' : '')
+    + '" data-action-key="' + escapeHtml(occurrence.key) + '">'
+    + '<span class="object-heading"><code>'
+    + escapeHtml(surface.process_id ?? 'missing process')
+    + '</code><strong>' + escapeHtml(action.eligibility ?? 'UNRESOLVED') + '</strong></span>'
+    + '<span class="action-transition"><code>'
+    + escapeHtml(action.transition_id ?? 'no transition')
+    + '</code><em>' + escapeHtml(action.transition_kind ?? 'missing kind') + '</em></span>'
+    + '<small>' + escapeHtml(surface.routing_status ?? 'missing routing status')
+    + ' · runtime registration ' + escapeHtml(surface.runtime_registration ?? 'missing')
+    + '</small></button>';
+}
+
+export function renderActionsView(viewModel) {
+  if (!viewModel.surfaceAvailability.action_surfaces) {
+    return unavailableSurface('BOUNDED VIEW', 'action_surfaces');
+  }
+  const selected = selectedAction(viewModel);
+  const cards = viewModel.actionOccurrences.map(
+    (occurrence) => renderActionCard(occurrence, viewModel.selectedActionKey),
+  ).join('');
+  let inspector = '<aside class="inspector empty"><h2>Action Surface</h2>'
+    + '<p>No process action surface is available.</p></aside>';
+  if (selected) {
+    const surface = selected.surface ?? {};
+    const action = surface.declared_next_action ?? {};
+    inspector = '<aside class="inspector action-inspector"><div class="inspector-heading"><div>'
+      + '<p class="eyebrow">READ-ONLY ACTION SURFACE</p><h2><code>'
+      + escapeHtml(surface.process_id ?? 'missing process') + '</code></h2></div></div>'
+      + '<section class="inspector-section current-standing"><h3>ELIGIBILITY</h3><strong>'
+      + escapeHtml(action.eligibility ?? 'UNRESOLVED') + '</strong>'
+      + '<p>' + escapeHtml(action.reason ?? 'missing reason') + '</p></section>'
+      + '<section class="inspector-section"><h3>DECLARED NEXT TRANSITION</h3>'
+      + fieldBlock('TRANSITION ID', action.transition_id)
+      + fieldBlock('KIND', action.transition_kind)
+      + fieldBlock('TO PHASE', action.to_phase)
+      + fieldBlock('REQUIRES CAPABILITY', action.requires_capability)
+      + fieldBlock('RECIPIENT ROLE', action.recipient_role)
+      + '</section>'
+      + '<section class="inspector-section"><h3>ROUTING STATE</h3>'
+      + fieldBlock('PHASE', surface.phase)
+      + fieldBlock('STATUS', surface.routing_status)
+      + fieldBlock('RUNTIME REGISTRATION', surface.runtime_registration)
+      + fieldBlock('EVENTS CONSUMED', surface.event_count_consumed)
+      + '</section>'
+      + '<section class="inspector-section"><h3>AUTHORITY BOUNDARY</h3><pre>'
+      + escapeHtml(JSON.stringify({
+          authority_required: action.authority_required,
+          authority_effect: action.authority_effect,
+          execution_effect: action.execution_effect,
+          projection_boundary: surface.projection_boundary,
+        }, null, 2)) + '</pre></section>'
+      + '<section class="inspector-section"><h3>PROVENANCE</h3><pre>'
+      + escapeHtml(JSON.stringify(surface.provenance ?? {}, null, 2)) + '</pre></section>'
+      + localObjectDiagnostics(selected.diagnostics) + '</aside>';
+  }
+  return '<section class="bounded-view actions-view" data-view-name="ACTIONS">'
+    + '<div class="section-heading"><div><p class="eyebrow">OPERATIONAL LEGIBILITY</p>'
+    + '<h2>Action Surfaces</h2></div><p>' + String(viewModel.actionOccurrences.length)
+    + ' projected process surfaces</p></div>'
+    + '<p class="semantic-boundary"><code>visible action != selected action != authorized action != executed action</code>. '
+    + 'This lens derives routing eligibility and performs no consequence.</p>'
+    + '<div class="bounded-grid"><div class="object-list action-list">' + cards + '</div>'
+    + inspector + '</div></section>';
+}
+
 function evidenceFilterText(reference) {
   return [
     reference?.id,
@@ -865,6 +943,9 @@ export function renderActiveView(viewModel) {
   }
   if (viewModel.activeView === 'HORIZON') {
     return renderHorizonView(viewModel);
+  }
+  if (viewModel.activeView === 'ACTIONS') {
+    return renderActionsView(viewModel);
   }
   if (viewModel.activeView === 'SOURCE') {
     return renderSourceView(viewModel);

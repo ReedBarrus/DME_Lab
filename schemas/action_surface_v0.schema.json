@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/action_surface_v0.schema.json",
+  "title": "Cockpit Action Surface v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "surface_version",
+    "process_id",
+    "description",
+    "runtime_registration",
+    "phase",
+    "routing_status",
+    "scientific_standing",
+    "declared_next_action",
+    "blocker",
+    "pending_role",
+    "pending_decision",
+    "event_count_consumed",
+    "last_event_type",
+    "projection_boundary",
+    "provenance"
+  ],
+  "properties": {
+    "surface_version": {"const": "action_surface_v0"},
+    "process_id": {"type": "string", "minLength": 1},
+    "description": {"type": ["string", "null"]},
+    "runtime_registration": {"enum": ["PRESENT", "ABSENT"]},
+    "phase": {"type": "string", "minLength": 1},
+    "routing_status": {"type": "string", "minLength": 1},
+    "scientific_standing": {"type": "object"},
+    "declared_next_action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "eligibility",
+        "transition_id",
+        "transition_kind",
+        "to_phase",
+        "requires_capability",
+        "recipient_role",
+        "decision",
+        "authority_effect",
+        "execution_effect",
+        "authority_required",
+        "reason"
+      ],
+      "properties": {
+        "eligibility": {
+          "enum": [
+            "SPEC_ONLY_UNREGISTERED",
+            "MECHANICAL_ROUTING_AVAILABLE",
+            "MECHANICAL_CAPABILITY_REQUIRED",
+            "REQUIRES_ROLE_JUDGMENT",
+            "REQUIRES_EXPLICIT_HUMAN_DECISION",
+            "BLOCKED",
+            "FAILED",
+            "STOPPED_BY_HUMAN",
+            "TERMINAL",
+            "UNRESOLVED"
+          ]
+        },
+        "transition_id": {"type": ["string", "null"]},
+        "transition_kind": {"type": ["string", "null"]},
+        "to_phase": {"type": ["string", "null"]},
+        "requires_capability": {"type": ["string", "null"]},
+        "recipient_role": {"type": ["string", "null"]},
+        "decision": {"type": ["object", "null"]},
+        "authority_effect": {"const": "NONE_BY_ACTION_SURFACE"},
+        "execution_effect": {"const": "NONE_BY_ACTION_SURFACE"},
+        "authority_required": {"type": ["boolean", "null"]},
+        "reason": {"type": "string", "minLength": 1}
+      }
+    },
+    "blocker": {},
+    "pending_role": {"type": ["string", "null"]},
+    "pending_decision": {"type": ["object", "null"]},
+    "event_count_consumed": {"type": "integer", "minimum": 0},
+    "last_event_type": {"type": ["string", "null"]},
+    "projection_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "read_only",
+        "creates_authority",
+        "performs_execution",
+        "selects_action",
+        "advances_cursor"
+      ],
+      "properties": {
+        "read_only": {"const": true},
+        "creates_authority": {"const": false},
+        "performs_execution": {"const": false},
+        "selects_action": {"const": false},
+        "advances_cursor": {"const": false}
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["process_spec_path", "event_stream_path", "source_commit"],
+      "properties": {
+        "process_spec_path": {"type": "string", "minLength": 1},
+        "event_stream_path": {"const": "lab/events/events.jsonl"},
+        "source_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+      }
+    }
+  }
+}
