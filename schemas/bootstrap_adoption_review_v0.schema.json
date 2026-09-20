@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/bootstrap_adoption_review_v0.schema.json",
+  "title": "Bootstrap Adoption Review v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "event_id",
+    "protocol_object_id",
+    "protocol_path",
+    "protocol_git_blob_sha",
+    "bootstrap_object_git_blob_sha",
+    "review_id",
+    "reviewer",
+    "independence",
+    "checks",
+    "disposition",
+    "basis",
+    "authority_effect"
+  ],
+  "properties": {
+    "schema": {"const": "bootstrap_adoption_review_v0"},
+    "event_id": {"const": "BOOTSTRAP_ADOPTION_001"},
+    "protocol_object_id": {"const": "PROMOTION_PROTOCOL_v0"},
+    "protocol_path": {"const": "docs/operations/PROMOTION_PROTOCOL_v0.md"},
+    "protocol_git_blob_sha": {"const": "49fbe7c792511b6c7104a07aecba3ced84108ff8"},
+    "bootstrap_object_git_blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "review_id": {"type": "string", "minLength": 1},
+    "reviewer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["seat", "identity"],
+      "properties": {
+        "seat": {"type": "string", "minLength": 1},
+        "identity": {"type": "string", "minLength": 1}
+      }
+    },
+    "independence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["protocol_author", "bootstrap_object_author"],
+      "properties": {
+        "protocol_author": {"type": "boolean"},
+        "bootstrap_object_author": {"type": "boolean"}
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identity_closure",
+        "precondition_closure",
+        "authority_closure",
+        "execution_closure",
+        "success_geometry",
+        "failure_geometry",
+        "receipt_closure",
+        "escape_hatch_closure",
+        "self_governance_nonclaim",
+        "protocol_schema_conformance"
+      ],
+      "properties": {
+        "identity_closure": {"enum": ["PASS", "HOLD", "FAIL"]},
+        "precondition_closure": {"enum": ["PASS", "HOLD", "FAIL"]},
+        "authority_closure": {"enum": ["PASS", "HOLD", "FAIL"]},
+        "execution_closure": {"enum": ["PASS", "HOLD", "FAIL"]},
+        "success_geometry": {"enum": ["PASS", "HOLD", "FAIL"]},
+        "failure_geometry": {"enum": ["PASS", "HOLD", "FAIL"]},
+        "receipt_closure": {"enum": ["PASS", "HOLD", "FAIL"]},
+        "escape_hatch_closure": {"enum": ["PASS", "HOLD", "FAIL"]},
+        "self_governance_nonclaim": {"enum": ["PASS", "HOLD", "FAIL"]},
+        "protocol_schema_conformance": {"enum": ["PASS", "HOLD", "FAIL"]}
+      }
+    },
+    "disposition": {"enum": ["ADMIT", "HOLD", "REJECT", "REQUIRE_REPRESSURE"]},
+    "basis": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "authority_effect": {"const": "NONE"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"disposition": {"const": "ADMIT"}}},
+      "then": {
+        "properties": {
+          "independence": {
+            "properties": {
+              "protocol_author": {"const": false},
+              "bootstrap_object_author": {"const": false}
+            }
+          },
+          "checks": {
+            "properties": {
+              "identity_closure": {"const": "PASS"},
+              "precondition_closure": {"const": "PASS"},
+              "authority_closure": {"const": "PASS"},
+              "execution_closure": {"const": "PASS"},
+              "success_geometry": {"const": "PASS"},
+              "failure_geometry": {"const": "PASS"},
+              "receipt_closure": {"const": "PASS"},
+              "escape_hatch_closure": {"const": "PASS"},
+              "self_governance_nonclaim": {"const": "PASS"},
+              "protocol_schema_conformance": {"const": "PASS"}
+            }
+          }
+        }
+      }
+    }
+  ]
+}
