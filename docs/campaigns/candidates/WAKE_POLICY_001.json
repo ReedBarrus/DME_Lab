@@ -1,0 +1,58 @@
+{
+  "schema": "development_campaign_v0",
+  "campaign_id": "WAKE_POLICY_001",
+  "title": "Unattended Exact-Bell Policy Horizon",
+  "basis_refs": [
+    "git:2ee939453651da741769ea07210fcdeaec9da971",
+    "qualification:docs/candidates/wake_source_v0/QUALIFICATION_001.md@ee721faebb5f2a3e6780d20b7a558043e164a5b3"
+  ],
+  "objective": "Determine when one already-addressed outstanding assignment may receive an unattended exact bell without the clock choosing work, seats, priority, or authority.",
+  "claim_ceiling": "Only the relation from a declared wake-policy condition to bell eligibility for an exact assignment. No work selection, assignment, preparation, execution authority, or open-ended scheduling.",
+  "target_objects": [
+    "WAKE_POLICY_001",
+    "WAKE_POLICY_BINDING_v0"
+  ],
+  "unresolved_relations": [
+    {"relation_id": "WP-R1", "statement": "OUTSTANDING != BELL_DUE"},
+    {"relation_id": "WP-R2", "statement": "BELL_DUE != BELL_EMITTED"},
+    {"relation_id": "WP-R3", "statement": "CLOCK_EVENT != WORK_SELECTION"},
+    {"relation_id": "WP-R4", "statement": "WAKE_POLICY_BINDING != ASSIGNMENT"}
+  ],
+  "pressure_points": [
+    "Pressure time/event eligibility independently of assignment identity.",
+    "Pressure one exact due relation into the already-qualified WAKE_SOURCE_001 membrane.",
+    "Pressure replay, satisfaction, release, stale, and budget exhaustion without hidden work selection."
+  ],
+  "dependency_edges": [
+    {"from": "RUNTIME_SANITY_GATE_001", "to": "WAKE_POLICY_001"}
+  ],
+  "proposal_allowance": {
+    "max_candidates": 4,
+    "max_model_calls": 0,
+    "allowed_resource_classes": ["DETERMINISTIC"],
+    "external_effects": "NONE",
+    "authority_effect": "NONE"
+  },
+  "completion_criteria": [
+    "A declared wake policy can mark one exact outstanding assignment bell-eligible without choosing the assignment.",
+    "The existing wake-source and reentry membranes remain independently responsible for bell emission and wake acceptance.",
+    "Satisfied, released, stale, obsolete, and budget-exhausted assignments cannot receive unattended bells."
+  ],
+  "stop_conditions": [
+    "Wake policy starts choosing among assignments.",
+    "Time semantics are written into assignment objects.",
+    "The clock acquires execution or consequence authority."
+  ],
+  "explicit_non_authorizations": [
+    "NO_WORK_SELECTION",
+    "NO_ASSIGNMENT_AUTHORITY",
+    "NO_PRIORITY_POLICY",
+    "NO_DIRECT_WAKE_OCCUPANCY",
+    "NO_EXECUTION_AUTHORITY",
+    "NO_STANDING_AUTHORITY"
+  ],
+  "status": "CANDIDATE",
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "adoption_effect": "NONE"
+}

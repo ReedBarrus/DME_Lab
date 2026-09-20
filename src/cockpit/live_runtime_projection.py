@@ -17,6 +17,8 @@ import time
 from typing import Any, Iterator
 from urllib.parse import urlparse
 
+from src.cockpit.development_horizon_projection import derive_development_horizons
+
 
 class LiveRuntimeProjectionError(RuntimeError):
     pass
@@ -31,6 +33,8 @@ class RuntimeSources:
     preparation_db: Path | None = None
     semantic_db: Path | None = None
     reentry_db: Path | None = None
+    assignment_db: Path | None = None
+    wake_source_db: Path | None = None
     comparison_basis_refs: tuple[str, ...] = ()
 
 
@@ -368,6 +372,36 @@ def build_runtime_state(sources: RuntimeSources) -> dict[str, Any]:
         reentry.get("receipts", []), ("receipt_json",)
     )
 
+    assignment, assignment_status = _read_source(
+        "assignment",
+        sources.assignment_db,
+        {
+            "history": "SELECT * FROM assignment_events ORDER BY seq",
+            "satisfactions": "SELECT * FROM assignment_satisfactions ORDER BY seq",
+        },
+    )
+    assignment["history"] = _decode_json_fields(
+        assignment.get("history", []), ("event_json",)
+    )
+    assignment["satisfactions"] = _decode_json_fields(
+        assignment.get("satisfactions", []), ("satisfaction_json",)
+    )
+
+    wake_source, wake_source_status = _read_source(
+        "wake_source",
+        sources.wake_source_db,
+        {
+            "bells": "SELECT * FROM manual_bells ORDER BY seq",
+            "emissions": "SELECT * FROM bell_emissions ORDER BY seq",
+        },
+    )
+    wake_source["bells"] = _decode_json_fields(
+        wake_source.get("bells", []), ("bell_json",)
+    )
+    wake_source["emissions"] = _decode_json_fields(
+        wake_source.get("emissions", []), ("emission_json",)
+    )
+
     active_seats = [
         seat for seat in controller.get("seats", [])
         if seat.get("occupancy_state") == "OCCUPIED"
@@ -407,6 +441,8 @@ def build_runtime_state(sources: RuntimeSources) -> dict[str, Any]:
         preparation_status,
         semantic_status,
         reentry_status,
+        assignment_status,
+        wake_source_status,
     ]
     overall_status = (
         "AVAILABLE"
@@ -414,7 +450,7 @@ def build_runtime_state(sources: RuntimeSources) -> dict[str, Any]:
         else "PARTIAL"
     )
 
-    return {
+    state = {
         "schema": "live_runtime_projection_v0",
         "projection_status": overall_status,
         "projection_effect": "NONE",
@@ -458,11 +494,18 @@ def build_runtime_state(sources: RuntimeSources) -> dict[str, Any]:
         "reentry_opportunities": reentry.get("opportunities", []),
         "reentry_events": reentry.get("events", []),
         "reentry_receipts": reentry.get("receipts", []),
+        "assignment_history": assignment.get("history", []),
+        "assignment_satisfactions": assignment.get("satisfactions", []),
+        "manual_bells": wake_source.get("bells", []),
+        "bell_emissions": wake_source.get("emissions", []),
         "standing_movement_history": {
             "status": "UNAVAILABLE_IN_CURRENT_CAMPAIGN_STORE",
             "current_standing_only": True,
         },
     }
+
+    state["development_horizons"] = derive_development_horizons(state)
+    return state
 
 
 def build_snapshot(sources: RuntimeSources) -> dict[str, Any]:
@@ -594,6 +637,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--preparation-db")
     parser.add_argument("--semantic-db")
     parser.add_argument("--reentry-db")
+    parser.add_argument("--assignment-db")
+    parser.add_argument("--wake-source-db")
     parser.add_argument("--comparison-basis-ref", action="append", default=[])
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8765)
@@ -609,6 +654,8 @@ def main(argv: list[str] | None = None) -> int:
         preparation_db=_optional_path(args.preparation_db),
         semantic_db=_optional_path(args.semantic_db),
         reentry_db=_optional_path(args.reentry_db),
+        assignment_db=_optional_path(args.assignment_db),
+        wake_source_db=_optional_path(args.wake_source_db),
         comparison_basis_refs=tuple(args.comparison_basis_ref),
     )
 
