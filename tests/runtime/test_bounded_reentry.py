@@ -17,6 +17,7 @@ from tools.development_campaign_v0 import CampaignStore, build_campaign, object_
 from tools.envelope_selection_v0 import SELECT, SelectionStore, build_selection_event
 from tools.goblin_pool import GoblinPool
 from tools.preparation_v0 import PreparationStore
+from src.cockpit.live_runtime_projection import RuntimeSources, build_snapshot
 
 
 class BoundedReentryPressure(unittest.TestCase):
@@ -140,6 +141,16 @@ class BoundedReentryPressure(unittest.TestCase):
             self.requests[request["request_id"]] = request
             self.selections[request["request_id"]] = selection
 
+        self.live_sources = RuntimeSources(
+            repo=self.repo,
+            controller_db=self.controller_db,
+            campaign_db=self.campaign_db,
+            selection_db=self.selection_db,
+            preparation_db=self.prep_db,
+            reentry_db=self.reentry_db,
+            comparison_basis_refs=("git:HEAD",),
+        )
+
         self.runner = BoundedReentryRunner(
             repo=self.repo,
             pool=self.pool,
@@ -213,10 +224,17 @@ class BoundedReentryPressure(unittest.TestCase):
     def test_r1_normal_reentry_one_prep_one_successor_then_dormant(self) -> None:
         self.opportunity("R1")
         before = self.pool.seat_snapshot("MAYA")
+        before_live = build_snapshot(self.live_sources)
         self.assertEqual(before["occupancy_state"], "AVAILABLE")
+        witnessed = {}
 
-        receipt = self.runner.run_once("R1")
+        def hook(phase: str, payload: dict) -> None:
+            if phase == "WAKE_ACCEPTED":
+                witnessed["during"] = build_snapshot(self.live_sources)
+
+        receipt = self.runner.run_once("R1", phase_hook=hook)
         after = self.pool.seat_snapshot("MAYA")
+        after_live = build_snapshot(self.live_sources)
 
         self.assertEqual(receipt["outcome"], "UNIT_COMPLETED")
         self.assertEqual(receipt["work_units_performed"], 1)
@@ -235,6 +253,20 @@ class BoundedReentryPressure(unittest.TestCase):
                 "DORMANT",
             ],
         )
+
+        during_state = witnessed["during"]["state"]
+        self.assertEqual(
+            [seat["seat_id"] for seat in during_state["active_operations"]["occupied_seats"]],
+            ["MAYA"],
+        )
+        self.assertTrue(
+            any(event["event_kind"] == "WAKE_ACCEPTED" for event in during_state["reentry_events"])
+        )
+        self.assertNotEqual(before_live["state_sha256"], witnessed["during"]["state_sha256"])
+        self.assertNotEqual(witnessed["during"]["state_sha256"], after_live["state_sha256"])
+        maya_after = next(seat for seat in after_live["state"]["seats"] if seat["seat_id"] == "MAYA")
+        self.assertEqual(maya_after["occupancy_state"], "AVAILABLE")
+        self.assertEqual(after_live["state"]["reentry_events"][-1]["event_kind"], "DORMANT")
 
     def test_r2_no_target_means_no_work_not_invented_task(self) -> None:
         self.opportunity("R2", request_id=None)
