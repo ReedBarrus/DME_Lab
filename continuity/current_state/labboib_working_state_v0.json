@@ -1,0 +1,37 @@
+{
+  "schema_version": "temporal_seat_working_state_v0",
+  "seat_id": "LABBOIB",
+  "state_id": "LABBOIB-STATE-000001",
+  "campaign": {
+    "campaign_id": "LABBOIB_SELF_HOSTING_001",
+    "title": "Boot bounded temporal re-entry seat",
+    "status": "ACTIVE_CANDIDATE_CONSTRUCTION",
+    "objective": "Materialize and pressure a reconstructable LABBOIB seat that can wake from durable state without inheriting ambient execution authority.",
+    "branch": "labboib-temporal-seat-v0",
+    "base_ref": "main",
+    "base_commit": "759eca8c3f3c2d3e37d8031207742290f1fb8b6b"
+  },
+  "continuity": {
+    "consumer": "labboib",
+    "synchronized_through": "CE-000033",
+    "historical_chat_imported": false
+  },
+  "injection_coordinate": {
+    "last_consumed_injection_id": null
+  },
+  "current_frontier": "materialize seat manifest, deterministic wake packet, and bounded qualification",
+  "unresolved": [
+    "scheduler trigger is not yet bound",
+    "no cloud model occupant is bound",
+    "conversation-history farming is not yet materialized",
+    "shared local chat bus is not yet materialized",
+    "no executable consequence authority is granted"
+  ],
+  "authority": {
+    "standing": "NONE",
+    "source": null
+  },
+  "last_wake_receipt_ref": null,
+  "standing_effect": "NONE_BY_WORKING_STATE",
+  "authority_effect": "NONE_BY_WORKING_STATE"
+}
