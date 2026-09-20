@@ -1,0 +1,114 @@
+name: LABBOIB_IMPLEMENTATION_OPERATOR_001
+
+on:
+  pull_request:
+    paths:
+      - "tools/labboib_implementation_operator_v0.py"
+      - "tests/runtime/test_labboib_implementation_operator.py"
+      - "schemas/implementation_*_v0.schema.json"
+      - "lab/ops/candidates/LABBOIB_IMPLEMENTATION_OPERATOR_001/**"
+      - "docs/candidates/labboib_implementation_operator_v0/**"
+      - ".github/workflows/labboib-implementation-operator-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile implementation membrane
+        run: |
+          python -m py_compile \
+            tools/labboib_implementation_operator_v0.py \
+            tests/runtime/test_labboib_implementation_operator.py
+
+      - name: Run implementation-operator pressure
+        run: |
+          python -m unittest tests.runtime.test_labboib_implementation_operator -v
+
+      - name: Re-run causal-applicability pressure
+        run: |
+          python -m unittest tests.runtime.test_causal_applicability -v
+
+      - name: Re-run controller-binding regression
+        run: |
+          python -m unittest tests.runtime.test_labboib_controller_binding -v
+
+      - name: Re-run goblin-pool regression
+        run: |
+          python -m unittest tests.runtime.test_goblin_pool -v
+
+      - name: Exercise direct implementation CLI
+        run: |
+          REPO="$(mktemp -d)"
+          STATE="$(mktemp -d)"
+
+          git -C "$REPO" init
+          git -C "$REPO" config user.name "DME CI"
+          git -C "$REPO" config user.email "dme-ci@example.invalid"
+
+          printf 'VALUE = 1\n' > "$REPO/foo.py"
+          printf 'EXTRA = "original"\n' > "$REPO/bar.py"
+          git -C "$REPO" add foo.py bar.py
+          git -C "$REPO" commit -m H1
+
+          H1="$(git -C "$REPO" rev-parse HEAD)"
+          EXPECTED="$(python - <<'PY'
+          import hashlib
+          print(hashlib.sha256(b"VALUE = 2\n").hexdigest())
+          PY
+          )"
+
+          cat > /tmp/implementation-request.json <<EOF
+          {
+            "schema": "implementation_request_v0",
+            "request_id": "R-CLI",
+            "seat_id": "LABBOIB",
+            "repository": "fixture://cli",
+            "basis_commit": "$H1",
+            "allowed_paths": ["foo.py"],
+            "requested_effect": "Set VALUE from 1 to 2.",
+            "qualification_contract": {
+              "exact_file_sha256": {
+                "foo.py": "$EXPECTED"
+              },
+              "declared_check_ids": ["PY_COMPILE_FOO"]
+            },
+            "operator_id": "ISOLATED_IMPLEMENTATION_FIXTURE",
+            "authority_ref": "lab/ops/candidates/LABBOIB_IMPLEMENTATION_OPERATOR_001/authority_v0.json"
+          }
+          EOF
+
+          python tools/labboib_implementation_operator_v0.py \
+            --repo "$REPO" \
+            --state-dir "$STATE" \
+            --request /tmp/implementation-request.json \
+            --fixture-mode EXACT \
+            > /tmp/implementation-result.json
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          result = json.loads(Path("/tmp/implementation-result.json").read_text())
+          d1 = result["realization"]
+
+          assert result["status"] == "REALIZED"
+          assert d1["scope_status"] == "VALID"
+          assert d1["effect_contract_status"] == "VALID"
+          assert d1["mechanical_result"] == "PASS"
+          assert result["applicability"]["result"] == "APPLICABLE"
+          assert result["admission"] == "NOT_ADMITTED_NO_CONSEQUENCE_AUTHORITY"
+          print("LABBOIB_IMPLEMENTATION_OPERATOR_001_CLI_PASS")
+          PY

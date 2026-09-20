@@ -1,0 +1,16 @@
+{
+  "schema": "labboib_implementation_operator_authority_v0",
+  "authority_id": "LABBOIB_IMPLEMENTATION_OPERATOR_001_FIXTURE_AUTHORITY",
+  "seat_id": "LABBOIB",
+  "operator_id": "ISOLATED_IMPLEMENTATION_FIXTURE",
+  "invocation_authorized": true,
+  "canonical_workspace_write_authorized": false,
+  "commit_authorized": false,
+  "merge_authorized": false,
+  "admission_authorized": false,
+  "scientific_promotion_authorized": false,
+  "scheduler_binding_authorized": false,
+  "model_binding_authorized": false,
+  "codex_invocation_authorized": false,
+  "purpose": "Bounded qualification of the implementation-operator membrane using a deterministic implementer fixture."
+}
