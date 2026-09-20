@@ -1,0 +1,78 @@
+{
+  "schema": "promotion_candidate_v0",
+  "promotion_id": "PROMOTION_BOUNDARY_001",
+  "mode": "RETROACTIVE_FORMALIZATION",
+  "status": "READY_FOR_REVIEW",
+  "subject": {
+    "kind": "CONSTITUTIONAL_DESIGN_CONSTRAINT",
+    "identity": "DME_OPERATIONAL_CONSTITUTION_ARTICLE_0_PROMOTION_BOUNDARY",
+    "description": "DISCOVERY HISTORY != INTEGRATION SURFACE != DURABLE SUBSTRATE, with explicit burdens for history preservation, bounded integration, and downstream dependency acceptance."
+  },
+  "source": {
+    "layer": "PRE_PROTOCOL",
+    "status": "ALREADY_DURABLE_ON_MAIN_WITHOUT_TYPED_PROMOTION_CHAIN",
+    "carrier_refs": [
+      "main@759eca8c3f3c2d3e37d8031207742290f1fb8b6b",
+      "PR#29",
+      "docs/Evidence_Arc/Astra_Reconstruction/DME_Operational_Constitution_Seed_v0.md@blob:f25f9ec41120bdf763082d0e340efcb1f6de98be",
+      "docs/decisions/cross_cutting/promotion_boundary_constitutional_v0.md@blob:c205075b6e83983c85c35e45dd604b12fe35d32b",
+      "docs/constraints/registry.jsonl@blob:7be5f7b4faeca4be1be0930739f11280c1f800ce"
+    ]
+  },
+  "target": {
+    "layer": "DURABLE_SUBSTRATE",
+    "status": "RATIFIED_EXISTING_DURABLE_STATE"
+  },
+  "bounded_behavior": "Developmental machinery must distinguish discovery history from an integration surface and distinguish that integration surface from durable substrate; durable-substrate promotion explicitly accepts downstream dependency consequence and does not silently import the whole experimental causal trail.",
+  "supporting_basis": [
+    "docs/operations/BRANCH_RETENTION_POLICY_v0.md",
+    "docs/operations/BRANCH_REGISTRY_v0.json",
+    "docs/decisions/cross_cutting/promotion_boundary_constitutional_v0.md",
+    "docs/Evidence_Arc/Astra_Reconstruction/DME_Operational_Constitution_Seed_v0.md",
+    "docs/constraints/registry.jsonl#D-0047",
+    "docs/constraints/registry.jsonl#D-0048",
+    "PR#29"
+  ],
+  "claim_ceiling": "If ratified, this promotion establishes only an operational constitutional development constraint governing how bounded machinery may move from discovery history through an integration surface into durable substrate. It does not establish scientific truth, runtime correctness, readiness of any particular Atlas or Concordance candidate, or a general requirement that lineage be replayed by consumers.",
+  "dependency_consequence": "Downstream development machinery may treat the three-layer promotion boundary as a durable process premise when deciding whether experimental work is merely historical, ready for integration review, or eligible to become shared dependency substrate.",
+  "proposed_delta": {
+    "kind": "RATIFICATION_ONLY",
+    "description": "Do not re-merge Article 0. If fresh review and adjudication admit the candidate and an exact ratification envelope is separately authorized, retain the existing bytes and write a formal promotion receipt recording ratification of the already-observed durable state. If not admitted, preserve the original merge history and explicitly mark or repair promotion standing instead of rewriting history.",
+    "paths": []
+  },
+  "lineage_references": [
+    "promotion-boundary-constitutional-v0 branch history",
+    "PR#29 head 9c79ad37522f58e2fa615324bdab681e21bf9501",
+    "PR#29 merge commit 759eca8c3f3c2d3e37d8031207742290f1fb8b6b",
+    "docs/operations/BRANCH_RETENTION_POLICY_v0.md",
+    "docs/operations/BRANCH_REGISTRY_v0.json"
+  ],
+  "known_scars": [
+    "Article 0 moved from human authorization to materialization and merge without a durable promotion candidate.",
+    "No fresh promotion review artifact preceded the merge.",
+    "No separate promotion adjudication artifact preceded the merge.",
+    "No non-self-authorizing promotion envelope preceded the merge.",
+    "No typed post-execution promotion receipt was written at the time of merge.",
+    "D-0047 and D-0048 are design constraints, not scientific findings."
+  ],
+  "non_promotions": [
+    "No Atlas candidate or Atlas runtime primitive is promoted by this candidate.",
+    "No Concordance candidate or held-out result is promoted by this candidate.",
+    "No scientific standing is created by ratification.",
+    "No runtime implementation is changed by ratification.",
+    "LINEAGE REFERENCE != LINEAGE REPLAY REQUIREMENT is not independently promoted into the distinction registry by this candidate.",
+    "The original pre-protocol merge is not rewritten as if this protocol existed beforehand."
+  ],
+  "review_burden": [
+    "Verify the exact current Article 0 bytes and original PR#29 merge lineage.",
+    "Determine whether the branch-retention basis legitimately supports the broader three-layer operational design constraint.",
+    "Determine whether D-0047 and D-0048 are correctly typed as design constraints rather than scientific findings.",
+    "Determine whether the claim ceiling prevents Article 0 from laundering readiness of any specific experimental candidate.",
+    "Determine whether the downstream dependency consequence is explicit enough for durable-substrate standing.",
+    "Determine whether the retained integration rule is minimal and does not require whole-lineage import.",
+    "Determine whether lineage remains recoverable without making replay a dependency requirement.",
+    "Account explicitly for the pre-protocol missing candidate/review/adjudication/envelope/receipt stages.",
+    "Return only ADMIT, HOLD, REJECT, or REQUIRE_REPRESSURE under Promotion Protocol v0."
+  ],
+  "authority_effect": "NONE"
+}
