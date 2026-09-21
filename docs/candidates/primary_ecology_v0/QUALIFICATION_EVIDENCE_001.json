@@ -104,6 +104,18 @@
     "Q2": {
       "relation": "OBSERVED_OBJECT_SOURCE_MUST_MATCH_EXPLICIT_BASIS_SOURCE_REF",
       "result": "PASS"
+    },
+    "Q3A": {
+      "relation": "SOURCE_OBJECT_ID_MUST_CORRESPOND_TO_OBSERVATION_OBJECT_ID",
+      "result": "PASS"
+    },
+    "Q3B": {
+      "relation": "SOURCE_IDENTITY_MUST_CORRESPOND_TO_OBSERVATION_IDENTITY",
+      "result": "PASS"
+    },
+    "Q3C": {
+      "relation": "EXACT_REPRESENTED_SOURCE_OBJECT_IDENTITY_CORRESPONDENCE_IS_ADMISSIBLE",
+      "result": "PASS"
     }
   },
   "core_relations": {
@@ -112,6 +124,7 @@
     "fresh_observation_payload_noninheritance": "PASS",
     "fresh_observation_source_relation": "PASS",
     "invocation_ne_work_claim": "PASS",
+    "observation_source_object_identity_correspondence": "PASS",
     "occupant_ne_invocation": "PASS",
     "role_ne_seat": "PASS",
     "seat_binding_work_claim_correspondence": "PASS",
@@ -126,7 +139,9 @@
   "legacy_seat_migration": "NOT_TESTED",
   "object_id": "PRIMARY_ECOLOGY_GRAMMAR_001-RESULT",
   "object_type": "PRIMARY_ECOLOGY_GRAMMAR_PRESSURE_RESULT",
-  "observation_source_identity_correspondence": "NOT_TESTED",
+  "observation_identity_scheme_semantics": "NOT_TESTED",
+  "observation_source_identity_correspondence": "TESTED_EXACT_OPAQUE_CORRESPONDENCE",
+  "observation_source_truth": "NOT_TESTED",
   "occupant_binding_effect": "NONE",
   "representation_succession": "NOT_TESTED",
   "role_vocabulary_status": "PROVISIONAL_EXTENSIBLE",
