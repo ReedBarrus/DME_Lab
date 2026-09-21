@@ -1,0 +1,194 @@
+{
+  "schema": "primary_ecology_role_catalog_v0",
+  "status": "PROVISIONAL_EXTENSIBLE",
+  "exhaustive": false,
+  "roles": [
+    {
+      "schema": "ecology_role_v0",
+      "role_id": "SCIENTIST",
+      "purpose": "Question formation, distinction production, pressure interpretation, and claim ceilings.",
+      "may_observe": [
+        "evidence",
+        "candidate_relations",
+        "pressure_results"
+      ],
+      "may_produce": [
+        "questions",
+        "distinctions",
+        "pressure_designs",
+        "interpretation_ceiling"
+      ],
+      "may_request": [
+        "evidence",
+        "review",
+        "bounded_execution"
+      ],
+      "forbidden_effect_classes": [
+        "authority_grant",
+        "live_execution",
+        "semantic_promotion"
+      ],
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    },
+    {
+      "schema": "ecology_role_v0",
+      "role_id": "ADVERSARY",
+      "purpose": "Search for counterexamples, hidden collapses, false closure, and representation attacks.",
+      "may_observe": [
+        "claims",
+        "evidence",
+        "pressure_designs"
+      ],
+      "may_produce": [
+        "counterexamples",
+        "fractures",
+        "falsifiers"
+      ],
+      "may_request": [
+        "fresh_basis",
+        "held_out_pressure"
+      ],
+      "forbidden_effect_classes": [
+        "repair",
+        "authority_grant",
+        "live_execution"
+      ],
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    },
+    {
+      "schema": "ecology_role_v0",
+      "role_id": "PLANNER",
+      "purpose": "Propose trajectories, dependencies, sequencing, and bounded candidate campaigns.",
+      "may_observe": [
+        "frontier",
+        "dependencies",
+        "constraints"
+      ],
+      "may_produce": [
+        "candidate_trajectories",
+        "dependency_relations",
+        "sequencing_proposals"
+      ],
+      "may_request": [
+        "authority",
+        "evidence",
+        "resources"
+      ],
+      "forbidden_effect_classes": [
+        "plan_adoption",
+        "authority_grant",
+        "live_execution"
+      ],
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    },
+    {
+      "schema": "ecology_role_v0",
+      "role_id": "WORKSHOP",
+      "purpose": "Bounded realization, implementation, apparatus construction, and test execution under separate authority.",
+      "may_observe": [
+        "execution_packet",
+        "implementation_basis",
+        "tests"
+      ],
+      "may_produce": [
+        "implementation",
+        "test_results",
+        "execution_receipts"
+      ],
+      "may_request": [
+        "clarification",
+        "authority",
+        "review"
+      ],
+      "forbidden_effect_classes": [
+        "self_authorization",
+        "semantic_promotion"
+      ],
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    },
+    {
+      "schema": "ecology_role_v0",
+      "role_id": "QC",
+      "purpose": "Fresh review of artifacts, receipts, qualification claims, and bounded evidence correspondence.",
+      "may_observe": [
+        "artifacts",
+        "receipts",
+        "qualification_claims"
+      ],
+      "may_produce": [
+        "review_dispositions",
+        "fractures",
+        "correspondence_findings"
+      ],
+      "may_request": [
+        "fresh_basis",
+        "repressure"
+      ],
+      "forbidden_effect_classes": [
+        "repair_reviewed_subject",
+        "authority_grant",
+        "live_execution"
+      ],
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    },
+    {
+      "schema": "ecology_role_v0",
+      "role_id": "RECONSTRUCTOR",
+      "purpose": "Recover lineage, basis, continuity, and historical limits without manufacturing missing evidence.",
+      "may_observe": [
+        "history",
+        "lineage",
+        "retained_basis"
+      ],
+      "may_produce": [
+        "reconstructions",
+        "continuity_packets",
+        "historical_limit_findings"
+      ],
+      "may_request": [
+        "missing_sources",
+        "fresh_review"
+      ],
+      "forbidden_effect_classes": [
+        "invent_missing_evidence",
+        "retroactive_authority",
+        "live_execution"
+      ],
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    },
+    {
+      "schema": "ecology_role_v0",
+      "role_id": "COORDINATOR",
+      "purpose": "Represent and route attention among known seats, lanes, claims, and cursors without semantic verdict authority.",
+      "may_observe": [
+        "seat_coordinates",
+        "lane_coordinates",
+        "claims",
+        "cursors"
+      ],
+      "may_produce": [
+        "routing_proposals",
+        "coordination_state",
+        "revalidation_requests"
+      ],
+      "may_request": [
+        "fresh_state",
+        "review",
+        "authority"
+      ],
+      "forbidden_effect_classes": [
+        "semantic_verdict",
+        "authority_grant",
+        "live_execution"
+      ],
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    }
+  ]
+}
