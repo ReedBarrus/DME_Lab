@@ -10,6 +10,17 @@
       "execution_effect": "NONE"
     }
   ],
+  "missingness_witnesses": [
+    {
+      "schema": "missingness_witness_v0",
+      "witness_id": "MISSINGNESS_WITNESS_MISSING_OBJECT",
+      "object_id": "MISSING_OBJECT",
+      "standing": "UNAVAILABLE_AT_BASIS",
+      "reason": "SOURCE_NOT_AVAILABLE_AT_BASIS",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    }
+  ],
   "observation_basis": {
     "schema": "observation_basis_v0",
     "basis_id": "OBSERVATION_BASIS_TEST_001",
@@ -27,7 +38,8 @@
     "explicit_missing_objects": [
       {
         "object_id": "MISSING_OBJECT",
-        "reason": "SOURCE_NOT_AVAILABLE_AT_BASIS"
+        "reason": "SOURCE_NOT_AVAILABLE_AT_BASIS",
+        "witness_ref": "missingness-witness://MISSINGNESS_WITNESS_MISSING_OBJECT@sha256:858fdb475f58b31ef84886d2b9d730b6261b26cd59ddc62e51698d0fdef50ca3"
       }
     ],
     "source_refs": [
@@ -44,7 +56,7 @@
     "seat_id": "SCIENCE_TEST_01",
     "occupant_id": "LABOIB_CANDIDATE",
     "invocation_id": "INVOCATION_A",
-    "observation_basis_ref": "observation-basis://OBSERVATION_BASIS_TEST_001@sha256:154ead55f9c4309c9b5e07625c0cec092cc5994ab91ae072c7ece94bcbebf21e",
+    "observation_basis_ref": "observation-basis://OBSERVATION_BASIS_TEST_001@sha256:751f2f1efc473b390b0e67a88e4bb5c674c96c9732edeea6ce4d1890ec0dc237",
     "task_ref": "task://PRIMARY_ECOLOGY_GRAMMAR_001",
     "work_claim_ref": null,
     "standing_refs": [],
