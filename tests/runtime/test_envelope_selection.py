@@ -263,5 +263,66 @@ class EnvelopeSelectionPressure(unittest.TestCase):
         self.assertEqual(self.selection_store.history(self.campaign["campaign_id"]), [])
 
 
+    def test_s11_reed_label_policy_does_not_authenticate_event_origin(self) -> None:
+        # A: ordinary helper path.
+        event_a = self.event("E2", "S11-A")
+        first = self.selection_store.append(event_a)
+        self.assertFalse(first["idempotent_replay"])
+
+        # Release the exact request so the same request identity can be selected
+        # again through an independent event-formation path.
+        self.selection_store.append(
+            self.event("E2", "S11-REL", kind=RELEASE)
+        )
+
+        # B: bypass build_selection_event and form otherwise-valid bytes
+        # directly. No signer, session principal, capability, or authenticated
+        # origin is consumed by SelectionStore._validate().
+        event_b = copy.deepcopy(event_a)
+        event_b["selection_id"] = "S11-B"
+        event_b["selection_reason"] = "independent caller asserts REED"
+        second = self.selection_store.append(event_b)
+        self.assertFalse(second["idempotent_replay"])
+
+        stored = self.selection_store.history(
+            self.campaign["campaign_id"]
+        )
+        stored_b = next(
+            event for event in stored
+            if event["selection_id"] == "S11-B"
+        )
+        self.assertEqual(stored_b["selected_by"], "REED")
+        self.assertEqual(
+            set(stored_b),
+            {
+                "schema",
+                "selection_id",
+                "campaign_id",
+                "campaign_sha256",
+                "request_id",
+                "request_sha256",
+                "selected_by",
+                "selected_at_basis_refs",
+                "selected_at_basis_sha256",
+                "selection_kind",
+                "selection_reason",
+                "authorization_effect",
+                "execution_effect",
+                "standing_effect",
+                "_seq",
+            },
+        )
+
+        # C: the store does enforce the selector attribute policy.
+        event_c = copy.deepcopy(event_b)
+        event_c["selection_id"] = "S11-C"
+        event_c["selected_by"] = "LABBOIB"
+        with self.assertRaisesRegex(
+            EnvelopeSelectionError,
+            "v0 selector must be REED",
+        ):
+            self.selection_store.append(event_c)
+
+
 if __name__ == "__main__":
     unittest.main()
