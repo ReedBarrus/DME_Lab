@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lane_lifecycle_pressure_result_v0",
+  "title": "LANE_LIFECYCLE_DISPOSITION_001 synthetic pressure result",
+  "type": "object",
+  "required": [
+    "object_type",
+    "object_id",
+    "disposition",
+    "frozen_execution_head",
+    "cell_receipts"
+  ],
+  "properties": {
+    "object_type": {"const": "PRESSURE_RESULT"},
+    "object_id": {"const": "LANE_LIFECYCLE_DISPOSITION_001-SYNTHETIC_PRESSURE-001"},
+    "disposition": {"enum": ["QUALIFIED", "FRACTURE"]},
+    "frozen_execution_head": {"type": "string"},
+    "cell_receipts": {"type": "array"}
+  },
+  "additionalProperties": true
+}
