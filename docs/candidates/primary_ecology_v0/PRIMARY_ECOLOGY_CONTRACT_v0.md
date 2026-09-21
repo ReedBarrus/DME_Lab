@@ -196,6 +196,10 @@ and:
 binding.observation_basis_ref
 =
 canonical identity of the exact basis object
+
+binding.work_claim_ref
+=
+seat.work_claim_ref
 ```
 
 Thus:
@@ -206,9 +210,18 @@ INDIVIDUALLY VALID OBJECTS
 VALID COMPOSED ECOLOGY BUNDLE
 ```
 
+The seat and engagement binding therefore cannot disagree about which current
+work claim exists. Mutual null is a valid no-current-claim state; a non-null
+current claim is valid only when both surfaces carry the exact same reference.
+
 An older observation basis may later be carried as historical provenance only
 through an explicitly typed historical-basis relation. That relation is not
 materialized or qualified here.
+
+Role-definition content identity/versioning remains unresolved in this candidate.
+The current pressure correlates role objects by `role_id`; it does not yet
+establish whether that identifier names a mutable current definition or an exact
+versioned semantic object.
 
 ## Observation basis
 
