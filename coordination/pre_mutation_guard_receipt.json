@@ -1,0 +1,45 @@
+{
+  "schema": "seat_engagement_lane_b_pre_mutation_guard_receipt_v0",
+  "warrant_id": "SEAT_ENGAGEMENT_HANDSHAKE_001",
+  "lane_id": "LANE_B",
+  "invocation_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-WORKSHOP-INVOCATION-001",
+  "local_branch": "lane-b-recovery-continuity-v0",
+  "local_head_at_guard": "0a1370961a6136a6adc9e45fd63e649701d6ad70",
+  "local_claim_path": "coordination/active_work_claim.json",
+  "local_claim_git_blob": "809fcc26a5cc6bd61f3d07544d1a10e3a155bf71",
+  "local_claim_digest": "sha256:b0b65897afc10b6493abb4a6f37fc3b1c7f4947820fb058aa602895826a2bfad",
+  "peer_lane_id": "LANE_A",
+  "peer_branch": "lane-a-cockpit-coordination-v0",
+  "peer_head_observed": "de667390d81c1219abfee063d2a3b1fe13d1ba71",
+  "peer_claim_state": "ABSENT",
+  "peer_cursor_git_blob": "f76071e1a98e479757a75b66cff97418868d02b6",
+  "qualified_coordination_head": "ee178c23124cac68bd8b5a3bc75ce16a486845b9",
+  "qualified_guard_path": "tools/two_lane_coordination_v0.py",
+  "qualified_guard_git_blob": "be80b22c5f06f1e92e36eb80ad60c147698275a2",
+  "guard_result": {
+    "schema": "two_lane_pre_mutation_guard_v0",
+    "local_claim_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-LANE_B-CLAIM-001",
+    "coordination_posture": "NO_COORDINATION_BLOCK",
+    "stale_peers": [],
+    "peer_activity_advances": [],
+    "comparisons": [],
+    "coordination_clear": true,
+    "authorization_effect": "NONE",
+    "execution_effect": "NONE",
+    "integration_effect": "NONE"
+  },
+  "separate_system_write_basis": {
+    "source": "HUMAN_WARRANT",
+    "warrant_id": "SEAT_ENGAGEMENT_HANDSHAKE_001",
+    "addressed_role": "WORKSHOP",
+    "permitted_surface": [
+      "docs/candidates/seat_engagement_handshake_v0/**",
+      "schemas/seat_engagement_*",
+      "tools/seat_engagement_handshake_v0.py",
+      "tests/runtime/test_seat_engagement_handshake_v0.py",
+      ".github/workflows/seat-engagement-handshake-001.yml",
+      "minimum LANE_B coordination objects"
+    ],
+    "effect": "EXTERNAL_TO_COORDINATION_GUARD"
+  }
+}
