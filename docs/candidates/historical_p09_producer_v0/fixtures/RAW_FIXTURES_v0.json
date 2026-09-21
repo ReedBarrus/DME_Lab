@@ -1,65 +1,13 @@
 {
-  "schema": "historical_p09_raw_fixtures_v0",
-  "cells": {
-    "A": {
-      "scope": {
-        "scope_id": "S-A",
-        "unit_ids": ["U1"],
-        "event_count": 2,
-        "event_log_sha256": "sha256:5806f4c8c769eff936f324f38373bb9ddf5a9c4fedde2d9374ee4bb5b177efef",
-        "scope_identity": "sha256:83285c87adf2c1ac1caedb1cb06a1eb2038f85e0d676b99a65f2eb1caa08d3d2"
-      },
-      "events": [
-        {"scope_id":"S-A","unit_id":"U1","event_index":1,"event_type":"EFFECT_BEARING_UNIT_START"},
-        {"scope_id":"S-A","unit_id":"U1","event_index":2,"event_type":"TERMINAL_RECEIPT"}
-      ]
-    },
-    "B": {
-      "scope": {"scope_id":"S-B","unit_ids":["U1"],"event_count":1,"event_log_sha256":"sha256:194a17974a211f99f55e3c6fb2213a64b7614fb248407a872e5bbc721a7627b6","scope_identity":"sha256:37becf8b85a69570d63fdfbe165a2c30a284947ff4d64b0e5b5e516a2471f51f"},
-      "events": [{"scope_id":"S-B","unit_id":"U1","event_index":1,"event_type":"EFFECT_BEARING_UNIT_START"}]
-    },
-    "C": {
-      "scope": {"scope_id":"S-C","unit_ids":["U1"],"event_count":2,"event_log_sha256":"sha256:cb74f1064f8dc69191741c8ab3b312fa7fecb7f77289e70825b8e223462a53ee","scope_identity":"sha256:b4b7b90f090d04d9bfb18d1a52fb609dc278df3764d28de547f13455764249fb"},
-      "events": [
-        {"scope_id":"S-C","unit_id":"U1","event_index":1,"event_type":"EFFECT_BEARING_UNIT_START"},
-        {"scope_id":"S-C","unit_id":"U1","event_index":2,"event_type":"OWNERSHIP_INDEPENDENT_CHECKPOINT"}
-      ]
-    },
-    "D": {
-      "scope": {"scope_id":"S-D","unit_ids":["U1"],"event_count":2,"event_log_sha256":"sha256:648b84ec9fd53aaeccb583bad5b56dd2202bc68bc68206cf80393ee9a6b1733a","scope_identity":"sha256:0000000000000000000000000000000000000000000000000000000000000000"},
-      "events": [
-        {"scope_id":"S-D","unit_id":"U1","event_index":1,"event_type":"EFFECT_BEARING_UNIT_START"},
-        {"scope_id":"S-D","unit_id":"U1","event_index":2,"event_type":"TERMINAL_RECEIPT"}
-      ]
-    },
-    "E": {
-      "scope": {"scope_id":"S-E","unit_ids":["U1","U2"],"event_count":3,"event_log_sha256":"sha256:5ecc201aa4a7929a11aec7d4a29dbcc43e06c37b9c449cb1a907e1e5d09d7268","scope_identity":"sha256:9b62c94975184851cca199767bc36a4a498dc20dee3a14e961307fe9b49fff42"},
-      "events": [
-        {"scope_id":"S-E","unit_id":"U1","event_index":1,"event_type":"EFFECT_BEARING_UNIT_START"},
-        {"scope_id":"S-E","unit_id":"U1","event_index":2,"event_type":"TERMINAL_RECEIPT"},
-        {"scope_id":"S-E","unit_id":"U2","event_index":3,"event_type":"EFFECT_BEARING_UNIT_START"}
-      ]
-    },
-    "F": {
-      "scope": {"scope_id":"S-F","unit_ids":["U1","U2"],"event_count":3,"event_log_sha256":"sha256:e66d2fc57b81c57edebbd97c92674eb6d55a3022429c50c19b19d5e62d2876e2","scope_identity":"sha256:39ef4ad17351212f25405ded281e248767399ec5c5ee98b8cdc8a30a5fcfb663"},
-      "events": [
-        {"scope_id":"S-F","unit_id":"U1","event_index":1,"event_type":"EFFECT_BEARING_UNIT_START"},
-        {"scope_id":"S-F","unit_id":"U1","event_index":2,"event_type":"TERMINAL_RECEIPT"}
-      ]
-    },
-    "G": {
-      "scope": {"scope_id":"S-G","unit_ids":["U1"],"event_count":2,"event_log_sha256":"sha256:95204c6082e169690d946430d984eccb23d472a84b64fcb5caa911ce53b17dc1","scope_identity":"sha256:4ebeec42a99b73849159987cf19295058fd7976bb5493085d315d265fb33a5ec"},
-      "events": [
-        {"scope_id":"S-G","unit_id":"U1","event_index":1,"event_type":"TERMINAL_RECEIPT"},
-        {"scope_id":"S-G","unit_id":"U1","event_index":2,"event_type":"EFFECT_BEARING_UNIT_START"}
-      ]
-    },
-    "H": {
-      "scope": {"scope_id":"S-H","unit_ids":["U1"],"event_count":2,"event_log_sha256":"sha256:a3b509c4821a3d708720c8bd11c0479d57f529bb52c992e191439988244d31e2","scope_identity":"sha256:7544e507800d3fc5e33b5f8d6e26e9c8e91e520e5d4b953876de716cca967fd6"},
-      "events": [
-        {"scope_id":"S-H","unit_id":"U1","event_index":1,"event_type":"OWNERSHIP_INDEPENDENT_CHECKPOINT"},
-        {"scope_id":"S-H","unit_id":"U1","event_index":2,"event_type":"EFFECT_BEARING_UNIT_START"}
-      ]
-    }
+  "schema":"historical_p09_raw_fixtures_v0",
+  "cells":{
+    "A":{"scope_basis_identity":"sha256:83285c87adf2c1ac1caedb1cb06a1eb2038f85e0d676b99a65f2eb1caa08d3d2","scope":{"scope_id":"S-A","unit_ids":["U1"],"event_count":2,"event_log_sha256":"sha256:5806f4c8c769eff936f324f38373bb9ddf5a9c4fedde2d9374ee4bb5b177efef"},"events":[{"scope_id":"S-A","unit_id":"U1","event_index":1,"event_type":"EFFECT_BEARING_UNIT_START"},{"scope_id":"S-A","unit_id":"U1","event_index":2,"event_type":"TERMINAL_RECEIPT"}]},
+    "B":{"scope_basis_identity":"sha256:37becf8b85a69570d63fdfbe165a2c30a284947ff4d64b0e5b5e516a2471f51f","scope":{"scope_id":"S-B","unit_ids":["U1"],"event_count":1,"event_log_sha256":"sha256:194a17974a211f99f55e3c6fb2213a64b7614fb248407a872e5bbc721a7627b6"},"events":[{"scope_id":"S-B","unit_id":"U1","event_index":1,"event_type":"EFFECT_BEARING_UNIT_START"}]},
+    "C":{"scope_basis_identity":"sha256:b4b7b90f090d04d9bfb18d1a52fb609dc278df3764d28de547f13455764249fb","scope":{"scope_id":"S-C","unit_ids":["U1"],"event_count":2,"event_log_sha256":"sha256:cb74f1064f8dc69191741c8ab3b312fa7fecb7f77289e70825b8e223462a53ee"},"events":[{"scope_id":"S-C","unit_id":"U1","event_index":1,"event_type":"EFFECT_BEARING_UNIT_START"},{"scope_id":"S-C","unit_id":"U1","event_index":2,"event_type":"OWNERSHIP_INDEPENDENT_CHECKPOINT"}]},
+    "D":{"scope_basis_identity":"sha256:0000000000000000000000000000000000000000000000000000000000000000","scope":{"scope_id":"S-D","unit_ids":["U1"],"event_count":2,"event_log_sha256":"sha256:648b84ec9fd53aaeccb583bad5b56dd2202bc68bc68206cf80393ee9a6b1733a"},"events":[{"scope_id":"S-D","unit_id":"U1","event_index":1,"event_type":"EFFECT_BEARING_UNIT_START"},{"scope_id":"S-D","unit_id":"U1","event_index":2,"event_type":"TERMINAL_RECEIPT"}]},
+    "E":{"scope_basis_identity":"sha256:9b62c94975184851cca199767bc36a4a498dc20dee3a14e961307fe9b49fff42","scope":{"scope_id":"S-E","unit_ids":["U1","U2"],"event_count":3,"event_log_sha256":"sha256:5ecc201aa4a7929a11aec7d4a29dbcc43e06c37b9c449cb1a907e1e5d09d7268"},"events":[{"scope_id":"S-E","unit_id":"U1","event_index":1,"event_type":"EFFECT_BEARING_UNIT_START"},{"scope_id":"S-E","unit_id":"U1","event_index":2,"event_type":"TERMINAL_RECEIPT"},{"scope_id":"S-E","unit_id":"U2","event_index":3,"event_type":"EFFECT_BEARING_UNIT_START"}]},
+    "F":{"scope_basis_identity":"sha256:39ef4ad17351212f25405ded281e248767399ec5c5ee98b8cdc8a30a5fcfb663","scope":{"scope_id":"S-F","unit_ids":["U1"],"event_count":2,"event_log_sha256":"sha256:2485f84142f01192bcb5be573e56c0cd2b00a2c50b81517f2862e8e686c0f203"},"events":[{"scope_id":"S-F","unit_id":"U1","event_index":1,"event_type":"EFFECT_BEARING_UNIT_START"},{"scope_id":"S-F","unit_id":"U1","event_index":2,"event_type":"TERMINAL_RECEIPT"}]},
+    "G":{"scope_basis_identity":"sha256:4ebeec42a99b73849159987cf19295058fd7976bb5493085d315d265fb33a5ec","scope":{"scope_id":"S-G","unit_ids":["U1"],"event_count":2,"event_log_sha256":"sha256:95204c6082e169690d946430d984eccb23d472a84b64fcb5caa911ce53b17dc1"},"events":[{"scope_id":"S-G","unit_id":"U1","event_index":1,"event_type":"TERMINAL_RECEIPT"},{"scope_id":"S-G","unit_id":"U1","event_index":2,"event_type":"EFFECT_BEARING_UNIT_START"}]},
+    "H":{"scope_basis_identity":"sha256:7544e507800d3fc5e33b5f8d6e26e9c8e91e520e5d4b953876de716cca967fd6","scope":{"scope_id":"S-H","unit_ids":["U1"],"event_count":2,"event_log_sha256":"sha256:a3b509c4821a3d708720c8bd11c0479d57f529bb52c992e191439988244d31e2"},"events":[{"scope_id":"S-H","unit_id":"U1","event_index":1,"event_type":"OWNERSHIP_INDEPENDENT_CHECKPOINT"},{"scope_id":"S-H","unit_id":"U1","event_index":2,"event_type":"EFFECT_BEARING_UNIT_START"}]}
   }
 }
