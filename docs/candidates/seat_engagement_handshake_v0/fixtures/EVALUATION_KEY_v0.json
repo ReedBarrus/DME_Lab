@@ -1,0 +1,19 @@
+{
+  "schema":"seat_engagement_handshake_evaluation_key_v0",
+  "cells":{
+    "A":{"engagement_decision":"ACCEPT","engagement_reason":"ENGAGEMENT_ADMISSIBLE","binding_present":true,"work_claim_present":true,"pre_mutation_disposition":"READY_FOR_AUTHORIZED_UNIT","effect_started":true,"grant_state":"CONSUMED","terminal_receipt":"SUCCESS","checkpointed":true,"released":true,"second_unit_started":false},
+    "B":{"engagement_decision":"DECLINE","engagement_reason":"EVALUATOR_DECLINED","binding_present":false,"work_claim_present":false,"pre_mutation_disposition":null,"effect_started":false,"grant_state":"ABSENT","terminal_receipt":null,"checkpointed":false,"released":false,"second_unit_started":false},
+    "C1":{"engagement_decision":"REFUSE","engagement_reason":"TARGET_SEAT_MISMATCH","binding_present":false,"work_claim_present":false,"pre_mutation_disposition":null,"effect_started":false,"grant_state":"ABSENT","terminal_receipt":null,"checkpointed":false,"released":false,"second_unit_started":false},
+    "C2":{"engagement_decision":"REFUSE","engagement_reason":"EVALUATOR_BINDING_INVALID","binding_present":false,"work_claim_present":false,"pre_mutation_disposition":null,"effect_started":false,"grant_state":"ABSENT","terminal_receipt":null,"checkpointed":false,"released":false,"second_unit_started":false},
+    "D":{"engagement_decision":"ACCEPT","engagement_reason":"ENGAGEMENT_ADMISSIBLE","binding_present":true,"work_claim_present":true,"pre_mutation_disposition":"COORDINATION_REQUEST","effect_started":false,"grant_state":"AVAILABLE","terminal_receipt":null,"checkpointed":false,"released":false,"second_unit_started":false},
+    "E":{"engagement_decision":"ACCEPT","engagement_reason":"ENGAGEMENT_ADMISSIBLE","binding_present":true,"work_claim_present":true,"pre_mutation_disposition":"AUTHORITY_REQUEST","effect_started":false,"grant_state":"ABSENT","terminal_receipt":null,"checkpointed":false,"released":false,"second_unit_started":false},
+    "F":{"engagement_decision":"CONTEXT_REQUEST","engagement_reason":"MISSING_REQUIRED_BASIS","binding_present":false,"work_claim_present":false,"pre_mutation_disposition":null,"effect_started":false,"grant_state":"AVAILABLE","terminal_receipt":null,"checkpointed":false,"released":false,"second_unit_started":false},
+    "G":{"engagement_decision":"ACCEPT","engagement_reason":"ENGAGEMENT_ADMISSIBLE","binding_present":true,"work_claim_present":true,"pre_mutation_disposition":"READY_FOR_AUTHORIZED_UNIT","effect_started":true,"grant_state":"CONSUMED","terminal_receipt":"SUCCESS","checkpointed":true,"released":true,"second_unit_started":false},
+    "G2":{"engagement_decision":"ACCEPT","engagement_reason":"ENGAGEMENT_ADMISSIBLE","binding_present":true,"work_claim_present":true,"pre_mutation_disposition":"READY_FOR_AUTHORIZED_UNIT","effect_started":true,"grant_state":"CONSUMED","terminal_receipt":"FAILURE","checkpointed":true,"released":true,"second_unit_started":false},
+    "H":{"engagement_decision":"ACCEPT","engagement_reason":"ENGAGEMENT_ADMISSIBLE","binding_present":true,"work_claim_present":true,"pre_mutation_disposition":"AUTHORITY_REQUEST","effect_started":false,"grant_state":"ABSENT","terminal_receipt":null,"checkpointed":true,"released":false,"second_unit_started":false},
+    "I":{"engagement_decision":"ACCEPT","engagement_reason":"ENGAGEMENT_ADMISSIBLE","binding_present":true,"work_claim_present":true,"pre_mutation_disposition":"READY_FOR_AUTHORIZED_UNIT","effect_started":true,"grant_state":"CONSUMED","terminal_receipt":"SUCCESS","checkpointed":true,"released":true,"second_unit_started":false}
+  },
+  "secondary_observables":{
+    "I":{"authority_request_emitted":"UNSCORED"}
+  }
+}
