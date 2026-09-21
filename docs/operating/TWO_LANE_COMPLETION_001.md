@@ -364,6 +364,79 @@ MARK_BLOCKED
 → blocking relation basis retained
 ```
 
+Required source-state guard geometry:
+
+```text
+EVERY qualified arrow requires:
+
+P01 SOURCE_CLAIM_STATUS_IS_ACTIVE = true
+P02 SOURCE_LANE_STATUS_IS_ACTIVE = true
+P03 SOURCE_OCCUPANT_BINDING != null
+```
+
+Branch-specific conjunctions:
+
+```text
+COMPLETE:
+P01
+AND P02
+AND P03 non-null
+AND existing COMPLETE prerequisites
+
+RELEASE:
+P01
+AND P02
+AND P03 non-null
+AND existing RELEASE prerequisites
+
+MARK_BLOCKED:
+P01
+AND P02
+AND P03 non-null
+AND existing MARK_BLOCKED prerequisites
+```
+
+For MARK_BLOCKED:
+
+```text
+occupant_binding_after
+=
+exact occupant_binding_before
+=
+exact supplied non-null P03 identity
+```
+
+Freeze:
+
+```text
+REGISTERED SOURCE-STATE PREDICATE
+!=
+CAUSALLY EFFECTIVE SOURCE-STATE GUARD
+```
+
+Gate 1 qualifies only the latter.
+
+No branch may produce an ACTIVE-source transition when:
+
+```text
+P01 = false
+or
+P02 = false
+or
+P03 = null
+```
+
+and no MARK_BLOCKED result may violate D3:
+
+```text
+BLOCKED
++
+HELD
++
+occupant null
+→ INVALID
+```
+
 Gate 1 must establish the requested transition law from:
 
 ```text
@@ -427,6 +500,32 @@ lane HELD
 occupant null
 → INVALID
 ```
+
+F12 additionally requires independent held-out source-guard interventions:
+
+```text
+N1
+COMPLETE
+only P02 flipped from ACTIVE baseline
+→ inadmissible because P02
+
+N2
+RELEASE
+only P02 flipped from ACTIVE baseline
+→ inadmissible because P02
+
+N3
+MARK_BLOCKED
+only P02 flipped from ACTIVE baseline
+→ inadmissible because P02
+
+N4
+MARK_BLOCKED
+only P03 flipped from non-null baseline to null
+→ inadmissible because P03
+```
+
+All unrelated branch prerequisites remain conserved in each intervention.
 
 No live Lane-B mutation occurs during Gate 1.
 
