@@ -20,7 +20,11 @@
     "N0": "PASS",
     "N1": "PASS",
     "N2": "PASS",
-    "N3": "PASS"
+    "N3": "PASS",
+    "P1": "PASS",
+    "P2": "PASS",
+    "P3": "PASS",
+    "P4": "PASS"
   },
   "terminal_status": "QUALIFIED_SYNTHETIC_GRAMMAR"
 }
