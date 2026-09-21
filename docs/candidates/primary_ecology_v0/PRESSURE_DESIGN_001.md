@@ -246,8 +246,56 @@ object_id
 identity
 Expected: admissible as source-corresponding.
 
+Q4A -- missingness witness not supplied
+Basis claims SECRET_DRAGON_LEDGER = MISSING and names a witness ref, but no exact
+witness carrier is supplied.
+Expected: reject MISSINGNESS_WITNESS_NOT_SUPPLIED.
+
+Q4B -- witness for wrong object
+Witness says OTHER_OBJECT unavailable while basis says SECRET_DRAGON_LEDGER
+missing.
+Expected: reject MISSINGNESS_WITNESS_OBJECT_MISMATCH.
+
+Q4C -- exact missingness correspondence
+Witness says SECRET_DRAGON_LEDGER / UNAVAILABLE_AT_BASIS /
+SOURCE_NOT_AVAILABLE_AT_BASIS and basis carries the same object/reason.
+Expected: admissible as grounded missingness.
+
+Q4D -- missingness reason mismatch
+Witness says NETWORK_TIMEOUT while basis says PERMISSION_DENIED.
+Expected: reject MISSINGNESS_WITNESS_REASON_MISMATCH.
+
 Identity syntax remains opaque. Q3 does not require SHA-256 and does not qualify
 the meaning, trustworthiness, or authenticity of any identity scheme.
+
+Q4 addresses the second epistemic channel, `explicit_missing_objects[]`. A
+missingness row must reference an exact typed `missingness_witness_v0` carrier
+whose bytes establish only:
+
+```text
+object_id
+standing = UNAVAILABLE_AT_BASIS
+reason
+```
+
+The basis row and exact represented witness must correspond on `object_id` and
+`reason`.
+
+```text
+MISSINGNESS DECLARED
+!=
+MISSINGNESS ESTABLISHED
+
+REASON STRING PRESENT
+!=
+UNAVAILABILITY BASIS REPRESENTED
+
+MISSINGNESS WITNESS CORRESPONDS
+!=
+OBJECT ABSENT
+```
+
+This does not claim universal retrieval impossibility or witness truth.
 
 A separate focused regression mutates the contents of an otherwise matching
 observation basis while retaining the old `observation_basis_ref`. Expected:
