@@ -1,0 +1,39 @@
+task_basis_id:
+IR001-TASK-BASIS-01
+
+task_id:
+IR001-TASK
+
+ordered_units:
+[UNIT-00, UNIT-01, UNIT-02, UNIT-03]
+
+checkpoint_rule:
+RECEIPT-01 establishes completion through UNIT-01
+
+next_unit_rule:
+if completion through UNIT-01 is valid,
+the next bounded unit is UNIT-02
+
+forbidden_unit_rule:
+UNIT-03 is forbidden until a UNIT-02 receipt
+mechanically verifies REL-02
+
+unit_02_required_dependency:
+DEP-17
+
+unit_02_required_semantic_debt_carriage:
+D27
+
+basis_rule:
+packet basis must equal exact current basis unless a separately supplied
+continuity relation establishes packet applicability at the current basis
+
+coordination_rule:
+a mechanically established post-cursor work-claim overlap with the packet
+active_work_claim blocks continuation of the stale plan
+
+authority_rule:
+fresh_authorization_required = true requires a separate valid authority witness
+
+completion_criterion:
+UNIT-02 receipt mechanically verifies REL-02
