@@ -1,0 +1,20 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"seat_engagement_pre_mutation_disposition_v0.schema.json",
+  "title":"Seat Engagement Pre Mutation Disposition v0",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["schema","disposition","binding_id","work_claim_id","basis_status","coordination_status","authority_status","reason_code","authority_effect","execution_effect"],
+  "properties":{
+    "schema":{"const":"seat_engagement_pre_mutation_disposition_v0"},
+    "disposition":{"enum":["READY_FOR_AUTHORIZED_UNIT","REVALIDATION_REQUIRED","CONTEXT_REQUEST","AUTHORITY_REQUEST","COORDINATION_REQUEST","RELEASE_REQUIRED"]},
+    "binding_id":{"type":"string","minLength":1},
+    "work_claim_id":{"type":"string","minLength":1},
+    "basis_status":{"enum":["SUFFICIENT","INSUFFICIENT","CHANGED"]},
+    "coordination_status":{"enum":["CLEAR","COLLISION","CHANGED"]},
+    "authority_status":{"enum":["AVAILABLE","ABSENT","CONSUMED","INVALID"]},
+    "reason_code":{"type":"string","minLength":1},
+    "authority_effect":{"const":"NONE"},
+    "execution_effect":{"const":"NONE"}
+  }
+}
