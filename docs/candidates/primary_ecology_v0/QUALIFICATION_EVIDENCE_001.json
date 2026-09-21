@@ -80,11 +80,28 @@
     "N3": {
       "relation": "SEAT_CLAIM_ABSENT_BINDING_CLAIM_PRESENT_IS_INVALID",
       "result": "PASS"
+    },
+    "P1": {
+      "relation": "OLD_OBSERVED_OBJECT_MUST_NOT_AUTO_PROPAGATE_TO_FRESH_INVOCATION",
+      "result": "PASS"
+    },
+    "P2": {
+      "relation": "OLD_MISSINGNESS_MUST_NOT_AUTO_PROPAGATE_TO_FRESH_INVOCATION",
+      "result": "PASS"
+    },
+    "P3": {
+      "relation": "FRESH_OBSERVATION_MAY_REESTABLISH_SAME_FACT_EXPLICITLY",
+      "result": "PASS"
+    },
+    "P4": {
+      "relation": "HISTORICAL_BASIS_REFERENCE_DISTINCT_FROM_CURRENT_OBSERVATION",
+      "result": "PASS"
     }
   },
   "core_relations": {
     "cross_object_identity_correspondence": "PASS",
     "current_world_ne_observation_basis": "PASS",
+    "fresh_observation_payload_noninheritance": "PASS",
     "invocation_ne_work_claim": "PASS",
     "occupant_ne_invocation": "PASS",
     "role_ne_seat": "PASS",
@@ -95,7 +112,7 @@
   "durable_ecology_installed": false,
   "execution_effect": "NONE",
   "function_needs_seat": "NOT_TESTED",
-  "historical_basis_reuse": "EXPLICIT_RELATION_NOT_YET_MODELED",
+  "historical_basis_reuse": "SEPARATE_TYPED_RELATION_REQUIRED_NOT_MODELED",
   "integration_effect": "NONE",
   "legacy_seat_migration": "NOT_TESTED",
   "object_id": "PRIMARY_ECOLOGY_GRAMMAR_001-RESULT",
