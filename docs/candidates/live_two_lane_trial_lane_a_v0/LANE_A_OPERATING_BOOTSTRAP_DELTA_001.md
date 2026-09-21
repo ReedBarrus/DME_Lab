@@ -205,3 +205,50 @@ grant execution
 integrate anything into main
 release either live lane
 ~~~
+
+
+## LIVE_TWO_LANE_FOLLOWUP_002
+
+~~~text
+PEER_HEAD_RETAINED:
+402f8525aa756a434f894e973a5741b915b9cd00
+
+PEER_HEAD_CURRENT:
+a88d1d56d0b624cf00239cc8c2621522b45b4b08
+
+PEER_CLAIM_RETAINED:
+sha256:ce582d03a3e066b4d301ba2f37e3a6d7fd169ac7c088617f9430e0843d6445ef
+
+PEER_CLAIM_CURRENT:
+sha256:ce582d03a3e066b4d301ba2f37e3a6d7fd169ac7c088617f9430e0843d6445ef
+
+GUARD_POSTURE:
+NO_COORDINATION_BLOCK
+
+PEER_ACTIVITY_ADVANCES:
+[
+  {
+    "lane_id": "LANE_B",
+    "reason": "PEER_ACTIVITY_ADVANCED_CLAIM_UNCHANGED",
+    "last_seen_head": "402f8525aa756a434f894e973a5741b915b9cd00",
+    "current_head": "a88d1d56d0b624cf00239cc8c2621522b45b4b08",
+    "claim_digest": "sha256:ce582d03a3e066b4d301ba2f37e3a6d7fd169ac7c088617f9430e0843d6445ef"
+  }
+]
+
+WORK_PERMITTED:
+YES
+~~~
+
+Bounded interpretation:
+
+The retained Lane-B coordinate was stale with respect to branch activity but not
+with respect to the ACTIVE work claim. The peer head advanced while the exact
+canonical claim digest remained unchanged. Under the qualified v0 pre-mutation
+guard this is mechanically distinguished from PEER_CLAIM_CHANGED, is surfaced
+as PEER_ACTIVITY_ADVANCED_CLAIM_UNCHANGED, and does not by itself require
+cursor refresh or block the separately authorized non-overlapping Lane-A work.
+
+This observation supports only the existing documentation claim that peer
+activity advance and peer claim change are distinct coordination events. It
+does not generalize authority, execution, integration, or scheduler behavior.
