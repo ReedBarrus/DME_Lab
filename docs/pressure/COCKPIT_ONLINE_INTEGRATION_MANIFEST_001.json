@@ -1,0 +1,80 @@
+{
+  "schema": "cockpit_online_integration_manifest_v0",
+  "pressure_id": "COCKPIT_ONLINE_INTEGRATION_PRESSURE_001",
+  "coordinates": {
+    "merge_base": "35d1f13396afde04e4fbad8d3c3de60136926736",
+    "main": "00b3783683ad9009d6152cc861b9383087aece7f",
+    "perceptual": "0fd6f3d81393eb81e4f8d3df86e6b6d411d2c0f9",
+    "development": "7cd6ffd9b03c1d7638f2fffb38448f47a1e78d95"
+  },
+  "read_bundle": [
+    {
+      "path": "src/cockpit/observer/perceptual_instrument.mjs",
+      "source_blob": "bd22cdfd4505cb2ada4dc2b0f0fb850d1429f2aa"
+    },
+    {
+      "path": "src/cockpit/observer/runtime_live.mjs",
+      "source_blob": "54f77aeb123ed80c846bdb540c32a9a54c78fedf"
+    },
+    {
+      "path": "src/cockpit/observer/control_live.mjs",
+      "source_blob": "badd63646445263c9c293ec76ba18bc909156474"
+    },
+    {
+      "path": "src/cockpit/live_runtime_projection.py",
+      "source_blob": "c0fd7b0287b9910aa960e141d8734e2f7041ef92"
+    },
+    {
+      "path": "src/cockpit/development_horizon_projection.py",
+      "source_blob": "9f5efb36a526c9311e059cdfefca32a3f8b5d785"
+    },
+    {
+      "path": "tests/cockpit/test_perceptual_instrument.mjs",
+      "source_blob": "1b7c95aea1d47d2ea0064f9178d4d9f8480d7b5b"
+    },
+    {
+      "path": "tests/runtime/test_live_runtime_projection.py",
+      "source_blob": "51604dfc35e6730467011354f512a49d622857c5"
+    }
+  ],
+  "overlap": [
+    {
+      "path": "src/cockpit/observer/app.mjs",
+      "main_blob": "a004b71464cc1fa651d56f77d98f7280a80e3602",
+      "perceptual_blob": "15a4ea879164eaa5bf6a53ec54d5212a86d17e69",
+      "required_composition": [
+        "MAIN_ACTION_SURFACE_SELECTION",
+        "PERCEPTUAL_ADDRESS_CONTINUITY",
+        "RUNTIME_STARTUP",
+        "CONTROL_PREFILL_STARTUP"
+      ]
+    },
+    {
+      "path": "src/cockpit/observer/styles.css",
+      "main_blob": "6bf3dc692cb9dc1195884be665573e58f497431f",
+      "perceptual_blob": "0d4c3f0489a0edbbaf2f2fc190a92b77c2f8d0c5",
+      "required_composition": [
+        "COMMON_STYLE_BASIS",
+        "MAIN_ACTION_SURFACE_TAIL",
+        "PERCEPTUAL_RUNTIME_INSTRUMENT_TAIL"
+      ]
+    },
+    {
+      "path": "src/cockpit/observer/index.html",
+      "main_blob": "226915668b120ba7e71dec3ff975e61d0a544f35",
+      "perceptual_blob": "219c4cb82887a55469180f2ad64c65464b69ddc0",
+      "required_composition": [
+        "instrument-root",
+        "runtime-root",
+        "control-root"
+      ]
+    }
+  ],
+  "excluded_from_initial_bundle": [
+    "src/cockpit/control_adapter.py",
+    "write-capable campaign/selection/preparation/assignment/wake stores"
+  ],
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "deployment_effect": "NONE"
+}
