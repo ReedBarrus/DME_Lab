@@ -15,6 +15,7 @@ from tools.primary_ecology_v0 import (
     observation_basis_ref,
     observation_source_ref,
     missingness_witness_ref,
+    source_encounter_ref,
     observation_status,
     occupied_seat,
     rotate_invocation,
@@ -24,6 +25,7 @@ from tools.primary_ecology_v0 import (
     validate_observation_basis,
     validate_observation_grounding,
     validate_missingness_grounding,
+    validate_source_encounter_grounding,
     validate_role,
     validate_seat,
 )
@@ -192,6 +194,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             basis=null_bundle["basis"],
             source_carriers=null_bundle["sources"],
             missingness_witnesses=null_bundle["missingness_witnesses"],
+            source_encounters=null_bundle["source_encounters"],
         )
 
         same_bundle = clean_bundle()
@@ -204,6 +207,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             basis=same_bundle["basis"],
             source_carriers=same_bundle["sources"],
             missingness_witnesses=same_bundle["missingness_witnesses"],
+            source_encounters=same_bundle["source_encounters"],
         )
 
     def test_N1_work_claim_identity_mismatch_rejected(self):
@@ -312,12 +316,25 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             occupant_id=new_binding["occupant_id"],
             invocation_id=new_binding["invocation_id"],
         )
+        encounter = {
+            "schema":"source_encounter_v0",
+            "encounter_id":"ENCOUNTER_INVOCATION_P3_POISON_SENTINEL",
+            "seat_id":new_binding["seat_id"],
+            "occupant_id":new_binding["occupant_id"],
+            "invocation_id":new_binding["invocation_id"],
+            "source_ref":fresh_source_ref,
+            "encounter_kind":"PRESENTED_TO_INVOCATION",
+            "basis_ref":new_basis["basis_ref"],
+            "authority_effect":"NONE",
+            "execution_effect":"NONE",
+        }
         validate_correspondence(
             role=clean_role(),
             seat=new_seat,
             binding=new_binding,
             basis=new_basis,
             source_carriers=[fresh_source],
+            source_encounters=[encounter],
         )
         self.assertEqual(observation_status(new_basis, "POISON_SENTINEL"), "OBSERVED")
         self.assertEqual(
@@ -574,6 +591,116 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         with self.assertRaisesRegex(EcologyError, "MISSINGNESS_WITNESS_REASON_MISMATCH"):
             validate_missingness_grounding(basis, [witness])
 
+    def _q5_bundle(self):
+        source = {
+            "schema":"observation_source_v0",
+            "source_id":"SOURCE_BIGFOOT_R",
+            "object_id":"BIGFOOT",
+            "identity":"opaque:IDENTITY-R",
+            "authority_effect":"NONE",
+            "execution_effect":"NONE",
+        }
+        source_ref = observation_source_ref(source)
+        basis = fresh_basis(
+            clean_basis(),
+            seat_id="SCIENCE_TEST_01",
+            occupant_id="LABOIB_CANDIDATE",
+            invocation_id="INVOCATION_R",
+            basis_id="OBSERVATION_BASIS_R",
+            observed_objects=[{
+                "object_id":"BIGFOOT",
+                "identity":"opaque:IDENTITY-R",
+                "source_ref":source_ref,
+            }],
+            source_refs=[source_ref],
+        )
+        binding = clean_binding()
+        binding["binding_id"] = "BINDING:SCIENCE_TEST_01:LABOIB_CANDIDATE:INVOCATION_R"
+        binding["invocation_id"] = "INVOCATION_R"
+        binding["observation_basis_ref"] = observation_basis_ref(basis)
+        seat = occupied_seat(
+            seat=clean_empty_seat("SCIENCE_TEST_01"),
+            occupant_id="LABOIB_CANDIDATE",
+            invocation_id="INVOCATION_R",
+        )
+        encounter = {
+            "schema":"source_encounter_v0",
+            "encounter_id":"ENCOUNTER_R4",
+            "seat_id":binding["seat_id"],
+            "occupant_id":binding["occupant_id"],
+            "invocation_id":binding["invocation_id"],
+            "source_ref":source_ref,
+            "encounter_kind":"PRESENTED_TO_INVOCATION",
+            "basis_ref":basis["basis_ref"],
+            "authority_effect":"NONE",
+            "execution_effect":"NONE",
+        }
+        return source, basis, binding, seat, encounter
+
+    def test_R1_source_without_current_encounter_rejected(self):
+        source, basis, binding, seat, _ = self._q5_bundle()
+        with self.assertRaisesRegex(EcologyError, "CURRENT_SOURCE_ENCOUNTER_NOT_SUPPLIED"):
+            validate_correspondence(
+                role=clean_role(),
+                seat=seat,
+                binding=binding,
+                basis=basis,
+                source_carriers=[source],
+                source_encounters=[],
+            )
+
+    def test_R2_encounter_wrong_invocation_rejected(self):
+        _, basis, binding, _, encounter = self._q5_bundle()
+        encounter["invocation_id"] = "INVOCATION_OTHER"
+        with self.assertRaisesRegex(EcologyError, "SOURCE_ENCOUNTER_INVOCATION_MISMATCH"):
+            validate_source_encounter_grounding(
+                basis=basis, binding=binding, source_encounters=[encounter]
+            )
+
+    def test_R3_encounter_wrong_source_rejected(self):
+        _, basis, binding, _, encounter = self._q5_bundle()
+        encounter["source_ref"] = "observation-source://OTHER@opaque:other"
+        with self.assertRaisesRegex(EcologyError, "SOURCE_ENCOUNTER_SOURCE_MISMATCH"):
+            validate_source_encounter_grounding(
+                basis=basis, binding=binding, source_encounters=[encounter]
+            )
+
+    def test_R4_exact_current_source_encounter_valid(self):
+        source, basis, binding, seat, encounter = self._q5_bundle()
+        validate_correspondence(
+            role=clean_role(),
+            seat=seat,
+            binding=binding,
+            basis=basis,
+            source_carriers=[source],
+            source_encounters=[encounter],
+        )
+        self.assertTrue(source_encounter_ref(encounter).startswith("source-encounter://"))
+
+    def test_R5_encounter_wrong_seat_rejected(self):
+        _, basis, binding, _, encounter = self._q5_bundle()
+        encounter["seat_id"] = "SCIENCE_TEST_02"
+        with self.assertRaisesRegex(EcologyError, "SOURCE_ENCOUNTER_SEAT_MISMATCH"):
+            validate_source_encounter_grounding(
+                basis=basis, binding=binding, source_encounters=[encounter]
+            )
+
+    def test_R6_encounter_wrong_occupant_rejected(self):
+        _, basis, binding, _, encounter = self._q5_bundle()
+        encounter["occupant_id"] = "OCCUPANT_OTHER"
+        with self.assertRaisesRegex(EcologyError, "SOURCE_ENCOUNTER_OCCUPANT_MISMATCH"):
+            validate_source_encounter_grounding(
+                basis=basis, binding=binding, source_encounters=[encounter]
+            )
+
+    def test_R7_encounter_wrong_basis_rejected(self):
+        _, basis, binding, _, encounter = self._q5_bundle()
+        encounter["basis_ref"] = "fixture://OTHER_BASIS"
+        with self.assertRaisesRegex(EcologyError, "SOURCE_ENCOUNTER_BASIS_MISMATCH"):
+            validate_source_encounter_grounding(
+                basis=basis, binding=binding, source_encounters=[encounter]
+            )
+
     def test_observation_basis_ref_pins_exact_basis_bytes(self):
         b = clean_bundle()
         original_ref = observation_basis_ref(b["basis"])
@@ -616,6 +743,9 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         self.assertEqual(
             result["core_relations"]["explicit_missingness_grounding"], "PASS"
         )
+        self.assertEqual(
+            result["core_relations"]["current_invocation_source_encounter"], "PASS"
+        )
         self.assertFalse(result["durable_ecology_installed"])
         self.assertEqual(result["authority_effect"], "NONE")
         self.assertEqual(result["execution_effect"], "NONE")
@@ -639,6 +769,13 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         )
         self.assertEqual(result["missingness_witness_truth"], "NOT_TESTED")
         self.assertEqual(result["universal_unavailability"], "NOT_CLAIMED")
+        self.assertEqual(
+            result["source_encounter_correspondence"],
+            "TESTED_CURRENT_SEAT_OCCUPANT_INVOCATION_SOURCE_BASIS",
+        )
+        self.assertEqual(result["source_encounter_truth"], "NOT_TESTED")
+        self.assertEqual(result["direct_object_perception"], "NOT_CLAIMED")
+        self.assertEqual(result["source_understanding"], "NOT_CLAIMED")
 
 
 if __name__ == "__main__":
