@@ -10,7 +10,7 @@ OBJECT_ID:
 TWO_LANE_COMPLETION_001
 
 STATUS:
-MATERIALIZED FOR REVIEW
+R1-R10 LIFECYCLE REPAIR APPLIED FOR FRESH REVIEW
 
 EXECUTION:
 NOT AUTHORIZED BY THIS FILE
@@ -28,20 +28,34 @@ Complete the first two-lane operating loop without rewriting the live Lane-B
 negative specimen and without collapsing reusable candidate science into
 ephemeral operating state.
 
-Completion means:
+Completion ultimately requires:
 
 ```text
 QUALIFIED COORDINATION
 +
 ONE REAL BOUNDED ACTIVATION
 +
-TERMINAL CLAIM DISPOSITION
+QUALIFIED LIFECYCLE DISPOSITION LAW
 +
-OCCUPANT RELEASE
+ADMISSIBLE HISTORICAL LANE-B RELEASE
++
+OCCUPANT RELEASE FOR THAT RELEASE BRANCH
 +
 CLEAN CANDIDATE EXTRACTION
 +
 REPLAYABLE RECEIPTS
+```
+
+Freeze:
+
+```text
+LIFECYCLE DISPOSITION
+!=
+ALWAYS TERMINAL
+
+LIFECYCLE DISPOSITION
+!=
+ALWAYS OCCUPANT RELEASE
 ```
 
 ## Exact current basis
@@ -85,24 +99,48 @@ work claim = SEAT_ENGAGEMENT_HANDSHAKE_001-LANE_B-CLAIM-001
 work claim status = ACTIVE
 ```
 
+This envelope does not change those records.
+
 ## Earned wounds
 
-### W1 — terminal states exist but transition law is unqualified
+### W1 — lifecycle status values exist but transition law is unqualified
 
 The qualified schemas already admit:
 
 ```text
-claim: ACTIVE | RELEASED | COMPLETED | BLOCKED
-lane: READY_UNCLAIMED | ACTIVE | HELD | CLOSED
+claim:
+ACTIVE | RELEASED | COMPLETED | BLOCKED
+
+lane:
+READY_UNCLAIMED | ACTIVE | HELD | CLOSED
 ```
 
 Freeze:
 
 ```text
-TERMINAL STATES EXIST
+STATUS VALUES EXIST
 !=
-TERMINAL TRANSITIONS QUALIFIED
+TRANSITIONS QUALIFIED
 ```
+
+The repaired lifecycle candidate now proposes only:
+
+```text
+ACTIVE
+├─ COMPLETE ─────→ COMPLETED
+│                  READY_UNCLAIMED
+│                  occupant null
+│
+├─ RELEASE ──────→ RELEASED
+│                  READY_UNCLAIMED
+│                  occupant null
+│
+└─ MARK_BLOCKED ─→ BLOCKED
+                   HELD
+                   occupant preserved
+```
+
+Every other lifecycle edge remains unqualified.
 
 ### W2 — candidate artifacts and operating state share one branch
 
@@ -157,78 +195,302 @@ CURRENT GRANT
 A clean integration candidate must retain the historical source coordinate
 without presenting that source assignment as current authority.
 
-## Ordered completion gates
+## Lifecycle laws carried by Gate 1
 
-### Gate 0 — revalidate source coordinates
-
-Before future execution, resolve current main, both lane heads, PR #69, its
-coordination objects, and all historical specimen refs. If a relevant source
-changed, stop for amendment.
-
-### Gate 1 — qualify terminal lane lifecycle
-
-Materialize and pressure LANE_LIFECYCLE_DISPOSITION_001.
-
-It must establish:
+Freeze before any future lifecycle execution:
 
 ```text
-ACTIVE CLAIM
-→ terminal disposition
-→ durable disposition evidence
-→ occupant relation released
-→ lane mechanically reusable or held
+REQUEST
+!=
+ADMISSIBILITY
+!=
+RESULTING STATE
+
+UPSTREAM STANDING
+!=
+LIFECYCLE VERDICT
+
+REPRESENTABLE RELEASE
+!=
+HISTORICAL RELEASE ADMISSIBILITY
+
+BLOCKED
+!=
+TERMINAL
+
+MARK_BLOCKED
+!=
+OCCUPANT RELEASE
+
+NON_ACTIVE
+!=
+TERMINAL
+!=
+REUSABLE
 ```
 
-without retroactive attribution, authority creation, silent deletion, history
-erasure, or timeout-based claim expiry.
-
-No live Lane-B mutation occurs until this pressure is separately authorized and
-qualifies.
-
-### Gate 2 — dispose the historical Lane-B relation
-
-After Gate 1 and a fresh bounded authorization, the intended historical
-disposition is:
+Experimental membrane:
 
 ```text
-claim:
-RELEASED
+INPUT:
+current operating state
++
+raw source objects
++
+requested transition
++
+qualified upstream relations
+with recoverable basis
 
-not:
-COMPLETED
-```
+CANDIDATE DERIVES:
+admissibility
+postcondition claim state
+postcondition lane state
+postcondition occupant posture
+required conserved debt
 
-because RELEASED relinquishes future ownership without asserting that the
-named invocation validly exercised all historical effects.
-
-Expected lane posture:
-
-```text
-lane = READY_UNCLAIMED
-occupant_binding = null
-terminal claim artifact retained
-unresolved provenance ref retained
+SCORER OWNS:
+expected verdict
+expected postconditions
+expected debt preservation
 ```
 
 Freeze:
 
 ```text
-RELEASE != COMPLETION
-RELEASE != RETROACTIVE ATTRIBUTION
-RELEASE != ERASURE
+QUALIFIED UPSTREAM RELATION:
+ALLOWED
+
+LIFECYCLE-SHAPED ANSWER:
+FORBIDDEN
+```
+
+## Ordered completion gates
+
+### Gate 0 — revalidate source coordinates
+
+Before any future execution, resolve current main, both lane heads, PR #69,
+its coordination objects, and all historical specimen refs.
+
+If a relevant source changed:
+
+```text
+STOP FOR AMENDMENT
+```
+
+No lifecycle or integration action follows automatically.
+
+### Gate 1 — qualify lane lifecycle controller
+
+Materialize and pressure LANE_LIFECYCLE_DISPOSITION_001 only under separate
+future authorization.
+
+The bounded controller under review has exactly three requested transition
+families:
+
+```text
+COMPLETE
+RELEASE
+MARK_BLOCKED
+```
+
+Required branch-specific postconditions:
+
+```text
+COMPLETE
+→ claim COMPLETED
+→ lane READY_UNCLAIMED
+→ occupant null
+→ required disposition / debt evidence retained
+
+RELEASE
+→ claim RELEASED
+→ lane READY_UNCLAIMED
+→ occupant null
+→ required historical / unresolved refs retained
+
+MARK_BLOCKED
+→ claim BLOCKED
+→ lane HELD
+→ occupant preserved
+→ blocking relation basis retained
+```
+
+Gate 1 must establish the requested transition law from:
+
+```text
+raw current state
++
+raw source objects
++
+requested transition
++
+qualified upstream relations
+with recoverable basis
+```
+
+without:
+
+```text
+retroactive attribution
+answer-key leakage
+authority creation
+silent deletion
+history erasure
+timeout-based claim expiry
+generic occupant release
+BLOCKED terminalization
+BLOCKED lane reuse
+```
+
+Reusable-lane invariant:
+
+```text
+READY_UNCLAIMED admissible only if:
+
+claim status ∈ {RELEASED, COMPLETED}
+
+AND
+
+occupant_binding = null
+
+AND
+
+required lifecycle disposition evidence is reachable
+```
+
+Required negative pressure includes:
+
+```text
+D1
+claim ACTIVE
+lane READY_UNCLAIMED
+occupant null
+→ INVALID
+
+D2
+claim BLOCKED
+lane READY_UNCLAIMED
+→ INVALID
+
+D3
+claim BLOCKED
+lane HELD
+occupant null
+→ INVALID
+```
+
+No live Lane-B mutation occurs during Gate 1.
+
+### Gate 2 — evaluate historical Lane-B RELEASE request
+
+Only after Gate 1 is independently qualified and after a fresh bounded
+authorization may the historical Lane-B lifecycle request be evaluated.
+
+Requested transition:
+
+```text
+RELEASE
+```
+
+Historical target shape, if RELEASE is found admissible:
+
+```text
+claim:
+RELEASED
+
+lane:
+READY_UNCLAIMED
+
+occupant_binding:
+null
+
+historical claim artifact:
+retained
+
+unresolved provenance ref:
+retained
+```
+
+But freeze:
+
+```text
+HISTORICAL LANE-B REQUEST:
+RELEASE
+
+LIVE RELEASE ADMISSIBILITY:
+NOT PRE-ESTABLISHED
+```
+
+The fact that the representation can express the target shape does not
+adjudicate the live historical specimen.
+
+```text
+REPRESENTABLE RELEASE
+!=
+HISTORICAL RELEASE ADMISSIBILITY
+```
+
+If future evaluation finds RELEASE inadmissible:
+
+```text
+DO NOT FORCE RELEASE
+DO NOT SUBSTITUTE COMPLETE
+DO NOT MARK BLOCKED WITHOUT AN EXPLICIT REQUEST + BASIS
+DO NOT NULL THE OCCUPANT BY CONVENIENCE
+```
+
+If future evaluation finds RELEASE admissible, RELEASE means only:
+
+```text
+future ownership relinquished
+```
+
+and does not assert:
+
+```text
+named invocation caused all historical effects
+historical ambiguity resolved
+historical authority restored
+claim validly completed
+```
+
+Freeze:
+
+```text
+RELEASE
+!=
+COMPLETION
+
+RELEASE
+!=
+RETROACTIVE ATTRIBUTION
+
+RELEASE
+!=
+ERASURE
 ```
 
 ### Gate 3 — cleanly extract the reusable seat-handshake candidate
 
-Create a fresh integration branch from then-current admitted main using
-docs/operating/SEAT_ENGAGEMENT_CLEAN_EXTRACTION_001.md.
+Only after a separately authorized Gate 2 historical disposition has actually
+produced an admitted reusable Lane-B posture may a clean extraction be
+considered.
+
+Create a fresh integration branch from then-current admitted main using:
+
+```text
+docs/operating/SEAT_ENGAGEMENT_CLEAN_EXTRACTION_001.md
+```
 
 Do not import live coordination state from Lane B.
 
 Exact implementation/schema/test material may be copied only through the
-allowlisted boundary. Contract/report material carrying historical Lane-B
-assignment or warrant context must be de-operationalized so that source
-provenance is preserved without becoming current authority.
+allowlisted boundary.
+
+Contract/report material carrying historical Lane-B assignment or warrant
+context must be de-operationalized so source provenance is preserved without
+becoming current authority.
 
 Then produce fresh clean-basis qualification evidence and re-run:
 
@@ -247,9 +509,16 @@ CLEAN-BASIS QUALIFICATION RECEIPT
 
 ### Gate 4 — fresh review
 
-Fresh review checks source preservation, operating-state exclusion, clean-basis
-qualification, unchanged claim ceiling, preserved provenance wound, and zero
-live authority effects.
+Fresh review checks:
+
+```text
+source preservation
+operating-state exclusion
+clean-basis qualification
+unchanged claim ceiling
+preserved provenance wound
+zero live authority effects
+```
 
 ### Gate 5 — integration decision
 
@@ -258,21 +527,35 @@ be merged.
 
 ## Completion predicate
 
+A future successful completion may be reported only when:
+
 ```text
 TWO_LANE_COMPLETION_001
 =
 qualified two-lane coordination
-+ qualified terminal lifecycle transition
-+ historical Lane-B claim explicitly disposed
-+ Lane B mechanically reusable
-+ Lane A mechanically legible
-+ seat-handshake candidate cleanly separated from operating state
-+ historical assignment/warrant context demoted to source provenance
-+ fresh clean-basis qualification evidence
++
+qualified three-arrow lifecycle controller
++
+historical Lane-B RELEASE separately evaluated as admissible
++
+historical Lane-B RELEASE actually disposed under separate authority
++
+Lane B satisfies reusable-lane invariant
++
+Lane A remains mechanically legible
++
+seat-handshake candidate cleanly separated from operating state
++
+historical assignment/warrant context demoted to source provenance
++
+fresh clean-basis qualification evidence
 ```
 
 INVOCATION_EFFECT_PROVENANCE_001 is not required to retroactively solve the
-historical specimen before release.
+historical specimen before a RELEASE request can be evaluated.
+
+It remains required that unresolved provenance debt be conserved if RELEASE is
+admitted.
 
 ## After completion
 
@@ -289,27 +572,69 @@ Independent next pressure candidates:
 ```
 
 Only the first two are currently strong prerequisites before treating a third
-mutating lane as mature. Remaining order stays a planning question.
+mutating lane as mature.
+
+Remaining order stays a planning question.
 
 ## Explicit non-authorizations
 
+This repaired envelope does not authorize:
+
 ```text
+lifecycle pressure execution
+fixture freeze execution
 live Lane-A mutation
 live Lane-B release
-claim status mutation
-occupant release
-PR #69 mutation or merge
-main mutation
+live claim status mutation
+live occupant release
+PR #69 mutation
+PR #70 mutation
 clean extraction execution
 new integration branch
+main mutation
+merge
 INVOCATION_EFFECT_PROVENANCE_001 execution
 MULTI_PEER_COORDINATION_001 execution
 Lane C creation
+planner-seat materialization
 seat activation
 scheduler / wake
 authority-policy activation
 external consequence
 ```
+
+## Repair-pass boundary
+
+This repair pass is limited to documentation semantics in:
+
+```text
+docs/candidates/two_lane_lifecycle_v0/
+LANE_LIFECYCLE_DISPOSITION_001.md
+
+docs/candidates/two_lane_lifecycle_v0/
+PRESSURE_DESIGN_001.md
+
+docs/operating/
+TWO_LANE_COMPLETION_001.md
+```
+
+After those repairs:
+
+```text
+STOP
+→
+FRESH REVIEW
+```
+
+Required fresh-review verdict:
+
+```text
+ADMISSIBLE_EXECUTION_ENVELOPE
+or
+BOUNDED_FRACTURE
+```
+
+No pressure execution follows automatically.
 
 ## Terminal disposition
 
@@ -318,23 +643,38 @@ OBJECT_TYPE:
 DISPOSITION
 
 OBJECT_ID:
-TWO_LANE_COMPLETION_001_PREPARATION_DISPOSITION
+TWO_LANE_COMPLETION_001_REPAIR_DISPOSITION
 
-ENVELOPE:
-DEFINED
+R1-R10 LIFECYCLE LAW:
+MATERIALIZED FOR FRESH REVIEW
 
-LIFECYCLE WOUND:
-ISOLATED
+LIFECYCLE PRESSURE:
+UNEXECUTED
 
-INTEGRATION WOUND:
-ISOLATED
+HISTORICAL LANE-B RELEASE:
+UNEXECUTED
 
-PROVENANCE WOUND:
-PRESERVED
+CLEAN EXTRACTION:
+UNEXECUTED
 
-LIVE LANES:
+PR #69:
 UNTOUCHED
 
-EXECUTION:
-HELD FOR FRESH AUTHORIZATION
+PR #70:
+UNTOUCHED
+
+LANE A:
+UNTOUCHED
+
+LANE B:
+UNTOUCHED
+
+MAIN:
+UNTOUCHED
+
+MERGE:
+NO
+
+NEXT:
+FRESH REVIEW
 ```
