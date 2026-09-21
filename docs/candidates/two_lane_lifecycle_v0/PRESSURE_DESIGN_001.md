@@ -154,6 +154,8 @@ P02 SOURCE_LANE_STATUS_IS_ACTIVE
 
 P03 SOURCE_OCCUPANT_BINDING is non-null
 
+P04 REQUESTED_TRANSITION = COMPLETE
+
 P05 WORK_UNIT_CORRESPONDENCE_MATCHES
 
 P06 COMPLETION_CRITERION_RAW_TERMS_SATISFIED
@@ -184,6 +186,8 @@ P02 SOURCE_LANE_STATUS_IS_ACTIVE
 
 P03 SOURCE_OCCUPANT_BINDING is non-null
 
+P04 REQUESTED_TRANSITION = RELEASE
+
 P09 ACTIVE_OWNERSHIP_EFFECT_STATUS =
 NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP
 
@@ -212,6 +216,8 @@ P01 SOURCE_CLAIM_STATUS_IS_ACTIVE
 P02 SOURCE_LANE_STATUS_IS_ACTIVE
 
 P03 SOURCE_OCCUPANT_BINDING is non-null
+
+P04 REQUESTED_TRANSITION = MARK_BLOCKED
 
 P12 MARK_BLOCKED_BLOCKING_RELATION standing = ESTABLISHED
 
@@ -1338,7 +1344,7 @@ the prohibited resulting posture.
 COMPLETE
 
 required predicates:
-P01 P02 P03 P05 P06
+P01 P02 P03 P04 P05 P06
 every criterion-required P07
 P08
 
@@ -1362,7 +1368,7 @@ result compatible
 RELEASE
 
 required predicates:
-P01 P02 P03 P09 P10 P11
+P01 P02 P03 P04 P09 P10 P11
 P18 where supplied for conserved provenance standing
 
 source guards:
@@ -1386,7 +1392,7 @@ result compatible
 MARK_BLOCKED
 
 required predicates:
-P01 P02 P03 P12
+P01 P02 P03 P04 P12
 
 source guards:
 P01 = true
@@ -1410,6 +1416,414 @@ BLOCKED is never treated as reusable terminal state
 All registered source-state predicates required by each branch are therefore
 explicit members of its admissibility conjunction and have held-out causal
 interventions.
+
+## F13 exclusive request-dispatch pressure
+
+These are held-out pressure-design cells only.
+
+They are not executed by this repair.
+
+The pressure target is branch-selection causality, not merely whether the final
+administration is accepted or rejected.
+
+Freeze:
+
+```text
+REQUEST TOKEN VALID
+!=
+REQUEST SELECTS BRANCH
+
+BRANCH PREREQUISITES SATISFIED
+!=
+BRANCH REQUESTED
+
+SCORER REJECTS WRONG OUTPUT
+!=
+CONTROLLER DISPATCH QUALIFIED
+
+CAUSALLY EFFECTIVE
+!=
+BOOLEAN-CONJUNCTION MEMBER
+```
+
+### Dispatch observation surface
+
+Every future N5 administration must expose a mechanical dispatch trace before
+branch admissibility is scored:
+
+```text
+requested_transition
+selected_branch
+excluded_branches[]
+branch_predicates_consulted[]
+branch_admissibility
+resulting_state_if_admitted
+```
+
+The scorer must verify:
+
+```text
+selected_branch
+=
+requested_transition
+
+excluded_branches
+=
+the other two lifecycle branches
+```
+
+A scorer rejection after the wrong branch ran does not qualify dispatch.
+
+### N5A — COMPLETE baseline, P04 changed to RELEASE
+
+Construct one synthetic input set with:
+
+```text
+shared source guards:
+P01 = true
+P02 = true
+P03 = non-null
+
+COMPLETE-supporting predicates:
+P05 = true by raw derivation
+P06 = true by raw derivation
+required P07 qualified
+P08 = NONE_ESTABLISHED qualified
+
+RELEASE-supporting predicates:
+P09 =
+NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP qualified
+P10 exact conserved reference set derived
+P11 = RETAINABLE qualified
+P18 = UNRESOLVED qualified where conserved provenance standing is included
+```
+
+Baseline:
+
+```text
+P04 = COMPLETE
+
+selected_branch:
+COMPLETE
+
+result:
+derived only from COMPLETE law
+```
+
+Independent intervention:
+
+```text
+CHANGE ONLY:
+P04 COMPLETE → RELEASE
+
+ALL OTHER INPUTS:
+BYTE / SEMANTICALLY IDENTICAL
+```
+
+Required observation:
+
+```text
+requested_transition = RELEASE
+
+selected_branch = RELEASE
+
+excluded_branches =
+COMPLETE
+MARK_BLOCKED
+
+COMPLETE branch predicates may remain present in the input set
+but COMPLETE MUST NOT be operative
+
+RELEASE admissibility/result:
+derived only from RELEASE law
+```
+
+Because the synthetic input set deliberately contains a valid RELEASE basis,
+the expected admitted result is:
+
+```text
+claim RELEASED
+lane READY_UNCLAIMED
+occupant null
+```
+
+This demonstrates dispatch directly rather than depending on missing-input
+rejection.
+
+### N5B — RELEASE baseline, P04 changed to MARK_BLOCKED
+
+Construct one synthetic input set with:
+
+```text
+shared source guards:
+P01 = true
+P02 = true
+P03 = OCCUPANT-X
+
+RELEASE-supporting predicates:
+P09 =
+NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP qualified
+P10 exact conserved reference set derived
+P11 = RETAINABLE qualified
+
+MARK_BLOCKED-supporting predicate:
+P12 MARK_BLOCKED_BLOCKING_STATUS = ESTABLISHED qualified
+```
+
+Baseline:
+
+```text
+P04 = RELEASE
+
+selected_branch:
+RELEASE
+
+result:
+derived only from RELEASE law
+```
+
+Independent intervention:
+
+```text
+CHANGE ONLY:
+P04 RELEASE → MARK_BLOCKED
+
+ALL OTHER INPUTS:
+BYTE / SEMANTICALLY IDENTICAL
+```
+
+Required observation:
+
+```text
+requested_transition = MARK_BLOCKED
+
+selected_branch = MARK_BLOCKED
+
+excluded_branches =
+COMPLETE
+RELEASE
+
+RELEASE branch predicates remain present
+but RELEASE MUST NOT be operative
+
+MARK_BLOCKED admissibility/result:
+derived only from MARK_BLOCKED law
+```
+
+Because the unchanged input set deliberately contains a valid P12 witness, the
+expected admitted result is:
+
+```text
+claim BLOCKED
+lane HELD
+occupant = exact OCCUPANT-X source identity
+```
+
+### N5C — MARK_BLOCKED baseline, P04 changed to COMPLETE
+
+Construct one synthetic input set with:
+
+```text
+shared source guards:
+P01 = true
+P02 = true
+P03 = OCCUPANT-X
+
+MARK_BLOCKED-supporting predicate:
+P12 MARK_BLOCKED_BLOCKING_STATUS = ESTABLISHED qualified
+
+COMPLETE-supporting predicates:
+P05 = true by raw derivation
+P06 = true by raw derivation
+required P07 qualified
+
+P08 COMPLETION_BLOCKER_STATUS =
+FORBIDS_COMPLETION
+qualified
+```
+
+Baseline:
+
+```text
+P04 = MARK_BLOCKED
+
+selected_branch:
+MARK_BLOCKED
+
+MARK_BLOCKED admitted from P12
+```
+
+Independent intervention:
+
+```text
+CHANGE ONLY:
+P04 MARK_BLOCKED → COMPLETE
+
+ALL OTHER INPUTS:
+BYTE / SEMANTICALLY IDENTICAL
+```
+
+Required observation:
+
+```text
+requested_transition = COMPLETE
+
+selected_branch = COMPLETE
+
+excluded_branches =
+RELEASE
+MARK_BLOCKED
+
+MARK_BLOCKED's valid P12 witness remains present
+but MARK_BLOCKED MUST NOT be operative
+```
+
+The newly selected COMPLETE branch must evaluate its own unchanged predicates.
+Because P08 = FORBIDS_COMPLETION, the expected COMPLETE result is:
+
+```text
+admissible = false
+blocking predicate = P08
+no COMPLETE postcondition emitted
+```
+
+The required dispatch result is still a pass because the previously supported
+MARK_BLOCKED branch was excluded and COMPLETE alone became operative.
+
+### Generalized P04 intervention property
+
+For every administration:
+
+```text
+INPUT_SET = I
+P04 = X
+→ selected_branch = X
+```
+
+For the same non-P04 input set:
+
+```text
+INPUT_SET = I
+P04 = Y
+X != Y
+→ selected_branch = Y
+```
+
+Therefore:
+
+```text
+CHANGE ONLY P04
+→
+CHANGE OPERATIVE BRANCH
+```
+
+No unrelated predicate mutation is required.
+
+### F13 branch-dispatch audit
+
+```text
+P04 = COMPLETE
+
+selected:
+COMPLETE law
+
+excluded:
+RELEASE
+MARK_BLOCKED
+
+admissibility source:
+P01 P02 P03 P04 P05 P06
+required P07
+P08
+
+result if admitted:
+COMPLETED
+READY_UNCLAIMED
+occupant null
+
+
+P04 = RELEASE
+
+selected:
+RELEASE law
+
+excluded:
+COMPLETE
+MARK_BLOCKED
+
+admissibility source:
+P01 P02 P03 P04 P09 P10 P11
+P18 conserved where supplied but not sufficient by itself
+
+result if admitted:
+RELEASED
+READY_UNCLAIMED
+occupant null
+
+
+P04 = MARK_BLOCKED
+
+selected:
+MARK_BLOCKED law
+
+excluded:
+COMPLETE
+RELEASE
+
+admissibility source:
+P01 P02 P03 P04 P12
+
+result if admitted:
+BLOCKED
+HELD
+exact source occupant identity preserved
+```
+
+Any controller path where:
+
+```text
+P04 = X
+operative branch = Y
+X != Y
+```
+
+is an automatic pressure failure.
+
+### F11 regression
+
+```text
+ALL CONTROLLER INPUT:
+RAW_INPUT
+XOR
+QUALIFIED_UPSTREAM_STANDING
+
+NO THIRD CATEGORY:
+PRESERVED
+```
+
+P04 remains RAW_INPUT. The derived `selected_branch` is internal controller
+state, not a new input category or nineteenth semantic predicate.
+
+### F12 regression
+
+```text
+P01:
+still causally effective
+
+P02:
+still causally effective
+
+P03:
+still causally effective
+
+N1-N4:
+unchanged
+
+source-state geometry:
+unchanged
+```
+
+F13 adds dispatch causality; it does not weaken any source-state guard.
 
 ## Resulting disposition evidence
 
