@@ -1,0 +1,118 @@
+name: LANE_B_SUCCESSOR_ENGAGEMENT_001_INTEGRATION_QUALIFICATION
+
+on:
+  push:
+    branches:
+      - lane-b-successor-engagement-integration-qualification-v1
+    paths:
+      - ".github/workflows/lane-b-successor-engagement-integration-qualification.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact integration head
+        uses: actions/checkout@v4
+        with:
+          ref: 145c62fcecf151f5d0e1257f91b986904f04c637
+          fetch-depth: 0
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify exact mechanism blobs and excluded live-state paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object .github/workflows/lane-b-successor-engagement-001.yml)" = "fa5012f0782446f39e6de15dead97406a8389b3c"
+          test "$(git hash-object docs/candidates/lane_b_successor_engagement_v0/PRESSURE_DESIGN_001.md)" = "1ba4a57ce21c2ee5b8759fd20d22359de01cb4c0"
+          test "$(git hash-object schemas/lane_engagement_binding_v0.schema.json)" = "136b6fc7307c81d3e8c11be0bd8214498b816623"
+          test "$(git hash-object tests/runtime/test_lane_b_successor_engagement_v0.py)" = "9126fa50c5a36193fff4ce798c8d9746ad13cb1e"
+          test "$(git hash-object tools/lane_b_successor_engagement_v0.py)" = "a681c59948f3d7b7a0f4219693f9d4a0691c5162"
+
+          test "$(git hash-object schemas/peer_state_observation_v1.schema.json)" = "24e2cccff0fbcaa47fee1d9dd33f7569b4473259"
+          test "$(git hash-object schemas/two_lane_coordination_cursor_v1.schema.json)" = "19d12deca3ed6df4aabc77987ef4b969d399dcd1"
+          test "$(git hash-object tools/two_lane_coordination_v1.py)" = "cec40bbf31a7f36123ac0e8b3f7bc56fd6517f2b"
+          test "$(git hash-object tests/runtime/test_quiet_peer_coordination_v1.py)" = "78e73d8d6d1ecbb30d8f2658c2d9e15ed81a23f3"
+          test "$(git hash-object docs/candidates/quiet_peer_coordination_v1/PRESSURE_DESIGN_001.md)" = "9a2a07b7db36e96efd9ea2790c835169b6482777"
+          test "$(git hash-object fixtures/quiet_peer_coordination_v1/lane_a_manifest.json)" = "ebd2379336f1cffa7acc1fa91bdc52308760a9fb"
+          test "$(git hash-object .github/workflows/quiet-peer-coordination-representation-001.yml)" = "a50149cf0e93db225ed7072c1c9b2c6399d83767"
+
+          test "$(git hash-object tools/lane_b_successor_engagement_repressure_v1.py)" = "05b2135069f4c98da4b7a8e717f406dd5f9e228e"
+          test "$(git hash-object tests/runtime/test_lane_b_successor_engagement_repressure_v1.py)" = "7846e6882fdde0d110133d0f3eb13ed56a42b91f"
+          test "$(git hash-object docs/candidates/lane_b_successor_engagement_repressure_v1/PRESSURE_DESIGN_001.md)" = "146da97e755d6f7518ddd3252e98b0d045170ea0"
+          test "$(git hash-object .github/workflows/lane-b-successor-engagement-repressure-001.yml)" = "780ef90dd967aa6cfaf1f19ae1e8ba55088d0d25"
+
+          test "$(git hash-object coordination/predecessor_fences/LANE_B_LEGACY_INSTANCE_001.json)" = "0b2ec2312dd9feaf81ffb7ac9b21e6256952d8fd"
+
+          test ! -e coordination/lane_manifest.json
+          test ! -e coordination/succession/LANE_B_SUCCESSOR_INSTANCE_001.json
+          test ! -e coordination/active_work_claim.json
+          test ! -e coordination/peer_cursor.json
+          test ! -e coordination/engagement_binding.json
+
+          echo "EXACT_BLOB_MATCH=PASS"
+          echo "SUCCESSOR_LIVE_STATE_IN_TREE=ABSENT"
+          echo "PREDECESSOR_FENCE_BLOB=PASS"
+
+      - name: Reconstruct exact successor subject ephemerally
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p coordination/succession
+          git show 5c2318b12317298345dbd71f0df735a7c4f376c5:coordination/lane_manifest.json > coordination/lane_manifest.json
+          git show 5c2318b12317298345dbd71f0df735a7c4f376c5:coordination/succession/LANE_B_SUCCESSOR_INSTANCE_001.json > coordination/succession/LANE_B_SUCCESSOR_INSTANCE_001.json
+
+          test "$(git hash-object coordination/lane_manifest.json)" = "37708df7b2f0b8431c7eb84a8eebdbdd8a08b26a"
+          test "$(git hash-object coordination/succession/LANE_B_SUCCESSOR_INSTANCE_001.json)" = "9ad3e12a0d395046a26fdc29419ddda6510d1afd"
+
+          echo "EPHEMERAL_SUCCESSOR_MANIFEST_BLOB=37708df7b2f0b8431c7eb84a8eebdbdd8a08b26a"
+          echo "EPHEMERAL_SUCCESSOR_ANCESTRY_BLOB=9ad3e12a0d395046a26fdc29419ddda6510d1afd"
+
+      - name: Verify live predecessor fence
+        run: |
+          python tools/live_predecessor_fence_v0.py verify             --observed-head 41316921b211c1daf75c9b71b8147e0eb67d372d
+
+      - name: Original engagement A-J regression
+        run: python -m unittest tests.runtime.test_lane_b_successor_engagement_v0 -v
+
+      - name: Quiet-peer v1 regression
+        run: python -m unittest tests.runtime.test_quiet_peer_coordination_v1 -v
+
+      - name: Repaired composition regression
+        run: python -m unittest tests.runtime.test_lane_b_successor_engagement_repressure_v1 -v
+
+      - name: Emit authoritative-integration qualification result
+        run: |
+          python -m tools.lane_b_successor_engagement_repressure_v1             --output integration_repressure_result.json
+
+      - name: Remove ephemeral successor subject and verify no live-state residue
+        if: always()
+        shell: bash
+        run: |
+          rm -f coordination/lane_manifest.json
+          rm -f coordination/succession/LANE_B_SUCCESSOR_INSTANCE_001.json
+          rmdir coordination/succession 2>/dev/null || true
+
+          test ! -e coordination/lane_manifest.json
+          test ! -e coordination/succession/LANE_B_SUCCESSOR_INSTANCE_001.json
+          test ! -e coordination/active_work_claim.json
+          test ! -e coordination/peer_cursor.json
+          test ! -e coordination/engagement_binding.json
+
+          echo "EPHEMERAL_SUCCESSOR_SUBJECT_REMOVED=YES"
+          echo "LIVE_SUCCESSOR_OBJECT_RESIDUE=NONE"
+
+      - name: Upload qualification result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lane-b-successor-engagement-integration-qualification
+          path: integration_repressure_result.json
+          if-no-files-found: warn
