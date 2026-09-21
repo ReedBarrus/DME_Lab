@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/missingness_witness_v0.schema.json",
+  "title": "Missingness Witness v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "witness_id",
+    "object_id",
+    "standing",
+    "reason",
+    "authority_effect",
+    "execution_effect"
+  ],
+  "properties": {
+    "schema": {
+      "const": "missingness_witness_v0"
+    },
+    "witness_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "object_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "standing": {
+      "const": "UNAVAILABLE_AT_BASIS"
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_effect": {
+      "const": "NONE"
+    },
+    "execution_effect": {
+      "const": "NONE"
+    }
+  }
+}
