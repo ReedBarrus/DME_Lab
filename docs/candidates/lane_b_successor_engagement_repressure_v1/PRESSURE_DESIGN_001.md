@@ -78,3 +78,101 @@ NONE
 
 A survivor establishes only bounded synthetic composability of the already
 surviving engagement law with the qualified peer-state cursor v1.
+
+
+## REPRESSURE_REPAIR_001 — current-coordination causal membrane
+
+Fresh review established:
+
+```text
+VALID CURSOR
+!=
+CURRENT CURSOR
+
+REVALIDATION AVAILABLE
+!=
+REVALIDATION CAUSALLY REQUIRED
+```
+
+The composition acceptance surface is therefore:
+
+```text
+CURRENT PEER_STATE_OBSERVATION_v1[]
++
+RETAINED two_lane_coordination_cursor_v1
++
+SYNTHETIC ENGAGEMENT CANDIDATE
+↓
+coordination_v1.pre_mutation_guard(...)
+↓
+coordination_clear == true
+↓
+original engagement.evaluate_engagement(...)
+↓
+ENGAGEMENT_VALID | original rejection
+```
+
+If coordination is not clear:
+
+```text
+REVALIDATION_REQUIRED
+|
+COORDINATION_HOLD
+|
+CONFLICT_STOP
+↓
+engagement_evaluated = false
+engagement_acceptance_reached = false
+```
+
+No change is made to the original engagement evaluator or qualified quiet-peer
+v1 implementation.
+
+### O — stale quiet cursor bypass
+
+```text
+retained:
+LANE_A / NO_ACTIVE_CLAIM / H0
+
+current:
+LANE_A / ACTIVE_CLAIM / H1
+```
+
+Required:
+
+```text
+REVALIDATION_REQUIRED
+PEER_CLAIM_APPEARED
+engagement_evaluated = false
+```
+
+### O_CONTROL — stable current quiet peer
+
+```text
+retained:
+LANE_A / NO_ACTIVE_CLAIM / H0
+
+current:
+LANE_A / NO_ACTIVE_CLAIM / H0
+```
+
+Required:
+
+```text
+NO_COORDINATION_BLOCK
+coordination_clear = true
+↓
+ENGAGEMENT_VALID
+```
+
+Freeze:
+
+```text
+CURSOR CREATION
+!=
+CURSOR REVALIDATION
+
+FRESH ENGAGEMENT
+REQUIRES
+CURRENT COORDINATION CLEARANCE
+```
