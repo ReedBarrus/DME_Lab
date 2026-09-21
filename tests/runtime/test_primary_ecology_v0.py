@@ -14,6 +14,7 @@ from tools.primary_ecology_v0 import (
     fresh_basis,
     observation_basis_ref,
     observation_source_ref,
+    missingness_witness_ref,
     observation_status,
     occupied_seat,
     rotate_invocation,
@@ -22,6 +23,7 @@ from tools.primary_ecology_v0 import (
     validate_correspondence,
     validate_observation_basis,
     validate_observation_grounding,
+    validate_missingness_grounding,
     validate_role,
     validate_seat,
 )
@@ -189,6 +191,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             binding=null_bundle["binding"],
             basis=null_bundle["basis"],
             source_carriers=null_bundle["sources"],
+            missingness_witnesses=null_bundle["missingness_witnesses"],
         )
 
         same_bundle = clean_bundle()
@@ -200,6 +203,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             binding=same_bundle["binding"],
             basis=same_bundle["basis"],
             source_carriers=same_bundle["sources"],
+            missingness_witnesses=same_bundle["missingness_witnesses"],
         )
 
     def test_N1_work_claim_identity_mismatch_rejected(self):
@@ -255,6 +259,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         old["explicit_missing_objects"] = [{
             "object_id":"MISSING_POISON_SENTINEL",
             "reason":"MISSING_FOR_PRIOR_INVOCATION",
+            "witness_ref":"missingness-witness://PRIOR-P2@opaque:prior",
         }]
         old["source_refs"] = ["fixture://OLD_MISSINGNESS"]
 
@@ -475,6 +480,100 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         )
         validate_observation_grounding(basis, [source])
 
+    def test_Q4A_missingness_without_supplied_witness_rejected(self):
+        basis = fresh_basis(
+            clean_basis(),
+            seat_id="SCIENCE_TEST_01",
+            occupant_id="LABOIB_CANDIDATE",
+            invocation_id="INVOCATION_Q4A",
+            basis_id="OBSERVATION_BASIS_Q4A",
+            explicit_missing_objects=[{
+                "object_id":"SECRET_DRAGON_LEDGER",
+                "reason":"SOURCE_NOT_AVAILABLE_AT_BASIS",
+                "witness_ref":"missingness-witness://UNSUPPLIED@opaque:missing",
+            }],
+        )
+        with self.assertRaisesRegex(EcologyError, "MISSINGNESS_WITNESS_NOT_SUPPLIED"):
+            validate_missingness_grounding(basis, [])
+
+    def test_Q4B_missingness_witness_wrong_object_rejected(self):
+        witness = {
+            "schema":"missingness_witness_v0",
+            "witness_id":"WITNESS_Q4B",
+            "object_id":"OTHER_OBJECT",
+            "standing":"UNAVAILABLE_AT_BASIS",
+            "reason":"SOURCE_NOT_AVAILABLE_AT_BASIS",
+            "authority_effect":"NONE",
+            "execution_effect":"NONE",
+        }
+        ref = missingness_witness_ref(witness)
+        basis = fresh_basis(
+            clean_basis(),
+            seat_id="SCIENCE_TEST_01",
+            occupant_id="LABOIB_CANDIDATE",
+            invocation_id="INVOCATION_Q4B",
+            basis_id="OBSERVATION_BASIS_Q4B",
+            explicit_missing_objects=[{
+                "object_id":"SECRET_DRAGON_LEDGER",
+                "reason":"SOURCE_NOT_AVAILABLE_AT_BASIS",
+                "witness_ref":ref,
+            }],
+        )
+        with self.assertRaisesRegex(EcologyError, "MISSINGNESS_WITNESS_OBJECT_MISMATCH"):
+            validate_missingness_grounding(basis, [witness])
+
+    def test_Q4C_exact_missingness_correspondence_valid(self):
+        witness = {
+            "schema":"missingness_witness_v0",
+            "witness_id":"WITNESS_Q4C",
+            "object_id":"SECRET_DRAGON_LEDGER",
+            "standing":"UNAVAILABLE_AT_BASIS",
+            "reason":"SOURCE_NOT_AVAILABLE_AT_BASIS",
+            "authority_effect":"NONE",
+            "execution_effect":"NONE",
+        }
+        ref = missingness_witness_ref(witness)
+        basis = fresh_basis(
+            clean_basis(),
+            seat_id="SCIENCE_TEST_01",
+            occupant_id="LABOIB_CANDIDATE",
+            invocation_id="INVOCATION_Q4C",
+            basis_id="OBSERVATION_BASIS_Q4C",
+            explicit_missing_objects=[{
+                "object_id":"SECRET_DRAGON_LEDGER",
+                "reason":"SOURCE_NOT_AVAILABLE_AT_BASIS",
+                "witness_ref":ref,
+            }],
+        )
+        validate_missingness_grounding(basis, [witness])
+        self.assertEqual(observation_status(basis, "SECRET_DRAGON_LEDGER"), "MISSING")
+
+    def test_Q4D_missingness_reason_mismatch_rejected(self):
+        witness = {
+            "schema":"missingness_witness_v0",
+            "witness_id":"WITNESS_Q4D",
+            "object_id":"SECRET_DRAGON_LEDGER",
+            "standing":"UNAVAILABLE_AT_BASIS",
+            "reason":"NETWORK_TIMEOUT",
+            "authority_effect":"NONE",
+            "execution_effect":"NONE",
+        }
+        ref = missingness_witness_ref(witness)
+        basis = fresh_basis(
+            clean_basis(),
+            seat_id="SCIENCE_TEST_01",
+            occupant_id="LABOIB_CANDIDATE",
+            invocation_id="INVOCATION_Q4D",
+            basis_id="OBSERVATION_BASIS_Q4D",
+            explicit_missing_objects=[{
+                "object_id":"SECRET_DRAGON_LEDGER",
+                "reason":"PERMISSION_DENIED",
+                "witness_ref":ref,
+            }],
+        )
+        with self.assertRaisesRegex(EcologyError, "MISSINGNESS_WITNESS_REASON_MISMATCH"):
+            validate_missingness_grounding(basis, [witness])
+
     def test_observation_basis_ref_pins_exact_basis_bytes(self):
         b = clean_bundle()
         original_ref = observation_basis_ref(b["basis"])
@@ -514,6 +613,9 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             result["core_relations"]["observation_source_object_identity_correspondence"],
             "PASS",
         )
+        self.assertEqual(
+            result["core_relations"]["explicit_missingness_grounding"], "PASS"
+        )
         self.assertFalse(result["durable_ecology_installed"])
         self.assertEqual(result["authority_effect"], "NONE")
         self.assertEqual(result["execution_effect"], "NONE")
@@ -531,6 +633,12 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             result["observation_identity_scheme_semantics"], "NOT_TESTED"
         )
         self.assertEqual(result["observation_source_truth"], "NOT_TESTED")
+        self.assertEqual(
+            result["missingness_witness_correspondence"],
+            "TESTED_EXACT_OBJECT_REASON",
+        )
+        self.assertEqual(result["missingness_witness_truth"], "NOT_TESTED")
+        self.assertEqual(result["universal_unavailability"], "NOT_CLAIMED")
 
 
 if __name__ == "__main__":
