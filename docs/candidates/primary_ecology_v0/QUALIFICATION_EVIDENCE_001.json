@@ -1,0 +1,74 @@
+{
+  "authority_effect": "NONE",
+  "cells": {
+    "A": {
+      "relation": "SEAT_EXISTS_WITHOUT_OCCUPANT",
+      "result": "PASS"
+    },
+    "B": {
+      "relation": "ROLE_IDENTITY_DISTINCT_FROM_SEAT_IDENTITY",
+      "result": "PASS"
+    },
+    "C": {
+      "relation": "OCCUPANT_ROTATION_WITHOUT_SEAT_OR_STANDING_INHERITANCE",
+      "result": "PASS"
+    },
+    "D": {
+      "relation": "OCCUPANT_IDENTITY_DISTINCT_FROM_INVOCATION_IDENTITY",
+      "result": "PASS"
+    },
+    "E": {
+      "relation": "INVOCATION_DISTINCT_FROM_WORK_CLAIM",
+      "result": "PASS"
+    },
+    "F": {
+      "relation": "WORK_CLAIM_DISTINCT_FROM_AUTHORITY",
+      "result": "PASS"
+    },
+    "G": {
+      "relation": "ROLE_DOES_NOT_MANUFACTURE_AUTHORITY",
+      "result": "PASS"
+    },
+    "H": {
+      "relation": "CURRENT_WORLD_DISTINCT_FROM_OBSERVATION_BASIS",
+      "result": "PASS"
+    },
+    "I": {
+      "relation": "MISSING_DISTINCT_FROM_ABSENT",
+      "result": "PASS"
+    },
+    "J": {
+      "relation": "DECISION_TIME_BASIS_DISTINCT_FROM_LATER_WORLD",
+      "result": "PASS"
+    },
+    "K": {
+      "relation": "ABSENT_DISTINCT_FROM_PLACEHOLDER_IDENTITY",
+      "result": "PASS"
+    },
+    "L": {
+      "relation": "ROLE_LABEL_AND_AUTHORITY_REF_DISTINCT_FROM_AUTHORITY_STANDING",
+      "result": "PASS"
+    }
+  },
+  "core_relations": {
+    "current_world_ne_observation_basis": "PASS",
+    "invocation_ne_work_claim": "PASS",
+    "occupant_ne_invocation": "PASS",
+    "role_ne_seat": "PASS",
+    "seat_ne_occupant": "PASS",
+    "work_claim_ne_authority": "PASS"
+  },
+  "durable_ecology_installed": false,
+  "execution_effect": "NONE",
+  "function_needs_seat": "NOT_TESTED",
+  "integration_effect": "NONE",
+  "legacy_seat_migration": "NOT_TESTED",
+  "object_id": "PRIMARY_ECOLOGY_GRAMMAR_001-RESULT",
+  "object_type": "PRIMARY_ECOLOGY_GRAMMAR_PRESSURE_RESULT",
+  "occupant_binding_effect": "NONE",
+  "representation_succession": "NOT_TESTED",
+  "role_vocabulary_status": "PROVISIONAL_EXTENSIBLE",
+  "status": "QUALIFIED_SYNTHETIC_GRAMMAR",
+  "stop": true,
+  "work_claim_effect": "NONE"
+}
