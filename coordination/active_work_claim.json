@@ -1,0 +1,31 @@
+{
+  "schema": "two_lane_work_claim_v0",
+  "claim_id": "FIRST_TWO_LANE_TRIAL-LANE_B-CLAIM-001",
+  "lane_id": "LANE_B",
+  "seat_id": "FIRST_TWO_LANE_TRIAL-LANE_B-SEAT-001",
+  "occupant_id": "FIRST_TWO_LANE_TRIAL-LANE_B-OPERATOR-001",
+  "invocation_id": "FIRST_TWO_LANE_TRIAL-LANE_B-INVOCATION-001",
+  "branch": "lane-b-successor-v1",
+  "basis_head": "5c2318b12317298345dbd71f0df735a7c4f376c5",
+  "target_lineage": "PROJECT_STATE_TWO_LANE_INTEGRATION_RECONCILIATION_001",
+  "campaign_id": "FIRST_BOUNDED_REAL_WORK_TWO_LANE_TRIAL",
+  "pressure_id": "FIRST_BOUNDED_REAL_WORK_TWO_LANE_TRIAL-LANE_B-001",
+  "addressed_role": "WORKSHOP",
+  "binding_ref": "binding://FIRST_TWO_LANE_TRIAL-LANE_B-BINDING-001",
+  "consequence_envelope_id": "FIRST_TWO_LANE_TRIAL-LANE_B-CANDIDATE-DOC-ONLY",
+  "semantic_surfaces": [
+    "PROJECT_STATE_CURRENT_STANDING",
+    "TWO_LANE_COORDINATION_STANDING"
+  ],
+  "artifact_scopes": [
+    "docs/candidates/live_two_lane_trial_v0/LANE_B_PROJECT_STATE_DELTA_001.md"
+  ],
+  "mutation_paths": [
+    "docs/candidates/live_two_lane_trial_v0/LANE_B_PROJECT_STATE_DELTA_001.md"
+  ],
+  "status": "ACTIVE",
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "integration_effect": "NONE",
+  "priority_effect": "NONE"
+}

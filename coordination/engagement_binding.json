@@ -1,0 +1,17 @@
+{
+  "schema": "LANE_ENGAGEMENT_BINDING_v0",
+  "binding_id": "FIRST_TWO_LANE_TRIAL-LANE_B-BINDING-001",
+  "lane_instance_id": "LANE_B_SUCCESSOR_INSTANCE_001",
+  "lane_id": "LANE_B",
+  "branch": "lane-b-successor-v1",
+  "seat_id": "FIRST_TWO_LANE_TRIAL-LANE_B-SEAT-001",
+  "occupant_id": "FIRST_TWO_LANE_TRIAL-LANE_B-OPERATOR-001",
+  "invocation_id": "FIRST_TWO_LANE_TRIAL-LANE_B-INVOCATION-001",
+  "engagement_id": "FIRST_TWO_LANE_TRIAL-LANE_B-ENGAGEMENT-001",
+  "basis_head": "5c2318b12317298345dbd71f0df735a7c4f376c5",
+  "successor_ancestry_ref": "coordination/succession/LANE_B_SUCCESSOR_INSTANCE_001.json@9ad3e12a0d395046a26fdc29419ddda6510d1afd",
+  "predecessor_fence_ref": "coordination/predecessor_fences/LANE_B_LEGACY_INSTANCE_001.json@0b2ec2312dd9feaf81ffb7ac9b21e6256952d8fd",
+  "predecessor_debt_ref": "sha256:b42da029e9d0daccb6a486150e420cde5510c023ffe9b6bcd73a3b5ad4a399d5",
+  "authority_effect": "NONE",
+  "execution_effect": "NONE"
+}

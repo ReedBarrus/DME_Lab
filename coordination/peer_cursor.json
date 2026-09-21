@@ -1,0 +1,17 @@
+{
+  "schema": "two_lane_coordination_cursor_v1",
+  "consumer_lane_id": "LANE_B",
+  "peer_coordinates": [
+    {
+      "schema": "PEER_STATE_COORDINATE_v1",
+      "lane_id": "LANE_A",
+      "branch": "lane-a-cockpit-coordination-v0",
+      "last_seen_head": "de667390d81c1219abfee063d2a3b1fe13d1ba71",
+      "claim_observation": {
+        "state": "NO_ACTIVE_CLAIM"
+      }
+    }
+  ],
+  "authority_effect": "NONE",
+  "execution_effect": "NONE"
+}
