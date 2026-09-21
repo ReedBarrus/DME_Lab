@@ -262,6 +262,28 @@ Rotation constructs a fresh current basis carrier. By default its
 empty. Observation or missingness may be re-established only through explicitly
 supplied fresh inputs for the new invocation.
 
+A supplied observed-object claim is admitted only when its `source_ref` is also
+present in the same basis object's `source_refs[]`.
+
+```text
+EXPLICITLY SUPPLIED
+!=
+ESTABLISHED
+
+SOURCE REF NAMED
+!=
+SOURCE SUPPLIED
+
+OBSERVATION CLAIM
+!=
+OBSERVATION GROUNDING
+```
+
+This is a minimal grounding membrane: it establishes only an explicit
+claim-to-represented-source relation. It does **not** establish that the named
+source is true, authentic, or sufficient to prove the claimed object identity.
+Source-to-object identity correspondence remains unqualified.
+
 The predecessor basis remains separately recoverable by exact identity, but its
 payload is not current observation. A typed historical-consultation relation is
 still future work and is not manufactured by this repair.
@@ -291,9 +313,10 @@ A green pressure may establish only:
 > Under the frozen synthetic pressure, the candidate grammar can represent
 > roles, seats, occupants, invocations, work-claim references, authority
 > references, and observation bases while enforcing the tested cross-object
-> current-identity correspondence, work-claim correspondence, and fresh-
-> observation payload noninheritance while avoiding the tested identity/
-> authority/missingness collapses.
+> current-identity correspondence, work-claim correspondence, fresh-observation
+> payload noninheritance, and explicit represented source relations for current
+> observed-object claims while avoiding the tested identity/authority/
+> missingness collapses.
 
 It does not establish:
 
@@ -308,6 +331,8 @@ claim validity
 authority validity
 execution permission
 historical-basis reuse semantics
+observation source-to-object identity proof
+source truth / authenticity
 representation succession
 legacy-seat migration
 ```
