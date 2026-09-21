@@ -1,20 +1,14 @@
 {
-  "schema": "historical_p11_evaluation_key_v0",
-  "cells": {
-    "A": {
-      "standing": "RETAINABLE"
-    },
-    "B": {
-      "standing": "NOT_RETAINABLE"
-    },
-    "C": {
-      "standing": "NOT_RETAINABLE"
-    },
-    "D": {
-      "standing": "NOT_RETAINABLE"
-    },
-    "E": {
-      "standing": "NOT_RETAINABLE"
-    }
+  "schema":"historical_p11_evaluation_key_v0",
+  "cells":{
+    "A":{"status":"VALID","standing":"RETAINABLE"},
+    "B":{"status":"VALID","standing":"NOT_RETAINABLE"},
+    "C":{"status":"VALID","standing":"NOT_RETAINABLE"},
+    "D":{"status":"VALID","standing":"NOT_RETAINABLE"},
+    "E":{"status":"VALID","standing":"NOT_RETAINABLE"},
+    "F":{"status":"ADMINISTRATION_INVALID","standing":null},
+    "G":{"status":"ADMINISTRATION_INVALID","standing":null},
+    "H":{"status":"ADMINISTRATION_INVALID","standing":null},
+    "I":{"status":"VALID","standing":"RETAINABLE"}
   }
 }
