@@ -1,0 +1,14 @@
+{
+  "schema": "two_lane_coordination_cursor_v0",
+  "consumer_lane_id": "INVOCATION_EFFECT_PROVENANCE_001",
+  "peer_coordinates": [
+    {
+      "lane_id": "LANE_B",
+      "branch": "lane-b-recovery-continuity-v0",
+      "last_seen_head": "41316921b211c1daf75c9b71b8147e0eb67d372d",
+      "last_seen_claim_digest": "sha256:b0b65897afc10b6493abb4a6f37fc3b1c7f4947820fb058aa602895826a2bfad"
+    }
+  ],
+  "authority_effect": "NONE",
+  "execution_effect": "NONE"
+}
