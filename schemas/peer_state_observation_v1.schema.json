@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "peer_state_observation_v1.schema.json",
+  "title": "Peer State Observation v1",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "lane_id",
+        "branch",
+        "head",
+        "lane_manifest",
+        "claim_presence",
+        "active_claim",
+        "claim_path_observation",
+        "authority_effect",
+        "execution_effect"
+      ],
+      "properties": {
+        "schema": {
+          "const": "PEER_STATE_OBSERVATION_v1"
+        },
+        "lane_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "branch": {
+          "type": "string",
+          "minLength": 1
+        },
+        "head": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "lane_manifest": {
+          "type": "object"
+        },
+        "claim_presence": {
+          "const": "ACTIVE_CLAIM"
+        },
+        "active_claim": {
+          "type": "object"
+        },
+        "claim_path_observation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "state"
+          ],
+          "properties": {
+            "path": {
+              "const": "coordination/active_work_claim.json"
+            },
+            "state": {
+              "const": "PRESENT_AT_OBSERVED_HEAD"
+            }
+          }
+        },
+        "authority_effect": {
+          "const": "NONE"
+        },
+        "execution_effect": {
+          "const": "NONE"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "lane_id",
+        "branch",
+        "head",
+        "lane_manifest",
+        "claim_presence",
+        "claim_path_observation",
+        "authority_effect",
+        "execution_effect"
+      ],
+      "properties": {
+        "schema": {
+          "const": "PEER_STATE_OBSERVATION_v1"
+        },
+        "lane_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "branch": {
+          "type": "string",
+          "minLength": 1
+        },
+        "head": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "lane_manifest": {
+          "type": "object"
+        },
+        "claim_presence": {
+          "const": "NO_ACTIVE_CLAIM"
+        },
+        "claim_path_observation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "state"
+          ],
+          "properties": {
+            "path": {
+              "const": "coordination/active_work_claim.json"
+            },
+            "state": {
+              "const": "ABSENT_AT_OBSERVED_HEAD"
+            }
+          }
+        },
+        "authority_effect": {
+          "const": "NONE"
+        },
+        "execution_effect": {
+          "const": "NONE"
+        }
+      }
+    }
+  ]
+}
