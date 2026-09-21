@@ -1,0 +1,41 @@
+name: INVOCATION_RECOVERY_001_APPARATUS
+
+on:
+  pull_request:
+    paths:
+      - "docs/candidates/invocation_recovery_v0/apparatus/**"
+      - "lab/ops/candidates/invocation_recovery_001/**"
+      - "tests/lab/test_invocation_recovery_001_apparatus.py"
+      - ".github/workflows/invocation-recovery-001-apparatus.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile INVOCATION_RECOVERY_001 apparatus
+        run: |
+          python -m py_compile \
+            lab/ops/candidates/invocation_recovery_001/apparatus.py \
+            tests/lab/test_invocation_recovery_001_apparatus.py
+
+      - name: Run deterministic apparatus pressure
+        run: |
+          python -m unittest tests.lab.test_invocation_recovery_001_apparatus -v
+
+      - name: Verify held-out realization remains absent
+        run: |
+          test ! -e lab/ops/candidates/invocation_recovery_001/held_out_realization
+          echo "HELD_OUT_REALIZATION_UNTOUCHED"
