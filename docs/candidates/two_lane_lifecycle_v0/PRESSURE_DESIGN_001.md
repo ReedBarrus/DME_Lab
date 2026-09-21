@@ -666,10 +666,24 @@ Required negative cells:
 
 ### D1 — ACTIVE claim cannot be reusable
 
+RAW_INPUT:
+
 ```text
-claim = ACTIVE
-lane = READY_UNCLAIMED
-occupant = null
+P14:
+current claim.status = ACTIVE
+→ CLAIM_STATUS_IS_REUSABLE_TERMINAL_CLASS derives false
+
+P15:
+current lane manifest.occupant_binding = null
+
+P13:
+explicit disposition_evidence_refs[] raw object supplied for current state
+```
+
+Current lane manifest:
+
+```text
+lane.status = READY_UNCLAIMED
 ```
 
 Expected:
@@ -680,10 +694,17 @@ INVALID LIFECYCLE STATE
 
 ### D2 — BLOCKED claim cannot be READY_UNCLAIMED
 
+RAW_INPUT:
+
 ```text
-claim = BLOCKED
-lane = READY_UNCLAIMED
-occupant = OCCUPANT-X
+P14:
+current claim.status = BLOCKED
+→ CLAIM_STATUS_IS_REUSABLE_TERMINAL_CLASS derives false
+
+P15:
+current lane manifest.occupant_binding = OCCUPANT-X
+
+current lane manifest.status = READY_UNCLAIMED
 ```
 
 Expected:
@@ -694,10 +715,17 @@ INVALID LIFECYCLE STATE
 
 ### D3 — BLOCKED / HELD cannot lose occupant
 
+RAW_INPUT:
+
 ```text
-claim = BLOCKED
-lane = HELD
-occupant = null
+P14:
+current claim.status = BLOCKED
+→ CLAIM_STATUS_IS_REUSABLE_TERMINAL_CLASS derives false
+
+P15:
+current lane manifest.occupant_binding = null
+
+current lane manifest.status = HELD
 ```
 
 Expected:
@@ -822,16 +850,19 @@ This remains synthetic and does not adjudicate live Lane B.
 
 ### C — unresolved blocker
 
-Raw basis:
+RAW_INPUT:
 
 ```text
-claim = ACTIVE
-lane = ACTIVE
-occupant = OCCUPANT-X
+P01 claim.status = ACTIVE
+P02 lane.status = ACTIVE
+P03 occupant_binding = OCCUPANT-X
+P04 requested_transition = MARK_BLOCKED
+```
 
-requested_transition = MARK_BLOCKED
+QUALIFIED_UPSTREAM_STANDING:
 
-P12 QUALIFIED_UPSTREAM_STANDING:
+```text
+P12:
 relation_type = MARK_BLOCKED_BLOCKING_STATUS
 standing = ESTABLISHED
 basis_ref = <recoverable blocking basis>
