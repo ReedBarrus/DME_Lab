@@ -464,7 +464,7 @@ def main() -> int:
         "disposition": disposition,
         "failing_cell": failing_cell,
         "qualified_design_head": freeze["qualified_design_head"],
-        "frozen_execution_head": freeze["freeze_commit"],
+        "frozen_execution_head": freeze["apparatus_basis_head"],
         "execution_command": freeze["executable_command"],
         "environment": freeze["environment"],
         "frozen_identities": freeze["frozen_files"],
