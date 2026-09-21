@@ -1,0 +1,120 @@
+{
+  "schema": "historical_p11_raw_fixtures_v0",
+  "cells": {
+    "A": {
+      "required_refs": [
+        {
+          "ref_id": "R1",
+          "carrier_id": "C1",
+          "content_id": "H1"
+        },
+        {
+          "ref_id": "R2",
+          "carrier_id": "C2",
+          "content_id": "H2"
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "C1",
+          "content_id": "H1"
+        },
+        {
+          "carrier_id": "C2",
+          "content_id": "H2"
+        }
+      ],
+      "retrieval_edges": [
+        {
+          "ref_id": "R1",
+          "carrier_id": "C1"
+        },
+        {
+          "ref_id": "R2",
+          "carrier_id": "C2"
+        }
+      ],
+      "release_delete_carrier_ids": []
+    },
+    "B": {
+      "required_refs": [
+        {
+          "ref_id": "R1",
+          "carrier_id": "C1",
+          "content_id": "H1"
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "C1",
+          "content_id": "H1"
+        }
+      ],
+      "retrieval_edges": [],
+      "release_delete_carrier_ids": []
+    },
+    "C": {
+      "required_refs": [
+        {
+          "ref_id": "R1",
+          "carrier_id": "C1",
+          "content_id": "H1"
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "C1",
+          "content_id": "H1"
+        }
+      ],
+      "retrieval_edges": [
+        {
+          "ref_id": "R1",
+          "carrier_id": "C1"
+        }
+      ],
+      "release_delete_carrier_ids": [
+        "C1"
+      ]
+    },
+    "D": {
+      "required_refs": [
+        {
+          "ref_id": "R1",
+          "carrier_id": "C1",
+          "content_id": "H1"
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "C1",
+          "content_id": "H2"
+        }
+      ],
+      "retrieval_edges": [
+        {
+          "ref_id": "R1",
+          "carrier_id": "C1"
+        }
+      ],
+      "release_delete_carrier_ids": []
+    },
+    "E": {
+      "required_refs": [
+        {
+          "ref_id": "R1",
+          "carrier_id": "C1",
+          "content_id": "H1"
+        }
+      ],
+      "carriers": [],
+      "retrieval_edges": [
+        {
+          "ref_id": "R1",
+          "carrier_id": "C1"
+        }
+      ],
+      "release_delete_carrier_ids": []
+    }
+  }
+}
