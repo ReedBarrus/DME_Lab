@@ -1,0 +1,9 @@
+Inspect the supplied task basis, reconstruction packet, referenced basis
+artifacts, current basis evidence, coordination delta, and authority witness
+surface.
+
+Return the frozen structured recovery decision.
+
+Do not use information not supplied in this invocation.
+Do not describe the held-out cell.
+Do not infer authority from the reconstruction packet.
