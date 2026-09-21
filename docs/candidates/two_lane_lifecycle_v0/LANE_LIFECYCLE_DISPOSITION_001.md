@@ -236,21 +236,26 @@ MARK_BLOCKED
 
 and may still be rejected by the lifecycle law.
 
-## Experimental membrane
+## Closed F11 controller input membrane
 
-Candidate input may contain only:
-
-```text
-current operating state
-raw source objects
-requested transition
-qualified upstream relations
-with recoverable basis
-```
-
-A qualified upstream relation may preserve:
+Every semantic predicate consumed by the lifecycle controller must enter through
+exactly one of two input classes.
 
 ```text
+A.
+RAW_INPUT
+
+The controller receives exact raw objects and derives the predicate under a
+frozen local law.
+
+OR
+
+B.
+QUALIFIED_UPSTREAM_STANDING
+
+The controller receives an independently established relation carrying at
+minimum:
+
 relation_type
 standing
 basis_ref
@@ -258,34 +263,79 @@ producer
 version
 ```
 
-Example:
+No third input category exists.
 
 ```text
-relation_type:
-INVOCATION_EFFECT_ATTRIBUTION
-
-standing:
-UNRESOLVED
-
-basis_ref:
-<recoverable exact source>
-
-producer/version:
-<qualified upstream identity>
+RAW_INPUT
+XOR
+QUALIFIED_UPSTREAM_STANDING
 ```
 
-This is admissible because it is an upstream relation, not a lifecycle verdict.
-
-Forbidden candidate input includes lifecycle-shaped answer fields such as:
+For `QUALIFIED_UPSTREAM_STANDING`, the relation is admissible only when:
 
 ```text
-completion_admissible = true
-release_safe = true
-completion_impossible = true
-release_not_admissible = true
-blocked_is_correct = true
-resulting_lane_state = READY_UNCLAIMED
-expected_disposition = RELEASED
+basis_ref:
+recoverable
+
+producer + version:
+bound to a qualification receipt that establishes standing to produce the
+named relation_type
+
+relation_type:
+allowed by the frozen predicate registry
+
+standing:
+allowed for that relation_type
+```
+
+A typed object is not enough.
+
+```text
+TYPED
+!=
+QUALIFIED
+
+PREDICATE PRESENT
+!=
+PREDICATE ESTABLISHED
+
+SOURCE BASIS
+!=
+QUALIFIED STANDING
+```
+
+Negative or absence semantics may not be inferred from missing input.
+
+```text
+ABSENCE CLAIM
+!=
+ABSENCE OF INPUT
+```
+
+A negative semantic predicate must therefore be either:
+
+```text
+RAW_INPUT:
+derived from an explicitly supplied raw closed-scope object under the frozen
+law
+
+OR
+
+QUALIFIED_UPSTREAM_STANDING:
+an explicit standing such as NONE_ESTABLISHED or
+NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP
+with recoverable basis and qualified producer/version
+```
+
+Forbidden third-category inputs include:
+
+```text
+bare boolean summaries
+unqualified typed predicates
+prose conclusions
+missing-object inference
+lifecycle-shaped answer fields
+source objects treated as if their presence established standing
 ```
 
 Freeze:
@@ -318,6 +368,500 @@ expected occupant posture
 expected debt preservation
 ```
 
+### Exhaustive controller-consumed predicate inventory
+
+The following registry is exhaustive for the repaired v0 controller. A future
+apparatus must fail administration if it consumes a semantic predicate not
+listed here.
+
+#### P01 — source claim is ACTIVE
+
+```text
+CONSUMED_PREDICATE:
+SOURCE_CLAIM_STATUS_IS_ACTIVE
+
+INPUT_CLASS:
+RAW_INPUT
+
+raw_basis:
+exact current claim object
+
+controller_derivation:
+read claim.status and compare exactly to ACTIVE
+```
+
+#### P02 — source lane is ACTIVE
+
+```text
+CONSUMED_PREDICATE:
+SOURCE_LANE_STATUS_IS_ACTIVE
+
+INPUT_CLASS:
+RAW_INPUT
+
+raw_basis:
+exact current lane manifest
+
+controller_derivation:
+read lane.status and compare exactly to ACTIVE
+```
+
+#### P03 — source occupant binding posture
+
+```text
+CONSUMED_PREDICATE:
+SOURCE_OCCUPANT_BINDING
+
+INPUT_CLASS:
+RAW_INPUT
+
+raw_basis:
+exact current lane manifest
+
+controller_derivation:
+read occupant_binding exactly; derive null / non-null and preserve exact
+identity when MARK_BLOCKED requires preservation
+```
+
+#### P04 — requested transition
+
+```text
+CONSUMED_PREDICATE:
+REQUESTED_TRANSITION
+
+INPUT_CLASS:
+RAW_INPUT
+
+raw_basis:
+exact transition-request object
+
+controller_derivation:
+read requested_transition exactly and require membership in
+{COMPLETE, RELEASE, MARK_BLOCKED}
+```
+
+#### P05 — work-unit correspondence / MATCHES
+
+```text
+CONSUMED_PREDICATE:
+WORK_UNIT_CORRESPONDENCE_MATCHES
+
+INPUT_CLASS:
+RAW_INPUT
+
+raw_basis:
+exact work-unit binding object
++
+exact claim object
++
+exact bounded-unit / envelope identity objects referenced by the binding
+
+controller_derivation:
+derive MATCHES only by exact identity equality across the frozen correspondence
+fields; no semantic synonym or prose match is allowed
+```
+
+#### P06 — raw completion criterion satisfaction
+
+```text
+CONSUMED_PREDICATE:
+COMPLETION_CRITERION_RAW_TERMS_SATISFIED
+
+INPUT_CLASS:
+RAW_INPUT
+
+raw_basis:
+exact completion-criterion object
++
+the exact raw receipts / work evidence named by that criterion
+
+controller_derivation:
+evaluate the frozen mechanically decidable criterion terms against the supplied
+raw objects; a fixture may not supply SATISFIED / NOT_SATISFIED as a semantic
+summary
+```
+
+If the completion criterion requires semantic standing from another producer,
+that standing is not smuggled into P06. It must enter separately through P07.
+
+#### P07 — required completion upstream standing
+
+```text
+CONSUMED_PREDICATE:
+REQUIRED_COMPLETION_UPSTREAM_STANDING
+
+INPUT_CLASS:
+QUALIFIED_UPSTREAM_STANDING
+
+relation_type:
+the exact relation_type named by the completion criterion
+
+standing:
+the exact standing required by that criterion
+
+basis_ref:
+recoverable exact upstream basis
+
+producer:
+qualified producer identity
+
+version:
+qualified producer version
+```
+
+Qualification path:
+
+```text
+relation witness
+→ producer/version qualification receipt
+→ recoverable basis_ref
+→ standing check
+```
+
+Every required upstream relation is checked independently.
+
+#### P08 — completion blocker status
+
+```text
+CONSUMED_PREDICATE:
+COMPLETION_BLOCKER_STATUS
+
+INPUT_CLASS:
+QUALIFIED_UPSTREAM_STANDING
+
+relation_type:
+COMPLETION_BLOCKER_STATUS
+
+standing:
+NONE_ESTABLISHED
+or
+FORBIDS_COMPLETION
+
+basis_ref:
+recoverable blocker-evaluation basis
+
+producer:
+qualified blocker-status producer identity
+
+version:
+qualified blocker-status producer version
+```
+
+Qualification path:
+
+```text
+explicit blocker-status witness
+→ producer/version qualification receipt
+→ recoverable basis_ref
+```
+
+`NONE_ESTABLISHED` must be supplied as established standing. It may not be
+inferred because no blocker input happened to be present.
+
+#### P09 — unfinished effect-bearing ACTIVE-ownership status
+
+```text
+CONSUMED_PREDICATE:
+ACTIVE_OWNERSHIP_EFFECT_STATUS
+
+INPUT_CLASS:
+QUALIFIED_UPSTREAM_STANDING
+
+relation_type:
+ACTIVE_OWNERSHIP_EFFECT_STATUS
+
+standing:
+NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP
+or
+UNFINISHED_EFFECT_REQUIRES_ACTIVE_OWNERSHIP
+
+basis_ref:
+recoverable effect / unit ownership basis
+
+producer:
+qualified effect-ownership producer identity
+
+version:
+qualified effect-ownership producer version
+```
+
+Qualification path:
+
+```text
+explicit effect-ownership standing
+→ producer/version qualification receipt
+→ recoverable basis_ref
+```
+
+The RELEASE law consumes the explicit standing. It never interprets missing
+effect records as proof of absence.
+
+#### P10 — required unresolved / historical reference set
+
+```text
+CONSUMED_PREDICATE:
+REQUIRED_CONSERVED_REFERENCE_SET
+
+INPUT_CLASS:
+RAW_INPUT
+
+raw_basis:
+exact source claim / source objects carrying unresolved or historical
+reference identities
+
+controller_derivation:
+extract the exact required reference identities under the frozen lifecycle law;
+existence means exact reference presence in supplied raw source, not a prose
+statement that provenance exists
+```
+
+This includes unresolved provenance-reference existence.
+
+#### P11 — required-reference retainability
+
+```text
+CONSUMED_PREDICATE:
+REQUIRED_REFERENCE_RETENTION_STATUS
+
+INPUT_CLASS:
+QUALIFIED_UPSTREAM_STANDING
+
+relation_type:
+REFERENCE_RETENTION_STATUS
+
+standing:
+RETAINABLE
+or
+NOT_RETAINABLE
+
+basis_ref:
+recoverable disposition-storage / reference-preservation basis
+
+producer:
+qualified retention producer identity
+
+version:
+qualified retention producer version
+```
+
+Qualification path:
+
+```text
+retention-standing witness
+→ producer/version qualification receipt
+→ recoverable basis_ref
+→ exact required reference set from P10
+```
+
+`present` and `retainable` are separate predicates.
+
+#### P12 — blocking relation standing for MARK_BLOCKED
+
+```text
+CONSUMED_PREDICATE:
+MARK_BLOCKED_BLOCKING_RELATION
+
+INPUT_CLASS:
+QUALIFIED_UPSTREAM_STANDING
+
+relation_type:
+the exact blocking relation consumed by the requested MARK_BLOCKED evaluation
+
+standing:
+ESTABLISHED
+
+basis_ref:
+recoverable exact blocking basis
+
+producer:
+qualified producer identity for that blocking relation_type
+
+version:
+qualified producer version
+```
+
+Qualification path:
+
+```text
+blocking witness
+→ producer/version qualification receipt
+→ recoverable basis_ref
+```
+
+A typed blocker object without qualified standing is insufficient.
+
+#### P13 — lifecycle disposition evidence reachability
+
+```text
+CONSUMED_PREDICATE:
+LIFECYCLE_DISPOSITION_EVIDENCE_REACHABLE
+
+INPUT_CLASS:
+RAW_INPUT
+
+raw_basis:
+exact disposition evidence reference
++
+exact retrieved disposition object / content identity
+
+controller_derivation:
+derive reachable only when the reference resolves to the exact retained object
+under the frozen content-identity rule
+```
+
+This predicate is used by the reusable-lane invariant.
+
+#### P14 — reusable terminal claim class
+
+```text
+CONSUMED_PREDICATE:
+CLAIM_STATUS_IS_REUSABLE_TERMINAL_CLASS
+
+INPUT_CLASS:
+RAW_INPUT
+
+raw_basis:
+exact current claim object
+
+controller_derivation:
+derive true iff claim.status ∈ {RELEASED, COMPLETED};
+BLOCKED and ACTIVE both derive false
+```
+
+#### P15 — reusable occupant is null
+
+```text
+CONSUMED_PREDICATE:
+REUSABLE_OCCUPANT_BINDING_IS_NULL
+
+INPUT_CLASS:
+RAW_INPUT
+
+raw_basis:
+exact current lane manifest
+
+controller_derivation:
+derive true iff occupant_binding is exactly null
+```
+
+#### P16 — old-claim identity reuse
+
+```text
+CONSUMED_PREDICATE:
+OLD_CLAIM_IDENTITY_REUSED_FOR_NEW_UNIT
+
+INPUT_CLASS:
+RAW_INPUT
+
+raw_basis:
+exact terminal historical claim object
++
+exact attempted current claim object
+
+controller_derivation:
+derive reuse only by exact claim identity equality
+```
+
+#### P17 — fresh binding / current-claim correspondence for new work
+
+```text
+CONSUMED_PREDICATE:
+FRESH_BINDING_CLAIM_RELATION_PRESENT
+
+INPUT_CLASS:
+RAW_INPUT
+
+raw_basis:
+exact new work-unit binding object, if supplied
++
+exact attempted current claim object
+
+controller_derivation:
+derive true only when a distinct fresh binding exists and exactly corresponds
+to the attempted new claim / unit identities
+```
+
+Missing binding input does not itself become a semantic absence claim; the
+controller evaluates the explicit raw current-attempt object set supplied by
+the cell.
+
+#### P18 — invocation-effect attribution standing
+
+```text
+CONSUMED_PREDICATE:
+INVOCATION_EFFECT_ATTRIBUTION_STANDING
+
+INPUT_CLASS:
+QUALIFIED_UPSTREAM_STANDING
+
+relation_type:
+INVOCATION_EFFECT_ATTRIBUTION
+
+standing:
+the supplied qualified standing, including UNRESOLVED where applicable
+
+basis_ref:
+recoverable provenance basis
+
+producer:
+qualified invocation-effect provenance producer identity
+
+version:
+qualified producer version
+```
+
+Qualification path:
+
+```text
+attribution witness
+→ producer/version qualification receipt
+→ recoverable basis_ref
+```
+
+This standing may determine conserved debt. It does not determine RELEASE,
+COMPLETE, or MARK_BLOCKED admissibility by itself.
+
+### Exhaustiveness rule
+
+The controller may not consume a nineteenth hidden semantic predicate.
+
+```text
+PREDICATE NOT IN P01-P18
+→
+ADMINISTRATION INVALID
+```
+
+A future repair that genuinely needs another semantic predicate requires fresh
+contract review.
+
+### Scorer-only / output predicates are not controller inputs
+
+The following A-I pressure checks are intentionally not supplied through the
+controller input membrane:
+
+```text
+candidate retained historical claim object
+candidate retained required unresolved refs
+candidate resulting claim state obeys requested transition
+candidate resulting lane state obeys requested transition
+candidate resulting occupant posture obeys requested transition
+candidate authority_effect = NONE
+candidate execution_effect = NONE
+candidate integration_effect = NONE
+candidate did not resurrect old claim
+candidate did not delete history
+candidate BLOCKED result is nonterminal
+candidate READY_UNCLAIMED result satisfies reusable-lane invariant
+```
+
+These are derived from candidate output plus the frozen law by the scorer.
+
+```text
+SCORER CHECK
+!=
+CONTROLLER INPUT
+```
+
 ## Lifecycle admissibility laws
 
 ### COMPLETE
@@ -325,24 +869,24 @@ expected debt preservation
 ```text
 COMPLETE admissible iff:
 
-source claim = ACTIVE
+P01 SOURCE_CLAIM_STATUS_IS_ACTIVE
 
 AND
 
-required work-unit relation matches
+P05 WORK_UNIT_CORRESPONDENCE_MATCHES
 
 AND
 
-the frozen completion criterion is satisfied
+P06 COMPLETION_CRITERION_RAW_TERMS_SATISFIED
 
 AND
 
-every upstream relation required by that criterion
-has the required standing
+every P07 REQUIRED_COMPLETION_UPSTREAM_STANDING required by the criterion
+has the required qualified standing
 
 AND
 
-no established blocker forbids completion
+P08 COMPLETION_BLOCKER_STATUS = NONE_ESTABLISHED
 ```
 
 If admissible:
@@ -374,17 +918,21 @@ LIVE COMPLETION EXECUTION AUTHORIZED
 ```text
 RELEASE admissible iff:
 
-source claim = ACTIVE
+P01 SOURCE_CLAIM_STATUS_IS_ACTIVE
 
 AND
 
-no currently effect-bearing unfinished unit
-requires ACTIVE ownership to remain conserved
+P09 ACTIVE_OWNERSHIP_EFFECT_STATUS =
+NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP
 
 AND
 
-required historical / unresolved refs
-can be retained in disposition evidence
+P10 REQUIRED_CONSERVED_REFERENCE_SET is derived from raw source objects
+
+AND
+
+P11 REQUIRED_REFERENCE_RETENTION_STATUS = RETAINABLE
+for that exact reference set
 ```
 
 If admissible:
@@ -425,15 +973,15 @@ ERASURE
 ```text
 MARK_BLOCKED admissible iff:
 
-source claim = ACTIVE
+P01 SOURCE_CLAIM_STATUS_IS_ACTIVE
 
 AND
 
-an established blocking relation exists
+P12 MARK_BLOCKED_BLOCKING_RELATION carries standing = ESTABLISHED
 
 AND
 
-that blocking relation has recoverable basis
+its basis_ref is recoverable and producer/version is qualified
 ```
 
 If admissible:
