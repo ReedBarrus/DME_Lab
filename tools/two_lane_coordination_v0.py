@@ -341,6 +341,10 @@ def pre_mutation_guard(
             if fence_result.get("predecessor_currently_operative") is False:
                 comparison = compare_claims(local_claim, peer)
                 comparison["historical_active_pair"] = comparison["active_pair"]
+                comparison["provenance_overlap"] = bool(
+                    comparison["same_consequence_trajectory"]
+                    and comparison["artifact_overlap"]
+                )
                 comparison["peer_currently_operative"] = False
                 comparison["semantic_collision"] = False
                 comparison["provenance_collision"] = False
