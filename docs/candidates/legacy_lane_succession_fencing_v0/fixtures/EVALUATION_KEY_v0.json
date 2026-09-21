@@ -1,0 +1,15 @@
+{
+  "schema": "legacy_lane_succession_fencing_evaluation_key_v0",
+  "cells": {
+    "A": {"decision":"REJECT","reason":"PREDECESSOR_FENCED","predecessor_currently_operative":false,"coordination_posture":"NOT_EVALUATED"},
+    "B": {"decision":"NORMAL_ADMISSIBILITY_MEMBRANE","reason":"SUCCESSOR_FRESHNESS_AND_DEBT_CONSERVATION_SATISFIED","predecessor_currently_operative":false,"coordination_posture":"NO_COORDINATION_BLOCK"},
+    "C": {"decision":"REJECT","reason":"PREDECESSOR_FENCED","predecessor_currently_operative":false,"coordination_posture":"NOT_EVALUATED"},
+    "D": {"decision":"REJECT","reason":"PREDECESSOR_FENCED","predecessor_currently_operative":false,"coordination_posture":"NOT_EVALUATED"},
+    "E": {"decision":"REJECT","reason":"AUTHORITY_INHERITANCE_FORBIDDEN","predecessor_currently_operative":false,"coordination_posture":"NO_COORDINATION_BLOCK"},
+    "F": {"decision":"REJECT","reason":"PREDECESSOR_DEBT_REFERENCE_REQUIRED","predecessor_currently_operative":false,"coordination_posture":"NO_COORDINATION_BLOCK"},
+    "G": {"decision":"NORMAL_ADMISSIBILITY_MEMBRANE","reason":"NO_OPERATIVE_FENCE_RELATION","predecessor_currently_operative":true,"coordination_posture":"NOT_APPLICABLE"},
+    "H": {"decision":"CONFLICT_STOP","reason":"PREDECESSOR_ADVANCED_AFTER_FENCE","predecessor_currently_operative":null,"coordination_posture":"NOT_EVALUATED"},
+    "J": {"decision":"NORMAL_ADMISSIBILITY_MEMBRANE","reason":"SUCCESSOR_FRESHNESS_AND_DEBT_CONSERVATION_SATISFIED","predecessor_currently_operative":false,"coordination_posture":"NO_COORDINATION_BLOCK"},
+    "J_NO_FENCE": {"decision":"COORDINATION_HOLD","reason":"ACTIVE_PREDECESSOR_OVERLAP","predecessor_currently_operative":true,"coordination_posture":"COORDINATION_HOLD"}
+  }
+}
