@@ -228,15 +228,23 @@ versioned semantic object.
 
 ## Observation basis
 
-`observation_basis_v0` records what one invocation actually observed at one
-basis and what was explicitly unavailable.
+`observation_basis_v0` is the candidate current epistemic-basis carrier. Its
+legacy structural field `observed_objects[]` does **not** by itself establish
+that the invocation observed the object or even inspected the source. The field
+contains source-associated claim rows whose standing is established only by the
+wider correspondence and encounter machinery. The basis also records what was
+explicitly unavailable.
 
 ```text
 OBJECT EXISTS IN LATER WORLD
 !=
-OBJECT OBSERVED AT DECISION BASIS
+OBJECT REPRESENTED IN DECISION BASIS
 
-OBJECT NOT OBSERVED
+FIELD NAME observed_objects
+!=
+OBSERVED STANDING
+
+OBJECT NOT REPRESENTED
 !=
 OBJECT ABSENT
 
@@ -259,8 +267,8 @@ REOBSERVE WORLD
 
 Rotation constructs a fresh current basis carrier. By default its
 `observed_objects[]`, `explicit_missing_objects[]`, and `source_refs[]` are
-empty. Observation or missingness may be re-established only through explicitly
-supplied fresh inputs for the new invocation.
+empty. Source-claim or missingness rows may be re-established only through
+explicitly supplied fresh inputs for the new invocation.
 
 A supplied observed-object claim is admitted only when its `source_ref` is also
 present in the same basis object's `source_refs[]`.
@@ -371,9 +379,9 @@ encounter_kind = PRESENTED_TO_INVOCATION
 basis_ref
 ```
 
-A current observed-object claim is composition-valid only when the exact source
-carrier corresponds and a source encounter is represented for the same current
-seat, occupant, invocation, exact source ref, and basis coordinate.
+A current `observed_objects[]` row is composition-valid only when the exact
+source carrier corresponds and a source encounter is represented for the same
+current seat, occupant, invocation, exact source ref, and basis coordinate.
 
 ```text
 SOURCE CARRIER SUPPLIED
@@ -396,6 +404,33 @@ OBJECT DIRECTLY PERCEIVED
 The encounter relation does not make the chassis a full event/runtime system. It
 does not establish encounter truth/authenticity, comprehension, direct
 perception, or semantic truth.
+
+The strongest standing earned by the present observed-side chain is therefore:
+
+```text
+basis row alone
+=
+SOURCE_CLAIM_REPRESENTED
+
+exact current source correspondence
++
+PRESENTED_TO_INVOCATION encounter
+=
+SOURCE_PRESENTED
+```
+
+and explicitly not:
+
+```text
+SOURCE_PRESENTED
+=
+OBSERVED
+```
+
+`OBSERVED` standing is reserved for stronger future machinery that establishes
+inspection, consumption, attention, parsing, or another separately qualified
+relation. This candidate does not preselect which mechanism should eventually
+earn that standing.
 
 The MISSING channel retains a separate specimen-specific encounter carrier:
 `missingness_witness_encounter_v0`. A current missingness claim is
@@ -465,11 +500,12 @@ A green pressure may establish only:
 > references, and observation bases while enforcing the tested cross-object
 > current-identity correspondence, work-claim correspondence, fresh-observation
 > payload noninheritance, explicit represented source relations, exact
-> represented source/object/identity correspondence for current observed-object
-> claims, exact current-invocation source-encounter correspondence, exact
-> represented missingness witness correspondence, and exact current-invocation
-> missingness-witness encounter correspondence while avoiding the tested
-> identity/authority/missingness collapses.
+> represented source/object/identity correspondence for current source-claim
+> rows, exact current-invocation source-encounter correspondence, a bounded
+> SOURCE_PRESENTED standing ceiling, exact represented missingness witness
+> correspondence, and exact current-invocation missingness-witness encounter
+> correspondence while avoiding the tested identity/authority/missingness
+> collapses.
 
 It does not establish:
 
@@ -489,6 +525,8 @@ source truth / authenticity
 semantic truth of source claims
 source encounter truth / authenticity
 source understanding or direct object perception
+OBSERVED standing
+source inspection / consumption / attention / parsing
 missingness witness truth / authenticity
 missingness witness encounter truth / authenticity
 missingness-reason understanding
