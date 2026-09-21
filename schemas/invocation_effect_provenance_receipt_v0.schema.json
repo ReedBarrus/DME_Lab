@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "invocation_effect_provenance_receipt_v0.schema.json",
+  "title": "Invocation Effect Provenance Candidate Receipt v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "effect_id",
+    "seat_id",
+    "occupant_id",
+    "invocation_id",
+    "claim_id",
+    "work_unit_id",
+    "authority_ref",
+    "pre_coordinate",
+    "post_coordinate",
+    "mutation_event_id",
+    "effect_kind",
+    "object_refs",
+    "witness_commitment",
+    "receipt_digest"
+  ],
+  "properties": {
+    "schema": {
+      "const": "invocation_effect_provenance_receipt_v0"
+    },
+    "effect_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "seat_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occupant_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "invocation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "work_unit_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pre_coordinate": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "post_coordinate": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "mutation_event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "effect_kind": {
+      "type": "string",
+      "minLength": 1
+    },
+    "object_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "witness_commitment": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "receipt_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    }
+  }
+}
