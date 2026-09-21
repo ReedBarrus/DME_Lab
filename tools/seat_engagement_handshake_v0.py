@@ -564,19 +564,15 @@ def pre_mutation_disposition(
     ):
         disposition = "RELEASE_REQUIRED"
         reason = "BINDING_NOT_CURRENT"
-        binding_status = "INVALID"
     elif basis_state != "SUFFICIENT":
         disposition = "CONTEXT_REQUEST"
         reason = "REQUIRED_BASIS_UNRESOLVED"
-        binding_status = "VALID"
     elif coordinate_changed:
         disposition = "REVALIDATION_REQUIRED"
         reason = "CONSUMED_COORDINATE_CHANGED"
-        binding_status = "VALID"
     elif peer_state == "ESTABLISHED_COLLISION":
         disposition = "COORDINATION_REQUEST"
         reason = "ESTABLISHED_PEER_COLLISION"
-        binding_status = "VALID"
     elif not _grant_corresponds(grant, envelope, binding):
         disposition = "AUTHORITY_REQUEST"
         if grant is None:
@@ -585,18 +581,17 @@ def pre_mutation_disposition(
             reason = "CURRENT_ONE_UNIT_AUTHORITY_CONSUMED"
         else:
             reason = "CURRENT_ONE_UNIT_AUTHORITY_INVALID"
-        binding_status = "VALID"
     else:
         disposition = "READY_FOR_AUTHORIZED_UNIT"
         reason = "MEMBRANE_CLEAR_AUTHORITY_SEPARATELY_VALID"
-        binding_status = "VALID"
 
-    authority_status = (
-        "ABSENT"
-        if grant is None
-        else ("AVAILABLE" if _grant_corresponds(grant, envelope, binding) else str(grant.get("state", "INVALID")))
-    )
-    if authority_status not in {"AVAILABLE", "ABSENT", "CONSUMED", "INVALID"}:
+    if grant is None:
+        authority_status = "ABSENT"
+    elif _grant_corresponds(grant, envelope, binding):
+        authority_status = "AVAILABLE"
+    elif grant.get("state") == "CONSUMED":
+        authority_status = "CONSUMED"
+    else:
         authority_status = "INVALID"
 
     return {
@@ -604,13 +599,16 @@ def pre_mutation_disposition(
         "disposition": disposition,
         "binding_id": binding["binding_id"],
         "work_claim_id": work_claim["claim_id"],
-        "basis_status": "SUFFICIENT" if basis_state == "SUFFICIENT" else "INSUFFICIENT",
+        "basis_status": (
+            "CHANGED"
+            if coordinate_changed
+            else ("SUFFICIENT" if basis_state == "SUFFICIENT" else "INSUFFICIENT")
+        ),
         "coordination_status": (
             "COLLISION" if peer_state == "ESTABLISHED_COLLISION" else "CLEAR"
         ),
         "authority_status": authority_status,
         "reason_code": reason,
-        "binding_status_internal": binding_status,
         "authority_effect": "NONE",
         "execution_effect": "NONE",
     }
