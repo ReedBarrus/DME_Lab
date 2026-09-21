@@ -1,0 +1,37 @@
+{
+  "schema": "ir001_common_component_manifest_v0",
+  "contract_head": "0138cdf83192bd967ff2be961aa6011646bb5701",
+  "encoding": "UTF-8",
+  "newline_policy": "LF",
+  "terminal_lf_required": true,
+  "components": [
+    {
+      "component_id": "RECOVERY_ROLE_HEADER_v0",
+      "path": "docs/candidates/invocation_recovery_v0/apparatus/common/RECOVERY_ROLE_HEADER_v0.txt",
+      "byte_count": 458,
+      "git_blob_sha1": "fc5f06b00d5405328537d3e55ab7ba3e07f47ec4",
+      "sha256": "5a2bf2b2ee3a540591e7c592fbadf2586467319a8cd5b9a4b882be92273466ec"
+    },
+    {
+      "component_id": "TASK_BASIS_v0",
+      "path": "docs/candidates/invocation_recovery_v0/apparatus/common/TASK_BASIS_v0.txt",
+      "byte_count": 921,
+      "git_blob_sha1": "1d912c8556afb677fdfb3cc7ac7a2188c205e5cd",
+      "sha256": "762deb3eeac111c5f30ea6fb03ea1611494cf1252043a817a1f79249dd354a96"
+    },
+    {
+      "component_id": "RECOVERY_TASK_INSTRUCTION_v0",
+      "path": "docs/candidates/invocation_recovery_v0/apparatus/common/RECOVERY_TASK_INSTRUCTION_v0.txt",
+      "byte_count": 355,
+      "git_blob_sha1": "e9797fdf5e10bcb5affbe7e69afa103068d0fc5e",
+      "sha256": "0ba5965c65a2147fe013917d43371affa125076ec0a7d20d3e3eeeae62746ea2"
+    },
+    {
+      "component_id": "RECOVERY_RESPONSE_SCHEMA_v0",
+      "path": "docs/candidates/invocation_recovery_v0/apparatus/common/RECOVERY_RESPONSE_SCHEMA_v0.txt",
+      "byte_count": 556,
+      "git_blob_sha1": "78f64a50edfaeb908bb0ac7a10acfb16601d6ffa",
+      "sha256": "e11cd797da1d1a54351c7983fcc487912c786b9d1c981a372d32a69ed3101c6b"
+    }
+  ]
+}
