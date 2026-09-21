@@ -1,0 +1,61 @@
+{
+  "schema": "lane_successor_ancestry_v0",
+  "successor_instance_id": "LANE_B_SUCCESSOR_INSTANCE_001",
+  "lane_id": "LANE_B",
+  "successor_branch": "lane-b-successor-v1",
+  "creation_basis": "788c754c95d1874e5a2dd245ee100f42d2760fad",
+  "predecessor_instance_id": "LANE_B_LEGACY_INSTANCE_001",
+  "predecessor_branch": "lane-b-recovery-continuity-v0",
+  "predecessor_head": "41316921b211c1daf75c9b71b8147e0eb67d372d",
+  "predecessor_claim_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-LANE_B-CLAIM-001",
+  "predecessor_fence_path": "coordination/predecessor_fences/LANE_B_LEGACY_INSTANCE_001.json",
+  "predecessor_fence_blob": "0b2ec2312dd9feaf81ffb7ac9b21e6256952d8fd",
+  "predecessor_fence_content_identity": "sha256:25b8a646b0f2a536b3dba5572da008499632e5b0c1a51865a8b43cf62f785723",
+  "qualified_fence_payload_identity": "sha256:2cced34cedccb4d763031fdfe3b271a8146473f9995b437fb9f0b894f0fabb86",
+  "predecessor_debt_identity": "sha256:b42da029e9d0daccb6a486150e420cde5510c023ffe9b6bcd73a3b5ad4a399d5",
+  "predecessor_historical_status": "ACTIVE",
+  "predecessor_current_operability": "FENCED",
+  "successor_initial_status": "READY_UNCLAIMED",
+  "successor_initial_occupant_binding": null,
+  "successor_initial_active_claim": "ABSENT",
+  "successor_initial_invocation": "ABSENT",
+  "successor_initial_authority": "ABSENT",
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "historical_disposition_effect": "NONE",
+  "predecessor_debt": {
+    "p09": {
+      "standing": "NOT_ESTABLISHED",
+      "reason": "P09_SUBJECT_NOT_CLOSED"
+    },
+    "p10": {
+      "standing": "NOT_ESTABLISHED",
+      "reason": "P10_SET_NOT_EXACTLY_DERIVABLE"
+    },
+    "p11": {
+      "standing": "NOT_ESTABLISHED"
+    },
+    "p18": {
+      "standing": "UNRESOLVED"
+    }
+  },
+  "future_activation_freshness_requirements": [
+    "claim_id",
+    "occupant_id",
+    "invocation_id",
+    "binding_ref",
+    "basis_head",
+    "coordination_cursor",
+    "authority_witness_where_required"
+  ],
+  "prohibited_inheritance": [
+    "predecessor_invocation",
+    "predecessor_work_claim",
+    "predecessor_authority",
+    "predecessor_consumed_authority",
+    "predecessor_completion_standing",
+    "predecessor_p09_standing",
+    "predecessor_p11_standing",
+    "predecessor_effect_ownership"
+  ]
+}
