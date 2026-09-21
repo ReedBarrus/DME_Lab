@@ -1,0 +1,276 @@
+{
+  "schema": "legacy_lane_succession_fencing_pressure_v0",
+  "predecessor": {
+    "instance_id": "LANE_B_LEGACY_INSTANCE_001",
+    "lane_id": "LANE_B",
+    "branch": "lane-b-recovery-continuity-v0",
+    "head": "41316921b211c1daf75c9b71b8147e0eb67d372d",
+    "claim_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-LANE_B-CLAIM-001",
+    "claim_blob": "809fcc26a5cc6bd61f3d07544d1a10e3a155bf71",
+    "claim_status": "ACTIVE",
+    "occupant_id": "WORKSHOP",
+    "invocation_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-WORKSHOP-INVOCATION-001",
+    "lane_manifest_blob": "3f1c4a9b0ad0dd96237d6b3da42dbd61a3744f1f",
+    "pre_mutation_guard_blob": "e93fb2f6fbed820f7b7f1ceffd0b27213bd86eb2",
+    "target_lineage": "SEAT_ENGAGEMENT_HANDSHAKE_001",
+    "consequence_envelope_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-SYSTEM_WRITE",
+    "semantic_surfaces": [
+      "SEAT_ENGAGEMENT_STATE_MACHINE",
+      "WORK_UNIT_BINDING_AND_CLAIM",
+      "ONE_UNIT_AUTHORITY_CONSUMPTION",
+      "CHECKPOINT_RELEASE_RECOVERY"
+    ],
+    "artifact_scopes": [
+      "docs/candidates/seat_engagement_handshake_v0",
+      "schemas/seat_engagement",
+      "tools/seat_engagement_handshake_v0.py",
+      "tests/runtime/test_seat_engagement_handshake_v0.py",
+      ".github/workflows/seat-engagement-handshake-001.yml"
+    ]
+  },
+  "predecessor_debt": {
+    "p09": {"standing": "NOT_ESTABLISHED", "reason": "P09_SUBJECT_NOT_CLOSED"},
+    "p10": {"standing": "NOT_ESTABLISHED", "reason": "P10_SET_NOT_EXACTLY_DERIVABLE"},
+    "p11": {"standing": "NOT_ESTABLISHED"},
+    "p18": {"standing": "UNRESOLVED"}
+  },
+  "fences": {
+    "VALID": {
+      "fence_id": "LEGACY_LANE_SUCCESSION_FENCING_001-FENCE",
+      "predecessor_instance_id": "LANE_B_LEGACY_INSTANCE_001",
+      "predecessor_head": "41316921b211c1daf75c9b71b8147e0eb67d372d",
+      "predecessor_claim_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-LANE_B-CLAIM-001",
+      "predecessor_claim_blob": "809fcc26a5cc6bd61f3d07544d1a10e3a155bf71",
+      "predecessor_invocation_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-WORKSHOP-INVOCATION-001",
+      "predecessor_lane_manifest_blob": "3f1c4a9b0ad0dd96237d6b3da42dbd61a3744f1f",
+      "predecessor_guard_receipt_blob": "e93fb2f6fbed820f7b7f1ceffd0b27213bd86eb2",
+      "predecessor_debt_identity": "sha256:b42da029e9d0daccb6a486150e420cde5510c023ffe9b6bcd73a3b5ad4a399d5",
+      "effect": "FUTURE_EFFECT_EXCLUSION_ONLY",
+      "historical_disposition_effect": "NONE",
+      "authority_effect": "NONE",
+      "history_rewrite_effect": "NONE"
+    }
+  },
+  "cells": {
+    "A": {
+      "observed_predecessor_head": "41316921b211c1daf75c9b71b8147e0eb67d372d",
+      "fence_registry": ["VALID"],
+      "prose_retired": false,
+      "attempt": {
+        "kind": "PREDECESSOR",
+        "instance_id": "LANE_B_LEGACY_INSTANCE_001",
+        "claim_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-LANE_B-CLAIM-001",
+        "claim_status": "ACTIVE",
+        "occupant_id": "WORKSHOP",
+        "invocation_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-WORKSHOP-INVOCATION-001",
+        "target_lineage": "SUCCESSOR_TEST_LINEAGE",
+        "consequence_envelope_id": "SUCCESSOR-CONSEQUENCE-001",
+        "semantic_surfaces": ["SUCCESSOR_FRESH_SURFACE"],
+        "artifact_scopes": ["docs/candidates/successor_synthetic"],
+        "predecessor_fence_ref": null,
+        "predecessor_debt_ref": null,
+        "authority_origin": "NONE",
+        "fresh_basis": false,
+        "fresh_coordination": false
+      }
+    },
+    "B": {
+      "observed_predecessor_head": "41316921b211c1daf75c9b71b8147e0eb67d372d",
+      "fence_registry": ["VALID"],
+      "prose_retired": false,
+      "attempt": {
+        "kind": "SUCCESSOR",
+        "instance_id": "LANE_B_SUCCESSOR_INSTANCE_001",
+        "claim_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-LANE_B-SUCCESSOR-CLAIM-001",
+        "claim_status": "ACTIVE",
+        "occupant_id": "WORKSHOP_SUCCESSOR",
+        "invocation_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-WORKSHOP-INVOCATION-002",
+        "target_lineage": "SUCCESSOR_TEST_LINEAGE",
+        "consequence_envelope_id": "SUCCESSOR-CONSEQUENCE-001",
+        "semantic_surfaces": ["SUCCESSOR_FRESH_SURFACE"],
+        "artifact_scopes": ["docs/candidates/successor_synthetic"],
+        "predecessor_fence_ref": "sha256:2cced34cedccb4d763031fdfe3b271a8146473f9995b437fb9f0b894f0fabb86",
+        "predecessor_debt_ref": "sha256:b42da029e9d0daccb6a486150e420cde5510c023ffe9b6bcd73a3b5ad4a399d5",
+        "authority_origin": "FRESH",
+        "fresh_basis": true,
+        "fresh_coordination": true
+      }
+    },
+    "C": {
+      "observed_predecessor_head": "41316921b211c1daf75c9b71b8147e0eb67d372d",
+      "fence_registry": ["VALID"],
+      "prose_retired": false,
+      "attempt": {
+        "kind": "SUCCESSOR",
+        "instance_id": "LANE_B_SUCCESSOR_INSTANCE_001",
+        "claim_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-LANE_B-CLAIM-001",
+        "claim_status": "ACTIVE",
+        "occupant_id": "WORKSHOP_SUCCESSOR",
+        "invocation_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-WORKSHOP-INVOCATION-002",
+        "target_lineage": "SUCCESSOR_TEST_LINEAGE",
+        "consequence_envelope_id": "SUCCESSOR-CONSEQUENCE-001",
+        "semantic_surfaces": ["SUCCESSOR_FRESH_SURFACE"],
+        "artifact_scopes": ["docs/candidates/successor_synthetic"],
+        "predecessor_fence_ref": "sha256:2cced34cedccb4d763031fdfe3b271a8146473f9995b437fb9f0b894f0fabb86",
+        "predecessor_debt_ref": "sha256:b42da029e9d0daccb6a486150e420cde5510c023ffe9b6bcd73a3b5ad4a399d5",
+        "authority_origin": "FRESH",
+        "fresh_basis": true,
+        "fresh_coordination": true
+      }
+    },
+    "D": {
+      "observed_predecessor_head": "41316921b211c1daf75c9b71b8147e0eb67d372d",
+      "fence_registry": ["VALID"],
+      "prose_retired": false,
+      "attempt": {
+        "kind": "SUCCESSOR",
+        "instance_id": "LANE_B_SUCCESSOR_INSTANCE_001",
+        "claim_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-LANE_B-SUCCESSOR-CLAIM-001",
+        "claim_status": "ACTIVE",
+        "occupant_id": "WORKSHOP_SUCCESSOR",
+        "invocation_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-WORKSHOP-INVOCATION-001",
+        "target_lineage": "SUCCESSOR_TEST_LINEAGE",
+        "consequence_envelope_id": "SUCCESSOR-CONSEQUENCE-001",
+        "semantic_surfaces": ["SUCCESSOR_FRESH_SURFACE"],
+        "artifact_scopes": ["docs/candidates/successor_synthetic"],
+        "predecessor_fence_ref": "sha256:2cced34cedccb4d763031fdfe3b271a8146473f9995b437fb9f0b894f0fabb86",
+        "predecessor_debt_ref": "sha256:b42da029e9d0daccb6a486150e420cde5510c023ffe9b6bcd73a3b5ad4a399d5",
+        "authority_origin": "FRESH",
+        "fresh_basis": true,
+        "fresh_coordination": true
+      }
+    },
+    "E": {
+      "observed_predecessor_head": "41316921b211c1daf75c9b71b8147e0eb67d372d",
+      "fence_registry": ["VALID"],
+      "prose_retired": false,
+      "attempt": {
+        "kind": "SUCCESSOR",
+        "instance_id": "LANE_B_SUCCESSOR_INSTANCE_001",
+        "claim_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-LANE_B-SUCCESSOR-CLAIM-001",
+        "claim_status": "ACTIVE",
+        "occupant_id": "WORKSHOP_SUCCESSOR",
+        "invocation_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-WORKSHOP-INVOCATION-002",
+        "target_lineage": "SUCCESSOR_TEST_LINEAGE",
+        "consequence_envelope_id": "SUCCESSOR-CONSEQUENCE-001",
+        "semantic_surfaces": ["SUCCESSOR_FRESH_SURFACE"],
+        "artifact_scopes": ["docs/candidates/successor_synthetic"],
+        "predecessor_fence_ref": "sha256:2cced34cedccb4d763031fdfe3b271a8146473f9995b437fb9f0b894f0fabb86",
+        "predecessor_debt_ref": "sha256:b42da029e9d0daccb6a486150e420cde5510c023ffe9b6bcd73a3b5ad4a399d5",
+        "authority_origin": "PREDECESSOR",
+        "fresh_basis": true,
+        "fresh_coordination": true
+      }
+    },
+    "F": {
+      "observed_predecessor_head": "41316921b211c1daf75c9b71b8147e0eb67d372d",
+      "fence_registry": ["VALID"],
+      "prose_retired": false,
+      "attempt": {
+        "kind": "SUCCESSOR",
+        "instance_id": "LANE_B_SUCCESSOR_INSTANCE_001",
+        "claim_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-LANE_B-SUCCESSOR-CLAIM-001",
+        "claim_status": "ACTIVE",
+        "occupant_id": "WORKSHOP_SUCCESSOR",
+        "invocation_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-WORKSHOP-INVOCATION-002",
+        "target_lineage": "SUCCESSOR_TEST_LINEAGE",
+        "consequence_envelope_id": "SUCCESSOR-CONSEQUENCE-001",
+        "semantic_surfaces": ["SUCCESSOR_FRESH_SURFACE"],
+        "artifact_scopes": ["docs/candidates/successor_synthetic"],
+        "predecessor_fence_ref": "sha256:2cced34cedccb4d763031fdfe3b271a8146473f9995b437fb9f0b894f0fabb86",
+        "predecessor_debt_ref": null,
+        "authority_origin": "FRESH",
+        "fresh_basis": true,
+        "fresh_coordination": true
+      }
+    },
+    "G": {
+      "observed_predecessor_head": "41316921b211c1daf75c9b71b8147e0eb67d372d",
+      "fence_registry": [],
+      "prose_retired": true,
+      "attempt": {
+        "kind": "PREDECESSOR",
+        "instance_id": "LANE_B_LEGACY_INSTANCE_001",
+        "claim_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-LANE_B-CLAIM-001",
+        "claim_status": "ACTIVE",
+        "occupant_id": "WORKSHOP",
+        "invocation_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-WORKSHOP-INVOCATION-001",
+        "target_lineage": "SUCCESSOR_TEST_LINEAGE",
+        "consequence_envelope_id": "SUCCESSOR-CONSEQUENCE-001",
+        "semantic_surfaces": ["SUCCESSOR_FRESH_SURFACE"],
+        "artifact_scopes": ["docs/candidates/successor_synthetic"],
+        "predecessor_fence_ref": null,
+        "predecessor_debt_ref": null,
+        "authority_origin": "NONE",
+        "fresh_basis": false,
+        "fresh_coordination": false
+      }
+    },
+    "H": {
+      "observed_predecessor_head": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "fence_registry": ["VALID"],
+      "prose_retired": false,
+      "attempt": {
+        "kind": "SUCCESSOR",
+        "instance_id": "LANE_B_SUCCESSOR_INSTANCE_001",
+        "claim_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-LANE_B-SUCCESSOR-CLAIM-001",
+        "claim_status": "ACTIVE",
+        "occupant_id": "WORKSHOP_SUCCESSOR",
+        "invocation_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-WORKSHOP-INVOCATION-002",
+        "target_lineage": "SUCCESSOR_TEST_LINEAGE",
+        "consequence_envelope_id": "SUCCESSOR-CONSEQUENCE-001",
+        "semantic_surfaces": ["SUCCESSOR_FRESH_SURFACE"],
+        "artifact_scopes": ["docs/candidates/successor_synthetic"],
+        "predecessor_fence_ref": "sha256:2cced34cedccb4d763031fdfe3b271a8146473f9995b437fb9f0b894f0fabb86",
+        "predecessor_debt_ref": "sha256:b42da029e9d0daccb6a486150e420cde5510c023ffe9b6bcd73a3b5ad4a399d5",
+        "authority_origin": "FRESH",
+        "fresh_basis": true,
+        "fresh_coordination": true
+      }
+    },
+    "J": {
+      "observed_predecessor_head": "41316921b211c1daf75c9b71b8147e0eb67d372d",
+      "fence_registry": ["VALID"],
+      "prose_retired": false,
+      "attempt": {
+        "kind": "SUCCESSOR",
+        "instance_id": "LANE_B_SUCCESSOR_INSTANCE_001",
+        "claim_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-LANE_B-SUCCESSOR-CLAIM-001",
+        "claim_status": "ACTIVE",
+        "occupant_id": "WORKSHOP_SUCCESSOR",
+        "invocation_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-WORKSHOP-INVOCATION-002",
+        "target_lineage": "SEAT_ENGAGEMENT_HANDSHAKE_001",
+        "consequence_envelope_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-SYSTEM_WRITE",
+        "semantic_surfaces": ["SEAT_ENGAGEMENT_STATE_MACHINE"],
+        "artifact_scopes": ["docs/candidates/seat_engagement_handshake_v0"],
+        "predecessor_fence_ref": "sha256:2cced34cedccb4d763031fdfe3b271a8146473f9995b437fb9f0b894f0fabb86",
+        "predecessor_debt_ref": "sha256:b42da029e9d0daccb6a486150e420cde5510c023ffe9b6bcd73a3b5ad4a399d5",
+        "authority_origin": "FRESH",
+        "fresh_basis": true,
+        "fresh_coordination": true
+      }
+    },
+    "J_NO_FENCE": {
+      "observed_predecessor_head": "41316921b211c1daf75c9b71b8147e0eb67d372d",
+      "fence_registry": [],
+      "prose_retired": false,
+      "attempt": {
+        "kind": "SUCCESSOR",
+        "instance_id": "LANE_B_SUCCESSOR_INSTANCE_001",
+        "claim_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-LANE_B-SUCCESSOR-CLAIM-001",
+        "claim_status": "ACTIVE",
+        "occupant_id": "WORKSHOP_SUCCESSOR",
+        "invocation_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-WORKSHOP-INVOCATION-002",
+        "target_lineage": "SEAT_ENGAGEMENT_HANDSHAKE_001",
+        "consequence_envelope_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-SYSTEM_WRITE",
+        "semantic_surfaces": ["SEAT_ENGAGEMENT_STATE_MACHINE"],
+        "artifact_scopes": ["docs/candidates/seat_engagement_handshake_v0"],
+        "predecessor_fence_ref": "sha256:2cced34cedccb4d763031fdfe3b271a8146473f9995b437fb9f0b894f0fabb86",
+        "predecessor_debt_ref": "sha256:b42da029e9d0daccb6a486150e420cde5510c023ffe9b6bcd73a3b5ad4a399d5",
+        "authority_origin": "FRESH",
+        "fresh_basis": true,
+        "fresh_coordination": true
+      }
+    }
+  }
+}
