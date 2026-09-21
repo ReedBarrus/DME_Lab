@@ -84,8 +84,29 @@ OBSERVATION GROUNDING
 ```
 
 This v0 relation establishes only that an observation claim has an explicitly
-represented source relation. It does not establish that the source proves the
-claimed object identity.
+represented source relation.
+
+Q3 adds a separate typed source carrier. The basis still carries only exact
+source references; source carrier bytes live outside the observation basis and
+are independently content-addressed.
+
+```text
+SOURCE REPRESENTED
+!=
+SOURCE CORRESPONDS TO CLAIMED OBJECT
+
+SOURCE CORRESPONDS TO OBJECT
+!=
+SOURCE ESTABLISHES CLAIMED IDENTITY
+
+SOURCE / OBJECT / IDENTITY CORRESPONDENCE
+!=
+SOURCE TRUTH
+```
+
+The candidate compares the observation row against the exact represented source
+carrier on `source_ref`, `object_id`, and opaque `identity`. It does not
+interpret the identity scheme or adjudicate source truth/authenticity.
 
 ## Cells
 
@@ -201,9 +222,32 @@ while basis source_refs = [source://B].
 Expected: reject OBSERVED_OBJECT_SOURCE_NOT_REPRESENTED.
 ```
 
-Q3 -- source-to-object identity correspondence is deliberately not tested here.
-A matching `source_ref` does not yet prove that the source establishes the
-claimed `identity`. That remains a separate future pressure surface.
+Q3A -- source/object mismatch
+Exact represented source carrier says:
+object_id = GARY_FROM_ACCOUNTING
+Observation says:
+object_id = BIGFOOT
+while both use the same exact source carrier ref.
+Expected: reject OBSERVED_OBJECT_SOURCE_OBJECT_MISMATCH.
+
+Q3B -- source/identity mismatch
+Exact represented source carrier says:
+object_id = BIGFOOT
+identity = opaque:IDENTITY-B
+Observation says:
+object_id = BIGFOOT
+identity = opaque:IDENTITY-A
+Expected: reject OBSERVED_OBJECT_SOURCE_IDENTITY_MISMATCH.
+
+Q3C -- exact correspondence
+Exact represented source carrier and observation agree on:
+source ref
+object_id
+identity
+Expected: admissible as source-corresponding.
+
+Identity syntax remains opaque. Q3 does not require SHA-256 and does not qualify
+the meaning, trustworthiness, or authenticity of any identity scheme.
 
 A separate focused regression mutates the contents of an otherwise matching
 observation basis while retaining the old `observation_basis_ref`. Expected:
