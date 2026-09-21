@@ -156,7 +156,10 @@ AUTHORITY ESTABLISHED
 ```
 
 A fresh occupant or invocation must not silently inherit prior invocation-local
-work claim, standing, authority references, **or current observation basis**.
+work claim, standing, authority references, **or current observation content**.
+
+Changing observer metadata, basis ID, or content hash is not evidence that the
+new invocation observed the predecessor's payload.
 
 ## Cross-object correspondence
 
@@ -244,7 +247,24 @@ ABSENT
 OLD OBSERVATION BASIS
 !=
 CURRENT INVOCATION OBSERVATION
+
+FRESH BASIS IDENTITY
+!=
+FRESH OBSERVATION
+
+REBASE OBSERVER METADATA
+!=
+REOBSERVE WORLD
 ```
+
+Rotation constructs a fresh current basis carrier. By default its
+`observed_objects[]`, `explicit_missing_objects[]`, and `source_refs[]` are
+empty. Observation or missingness may be re-established only through explicitly
+supplied fresh inputs for the new invocation.
+
+The predecessor basis remains separately recoverable by exact identity, but its
+payload is not current observation. A typed historical-consultation relation is
+still future work and is not manufactured by this repair.
 
 The basis is immutable input to the bounded evaluator; later world changes do
 not rewrite it.
@@ -271,8 +291,9 @@ A green pressure may establish only:
 > Under the frozen synthetic pressure, the candidate grammar can represent
 > roles, seats, occupants, invocations, work-claim references, authority
 > references, and observation bases while enforcing the tested cross-object
-> current-identity correspondence and avoiding the tested identity/authority/
-> missingness collapses.
+> current-identity correspondence, work-claim correspondence, and fresh-
+> observation payload noninheritance while avoiding the tested identity/
+> authority/missingness collapses.
 
 It does not establish:
 
