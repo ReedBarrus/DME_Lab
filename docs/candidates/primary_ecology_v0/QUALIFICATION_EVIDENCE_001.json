@@ -48,9 +48,26 @@
     "L": {
       "relation": "ROLE_LABEL_AND_AUTHORITY_REF_DISTINCT_FROM_AUTHORITY_STANDING",
       "result": "PASS"
+    },
+    "M1": {
+      "relation": "CURRENT_INVOCATION_MUST_CORRESPOND_TO_CURRENT_OBSERVATION_BASIS",
+      "result": "PASS"
+    },
+    "M2": {
+      "relation": "CURRENT_OCCUPANT_MUST_CORRESPOND_TO_CURRENT_OBSERVATION_BASIS",
+      "result": "PASS"
+    },
+    "M3": {
+      "relation": "CURRENT_SEAT_MUST_CORRESPOND_TO_CURRENT_OBSERVATION_BASIS",
+      "result": "PASS"
+    },
+    "M4": {
+      "relation": "BINDING_ROLE_MUST_CORRESPOND_TO_SEAT_ROLE",
+      "result": "PASS"
     }
   },
   "core_relations": {
+    "cross_object_identity_correspondence": "PASS",
     "current_world_ne_observation_basis": "PASS",
     "invocation_ne_work_claim": "PASS",
     "occupant_ne_invocation": "PASS",
@@ -61,6 +78,7 @@
   "durable_ecology_installed": false,
   "execution_effect": "NONE",
   "function_needs_seat": "NOT_TESTED",
+  "historical_basis_reuse": "EXPLICIT_RELATION_NOT_YET_MODELED",
   "integration_effect": "NONE",
   "legacy_seat_migration": "NOT_TESTED",
   "object_id": "PRIMARY_ECOLOGY_GRAMMAR_001-RESULT",
