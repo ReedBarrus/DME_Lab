@@ -96,12 +96,21 @@
     "P4": {
       "relation": "HISTORICAL_BASIS_REFERENCE_DISTINCT_FROM_CURRENT_OBSERVATION",
       "result": "PASS"
+    },
+    "Q1": {
+      "relation": "OBSERVED_OBJECT_REQUIRES_REPRESENTED_SOURCE_RELATION",
+      "result": "PASS"
+    },
+    "Q2": {
+      "relation": "OBSERVED_OBJECT_SOURCE_MUST_MATCH_EXPLICIT_BASIS_SOURCE_REF",
+      "result": "PASS"
     }
   },
   "core_relations": {
     "cross_object_identity_correspondence": "PASS",
     "current_world_ne_observation_basis": "PASS",
     "fresh_observation_payload_noninheritance": "PASS",
+    "fresh_observation_source_relation": "PASS",
     "invocation_ne_work_claim": "PASS",
     "occupant_ne_invocation": "PASS",
     "role_ne_seat": "PASS",
@@ -117,6 +126,7 @@
   "legacy_seat_migration": "NOT_TESTED",
   "object_id": "PRIMARY_ECOLOGY_GRAMMAR_001-RESULT",
   "object_type": "PRIMARY_ECOLOGY_GRAMMAR_PRESSURE_RESULT",
+  "observation_source_identity_correspondence": "NOT_TESTED",
   "occupant_binding_effect": "NONE",
   "representation_succession": "NOT_TESTED",
   "role_vocabulary_status": "PROVISIONAL_EXTENSIBLE",
