@@ -63,5 +63,19 @@
     "authority_refs": [],
     "authority_effect": "NONE",
     "execution_effect": "NONE"
-  }
+  },
+  "source_encounters": [
+    {
+      "schema": "source_encounter_v0",
+      "encounter_id": "ENCOUNTER_OBSERVED_OBJECT_INVOCATION_A",
+      "seat_id": "SCIENCE_TEST_01",
+      "occupant_id": "LABOIB_CANDIDATE",
+      "invocation_id": "INVOCATION_A",
+      "source_ref": "observation-source://SOURCE_OBSERVED_OBJECT@sha256:30e752e16f453e7f87bddc97bc3099f5e818039e0d777395457fdd2662b30cdd",
+      "encounter_kind": "PRESENTED_TO_INVOCATION",
+      "basis_ref": "fixture://PRIMARY_ECOLOGY_GRAMMAR_001/BASIS_A",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    }
+  ]
 }
