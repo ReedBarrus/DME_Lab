@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/observation_basis_v0.schema.json",
+  "title": "Observation Basis v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "basis_id",
+    "observer_seat_id",
+    "observer_occupant_id",
+    "observer_invocation_id",
+    "basis_ref",
+    "observed_objects",
+    "explicit_missing_objects",
+    "source_refs",
+    "authority_effect",
+    "execution_effect"
+  ],
+  "properties": {
+    "schema": {
+      "const": "observation_basis_v0"
+    },
+    "basis_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observer_seat_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observer_occupant_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observer_invocation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "basis_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observed_objects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "object_id",
+          "identity",
+          "source_ref"
+        ],
+        "properties": {
+          "object_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "identity": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "explicit_missing_objects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "object_id",
+          "reason"
+        ],
+        "properties": {
+          "object_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "source_refs": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "authority_effect": {
+      "const": "NONE"
+    },
+    "execution_effect": {
+      "const": "NONE"
+    }
+  }
+}
