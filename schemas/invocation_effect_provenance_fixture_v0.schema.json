@@ -25,7 +25,10 @@
     "candidate_mode",
     "candidate_observation_override",
     "expected_output_payload",
-    "object_refs"
+    "object_refs",
+    "branch_id",
+    "git_author",
+    "authority_scope"
   ],
   "properties": {
     "cell_id": {
@@ -163,6 +166,37 @@
         "minLength": 1
       },
       "uniqueItems": true
+    },
+    "branch_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "git_author": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "invocation_id",
+        "claim_id",
+        "work_unit_id"
+      ],
+      "properties": {
+        "invocation_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claim_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "work_unit_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
     }
   }
 }
