@@ -1,0 +1,56 @@
+name: QUIET_PEER_COORDINATION_REPRESENTATION_001
+
+on:
+  push:
+    branches:
+      - quiet-peer-coordination-representation-v1
+    paths:
+      - "schemas/peer_state_observation_v1.schema.json"
+      - "schemas/two_lane_coordination_cursor_v1.schema.json"
+      - "fixtures/quiet_peer_coordination_v1/**"
+      - "docs/candidates/quiet_peer_coordination_v1/**"
+      - "tools/two_lane_coordination_v1.py"
+      - "tests/runtime/test_quiet_peer_coordination_v1.py"
+      - ".github/workflows/quiet-peer-coordination-representation-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout isolated repair branch
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile
+        run: |
+          python -m py_compile \
+            tools/two_lane_coordination_v0.py \
+            tools/two_lane_coordination_v1.py \
+            tests/runtime/test_quiet_peer_coordination_v1.py
+
+      - name: Existing v0 coordination regression
+        run: python -m unittest tests.runtime.test_two_lane_coordination_v0 -v
+
+      - name: Execute A-M quiet-peer pressure
+        run: python -m unittest tests.runtime.test_quiet_peer_coordination_v1 -v
+
+      - name: Emit bounded pressure result
+        run: |
+          python -m tools.two_lane_coordination_v1 \
+            --output quiet_peer_coordination_result.json
+
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quiet-peer-coordination-representation-001-result
+          path: quiet_peer_coordination_result.json
+          if-no-files-found: warn

@@ -1,0 +1,66 @@
+name: LANE_B_SUCCESSOR_ENGAGEMENT_001_REPRESSURE_001
+
+on:
+  push:
+    branches:
+      - lane-b-successor-engagement-repressure-v1
+      - lane-b-successor-engagement-repressure-repair-v1
+    paths:
+      - "tools/lane_b_successor_engagement_repressure_v1.py"
+      - "tests/runtime/test_lane_b_successor_engagement_repressure_v1.py"
+      - "docs/candidates/lane_b_successor_engagement_repressure_v1/**"
+      - ".github/workflows/lane-b-successor-engagement-repressure-001.yml"
+      - "tools/lane_b_successor_engagement_v0.py"
+      - "schemas/lane_engagement_binding_v0.schema.json"
+      - "tools/two_lane_coordination_v1.py"
+      - "schemas/peer_state_observation_v1.schema.json"
+      - "schemas/two_lane_coordination_cursor_v1.schema.json"
+      - "fixtures/quiet_peer_coordination_v1/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  repressure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout isolated composition branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile exact source layers and composition harness
+        run: |
+          python -m py_compile \
+            tools/lane_b_successor_engagement_v0.py \
+            tools/two_lane_coordination_v1.py \
+            tools/lane_b_successor_engagement_repressure_v1.py \
+            tests/runtime/test_lane_b_successor_engagement_repressure_v1.py
+
+      - name: Original engagement source regression
+        run: python -m unittest tests.runtime.test_lane_b_successor_engagement_v0 -v
+
+      - name: Qualified quiet-peer v1 regression
+        run: python -m unittest tests.runtime.test_quiet_peer_coordination_v1 -v
+
+      - name: Execute engagement composition repressure
+        run: python -m unittest tests.runtime.test_lane_b_successor_engagement_repressure_v1 -v
+
+      - name: Emit bounded repressure result
+        run: |
+          python -m tools.lane_b_successor_engagement_repressure_v1 \
+            --output successor_engagement_repressure_result.json
+
+      - name: Upload repressure result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lane-b-successor-engagement-repressure-001-result
+          path: successor_engagement_repressure_result.json
+          if-no-files-found: warn
