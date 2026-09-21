@@ -195,6 +195,8 @@ def validate_correspondence(
         raise EcologyError("BINDING_SEAT_OCCUPANT_MISMATCH")
     if binding["invocation_id"] != seat["invocation_id"]:
         raise EcologyError("BINDING_SEAT_INVOCATION_MISMATCH")
+    if binding["work_claim_ref"] != seat["work_claim_ref"]:
+        raise EcologyError("SEAT_BINDING_WORK_CLAIM_MISMATCH")
     if basis["observer_seat_id"] != binding["seat_id"]:
         raise EcologyError("BINDING_BASIS_SEAT_MISMATCH")
     if basis["observer_occupant_id"] != binding["occupant_id"]:
@@ -537,6 +539,62 @@ def run_pressure() -> dict[str, Any]:
         "relation":"BINDING_ROLE_MUST_CORRESPOND_TO_SEAT_ROLE",
     }
 
+    # N0 -- mutual absence and exact same claim ref are both coherent.
+    n0_null = clean_bundle()
+    n0_same = clean_bundle()
+    n0_same["seat"]["work_claim_ref"] = "claim://SAME-CURRENT-CLAIM"
+    n0_same["binding"]["work_claim_ref"] = "claim://SAME-CURRENT-CLAIM"
+    try:
+        validate_correspondence(
+            role=n0_null["role"], seat=n0_null["seat"],
+            binding=n0_null["binding"], basis=n0_null["basis"],
+        )
+        validate_correspondence(
+            role=n0_same["role"], seat=n0_same["seat"],
+            binding=n0_same["binding"], basis=n0_same["basis"],
+        )
+        n0 = "PASS"
+    except EcologyError:
+        n0 = "FRACTURE"
+    cells["N0"] = {
+        "result":n0,
+        "relation":"CURRENT_WORK_CLAIM_MUTUAL_ABSENCE_OR_EXACT_IDENTITY_IS_COHERENT",
+    }
+
+    # N1 -- both surfaces claim work, but disagree on exact current claim identity.
+    n1 = clean_bundle()
+    n1["seat"]["work_claim_ref"] = "claim://A"
+    n1["binding"]["work_claim_ref"] = "claim://B"
+    cells["N1"] = {
+        "result":_correspondence_cell(
+            role=n1["role"], seat=n1["seat"], binding=n1["binding"], basis=n1["basis"],
+            expected_error="SEAT_BINDING_WORK_CLAIM_MISMATCH",
+        ),
+        "relation":"SEAT_AND_BINDING_MUST_AGREE_ON_CURRENT_WORK_CLAIM_IDENTITY",
+    }
+
+    # N2 -- seat says a current claim exists while binding says no claim.
+    n2 = clean_bundle()
+    n2["seat"]["work_claim_ref"] = "claim://A"
+    cells["N2"] = {
+        "result":_correspondence_cell(
+            role=n2["role"], seat=n2["seat"], binding=n2["binding"], basis=n2["basis"],
+            expected_error="SEAT_BINDING_WORK_CLAIM_MISMATCH",
+        ),
+        "relation":"SEAT_CLAIM_PRESENT_BINDING_CLAIM_ABSENT_IS_INVALID",
+    }
+
+    # N3 -- binding says a current claim exists while seat says no claim.
+    n3 = clean_bundle()
+    n3["binding"]["work_claim_ref"] = "claim://A"
+    cells["N3"] = {
+        "result":_correspondence_cell(
+            role=n3["role"], seat=n3["seat"], binding=n3["binding"], basis=n3["basis"],
+            expected_error="SEAT_BINDING_WORK_CLAIM_MISMATCH",
+        ),
+        "relation":"SEAT_CLAIM_ABSENT_BINDING_CLAIM_PRESENT_IS_INVALID",
+    }
+
     evaluation_key = _load(FIXTURE_DIR / "EVALUATION_KEY_v0.json")
     expected_cells = evaluation_key.get("cells", {}) if isinstance(evaluation_key, dict) else {}
     key_matches = all(expected_cells.get(cell_id) == cell["result"] for cell_id, cell in cells.items()) and set(expected_cells) == set(cells)
@@ -557,7 +615,8 @@ def run_pressure() -> dict[str, Any]:
             "invocation_ne_work_claim":cells["E"]["result"],
             "work_claim_ne_authority":cells["F"]["result"],
             "current_world_ne_observation_basis":cells["H"]["result"],
-            "cross_object_identity_correspondence":"PASS" if all(cells[x]["result"] == "PASS" for x in ("M1","M2","M3","M4")) else "FRACTURE",
+            "cross_object_identity_correspondence":"PASS" if all(cells[x]["result"] == "PASS" for x in ("M1","M2","M3","M4","N0","N1","N2","N3")) else "FRACTURE",
+            "seat_binding_work_claim_correspondence":"PASS" if all(cells[x]["result"] == "PASS" for x in ("N0","N1","N2","N3")) else "FRACTURE",
         },
         "role_vocabulary_status":"PROVISIONAL_EXTENSIBLE",
         "durable_ecology_installed":False,
