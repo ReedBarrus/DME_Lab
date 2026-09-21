@@ -298,14 +298,30 @@ def fresh_basis(
     occupant_id: str,
     invocation_id: str,
     basis_id: str,
+    observed_objects: list[dict[str, Any]] | None = None,
+    explicit_missing_objects: list[dict[str, Any]] | None = None,
+    source_refs: list[str] | None = None,
 ) -> dict[str, Any]:
+    """Construct a current basis for a fresh observer coordinate.
+
+    The predecessor basis is validated as lineage input only. Its epistemic
+    payload is never copied. Current observation content must be supplied
+    explicitly for the new invocation.
+    """
     validate_observation_basis(basis)
-    out = copy.deepcopy(dict(basis))
-    out["basis_id"] = basis_id
-    out["observer_seat_id"] = seat_id
-    out["observer_occupant_id"] = occupant_id
-    out["observer_invocation_id"] = invocation_id
-    out["basis_ref"] = f"fixture://PRIMARY_ECOLOGY_GRAMMAR_001/{basis_id}"
+    out = {
+        "schema":"observation_basis_v0",
+        "basis_id":basis_id,
+        "observer_seat_id":seat_id,
+        "observer_occupant_id":occupant_id,
+        "observer_invocation_id":invocation_id,
+        "basis_ref":f"fixture://PRIMARY_ECOLOGY_GRAMMAR_001/{basis_id}",
+        "observed_objects":copy.deepcopy(observed_objects or []),
+        "explicit_missing_objects":copy.deepcopy(explicit_missing_objects or []),
+        "source_refs":copy.deepcopy(source_refs or []),
+        "authority_effect":"NONE",
+        "execution_effect":"NONE",
+    }
     validate_observation_basis(out)
     return out
 
@@ -314,6 +330,10 @@ def rotate_invocation(
     binding: Mapping[str, Any],
     basis: Mapping[str, Any],
     new_invocation_id: str,
+    *,
+    observed_objects: list[dict[str, Any]] | None = None,
+    explicit_missing_objects: list[dict[str, Any]] | None = None,
+    source_refs: list[str] | None = None,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     validate_binding(binding)
     new_basis = fresh_basis(
@@ -322,6 +342,9 @@ def rotate_invocation(
         occupant_id=binding["occupant_id"],
         invocation_id=new_invocation_id,
         basis_id=f"{basis['basis_id']}:FOR:{new_invocation_id}",
+        observed_objects=observed_objects,
+        explicit_missing_objects=explicit_missing_objects,
+        source_refs=source_refs,
     )
     out = copy.deepcopy(dict(binding))
     out["binding_id"] = f"BINDING:{binding['seat_id']}:{binding['occupant_id']}:{new_invocation_id}"
@@ -339,21 +362,32 @@ def rotate_occupant(
     basis: Mapping[str, Any],
     new_occupant_id: str,
     new_invocation_id: str,
+    *,
+    observed_objects: list[dict[str, Any]] | None = None,
+    explicit_missing_objects: list[dict[str, Any]] | None = None,
+    source_refs: list[str] | None = None,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
-    new_binding, new_basis = rotate_invocation(binding, basis, new_invocation_id)
+    validate_binding(binding)
     new_basis = fresh_basis(
-        new_basis,
+        basis,
         seat_id=binding["seat_id"],
         occupant_id=new_occupant_id,
         invocation_id=new_invocation_id,
         basis_id=f"{basis['basis_id']}:FOR:{new_occupant_id}:{new_invocation_id}",
+        observed_objects=observed_objects,
+        explicit_missing_objects=explicit_missing_objects,
+        source_refs=source_refs,
     )
-    new_binding["occupant_id"] = new_occupant_id
-    new_binding["binding_id"] = f"BINDING:{binding['seat_id']}:{new_occupant_id}:{new_invocation_id}"
-    new_binding["observation_basis_ref"] = observation_basis_ref(new_basis)
-    validate_binding(new_binding)
-    return new_binding, new_basis
-
+    out = copy.deepcopy(dict(binding))
+    out["binding_id"] = f"BINDING:{binding['seat_id']}:{new_occupant_id}:{new_invocation_id}"
+    out["occupant_id"] = new_occupant_id
+    out["invocation_id"] = new_invocation_id
+    out["observation_basis_ref"] = observation_basis_ref(new_basis)
+    out["work_claim_ref"] = None
+    out["standing_refs"] = []
+    out["authority_refs"] = []
+    validate_binding(out)
+    return out, new_basis
 
 def authority_standing(binding: Mapping[str, Any]) -> str:
     validate_binding(binding)
@@ -595,6 +629,82 @@ def run_pressure() -> dict[str, Any]:
         "relation":"SEAT_CLAIM_ABSENT_BINDING_CLAIM_PRESENT_IS_INVALID",
     }
 
+    # P1 -- old observed content must not auto-propagate into a fresh invocation.
+    p_old = clean_basis()
+    p_old["observed_objects"] = [{
+        "object_id":"POISON_SENTINEL",
+        "identity":"sha256:" + ("b" * 64),
+        "source_ref":"fixture://OLD_OBSERVATION/POISON_SENTINEL",
+    }]
+    p_old["explicit_missing_objects"] = []
+    p_old["source_refs"] = ["fixture://OLD_OBSERVATION"]
+    validate_observation_basis(p_old)
+    p_binding = clean_binding()
+    p_new_binding, p_new_basis = rotate_invocation(
+        p_binding, p_old, "INVOCATION_P1"
+    )
+    cells["P1"] = {
+        "result":"PASS" if observation_status(p_new_basis, "POISON_SENTINEL") == "UNKNOWN" and not p_new_basis["observed_objects"] else "FRACTURE",
+        "relation":"OLD_OBSERVED_OBJECT_MUST_NOT_AUTO_PROPAGATE_TO_FRESH_INVOCATION",
+    }
+
+    # P2 -- prior missingness is also invocation-local and must not auto-propagate.
+    p2_old = clean_basis()
+    p2_old["observed_objects"] = []
+    p2_old["explicit_missing_objects"] = [{
+        "object_id":"MISSING_POISON_SENTINEL",
+        "reason":"MISSING_FOR_PRIOR_INVOCATION",
+    }]
+    p2_old["source_refs"] = ["fixture://OLD_MISSINGNESS"]
+    validate_observation_basis(p2_old)
+    _, p2_new_basis = rotate_invocation(
+        clean_binding(), p2_old, "INVOCATION_P2"
+    )
+    cells["P2"] = {
+        "result":"PASS" if observation_status(p2_new_basis, "MISSING_POISON_SENTINEL") == "UNKNOWN" and not p2_new_basis["explicit_missing_objects"] else "FRACTURE",
+        "relation":"OLD_MISSINGNESS_MUST_NOT_AUTO_PROPAGATE_TO_FRESH_INVOCATION",
+    }
+
+    # P3 -- the same fact may appear again only when supplied as fresh current
+    # observation input for the new invocation.
+    fresh_x = [{
+        "object_id":"POISON_SENTINEL",
+        "identity":"sha256:" + ("c" * 64),
+        "source_ref":"fixture://FRESH_OBSERVATION/INVOCATION_P3/POISON_SENTINEL",
+    }]
+    p3_binding, p3_basis = rotate_invocation(
+        clean_binding(),
+        p_old,
+        "INVOCATION_P3",
+        observed_objects=fresh_x,
+        explicit_missing_objects=[],
+        source_refs=["fixture://FRESH_OBSERVATION/INVOCATION_P3"],
+    )
+    p3_seat = occupied_seat(
+        seat=clean_empty_seat(p3_binding["seat_id"]),
+        occupant_id=p3_binding["occupant_id"],
+        invocation_id=p3_binding["invocation_id"],
+    )
+    validate_correspondence(
+        role=role, seat=p3_seat, binding=p3_binding, basis=p3_basis
+    )
+    cells["P3"] = {
+        "result":"PASS" if observation_status(p3_basis, "POISON_SENTINEL") == "OBSERVED" and p3_basis["source_refs"] == ["fixture://FRESH_OBSERVATION/INVOCATION_P3"] else "FRACTURE",
+        "relation":"FRESH_OBSERVATION_MAY_REESTABLISH_SAME_FACT_EXPLICITLY",
+    }
+
+    # P4 -- prior basis remains recoverable as a separate exact historical
+    # reference, but it is not the current invocation's observation basis.
+    p4_current_binding, p4_current_basis = rotate_invocation(
+        clean_binding(), p_old, "INVOCATION_P4"
+    )
+    historical_ref = observation_basis_ref(p_old)
+    current_ref = observation_basis_ref(p4_current_basis)
+    cells["P4"] = {
+        "result":"PASS" if historical_ref != current_ref and p4_current_binding["observation_basis_ref"] == current_ref and observation_status(p4_current_basis, "POISON_SENTINEL") == "UNKNOWN" else "FRACTURE",
+        "relation":"HISTORICAL_BASIS_REFERENCE_DISTINCT_FROM_CURRENT_OBSERVATION",
+    }
+
     evaluation_key = _load(FIXTURE_DIR / "EVALUATION_KEY_v0.json")
     expected_cells = evaluation_key.get("cells", {}) if isinstance(evaluation_key, dict) else {}
     key_matches = all(expected_cells.get(cell_id) == cell["result"] for cell_id, cell in cells.items()) and set(expected_cells) == set(cells)
@@ -617,6 +727,7 @@ def run_pressure() -> dict[str, Any]:
             "current_world_ne_observation_basis":cells["H"]["result"],
             "cross_object_identity_correspondence":"PASS" if all(cells[x]["result"] == "PASS" for x in ("M1","M2","M3","M4","N0","N1","N2","N3")) else "FRACTURE",
             "seat_binding_work_claim_correspondence":"PASS" if all(cells[x]["result"] == "PASS" for x in ("N0","N1","N2","N3")) else "FRACTURE",
+            "fresh_observation_payload_noninheritance":"PASS" if all(cells[x]["result"] == "PASS" for x in ("P1","P2","P3","P4")) else "FRACTURE",
         },
         "role_vocabulary_status":"PROVISIONAL_EXTENSIBLE",
         "durable_ecology_installed":False,
@@ -627,7 +738,7 @@ def run_pressure() -> dict[str, Any]:
         "integration_effect":"NONE",
         "representation_succession":"NOT_TESTED",
         "legacy_seat_migration":"NOT_TESTED",
-        "historical_basis_reuse":"EXPLICIT_RELATION_NOT_YET_MODELED",
+        "historical_basis_reuse":"SEPARATE_TYPED_RELATION_REQUIRED_NOT_MODELED",
         "function_needs_seat":"NOT_TESTED",
         "stop":True,
     }
