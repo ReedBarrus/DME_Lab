@@ -1,0 +1,92 @@
+{
+  "schema": "invocation_effect_provenance_001_pre_mutation_guard_receipt_v0",
+  "warrant_id": "INVOCATION_EFFECT_PROVENANCE_001",
+  "role_binding": "WORKSHOP",
+  "invocation_binding": "INVOCATION_EFFECT_PROVENANCE_001-CHATGPT-CURRENT-INVOCATION",
+  "local_branch": "invocation-effect-provenance-v0",
+  "local_head_at_guard": "1c69c64af41ac4fe8685ad056622440a57511761",
+  "local_claim_path": "docs/candidates/invocation_effect_provenance_v0/coordination/active_work_claim.json",
+  "local_claim_git_blob": "d9f949e649e5ac4a1a47f16d7020ca28e25ed3da",
+  "local_claim_digest": "sha256:be161821d938aa4c477ab8b0bc79ec3424e7e7038778a33119601ab3b714f0a5",
+  "peer_observations": [
+    {
+      "lane_id": "LANE_A",
+      "branch": "lane-a-cockpit-coordination-v0",
+      "head": "de667390d81c1219abfee063d2a3b1fe13d1ba71",
+      "manifest_status": "READY_UNCLAIMED",
+      "occupant_binding": null,
+      "current_claim_state": "ABSENT"
+    },
+    {
+      "lane_id": "LANE_B",
+      "branch": "lane-b-recovery-continuity-v0",
+      "head": "41316921b211c1daf75c9b71b8147e0eb67d372d",
+      "manifest_status": "ACTIVE",
+      "occupant_binding": "WARRANT:SEAT_ENGAGEMENT_HANDSHAKE_001:LANE_B:WORKSHOP:INVOCATION-001",
+      "current_claim_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-LANE_B-CLAIM-001",
+      "current_claim_git_blob": "809fcc26a5cc6bd61f3d07544d1a10e3a155bf71",
+      "current_claim_digest": "sha256:b0b65897afc10b6493abb4a6f37fc3b1c7f4947820fb058aa602895826a2bfad"
+    }
+  ],
+  "peer_cursor_path": "docs/candidates/invocation_effect_provenance_v0/coordination/peer_cursor.json",
+  "peer_cursor_git_blob": "52a95c34be6e24e97d990b7e3ac2c6f701791192",
+  "qualified_coordination_head": "ee178c23124cac68bd8b5a3bc75ce16a486845b9",
+  "qualified_guard_path": "tools/two_lane_coordination_v0.py",
+  "qualified_guard_git_blob": "be80b22c5f06f1e92e36eb80ad60c147698275a2",
+  "guard_result": {
+    "schema": "two_lane_pre_mutation_guard_v0",
+    "local_claim_id": "INVOCATION_EFFECT_PROVENANCE_001-WORKSHOP-CLAIM-001",
+    "coordination_posture": "NO_COORDINATION_BLOCK",
+    "stale_peers": [],
+    "peer_activity_advances": [],
+    "comparisons": [
+      {
+        "schema": "two_lane_claim_comparison_v0",
+        "local_claim_id": "INVOCATION_EFFECT_PROVENANCE_001-WORKSHOP-CLAIM-001",
+        "peer_claim_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-LANE_B-CLAIM-001",
+        "active_pair": true,
+        "semantic_overlap": [],
+        "artifact_overlap": [],
+        "path_overlap": [],
+        "same_consequence_trajectory": false,
+        "semantic_collision": false,
+        "provenance_collision": false,
+        "relation": "CLEAR",
+        "coordination_block": false,
+        "authority_effect": "NONE",
+        "execution_effect": "NONE"
+      }
+    ],
+    "coordination_clear": true,
+    "authorization_effect": "NONE",
+    "execution_effect": "NONE",
+    "integration_effect": "NONE"
+  },
+  "separate_system_write_basis": {
+    "source": "HUMAN_WARRANT",
+    "warrant_path": "docs/warrants/INVOCATION_EFFECT_PROVENANCE_001_EXECUTION_WARRANT_v0.md",
+    "warrant_git_blob": "6715a15f2f8f4d559b0222459e75f266dd53fc87",
+    "addressed_role": "WORKSHOP",
+    "current_invocation_explicitly_bound": true,
+    "permitted_surface": [
+      "create invocation-effect-provenance-v0 from c49f13450fe69691988810ca6cb8ccaca1f42231",
+      "docs/candidates/invocation_effect_provenance_v0/**",
+      "schemas/invocation_effect_provenance_*",
+      "tools/invocation_effect_provenance_v0.py",
+      "tests/runtime/test_invocation_effect_provenance_v0.py",
+      ".github/workflows/invocation-effect-provenance-001.yml",
+      "qualification evidence directly belonging to this pressure",
+      "coordination records for this new pressure only"
+    ],
+    "prohibited_effects": [
+      "live Lane A mutation",
+      "live Lane B mutation",
+      "retroactive Lane-B attribution",
+      "merge",
+      "deployment",
+      "external consequence",
+      "authority-policy activation"
+    ],
+    "effect": "EXTERNAL_TO_COORDINATION_GUARD"
+  }
+}
