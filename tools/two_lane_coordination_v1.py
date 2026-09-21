@@ -56,6 +56,13 @@ class PeerStateCoordinationError(RuntimeError):
     pass
 
 
+def _load_json(path: Path) -> dict[str, Any]:
+    value = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(value, dict):
+        raise PeerStateCoordinationError(f"{path} must contain an object")
+    return value
+
+
 def _string(value: Any, field: str) -> str:
     if not isinstance(value, str) or not value:
         raise PeerStateCoordinationError(f"{field} must be non-empty string")
