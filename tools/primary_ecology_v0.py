@@ -457,13 +457,48 @@ def validate_correspondence(
     )
 
 
-def observation_status(basis: Mapping[str, Any], object_id: str) -> str:
+def basis_claim_status(basis: Mapping[str, Any], object_id: str) -> str:
+    """Return only what the basis bytes themselves represent.
+
+    A row in observed_objects does not by itself establish observation or even
+    current presentation to the invocation; those standings require the wider
+    current correspondence/encounter membrane.
+    """
     validate_observation_basis(basis)
     if any(row["object_id"] == object_id for row in basis["observed_objects"]):
-        return "OBSERVED"
+        return "SOURCE_CLAIM_REPRESENTED"
     if any(row["object_id"] == object_id for row in basis["explicit_missing_objects"]):
         return "MISSING"
     return "UNKNOWN"
+
+
+def current_epistemic_status(
+    *,
+    role: Mapping[str, Any],
+    seat: Mapping[str, Any],
+    binding: Mapping[str, Any],
+    basis: Mapping[str, Any],
+    object_id: str,
+    source_carriers: list[Mapping[str, Any]] | None = None,
+    missingness_witnesses: list[Mapping[str, Any]] | None = None,
+    source_encounters: list[Mapping[str, Any]] | None = None,
+    missingness_witness_encounters: list[Mapping[str, Any]] | None = None,
+) -> str:
+    """Return only the standing earned by the fully validated current bundle."""
+    validate_correspondence(
+        role=role,
+        seat=seat,
+        binding=binding,
+        basis=basis,
+        source_carriers=source_carriers,
+        missingness_witnesses=missingness_witnesses,
+        source_encounters=source_encounters,
+        missingness_witness_encounters=missingness_witness_encounters,
+    )
+    raw = basis_claim_status(basis, object_id)
+    if raw == "SOURCE_CLAIM_REPRESENTED":
+        return "SOURCE_PRESENTED"
+    return raw
 
 
 def role_catalog() -> dict[str, Any]:
@@ -793,18 +828,18 @@ def run_pressure() -> dict[str, Any]:
     cells["G"] = {"result":g,"relation":"ROLE_DOES_NOT_MANUFACTURE_AUTHORITY"}
 
     cells["H"] = {
-        "result":"PASS" if observation_status(basis, "WORLD_OBJECT_NOT_IN_BASIS") == "UNKNOWN" else "FRACTURE",
+        "result":"PASS" if basis_claim_status(basis, "WORLD_OBJECT_NOT_IN_BASIS") == "UNKNOWN" else "FRACTURE",
         "relation":"CURRENT_WORLD_DISTINCT_FROM_OBSERVATION_BASIS",
     }
 
     cells["I"] = {
-        "result":"PASS" if observation_status(basis, "MISSING_OBJECT") == "MISSING" else "FRACTURE",
+        "result":"PASS" if basis_claim_status(basis, "MISSING_OBJECT") == "MISSING" else "FRACTURE",
         "relation":"MISSING_DISTINCT_FROM_ABSENT",
     }
 
-    before = observation_status(basis, "LATER_WORLD_OBJECT")
+    before = basis_claim_status(basis, "LATER_WORLD_OBJECT")
     later_world = {"objects":["LATER_WORLD_OBJECT"]}
-    after = observation_status(basis, "LATER_WORLD_OBJECT")
+    after = basis_claim_status(basis, "LATER_WORLD_OBJECT")
     cells["J"] = {
         "result":"PASS" if before == "UNKNOWN" and after == "UNKNOWN" and "LATER_WORLD_OBJECT" in later_world["objects"] else "FRACTURE",
         "relation":"DECISION_TIME_BASIS_DISTINCT_FROM_LATER_WORLD",
@@ -968,7 +1003,7 @@ def run_pressure() -> dict[str, Any]:
         p_binding, p_old, "INVOCATION_P1"
     )
     cells["P1"] = {
-        "result":"PASS" if observation_status(p_new_basis, "POISON_SENTINEL") == "UNKNOWN" and not p_new_basis["observed_objects"] else "FRACTURE",
+        "result":"PASS" if basis_claim_status(p_new_basis, "POISON_SENTINEL") == "UNKNOWN" and not p_new_basis["observed_objects"] else "FRACTURE",
         "relation":"OLD_OBSERVED_OBJECT_MUST_NOT_AUTO_PROPAGATE_TO_FRESH_INVOCATION",
     }
 
@@ -986,7 +1021,7 @@ def run_pressure() -> dict[str, Any]:
         clean_binding(), p2_old, "INVOCATION_P2"
     )
     cells["P2"] = {
-        "result":"PASS" if observation_status(p2_new_basis, "MISSING_POISON_SENTINEL") == "UNKNOWN" and not p2_new_basis["explicit_missing_objects"] else "FRACTURE",
+        "result":"PASS" if basis_claim_status(p2_new_basis, "MISSING_POISON_SENTINEL") == "UNKNOWN" and not p2_new_basis["explicit_missing_objects"] else "FRACTURE",
         "relation":"OLD_MISSINGNESS_MUST_NOT_AUTO_PROPAGATE_TO_FRESH_INVOCATION",
     }
 
@@ -1037,7 +1072,7 @@ def run_pressure() -> dict[str, Any]:
         source_encounters=[p3_encounter],
     )
     cells["P3"] = {
-        "result":"PASS" if observation_status(p3_basis, "POISON_SENTINEL") == "OBSERVED" and p3_basis["source_refs"] == [p3_source_ref] else "FRACTURE",
+        "result":"PASS" if basis_claim_status(p3_basis, "POISON_SENTINEL") == "SOURCE_CLAIM_REPRESENTED" and p3_basis["source_refs"] == [p3_source_ref] else "FRACTURE",
         "relation":"FRESH_OBSERVATION_MAY_REESTABLISH_SAME_FACT_EXPLICITLY",
     }
 
@@ -1049,7 +1084,7 @@ def run_pressure() -> dict[str, Any]:
     historical_ref = observation_basis_ref(p_old)
     current_ref = observation_basis_ref(p4_current_basis)
     cells["P4"] = {
-        "result":"PASS" if historical_ref != current_ref and p4_current_binding["observation_basis_ref"] == current_ref and observation_status(p4_current_basis, "POISON_SENTINEL") == "UNKNOWN" else "FRACTURE",
+        "result":"PASS" if historical_ref != current_ref and p4_current_binding["observation_basis_ref"] == current_ref and basis_claim_status(p4_current_basis, "POISON_SENTINEL") == "UNKNOWN" else "FRACTURE",
         "relation":"HISTORICAL_BASIS_REFERENCE_DISTINCT_FROM_CURRENT_OBSERVATION",
     }
 
@@ -1683,6 +1718,43 @@ def run_pressure() -> dict[str, Any]:
         "relation":"MISSINGNESS_WITNESS_ENCOUNTER_MUST_BELONG_TO_CURRENT_BASIS_COORDINATE",
     }
 
+    # Q7 / T1 -- a basis row alone earns only represented-source-claim standing.
+    t_bundle = clean_bundle()
+    t1_status = basis_claim_status(t_bundle["basis"], "OBSERVED_OBJECT")
+    cells["T1"] = {
+        "result":"PASS" if t1_status == "SOURCE_CLAIM_REPRESENTED" else "FRACTURE",
+        "relation":"BASIS_ROW_DOES_NOT_MANUFACTURE_OBSERVED_STANDING",
+    }
+
+    # T2 -- after the exact current encounter membrane survives, the strongest
+    # standing earned is SOURCE_PRESENTED, not OBSERVED.
+    try:
+        t2_status = current_epistemic_status(
+            role=t_bundle["role"],
+            seat=t_bundle["seat"],
+            binding=t_bundle["binding"],
+            basis=t_bundle["basis"],
+            object_id="OBSERVED_OBJECT",
+            source_carriers=t_bundle["sources"],
+            missingness_witnesses=t_bundle["missingness_witnesses"],
+            source_encounters=t_bundle["source_encounters"],
+            missingness_witness_encounters=t_bundle["missingness_witness_encounters"],
+        )
+        t2_result = "PASS" if t2_status == "SOURCE_PRESENTED" else "FRACTURE"
+    except EcologyError:
+        t2_result = "FRACTURE"
+    cells["T2"] = {
+        "result":t2_result,
+        "relation":"PRESENTED_TO_INVOCATION_EARNS_SOURCE_PRESENTED_NOT_OBSERVED",
+    }
+
+    # T3 -- the current apparatus must not emit OBSERVED standing for either a
+    # basis-only row or the fully validated presented-source chain.
+    cells["T3"] = {
+        "result":"PASS" if t1_status != "OBSERVED" and t2_status != "OBSERVED" else "FRACTURE",
+        "relation":"OBSERVED_STANDING_REQUIRES_STRONGER_FUTURE_MACHINERY",
+    }
+
     evaluation_key = _load(FIXTURE_DIR / "EVALUATION_KEY_v0.json")
     expected_cells = evaluation_key.get("cells", {}) if isinstance(evaluation_key, dict) else {}
     key_matches = all(expected_cells.get(cell_id) == cell["result"] for cell_id, cell in cells.items()) and set(expected_cells) == set(cells)
@@ -1711,6 +1783,7 @@ def run_pressure() -> dict[str, Any]:
             "explicit_missingness_grounding":"PASS" if all(cells[x]["result"] == "PASS" for x in ("Q4A","Q4B","Q4C","Q4D")) else "FRACTURE",
             "current_invocation_source_encounter":"PASS" if all(cells[x]["result"] == "PASS" for x in ("R1","R2","R3","R4","R5","R6","R7")) else "FRACTURE",
             "current_invocation_missingness_witness_encounter":"PASS" if all(cells[x]["result"] == "PASS" for x in ("S1","S2","S3","S4","S5","S6","S7")) else "FRACTURE",
+            "observed_status_semantic_ceiling":"PASS" if all(cells[x]["result"] == "PASS" for x in ("T1","T2","T3")) else "FRACTURE",
         },
         "role_vocabulary_status":"PROVISIONAL_EXTENSIBLE",
         "durable_ecology_installed":False,
@@ -1735,6 +1808,9 @@ def run_pressure() -> dict[str, Any]:
         "missingness_witness_encounter_correspondence":"TESTED_CURRENT_SEAT_OCCUPANT_INVOCATION_WITNESS_BASIS",
         "missingness_witness_encounter_truth":"NOT_TESTED",
         "missingness_reason_understanding":"NOT_CLAIMED",
+        "presented_source_standing":"SOURCE_PRESENTED",
+        "direct_observation_standing":"NOT_ESTABLISHED",
+        "source_inspection_or_consumption":"NOT_ESTABLISHED",
         "function_needs_seat":"NOT_TESTED",
         "stop":True,
     }
