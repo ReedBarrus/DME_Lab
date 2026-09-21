@@ -10,6 +10,11 @@ from pathlib import Path
 import re
 from typing import Any
 
+from tools.live_predecessor_fence_v0 import (
+    LiveFenceError,
+    evaluate_peer_current_operability,
+)
+
 CLAIM_SCHEMA = "two_lane_work_claim_v0"
 CURSOR_SCHEMA = "two_lane_coordination_cursor_v0"
 HEX40 = re.compile(r"^[0-9a-f]{40}$")
@@ -278,13 +283,77 @@ def pre_mutation_guard(
             "stale_peers": stale,
             "comparisons": [],
             "peer_activity_advances": activity_advances,
+            "fence_consultations": [],
             "coordination_clear": False,
             "authorization_effect": "NONE",
             "execution_effect": "NONE",
             "integration_effect": "NONE",
         }
 
-    comparisons = [compare_claims(local_claim, peers[k]) for k in sorted(peers)]
+    comparisons = []
+    fence_consultations = []
+    for lane_id in sorted(peers):
+        peer = peers[lane_id]
+        current = current_peer_heads[lane_id]
+        try:
+            fence_result = evaluate_peer_current_operability(
+                peer,
+                current["head"],
+                include_fence=True,
+            )
+        except LiveFenceError as exc:
+            raise CoordinationError(f"predecessor fence invalid: {exc}") from exc
+
+        if fence_result.get("applicable"):
+            consultation = {
+                "peer_claim_id": peer["claim_id"],
+                "peer_branch": peer["branch"],
+                "observed_peer_head": current["head"],
+                "decision": fence_result.get("decision"),
+                "reason": fence_result.get("reason"),
+                "predecessor_currently_operative": fence_result.get(
+                    "predecessor_currently_operative"
+                ),
+                "consulted_fence_identity": fence_result.get(
+                    "consulted_fence_identity"
+                ),
+                "live_fence_object_identity": fence_result.get(
+                    "live_fence_object_identity"
+                ),
+            }
+            fence_consultations.append(consultation)
+
+            if fence_result.get("decision") == "CONFLICT_STOP":
+                return {
+                    "schema": "two_lane_pre_mutation_guard_v0",
+                    "local_claim_id": local_claim["claim_id"],
+                    "coordination_posture": "CONFLICT_STOP",
+                    "stale_peers": [],
+                    "comparisons": [],
+                    "peer_activity_advances": activity_advances,
+                    "fence_consultations": fence_consultations,
+                    "coordination_clear": False,
+                    "authorization_effect": "NONE",
+                    "execution_effect": "NONE",
+                    "integration_effect": "NONE",
+                }
+
+            if fence_result.get("predecessor_currently_operative") is False:
+                comparison = compare_claims(local_claim, peer)
+                comparison["historical_active_pair"] = comparison["active_pair"]
+                comparison["peer_currently_operative"] = False
+                comparison["semantic_collision"] = False
+                comparison["provenance_collision"] = False
+                comparison["coordination_block"] = False
+                comparison["relation"] = "FENCED_PREDECESSOR_EXCLUDED"
+                comparison["consulted_fence_identity"] = fence_result.get(
+                    "consulted_fence_identity"
+                )
+                comparisons.append(comparison)
+                continue
+
+        comparisons.append(compare_claims(local_claim, peer))
+
     blocked = [c for c in comparisons if c["coordination_block"]]
     return {
         "schema": "two_lane_pre_mutation_guard_v0",
@@ -295,6 +364,7 @@ def pre_mutation_guard(
         "stale_peers": [],
         "peer_activity_advances": activity_advances,
         "comparisons": comparisons,
+        "fence_consultations": fence_consultations,
         "coordination_clear": not blocked,
         "authorization_effect": "NONE",
         "execution_effect": "NONE",
