@@ -1,0 +1,32 @@
+name: LEGACY_LANE_SUCCESSION_FENCING_001
+
+on:
+  pull_request:
+    paths:
+      - "docs/candidates/legacy_lane_succession_fencing_v0/**"
+      - "tools/legacy_lane_succession_fencing_v0.py"
+      - "tests/runtime/test_legacy_lane_succession_fencing_v0.py"
+      - ".github/workflows/legacy-lane-succession-fencing-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile
+        run: python -m py_compile tools/legacy_lane_succession_fencing_v0.py tests/runtime/test_legacy_lane_succession_fencing_v0.py
+      - name: Execute frozen pressure
+        run: python -m unittest tests.runtime.test_legacy_lane_succession_fencing_v0 -v
+      - name: Emit deterministic qualification evidence
+        run: |
+          python tools/legacy_lane_succession_fencing_v0.py docs/candidates/legacy_lane_succession_fencing_v0/fixtures/RAW_FIXTURES_v0.json | tee /tmp/LEGACY_LANE_SUCCESSION_FENCING_001.json
+          echo "LIVE_LANE_MUTATION=NONE"
+          echo "SUCCESSOR_ACTIVATION=NONE"
