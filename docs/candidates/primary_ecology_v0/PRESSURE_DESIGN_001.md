@@ -356,6 +356,69 @@ Expected: reject SOURCE_ENCOUNTER_BASIS_MISMATCH.
 The encounter carrier is not an event-runtime claim and does not qualify whether
 the represented encounter itself is truthful.
 
+Q6 pressures the symmetric MISSING-side encounter relation without generalizing
+the two encounter carriers into one abstraction.
+
+A typed `missingness_witness_encounter_v0` represents only that one exact
+missingness witness was presented to one current seat / occupant / invocation at
+one basis coordinate.
+
+```text
+MISSINGNESS WITNESS SUPPLIED
+!=
+MISSINGNESS WITNESS ENCOUNTERED
+
+WITNESS ENCOUNTERED
+!=
+WITNESS TRUE
+
+WITNESS ENCOUNTERED
+!=
+OBJECT ABSENT
+
+WITNESS ENCOUNTERED
+!=
+UNIVERSAL UNAVAILABILITY
+
+WITNESS ENCOUNTERED
+!=
+INVOCATION UNDERSTOOD WHY RETRIEVAL FAILED
+```
+
+For every current missingness row, the encounter must correspond on:
+
+```text
+seat_id
+occupant_id
+invocation_id
+witness_ref
+basis_ref
+```
+
+S1 -- exact witness, no encounter
+Expected: reject CURRENT_MISSINGNESS_WITNESS_ENCOUNTER_NOT_SUPPLIED.
+
+S2 -- encounter belongs to wrong invocation
+Expected: reject MISSINGNESS_WITNESS_ENCOUNTER_INVOCATION_MISMATCH.
+
+S3 -- encounter points to wrong witness
+Expected: reject MISSINGNESS_WITNESS_ENCOUNTER_WITNESS_MISMATCH.
+
+S4 -- exact current witness encounter
+Expected: admissible as currently encountered missingness basis.
+
+S5 -- encounter belongs to wrong seat
+Expected: reject MISSINGNESS_WITNESS_ENCOUNTER_SEAT_MISMATCH.
+
+S6 -- encounter belongs to wrong occupant
+Expected: reject MISSINGNESS_WITNESS_ENCOUNTER_OCCUPANT_MISMATCH.
+
+S7 -- encounter belongs to wrong basis coordinate
+Expected: reject MISSINGNESS_WITNESS_ENCOUNTER_BASIS_MISMATCH.
+
+This pressure does not establish witness truth, object absence, universal
+unavailability, or comprehension of the failure reason.
+
 A separate focused regression mutates the contents of an otherwise matching
 observation basis while retaining the old `observation_basis_ref`. Expected:
 reject `BINDING_OBSERVATION_BASIS_REF_MISMATCH`.
