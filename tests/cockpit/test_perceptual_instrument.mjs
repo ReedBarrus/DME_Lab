@@ -146,6 +146,41 @@ test('control affordances require both configured control and exact coordinates'
   assert.deepEqual(actions.map((item)=>item.verb),['CHAT','COMPARE','ASSIGN']);
 });
 
+test('control affordances are prefill candidates, not admissibility claims', () => {
+  const state = snapshot();
+  state.state.current_selection = [{campaign_id:'C1',request_id:'R1'}];
+  state.state.assignment_history = [{
+    event_json:{
+      assignment_id:'A-DRAFT',
+      assignment_kind:'ASSIGNED',
+      campaign_id:'C1',
+      request_id:'R1',
+      seat_id:'MAYA',
+      preparation_kind:'DRAFT_PACKET',
+    },
+  }];
+
+  const actions = deriveContextualAffordances({
+    addresses:[{kind:'assignment',id:'A-DRAFT'}],
+    snapshot:state,
+    controlConfigured:true,
+  });
+
+  const control = actions.filter((item)=>['RELEASE','RING'].includes(item.verb));
+  assert.deepEqual(control, [
+    {
+      verb:'RELEASE',
+      effect:'CONTROL_PREFILL_ONLY',
+      admissibility:'UNVERIFIED_UNTIL_EXACT_PREVIEW',
+    },
+    {
+      verb:'RING',
+      effect:'CONTROL_PREFILL_ONLY',
+      admissibility:'UNVERIFIED_UNTIL_EXACT_PREVIEW',
+    },
+  ]);
+});
+
 test('campaign planning remains a local draft with zero consequence effects', () => {
   const draft = buildCampaignPlanDraft({
     addresses:[{kind:'campaign',id:'C1'}],

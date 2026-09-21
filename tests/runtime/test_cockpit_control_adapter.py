@@ -652,5 +652,26 @@ class CockpitControlAdapterPressure(unittest.TestCase):
         )
 
 
+    def test_c13_ring_preview_rejects_non_resolve_refs_assignment(self) -> None:
+        self.focus("COS-E1", "C13-F")
+        assignment = self.assign(
+            "COS-E1",
+            "C13-A",
+            preparation_kind="DRAFT_PACKET",
+        )
+        assignment_id = assignment["retained_objects"][0]["id"]
+
+        with self.assertRaises(CockpitControlError):
+            self.adapter.build_preview(
+                {
+                    "verb": "RING",
+                    "gesture_id": "C13-R",
+                    "campaign_id": self.campaign["campaign_id"],
+                    "assignment_id": assignment_id,
+                    "reason": "pressure perceptual affordance against exact preview",
+                }
+            )
+
+
 if __name__ == "__main__":
     unittest.main()
