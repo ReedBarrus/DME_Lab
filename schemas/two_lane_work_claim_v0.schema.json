@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "two_lane_work_claim_v0.schema.json",
+  "title": "Two Lane Work Claim v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "claim_id",
+    "lane_id",
+    "seat_id",
+    "occupant_id",
+    "invocation_id",
+    "branch",
+    "basis_head",
+    "target_lineage",
+    "campaign_id",
+    "pressure_id",
+    "addressed_role",
+    "binding_ref",
+    "consequence_envelope_id",
+    "semantic_surfaces",
+    "artifact_scopes",
+    "mutation_paths",
+    "status",
+    "authority_effect",
+    "execution_effect",
+    "integration_effect",
+    "priority_effect"
+  ],
+  "properties": {
+    "schema": {
+      "const": "two_lane_work_claim_v0"
+    },
+    "claim_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lane_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "seat_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occupant_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "invocation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "branch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "basis_head": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "target_lineage": {
+      "type": "string",
+      "minLength": 1
+    },
+    "campaign_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pressure_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "addressed_role": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "binding_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "consequence_envelope_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "semantic_surfaces": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "artifact_scopes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "mutation_paths": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "status": {
+      "enum": [
+        "ACTIVE",
+        "RELEASED",
+        "COMPLETED",
+        "BLOCKED"
+      ]
+    },
+    "authority_effect": {
+      "const": "NONE"
+    },
+    "execution_effect": {
+      "const": "NONE"
+    },
+    "integration_effect": {
+      "const": "NONE"
+    },
+    "priority_effect": {
+      "const": "NONE"
+    }
+  }
+}
