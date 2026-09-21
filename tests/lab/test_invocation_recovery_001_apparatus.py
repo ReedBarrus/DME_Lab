@@ -4,6 +4,8 @@ import copy
 import inspect
 import json
 from pathlib import Path
+import shutil
+import subprocess
 import tempfile
 import unittest
 
@@ -386,6 +388,179 @@ class InvocationRecovery001ApparatusPressure(unittest.TestCase):
                 )
             with self.assertRaises(ir.AdministrationError):
                 store.batch_disposition()
+
+
+    def _isolated_common_root(self, root: Path, *, include_residue: bool, poison_residue: bool = False) -> Path:
+        canonical_rel = Path("docs/candidates/invocation_recovery_v0/apparatus/common")
+        residue_rel = Path("fixtures/invocation_recovery_v0/common")
+        (root / canonical_rel).mkdir(parents=True, exist_ok=True)
+        for source in (ROOT / canonical_rel).iterdir():
+            if source.is_file():
+                shutil.copy2(source, root / canonical_rel / source.name)
+        if include_residue:
+            (root / residue_rel).mkdir(parents=True, exist_ok=True)
+            for source in (ROOT / residue_rel).iterdir():
+                if source.is_file():
+                    target = root / residue_rel / source.name
+                    shutil.copy2(source, target)
+                    if poison_residue:
+                        target.write_bytes(b"NONCANONICAL-RESIDUE-POISON\n")
+        return root
+
+    def test_r1_manifest_references_only_manifest_referenced_family(self) -> None:
+        manifest = ir.load_json(PATHS["common_manifest"])
+        expected = {
+            "docs/candidates/invocation_recovery_v0/apparatus/common/RECOVERY_ROLE_HEADER_v0.txt",
+            "docs/candidates/invocation_recovery_v0/apparatus/common/TASK_BASIS_v0.txt",
+            "docs/candidates/invocation_recovery_v0/apparatus/common/RECOVERY_TASK_INSTRUCTION_v0.txt",
+            "docs/candidates/invocation_recovery_v0/apparatus/common/RECOVERY_RESPONSE_SCHEMA_v0.txt",
+        }
+        observed = {row["path"] for row in manifest["components"]}
+        self.assertEqual(observed, expected)
+        self.assertTrue(all(path.startswith("docs/candidates/invocation_recovery_v0/apparatus/common/") for path in observed))
+        self.assertFalse(any(path.startswith("fixtures/invocation_recovery_v0/common/") for path in observed))
+
+    def test_r2_assembler_resolves_common_components_only_through_manifest_closure(self) -> None:
+        source = inspect.getsource(ir.component_payloads)
+        self.assertIn("validate_common_component_manifest", source)
+        self.assertNotIn("fixtures/invocation_recovery_v0/common", source)
+        self.assertNotIn("01_RECOVERY_ROLE_HEADER", source)
+        self.assertNotIn("02_TASK_BASIS", source)
+        self.assertNotIn("08_RECOVERY_TASK_INSTRUCTION", source)
+        self.assertNotIn("09_RECOVERY_RESPONSE_SCHEMA", source)
+
+        with tempfile.TemporaryDirectory() as tmp:
+            isolated = self._isolated_common_root(Path(tmp), include_residue=False)
+            manifest = isolated / "docs/candidates/invocation_recovery_v0/apparatus/common/COMMON_COMPONENT_MANIFEST_v0.json"
+            for cell_id in ir.VALID_CELL_IDS:
+                ir.validate_successor_input_structure(
+                    isolated,
+                    manifest,
+                    self.fixture,
+                    cell_id,
+                    ir.assemble_successor_input(isolated, manifest, self.fixture, cell_id),
+                )
+
+    def test_r3_residue_paths_are_not_transitively_consumed(self) -> None:
+        baseline = {
+            cell_id: ir.assemble_successor_input(ROOT, PATHS["common_manifest"], self.fixture, cell_id)
+            for cell_id in ir.VALID_CELL_IDS
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            isolated = self._isolated_common_root(
+                Path(tmp),
+                include_residue=True,
+                poison_residue=True,
+            )
+            manifest = isolated / "docs/candidates/invocation_recovery_v0/apparatus/common/COMMON_COMPONENT_MANIFEST_v0.json"
+            observed = {
+                cell_id: ir.assemble_successor_input(isolated, manifest, self.fixture, cell_id)
+                for cell_id in ir.VALID_CELL_IDS
+            }
+        self.assertEqual(observed, baseline)
+
+    def test_r4_each_canonical_residue_pair_is_byte_identical_at_incident_specimen(self) -> None:
+        pairs = (
+            (
+                "docs/candidates/invocation_recovery_v0/apparatus/common/RECOVERY_ROLE_HEADER_v0.txt",
+                "fixtures/invocation_recovery_v0/common/01_RECOVERY_ROLE_HEADER_v0.txt",
+                "fc5f06b00d5405328537d3e55ab7ba3e07f47ec4",
+            ),
+            (
+                "docs/candidates/invocation_recovery_v0/apparatus/common/TASK_BASIS_v0.txt",
+                "fixtures/invocation_recovery_v0/common/02_TASK_BASIS_v0.txt",
+                "1d912c8556afb677fdfb3cc7ac7a2188c205e5cd",
+            ),
+            (
+                "docs/candidates/invocation_recovery_v0/apparatus/common/RECOVERY_TASK_INSTRUCTION_v0.txt",
+                "fixtures/invocation_recovery_v0/common/08_RECOVERY_TASK_INSTRUCTION_v0.txt",
+                "e9797fdf5e10bcb5affbe7e69afa103068d0fc5e",
+            ),
+            (
+                "docs/candidates/invocation_recovery_v0/apparatus/common/RECOVERY_RESPONSE_SCHEMA_v0.txt",
+                "fixtures/invocation_recovery_v0/common/09_RECOVERY_RESPONSE_SCHEMA_v0.txt",
+                "78f64a50edfaeb908bb0ac7a10acfb16601d6ffa",
+            ),
+        )
+        for canonical, residue, expected_blob in pairs:
+            a = (ROOT / canonical).read_bytes()
+            b = (ROOT / residue).read_bytes()
+            self.assertEqual(a, b)
+            self.assertEqual(ir.git_blob_sha1(a), expected_blob)
+            self.assertEqual(ir.git_blob_sha1(b), expected_blob)
+
+    def test_r5_residue_presence_or_absence_cannot_change_any_a_f_input(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_a, tempfile.TemporaryDirectory() as tmp_b:
+            absent = self._isolated_common_root(Path(tmp_a), include_residue=False)
+            present = self._isolated_common_root(Path(tmp_b), include_residue=True)
+            manifest_a = absent / "docs/candidates/invocation_recovery_v0/apparatus/common/COMMON_COMPONENT_MANIFEST_v0.json"
+            manifest_b = present / "docs/candidates/invocation_recovery_v0/apparatus/common/COMMON_COMPONENT_MANIFEST_v0.json"
+            for cell_id in ir.VALID_CELL_IDS:
+                self.assertEqual(
+                    ir.assemble_successor_input(absent, manifest_a, self.fixture, cell_id),
+                    ir.assemble_successor_input(present, manifest_b, self.fixture, cell_id),
+                )
+
+    def test_r6_repaired_contract_bytes_remain_unchanged(self) -> None:
+        contract_paths = (
+            "docs/candidates/invocation_recovery_v0/INVOCATION_RECOVERY_001.md",
+            "docs/candidates/invocation_recovery_v0/PRESSURE_DESIGN_001.md",
+        )
+        proc = subprocess.run(
+            ["git", "diff", "--exit-code", ir.CONTRACT_HEAD, "--", *contract_paths],
+            cwd=ROOT,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+
+    def test_r7_concurrent_history_is_preserved_without_exclusive_provenance_claim(self) -> None:
+        concurrent_commits = (
+            "893695cb5f84c20d29220fad1b780220b81c3184",
+            "a7c93c7a9dc9ef891dd2f626a1c8a1476ddc9f96",
+            "8e7b58d443d3b3fa440f630c8c212cab561cf403",
+            "ec34811624ed15200c15a2c4d28881e1175f660e",
+        )
+        for commit in concurrent_commits:
+            proc = subprocess.run(
+                ["git", "merge-base", "--is-ancestor", commit, "HEAD"],
+                cwd=ROOT,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True,
+                check=False,
+            )
+            self.assertEqual(proc.returncode, 0, commit + "\n" + proc.stderr)
+
+        reconciliation = (
+            ROOT
+            / "docs/candidates/invocation_recovery_v0/apparatus/PROVENANCE_RECONCILIATION_001.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn("COMMIT AUTHORSHIP", reconciliation)
+        self.assertIn("OCCUPANT / INVOCATION ATTRIBUTION", reconciliation)
+        self.assertIn("not treated as evidence that one invocation authored", reconciliation)
+
+    def test_r8_semantic_dependency_closure_is_unique_despite_residue(self) -> None:
+        manifest = ir.load_json(PATHS["common_manifest"])
+        closure = tuple(row["path"] for row in manifest["components"])
+        self.assertEqual(len(closure), len(set(closure)))
+        self.assertEqual(len(closure), 4)
+        self.assertTrue(all((ROOT / path).is_file() for path in closure))
+
+        apparatus_source = Path(ir.__file__).read_text(encoding="utf-8")
+        self.assertNotIn("fixtures/invocation_recovery_v0/common/", apparatus_source)
+
+        with tempfile.TemporaryDirectory() as tmp:
+            isolated = self._isolated_common_root(
+                Path(tmp),
+                include_residue=True,
+                poison_residue=True,
+            )
+            manifest_path = isolated / "docs/candidates/invocation_recovery_v0/apparatus/common/COMMON_COMPONENT_MANIFEST_v0.json"
+            identities = ir.common_component_identities(isolated, manifest_path)
+            self.assertEqual(set(identities), set(ir.COMMON_COMPONENT_IDS))
 
 
 if __name__ == "__main__":
