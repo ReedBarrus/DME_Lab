@@ -40,6 +40,10 @@ SOURCE_ENCOUNTER_FIELDS = {
     "schema","encounter_id","seat_id","occupant_id","invocation_id",
     "source_ref","encounter_kind","basis_ref","authority_effect","execution_effect",
 }
+MISSINGNESS_WITNESS_ENCOUNTER_FIELDS = {
+    "schema","encounter_id","seat_id","occupant_id","invocation_id",
+    "witness_ref","encounter_kind","basis_ref","authority_effect","execution_effect",
+}
 BINDING_FIELDS = {
     "schema","binding_id","role_id","seat_id","occupant_id","invocation_id",
     "observation_basis_ref","task_ref","work_claim_ref","standing_refs",
@@ -316,6 +320,73 @@ def validate_source_encounter_grounding(
             raise EcologyError("SOURCE_ENCOUNTER_BASIS_MISMATCH")
 
 
+def validate_missingness_witness_encounter(encounter: Mapping[str, Any]) -> None:
+    if (
+        not isinstance(encounter, Mapping)
+        or set(encounter) != MISSINGNESS_WITNESS_ENCOUNTER_FIELDS
+    ):
+        raise EcologyError("missingness witness encounter fields must be exact")
+    if encounter["schema"] != "missingness_witness_encounter_v0":
+        raise EcologyError("wrong missingness witness encounter schema")
+    for field in (
+        "encounter_id","seat_id","occupant_id","invocation_id",
+        "witness_ref","basis_ref",
+    ):
+        _nonempty_string(encounter[field], field)
+    if encounter["encounter_kind"] != "PRESENTED_TO_INVOCATION":
+        raise EcologyError("MISSINGNESS_WITNESS_ENCOUNTER_KIND_INVALID")
+    if encounter["authority_effect"] != "NONE" or encounter["execution_effect"] != "NONE":
+        raise EcologyError("missingness witness encounter effects must remain NONE")
+
+
+def missingness_witness_encounter_ref(encounter: Mapping[str, Any]) -> str:
+    validate_missingness_witness_encounter(encounter)
+    return (
+        f"missingness-witness-encounter://{encounter['encounter_id']}"
+        f"@{object_identity(dict(encounter))}"
+    )
+
+
+def validate_missingness_witness_encounter_grounding(
+    *,
+    basis: Mapping[str, Any],
+    binding: Mapping[str, Any],
+    missingness_witness_encounters: list[Mapping[str, Any]],
+) -> None:
+    validate_observation_basis(basis)
+    validate_binding(binding)
+    if not isinstance(missingness_witness_encounters, list):
+        raise EcologyError("missingness_witness_encounters must be a list")
+
+    by_witness: dict[str, Mapping[str, Any]] = {}
+    exact_refs: set[str] = set()
+    for encounter in missingness_witness_encounters:
+        validate_missingness_witness_encounter(encounter)
+        exact_ref = missingness_witness_encounter_ref(encounter)
+        if exact_ref in exact_refs:
+            raise EcologyError("duplicate exact missingness witness encounter")
+        exact_refs.add(exact_ref)
+        witness_ref = encounter["witness_ref"]
+        if witness_ref in by_witness:
+            raise EcologyError("duplicate missingness witness encounter for witness_ref")
+        by_witness[witness_ref] = encounter
+
+    for row in basis["explicit_missing_objects"]:
+        if not missingness_witness_encounters:
+            raise EcologyError("CURRENT_MISSINGNESS_WITNESS_ENCOUNTER_NOT_SUPPLIED")
+        encounter = by_witness.get(row["witness_ref"])
+        if encounter is None:
+            raise EcologyError("MISSINGNESS_WITNESS_ENCOUNTER_WITNESS_MISMATCH")
+        if encounter["seat_id"] != binding["seat_id"]:
+            raise EcologyError("MISSINGNESS_WITNESS_ENCOUNTER_SEAT_MISMATCH")
+        if encounter["occupant_id"] != binding["occupant_id"]:
+            raise EcologyError("MISSINGNESS_WITNESS_ENCOUNTER_OCCUPANT_MISMATCH")
+        if encounter["invocation_id"] != binding["invocation_id"]:
+            raise EcologyError("MISSINGNESS_WITNESS_ENCOUNTER_INVOCATION_MISMATCH")
+        if encounter["basis_ref"] != basis["basis_ref"]:
+            raise EcologyError("MISSINGNESS_WITNESS_ENCOUNTER_BASIS_MISMATCH")
+
+
 def validate_binding(binding: Mapping[str, Any]) -> None:
     if not isinstance(binding, Mapping) or set(binding) != BINDING_FIELDS:
         raise EcologyError("binding fields must be exact")
@@ -344,6 +415,7 @@ def validate_correspondence(
     source_carriers: list[Mapping[str, Any]] | None = None,
     missingness_witnesses: list[Mapping[str, Any]] | None = None,
     source_encounters: list[Mapping[str, Any]] | None = None,
+    missingness_witness_encounters: list[Mapping[str, Any]] | None = None,
 ) -> None:
     validate_role(role)
     validate_seat(seat)
@@ -377,6 +449,11 @@ def validate_correspondence(
         basis=basis,
         binding=binding,
         source_encounters=source_encounters or [],
+    )
+    validate_missingness_witness_encounter_grounding(
+        basis=basis,
+        binding=binding,
+        missingness_witness_encounters=missingness_witness_encounters or [],
     )
 
 
@@ -480,6 +557,16 @@ def clean_source_encounters() -> list[dict[str, Any]]:
     return out
 
 
+def clean_missingness_witness_encounters() -> list[dict[str, Any]]:
+    value = fixtures()["missingness_witness_encounters"]
+    if not isinstance(value, list):
+        raise EcologyError("missingness_witness_encounters fixture must be a list")
+    out = copy.deepcopy(value)
+    for encounter in out:
+        validate_missingness_witness_encounter(encounter)
+    return out
+
+
 def clean_bundle() -> dict[str, Any]:
     role = clean_role("SCIENTIST")
     basis = clean_basis()
@@ -487,6 +574,7 @@ def clean_bundle() -> dict[str, Any]:
     sources = clean_sources()
     missingness_witnesses = clean_missingness_witnesses()
     source_encounters = clean_source_encounters()
+    missingness_witness_encounters = clean_missingness_witness_encounters()
     seat = occupied_seat(
         seat=clean_empty_seat(binding["seat_id"]),
         occupant_id=binding["occupant_id"],
@@ -497,11 +585,13 @@ def clean_bundle() -> dict[str, Any]:
         source_carriers=sources,
         missingness_witnesses=missingness_witnesses,
         source_encounters=source_encounters,
+        missingness_witness_encounters=missingness_witness_encounters,
     )
     return {
         "role":role, "seat":seat, "binding":binding, "basis":basis,
         "sources":sources, "missingness_witnesses":missingness_witnesses,
         "source_encounters":source_encounters,
+        "missingness_witness_encounters":missingness_witness_encounters,
     }
 
 
@@ -618,6 +708,7 @@ def _correspondence_cell(
     source_carriers: list[Mapping[str, Any]] | None = None,
     missingness_witnesses: list[Mapping[str, Any]] | None = None,
     source_encounters: list[Mapping[str, Any]] | None = None,
+    missingness_witness_encounters: list[Mapping[str, Any]] | None = None,
 ) -> str:
     try:
         validate_correspondence(
@@ -625,6 +716,7 @@ def _correspondence_cell(
             source_carriers=source_carriers,
             missingness_witnesses=missingness_witnesses,
             source_encounters=source_encounters,
+            missingness_witness_encounters=missingness_witness_encounters,
         )
     except EcologyError as exc:
         return "PASS" if str(exc) == expected_error else "FRACTURE"
@@ -807,6 +899,7 @@ def run_pressure() -> dict[str, Any]:
             source_carriers=n0_null["sources"],
             missingness_witnesses=n0_null["missingness_witnesses"],
             source_encounters=n0_null["source_encounters"],
+            missingness_witness_encounters=n0_null["missingness_witness_encounters"],
         )
         validate_correspondence(
             role=n0_same["role"], seat=n0_same["seat"],
@@ -814,6 +907,7 @@ def run_pressure() -> dict[str, Any]:
             source_carriers=n0_same["sources"],
             missingness_witnesses=n0_same["missingness_witnesses"],
             source_encounters=n0_same["source_encounters"],
+            missingness_witness_encounters=n0_same["missingness_witness_encounters"],
         )
         n0 = "PASS"
     except EcologyError:
@@ -1394,6 +1488,201 @@ def run_pressure() -> dict[str, Any]:
         "relation":"SOURCE_ENCOUNTER_MUST_BELONG_TO_CURRENT_BASIS_COORDINATE",
     }
 
+    # Q6A -- exact missingness witness exists and corresponds, but no current
+    # invocation encounter with that witness is represented.
+    s_witness = {
+        "schema":"missingness_witness_v0",
+        "witness_id":"WITNESS_MOTHMAN_S",
+        "object_id":"MOTHMAN_FILES",
+        "standing":"UNAVAILABLE_AT_BASIS",
+        "reason":"PERMISSION_DENIED",
+        "authority_effect":"NONE",
+        "execution_effect":"NONE",
+    }
+    s_witness_ref = missingness_witness_ref(s_witness)
+    s_basis = fresh_basis(
+        clean_basis(),
+        seat_id="SCIENCE_TEST_01",
+        occupant_id="LABOIB_CANDIDATE",
+        invocation_id="INVOCATION_S",
+        basis_id="OBSERVATION_BASIS_S",
+        explicit_missing_objects=[{
+            "object_id":"MOTHMAN_FILES",
+            "reason":"PERMISSION_DENIED",
+            "witness_ref":s_witness_ref,
+        }],
+    )
+    s_binding = clean_binding()
+    s_binding["binding_id"] = "BINDING:SCIENCE_TEST_01:LABOIB_CANDIDATE:INVOCATION_S"
+    s_binding["invocation_id"] = "INVOCATION_S"
+    s_binding["observation_basis_ref"] = observation_basis_ref(s_basis)
+    s_seat = occupied_seat(
+        seat=clean_empty_seat("SCIENCE_TEST_01"),
+        occupant_id="LABOIB_CANDIDATE",
+        invocation_id="INVOCATION_S",
+    )
+    try:
+        validate_correspondence(
+            role=role, seat=s_seat, binding=s_binding, basis=s_basis,
+            missingness_witnesses=[s_witness],
+            missingness_witness_encounters=[],
+        )
+        s1_result = "FRACTURE"
+    except EcologyError as exc:
+        s1_result = (
+            "PASS"
+            if str(exc) == "CURRENT_MISSINGNESS_WITNESS_ENCOUNTER_NOT_SUPPLIED"
+            else "FRACTURE"
+        )
+    cells["S1"] = {
+        "result":s1_result,
+        "relation":"CURRENT_MISSING_CLAIM_REQUIRES_REPRESENTED_WITNESS_ENCOUNTER",
+    }
+
+    # S2 -- encounter belongs to a different invocation.
+    s2_encounter = {
+        "schema":"missingness_witness_encounter_v0",
+        "encounter_id":"MISSINGNESS_ENCOUNTER_S2",
+        "seat_id":s_binding["seat_id"],
+        "occupant_id":s_binding["occupant_id"],
+        "invocation_id":"INVOCATION_OTHER",
+        "witness_ref":s_witness_ref,
+        "encounter_kind":"PRESENTED_TO_INVOCATION",
+        "basis_ref":s_basis["basis_ref"],
+        "authority_effect":"NONE",
+        "execution_effect":"NONE",
+    }
+    try:
+        validate_missingness_witness_encounter_grounding(
+            basis=s_basis,
+            binding=s_binding,
+            missingness_witness_encounters=[s2_encounter],
+        )
+        s2_result = "FRACTURE"
+    except EcologyError as exc:
+        s2_result = (
+            "PASS"
+            if str(exc) == "MISSINGNESS_WITNESS_ENCOUNTER_INVOCATION_MISMATCH"
+            else "FRACTURE"
+        )
+    cells["S2"] = {
+        "result":s2_result,
+        "relation":"MISSINGNESS_WITNESS_ENCOUNTER_MUST_BELONG_TO_CURRENT_INVOCATION",
+    }
+
+    # S3 -- encounter points to a different witness.
+    s3_encounter = {
+        "schema":"missingness_witness_encounter_v0",
+        "encounter_id":"MISSINGNESS_ENCOUNTER_S3",
+        "seat_id":s_binding["seat_id"],
+        "occupant_id":s_binding["occupant_id"],
+        "invocation_id":s_binding["invocation_id"],
+        "witness_ref":"missingness-witness://OTHER@opaque:other",
+        "encounter_kind":"PRESENTED_TO_INVOCATION",
+        "basis_ref":s_basis["basis_ref"],
+        "authority_effect":"NONE",
+        "execution_effect":"NONE",
+    }
+    try:
+        validate_missingness_witness_encounter_grounding(
+            basis=s_basis,
+            binding=s_binding,
+            missingness_witness_encounters=[s3_encounter],
+        )
+        s3_result = "FRACTURE"
+    except EcologyError as exc:
+        s3_result = (
+            "PASS"
+            if str(exc) == "MISSINGNESS_WITNESS_ENCOUNTER_WITNESS_MISMATCH"
+            else "FRACTURE"
+        )
+    cells["S3"] = {
+        "result":s3_result,
+        "relation":"MISSINGNESS_WITNESS_ENCOUNTER_MUST_POINT_TO_EXACT_WITNESS",
+    }
+
+    # S4 -- exact current seat / occupant / invocation / witness / basis encounter.
+    s4_encounter = {
+        "schema":"missingness_witness_encounter_v0",
+        "encounter_id":"MISSINGNESS_ENCOUNTER_S4",
+        "seat_id":s_binding["seat_id"],
+        "occupant_id":s_binding["occupant_id"],
+        "invocation_id":s_binding["invocation_id"],
+        "witness_ref":s_witness_ref,
+        "encounter_kind":"PRESENTED_TO_INVOCATION",
+        "basis_ref":s_basis["basis_ref"],
+        "authority_effect":"NONE",
+        "execution_effect":"NONE",
+    }
+    try:
+        validate_correspondence(
+            role=role, seat=s_seat, binding=s_binding, basis=s_basis,
+            missingness_witnesses=[s_witness],
+            missingness_witness_encounters=[s4_encounter],
+        )
+        s4_result = "PASS"
+    except EcologyError:
+        s4_result = "FRACTURE"
+    cells["S4"] = {
+        "result":s4_result,
+        "relation":"EXACT_CURRENT_MISSINGNESS_WITNESS_ENCOUNTER_IS_ADMISSIBLE",
+    }
+
+    # S5-S7 pressure the remaining declared encounter coordinates.
+    s5 = copy.deepcopy(s4_encounter)
+    s5["seat_id"] = "SCIENCE_TEST_02"
+    try:
+        validate_missingness_witness_encounter_grounding(
+            basis=s_basis, binding=s_binding, missingness_witness_encounters=[s5]
+        )
+        s5_result = "FRACTURE"
+    except EcologyError as exc:
+        s5_result = (
+            "PASS"
+            if str(exc) == "MISSINGNESS_WITNESS_ENCOUNTER_SEAT_MISMATCH"
+            else "FRACTURE"
+        )
+    cells["S5"] = {
+        "result":s5_result,
+        "relation":"MISSINGNESS_WITNESS_ENCOUNTER_MUST_BELONG_TO_CURRENT_SEAT",
+    }
+
+    s6 = copy.deepcopy(s4_encounter)
+    s6["occupant_id"] = "OCCUPANT_OTHER"
+    try:
+        validate_missingness_witness_encounter_grounding(
+            basis=s_basis, binding=s_binding, missingness_witness_encounters=[s6]
+        )
+        s6_result = "FRACTURE"
+    except EcologyError as exc:
+        s6_result = (
+            "PASS"
+            if str(exc) == "MISSINGNESS_WITNESS_ENCOUNTER_OCCUPANT_MISMATCH"
+            else "FRACTURE"
+        )
+    cells["S6"] = {
+        "result":s6_result,
+        "relation":"MISSINGNESS_WITNESS_ENCOUNTER_MUST_BELONG_TO_CURRENT_OCCUPANT",
+    }
+
+    s7 = copy.deepcopy(s4_encounter)
+    s7["basis_ref"] = "fixture://OTHER_BASIS"
+    try:
+        validate_missingness_witness_encounter_grounding(
+            basis=s_basis, binding=s_binding, missingness_witness_encounters=[s7]
+        )
+        s7_result = "FRACTURE"
+    except EcologyError as exc:
+        s7_result = (
+            "PASS"
+            if str(exc) == "MISSINGNESS_WITNESS_ENCOUNTER_BASIS_MISMATCH"
+            else "FRACTURE"
+        )
+    cells["S7"] = {
+        "result":s7_result,
+        "relation":"MISSINGNESS_WITNESS_ENCOUNTER_MUST_BELONG_TO_CURRENT_BASIS_COORDINATE",
+    }
+
     evaluation_key = _load(FIXTURE_DIR / "EVALUATION_KEY_v0.json")
     expected_cells = evaluation_key.get("cells", {}) if isinstance(evaluation_key, dict) else {}
     key_matches = all(expected_cells.get(cell_id) == cell["result"] for cell_id, cell in cells.items()) and set(expected_cells) == set(cells)
@@ -1421,6 +1710,7 @@ def run_pressure() -> dict[str, Any]:
             "observation_source_object_identity_correspondence":"PASS" if all(cells[x]["result"] == "PASS" for x in ("Q3A","Q3B","Q3C")) else "FRACTURE",
             "explicit_missingness_grounding":"PASS" if all(cells[x]["result"] == "PASS" for x in ("Q4A","Q4B","Q4C","Q4D")) else "FRACTURE",
             "current_invocation_source_encounter":"PASS" if all(cells[x]["result"] == "PASS" for x in ("R1","R2","R3","R4","R5","R6","R7")) else "FRACTURE",
+            "current_invocation_missingness_witness_encounter":"PASS" if all(cells[x]["result"] == "PASS" for x in ("S1","S2","S3","S4","S5","S6","S7")) else "FRACTURE",
         },
         "role_vocabulary_status":"PROVISIONAL_EXTENSIBLE",
         "durable_ecology_installed":False,
@@ -1442,6 +1732,9 @@ def run_pressure() -> dict[str, Any]:
         "source_encounter_truth":"NOT_TESTED",
         "direct_object_perception":"NOT_CLAIMED",
         "source_understanding":"NOT_CLAIMED",
+        "missingness_witness_encounter_correspondence":"TESTED_CURRENT_SEAT_OCCUPANT_INVOCATION_WITNESS_BASIS",
+        "missingness_witness_encounter_truth":"NOT_TESTED",
+        "missingness_reason_understanding":"NOT_CLAIMED",
         "function_needs_seat":"NOT_TESTED",
         "stop":True,
     }
