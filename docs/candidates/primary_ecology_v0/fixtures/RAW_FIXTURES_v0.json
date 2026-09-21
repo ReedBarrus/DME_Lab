@@ -1,0 +1,44 @@
+{
+  "schema": "primary_ecology_raw_fixtures_v0",
+  "observation_basis": {
+    "schema": "observation_basis_v0",
+    "basis_id": "OBSERVATION_BASIS_TEST_001",
+    "observer_seat_id": "SCIENCE_TEST_01",
+    "observer_occupant_id": "LABOIB_CANDIDATE",
+    "observer_invocation_id": "INVOCATION_A",
+    "basis_ref": "fixture://PRIMARY_ECOLOGY_GRAMMAR_001/BASIS_A",
+    "observed_objects": [
+      {
+        "object_id": "OBSERVED_OBJECT",
+        "identity": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_ref": "fixture://OBSERVED_OBJECT"
+      }
+    ],
+    "explicit_missing_objects": [
+      {
+        "object_id": "MISSING_OBJECT",
+        "reason": "SOURCE_NOT_AVAILABLE_AT_BASIS"
+      }
+    ],
+    "source_refs": [
+      "fixture://PRIMARY_ECOLOGY_GRAMMAR_001"
+    ],
+    "authority_effect": "NONE",
+    "execution_effect": "NONE"
+  },
+  "engagement_binding": {
+    "schema": "ecology_engagement_binding_v0",
+    "binding_id": "BINDING:SCIENCE_TEST_01:LABOIB_CANDIDATE:INVOCATION_A",
+    "role_id": "SCIENTIST",
+    "seat_id": "SCIENCE_TEST_01",
+    "occupant_id": "LABOIB_CANDIDATE",
+    "invocation_id": "INVOCATION_A",
+    "observation_basis_ref": "OBSERVATION_BASIS_TEST_001",
+    "task_ref": "task://PRIMARY_ECOLOGY_GRAMMAR_001",
+    "work_claim_ref": null,
+    "standing_refs": [],
+    "authority_refs": [],
+    "authority_effect": "NONE",
+    "execution_effect": "NONE"
+  }
+}
