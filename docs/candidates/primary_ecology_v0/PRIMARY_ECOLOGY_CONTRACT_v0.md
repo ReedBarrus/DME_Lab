@@ -321,6 +321,44 @@ The `identity` value remains opaque and nonempty. This candidate does not
 qualify an identity scheme, require SHA-256, authenticate the source, or establish
 that the source's semantic claim is true.
 
+The `explicit_missing_objects[]` channel is separately grounded by exact typed
+`missingness_witness_v0` carriers. Each missingness row carries a
+`witness_ref`, and the exact represented witness must agree on:
+
+```text
+object_id
+reason
+```
+
+while the witness itself has:
+
+```text
+standing = UNAVAILABLE_AT_BASIS
+```
+
+This establishes only a represented current-basis unavailability relation.
+
+```text
+MISSINGNESS DECLARED
+!=
+MISSINGNESS ESTABLISHED
+
+REASON STRING PRESENT
+!=
+UNAVAILABILITY BASIS REPRESENTED
+
+MISSING
+!=
+ABSENT
+
+MISSINGNESS WITNESS CORRESPONDS
+!=
+UNIVERSAL RETRIEVAL IMPOSSIBILITY
+```
+
+The witness is not treated as an authority grant or a proof that the object does
+not exist, and witness truth/authenticity remains unqualified.
+
 The predecessor basis remains separately recoverable by exact identity, but its
 payload is not current observation. A typed historical-consultation relation is
 still future work and is not manufactured by this repair.
@@ -351,9 +389,10 @@ A green pressure may establish only:
 > roles, seats, occupants, invocations, work-claim references, authority
 > references, and observation bases while enforcing the tested cross-object
 > current-identity correspondence, work-claim correspondence, fresh-observation
-> payload noninheritance, explicit represented source relations, and exact
+> payload noninheritance, explicit represented source relations, exact
 > represented source/object/identity correspondence for current observed-object
-> claims while avoiding the tested identity/authority/missingness collapses.
+> claims, and exact represented missingness witness correspondence while
+> avoiding the tested identity/authority/missingness collapses.
 
 It does not establish:
 
@@ -371,6 +410,8 @@ historical-basis reuse semantics
 observation identity-scheme semantics
 source truth / authenticity
 semantic truth of source claims
+missingness witness truth / authenticity
+universal retrieval impossibility
 representation succession
 legacy-seat migration
 ```
