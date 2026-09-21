@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lane_engagement_binding_v0.schema.json",
+  "title": "Lane Engagement Binding v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "binding_id",
+    "lane_instance_id",
+    "lane_id",
+    "branch",
+    "seat_id",
+    "occupant_id",
+    "invocation_id",
+    "engagement_id",
+    "basis_head",
+    "successor_ancestry_ref",
+    "predecessor_fence_ref",
+    "predecessor_debt_ref",
+    "authority_effect",
+    "execution_effect"
+  ],
+  "properties": {
+    "schema": {
+      "const": "LANE_ENGAGEMENT_BINDING_v0"
+    },
+    "binding_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lane_instance_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lane_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "branch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "seat_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occupant_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "invocation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "engagement_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "basis_head": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "successor_ancestry_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "predecessor_fence_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "predecessor_debt_ref": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "authority_effect": {
+      "const": "NONE"
+    },
+    "execution_effect": {
+      "const": "NONE"
+    }
+  }
+}
