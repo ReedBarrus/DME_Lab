@@ -1,0 +1,22 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"seat_engagement_work_unit_binding_v0.schema.json",
+  "title":"Seat Engagement Work Unit Binding v0",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["schema","binding_id","lane_id","seat_id","occupant_id","invocation_id","envelope_id","bounded_unit_id","target_lineage","basis_head","authority_effect","execution_effect"],
+  "properties":{
+    "schema":{"const":"seat_engagement_work_unit_binding_v0"},
+    "binding_id":{"type":"string","minLength":1},
+    "lane_id":{"type":"string","minLength":1},
+    "seat_id":{"type":"string","minLength":1},
+    "occupant_id":{"type":"string","minLength":1},
+    "invocation_id":{"type":"string","minLength":1},
+    "envelope_id":{"type":"string","minLength":1},
+    "bounded_unit_id":{"type":"string","minLength":1},
+    "target_lineage":{"type":"string","minLength":1},
+    "basis_head":{"type":"string","pattern":"^[0-9a-f]{40}$"},
+    "authority_effect":{"const":"NONE"},
+    "execution_effect":{"const":"NONE"}
+  }
+}
