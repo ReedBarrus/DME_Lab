@@ -177,6 +177,50 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
                 role=b["role"], seat=b["seat"], binding=b["binding"], basis=b["basis"]
             )
 
+    def test_N0_mutual_null_or_exact_same_work_claim_is_valid(self):
+        null_bundle = clean_bundle()
+        validate_correspondence(
+            role=null_bundle["role"],
+            seat=null_bundle["seat"],
+            binding=null_bundle["binding"],
+            basis=null_bundle["basis"],
+        )
+
+        same_bundle = clean_bundle()
+        same_bundle["seat"]["work_claim_ref"] = "claim://SAME-CURRENT-CLAIM"
+        same_bundle["binding"]["work_claim_ref"] = "claim://SAME-CURRENT-CLAIM"
+        validate_correspondence(
+            role=same_bundle["role"],
+            seat=same_bundle["seat"],
+            binding=same_bundle["binding"],
+            basis=same_bundle["basis"],
+        )
+
+    def test_N1_work_claim_identity_mismatch_rejected(self):
+        b = clean_bundle()
+        b["seat"]["work_claim_ref"] = "claim://A"
+        b["binding"]["work_claim_ref"] = "claim://B"
+        with self.assertRaisesRegex(EcologyError, "SEAT_BINDING_WORK_CLAIM_MISMATCH"):
+            validate_correspondence(
+                role=b["role"], seat=b["seat"], binding=b["binding"], basis=b["basis"]
+            )
+
+    def test_N2_seat_claim_binding_absent_rejected(self):
+        b = clean_bundle()
+        b["seat"]["work_claim_ref"] = "claim://A"
+        with self.assertRaisesRegex(EcologyError, "SEAT_BINDING_WORK_CLAIM_MISMATCH"):
+            validate_correspondence(
+                role=b["role"], seat=b["seat"], binding=b["binding"], basis=b["basis"]
+            )
+
+    def test_N3_seat_absent_binding_claim_rejected(self):
+        b = clean_bundle()
+        b["binding"]["work_claim_ref"] = "claim://A"
+        with self.assertRaisesRegex(EcologyError, "SEAT_BINDING_WORK_CLAIM_MISMATCH"):
+            validate_correspondence(
+                role=b["role"], seat=b["seat"], binding=b["binding"], basis=b["basis"]
+            )
+
     def test_observation_basis_ref_pins_exact_basis_bytes(self):
         b = clean_bundle()
         original_ref = observation_basis_ref(b["basis"])
@@ -202,6 +246,9 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         self.assertTrue(all(cell["result"] == "PASS" for cell in result["cells"].values()))
         self.assertEqual(
             result["core_relations"]["cross_object_identity_correspondence"], "PASS"
+        )
+        self.assertEqual(
+            result["core_relations"]["seat_binding_work_claim_correspondence"], "PASS"
         )
         self.assertFalse(result["durable_ecology_installed"])
         self.assertEqual(result["authority_effect"], "NONE")
