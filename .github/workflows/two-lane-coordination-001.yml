@@ -39,6 +39,7 @@ jobs:
           for path in (
               Path("schemas/two_lane_work_claim_v0.schema.json"),
               Path("schemas/two_lane_coordination_cursor_v0.schema.json"),
+              Path("schemas/two_lane_lane_manifest_v0.schema.json"),
           ):
               value = json.loads(path.read_text(encoding="utf-8"))
               assert value["type"] == "object"
