@@ -21,13 +21,24 @@
     "target_lineage": "IR001-LINEAGE-01",
     "coordination_cursor": "E10",
     "active_work_claim": "IR001-CLAIM-SHARED-17",
-    "completed_units": ["UNIT-00", "UNIT-01"],
-    "observed_receipts": ["RECEIPT-00", "RECEIPT-01"],
+    "completed_units": [
+      "UNIT-00",
+      "UNIT-01"
+    ],
+    "observed_receipts": [
+      "RECEIPT-00",
+      "RECEIPT-01"
+    ],
     "working_state_ref": "fixture:IR001-WORKING-STATE-01",
-    "semantic_debt": ["D27"],
+    "semantic_debt": [
+      "D27"
+    ],
     "known_failures": [],
     "next_bounded_unit": "UNIT-02",
-    "remaining_bounded_units": ["UNIT-02", "UNIT-03"],
+    "remaining_bounded_units": [
+      "UNIT-02",
+      "UNIT-03"
+    ],
     "stop_conditions": [
       "BASIS_NOT_CURRENT",
       "COORDINATION_INVALIDATED",
@@ -38,11 +49,20 @@
     "completion_criterion": "UNIT-02 receipt mechanically verifies REL-02",
     "resource_estimate": {
       "context_class": "SMALL",
-      "expected_tool_calls": {"min": 1, "max": 4},
-      "expected_mutation_steps": {"min": 0, "max": 1},
+      "expected_tool_calls": {
+        "min": 1,
+        "max": 4
+      },
+      "expected_mutation_steps": {
+        "min": 0,
+        "max": 1
+      },
       "repair_cycles_reserved": 1,
       "reconstruction_margin": "REQUIRED",
-      "estimated_jumps_remaining": {"min": 1, "max": 2}
+      "estimated_jumps_remaining": {
+        "min": 1,
+        "max": 2
+      }
     },
     "required_capabilities": [
       "READ_PACKET",
@@ -50,7 +70,10 @@
       "READ_COORDINATION_DELTA",
       "DERIVE_RECOVERY_DECISION"
     ],
-    "acceptable_successor_classes": ["SAME_CLASS", "REPLACEMENT_CLASS"],
+    "acceptable_successor_classes": [
+      "SAME_CLASS",
+      "REPLACEMENT_CLASS"
+    ],
     "authority_state": "CHECKPOINT_AUTHORITY_EXPIRED",
     "fresh_authorization_required": true,
     "created_at": "2026-09-21T04:15:00Z"
@@ -66,8 +89,18 @@
       "relation": "UNIT-02_REQUIRES_DEP-17",
       "payload": "SYNTHETIC_NO_EFFECT_DEPENDENCY"
     },
-    "receipt_00": {"artifact_id": "RECEIPT-00", "unit_id": "UNIT-00", "verified": true},
-    "receipt_01": {"artifact_id": "RECEIPT-01", "unit_id": "UNIT-01", "verified": true}
+    "receipt_00": {
+      "artifact_id": "RECEIPT-00",
+      "unit_id": "UNIT-00",
+      "verified": true,
+      "basis_head": "0138cdf83192bd967ff2be961aa6011646bb5701"
+    },
+    "receipt_01": {
+      "artifact_id": "RECEIPT-01",
+      "unit_id": "UNIT-01",
+      "verified": true,
+      "basis_head": "0138cdf83192bd967ff2be961aa6011646bb5701"
+    }
   },
   "coordination": {
     "none_relevant": [],
@@ -82,7 +115,10 @@
   "authority": {
     "witness": {
       "fixture": "IR001-AUTH-WITNESS-01",
-      "authorizes": ["IDENTIFY_UNIT-02", "RETURN_STRUCTURED_RECOVERY_DECISION"],
+      "authorizes": [
+        "IDENTIFY_UNIT-02",
+        "RETURN_STRUCTURED_RECOVERY_DECISION"
+      ],
       "does_not_authorize": [
         "REPOSITORY_MUTATION",
         "CURSOR_MUTATION",
