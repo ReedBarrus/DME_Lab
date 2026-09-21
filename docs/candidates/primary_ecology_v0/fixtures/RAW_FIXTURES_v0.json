@@ -1,5 +1,15 @@
 {
   "schema": "primary_ecology_raw_fixtures_v0",
+  "source_carriers": [
+    {
+      "schema": "observation_source_v0",
+      "source_id": "SOURCE_OBSERVED_OBJECT",
+      "object_id": "OBSERVED_OBJECT",
+      "identity": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    }
+  ],
   "observation_basis": {
     "schema": "observation_basis_v0",
     "basis_id": "OBSERVATION_BASIS_TEST_001",
@@ -11,7 +21,7 @@
       {
         "object_id": "OBSERVED_OBJECT",
         "identity": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-        "source_ref": "fixture://OBSERVED_OBJECT"
+        "source_ref": "observation-source://SOURCE_OBSERVED_OBJECT@sha256:30e752e16f453e7f87bddc97bc3099f5e818039e0d777395457fdd2662b30cdd"
       }
     ],
     "explicit_missing_objects": [
@@ -22,7 +32,7 @@
     ],
     "source_refs": [
       "fixture://PRIMARY_ECOLOGY_GRAMMAR_001",
-      "fixture://OBSERVED_OBJECT"
+      "observation-source://SOURCE_OBSERVED_OBJECT@sha256:30e752e16f453e7f87bddc97bc3099f5e818039e0d777395457fdd2662b30cdd"
     ],
     "authority_effect": "NONE",
     "execution_effect": "NONE"
@@ -34,7 +44,7 @@
     "seat_id": "SCIENCE_TEST_01",
     "occupant_id": "LABOIB_CANDIDATE",
     "invocation_id": "INVOCATION_A",
-    "observation_basis_ref": "observation-basis://OBSERVATION_BASIS_TEST_001@sha256:7a6ac4b85b74f703f14d5f6ee80e526f3ca29fd15aab8bed8300a0d9e7d17aff",
+    "observation_basis_ref": "observation-basis://OBSERVATION_BASIS_TEST_001@sha256:154ead55f9c4309c9b5e07625c0cec092cc5994ab91ae072c7ece94bcbebf21e",
     "task_ref": "task://PRIMARY_ECOLOGY_GRAMMAR_001",
     "work_claim_ref": null,
     "standing_refs": [],
