@@ -1,0 +1,14 @@
+{
+  "schema": "two_lane_coordination_cursor_v0",
+  "consumer_lane_id": "LANE_A",
+  "peer_coordinates": [
+    {
+      "lane_id": "LANE_B",
+      "branch": "lane-b-successor-v1",
+      "last_seen_head": "402f8525aa756a434f894e973a5741b915b9cd00",
+      "last_seen_claim_digest": "sha256:ce582d03a3e066b4d301ba2f37e3a6d7fd169ac7c088617f9430e0843d6445ef"
+    }
+  ],
+  "authority_effect": "NONE",
+  "execution_effect": "NONE"
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "two_lane_work_claim_v0",
+  "claim_id": "FIRST_TWO_LANE_TRIAL-LANE_A-CLAIM-001",
+  "lane_id": "LANE_A",
+  "seat_id": "FIRST_TWO_LANE_TRIAL-LANE_A-SEAT-001",
+  "occupant_id": "FIRST_TWO_LANE_TRIAL-LANE_A-OPERATOR-001",
+  "invocation_id": "FIRST_TWO_LANE_TRIAL-LANE_A-INVOCATION-001",
+  "branch": "lane-a-cockpit-coordination-v0",
+  "basis_head": "de667390d81c1219abfee063d2a3b1fe13d1ba71",
+  "target_lineage": "TWO_LANE_OPERATING_BOOTSTRAP_RECONCILIATION_001",
+  "campaign_id": "FIRST_BOUNDED_REAL_WORK_TWO_LANE_TRIAL",
+  "pressure_id": "FIRST_BOUNDED_REAL_WORK_TWO_LANE_TRIAL-LANE_A-001",
+  "addressed_role": "WORKSHOP",
+  "binding_ref": null,
+  "consequence_envelope_id": "FIRST_TWO_LANE_TRIAL-LANE_A-CANDIDATE-DOC-ONLY",
+  "semantic_surfaces": [
+    "TWO_LANE_OPERATING_BOOTSTRAP_CURRENTNESS",
+    "LANE_A_OPERATING_DOCUMENTATION"
+  ],
+  "artifact_scopes": [
+    "docs/candidates/live_two_lane_trial_lane_a_v0"
+  ],
+  "mutation_paths": [
+    "docs/candidates/live_two_lane_trial_lane_a_v0/LANE_A_OPERATING_BOOTSTRAP_DELTA_001.md"
+  ],
+  "status": "ACTIVE",
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "integration_effect": "NONE",
+  "priority_effect": "NONE"
+}
