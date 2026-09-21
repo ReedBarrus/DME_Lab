@@ -18,7 +18,7 @@ jobs:
       - name: Checkout exact integration head
         uses: actions/checkout@v4
         with:
-          ref: 145c62fcecf151f5d0e1257f91b986904f04c637
+          ref: 8dd7ea176a90a56dfd9afd72078d806cf8794bb7
           fetch-depth: 0
 
       - name: Set up Python 3.12
