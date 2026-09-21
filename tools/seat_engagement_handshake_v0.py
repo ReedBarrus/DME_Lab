@@ -771,6 +771,18 @@ def run_cell(
     }
     secondary = {"authority_request_emitted": False}
 
+    # Raw authority evidence is retained even when engagement terminates before
+    # post-ACCEPT revalidation. Presence is not exercise or adjudication.
+    if grant is None:
+        early_authority_evidence = {
+            "schema": "seat_engagement_authority_absence_v0",
+            "state": "ABSENT",
+            "authority_effect": "NONE",
+        }
+    else:
+        early_authority_evidence = copy.deepcopy(grant)
+    events.append(_event("AUTHORITY_EVIDENCE", early_authority_evidence))
+
     if decision["decision"] != "ACCEPT":
         return {
             "cell_id": cell_id,
@@ -798,17 +810,6 @@ def run_cell(
         "inference_performed_by_seat": False,
     }
     events.append(_event("PEER_EVIDENCE", peer_evidence))
-
-    authority_evidence: dict[str, Any]
-    if grant is None:
-        authority_evidence = {
-            "schema": "seat_engagement_authority_absence_v0",
-            "state": "ABSENT",
-            "authority_effect": "NONE",
-        }
-    else:
-        authority_evidence = copy.deepcopy(grant)
-    events.append(_event("AUTHORITY_EVIDENCE", authority_evidence))
 
     disposition = pre_mutation_disposition(
         envelope=envelope,
