@@ -194,7 +194,9 @@ INVOCATION
 +
 ACTIVE CLAIM
 +
-AUTHORIZED WORK UNIT
+BOUNDED WORK UNIT
++
+INDEPENDENT AUTHORITY STATE
 
 WHILE ALSO RETAINING:
 
@@ -214,6 +216,17 @@ OUTPUT CORRECTNESS
 ```
 
 The pressure must distinguish causal attribution from authority.
+
+Freeze:
+
+```text
+WORK UNIT IDENTITY
+!=
+WORK UNIT AUTHORIZED
+```
+
+The independent authority state is an upstream fixture relation for this
+pressure. Effect attribution must neither manufacture nor strengthen it.
 
 A successful pressure does not establish a universal invocation identity system.
 
@@ -298,6 +311,66 @@ CAUSAL CORRESPONDENCE
 The apparatus must verify the relation mechanically rather than trusting the
 receipt's prose or identifiers.
 
+### Experimental membrane
+
+The synthetic experiment must preserve three independent surfaces:
+
+```text
+HARNESS
+→ establishes the synthetic invocation binding
+→ controls the effect path
+→ retains raw causal events
+→ retains actual pre-effect / post-effect state
+
+CANDIDATE
+→ receives only admissible raw basis
+→ produces whatever provenance mechanism is under test
+
+SCORER
+→ independently compares candidate-produced provenance
+  against harness-retained ground truth
+```
+
+Freeze:
+
+```text
+CANDIDATE PROVENANCE CLAIM
+!=
+HARNESS GROUND TRUTH
+
+RAW EFFECT TRACE
+!=
+PRE-ADJUDICATED CAUSAL RELATION
+
+CANDIDATE CANNOT
+AUTHOR ITS OWN GROUND TRUTH
+```
+
+The harness may know which synthetic invocation caused the controlled effect
+without exposing that adjudicated answer to the candidate mechanism.
+
+```text
+HARNESS / CANDIDATE / SCORER SEPARATION
+=
+EXPERIMENTAL DESIGN
+
+NOT
+=
+PRODUCT ARCHITECTURE
+```
+
+The authority basis used by the harness is independently supplied as one of:
+
+```text
+VALID
+ABSENT
+CONSUMED
+INVALID
+```
+
+This pressure asks whether provenance remains independent of that authority
+state. It does not execute or qualify `AUTHORITY_POLICY_001`.
+
 ---
 
 ## 6. PROTECTED SEMANTIC DISTINCTIONS
@@ -376,6 +449,45 @@ INVALID
 
 This answers only whether the bounded effect is mechanically correspondent with
 the supplied invocation relation.
+
+Freeze the result meanings:
+
+```text
+ESTABLISHED
+=
+positive retained evidence satisfies
+the frozen correspondence predicate
+
+UNATTRIBUTED
+=
+a durable effect exists,
+but retained evidence is insufficient
+to establish the tested actor relation
+
+INVALID
+=
+candidate attribution / provenance evidence exists
+but contradicts mechanically observed harness ground truth
+```
+
+Freeze precedence:
+
+```text
+CONTRADICTION
+→ INVALID
+
+else
+
+INSUFFICIENT POSITIVE CORRESPONDENCE
+→ UNATTRIBUTED
+
+else
+
+SUFFICIENT CORRESPONDENCE
+→ ESTABLISHED
+```
+
+Absence of sufficient attribution evidence is not itself contradictory evidence.
 
 ### CLAIM EXERCISE
 
@@ -633,25 +745,35 @@ PRE-ADJUDICATED PROVENANCE VERDICT
 
 ### CELL A — MATCHED EFFECT
 
-Raw relation:
+Raw basis:
 
 ```text
-claim C1:
-ACTIVE
-bound to invocation I1
-work unit U1
+UPSTREAM BINDING BASIS:
+candidate invocation = I1
 
-authority A1:
-VALID for U1 at effect start
+CLAIM BASIS:
+claim = C1
+claim status = ACTIVE
+work unit = U1
 
-I1 enters the controlled effect path
-from pre-coordinate H0
+CONTROLLED EFFECT TRACE:
+entry event = X
+pre-state = H0
+mutation event = M
+post-state = H1
 
-durable effect E1 produces post-coordinate H1
+AUTHORITY BASIS:
+A1 = VALID at effect start
 
-mechanical provenance relation binds:
-I1 + C1 + U1 + H0 -> H1
+CANDIDATE PROVENANCE MATERIAL:
+whatever the tested mechanism emits
 ```
+
+The candidate must not receive an adjudicated statement that
+`I1 + C1 + U1 + H0 -> H1` is already established.
+
+The scorer independently derives whether the retained raw basis and
+candidate-produced provenance establish the tested correspondence.
 
 Expected:
 
@@ -688,15 +810,21 @@ Expected:
 EFFECT_EXISTS:
 true
 
-effect MUST NOT be attributed to I1
-merely from branch / Git author / timing
+INVOCATION_EFFECT_ATTRIBUTION
+of this effect to I1:
+UNATTRIBUTED
 
-C1 exercise by I1:
-UNESTABLISHED or INVALID
-according to the frozen scorer
+CLAIM_EXERCISE
+of C1 by I1:
+UNESTABLISHED
 ```
 
-The scorer must freeze one exact output before realization.
+This cell contains no candidate provenance object falsely claiming I1 as the
+actor. Therefore insufficient positive correspondence is UNATTRIBUTED, not
+INVALID.
+
+A separate contradictory-provenance specimen must score INVALID under the
+frozen precedence.
 
 ### CELL C — ACTIVE CLAIM / UNRECEIPTED OR UNBOUND EFFECT
 
@@ -895,11 +1023,19 @@ what constitutes valid authority at effect start
 what constitutes mechanical correspondence
 between pre-coordinate and post-coordinate
 
-whether Cell B returns:
+the frozen attribution semantics and precedence:
+
+CONTRADICTION
+→ INVALID
+
+INSUFFICIENT POSITIVE CORRESPONDENCE
+→ UNATTRIBUTED
+
+SUFFICIENT CORRESPONDENCE
+→ ESTABLISHED
+
+Cell B's non-I1 relation:
 UNATTRIBUTED
-or
-INVALID
-for the non-I1 relation
 ```
 
 No answer-key field may be exposed to the candidate mechanism.
