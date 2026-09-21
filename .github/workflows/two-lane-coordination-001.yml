@@ -1,0 +1,47 @@
+name: TWO_LANE_COORDINATION_001
+
+on:
+  pull_request:
+    paths:
+      - "docs/candidates/two_lane_coordination_v0/**"
+      - "tools/two_lane_coordination_v0.py"
+      - "schemas/two_lane_*"
+      - "tests/runtime/test_two_lane_coordination_v0.py"
+      - ".github/workflows/two-lane-coordination-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile apparatus
+        run: |
+          python -m py_compile             tools/two_lane_coordination_v0.py             tests/runtime/test_two_lane_coordination_v0.py
+
+      - name: Execute bounded coordination pressure
+        run: |
+          python -m unittest             tests.runtime.test_two_lane_coordination_v0 -v
+
+      - name: Parse frozen JSON schemas
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          for path in (
+              Path("schemas/two_lane_work_claim_v0.schema.json"),
+              Path("schemas/two_lane_coordination_cursor_v0.schema.json"),
+          ):
+              value = json.loads(path.read_text(encoding="utf-8"))
+              assert value["type"] == "object"
+              assert value["additionalProperties"] is False
+              print(path, "OK")
+          PY
