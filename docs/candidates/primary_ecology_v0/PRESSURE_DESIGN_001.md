@@ -47,7 +47,20 @@ occupant or invocation is invalid.
 OLD OBSERVATION BASIS
 !=
 CURRENT INVOCATION OBSERVATION
+
+FRESH BASIS IDENTITY
+!=
+FRESH OBSERVATION
+
+REBASE OBSERVER METADATA
+!=
+REOBSERVE WORLD
 ```
+
+A fresh invocation basis must not inherit prior `observed_objects[]`,
+`explicit_missing_objects[]`, or `source_refs[]` merely because a predecessor
+basis exists. Current observation payload is empty unless explicitly supplied as
+fresh input for the new invocation.
 
 Explicit historical-basis reuse, if later needed, requires a separate typed
 relation and is not modeled by this candidate.
@@ -134,6 +147,26 @@ Expected: reject SEAT_BINDING_WORK_CLAIM_MISMATCH.
 N3 -- seat absent / binding claim
 Seat says null while binding says claim://A.
 Expected: reject SEAT_BINDING_WORK_CLAIM_MISMATCH.
+
+P1 -- old observed object must not auto-propagate
+Old basis observes POISON_SENTINEL.
+Rotate invocation with no fresh observation input.
+Expected: new basis reports POISON_SENTINEL = UNKNOWN and observed_objects = [].
+
+P2 -- old missingness must not auto-propagate
+Old basis reports MISSING_POISON_SENTINEL = MISSING.
+Rotate invocation with no fresh missingness input.
+Expected: new basis reports it = UNKNOWN and explicit_missing_objects = [].
+
+P3 -- fresh observation may reestablish same fact
+Old basis observes POISON_SENTINEL.
+Fresh invocation receives an explicitly supplied fresh observation of the same fact.
+Expected: new basis may report POISON_SENTINEL = OBSERVED with fresh source refs.
+
+P4 -- historical basis remains separate
+Retain exact old basis reference while fresh current basis is empty.
+Expected: old ref != current ref; binding points only to current ref; old payload
+does not become current observation.
 ```
 
 A separate focused regression mutates the contents of an otherwise matching
