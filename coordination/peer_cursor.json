@@ -1,0 +1,7 @@
+{
+  "schema": "two_lane_coordination_cursor_v0",
+  "consumer_lane_id": "LANE_B",
+  "peer_coordinates": [],
+  "authority_effect": "NONE",
+  "execution_effect": "NONE"
+}
