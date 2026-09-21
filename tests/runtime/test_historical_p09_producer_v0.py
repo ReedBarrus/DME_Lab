@@ -21,5 +21,11 @@ class HistoricalP09ProducerTests(unittest.TestCase):
             self.assertTrue(value["producer"])
             self.assertTrue(value["version"])
 
+    def test_scope_closure_and_temporal_cells(self):
+        observed=qualify(load_json(FIXTURES))
+        self.assertEqual(observed["F"]["status"],"ADMINISTRATION_INVALID")
+        self.assertEqual(observed["G"]["standing"],"UNFINISHED_EFFECT_REQUIRES_ACTIVE_OWNERSHIP")
+        self.assertEqual(observed["H"]["standing"],"UNFINISHED_EFFECT_REQUIRES_ACTIVE_OWNERSHIP")
+
 if __name__=="__main__":
     unittest.main()
