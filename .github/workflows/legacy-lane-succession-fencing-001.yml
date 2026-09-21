@@ -25,8 +25,15 @@ jobs:
         run: python -m py_compile tools/legacy_lane_succession_fencing_v0.py tests/runtime/test_legacy_lane_succession_fencing_v0.py
       - name: Execute frozen pressure
         run: python -m unittest tests.runtime.test_legacy_lane_succession_fencing_v0 -v
-      - name: Emit deterministic qualification evidence
+      - name: Regenerate qualification evidence
         run: |
-          python tools/legacy_lane_succession_fencing_v0.py docs/candidates/legacy_lane_succession_fencing_v0/fixtures/RAW_FIXTURES_v0.json | tee /tmp/LEGACY_LANE_SUCCESSION_FENCING_001.json
+          python tools/legacy_lane_succession_fencing_v0.py docs/candidates/legacy_lane_succession_fencing_v0/fixtures/RAW_FIXTURES_v0.json > /tmp/LEGACY_LANE_SUCCESSION_FENCING_001.json
+          diff -u docs/candidates/legacy_lane_succession_fencing_v0/QUALIFICATION_EVIDENCE_001.json /tmp/LEGACY_LANE_SUCCESSION_FENCING_001.json
+      - name: Emit bounded receipt
+        run: |
+          cat docs/candidates/legacy_lane_succession_fencing_v0/QUALIFICATION_EVIDENCE_001.json
+          echo "EVIDENCE_BYTES_REGENERATED=EXACT_MATCH"
           echo "LIVE_LANE_MUTATION=NONE"
+          echo "PREDECESSOR_DISPOSITION=UNCHANGED"
           echo "SUCCESSOR_ACTIVATION=NONE"
+          echo "MERGE=NONE"
