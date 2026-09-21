@@ -1,0 +1,33 @@
+name: ACTION_INFLIGHT_LEGIBILITY_001
+
+on:
+  pull_request:
+    paths:
+      - "src/cockpit/action_surface.py"
+      - "tools/lab_conductor.py"
+      - "tests/cockpit/test_action_surface.py"
+      - "tests/lab/test_lab_conductor.py"
+      - "docs/candidates/night_roam/ACTION_INFLIGHT_LEGIBILITY_PRESSURE_001.md"
+      - ".github/workflows/action-inflight-legibility-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile
+        run: python -m py_compile src/cockpit/action_surface.py tools/lab_conductor.py tests/cockpit/test_action_surface.py tests/lab/test_lab_conductor.py
+      - name: Action Surface pressure
+        run: python -m unittest tests.cockpit.test_action_surface -v
+      - name: Conductor lifecycle pressure
+        run: python -m unittest tests.lab.test_lab_conductor -v
