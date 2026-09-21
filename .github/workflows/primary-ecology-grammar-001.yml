@@ -1,0 +1,34 @@
+name: PRIMARY_ECOLOGY_GRAMMAR_001
+
+on:
+  pull_request:
+    paths:
+      - "docs/candidates/primary_ecology_v0/**"
+      - "schemas/ecology_role_v0.schema.json"
+      - "schemas/ecology_seat_v0.schema.json"
+      - "schemas/observation_basis_v0.schema.json"
+      - "schemas/ecology_engagement_binding_v0.schema.json"
+      - "tools/primary_ecology_v0.py"
+      - "tests/runtime/test_primary_ecology_v0.py"
+      - ".github/workflows/primary-ecology-grammar-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile bounded apparatus
+        run: python -m py_compile tools/primary_ecology_v0.py tests/runtime/test_primary_ecology_v0.py
+      - name: Execute grammar pressure
+        run: python -m unittest tests.runtime.test_primary_ecology_v0 -v
+      - name: Regenerate qualification evidence
+        run: python -m tools.primary_ecology_v0 --output /tmp/PRIMARY_ECOLOGY_GRAMMAR_001_RESULT.json
+      - name: Verify retained evidence bytes
+        run: diff -u docs/candidates/primary_ecology_v0/QUALIFICATION_EVIDENCE_001.json /tmp/PRIMARY_ECOLOGY_GRAMMAR_001_RESULT.json
