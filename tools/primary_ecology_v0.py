@@ -1728,6 +1728,7 @@ def run_pressure() -> dict[str, Any]:
 
     # T2 -- after the exact current encounter membrane survives, the strongest
     # standing earned is SOURCE_PRESENTED, not OBSERVED.
+    t2_status = "INVALID"
     try:
         t2_status = current_epistemic_status(
             role=t_bundle["role"],
