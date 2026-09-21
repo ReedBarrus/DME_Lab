@@ -279,10 +279,47 @@ OBSERVATION CLAIM
 OBSERVATION GROUNDING
 ```
 
-This is a minimal grounding membrane: it establishes only an explicit
-claim-to-represented-source relation. It does **not** establish that the named
-source is true, authentic, or sufficient to prove the claimed object identity.
-Source-to-object identity correspondence remains unqualified.
+This first grounding membrane establishes an explicit
+claim-to-represented-source relation.
+
+A separate `observation_source_v0` carrier now represents the source-side
+object coordinate:
+
+```text
+source_id
+object_id
+identity
+```
+
+The basis references the carrier by a content-addressed source ref derived from
+the exact carrier bytes. A current observed-object claim is source-corresponding
+only when the exact represented carrier agrees on:
+
+```text
+source_ref
+object_id
+identity
+```
+
+This earns only exact represented correspondence.
+
+```text
+SOURCE REPRESENTED
+!=
+SOURCE CORRESPONDS TO CLAIMED OBJECT
+
+SOURCE CORRESPONDS TO OBJECT
+!=
+SOURCE ESTABLISHES CLAIMED IDENTITY
+
+SOURCE / OBJECT / IDENTITY AGREEMENT
+!=
+SOURCE TRUTH
+```
+
+The `identity` value remains opaque and nonempty. This candidate does not
+qualify an identity scheme, require SHA-256, authenticate the source, or establish
+that the source's semantic claim is true.
 
 The predecessor basis remains separately recoverable by exact identity, but its
 payload is not current observation. A typed historical-consultation relation is
@@ -314,9 +351,9 @@ A green pressure may establish only:
 > roles, seats, occupants, invocations, work-claim references, authority
 > references, and observation bases while enforcing the tested cross-object
 > current-identity correspondence, work-claim correspondence, fresh-observation
-> payload noninheritance, and explicit represented source relations for current
-> observed-object claims while avoiding the tested identity/authority/
-> missingness collapses.
+> payload noninheritance, explicit represented source relations, and exact
+> represented source/object/identity correspondence for current observed-object
+> claims while avoiding the tested identity/authority/missingness collapses.
 
 It does not establish:
 
@@ -331,8 +368,9 @@ claim validity
 authority validity
 execution permission
 historical-basis reuse semantics
-observation source-to-object identity proof
+observation identity-scheme semantics
 source truth / authenticity
+semantic truth of source claims
 representation succession
 legacy-seat migration
 ```
