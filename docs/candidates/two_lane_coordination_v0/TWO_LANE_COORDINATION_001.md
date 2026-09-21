@@ -111,11 +111,14 @@ GLOBAL TOTAL ORDER
 Immediately before a lane begins a new repository mutation unit:
 
 1. resolve each relevant peer branch to its current exact head;
-2. compare with the retained peer coordinate;
-3. if head or claim digest changed, return REVALIDATION_REQUIRED;
-4. only after consuming the current peer claim may overlap be evaluated;
-5. if a collision is present, return COORDINATION_HOLD;
-6. otherwise return NO_COORDINATION_BLOCK.
+2. read the peer's exact current work claim from that head;
+3. compare the current claim digest with the retained peer claim digest;
+4. if the claim digest changed, return REVALIDATION_REQUIRED;
+5. if only the branch head advanced while the claim digest is unchanged,
+   retain that activity as provenance but do not manufacture a coordination block;
+6. only after the current claim is known may overlap be evaluated;
+7. if a collision is present, return COORDINATION_HOLD;
+8. otherwise return NO_COORDINATION_BLOCK.
 
 ```text
 NO_COORDINATION_BLOCK
@@ -223,16 +226,21 @@ Different branches are allowed, but target_lineage, consequence_envelope_id,
 and artifact_scope overlap.
 Expected: PROVENANCE_COLLISION → COORDINATION_HOLD.
 
-### E — stale peer coordinate
-Local cursor retains peer H0; peer branch is now H1.
-Expected: REVALIDATION_REQUIRED before overlap adjudication.
+### E — peer activity without claim change
+Local cursor retains peer H0; peer branch is now H1, but the exact current
+peer work-claim digest is unchanged.
+Expected: activity advance is visible, but no revalidation block is created
+solely by unrelated branch movement.
 
-After the lane explicitly consumes the H1 peer claim and updates its cursor,
-the guard may adjudicate the current claims. If they overlap, hold.
+This prevents acknowledgement / unrelated-work commits from causing
+cross-lane stale ping-pong.
 
 ### F — claim changes without cursor acknowledgement
-Peer head/current claim differs from the retained claim digest.
-Expected: REVALIDATION_REQUIRED.
+The exact current peer claim digest differs from the retained claim digest.
+Expected: REVALIDATION_REQUIRED before overlap adjudication.
+
+After the lane explicitly consumes the changed peer claim and updates its
+coordination cursor, the guard may adjudicate current overlap.
 
 ## Failure behavior
 
@@ -244,8 +252,7 @@ peer current claim unavailable
 claim malformed
 cursor malformed
 peer branch identity disagrees
-claim digest disagrees
-coordination basis stale
+claim digest disagrees without acknowledgement
 collision detected
 ```
 
@@ -275,8 +282,8 @@ NO occupant authentication
 A passing pressure may establish only:
 
 > Two bounded lanes can expose exact declared work claims, detect exact tested
-> semantic/provenance collisions, and refuse to rely on stale peer coordination
-> coordinates before mutation.
+> semantic/provenance collisions, distinguish peer activity from peer-claim
+> change, and refuse to rely on an unacknowledged changed claim before mutation.
 
 It does not establish general multi-agent safety, general conflict detection,
 authenticated identity, authority to mutate, or safe parallel integration.
