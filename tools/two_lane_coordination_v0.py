@@ -223,6 +223,7 @@ def pre_mutation_guard(
 
     observed = {p["lane_id"]: p for p in cursor["peer_coordinates"]}
     stale = []
+    activity_advances = []
     peers: dict[str, dict[str, Any]] = {}
     for peer in peer_claims:
         validate_claim(peer)
@@ -249,14 +250,6 @@ def pre_mutation_guard(
         if retained["branch"] != current["branch"]:
             stale.append({"lane_id": lane_id, "reason": "CURSOR_BRANCH_MISMATCH"})
             continue
-        if retained["last_seen_head"] != current["head"]:
-            stale.append({
-                "lane_id": lane_id,
-                "reason": "PEER_HEAD_ADVANCED",
-                "last_seen_head": retained["last_seen_head"],
-                "current_head": current["head"],
-            })
-            continue
         digest = claim_digest(peer)
         if retained["last_seen_claim_digest"] != digest:
             stale.append({
@@ -264,6 +257,17 @@ def pre_mutation_guard(
                 "reason": "PEER_CLAIM_CHANGED",
                 "last_seen_claim_digest": retained["last_seen_claim_digest"],
                 "current_claim_digest": digest,
+                "last_seen_head": retained["last_seen_head"],
+                "current_head": current["head"],
+            })
+            continue
+        if retained["last_seen_head"] != current["head"]:
+            activity_advances.append({
+                "lane_id": lane_id,
+                "reason": "PEER_ACTIVITY_ADVANCED_CLAIM_UNCHANGED",
+                "last_seen_head": retained["last_seen_head"],
+                "current_head": current["head"],
+                "claim_digest": digest,
             })
 
     if stale:
@@ -273,6 +277,7 @@ def pre_mutation_guard(
             "coordination_posture": "REVALIDATION_REQUIRED",
             "stale_peers": stale,
             "comparisons": [],
+            "peer_activity_advances": activity_advances,
             "coordination_clear": False,
             "authorization_effect": "NONE",
             "execution_effect": "NONE",
@@ -288,6 +293,7 @@ def pre_mutation_guard(
             "COORDINATION_HOLD" if blocked else "NO_COORDINATION_BLOCK"
         ),
         "stale_peers": [],
+        "peer_activity_advances": activity_advances,
         "comparisons": comparisons,
         "coordination_clear": not blocked,
         "authorization_effect": "NONE",
