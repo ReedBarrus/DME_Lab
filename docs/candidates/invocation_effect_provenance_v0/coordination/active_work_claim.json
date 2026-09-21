@@ -1,0 +1,41 @@
+{
+  "schema": "two_lane_work_claim_v0",
+  "claim_id": "INVOCATION_EFFECT_PROVENANCE_001-WORKSHOP-CLAIM-001",
+  "lane_id": "INVOCATION_EFFECT_PROVENANCE_001",
+  "seat_id": "WORKSHOP",
+  "occupant_id": "WORKSHOP",
+  "invocation_id": "INVOCATION_EFFECT_PROVENANCE_001-CHATGPT-CURRENT-INVOCATION",
+  "branch": "invocation-effect-provenance-v0",
+  "basis_head": "c49f13450fe69691988810ca6cb8ccaca1f42231",
+  "target_lineage": "INVOCATION_EFFECT_PROVENANCE_001",
+  "campaign_id": null,
+  "pressure_id": "INVOCATION_EFFECT_PROVENANCE_001",
+  "addressed_role": "WORKSHOP",
+  "binding_ref": "WARRANT:INVOCATION_EFFECT_PROVENANCE_001:WORKSHOP:CURRENT_CHATGPT_INVOCATION",
+  "consequence_envelope_id": "INVOCATION_EFFECT_PROVENANCE_001-SYSTEM_WRITE",
+  "semantic_surfaces": [
+    "INVOCATION_EFFECT_ATTRIBUTION",
+    "CLAIM_EXERCISE",
+    "AUTHORITY_PROVENANCE_SEPARATION",
+    "SYNTHETIC_EFFECT_CORRESPONDENCE"
+  ],
+  "artifact_scopes": [
+    "docs/candidates/invocation_effect_provenance_v0",
+    "schemas/invocation_effect_provenance",
+    "tools/invocation_effect_provenance_v0.py",
+    "tests/runtime/test_invocation_effect_provenance_v0.py",
+    ".github/workflows/invocation-effect-provenance-001.yml"
+  ],
+  "mutation_paths": [
+    "docs/candidates/invocation_effect_provenance_v0/**",
+    "schemas/invocation_effect_provenance_*",
+    "tools/invocation_effect_provenance_v0.py",
+    "tests/runtime/test_invocation_effect_provenance_v0.py",
+    ".github/workflows/invocation-effect-provenance-001.yml"
+  ],
+  "status": "ACTIVE",
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "integration_effect": "NONE",
+  "priority_effect": "NONE"
+}
