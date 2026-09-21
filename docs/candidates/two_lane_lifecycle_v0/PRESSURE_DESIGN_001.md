@@ -150,6 +150,10 @@ Admissible iff:
 ```text
 P01 SOURCE_CLAIM_STATUS_IS_ACTIVE
 
+P02 SOURCE_LANE_STATUS_IS_ACTIVE
+
+P03 SOURCE_OCCUPANT_BINDING is non-null
+
 P05 WORK_UNIT_CORRESPONDENCE_MATCHES
 
 P06 COMPLETION_CRITERION_RAW_TERMS_SATISFIED
@@ -176,6 +180,10 @@ Admissible iff:
 ```text
 P01 SOURCE_CLAIM_STATUS_IS_ACTIVE
 
+P02 SOURCE_LANE_STATUS_IS_ACTIVE
+
+P03 SOURCE_OCCUPANT_BINDING is non-null
+
 P09 ACTIVE_OWNERSHIP_EFFECT_STATUS =
 NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP
 
@@ -201,6 +209,10 @@ Admissible iff:
 ```text
 P01 SOURCE_CLAIM_STATUS_IS_ACTIVE
 
+P02 SOURCE_LANE_STATUS_IS_ACTIVE
+
+P03 SOURCE_OCCUPANT_BINDING is non-null
+
 P12 MARK_BLOCKED_BLOCKING_RELATION standing = ESTABLISHED
 
 P12 basis_ref recoverable
@@ -212,7 +224,7 @@ Expected postcondition when admissible:
 ```text
 claim = BLOCKED
 lane = HELD
-occupant_binding = PRESERVED
+occupant_binding = exact supplied non-null P03 identity PRESERVED
 ```
 
 Freeze:
@@ -1058,6 +1070,346 @@ NEW WORK UNIT
 →
 NEW CURRENT BINDING / CLAIM RELATION
 ```
+
+## F12 source-state causal-effect pressure
+
+These cells are held-out design cells only.
+
+They are not executed by this repair.
+
+Each cell starts from an otherwise valid branch baseline and changes exactly one
+registered source-state predicate.
+
+Freeze:
+
+```text
+PREDICATE REGISTERED
+!=
+PREDICATE CAUSALLY EFFECTIVE
+
+HELD-OUT SOURCE-GUARD INTERVENTION
+=
+ONE SOURCE GUARD CHANGED
++
+ALL UNRELATED BRANCH PREREQUISITES CONSERVED
+```
+
+### N1 — COMPLETE rejects non-ACTIVE source lane
+
+Baseline:
+
+```text
+Cell A valid COMPLETE basis
+```
+
+Independent intervention:
+
+```text
+P01:
+claim.status = ACTIVE
+UNCHANGED
+
+P02:
+lane.status = HELD
+CHANGED from ACTIVE
+
+P03:
+occupant_binding = OCCUPANT-X
+UNCHANGED / non-null
+
+P04:
+requested_transition = COMPLETE
+
+P05:
+exact work-unit correspondence = true by raw derivation
+
+P06:
+raw completion criterion terms = satisfied by raw derivation
+
+P07:
+every criterion-required qualified upstream standing from Cell A
+UNCHANGED and valid
+
+P08:
+COMPLETION_BLOCKER_STATUS = NONE_ESTABLISHED
+UNCHANGED and qualified
+```
+
+Expected:
+
+```text
+admissible = false
+blocking_source_predicate = P02 SOURCE_LANE_STATUS_IS_ACTIVE
+no COMPLETE postcondition emitted
+```
+
+Required causal proof:
+
+```text
+same baseline with P02 = ACTIVE
+→ COMPLETE admissible
+
+same basis with only P02 != ACTIVE
+→ COMPLETE inadmissible
+```
+
+### N2 — RELEASE rejects non-ACTIVE source lane
+
+Baseline:
+
+```text
+Cell B valid RELEASE basis
+```
+
+Independent intervention:
+
+```text
+P01:
+claim.status = ACTIVE
+UNCHANGED
+
+P02:
+lane.status = HELD
+CHANGED from ACTIVE
+
+P03:
+occupant_binding = OCCUPANT-X
+UNCHANGED / non-null
+
+P04:
+requested_transition = RELEASE
+
+P09:
+ACTIVE_OWNERSHIP_EFFECT_STATUS =
+NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP
+UNCHANGED and qualified
+
+P10:
+required conserved reference set
+UNCHANGED from raw source
+
+P11:
+REFERENCE_RETENTION_STATUS = RETAINABLE
+UNCHANGED and qualified
+
+P18:
+INVOCATION_EFFECT_ATTRIBUTION = UNRESOLVED
+UNCHANGED when present in the baseline
+```
+
+Expected:
+
+```text
+admissible = false
+blocking_source_predicate = P02 SOURCE_LANE_STATUS_IS_ACTIVE
+no RELEASE postcondition emitted
+```
+
+Required causal proof:
+
+```text
+same baseline with P02 = ACTIVE
+→ RELEASE admissible
+
+same basis with only P02 != ACTIVE
+→ RELEASE inadmissible
+```
+
+### N3 — MARK_BLOCKED rejects non-ACTIVE source lane
+
+Baseline:
+
+```text
+Cell C valid MARK_BLOCKED basis
+```
+
+Independent intervention:
+
+```text
+P01:
+claim.status = ACTIVE
+UNCHANGED
+
+P02:
+lane.status = HELD
+CHANGED from ACTIVE
+
+P03:
+occupant_binding = OCCUPANT-X
+UNCHANGED / non-null
+
+P04:
+requested_transition = MARK_BLOCKED
+
+P12:
+relation_type = MARK_BLOCKED_BLOCKING_STATUS
+standing = ESTABLISHED
+basis_ref = <same recoverable blocking basis as baseline>
+producer = <same qualified producer>
+version = <same qualified version>
+```
+
+Expected:
+
+```text
+admissible = false
+blocking_source_predicate = P02 SOURCE_LANE_STATUS_IS_ACTIVE
+no BLOCKED / HELD postcondition emitted
+```
+
+Required causal proof:
+
+```text
+same baseline with P02 = ACTIVE
+→ MARK_BLOCKED admissible
+
+same basis with only P02 != ACTIVE
+→ MARK_BLOCKED inadmissible
+```
+
+### N4 — MARK_BLOCKED rejects null source occupant
+
+Baseline:
+
+```text
+Cell C valid MARK_BLOCKED basis
+```
+
+Independent intervention:
+
+```text
+P01:
+claim.status = ACTIVE
+UNCHANGED
+
+P02:
+lane.status = ACTIVE
+UNCHANGED
+
+P03:
+occupant_binding = null
+CHANGED from OCCUPANT-X
+
+P04:
+requested_transition = MARK_BLOCKED
+
+P12:
+relation_type = MARK_BLOCKED_BLOCKING_STATUS
+standing = ESTABLISHED
+basis_ref = <same recoverable blocking basis as baseline>
+producer = <same qualified producer>
+version = <same qualified version>
+```
+
+Expected:
+
+```text
+admissible = false
+blocking_source_predicate = P03 SOURCE_OCCUPANT_BINDING
+no BLOCKED / HELD postcondition emitted
+```
+
+Required causal proof:
+
+```text
+same baseline with non-null P03
+→ MARK_BLOCKED admissible
+→ exact P03 identity preserved after transition
+
+same basis with only P03 = null
+→ MARK_BLOCKED inadmissible
+```
+
+D3 remains unchanged:
+
+```text
+claim BLOCKED
+lane HELD
+occupant null
+→ INVALID
+```
+
+N4 rejects the invalid source before transition, while D3 independently rejects
+the prohibited resulting posture.
+
+### F12 branch audit
+
+```text
+COMPLETE
+
+required predicates:
+P01 P02 P03 P05 P06
+every criterion-required P07
+P08
+
+source guards:
+P01 = true
+P02 = true
+P03 != null
+
+result:
+COMPLETED
+READY_UNCLAIMED
+occupant null
+
+mechanical source blockers:
+P01 / P02 / P03
+
+D1-D3:
+result compatible
+
+
+RELEASE
+
+required predicates:
+P01 P02 P03 P09 P10 P11
+P18 where supplied for conserved provenance standing
+
+source guards:
+P01 = true
+P02 = true
+P03 != null
+
+result:
+RELEASED
+READY_UNCLAIMED
+occupant null
+required refs conserved
+
+mechanical source blockers:
+P01 / P02 / P03
+
+D1-D3:
+result compatible
+
+
+MARK_BLOCKED
+
+required predicates:
+P01 P02 P03 P12
+
+source guards:
+P01 = true
+P02 = true
+P03 != null
+
+result:
+BLOCKED
+HELD
+occupant = exact P03 source identity
+
+mechanical source blockers:
+P01 / P02 / P03
+
+D1-D3:
+exact occupant preservation prevents D3
+HELD posture prevents D2
+BLOCKED is never treated as reusable terminal state
+```
+
+All registered source-state predicates required by each branch are therefore
+explicit members of its admissibility conjunction and have held-out causal
+interventions.
 
 ## Resulting disposition evidence
 
