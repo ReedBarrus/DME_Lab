@@ -68,6 +68,10 @@ RAW LIFECYCLE BASIS
 !=
 EXPECTED DISPOSITION
 
+UPSTREAM STANDING
+!=
+LIFECYCLE VERDICT
+
 QUALIFIED UPSTREAM RELATION:
 ALLOWED
 
@@ -202,8 +206,8 @@ release_safe
 release_not_admissible
 completion_impossible
 blocked_is_correct
-future ownership must be relinquished
-raw basis supports release but not completion
+operator-intent conclusion disguised as raw state
+release/completion verdict prose
 expected claim state
 expected lane state
 expected occupant posture
