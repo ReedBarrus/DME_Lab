@@ -53,10 +53,54 @@ test('operational graph derives only explicit identifier relations', () => {
 test('address persists across projections and missing consequence representation is explicit', () => {
   const graph = buildOperationalGraph(snapshot());
   const semanticOnly = [{kind:'pressure_occurrence',id:'PR-001'}];
-  assert.equal(projectionAddressStatus('TOPOLOGY', semanticOnly, graph).status, 'REPRESENTABLE');
-  const consequence = projectionAddressStatus('CONSEQUENCE', semanticOnly, graph);
+  const observer = {
+    occurrences:[{key:'PR-001',node:{id:'PR-001',title:'Pressure one'}}],
+    constraintOccurrences:[],
+    evidenceOccurrences:[],
+    projectionDocumentOccurrences:[],
+  };
+  assert.equal(
+    projectionAddressStatus('TOPOLOGY', semanticOnly, graph, observer).status,
+    'REPRESENTABLE',
+  );
+  const consequence = projectionAddressStatus('CONSEQUENCE', semanticOnly, graph, observer);
   assert.equal(consequence.status, 'ADDRESS_NOT_REPRESENTABLE');
   assert.deepEqual(consequence.missing, semanticOnly);
+});
+
+test('topology representability follows exact loaded basis presence', () => {
+  const graph = buildOperationalGraph(snapshot());
+  const observer = {
+    occurrences:[{
+      key:'P1-exact',
+      node:{id:'P1-exact',title:'Exact pressure'},
+    }],
+    constraintOccurrences:[],
+    evidenceOccurrences:[],
+    projectionDocumentOccurrences:[],
+  };
+
+  const t1 = [{kind:'pressure_occurrence',id:'P1-exact'}];
+  const t2 = [{kind:'pressure_occurrence',id:'P1-absent'}];
+  const t3 = [{kind:'request',id:'R1'}];
+  const t4 = [{kind:'request',id:'R-missing'}];
+
+  assert.deepEqual(
+    projectionAddressStatus('TOPOLOGY', t1, graph, observer),
+    {status:'REPRESENTABLE',missing:[]},
+  );
+  assert.deepEqual(
+    projectionAddressStatus('TOPOLOGY', t2, graph, observer),
+    {status:'ADDRESS_NOT_REPRESENTABLE',missing:t2},
+  );
+  assert.deepEqual(
+    projectionAddressStatus('TOPOLOGY', t3, graph, observer),
+    {status:'REPRESENTABLE',missing:[]},
+  );
+  assert.deepEqual(
+    projectionAddressStatus('TOPOLOGY', t4, graph, observer),
+    {status:'ADDRESS_NOT_REPRESENTABLE',missing:t4},
+  );
 });
 
 test('multi-selection never implies priority', () => {

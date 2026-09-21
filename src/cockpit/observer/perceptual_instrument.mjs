@@ -298,15 +298,26 @@ export function toggleAddressSelection(current, next, additive = false) {
     : [...existing, next];
 }
 
-export function projectionAddressStatus(projection, addresses, graph) {
+export function projectionAddressStatus(
+  projection,
+  addresses,
+  graph,
+  observerModel = null,
+) {
   const selected = array(addresses);
   if (!selected.length) return {status: 'EMPTY', missing: []};
-  if (projection === 'TOPOLOGY') {
-    return {status: 'REPRESENTABLE', missing: []};
-  }
-  const missing = selected.filter(
-    (item) => !graph?.byKey?.has(addressKey(item)),
-  );
+
+  const missing = selected.filter((item) => {
+    const operationallyPresent = Boolean(
+      graph?.byKey?.has(addressKey(item)),
+    );
+    if (projection !== 'TOPOLOGY') return !operationallyPresent;
+    const semanticallyPresent = Boolean(
+      observerAddressObject(observerModel, item),
+    );
+    return !operationallyPresent && !semanticallyPresent;
+  });
+
   return {
     status: missing.length
       ? 'ADDRESS_NOT_REPRESENTABLE'
