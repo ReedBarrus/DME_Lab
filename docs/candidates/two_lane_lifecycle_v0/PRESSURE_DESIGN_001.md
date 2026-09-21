@@ -407,28 +407,58 @@ The fixture must not contain a RELEASE verdict.
 
 ## R3 — representable release is not live historical release adjudication
 
-Use a synthetic fixture shaped like the historical Lane-B representation:
+Use a synthetic fixture shaped like the historical Lane-B representation, but
+supply the complete RELEASE basis through the closed membrane.
+
+RAW_INPUT:
 
 ```text
-claim shape:
-SEAT_ENGAGEMENT_HANDSHAKE_001-LANE_B-CLAIM-001-like
+P01:
+synthetic claim object.status = ACTIVE
 
-requested_transition:
-RELEASE
+P02:
+synthetic lane manifest.status = ACTIVE
 
-P18 QUALIFIED_UPSTREAM_STANDING:
-  relation_type = INVOCATION_EFFECT_ATTRIBUTION
-  standing = UNRESOLVED
-  basis_ref = <recoverable provenance basis>
-  producer = <qualified producer>
-  version = <qualified version>
+P03:
+synthetic lane manifest.occupant_binding = OCCUPANT-X
 
-P10 RAW_INPUT:
-  unresolved_ref_id = PROV-REF-01
+P04:
+transition request.requested_transition = RELEASE
+
+P10:
+synthetic source object carries unresolved_ref_id = PROV-REF-01
 ```
 
-Expected synthetic result may be RELEASED only from the frozen synthetic raw
-facts.
+QUALIFIED_UPSTREAM_STANDING:
+
+```text
+P09:
+relation_type = ACTIVE_OWNERSHIP_EFFECT_STATUS
+standing = NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP
+basis_ref = <recoverable synthetic effect-ownership basis>
+producer = <qualified producer>
+version = <qualified version>
+
+P11:
+relation_type = REFERENCE_RETENTION_STATUS
+standing = RETAINABLE
+basis_ref = <recoverable synthetic retention basis for PROV-REF-01>
+producer = <qualified producer>
+version = <qualified version>
+
+P18:
+relation_type = INVOCATION_EFFECT_ATTRIBUTION
+standing = UNRESOLVED
+basis_ref = <recoverable synthetic provenance basis>
+producer = <qualified producer>
+version = <qualified version>
+```
+
+The synthetic claim identity / source shape may mirror the historical specimen,
+but no live historical object is consumed as a RELEASE verdict.
+
+Expected synthetic result may be RELEASED only from P01 + P09 + P10 + P11.
+P18 remains conserved provenance debt and does not itself authorize RELEASE.
 
 The cell must not assert:
 
@@ -820,7 +850,18 @@ occupant = OCCUPANT-X
 
 ### E — silent deletion
 
-Candidate omits historical claim object after a valid lifecycle evaluation.
+Controller input:
+
+```text
+reuse any fully classified admissible fixture above
+without adding a semantic predicate
+```
+
+Scorer-only adversarial mutation:
+
+```text
+candidate output omits the retained historical claim object
+```
 
 Expected:
 
@@ -838,9 +879,31 @@ DELETE HISTORY
 
 ### F — release erases unresolved debt
 
-Raw basis contains a required unresolved provenance reference.
+Controller input uses a fully classified RELEASE basis.
 
-Candidate RELEASE result omits it.
+RAW_INPUT:
+
+```text
+P10:
+source object contains unresolved_ref_id = PROV-REF-01
+```
+
+QUALIFIED_UPSTREAM_STANDING:
+
+```text
+P11:
+relation_type = REFERENCE_RETENTION_STATUS
+standing = RETAINABLE
+basis_ref = <recoverable retention basis for PROV-REF-01>
+producer = <qualified producer>
+version = <qualified version>
+```
+
+Scorer-only adversarial mutation:
+
+```text
+candidate RELEASE output omits PROV-REF-01
+```
 
 Expected:
 
@@ -883,7 +946,14 @@ unqualified statement that completion was or was not established.
 
 ### H — lifecycle disposition manufactures authority
 
-Any lifecycle result attempts:
+Controller input:
+
+```text
+reuse any fully classified fixture above
+without adding a semantic predicate
+```
+
+Scorer-only adversarial mutation attempts:
 
 ```text
 authority_effect != NONE
