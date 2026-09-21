@@ -1,0 +1,48 @@
+name: COCKPIT_ONLINE_INTEGRATION_001
+
+on:
+  pull_request:
+    paths:
+      - "src/cockpit/**"
+      - "tests/cockpit/**"
+      - "tests/runtime/test_cockpit_online_read_integration.py"
+      - "docs/pressure/COCKPIT_ONLINE_INTEGRATION_*"
+      - ".github/workflows/cockpit-online-integration-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile read-side Python
+        run: |
+          python -m py_compile             src/cockpit/action_surface.py             src/cockpit/projection_adapter.py             src/cockpit/live_runtime_projection.py             src/cockpit/development_horizon_projection.py             tests/runtime/test_cockpit_online_read_integration.py
+
+      - name: Main Cockpit regressions
+        run: |
+          python -m unittest             tests.cockpit.test_action_surface             tests.cockpit.test_projection_adapter -v
+          node --test tests/cockpit/test_observer.mjs
+
+      - name: Perceptual and browser-boundary regressions
+        run: |
+          node --test             tests/cockpit/test_perceptual_instrument.mjs             tests/cockpit/test_control_adapter.mjs             tests/cockpit/test_online_integration.mjs
+
+      - name: Read-side runtime integration pressure
+        run: |
+          python -m unittest             tests.runtime.test_cockpit_online_read_integration -v
