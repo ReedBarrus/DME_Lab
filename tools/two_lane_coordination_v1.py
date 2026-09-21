@@ -35,6 +35,7 @@ CURSOR_SCHEMA = "two_lane_coordination_cursor_v1"
 COORD_SCHEMA = "PEER_STATE_COORDINATE_v1"
 HEX40 = re.compile(r"^[0-9a-f]{40}$")
 SHA256 = re.compile(r"^sha256:[0-9a-f]{64}$")
+PREDECESSOR_HEAD = "41316921b211c1daf75c9b71b8147e0eb67d372d"
 
 MANIFEST_FIELDS = {
     "schema","lane_id","branch","intended_horizon","coordination_contract_ref",
