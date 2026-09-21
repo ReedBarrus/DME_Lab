@@ -137,6 +137,26 @@ KNOWN EFFECT ACTOR
 
 This wound remains preserved for INVOCATION_EFFECT_PROVENANCE_001.
 
+### W4 — source candidate still contains live-origin assignment language
+
+The seat-handshake contract on PR #69 preserves historical warrant and
+Lane-B operating-assignment material inside the candidate document itself.
+
+Freeze:
+
+```text
+SOURCE PROVENANCE
+!=
+CURRENT OPERATING ASSIGNMENT
+
+HISTORICAL WARRANT
+!=
+CURRENT GRANT
+```
+
+A clean integration candidate must retain the historical source coordinate
+without presenting that source assignment as current authority.
+
 ## Ordered completion gates
 
 ### Gate 0 — revalidate source coordinates
@@ -200,18 +220,29 @@ RELEASE != ERASURE
 
 ### Gate 3 — cleanly extract the reusable seat-handshake candidate
 
-Create a fresh integration branch from then-current admitted main and copy only
-the allowlisted candidate files defined in
+Create a fresh integration branch from then-current admitted main using
 docs/operating/SEAT_ENGAGEMENT_CLEAN_EXTRACTION_001.md.
 
 Do not import live coordination state from Lane B.
 
-Re-run:
+Exact implementation/schema/test material may be copied only through the
+allowlisted boundary. Contract/report material carrying historical Lane-B
+assignment or warrant context must be de-operationalized so that source
+provenance is preserved without becoming current authority.
+
+Then produce fresh clean-basis qualification evidence and re-run:
 
 ```text
 SEAT_ENGAGEMENT_HANDSHAKE_001 focused suite
 TWO_LANE_COORDINATION_001 regression suite
-qualification-evidence regeneration / equality checks
+```
+
+Freeze:
+
+```text
+SOURCE QUALIFICATION EVIDENCE
+!=
+CLEAN-BASIS QUALIFICATION RECEIPT
 ```
 
 ### Gate 4 — fresh review
@@ -236,6 +267,7 @@ qualified two-lane coordination
 + Lane B mechanically reusable
 + Lane A mechanically legible
 + seat-handshake candidate cleanly separated from operating state
++ historical assignment/warrant context demoted to source provenance
 + fresh clean-basis qualification evidence
 ```
 
