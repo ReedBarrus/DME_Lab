@@ -65,6 +65,28 @@ fresh input for the new invocation.
 Explicit historical-basis reuse, if later needed, requires a separate typed
 relation and is not modeled by this candidate.
 
+Fresh observation payload is not established merely because a caller supplies
+an `observed_objects[]` entry. For each current observed-object claim, the
+claim's `source_ref` must also appear in the basis-level `source_refs[]`.
+
+```text
+EXPLICITLY SUPPLIED
+!=
+ESTABLISHED
+
+SOURCE REF NAMED
+!=
+SOURCE SUPPLIED
+
+OBSERVATION CLAIM
+!=
+OBSERVATION GROUNDING
+```
+
+This v0 relation establishes only that an observation claim has an explicitly
+represented source relation. It does not establish that the source proves the
+claimed object identity.
+
 ## Cells
 
 ```text
@@ -167,7 +189,21 @@ P4 -- historical basis remains separate
 Retain exact old basis reference while fresh current basis is empty.
 Expected: old ref != current ref; binding points only to current ref; old payload
 does not become current observation.
+
+Q1 -- observed object with zero represented basis sources
+observed_objects contains MAGIC_OBJECT with source://TOTALLY-REAL-BRO
+while source_refs = [].
+Expected: reject OBSERVED_OBJECT_SOURCE_NOT_REPRESENTED.
+
+Q2 -- observed object references an unsupplied source
+observed object source_ref = source://A
+while basis source_refs = [source://B].
+Expected: reject OBSERVED_OBJECT_SOURCE_NOT_REPRESENTED.
 ```
+
+Q3 -- source-to-object identity correspondence is deliberately not tested here.
+A matching `source_ref` does not yet prove that the source establishes the
+claimed `identity`. That remains a separate future pressure surface.
 
 A separate focused regression mutates the contents of an otherwise matching
 observation basis while retaining the old `observation_basis_ref`. Expected:
