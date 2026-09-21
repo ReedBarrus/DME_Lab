@@ -1,25 +1,13 @@
 {
   "schema": "historical_p09_evaluation_key_v0",
   "cells": {
-    "A": {
-      "status": "VALID",
-      "standing": "NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP"
-    },
-    "B": {
-      "status": "VALID",
-      "standing": "UNFINISHED_EFFECT_REQUIRES_ACTIVE_OWNERSHIP"
-    },
-    "C": {
-      "status": "VALID",
-      "standing": "NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP"
-    },
-    "D": {
-      "status": "ADMINISTRATION_INVALID",
-      "standing": null
-    },
-    "E": {
-      "status": "VALID",
-      "standing": "UNFINISHED_EFFECT_REQUIRES_ACTIVE_OWNERSHIP"
-    }
+    "A": {"status":"VALID","standing":"NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP"},
+    "B": {"status":"VALID","standing":"UNFINISHED_EFFECT_REQUIRES_ACTIVE_OWNERSHIP"},
+    "C": {"status":"VALID","standing":"NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP"},
+    "D": {"status":"ADMINISTRATION_INVALID","standing":null},
+    "E": {"status":"VALID","standing":"UNFINISHED_EFFECT_REQUIRES_ACTIVE_OWNERSHIP"},
+    "F": {"status":"ADMINISTRATION_INVALID","standing":null},
+    "G": {"status":"VALID","standing":"UNFINISHED_EFFECT_REQUIRES_ACTIVE_OWNERSHIP"},
+    "H": {"status":"VALID","standing":"UNFINISHED_EFFECT_REQUIRES_ACTIVE_OWNERSHIP"}
   }
 }
