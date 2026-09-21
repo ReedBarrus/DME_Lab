@@ -118,6 +118,22 @@ Expected: reject BINDING_BASIS_SEAT_MISMATCH.
 M4 -- role / seat mismatch
 Binding says PLANNER while role + seat say SCIENTIST.
 Expected: reject ROLE_SEAT_BINDING_MISMATCH.
+
+N0 -- coherent work-claim correspondence
+Both seat + binding null, and separately both carry the exact same claim ref.
+Expected: both valid.
+
+N1 -- current work-claim identity mismatch
+Seat says claim://A while binding says claim://B.
+Expected: reject SEAT_BINDING_WORK_CLAIM_MISMATCH.
+
+N2 -- seat claim / binding absent
+Seat says claim://A while binding says null.
+Expected: reject SEAT_BINDING_WORK_CLAIM_MISMATCH.
+
+N3 -- seat absent / binding claim
+Seat says null while binding says claim://A.
+Expected: reject SEAT_BINDING_WORK_CLAIM_MISMATCH.
 ```
 
 A separate focused regression mutates the contents of an otherwise matching
