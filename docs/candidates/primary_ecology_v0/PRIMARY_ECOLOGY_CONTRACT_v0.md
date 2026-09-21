@@ -397,6 +397,43 @@ The encounter relation does not make the chassis a full event/runtime system. It
 does not establish encounter truth/authenticity, comprehension, direct
 perception, or semantic truth.
 
+The MISSING channel retains a separate specimen-specific encounter carrier:
+`missingness_witness_encounter_v0`. A current missingness claim is
+composition-valid only when its exact missingness witness corresponds and an
+encounter with that exact witness is represented for the same current:
+
+```text
+seat_id
+occupant_id
+invocation_id
+witness_ref
+basis_ref
+```
+
+No generic epistemic-encounter abstraction is claimed from these two specimens.
+
+```text
+MISSINGNESS WITNESS SUPPLIED
+!=
+MISSINGNESS WITNESS ENCOUNTERED
+
+WITNESS ENCOUNTERED
+!=
+WITNESS TRUE
+
+WITNESS ENCOUNTERED
+!=
+OBJECT ABSENT
+
+WITNESS ENCOUNTERED
+!=
+UNIVERSAL UNAVAILABILITY
+
+WITNESS ENCOUNTERED
+!=
+MISSINGNESS-REASON UNDERSTANDING
+```
+
 The predecessor basis remains separately recoverable by exact identity, but its
 payload is not current observation. A typed historical-consultation relation is
 still future work and is not manufactured by this repair.
@@ -429,8 +466,9 @@ A green pressure may establish only:
 > current-identity correspondence, work-claim correspondence, fresh-observation
 > payload noninheritance, explicit represented source relations, exact
 > represented source/object/identity correspondence for current observed-object
-> claims, exact current-invocation source-encounter correspondence, and exact
-> represented missingness witness correspondence while avoiding the tested
+> claims, exact current-invocation source-encounter correspondence, exact
+> represented missingness witness correspondence, and exact current-invocation
+> missingness-witness encounter correspondence while avoiding the tested
 > identity/authority/missingness collapses.
 
 It does not establish:
@@ -452,6 +490,9 @@ semantic truth of source claims
 source encounter truth / authenticity
 source understanding or direct object perception
 missingness witness truth / authenticity
+missingness witness encounter truth / authenticity
+missingness-reason understanding
+generic epistemic-carrier encounter abstraction
 universal retrieval impossibility
 representation succession
 legacy-seat migration
