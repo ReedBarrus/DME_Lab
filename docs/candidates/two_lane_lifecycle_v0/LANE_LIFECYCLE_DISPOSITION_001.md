@@ -777,18 +777,20 @@ INPUT_CLASS:
 RAW_INPUT
 
 raw_basis:
-exact new work-unit binding object, if supplied
-+
-exact attempted current claim object
+exact CURRENT_ATTEMPT_OBJECT_SET raw object containing:
+  attempted current claim object
+  binding_refs[]
+  exact referenced binding objects for every binding_ref
 
 controller_derivation:
-derive true only when a distinct fresh binding exists and exactly corresponds
-to the attempted new claim / unit identities
+derive true only when binding_refs contains a distinct fresh binding whose exact
+object corresponds to the attempted new claim / unit identities;
+derive false from an explicitly supplied empty binding_refs[] or from supplied
+non-corresponding binding objects
 ```
 
-Missing binding input does not itself become a semantic absence claim; the
-controller evaluates the explicit raw current-attempt object set supplied by
-the cell.
+The CURRENT_ATTEMPT_OBJECT_SET object itself is mandatory. Therefore a false
+P17 is never inferred from absence of input.
 
 #### P18 — invocation-effect attribution standing
 
