@@ -880,6 +880,14 @@ P01 SOURCE_CLAIM_STATUS_IS_ACTIVE
 
 AND
 
+P02 SOURCE_LANE_STATUS_IS_ACTIVE
+
+AND
+
+P03 SOURCE_OCCUPANT_BINDING is non-null
+
+AND
+
 P05 WORK_UNIT_CORRESPONDENCE_MATCHES
 
 AND
@@ -926,6 +934,14 @@ LIVE COMPLETION EXECUTION AUTHORIZED
 RELEASE admissible iff:
 
 P01 SOURCE_CLAIM_STATUS_IS_ACTIVE
+
+AND
+
+P02 SOURCE_LANE_STATUS_IS_ACTIVE
+
+AND
+
+P03 SOURCE_OCCUPANT_BINDING is non-null
 
 AND
 
@@ -984,6 +1000,14 @@ P01 SOURCE_CLAIM_STATUS_IS_ACTIVE
 
 AND
 
+P02 SOURCE_LANE_STATUS_IS_ACTIVE
+
+AND
+
+P03 SOURCE_OCCUPANT_BINDING is non-null
+
+AND
+
 P12 MARK_BLOCKED_BLOCKING_RELATION carries standing = ESTABLISHED
 
 AND
@@ -1001,7 +1025,7 @@ lane:
 ACTIVE → HELD
 
 occupant:
-PRESERVED
+exact non-null P03 source occupant identity PRESERVED
 ```
 
 Freeze:
@@ -1025,6 +1049,158 @@ OCCUPANT RELEASE
 ```
 
 Resume semantics remain undefined and out of scope.
+
+## F12 source-state guard law
+
+The source transition geometry is mechanically operative, not documentary.
+
+For every qualified arrow:
+
+```text
+P01 SOURCE_CLAIM_STATUS_IS_ACTIVE
+=
+REQUIRED TRUE
+
+P02 SOURCE_LANE_STATUS_IS_ACTIVE
+=
+REQUIRED TRUE
+
+P03 SOURCE_OCCUPANT_BINDING
+=
+REQUIRED NON-NULL
+```
+
+Therefore:
+
+```text
+PREDICATE REGISTERED
+!=
+PREDICATE CAUSALLY EFFECTIVE
+```
+
+A branch is admissible only when every registered source-state guard required by
+its frozen geometry is true.
+
+### COMPLETE source-state audit
+
+```text
+required source-state guards:
+P01 claim ACTIVE
+P02 lane ACTIVE
+P03 occupant non-null
+
+remaining required predicates:
+P05 work-unit correspondence MATCHES
+P06 raw completion criterion terms satisfied
+every required P07 qualified completion standing present
+P08 completion blocker status = NONE_ESTABLISHED
+
+resulting state:
+claim COMPLETED
+lane READY_UNCLAIMED
+occupant null
+```
+
+Mechanical blockers:
+
+```text
+P01 false → COMPLETE inadmissible
+P02 false → COMPLETE inadmissible
+P03 null  → COMPLETE inadmissible
+```
+
+### RELEASE source-state audit
+
+```text
+required source-state guards:
+P01 claim ACTIVE
+P02 lane ACTIVE
+P03 occupant non-null
+
+remaining required predicates:
+P09 active-ownership effect status =
+  NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP
+P10 required conserved reference set derived
+P11 reference retention status = RETAINABLE
+
+resulting state:
+claim RELEASED
+lane READY_UNCLAIMED
+occupant null
+required refs retained
+```
+
+Mechanical blockers:
+
+```text
+P01 false → RELEASE inadmissible
+P02 false → RELEASE inadmissible
+P03 null  → RELEASE inadmissible
+```
+
+### MARK_BLOCKED source-state audit
+
+```text
+required source-state guards:
+P01 claim ACTIVE
+P02 lane ACTIVE
+P03 occupant non-null
+
+remaining required predicates:
+P12 MARK_BLOCKED_BLOCKING_STATUS = ESTABLISHED
+with recoverable basis and qualified producer/version
+
+resulting state:
+claim BLOCKED
+lane HELD
+occupant = exact supplied P03 identity
+```
+
+Mechanical blockers:
+
+```text
+P01 false → MARK_BLOCKED inadmissible
+P02 false → MARK_BLOCKED inadmissible
+P03 null  → MARK_BLOCKED inadmissible
+```
+
+The MARK_BLOCKED postcondition must conserve the exact non-null source occupant:
+
+```text
+occupant_binding_after
+=
+occupant_binding_before
+=
+P03 exact supplied identity
+```
+
+This prevents:
+
+```text
+BLOCKED
++
+HELD
++
+occupant null
+```
+
+and therefore remains consistent with D3.
+
+### Source-state geometry identity
+
+```text
+WRITTEN SOURCE TRANSITION GEOMETRY
+=
+OPERATIVE ADMISSIBILITY GUARDS
+
+for:
+COMPLETE
+RELEASE
+MARK_BLOCKED
+```
+
+No branch may describe an ACTIVE-source transition when P02 is false or P03 is
+null.
 
 ## Lifecycle disposition terminology
 
