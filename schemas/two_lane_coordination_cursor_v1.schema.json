@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "two_lane_coordination_cursor_v1.schema.json",
+  "title": "Two Lane Coordination Cursor v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "consumer_lane_id",
+    "peer_coordinates",
+    "authority_effect",
+    "execution_effect"
+  ],
+  "properties": {
+    "schema": {
+      "const": "two_lane_coordination_cursor_v1"
+    },
+    "consumer_lane_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "peer_coordinates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schema",
+          "lane_id",
+          "branch",
+          "last_seen_head",
+          "claim_observation"
+        ],
+        "properties": {
+          "schema": {
+            "const": "PEER_STATE_COORDINATE_v1"
+          },
+          "lane_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "branch": {
+            "type": "string",
+            "minLength": 1
+          },
+          "last_seen_head": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{40}$"
+          },
+          "claim_observation": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "state",
+                  "claim_digest"
+                ],
+                "properties": {
+                  "state": {
+                    "const": "ACTIVE_CLAIM"
+                  },
+                  "claim_digest": {
+                    "type": "string",
+                    "pattern": "^sha256:[0-9a-f]{64}$"
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "state"
+                ],
+                "properties": {
+                  "state": {
+                    "const": "NO_ACTIVE_CLAIM"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "authority_effect": {
+      "const": "NONE"
+    },
+    "execution_effect": {
+      "const": "NONE"
+    }
+  }
+}
