@@ -1,0 +1,25 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"seat_engagement_decision_v0.schema.json",
+  "title":"Seat Engagement Decision v0",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["schema","decision","seat_id","occupant_id","invocation_id","envelope_id","evaluated_basis","basis_status","binding_status","coordination_status","authority_status","missing_requirements","reason_code","authority_effect","execution_effect"],
+  "properties":{
+    "schema":{"const":"seat_engagement_decision_v0"},
+    "decision":{"enum":["ACCEPT","DECLINE","REFUSE","CONTEXT_REQUEST"]},
+    "seat_id":{"type":"string","minLength":1},
+    "occupant_id":{"type":"string","minLength":1},
+    "invocation_id":{"type":"string","minLength":1},
+    "envelope_id":{"type":"string","minLength":1},
+    "evaluated_basis":{"type":"string","pattern":"^[0-9a-f]{40}$"},
+    "basis_status":{"enum":["SUFFICIENT","INSUFFICIENT","UNRESOLVED"]},
+    "binding_status":{"enum":["CANDIDATE_VALID","CANDIDATE_INVALID","NOT_APPLICABLE"]},
+    "coordination_status":{"enum":["NOT_YET_EVALUATED","CLEAR","BLOCKED","CHANGED"]},
+    "authority_status":{"enum":["NOT_YET_EVALUATED","AVAILABLE","ABSENT","CONSUMED","INVALID"]},
+    "missing_requirements":{"type":"array","items":{"type":"string","minLength":1},"uniqueItems":true},
+    "reason_code":{"type":"string","minLength":1},
+    "authority_effect":{"const":"NONE"},
+    "execution_effect":{"const":"NONE"}
+  }
+}
