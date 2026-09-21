@@ -272,7 +272,9 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             "source_ref":"fixture://OLD_OBSERVATION/POISON_SENTINEL",
         }]
         old["explicit_missing_objects"] = []
-        old["source_refs"] = ["fixture://OLD_OBSERVATION"]
+        old["source_refs"] = [
+            "fixture://OLD_OBSERVATION/POISON_SENTINEL"
+        ]
 
         fresh_observation = [{
             "object_id":"POISON_SENTINEL",
@@ -314,7 +316,9 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             "source_ref":"fixture://OLD_OBSERVATION/POISON_SENTINEL",
         }]
         old["explicit_missing_objects"] = []
-        old["source_refs"] = ["fixture://OLD_OBSERVATION"]
+        old["source_refs"] = [
+            "fixture://OLD_OBSERVATION/POISON_SENTINEL"
+        ]
 
         historical_ref = observation_basis_ref(old)
         current_binding, current_basis = rotate_invocation(
