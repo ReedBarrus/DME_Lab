@@ -1,0 +1,361 @@
+{
+  "schema": "invocation_effect_provenance_held_out_fixture_set_v0",
+  "warrant_blob": "6715a15f2f8f4d559b0222459e75f266dd53fc87",
+  "pinned_main": "c49f13450fe69691988810ca6cb8ccaca1f42231",
+  "historical_negative_specimen": {
+    "pre_mutation_guard_coordinate": "f55a89de6478691587ab67298fa1b3ad546f27ce",
+    "later_observed_head": "41316921b211c1daf75c9b71b8147e0eb67d372d",
+    "use": "READ_ONLY_STANDING_ONLY",
+    "fixture_source": false
+  },
+  "cell_order": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E1",
+    "E2",
+    "F",
+    "G",
+    "H"
+  ],
+  "fixtures": [
+    {
+      "cell_id": "A",
+      "tested_invocation_id": "I1",
+      "effect_id": "IEP001-A-EFFECT",
+      "effect_kind": "SYNTHETIC_FILE_TRANSITION",
+      "mutation_event_id": "IEP001-A-MUTATION",
+      "actual_actor_invocation_id": "I1",
+      "seat_id": "IEP001-SYNTHETIC-SEAT",
+      "occupant_id": "WORKSHOP",
+      "candidate_claim_id": "C1",
+      "candidate_work_unit_id": "U1",
+      "authority_ref": "IEP001-A-AUTH",
+      "authority_state": "VALID",
+      "authority_scope": {
+        "invocation_id": "I1",
+        "claim_id": "C1",
+        "work_unit_id": "U1"
+      },
+      "branch_id": "IEP001-SYNTHETIC-BRANCH",
+      "git_author": "IEP001-SHARED-GIT-AUTHOR",
+      "claim_at_effect_start": {
+        "claim_id": "C1",
+        "status": "ACTIVE",
+        "invocation_id": "I1",
+        "work_unit_id": "U1"
+      },
+      "tested_work_unit_id": "U1",
+      "initial_payload": "A-H0\n",
+      "mutation_payload": "A-H1\n",
+      "entry_witness": "IEP001-A-OPAQUE-ENTRY-WITNESS-7f0b3a1c",
+      "candidate_mode": "EMIT",
+      "candidate_observation_override": {},
+      "expected_output_payload": null,
+      "object_refs": [
+        "synthetic://iep001/branch/target.bin"
+      ]
+    },
+    {
+      "cell_id": "B",
+      "tested_invocation_id": "I1",
+      "effect_id": "IEP001-B-EFFECT",
+      "effect_kind": "SYNTHETIC_FILE_TRANSITION",
+      "mutation_event_id": "IEP001-B-MUTATION",
+      "actual_actor_invocation_id": "I2",
+      "seat_id": "IEP001-SYNTHETIC-SEAT",
+      "occupant_id": "WORKSHOP",
+      "candidate_claim_id": null,
+      "candidate_work_unit_id": "U1",
+      "authority_ref": "IEP001-B-AUTH",
+      "authority_state": "VALID",
+      "authority_scope": {
+        "invocation_id": "I1",
+        "claim_id": "C1",
+        "work_unit_id": "U1"
+      },
+      "branch_id": "IEP001-SYNTHETIC-BRANCH",
+      "git_author": "IEP001-SHARED-GIT-AUTHOR",
+      "claim_at_effect_start": {
+        "claim_id": "C1",
+        "status": "ACTIVE",
+        "invocation_id": "I1",
+        "work_unit_id": "U1"
+      },
+      "tested_work_unit_id": "U1",
+      "initial_payload": "B-H0\n",
+      "mutation_payload": "B-H1\n",
+      "entry_witness": "IEP001-B-OPAQUE-ENTRY-WITNESS-7f0b3a1c",
+      "candidate_mode": "EMIT",
+      "candidate_observation_override": {},
+      "expected_output_payload": null,
+      "object_refs": [
+        "synthetic://iep001/branch/target.bin"
+      ]
+    },
+    {
+      "cell_id": "C",
+      "tested_invocation_id": "I1",
+      "effect_id": "IEP001-C-EFFECT",
+      "effect_kind": "SYNTHETIC_FILE_TRANSITION",
+      "mutation_event_id": "IEP001-C-MUTATION",
+      "actual_actor_invocation_id": "I-UNBOUND",
+      "seat_id": "IEP001-SYNTHETIC-SEAT",
+      "occupant_id": "WORKSHOP",
+      "candidate_claim_id": null,
+      "candidate_work_unit_id": "U1",
+      "authority_ref": "IEP001-C-AUTH",
+      "authority_state": "VALID",
+      "authority_scope": {
+        "invocation_id": "I1",
+        "claim_id": "C1",
+        "work_unit_id": "U1"
+      },
+      "branch_id": "IEP001-SYNTHETIC-BRANCH",
+      "git_author": "IEP001-SHARED-GIT-AUTHOR",
+      "claim_at_effect_start": {
+        "claim_id": "C1",
+        "status": "ACTIVE",
+        "invocation_id": "I1",
+        "work_unit_id": "U1"
+      },
+      "tested_work_unit_id": "U1",
+      "initial_payload": "C-H0\n",
+      "mutation_payload": "C-H1\n",
+      "entry_witness": "IEP001-C-OPAQUE-ENTRY-WITNESS-7f0b3a1c",
+      "candidate_mode": "NO_PROVENANCE",
+      "candidate_observation_override": {},
+      "expected_output_payload": null,
+      "object_refs": [
+        "synthetic://iep001/branch/target.bin"
+      ]
+    },
+    {
+      "cell_id": "D",
+      "tested_invocation_id": "I1",
+      "effect_id": "IEP001-D-EFFECT",
+      "effect_kind": "SYNTHETIC_FILE_TRANSITION",
+      "mutation_event_id": "IEP001-D-MUTATION",
+      "actual_actor_invocation_id": "I1",
+      "seat_id": "IEP001-SYNTHETIC-SEAT",
+      "occupant_id": "WORKSHOP",
+      "candidate_claim_id": "C1",
+      "candidate_work_unit_id": "U1",
+      "authority_ref": "IEP001-D-AUTH",
+      "authority_state": "VALID",
+      "authority_scope": {
+        "invocation_id": "I1",
+        "claim_id": "C1",
+        "work_unit_id": "U1"
+      },
+      "branch_id": "IEP001-SYNTHETIC-BRANCH",
+      "git_author": "IEP001-SHARED-GIT-AUTHOR",
+      "claim_at_effect_start": {
+        "claim_id": "C1",
+        "status": "ACTIVE",
+        "invocation_id": "I1",
+        "work_unit_id": "U1"
+      },
+      "tested_work_unit_id": "U1",
+      "initial_payload": "D-H0\n",
+      "mutation_payload": "D-H1\n",
+      "entry_witness": "IEP001-D-OPAQUE-ENTRY-WITNESS-7f0b3a1c",
+      "candidate_mode": "EMIT",
+      "candidate_observation_override": {
+        "pre_coordinate": "sha256:c9a6da75ff476bce2ae1609db1b431bc24ea3042f11e99b0399007ffb985de89"
+      },
+      "expected_output_payload": null,
+      "object_refs": [
+        "synthetic://iep001/branch/target.bin"
+      ]
+    },
+    {
+      "cell_id": "E1",
+      "tested_invocation_id": "I1",
+      "effect_id": "IEP001-E1-EFFECT",
+      "effect_kind": "SYNTHETIC_FILE_TRANSITION",
+      "mutation_event_id": "IEP001-E1-MUTATION",
+      "actual_actor_invocation_id": "I1",
+      "seat_id": "IEP001-SYNTHETIC-SEAT",
+      "occupant_id": "WORKSHOP",
+      "candidate_claim_id": "C1",
+      "candidate_work_unit_id": "U1",
+      "authority_ref": "IEP001-E1-AUTH",
+      "authority_state": "ABSENT",
+      "authority_scope": {
+        "invocation_id": "I1",
+        "claim_id": "C1",
+        "work_unit_id": "U1"
+      },
+      "branch_id": "IEP001-SYNTHETIC-BRANCH",
+      "git_author": "IEP001-SHARED-GIT-AUTHOR",
+      "claim_at_effect_start": {
+        "claim_id": "C1",
+        "status": "ACTIVE",
+        "invocation_id": "I1",
+        "work_unit_id": "U1"
+      },
+      "tested_work_unit_id": "U1",
+      "initial_payload": "E1-H0\n",
+      "mutation_payload": "E1-H1\n",
+      "entry_witness": "IEP001-E1-OPAQUE-ENTRY-WITNESS-7f0b3a1c",
+      "candidate_mode": "EMIT",
+      "candidate_observation_override": {},
+      "expected_output_payload": null,
+      "object_refs": [
+        "synthetic://iep001/branch/target.bin"
+      ]
+    },
+    {
+      "cell_id": "E2",
+      "tested_invocation_id": "I1",
+      "effect_id": "IEP001-E2-EFFECT",
+      "effect_kind": "SYNTHETIC_FILE_TRANSITION",
+      "mutation_event_id": "IEP001-E2-MUTATION",
+      "actual_actor_invocation_id": "I1",
+      "seat_id": "IEP001-SYNTHETIC-SEAT",
+      "occupant_id": "WORKSHOP",
+      "candidate_claim_id": "C1",
+      "candidate_work_unit_id": "U1",
+      "authority_ref": "IEP001-E2-AUTH",
+      "authority_state": "CONSUMED",
+      "authority_scope": {
+        "invocation_id": "I1",
+        "claim_id": "C1",
+        "work_unit_id": "U1"
+      },
+      "branch_id": "IEP001-SYNTHETIC-BRANCH",
+      "git_author": "IEP001-SHARED-GIT-AUTHOR",
+      "claim_at_effect_start": {
+        "claim_id": "C1",
+        "status": "ACTIVE",
+        "invocation_id": "I1",
+        "work_unit_id": "U1"
+      },
+      "tested_work_unit_id": "U1",
+      "initial_payload": "E2-H0\n",
+      "mutation_payload": "E2-H1\n",
+      "entry_witness": "IEP001-E2-OPAQUE-ENTRY-WITNESS-7f0b3a1c",
+      "candidate_mode": "EMIT",
+      "candidate_observation_override": {},
+      "expected_output_payload": null,
+      "object_refs": [
+        "synthetic://iep001/branch/target.bin"
+      ]
+    },
+    {
+      "cell_id": "F",
+      "tested_invocation_id": "I1",
+      "effect_id": "IEP001-F-EFFECT",
+      "effect_kind": "SYNTHETIC_FILE_TRANSITION",
+      "mutation_event_id": "IEP001-F-MUTATION",
+      "actual_actor_invocation_id": "I2",
+      "seat_id": "IEP001-SYNTHETIC-SEAT",
+      "occupant_id": "WORKSHOP",
+      "candidate_claim_id": null,
+      "candidate_work_unit_id": "U1",
+      "authority_ref": "IEP001-F-AUTH",
+      "authority_state": "VALID",
+      "authority_scope": {
+        "invocation_id": "I1",
+        "claim_id": "C1",
+        "work_unit_id": "U1"
+      },
+      "branch_id": "IEP001-SYNTHETIC-BRANCH",
+      "git_author": "IEP001-SHARED-GIT-AUTHOR",
+      "claim_at_effect_start": {
+        "claim_id": "C1",
+        "status": "ACTIVE",
+        "invocation_id": "I1",
+        "work_unit_id": "U1"
+      },
+      "tested_work_unit_id": "U1",
+      "initial_payload": "F-H0\n",
+      "mutation_payload": "TASK-EXPECTED\n",
+      "entry_witness": "IEP001-F-OPAQUE-ENTRY-WITNESS-7f0b3a1c",
+      "candidate_mode": "EMIT",
+      "candidate_observation_override": {},
+      "expected_output_payload": "TASK-EXPECTED\n",
+      "object_refs": [
+        "synthetic://iep001/branch/target.bin"
+      ]
+    },
+    {
+      "cell_id": "G",
+      "tested_invocation_id": "I1",
+      "effect_id": "IEP001-G-EFFECT",
+      "effect_kind": "SYNTHETIC_FILE_TRANSITION",
+      "mutation_event_id": "IEP001-G-MUTATION",
+      "actual_actor_invocation_id": "I1",
+      "seat_id": "IEP001-SYNTHETIC-SEAT",
+      "occupant_id": "WORKSHOP",
+      "candidate_claim_id": "C1",
+      "candidate_work_unit_id": "U1",
+      "authority_ref": "IEP001-G-AUTH",
+      "authority_state": "VALID",
+      "authority_scope": {
+        "invocation_id": "I1",
+        "claim_id": "C1",
+        "work_unit_id": "U1"
+      },
+      "branch_id": "IEP001-SYNTHETIC-BRANCH",
+      "git_author": "IEP001-SHARED-GIT-AUTHOR",
+      "claim_at_effect_start": {
+        "claim_id": "C1",
+        "status": "ACTIVE",
+        "invocation_id": "I1",
+        "work_unit_id": "U2"
+      },
+      "tested_work_unit_id": "U1",
+      "initial_payload": "G-H0\n",
+      "mutation_payload": "G-H1\n",
+      "entry_witness": "IEP001-G-OPAQUE-ENTRY-WITNESS-7f0b3a1c",
+      "candidate_mode": "EMIT",
+      "candidate_observation_override": {},
+      "expected_output_payload": null,
+      "object_refs": [
+        "synthetic://iep001/branch/target.bin"
+      ]
+    },
+    {
+      "cell_id": "H",
+      "tested_invocation_id": "I1",
+      "effect_id": "IEP001-H-EFFECT",
+      "effect_kind": "SYNTHETIC_FILE_TRANSITION",
+      "mutation_event_id": "IEP001-H-MUTATION",
+      "actual_actor_invocation_id": "I1",
+      "seat_id": "IEP001-SYNTHETIC-SEAT",
+      "occupant_id": "WORKSHOP",
+      "candidate_claim_id": "C1",
+      "candidate_work_unit_id": "U1",
+      "authority_ref": "IEP001-H-AUTH",
+      "authority_state": "VALID",
+      "authority_scope": {
+        "invocation_id": "I1",
+        "claim_id": "C1",
+        "work_unit_id": "U1"
+      },
+      "branch_id": "IEP001-SYNTHETIC-BRANCH",
+      "git_author": "IEP001-SHARED-GIT-AUTHOR",
+      "claim_at_effect_start": {
+        "claim_id": "C1",
+        "status": "ACTIVE",
+        "invocation_id": "I1",
+        "work_unit_id": "U1"
+      },
+      "tested_work_unit_id": "U1",
+      "initial_payload": "H-H0\n",
+      "mutation_payload": "H-H1\n",
+      "entry_witness": "IEP001-H-OPAQUE-ENTRY-WITNESS-7f0b3a1c",
+      "candidate_mode": "EMIT",
+      "candidate_observation_override": {
+        "post_coordinate": "sha256:fb403b7f4258077a415d973249af0622390526a32a955f1bb7ad4e0501332325"
+      },
+      "expected_output_payload": null,
+      "object_refs": [
+        "synthetic://iep001/branch/target.bin"
+      ]
+    }
+  ]
+}
