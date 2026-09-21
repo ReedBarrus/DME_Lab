@@ -64,6 +64,22 @@
     "M4": {
       "relation": "BINDING_ROLE_MUST_CORRESPOND_TO_SEAT_ROLE",
       "result": "PASS"
+    },
+    "N0": {
+      "relation": "CURRENT_WORK_CLAIM_MUTUAL_ABSENCE_OR_EXACT_IDENTITY_IS_COHERENT",
+      "result": "PASS"
+    },
+    "N1": {
+      "relation": "SEAT_AND_BINDING_MUST_AGREE_ON_CURRENT_WORK_CLAIM_IDENTITY",
+      "result": "PASS"
+    },
+    "N2": {
+      "relation": "SEAT_CLAIM_PRESENT_BINDING_CLAIM_ABSENT_IS_INVALID",
+      "result": "PASS"
+    },
+    "N3": {
+      "relation": "SEAT_CLAIM_ABSENT_BINDING_CLAIM_PRESENT_IS_INVALID",
+      "result": "PASS"
     }
   },
   "core_relations": {
@@ -72,6 +88,7 @@
     "invocation_ne_work_claim": "PASS",
     "occupant_ne_invocation": "PASS",
     "role_ne_seat": "PASS",
+    "seat_binding_work_claim_correspondence": "PASS",
     "seat_ne_occupant": "PASS",
     "work_claim_ne_authority": "PASS"
   },
