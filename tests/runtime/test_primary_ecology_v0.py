@@ -11,6 +11,7 @@ from tools.primary_ecology_v0 import (
     clean_bundle,
     clean_empty_seat,
     clean_role,
+    fresh_basis,
     observation_basis_ref,
     observation_status,
     occupied_seat,
@@ -221,6 +222,120 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
                 role=b["role"], seat=b["seat"], binding=b["binding"], basis=b["basis"]
             )
 
+    def test_P1_old_observed_payload_does_not_auto_propagate(self):
+        old = clean_basis()
+        old["observed_objects"] = [{
+            "object_id":"POISON_SENTINEL",
+            "identity":"sha256:" + ("b" * 64),
+            "source_ref":"fixture://OLD_OBSERVATION/POISON_SENTINEL",
+        }]
+        old["explicit_missing_objects"] = []
+        old["source_refs"] = ["fixture://OLD_OBSERVATION"]
+
+        new_binding, new_basis = rotate_invocation(
+            clean_binding(), old, "INVOCATION_P1"
+        )
+
+        self.assertEqual(observation_status(new_basis, "POISON_SENTINEL"), "UNKNOWN")
+        self.assertEqual(new_basis["observed_objects"], [])
+        self.assertEqual(new_basis["explicit_missing_objects"], [])
+        self.assertEqual(new_basis["source_refs"], [])
+        self.assertNotEqual(new_binding["observation_basis_ref"], observation_basis_ref(old))
+
+    def test_P2_old_missingness_does_not_auto_propagate(self):
+        old = clean_basis()
+        old["observed_objects"] = []
+        old["explicit_missing_objects"] = [{
+            "object_id":"MISSING_POISON_SENTINEL",
+            "reason":"MISSING_FOR_PRIOR_INVOCATION",
+        }]
+        old["source_refs"] = ["fixture://OLD_MISSINGNESS"]
+
+        _, new_basis = rotate_invocation(
+            clean_binding(), old, "INVOCATION_P2"
+        )
+
+        self.assertEqual(
+            observation_status(new_basis, "MISSING_POISON_SENTINEL"), "UNKNOWN"
+        )
+        self.assertEqual(new_basis["explicit_missing_objects"], [])
+        self.assertEqual(new_basis["source_refs"], [])
+
+    def test_P3_fresh_observation_can_reestablish_same_fact(self):
+        old = clean_basis()
+        old["observed_objects"] = [{
+            "object_id":"POISON_SENTINEL",
+            "identity":"sha256:" + ("b" * 64),
+            "source_ref":"fixture://OLD_OBSERVATION/POISON_SENTINEL",
+        }]
+        old["explicit_missing_objects"] = []
+        old["source_refs"] = ["fixture://OLD_OBSERVATION"]
+
+        fresh_observation = [{
+            "object_id":"POISON_SENTINEL",
+            "identity":"sha256:" + ("c" * 64),
+            "source_ref":"fixture://FRESH_OBSERVATION/INVOCATION_P3/POISON_SENTINEL",
+        }]
+        new_binding, new_basis = rotate_invocation(
+            clean_binding(),
+            old,
+            "INVOCATION_P3",
+            observed_objects=fresh_observation,
+            explicit_missing_objects=[],
+            source_refs=["fixture://FRESH_OBSERVATION/INVOCATION_P3"],
+        )
+        new_seat = occupied_seat(
+            seat=clean_empty_seat(new_binding["seat_id"]),
+            occupant_id=new_binding["occupant_id"],
+            invocation_id=new_binding["invocation_id"],
+        )
+        validate_correspondence(
+            role=clean_role(),
+            seat=new_seat,
+            binding=new_binding,
+            basis=new_basis,
+        )
+        self.assertEqual(observation_status(new_basis, "POISON_SENTINEL"), "OBSERVED")
+        self.assertEqual(
+            new_basis["source_refs"],
+            ["fixture://FRESH_OBSERVATION/INVOCATION_P3"],
+        )
+
+    def test_P4_historical_basis_is_separate_from_current_observation(self):
+        old = clean_basis()
+        old["observed_objects"] = [{
+            "object_id":"POISON_SENTINEL",
+            "identity":"sha256:" + ("b" * 64),
+            "source_ref":"fixture://OLD_OBSERVATION/POISON_SENTINEL",
+        }]
+        old["explicit_missing_objects"] = []
+        old["source_refs"] = ["fixture://OLD_OBSERVATION"]
+
+        historical_ref = observation_basis_ref(old)
+        current_binding, current_basis = rotate_invocation(
+            clean_binding(), old, "INVOCATION_P4"
+        )
+        current_ref = observation_basis_ref(current_basis)
+
+        self.assertNotEqual(historical_ref, current_ref)
+        self.assertEqual(current_binding["observation_basis_ref"], current_ref)
+        self.assertEqual(
+            observation_status(current_basis, "POISON_SENTINEL"), "UNKNOWN"
+        )
+
+    def test_fresh_basis_requires_explicit_current_payload(self):
+        old = clean_basis()
+        new = fresh_basis(
+            old,
+            seat_id="SCIENCE_TEST_01",
+            occupant_id="LABOIB_CANDIDATE",
+            invocation_id="INVOCATION_EXPLICIT",
+            basis_id="OBSERVATION_BASIS_TEST_001:FOR:INVOCATION_EXPLICIT",
+        )
+        self.assertEqual(new["observed_objects"], [])
+        self.assertEqual(new["explicit_missing_objects"], [])
+        self.assertEqual(new["source_refs"], [])
+
     def test_observation_basis_ref_pins_exact_basis_bytes(self):
         b = clean_bundle()
         original_ref = observation_basis_ref(b["basis"])
@@ -250,6 +365,9 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         self.assertEqual(
             result["core_relations"]["seat_binding_work_claim_correspondence"], "PASS"
         )
+        self.assertEqual(
+            result["core_relations"]["fresh_observation_payload_noninheritance"], "PASS"
+        )
         self.assertFalse(result["durable_ecology_installed"])
         self.assertEqual(result["authority_effect"], "NONE")
         self.assertEqual(result["execution_effect"], "NONE")
@@ -257,7 +375,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         self.assertEqual(result["representation_succession"], "NOT_TESTED")
         self.assertEqual(result["legacy_seat_migration"], "NOT_TESTED")
         self.assertEqual(
-            result["historical_basis_reuse"], "EXPLICIT_RELATION_NOT_YET_MODELED"
+            result["historical_basis_reuse"], "SEPARATE_TYPED_RELATION_REQUIRED_NOT_MODELED"
         )
 
 
