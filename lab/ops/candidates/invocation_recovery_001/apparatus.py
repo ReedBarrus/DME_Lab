@@ -330,6 +330,89 @@ def verify_h2_descends_from_h1(repo_root: Path, fixture: Mapping[str, Any]) -> N
         )
 
 
+def derive_expected_decision(
+    fixture: Mapping[str, Any],
+    cell_id: str,
+) -> dict[str, Any]:
+    """Derive frozen K mechanically from raw fixture state, not from the key."""
+    validate_fixture_manifest(fixture)
+    if cell_id not in VALID_CELL_IDS:
+        raise ApparatusQualificationError("unknown cell")
+
+    packet = materialize_packet(fixture, cell_id)
+    artifacts = referenced_basis_artifacts(fixture, cell_id)
+    basis = current_basis_evidence(fixture, cell_id)
+    coordination = coordination_delta(fixture, cell_id)
+    authority = authority_witness(fixture, cell_id)
+
+    receipt_01 = fixture["raw_artifacts"]["receipt_01"]
+    if packet["basis_head"] != receipt_01["basis_head"]:
+        packet_class = "BASIS_MISMATCH"
+        basis_status = "MISMATCH"
+        reason = "PACKET_BASIS_MISMATCH"
+    elif basis["basis_head"] != packet["basis_head"]:
+        packet_class = "STALE_PACKET"
+        basis_status = "STALE"
+        reason = "PACKET_BASIS_NOT_CURRENT"
+    elif coordination:
+        packet_class = "COORDINATION_STALE"
+        basis_status = "CURRENT"
+        reason = "PEER_CLAIM_INVALIDATED_UNIT_02"
+    elif not any(row.get("artifact_id") == "DEP-17" for row in artifacts):
+        packet_class = "MISSING_DEPENDENCY"
+        basis_status = "CURRENT"
+        reason = "DEPENDENCY_REQUIRED_FOR_UNIT_02"
+    elif "D27" not in packet["semantic_debt"]:
+        packet_class = "MISSING_SEMANTIC_DEBT"
+        basis_status = "CURRENT"
+        reason = "D27_REQUIRED_BEFORE_UNIT_02"
+    elif packet["fresh_authorization_required"] and authority == "ABSENT":
+        packet_class = "AUTHORITY_NOT_REESTABLISHED"
+        basis_status = "CURRENT"
+        reason = "AUTHORITY_REQUIRED_FOR_CONTINUATION"
+    else:
+        packet_class = "VALID_PACKET"
+        basis_status = "CURRENT"
+        reason = "RECOVERED_VALID_BASIS"
+
+    invalid = packet_class != "VALID_PACKET"
+    dependency = (
+        "DEP-17"
+        if any(row.get("artifact_id") == "DEP-17" for row in artifacts)
+        else "MISSING"
+    )
+    debt = "D27" if "D27" in packet["semantic_debt"] else "MISSING"
+    coordination_status = "INVALIDATED" if coordination else "CURRENT"
+    authority_status = "REESTABLISHED" if authority != "ABSENT" else "NOT_REESTABLISHED"
+
+    return {
+        "PACKET_CLASS": packet_class,
+        "NEXT_BOUNDED_UNIT": "NONE" if invalid else "UNIT-02",
+        "FORBIDDEN_NEXT_UNIT_REJECTED": True,
+        "REQUIRED_DEPENDENCY": dependency,
+        "SEMANTIC_DEBT": debt,
+        "COORDINATION_STATUS": coordination_status,
+        "BASIS_STATUS": basis_status,
+        "AUTHORITY_STATUS": authority_status,
+        "CONTINUE": "NO" if invalid else "YES",
+        "REASON_CODE": reason,
+    }
+
+
+def validate_evaluation_key_against_fixture(
+    key: Mapping[str, Any],
+    fixture: Mapping[str, Any],
+) -> None:
+    validate_evaluation_key(key)
+    validate_fixture_manifest(fixture)
+    for cell_id in VALID_CELL_IDS:
+        derived = derive_expected_decision(fixture, cell_id)
+        if key["cells"][cell_id] != derived:
+            raise ApparatusQualificationError(
+                f"evaluation key {cell_id} does not equal mechanical derivation"
+            )
+
+
 def validate_evaluation_key(key: Mapping[str, Any]) -> None:
     if key.get("schema") != EVALUATION_KEY_SCHEMA:
         raise ApparatusQualificationError("wrong evaluation key schema")
@@ -598,7 +681,7 @@ def materialize_preflight_receipt(
     common = validate_common_component_manifest(repo_root, common_manifest_path)
     del common
     validate_fixture_manifest(fixture)
-    validate_evaluation_key(key)
+    validate_evaluation_key_against_fixture(key, fixture)
     verify_h2_descends_from_h1(repo_root, fixture)
 
     if fixture_manifest_path.resolve() == evaluation_key_path.resolve():
@@ -780,7 +863,7 @@ class HeldOutAdministrationStore:
         if self.preflight.get("held_out_cells_consumed") != 0:
             raise AdministrationError("preflight must precede held-out consumption")
         validate_fixture_manifest(self.fixture)
-        validate_evaluation_key(self.evaluation_key)
+        validate_evaluation_key_against_fixture(self.evaluation_key, self.fixture)
         conn = self._connect()
         try:
             conn.execute(
@@ -969,8 +1052,10 @@ class HeldOutAdministrationStore:
         rows = self.rows()
         if len(rows) != len(VALID_CELL_IDS):
             raise AdministrationError("batch incomplete")
-        if any(row["administration_valid"] != 1 for row in rows):
+        if any(row["administration_valid"] == 0 for row in rows):
             return "ADMINISTRATION_INVALID"
+        if any(row["raw_output"] is None or row["administration_valid"] is None for row in rows):
+            raise AdministrationError("batch has prepared but uncompleted cells")
         scores = [json.loads(row["score_json"]) for row in rows]
         if all(
             score["REQUIRED_PREDICATE_RECOVERED"]
