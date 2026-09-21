@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "invocation_effect_provenance_fixture_v0.schema.json",
+  "title": "Invocation Effect Provenance Held-Out Fixture v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "cell_id",
+    "tested_invocation_id",
+    "effect_id",
+    "effect_kind",
+    "mutation_event_id",
+    "actual_actor_invocation_id",
+    "seat_id",
+    "occupant_id",
+    "candidate_claim_id",
+    "candidate_work_unit_id",
+    "authority_ref",
+    "authority_state",
+    "claim_at_effect_start",
+    "tested_work_unit_id",
+    "initial_payload",
+    "mutation_payload",
+    "entry_witness",
+    "candidate_mode",
+    "candidate_observation_override",
+    "expected_output_payload",
+    "object_refs"
+  ],
+  "properties": {
+    "cell_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tested_invocation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "effect_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "effect_kind": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mutation_event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actual_actor_invocation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "seat_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occupant_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "candidate_claim_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "candidate_work_unit_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "authority_state": {
+      "enum": [
+        "VALID",
+        "ABSENT",
+        "CONSUMED",
+        "INVALID"
+      ]
+    },
+    "claim_at_effect_start": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claim_id",
+        "status",
+        "invocation_id",
+        "work_unit_id"
+      ],
+      "properties": {
+        "claim_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "ACTIVE",
+            "RELEASED",
+            "COMPLETED",
+            "BLOCKED"
+          ]
+        },
+        "invocation_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "work_unit_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "tested_work_unit_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "initial_payload": {
+      "type": "string"
+    },
+    "mutation_payload": {
+      "type": "string"
+    },
+    "entry_witness": {
+      "type": "string",
+      "minLength": 16
+    },
+    "candidate_mode": {
+      "enum": [
+        "EMIT",
+        "NO_PROVENANCE"
+      ]
+    },
+    "candidate_observation_override": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pre_coordinate": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "post_coordinate": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      }
+    },
+    "expected_output_payload": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "object_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    }
+  }
+}
