@@ -1,0 +1,16 @@
+{
+  "schema": "lane_lifecycle_producer_registry_v0",
+  "qualified_producers": {
+    "SYNTHETIC_UPSTREAM_PRODUCER@v1": {
+      "relation_types": [
+        "UNIT_COMPLETION_STANDING",
+        "COMPLETION_BLOCKER_STATUS",
+        "ACTIVE_OWNERSHIP_EFFECT_STATUS",
+        "REFERENCE_RETENTION_STATUS",
+        "MARK_BLOCKED_BLOCKING_STATUS",
+        "INVOCATION_EFFECT_ATTRIBUTION"
+      ],
+      "qualification_ref": "SYNTHETIC_UPSTREAM_PRODUCER_QUALIFICATION_001"
+    }
+  }
+}
