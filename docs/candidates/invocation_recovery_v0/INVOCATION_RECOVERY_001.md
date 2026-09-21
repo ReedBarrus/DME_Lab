@@ -378,14 +378,14 @@ declared work-claim overlap with the packet's `active_work_claim`.
 
 ### MISSING_DEPENDENCY
 
-True if a dependency named by the held-out reconstruction key is absent from
-the packet's reconstructable durable basis.
+True if a dependency required by the common successor-visible TASK_BASIS_v0
+is absent from the packet's reconstructable durable basis.
 
 ### MISSING_SEMANTIC_DEBT
 
-True if required unresolved semantic debt named by the held-out reconstruction
-key is absent from the packet even when the coordination cursor is otherwise
-current.
+True if unresolved semantic debt required by the common successor-visible
+TASK_BASIS_v0 is absent from the packet even when the coordination cursor is
+otherwise current.
 
 ### AUTHORITY_NOT_REESTABLISHED
 
@@ -498,6 +498,11 @@ this exact order:
 
 No cell identifier, expected outcome, held-out evaluation key, expected tuple,
 or scorer annotation is successor-visible.
+
+The component set, order, semantic roles, and common semantic content are frozen
+by this contract. Exact serialized byte identities are to be materialized and
+pinned by the future apparatus before realization; they are not permitted to
+drift between cells or after outcomes are visible.
 
 ### RECOVERY_ROLE_HEADER_v0
 
@@ -758,7 +763,8 @@ RESPONSE FORMAT MAY LEAK EXPECTED CELL TUPLE
 ## Successor-input anti-leakage rule
 
 The future apparatus must prove, before any successor invocation, that the
-assembled successor input contains none of:
+assembled successor input contains none of the following as cell-specific
+answer-bearing annotations or derived verdicts:
 
 ```text
 frozen K
@@ -777,8 +783,26 @@ prior cell output
 old invocation scratch state
 ```
 
-The apparatus must retain exact successor-input bytes for later adversarial
-review.
+This is a structural provenance check, not a naive token blacklist.
+
+Generic vocabulary is allowed where the membrane explicitly authorizes it.
+For example, all packet-validity class names may appear in
+RECOVERY_RESPONSE_SCHEMA_v0, and UNIT-02 / DEP-17 / D27 may appear in the
+common TASK_BASIS_v0 or exact reconstruction basis where they are legitimate
+upstream facts.
+
+What is forbidden is smuggling the cell-specific answer into an input component
+whose declared role is raw basis, task semantics, current basis, coordination
+evidence, or authority evidence.
+
+The future apparatus must preserve component boundaries, materialize the frozen
+common components once, pin their exact byte identities before realization,
+retain exact assembled successor-input bytes for every cell, and verify that no
+cell-specific answer annotation was inserted outside the frozen membrane.
+
+Those exact byte identities are apparatus identities, not new semantic freedom:
+once materialized for the batch they may not change after any successor output
+exists.
 
 A cell with leaked forbidden material is administration-invalid.
 
