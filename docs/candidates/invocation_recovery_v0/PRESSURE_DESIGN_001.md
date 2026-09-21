@@ -151,9 +151,16 @@ prior cell output
 old invocation scratch state
 ```
 
-The future apparatus must retain exact assembled successor-input bytes before
-each invocation and mechanically scan those bytes for forbidden answer-bearing
-administration material.
+The future apparatus must materialize the frozen common input components once,
+pin their exact byte identities before realization, retain exact assembled
+successor-input bytes before each invocation, and mechanically verify component
+provenance against the frozen membrane.
+
+This anti-leakage check is structural rather than a naive token blacklist:
+generic response vocabulary and legitimate task-basis identifiers may appear
+only in the components where the contract explicitly allows them; cell-specific
+expected verdict annotations may not appear in raw-basis, coordination, current-
+basis, or authority components.
 
 ```text
 HELD-OUT EVALUATION KEY
