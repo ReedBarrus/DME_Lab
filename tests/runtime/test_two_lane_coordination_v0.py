@@ -194,7 +194,7 @@ class TwoLaneCoordinationPressure(unittest.TestCase):
         self.assertEqual(comparison["relation"], "PROVENANCE_COLLISION")
         self.assertTrue(comparison["coordination_block"])
 
-    def test_e_stale_peer_head_requires_revalidation_before_overlap_adjudication(self) -> None:
+    def test_e_peer_head_advance_with_unchanged_claim_does_not_ping_pong(self) -> None:
         local = claim(
             lane="LANE_A",
             branch="lane-a",
@@ -228,10 +228,13 @@ class TwoLaneCoordinationPressure(unittest.TestCase):
             cursor=cursor,
             current_peer_heads=moved,
         )
-        self.assertEqual(result["coordination_posture"], "REVALIDATION_REQUIRED")
-        self.assertFalse(result["coordination_clear"])
-        self.assertEqual(result["comparisons"], [])
-        self.assertEqual(result["stale_peers"][0]["reason"], "PEER_HEAD_ADVANCED")
+        self.assertEqual(result["coordination_posture"], "NO_COORDINATION_BLOCK")
+        self.assertTrue(result["coordination_clear"])
+        self.assertEqual(result["stale_peers"], [])
+        self.assertEqual(
+            result["peer_activity_advances"][0]["reason"],
+            "PEER_ACTIVITY_ADVANCED_CLAIM_UNCHANGED",
+        )
 
     def test_e_after_revalidation_current_overlap_can_hold(self) -> None:
         local = claim(
