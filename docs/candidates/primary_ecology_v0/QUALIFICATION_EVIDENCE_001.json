@@ -132,10 +132,39 @@
     "Q4D": {
       "relation": "MISSINGNESS_WITNESS_REASON_MUST_CORRESPOND",
       "result": "PASS"
+    },
+    "R1": {
+      "relation": "CURRENT_OBSERVED_CLAIM_REQUIRES_REPRESENTED_SOURCE_ENCOUNTER",
+      "result": "PASS"
+    },
+    "R2": {
+      "relation": "SOURCE_ENCOUNTER_MUST_BELONG_TO_CURRENT_INVOCATION",
+      "result": "PASS"
+    },
+    "R3": {
+      "relation": "SOURCE_ENCOUNTER_MUST_POINT_TO_EXACT_OBSERVED_SOURCE",
+      "result": "PASS"
+    },
+    "R4": {
+      "relation": "EXACT_CURRENT_SOURCE_ENCOUNTER_IS_ADMISSIBLE",
+      "result": "PASS"
+    },
+    "R5": {
+      "relation": "SOURCE_ENCOUNTER_MUST_BELONG_TO_CURRENT_SEAT",
+      "result": "PASS"
+    },
+    "R6": {
+      "relation": "SOURCE_ENCOUNTER_MUST_BELONG_TO_CURRENT_OCCUPANT",
+      "result": "PASS"
+    },
+    "R7": {
+      "relation": "SOURCE_ENCOUNTER_MUST_BELONG_TO_CURRENT_BASIS_COORDINATE",
+      "result": "PASS"
     }
   },
   "core_relations": {
     "cross_object_identity_correspondence": "PASS",
+    "current_invocation_source_encounter": "PASS",
     "current_world_ne_observation_basis": "PASS",
     "explicit_missingness_grounding": "PASS",
     "fresh_observation_payload_noninheritance": "PASS",
@@ -148,6 +177,7 @@
     "seat_ne_occupant": "PASS",
     "work_claim_ne_authority": "PASS"
   },
+  "direct_object_perception": "NOT_CLAIMED",
   "durable_ecology_installed": false,
   "execution_effect": "NONE",
   "function_needs_seat": "NOT_TESTED",
@@ -164,6 +194,9 @@
   "occupant_binding_effect": "NONE",
   "representation_succession": "NOT_TESTED",
   "role_vocabulary_status": "PROVISIONAL_EXTENSIBLE",
+  "source_encounter_correspondence": "TESTED_CURRENT_SEAT_OCCUPANT_INVOCATION_SOURCE_BASIS",
+  "source_encounter_truth": "NOT_TESTED",
+  "source_understanding": "NOT_CLAIMED",
   "status": "QUALIFIED_SYNTHETIC_GRAMMAR",
   "stop": true,
   "universal_unavailability": "NOT_CLAIMED",
