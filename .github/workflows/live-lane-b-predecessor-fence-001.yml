@@ -1,0 +1,31 @@
+name: LIVE_LANE_B_PREDECESSOR_FENCE_001
+
+on:
+  pull_request:
+    paths:
+      - "coordination/predecessor_fences/**"
+      - "tools/live_predecessor_fence_v0.py"
+      - "tools/two_lane_coordination_v0.py"
+      - "tests/runtime/test_live_predecessor_fence_v0.py"
+      - ".github/workflows/live-lane-b-predecessor-fence-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile
+        run: python -m py_compile tools/legacy_lane_succession_fencing_v0.py tools/live_predecessor_fence_v0.py tools/two_lane_coordination_v0.py tests/runtime/test_live_predecessor_fence_v0.py
+      - name: Existing coordination regression
+        run: python -m unittest tests.runtime.test_two_lane_coordination_v0 -v
+      - name: Live fence verification
+        run: python -m unittest tests.runtime.test_live_predecessor_fence_v0 -v
+      - name: Emit live verification receipt
+        run: python tools/live_predecessor_fence_v0.py verify --observed-head 41316921b211c1daf75c9b71b8147e0eb67d372d
