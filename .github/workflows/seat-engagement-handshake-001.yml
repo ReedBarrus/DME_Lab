@@ -68,6 +68,9 @@ jobs:
           print("REAL_SEAT_UNTOUCHED")
           print("LIVE_AUTHORITY_NONE")
           print("EXTERNAL_CONSEQUENCE_NONE")
+          print("QUALIFICATION_EVIDENCE_BEGIN")
+          print(Path("/tmp/seat_engagement_evidence.json").read_text(), end="")
+          print("QUALIFICATION_EVIDENCE_END")
           PY
 
       - name: Confirm no production activation surface was materialized
