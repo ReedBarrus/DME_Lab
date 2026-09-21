@@ -179,7 +179,7 @@ ACCEPT
 → grant CONSUMED
 → FAILURE receipt
 → checkpoint
-→ release-or-recovery posture
+→ release
 
 grant restored:
 NO
