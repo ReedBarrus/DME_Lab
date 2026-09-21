@@ -21,7 +21,8 @@
       }
     ],
     "source_refs": [
-      "fixture://PRIMARY_ECOLOGY_GRAMMAR_001"
+      "fixture://PRIMARY_ECOLOGY_GRAMMAR_001",
+      "fixture://OBSERVED_OBJECT"
     ],
     "authority_effect": "NONE",
     "execution_effect": "NONE"
@@ -33,7 +34,7 @@
     "seat_id": "SCIENCE_TEST_01",
     "occupant_id": "LABOIB_CANDIDATE",
     "invocation_id": "INVOCATION_A",
-    "observation_basis_ref": "observation-basis://OBSERVATION_BASIS_TEST_001@sha256:171c08d9698d5395df78a3966cbbf325dc3169986dbc7de512410519670615c8",
+    "observation_basis_ref": "observation-basis://OBSERVATION_BASIS_TEST_001@sha256:7a6ac4b85b74f703f14d5f6ee80e526f3ca29fd15aab8bed8300a0d9e7d17aff",
     "task_ref": "task://PRIMARY_ECOLOGY_GRAMMAR_001",
     "work_claim_ref": null,
     "standing_refs": [],
