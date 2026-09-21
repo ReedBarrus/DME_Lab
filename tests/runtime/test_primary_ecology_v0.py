@@ -19,6 +19,7 @@ from tools.primary_ecology_v0 import (
     rotate_occupant,
     run_pressure,
     validate_correspondence,
+    validate_observation_basis,
     validate_role,
     validate_seat,
 )
@@ -230,7 +231,9 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             "source_ref":"fixture://OLD_OBSERVATION/POISON_SENTINEL",
         }]
         old["explicit_missing_objects"] = []
-        old["source_refs"] = ["fixture://OLD_OBSERVATION"]
+        old["source_refs"] = [
+            "fixture://OLD_OBSERVATION/POISON_SENTINEL"
+        ]
 
         new_binding, new_basis = rotate_invocation(
             clean_binding(), old, "INVOCATION_P1"
@@ -282,7 +285,9 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             "INVOCATION_P3",
             observed_objects=fresh_observation,
             explicit_missing_objects=[],
-            source_refs=["fixture://FRESH_OBSERVATION/INVOCATION_P3"],
+            source_refs=[
+                "fixture://FRESH_OBSERVATION/INVOCATION_P3/POISON_SENTINEL"
+            ],
         )
         new_seat = occupied_seat(
             seat=clean_empty_seat(new_binding["seat_id"]),
@@ -298,7 +303,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         self.assertEqual(observation_status(new_basis, "POISON_SENTINEL"), "OBSERVED")
         self.assertEqual(
             new_basis["source_refs"],
-            ["fixture://FRESH_OBSERVATION/INVOCATION_P3"],
+            ["fixture://FRESH_OBSERVATION/INVOCATION_P3/POISON_SENTINEL"],
         )
 
     def test_P4_historical_basis_is_separate_from_current_observation(self):
@@ -336,6 +341,43 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         self.assertEqual(new["explicit_missing_objects"], [])
         self.assertEqual(new["source_refs"], [])
 
+    def test_Q1_observed_object_without_basis_source_rejected(self):
+        basis = fresh_basis(
+            clean_basis(),
+            seat_id="SCIENCE_TEST_01",
+            occupant_id="LABOIB_CANDIDATE",
+            invocation_id="INVOCATION_Q1",
+            basis_id="OBSERVATION_BASIS_Q1",
+        )
+        basis["observed_objects"] = [{
+            "object_id":"MAGIC_OBJECT",
+            "identity":"sha256:" + ("d" * 64),
+            "source_ref":"source://TOTALLY-REAL-BRO",
+        }]
+        with self.assertRaisesRegex(
+            EcologyError, "OBSERVED_OBJECT_SOURCE_NOT_REPRESENTED"
+        ):
+            validate_observation_basis(basis)
+
+    def test_Q2_observed_object_with_different_basis_source_rejected(self):
+        basis = fresh_basis(
+            clean_basis(),
+            seat_id="SCIENCE_TEST_01",
+            occupant_id="LABOIB_CANDIDATE",
+            invocation_id="INVOCATION_Q2",
+            basis_id="OBSERVATION_BASIS_Q2",
+            source_refs=["source://B"],
+        )
+        basis["observed_objects"] = [{
+            "object_id":"MAGIC_OBJECT",
+            "identity":"sha256:" + ("e" * 64),
+            "source_ref":"source://A",
+        }]
+        with self.assertRaisesRegex(
+            EcologyError, "OBSERVED_OBJECT_SOURCE_NOT_REPRESENTED"
+        ):
+            validate_observation_basis(basis)
+
     def test_observation_basis_ref_pins_exact_basis_bytes(self):
         b = clean_bundle()
         original_ref = observation_basis_ref(b["basis"])
@@ -368,6 +410,9 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         self.assertEqual(
             result["core_relations"]["fresh_observation_payload_noninheritance"], "PASS"
         )
+        self.assertEqual(
+            result["core_relations"]["fresh_observation_source_relation"], "PASS"
+        )
         self.assertFalse(result["durable_ecology_installed"])
         self.assertEqual(result["authority_effect"], "NONE")
         self.assertEqual(result["execution_effect"], "NONE")
@@ -376,6 +421,9 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         self.assertEqual(result["legacy_seat_migration"], "NOT_TESTED")
         self.assertEqual(
             result["historical_basis_reuse"], "SEPARATE_TYPED_RELATION_REQUIRED_NOT_MODELED"
+        )
+        self.assertEqual(
+            result["observation_source_identity_correspondence"], "NOT_TESTED"
         )
 
 
