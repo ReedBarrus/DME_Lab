@@ -1417,6 +1417,668 @@ All registered source-state predicates required by each branch are therefore
 explicit members of its admissibility conjunction and have held-out causal
 interventions.
 
+## F14 edge-defining intervention coverage
+
+This repair changes pressure coverage only.
+
+It does not change the frozen lifecycle law, predicate registry, dispatch law,
+D1-D3, or any branch semantics.
+
+Freeze:
+
+```text
+FROZEN LAW CORRECT
+!=
+PRESSURE COVERAGE COMPLETE
+
+PREDICATE CAUSALLY REQUIRED
+!=
+CAUSAL REQUIREMENT DEMONSTRATED
+
+POSITIVE FIXTURE SUPPLIES VALID VALUE
+!=
+NEGATIVE INTERVENTION QUALIFIES GUARD
+```
+
+Required pressure law:
+
+```text
+FOR EVERY EDGE-DEFINING PREDICATE REQUIRED BY A BRANCH:
+
+all unrelated required inputs valid
++
+target predicate alone intervened
+→
+observable consequence required by that predicate's frozen mechanical role
+```
+
+### N6A — COMPLETE / P01 claim-status intervention
+
+Baseline:
+
+```text
+otherwise-valid COMPLETE administration
+```
+
+Independent intervention:
+
+```text
+P01:
+SOURCE_CLAIM_STATUS_IS_ACTIVE = false
+CHANGE ONLY source claim.status away from ACTIVE
+
+P02:
+SOURCE_LANE_STATUS_IS_ACTIVE = true
+UNCHANGED
+
+P03:
+SOURCE_OCCUPANT_BINDING = OCCUPANT-X
+UNCHANGED / non-null
+
+P04:
+REQUESTED_TRANSITION = COMPLETE
+UNCHANGED
+
+P05:
+WORK_UNIT_CORRESPONDENCE_MATCHES = true by raw derivation
+UNCHANGED
+
+P06:
+COMPLETION_CRITERION_RAW_TERMS_SATISFIED = true
+UNCHANGED
+
+required P07:
+qualified
+UNCHANGED
+
+P08:
+COMPLETION_BLOCKER_STATUS = NONE_ESTABLISHED
+UNCHANGED and qualified
+```
+
+Expected:
+
+```text
+selected_branch = COMPLETE
+
+COMPLETE admissible = false
+
+blocking predicate:
+P01 SOURCE_CLAIM_STATUS_IS_ACTIVE
+```
+
+Single-variable proof:
+
+```text
+same input set with P01 = true
+→ COMPLETE admissible
+
+same input set with only P01 = false
+→ COMPLETE inadmissible
+```
+
+### N6B — RELEASE / P01 claim-status intervention
+
+Baseline:
+
+```text
+otherwise-valid RELEASE administration
+```
+
+Independent intervention:
+
+```text
+P01:
+SOURCE_CLAIM_STATUS_IS_ACTIVE = false
+CHANGE ONLY source claim.status away from ACTIVE
+
+P02:
+SOURCE_LANE_STATUS_IS_ACTIVE = true
+UNCHANGED
+
+P03:
+SOURCE_OCCUPANT_BINDING = OCCUPANT-X
+UNCHANGED / non-null
+
+P04:
+REQUESTED_TRANSITION = RELEASE
+UNCHANGED
+
+P09:
+ACTIVE_OWNERSHIP_EFFECT_STATUS =
+NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP
+UNCHANGED and qualified
+
+P10:
+REQUIRED_CONSERVED_REFERENCE_SET
+UNCHANGED and mechanically derived
+
+P11:
+REQUIRED_REFERENCE_RETENTION_STATUS = RETAINABLE
+UNCHANGED and qualified
+
+P18:
+UNCHANGED where supplied as conserved provenance standing
+```
+
+Expected:
+
+```text
+selected_branch = RELEASE
+
+RELEASE admissible = false
+
+blocking predicate:
+P01 SOURCE_CLAIM_STATUS_IS_ACTIVE
+```
+
+Single-variable proof:
+
+```text
+same input set with P01 = true
+→ RELEASE admissible
+
+same input set with only P01 = false
+→ RELEASE inadmissible
+```
+
+### N6C — MARK_BLOCKED / P01 claim-status intervention
+
+Baseline:
+
+```text
+otherwise-valid MARK_BLOCKED administration
+```
+
+Independent intervention:
+
+```text
+P01:
+SOURCE_CLAIM_STATUS_IS_ACTIVE = false
+CHANGE ONLY source claim.status away from ACTIVE
+
+P02:
+SOURCE_LANE_STATUS_IS_ACTIVE = true
+UNCHANGED
+
+P03:
+SOURCE_OCCUPANT_BINDING = OCCUPANT-X
+UNCHANGED / non-null
+
+P04:
+REQUESTED_TRANSITION = MARK_BLOCKED
+UNCHANGED
+
+P12:
+MARK_BLOCKED_BLOCKING_STATUS = ESTABLISHED
+UNCHANGED
+basis_ref recoverable
+producer/version qualified
+```
+
+Expected:
+
+```text
+selected_branch = MARK_BLOCKED
+
+MARK_BLOCKED admissible = false
+
+blocking predicate:
+P01 SOURCE_CLAIM_STATUS_IS_ACTIVE
+```
+
+Single-variable proof:
+
+```text
+same input set with P01 = true
+→ MARK_BLOCKED admissible
+
+same input set with only P01 = false
+→ MARK_BLOCKED inadmissible
+```
+
+### N7A — COMPLETE / P03 occupant intervention
+
+Baseline:
+
+```text
+otherwise-valid COMPLETE administration
+```
+
+Independent intervention:
+
+```text
+P01:
+SOURCE_CLAIM_STATUS_IS_ACTIVE = true
+UNCHANGED
+
+P02:
+SOURCE_LANE_STATUS_IS_ACTIVE = true
+UNCHANGED
+
+P03:
+SOURCE_OCCUPANT_BINDING
+OCCUPANT-X → null
+CHANGE ONLY
+
+P04:
+REQUESTED_TRANSITION = COMPLETE
+UNCHANGED
+
+P05:
+WORK_UNIT_CORRESPONDENCE_MATCHES = true
+UNCHANGED
+
+P06:
+COMPLETION_CRITERION_RAW_TERMS_SATISFIED = true
+UNCHANGED
+
+required P07:
+qualified
+UNCHANGED
+
+P08:
+COMPLETION_BLOCKER_STATUS = NONE_ESTABLISHED
+UNCHANGED and qualified
+```
+
+Expected:
+
+```text
+selected_branch = COMPLETE
+
+COMPLETE admissible = false
+
+blocking predicate:
+P03 SOURCE_OCCUPANT_BINDING
+```
+
+Single-variable proof:
+
+```text
+same input set with P03 non-null
+→ COMPLETE admissible
+
+same input set with only P03 = null
+→ COMPLETE inadmissible
+```
+
+### N7B — RELEASE / P03 occupant intervention
+
+Baseline:
+
+```text
+otherwise-valid RELEASE administration
+```
+
+Independent intervention:
+
+```text
+P01:
+SOURCE_CLAIM_STATUS_IS_ACTIVE = true
+UNCHANGED
+
+P02:
+SOURCE_LANE_STATUS_IS_ACTIVE = true
+UNCHANGED
+
+P03:
+SOURCE_OCCUPANT_BINDING
+OCCUPANT-X → null
+CHANGE ONLY
+
+P04:
+REQUESTED_TRANSITION = RELEASE
+UNCHANGED
+
+P09:
+ACTIVE_OWNERSHIP_EFFECT_STATUS =
+NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP
+UNCHANGED and qualified
+
+P10:
+REQUIRED_CONSERVED_REFERENCE_SET
+UNCHANGED and mechanically derived
+
+P11:
+REQUIRED_REFERENCE_RETENTION_STATUS = RETAINABLE
+UNCHANGED and qualified
+
+P18:
+UNCHANGED where supplied
+```
+
+Expected:
+
+```text
+selected_branch = RELEASE
+
+RELEASE admissible = false
+
+blocking predicate:
+P03 SOURCE_OCCUPANT_BINDING
+```
+
+Single-variable proof:
+
+```text
+same input set with P03 non-null
+→ RELEASE admissible
+
+same input set with only P03 = null
+→ RELEASE inadmissible
+```
+
+### Complete 4 × 3 edge-defining intervention matrix
+
+```text
+                     COMPLETE      RELEASE       MARK_BLOCKED
+
+P01 claim guard      N6A           N6B           N6C
+P02 lane guard       N1            N2            N3
+P03 occupant guard   N7A           N7B           N4
+P04 request dispatch N5A           N5B           N5C
+```
+
+Coverage result:
+
+```text
+P01:
+3 / 3 branches covered
+
+P02:
+3 / 3 branches covered
+
+P03:
+3 / 3 branches covered
+
+P04:
+3 / 3 branch baselines covered
+
+TOTAL:
+12 / 12 edge-defining matrix cells covered
+```
+
+### Matrix audit
+
+```text
+P01 / COMPLETE
+cell:
+N6A
+baseline:
+COMPLETE
+intervened:
+P01 only
+held fixed:
+P02 P03 P04 P05 P06 required P07 P08
+selected branch:
+COMPLETE
+expected consequence:
+inadmissible
+demonstrates:
+P01 claim-status guard
+
+
+P01 / RELEASE
+cell:
+N6B
+baseline:
+RELEASE
+intervened:
+P01 only
+held fixed:
+P02 P03 P04 P09 P10 P11 and P18 where supplied
+selected branch:
+RELEASE
+expected consequence:
+inadmissible
+demonstrates:
+P01 claim-status guard
+
+
+P01 / MARK_BLOCKED
+cell:
+N6C
+baseline:
+MARK_BLOCKED
+intervened:
+P01 only
+held fixed:
+P02 P03 P04 P12
+selected branch:
+MARK_BLOCKED
+expected consequence:
+inadmissible
+demonstrates:
+P01 claim-status guard
+
+
+P02 / COMPLETE
+cell:
+N1
+baseline:
+COMPLETE
+intervened:
+P02 only
+held fixed:
+all unrelated COMPLETE requirements
+selected branch:
+COMPLETE
+expected consequence:
+inadmissible
+demonstrates:
+P02 lane-status guard
+
+
+P02 / RELEASE
+cell:
+N2
+baseline:
+RELEASE
+intervened:
+P02 only
+held fixed:
+all unrelated RELEASE requirements
+selected branch:
+RELEASE
+expected consequence:
+inadmissible
+demonstrates:
+P02 lane-status guard
+
+
+P02 / MARK_BLOCKED
+cell:
+N3
+baseline:
+MARK_BLOCKED
+intervened:
+P02 only
+held fixed:
+all unrelated MARK_BLOCKED requirements
+selected branch:
+MARK_BLOCKED
+expected consequence:
+inadmissible
+demonstrates:
+P02 lane-status guard
+
+
+P03 / COMPLETE
+cell:
+N7A
+baseline:
+COMPLETE
+intervened:
+P03 only
+held fixed:
+P01 P02 P04 P05 P06 required P07 P08
+selected branch:
+COMPLETE
+expected consequence:
+inadmissible
+demonstrates:
+P03 non-null occupant guard
+
+
+P03 / RELEASE
+cell:
+N7B
+baseline:
+RELEASE
+intervened:
+P03 only
+held fixed:
+P01 P02 P04 P09 P10 P11 and P18 where supplied
+selected branch:
+RELEASE
+expected consequence:
+inadmissible
+demonstrates:
+P03 non-null occupant guard
+
+
+P03 / MARK_BLOCKED
+cell:
+N4
+baseline:
+MARK_BLOCKED
+intervened:
+P03 only
+held fixed:
+all unrelated MARK_BLOCKED requirements
+selected branch:
+MARK_BLOCKED
+expected consequence:
+inadmissible
+demonstrates:
+P03 non-null occupant guard
+
+
+P04 / COMPLETE
+cell:
+N5A
+baseline:
+COMPLETE
+intervened:
+P04 only
+held fixed:
+all non-P04 inputs
+selected branch:
+RELEASE after intervention
+expected consequence:
+operative branch changes from COMPLETE to RELEASE
+demonstrates:
+P04 exclusive dispatch from COMPLETE baseline
+
+
+P04 / RELEASE
+cell:
+N5B
+baseline:
+RELEASE
+intervened:
+P04 only
+held fixed:
+all non-P04 inputs
+selected branch:
+MARK_BLOCKED after intervention
+expected consequence:
+operative branch changes from RELEASE to MARK_BLOCKED
+demonstrates:
+P04 exclusive dispatch from RELEASE baseline
+
+
+P04 / MARK_BLOCKED
+cell:
+N5C
+baseline:
+MARK_BLOCKED
+intervened:
+P04 only
+held fixed:
+all non-P04 inputs
+selected branch:
+COMPLETE after intervention
+expected consequence:
+operative branch changes from MARK_BLOCKED to COMPLETE
+demonstrates:
+P04 exclusive dispatch from MARK_BLOCKED baseline
+```
+
+Any matrix cell lacking one explicit single-variable intervention is a future
+qualification failure.
+
+### Single-variable intervention invariant
+
+For N1-N7 and N5A-N5C:
+
+```text
+TARGET PREDICATE:
+changed exactly as declared
+
+ALL UNRELATED REQUIRED INPUTS:
+held valid and unchanged relative to that cell's baseline
+```
+
+Required observation:
+
+```text
+P01 intervention:
+same selected branch
+admissible → inadmissible because P01
+
+P02 intervention:
+same selected branch
+admissible → inadmissible because P02
+
+P03 intervention:
+same selected branch
+admissible → inadmissible because P03
+
+P04 intervention:
+selected branch changes according to P04
+without unrelated input mutation
+```
+
+Thus:
+
+```text
+DECLARED CAUSAL GUARD
+=
+INTERVENTIONALLY COVERED CAUSAL GUARD
+```
+
+for P01-P04 across all three qualified arrows.
+
+### F14 regression boundary
+
+```text
+F11:
+RAW_INPUT XOR QUALIFIED_UPSTREAM_STANDING
+NO THIRD CATEGORY
+UNCHANGED
+
+F12:
+P01 / P02 / P03 literal branch guards
+N1-N4 preserved
+UNCHANGED
+
+F13:
+P04 exclusive dispatch
+N5A-N5C preserved
+UNCHANGED
+
+P01-P18 registry:
+UNCHANGED
+
+D1-D3:
+UNCHANGED
+
+THREE-ARROW SET:
+UNCHANGED
+```
+
 ## F13 exclusive request-dispatch pressure
 
 These are held-out pressure-design cells only.
