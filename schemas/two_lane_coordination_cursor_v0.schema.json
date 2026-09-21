@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "two_lane_coordination_cursor_v0.schema.json",
+  "title": "Two Lane Coordination Cursor v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "consumer_lane_id",
+    "peer_coordinates",
+    "authority_effect",
+    "execution_effect"
+  ],
+  "properties": {
+    "schema": {
+      "const": "two_lane_coordination_cursor_v0"
+    },
+    "consumer_lane_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "peer_coordinates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "lane_id",
+          "branch",
+          "last_seen_head",
+          "last_seen_claim_digest"
+        ],
+        "properties": {
+          "lane_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "branch": {
+            "type": "string",
+            "minLength": 1
+          },
+          "last_seen_head": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{40}$"
+          },
+          "last_seen_claim_digest": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "authority_effect": {
+      "const": "NONE"
+    },
+    "execution_effect": {
+      "const": "NONE"
+    }
+  }
+}
