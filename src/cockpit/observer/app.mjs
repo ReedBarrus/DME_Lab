@@ -1,3 +1,6 @@
+import { startRuntimeProjection } from './runtime_live.mjs';
+import { startControlAdapter } from './control_live.mjs';
+import { createPerceptualInstrument } from './perceptual_instrument.mjs';
 import {
   buildObserverModel,
   followEvidence,
@@ -30,6 +33,7 @@ const roots = {
 };
 
 let viewModel = null;
+const instrument = createPerceptualInstrument(document.querySelector('#instrument-root'));
 
 function projectionUrl() {
   const requested = new URL(window.location.href).searchParams.get('model');
@@ -55,16 +59,24 @@ function render() {
   });
 
   document.querySelectorAll('[data-occurrence-key]').forEach((button) => {
-    button.addEventListener('click', () => {
-      viewModel = selectOccurrence(viewModel, button.dataset.occurrenceKey);
+    button.addEventListener('click', (event) => {
+      const key = button.dataset.occurrenceKey;
+      viewModel = selectOccurrence(viewModel, key);
       render();
+      instrument?.selectAddress(
+        'pressure_occurrence',
+        key,
+        event.ctrlKey || event.metaKey || event.shiftKey,
+      );
     });
   });
 
   document.querySelectorAll('[data-open-lineage-key]').forEach((button) => {
     button.addEventListener('click', () => {
-      viewModel = openLineage(viewModel, button.dataset.openLineageKey);
+      const key = button.dataset.openLineageKey;
+      viewModel = openLineage(viewModel, key);
       render();
+      instrument?.selectAddress('pressure_occurrence', key);
     });
   });
 
@@ -76,6 +88,12 @@ function render() {
         button.dataset.fromOccurrenceKey,
       );
       render();
+      if (viewModel.selectedOccurrenceKey) {
+        instrument?.selectAddress(
+          'pressure_occurrence',
+          viewModel.selectedOccurrenceKey,
+        );
+      }
     });
   });
 
@@ -87,16 +105,28 @@ function render() {
   });
 
   document.querySelectorAll('[data-constraint-key]').forEach((button) => {
-    button.addEventListener('click', () => {
-      viewModel = selectConstraint(viewModel, button.dataset.constraintKey);
+    button.addEventListener('click', (event) => {
+      const key = button.dataset.constraintKey;
+      viewModel = selectConstraint(viewModel, key);
       render();
+      instrument?.selectAddress(
+        'constraint',
+        key,
+        event.ctrlKey || event.metaKey || event.shiftKey,
+      );
     });
   });
 
   document.querySelectorAll('[data-evidence-key]').forEach((button) => {
-    button.addEventListener('click', () => {
-      viewModel = selectEvidence(viewModel, button.dataset.evidenceKey);
+    button.addEventListener('click', (event) => {
+      const key = button.dataset.evidenceKey;
+      viewModel = selectEvidence(viewModel, key);
       render();
+      instrument?.selectAddress(
+        'evidence',
+        key,
+        event.ctrlKey || event.metaKey || event.shiftKey,
+      );
     });
   });
 
@@ -109,16 +139,22 @@ function render() {
         button.dataset.followEvidenceKey,
       );
       render();
+      if (viewModel.selectedEvidenceKey) {
+        instrument?.selectAddress('evidence', viewModel.selectedEvidenceKey);
+      }
     });
   });
 
   document.querySelectorAll('[data-projection-document-key]').forEach((button) => {
-    button.addEventListener('click', () => {
-      viewModel = selectProjectionDocument(
-        viewModel,
-        button.dataset.projectionDocumentKey,
-      );
+    button.addEventListener('click', (event) => {
+      const key = button.dataset.projectionDocumentKey;
+      viewModel = selectProjectionDocument(viewModel, key);
       render();
+      instrument?.selectAddress(
+        'projection_document',
+        key,
+        event.ctrlKey || event.metaKey || event.shiftKey,
+      );
     });
   });
 
@@ -166,9 +202,16 @@ async function start() {
     document.body.dataset.projectionState =
       viewModel.repositoryState?.projection_status || 'missing';
     render();
+    instrument?.setObserverModel(viewModel);
   } catch (error) {
     renderFailure(error);
   }
 }
 
 start();
+
+startRuntimeProjection(
+  document.querySelector('#runtime-root'),
+  (snapshot) => instrument?.setRuntimeSnapshot(snapshot),
+);
+startControlAdapter(document.querySelector('#control-root'));

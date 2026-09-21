@@ -634,7 +634,7 @@ test('P2 view shell exposes only the bounded normalized lens vocabulary', () => 
   const markup = renderViewNavigation(view);
 
   assert.equal(view.activeView, 'MAP');
-  assert.deepEqual([...VIEW_NAMES], ['MAP', 'CONSTRAINTS', 'LINEAGE', 'HORIZON', 'SOURCE']);
+  assert.deepEqual([...VIEW_NAMES], ['MAP', 'CONSTRAINTS', 'LINEAGE', 'HORIZON', 'ACTIONS', 'SOURCE']);
   for (const name of VIEW_NAMES) {
     assert.match(markup, new RegExp('data-view="' + name + '"'));
   }
