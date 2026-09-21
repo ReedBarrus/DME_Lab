@@ -1,0 +1,49 @@
+{
+  "schema": "two_lane_work_claim_v0",
+  "claim_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-LANE_B-CLAIM-001",
+  "lane_id": "LANE_B",
+  "seat_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-CANDIDATE-SEAT",
+  "occupant_id": "WORKSHOP",
+  "invocation_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-WORKSHOP-INVOCATION-001",
+  "branch": "lane-b-recovery-continuity-v0",
+  "basis_head": "c27a01ce5b05e5483279ca07678aa208d10f1756",
+  "target_lineage": "SEAT_ENGAGEMENT_HANDSHAKE_001",
+  "campaign_id": null,
+  "pressure_id": "SEAT_ENGAGEMENT_HANDSHAKE_001",
+  "addressed_role": "WORKSHOP",
+  "binding_ref": "WARRANT:SEAT_ENGAGEMENT_HANDSHAKE_001:LANE_B:WORKSHOP:INVOCATION-001",
+  "consequence_envelope_id": "SEAT_ENGAGEMENT_HANDSHAKE_001-SYSTEM_WRITE",
+  "semantic_surfaces": [
+    "SEAT_ENGAGEMENT_STATE_MACHINE",
+    "WORK_UNIT_BINDING_AND_CLAIM",
+    "ONE_UNIT_AUTHORITY_CONSUMPTION",
+    "CHECKPOINT_RELEASE_RECOVERY"
+  ],
+  "artifact_scopes": [
+    "docs/candidates/seat_engagement_handshake_v0",
+    "schemas/seat_engagement",
+    "tools/seat_engagement_handshake_v0.py",
+    "tests/runtime/test_seat_engagement_handshake_v0.py",
+    ".github/workflows/seat-engagement-handshake-001.yml",
+    "coordination/lane_manifest.json",
+    "coordination/active_work_claim.json",
+    "coordination/peer_cursor.json",
+    "coordination/pre_mutation_guard_receipt.json"
+  ],
+  "mutation_paths": [
+    "docs/candidates/seat_engagement_handshake_v0/**",
+    "schemas/seat_engagement_*",
+    "tools/seat_engagement_handshake_v0.py",
+    "tests/runtime/test_seat_engagement_handshake_v0.py",
+    ".github/workflows/seat-engagement-handshake-001.yml",
+    "coordination/lane_manifest.json",
+    "coordination/active_work_claim.json",
+    "coordination/peer_cursor.json",
+    "coordination/pre_mutation_guard_receipt.json"
+  ],
+  "status": "ACTIVE",
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "integration_effect": "NONE",
+  "priority_effect": "NONE"
+}
