@@ -201,10 +201,12 @@ Old basis reports MISSING_POISON_SENTINEL = MISSING.
 Rotate invocation with no fresh missingness input.
 Expected: new basis reports it = UNKNOWN and explicit_missing_objects = [].
 
-P3 -- fresh observation may reestablish same fact
-Old basis observes POISON_SENTINEL.
-Fresh invocation receives an explicitly supplied fresh observation of the same fact.
-Expected: new basis may report POISON_SENTINEL = OBSERVED with fresh source refs.
+P3 -- fresh source claim may reestablish same fact
+Old basis carries a POISON_SENTINEL source claim.
+Fresh invocation receives an explicitly supplied source claim for the same fact,
+plus exact source correspondence and current source encounter.
+Expected: the basis row is SOURCE_CLAIM_REPRESENTED and the fully validated
+current standing is SOURCE_PRESENTED.
 
 P4 -- historical basis remains separate
 Retain exact old basis reference while fresh current basis is empty.
@@ -418,6 +420,42 @@ Expected: reject MISSINGNESS_WITNESS_ENCOUNTER_BASIS_MISMATCH.
 
 This pressure does not establish witness truth, object absence, universal
 unavailability, or comprehension of the failure reason.
+
+Q7 pressures the standing label earned by the observed-side machinery. The
+legacy structural field name `observed_objects[]` is not itself semantic
+standing.
+
+```text
+FIELD NAME observed_objects
+!=
+OBSERVED STANDING
+
+SOURCE PRESENTED TO INVOCATION
+!=
+SOURCE INSPECTED / CONSUMED
+
+SOURCE PRESENTED
+!=
+OBJECT DIRECTLY OBSERVED
+```
+
+T1 -- basis row alone
+A basis row with source/object/identity content, without consulting the wider
+current bundle, earns only:
+SOURCE_CLAIM_REPRESENTED.
+
+T2 -- full current chain
+Exact source carrier + exact source/object/identity correspondence + exact
+current source encounter with encounter_kind = PRESENTED_TO_INVOCATION earns:
+SOURCE_PRESENTED.
+
+T3 -- semantic ceiling
+Neither basis-only status nor the fully validated current status may emit
+OBSERVED under the present machinery.
+
+Stronger future standing such as OBSERVED requires additional machinery for
+inspection, consumption, attention, parsing, or another explicitly qualified
+relation. Q7 does not choose that future mechanism.
 
 A separate focused regression mutates the contents of an otherwise matching
 observation basis while retaining the old `observation_basis_ref`. Expected:
