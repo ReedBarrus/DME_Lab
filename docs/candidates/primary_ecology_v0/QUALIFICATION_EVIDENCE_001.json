@@ -188,6 +188,18 @@
     "S7": {
       "relation": "MISSINGNESS_WITNESS_ENCOUNTER_MUST_BELONG_TO_CURRENT_BASIS_COORDINATE",
       "result": "PASS"
+    },
+    "T1": {
+      "relation": "BASIS_ROW_DOES_NOT_MANUFACTURE_OBSERVED_STANDING",
+      "result": "PASS"
+    },
+    "T2": {
+      "relation": "PRESENTED_TO_INVOCATION_EARNS_SOURCE_PRESENTED_NOT_OBSERVED",
+      "result": "PASS"
+    },
+    "T3": {
+      "relation": "OBSERVED_STANDING_REQUIRES_STRONGER_FUTURE_MACHINERY",
+      "result": "PASS"
     }
   },
   "core_relations": {
@@ -200,6 +212,7 @@
     "fresh_observation_source_relation": "PASS",
     "invocation_ne_work_claim": "PASS",
     "observation_source_object_identity_correspondence": "PASS",
+    "observed_status_semantic_ceiling": "PASS",
     "occupant_ne_invocation": "PASS",
     "role_ne_seat": "PASS",
     "seat_binding_work_claim_correspondence": "PASS",
@@ -207,6 +220,7 @@
     "work_claim_ne_authority": "PASS"
   },
   "direct_object_perception": "NOT_CLAIMED",
+  "direct_observation_standing": "NOT_ESTABLISHED",
   "durable_ecology_installed": false,
   "execution_effect": "NONE",
   "function_needs_seat": "NOT_TESTED",
@@ -224,10 +238,12 @@
   "observation_source_identity_correspondence": "TESTED_EXACT_OPAQUE_CORRESPONDENCE",
   "observation_source_truth": "NOT_TESTED",
   "occupant_binding_effect": "NONE",
+  "presented_source_standing": "SOURCE_PRESENTED",
   "representation_succession": "NOT_TESTED",
   "role_vocabulary_status": "PROVISIONAL_EXTENSIBLE",
   "source_encounter_correspondence": "TESTED_CURRENT_SEAT_OCCUPANT_INVOCATION_SOURCE_BASIS",
   "source_encounter_truth": "NOT_TESTED",
+  "source_inspection_or_consumption": "NOT_ESTABLISHED",
   "source_understanding": "NOT_CLAIMED",
   "status": "QUALIFIED_SYNTHETIC_GRAMMAR",
   "stop": true,
