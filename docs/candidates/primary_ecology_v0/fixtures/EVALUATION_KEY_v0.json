@@ -26,7 +26,10 @@
     "P3": "PASS",
     "P4": "PASS",
     "Q1": "PASS",
-    "Q2": "PASS"
+    "Q2": "PASS",
+    "Q3A": "PASS",
+    "Q3B": "PASS",
+    "Q3C": "PASS"
   },
   "terminal_status": "QUALIFIED_SYNTHETIC_GRAMMAR"
 }
