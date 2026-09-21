@@ -1,0 +1,14 @@
+{
+  "schema": "two_lane_lane_manifest_v0",
+  "lane_id": "LANE_A",
+  "branch": "lane-a-cockpit-coordination-v0",
+  "intended_horizon": "Cockpit / coordination / operator interaction",
+  "coordination_contract_ref": "git:ee178c23124cac68bd8b5a3bc75ce16a486845b9",
+  "status": "READY_UNCLAIMED",
+  "occupant_binding": null,
+  "active_work_claim_path": "coordination/active_work_claim.json",
+  "peer_cursor_path": "coordination/peer_cursor.json",
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "integration_effect": "NONE"
+}
