@@ -33,7 +33,14 @@
     "Q4A": "PASS",
     "Q4B": "PASS",
     "Q4C": "PASS",
-    "Q4D": "PASS"
+    "Q4D": "PASS",
+    "R1": "PASS",
+    "R2": "PASS",
+    "R3": "PASS",
+    "R4": "PASS",
+    "R5": "PASS",
+    "R6": "PASS",
+    "R7": "PASS"
   },
   "terminal_status": "QUALIFIED_SYNTHETIC_GRAMMAR"
 }
