@@ -297,6 +297,65 @@ OBJECT ABSENT
 
 This does not claim universal retrieval impossibility or witness truth.
 
+Q5 adds a bounded current-invocation encounter membrane for the observed channel.
+An exact `source_encounter_v0` carrier represents only that one source was
+presented to one seat / occupant / invocation at one basis coordinate.
+
+```text
+SOURCE CARRIER SUPPLIED
+!=
+SOURCE ENCOUNTERED
+
+SOURCE ENCOUNTERED
+!=
+SOURCE UNDERSTOOD
+
+SOURCE ENCOUNTERED
+!=
+SOURCE TRUE
+
+SOURCE ENCOUNTERED
+!=
+OBJECT DIRECTLY PERCEIVED
+```
+
+For every current observed-object row, a supplied encounter must correspond on:
+
+```text
+seat_id
+occupant_id
+invocation_id
+source_ref
+basis_ref
+```
+
+R1 -- source exists, no encounter
+Exact source carrier and observed row correspond, but no encounter carrier is
+supplied.
+Expected: reject CURRENT_SOURCE_ENCOUNTER_NOT_SUPPLIED.
+
+R2 -- encounter belongs to wrong invocation
+Expected: reject SOURCE_ENCOUNTER_INVOCATION_MISMATCH.
+
+R3 -- encounter points to wrong source
+Expected: reject SOURCE_ENCOUNTER_SOURCE_MISMATCH.
+
+R4 -- exact current encounter
+Current seat / occupant / invocation / exact source / basis coordinate all agree.
+Expected: admissible as currently encountered.
+
+R5 -- encounter belongs to wrong seat
+Expected: reject SOURCE_ENCOUNTER_SEAT_MISMATCH.
+
+R6 -- encounter belongs to wrong occupant
+Expected: reject SOURCE_ENCOUNTER_OCCUPANT_MISMATCH.
+
+R7 -- encounter belongs to wrong basis coordinate
+Expected: reject SOURCE_ENCOUNTER_BASIS_MISMATCH.
+
+The encounter carrier is not an event-runtime claim and does not qualify whether
+the represented encounter itself is truthful.
+
 A separate focused regression mutates the contents of an otherwise matching
 observation basis while retaining the old `observation_basis_ref`. Expected:
 reject `BINDING_OBSERVATION_BASIS_REF_MISMATCH`.
