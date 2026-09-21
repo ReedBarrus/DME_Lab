@@ -4,11 +4,14 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+import sys
 from typing import Any
 
-from tools.legacy_lane_succession_fencing_v0 import evaluate_cell, identity
-
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from tools.legacy_lane_succession_fencing_v0 import evaluate_cell, identity
 LIVE_FENCE_PATH = ROOT / "coordination/predecessor_fences/LANE_B_LEGACY_INSTANCE_001.json"
 QUALIFIED_EVALUATOR_BLOB = "9b17d812e8a8c339f4a952b8fed05f17cb37e1b0"
 QUALIFIED_FENCE_IDENTITY = "sha256:2cced34cedccb4d763031fdfe3b271a8146473f9995b437fb9f0b894f0fabb86"
