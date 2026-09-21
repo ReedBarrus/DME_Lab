@@ -1,0 +1,32 @@
+name: HISTORICAL_P09_PRODUCER_QUALIFICATION_001
+
+on:
+  pull_request:
+    paths:
+      - "docs/candidates/historical_p09_producer_v0/**"
+      - "tools/historical_p09_producer_v0.py"
+      - "tests/runtime/test_historical_p09_producer_v0.py"
+      - ".github/workflows/historical-p09-producer-qualification-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile
+        run: python -m py_compile tools/historical_p09_producer_v0.py tests/runtime/test_historical_p09_producer_v0.py
+      - name: Execute frozen pressure
+        run: python -m unittest tests.runtime.test_historical_p09_producer_v0 -v
+      - name: Emit bounded result
+        run: |
+          python tools/historical_p09_producer_v0.py docs/candidates/historical_p09_producer_v0/fixtures/RAW_FIXTURES_v0.json
+          echo "P09_PRODUCER_PRESSURE_EXECUTED"
+          echo "LIVE_LANE_MUTATION=NONE"
