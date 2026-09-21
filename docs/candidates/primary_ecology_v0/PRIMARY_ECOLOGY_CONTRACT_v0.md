@@ -47,6 +47,22 @@ FUNCTION EXISTS
 FUNCTION NEEDS A SEAT
 ```
 
+and enforcing the current-bundle correspondence relation:
+
+```text
+ROLE
++
+SEAT
++
+ENGAGEMENT BINDING
++
+CURRENT OBSERVATION BASIS
+
+MUST REFER TO
+THE SAME CURRENT
+role / seat / occupant / invocation
+```
+
 The candidate does not qualify role intelligence, planning quality, scientific
 quality, autonomy, scheduling, migration, or authority policy.
 
@@ -124,7 +140,7 @@ SAME SEAT
 ## Engagement binding
 
 `ecology_engagement_binding_v0` couples one role, seat, occupant, invocation,
-and observation basis for synthetic pressure.
+and current observation basis for synthetic pressure.
 
 It may carry references to claims, standing, or authority, but references are
 not adjudications.
@@ -140,7 +156,59 @@ AUTHORITY ESTABLISHED
 ```
 
 A fresh occupant or invocation must not silently inherit prior invocation-local
-work claim, standing, or authority references.
+work claim, standing, authority references, **or current observation basis**.
+
+## Cross-object correspondence
+
+Schema-valid component objects do not make a valid ecology bundle by themselves.
+
+The current engagement bundle is valid only when:
+
+```text
+binding.role_id
+=
+role.role_id
+=
+seat.role_id
+
+binding.seat_id
+=
+seat.seat_id
+=
+basis.observer_seat_id
+
+binding.occupant_id
+=
+seat.occupant_id
+=
+basis.observer_occupant_id
+
+binding.invocation_id
+=
+seat.invocation_id
+=
+basis.observer_invocation_id
+```
+
+and:
+
+```text
+binding.observation_basis_ref
+=
+canonical identity of the exact basis object
+```
+
+Thus:
+
+```text
+INDIVIDUALLY VALID OBJECTS
+!=
+VALID COMPOSED ECOLOGY BUNDLE
+```
+
+An older observation basis may later be carried as historical provenance only
+through an explicitly typed historical-basis relation. That relation is not
+materialized or qualified here.
 
 ## Observation basis
 
@@ -159,6 +227,10 @@ OBJECT ABSENT
 EXPLICITLY MISSING
 !=
 ABSENT
+
+OLD OBSERVATION BASIS
+!=
+CURRENT INVOCATION OBSERVATION
 ```
 
 The basis is immutable input to the bounded evaluator; later world changes do
@@ -185,7 +257,8 @@ A green pressure may establish only:
 
 > Under the frozen synthetic pressure, the candidate grammar can represent
 > roles, seats, occupants, invocations, work-claim references, authority
-> references, and observation bases without the tested identity/authority/
+> references, and observation bases while enforcing the tested cross-object
+> current-identity correspondence and avoiding the tested identity/authority/
 > missingness collapses.
 
 It does not establish:
@@ -200,6 +273,7 @@ standing inheritance
 claim validity
 authority validity
 execution permission
+historical-basis reuse semantics
 representation succession
 legacy-seat migration
 ```
