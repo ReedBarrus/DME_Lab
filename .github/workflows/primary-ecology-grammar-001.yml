@@ -7,6 +7,7 @@ on:
       - "schemas/ecology_role_v0.schema.json"
       - "schemas/ecology_seat_v0.schema.json"
       - "schemas/observation_basis_v0.schema.json"
+      - "schemas/observation_source_v0.schema.json"
       - "schemas/ecology_engagement_binding_v0.schema.json"
       - "tools/primary_ecology_v0.py"
       - "tests/runtime/test_primary_ecology_v0.py"
