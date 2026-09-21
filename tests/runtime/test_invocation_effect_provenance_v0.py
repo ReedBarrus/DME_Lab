@@ -43,6 +43,13 @@ class InvocationEffectProvenanceV0Qualification(unittest.TestCase):
             "candidate_work_unit_id": candidate_work_unit,
             "authority_ref": f"{cell_id}-AUTH",
             "authority_state": authority,
+            "authority_scope": {
+                "invocation_id": tested,
+                "claim_id": "QC1",
+                "work_unit_id": "QU1",
+            },
+            "branch_id": "Q-SYNTHETIC-BRANCH",
+            "git_author": "Q-SHARED-GIT-AUTHOR",
             "claim_at_effect_start": {
                 "claim_id": "QC1",
                 "status": claim_status,
