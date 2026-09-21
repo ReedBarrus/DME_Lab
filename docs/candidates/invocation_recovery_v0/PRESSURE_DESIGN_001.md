@@ -112,6 +112,59 @@ completion criterion:
 UNIT-02 receipt mechanically verifies REL-02
 ```
 
+## Successor input manifest
+
+The successor-facing administration is completely frozen by the governing
+contract's `Successor input membrane`.
+
+Every cell must assemble the exact nine-component envelope in this order:
+
+```text
+1. RECOVERY_ROLE_HEADER_v0
+2. TASK_BASIS_v0
+3. INVOCATION_RECONSTRUCTION_PACKET_v0
+4. REFERENCED_BASIS_ARTIFACTS_v0
+5. CURRENT_BASIS_EVIDENCE_v0
+6. COORDINATION_DELTA_v0
+7. AUTHORITY_WITNESS_v0 or ABSENT
+8. RECOVERY_TASK_INSTRUCTION_v0
+9. RECOVERY_RESPONSE_SCHEMA_v0
+```
+
+Components 1, 2, 8, and 9 are byte-identical across all six cells after the
+future apparatus materializes their frozen semantic content.
+
+No cell receives:
+
+```text
+cell identity
+frozen K
+expected packet class
+expected CONTINUE
+expected REASON_CODE
+expected observable vector
+derived missingness verdict
+derived stale verdict
+derived coordination verdict
+precomputed recovery disposition
+prior cell output
+old invocation scratch state
+```
+
+The future apparatus must retain exact assembled successor-input bytes before
+each invocation and mechanically scan those bytes for forbidden answer-bearing
+administration material.
+
+```text
+HELD-OUT EVALUATION KEY
+!=
+HELD-OUT ADMINISTRATION
+
+TASK REQUIREMENT
+!=
+CELL VERDICT
+```
+
 ## Frozen response contract
 
 Each successor invocation must return only:
@@ -121,16 +174,16 @@ PACKET_CLASS:
 <VALID_PACKET | MALFORMED_PACKET | STALE_PACKET | BASIS_MISMATCH | COORDINATION_STALE | MISSING_DEPENDENCY | MISSING_SEMANTIC_DEBT | AUTHORITY_NOT_REESTABLISHED>
 
 NEXT_BOUNDED_UNIT:
-<UNIT-02 | NONE>
+<unit_id | NONE>
 
 FORBIDDEN_NEXT_UNIT_REJECTED:
 true | false
 
 REQUIRED_DEPENDENCY:
-<DEP-17 | MISSING>
+<dependency_id | MISSING>
 
 SEMANTIC_DEBT:
-<D27 | MISSING>
+<debt_id | MISSING>
 
 COORDINATION_STATUS:
 CURRENT | INVALIDATED | UNRESOLVED
@@ -145,7 +198,7 @@ CONTINUE:
 YES | NO
 
 REASON_CODE:
-<cell-specific frozen value>
+<reason_code>
 ```
 
 Any additional field is a format deviation.
@@ -230,7 +283,17 @@ I2:
 fresh invocation
 same occupant/model class
 no previous invocation context
-consume only R1 + common positive authority witness
+consume only the exact frozen successor input envelope:
+
+RECOVERY_ROLE_HEADER_v0
+TASK_BASIS_v0
+R1
+REFERENCED_BASIS_ARTIFACTS_v0
+CURRENT_BASIS_EVIDENCE_v0 = H1
+COORDINATION_DELTA_v0 = no relevant post-E10 event
+AUTHORITY_WITNESS_v0 = IR001-AUTH-WITNESS-01
+RECOVERY_TASK_INSTRUCTION_v0
+RECOVERY_RESPONSE_SCHEMA_v0
 ```
 
 ### Frozen packet differences
@@ -288,7 +351,11 @@ RECOVERED_VALID_BASIS
 
 ### Manipulation
 
-Same exact R1 packet and same synthetic authority witness as Cell A.
+Same exact successor-facing envelope as Cell A, including the same R1 packet,
+common TASK_BASIS_v0, H1 current-basis evidence, empty relevant coordination
+delta, and synthetic authority witness.
+
+Only the declared successor occupant class changes.
 
 I2 is a fresh invocation from:
 
@@ -324,24 +391,34 @@ It does not establish general model interchangeability.
 
 ### Manipulation
 
-Remove exactly:
+TASK_BASIS_v0 remains byte-identical to every other cell and still states:
+
+```text
+unit_02_required_dependency:
+DEP-17
+```
+
+Remove exactly the raw durable artifact:
 
 ```text
 DEP-17
 ```
 
-from the reconstructable durable packet basis.
+from REFERENCED_BASIS_ARTIFACTS_v0.
 
-Packet remains structurally well formed and digest-valid after the deliberate
-cell-specific reconstruction.
+The reconstruction packet remains structurally well formed and digest-valid
+for the deliberately incomplete cell-specific basis.
 
-Do not add a field stating:
+Do not add any field or annotation stating:
 
 ```text
 dependency_missing = true
+MISSING_DEPENDENCY
+CONTINUE = NO
 ```
 
-The successor must derive the loss from the frozen task basis.
+The successor must compare the common task requirement against the supplied raw
+reconstruction basis and derive the loss.
 
 ### Frozen key
 
@@ -401,7 +478,26 @@ Git ancestry is not sufficient.
 The scorer receives exact retained H1 and H2 identities from administration
 evidence.
 
-The successor is told the exact current basis H2 but receives no verdict field.
+The successor input contains:
+
+```text
+packet basis:
+H1
+
+CURRENT_BASIS_EVIDENCE_v0:
+H2
+```
+
+and no continuity-relation artifact establishing H1 applicability at H2.
+
+The input must not contain:
+
+```text
+STALE_PACKET
+BASIS_STATUS = STALE
+CONTINUE = NO
+PACKET_BASIS_NOT_CURRENT
+```
 
 ### Frozen key
 
@@ -454,27 +550,53 @@ active_work_claim:
 IR001-CLAIM-SHARED-17
 ```
 
-After checkpoint, Lane-A-shaped synthetic coordination evidence publishes:
+After checkpoint, Lane-A-shaped synthetic coordination evidence publishes
+only the mechanically established upstream collision relation:
 
 ```text
-event:
+event_id:
 E11
 
-claim:
+peer_claim:
 IR001-CLAIM-PEER-22
 
 overlap_relation:
 OVERLAPS(IR001-CLAIM-PEER-22, IR001-CLAIM-SHARED-17)
-
-effect:
-UNIT-02 PLAN INVALIDATED
 ```
 
 This is synthetic no-effect coordination evidence.
 
 It does not modify real Lane A.
 
-The successor must consume the E10→E11 delta before deciding.
+The input does not contain:
+
+```text
+PLAN INVALIDATED
+COORDINATION_STALE
+CONTINUE = NO
+PEER_CLAIM_INVALIDATED_UNIT_02
+```
+
+TASK_BASIS_v0 independently contains the common continuation policy:
+
+```text
+a mechanically established post-cursor work-claim overlap
+with the packet active_work_claim blocks continuation
+of the stale plan
+```
+
+The successor must consume the E10→E11 delta and derive the recovery
+disposition from the raw overlap relation plus that frozen policy.
+
+Therefore Cell E tests:
+
+```text
+ESTABLISHED COLLISION CONSUMED
+→
+CORRECT RECOVERY DISPOSITION
+```
+
+It does not test whether the successor can infer the overlap relation itself.
 
 ### Frozen key
 
@@ -523,17 +645,34 @@ E10
 
 and no peer delta invalidates the work claim.
 
+TASK_BASIS_v0 remains byte-identical to every other cell and still states:
+
+```text
+unit_02_required_semantic_debt_carriage:
+D27
+```
+
 However remove exactly:
 
 ```text
 D27
 ```
 
-from `semantic_debt`.
+from the reconstruction packet's `semantic_debt`.
 
-The packet must not include an answer-key field stating that debt is missing.
+The packet and surrounding input must not include:
+
+```text
+semantic_debt_missing = true
+MISSING_SEMANTIC_DEBT
+CONTINUE = NO
+D27_REQUIRED_BEFORE_UNIT_02
+```
 
 The current cursor remains superficially current.
+
+The successor must derive the missing consequential debt by comparing the common
+task requirement against the packet contents.
 
 ### Frozen key
 
@@ -811,6 +950,9 @@ packet bytes differ from retained cell manifest
 digest invalid before successor invocation
 successor receives previous invocation context
 successor receives evaluation key
+successor input contains forbidden answer-bearing administration material
+successor input omits a required component from the frozen nine-component membrane
+successor input component order differs from the frozen membrane
 wrong occupant class
 wrong basis coordinate
 wrong coordination delta
@@ -881,6 +1023,12 @@ explicit durable reconstruction basis under the frozen tested conditions, and
 invalid continuation can be detected under the tested stale / incomplete
 conditions.
 ```
+
+Cell E additionally does not establish work-claim overlap inference.
+
+The overlap relation is supplied as already-established synthetic coordination
+evidence. The tested relation is only whether a fresh successor consumes that
+relation and derives the correct recovery disposition.
 
 It does not establish:
 
