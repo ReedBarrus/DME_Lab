@@ -1,0 +1,86 @@
+{
+  "schema": "historical_p09_raw_fixtures_v0",
+  "cells": {
+    "A": {
+      "closed_scope": true,
+      "unit_ids": [
+        "U1"
+      ],
+      "events": [
+        {
+          "unit_id": "U1",
+          "event_type": "EFFECT_BEARING_UNIT_START"
+        },
+        {
+          "unit_id": "U1",
+          "event_type": "TERMINAL_RECEIPT"
+        }
+      ]
+    },
+    "B": {
+      "closed_scope": true,
+      "unit_ids": [
+        "U1"
+      ],
+      "events": [
+        {
+          "unit_id": "U1",
+          "event_type": "EFFECT_BEARING_UNIT_START"
+        }
+      ]
+    },
+    "C": {
+      "closed_scope": true,
+      "unit_ids": [
+        "U1"
+      ],
+      "events": [
+        {
+          "unit_id": "U1",
+          "event_type": "EFFECT_BEARING_UNIT_START"
+        },
+        {
+          "unit_id": "U1",
+          "event_type": "OWNERSHIP_INDEPENDENT_CHECKPOINT"
+        }
+      ]
+    },
+    "D": {
+      "closed_scope": false,
+      "unit_ids": [
+        "U1"
+      ],
+      "events": [
+        {
+          "unit_id": "U1",
+          "event_type": "EFFECT_BEARING_UNIT_START"
+        },
+        {
+          "unit_id": "U1",
+          "event_type": "TERMINAL_RECEIPT"
+        }
+      ]
+    },
+    "E": {
+      "closed_scope": true,
+      "unit_ids": [
+        "U1",
+        "U2"
+      ],
+      "events": [
+        {
+          "unit_id": "U1",
+          "event_type": "EFFECT_BEARING_UNIT_START"
+        },
+        {
+          "unit_id": "U1",
+          "event_type": "TERMINAL_RECEIPT"
+        },
+        {
+          "unit_id": "U2",
+          "event_type": "EFFECT_BEARING_UNIT_START"
+        }
+      ]
+    }
+  }
+}
