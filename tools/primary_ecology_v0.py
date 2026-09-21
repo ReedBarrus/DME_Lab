@@ -29,6 +29,9 @@ BASIS_FIELDS = {
     "observer_invocation_id","basis_ref","observed_objects",
     "explicit_missing_objects","source_refs","authority_effect","execution_effect",
 }
+SOURCE_FIELDS = {
+    "schema","source_id","object_id","identity","authority_effect","execution_effect",
+}
 BINDING_FIELDS = {
     "schema","binding_id","role_id","seat_id","occupant_id","invocation_id",
     "observation_basis_ref","task_ref","work_claim_ref","standing_refs",
@@ -158,6 +161,48 @@ def observation_basis_ref(basis: Mapping[str, Any]) -> str:
     return f"observation-basis://{basis['basis_id']}@{object_identity(dict(basis))}"
 
 
+def validate_observation_source(source: Mapping[str, Any]) -> None:
+    if not isinstance(source, Mapping) or set(source) != SOURCE_FIELDS:
+        raise EcologyError("observation source fields must be exact")
+    if source["schema"] != "observation_source_v0":
+        raise EcologyError("wrong observation source schema")
+    for field in ("source_id","object_id","identity"):
+        _nonempty_string(source[field], field)
+    if source["authority_effect"] != "NONE" or source["execution_effect"] != "NONE":
+        raise EcologyError("observation source effects must remain NONE")
+
+
+def observation_source_ref(source: Mapping[str, Any]) -> str:
+    validate_observation_source(source)
+    return f"observation-source://{source['source_id']}@{object_identity(dict(source))}"
+
+
+def validate_observation_grounding(
+    basis: Mapping[str, Any],
+    source_carriers: list[Mapping[str, Any]],
+) -> None:
+    validate_observation_basis(basis)
+    if not isinstance(source_carriers, list):
+        raise EcologyError("source_carriers must be a list")
+
+    by_ref: dict[str, Mapping[str, Any]] = {}
+    for source in source_carriers:
+        validate_observation_source(source)
+        ref = observation_source_ref(source)
+        if ref in by_ref:
+            raise EcologyError("duplicate exact observation source carrier")
+        by_ref[ref] = source
+
+    for row in basis["observed_objects"]:
+        source = by_ref.get(row["source_ref"])
+        if source is None:
+            raise EcologyError("OBSERVED_OBJECT_SOURCE_CARRIER_NOT_SUPPLIED")
+        if source["object_id"] != row["object_id"]:
+            raise EcologyError("OBSERVED_OBJECT_SOURCE_OBJECT_MISMATCH")
+        if source["identity"] != row["identity"]:
+            raise EcologyError("OBSERVED_OBJECT_SOURCE_IDENTITY_MISMATCH")
+
+
 def validate_binding(binding: Mapping[str, Any]) -> None:
     if not isinstance(binding, Mapping) or set(binding) != BINDING_FIELDS:
         raise EcologyError("binding fields must be exact")
@@ -183,6 +228,7 @@ def validate_correspondence(
     seat: Mapping[str, Any],
     binding: Mapping[str, Any],
     basis: Mapping[str, Any],
+    source_carriers: list[Mapping[str, Any]] | None = None,
 ) -> None:
     validate_role(role)
     validate_seat(seat)
@@ -210,6 +256,7 @@ def validate_correspondence(
     expected_ref = observation_basis_ref(basis)
     if binding["observation_basis_ref"] != expected_ref:
         raise EcologyError("BINDING_OBSERVATION_BASIS_REF_MISMATCH")
+    validate_observation_grounding(basis, source_carriers or [])
 
 
 def observation_status(basis: Mapping[str, Any], object_id: str) -> str:
@@ -282,17 +329,34 @@ def clean_binding() -> dict[str, Any]:
     return copy.deepcopy(value)
 
 
+def clean_sources() -> list[dict[str, Any]]:
+    value = fixtures()["source_carriers"]
+    if not isinstance(value, list):
+        raise EcologyError("source_carriers fixture must be a list")
+    out = copy.deepcopy(value)
+    for source in out:
+        validate_observation_source(source)
+    return out
+
+
 def clean_bundle() -> dict[str, Any]:
     role = clean_role("SCIENTIST")
     basis = clean_basis()
     binding = clean_binding()
+    sources = clean_sources()
     seat = occupied_seat(
         seat=clean_empty_seat(binding["seat_id"]),
         occupant_id=binding["occupant_id"],
         invocation_id=binding["invocation_id"],
     )
-    validate_correspondence(role=role, seat=seat, binding=binding, basis=basis)
-    return {"role":role, "seat":seat, "binding":binding, "basis":basis}
+    validate_correspondence(
+        role=role, seat=seat, binding=binding, basis=basis,
+        source_carriers=sources,
+    )
+    return {
+        "role":role, "seat":seat, "binding":binding, "basis":basis,
+        "sources":sources,
+    }
 
 
 def fresh_basis(
@@ -405,9 +469,13 @@ def _correspondence_cell(
     binding: Mapping[str, Any],
     basis: Mapping[str, Any],
     expected_error: str,
+    source_carriers: list[Mapping[str, Any]] | None = None,
 ) -> str:
     try:
-        validate_correspondence(role=role, seat=seat, binding=binding, basis=basis)
+        validate_correspondence(
+            role=role, seat=seat, binding=binding, basis=basis,
+            source_carriers=source_carriers,
+        )
     except EcologyError as exc:
         return "PASS" if str(exc) == expected_error else "FRACTURE"
     return "FRACTURE"
@@ -586,10 +654,12 @@ def run_pressure() -> dict[str, Any]:
         validate_correspondence(
             role=n0_null["role"], seat=n0_null["seat"],
             binding=n0_null["binding"], basis=n0_null["basis"],
+            source_carriers=n0_null["sources"],
         )
         validate_correspondence(
             role=n0_same["role"], seat=n0_same["seat"],
             binding=n0_same["binding"], basis=n0_same["basis"],
+            source_carriers=n0_same["sources"],
         )
         n0 = "PASS"
     except EcologyError:
@@ -673,10 +743,19 @@ def run_pressure() -> dict[str, Any]:
 
     # P3 -- the same fact may appear again only when supplied as fresh current
     # observation input for the new invocation.
+    p3_source = {
+        "schema":"observation_source_v0",
+        "source_id":"SOURCE_INVOCATION_P3_POISON_SENTINEL",
+        "object_id":"POISON_SENTINEL",
+        "identity":"sha256:" + ("c" * 64),
+        "authority_effect":"NONE",
+        "execution_effect":"NONE",
+    }
+    p3_source_ref = observation_source_ref(p3_source)
     fresh_x = [{
         "object_id":"POISON_SENTINEL",
         "identity":"sha256:" + ("c" * 64),
-        "source_ref":"fixture://FRESH_OBSERVATION/INVOCATION_P3/POISON_SENTINEL",
+        "source_ref":p3_source_ref,
     }]
     p3_binding, p3_basis = rotate_invocation(
         clean_binding(),
@@ -684,9 +763,7 @@ def run_pressure() -> dict[str, Any]:
         "INVOCATION_P3",
         observed_objects=fresh_x,
         explicit_missing_objects=[],
-        source_refs=[
-            "fixture://FRESH_OBSERVATION/INVOCATION_P3/POISON_SENTINEL"
-        ],
+        source_refs=[p3_source_ref],
     )
     p3_seat = occupied_seat(
         seat=clean_empty_seat(p3_binding["seat_id"]),
@@ -694,10 +771,11 @@ def run_pressure() -> dict[str, Any]:
         invocation_id=p3_binding["invocation_id"],
     )
     validate_correspondence(
-        role=role, seat=p3_seat, binding=p3_binding, basis=p3_basis
+        role=role, seat=p3_seat, binding=p3_binding, basis=p3_basis,
+        source_carriers=[p3_source],
     )
     cells["P3"] = {
-        "result":"PASS" if observation_status(p3_basis, "POISON_SENTINEL") == "OBSERVED" and p3_basis["source_refs"] == ["fixture://FRESH_OBSERVATION/INVOCATION_P3/POISON_SENTINEL"] else "FRACTURE",
+        "result":"PASS" if observation_status(p3_basis, "POISON_SENTINEL") == "OBSERVED" and p3_basis["source_refs"] == [p3_source_ref] else "FRACTURE",
         "relation":"FRESH_OBSERVATION_MAY_REESTABLISH_SAME_FACT_EXPLICITLY",
     }
 
@@ -760,6 +838,105 @@ def run_pressure() -> dict[str, Any]:
         "relation":"OBSERVED_OBJECT_SOURCE_MUST_MATCH_EXPLICIT_BASIS_SOURCE_REF",
     }
 
+    # Q3A -- exact represented source carrier says one object, observation says another.
+    q3a_source = {
+        "schema":"observation_source_v0",
+        "source_id":"SOURCE_GARY_BATHMAT",
+        "object_id":"GARY_FROM_ACCOUNTING",
+        "identity":"opaque:GARY-BATHMAT-v1",
+        "authority_effect":"NONE",
+        "execution_effect":"NONE",
+    }
+    q3a_ref = observation_source_ref(q3a_source)
+    q3a_basis = fresh_basis(
+        clean_basis(),
+        seat_id="SCIENCE_TEST_01",
+        occupant_id="LABOIB_CANDIDATE",
+        invocation_id="INVOCATION_Q3A",
+        basis_id="OBSERVATION_BASIS_Q3A",
+        observed_objects=[{
+            "object_id":"BIGFOOT",
+            "identity":"opaque:GARY-BATHMAT-v1",
+            "source_ref":q3a_ref,
+        }],
+        source_refs=[q3a_ref],
+    )
+    try:
+        validate_observation_grounding(q3a_basis, [q3a_source])
+        q3a_result = "FRACTURE"
+    except EcologyError as exc:
+        q3a_result = "PASS" if str(exc) == "OBSERVED_OBJECT_SOURCE_OBJECT_MISMATCH" else "FRACTURE"
+    cells["Q3A"] = {
+        "result":q3a_result,
+        "relation":"SOURCE_OBJECT_ID_MUST_CORRESPOND_TO_OBSERVATION_OBJECT_ID",
+    }
+
+    # Q3B -- object agrees, but exact represented source identity differs.
+    q3b_source = {
+        "schema":"observation_source_v0",
+        "source_id":"SOURCE_BIGFOOT_B",
+        "object_id":"BIGFOOT",
+        "identity":"opaque:IDENTITY-B",
+        "authority_effect":"NONE",
+        "execution_effect":"NONE",
+    }
+    q3b_ref = observation_source_ref(q3b_source)
+    q3b_basis = fresh_basis(
+        clean_basis(),
+        seat_id="SCIENCE_TEST_01",
+        occupant_id="LABOIB_CANDIDATE",
+        invocation_id="INVOCATION_Q3B",
+        basis_id="OBSERVATION_BASIS_Q3B",
+        observed_objects=[{
+            "object_id":"BIGFOOT",
+            "identity":"opaque:IDENTITY-A",
+            "source_ref":q3b_ref,
+        }],
+        source_refs=[q3b_ref],
+    )
+    try:
+        validate_observation_grounding(q3b_basis, [q3b_source])
+        q3b_result = "FRACTURE"
+    except EcologyError as exc:
+        q3b_result = "PASS" if str(exc) == "OBSERVED_OBJECT_SOURCE_IDENTITY_MISMATCH" else "FRACTURE"
+    cells["Q3B"] = {
+        "result":q3b_result,
+        "relation":"SOURCE_IDENTITY_MUST_CORRESPOND_TO_OBSERVATION_IDENTITY",
+    }
+
+    # Q3C -- exact represented carrier agrees on source, object, and identity.
+    q3c_source = {
+        "schema":"observation_source_v0",
+        "source_id":"SOURCE_BIGFOOT_C",
+        "object_id":"BIGFOOT",
+        "identity":"opaque:IDENTITY-A",
+        "authority_effect":"NONE",
+        "execution_effect":"NONE",
+    }
+    q3c_ref = observation_source_ref(q3c_source)
+    q3c_basis = fresh_basis(
+        clean_basis(),
+        seat_id="SCIENCE_TEST_01",
+        occupant_id="LABOIB_CANDIDATE",
+        invocation_id="INVOCATION_Q3C",
+        basis_id="OBSERVATION_BASIS_Q3C",
+        observed_objects=[{
+            "object_id":"BIGFOOT",
+            "identity":"opaque:IDENTITY-A",
+            "source_ref":q3c_ref,
+        }],
+        source_refs=[q3c_ref],
+    )
+    try:
+        validate_observation_grounding(q3c_basis, [q3c_source])
+        q3c_result = "PASS"
+    except EcologyError:
+        q3c_result = "FRACTURE"
+    cells["Q3C"] = {
+        "result":q3c_result,
+        "relation":"EXACT_REPRESENTED_SOURCE_OBJECT_IDENTITY_CORRESPONDENCE_IS_ADMISSIBLE",
+    }
+
     evaluation_key = _load(FIXTURE_DIR / "EVALUATION_KEY_v0.json")
     expected_cells = evaluation_key.get("cells", {}) if isinstance(evaluation_key, dict) else {}
     key_matches = all(expected_cells.get(cell_id) == cell["result"] for cell_id, cell in cells.items()) and set(expected_cells) == set(cells)
@@ -784,6 +961,7 @@ def run_pressure() -> dict[str, Any]:
             "seat_binding_work_claim_correspondence":"PASS" if all(cells[x]["result"] == "PASS" for x in ("N0","N1","N2","N3")) else "FRACTURE",
             "fresh_observation_payload_noninheritance":"PASS" if all(cells[x]["result"] == "PASS" for x in ("P1","P2","P3","P4")) else "FRACTURE",
             "fresh_observation_source_relation":"PASS" if all(cells[x]["result"] == "PASS" for x in ("Q1","Q2")) else "FRACTURE",
+            "observation_source_object_identity_correspondence":"PASS" if all(cells[x]["result"] == "PASS" for x in ("Q3A","Q3B","Q3C")) else "FRACTURE",
         },
         "role_vocabulary_status":"PROVISIONAL_EXTENSIBLE",
         "durable_ecology_installed":False,
@@ -795,7 +973,9 @@ def run_pressure() -> dict[str, Any]:
         "representation_succession":"NOT_TESTED",
         "legacy_seat_migration":"NOT_TESTED",
         "historical_basis_reuse":"SEPARATE_TYPED_RELATION_REQUIRED_NOT_MODELED",
-        "observation_source_identity_correspondence":"NOT_TESTED",
+        "observation_source_identity_correspondence":"TESTED_EXACT_OPAQUE_CORRESPONDENCE",
+        "observation_identity_scheme_semantics":"NOT_TESTED",
+        "observation_source_truth":"NOT_TESTED",
         "function_needs_seat":"NOT_TESTED",
         "stop":True,
     }
