@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "two_lane_lane_manifest_v0.schema.json",
+  "title": "Two Lane Operating Manifest v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "lane_id",
+    "branch",
+    "intended_horizon",
+    "coordination_contract_ref",
+    "status",
+    "occupant_binding",
+    "active_work_claim_path",
+    "peer_cursor_path",
+    "authority_effect",
+    "execution_effect",
+    "integration_effect"
+  ],
+  "properties": {
+    "schema": {
+      "const": "two_lane_lane_manifest_v0"
+    },
+    "lane_id": {
+      "enum": [
+        "LANE_A",
+        "LANE_B"
+      ]
+    },
+    "branch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "intended_horizon": {
+      "type": "string",
+      "minLength": 1
+    },
+    "coordination_contract_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "READY_UNCLAIMED",
+        "ACTIVE",
+        "HELD",
+        "CLOSED"
+      ]
+    },
+    "occupant_binding": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "active_work_claim_path": {
+      "const": "coordination/active_work_claim.json"
+    },
+    "peer_cursor_path": {
+      "const": "coordination/peer_cursor.json"
+    },
+    "authority_effect": {
+      "const": "NONE"
+    },
+    "execution_effect": {
+      "const": "NONE"
+    },
+    "integration_effect": {
+      "const": "NONE"
+    }
+  }
+}
