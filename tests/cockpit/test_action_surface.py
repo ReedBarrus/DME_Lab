@@ -158,5 +158,134 @@ class ActionSurfaceTest(unittest.TestCase):
             build_action_surfaces(root, "HEAD")
 
 
+    def test_transition_lifecycle_is_observational_until_success(self) -> None:
+        temporary, root = self.make_repo()
+        self.addCleanup(temporary.cleanup)
+        event_path = root / "lab" / "events" / "events.jsonl"
+
+        cells = [
+            [
+                {
+                    "event_type": "PROCESS_REGISTERED",
+                    "process_id": "P-ACTION-SURFACE-TEST",
+                    "initial_phase": "SEEDED",
+                },
+            ],
+            [
+                {
+                    "event_type": "PROCESS_REGISTERED",
+                    "process_id": "P-ACTION-SURFACE-TEST",
+                    "initial_phase": "SEEDED",
+                },
+                {
+                    "event_type": "TRANSITION_REQUESTED",
+                    "process_id": "P-ACTION-SURFACE-TEST",
+                    "transition_id": "LOAD",
+                },
+            ],
+            [
+                {
+                    "event_type": "PROCESS_REGISTERED",
+                    "process_id": "P-ACTION-SURFACE-TEST",
+                    "initial_phase": "SEEDED",
+                },
+                {
+                    "event_type": "TRANSITION_REQUESTED",
+                    "process_id": "P-ACTION-SURFACE-TEST",
+                    "transition_id": "LOAD",
+                },
+                {
+                    "event_type": "TRANSITION_STARTED",
+                    "process_id": "P-ACTION-SURFACE-TEST",
+                    "transition_id": "LOAD",
+                },
+            ],
+            [
+                {
+                    "event_type": "PROCESS_REGISTERED",
+                    "process_id": "P-ACTION-SURFACE-TEST",
+                    "initial_phase": "SEEDED",
+                },
+                {
+                    "event_type": "TRANSITION_REQUESTED",
+                    "process_id": "P-ACTION-SURFACE-TEST",
+                    "transition_id": "LOAD",
+                },
+                {
+                    "event_type": "TRANSITION_STARTED",
+                    "process_id": "P-ACTION-SURFACE-TEST",
+                    "transition_id": "LOAD",
+                },
+                {
+                    "event_type": "TRANSITION_SUCCEEDED",
+                    "process_id": "P-ACTION-SURFACE-TEST",
+                    "transition_id": "LOAD",
+                    "to_phase": "WAITING",
+                },
+            ],
+        ]
+
+        observed = []
+        for index, events in enumerate(cells, start=1):
+            event_path.write_text(
+                "".join(
+                    json.dumps(event, sort_keys=True) + "\n"
+                    for event in events
+                ),
+                encoding="utf-8",
+            )
+            run_git(root, "add", str(event_path.relative_to(root)))
+            run_git(root, "commit", "-m", f"lifecycle cell {index}")
+            surface = build_action_surfaces(root, "HEAD")[0]
+            observed.append(
+                (
+                    surface["phase"],
+                    surface["routing_status"],
+                    surface["last_event_type"],
+                    surface["declared_next_action"]["transition_id"],
+                    surface["declared_next_action"]["eligibility"],
+                    surface["event_count_consumed"],
+                )
+            )
+
+        self.assertEqual(
+            observed,
+            [
+                (
+                    "SEEDED",
+                    "REGISTERED",
+                    "PROCESS_REGISTERED",
+                    "LOAD",
+                    "MECHANICAL_ROUTING_AVAILABLE",
+                    1,
+                ),
+                (
+                    "SEEDED",
+                    "REGISTERED",
+                    "TRANSITION_REQUESTED",
+                    "LOAD",
+                    "MECHANICAL_ROUTING_AVAILABLE",
+                    2,
+                ),
+                (
+                    "SEEDED",
+                    "REGISTERED",
+                    "TRANSITION_STARTED",
+                    "LOAD",
+                    "MECHANICAL_ROUTING_AVAILABLE",
+                    3,
+                ),
+                (
+                    "WAITING",
+                    "ACTIVE",
+                    "TRANSITION_SUCCEEDED",
+                    "AUTHORIZE",
+                    "REQUIRES_EXPLICIT_HUMAN_DECISION",
+                    4,
+                ),
+            ],
+        )
+
+
 if __name__ == "__main__":
     unittest.main()
