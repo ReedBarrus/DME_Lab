@@ -359,6 +359,44 @@ UNIVERSAL RETRIEVAL IMPOSSIBILITY
 The witness is not treated as an authority grant or a proof that the object does
 not exist, and witness truth/authenticity remains unqualified.
 
+The observed-object channel also requires a typed `source_encounter_v0`
+carrier. This carrier records a bounded current relation:
+
+```text
+seat_id
+occupant_id
+invocation_id
+source_ref
+encounter_kind = PRESENTED_TO_INVOCATION
+basis_ref
+```
+
+A current observed-object claim is composition-valid only when the exact source
+carrier corresponds and a source encounter is represented for the same current
+seat, occupant, invocation, exact source ref, and basis coordinate.
+
+```text
+SOURCE CARRIER SUPPLIED
+!=
+SOURCE ENCOUNTERED
+
+SOURCE ENCOUNTERED
+!=
+SOURCE UNDERSTOOD
+
+SOURCE ENCOUNTERED
+!=
+SOURCE TRUE
+
+SOURCE ENCOUNTERED
+!=
+OBJECT DIRECTLY PERCEIVED
+```
+
+The encounter relation does not make the chassis a full event/runtime system. It
+does not establish encounter truth/authenticity, comprehension, direct
+perception, or semantic truth.
+
 The predecessor basis remains separately recoverable by exact identity, but its
 payload is not current observation. A typed historical-consultation relation is
 still future work and is not manufactured by this repair.
@@ -391,8 +429,9 @@ A green pressure may establish only:
 > current-identity correspondence, work-claim correspondence, fresh-observation
 > payload noninheritance, explicit represented source relations, exact
 > represented source/object/identity correspondence for current observed-object
-> claims, and exact represented missingness witness correspondence while
-> avoiding the tested identity/authority/missingness collapses.
+> claims, exact current-invocation source-encounter correspondence, and exact
+> represented missingness witness correspondence while avoiding the tested
+> identity/authority/missingness collapses.
 
 It does not establish:
 
@@ -410,6 +449,8 @@ historical-basis reuse semantics
 observation identity-scheme semantics
 source truth / authenticity
 semantic truth of source claims
+source encounter truth / authenticity
+source understanding or direct object perception
 missingness witness truth / authenticity
 universal retrieval impossibility
 representation succession
