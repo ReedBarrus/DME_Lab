@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - lane-b-successor-engagement-repressure-v1
+      - lane-b-successor-engagement-repressure-repair-v1
     paths:
       - "tools/lane_b_successor_engagement_repressure_v1.py"
       - "tests/runtime/test_lane_b_successor_engagement_repressure_v1.py"
