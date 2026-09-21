@@ -31,17 +31,67 @@ No fixture may mutate live Lane A or Lane B.
 
 No pressure execution is authorized by this repair.
 
-Candidate input may contain only:
+Every controller-consumed semantic predicate must be supplied through exactly
+one of the two classes frozen in the governing contract:
 
 ```text
-current operating state
-raw source objects
-requested transition
-qualified upstream relations
-with recoverable basis
+RAW_INPUT
+
+or
+
+QUALIFIED_UPSTREAM_STANDING
 ```
 
-The candidate must derive:
+No third category exists.
+
+```text
+TYPED
+!=
+QUALIFIED
+
+PREDICATE PRESENT
+!=
+PREDICATE ESTABLISHED
+
+ABSENCE CLAIM
+!=
+ABSENCE OF INPUT
+
+SOURCE BASIS
+!=
+QUALIFIED STANDING
+```
+
+The exhaustive input predicate registry is P01-P18 in
+`LANE_LIFECYCLE_DISPOSITION_001.md`.
+
+A future apparatus must reject administration when:
+
+```text
+a controller-consumed predicate is not in P01-P18
+
+a RAW_INPUT predicate lacks its exact raw basis
+
+a QUALIFIED_UPSTREAM_STANDING witness lacks:
+  relation_type
+  standing
+  basis_ref
+  producer
+  version
+
+basis_ref is unrecoverable
+
+producer/version is not qualified to establish the named relation_type
+
+a negative standing is inferred from missing input rather than explicitly
+derived or witnessed
+```
+
+The qualified producer relation is apparatus configuration, not a cell verdict:
+producer/version must resolve to a frozen qualification receipt establishing the
+relation types it may produce.
+
+The candidate derives:
 
 ```text
 admissibility
@@ -98,16 +148,16 @@ Every other requested transition is outside the v0 qualified surface.
 Admissible iff:
 
 ```text
-source claim = ACTIVE
+P01 SOURCE_CLAIM_STATUS_IS_ACTIVE
 
-required work-unit relation matches
+P05 WORK_UNIT_CORRESPONDENCE_MATCHES
 
-frozen completion criterion satisfied
+P06 COMPLETION_CRITERION_RAW_TERMS_SATISFIED
 
-every upstream relation required by that criterion
-has required standing
+every required P07 REQUIRED_COMPLETION_UPSTREAM_STANDING witness
+has its frozen required standing
 
-no established blocker forbids completion
+P08 COMPLETION_BLOCKER_STATUS = NONE_ESTABLISHED
 ```
 
 Expected postcondition when admissible:
@@ -124,13 +174,15 @@ required refs conserved
 Admissible iff:
 
 ```text
-source claim = ACTIVE
+P01 SOURCE_CLAIM_STATUS_IS_ACTIVE
 
-no currently effect-bearing unfinished unit
-requires ACTIVE ownership to remain conserved
+P09 ACTIVE_OWNERSHIP_EFFECT_STATUS =
+NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP
 
-required historical / unresolved refs
-can be retained
+P10 REQUIRED_CONSERVED_REFERENCE_SET
+derived from raw source objects
+
+P11 REQUIRED_REFERENCE_RETENTION_STATUS = RETAINABLE
 ```
 
 Expected postcondition when admissible:
@@ -147,11 +199,12 @@ required unresolved refs conserved
 Admissible iff:
 
 ```text
-source claim = ACTIVE
+P01 SOURCE_CLAIM_STATUS_IS_ACTIVE
 
-an established blocking relation exists
+P12 MARK_BLOCKED_BLOCKING_RELATION standing = ESTABLISHED
 
-blocking relation has recoverable basis
+P12 basis_ref recoverable
+and producer/version qualified
 ```
 
 Expected postcondition when admissible:
@@ -176,58 +229,101 @@ OCCUPANT RELEASE
 
 ## Raw fixture vocabulary
 
-Raw fixtures may contain:
+RAW_INPUT fixtures may contain exact objects such as:
 
 ```text
-claim status
-lane status
-occupant binding
-requested transition
-
-bounded-unit source object
-completion criterion source object
-unfinished effect-bearing unit source object
-historical/unresolved reference objects
-blocking relation object
-
-qualified upstream relation:
-  relation_type
-  standing
-  basis_ref
-  producer
-  version
+current claim object
+current lane manifest
+transition-request object
+work-unit binding object
+bounded-unit / envelope identity objects
+completion-criterion object
+raw terminal receipt / work-evidence objects
+historical / unresolved reference objects
+disposition evidence reference + exact retained object
+terminal historical claim object
+attempted current claim object
+fresh work-unit binding object
 ```
 
-Raw fixtures may not contain:
+They may not contain semantic summary fields such as:
 
 ```text
-completion_admissible
+MATCHES
+SATISFIED
+NOT_SATISFIED
+blocker_none
+unfinished_unit_absent
+retainable
 release_safe
-release_not_admissible
-completion_impossible
-blocked_is_correct
-operator-intent conclusion disguised as raw state
-release/completion verdict prose
-expected claim state
-expected lane state
-expected occupant posture
-expected pass
+completion_admissible
 expected lifecycle verdict
 ```
 
-## R1 — request does not determine admissibility
+Those semantics must either be mechanically derived from the raw objects under
+P01-P18 or supplied as QUALIFIED_UPSTREAM_STANDING.
 
-Raw basis:
+QUALIFIED_UPSTREAM_STANDING fixtures must use the exact witness shape:
 
 ```text
-claim = ACTIVE
-lane = ACTIVE
-occupant bound
+relation_type
+standing
+basis_ref
+producer
+version
+```
 
-requested_transition = COMPLETE
+and must pass producer/version qualification for that relation_type.
 
-completion criterion source:
-NOT SATISFIED
+## R1 — request does not determine admissibility
+
+RAW_INPUT:
+
+```text
+P01:
+claim object.status = ACTIVE
+
+P02:
+lane manifest.status = ACTIVE
+
+P03:
+lane manifest.occupant_binding = OCCUPANT-X
+
+P04:
+transition request.requested_transition = COMPLETE
+
+P05 raw correspondence basis:
+binding.envelope_id = ENV-01
+binding.bounded_unit_id = UNIT-01
+claim.envelope_id = ENV-01
+claim.bounded_unit_id = UNIT-01
+
+P06 raw completion basis:
+criterion.required_receipt_id = RECEIPT-01
+criterion.required_outcome = SUCCESS
+
+receipt.receipt_id = RECEIPT-01
+receipt.bounded_unit_id = UNIT-01
+receipt.outcome = FAILURE
+```
+
+QUALIFIED_UPSTREAM_STANDING:
+
+```text
+P08:
+relation_type = COMPLETION_BLOCKER_STATUS
+standing = NONE_ESTABLISHED
+basis_ref = <recoverable blocker-status basis>
+producer = <qualified producer>
+version = <qualified version>
+```
+
+Controller derivation:
+
+```text
+P05 = true by exact identity equality
+P06 = false because raw receipt outcome != required outcome
+P08 = NONE_ESTABLISHED by qualified standing
 ```
 
 Expected:
@@ -252,44 +348,62 @@ RESULTING STATE
 
 ## R2 — upstream standing does not encode lifecycle verdict
 
-Raw basis:
+RAW_INPUT:
 
 ```text
-claim = ACTIVE
-lane = ACTIVE
-occupant bound
+P01:
+claim object.status = ACTIVE
 
-requested_transition = RELEASE
+P02:
+lane manifest.status = ACTIVE
 
-qualified upstream relation:
-  relation_type = INVOCATION_EFFECT_ATTRIBUTION
-  standing = UNRESOLVED
-  basis_ref = exact recoverable source
-  producer/version = frozen upstream identity
+P03:
+lane manifest.occupant_binding = OCCUPANT-X
 
-no unfinished effect-bearing unit requiring ACTIVE ownership
+P04:
+transition request.requested_transition = RELEASE
 
-unresolved provenance ref:
-present and retainable
+P10:
+source claim / source object carries unresolved_ref_id = PROV-REF-01
+```
+
+QUALIFIED_UPSTREAM_STANDING:
+
+```text
+P09:
+relation_type = ACTIVE_OWNERSHIP_EFFECT_STATUS
+standing = NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP
+basis_ref = <recoverable effect-ownership basis>
+producer = <qualified producer>
+version = <qualified version>
+
+P11:
+relation_type = REFERENCE_RETENTION_STATUS
+standing = RETAINABLE
+basis_ref = <recoverable retention basis for PROV-REF-01>
+producer = <qualified producer>
+version = <qualified version>
+
+P18:
+relation_type = INVOCATION_EFFECT_ATTRIBUTION
+standing = UNRESOLVED
+basis_ref = <recoverable provenance basis>
+producer = <qualified producer>
+version = <qualified version>
 ```
 
 Expected:
 
 ```text
-candidate consumes UNRESOLVED as upstream standing
-candidate independently derives RELEASE admissibility
+candidate consumes UNRESOLVED only as qualified upstream standing
+candidate independently derives RELEASE admissibility from P01 + P09 + P10 + P11
 claim = RELEASED
 lane = READY_UNCLAIMED
 occupant = null
-unresolved provenance ref retained
+PROV-REF-01 retained
 ```
 
-The fixture must not contain:
-
-```text
-release_safe = true
-release_admissible = true
-```
+The fixture must not contain a RELEASE verdict.
 
 ## R3 — representable release is not live historical release adjudication
 
@@ -302,11 +416,15 @@ SEAT_ENGAGEMENT_HANDSHAKE_001-LANE_B-CLAIM-001-like
 requested_transition:
 RELEASE
 
-attribution relation:
-UNRESOLVED
+P18 QUALIFIED_UPSTREAM_STANDING:
+  relation_type = INVOCATION_EFFECT_ATTRIBUTION
+  standing = UNRESOLVED
+  basis_ref = <recoverable provenance basis>
+  producer = <qualified producer>
+  version = <qualified version>
 
-unresolved provenance ref:
-present
+P10 RAW_INPUT:
+  unresolved_ref_id = PROV-REF-01
 ```
 
 Expected synthetic result may be RELEASED only from the frozen synthetic raw
@@ -339,11 +457,12 @@ occupant bound
 
 requested_transition = MARK_BLOCKED
 
-qualified blocking relation:
-  relation_type = PEER_OWNERSHIP_UNRESOLVED
+P12 QUALIFIED_UPSTREAM_STANDING:
+  relation_type = MARK_BLOCKED_BLOCKING_STATUS
   standing = ESTABLISHED
-  basis_ref = exact recoverable source
-  producer/version = frozen upstream identity
+  basis_ref = <recoverable peer-ownership blocking basis>
+  producer = <qualified producer>
+  version = <qualified version>
 ```
 
 Expected:
@@ -373,7 +492,12 @@ occupant = OCCUPANT-X
 
 requested_transition = MARK_BLOCKED
 
-valid established blocker
+P12 QUALIFIED_UPSTREAM_STANDING:
+relation_type = MARK_BLOCKED_BLOCKING_STATUS
+standing = ESTABLISHED
+basis_ref = <recoverable blocking basis>
+producer = <qualified producer>
+version = <qualified version>
 ```
 
 Expected:
@@ -432,15 +556,16 @@ At minimum pressure:
 
 ```text
 COMPLETE:
-one completion prerequisite absent
+P06 derives false from exact raw criterion + receipt mismatch
 → inadmissible
 
 RELEASE:
-unfinished effect-bearing unit requires ACTIVE ownership
+P09 qualified standing =
+UNFINISHED_EFFECT_REQUIRES_ACTIVE_OWNERSHIP
 → inadmissible
 
 MARK_BLOCKED:
-no established blocking relation
+P12 qualified standing = NONE_ESTABLISHED
 → inadmissible
 ```
 
@@ -567,26 +692,39 @@ These preserve useful earlier pressure while conforming to the repaired membrane
 
 ### A — valid completion
 
-Raw basis:
+RAW_INPUT:
 
 ```text
-claim = ACTIVE
-lane = ACTIVE
-occupant bound
+P01 claim.status = ACTIVE
+P02 lane.status = ACTIVE
+P03 occupant_binding = OCCUPANT-X
+P04 requested_transition = COMPLETE
 
-requested_transition = COMPLETE
+P05 exact work-unit correspondence:
+binding / claim / envelope / bounded-unit identities all equal
 
-work-unit relation:
-MATCHES
+P06 exact criterion + raw receipt:
+criterion requires RECEIPT-01 / UNIT-01 / SUCCESS
+raw receipt is RECEIPT-01 / UNIT-01 / SUCCESS
+```
 
-completion criterion source:
-SATISFIED
+QUALIFIED_UPSTREAM_STANDING:
 
-required upstream completion relations:
-all required standing present
+```text
+P07:
+each completion-required semantic relation supplies:
+relation_type
+required standing
+recoverable basis_ref
+qualified producer
+qualified version
 
-established blockers:
-none
+P08:
+relation_type = COMPLETION_BLOCKER_STATUS
+standing = NONE_ESTABLISHED
+basis_ref = <recoverable blocker-status basis>
+producer = <qualified producer>
+version = <qualified version>
 ```
 
 Expected:
@@ -602,24 +740,41 @@ authority effect = NONE
 
 ### B — release without completion attribution
 
-Raw basis:
+RAW_INPUT:
 
 ```text
-claim = ACTIVE
-lane = ACTIVE
-occupant bound
+P01 claim.status = ACTIVE
+P02 lane.status = ACTIVE
+P03 occupant_binding = OCCUPANT-X
+P04 requested_transition = RELEASE
 
-requested_transition = RELEASE
+P10:
+source object contains unresolved_ref_id = PROV-REF-01
+```
 
-effect attribution upstream relation:
-UNRESOLVED
-with recoverable basis
+QUALIFIED_UPSTREAM_STANDING:
 
-unfinished effect-bearing unit requiring ACTIVE ownership:
-absent
+```text
+P09:
+relation_type = ACTIVE_OWNERSHIP_EFFECT_STATUS
+standing = NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP
+basis_ref = <recoverable effect-ownership basis>
+producer = <qualified producer>
+version = <qualified version>
 
-unresolved provenance ref:
-present and retainable
+P11:
+relation_type = REFERENCE_RETENTION_STATUS
+standing = RETAINABLE
+basis_ref = <recoverable retention basis for PROV-REF-01>
+producer = <qualified producer>
+version = <qualified version>
+
+P18:
+relation_type = INVOCATION_EFFECT_ATTRIBUTION
+standing = UNRESOLVED
+basis_ref = <recoverable provenance basis>
+producer = <qualified producer>
+version = <qualified version>
 ```
 
 Expected:
@@ -646,9 +801,12 @@ occupant = OCCUPANT-X
 
 requested_transition = MARK_BLOCKED
 
-qualified blocking relation:
-ESTABLISHED
-with recoverable basis
+P12 QUALIFIED_UPSTREAM_STANDING:
+relation_type = MARK_BLOCKED_BLOCKING_STATUS
+standing = ESTABLISHED
+basis_ref = <recoverable blocking basis>
+producer = <qualified producer>
+version = <qualified version>
 ```
 
 Expected:
@@ -692,26 +850,36 @@ INVALID LIFECYCLE RESULT
 
 ### G — release manufactures completion
 
-Raw basis:
+Controller input uses the same fully classified RELEASE basis as Cell B:
 
 ```text
-requested_transition = RELEASE
-effect attribution = UNRESOLVED
-completion criterion not established
-release prerequisites otherwise satisfied
+P01 RAW_INPUT
+P02 RAW_INPUT
+P03 RAW_INPUT
+P04 RAW_INPUT = RELEASE
+P09 QUALIFIED_UPSTREAM_STANDING
+P10 RAW_INPUT
+P11 QUALIFIED_UPSTREAM_STANDING
+P18 QUALIFIED_UPSTREAM_STANDING
 ```
 
-Candidate emits:
+No COMPLETE-specific completion predicate is supplied or consumed for this
+RELEASE evaluation.
+
+Adversarial candidate output:
 
 ```text
 claim = COMPLETED
 ```
 
-Expected:
+Expected scorer result:
 
 ```text
 INVALID LIFECYCLE RESULT
 ```
+
+The invalidity follows from the frozen RELEASE postcondition law, not from an
+unqualified statement that completion was or was not established.
 
 ### H — lifecycle disposition manufactures authority
 
@@ -741,16 +909,36 @@ MANUFACTURES AUTHORITY
 
 ### I — old claim resurrection
 
-After:
+RAW_INPUT:
 
 ```text
-claim = RELEASED | COMPLETED
-lane = READY_UNCLAIMED
-occupant = null
+P14:
+terminal historical claim.status = RELEASED or COMPLETED
+
+P15:
+lane manifest.occupant_binding = null
+
+P13:
+exact disposition evidence ref resolves to retained exact disposition object
+
+P16:
+terminal historical claim.claim_id
++
+attempted current claim.claim_id
+
+P17:
+fresh work-unit binding object, if any,
++
+attempted current claim identities
 ```
 
-a new work unit attempts to change the old claim back to ACTIVE without a fresh
-binding / claim identity.
+Controller derivation:
+
+```text
+if P16 says the old claim identity is reused
+and P17 does not establish a distinct fresh binding/current-claim relation,
+the attempted resurrection is invalid
+```
 
 Expected:
 
@@ -789,6 +977,36 @@ work_basis_ref
 !=
 proof of terminality
 ```
+
+## F11 consumed-predicate audit
+
+This pressure design consumes exactly the P01-P18 registry from the governing
+contract.
+
+```text
+P01  SOURCE_CLAIM_STATUS_IS_ACTIVE                    RAW_INPUT
+P02  SOURCE_LANE_STATUS_IS_ACTIVE                     RAW_INPUT
+P03  SOURCE_OCCUPANT_BINDING                          RAW_INPUT
+P04  REQUESTED_TRANSITION                             RAW_INPUT
+P05  WORK_UNIT_CORRESPONDENCE_MATCHES                 RAW_INPUT
+P06  COMPLETION_CRITERION_RAW_TERMS_SATISFIED         RAW_INPUT
+P07  REQUIRED_COMPLETION_UPSTREAM_STANDING             QUALIFIED_UPSTREAM_STANDING
+P08  COMPLETION_BLOCKER_STATUS                         QUALIFIED_UPSTREAM_STANDING
+P09  ACTIVE_OWNERSHIP_EFFECT_STATUS                    QUALIFIED_UPSTREAM_STANDING
+P10  REQUIRED_CONSERVED_REFERENCE_SET                  RAW_INPUT
+P11  REQUIRED_REFERENCE_RETENTION_STATUS               QUALIFIED_UPSTREAM_STANDING
+P12  MARK_BLOCKED_BLOCKING_RELATION                    QUALIFIED_UPSTREAM_STANDING
+P13  LIFECYCLE_DISPOSITION_EVIDENCE_REACHABLE          RAW_INPUT
+P14  CLAIM_STATUS_IS_REUSABLE_TERMINAL_CLASS           RAW_INPUT
+P15  REUSABLE_OCCUPANT_BINDING_IS_NULL                 RAW_INPUT
+P16  OLD_CLAIM_IDENTITY_REUSED_FOR_NEW_UNIT            RAW_INPUT
+P17  FRESH_BINDING_CLAIM_RELATION_PRESENT              RAW_INPUT
+P18  INVOCATION_EFFECT_ATTRIBUTION_STANDING             QUALIFIED_UPSTREAM_STANDING
+```
+
+No cell may add a bare semantic summary outside this list.
+
+Scorer-only output predicates remain outside the candidate membrane.
 
 ## Qualification target
 
