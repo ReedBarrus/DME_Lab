@@ -48,9 +48,13 @@ class LaneBSuccessorEngagementRepressure(unittest.TestCase):
         self.assertTrue(self.result["cell_checks"]["K"])
         self.assertEqual(self.result["quiet_peer_representation"], "PASS")
 
-    def test_L_quiet_to_active_is_peer_claim_appeared(self):
-        guard = self.result["cells"]["L"]["guard"]
-        self.assertEqual(guard["coordination_posture"], "REVALIDATION_REQUIRED")
+    def test_L_quiet_to_active_is_causally_required_before_engagement(self):
+        acceptance = self.result["cells"]["L"]["acceptance"]
+        guard = acceptance["coordination_guard"]
+        self.assertEqual(acceptance["decision"], "REVALIDATION_REQUIRED")
+        self.assertEqual(acceptance["reason"], "PEER_CLAIM_APPEARED")
+        self.assertFalse(acceptance["engagement_evaluated"])
+        self.assertFalse(acceptance["engagement_acceptance_reached"])
         self.assertFalse(guard["coordination_clear"])
         self.assertTrue(any(
             x["reason"] == "PEER_CLAIM_APPEARED"
@@ -62,23 +66,56 @@ class LaneBSuccessorEngagementRepressure(unittest.TestCase):
         ))
         self.assertTrue(self.result["cell_checks"]["L"])
 
-    def test_M_omitted_quiet_coordinate_is_causally_required(self):
+    def test_M_omitted_quiet_coordinate_blocks_before_engagement(self):
         cell = self.result["cells"]["M"]
-        self.assertFalse(cell["engagement_evaluated"])
-        self.assertEqual(cell["guard"]["coordination_posture"], "REVALIDATION_REQUIRED")
-        self.assertFalse(cell["guard"]["coordination_clear"])
+        acceptance = cell["acceptance"]
+        guard = acceptance["coordination_guard"]
+        self.assertEqual(acceptance["decision"], "REVALIDATION_REQUIRED")
+        self.assertEqual(acceptance["reason"], "PEER_NOT_ACKNOWLEDGED")
+        self.assertFalse(acceptance["engagement_evaluated"])
+        self.assertFalse(acceptance["engagement_acceptance_reached"])
+        self.assertFalse(guard["coordination_clear"])
         self.assertTrue(any(
             x["reason"] == "PEER_NOT_ACKNOWLEDGED"
-            for x in cell["guard"]["stale_peers"]
+            for x in guard["stale_peers"]
         ))
         self.assertTrue(self.result["cell_checks"]["M"])
 
-    def test_N_active_overlap_still_blocks(self):
-        guard = self.result["cells"]["N"]["guard"]
-        self.assertEqual(guard["coordination_posture"], "COORDINATION_HOLD")
+    def test_N_active_overlap_blocks_before_engagement(self):
+        acceptance = self.result["cells"]["N"]["acceptance"]
+        guard = acceptance["coordination_guard"]
+        self.assertEqual(acceptance["decision"], "COORDINATION_HOLD")
+        self.assertFalse(acceptance["engagement_evaluated"])
+        self.assertFalse(acceptance["engagement_acceptance_reached"])
         self.assertFalse(guard["coordination_clear"])
         self.assertTrue(any(x["coordination_block"] for x in guard["comparisons"]))
         self.assertTrue(self.result["cell_checks"]["N"])
+
+    def test_O_stale_schema_valid_cursor_cannot_bypass_revalidation(self):
+        cell = self.result["cells"]["O"]
+        acceptance = cell["acceptance"]
+        guard = acceptance["coordination_guard"]
+        self.assertEqual(acceptance["decision"], "REVALIDATION_REQUIRED")
+        self.assertEqual(acceptance["reason"], "PEER_CLAIM_APPEARED")
+        self.assertFalse(acceptance["engagement_evaluated"])
+        self.assertFalse(acceptance["engagement_acceptance_reached"])
+        self.assertFalse(guard["coordination_clear"])
+        self.assertTrue(self.result["cell_checks"]["O"])
+
+    def test_O_CONTROL_stable_current_peer_clears_then_engages(self):
+        cell = self.result["cells"]["O_CONTROL"]
+        acceptance = cell["acceptance"]
+        guard = acceptance["coordination_guard"]
+        self.assertEqual(guard["coordination_posture"], "NO_COORDINATION_BLOCK")
+        self.assertTrue(guard["coordination_clear"])
+        self.assertTrue(acceptance["engagement_evaluated"])
+        self.assertTrue(acceptance["engagement_acceptance_reached"])
+        self.assertEqual(acceptance["decision"], "ENGAGEMENT_VALID")
+        self.assertEqual(
+            acceptance["reason"],
+            "COUPLED_ENGAGEMENT_INVARIANT_SATISFIED",
+        )
+        self.assertTrue(self.result["cell_checks"]["O_CONTROL"])
 
     def test_predecessor_fence_remains_exact_and_excluding(self):
         obs = self.result["predecessor_fence_observation"]
@@ -112,6 +149,7 @@ class LaneBSuccessorEngagementRepressure(unittest.TestCase):
             "active_collision_regression",
             "predecessor_fence",
             "authority_separation",
+            "current_coordination_coupling",
         ):
             with self.subTest(field=key):
                 self.assertEqual(self.result[key], "PASS")
