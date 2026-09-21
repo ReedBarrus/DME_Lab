@@ -202,7 +202,8 @@ def validate_fixture(fixture: Mapping[str, Any]) -> None:
         "cell_id", "tested_invocation_id", "effect_id", "effect_kind",
         "mutation_event_id", "actual_actor_invocation_id", "seat_id", "occupant_id",
         "candidate_claim_id", "candidate_work_unit_id", "authority_ref",
-        "authority_state", "claim_at_effect_start", "tested_work_unit_id",
+        "authority_state", "authority_scope", "branch_id", "git_author",
+        "claim_at_effect_start", "tested_work_unit_id",
         "initial_payload", "mutation_payload", "entry_witness", "candidate_mode",
         "candidate_observation_override", "expected_output_payload", "object_refs",
     }
@@ -213,6 +214,8 @@ def validate_fixture(fixture: Mapping[str, Any]) -> None:
         raise AdministrationInvalid("invalid candidate_mode")
     claim = fixture["claim_at_effect_start"]
     _exact_keys(claim, {"claim_id", "status", "invocation_id", "work_unit_id"}, "claim_at_effect_start")
+    authority_scope = fixture["authority_scope"]
+    _exact_keys(authority_scope, {"invocation_id", "claim_id", "work_unit_id"}, "authority_scope")
     override = fixture["candidate_observation_override"]
     if not isinstance(override, Mapping) or not set(override) <= {"pre_coordinate", "post_coordinate"}:
         raise AdministrationInvalid("candidate_observation_override malformed")
@@ -316,6 +319,9 @@ class SyntheticEffectHarness:
             "tested_work_unit_id": fixture["tested_work_unit_id"],
             "authority_state": fixture["authority_state"],
             "authority_ref": fixture["authority_ref"],
+            "authority_scope": copy.deepcopy(fixture["authority_scope"]),
+            "branch_id": fixture["branch_id"],
+            "git_author": fixture["git_author"],
             "object_refs": list(fixture["object_refs"]),
             "output_match": output_match,
             "entry_event": entry_event,
