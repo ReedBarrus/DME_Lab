@@ -40,7 +40,14 @@
     "R4": "PASS",
     "R5": "PASS",
     "R6": "PASS",
-    "R7": "PASS"
+    "R7": "PASS",
+    "S1": "PASS",
+    "S2": "PASS",
+    "S3": "PASS",
+    "S4": "PASS",
+    "S5": "PASS",
+    "S6": "PASS",
+    "S7": "PASS"
   },
   "terminal_status": "QUALIFIED_SYNTHETIC_GRAMMAR"
 }
