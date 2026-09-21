@@ -6,9 +6,10 @@
       "schema": "PEER_STATE_COORDINATE_v1",
       "lane_id": "LANE_A",
       "branch": "lane-a-cockpit-coordination-v0",
-      "last_seen_head": "de667390d81c1219abfee063d2a3b1fe13d1ba71",
+      "last_seen_head": "afc276fbe2f1213d69d83000245c6e2a4f949903",
       "claim_observation": {
-        "state": "NO_ACTIVE_CLAIM"
+        "state": "ACTIVE_CLAIM",
+        "claim_digest": "sha256:606f0847923c1fdfb47fcdb378fb6dac25ae44536440f434589dfca43f2af101"
       }
     }
   ],
