@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import copy
+import hashlib
 import json
 from pathlib import Path
 from typing import Any, Mapping
@@ -39,6 +40,23 @@ PLACEHOLDERS = {"TBD", "UNKNOWN", "PLACEHOLDER", "NONE", "NULL"}
 
 class EcologyError(RuntimeError):
     pass
+
+
+def canonical_bytes(value: Any) -> bytes:
+    return (
+        json.dumps(
+            value,
+            sort_keys=True,
+            ensure_ascii=False,
+            allow_nan=False,
+            separators=(",", ":"),
+        )
+        + "\n"
+    ).encode("utf-8")
+
+
+def object_identity(value: Any) -> str:
+    return "sha256:" + hashlib.sha256(canonical_bytes(value)).hexdigest()
 
 
 def _load(path: Path) -> Any:
@@ -131,6 +149,11 @@ def validate_observation_basis(basis: Mapping[str, Any]) -> None:
         raise EcologyError("observation basis effects must remain NONE")
 
 
+def observation_basis_ref(basis: Mapping[str, Any]) -> str:
+    validate_observation_basis(basis)
+    return f"observation-basis://{basis['basis_id']}@{object_identity(dict(basis))}"
+
+
 def validate_binding(binding: Mapping[str, Any]) -> None:
     if not isinstance(binding, Mapping) or set(binding) != BINDING_FIELDS:
         raise EcologyError("binding fields must be exact")
@@ -148,6 +171,39 @@ def validate_binding(binding: Mapping[str, Any]) -> None:
         raise EcologyError("BINDING_AUTHORITY_EFFECT_NOT_NONE")
     if binding["execution_effect"] != "NONE":
         raise EcologyError("BINDING_EXECUTION_EFFECT_NOT_NONE")
+
+
+def validate_correspondence(
+    *,
+    role: Mapping[str, Any],
+    seat: Mapping[str, Any],
+    binding: Mapping[str, Any],
+    basis: Mapping[str, Any],
+) -> None:
+    validate_role(role)
+    validate_seat(seat)
+    validate_binding(binding)
+    validate_observation_basis(basis)
+
+    if seat["seat_state"] != "OCCUPIED_CANDIDATE":
+        raise EcologyError("CORRESPONDENCE_REQUIRES_OCCUPIED_CANDIDATE_SEAT")
+    if binding["role_id"] != role["role_id"] or seat["role_id"] != role["role_id"]:
+        raise EcologyError("ROLE_SEAT_BINDING_MISMATCH")
+    if binding["seat_id"] != seat["seat_id"]:
+        raise EcologyError("BINDING_SEAT_MISMATCH")
+    if binding["occupant_id"] != seat["occupant_id"]:
+        raise EcologyError("BINDING_SEAT_OCCUPANT_MISMATCH")
+    if binding["invocation_id"] != seat["invocation_id"]:
+        raise EcologyError("BINDING_SEAT_INVOCATION_MISMATCH")
+    if basis["observer_seat_id"] != binding["seat_id"]:
+        raise EcologyError("BINDING_BASIS_SEAT_MISMATCH")
+    if basis["observer_occupant_id"] != binding["occupant_id"]:
+        raise EcologyError("BINDING_BASIS_OCCUPANT_MISMATCH")
+    if basis["observer_invocation_id"] != binding["invocation_id"]:
+        raise EcologyError("BINDING_BASIS_INVOCATION_MISMATCH")
+    expected_ref = observation_basis_ref(basis)
+    if binding["observation_basis_ref"] != expected_ref:
+        raise EcologyError("BINDING_OBSERVATION_BASIS_REF_MISMATCH")
 
 
 def observation_status(basis: Mapping[str, Any], object_id: str) -> str:
@@ -220,78 +276,155 @@ def clean_binding() -> dict[str, Any]:
     return copy.deepcopy(value)
 
 
-def rotate_invocation(binding: Mapping[str, Any], new_invocation_id: str) -> dict[str, Any]:
+def clean_bundle() -> dict[str, Any]:
+    role = clean_role("SCIENTIST")
+    basis = clean_basis()
+    binding = clean_binding()
+    seat = occupied_seat(
+        seat=clean_empty_seat(binding["seat_id"]),
+        occupant_id=binding["occupant_id"],
+        invocation_id=binding["invocation_id"],
+    )
+    validate_correspondence(role=role, seat=seat, binding=binding, basis=basis)
+    return {"role":role, "seat":seat, "binding":binding, "basis":basis}
+
+
+def fresh_basis(
+    basis: Mapping[str, Any],
+    *,
+    seat_id: str,
+    occupant_id: str,
+    invocation_id: str,
+    basis_id: str,
+) -> dict[str, Any]:
+    validate_observation_basis(basis)
+    out = copy.deepcopy(dict(basis))
+    out["basis_id"] = basis_id
+    out["observer_seat_id"] = seat_id
+    out["observer_occupant_id"] = occupant_id
+    out["observer_invocation_id"] = invocation_id
+    out["basis_ref"] = f"fixture://PRIMARY_ECOLOGY_GRAMMAR_001/{basis_id}"
+    validate_observation_basis(out)
+    return out
+
+
+def rotate_invocation(
+    binding: Mapping[str, Any],
+    basis: Mapping[str, Any],
+    new_invocation_id: str,
+) -> tuple[dict[str, Any], dict[str, Any]]:
     validate_binding(binding)
+    new_basis = fresh_basis(
+        basis,
+        seat_id=binding["seat_id"],
+        occupant_id=binding["occupant_id"],
+        invocation_id=new_invocation_id,
+        basis_id=f"{basis['basis_id']}:FOR:{new_invocation_id}",
+    )
     out = copy.deepcopy(dict(binding))
-    out["binding_id"] = f"BINDING:{binding['seat_id']}:{new_invocation_id}"
+    out["binding_id"] = f"BINDING:{binding['seat_id']}:{binding['occupant_id']}:{new_invocation_id}"
     out["invocation_id"] = new_invocation_id
+    out["observation_basis_ref"] = observation_basis_ref(new_basis)
     out["work_claim_ref"] = None
     out["standing_refs"] = []
     out["authority_refs"] = []
     validate_binding(out)
-    return out
+    return out, new_basis
 
 
-def rotate_occupant(binding: Mapping[str, Any], new_occupant_id: str, new_invocation_id: str) -> dict[str, Any]:
-    out = rotate_invocation(binding, new_invocation_id)
-    out["occupant_id"] = new_occupant_id
-    out["binding_id"] = f"BINDING:{binding['seat_id']}:{new_occupant_id}:{new_invocation_id}"
-    validate_binding(out)
-    return out
+def rotate_occupant(
+    binding: Mapping[str, Any],
+    basis: Mapping[str, Any],
+    new_occupant_id: str,
+    new_invocation_id: str,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    new_binding, new_basis = rotate_invocation(binding, basis, new_invocation_id)
+    new_basis = fresh_basis(
+        new_basis,
+        seat_id=binding["seat_id"],
+        occupant_id=new_occupant_id,
+        invocation_id=new_invocation_id,
+        basis_id=f"{basis['basis_id']}:FOR:{new_occupant_id}:{new_invocation_id}",
+    )
+    new_binding["occupant_id"] = new_occupant_id
+    new_binding["binding_id"] = f"BINDING:{binding['seat_id']}:{new_occupant_id}:{new_invocation_id}"
+    new_binding["observation_basis_ref"] = observation_basis_ref(new_basis)
+    validate_binding(new_binding)
+    return new_binding, new_basis
 
 
 def authority_standing(binding: Mapping[str, Any]) -> str:
     validate_binding(binding)
-    # This grammar carries only references. It intentionally has no authority
-    # adjudicator, so presence of a ref cannot become authority.
     return "UNADJUDICATED" if binding["authority_refs"] else "ABSENT"
+
+
+def _correspondence_cell(
+    *,
+    role: Mapping[str, Any],
+    seat: Mapping[str, Any],
+    binding: Mapping[str, Any],
+    basis: Mapping[str, Any],
+    expected_error: str,
+) -> str:
+    try:
+        validate_correspondence(role=role, seat=seat, binding=binding, basis=basis)
+    except EcologyError as exc:
+        return "PASS" if str(exc) == expected_error else "FRACTURE"
+    return "FRACTURE"
 
 
 def run_pressure() -> dict[str, Any]:
     role = clean_role()
     empty = clean_empty_seat()
-    basis = clean_basis()
-    binding = clean_binding()
+    bundle = clean_bundle()
+    basis = bundle["basis"]
+    binding = bundle["binding"]
 
     cells: dict[str, Any] = {}
 
-    # A -- explicit empty seat.
     validate_seat(empty)
     cells["A"] = {"result":"PASS","relation":"SEAT_EXISTS_WITHOUT_OCCUPANT"}
 
-    # B -- same role may have more than one seat; role identity does not collapse seat identity.
     second = clean_empty_seat("SCIENCE_TEST_02")
     cells["B"] = {
         "result":"PASS" if empty["role_id"] == second["role_id"] and empty["seat_id"] != second["seat_id"] else "FRACTURE",
         "relation":"ROLE_IDENTITY_DISTINCT_FROM_SEAT_IDENTITY",
     }
 
-    # C -- occupant rotation retains seat identity and drops invocation-local refs.
     old = copy.deepcopy(binding)
     old["standing_refs"] = ["standing://OLD_INVOCATION"]
     old["authority_refs"] = ["authority://OLD_INVOCATION"]
     old["work_claim_ref"] = "claim://OLD_INVOCATION"
     validate_binding(old)
-    rotated = rotate_occupant(old, "OCCUPANT_B", "INVOCATION_B")
+    rotated, rotated_basis = rotate_occupant(old, basis, "OCCUPANT_B", "INVOCATION_B")
+    rotated_seat = occupied_seat(
+        seat=clean_empty_seat(rotated["seat_id"]),
+        occupant_id=rotated["occupant_id"],
+        invocation_id=rotated["invocation_id"],
+    )
+    validate_correspondence(role=role, seat=rotated_seat, binding=rotated, basis=rotated_basis)
     cells["C"] = {
         "result":"PASS" if rotated["seat_id"] == old["seat_id"] and rotated["occupant_id"] != old["occupant_id"] and not rotated["standing_refs"] and not rotated["authority_refs"] and rotated["work_claim_ref"] is None else "FRACTURE",
         "relation":"OCCUPANT_ROTATION_WITHOUT_SEAT_OR_STANDING_INHERITANCE",
     }
 
-    # D -- invocation rotation can happen with the same occupant; standing/claim/authority do not inherit.
-    same_occ = rotate_invocation(old, "INVOCATION_C")
+    same_occ, same_occ_basis = rotate_invocation(old, basis, "INVOCATION_C")
+    same_occ_seat = occupied_seat(
+        seat=clean_empty_seat(same_occ["seat_id"]),
+        occupant_id=same_occ["occupant_id"],
+        invocation_id=same_occ["invocation_id"],
+    )
+    validate_correspondence(role=role, seat=same_occ_seat, binding=same_occ, basis=same_occ_basis)
     cells["D"] = {
         "result":"PASS" if same_occ["occupant_id"] == old["occupant_id"] and same_occ["invocation_id"] != old["invocation_id"] and not same_occ["standing_refs"] and not same_occ["authority_refs"] and same_occ["work_claim_ref"] is None else "FRACTURE",
         "relation":"OCCUPANT_IDENTITY_DISTINCT_FROM_INVOCATION_IDENTITY",
     }
 
-    # E -- engagement may exist without a work claim.
     cells["E"] = {
         "result":"PASS" if binding["work_claim_ref"] is None else "FRACTURE",
         "relation":"INVOCATION_DISTINCT_FROM_WORK_CLAIM",
     }
 
-    # F -- a work-claim ref never manufactures authority in this grammar.
     with_claim = copy.deepcopy(binding)
     with_claim["work_claim_ref"] = "claim://CANDIDATE"
     validate_binding(with_claim)
@@ -300,7 +433,6 @@ def run_pressure() -> dict[str, Any]:
         "relation":"WORK_CLAIM_DISTINCT_FROM_AUTHORITY",
     }
 
-    # G -- role semantics cannot carry authority effect.
     bad_role = copy.deepcopy(role)
     bad_role["authority_effect"] = "GRANT"
     try:
@@ -310,19 +442,16 @@ def run_pressure() -> dict[str, Any]:
         g = "PASS" if str(exc) == "ROLE_AUTHORITY_EFFECT_NOT_NONE" else "FRACTURE"
     cells["G"] = {"result":g,"relation":"ROLE_DOES_NOT_MANUFACTURE_AUTHORITY"}
 
-    # H -- world existence not present in basis remains UNKNOWN, not OBSERVED or ABSENT.
     cells["H"] = {
         "result":"PASS" if observation_status(basis, "WORLD_OBJECT_NOT_IN_BASIS") == "UNKNOWN" else "FRACTURE",
         "relation":"CURRENT_WORLD_DISTINCT_FROM_OBSERVATION_BASIS",
     }
 
-    # I -- explicit missingness is MISSING, not ABSENT.
     cells["I"] = {
         "result":"PASS" if observation_status(basis, "MISSING_OBJECT") == "MISSING" else "FRACTURE",
         "relation":"MISSING_DISTINCT_FROM_ABSENT",
     }
 
-    # J -- basis remains basis-relative even if a later world snapshot includes the object.
     before = observation_status(basis, "LATER_WORLD_OBJECT")
     later_world = {"objects":["LATER_WORLD_OBJECT"]}
     after = observation_status(basis, "LATER_WORLD_OBJECT")
@@ -331,7 +460,6 @@ def run_pressure() -> dict[str, Any]:
         "relation":"DECISION_TIME_BASIS_DISTINCT_FROM_LATER_WORLD",
     }
 
-    # K -- placeholder occupant is not a legitimate empty/occupied identity.
     bad_seat = copy.deepcopy(empty)
     bad_seat["seat_state"] = "OCCUPIED_CANDIDATE"
     bad_seat["occupant_id"] = "TBD"
@@ -343,7 +471,6 @@ def run_pressure() -> dict[str, Any]:
         k = "PASS" if "placeholder identity forbidden" in str(exc) else "FRACTURE"
     cells["K"] = {"result":k,"relation":"ABSENT_DISTINCT_FROM_PLACEHOLDER_IDENTITY"}
 
-    # L -- authority-looking role label and authority refs remain non-authoritative.
     auth_role = copy.deepcopy(role)
     auth_role["role_id"] = "AUTHORIZER_TEST_ROLE"
     validate_role(auth_role)
@@ -355,6 +482,61 @@ def run_pressure() -> dict[str, Any]:
         "relation":"ROLE_LABEL_AND_AUTHORITY_REF_DISTINCT_FROM_AUTHORITY_STANDING",
     }
 
+    # M1 -- invocation/basis mismatch. Seat and binding agree on new invocation;
+    # basis remains the exact old invocation basis.
+    m1_seat = copy.deepcopy(bundle["seat"])
+    m1_binding = copy.deepcopy(binding)
+    m1_seat["invocation_id"] = "INVOCATION_B"
+    m1_binding["invocation_id"] = "INVOCATION_B"
+    cells["M1"] = {
+        "result":_correspondence_cell(
+            role=role, seat=m1_seat, binding=m1_binding, basis=basis,
+            expected_error="BINDING_BASIS_INVOCATION_MISMATCH",
+        ),
+        "relation":"CURRENT_INVOCATION_MUST_CORRESPOND_TO_CURRENT_OBSERVATION_BASIS",
+    }
+
+    # M2 -- occupant/basis mismatch. Seat and binding agree on new occupant;
+    # basis remains owned by the old occupant.
+    m2_seat = copy.deepcopy(bundle["seat"])
+    m2_binding = copy.deepcopy(binding)
+    m2_seat["occupant_id"] = "OCCUPANT_B"
+    m2_binding["occupant_id"] = "OCCUPANT_B"
+    cells["M2"] = {
+        "result":_correspondence_cell(
+            role=role, seat=m2_seat, binding=m2_binding, basis=basis,
+            expected_error="BINDING_BASIS_OCCUPANT_MISMATCH",
+        ),
+        "relation":"CURRENT_OCCUPANT_MUST_CORRESPOND_TO_CURRENT_OBSERVATION_BASIS",
+    }
+
+    # M3 -- seat/basis mismatch with same role and current occupant/invocation.
+    m3_seat = occupied_seat(
+        seat=clean_empty_seat("SCIENCE_TEST_02"),
+        occupant_id=binding["occupant_id"],
+        invocation_id=binding["invocation_id"],
+    )
+    m3_binding = copy.deepcopy(binding)
+    m3_binding["seat_id"] = "SCIENCE_TEST_02"
+    cells["M3"] = {
+        "result":_correspondence_cell(
+            role=role, seat=m3_seat, binding=m3_binding, basis=basis,
+            expected_error="BINDING_BASIS_SEAT_MISMATCH",
+        ),
+        "relation":"CURRENT_SEAT_MUST_CORRESPOND_TO_CURRENT_OBSERVATION_BASIS",
+    }
+
+    # M4 -- binding role must correspond to seat/role object.
+    m4_binding = copy.deepcopy(binding)
+    m4_binding["role_id"] = "PLANNER"
+    cells["M4"] = {
+        "result":_correspondence_cell(
+            role=role, seat=bundle["seat"], binding=m4_binding, basis=basis,
+            expected_error="ROLE_SEAT_BINDING_MISMATCH",
+        ),
+        "relation":"BINDING_ROLE_MUST_CORRESPOND_TO_SEAT_ROLE",
+    }
+
     evaluation_key = _load(FIXTURE_DIR / "EVALUATION_KEY_v0.json")
     expected_cells = evaluation_key.get("cells", {}) if isinstance(evaluation_key, dict) else {}
     key_matches = all(expected_cells.get(cell_id) == cell["result"] for cell_id, cell in cells.items()) and set(expected_cells) == set(cells)
@@ -362,6 +544,7 @@ def run_pressure() -> dict[str, Any]:
     terminal = "QUALIFIED_SYNTHETIC_GRAMMAR" if passed else "PRIMARY_ECOLOGY_GRAMMAR_FRACTURES"
     if isinstance(evaluation_key, dict) and evaluation_key.get("terminal_status") != terminal:
         terminal = "ADMINISTRATION_INVALID"
+
     return {
         "object_type":"PRIMARY_ECOLOGY_GRAMMAR_PRESSURE_RESULT",
         "object_id":"PRIMARY_ECOLOGY_GRAMMAR_001-RESULT",
@@ -374,6 +557,7 @@ def run_pressure() -> dict[str, Any]:
             "invocation_ne_work_claim":cells["E"]["result"],
             "work_claim_ne_authority":cells["F"]["result"],
             "current_world_ne_observation_basis":cells["H"]["result"],
+            "cross_object_identity_correspondence":"PASS" if all(cells[x]["result"] == "PASS" for x in ("M1","M2","M3","M4")) else "FRACTURE",
         },
         "role_vocabulary_status":"PROVISIONAL_EXTENSIBLE",
         "durable_ecology_installed":False,
@@ -384,6 +568,7 @@ def run_pressure() -> dict[str, Any]:
         "integration_effect":"NONE",
         "representation_succession":"NOT_TESTED",
         "legacy_seat_migration":"NOT_TESTED",
+        "historical_basis_reuse":"EXPLICIT_RELATION_NOT_YET_MODELED",
         "function_needs_seat":"NOT_TESTED",
         "stop":True,
     }
