@@ -436,8 +436,23 @@ raw_basis:
 exact transition-request object
 
 controller_derivation:
-read requested_transition exactly and require membership in
-{COMPLETE, RELEASE, MARK_BLOCKED}
+read requested_transition exactly;
+require membership in {COMPLETE, RELEASE, MARK_BLOCKED};
+derive selected_branch exactly equal to requested_transition;
+make exactly that branch operative for this administration;
+exclude the other two branch laws from evaluation
+```
+
+Freeze:
+
+```text
+REQUEST TOKEN VALID
+!=
+REQUEST SELECTS BRANCH
+
+BRANCH IMPLEMENTATION LOCATION
+!=
+REQUEST IDENTITY
 ```
 
 #### P05 — work-unit correspondence / MATCHES
@@ -869,6 +884,177 @@ SCORER CHECK
 CONTROLLER INPUT
 ```
 
+## F13 exclusive request dispatch law
+
+P04 is the exclusive branch-dispatch relation.
+
+```text
+P04 REQUESTED_TRANSITION
+        ↓
+EXCLUSIVE DISPATCH
+        ↓
+EXACTLY ONE OPERATIVE BRANCH
+        ↓
+BRANCH ADMISSIBILITY LAW
+        ↓
+ADMISSIBLE | INADMISSIBLE
+        ↓
+BRANCH-SPECIFIC RESULTING STATE IF ADMITTED
+```
+
+Required dispatch:
+
+```text
+if P04 == COMPLETE:
+    selected_branch = COMPLETE
+    evaluate COMPLETE branch law only
+    exclude RELEASE
+    exclude MARK_BLOCKED
+
+if P04 == RELEASE:
+    selected_branch = RELEASE
+    evaluate RELEASE branch law only
+    exclude COMPLETE
+    exclude MARK_BLOCKED
+
+if P04 == MARK_BLOCKED:
+    selected_branch = MARK_BLOCKED
+    evaluate MARK_BLOCKED branch law only
+    exclude COMPLETE
+    exclude RELEASE
+```
+
+No controller path may:
+
+```text
+choose a branch independently of P04
+
+evaluate all branches and choose whichever is admissible
+
+evaluate one branch and emit another branch's resulting state
+
+substitute resulting-state compatibility for request identity
+
+rely on scorer rejection to repair wrong dispatch
+```
+
+Freeze:
+
+```text
+REQUEST TOKEN VALID
+!=
+REQUEST SELECTS BRANCH
+
+BRANCH PREREQUISITES SATISFIED
+!=
+BRANCH REQUESTED
+
+SCORER REJECTS WRONG OUTPUT
+!=
+CONTROLLER DISPATCH QUALIFIED
+
+CAUSALLY EFFECTIVE
+!=
+BOOLEAN-CONJUNCTION MEMBER
+```
+
+For every administration:
+
+```text
+REQUESTED_TRANSITION
+=
+selected_branch
+=
+exactly one operative branch
+```
+
+and:
+
+```text
+P04 changes
+→
+selected_branch changes
+
+with every non-P04 input held fixed
+```
+
+Any path satisfying:
+
+```text
+P04 = X
+AND
+selected_branch = Y
+AND
+X != Y
+```
+
+is invalid controller behavior.
+
+### Dispatch audit
+
+```text
+P04 = COMPLETE
+
+selected branch:
+COMPLETE law
+
+excluded:
+RELEASE
+MARK_BLOCKED
+
+admissibility source:
+COMPLETE conjunction only
+
+result if admitted:
+COMPLETED
+READY_UNCLAIMED
+occupant null
+
+
+P04 = RELEASE
+
+selected branch:
+RELEASE law
+
+excluded:
+COMPLETE
+MARK_BLOCKED
+
+admissibility source:
+RELEASE conjunction only
+
+result if admitted:
+RELEASED
+READY_UNCLAIMED
+occupant null
+
+
+P04 = MARK_BLOCKED
+
+selected branch:
+MARK_BLOCKED law
+
+excluded:
+COMPLETE
+RELEASE
+
+admissibility source:
+MARK_BLOCKED conjunction only
+
+result if admitted:
+BLOCKED
+HELD
+exact source occupant identity preserved
+```
+
+```text
+REGISTERED EDGE-DEFINING INPUTS:
+P01 P02 P03 P04
+
+DECORATIVE EDGE-DEFINING INPUTS:
+0
+```
+
 ## Lifecycle admissibility laws
 
 ### COMPLETE
@@ -885,6 +1071,10 @@ P02 SOURCE_LANE_STATUS_IS_ACTIVE
 AND
 
 P03 SOURCE_OCCUPANT_BINDING is non-null
+
+AND
+
+P04 REQUESTED_TRANSITION = COMPLETE
 
 AND
 
@@ -942,6 +1132,10 @@ P02 SOURCE_LANE_STATUS_IS_ACTIVE
 AND
 
 P03 SOURCE_OCCUPANT_BINDING is non-null
+
+AND
+
+P04 REQUESTED_TRANSITION = RELEASE
 
 AND
 
@@ -1005,6 +1199,10 @@ P02 SOURCE_LANE_STATUS_IS_ACTIVE
 AND
 
 P03 SOURCE_OCCUPANT_BINDING is non-null
+
+AND
+
+P04 REQUESTED_TRANSITION = MARK_BLOCKED
 
 AND
 
@@ -1201,6 +1399,19 @@ MARK_BLOCKED
 
 No branch may describe an ACTIVE-source transition when P02 is false or P03 is
 null.
+
+
+F13 adds the independent edge-selection guard without weakening F12:
+
+```text
+P04 must equal the exact branch under evaluation.
+
+P01 / P02 / P03:
+source-state guards
+
+P04:
+exclusive request-dispatch guard
+```
 
 ## Lifecycle disposition terminology
 
