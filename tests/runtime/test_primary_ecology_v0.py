@@ -17,7 +17,8 @@ from tools.primary_ecology_v0 import (
     missingness_witness_ref,
     source_encounter_ref,
     missingness_witness_encounter_ref,
-    observation_status,
+    basis_claim_status,
+    current_epistemic_status,
     occupied_seat,
     rotate_invocation,
     rotate_occupant,
@@ -117,17 +118,17 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
 
     def test_H_unobserved_world_object_is_unknown(self):
         basis = clean_basis()
-        self.assertEqual(observation_status(basis, "WORLD_OBJECT_NOT_IN_BASIS"), "UNKNOWN")
+        self.assertEqual(basis_claim_status(basis, "WORLD_OBJECT_NOT_IN_BASIS"), "UNKNOWN")
 
     def test_I_explicit_missing_is_not_absent(self):
         basis = clean_basis()
-        self.assertEqual(observation_status(basis, "MISSING_OBJECT"), "MISSING")
+        self.assertEqual(basis_claim_status(basis, "MISSING_OBJECT"), "MISSING")
 
     def test_J_later_world_change_does_not_rewrite_prior_basis(self):
         basis = clean_basis()
-        before = observation_status(basis, "LATER_WORLD_OBJECT")
+        before = basis_claim_status(basis, "LATER_WORLD_OBJECT")
         later_world = {"objects":["LATER_WORLD_OBJECT"]}
-        after = observation_status(basis, "LATER_WORLD_OBJECT")
+        after = basis_claim_status(basis, "LATER_WORLD_OBJECT")
         self.assertIn("LATER_WORLD_OBJECT", later_world["objects"])
         self.assertEqual((before, after), ("UNKNOWN", "UNKNOWN"))
 
@@ -255,7 +256,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             clean_binding(), old, "INVOCATION_P1"
         )
 
-        self.assertEqual(observation_status(new_basis, "POISON_SENTINEL"), "UNKNOWN")
+        self.assertEqual(basis_claim_status(new_basis, "POISON_SENTINEL"), "UNKNOWN")
         self.assertEqual(new_basis["observed_objects"], [])
         self.assertEqual(new_basis["explicit_missing_objects"], [])
         self.assertEqual(new_basis["source_refs"], [])
@@ -276,7 +277,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         )
 
         self.assertEqual(
-            observation_status(new_basis, "MISSING_POISON_SENTINEL"), "UNKNOWN"
+            basis_claim_status(new_basis, "MISSING_POISON_SENTINEL"), "UNKNOWN"
         )
         self.assertEqual(new_basis["explicit_missing_objects"], [])
         self.assertEqual(new_basis["source_refs"], [])
@@ -340,7 +341,22 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             source_carriers=[fresh_source],
             source_encounters=[encounter],
         )
-        self.assertEqual(observation_status(new_basis, "POISON_SENTINEL"), "OBSERVED")
+        self.assertEqual(
+            basis_claim_status(new_basis, "POISON_SENTINEL"),
+            "SOURCE_CLAIM_REPRESENTED",
+        )
+        self.assertEqual(
+            current_epistemic_status(
+                role=clean_role(),
+                seat=new_seat,
+                binding=new_binding,
+                basis=new_basis,
+                object_id="POISON_SENTINEL",
+                source_carriers=[fresh_source],
+                source_encounters=[encounter],
+            ),
+            "SOURCE_PRESENTED",
+        )
         self.assertEqual(
             new_basis["source_refs"],
             [fresh_source_ref],
@@ -367,7 +383,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         self.assertNotEqual(historical_ref, current_ref)
         self.assertEqual(current_binding["observation_basis_ref"], current_ref)
         self.assertEqual(
-            observation_status(current_basis, "POISON_SENTINEL"), "UNKNOWN"
+            basis_claim_status(current_basis, "POISON_SENTINEL"), "UNKNOWN"
         )
 
     def test_fresh_basis_requires_explicit_current_payload(self):
@@ -567,7 +583,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             }],
         )
         validate_missingness_grounding(basis, [witness])
-        self.assertEqual(observation_status(basis, "SECRET_DRAGON_LEDGER"), "MISSING")
+        self.assertEqual(basis_claim_status(basis, "SECRET_DRAGON_LEDGER"), "MISSING")
 
     def test_Q4D_missingness_reason_mismatch_rejected(self):
         witness = {
@@ -841,6 +857,51 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
                 missingness_witness_encounters=[encounter],
             )
 
+    def test_T1_basis_row_is_only_source_claim_represented(self):
+        bundle = clean_bundle()
+        self.assertEqual(
+            basis_claim_status(bundle["basis"], "OBSERVED_OBJECT"),
+            "SOURCE_CLAIM_REPRESENTED",
+        )
+
+    def test_T2_full_current_chain_earns_source_presented(self):
+        bundle = clean_bundle()
+        self.assertEqual(
+            current_epistemic_status(
+                role=bundle["role"],
+                seat=bundle["seat"],
+                binding=bundle["binding"],
+                basis=bundle["basis"],
+                object_id="OBSERVED_OBJECT",
+                source_carriers=bundle["sources"],
+                missingness_witnesses=bundle["missingness_witnesses"],
+                source_encounters=bundle["source_encounters"],
+                missingness_witness_encounters=bundle[
+                    "missingness_witness_encounters"
+                ],
+            ),
+            "SOURCE_PRESENTED",
+        )
+
+    def test_T3_current_apparatus_does_not_emit_observed_standing(self):
+        bundle = clean_bundle()
+        basis_status = basis_claim_status(bundle["basis"], "OBSERVED_OBJECT")
+        current_status = current_epistemic_status(
+            role=bundle["role"],
+            seat=bundle["seat"],
+            binding=bundle["binding"],
+            basis=bundle["basis"],
+            object_id="OBSERVED_OBJECT",
+            source_carriers=bundle["sources"],
+            missingness_witnesses=bundle["missingness_witnesses"],
+            source_encounters=bundle["source_encounters"],
+            missingness_witness_encounters=bundle[
+                "missingness_witness_encounters"
+            ],
+        )
+        self.assertNotEqual(basis_status, "OBSERVED")
+        self.assertNotEqual(current_status, "OBSERVED")
+
     def test_observation_basis_ref_pins_exact_basis_bytes(self):
         b = clean_bundle()
         original_ref = observation_basis_ref(b["basis"])
@@ -890,6 +951,10 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             result["core_relations"]["current_invocation_missingness_witness_encounter"],
             "PASS",
         )
+        self.assertEqual(
+            result["core_relations"]["observed_status_semantic_ceiling"],
+            "PASS",
+        )
         self.assertFalse(result["durable_ecology_installed"])
         self.assertEqual(result["authority_effect"], "NONE")
         self.assertEqual(result["execution_effect"], "NONE")
@@ -929,6 +994,13 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         )
         self.assertEqual(
             result["missingness_reason_understanding"], "NOT_CLAIMED"
+        )
+        self.assertEqual(result["presented_source_standing"], "SOURCE_PRESENTED")
+        self.assertEqual(
+            result["direct_observation_standing"], "NOT_ESTABLISHED"
+        )
+        self.assertEqual(
+            result["source_inspection_or_consumption"], "NOT_ESTABLISHED"
         )
 
 
