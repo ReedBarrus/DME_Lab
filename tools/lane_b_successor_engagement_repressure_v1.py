@@ -154,6 +154,68 @@ def evaluate_original_engagement(bundle: dict[str, Any]) -> dict[str, Any]:
         return engagement.evaluate_engagement(**bundle)
 
 
+def evaluate_engagement_with_current_coordination(
+    bundle: dict[str, Any],
+    *,
+    current_peer_states: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """Causal composition membrane for engagement acceptance.
+
+    A complete candidate with claim + cursor cannot reach the unchanged
+    engagement evaluator until the exact qualified v1 pre-mutation guard
+    returns coordination_clear=True. Incomplete candidates that cannot
+    possibly yield ENGAGEMENT_VALID retain the original engagement result.
+    """
+    claim = bundle.get("claim")
+    cursor = bundle.get("cursor")
+
+    if claim is None or cursor is None:
+        result = copy.deepcopy(evaluate_original_engagement(bundle))
+        result["coordination_guard"] = None
+        result["engagement_evaluated"] = True
+        result["engagement_acceptance_reached"] = (
+            result.get("decision") == "ENGAGEMENT_VALID"
+        )
+        return result
+
+    guard = coordination_v1.pre_mutation_guard(
+        local_claim=claim,
+        current_peer_states=current_peer_states,
+        cursor=cursor,
+    )
+
+    if guard.get("coordination_clear") is not True:
+        if guard.get("coordination_posture") == "REVALIDATION_REQUIRED":
+            stale = guard.get("stale_peers", [])
+            reason = stale[0].get("reason") if stale else "REVALIDATION_REQUIRED"
+        elif guard.get("coordination_posture") == "COORDINATION_HOLD":
+            reason = "COORDINATION_HOLD"
+        elif guard.get("coordination_posture") == "CONFLICT_STOP":
+            reason = "CONFLICT_STOP"
+        else:
+            reason = "COORDINATION_NOT_CLEAR"
+
+        return {
+            "decision": guard.get("coordination_posture"),
+            "reason": reason,
+            "coordination_guard": guard,
+            "engagement_evaluated": False,
+            "engagement_acceptance_reached": False,
+            "authority_effect": "NONE",
+            "execution_effect": "NONE",
+            "integration_effect": "NONE",
+            "effect": "NONE",
+        }
+
+    result = copy.deepcopy(evaluate_original_engagement(bundle))
+    result["coordination_guard"] = guard
+    result["engagement_evaluated"] = True
+    result["engagement_acceptance_reached"] = (
+        result.get("decision") == "ENGAGEMENT_VALID"
+    )
+    return result
+
+
 def lane_a_active_observation_overlapping(local_claim: Mapping[str, Any]) -> dict[str, Any]:
     peer_claim = coordination_v1.synthetic_claim(
         "LANE_A",
@@ -230,49 +292,50 @@ def run_repressure() -> dict[str, Any]:
         }
 
     base = compose_clean_bundle()
+    quiet_current = [lane_a_quiet_observation()]
     cells: dict[str, Any] = {}
 
     # Original A-J, exact mutations, evaluated by the unchanged original
     # engagement function with only the cursor validator dependency replaced.
-    cells["A"] = evaluate_original_engagement(copy.deepcopy(base))
+    cells["A"] = evaluate_engagement_with_current_coordination(copy.deepcopy(base), current_peer_states=quiet_current)
 
     b = copy.deepcopy(base)
     b["claim"]["claim_id"] = engagement.PREDECESSOR_CLAIM_ID
-    cells["B"] = evaluate_original_engagement(b)
+    cells["B"] = evaluate_engagement_with_current_coordination(b, current_peer_states=quiet_current)
 
     c = copy.deepcopy(base)
     c["binding"]["invocation_id"] = engagement.PREDECESSOR_INVOCATION
     c["claim"]["invocation_id"] = engagement.PREDECESSOR_INVOCATION
-    cells["C"] = evaluate_original_engagement(c)
+    cells["C"] = evaluate_engagement_with_current_coordination(c, current_peer_states=quiet_current)
 
     d = copy.deepcopy(base)
     d["binding"]["occupant_id"] = engagement.PREDECESSOR_OCCUPANT
     d["claim"]["occupant_id"] = engagement.PREDECESSOR_OCCUPANT
-    cells["D"] = evaluate_original_engagement(d)
+    cells["D"] = evaluate_engagement_with_current_coordination(d, current_peer_states=quiet_current)
 
     e = copy.deepcopy(base)
     e["claim"]["invocation_id"] = "LANE_B_SUCCESSOR_OTHER_FRESH_INVOCATION"
-    cells["E"] = evaluate_original_engagement(e)
+    cells["E"] = evaluate_engagement_with_current_coordination(e, current_peer_states=quiet_current)
 
     f = copy.deepcopy(base)
     f["engaged_manifest"]["occupant_binding"] = "binding://WRONG-BINDING"
-    cells["F"] = evaluate_original_engagement(f)
+    cells["F"] = evaluate_engagement_with_current_coordination(f, current_peer_states=quiet_current)
 
     g = copy.deepcopy(base)
     g["binding"] = None
-    cells["G"] = evaluate_original_engagement(g)
+    cells["G"] = evaluate_engagement_with_current_coordination(g, current_peer_states=quiet_current)
 
     h = copy.deepcopy(base)
     h["claim"] = None
-    cells["H"] = evaluate_original_engagement(h)
+    cells["H"] = evaluate_engagement_with_current_coordination(h, current_peer_states=quiet_current)
 
     i = copy.deepcopy(base)
     i["binding"]["authority_effect"] = "SMUGGLED"
-    cells["I"] = evaluate_original_engagement(i)
+    cells["I"] = evaluate_engagement_with_current_coordination(i, current_peer_states=quiet_current)
 
     j = copy.deepcopy(base)
     j["fence_doc"]["qualified_fence_payload"]["predecessor_head"] = "b" * 40
-    cells["J"] = evaluate_original_engagement(j)
+    cells["J"] = evaluate_engagement_with_current_coordination(j, current_peer_states=quiet_current)
 
     original_expectations = {
         "A":("ENGAGEMENT_VALID","COUPLED_ENGAGEMENT_INVARIANT_SATISFIED"),
@@ -298,7 +361,7 @@ def run_repressure() -> dict[str, Any]:
     # actually accepted by the original engagement evaluator.
     quiet_cursor = base["cursor"]
     quiet_rows = quiet_cursor["peer_coordinates"]
-    k_engagement = evaluate_original_engagement(copy.deepcopy(base))
+    k_engagement = evaluate_engagement_with_current_coordination(copy.deepcopy(base), current_peer_states=quiet_current)
     cells["K"] = {
         "cursor":quiet_cursor,
         "lane_a_coordinate_present":(
@@ -321,20 +384,20 @@ def run_repressure() -> dict[str, Any]:
     )
 
     # L — retained explicit quiet coordinate, current peer becomes ACTIVE.
+    # This now exercises the composed acceptance membrane itself.
     active_obs = lane_a_active_observation_overlapping(base["claim"])
-    l_guard = coordination_v1.pre_mutation_guard(
-        local_claim=base["claim"],
+    l_acceptance = evaluate_engagement_with_current_coordination(
+        copy.deepcopy(base),
         current_peer_states=[active_obs],
-        cursor=quiet_cursor,
     )
-    cells["L"] = {"guard":l_guard}
+    cells["L"] = {"acceptance": l_acceptance}
+    l_guard = l_acceptance.get("coordination_guard") or {}
     checks["L"] = (
-        l_guard.get("coordination_posture") == "REVALIDATION_REQUIRED"
+        l_acceptance.get("decision") == "REVALIDATION_REQUIRED"
+        and l_acceptance.get("reason") == "PEER_CLAIM_APPEARED"
+        and l_acceptance.get("engagement_evaluated") is False
+        and l_acceptance.get("engagement_acceptance_reached") is False
         and l_guard.get("coordination_clear") is False
-        and any(
-            row.get("reason") == "PEER_CLAIM_APPEARED"
-            for row in l_guard.get("stale_peers", [])
-        )
     )
 
     # M — same current quiet observation, only retained coordinate omitted.
@@ -342,41 +405,89 @@ def run_repressure() -> dict[str, Any]:
         consumer_lane_id="LANE_B",
         peer_state_observations=[],
     )
-    m_guard = coordination_v1.pre_mutation_guard(
-        local_claim=base["claim"],
-        current_peer_states=[lane_a_quiet_observation()],
-        cursor=omitted_cursor,
+    m_bundle = copy.deepcopy(base)
+    m_bundle["cursor"] = omitted_cursor
+    m_acceptance = evaluate_engagement_with_current_coordination(
+        m_bundle,
+        current_peer_states=quiet_current,
     )
     cells["M"] = {
-        "explicit_cursor":quiet_cursor,
-        "omitted_cursor":omitted_cursor,
-        "guard":m_guard,
-        "engagement_evaluated":False,
+        "explicit_cursor": quiet_cursor,
+        "omitted_cursor": omitted_cursor,
+        "acceptance": m_acceptance,
     }
+    m_guard = m_acceptance.get("coordination_guard") or {}
     checks["M"] = (
-        m_guard.get("coordination_posture") == "REVALIDATION_REQUIRED"
+        m_acceptance.get("decision") == "REVALIDATION_REQUIRED"
+        and m_acceptance.get("reason") == "PEER_NOT_ACKNOWLEDGED"
+        and m_acceptance.get("engagement_evaluated") is False
         and m_guard.get("coordination_clear") is False
-        and any(
-            row.get("reason") == "PEER_NOT_ACKNOWLEDGED"
-            for row in m_guard.get("stale_peers", [])
-        )
     )
 
-    # N — correctly retained ACTIVE peer with overlapping claim still blocks.
+    # N — correctly retained ACTIVE peer with overlapping claim still blocks
+    # before the original engagement evaluator is reachable.
     active_cursor = coordination_v1.acknowledge_peer_states(
         consumer_lane_id="LANE_B",
         peer_state_observations=[active_obs],
     )
-    n_guard = coordination_v1.pre_mutation_guard(
-        local_claim=base["claim"],
+    n_bundle = copy.deepcopy(base)
+    n_bundle["cursor"] = active_cursor
+    n_acceptance = evaluate_engagement_with_current_coordination(
+        n_bundle,
         current_peer_states=[active_obs],
-        cursor=active_cursor,
     )
-    cells["N"] = {"cursor":active_cursor,"guard":n_guard}
+    cells["N"] = {"cursor": active_cursor, "acceptance": n_acceptance}
+    n_guard = n_acceptance.get("coordination_guard") or {}
     checks["N"] = (
-        n_guard.get("coordination_posture") == "COORDINATION_HOLD"
+        n_acceptance.get("decision") == "COORDINATION_HOLD"
+        and n_acceptance.get("engagement_evaluated") is False
         and n_guard.get("coordination_clear") is False
-        and any(row.get("coordination_block") for row in n_guard.get("comparisons", []))
+        and any(
+            row.get("coordination_block")
+            for row in n_guard.get("comparisons", [])
+        )
+    )
+
+    # O — exact adversarial stale-cursor bypass attempt.
+    # Retain the H0 quiet cursor, then current Lane A becomes ACTIVE at H1.
+    active_o = copy.deepcopy(active_obs)
+    active_o["head"] = "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    o_acceptance = evaluate_engagement_with_current_coordination(
+        copy.deepcopy(base),
+        current_peer_states=[active_o],
+    )
+    cells["O"] = {
+        "retained_cursor": quiet_cursor,
+        "current_peer_state": active_o,
+        "acceptance": o_acceptance,
+    }
+    o_guard = o_acceptance.get("coordination_guard") or {}
+    checks["O"] = (
+        o_acceptance.get("decision") == "REVALIDATION_REQUIRED"
+        and o_acceptance.get("reason") == "PEER_CLAIM_APPEARED"
+        and o_acceptance.get("engagement_evaluated") is False
+        and o_acceptance.get("engagement_acceptance_reached") is False
+        and o_guard.get("coordination_clear") is False
+    )
+
+    # O_CONTROL — retained quiet coordinate and current quiet state are
+    # unchanged; guard clears, then and only then can engagement evaluate.
+    o_control_acceptance = evaluate_engagement_with_current_coordination(
+        copy.deepcopy(base),
+        current_peer_states=quiet_current,
+    )
+    cells["O_CONTROL"] = {
+        "retained_cursor": quiet_cursor,
+        "current_peer_state": quiet_current[0],
+        "acceptance": o_control_acceptance,
+    }
+    o_control_guard = o_control_acceptance.get("coordination_guard") or {}
+    checks["O_CONTROL"] = (
+        o_control_guard.get("coordination_posture") == "NO_COORDINATION_BLOCK"
+        and o_control_guard.get("coordination_clear") is True
+        and o_control_acceptance.get("engagement_evaluated") is True
+        and o_control_acceptance.get("decision") == "ENGAGEMENT_VALID"
+        and o_control_acceptance.get("engagement_acceptance_reached") is True
     )
 
     predecessor_fence_pass = (
@@ -395,7 +506,7 @@ def run_repressure() -> dict[str, Any]:
     original_a_j_pass = all(checks[x] for x in "ABCDEFGHIJ")
     all_pass = (
         original_a_j_pass
-        and all(checks[x] for x in ["K","L","M","N"])
+        and all(checks[x] for x in ["K","L","M","N","O","O_CONTROL"])
         and predecessor_fence_pass
         and authority_separation_pass
     )
@@ -418,6 +529,7 @@ def run_repressure() -> dict[str, Any]:
         "active_collision_regression":"PASS" if checks["N"] else "FRACTURE",
         "predecessor_fence":"PASS" if predecessor_fence_pass else "FRACTURE",
         "authority_separation":"PASS" if authority_separation_pass else "FRACTURE",
+        "current_coordination_coupling":"PASS" if checks["O"] and checks["O_CONTROL"] else "FRACTURE",
         "original_a_j":"PASS" if original_a_j_pass else "FRACTURE",
         "cell_checks":checks,
         "cells":cells,
@@ -455,7 +567,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         f"K={result.get('quiet_peer_representation')} "
         f"L={result.get('quiet_to_active_revalidation')} "
         f"M={result.get('unrepresented_peer_intervention')} "
-        f"N={result.get('active_collision_regression')}"
+        f"N={result.get('active_collision_regression')} "
+        f"O={result.get('current_coordination_coupling')}"
     )
     return 0 if result["result"] == "LANE_B_SUCCESSOR_ENGAGEMENT_SURVIVES" else 1
 
