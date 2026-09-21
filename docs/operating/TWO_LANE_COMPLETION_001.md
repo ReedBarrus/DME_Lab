@@ -381,18 +381,21 @@ COMPLETE:
 P01
 AND P02
 AND P03 non-null
+AND P04 = COMPLETE
 AND existing COMPLETE prerequisites
 
 RELEASE:
 P01
 AND P02
 AND P03 non-null
+AND P04 = RELEASE
 AND existing RELEASE prerequisites
 
 MARK_BLOCKED:
 P01
 AND P02
 AND P03 non-null
+AND P04 = MARK_BLOCKED
 AND existing MARK_BLOCKED prerequisites
 ```
 
@@ -415,6 +418,52 @@ CAUSALLY EFFECTIVE SOURCE-STATE GUARD
 ```
 
 Gate 1 qualifies only the latter.
+
+
+F13 additionally requires P04 to be the exclusive dispatch relation:
+
+```text
+P04 REQUESTED_TRANSITION
+        ↓
+EXACTLY ONE OPERATIVE BRANCH
+```
+
+```text
+P04 = COMPLETE
+→ COMPLETE law only
+
+P04 = RELEASE
+→ RELEASE law only
+
+P04 = MARK_BLOCKED
+→ MARK_BLOCKED law only
+```
+
+The other two branch laws are excluded from evaluation for that administration.
+
+Freeze:
+
+```text
+REQUEST TOKEN VALID
+!=
+REQUEST SELECTS BRANCH
+
+BRANCH PREREQUISITES SATISFIED
+!=
+BRANCH REQUESTED
+
+SCORER REJECTS WRONG OUTPUT
+!=
+CONTROLLER DISPATCH QUALIFIED
+```
+
+No Gate-1 path may satisfy:
+
+```text
+P04 = X
+operative branch = Y
+X != Y
+```
 
 No branch may produce an ACTIVE-source transition when:
 
@@ -526,6 +575,71 @@ only P03 flipped from non-null baseline to null
 ```
 
 All unrelated branch prerequisites remain conserved in each intervention.
+
+F13 additionally requires held-out request-dispatch interventions:
+
+```text
+N5A
+
+baseline:
+otherwise-valid COMPLETE basis
+
+change only:
+P04 COMPLETE → RELEASE
+
+required:
+selected branch = RELEASE
+COMPLETE excluded
+MARK_BLOCKED excluded
+
+RELEASE alone supplies admissibility/result
+
+
+N5B
+
+baseline:
+otherwise-valid RELEASE basis
+
+change only:
+P04 RELEASE → MARK_BLOCKED
+
+required:
+selected branch = MARK_BLOCKED
+COMPLETE excluded
+RELEASE excluded
+
+MARK_BLOCKED alone supplies admissibility/result
+
+
+N5C
+
+baseline:
+otherwise-valid MARK_BLOCKED basis
+
+change only:
+P04 MARK_BLOCKED → COMPLETE
+
+required:
+selected branch = COMPLETE
+RELEASE excluded
+MARK_BLOCKED excluded
+
+COMPLETE alone supplies admissibility/result
+```
+
+Generalized property:
+
+```text
+ALL NON-P04 INPUTS IDENTICAL
++
+P04 CHANGES
+→
+OPERATIVE BRANCH CHANGES
+```
+
+The newly selected branch may admit or reject according to its own law. The
+previously supported branch must never remain operative merely because its
+prerequisites are still present.
 
 No live Lane-B mutation occurs during Gate 1.
 
