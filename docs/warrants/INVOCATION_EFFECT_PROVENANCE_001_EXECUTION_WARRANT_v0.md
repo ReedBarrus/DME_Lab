@@ -371,6 +371,67 @@ INVALID
 This pressure asks whether provenance remains independent of that authority
 state. It does not execute or qualify `AUTHORITY_POLICY_001`.
 
+### Experimental input membrane
+
+Before candidate construction and held-out administration, freeze four
+different information surfaces:
+
+```text
+HARNESS-ONLY GROUND TRUTH
+=
+actual synthetic actor invocation
+actual controlled effect-entry event
+actual mutation event
+actual pre-effect coordinate
+actual post-effect coordinate
+actual upstream claim / work-unit fixture
+actual upstream authority fixture
+
+CANDIDATE INPUT
+=
+only the raw context that the tested mechanism would legitimately
+possess at the corresponding point in the synthetic effect path
+
+CANDIDATE OUTPUT
+=
+candidate-produced provenance material only
+
+SCORER INPUT
+=
+HARNESS-ONLY GROUND TRUTH
++
+CANDIDATE OUTPUT
++
+frozen evaluation predicate / key
+```
+
+Candidate input may contain identifiers that are operationally required by the
+candidate mechanism, such as its supplied invocation binding or current work
+unit. Merely echoing those identifiers cannot satisfy attribution.
+
+Freeze:
+
+```text
+KNOWING MY INVOCATION ID
+!=
+PROVING I CAUSED THIS EFFECT
+
+NAMING THE EXPECTED CLAIM
+!=
+PROVING CLAIM EXERCISE
+
+CANDIDATE-DECLARED IDENTIFIERS
+CANNOT BY THEMSELVES
+SATISFY CAUSAL CORRESPONDENCE
+```
+
+The frozen scorer must require at least one harness-observed correspondence
+between the controlled effect path and the candidate-produced provenance that
+cannot be established solely by self-declaration.
+
+This requirement defines experimental discriminability. It does not prescribe
+a production receipt format, cryptographic scheme, or process architecture.
+
 ---
 
 ## 6. PROTECTED SEMANTIC DISTINCTIONS
@@ -501,6 +562,48 @@ UNESTABLISHED
 This answers whether the attributed invocation was exercising the matching,
 current work claim for the tested work unit.
 
+Freeze the meanings:
+
+```text
+VALID
+=
+INVOCATION_EFFECT_ATTRIBUTION is ESTABLISHED
+and the harness-retained claim is ACTIVE
+and names the same invocation
+and covers the tested bounded work unit
+at EFFECT START
+
+INVALID
+=
+INVOCATION_EFFECT_ATTRIBUTION is ESTABLISHED
+but the mechanically observed claim / invocation / work-unit relation
+contradicts valid exercise
+
+UNESTABLISHED
+=
+the effect actor relation is not sufficiently established
+to determine whether the tested claim was exercised
+```
+
+Freeze precedence:
+
+```text
+ATTRIBUTION NOT ESTABLISHED
+→ CLAIM_EXERCISE = UNESTABLISHED
+
+else
+
+CLAIM / INVOCATION / WORK-UNIT CONTRADICTION
+→ CLAIM_EXERCISE = INVALID
+
+else
+
+MATCHING ACTIVE CLAIM AT EFFECT START
+→ CLAIM_EXERCISE = VALID
+```
+
+An ACTIVE claim alone cannot produce VALID claim exercise.
+
 ### AUTHORIZATION
 
 ```text
@@ -511,7 +614,23 @@ CONSUMED
 INVALID
 ```
 
-This is independent of effect attribution.
+This is an independently established upstream fixture relation, not a value the
+candidate mechanism is permitted to manufacture.
+
+For the synthetic pressure, the harness/scorer owns this relation.
+
+```text
+CANDIDATE PROVENANCE OUTPUT
+CANNOT CHANGE
+AUTHORIZATION_AT_EFFECT_START
+```
+
+Where authority is scoped to a subject, claim, or work unit, those coordinates
+must be retained in the raw fixture so that a VALID authority relation for one
+invocation cannot silently authorize another invocation's effect.
+
+This pressure tests non-strengthening only. It does not adjudicate the general
+correctness of `AUTHORITY_POLICY_001`.
 
 ### EFFECT RESULT
 
@@ -876,67 +995,120 @@ INVALID
 
 A plausible receipt may not override actual transition evidence.
 
-### CELL E — ATTRIBUTION ESTABLISHED / AUTHORITY ABSENT
+### CELL E1 — MATCHED ATTRIBUTION / AUTHORITY ABSENT
 
-Raw relation:
+Harness-only ground truth:
 
 ```text
-I1 causation:
-mechanically established
+actual actor invocation:
+I1
 
-claim / work-unit relation:
-mechanically established
+claim:
+C1 ACTIVE
+bound to I1
+covers U1
 
-authority for U1:
-ABSENT or already CONSUMED
+controlled effect trace:
+H0 -> M -> H1
+
+authority fixture for I1 / C1 / U1 at EFFECT START:
+ABSENT
 ```
 
-Expected:
+Candidate receives only the frozen admissible input surface and emits candidate
+provenance material.
+
+Expected scorer result:
 
 ```text
+EFFECT_EXISTS:
+true
+
 INVOCATION_EFFECT_ATTRIBUTION:
 ESTABLISHED
 
 CLAIM_EXERCISE:
-separately derived
+VALID
 
 AUTHORIZATION_AT_EFFECT_START:
-ABSENT or CONSUMED
-
-AUTHORIZED EFFECT:
-NO
+ABSENT
 ```
 
-Freeze:
+### CELL E2 — MATCHED ATTRIBUTION / AUTHORITY CONSUMED
+
+Same harness ground truth as E1 except:
+
+```text
+authority fixture for I1 / C1 / U1 at EFFECT START:
+CONSUMED
+```
+
+Expected scorer result:
+
+```text
+EFFECT_EXISTS:
+true
+
+INVOCATION_EFFECT_ATTRIBUTION:
+ESTABLISHED
+
+CLAIM_EXERCISE:
+VALID
+
+AUTHORIZATION_AT_EFFECT_START:
+CONSUMED
+```
+
+For E1 and E2:
 
 ```text
 PROVENANCE
 !=
 AUTHORITY
+
+ATTRIBUTION ESTABLISHED
+DOES NOT STRENGTHEN
+ABSENT OR CONSUMED AUTHORITY
 ```
 
 ### CELL F — OTHER INVOCATION PRODUCES THE RIGHT OUTPUT
 
-Raw relation:
+Harness-only ground truth:
 
 ```text
-I1 owns C1
+C1:
+ACTIVE
+bound to I1
+covers U1
 
-I2 can observe C1
+actual effect actor:
+I2
 
-I2 produces an effect that satisfies
-the task-level expected output
+actual effect:
+matches the task-level expected output
+
+candidate provenance:
+does not falsely assert I1 as actor
 ```
 
-Expected:
+Expected scorer result for the tested I1 relation:
 
 ```text
-OUTPUT MAY BE CORRECT
+EFFECT_EXISTS:
+true
 
-BUT
+INVOCATION_EFFECT_ATTRIBUTION:
+UNATTRIBUTED
 
-C1 WAS NOT VALIDLY EXERCISED BY I1
+CLAIM_EXERCISE:
+UNESTABLISHED
+
+OUTPUT_MATCH:
+true
 ```
+
+The harness may separately know that I2 caused the effect. This cell asks
+whether correctness is falsely converted into valid I1 exercise.
 
 Freeze:
 
@@ -954,15 +1126,24 @@ Include these only if they can be tested without broadening the question.
 
 ### CELL G — SAME INVOCATION / WRONG CLAIM OR WORK UNIT
 
-```text
-I1:
-mechanically established as effect actor
+Harness-only ground truth:
 
-attempted effect:
-outside C1 / U1 scope
+```text
+actual effect actor:
+I1
+
+controlled effect trace:
+retained
+
+C1:
+ACTIVE
+but does not cover the tested work unit
+or otherwise contradicts the observed I1 / unit relation
 ```
 
-Expected separation:
+Candidate receives only the admissible raw input surface.
+
+Expected scorer result:
 
 ```text
 INVOCATION_EFFECT_ATTRIBUTION:
@@ -999,7 +1180,24 @@ authority or truth source.
 
 ## 15. HELD-OUT ADMINISTRATION REQUIREMENTS
 
-The future pressure must freeze before execution:
+Freeze order:
+
+```text
+1. public pressure contract / question
+2. experimental input membrane
+3. closed derived vocabularies + precedence
+4. scorer correspondence predicate
+5. raw fixture identities
+6. held-out evaluation key
+7. candidate apparatus identity
+8. held-out administration
+```
+
+The candidate apparatus may consume the public contract and admissible candidate
+inputs. It must not consume harness-only ground truth or the held-out evaluation
+key.
+
+Before held-out administration, freeze:
 
 ```text
 raw fixture set
@@ -1022,6 +1220,11 @@ what constitutes valid authority at effect start
 
 what constitutes mechanical correspondence
 between pre-coordinate and post-coordinate
+
+the minimum harness-observed causal correspondence
+that cannot be satisfied by candidate self-declaration alone
+
+the frozen claim-exercise semantics and precedence
 
 the frozen attribution semantics and precedence:
 
@@ -1065,9 +1268,12 @@ active claim does not convert an unbound effect into attributed work
 
 false basis / post-coordinate receipt rejected
 
-attributed effect does not create authority
+matched attribution leaves ABSENT authority ABSENT
 
-correct output by wrong invocation does not become valid claim exercise
+matched attribution leaves CONSUMED authority CONSUMED
+
+correct output by wrong invocation remains UNATTRIBUTED
+for the tested claimant relation and does not become valid claim exercise
 
 historical LANE_B specimen remains unmodified
 ```
