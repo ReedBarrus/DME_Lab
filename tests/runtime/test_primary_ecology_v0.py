@@ -13,6 +13,7 @@ from tools.primary_ecology_v0 import (
     clean_role,
     fresh_basis,
     observation_basis_ref,
+    observation_source_ref,
     observation_status,
     occupied_seat,
     rotate_invocation,
@@ -20,6 +21,7 @@ from tools.primary_ecology_v0 import (
     run_pressure,
     validate_correspondence,
     validate_observation_basis,
+    validate_observation_grounding,
     validate_role,
     validate_seat,
 )
@@ -186,6 +188,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             seat=null_bundle["seat"],
             binding=null_bundle["binding"],
             basis=null_bundle["basis"],
+            source_carriers=null_bundle["sources"],
         )
 
         same_bundle = clean_bundle()
@@ -196,6 +199,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             seat=same_bundle["seat"],
             binding=same_bundle["binding"],
             basis=same_bundle["basis"],
+            source_carriers=same_bundle["sources"],
         )
 
     def test_N1_work_claim_identity_mismatch_rejected(self):
@@ -276,10 +280,19 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             "fixture://OLD_OBSERVATION/POISON_SENTINEL"
         ]
 
+        fresh_source = {
+            "schema":"observation_source_v0",
+            "source_id":"SOURCE_INVOCATION_P3_POISON_SENTINEL",
+            "object_id":"POISON_SENTINEL",
+            "identity":"sha256:" + ("c" * 64),
+            "authority_effect":"NONE",
+            "execution_effect":"NONE",
+        }
+        fresh_source_ref = observation_source_ref(fresh_source)
         fresh_observation = [{
             "object_id":"POISON_SENTINEL",
             "identity":"sha256:" + ("c" * 64),
-            "source_ref":"fixture://FRESH_OBSERVATION/INVOCATION_P3/POISON_SENTINEL",
+            "source_ref":fresh_source_ref,
         }]
         new_binding, new_basis = rotate_invocation(
             clean_binding(),
@@ -287,9 +300,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             "INVOCATION_P3",
             observed_objects=fresh_observation,
             explicit_missing_objects=[],
-            source_refs=[
-                "fixture://FRESH_OBSERVATION/INVOCATION_P3/POISON_SENTINEL"
-            ],
+            source_refs=[fresh_source_ref],
         )
         new_seat = occupied_seat(
             seat=clean_empty_seat(new_binding["seat_id"]),
@@ -301,11 +312,12 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             seat=new_seat,
             binding=new_binding,
             basis=new_basis,
+            source_carriers=[fresh_source],
         )
         self.assertEqual(observation_status(new_basis, "POISON_SENTINEL"), "OBSERVED")
         self.assertEqual(
             new_basis["source_refs"],
-            ["fixture://FRESH_OBSERVATION/INVOCATION_P3/POISON_SENTINEL"],
+            [fresh_source_ref],
         )
 
     def test_P4_historical_basis_is_separate_from_current_observation(self):
@@ -382,6 +394,87 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         ):
             validate_observation_basis(basis)
 
+    def test_Q3A_source_object_mismatch_rejected(self):
+        source = {
+            "schema":"observation_source_v0",
+            "source_id":"SOURCE_GARY_BATHMAT",
+            "object_id":"GARY_FROM_ACCOUNTING",
+            "identity":"opaque:GARY-BATHMAT-v1",
+            "authority_effect":"NONE",
+            "execution_effect":"NONE",
+        }
+        ref = observation_source_ref(source)
+        basis = fresh_basis(
+            clean_basis(),
+            seat_id="SCIENCE_TEST_01",
+            occupant_id="LABOIB_CANDIDATE",
+            invocation_id="INVOCATION_Q3A",
+            basis_id="OBSERVATION_BASIS_Q3A",
+            observed_objects=[{
+                "object_id":"BIGFOOT",
+                "identity":"opaque:GARY-BATHMAT-v1",
+                "source_ref":ref,
+            }],
+            source_refs=[ref],
+        )
+        with self.assertRaisesRegex(
+            EcologyError, "OBSERVED_OBJECT_SOURCE_OBJECT_MISMATCH"
+        ):
+            validate_observation_grounding(basis, [source])
+
+    def test_Q3B_source_identity_mismatch_rejected(self):
+        source = {
+            "schema":"observation_source_v0",
+            "source_id":"SOURCE_BIGFOOT_B",
+            "object_id":"BIGFOOT",
+            "identity":"opaque:IDENTITY-B",
+            "authority_effect":"NONE",
+            "execution_effect":"NONE",
+        }
+        ref = observation_source_ref(source)
+        basis = fresh_basis(
+            clean_basis(),
+            seat_id="SCIENCE_TEST_01",
+            occupant_id="LABOIB_CANDIDATE",
+            invocation_id="INVOCATION_Q3B",
+            basis_id="OBSERVATION_BASIS_Q3B",
+            observed_objects=[{
+                "object_id":"BIGFOOT",
+                "identity":"opaque:IDENTITY-A",
+                "source_ref":ref,
+            }],
+            source_refs=[ref],
+        )
+        with self.assertRaisesRegex(
+            EcologyError, "OBSERVED_OBJECT_SOURCE_IDENTITY_MISMATCH"
+        ):
+            validate_observation_grounding(basis, [source])
+
+    def test_Q3C_exact_source_object_identity_correspondence_valid(self):
+        source = {
+            "schema":"observation_source_v0",
+            "source_id":"SOURCE_BIGFOOT_C",
+            "object_id":"BIGFOOT",
+            "identity":"opaque:IDENTITY-A",
+            "authority_effect":"NONE",
+            "execution_effect":"NONE",
+        }
+        ref = observation_source_ref(source)
+        basis = fresh_basis(
+            clean_basis(),
+            seat_id="SCIENCE_TEST_01",
+            occupant_id="LABOIB_CANDIDATE",
+            invocation_id="INVOCATION_Q3C",
+            basis_id="OBSERVATION_BASIS_Q3C",
+            observed_objects=[{
+                "object_id":"BIGFOOT",
+                "identity":"opaque:IDENTITY-A",
+                "source_ref":ref,
+            }],
+            source_refs=[ref],
+        )
+        validate_observation_grounding(basis, [source])
+
     def test_observation_basis_ref_pins_exact_basis_bytes(self):
         b = clean_bundle()
         original_ref = observation_basis_ref(b["basis"])
@@ -417,6 +510,10 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         self.assertEqual(
             result["core_relations"]["fresh_observation_source_relation"], "PASS"
         )
+        self.assertEqual(
+            result["core_relations"]["observation_source_object_identity_correspondence"],
+            "PASS",
+        )
         self.assertFalse(result["durable_ecology_installed"])
         self.assertEqual(result["authority_effect"], "NONE")
         self.assertEqual(result["execution_effect"], "NONE")
@@ -427,8 +524,13 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             result["historical_basis_reuse"], "SEPARATE_TYPED_RELATION_REQUIRED_NOT_MODELED"
         )
         self.assertEqual(
-            result["observation_source_identity_correspondence"], "NOT_TESTED"
+            result["observation_source_identity_correspondence"],
+            "TESTED_EXACT_OPAQUE_CORRESPONDENCE",
         )
+        self.assertEqual(
+            result["observation_identity_scheme_semantics"], "NOT_TESTED"
+        )
+        self.assertEqual(result["observation_source_truth"], "NOT_TESTED")
 
 
 if __name__ == "__main__":
