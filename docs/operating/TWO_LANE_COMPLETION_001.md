@@ -641,6 +641,62 @@ The newly selected branch may admit or reject according to its own law. The
 previously supported branch must never remain operative merely because its
 prerequisites are still present.
 
+F14 requires complete intervention coverage for every declared edge-defining
+predicate across all three branches:
+
+```text
+                     COMPLETE      RELEASE       MARK_BLOCKED
+
+P01 claim guard      N6A           N6B           N6C
+P02 lane guard       N1            N2            N3
+P03 occupant guard   N7A           N7B           N4
+P04 request dispatch N5A           N5B           N5C
+```
+
+Qualification target:
+
+```text
+12 / 12 matrix cells explicitly pressureable
+```
+
+For P01 / P02 / P03:
+
+```text
+target guard alone changes
++
+all unrelated branch requirements remain valid
++
+selected branch remains fixed
+→
+admissibility changes as required by that guard
+```
+
+For P04:
+
+```text
+P04 alone changes
++
+all non-P04 inputs remain identical
+→
+selected branch changes exactly with P04
+```
+
+Freeze:
+
+```text
+FROZEN LAW CORRECT
+!=
+PRESSURE COVERAGE COMPLETE
+
+PREDICATE CAUSALLY REQUIRED
+!=
+CAUSAL REQUIREMENT DEMONSTRATED
+
+POSITIVE FIXTURE SUPPLIES VALID VALUE
+!=
+NEGATIVE INTERVENTION QUALIFIES GUARD
+```
+
 No live Lane-B mutation occurs during Gate 1.
 
 ### Gate 2 — evaluate historical Lane-B RELEASE request
