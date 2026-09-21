@@ -1,0 +1,20 @@
+{
+  "schema": "historical_p11_evaluation_key_v0",
+  "cells": {
+    "A": {
+      "standing": "RETAINABLE"
+    },
+    "B": {
+      "standing": "NOT_RETAINABLE"
+    },
+    "C": {
+      "standing": "NOT_RETAINABLE"
+    },
+    "D": {
+      "standing": "NOT_RETAINABLE"
+    },
+    "E": {
+      "standing": "NOT_RETAINABLE"
+    }
+  }
+}
