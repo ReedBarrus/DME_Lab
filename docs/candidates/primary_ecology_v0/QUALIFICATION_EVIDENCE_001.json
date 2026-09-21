@@ -160,10 +160,39 @@
     "R7": {
       "relation": "SOURCE_ENCOUNTER_MUST_BELONG_TO_CURRENT_BASIS_COORDINATE",
       "result": "PASS"
+    },
+    "S1": {
+      "relation": "CURRENT_MISSING_CLAIM_REQUIRES_REPRESENTED_WITNESS_ENCOUNTER",
+      "result": "PASS"
+    },
+    "S2": {
+      "relation": "MISSINGNESS_WITNESS_ENCOUNTER_MUST_BELONG_TO_CURRENT_INVOCATION",
+      "result": "PASS"
+    },
+    "S3": {
+      "relation": "MISSINGNESS_WITNESS_ENCOUNTER_MUST_POINT_TO_EXACT_WITNESS",
+      "result": "PASS"
+    },
+    "S4": {
+      "relation": "EXACT_CURRENT_MISSINGNESS_WITNESS_ENCOUNTER_IS_ADMISSIBLE",
+      "result": "PASS"
+    },
+    "S5": {
+      "relation": "MISSINGNESS_WITNESS_ENCOUNTER_MUST_BELONG_TO_CURRENT_SEAT",
+      "result": "PASS"
+    },
+    "S6": {
+      "relation": "MISSINGNESS_WITNESS_ENCOUNTER_MUST_BELONG_TO_CURRENT_OCCUPANT",
+      "result": "PASS"
+    },
+    "S7": {
+      "relation": "MISSINGNESS_WITNESS_ENCOUNTER_MUST_BELONG_TO_CURRENT_BASIS_COORDINATE",
+      "result": "PASS"
     }
   },
   "core_relations": {
     "cross_object_identity_correspondence": "PASS",
+    "current_invocation_missingness_witness_encounter": "PASS",
     "current_invocation_source_encounter": "PASS",
     "current_world_ne_observation_basis": "PASS",
     "explicit_missingness_grounding": "PASS",
@@ -184,7 +213,10 @@
   "historical_basis_reuse": "SEPARATE_TYPED_RELATION_REQUIRED_NOT_MODELED",
   "integration_effect": "NONE",
   "legacy_seat_migration": "NOT_TESTED",
+  "missingness_reason_understanding": "NOT_CLAIMED",
   "missingness_witness_correspondence": "TESTED_EXACT_OBJECT_REASON",
+  "missingness_witness_encounter_correspondence": "TESTED_CURRENT_SEAT_OCCUPANT_INVOCATION_WITNESS_BASIS",
+  "missingness_witness_encounter_truth": "NOT_TESTED",
   "missingness_witness_truth": "NOT_TESTED",
   "object_id": "PRIMARY_ECOLOGY_GRAMMAR_001-RESULT",
   "object_type": "PRIMARY_ECOLOGY_GRAMMAR_PRESSURE_RESULT",
