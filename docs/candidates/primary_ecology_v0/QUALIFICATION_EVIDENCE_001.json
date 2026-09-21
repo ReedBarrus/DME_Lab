@@ -116,11 +116,28 @@
     "Q3C": {
       "relation": "EXACT_REPRESENTED_SOURCE_OBJECT_IDENTITY_CORRESPONDENCE_IS_ADMISSIBLE",
       "result": "PASS"
+    },
+    "Q4A": {
+      "relation": "MISSINGNESS_REQUIRES_REPRESENTED_WITNESS",
+      "result": "PASS"
+    },
+    "Q4B": {
+      "relation": "MISSINGNESS_WITNESS_OBJECT_MUST_CORRESPOND",
+      "result": "PASS"
+    },
+    "Q4C": {
+      "relation": "EXACT_REPRESENTED_MISSINGNESS_CORRESPONDENCE_IS_ADMISSIBLE",
+      "result": "PASS"
+    },
+    "Q4D": {
+      "relation": "MISSINGNESS_WITNESS_REASON_MUST_CORRESPOND",
+      "result": "PASS"
     }
   },
   "core_relations": {
     "cross_object_identity_correspondence": "PASS",
     "current_world_ne_observation_basis": "PASS",
+    "explicit_missingness_grounding": "PASS",
     "fresh_observation_payload_noninheritance": "PASS",
     "fresh_observation_source_relation": "PASS",
     "invocation_ne_work_claim": "PASS",
@@ -137,6 +154,8 @@
   "historical_basis_reuse": "SEPARATE_TYPED_RELATION_REQUIRED_NOT_MODELED",
   "integration_effect": "NONE",
   "legacy_seat_migration": "NOT_TESTED",
+  "missingness_witness_correspondence": "TESTED_EXACT_OBJECT_REASON",
+  "missingness_witness_truth": "NOT_TESTED",
   "object_id": "PRIMARY_ECOLOGY_GRAMMAR_001-RESULT",
   "object_type": "PRIMARY_ECOLOGY_GRAMMAR_PRESSURE_RESULT",
   "observation_identity_scheme_semantics": "NOT_TESTED",
@@ -147,5 +166,6 @@
   "role_vocabulary_status": "PROVISIONAL_EXTENSIBLE",
   "status": "QUALIFIED_SYNTHETIC_GRAMMAR",
   "stop": true,
+  "universal_unavailability": "NOT_CLAIMED",
   "work_claim_effect": "NONE"
 }
