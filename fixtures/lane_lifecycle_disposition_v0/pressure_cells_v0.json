@@ -1,0 +1,610 @@
+{
+  "schema": "lane_lifecycle_pressure_fixture_set_v0",
+  "source_pressure_design_head": "758cd31768b79e92d52a3fdda9800a0c6c7172e6",
+  "bases": {
+    "complete_valid": {
+      "claim": {
+        "claim_id": "CLAIM-01",
+        "status": "ACTIVE",
+        "envelope_id": "ENV-01",
+        "bounded_unit_id": "UNIT-01",
+        "unresolved_refs": []
+      },
+      "lane": {
+        "status": "ACTIVE",
+        "occupant_binding": "OCCUPANT-X"
+      },
+      "request": {
+        "requested_transition": "COMPLETE"
+      },
+      "standings": [
+        {
+          "relation_type": "UNIT_COMPLETION_STANDING",
+          "standing": "QUALIFIED",
+          "basis_ref": "basis://unit-completion-qualified",
+          "producer": "SYNTHETIC_UPSTREAM_PRODUCER",
+          "version": "v1"
+        },
+        {
+          "relation_type": "COMPLETION_BLOCKER_STATUS",
+          "standing": "NONE_ESTABLISHED",
+          "basis_ref": "basis://completion-blocker-none",
+          "producer": "SYNTHETIC_UPSTREAM_PRODUCER",
+          "version": "v1"
+        }
+      ],
+      "binding": {
+        "envelope_id": "ENV-01",
+        "bounded_unit_id": "UNIT-01"
+      },
+      "envelope": {
+        "envelope_id": "ENV-01",
+        "bounded_unit_id": "UNIT-01"
+      },
+      "criterion": {
+        "required_receipt_id": "RECEIPT-01",
+        "required_bounded_unit_id": "UNIT-01",
+        "required_outcome": "SUCCESS",
+        "required_upstream_relations": [
+          {
+            "relation_type": "UNIT_COMPLETION_STANDING",
+            "standing": "QUALIFIED"
+          }
+        ]
+      },
+      "receipt": {
+        "receipt_id": "RECEIPT-01",
+        "bounded_unit_id": "UNIT-01",
+        "outcome": "SUCCESS"
+      }
+    },
+    "release_valid": {
+      "claim": {
+        "claim_id": "CLAIM-01",
+        "status": "ACTIVE",
+        "envelope_id": "ENV-01",
+        "bounded_unit_id": "UNIT-01",
+        "unresolved_refs": [
+          "PROV-REF-01"
+        ]
+      },
+      "lane": {
+        "status": "ACTIVE",
+        "occupant_binding": "OCCUPANT-X"
+      },
+      "request": {
+        "requested_transition": "RELEASE"
+      },
+      "standings": [
+        {
+          "relation_type": "ACTIVE_OWNERSHIP_EFFECT_STATUS",
+          "standing": "NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP",
+          "basis_ref": "basis://active-ownership-none",
+          "producer": "SYNTHETIC_UPSTREAM_PRODUCER",
+          "version": "v1"
+        },
+        {
+          "relation_type": "REFERENCE_RETENTION_STATUS",
+          "standing": "RETAINABLE",
+          "basis_ref": "basis://retention-prov-ref-01",
+          "producer": "SYNTHETIC_UPSTREAM_PRODUCER",
+          "version": "v1"
+        },
+        {
+          "relation_type": "INVOCATION_EFFECT_ATTRIBUTION",
+          "standing": "UNRESOLVED",
+          "basis_ref": "basis://invocation-effect-unresolved",
+          "producer": "SYNTHETIC_UPSTREAM_PRODUCER",
+          "version": "v1"
+        }
+      ]
+    },
+    "mark_blocked_valid": {
+      "claim": {
+        "claim_id": "CLAIM-01",
+        "status": "ACTIVE",
+        "envelope_id": "ENV-01",
+        "bounded_unit_id": "UNIT-01",
+        "unresolved_refs": []
+      },
+      "lane": {
+        "status": "ACTIVE",
+        "occupant_binding": "OCCUPANT-X"
+      },
+      "request": {
+        "requested_transition": "MARK_BLOCKED"
+      },
+      "standings": [
+        {
+          "relation_type": "MARK_BLOCKED_BLOCKING_STATUS",
+          "standing": "ESTABLISHED",
+          "basis_ref": "basis://mark-blocked-established",
+          "producer": "SYNTHETIC_UPSTREAM_PRODUCER",
+          "version": "v1"
+        }
+      ]
+    },
+    "dispatch_complete_release_shared": {
+      "claim": {
+        "claim_id": "CLAIM-01",
+        "status": "ACTIVE",
+        "envelope_id": "ENV-01",
+        "bounded_unit_id": "UNIT-01",
+        "unresolved_refs": [
+          "PROV-REF-01"
+        ]
+      },
+      "lane": {
+        "status": "ACTIVE",
+        "occupant_binding": "OCCUPANT-X"
+      },
+      "request": {
+        "requested_transition": "COMPLETE"
+      },
+      "standings": [
+        {
+          "relation_type": "UNIT_COMPLETION_STANDING",
+          "standing": "QUALIFIED",
+          "basis_ref": "basis://unit-completion-qualified",
+          "producer": "SYNTHETIC_UPSTREAM_PRODUCER",
+          "version": "v1"
+        },
+        {
+          "relation_type": "COMPLETION_BLOCKER_STATUS",
+          "standing": "NONE_ESTABLISHED",
+          "basis_ref": "basis://completion-blocker-none",
+          "producer": "SYNTHETIC_UPSTREAM_PRODUCER",
+          "version": "v1"
+        },
+        {
+          "relation_type": "ACTIVE_OWNERSHIP_EFFECT_STATUS",
+          "standing": "NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP",
+          "basis_ref": "basis://active-ownership-none",
+          "producer": "SYNTHETIC_UPSTREAM_PRODUCER",
+          "version": "v1"
+        },
+        {
+          "relation_type": "REFERENCE_RETENTION_STATUS",
+          "standing": "RETAINABLE",
+          "basis_ref": "basis://retention-prov-ref-01",
+          "producer": "SYNTHETIC_UPSTREAM_PRODUCER",
+          "version": "v1"
+        },
+        {
+          "relation_type": "INVOCATION_EFFECT_ATTRIBUTION",
+          "standing": "UNRESOLVED",
+          "basis_ref": "basis://invocation-effect-unresolved",
+          "producer": "SYNTHETIC_UPSTREAM_PRODUCER",
+          "version": "v1"
+        }
+      ],
+      "binding": {
+        "envelope_id": "ENV-01",
+        "bounded_unit_id": "UNIT-01"
+      },
+      "envelope": {
+        "envelope_id": "ENV-01",
+        "bounded_unit_id": "UNIT-01"
+      },
+      "criterion": {
+        "required_receipt_id": "RECEIPT-01",
+        "required_bounded_unit_id": "UNIT-01",
+        "required_outcome": "SUCCESS",
+        "required_upstream_relations": [
+          {
+            "relation_type": "UNIT_COMPLETION_STANDING",
+            "standing": "QUALIFIED"
+          }
+        ]
+      },
+      "receipt": {
+        "receipt_id": "RECEIPT-01",
+        "bounded_unit_id": "UNIT-01",
+        "outcome": "SUCCESS"
+      }
+    },
+    "dispatch_release_mark_blocked_shared": {
+      "claim": {
+        "claim_id": "CLAIM-01",
+        "status": "ACTIVE",
+        "envelope_id": "ENV-01",
+        "bounded_unit_id": "UNIT-01",
+        "unresolved_refs": [
+          "PROV-REF-01"
+        ]
+      },
+      "lane": {
+        "status": "ACTIVE",
+        "occupant_binding": "OCCUPANT-X"
+      },
+      "request": {
+        "requested_transition": "RELEASE"
+      },
+      "standings": [
+        {
+          "relation_type": "ACTIVE_OWNERSHIP_EFFECT_STATUS",
+          "standing": "NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP",
+          "basis_ref": "basis://active-ownership-none",
+          "producer": "SYNTHETIC_UPSTREAM_PRODUCER",
+          "version": "v1"
+        },
+        {
+          "relation_type": "REFERENCE_RETENTION_STATUS",
+          "standing": "RETAINABLE",
+          "basis_ref": "basis://retention-prov-ref-01",
+          "producer": "SYNTHETIC_UPSTREAM_PRODUCER",
+          "version": "v1"
+        },
+        {
+          "relation_type": "INVOCATION_EFFECT_ATTRIBUTION",
+          "standing": "UNRESOLVED",
+          "basis_ref": "basis://invocation-effect-unresolved",
+          "producer": "SYNTHETIC_UPSTREAM_PRODUCER",
+          "version": "v1"
+        },
+        {
+          "relation_type": "MARK_BLOCKED_BLOCKING_STATUS",
+          "standing": "ESTABLISHED",
+          "basis_ref": "basis://mark-blocked-established",
+          "producer": "SYNTHETIC_UPSTREAM_PRODUCER",
+          "version": "v1"
+        }
+      ]
+    },
+    "dispatch_mark_blocked_complete_shared": {
+      "claim": {
+        "claim_id": "CLAIM-01",
+        "status": "ACTIVE",
+        "envelope_id": "ENV-01",
+        "bounded_unit_id": "UNIT-01",
+        "unresolved_refs": []
+      },
+      "lane": {
+        "status": "ACTIVE",
+        "occupant_binding": "OCCUPANT-X"
+      },
+      "request": {
+        "requested_transition": "MARK_BLOCKED"
+      },
+      "standings": [
+        {
+          "relation_type": "UNIT_COMPLETION_STANDING",
+          "standing": "QUALIFIED",
+          "basis_ref": "basis://unit-completion-qualified",
+          "producer": "SYNTHETIC_UPSTREAM_PRODUCER",
+          "version": "v1"
+        },
+        {
+          "relation_type": "COMPLETION_BLOCKER_STATUS",
+          "standing": "FORBIDS_COMPLETION",
+          "basis_ref": "basis://completion-blocker-forbids",
+          "producer": "SYNTHETIC_UPSTREAM_PRODUCER",
+          "version": "v1"
+        },
+        {
+          "relation_type": "MARK_BLOCKED_BLOCKING_STATUS",
+          "standing": "ESTABLISHED",
+          "basis_ref": "basis://mark-blocked-established",
+          "producer": "SYNTHETIC_UPSTREAM_PRODUCER",
+          "version": "v1"
+        }
+      ],
+      "binding": {
+        "envelope_id": "ENV-01",
+        "bounded_unit_id": "UNIT-01"
+      },
+      "envelope": {
+        "envelope_id": "ENV-01",
+        "bounded_unit_id": "UNIT-01"
+      },
+      "criterion": {
+        "required_receipt_id": "RECEIPT-01",
+        "required_bounded_unit_id": "UNIT-01",
+        "required_outcome": "SUCCESS",
+        "required_upstream_relations": [
+          {
+            "relation_type": "UNIT_COMPLETION_STANDING",
+            "standing": "QUALIFIED"
+          }
+        ]
+      },
+      "receipt": {
+        "receipt_id": "RECEIPT-01",
+        "bounded_unit_id": "UNIT-01",
+        "outcome": "SUCCESS"
+      }
+    }
+  },
+  "invariant_cases": {
+    "D1": {
+      "claim": {
+        "claim_id": "CLAIM-D1",
+        "status": "ACTIVE"
+      },
+      "lane": {
+        "status": "READY_UNCLAIMED",
+        "occupant_binding": null
+      },
+      "disposition_evidence_ref": "DISP-D1",
+      "disposition_objects": {
+        "DISP-D1": {
+          "claim_id": "CLAIM-D1",
+          "kind": "SYNTHETIC_DISPOSITION_EVIDENCE"
+        }
+      }
+    },
+    "D2": {
+      "claim": {
+        "claim_id": "CLAIM-D2",
+        "status": "BLOCKED"
+      },
+      "lane": {
+        "status": "READY_UNCLAIMED",
+        "occupant_binding": "OCCUPANT-X"
+      },
+      "disposition_evidence_ref": "DISP-D2",
+      "disposition_objects": {
+        "DISP-D2": {
+          "claim_id": "CLAIM-D2",
+          "kind": "SYNTHETIC_DISPOSITION_EVIDENCE"
+        }
+      }
+    },
+    "D3": {
+      "claim": {
+        "claim_id": "CLAIM-D3",
+        "status": "BLOCKED"
+      },
+      "lane": {
+        "status": "HELD",
+        "occupant_binding": null
+      },
+      "disposition_evidence_ref": "DISP-D3",
+      "disposition_objects": {
+        "DISP-D3": {
+          "claim_id": "CLAIM-D3",
+          "kind": "SYNTHETIC_DISPOSITION_EVIDENCE"
+        }
+      }
+    }
+  },
+  "reactivation_input": {
+    "historical_claim": {
+      "claim_id": "CLAIM-OLD",
+      "status": "RELEASED"
+    },
+    "lane": {
+      "status": "READY_UNCLAIMED",
+      "occupant_binding": null
+    },
+    "disposition_evidence_ref": "DISP-OLD",
+    "disposition_objects": {
+      "DISP-OLD": {
+        "claim_id": "CLAIM-OLD",
+        "kind": "SYNTHETIC_DISPOSITION_EVIDENCE"
+      }
+    },
+    "current_attempt_object_set": {
+      "attempted_current_claim": {
+        "claim_id": "CLAIM-OLD",
+        "bounded_unit_id": "UNIT-02"
+      },
+      "binding_refs": [],
+      "bindings": {}
+    }
+  },
+  "cells": [
+    {
+      "cell_id": "A",
+      "kind": "branch",
+      "base": "complete_valid"
+    },
+    {
+      "cell_id": "B",
+      "kind": "branch",
+      "base": "release_valid"
+    },
+    {
+      "cell_id": "C",
+      "kind": "branch",
+      "base": "mark_blocked_valid"
+    },
+    {
+      "cell_id": "D",
+      "kind": "invariant_group",
+      "subcells": [
+        "D1",
+        "D2",
+        "D3"
+      ]
+    },
+    {
+      "cell_id": "E",
+      "kind": "adversarial_output",
+      "base": "release_valid",
+      "mutation": {
+        "op": "delete_field",
+        "path": "historical_claim"
+      }
+    },
+    {
+      "cell_id": "F",
+      "kind": "adversarial_output",
+      "base": "release_valid",
+      "mutation": {
+        "op": "replace",
+        "path": "unresolved_refs",
+        "value": []
+      }
+    },
+    {
+      "cell_id": "G",
+      "kind": "adversarial_output",
+      "base": "release_valid",
+      "mutation": {
+        "op": "replace",
+        "path": "resulting_state.claim_status",
+        "value": "COMPLETED"
+      }
+    },
+    {
+      "cell_id": "H",
+      "kind": "adversarial_output",
+      "base": "complete_valid",
+      "mutation": {
+        "op": "replace",
+        "path": "authority_effect",
+        "value": "SYNTHETIC_GRANT"
+      }
+    },
+    {
+      "cell_id": "I",
+      "kind": "reactivation",
+      "input_ref": "reactivation_input"
+    },
+    {
+      "cell_id": "N1",
+      "kind": "paired_intervention",
+      "base": "complete_valid",
+      "mutation": {
+        "op": "replace",
+        "path": "lane.status",
+        "from": "ACTIVE",
+        "value": "HELD"
+      },
+      "target_predicate": "P02"
+    },
+    {
+      "cell_id": "N2",
+      "kind": "paired_intervention",
+      "base": "release_valid",
+      "mutation": {
+        "op": "replace",
+        "path": "lane.status",
+        "from": "ACTIVE",
+        "value": "HELD"
+      },
+      "target_predicate": "P02"
+    },
+    {
+      "cell_id": "N3",
+      "kind": "paired_intervention",
+      "base": "mark_blocked_valid",
+      "mutation": {
+        "op": "replace",
+        "path": "lane.status",
+        "from": "ACTIVE",
+        "value": "HELD"
+      },
+      "target_predicate": "P02"
+    },
+    {
+      "cell_id": "N4",
+      "kind": "paired_intervention",
+      "base": "mark_blocked_valid",
+      "mutation": {
+        "op": "replace",
+        "path": "lane.occupant_binding",
+        "from": "OCCUPANT-X",
+        "value": null
+      },
+      "target_predicate": "P03"
+    },
+    {
+      "cell_id": "N6A",
+      "kind": "paired_intervention",
+      "base": "complete_valid",
+      "mutation": {
+        "op": "replace",
+        "path": "claim.status",
+        "from": "ACTIVE",
+        "value": "RELEASED"
+      },
+      "target_predicate": "P01"
+    },
+    {
+      "cell_id": "N6B",
+      "kind": "paired_intervention",
+      "base": "release_valid",
+      "mutation": {
+        "op": "replace",
+        "path": "claim.status",
+        "from": "ACTIVE",
+        "value": "RELEASED"
+      },
+      "target_predicate": "P01"
+    },
+    {
+      "cell_id": "N6C",
+      "kind": "paired_intervention",
+      "base": "mark_blocked_valid",
+      "mutation": {
+        "op": "replace",
+        "path": "claim.status",
+        "from": "ACTIVE",
+        "value": "RELEASED"
+      },
+      "target_predicate": "P01"
+    },
+    {
+      "cell_id": "N7A",
+      "kind": "paired_intervention",
+      "base": "complete_valid",
+      "mutation": {
+        "op": "replace",
+        "path": "lane.occupant_binding",
+        "from": "OCCUPANT-X",
+        "value": null
+      },
+      "target_predicate": "P03"
+    },
+    {
+      "cell_id": "N7B",
+      "kind": "paired_intervention",
+      "base": "release_valid",
+      "mutation": {
+        "op": "replace",
+        "path": "lane.occupant_binding",
+        "from": "OCCUPANT-X",
+        "value": null
+      },
+      "target_predicate": "P03"
+    },
+    {
+      "cell_id": "N5A",
+      "kind": "paired_intervention",
+      "base": "dispatch_complete_release_shared",
+      "mutation": {
+        "op": "replace",
+        "path": "request.requested_transition",
+        "from": "COMPLETE",
+        "value": "RELEASE"
+      },
+      "target_predicate": "P04"
+    },
+    {
+      "cell_id": "N5B",
+      "kind": "paired_intervention",
+      "base": "dispatch_release_mark_blocked_shared",
+      "mutation": {
+        "op": "replace",
+        "path": "request.requested_transition",
+        "from": "RELEASE",
+        "value": "MARK_BLOCKED"
+      },
+      "target_predicate": "P04"
+    },
+    {
+      "cell_id": "N5C",
+      "kind": "paired_intervention",
+      "base": "dispatch_mark_blocked_complete_shared",
+      "mutation": {
+        "op": "replace",
+        "path": "request.requested_transition",
+        "from": "MARK_BLOCKED",
+        "value": "COMPLETE"
+      },
+      "target_predicate": "P04"
+    }
+  ]
+}

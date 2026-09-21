@@ -1,0 +1,160 @@
+{
+  "schema": "lane_lifecycle_execution_freeze_v0",
+  "object_type": "EXECUTION_FREEZE",
+  "object_id": "LANE_LIFECYCLE_DISPOSITION_001-SYNTHETIC_PRESSURE-001-FREEZE",
+  "qualified_design_head": "758cd31768b79e92d52a3fdda9800a0c6c7172e6",
+  "apparatus_basis_head": "a969f2c9f61b64a1a5aa45893aec1c9c731660d6",
+  "lifecycle_contract_source": {
+    "path": "docs/candidates/two_lane_lifecycle_v0/LANE_LIFECYCLE_DISPOSITION_001.md",
+    "git_blob": "a7c3ba6eb7274accaf6de698f7f49c8429d2cf52"
+  },
+  "pressure_design_source": {
+    "path": "docs/candidates/two_lane_lifecycle_v0/PRESSURE_DESIGN_001.md",
+    "git_blob": "17008114d3807805e1981db6d540a3684f0ebe0a"
+  },
+  "completion_envelope_source": {
+    "path": "docs/operating/TWO_LANE_COMPLETION_001.md",
+    "git_blob": "ef41d758bfd8653e197de1f6126fe0f22fe98509"
+  },
+  "controller": {
+    "path": "tools/lane_lifecycle_disposition_v0.py",
+    "git_blob": "89ff5ffc6c3555bc31716735af6e93498d675ced"
+  },
+  "scorer_oracle": {
+    "path": "tools/lane_lifecycle_disposition_oracle_v0.py",
+    "git_blob": "ef4b0e16f946a1ebe6167832d8574d740735601d"
+  },
+  "runner": {
+    "path": "tools/run_lane_lifecycle_disposition_pressure_v0.py",
+    "git_blob": "7a5e3c4293e5f59257e65febcdd1d7f4036d4026"
+  },
+  "fixture_set": {
+    "path": "fixtures/lane_lifecycle_disposition_v0/pressure_cells_v0.json",
+    "git_blob": "6768f0609d7bfb015acf57fe3baad49ecf807279"
+  },
+  "evaluation_key": {
+    "path": "fixtures/lane_lifecycle_disposition_v0/evaluation_key_v0.json",
+    "git_blob": "ddfc4bfd9acedd8824374dd88dc097ef1e156423"
+  },
+  "producer_registry": {
+    "path": "fixtures/lane_lifecycle_disposition_v0/producer_registry_v0.json",
+    "git_blob": "6b469f82a4e9c12e9c6bb143a646ccaba393bedb"
+  },
+  "basis_catalog": {
+    "path": "fixtures/lane_lifecycle_disposition_v0/basis_catalog_v0.json",
+    "git_blob": "170795fc3638cca1fdf008b3a7e2b5746520f8c2"
+  },
+  "schemas": [
+    {
+      "path": "schemas/lane_lifecycle_pressure_cell_v0.schema.json",
+      "git_blob": "4cdefb97311e5184f69b39f44522d3c0fe0b6d42"
+    },
+    {
+      "path": "schemas/lane_lifecycle_pressure_result_v0.schema.json",
+      "git_blob": "9a1c9d09a6d7801949b29d7b301a92d45a5224b0"
+    }
+  ],
+  "frozen_files": [
+    {
+      "path": "tools/lane_lifecycle_disposition_v0.py",
+      "git_blob": "89ff5ffc6c3555bc31716735af6e93498d675ced"
+    },
+    {
+      "path": "tools/lane_lifecycle_disposition_oracle_v0.py",
+      "git_blob": "ef4b0e16f946a1ebe6167832d8574d740735601d"
+    },
+    {
+      "path": "tools/run_lane_lifecycle_disposition_pressure_v0.py",
+      "git_blob": "7a5e3c4293e5f59257e65febcdd1d7f4036d4026"
+    },
+    {
+      "path": "fixtures/lane_lifecycle_disposition_v0/producer_registry_v0.json",
+      "git_blob": "6b469f82a4e9c12e9c6bb143a646ccaba393bedb"
+    },
+    {
+      "path": "fixtures/lane_lifecycle_disposition_v0/basis_catalog_v0.json",
+      "git_blob": "170795fc3638cca1fdf008b3a7e2b5746520f8c2"
+    },
+    {
+      "path": "fixtures/lane_lifecycle_disposition_v0/pressure_cells_v0.json",
+      "git_blob": "6768f0609d7bfb015acf57fe3baad49ecf807279"
+    },
+    {
+      "path": "fixtures/lane_lifecycle_disposition_v0/evaluation_key_v0.json",
+      "git_blob": "ddfc4bfd9acedd8824374dd88dc097ef1e156423"
+    },
+    {
+      "path": "schemas/lane_lifecycle_pressure_cell_v0.schema.json",
+      "git_blob": "4cdefb97311e5184f69b39f44522d3c0fe0b6d42"
+    },
+    {
+      "path": "schemas/lane_lifecycle_pressure_result_v0.schema.json",
+      "git_blob": "9a1c9d09a6d7801949b29d7b301a92d45a5224b0"
+    },
+    {
+      "path": "docs/candidates/two_lane_lifecycle_v0/LANE_LIFECYCLE_DISPOSITION_001.md",
+      "git_blob": "a7c3ba6eb7274accaf6de698f7f49c8429d2cf52"
+    },
+    {
+      "path": "docs/candidates/two_lane_lifecycle_v0/PRESSURE_DESIGN_001.md",
+      "git_blob": "17008114d3807805e1981db6d540a3684f0ebe0a"
+    },
+    {
+      "path": "docs/operating/TWO_LANE_COMPLETION_001.md",
+      "git_blob": "ef41d758bfd8653e197de1f6126fe0f22fe98509"
+    }
+  ],
+  "required_top_level_cells": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "N1",
+    "N2",
+    "N3",
+    "N4",
+    "N6A",
+    "N6B",
+    "N6C",
+    "N7A",
+    "N7B",
+    "N5A",
+    "N5B",
+    "N5C"
+  ],
+  "d_cell_mapping": {
+    "cell_id": "D",
+    "exact_frozen_subcells": [
+      "D1",
+      "D2",
+      "D3"
+    ],
+    "rationale": "Frozen A-I design has no standalone D heading; D is executed as the exact aggregate of frozen D1-D3 resulting-state invariant cells."
+  },
+  "executable_command": "python tools/run_lane_lifecycle_disposition_pressure_v0.py --freeze fixtures/lane_lifecycle_disposition_v0/EXECUTION_FREEZE_001.json --output pressure_result.json",
+  "environment": {
+    "runner": "GitHub Actions ubuntu-latest",
+    "python": "3.12",
+    "stdlib_only": true,
+    "repository_worktree_required": true,
+    "git_required_for_blob_verification": true,
+    "network_required_by_pressure": false,
+    "locale_dependency": "NONE",
+    "clock_dependency": "NONE",
+    "randomness_dependency": "NONE"
+  },
+  "execution_policy": {
+    "stop_on_first_failure": true,
+    "retry_after_failure": false,
+    "repair_after_failure": false,
+    "fixture_mutation_after_freeze": false,
+    "controller_mutation_after_freeze": false,
+    "scorer_mutation_after_freeze": false,
+    "law_mutation_after_freeze": false
+  }
+}

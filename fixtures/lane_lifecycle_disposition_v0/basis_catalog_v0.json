@@ -1,0 +1,52 @@
+{
+  "schema": "lane_lifecycle_basis_catalog_v0",
+  "basis_objects": {
+    "basis://unit-completion-qualified": {
+      "kind": "UNIT_COMPLETION_STANDING_BASIS",
+      "unit_id": "UNIT-01",
+      "standing": "QUALIFIED"
+    },
+    "basis://completion-blocker-none": {
+      "kind": "COMPLETION_BLOCKER_STATUS_BASIS",
+      "scope": "UNIT-01",
+      "standing": "NONE_ESTABLISHED"
+    },
+    "basis://completion-blocker-forbids": {
+      "kind": "COMPLETION_BLOCKER_STATUS_BASIS",
+      "scope": "UNIT-01",
+      "standing": "FORBIDS_COMPLETION"
+    },
+    "basis://active-ownership-none": {
+      "kind": "ACTIVE_OWNERSHIP_EFFECT_STATUS_BASIS",
+      "scope": "UNIT-01",
+      "standing": "NO_UNFINISHED_EFFECT_REQUIRING_ACTIVE_OWNERSHIP"
+    },
+    "basis://active-ownership-required": {
+      "kind": "ACTIVE_OWNERSHIP_EFFECT_STATUS_BASIS",
+      "scope": "UNIT-01",
+      "standing": "UNFINISHED_EFFECT_REQUIRES_ACTIVE_OWNERSHIP"
+    },
+    "basis://retention-prov-ref-01": {
+      "kind": "REFERENCE_RETENTION_STATUS_BASIS",
+      "refs": [
+        "PROV-REF-01"
+      ],
+      "standing": "RETAINABLE"
+    },
+    "basis://mark-blocked-established": {
+      "kind": "MARK_BLOCKED_BLOCKING_STATUS_BASIS",
+      "scope": "UNIT-01",
+      "standing": "ESTABLISHED"
+    },
+    "basis://mark-blocked-none": {
+      "kind": "MARK_BLOCKED_BLOCKING_STATUS_BASIS",
+      "scope": "UNIT-01",
+      "standing": "NONE_ESTABLISHED"
+    },
+    "basis://invocation-effect-unresolved": {
+      "kind": "INVOCATION_EFFECT_ATTRIBUTION_BASIS",
+      "claim_id": "CLAIM-01",
+      "standing": "UNRESOLVED"
+    }
+  }
+}
