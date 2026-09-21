@@ -265,6 +265,54 @@ LIFECYCLE-SHAPED ANSWER:
 FORBIDDEN
 ```
 
+F11 closes that membrane to exactly two semantic input classes:
+
+```text
+A.
+RAW_INPUT
+→ predicate mechanically derived from exact supplied raw objects
+under the frozen local law
+
+B.
+QUALIFIED_UPSTREAM_STANDING
+→ relation_type
+→ standing
+→ basis_ref
+→ producer
+→ version
+→ recoverable basis
+→ producer/version qualified for that relation_type
+
+NO THIRD INPUT CATEGORY
+```
+
+Gate 1 must reject administration if a controller outcome depends on any
+semantic predicate whose derivation boundary is not recoverable.
+
+Freeze:
+
+```text
+TYPED
+!=
+QUALIFIED
+
+PREDICATE PRESENT
+!=
+PREDICATE ESTABLISHED
+
+ABSENCE CLAIM
+!=
+ABSENCE OF INPUT
+
+SOURCE BASIS
+!=
+QUALIFIED STANDING
+```
+
+The exhaustive repaired controller registry is P01-P18 in
+`LANE_LIFECYCLE_DISPOSITION_001.md`; Gate 1 may not silently add another
+consumed predicate.
+
 ## Ordered completion gates
 
 ### Gate 0 — revalidate source coordinates
