@@ -1,0 +1,18 @@
+{
+  "schema": "primary_ecology_evaluation_key_v0",
+  "cells": {
+    "A": "PASS",
+    "B": "PASS",
+    "C": "PASS",
+    "D": "PASS",
+    "E": "PASS",
+    "F": "PASS",
+    "G": "PASS",
+    "H": "PASS",
+    "I": "PASS",
+    "J": "PASS",
+    "K": "PASS",
+    "L": "PASS"
+  },
+  "terminal_status": "QUALIFIED_SYNTHETIC_GRAMMAR"
+}
