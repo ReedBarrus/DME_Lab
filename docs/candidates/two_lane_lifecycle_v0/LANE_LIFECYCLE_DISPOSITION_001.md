@@ -665,16 +665,18 @@ INPUT_CLASS:
 QUALIFIED_UPSTREAM_STANDING
 
 relation_type:
-the exact blocking relation consumed by the requested MARK_BLOCKED evaluation
+MARK_BLOCKED_BLOCKING_STATUS
 
 standing:
 ESTABLISHED
+or
+NONE_ESTABLISHED
 
 basis_ref:
-recoverable exact blocking basis
+recoverable exact blocking-status basis
 
 producer:
-qualified producer identity for that blocking relation_type
+qualified producer identity for MARK_BLOCKED_BLOCKING_STATUS
 
 version:
 qualified producer version
@@ -689,6 +691,9 @@ blocking witness
 ```
 
 A typed blocker object without qualified standing is insufficient.
+
+`NONE_ESTABLISHED` must be an explicit qualified standing; it may not be
+inferred from a missing blocker object.
 
 #### P13 — lifecycle disposition evidence reachability
 
