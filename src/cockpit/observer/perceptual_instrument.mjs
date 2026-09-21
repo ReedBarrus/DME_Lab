@@ -452,7 +452,7 @@ export function deriveContextualAffordances({
     byKind('request').length === 1
     && !selectedRequests.has(byKind('request')[0].id)
   ) {
-    result.push({verb: 'FOCUS', effect: 'QUALIFIED_CONTROL_PREVIEW'});
+    result.push({verb: 'FOCUS', effect: 'CONTROL_PREFILL_ONLY', admissibility: 'UNVERIFIED_UNTIL_EXACT_PREVIEW'});
   }
 
   if (
@@ -460,13 +460,13 @@ export function deriveContextualAffordances({
     && byKind('seat').length === 1
     && selectedRequests.has(byKind('request')[0].id)
   ) {
-    result.push({verb: 'ASSIGN', effect: 'QUALIFIED_CONTROL_PREVIEW'});
+    result.push({verb: 'ASSIGN', effect: 'CONTROL_PREFILL_ONLY', admissibility: 'UNVERIFIED_UNTIL_EXACT_PREVIEW'});
   }
 
   if (byKind('assignment').length === 1) {
     result.push(
-      {verb: 'RELEASE', effect: 'QUALIFIED_CONTROL_PREVIEW'},
-      {verb: 'RING', effect: 'QUALIFIED_CONTROL_PREVIEW'},
+      {verb: 'RELEASE', effect: 'CONTROL_PREFILL_ONLY', admissibility: 'UNVERIFIED_UNTIL_EXACT_PREVIEW'},
+      {verb: 'RING', effect: 'CONTROL_PREFILL_ONLY', admissibility: 'UNVERIFIED_UNTIL_EXACT_PREVIEW'},
     );
   }
 
@@ -1065,7 +1065,9 @@ export function createPerceptualInstrument(root) {
       );
       button.type = 'button';
       button.dataset.action = affordance.verb;
-      button.title = affordance.effect;
+      button.title = affordance.admissibility
+        ? affordance.effect + ' · ' + affordance.admissibility
+        : affordance.effect;
       actions.append(button);
     }
     rail.append(actions);
