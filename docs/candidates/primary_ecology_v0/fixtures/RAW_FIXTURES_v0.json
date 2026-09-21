@@ -77,5 +77,19 @@
       "authority_effect": "NONE",
       "execution_effect": "NONE"
     }
+  ],
+  "missingness_witness_encounters": [
+    {
+      "schema": "missingness_witness_encounter_v0",
+      "encounter_id": "MISSINGNESS_ENCOUNTER_MISSING_OBJECT_INVOCATION_A",
+      "seat_id": "SCIENCE_TEST_01",
+      "occupant_id": "LABOIB_CANDIDATE",
+      "invocation_id": "INVOCATION_A",
+      "witness_ref": "missingness-witness://MISSINGNESS_WITNESS_MISSING_OBJECT@sha256:858fdb475f58b31ef84886d2b9d730b6261b26cd59ddc62e51698d0fdef50ca3",
+      "encounter_kind": "PRESENTED_TO_INVOCATION",
+      "basis_ref": "fixture://PRIMARY_ECOLOGY_GRAMMAR_001/BASIS_A",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    }
   ]
 }
