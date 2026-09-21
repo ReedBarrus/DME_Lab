@@ -24,7 +24,9 @@
     "P1": "PASS",
     "P2": "PASS",
     "P3": "PASS",
-    "P4": "PASS"
+    "P4": "PASS",
+    "Q1": "PASS",
+    "Q2": "PASS"
   },
   "terminal_status": "QUALIFIED_SYNTHETIC_GRAMMAR"
 }
