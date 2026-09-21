@@ -16,6 +16,7 @@ from tools.primary_ecology_v0 import (
     observation_source_ref,
     missingness_witness_ref,
     source_encounter_ref,
+    missingness_witness_encounter_ref,
     observation_status,
     occupied_seat,
     rotate_invocation,
@@ -26,6 +27,7 @@ from tools.primary_ecology_v0 import (
     validate_observation_grounding,
     validate_missingness_grounding,
     validate_source_encounter_grounding,
+    validate_missingness_witness_encounter_grounding,
     validate_role,
     validate_seat,
 )
@@ -195,6 +197,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             source_carriers=null_bundle["sources"],
             missingness_witnesses=null_bundle["missingness_witnesses"],
             source_encounters=null_bundle["source_encounters"],
+            missingness_witness_encounters=null_bundle["missingness_witness_encounters"],
         )
 
         same_bundle = clean_bundle()
@@ -208,6 +211,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             source_carriers=same_bundle["sources"],
             missingness_witnesses=same_bundle["missingness_witnesses"],
             source_encounters=same_bundle["source_encounters"],
+            missingness_witness_encounters=same_bundle["missingness_witness_encounters"],
         )
 
     def test_N1_work_claim_identity_mismatch_rejected(self):
@@ -701,6 +705,142 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
                 basis=basis, binding=binding, source_encounters=[encounter]
             )
 
+    def _q6_bundle(self):
+        witness = {
+            "schema":"missingness_witness_v0",
+            "witness_id":"WITNESS_MOTHMAN_S",
+            "object_id":"MOTHMAN_FILES",
+            "standing":"UNAVAILABLE_AT_BASIS",
+            "reason":"PERMISSION_DENIED",
+            "authority_effect":"NONE",
+            "execution_effect":"NONE",
+        }
+        witness_ref = missingness_witness_ref(witness)
+        basis = fresh_basis(
+            clean_basis(),
+            seat_id="SCIENCE_TEST_01",
+            occupant_id="LABOIB_CANDIDATE",
+            invocation_id="INVOCATION_S",
+            basis_id="OBSERVATION_BASIS_S",
+            explicit_missing_objects=[{
+                "object_id":"MOTHMAN_FILES",
+                "reason":"PERMISSION_DENIED",
+                "witness_ref":witness_ref,
+            }],
+        )
+        binding = clean_binding()
+        binding["binding_id"] = "BINDING:SCIENCE_TEST_01:LABOIB_CANDIDATE:INVOCATION_S"
+        binding["invocation_id"] = "INVOCATION_S"
+        binding["observation_basis_ref"] = observation_basis_ref(basis)
+        seat = occupied_seat(
+            seat=clean_empty_seat("SCIENCE_TEST_01"),
+            occupant_id="LABOIB_CANDIDATE",
+            invocation_id="INVOCATION_S",
+        )
+        encounter = {
+            "schema":"missingness_witness_encounter_v0",
+            "encounter_id":"MISSINGNESS_ENCOUNTER_S4",
+            "seat_id":binding["seat_id"],
+            "occupant_id":binding["occupant_id"],
+            "invocation_id":binding["invocation_id"],
+            "witness_ref":witness_ref,
+            "encounter_kind":"PRESENTED_TO_INVOCATION",
+            "basis_ref":basis["basis_ref"],
+            "authority_effect":"NONE",
+            "execution_effect":"NONE",
+        }
+        return witness, basis, binding, seat, encounter
+
+    def test_S1_witness_without_current_encounter_rejected(self):
+        witness, basis, binding, seat, _ = self._q6_bundle()
+        with self.assertRaisesRegex(
+            EcologyError, "CURRENT_MISSINGNESS_WITNESS_ENCOUNTER_NOT_SUPPLIED"
+        ):
+            validate_correspondence(
+                role=clean_role(),
+                seat=seat,
+                binding=binding,
+                basis=basis,
+                missingness_witnesses=[witness],
+                missingness_witness_encounters=[],
+            )
+
+    def test_S2_missingness_encounter_wrong_invocation_rejected(self):
+        _, basis, binding, _, encounter = self._q6_bundle()
+        encounter["invocation_id"] = "INVOCATION_OTHER"
+        with self.assertRaisesRegex(
+            EcologyError, "MISSINGNESS_WITNESS_ENCOUNTER_INVOCATION_MISMATCH"
+        ):
+            validate_missingness_witness_encounter_grounding(
+                basis=basis,
+                binding=binding,
+                missingness_witness_encounters=[encounter],
+            )
+
+    def test_S3_missingness_encounter_wrong_witness_rejected(self):
+        _, basis, binding, _, encounter = self._q6_bundle()
+        encounter["witness_ref"] = "missingness-witness://OTHER@opaque:other"
+        with self.assertRaisesRegex(
+            EcologyError, "MISSINGNESS_WITNESS_ENCOUNTER_WITNESS_MISMATCH"
+        ):
+            validate_missingness_witness_encounter_grounding(
+                basis=basis,
+                binding=binding,
+                missingness_witness_encounters=[encounter],
+            )
+
+    def test_S4_exact_current_missingness_witness_encounter_valid(self):
+        witness, basis, binding, seat, encounter = self._q6_bundle()
+        validate_correspondence(
+            role=clean_role(),
+            seat=seat,
+            binding=binding,
+            basis=basis,
+            missingness_witnesses=[witness],
+            missingness_witness_encounters=[encounter],
+        )
+        self.assertTrue(
+            missingness_witness_encounter_ref(encounter).startswith(
+                "missingness-witness-encounter://"
+            )
+        )
+
+    def test_S5_missingness_encounter_wrong_seat_rejected(self):
+        _, basis, binding, _, encounter = self._q6_bundle()
+        encounter["seat_id"] = "SCIENCE_TEST_02"
+        with self.assertRaisesRegex(
+            EcologyError, "MISSINGNESS_WITNESS_ENCOUNTER_SEAT_MISMATCH"
+        ):
+            validate_missingness_witness_encounter_grounding(
+                basis=basis,
+                binding=binding,
+                missingness_witness_encounters=[encounter],
+            )
+
+    def test_S6_missingness_encounter_wrong_occupant_rejected(self):
+        _, basis, binding, _, encounter = self._q6_bundle()
+        encounter["occupant_id"] = "OCCUPANT_OTHER"
+        with self.assertRaisesRegex(
+            EcologyError, "MISSINGNESS_WITNESS_ENCOUNTER_OCCUPANT_MISMATCH"
+        ):
+            validate_missingness_witness_encounter_grounding(
+                basis=basis,
+                binding=binding,
+                missingness_witness_encounters=[encounter],
+            )
+
+    def test_S7_missingness_encounter_wrong_basis_rejected(self):
+        _, basis, binding, _, encounter = self._q6_bundle()
+        encounter["basis_ref"] = "fixture://OTHER_BASIS"
+        with self.assertRaisesRegex(
+            EcologyError, "MISSINGNESS_WITNESS_ENCOUNTER_BASIS_MISMATCH"
+        ):
+            validate_missingness_witness_encounter_grounding(
+                basis=basis,
+                binding=binding,
+                missingness_witness_encounters=[encounter],
+            )
+
     def test_observation_basis_ref_pins_exact_basis_bytes(self):
         b = clean_bundle()
         original_ref = observation_basis_ref(b["basis"])
@@ -746,6 +886,10 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         self.assertEqual(
             result["core_relations"]["current_invocation_source_encounter"], "PASS"
         )
+        self.assertEqual(
+            result["core_relations"]["current_invocation_missingness_witness_encounter"],
+            "PASS",
+        )
         self.assertFalse(result["durable_ecology_installed"])
         self.assertEqual(result["authority_effect"], "NONE")
         self.assertEqual(result["execution_effect"], "NONE")
@@ -776,6 +920,16 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         self.assertEqual(result["source_encounter_truth"], "NOT_TESTED")
         self.assertEqual(result["direct_object_perception"], "NOT_CLAIMED")
         self.assertEqual(result["source_understanding"], "NOT_CLAIMED")
+        self.assertEqual(
+            result["missingness_witness_encounter_correspondence"],
+            "TESTED_CURRENT_SEAT_OCCUPANT_INVOCATION_WITNESS_BASIS",
+        )
+        self.assertEqual(
+            result["missingness_witness_encounter_truth"], "NOT_TESTED"
+        )
+        self.assertEqual(
+            result["missingness_reason_understanding"], "NOT_CLAIMED"
+        )
 
 
 if __name__ == "__main__":
