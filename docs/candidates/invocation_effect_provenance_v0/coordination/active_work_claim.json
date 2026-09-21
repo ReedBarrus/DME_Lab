@@ -33,7 +33,7 @@
     "tests/runtime/test_invocation_effect_provenance_v0.py",
     ".github/workflows/invocation-effect-provenance-001.yml"
   ],
-  "status": "ACTIVE",
+  "status": "RELEASED",
   "authority_effect": "NONE",
   "execution_effect": "NONE",
   "integration_effect": "NONE",
