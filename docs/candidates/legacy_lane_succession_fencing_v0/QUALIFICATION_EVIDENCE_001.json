@@ -1,0 +1,107 @@
+{
+  "authority_effect": "NONE",
+  "cells": {
+    "A": {
+      "consulted_fence_identity": "sha256:2cced34cedccb4d763031fdfe3b271a8146473f9995b437fb9f0b894f0fabb86",
+      "coordination_posture": "NOT_EVALUATED",
+      "decision": "REJECT",
+      "predecessor_currently_operative": false,
+      "provenance_overlap": null,
+      "reason": "PREDECESSOR_FENCED",
+      "semantic_overlap": null
+    },
+    "B": {
+      "consulted_fence_identity": "sha256:2cced34cedccb4d763031fdfe3b271a8146473f9995b437fb9f0b894f0fabb86",
+      "coordination_posture": "NO_COORDINATION_BLOCK",
+      "decision": "NORMAL_ADMISSIBILITY_MEMBRANE",
+      "predecessor_currently_operative": false,
+      "provenance_overlap": false,
+      "reason": "SUCCESSOR_FRESHNESS_AND_DEBT_CONSERVATION_SATISFIED",
+      "semantic_overlap": false
+    },
+    "C": {
+      "consulted_fence_identity": "sha256:2cced34cedccb4d763031fdfe3b271a8146473f9995b437fb9f0b894f0fabb86",
+      "coordination_posture": "NOT_EVALUATED",
+      "decision": "REJECT",
+      "predecessor_currently_operative": false,
+      "provenance_overlap": null,
+      "reason": "PREDECESSOR_FENCED",
+      "semantic_overlap": null
+    },
+    "D": {
+      "consulted_fence_identity": "sha256:2cced34cedccb4d763031fdfe3b271a8146473f9995b437fb9f0b894f0fabb86",
+      "coordination_posture": "NOT_EVALUATED",
+      "decision": "REJECT",
+      "predecessor_currently_operative": false,
+      "provenance_overlap": null,
+      "reason": "PREDECESSOR_FENCED",
+      "semantic_overlap": null
+    },
+    "E": {
+      "consulted_fence_identity": "sha256:2cced34cedccb4d763031fdfe3b271a8146473f9995b437fb9f0b894f0fabb86",
+      "coordination_posture": "NO_COORDINATION_BLOCK",
+      "decision": "REJECT",
+      "predecessor_currently_operative": false,
+      "provenance_overlap": false,
+      "reason": "AUTHORITY_INHERITANCE_FORBIDDEN",
+      "semantic_overlap": false
+    },
+    "F": {
+      "consulted_fence_identity": "sha256:2cced34cedccb4d763031fdfe3b271a8146473f9995b437fb9f0b894f0fabb86",
+      "coordination_posture": "NO_COORDINATION_BLOCK",
+      "decision": "REJECT",
+      "predecessor_currently_operative": false,
+      "provenance_overlap": false,
+      "reason": "PREDECESSOR_DEBT_REFERENCE_REQUIRED",
+      "semantic_overlap": false
+    },
+    "G": {
+      "consulted_fence_identity": null,
+      "coordination_posture": "NOT_APPLICABLE",
+      "decision": "NORMAL_ADMISSIBILITY_MEMBRANE",
+      "predecessor_currently_operative": true,
+      "provenance_overlap": false,
+      "reason": "NO_OPERATIVE_FENCE_RELATION",
+      "semantic_overlap": false
+    },
+    "H": {
+      "consulted_fence_identity": "sha256:2cced34cedccb4d763031fdfe3b271a8146473f9995b437fb9f0b894f0fabb86",
+      "coordination_posture": "NOT_EVALUATED",
+      "decision": "CONFLICT_STOP",
+      "predecessor_currently_operative": null,
+      "provenance_overlap": null,
+      "reason": "PREDECESSOR_ADVANCED_AFTER_FENCE",
+      "semantic_overlap": null
+    },
+    "J": {
+      "consulted_fence_identity": "sha256:2cced34cedccb4d763031fdfe3b271a8146473f9995b437fb9f0b894f0fabb86",
+      "coordination_posture": "NO_COORDINATION_BLOCK",
+      "decision": "NORMAL_ADMISSIBILITY_MEMBRANE",
+      "predecessor_currently_operative": false,
+      "provenance_overlap": true,
+      "reason": "SUCCESSOR_FRESHNESS_AND_DEBT_CONSERVATION_SATISFIED",
+      "semantic_overlap": true
+    },
+    "J_NO_FENCE": {
+      "consulted_fence_identity": null,
+      "coordination_posture": "COORDINATION_HOLD",
+      "decision": "COORDINATION_HOLD",
+      "predecessor_currently_operative": true,
+      "provenance_overlap": true,
+      "reason": "ACTIVE_PREDECESSOR_OVERLAP",
+      "semantic_overlap": true
+    }
+  },
+  "fence_identities": {
+    "VALID": "sha256:2cced34cedccb4d763031fdfe3b271a8146473f9995b437fb9f0b894f0fabb86"
+  },
+  "live_lane_mutation": "NONE",
+  "merge": "NONE",
+  "object_id": "LEGACY_LANE_SUCCESSION_FENCING_001",
+  "predecessor_debt_identity": "sha256:b42da029e9d0daccb6a486150e420cde5510c023ffe9b6bcd73a3b5ad4a399d5",
+  "predecessor_disposition": "UNCHANGED",
+  "predecessor_identity": "sha256:5b443ba71741f9ed5745035f5db4bfb88e3a9f599572be608da4e2d5764f4672",
+  "schema": "legacy_lane_succession_fencing_result_v0",
+  "stop": "YES",
+  "successor_activation": "NONE"
+}
