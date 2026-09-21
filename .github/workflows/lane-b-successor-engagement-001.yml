@@ -1,0 +1,50 @@
+name: LANE_B_SUCCESSOR_ENGAGEMENT_001
+
+on:
+  push:
+    branches:
+      - lane-b-successor-engagement-qualification-v0
+    paths:
+      - "schemas/lane_engagement_binding_v0.schema.json"
+      - "docs/candidates/lane_b_successor_engagement_v0/**"
+      - "tools/lane_b_successor_engagement_v0.py"
+      - "tests/runtime/test_lane_b_successor_engagement_v0.py"
+      - ".github/workflows/lane-b-successor-engagement-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout isolated qualification branch
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile
+        run: |
+          python -m py_compile \
+            tools/lane_b_successor_engagement_v0.py \
+            tests/runtime/test_lane_b_successor_engagement_v0.py
+
+      - name: Execute A-L qualification
+        run: python -m unittest tests.runtime.test_lane_b_successor_engagement_v0 -v
+
+      - name: Emit bounded pressure result
+        run: |
+          python -m tools.lane_b_successor_engagement_v0 \
+            --output successor_engagement_pressure_result.json
+
+      - name: Upload pressure result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lane-b-successor-engagement-001-result
+          path: successor_engagement_pressure_result.json
+          if-no-files-found: warn
