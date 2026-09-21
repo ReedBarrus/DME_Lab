@@ -1,0 +1,206 @@
+{
+  "schema": "invocation_effect_provenance_execution_freeze_v0",
+  "object_type": "EXECUTION_FREEZE",
+  "object_id": "INVOCATION_EFFECT_PROVENANCE_001-HELD_OUT-FREEZE-001",
+  "warrant": {
+    "repository_ref": "PR#70@0abe90380b24576a16cb8b87fc3ee1b793011d2a",
+    "path": "docs/warrants/INVOCATION_EFFECT_PROVENANCE_001_EXECUTION_WARRANT_v0.md",
+    "git_blob": "6715a15f2f8f4d559b0222459e75f266dd53fc87"
+  },
+  "pinned_main": "c49f13450fe69691988810ca6cb8ccaca1f42231",
+  "isolated_branch": "invocation-effect-provenance-v0",
+  "apparatus_basis_head": "1864bf29974f90a4bab860783e188cfa363a28d0",
+  "historical_negative_specimen": {
+    "pre_mutation_guard_coordinate": "f55a89de6478691587ab67298fa1b3ad546f27ce",
+    "later_observed_head": "41316921b211c1daf75c9b71b8147e0eb67d372d",
+    "treatment": "READ_ONLY_NEGATIVE_SPECIMEN",
+    "held_out_fixture_source": false
+  },
+  "role_binding": {
+    "role": "WORKSHOP",
+    "invocation_binding": "INVOCATION_EFFECT_PROVENANCE_001-CHATGPT-CURRENT-INVOCATION",
+    "source": "EXPLICIT_HUMAN_BINDING"
+  },
+  "coordination": {
+    "local_claim_digest": "sha256:be161821d938aa4c477ab8b0bc79ec3424e7e7038778a33119601ab3b714f0a5",
+    "lane_a_head": "de667390d81c1219abfee063d2a3b1fe13d1ba71",
+    "lane_a_claim_state": "ABSENT",
+    "lane_b_head": "41316921b211c1daf75c9b71b8147e0eb67d372d",
+    "lane_b_claim_digest": "sha256:b0b65897afc10b6493abb4a6f37fc3b1c7f4947820fb058aa602895826a2bfad",
+    "guard_posture": "NO_COORDINATION_BLOCK",
+    "separate_system_write_basis": "HUMAN_WARRANT"
+  },
+  "apparatus_qualification": {
+    "run_id": 35586614323,
+    "job_id": 106291321805,
+    "result": "SUCCESS",
+    "dummy_tests": "9/9 PASS",
+    "held_out_execution": "SKIPPED_NOT_FROZEN",
+    "post_qualification_repair": "NONE"
+  },
+  "closed_vocabularies": {
+    "INVOCATION_EFFECT_ATTRIBUTION": [
+      "ESTABLISHED",
+      "UNATTRIBUTED",
+      "INVALID"
+    ],
+    "CLAIM_EXERCISE": [
+      "VALID",
+      "INVALID",
+      "UNESTABLISHED"
+    ],
+    "AUTHORIZATION_AT_EFFECT_START": [
+      "VALID",
+      "ABSENT",
+      "CONSUMED",
+      "INVALID"
+    ],
+    "EFFECT_RESULT": [
+      "SUCCESS",
+      "FAILURE",
+      "NOT_STARTED"
+    ],
+    "PRESSURE_RESULT": [
+      "INVOCATION_EFFECT_PROVENANCE_SURVIVES",
+      "INVOCATION_EFFECT_PROVENANCE_FRACTURES",
+      "ADMINISTRATION_INVALID"
+    ]
+  },
+  "attribution_precedence": [
+    "CONTRADICTION -> INVALID",
+    "INSUFFICIENT_POSITIVE_CORRESPONDENCE -> UNATTRIBUTED",
+    "SUFFICIENT_CORRESPONDENCE -> ESTABLISHED"
+  ],
+  "claim_exercise_precedence": [
+    "ATTRIBUTION_NOT_ESTABLISHED -> UNESTABLISHED",
+    "CLAIM_INVOCATION_WORK_UNIT_CONTRADICTION -> INVALID",
+    "MATCHING_ACTIVE_CLAIM_AT_EFFECT_START -> VALID"
+  ],
+  "effect_start_definition": "Harness-retained EFFECT_ENTRY immediately before the controlled mutation, after actor invocation and upstream claim/authority fixtures are fixed.",
+  "durable_effect_definition": "pre != post AND post independently re-read after fsync AND retained mutation event names the same pre/post target transition",
+  "minimum_non_self_declared_correspondence": [
+    "harness-issued opaque entry witness",
+    "independently re-read pre-coordinate",
+    "independently re-read post-coordinate",
+    "harness-retained mutation_event_id",
+    "harness-retained actual actor invocation"
+  ],
+  "candidate_input_membrane": {
+    "allowed_top_level": [
+      "schema",
+      "invocation_binding",
+      "effect_observation"
+    ],
+    "forbidden": [
+      "actual_actor_ground_truth",
+      "tested_invocation",
+      "expected_attribution",
+      "expected_claim_exercise",
+      "expected_authority",
+      "evaluation_key",
+      "pre_adjudicated_correspondence"
+    ]
+  },
+  "held_out_cell_order": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E1",
+    "E2",
+    "F",
+    "G",
+    "H"
+  ],
+  "fixtures_path": "docs/candidates/invocation_effect_provenance_v0/held_out/fixtures_v0.json",
+  "evaluation_key_path": "docs/candidates/invocation_effect_provenance_v0/held_out/evaluation_key_v0.json",
+  "executable_command": "python tools/invocation_effect_provenance_v0.py held-out --fixtures docs/candidates/invocation_effect_provenance_v0/held_out/fixtures_v0.json --key docs/candidates/invocation_effect_provenance_v0/held_out/evaluation_key_v0.json --freeze docs/candidates/invocation_effect_provenance_v0/EXECUTION_FREEZE_001.json --output held_out_result.json",
+  "environment": {
+    "runner": "GitHub Actions ubuntu-latest",
+    "python": "3.12",
+    "stdlib_only": true,
+    "repository_worktree_required": true,
+    "git_required_for_blob_verification": true,
+    "network_required_by_pressure": false,
+    "locale_dependency": "NONE",
+    "clock_dependency": "NONE",
+    "randomness_dependency": "NONE"
+  },
+  "execution_policy": {
+    "stop_on_first_mismatch": true,
+    "retry_after_held_out_failure": false,
+    "repair_after_held_out_begins": false,
+    "fixture_mutation_after_freeze": false,
+    "evaluation_key_mutation_after_freeze": false,
+    "apparatus_mutation_after_freeze": false,
+    "scorer_mutation_after_freeze": false,
+    "causal_question_mutation_after_freeze": false
+  },
+  "frozen_files": [
+    {
+      "path": "tools/invocation_effect_provenance_v0.py",
+      "git_blob": "3549db5ea46154cb0c7f6e8ca44996f814e06fe6"
+    },
+    {
+      "path": "tests/runtime/test_invocation_effect_provenance_v0.py",
+      "git_blob": "fd71bc2a3472e91a55ae0afe142eebc171cbd85d"
+    },
+    {
+      "path": "schemas/invocation_effect_provenance_receipt_v0.schema.json",
+      "git_blob": "96fa2e9103eb5eb96686ccc186b741553fc356fd"
+    },
+    {
+      "path": "schemas/invocation_effect_provenance_fixture_v0.schema.json",
+      "git_blob": "19cd8067bd83eafed23e92d1b430746c3d055074"
+    },
+    {
+      "path": "docs/candidates/invocation_effect_provenance_v0/CANDIDATE_CONTRACT_001.md",
+      "git_blob": "9ee4f2da7f3e4d822689dec7466bb0cd7ed95028"
+    },
+    {
+      "path": "docs/candidates/invocation_effect_provenance_v0/HELD_OUT_FREEZE_DESIGN_001.md",
+      "git_blob": "ac21394c51de177ee1a847a9ce36d95e93accb1c"
+    },
+    {
+      "path": "docs/candidates/invocation_effect_provenance_v0/held_out/fixtures_v0.json",
+      "git_blob": "153a6c030b4e6e27d1073e0304de813017931169"
+    },
+    {
+      "path": "docs/candidates/invocation_effect_provenance_v0/held_out/evaluation_key_v0.json",
+      "git_blob": "b5721990145db28620922d2e7343d84d80a3a7fe"
+    },
+    {
+      "path": ".github/workflows/invocation-effect-provenance-001.yml",
+      "git_blob": "9cd5d487031a15cbbbb94dec0e27663bbfc92373"
+    },
+    {
+      "path": "docs/candidates/invocation_effect_provenance_v0/APPARATUS_QUALIFICATION_001.md",
+      "git_blob": "7760f9aff9d22bbd74e6153b8786a6316ea24291"
+    },
+    {
+      "path": "docs/candidates/invocation_effect_provenance_v0/coordination/active_work_claim.json",
+      "git_blob": "d9f949e649e5ac4a1a47f16d7020ca28e25ed3da"
+    },
+    {
+      "path": "docs/candidates/invocation_effect_provenance_v0/coordination/peer_cursor.json",
+      "git_blob": "52a95c34be6e24e97d990b7e3ac2c6f701791192"
+    },
+    {
+      "path": "docs/candidates/invocation_effect_provenance_v0/coordination/pre_mutation_guard_receipt.json",
+      "git_blob": "9e7a56735cad5b83fca85b1f9ae87afc23138a1e"
+    }
+  ],
+  "explicit_non_authorizations": [
+    "live Lane A mutation",
+    "live Lane B mutation",
+    "retroactive Lane-B attribution",
+    "real seat activation",
+    "successor model invocation",
+    "authority-policy activation",
+    "merge",
+    "deployment",
+    "external consequence",
+    "scientific-standing promotion",
+    "next pressure"
+  ]
+}
