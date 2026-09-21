@@ -145,6 +145,10 @@ def validate_observation_basis(basis: Mapping[str, Any]) -> None:
     if set(observed_ids) & set(missing_ids):
         raise EcologyError("object cannot be both observed and explicitly missing")
     _string_list(basis["source_refs"], "source_refs")
+    represented_sources = set(basis["source_refs"])
+    for row in basis["observed_objects"]:
+        if row["source_ref"] not in represented_sources:
+            raise EcologyError("OBSERVED_OBJECT_SOURCE_NOT_REPRESENTED")
     if basis["authority_effect"] != "NONE" or basis["execution_effect"] != "NONE":
         raise EcologyError("observation basis effects must remain NONE")
 
@@ -637,7 +641,9 @@ def run_pressure() -> dict[str, Any]:
         "source_ref":"fixture://OLD_OBSERVATION/POISON_SENTINEL",
     }]
     p_old["explicit_missing_objects"] = []
-    p_old["source_refs"] = ["fixture://OLD_OBSERVATION"]
+    p_old["source_refs"] = [
+        "fixture://OLD_OBSERVATION/POISON_SENTINEL"
+    ]
     validate_observation_basis(p_old)
     p_binding = clean_binding()
     p_new_binding, p_new_basis = rotate_invocation(
@@ -678,7 +684,9 @@ def run_pressure() -> dict[str, Any]:
         "INVOCATION_P3",
         observed_objects=fresh_x,
         explicit_missing_objects=[],
-        source_refs=["fixture://FRESH_OBSERVATION/INVOCATION_P3"],
+        source_refs=[
+            "fixture://FRESH_OBSERVATION/INVOCATION_P3/POISON_SENTINEL"
+        ],
     )
     p3_seat = occupied_seat(
         seat=clean_empty_seat(p3_binding["seat_id"]),
@@ -689,7 +697,7 @@ def run_pressure() -> dict[str, Any]:
         role=role, seat=p3_seat, binding=p3_binding, basis=p3_basis
     )
     cells["P3"] = {
-        "result":"PASS" if observation_status(p3_basis, "POISON_SENTINEL") == "OBSERVED" and p3_basis["source_refs"] == ["fixture://FRESH_OBSERVATION/INVOCATION_P3"] else "FRACTURE",
+        "result":"PASS" if observation_status(p3_basis, "POISON_SENTINEL") == "OBSERVED" and p3_basis["source_refs"] == ["fixture://FRESH_OBSERVATION/INVOCATION_P3/POISON_SENTINEL"] else "FRACTURE",
         "relation":"FRESH_OBSERVATION_MAY_REESTABLISH_SAME_FACT_EXPLICITLY",
     }
 
@@ -703,6 +711,53 @@ def run_pressure() -> dict[str, Any]:
     cells["P4"] = {
         "result":"PASS" if historical_ref != current_ref and p4_current_binding["observation_basis_ref"] == current_ref and observation_status(p4_current_basis, "POISON_SENTINEL") == "UNKNOWN" else "FRACTURE",
         "relation":"HISTORICAL_BASIS_REFERENCE_DISTINCT_FROM_CURRENT_OBSERVATION",
+    }
+
+    # Q1 -- an observed-object claim with no represented source relation is invalid.
+    q1 = fresh_basis(
+        clean_basis(),
+        seat_id="SCIENCE_TEST_01",
+        occupant_id="LABOIB_CANDIDATE",
+        invocation_id="INVOCATION_Q1",
+        basis_id="OBSERVATION_BASIS_Q1",
+    )
+    q1["observed_objects"] = [{
+        "object_id":"MAGIC_OBJECT",
+        "identity":"sha256:" + ("d" * 64),
+        "source_ref":"source://TOTALLY-REAL-BRO",
+    }]
+    try:
+        validate_observation_basis(q1)
+        q1_result = "FRACTURE"
+    except EcologyError as exc:
+        q1_result = "PASS" if str(exc) == "OBSERVED_OBJECT_SOURCE_NOT_REPRESENTED" else "FRACTURE"
+    cells["Q1"] = {
+        "result":q1_result,
+        "relation":"OBSERVED_OBJECT_REQUIRES_REPRESENTED_SOURCE_RELATION",
+    }
+
+    # Q2 -- naming a different source in the basis does not ground the claim.
+    q2 = fresh_basis(
+        clean_basis(),
+        seat_id="SCIENCE_TEST_01",
+        occupant_id="LABOIB_CANDIDATE",
+        invocation_id="INVOCATION_Q2",
+        basis_id="OBSERVATION_BASIS_Q2",
+        source_refs=["source://B"],
+    )
+    q2["observed_objects"] = [{
+        "object_id":"MAGIC_OBJECT",
+        "identity":"sha256:" + ("e" * 64),
+        "source_ref":"source://A",
+    }]
+    try:
+        validate_observation_basis(q2)
+        q2_result = "FRACTURE"
+    except EcologyError as exc:
+        q2_result = "PASS" if str(exc) == "OBSERVED_OBJECT_SOURCE_NOT_REPRESENTED" else "FRACTURE"
+    cells["Q2"] = {
+        "result":q2_result,
+        "relation":"OBSERVED_OBJECT_SOURCE_MUST_MATCH_EXPLICIT_BASIS_SOURCE_REF",
     }
 
     evaluation_key = _load(FIXTURE_DIR / "EVALUATION_KEY_v0.json")
@@ -728,6 +783,7 @@ def run_pressure() -> dict[str, Any]:
             "cross_object_identity_correspondence":"PASS" if all(cells[x]["result"] == "PASS" for x in ("M1","M2","M3","M4","N0","N1","N2","N3")) else "FRACTURE",
             "seat_binding_work_claim_correspondence":"PASS" if all(cells[x]["result"] == "PASS" for x in ("N0","N1","N2","N3")) else "FRACTURE",
             "fresh_observation_payload_noninheritance":"PASS" if all(cells[x]["result"] == "PASS" for x in ("P1","P2","P3","P4")) else "FRACTURE",
+            "fresh_observation_source_relation":"PASS" if all(cells[x]["result"] == "PASS" for x in ("Q1","Q2")) else "FRACTURE",
         },
         "role_vocabulary_status":"PROVISIONAL_EXTENSIBLE",
         "durable_ecology_installed":False,
@@ -739,6 +795,7 @@ def run_pressure() -> dict[str, Any]:
         "representation_succession":"NOT_TESTED",
         "legacy_seat_migration":"NOT_TESTED",
         "historical_basis_reuse":"SEPARATE_TYPED_RELATION_REQUIRED_NOT_MODELED",
+        "observation_source_identity_correspondence":"NOT_TESTED",
         "function_needs_seat":"NOT_TESTED",
         "stop":True,
     }
