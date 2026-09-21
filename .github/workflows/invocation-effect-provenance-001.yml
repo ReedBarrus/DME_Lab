@@ -1,0 +1,67 @@
+name: INVOCATION_EFFECT_PROVENANCE_001
+
+on:
+  push:
+    branches:
+      - invocation-effect-provenance-v0
+    paths:
+      - "tools/invocation_effect_provenance_v0.py"
+      - "tests/runtime/test_invocation_effect_provenance_v0.py"
+      - "schemas/invocation_effect_provenance_*"
+      - "docs/candidates/invocation_effect_provenance_v0/held_out/**"
+      - "docs/candidates/invocation_effect_provenance_v0/EXECUTION_FREEZE_001.json"
+      - ".github/workflows/invocation-effect-provenance-001.yml"
+  workflow_dispatch:
+
+jobs:
+  qualify-apparatus:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout exact branch head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile apparatus
+        run: |
+          python -m py_compile \
+            tools/invocation_effect_provenance_v0.py \
+            tests/runtime/test_invocation_effect_provenance_v0.py
+
+      - name: Run dummy apparatus qualification
+        run: python -m unittest tests.runtime.test_invocation_effect_provenance_v0 -v
+
+      - name: Held-out execution gate
+        id: heldout_gate
+        shell: bash
+        run: |
+          if test -f docs/candidates/invocation_effect_provenance_v0/EXECUTION_FREEZE_001.json; then
+            echo "execute=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "execute=false" >> "$GITHUB_OUTPUT"
+            echo "HELD_OUT_EXECUTION=NOT_FROZEN"
+          fi
+
+      - name: Execute frozen held-out pressure exactly once
+        if: steps.heldout_gate.outputs.execute == 'true'
+        run: |
+          python tools/invocation_effect_provenance_v0.py held-out \
+            --fixtures docs/candidates/invocation_effect_provenance_v0/held_out/fixtures_v0.json \
+            --key docs/candidates/invocation_effect_provenance_v0/held_out/evaluation_key_v0.json \
+            --freeze docs/candidates/invocation_effect_provenance_v0/EXECUTION_FREEZE_001.json \
+            --output held_out_result.json
+
+      - name: Upload held-out result
+        if: always() && steps.heldout_gate.outputs.execute == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: invocation-effect-provenance-001-held-out
+          path: held_out_result.json
+          if-no-files-found: warn
