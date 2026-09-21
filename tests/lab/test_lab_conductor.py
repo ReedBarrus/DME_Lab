@@ -147,5 +147,57 @@ class LabConductorTests(unittest.TestCase):
         )
 
 
+    def test_partial_transition_lifecycle_is_observational_until_succeeded(self):
+        tmp, _, paths = self.make_root()
+        self.addCleanup(tmp.cleanup)
+        lab_conductor.ensure_registered("LP-001-CONDUCTOR-FIXTURE", paths)
+
+        lab_conductor.append_event(
+            paths.events,
+            {
+                "event_type": "TRANSITION_REQUESTED",
+                "process_id": "LP-001-CONDUCTOR-FIXTURE",
+                "transition_id": "LOAD_FROZEN_CONTRACT",
+            },
+        )
+        requested = lab_conductor.replay(paths)["processes"][
+            "LP-001-CONDUCTOR-FIXTURE"
+        ]
+        self.assertEqual(requested["phase"], "SEEDED")
+        self.assertEqual(requested["status"], "REGISTERED")
+        self.assertEqual(requested["last_event_type"], "TRANSITION_REQUESTED")
+
+        lab_conductor.append_event(
+            paths.events,
+            {
+                "event_type": "TRANSITION_STARTED",
+                "process_id": "LP-001-CONDUCTOR-FIXTURE",
+                "transition_id": "LOAD_FROZEN_CONTRACT",
+            },
+        )
+        started = lab_conductor.replay(paths)["processes"][
+            "LP-001-CONDUCTOR-FIXTURE"
+        ]
+        self.assertEqual(started["phase"], "SEEDED")
+        self.assertEqual(started["status"], "REGISTERED")
+        self.assertEqual(started["last_event_type"], "TRANSITION_STARTED")
+
+        lab_conductor.append_event(
+            paths.events,
+            {
+                "event_type": "TRANSITION_SUCCEEDED",
+                "process_id": "LP-001-CONDUCTOR-FIXTURE",
+                "transition_id": "LOAD_FROZEN_CONTRACT",
+                "to_phase": "CONTRACT_AVAILABLE",
+            },
+        )
+        succeeded = lab_conductor.replay(paths)["processes"][
+            "LP-001-CONDUCTOR-FIXTURE"
+        ]
+        self.assertEqual(succeeded["phase"], "CONTRACT_AVAILABLE")
+        self.assertEqual(succeeded["status"], "ACTIVE")
+        self.assertEqual(succeeded["last_event_type"], "TRANSITION_SUCCEEDED")
+
+
 if __name__ == "__main__":
     unittest.main()
