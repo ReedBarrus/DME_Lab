@@ -10,6 +10,7 @@ class HistoricalP11ProducerTests(unittest.TestCase):
         key=load_json(KEY)["cells"]
         self.assertEqual(set(observed),set(key))
         for cell_id, expected in key.items():
+            self.assertEqual(observed[cell_id]["status"],expected["status"])
             self.assertEqual(observed[cell_id]["standing"],expected["standing"])
 
     def test_witness_membrane(self):
@@ -19,6 +20,13 @@ class HistoricalP11ProducerTests(unittest.TestCase):
             self.assertTrue(value["basis_ref"])
             self.assertTrue(value["producer"])
             self.assertTrue(value["version"])
+
+    def test_exact_p10_set_binding(self):
+        observed=qualify(load_json(FIXTURES))
+        for cell_id in ("F","G","H"):
+            self.assertEqual(observed[cell_id]["status"],"ADMINISTRATION_INVALID")
+            self.assertIsNone(observed[cell_id]["standing"])
+        self.assertEqual(observed["I"]["standing"],"RETAINABLE")
 
 if __name__=="__main__":
     unittest.main()
