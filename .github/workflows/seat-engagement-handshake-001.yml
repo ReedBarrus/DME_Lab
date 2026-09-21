@@ -1,0 +1,77 @@
+name: SEAT_ENGAGEMENT_HANDSHAKE_001
+
+on:
+  pull_request:
+    paths:
+      - "docs/candidates/seat_engagement_handshake_v0/**"
+      - "schemas/seat_engagement_*"
+      - "tools/seat_engagement_handshake_v0.py"
+      - "tests/runtime/test_seat_engagement_handshake_v0.py"
+      - ".github/workflows/seat-engagement-handshake-001.yml"
+      - "coordination/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile deterministic apparatus
+        run: |
+          python -m py_compile \
+            tools/seat_engagement_handshake_v0.py \
+            tests/runtime/test_seat_engagement_handshake_v0.py
+
+      - name: Execute bounded synthetic pressure
+        run: |
+          python -m unittest tests.runtime.test_seat_engagement_handshake_v0 -v
+
+      - name: Generate and verify synthetic qualification evidence
+        run: |
+          FIXTURES=docs/candidates/seat_engagement_handshake_v0/fixtures/RAW_FIXTURES_v0.json
+          KEY=docs/candidates/seat_engagement_handshake_v0/fixtures/EVALUATION_KEY_v0.json
+          EVIDENCE=docs/candidates/seat_engagement_handshake_v0/QUALIFICATION_EVIDENCE_001.json
+          if test -f "$EVIDENCE"; then
+            python tools/seat_engagement_handshake_v0.py qualify \
+              --fixtures "$FIXTURES" \
+              --key "$KEY" \
+              --expected "$EVIDENCE" \
+              > /tmp/seat_engagement_evidence.json
+          else
+            python tools/seat_engagement_handshake_v0.py qualify \
+              --fixtures "$FIXTURES" \
+              --key "$KEY" \
+              > /tmp/seat_engagement_evidence.json
+          fi
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          value=json.loads(Path("/tmp/seat_engagement_evidence.json").read_text())
+          assert value["all_primary_cells_pass"] is True
+          assert value["model_invocations"] == 0
+          assert value["real_seat_effect"] == "NONE"
+          assert value["real_occupant_effect"] == "NONE"
+          assert value["live_authority_effect"] == "NONE"
+          assert value["external_effect"] == "NONE"
+          print("SYNTHETIC_QUALIFICATION_PASS")
+          print("REAL_SEAT_UNTOUCHED")
+          print("LIVE_AUTHORITY_NONE")
+          print("EXTERNAL_CONSEQUENCE_NONE")
+          PY
+
+      - name: Confirm no production activation surface was materialized
+        run: |
+          test ! -e docs/candidates/seat_engagement_handshake_v0/REAL_SEAT_ACTIVE
+          test ! -e docs/candidates/seat_engagement_handshake_v0/LIVE_AUTHORITY_ACTIVE
+          echo "PRODUCTION_ACTIVATION_ABSENT"
