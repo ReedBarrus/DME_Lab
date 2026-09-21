@@ -1,0 +1,73 @@
+{
+  "schema": "invocation_effect_provenance_001_final_disposition_v0",
+  "object_type": "PRESSURE_RESULT",
+  "object_id": "INVOCATION_EFFECT_PROVENANCE_001-HELD_OUT-001",
+  "disposition": "ADMINISTRATION_INVALID",
+  "qualified_apparatus_basis_head": "1864bf29974f90a4bab860783e188cfa363a28d0",
+  "execution_freeze_head": "0f946bd0b96e846b979a890c6339128625a9af11",
+  "execution_freeze_blob": "33dadd4da260daf3476ca7ef7e1d1dc57d286886",
+  "warrant": {
+    "pr": 70,
+    "head": "0abe90380b24576a16cb8b87fc3ee1b793011d2a",
+    "blob": "6715a15f2f8f4d559b0222459e75f266dd53fc87"
+  },
+  "held_out_run": {
+    "workflow_run_id": 35586813643,
+    "job_id": 106291959383,
+    "head": "0f946bd0b96e846b979a890c6339128625a9af11",
+    "dummy_qualification": "9/9 PASS",
+    "held_out_gate": "ENTERED",
+    "held_out_step": "FAILURE",
+    "result_artifact_count": 0
+  },
+  "administration_failure": {
+    "phase": "POST_HELD_OUT_EXECUTION_RESULT_ASSEMBLY",
+    "exception_type": "KeyError",
+    "exception_value": "warrant_blob",
+    "runner_location": "tools/invocation_effect_provenance_v0.py:execute_held_out result assembly",
+    "frozen_runner_expression": "freeze[\"warrant_blob\"]",
+    "frozen_manifest_actual_location": "freeze[\"warrant\"][\"git_blob\"]",
+    "smallest_mismatch": "runner expected a top-level warrant_blob key that the frozen execution manifest did not define",
+    "cell_level_verdicts_retained": false,
+    "cell_level_result_recovery_without_retry": "NOT_AVAILABLE"
+  },
+  "held_out_semantics": {
+    "administration_began": true,
+    "apparatus_repair_after_begin": "PROHIBITED_AND_NOT_PERFORMED",
+    "retry": "PROHIBITED_AND_NOT_PERFORMED",
+    "fixture_mutation": "NONE",
+    "scorer_mutation": "NONE",
+    "evaluation_key_mutation": "NONE",
+    "causal_question_mutation": "NONE"
+  },
+  "work_claim_disposition": {
+    "claim_id": "INVOCATION_EFFECT_PROVENANCE_001-WORKSHOP-CLAIM-001",
+    "released_commit": "f117d2fc9aed49efa4490cbcd2f076437fdab114",
+    "released_claim_blob": "ef7c0bba5e12d972adf9f3891dcb45ac9d69b218",
+    "status": "RELEASED",
+    "occupant_invocation_coordinates_retained_as": "HISTORICAL_PROVENANCE_ONLY",
+    "current_workshop_binding_effect": "NONE"
+  },
+  "authority_disposition": {
+    "system_write_source": "HUMAN_WARRANT",
+    "future_write_authority_after_final_evidence_receipt": "NONE_UNDER_THIS_WARRANT",
+    "one_unit_one_envelope_posture": "CONTRACTED_AT_STOP"
+  },
+  "prohibited_effects": {
+    "live_lane_a_mutation": "NONE",
+    "live_lane_b_mutation": "NONE",
+    "retroactive_lane_b_attribution": "NONE",
+    "merge": "NONE",
+    "deployment": "NONE",
+    "external_consequence": "NONE",
+    "authority_policy_activation": "NONE",
+    "successor_model_invocation": "NONE",
+    "scientific_promotion": "NONE"
+  },
+  "remaining_ambiguity": [
+    "The frozen held-out administration entered cell execution before the result-assembly exception.",
+    "The exact per-cell observed relation vectors were not serialized and cannot be recovered under this warrant without a prohibited rerun.",
+    "No claim is made that any held-out cell passed or failed."
+  ],
+  "stop": true
+}
