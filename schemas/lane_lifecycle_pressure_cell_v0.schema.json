@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lane_lifecycle_pressure_cell_v0",
+  "title": "LANE_LIFECYCLE_DISPOSITION_001 synthetic pressure cell",
+  "type": "object",
+  "required": ["cell_id", "kind"],
+  "properties": {
+    "cell_id": {"type": "string"},
+    "kind": {
+      "enum": [
+        "branch",
+        "invariant_group",
+        "adversarial_output",
+        "reactivation",
+        "paired_intervention"
+      ]
+    },
+    "base": {"type": "string"},
+    "mutation": {"type": "object"},
+    "subcells": {"type": "array", "items": {"type": "string"}},
+    "input": {"type": "object"}
+  },
+  "additionalProperties": false
+}
