@@ -56,7 +56,11 @@
     "U3": "PASS",
     "V1": "PASS",
     "V2": "PASS",
-    "V3": "PASS"
+    "V3": "PASS",
+    "W1": "PASS",
+    "W2": "PASS",
+    "W3": "PASS",
+    "W4": "PASS"
   },
   "terminal_status": "QUALIFIED_SYNTHETIC_GRAMMAR"
 }
