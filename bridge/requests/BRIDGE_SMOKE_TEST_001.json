@@ -1,0 +1,12 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0",
+  "request_id": "BRIDGE_SMOKE_TEST_001",
+  "enabled": false,
+  "source_ref": "1a5116ac79b5a51056f256010bf9d5927078396b",
+  "input_path": "bridge/prompts/BRIDGE_SMOKE_TEST_001.txt",
+  "input_sha256": "555acb9c886e9f38e71768e5c02ea91e868fe9c75e7e392e06043b7519bb46a0",
+  "model": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 64,
+  "purpose": "Safe disabled smoke test for the local LM Studio invocation bridge."
+}
