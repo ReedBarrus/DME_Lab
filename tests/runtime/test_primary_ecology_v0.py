@@ -330,6 +330,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             "source_ref":fresh_source_ref,
             "encounter_kind":"PRESENTED_TO_INVOCATION",
             "basis_ref":new_basis["basis_ref"],
+            "observation_basis_ref":observation_basis_ref(new_basis),
             "authority_effect":"NONE",
             "execution_effect":"NONE",
         }
@@ -652,6 +653,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             "source_ref":source_ref,
             "encounter_kind":"PRESENTED_TO_INVOCATION",
             "basis_ref":basis["basis_ref"],
+            "observation_basis_ref":observation_basis_ref(basis),
             "authority_effect":"NONE",
             "execution_effect":"NONE",
         }
@@ -762,6 +764,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             "witness_ref":witness_ref,
             "encounter_kind":"PRESENTED_TO_INVOCATION",
             "basis_ref":basis["basis_ref"],
+            "observation_basis_ref":observation_basis_ref(basis),
             "authority_effect":"NONE",
             "execution_effect":"NONE",
         }
@@ -993,6 +996,82 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         self.assertNotIn(basis_status, forbidden)
         self.assertNotIn(current_status, forbidden)
 
+    def test_W1_source_encounter_same_label_different_basis_bytes_rejected(self):
+        source, basis_a, binding_a, seat, encounter = self._q5_bundle()
+        basis_b = copy.deepcopy(basis_a)
+        basis_b["basis_id"] = "OBSERVATION_BASIS_R_MUTATED"
+        self.assertEqual(basis_a["basis_ref"], basis_b["basis_ref"])
+        self.assertNotEqual(
+            observation_basis_ref(basis_a),
+            observation_basis_ref(basis_b),
+        )
+        binding_b = copy.deepcopy(binding_a)
+        binding_b["observation_basis_ref"] = observation_basis_ref(basis_b)
+        with self.assertRaisesRegex(EcologyError, "SOURCE_ENCOUNTER_EXACT_BASIS_MISMATCH"):
+            validate_correspondence(
+                role=clean_role(),
+                seat=seat,
+                binding=binding_b,
+                basis=basis_b,
+                source_carriers=[source],
+                source_encounters=[encounter],
+            )
+
+    def test_W2_missingness_encounter_same_label_different_basis_bytes_rejected(self):
+        witness, basis_a, binding_a, seat, encounter = self._q6_bundle()
+        basis_b = copy.deepcopy(basis_a)
+        basis_b["basis_id"] = "OBSERVATION_BASIS_S_MUTATED"
+        self.assertEqual(basis_a["basis_ref"], basis_b["basis_ref"])
+        self.assertNotEqual(
+            observation_basis_ref(basis_a),
+            observation_basis_ref(basis_b),
+        )
+        binding_b = copy.deepcopy(binding_a)
+        binding_b["observation_basis_ref"] = observation_basis_ref(basis_b)
+        with self.assertRaisesRegex(
+            EcologyError, "MISSINGNESS_WITNESS_ENCOUNTER_EXACT_BASIS_MISMATCH"
+        ):
+            validate_correspondence(
+                role=clean_role(),
+                seat=seat,
+                binding=binding_b,
+                basis=basis_b,
+                missingness_witnesses=[witness],
+                missingness_witness_encounters=[encounter],
+            )
+
+    def test_W3_encounter_exact_current_basis_identity_valid(self):
+        source, basis_a, binding_a, seat, encounter = self._q5_bundle()
+        basis_b = copy.deepcopy(basis_a)
+        basis_b["basis_id"] = "OBSERVATION_BASIS_R_CURRENT"
+        binding_b = copy.deepcopy(binding_a)
+        binding_b["observation_basis_ref"] = observation_basis_ref(basis_b)
+        encounter["observation_basis_ref"] = observation_basis_ref(basis_b)
+        validate_correspondence(
+            role=clean_role(),
+            seat=seat,
+            binding=binding_b,
+            basis=basis_b,
+            source_carriers=[source],
+            source_encounters=[encounter],
+        )
+
+    def test_W4_basis_byte_mutation_invalidates_prior_encounter(self):
+        source, basis, binding, seat, encounter = self._q5_bundle()
+        exact_before = observation_basis_ref(basis)
+        basis["source_refs"] = list(basis["source_refs"]) + ["fixture://Q10/EXTRA"]
+        binding["observation_basis_ref"] = observation_basis_ref(basis)
+        self.assertNotEqual(exact_before, binding["observation_basis_ref"])
+        with self.assertRaisesRegex(EcologyError, "SOURCE_ENCOUNTER_EXACT_BASIS_MISMATCH"):
+            validate_correspondence(
+                role=clean_role(),
+                seat=seat,
+                binding=binding,
+                basis=basis,
+                source_carriers=[source],
+                source_encounters=[encounter],
+            )
+
     def test_observation_basis_ref_pins_exact_basis_bytes(self):
         b = clean_bundle()
         original_ref = observation_basis_ref(b["basis"])
@@ -1052,6 +1131,10 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         )
         self.assertEqual(
             result["core_relations"]["unknown_status_semantic_ceiling"],
+            "PASS",
+        )
+        self.assertEqual(
+            result["core_relations"]["encounter_exact_current_basis_identity"],
             "PASS",
         )
         self.assertFalse(result["durable_ecology_installed"])
@@ -1117,6 +1200,13 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         )
         self.assertEqual(result["unknown_standing"], "NOT_ESTABLISHED")
         self.assertEqual(result["basis_exhaustiveness"], "NOT_ESTABLISHED")
+        self.assertEqual(
+            result["encounter_basis_identity"],
+            "EXACT_OBSERVATION_BASIS_CONTENT_IDENTITY",
+        )
+        self.assertEqual(
+            result["friendly_basis_ref_identity_sufficient"], "NO"
+        )
 
 
 if __name__ == "__main__":
