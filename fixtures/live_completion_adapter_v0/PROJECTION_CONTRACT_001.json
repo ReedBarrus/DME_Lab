@@ -1,0 +1,116 @@
+{
+  "schema": "LIVE_COMPLETION_ADAPTER_PROJECTION_CONTRACT_v0",
+  "contract_id": "LIVE_COMPLETION_ADAPTER_QUALIFICATION_001-PROJECTION-CONTRACT-001",
+  "source_review_head": "348ab7af90f6ec693873f379d7fbb030bb083603",
+  "repaired_bridge_head": "b76c9e5aaad168ce206f7b11f0fac54dfdfcaf7a",
+  "frozen_coordinates": {
+    "authoritative_main": "f36261e17790b853a91c81bc2f7d0e63e8ee8436",
+    "lane_a": "61ed8e8a3cea8aa3bc29adb0df361c214da7aeba",
+    "lane_b": "a88d1d56d0b624cf00239cc8c2621522b45b4b08"
+  },
+  "adapter_implementation": {
+    "path": "tools/live_completion_controller_adapter_v2.py",
+    "blob": "f2fd235db70b4d2a6d15efbbe75ac1a44786c22c"
+  },
+  "authoritative_controller": {
+    "path": "tools/lane_lifecycle_disposition_v0.py",
+    "blob": "89ff5ffc6c3555bc31716735af6e93498d675ced"
+  },
+  "pinned_repo_inputs": {
+    "frozen_specimen": {
+      "path": "fixtures/live_completion_evidence_v1/FROZEN_LANE_A_SPECIMEN.json",
+      "blob": "5bdfb8abd40948a5c967788c6b38912086c133e1"
+    },
+    "binding": {
+      "path": "fixtures/live_completion_evidence_v1/RAW_LIVE_WORK_BINDING.json",
+      "blob": "59c7c4ecbcfe97a11e301218b9b96b26689c92db"
+    },
+    "criterion": {
+      "path": "fixtures/live_completion_evidence_v1/RAW_COMPLETION_CRITERION.json",
+      "blob": "a6f1c7b533e22ca0e492a7bd1ccb9e758436613d"
+    },
+    "evidence": {
+      "path": "fixtures/live_completion_evidence_v1/RAW_WORK_EVIDENCE.json",
+      "blob": "7d5547311cb75245acc6a52f0e7a57b2a045dc5b"
+    },
+    "blocker_scope": {
+      "path": "fixtures/live_completion_evidence_v1/RAW_BLOCKER_SCOPE.json",
+      "blob": "02598ff17d98d903d07903ee932b4e4dfe1d2d0e"
+    },
+    "p07_basis": {
+      "path": "fixtures/live_completion_evidence_v1/P07_RELATION_BASIS_001.json",
+      "blob": "2068d2982b7ca8ec360181a1e71443aae00d6cb6"
+    },
+    "p08_basis": {
+      "path": "fixtures/live_completion_evidence_v1/P08_RELATION_BASIS_001.json",
+      "blob": "fdda0deaff5142cd99eca3a7acf12f69a1844c44"
+    },
+    "producer_qualification_registry": {
+      "path": "fixtures/live_completion_evidence_v1/PRODUCER_QUALIFICATION_REGISTRY_002.json",
+      "blob": "cd70692b5d8d8f79cdea7d660b6449f10d9a86cd"
+    },
+    "raw_evaluator": {
+      "path": "tools/live_completion_raw_evaluator_v1.py",
+      "blob": "91757d9b9eb1293048ae11a0fa5b331c2269f894"
+    },
+    "p07_producer": {
+      "path": "tools/live_unit_completion_standing_producer_v1.py",
+      "blob": "06d57d1498aea07c0476dd861a31bbf9d0c1ede4"
+    },
+    "p08_producer": {
+      "path": "tools/live_completion_blocker_status_producer_v1.py",
+      "blob": "717d2b0ac3f9ffa94c955b3b003bc811d5c28459"
+    }
+  },
+  "pinned_git_inputs": {
+    "historical_claim": {
+      "ref": "61ed8e8a3cea8aa3bc29adb0df361c214da7aeba",
+      "path": "coordination/active_work_claim.json",
+      "blob": "5f0a134655c0c45287ef61b29ed46072d47c6895"
+    },
+    "historical_manifest": {
+      "ref": "61ed8e8a3cea8aa3bc29adb0df361c214da7aeba",
+      "path": "coordination/lane_manifest.json",
+      "blob": "9f5459fc2707091dd7512d86f3a2b795e64e32bf"
+    },
+    "prework_claim": {
+      "ref": "b36ae5c4a120e31f9f404791c65acfa8c8d69301",
+      "path": "coordination/active_work_claim.json",
+      "blob": "5f0a134655c0c45287ef61b29ed46072d47c6895"
+    }
+  },
+  "projection_rules": {
+    "envelope_id": "historical_claim.consequence_envelope_id -> claim/binding/envelope.envelope_id",
+    "bounded_unit_id": "raw.derive_p05(...).bounded_unit_id -> every controller bounded_unit_id coordinate",
+    "p06_outcome_mapping": {
+      "SATISFIED": "RAW_COMPLETION_TERMS_SATISFIED"
+    },
+    "p07": "qualified P07 relation -> UNIT_COMPLETION_STANDING carrier",
+    "p08": "qualified P08 relation -> COMPLETION_BLOCKER_STATUS carrier",
+    "receipt_id_prefix": "live-completion-adapter-v2:"
+  },
+  "operation_order": [
+    "RECONSTRUCT_PINNED_RAW_BASIS",
+    "DERIVE_P05_P06",
+    "REPRODUCE_P07_P08",
+    "PROJECT_CONTROLLER_INPUT",
+    "VERIFY_PROJECTED_INPUT",
+    "IMMEDIATELY_INVOKE_EXACT_CONTROLLER",
+    "WRAP_AND_RELABEL_RESULT"
+  ],
+  "forbidden_caller_inputs": [
+    "P05_VERDICT",
+    "P06_VERDICT",
+    "P07_STANDING",
+    "P08_STANDING",
+    "BLOCKER_BOOLEANS",
+    "BOUNDED_UNIT_ID",
+    "CONTROLLER_RECEIPT_OUTCOME",
+    "CONTROLLER_CLAIM_PROJECTION",
+    "CONTROLLER_INPUT",
+    "COMPLETE_ADMISSIBILITY_VERDICT",
+    "POST_PROJECTION_CALLBACK"
+  ],
+  "historical_claim_rule": "SOURCE_HISTORICAL_CLAIM != CONTROLLER_CLAIM_PROJECTION",
+  "transition_execution": "FORBIDDEN"
+}
