@@ -623,7 +623,8 @@ Legend:
 - [X] RECONSTRUCTION MEMBRANE NEUTRALITY REPAIR
 - [X] FORENSIC REPRESSURE OF REPAIRED MEMBRANE
 - [X] EXACT MATERIALIZATION OF REPAIRED CELL-002 PAIR
-- [~] ACCESS-RECEIPT / ADMINISTRATION VALIDATION
+- [!] CHATGPT ACCOUNT-SURFACE ACCESS ADMINISTRATION — contamination persists
+- [~] EXTERNALLY ADMINISTERED STATELESS RECONSTRUCTION
 - [~] formal Cell-002 blinded reconstruction — provisional semantic discrimination observed
 - [ ] formal evaluator adjudication
 
@@ -2168,3 +2169,109 @@ Then perform evaluator adjudication over:
 - evaluator-only semantic key.
 
 Do not rerun or revise the reconstructions before administration is settled.
+
+
+---
+
+# 17. Blinded Reconstruction Administration Failure — Account Context Contamination
+
+## Result
+
+Repeated fresh-chat attempts produced semantically useful A/B reconstructions but failed administration.
+
+Observed receipts included combinations of:
+
+```text
+other_packet_variant_access: YES
+evaluation_contract_exposed: YES
+target_mutation_exposed: YES
+lane_a_candidate_basis_exposed: YES
+memory_or_personalization_context_used: YES
+external_context_used: YES
+```
+
+with:
+
+```text
+administration_status:
+INVALID
+```
+
+## Apparatus finding
+
+A newly opened ChatGPT conversation is not, by itself, a qualified blinded cognition instrument for this campaign.
+
+Further, model self-report about hidden account / memory / personalization context is not sufficient evidence of isolation.
+
+Freeze:
+
+```text
+NEW CHAT
+!=
+STATELESS COGNITION INSTRUMENT
+
+MODEL SAYS "NO EXTERNAL CONTEXT"
+!=
+INDEPENDENT PROOF OF CONTEXT ISOLATION
+```
+
+and:
+
+```text
+BLINDING MUST BE ENFORCED BY THE INVOCATION APPARATUS,
+NOT RECOVERED AFTERWARD BY SELF-REPORT
+```
+
+## Scientific standing
+
+The observed A/B semantic discrimination remains useful as provisional behavior evidence.
+
+It does not qualify as formal blinded Cell-002 evidence because the cognition-access membrane was not independently controlled.
+
+Do not rerun further account-surface ChatGPT reconstructions merely to seek a favorable receipt.
+
+## Next lawful administration
+
+Use an externally administered stateless invocation surface in which the experimenter can establish, by construction:
+
+- exactly one packet is supplied;
+- no conversation history is supplied;
+- no memory / personalization context is supplied;
+- no repository / tool / connector access is enabled;
+- no evaluator key or mutation description is supplied;
+- no other packet variant is supplied;
+- the reconstruction response is frozen before evaluation.
+
+Candidate surfaces:
+
+```text
+1. STATELESS API INVOCATION WITH EXPLICIT MESSAGE PAYLOAD
+
+2. LOCAL MODEL / LM STUDIO INVOCATION WITH EMPTY CONTEXT
+
+3. OTHER PROVIDER API WITH EXPLICIT SINGLE-TURN INPUT
+```
+
+The access witness should be generated from the invocation harness configuration / captured request, not solely from model introspection.
+
+## Administration witness target
+
+Future formal receipt should distinguish:
+
+```text
+APPARATUS-OBSERVED ACCESS
+
+from
+
+MODEL-REPORTED ACCESS
+```
+
+with apparatus evidence taking precedence.
+
+Current next move:
+
+```text
+EXTERNALLY ADMINISTERED STATELESS RECONSTRUCTION
+```
+
+Do not alter the already materialized Cell-002 packets.
