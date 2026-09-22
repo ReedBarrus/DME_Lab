@@ -144,6 +144,17 @@ def _composed_basis_catalog(repo: Path) -> dict[str, Any]:
     return result
 
 
+def _controller_standing(row: Mapping[str, Any]) -> dict[str, Any]:
+    """Project a qualified live relation onto the exact lifecycle standing membrane."""
+    return {
+        "relation_type": row.get("relation_type"),
+        "standing": row.get("standing"),
+        "basis_ref": row.get("basis_ref"),
+        "producer": row.get("producer"),
+        "version": row.get("version"),
+    }
+
+
 def build_controller_input(repo_root: str | Path) -> dict[str, Any]:
     repo = Path(repo_root).resolve()
     verify_authoritative_controller_surface(repo)
@@ -187,8 +198,8 @@ def build_controller_input(repo_root: str | Path) -> dict[str, Any]:
             "outcome": "RAW_COMPLETION_TERMS_SATISFIED" if p06_ok else "RAW_COMPLETION_TERMS_NOT_SATISFIED",
         },
         "standings": [
-            copy.deepcopy(relations["P07"]["relation"]),
-            copy.deepcopy(relations["P08"]["relation"]),
+            _controller_standing(relations["P07"]["relation"]),
+            _controller_standing(relations["P08"]["relation"]),
         ],
     }
 
