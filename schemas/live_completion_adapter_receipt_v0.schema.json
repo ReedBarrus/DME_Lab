@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/live_completion_adapter_receipt_v0.schema.json",
+  "title": "LIVE_COMPLETION_ADAPTER_RECEIPT_v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "adapter_contract_id",
+    "adapter_implementation_blob",
+    "authoritative_controller",
+    "historical_claim_ref",
+    "historical_claim_object",
+    "controller_claim_projection",
+    "controller_input_digest",
+    "controller_input_projection",
+    "controller_result",
+    "transition_executed",
+    "lane_mutation",
+    "claim_mutation",
+    "occupant_mutation",
+    "merge_effect"
+  ],
+  "properties": {
+    "schema": {
+      "const": "LIVE_COMPLETION_ADAPTER_RECEIPT_v0"
+    },
+    "adapter_contract_id": {
+      "type": "string"
+    },
+    "adapter_implementation_blob": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "authoritative_controller": {
+      "type": "object"
+    },
+    "historical_claim_ref": {
+      "type": "string"
+    },
+    "historical_claim_object": {
+      "type": "object"
+    },
+    "controller_claim_projection": {
+      "type": "object"
+    },
+    "controller_input_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "controller_input_projection": {
+      "type": "object"
+    },
+    "controller_result": {
+      "type": "object"
+    },
+    "transition_executed": {
+      "const": false
+    },
+    "lane_mutation": {
+      "const": "NONE"
+    },
+    "claim_mutation": {
+      "const": "NONE"
+    },
+    "occupant_mutation": {
+      "const": "NONE"
+    },
+    "merge_effect": {
+      "const": "NONE"
+    }
+  }
+}
