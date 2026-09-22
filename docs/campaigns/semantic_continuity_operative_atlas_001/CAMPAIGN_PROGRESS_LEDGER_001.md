@@ -621,7 +621,8 @@ Legend:
 - [X] BASIS-RELATION DEPENDENCY PRESSURE
 - [!] REFERENCE-ADMISSION / DERIVED-BASIS PROPERTY PRESSURE — packet geometry survives, reconstruction membrane interferes
 - [X] RECONSTRUCTION MEMBRANE NEUTRALITY REPAIR
-- [~] FORENSIC REPRESSURE OF REPAIRED MEMBRANE
+- [X] FORENSIC REPRESSURE OF REPAIRED MEMBRANE
+- [~] EXACT MATERIALIZATION OF REPAIRED CELL-002 PAIR
 - [ ] admissible repaired Cell-002 counterfeit
 - [ ] formal Cell-002 blinded reconstruction
 
@@ -1706,3 +1707,277 @@ Attack specifically:
 - positive/negative symmetry.
 
 Do not materialize the pair until the repaired membrane survives this re-pressure.
+
+
+---
+
+# 15. Cell-002 Repaired Membrane — Forensic Repressure Qualification
+
+## Disposition
+
+Forensic Demon re-pressured the repaired Cell-002 reconstruction membrane and returned:
+
+```text
+MEMBRANE_INTERFERENCE:
+REPAIRED
+
+INSTRUCTION_TARGET_NEUTRALITY:
+SURVIVES
+
+EXPERIMENTAL_DESIGN:
+SURVIVES
+
+READY_FOR_EXACT_MATERIALIZATION:
+YES
+
+REQUIRED_REPAIR:
+NONE BEFORE EXACT MATERIALIZATION
+```
+
+## Four-state vocabulary
+
+The following bounded response states survived adversarial review:
+
+```text
+ESTABLISHED
+
+EXPLICITLY_NOT_ESTABLISHED
+
+UNRESOLVED
+
+NO_PACKET_LOCAL_STANDING_RECOVERED
+```
+
+The critical distinction survives:
+
+```text
+PACKET ESTABLISHES X
+
+!=
+
+PACKET ESTABLISHES NON-ESTABLISHMENT OF X
+
+!=
+
+PACKET ESTABLISHES X AS UNRESOLVED
+
+!=
+
+PACKET PROVIDES NO LOCAL STANDING FOR X
+```
+
+In particular:
+
+```text
+NO_PACKET_LOCAL_STANDING_RECOVERED
+```
+
+is a bounded statement about the admitted reconstruction basis, not a statement about the live/external state itself.
+
+## Membrane neutrality
+
+No hidden coercion was found from absence of support into:
+
+- unresolvedness;
+- explicit non-establishment;
+- positive execution.
+
+The repaired membrane now supports open-world packet reconstruction rather than absence-as-negation or absence-as-unresolvedness.
+
+Freeze:
+
+```text
+MISSING EXECUTION STANDING
+!=
+EXECUTION UNRESOLVED
+
+MISSING EXECUTION STANDING
+!=
+EXECUTION NOT_ESTABLISHED
+
+MISSING EXECUTION CEILING
+!=
+EXECUTION ESTABLISHED
+```
+
+## Result-state surface
+
+```text
+COMPLETE_RESULT_STATE_VALUES
+```
+
+survived with minor pressure.
+
+It associates the values with the COMPLETE adjudication result but does not inherently assert:
+
+- projected;
+- realized;
+- executed;
+- non-executed;
+- live;
+- non-live.
+
+CB3 and CB8 both remain intact.
+
+## Residual ceiling derivation
+
+For the designed negative packet, the retained local relations cannot lawfully derive any of:
+
+```text
+LIVE COMPLETE EXECUTION:
+EXPLICITLY_NOT_ESTABLISHED
+
+LIVE COMPLETE EXECUTION:
+UNRESOLVED
+
+LIVE COMPLETE EXECUTION:
+ESTABLISHED
+```
+
+Therefore the bounded negative state is:
+
+```text
+LIVE COMPLETE EXECUTION:
+NO_PACKET_LOCAL_STANDING_RECOVERED
+```
+
+Current forensic result:
+
+```text
+LOCAL_CEILING_RECOVERABILITY:
+NO
+
+SYNONYMOUS_CEILING_CARRIER:
+ABSENT
+```
+
+bounded to this exact design.
+
+## Reference-admission membrane
+
+```text
+REFERENCE_ADMISSION_DISCIPLINE:
+SURVIVES
+
+SUPPORT_HANDLE_SEMANTIC_LEAKAGE:
+NONE MATERIAL
+
+REFERENCE_SIDE_CHANNEL_CLOSED_AT_DESIGN_LEVEL:
+YES
+```
+
+Execution-time isolation remains unestablished until a valid access receipt proves the cognition-access membrane.
+
+Freeze:
+
+```text
+CAN CHALLENGE SOURCE
+!=
+SOURCE SEMANTICS AVAILABLE TO RECONSTRUCTION
+```
+
+## Closure pressure
+
+```text
+CLOSURE_ATTRACTIVENESS:
+ESTABLISHED
+```
+
+The negative remains:
+
+- positive;
+- coherent;
+- complete-seeming;
+- basis-linked;
+- challengeable;
+- non-contradictory;
+
+while lacking packet-local execution standing.
+
+## Non-target audit
+
+```text
+CB1:
+INTACT
+
+CB2:
+INTACT
+
+CB3:
+INTACT
+
+CB7-N:
+INTACT
+
+CB8:
+INTACT
+
+SUPPORT_HANDLE:
+INTACT
+
+REFERENCE_REACHABILITY:
+INTACT
+
+REFERENCE_ADMISSION_STATUS:
+INTACT
+
+AUTHORITY_STANDING:
+INTACT
+
+INTEGRATION_STANDING:
+INTACT
+
+POSITIVE_COMPLETE_STANDING:
+INTACT
+
+DEPENDENCY_ORDER:
+INTACT
+
+INSTRUCTION_SYMMETRY:
+INTACT
+
+RESPONSE_FORMAT_SYMMETRY:
+INTACT
+
+NON_TARGET_MATCH:
+SURVIVES
+```
+
+## Materialization gate
+
+Exact materialization is now warranted.
+
+Materialization must verify mechanically/textually that:
+
+1. repaired instruction is identical in both variants;
+2. four-state vocabulary is identical;
+3. COMPLETE_RESULT_STATE_VALUES is identical;
+4. negative contains no synonym for live-execution non-establishment, projective-vs-realized, controller non-execution, or non-mutating controller;
+5. positive contains the intended packet-local ceiling;
+6. cold support handles match exactly;
+7. reference-admission declarations match exactly;
+8. no source-content summary leaks into the negative.
+
+Fresh reconstruction remains prohibited until the exact materialized pair receives its required witnesses and execution-side access membrane.
+
+## Scientific claim ceiling
+
+This qualification establishes only that the repaired Cell-002 design can cleanly represent:
+
+```text
+PACKET-LOCAL EXPLICIT / DERIVED NON-ESTABLISHMENT
+
+!=
+
+NO PACKET-LOCAL STANDING RECOVERED
+```
+
+while retaining a challengeable but non-admitted cold support handle.
+
+It does not establish reconstruction discrimination, execution-side reference isolation, universal CB independence, or semantic continuity.
+
+Next lawful move:
+
+```text
+EXACT MATERIALIZATION OF REPAIRED CELL-002 MATCHED PAIR
+```
