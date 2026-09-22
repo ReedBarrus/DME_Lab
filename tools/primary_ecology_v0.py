@@ -468,7 +468,7 @@ def basis_claim_status(basis: Mapping[str, Any], object_id: str) -> str:
     if any(row["object_id"] == object_id for row in basis["observed_objects"]):
         return "SOURCE_CLAIM_REPRESENTED"
     if any(row["object_id"] == object_id for row in basis["explicit_missing_objects"]):
-        return "MISSING"
+        return "MISSINGNESS_CLAIM_REPRESENTED"
     return "UNKNOWN"
 
 
@@ -498,6 +498,8 @@ def current_epistemic_status(
     raw = basis_claim_status(basis, object_id)
     if raw == "SOURCE_CLAIM_REPRESENTED":
         return "SOURCE_PRESENTED"
+    if raw == "MISSINGNESS_CLAIM_REPRESENTED":
+        return "MISSINGNESS_WITNESS_PRESENTED"
     return raw
 
 
@@ -833,8 +835,8 @@ def run_pressure() -> dict[str, Any]:
     }
 
     cells["I"] = {
-        "result":"PASS" if basis_claim_status(basis, "MISSING_OBJECT") == "MISSING" else "FRACTURE",
-        "relation":"MISSING_DISTINCT_FROM_ABSENT",
+        "result":"PASS" if basis_claim_status(basis, "MISSING_OBJECT") == "MISSINGNESS_CLAIM_REPRESENTED" else "FRACTURE",
+        "relation":"MISSINGNESS_CLAIM_REPRESENTED_DISTINCT_FROM_ABSENT",
     }
 
     before = basis_claim_status(basis, "LATER_WORLD_OBJECT")
@@ -1756,6 +1758,47 @@ def run_pressure() -> dict[str, Any]:
         "relation":"OBSERVED_STANDING_REQUIRES_STRONGER_FUTURE_MACHINERY",
     }
 
+    # Q8 / U1 -- a missingness row alone earns only represented-claim standing.
+    u_bundle = clean_bundle()
+    u1_status = basis_claim_status(u_bundle["basis"], "MISSING_OBJECT")
+    cells["U1"] = {
+        "result":"PASS" if u1_status == "MISSINGNESS_CLAIM_REPRESENTED" else "FRACTURE",
+        "relation":"BASIS_MISSINGNESS_ROW_DOES_NOT_MANUFACTURE_MISSING_STANDING",
+    }
+
+    # U2 -- after exact witness correspondence and current witness encounter,
+    # the strongest standing earned is MISSINGNESS_WITNESS_PRESENTED.
+    u2_status = "INVALID"
+    try:
+        u2_status = current_epistemic_status(
+            role=u_bundle["role"],
+            seat=u_bundle["seat"],
+            binding=u_bundle["binding"],
+            basis=u_bundle["basis"],
+            object_id="MISSING_OBJECT",
+            source_carriers=u_bundle["sources"],
+            missingness_witnesses=u_bundle["missingness_witnesses"],
+            source_encounters=u_bundle["source_encounters"],
+            missingness_witness_encounters=u_bundle["missingness_witness_encounters"],
+        )
+        u2_result = (
+            "PASS"
+            if u2_status == "MISSINGNESS_WITNESS_PRESENTED"
+            else "FRACTURE"
+        )
+    except EcologyError:
+        u2_result = "FRACTURE"
+    cells["U2"] = {
+        "result":u2_result,
+        "relation":"PRESENTED_WITNESS_EARNS_MISSINGNESS_WITNESS_PRESENTED_NOT_MISSING",
+    }
+
+    # U3 -- current machinery must not emit bare MISSING standing.
+    cells["U3"] = {
+        "result":"PASS" if u1_status != "MISSING" and u2_status != "MISSING" else "FRACTURE",
+        "relation":"MISSING_STANDING_REQUIRES_STRONGER_FUTURE_MACHINERY",
+    }
+
     evaluation_key = _load(FIXTURE_DIR / "EVALUATION_KEY_v0.json")
     expected_cells = evaluation_key.get("cells", {}) if isinstance(evaluation_key, dict) else {}
     key_matches = all(expected_cells.get(cell_id) == cell["result"] for cell_id, cell in cells.items()) and set(expected_cells) == set(cells)
@@ -1785,6 +1828,7 @@ def run_pressure() -> dict[str, Any]:
             "current_invocation_source_encounter":"PASS" if all(cells[x]["result"] == "PASS" for x in ("R1","R2","R3","R4","R5","R6","R7")) else "FRACTURE",
             "current_invocation_missingness_witness_encounter":"PASS" if all(cells[x]["result"] == "PASS" for x in ("S1","S2","S3","S4","S5","S6","S7")) else "FRACTURE",
             "observed_status_semantic_ceiling":"PASS" if all(cells[x]["result"] == "PASS" for x in ("T1","T2","T3")) else "FRACTURE",
+            "missing_status_semantic_ceiling":"PASS" if all(cells[x]["result"] == "PASS" for x in ("U1","U2","U3")) else "FRACTURE",
         },
         "role_vocabulary_status":"PROVISIONAL_EXTENSIBLE",
         "durable_ecology_installed":False,
@@ -1812,6 +1856,9 @@ def run_pressure() -> dict[str, Any]:
         "presented_source_standing":"SOURCE_PRESENTED",
         "direct_observation_standing":"NOT_ESTABLISHED",
         "source_inspection_or_consumption":"NOT_ESTABLISHED",
+        "presented_missingness_standing":"MISSINGNESS_WITNESS_PRESENTED",
+        "missing_standing":"NOT_ESTABLISHED",
+        "retrieval_attempt_or_failure":"NOT_ESTABLISHED",
         "function_needs_seat":"NOT_TESTED",
         "stop":True,
     }
