@@ -1,0 +1,77 @@
+name: PRIMARY_ECOLOGY_GRAMMAR_001_INTEGRATION_001
+
+on:
+  push:
+    branches:
+      - primary-ecology-integration-001
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  integration-pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact integration descendant
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile ecology and integration apparatus
+        run: |
+          python -m py_compile \
+            tools/primary_ecology_v0.py \
+            tests/runtime/test_primary_ecology_v0.py \
+            tests/runtime/test_primary_ecology_integration_v0.py
+
+      - name: Fresh PRIMARY_ECOLOGY_GRAMMAR_001 qualification
+        run: python -m unittest tests.runtime.test_primary_ecology_v0 -v
+
+      - name: Regenerate descendant ecology qualification evidence
+        run: python -m tools.primary_ecology_v0 --output /tmp/PRIMARY_ECOLOGY_GRAMMAR_001_RESULT.json
+
+      - name: Verify retained ecology qualification evidence
+        run: diff -u docs/candidates/primary_ecology_v0/QUALIFICATION_EVIDENCE_001.json /tmp/PRIMARY_ECOLOGY_GRAMMAR_001_RESULT.json
+
+      - name: Execute Y1-Y3 and Y5 integration pressure
+        run: python -m unittest tests.runtime.test_primary_ecology_integration_v0 -v
+
+      - name: Compile adjacent current-main apparatus
+        run: |
+          python -m py_compile \
+            tools/two_lane_coordination_v0.py \
+            tools/two_lane_coordination_v1.py \
+            tools/lane_b_successor_engagement_v0.py \
+            tools/lane_b_successor_engagement_repressure_v1.py \
+            tools/lane_lifecycle_disposition_v0.py \
+            tools/lane_lifecycle_disposition_oracle_v0.py \
+            tools/run_lane_lifecycle_disposition_pressure_v0.py \
+            tests/runtime/test_two_lane_coordination_v0.py \
+            tests/runtime/test_quiet_peer_coordination_v1.py \
+            tests/runtime/test_lane_b_successor_engagement_v0.py \
+            tests/runtime/test_lane_b_successor_engagement_repressure_v1.py
+
+      - name: Y4 two-lane coordination regression
+        run: python -m unittest tests.runtime.test_two_lane_coordination_v0 -v
+
+      - name: Y4 quiet-peer coordination regression
+        run: python -m unittest tests.runtime.test_quiet_peer_coordination_v1 -v
+
+      - name: Y4 Lane-B successor engagement regression
+        run: python -m unittest tests.runtime.test_lane_b_successor_engagement_v0 -v
+
+      - name: Y4 Lane-B successor composition repressure
+        run: python -m unittest tests.runtime.test_lane_b_successor_engagement_repressure_v1 -v
+
+      - name: Y4 lane lifecycle synthetic pressure
+        run: |
+          python tools/run_lane_lifecycle_disposition_pressure_v0.py \
+            --freeze fixtures/lane_lifecycle_disposition_v0/EXECUTION_FREEZE_001.json \
+            --output /tmp/lane_lifecycle_pressure_result.json
