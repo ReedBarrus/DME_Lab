@@ -1,0 +1,99 @@
+{
+  "schema": "LIVE_COMPLETION_EVIDENCE_PRESSURE_CELLS_v0",
+  "cells": {
+    "A": {
+      "kind": "P05_CLEAN_LIVE_SUBJECT",
+      "input": "BASE"
+    },
+    "B": {
+      "kind": "P05_MISMATCHED_IDENTITY",
+      "mutation": {
+        "object": "binding",
+        "path": "claim_id",
+        "value": "DIFFERENT-CLAIM"
+      }
+    },
+    "C": {
+      "kind": "STALE_BASIS",
+      "mutation": {
+        "object": "evidence",
+        "path": "lane_head",
+        "value": "afc276fbe2f1213d69d83000245c6e2a4f949903"
+      }
+    },
+    "D": {
+      "kind": "MISSING_CRITERION",
+      "omit": [
+        "criterion"
+      ]
+    },
+    "E": {
+      "kind": "UNQUALIFIED_STANDING",
+      "relation": {
+        "schema": "LIVE_QUALIFIED_UPSTREAM_RELATION_v0",
+        "relation_type": "UNIT_COMPLETION_STANDING",
+        "standing": "QUALIFIED",
+        "basis_ref": "repo://fixtures/live_completion_evidence_v0/RAW_WORK_EVIDENCE.json",
+        "producer": "UNQUALIFIED_LIVE_COMPLETION_PRODUCER",
+        "version": "v0"
+      }
+    },
+    "F": {
+      "kind": "SYNTHETIC_LIVE_SUBSTITUTION",
+      "relation": {
+        "schema": "LIVE_QUALIFIED_UPSTREAM_RELATION_v0",
+        "relation_type": "UNIT_COMPLETION_STANDING",
+        "standing": "QUALIFIED",
+        "basis_ref": "basis://unit-completion-qualified",
+        "producer": "SYNTHETIC_UPSTREAM_PRODUCER",
+        "version": "v1"
+      },
+      "basis": {
+        "unit_id": "UNIT-01"
+      }
+    },
+    "G": {
+      "kind": "INFERRED_ABSENCE",
+      "omit": [
+        "blocker_evaluations"
+      ]
+    },
+    "H": {
+      "kind": "CLOSED_SCOPE_BLOCKER_POSITIVE",
+      "blocker_evaluations": {
+        "WORK_UNIT_IDENTITY_MISMATCH": false,
+        "CRITERION_BASIS_STALE": false,
+        "REQUIRED_RAW_TERM_UNSATISFIED": true,
+        "UNAUTHORIZED_MUTATION_PRESENT": false,
+        "REQUIRED_UPSTREAM_STANDING_MISSING_OR_UNQUALIFIED": false
+      }
+    },
+    "I": {
+      "kind": "CLOSED_SCOPE_BLOCKER_CLEAR",
+      "blocker_evaluations": {
+        "WORK_UNIT_IDENTITY_MISMATCH": false,
+        "CRITERION_BASIS_STALE": false,
+        "REQUIRED_RAW_TERM_UNSATISFIED": false,
+        "UNAUTHORIZED_MUTATION_PRESENT": false,
+        "REQUIRED_UPSTREAM_STANDING_MISSING_OR_UNQUALIFIED": false
+      }
+    },
+    "J": {
+      "kind": "FULL_COMPOSITION_COMPLETE_EVALUABLE",
+      "p01_p04": {
+        "P01": true,
+        "P02": true,
+        "P03": "WARRANT:FIRST_BOUNDED_REAL_WORK_TWO_LANE_TRIAL-LANE_A-001:LANE_A:WORKSHOP:INVOCATION-001",
+        "P04": "COMPLETE"
+      }
+    },
+    "K": {
+      "kind": "CRITERION_WRITTEN_AFTER_RESULT",
+      "mutation": {
+        "object": "criterion",
+        "path": "criterion_basis_commit",
+        "value": "61ed8e8a3cea8aa3bc29adb0df361c214da7aeba"
+      }
+    }
+  }
+}
