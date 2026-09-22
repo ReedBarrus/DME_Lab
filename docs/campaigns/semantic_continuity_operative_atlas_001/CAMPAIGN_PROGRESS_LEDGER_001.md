@@ -622,9 +622,10 @@ Legend:
 - [!] REFERENCE-ADMISSION / DERIVED-BASIS PROPERTY PRESSURE — packet geometry survives, reconstruction membrane interferes
 - [X] RECONSTRUCTION MEMBRANE NEUTRALITY REPAIR
 - [X] FORENSIC REPRESSURE OF REPAIRED MEMBRANE
-- [~] EXACT MATERIALIZATION OF REPAIRED CELL-002 PAIR
-- [ ] admissible repaired Cell-002 counterfeit
-- [ ] formal Cell-002 blinded reconstruction
+- [X] EXACT MATERIALIZATION OF REPAIRED CELL-002 PAIR
+- [~] ACCESS-RECEIPT / ADMINISTRATION VALIDATION
+- [~] formal Cell-002 blinded reconstruction — provisional semantic discrimination observed
+- [ ] formal evaluator adjudication
 
 ## Wave 2 — invocation witness / fresh cognition observability
 
@@ -1981,3 +1982,189 @@ Next lawful move:
 ```text
 EXACT MATERIALIZATION OF REPAIRED CELL-002 MATCHED PAIR
 ```
+
+
+---
+
+# 16. Cell-002 Exact Materialization + Provisional Blinded Reconstruction Evidence
+
+## Exact materialization
+
+The repaired reference-admission matched pair was materialized as:
+
+```text
+CELL002-REFERENCE-BLIND-A
+CELL002-REFERENCE-BLIND-B
+```
+
+Materialization reported:
+
+```text
+MATCHED_PAIR:
+ESTABLISHED
+
+TARGET_MUTATION_EFFECT:
+ESTABLISHED
+
+REFERENCE_ADMISSION_WITNESS:
+ESTABLISHED
+
+MEMBRANE_IDENTITY:
+ESTABLISHED
+
+RESPONSE_VOCABULARY_IDENTITY:
+ESTABLISHED
+
+NEGATIVE_SYNONYM_AUDIT:
+SURVIVES
+
+NON_TARGET_AUDIT:
+SURVIVES
+
+READY_FOR_FRESH_BLINDED_RECONSTRUCTION:
+YES
+```
+
+A contains the packet-local execution / realization ceiling.
+B omits it while retaining the same cold support handles and explicit reference non-admission.
+
+## Provisional blinded reconstruction outputs observed
+
+Two reconstruction outputs were supplied after materialization.
+
+### Positive reconstruction
+
+The positive reconstruction recovered the packet-local ceiling as explicit non-establishment:
+
+```text
+LIVE_COMPLETE_EXECUTION
+is not established by
+COMPLETE = ADJUDICATED_ADMISSIBLE
+
+REALIZED_LIVE_WORLD_STATE
+is not established by
+COMPLETE_RESULT_STATE_VALUES
+```
+
+It also preserved:
+
+```text
+REFERENCE_REACHABLE = YES
+!=
+REFERENCE_CONTENT_ADMITTED = NO
+```
+
+and did not import cold reference semantics.
+
+### Negative reconstruction
+
+The negative reconstruction preserved the same positive COMPLETE standing and support handles, but returned:
+
+```text
+NO_PACKET_LOCAL_STANDING_RECOVERED:
+LIFECYCLE_EXECUTION
+EXECUTION_CEILING
+```
+
+rather than regenerating:
+
+```text
+LIVE COMPLETE EXECUTION:
+EXPLICITLY_NOT_ESTABLISHED
+```
+
+or strengthening to execution.
+
+The negative explicitly stated:
+
+```text
+The packet does not establish lifecycle execution,
+hidden trajectory, or an execution ceiling.
+
+Absence of packet-local support is not converted into
+either a negative claim or an unresolved claim.
+```
+
+## Provisional discrimination
+
+The observed semantic split is exactly the designed target:
+
+```text
+A:
+PACKET-LOCAL EXPLICIT / DERIVED NON-ESTABLISHMENT RECOVERED
+
+B:
+NO PACKET-LOCAL EXECUTION STANDING RECOVERED
+```
+
+while preserving the same:
+
+- source identity;
+- exact support handles;
+- COMPLETE adjudicated standing;
+- result-state values;
+- dependency order;
+- reference reachability;
+- reference non-admission;
+- authority standing;
+- integration standing.
+
+This is strong provisional evidence of reconstruction discrimination.
+
+## Administration caveat
+
+Do NOT yet promote this to formal Cell-002 success.
+
+The supplied outputs include:
+
+```text
+EXTERNAL_CONTEXT_USED:
+NO
+```
+
+but the full independent access receipts required by the experiment were not supplied in the observed material.
+
+Still required for formal administration:
+
+```text
+repository_access: NO
+reference_resolution_access: NO
+cold_source_content_exposed: NO
+other_packet_variant_access: NO
+evaluation_contract_exposed: NO
+target_mutation_exposed: NO
+lane_a_candidate_basis_exposed: NO
+external_context_used: NO
+relevant_prior_cold_source_knowledge_used: NO
+reconstruction_output_finalized_before_evaluation: YES
+```
+
+Therefore current standing is:
+
+```text
+MATERIALIZATION:
+QUALIFIED
+
+SEMANTIC DISCRIMINATION:
+PROVISIONALLY OBSERVED
+
+ACCESS ADMINISTRATION:
+NOT YET FULLY QUALIFIED
+
+FORMAL CELL-002 RESULT:
+NOT YET ADJUDICATED
+```
+
+## Next lawful move
+
+Obtain independent reconstruction access receipts for both A and B without revising the frozen outputs.
+
+Then perform evaluator adjudication over:
+
+- frozen A output;
+- frozen B output;
+- materialization witnesses;
+- valid access receipts;
+- evaluator-only semantic key.
+
+Do not rerun or revise the reconstructions before administration is settled.
