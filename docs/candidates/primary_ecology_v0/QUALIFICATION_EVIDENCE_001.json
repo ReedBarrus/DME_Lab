@@ -225,6 +225,22 @@
     "V3": {
       "relation": "BASIS_SILENCE_DOES_NOT_MANUFACTURE_NEGATIVE_EPISTEMIC_STANDING",
       "result": "PASS"
+    },
+    "W1": {
+      "relation": "SOURCE_ENCOUNTER_SAME_FRIENDLY_BASIS_REF_DIFFERENT_EXACT_BASIS_REJECTED",
+      "result": "PASS"
+    },
+    "W2": {
+      "relation": "MISSINGNESS_ENCOUNTER_SAME_FRIENDLY_BASIS_REF_DIFFERENT_EXACT_BASIS_REJECTED",
+      "result": "PASS"
+    },
+    "W3": {
+      "relation": "ENCOUNTER_EXACT_CURRENT_BASIS_IDENTITY_IS_ADMISSIBLE",
+      "result": "PASS"
+    },
+    "W4": {
+      "relation": "BASIS_BYTE_MUTATION_INVALIDATES_PRIOR_ENCOUNTER",
+      "result": "PASS"
     }
   },
   "core_relations": {
@@ -232,6 +248,7 @@
     "current_invocation_missingness_witness_encounter": "PASS",
     "current_invocation_source_encounter": "PASS",
     "current_world_ne_observation_basis": "PASS",
+    "encounter_exact_current_basis_identity": "PASS",
     "explicit_missingness_grounding": "PASS",
     "fresh_observation_payload_noninheritance": "PASS",
     "fresh_observation_source_relation": "PASS",
@@ -249,7 +266,9 @@
   "direct_object_perception": "NOT_CLAIMED",
   "direct_observation_standing": "NOT_ESTABLISHED",
   "durable_ecology_installed": false,
+  "encounter_basis_identity": "EXACT_OBSERVATION_BASIS_CONTENT_IDENTITY",
   "execution_effect": "NONE",
+  "friendly_basis_ref_identity_sufficient": "NO",
   "function_needs_seat": "NOT_TESTED",
   "historical_basis_reuse": "SEPARATE_TYPED_RELATION_REQUIRED_NOT_MODELED",
   "integration_effect": "NONE",
