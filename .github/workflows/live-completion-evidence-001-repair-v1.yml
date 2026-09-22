@@ -34,3 +34,14 @@ jobs:
         with:
           name: live-completion-evidence-001-repair-v1-candidate
           path: candidate-evidence-a.json
+      - name: Produce deterministic final bridge evidence
+        run: |
+          python tools/run_live_completion_evidence_repair_final_v1.py --output final-evidence-a.json
+          python tools/run_live_completion_evidence_repair_final_v1.py --output final-evidence-b.json
+          cmp final-evidence-a.json final-evidence-b.json
+          cat final-evidence-a.json
+      - name: Upload final bridge evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: live-completion-evidence-001-repair-v1-final
+          path: final-evidence-a.json
