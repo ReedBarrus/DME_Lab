@@ -1,0 +1,45 @@
+{
+  "schema": "LIVE_COMPLETION_EVIDENCE_EVALUATION_KEY_v0",
+  "expected": {
+    "A": {
+      "P05": "MATCHES"
+    },
+    "B": {
+      "P05": "DOES_NOT_MATCH"
+    },
+    "C": {
+      "status": "ADMINISTRATION_INVALID",
+      "reason": "STALE_LIVE_BASIS"
+    },
+    "D": {
+      "P06": "NOT_ESTABLISHED",
+      "reason": "MISSING_CRITERION"
+    },
+    "E": {
+      "P07": "NOT_ESTABLISHED",
+      "reason": "PRODUCER_VERSION_NOT_QUALIFIED"
+    },
+    "F": {
+      "status": "REJECT",
+      "reason": "LIVE_SUBJECT_IDENTITY_MISMATCH"
+    },
+    "G": {
+      "P08": "NOT_ESTABLISHED",
+      "reason": "BLOCKER_SCOPE_NOT_CLOSED"
+    },
+    "H": {
+      "P08": "FORBIDS_COMPLETION"
+    },
+    "I": {
+      "P08": "NONE_ESTABLISHED"
+    },
+    "J": {
+      "composition": "COMPLETE_EVALUABLE",
+      "transition_executed": false
+    },
+    "K": {
+      "status": "ADMINISTRATION_INVALID",
+      "reason": "CRITERION_PROVENANCE_INVALID"
+    }
+  }
+}
