@@ -1,0 +1,26 @@
+{
+  "schema": "LIVE_WORK_EVIDENCE_BUNDLE_v0",
+  "bundle_id": "FIRST_TWO_LANE_TRIAL-LANE_A-EVIDENCE-BUNDLE-001",
+  "work_unit_id": "FIRST_TWO_LANE_TRIAL-LANE_A-WORK-UNIT-001",
+  "lane_head": "61ed8e8a3cea8aa3bc29adb0df361c214da7aeba",
+  "activation_basis": "de667390d81c1219abfee063d2a3b1fe13d1ba71",
+  "activation_commit": "b36ae5c4a120e31f9f404791c65acfa8c8d69301",
+  "work_commits": [
+    "afc276fbe2f1213d69d83000245c6e2a4f949903",
+    "61ed8e8a3cea8aa3bc29adb0df361c214da7aeba"
+  ],
+  "commit_changed_paths": {
+    "afc276fbe2f1213d69d83000245c6e2a4f949903": [
+      "docs/candidates/live_two_lane_trial_lane_a_v0/LANE_A_OPERATING_BOOTSTRAP_DELTA_001.md"
+    ],
+    "61ed8e8a3cea8aa3bc29adb0df361c214da7aeba": [
+      "docs/candidates/live_two_lane_trial_lane_a_v0/LANE_A_OPERATING_BOOTSTRAP_DELTA_001.md"
+    ]
+  },
+  "final_artifacts": [
+    {
+      "path": "docs/candidates/live_two_lane_trial_lane_a_v0/LANE_A_OPERATING_BOOTSTRAP_DELTA_001.md",
+      "blob": "74abc78eeb91b791d9525c6485935905fbe3a06a"
+    }
+  ]
+}
