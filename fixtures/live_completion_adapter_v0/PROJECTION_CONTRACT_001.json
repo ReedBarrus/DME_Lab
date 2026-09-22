@@ -10,7 +10,7 @@
   },
   "adapter_implementation": {
     "path": "tools/live_completion_controller_adapter_v2.py",
-    "blob": "f2fd235db70b4d2a6d15efbbe75ac1a44786c22c"
+    "blob": "d6729a3c946c29b3ee3c2fd40d032b09a64d0437"
   },
   "authoritative_controller": {
     "path": "tools/lane_lifecycle_disposition_v0.py",
