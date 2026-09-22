@@ -498,6 +498,38 @@ Stronger future standing such as MISSING or RETRIEVAL_FAILED requires additional
 machinery establishing the relevant retrieval or failure relation. Q8 does not
 choose that future mechanism.
 
+Q9 pressures the semantic ceiling on basis silence.
+
+```text
+CLAIM NOT REPRESENTED
+!=
+UNKNOWN
+
+BASIS SILENT
+!=
+INVOCATION IGNORANT
+
+NO CURRENT ROW
+!=
+NEGATIVE EPISTEMIC FACT
+```
+
+V1 -- basis silent
+No source row and no missingness row exist for PROJECT_X.
+Expected: UNREPRESENTED_AT_BASIS, not UNKNOWN.
+
+V2 -- full current bundle silent
+The entire current bundle validates but still contains no epistemic carrier for
+PROJECT_X.
+Expected: NO_CURRENT_REPRESENTED_CLAIM, not UNKNOWN.
+
+V3 -- semantic ceiling
+Silence must not manufacture UNKNOWN, ABSENT, MISSING, FALSE, or UNAVAILABLE.
+
+Genuine UNKNOWN standing would require stronger future machinery such as a
+declared exhaustive scope plus a qualified relation between the queried object
+and that scope. Q9 does not invent such machinery.
+
 A separate focused regression mutates the contents of an otherwise matching
 observation basis while retaining the old `observation_basis_ref`. Expected:
 reject `BINDING_OBSERVATION_BASIS_REF_MISMATCH`.
