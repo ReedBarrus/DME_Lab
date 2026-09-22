@@ -132,9 +132,9 @@ E -- invocation without work claim
 Expected: valid synthetic engagement binding.
 INVOCATION != WORK CLAIM
 
-F -- work-claim reference without authority
-Expected: authority standing remains ABSENT.
-WORK CLAIM != AUTHORITY
+F -- work-claim reference without represented authority ref
+Expected: authority-reference standing remains NO_AUTHORITY_REF_REPRESENTED.
+WORK CLAIM REPRESENTED != AUTHORITY REF REPRESENTED
 
 G -- role authority leak
 Mutate role authority_effect away from NONE.
@@ -568,6 +568,48 @@ Expected: old encounter no longer establishes current presentation.
 A separate focused regression still verifies that mutating basis contents while
 retaining an old binding `observation_basis_ref` rejects
 `BINDING_OBSERVATION_BASIS_REF_MISMATCH`.
+
+Q11 pressures the semantic ceiling on authority-reference silence.
+
+```text
+AUTHORITY REF SILENT
+!=
+AUTHORITY ABSENT
+
+NO LOCAL AUTHORITY REF
+!=
+NO EXTERNAL AUTHORITY
+
+NO REPRESENTED AUTHORITY
+!=
+AUTHORITY DENIED
+
+NO REPRESENTED AUTHORITY
+!=
+AUTHORITY ESTABLISHED
+```
+
+X1 -- empty authority refs
+`authority_refs = []`.
+Expected: NO_AUTHORITY_REF_REPRESENTED, not ABSENT.
+
+X2 -- unqualified authority ref present
+`authority_refs = [authority://Q11-UNQUALIFIED]`.
+Expected: UNADJUDICATED, not AUTHORIZED.
+
+X3 -- negative semantic ceiling
+Empty authority refs must not manufacture ABSENT, DENIED, UNAUTHORIZED, REVOKED,
+or INVALID.
+
+X4 -- work claim without authority ref
+A work claim may be represented while the local authority-reference surface
+remains empty.
+Expected: work claim remains represented; authority-reference standing remains
+NO_AUTHORITY_REF_REPRESENTED; authority effect remains NONE.
+
+This pressure does not adjudicate authority validity, external authority,
+execution permission, or denial. It establishes only what the binding itself
+represents.
 
 ## Terminal result
 
