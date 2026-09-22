@@ -1,0 +1,63 @@
+{
+  "adapter_blob": "d6729a3c946c29b3ee3c2fd40d032b09a64d0437",
+  "cell_checks": {
+    "A": true,
+    "B": true,
+    "C": true,
+    "D": true,
+    "E": true,
+    "F": true,
+    "G": true,
+    "H": true,
+    "I": true,
+    "J": true,
+    "K": true,
+    "L": true
+  },
+  "cells": {
+    "A": {
+      "admissible": true,
+      "consulted": ["P01","P02","P03","P04","P05","P06","P07","P08"],
+      "exact_controller": true,
+      "selected_branch": "COMPLETE",
+      "transition_executed": false
+    },
+    "B": {"controller_calls": 0, "error": "AdapterInvalid:PIN_MISMATCH:evidence", "status": "RAISED"},
+    "C": {"controller_calls": 0, "error": "AdapterInvalid:PIN_MISMATCH:criterion", "status": "RAISED"},
+    "D": {
+      "adapter_attempt": {"controller_calls": 0, "error": "AdapterInvalid:PIN_MISMATCH:binding", "status": "RAISED"},
+      "p05_mismatches": ["bounded_unit_id"],
+      "p05_status": "DOES_NOT_MATCH"
+    },
+    "E": {"caller_outcome_accepted": false, "signature": "(repo_root: 'str | Path') -> 'dict[str, Any]'"},
+    "F": {"reason": "PRODUCER_VERSION_NOT_QUALIFIED", "status": "NOT_ESTABLISHED"},
+    "G": {"controller_calls": 0, "error": "AdapterInvalid:PIN_MISMATCH:p07_basis", "status": "RAISED"},
+    "H": {"controller_calls": 0, "error": "AdapterInvalid:PIN_MISMATCH:p08_basis", "status": "RAISED"},
+    "I": {"controller_calls": 0, "error": "AdapterInvalid:AUTHORITATIVE_CONTROLLER_DRIFT", "status": "RAISED"},
+    "J": {"controller_calls": 0, "error": "AdapterInvalid:PROJECTED_INPUT_DIGEST_MISMATCH_PRE_INVOKE", "status": "RAISED"},
+    "K": {
+      "controller_result_has_historical_claim": false,
+      "historical_claim_ref": "git:61ed8e8a3cea8aa3bc29adb0df361c214da7aeba:coordination/active_work_claim.json@5f0a134655c0c45287ef61b29ed46072d47c6895",
+      "objects_differ": true,
+      "projection_has_bounded_unit_id": true,
+      "separate_returned_projection": true,
+      "source_has_bounded_unit_id": false
+    },
+    "L": {
+      "admissible": true,
+      "claim_mutation": "NONE",
+      "lane_mutation": "NONE",
+      "occupant_mutation": "NONE",
+      "selected_branch": "COMPLETE",
+      "transition_executed": false
+    }
+  },
+  "controller_blob": "89ff5ffc6c3555bc31716735af6e93498d675ced",
+  "live_lane_mutation": "NONE",
+  "merge": "NONE",
+  "object_id": "LIVE_COMPLETION_ADAPTER_QUALIFICATION_001",
+  "object_type": "BOUNDED_ADAPTER_QUALIFICATION_EVIDENCE",
+  "pass": true,
+  "projection_contract_blob": "ce596b0a32ab392f6ae8df6a2f7c294b35259ee4",
+  "transition_executed": false
+}
