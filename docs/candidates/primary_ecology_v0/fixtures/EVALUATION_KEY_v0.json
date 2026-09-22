@@ -53,7 +53,10 @@
     "T3": "PASS",
     "U1": "PASS",
     "U2": "PASS",
-    "U3": "PASS"
+    "U3": "PASS",
+    "V1": "PASS",
+    "V2": "PASS",
+    "V3": "PASS"
   },
   "terminal_status": "QUALIFIED_SYNTHETIC_GRAMMAR"
 }
