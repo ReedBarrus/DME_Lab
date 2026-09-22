@@ -1,0 +1,29 @@
+name: live-completion-adapter-qualification-001
+on:
+  push:
+    branches: [live-completion-adapter-qualification-v0]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Focused adapter qualification
+        run: python -m unittest -v tests.runtime.test_live_completion_adapter_v0
+      - name: Deterministic A-L evidence
+        run: |
+          python tools/run_live_completion_adapter_pressure_v0.py --output adapter-evidence-a.json
+          python tools/run_live_completion_adapter_pressure_v0.py --output adapter-evidence-b.json
+          cmp adapter-evidence-a.json adapter-evidence-b.json
+          cat adapter-evidence-a.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: live-completion-adapter-qualification-001
+          path: adapter-evidence-a.json
