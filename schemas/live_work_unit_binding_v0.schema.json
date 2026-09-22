@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/live_work_unit_binding_v0.schema.json",
+  "title": "LIVE_WORK_UNIT_BINDING_v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "work_unit_id",
+    "lane_id",
+    "claim_id",
+    "claim_blob",
+    "occupant_id",
+    "invocation_id",
+    "branch",
+    "claim_basis_head",
+    "target_lineage",
+    "campaign_id",
+    "pressure_id",
+    "consequence_envelope_id",
+    "artifact_scopes",
+    "mutation_paths",
+    "source_warrant_ref",
+    "completion_criterion_ref",
+    "work_evidence_bundle_ref"
+  ],
+  "properties": {
+    "schema": {
+      "const": "LIVE_WORK_UNIT_BINDING_v0"
+    },
+    "work_unit_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lane_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim_blob": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "occupant_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "invocation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "branch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim_basis_head": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "target_lineage": {
+      "type": "string",
+      "minLength": 1
+    },
+    "campaign_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pressure_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "consequence_envelope_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifact_scopes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "mutation_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "source_warrant_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "completion_criterion_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "work_evidence_bundle_ref": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}
