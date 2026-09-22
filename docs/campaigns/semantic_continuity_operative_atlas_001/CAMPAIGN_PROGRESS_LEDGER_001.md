@@ -2275,3 +2275,119 @@ EXTERNALLY ADMINISTERED STATELESS RECONSTRUCTION
 ```
 
 Do not alter the already materialized Cell-002 packets.
+
+
+---
+
+# 18. Stateless Local Reconstruction Attempt — Apparatus vs Reconstructor Quality
+
+## Surface
+
+A/B reconstructions were run through a local Qwen specimen:
+
+```text
+qwen/qwen3-coder-30b
+```
+
+with receipts reporting:
+
+```text
+other_packet_variant_supplied_in_this_chat: NO
+other_campaign_material_supplied_in_this_chat: NO
+repository_or_reference_resolution_used: NO
+connected_app_or_plugin_context_used: NO
+memory_or_personalization_context_used: NO
+reconstruction_output_finalized_before_any_evaluation_material: YES
+administration_status: VALID
+```
+
+These receipts are useful but remain model-reported unless independently backed by captured invocation configuration / request payload.
+
+Freeze:
+
+```text
+MODEL-REPORTED VALID ADMINISTRATION
+!=
+APPARATUS-OBSERVED VALID ADMINISTRATION
+```
+
+## Positive reconstruction behavior
+
+The A reconstruction substantially recovered the intended packet-local execution / realization ceiling:
+
+```text
+COMPLETE ADJUDICATED ADMISSIBLE
+DOES NOT ESTABLISH
+LIVE COMPLETE EXECUTION
+
+COMPLETE RESULT STATE VALUES
+DO NOT ESTABLISH
+REALIZED LIVE WORLD STATE
+```
+
+It also preserved reference non-admission.
+
+However it showed classification defects, including treating some explicitly supplied literal fields inconsistently with the response-state vocabulary.
+
+## Negative reconstruction behavior
+
+The B reconstruction did not recreate the removed execution ceiling.
+
+However it exhibited a different failure mode: explicit packet fields were misclassified as UNRESOLVED or NO_PACKET_LOCAL_STANDING_RECOVERED despite being directly represented.
+
+Examples include support-handle identities and COMPLETE_RESULT_STATE_VALUES.
+
+Therefore:
+
+```text
+REFERENCE-ADMISSION DISCRIMINATION SIGNAL:
+PRESENT
+
+RECONSTRUCTION COMPETENCE:
+FRACTURED / INCONSISTENT
+```
+
+The clean isolation experiment has exposed a distinct variable:
+
+```text
+ADMINISTRATION QUALITY
+!=
+RECONSTRUCTOR COMPETENCE
+```
+
+and:
+
+```text
+FAILED RECONSTRUCTION
+!=
+CONTAMINATED RECONSTRUCTION
+```
+
+## Current scientific standing
+
+Do not score the pair as formal Cell-002 semantic success yet.
+
+The observed data support:
+
+1. the positive ceiling is recoverable by this model;
+2. the negative does not obviously regenerate the deleted ceiling;
+3. the model inconsistently obeys the packet's response-state semantics;
+4. model-reported access receipts should not substitute for apparatus-captured isolation evidence.
+
+## Next pressure
+
+Use the same frozen A/B packets with an externally captured single-turn invocation harness.
+
+Record exactly:
+
+- model identifier;
+- full transmitted request body;
+- absence of prior messages;
+- tool / connector configuration;
+- repository access configuration;
+- response body;
+- hashes / local artifact IDs if available.
+
+Then adjudicate reconstruction fidelity separately from administration validity.
+
+Do not modify the packets to accommodate Qwen's classification errors.
