@@ -108,7 +108,10 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
     def test_F_work_claim_reference_does_not_manufacture_authority(self):
         binding = clean_binding()
         binding["work_claim_ref"] = "claim://CANDIDATE"
-        self.assertEqual(authority_standing(binding), "ABSENT")
+        self.assertEqual(
+            authority_standing(binding),
+            "NO_AUTHORITY_REF_REPRESENTED",
+        )
 
     def test_G_role_authority_leak_rejected(self):
         role = clean_role()
@@ -1072,6 +1075,42 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
                 source_encounters=[encounter],
             )
 
+    def test_X1_empty_authority_refs_are_not_absent(self):
+        binding = clean_binding()
+        binding["authority_refs"] = []
+        self.assertEqual(
+            authority_standing(binding),
+            "NO_AUTHORITY_REF_REPRESENTED",
+        )
+        self.assertNotEqual(authority_standing(binding), "ABSENT")
+
+    def test_X2_unqualified_authority_ref_remains_unadjudicated(self):
+        binding = clean_binding()
+        binding["authority_refs"] = ["authority://Q11-UNQUALIFIED"]
+        self.assertEqual(authority_standing(binding), "UNADJUDICATED")
+        self.assertNotEqual(authority_standing(binding), "AUTHORIZED")
+
+    def test_X3_authority_ref_silence_does_not_emit_negative_authority_fact(self):
+        binding = clean_binding()
+        binding["authority_refs"] = []
+        status = authority_standing(binding)
+        self.assertNotIn(
+            status,
+            {"ABSENT", "DENIED", "UNAUTHORIZED", "REVOKED", "INVALID"},
+        )
+
+    def test_X4_work_claim_without_authority_ref_preserves_distinction(self):
+        binding = clean_binding()
+        binding["work_claim_ref"] = "claim://Q11-CANDIDATE"
+        binding["authority_refs"] = []
+        validate_binding(binding)
+        self.assertEqual(binding["work_claim_ref"], "claim://Q11-CANDIDATE")
+        self.assertEqual(
+            authority_standing(binding),
+            "NO_AUTHORITY_REF_REPRESENTED",
+        )
+        self.assertEqual(binding["authority_effect"], "NONE")
+
     def test_observation_basis_ref_pins_exact_basis_bytes(self):
         b = clean_bundle()
         original_ref = observation_basis_ref(b["basis"])
@@ -1135,6 +1174,10 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         )
         self.assertEqual(
             result["core_relations"]["encounter_exact_current_basis_identity"],
+            "PASS",
+        )
+        self.assertEqual(
+            result["core_relations"]["authority_absence_semantic_ceiling"],
             "PASS",
         )
         self.assertFalse(result["durable_ecology_installed"])
@@ -1206,6 +1249,19 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         )
         self.assertEqual(
             result["friendly_basis_ref_identity_sufficient"], "NO"
+        )
+        self.assertEqual(
+            result["empty_authority_ref_standing"],
+            "NO_AUTHORITY_REF_REPRESENTED",
+        )
+        self.assertEqual(
+            result["represented_authority_ref_standing"], "UNADJUDICATED"
+        )
+        self.assertEqual(
+            result["authority_absence_standing"], "NOT_ESTABLISHED"
+        )
+        self.assertEqual(
+            result["authority_denial_standing"], "NOT_ESTABLISHED"
         )
 
 
