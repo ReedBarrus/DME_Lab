@@ -1,0 +1,25 @@
+{
+  "policy_version": "LOCAL_LMSTUDIO_BRIDGE_POLICY_V0",
+  "remote": "origin",
+  "branch": "draci-v0-candidate-basis",
+  "request_prefix": "bridge/requests/",
+  "result_prefix": "bridge/results/",
+  "allowed_input_prefixes": [
+    "docs/campaigns/",
+    "bridge/prompts/"
+  ],
+  "allowed_models": [
+    "qwen/qwen3-coder-30b",
+    "microsoft/phi-4"
+  ],
+  "lmstudio_base_url": "http://127.0.0.1:1234/v1",
+  "max_prompt_bytes": 200000,
+  "max_tokens_ceiling": 8192,
+  "temperature_min": 0.0,
+  "temperature_max": 1.0,
+  "require_local_approval": true,
+  "allow_tools": false,
+  "allow_previous_response_id": false,
+  "allow_arbitrary_system_prompt": false,
+  "allow_result_push": false
+}
