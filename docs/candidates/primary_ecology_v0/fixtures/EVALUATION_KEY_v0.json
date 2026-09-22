@@ -50,7 +50,10 @@
     "S7": "PASS",
     "T1": "PASS",
     "T2": "PASS",
-    "T3": "PASS"
+    "T3": "PASS",
+    "U1": "PASS",
+    "U2": "PASS",
+    "U3": "PASS"
   },
   "terminal_status": "QUALIFIED_SYNTHETIC_GRAMMAR"
 }
