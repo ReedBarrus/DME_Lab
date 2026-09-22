@@ -248,6 +248,18 @@ OBJECT NOT REPRESENTED
 !=
 OBJECT ABSENT
 
+CLAIM NOT REPRESENTED
+!=
+UNKNOWN
+
+BASIS SILENT
+!=
+INVOCATION IGNORANT
+
+NO CURRENT ROW
+!=
+NEGATIVE EPISTEMIC FACT
+
 MISSINGNESS CLAIM REPRESENTED
 !=
 ABSENT
@@ -497,6 +509,36 @@ establishes a retrieval attempt, direct retrieval failure, or another separately
 qualified relation. This candidate does not preselect which mechanism should
 eventually earn that standing.
 
+When neither a source-claim row nor a missingness-claim row exists for an
+object, the candidate earns only structural silence:
+
+```text
+basis silent
+=
+UNREPRESENTED_AT_BASIS
+
+fully validated current bundle still silent
+=
+NO_CURRENT_REPRESENTED_CLAIM
+```
+
+and explicitly not:
+
+```text
+UNREPRESENTED_AT_BASIS
+=
+UNKNOWN
+
+NO_CURRENT_REPRESENTED_CLAIM
+=
+UNKNOWN
+```
+
+The current basis is not claimed to be exhaustive for all information available
+to an invocation. Bare `UNKNOWN` standing therefore remains unearned. An
+exhaustive-scope or completeness mechanism, if ever needed, is separate future
+pressure.
+
 The predecessor basis remains separately recoverable by exact identity, but its
 payload is not current observation. A typed historical-consultation relation is
 still future work and is not manufactured by this repair.
@@ -532,8 +574,10 @@ A green pressure may establish only:
 > rows, exact current-invocation source-encounter correspondence, a bounded
 > SOURCE_PRESENTED standing ceiling, exact represented missingness witness
 > correspondence, exact current-invocation missingness-witness encounter
-> correspondence, and a bounded MISSINGNESS_WITNESS_PRESENTED standing ceiling
-> while avoiding the tested identity/authority/missingness collapses.
+> correspondence, a bounded MISSINGNESS_WITNESS_PRESENTED standing ceiling, and
+> bounded silence standings of UNREPRESENTED_AT_BASIS /
+> NO_CURRENT_REPRESENTED_CLAIM while avoiding the tested
+> identity/authority/missingness collapses.
 
 It does not establish:
 
@@ -560,6 +604,8 @@ missingness witness encounter truth / authenticity
 missingness-reason understanding
 MISSING standing
 retrieval attempt / direct retrieval failure
+UNKNOWN standing
+basis exhaustiveness / exhaustive epistemic scope
 generic epistemic-carrier encounter abstraction
 universal retrieval impossibility
 representation succession
