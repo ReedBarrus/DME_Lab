@@ -2596,3 +2596,147 @@ A formal evaluator should score each frozen reconstruction on two orthogonal axe
 ```
 
 Administration validity should be established from the LM Studio / invocation apparatus rather than model-authored receipts.
+
+
+---
+
+# 21. Pre-Reset Evaluator Salvage — Individual Results vs Contaminated Cross-Adjudication
+
+## Individual Qwen evaluation
+
+A formal evaluator result for the frozen Qwen pair reported:
+
+```text
+A_TARGET_RECOVERY:
+SURVIVES
+
+B_TARGET_REMOVAL:
+FRACTURES
+
+TARGET_RELATION_DISCRIMINATION:
+FRACTURES
+
+A_WHOLE_POSTURE_FIDELITY:
+FRACTURES
+
+B_WHOLE_POSTURE_FIDELITY:
+FRACTURES
+
+REFERENCE_ADMISSION_DISCIPLINE:
+SURVIVES
+
+ADMINISTRATION_STANDING:
+OPERATOR_DECLARED
+```
+
+The evaluator nevertheless preserved the narrower observation:
+
+```text
+A explicit ceiling recovered
++
+B removed ceiling not regenerated
+```
+
+while Qwen failed to positively reconstruct B's distinct:
+
+```text
+NO_PACKET_LOCAL_STANDING_RECOVERED
+```
+
+execution state.
+
+Additional Qwen fractures included explicit-field misclassification, dependency-order loss, and calibration-literal elevation.
+
+## Individual Phi-4 evaluation
+
+A formal evaluator result for the frozen Phi-4 pair reported:
+
+```text
+A_TARGET_RECOVERY:
+SURVIVES
+
+B_TARGET_REMOVAL:
+SURVIVES
+
+TARGET_RELATION_DISCRIMINATION:
+SURVIVES
+
+A_WHOLE_POSTURE_FIDELITY:
+FRACTURES
+
+B_WHOLE_POSTURE_FIDELITY:
+FRACTURES
+
+REFERENCE_ADMISSION_DISCIPLINE:
+SURVIVES
+
+ADMINISTRATION_STANDING:
+OPERATOR_DECLARED
+
+RECONSTRUCTOR_COMPETENCE:
+QUALIFIED_FOR_TARGET_ONLY
+```
+
+Thus Phi-4 preserved the intended target distinction more faithfully than Qwen while still failing whole-posture reconstruction.
+
+## Cross-adjudication contamination
+
+A later cross-reconstructor adjudicator was supplied extra Cell-002 materialization artifacts from an older / wrong artifact set due to coordinator routing error.
+
+Therefore that cross-adjudication must NOT be treated as a formally clean derived result.
+
+Freeze:
+
+```text
+USEFUL DERIVED INTERPRETATION
+!=
+FORMALLY QUALIFIED CROSS-ADJUDICATION
+```
+
+The cross result may be retained historically because it articulated a useful distinction:
+
+```text
+TARGET CARRIER SENSITIVITY
+!=
+FULL TARGET STATE DISCRIMINATION
+!=
+WHOLE-POSTURE FIDELITY
+```
+
+but its formal standing is:
+
+```text
+CROSS_RECONSTRUCTOR_ADJUDICATION:
+SUPERSEDED / ADMINISTRATIVELY CONTAMINATED
+```
+
+until rerun from the corrected exact artifact bundle.
+
+## Reset consequence
+
+The reset should preserve only:
+
+1. current repaired Cell-002 A/B packet texts actually used in LM Studio;
+2. frozen Qwen A/B reconstruction outputs;
+3. frozen Phi-4 A/B reconstruction outputs;
+4. the individual Qwen formal evaluator result;
+5. the individual Phi-4 formal evaluator result;
+6. campaign ledger history.
+
+Do not carry forward:
+
+- contaminated ChatGPT reconstructions;
+- model-authored access receipts as apparatus proof;
+- the older Cell-002 blind A/B repo artifacts as substitutes for the repaired reference-admission pair;
+- the contaminated cross-reconstructor adjudication as a formal result.
+
+Next formal action after reset:
+
+```text
+MATERIALIZE THE CURRENT REPAIRED REFERENCE-ADMISSION A/B PACKETS
+AS CANONICAL STANDALONE REPO ARTIFACTS
+
+THEN RERUN ONLY THE CROSS-RECONSTRUCTOR ADJUDICATION
+FROM THE TWO VALID INDIVIDUAL EVALUATOR RESULTS
+PLUS THE CORRECT CURRENT MATERIALIZATION ARTIFACTS.
+```
