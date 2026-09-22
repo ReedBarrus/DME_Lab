@@ -1,0 +1,20 @@
+{
+  "schema": "LIVE_COMPLETION_BLOCKER_SCOPE_v0",
+  "scope_id": "FIRST_TWO_LANE_TRIAL-LANE_A-BLOCKER-SCOPE-001",
+  "work_unit_id": "FIRST_TWO_LANE_TRIAL-LANE_A-WORK-UNIT-001",
+  "criterion_ref": "repo://fixtures/live_completion_evidence_v0/RAW_COMPLETION_CRITERION.json",
+  "evaluated_basis_head": "61ed8e8a3cea8aa3bc29adb0df361c214da7aeba",
+  "blocker_classes": [
+    "WORK_UNIT_IDENTITY_MISMATCH",
+    "CRITERION_BASIS_STALE",
+    "REQUIRED_RAW_TERM_UNSATISFIED",
+    "UNAUTHORIZED_MUTATION_PRESENT",
+    "REQUIRED_UPSTREAM_STANDING_MISSING_OR_UNQUALIFIED"
+  ],
+  "required_source_refs": [
+    "repo://fixtures/live_completion_evidence_v0/RAW_LIVE_WORK_BINDING.json",
+    "repo://fixtures/live_completion_evidence_v0/RAW_COMPLETION_CRITERION.json",
+    "repo://fixtures/live_completion_evidence_v0/RAW_WORK_EVIDENCE.json"
+  ],
+  "scope_closure_rule": "ALL_DECLARED_CLASSES_EXPLICITLY_EVALUATED"
+}
