@@ -1,0 +1,325 @@
+{
+  "authority_absence_standing": "NOT_ESTABLISHED",
+  "authority_denial_standing": "NOT_ESTABLISHED",
+  "authority_effect": "NONE",
+  "basis_exhaustiveness": "NOT_ESTABLISHED",
+  "cells": {
+    "A": {
+      "relation": "SEAT_EXISTS_WITHOUT_OCCUPANT",
+      "result": "PASS"
+    },
+    "B": {
+      "relation": "ROLE_IDENTITY_DISTINCT_FROM_SEAT_IDENTITY",
+      "result": "PASS"
+    },
+    "C": {
+      "relation": "OCCUPANT_ROTATION_WITHOUT_SEAT_OR_STANDING_INHERITANCE",
+      "result": "PASS"
+    },
+    "D": {
+      "relation": "OCCUPANT_IDENTITY_DISTINCT_FROM_INVOCATION_IDENTITY",
+      "result": "PASS"
+    },
+    "E": {
+      "relation": "INVOCATION_DISTINCT_FROM_WORK_CLAIM",
+      "result": "PASS"
+    },
+    "F": {
+      "relation": "WORK_CLAIM_REPRESENTED_DISTINCT_FROM_AUTHORITY_REF_REPRESENTED",
+      "result": "PASS"
+    },
+    "G": {
+      "relation": "ROLE_DOES_NOT_MANUFACTURE_AUTHORITY",
+      "result": "PASS"
+    },
+    "H": {
+      "relation": "CURRENT_WORLD_DISTINCT_FROM_OBSERVATION_BASIS",
+      "result": "PASS"
+    },
+    "I": {
+      "relation": "MISSINGNESS_CLAIM_REPRESENTED_DISTINCT_FROM_ABSENT",
+      "result": "PASS"
+    },
+    "J": {
+      "relation": "DECISION_TIME_BASIS_DISTINCT_FROM_LATER_WORLD",
+      "result": "PASS"
+    },
+    "K": {
+      "relation": "ABSENT_DISTINCT_FROM_PLACEHOLDER_IDENTITY",
+      "result": "PASS"
+    },
+    "L": {
+      "relation": "ROLE_LABEL_AND_AUTHORITY_REF_DISTINCT_FROM_AUTHORITY_STANDING",
+      "result": "PASS"
+    },
+    "M1": {
+      "relation": "CURRENT_INVOCATION_MUST_CORRESPOND_TO_CURRENT_OBSERVATION_BASIS",
+      "result": "PASS"
+    },
+    "M2": {
+      "relation": "CURRENT_OCCUPANT_MUST_CORRESPOND_TO_CURRENT_OBSERVATION_BASIS",
+      "result": "PASS"
+    },
+    "M3": {
+      "relation": "CURRENT_SEAT_MUST_CORRESPOND_TO_CURRENT_OBSERVATION_BASIS",
+      "result": "PASS"
+    },
+    "M4": {
+      "relation": "BINDING_ROLE_MUST_CORRESPOND_TO_SEAT_ROLE",
+      "result": "PASS"
+    },
+    "N0": {
+      "relation": "CURRENT_WORK_CLAIM_MUTUAL_ABSENCE_OR_EXACT_IDENTITY_IS_COHERENT",
+      "result": "PASS"
+    },
+    "N1": {
+      "relation": "SEAT_AND_BINDING_MUST_AGREE_ON_CURRENT_WORK_CLAIM_IDENTITY",
+      "result": "PASS"
+    },
+    "N2": {
+      "relation": "SEAT_CLAIM_PRESENT_BINDING_CLAIM_ABSENT_IS_INVALID",
+      "result": "PASS"
+    },
+    "N3": {
+      "relation": "SEAT_CLAIM_ABSENT_BINDING_CLAIM_PRESENT_IS_INVALID",
+      "result": "PASS"
+    },
+    "P1": {
+      "relation": "OLD_OBSERVED_OBJECT_MUST_NOT_AUTO_PROPAGATE_TO_FRESH_INVOCATION",
+      "result": "PASS"
+    },
+    "P2": {
+      "relation": "OLD_MISSINGNESS_MUST_NOT_AUTO_PROPAGATE_TO_FRESH_INVOCATION",
+      "result": "PASS"
+    },
+    "P3": {
+      "relation": "FRESH_OBSERVATION_MAY_REESTABLISH_SAME_FACT_EXPLICITLY",
+      "result": "PASS"
+    },
+    "P4": {
+      "relation": "HISTORICAL_BASIS_REFERENCE_DISTINCT_FROM_CURRENT_OBSERVATION",
+      "result": "PASS"
+    },
+    "Q1": {
+      "relation": "OBSERVED_OBJECT_REQUIRES_REPRESENTED_SOURCE_RELATION",
+      "result": "PASS"
+    },
+    "Q2": {
+      "relation": "OBSERVED_OBJECT_SOURCE_MUST_MATCH_EXPLICIT_BASIS_SOURCE_REF",
+      "result": "PASS"
+    },
+    "Q3A": {
+      "relation": "SOURCE_OBJECT_ID_MUST_CORRESPOND_TO_OBSERVATION_OBJECT_ID",
+      "result": "PASS"
+    },
+    "Q3B": {
+      "relation": "SOURCE_IDENTITY_MUST_CORRESPOND_TO_OBSERVATION_IDENTITY",
+      "result": "PASS"
+    },
+    "Q3C": {
+      "relation": "EXACT_REPRESENTED_SOURCE_OBJECT_IDENTITY_CORRESPONDENCE_IS_ADMISSIBLE",
+      "result": "PASS"
+    },
+    "Q4A": {
+      "relation": "MISSINGNESS_REQUIRES_REPRESENTED_WITNESS",
+      "result": "PASS"
+    },
+    "Q4B": {
+      "relation": "MISSINGNESS_WITNESS_OBJECT_MUST_CORRESPOND",
+      "result": "PASS"
+    },
+    "Q4C": {
+      "relation": "EXACT_REPRESENTED_MISSINGNESS_CORRESPONDENCE_IS_ADMISSIBLE",
+      "result": "PASS"
+    },
+    "Q4D": {
+      "relation": "MISSINGNESS_WITNESS_REASON_MUST_CORRESPOND",
+      "result": "PASS"
+    },
+    "R1": {
+      "relation": "CURRENT_OBSERVED_CLAIM_REQUIRES_REPRESENTED_SOURCE_ENCOUNTER",
+      "result": "PASS"
+    },
+    "R2": {
+      "relation": "SOURCE_ENCOUNTER_MUST_BELONG_TO_CURRENT_INVOCATION",
+      "result": "PASS"
+    },
+    "R3": {
+      "relation": "SOURCE_ENCOUNTER_MUST_POINT_TO_EXACT_OBSERVED_SOURCE",
+      "result": "PASS"
+    },
+    "R4": {
+      "relation": "EXACT_CURRENT_SOURCE_ENCOUNTER_IS_ADMISSIBLE",
+      "result": "PASS"
+    },
+    "R5": {
+      "relation": "SOURCE_ENCOUNTER_MUST_BELONG_TO_CURRENT_SEAT",
+      "result": "PASS"
+    },
+    "R6": {
+      "relation": "SOURCE_ENCOUNTER_MUST_BELONG_TO_CURRENT_OCCUPANT",
+      "result": "PASS"
+    },
+    "R7": {
+      "relation": "SOURCE_ENCOUNTER_MUST_BELONG_TO_CURRENT_BASIS_COORDINATE",
+      "result": "PASS"
+    },
+    "S1": {
+      "relation": "CURRENT_MISSING_CLAIM_REQUIRES_REPRESENTED_WITNESS_ENCOUNTER",
+      "result": "PASS"
+    },
+    "S2": {
+      "relation": "MISSINGNESS_WITNESS_ENCOUNTER_MUST_BELONG_TO_CURRENT_INVOCATION",
+      "result": "PASS"
+    },
+    "S3": {
+      "relation": "MISSINGNESS_WITNESS_ENCOUNTER_MUST_POINT_TO_EXACT_WITNESS",
+      "result": "PASS"
+    },
+    "S4": {
+      "relation": "EXACT_CURRENT_MISSINGNESS_WITNESS_ENCOUNTER_IS_ADMISSIBLE",
+      "result": "PASS"
+    },
+    "S5": {
+      "relation": "MISSINGNESS_WITNESS_ENCOUNTER_MUST_BELONG_TO_CURRENT_SEAT",
+      "result": "PASS"
+    },
+    "S6": {
+      "relation": "MISSINGNESS_WITNESS_ENCOUNTER_MUST_BELONG_TO_CURRENT_OCCUPANT",
+      "result": "PASS"
+    },
+    "S7": {
+      "relation": "MISSINGNESS_WITNESS_ENCOUNTER_MUST_BELONG_TO_CURRENT_BASIS_COORDINATE",
+      "result": "PASS"
+    },
+    "T1": {
+      "relation": "BASIS_ROW_DOES_NOT_MANUFACTURE_OBSERVED_STANDING",
+      "result": "PASS"
+    },
+    "T2": {
+      "relation": "PRESENTED_TO_INVOCATION_EARNS_SOURCE_PRESENTED_NOT_OBSERVED",
+      "result": "PASS"
+    },
+    "T3": {
+      "relation": "OBSERVED_STANDING_REQUIRES_STRONGER_FUTURE_MACHINERY",
+      "result": "PASS"
+    },
+    "U1": {
+      "relation": "BASIS_MISSINGNESS_ROW_DOES_NOT_MANUFACTURE_MISSING_STANDING",
+      "result": "PASS"
+    },
+    "U2": {
+      "relation": "PRESENTED_WITNESS_EARNS_MISSINGNESS_WITNESS_PRESENTED_NOT_MISSING",
+      "result": "PASS"
+    },
+    "U3": {
+      "relation": "MISSING_STANDING_REQUIRES_STRONGER_FUTURE_MACHINERY",
+      "result": "PASS"
+    },
+    "V1": {
+      "relation": "BASIS_SILENCE_EARNS_UNREPRESENTED_AT_BASIS_NOT_UNKNOWN",
+      "result": "PASS"
+    },
+    "V2": {
+      "relation": "VALIDATED_BUNDLE_SILENCE_EARNS_NO_CURRENT_REPRESENTED_CLAIM",
+      "result": "PASS"
+    },
+    "V3": {
+      "relation": "BASIS_SILENCE_DOES_NOT_MANUFACTURE_NEGATIVE_EPISTEMIC_STANDING",
+      "result": "PASS"
+    },
+    "W1": {
+      "relation": "SOURCE_ENCOUNTER_SAME_FRIENDLY_BASIS_REF_DIFFERENT_EXACT_BASIS_REJECTED",
+      "result": "PASS"
+    },
+    "W2": {
+      "relation": "MISSINGNESS_ENCOUNTER_SAME_FRIENDLY_BASIS_REF_DIFFERENT_EXACT_BASIS_REJECTED",
+      "result": "PASS"
+    },
+    "W3": {
+      "relation": "ENCOUNTER_EXACT_CURRENT_BASIS_IDENTITY_IS_ADMISSIBLE",
+      "result": "PASS"
+    },
+    "W4": {
+      "relation": "BASIS_BYTE_MUTATION_INVALIDATES_PRIOR_ENCOUNTER",
+      "result": "PASS"
+    },
+    "X1": {
+      "relation": "EMPTY_AUTHORITY_REFS_EARN_NO_AUTHORITY_REF_REPRESENTED_NOT_ABSENT",
+      "result": "PASS"
+    },
+    "X2": {
+      "relation": "UNQUALIFIED_AUTHORITY_REF_REMAINS_UNADJUDICATED",
+      "result": "PASS"
+    },
+    "X3": {
+      "relation": "AUTHORITY_REF_SILENCE_DOES_NOT_MANUFACTURE_NEGATIVE_AUTHORITY_STANDING",
+      "result": "PASS"
+    },
+    "X4": {
+      "relation": "WORK_CLAIM_REPRESENTED_DOES_NOT_MANUFACTURE_AUTHORITY_OR_AUTHORITY_ABSENCE",
+      "result": "PASS"
+    }
+  },
+  "core_relations": {
+    "authority_absence_semantic_ceiling": "PASS",
+    "cross_object_identity_correspondence": "PASS",
+    "current_invocation_missingness_witness_encounter": "PASS",
+    "current_invocation_source_encounter": "PASS",
+    "current_world_ne_observation_basis": "PASS",
+    "encounter_exact_current_basis_identity": "PASS",
+    "explicit_missingness_grounding": "PASS",
+    "fresh_observation_payload_noninheritance": "PASS",
+    "fresh_observation_source_relation": "PASS",
+    "invocation_ne_work_claim": "PASS",
+    "missing_status_semantic_ceiling": "PASS",
+    "observation_source_object_identity_correspondence": "PASS",
+    "observed_status_semantic_ceiling": "PASS",
+    "occupant_ne_invocation": "PASS",
+    "role_ne_seat": "PASS",
+    "seat_binding_work_claim_correspondence": "PASS",
+    "seat_ne_occupant": "PASS",
+    "unknown_status_semantic_ceiling": "PASS",
+    "work_claim_ne_authority": "PASS"
+  },
+  "direct_object_perception": "NOT_CLAIMED",
+  "direct_observation_standing": "NOT_ESTABLISHED",
+  "durable_ecology_installed": false,
+  "empty_authority_ref_standing": "NO_AUTHORITY_REF_REPRESENTED",
+  "encounter_basis_identity": "EXACT_OBSERVATION_BASIS_CONTENT_IDENTITY",
+  "execution_effect": "NONE",
+  "friendly_basis_ref_identity_sufficient": "NO",
+  "function_needs_seat": "NOT_TESTED",
+  "historical_basis_reuse": "SEPARATE_TYPED_RELATION_REQUIRED_NOT_MODELED",
+  "integration_effect": "NONE",
+  "legacy_seat_migration": "NOT_TESTED",
+  "missing_standing": "NOT_ESTABLISHED",
+  "missingness_reason_understanding": "NOT_CLAIMED",
+  "missingness_witness_correspondence": "TESTED_EXACT_OBJECT_REASON",
+  "missingness_witness_encounter_correspondence": "TESTED_CURRENT_SEAT_OCCUPANT_INVOCATION_WITNESS_BASIS",
+  "missingness_witness_encounter_truth": "NOT_TESTED",
+  "missingness_witness_truth": "NOT_TESTED",
+  "object_id": "PRIMARY_ECOLOGY_GRAMMAR_001-RESULT",
+  "object_type": "PRIMARY_ECOLOGY_GRAMMAR_PRESSURE_RESULT",
+  "observation_identity_scheme_semantics": "NOT_TESTED",
+  "observation_source_identity_correspondence": "TESTED_EXACT_OPAQUE_CORRESPONDENCE",
+  "observation_source_truth": "NOT_TESTED",
+  "occupant_binding_effect": "NONE",
+  "presented_missingness_standing": "MISSINGNESS_WITNESS_PRESENTED",
+  "presented_source_standing": "SOURCE_PRESENTED",
+  "representation_succession": "NOT_TESTED",
+  "represented_authority_ref_standing": "UNADJUDICATED",
+  "retrieval_attempt_or_failure": "NOT_ESTABLISHED",
+  "role_vocabulary_status": "PROVISIONAL_EXTENSIBLE",
+  "silent_basis_standing": "UNREPRESENTED_AT_BASIS",
+  "silent_current_standing": "NO_CURRENT_REPRESENTED_CLAIM",
+  "source_encounter_correspondence": "TESTED_CURRENT_SEAT_OCCUPANT_INVOCATION_SOURCE_BASIS",
+  "source_encounter_truth": "NOT_TESTED",
+  "source_inspection_or_consumption": "NOT_ESTABLISHED",
+  "source_understanding": "NOT_CLAIMED",
+  "status": "QUALIFIED_SYNTHETIC_GRAMMAR",
+  "stop": true,
+  "universal_unavailability": "NOT_CLAIMED",
+  "unknown_standing": "NOT_ESTABLISHED",
+  "work_claim_effect": "NONE"
+}

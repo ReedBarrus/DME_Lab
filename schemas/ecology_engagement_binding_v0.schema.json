@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/ecology_engagement_binding_v0.schema.json",
+  "title": "Ecology Engagement Binding v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "binding_id",
+    "role_id",
+    "seat_id",
+    "occupant_id",
+    "invocation_id",
+    "observation_basis_ref",
+    "task_ref",
+    "work_claim_ref",
+    "standing_refs",
+    "authority_refs",
+    "authority_effect",
+    "execution_effect"
+  ],
+  "properties": {
+    "schema": {
+      "const": "ecology_engagement_binding_v0"
+    },
+    "binding_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "role_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "seat_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occupant_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "invocation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observation_basis_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "work_claim_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "standing_refs": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "authority_refs": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "authority_effect": {
+      "const": "NONE"
+    },
+    "execution_effect": {
+      "const": "NONE"
+    }
+  }
+}

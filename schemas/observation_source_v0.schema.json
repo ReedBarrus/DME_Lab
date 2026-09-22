@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/observation_source_v0.schema.json",
+  "title": "Observation Source v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "source_id",
+    "object_id",
+    "identity",
+    "authority_effect",
+    "execution_effect"
+  ],
+  "properties": {
+    "schema": {
+      "const": "observation_source_v0"
+    },
+    "source_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "object_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "identity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_effect": {
+      "const": "NONE"
+    },
+    "execution_effect": {
+      "const": "NONE"
+    }
+  }
+}

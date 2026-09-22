@@ -1,0 +1,103 @@
+{
+  "schema": "primary_ecology_seat_catalog_v0",
+  "status": "SYNTHETIC_TEST_FIXTURE",
+  "durable_ecology_installation": false,
+  "seats": [
+    {
+      "schema": "ecology_seat_v0",
+      "seat_id": "SCIENCE_TEST_01",
+      "role_id": "SCIENTIST",
+      "seat_state": "AVAILABLE_UNOCCUPIED",
+      "occupant_id": null,
+      "invocation_id": null,
+      "work_claim_ref": null,
+      "cursor_ref": null,
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    },
+    {
+      "schema": "ecology_seat_v0",
+      "seat_id": "SCIENCE_TEST_02",
+      "role_id": "SCIENTIST",
+      "seat_state": "AVAILABLE_UNOCCUPIED",
+      "occupant_id": null,
+      "invocation_id": null,
+      "work_claim_ref": null,
+      "cursor_ref": null,
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    },
+    {
+      "schema": "ecology_seat_v0",
+      "seat_id": "ADVERSARY_TEST_01",
+      "role_id": "ADVERSARY",
+      "seat_state": "AVAILABLE_UNOCCUPIED",
+      "occupant_id": null,
+      "invocation_id": null,
+      "work_claim_ref": null,
+      "cursor_ref": null,
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    },
+    {
+      "schema": "ecology_seat_v0",
+      "seat_id": "PLANNER_TEST_01",
+      "role_id": "PLANNER",
+      "seat_state": "AVAILABLE_UNOCCUPIED",
+      "occupant_id": null,
+      "invocation_id": null,
+      "work_claim_ref": null,
+      "cursor_ref": null,
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    },
+    {
+      "schema": "ecology_seat_v0",
+      "seat_id": "WORKSHOP_TEST_01",
+      "role_id": "WORKSHOP",
+      "seat_state": "AVAILABLE_UNOCCUPIED",
+      "occupant_id": null,
+      "invocation_id": null,
+      "work_claim_ref": null,
+      "cursor_ref": null,
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    },
+    {
+      "schema": "ecology_seat_v0",
+      "seat_id": "QC_TEST_01",
+      "role_id": "QC",
+      "seat_state": "AVAILABLE_UNOCCUPIED",
+      "occupant_id": null,
+      "invocation_id": null,
+      "work_claim_ref": null,
+      "cursor_ref": null,
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    },
+    {
+      "schema": "ecology_seat_v0",
+      "seat_id": "RECONSTRUCTOR_TEST_01",
+      "role_id": "RECONSTRUCTOR",
+      "seat_state": "AVAILABLE_UNOCCUPIED",
+      "occupant_id": null,
+      "invocation_id": null,
+      "work_claim_ref": null,
+      "cursor_ref": null,
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    },
+    {
+      "schema": "ecology_seat_v0",
+      "seat_id": "COORDINATOR_TEST_01",
+      "role_id": "COORDINATOR",
+      "seat_state": "AVAILABLE_UNOCCUPIED",
+      "occupant_id": null,
+      "invocation_id": null,
+      "work_claim_ref": null,
+      "cursor_ref": null,
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    }
+  ]
+}
