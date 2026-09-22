@@ -122,7 +122,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
 
     def test_I_explicit_missing_is_not_absent(self):
         basis = clean_basis()
-        self.assertEqual(basis_claim_status(basis, "MISSING_OBJECT"), "MISSING")
+        self.assertEqual(basis_claim_status(basis, "MISSING_OBJECT"), "MISSINGNESS_CLAIM_REPRESENTED")
 
     def test_J_later_world_change_does_not_rewrite_prior_basis(self):
         basis = clean_basis()
@@ -583,7 +583,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             }],
         )
         validate_missingness_grounding(basis, [witness])
-        self.assertEqual(basis_claim_status(basis, "SECRET_DRAGON_LEDGER"), "MISSING")
+        self.assertEqual(basis_claim_status(basis, "SECRET_DRAGON_LEDGER"), "MISSINGNESS_CLAIM_REPRESENTED")
 
     def test_Q4D_missingness_reason_mismatch_rejected(self):
         witness = {
@@ -902,6 +902,51 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         self.assertNotEqual(basis_status, "OBSERVED")
         self.assertNotEqual(current_status, "OBSERVED")
 
+    def test_U1_basis_missingness_row_is_only_claim_represented(self):
+        bundle = clean_bundle()
+        self.assertEqual(
+            basis_claim_status(bundle["basis"], "MISSING_OBJECT"),
+            "MISSINGNESS_CLAIM_REPRESENTED",
+        )
+
+    def test_U2_full_current_missingness_chain_earns_witness_presented(self):
+        bundle = clean_bundle()
+        self.assertEqual(
+            current_epistemic_status(
+                role=bundle["role"],
+                seat=bundle["seat"],
+                binding=bundle["binding"],
+                basis=bundle["basis"],
+                object_id="MISSING_OBJECT",
+                source_carriers=bundle["sources"],
+                missingness_witnesses=bundle["missingness_witnesses"],
+                source_encounters=bundle["source_encounters"],
+                missingness_witness_encounters=bundle[
+                    "missingness_witness_encounters"
+                ],
+            ),
+            "MISSINGNESS_WITNESS_PRESENTED",
+        )
+
+    def test_U3_current_apparatus_does_not_emit_missing_standing(self):
+        bundle = clean_bundle()
+        basis_status = basis_claim_status(bundle["basis"], "MISSING_OBJECT")
+        current_status = current_epistemic_status(
+            role=bundle["role"],
+            seat=bundle["seat"],
+            binding=bundle["binding"],
+            basis=bundle["basis"],
+            object_id="MISSING_OBJECT",
+            source_carriers=bundle["sources"],
+            missingness_witnesses=bundle["missingness_witnesses"],
+            source_encounters=bundle["source_encounters"],
+            missingness_witness_encounters=bundle[
+                "missingness_witness_encounters"
+            ],
+        )
+        self.assertNotEqual(basis_status, "MISSING")
+        self.assertNotEqual(current_status, "MISSING")
+
     def test_observation_basis_ref_pins_exact_basis_bytes(self):
         b = clean_bundle()
         original_ref = observation_basis_ref(b["basis"])
@@ -955,6 +1000,10 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             result["core_relations"]["observed_status_semantic_ceiling"],
             "PASS",
         )
+        self.assertEqual(
+            result["core_relations"]["missing_status_semantic_ceiling"],
+            "PASS",
+        )
         self.assertFalse(result["durable_ecology_installed"])
         self.assertEqual(result["authority_effect"], "NONE")
         self.assertEqual(result["execution_effect"], "NONE")
@@ -1001,6 +1050,14 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         )
         self.assertEqual(
             result["source_inspection_or_consumption"], "NOT_ESTABLISHED"
+        )
+        self.assertEqual(
+            result["presented_missingness_standing"],
+            "MISSINGNESS_WITNESS_PRESENTED",
+        )
+        self.assertEqual(result["missing_standing"], "NOT_ESTABLISHED")
+        self.assertEqual(
+            result["retrieval_attempt_or_failure"], "NOT_ESTABLISHED"
         )
 
 
