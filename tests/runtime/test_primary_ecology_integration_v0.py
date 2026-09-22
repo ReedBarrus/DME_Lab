@@ -144,6 +144,39 @@ class PrimaryEcologyIntegrationTests(unittest.TestCase):
         self.assertEqual(result["work_claim_effect"], "NONE")
         self.assertFalse(result["durable_ecology_installed"])
 
+    def test_Y4_lane_b_historical_precondition_is_unchanged_from_target_main(self):
+        current_manifest = ROOT / "coordination/lane_manifest.json"
+        self.assertFalse(current_manifest.exists())
+
+        target_probe = subprocess.run(
+            [
+                "git",
+                "cat-file",
+                "-e",
+                f"{TARGET_BASE}:coordination/lane_manifest.json",
+            ],
+            cwd=ROOT,
+            check=False,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+        self.assertNotEqual(target_probe.returncode, 0)
+
+        unchanged_paths = (
+            "tools/lane_b_successor_engagement_v0.py",
+            "tools/lane_b_successor_engagement_repressure_v1.py",
+            "tests/runtime/test_lane_b_successor_engagement_v0.py",
+            "tests/runtime/test_lane_b_successor_engagement_repressure_v1.py",
+            "schemas/lane_engagement_binding_v0.schema.json",
+            "coordination/predecessor_fences/LANE_B_LEGACY_INSTANCE_001.json",
+        )
+        diff = subprocess.run(
+            ["git", "diff", "--quiet", f"{TARGET_BASE}..HEAD", "--", *unchanged_paths],
+            cwd=ROOT,
+            check=False,
+        )
+        self.assertEqual(diff.returncode, 0)
+
     def test_Y5_all_18_transplanted_artifacts_are_exact_source_blobs(self):
         self.assertEqual(len(SOURCE_BLOBS), 18)
         for rel, expected_sha in SOURCE_BLOBS.items():
