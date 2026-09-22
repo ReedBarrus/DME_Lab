@@ -23,6 +23,7 @@ from tools.primary_ecology_v0 import (
     rotate_invocation,
     rotate_occupant,
     run_pressure,
+    validate_binding,
     validate_correspondence,
     validate_observation_basis,
     validate_observation_grounding,
