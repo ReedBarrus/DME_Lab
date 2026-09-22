@@ -17,24 +17,69 @@
   "cells": {
     "A": {
       "admissible": true,
-      "consulted": ["P01","P02","P03","P04","P05","P06","P07","P08"],
+      "consulted": [
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05",
+        "P06",
+        "P07",
+        "P08"
+      ],
       "exact_controller": true,
       "selected_branch": "COMPLETE",
       "transition_executed": false
     },
-    "B": {"controller_calls": 0, "error": "AdapterInvalid:PIN_MISMATCH:evidence", "status": "RAISED"},
-    "C": {"controller_calls": 0, "error": "AdapterInvalid:PIN_MISMATCH:criterion", "status": "RAISED"},
+    "B": {
+      "controller_calls": 0,
+      "error": "AdapterInvalid:PIN_MISMATCH:evidence",
+      "status": "RAISED"
+    },
+    "C": {
+      "controller_calls": 0,
+      "error": "AdapterInvalid:PIN_MISMATCH:criterion",
+      "status": "RAISED"
+    },
     "D": {
-      "adapter_attempt": {"controller_calls": 0, "error": "AdapterInvalid:PIN_MISMATCH:binding", "status": "RAISED"},
-      "p05_mismatches": ["bounded_unit_id"],
+      "adapter_attempt": {
+        "controller_calls": 0,
+        "error": "AdapterInvalid:PIN_MISMATCH:binding",
+        "status": "RAISED"
+      },
+      "p05_mismatches": [
+        "bounded_unit_id"
+      ],
       "p05_status": "DOES_NOT_MATCH"
     },
-    "E": {"caller_outcome_accepted": false, "signature": "(repo_root: 'str | Path') -> 'dict[str, Any]'"},
-    "F": {"reason": "PRODUCER_VERSION_NOT_QUALIFIED", "status": "NOT_ESTABLISHED"},
-    "G": {"controller_calls": 0, "error": "AdapterInvalid:PIN_MISMATCH:p07_basis", "status": "RAISED"},
-    "H": {"controller_calls": 0, "error": "AdapterInvalid:PIN_MISMATCH:p08_basis", "status": "RAISED"},
-    "I": {"controller_calls": 0, "error": "AdapterInvalid:AUTHORITATIVE_CONTROLLER_DRIFT", "status": "RAISED"},
-    "J": {"controller_calls": 0, "error": "AdapterInvalid:PROJECTED_INPUT_DIGEST_MISMATCH_PRE_INVOKE", "status": "RAISED"},
+    "E": {
+      "caller_outcome_accepted": false,
+      "signature": "(repo_root: 'str | Path') -> 'dict[str, Any]'"
+    },
+    "F": {
+      "reason": "PRODUCER_VERSION_NOT_QUALIFIED",
+      "status": "NOT_ESTABLISHED"
+    },
+    "G": {
+      "controller_calls": 0,
+      "error": "AdapterInvalid:PIN_MISMATCH:p07_basis",
+      "status": "RAISED"
+    },
+    "H": {
+      "controller_calls": 0,
+      "error": "AdapterInvalid:PIN_MISMATCH:p08_basis",
+      "status": "RAISED"
+    },
+    "I": {
+      "controller_calls": 0,
+      "error": "AdapterInvalid:AUTHORITATIVE_CONTROLLER_DRIFT",
+      "status": "RAISED"
+    },
+    "J": {
+      "controller_calls": 0,
+      "error": "AdapterInvalid:PROJECTED_INPUT_DIGEST_MISMATCH_PRE_INVOKE",
+      "status": "RAISED"
+    },
     "K": {
       "controller_result_has_historical_claim": false,
       "historical_claim_ref": "git:61ed8e8a3cea8aa3bc29adb0df361c214da7aeba:coordination/active_work_claim.json@5f0a134655c0c45287ef61b29ed46072d47c6895",
