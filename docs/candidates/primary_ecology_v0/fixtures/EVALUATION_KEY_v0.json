@@ -60,7 +60,11 @@
     "W1": "PASS",
     "W2": "PASS",
     "W3": "PASS",
-    "W4": "PASS"
+    "W4": "PASS",
+    "X1": "PASS",
+    "X2": "PASS",
+    "X3": "PASS",
+    "X4": "PASS"
   },
   "terminal_status": "QUALIFIED_SYNTHETIC_GRAMMAR"
 }
