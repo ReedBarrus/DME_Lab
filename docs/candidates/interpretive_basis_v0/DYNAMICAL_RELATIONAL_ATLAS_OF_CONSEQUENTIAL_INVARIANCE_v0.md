@@ -126,21 +126,44 @@ REALITY
 The Atlas begins with consequence rather than with role, authority,
 agent, seat, influence, correction, or planning.
 
-Primitive situated relation:
+Primitive situated relation identity is provisionally separated from its changing state:
 
 ```text
-R = (s, o, b, t)
+ρ = (s, o, κ)
 
-s = subject configuration
-o = object / referent configuration
-b = operative basis
-t = observation / execution coordinate
+s = subject identity / configuration reference
+o = object / referent identity / configuration reference
+κ = declared correspondence key / relation identity basis
 ```
+
+The exact structure of `κ` is intentionally unresolved.
 
 Associated relational state:
 
 ```text
-x_R(t)
+x_ρ(t)
+```
+
+may include:
+
+```text
+operative basis b_ρ(t)
+current configuration
+occupancy
+claim state
+authority standing
+environmental dependencies
+other earned coordinates
+```
+
+Freeze:
+
+```text
+RELATION IDENTITY
+!=
+RELATION STATE
+!=
+OBSERVATION / EXECUTION COORDINATE
 ```
 
 Primary mapping:
@@ -156,9 +179,9 @@ CONSEQUENCE
 Let consequence be:
 
 ```text
-C_R : X_R → 𝓒
+C_ρ : X_ρ → 𝓒
 
-C_R(t) = C_R(x_R(t))
+C_ρ(t) = C_ρ(x_ρ(t))
 ```
 
 `𝓒` is not assumed scalar.
@@ -187,28 +210,28 @@ No universal goodness scalar is assumed.
 An action is provisionally represented as:
 
 ```text
-A_R : x → x'
+A_ρ : x → x'
 ```
 
-Observed consequential displacement:
+Consequential displacement may be represented as:
 
 ```text
-Δ_A C_R
+Δ_A C_ρ
 =
-C_R(A_R(x)) - C_R(x)
+C_ρ(A_ρ(x)) - C_ρ(x)
 ```
 
-Full observed action change may be represented as:
+Full action change may be represented as a typed set of coordinate transitions:
 
 ```text
-Δ_R A
+Δ_ρ A
 =
 (
-ΔC_R,
+ΔC_ρ,
 Δθ_s,
 Δθ_o,
-Δb,
-Δt,
+b₀ → b₁,
+t₀ → t₁,
 ...
 )
 ```
@@ -230,28 +253,45 @@ Introduce provisional local configuration coordinates:
 
 `θ` does not yet mean literal angle.
 
-Locally:
+Locally, where the Lab earns continuous coordinates:
 
 ```text
-x_R = x_R(θ_s, θ_o, b, t, ...)
+x_ρ = x_ρ(θ_s, θ_o, ...)
 
-C_R = C_R(θ_s, θ_o, b, t, ...)
+C_ρ = C_ρ(θ_s, θ_o, ...)
 ```
 
-Local consequential change may therefore be decomposed as:
+Local consequential change may then be decomposed over those earned continuous coordinates:
 
 ```text
-dC_R
+dC_ρ
 =
-(∂C_R / ∂θ_s)dθ_s
+(∂C_ρ / ∂θ_s)dθ_s
 +
-(∂C_R / ∂θ_o)dθ_o
-+
-(∂C_R / ∂b)db
-+
-(∂C_R / ∂t)dt
+(∂C_ρ / ∂θ_o)dθ_o
 +
 ...
+```
+
+Structured basis and currentness changes MUST NOT be presumed differentiable.
+
+For basis changes prefer explicit transitions such as:
+
+```text
+b₀ → b₁
+
+Δ_b C
+=
+C(x,b₁) - C(x,b₀)
+```
+
+unless a continuous basis coordinate is separately earned.
+
+Freeze:
+
+```text
+DO NOT DRAW A SMOOTH SURFACE
+WHERE THE LAB HAS ONLY EARNED DISCRETE EDGES
 ```
 
 Interpretive value:
@@ -320,10 +360,14 @@ correction in another.
 Let:
 
 ```text
-𝓤(x)
+Ω
 =
-operators / actions that exist from or around state x
+represented / known operator space
 ```
+
+State- and relation-specific possibility, reachability, admissibility, authority,
+and executability are projections / predicates over `Ω`, not assumed to be
+one universally nested set.
 
 Distinguish at least these non-equivalent operator standings / relations:
 
@@ -344,7 +388,8 @@ ADMISSIBLE:
 the selected / candidate transformation survives the relevant local qualification / standing gates
 
 AUTHORIZED:
-the transformation has a current authority carrier for this subject / action / basis
+an operation-specific authority relation has been independently established
+for this subject / operation / basis / scope / currentness envelope
 
 EXECUTABLE:
 the transformation has the concrete execution conditions / surface required now
@@ -383,21 +428,12 @@ Do not assume a universal dispatch chain. Request / selection coordinates are me
 The Atlas may represent these as separate masks / standing functions, but MUST NOT
 assume a universal binary admissibility predicate or a universal nesting relation.
 
-Where a specific mechanism earns containment, a local chain may look like:
+Where a specific mechanism earns containment, a local chain may be drawn.
 
-```text
-𝓤_exec
-⊆
-𝓤_auth
-⊆
-𝓤_adm
-⊆
-𝓤_reach
-⊆
-𝓤_poss
-```
+But in general the standings may be independent predicates whose intersections
+define an actually usable action surface.
 
-but this containment is itself an earned relation, not a global law.
+Do not infer nesting merely from the vocabulary.
 
 Authority therefore is not an identity property and is not reducible to admissibility.
 
@@ -405,20 +441,62 @@ Authority therefore is not an identity property and is not reducible to admissib
 
 Authority is provisionally interpreted as relationally emergent.
 
-Candidate authority coordinate:
+Minimum currently earned authority projection:
 
 ```text
-AUTHORITY
+AUTHORITY_EDGE E
 =
-f(
-operator,
+(
+actor,
 subject,
-action,
+operation,
 basis,
-consequence range,
-corrective path
+scope,
+currentness,
+consequence_envelope,
+lifetime / consumption state where earned
 )
+
+STANDING(E)
+=
+AUTHORIZED | UNRESOLVED | ABSENT | INVALID | CONSUMED | ...
 ```
+
+Only standings earned by the underlying mechanism may be used.
+
+Freeze:
+
+```text
+AUTHORITY CARRIER / WARRANT / REFERENCE PRESENT
+!=
+AUTHORITY STANDING ESTABLISHED
+
+AUTHORIZED(operation A)
+!=
+AUTHORIZED(operation B)
+
+CURRENT BOUNDED AUTHORITY
+!=
+CONTINUED / SUCCESSOR AUTHORITY
+
+AUTHORIZED OBJECTIVE
+!=
+AUTHORIZED REALIZATION / PATH
+```
+
+Current evidence forces operation-distinct edges where applicable, including:
+
+```text
+AUTHORIZE / ACTIVATE
+!=
+SYSTEM_WRITE / MODIFY
+!=
+EXECUTE EFFECT
+!=
+PROMOTE / CHANGE CURRENT STANDING
+```
+
+This does NOT install a global authority-type taxonomy.
 
 Therefore:
 
@@ -459,21 +537,22 @@ Authority may vary across:
 - corrective support;
 - relational dependency.
 
-Current human stewardship is therefore:
+Current human stewardship is represented operationally where the present
+workflow requires explicit human authorization, but its complete mechanical
+authority basis remains under-modeled.
+
+Freeze:
 
 ```text
-HIGH-CONSEQUENCE,
-HIGH-CONTEXT,
-EXTERNAL-WORLD RELATIONAL STANDING
-
-NOT:
-
-MYTHICAL
-ABSOLUTE
-UNREVIEWABLE
-INFORMATIONALLY DESPOTIC
-PERMANENT BY IDENTITY
+CURRENT OPERATIONAL HUMAN AUTHORITY
+!=
+HUMAN IDENTITY
+!=
+MECHANICALLY CLOSED AUTHORITY BASIS
 ```
+
+The Atlas must not infer authority from human identity alone, nor erase current
+external stewardship merely because its basis is not yet fully mechanized.
 
 ## 8. CONSEQUENTIAL REACH, TRAJECTORY, AND PREVENTION
 
@@ -501,18 +580,29 @@ Then a consequence trajectory may be represented as:
 C(Φ_τ(A(x)))
 ```
 
-and a horizon-bounded consequence tube as:
+Define first a horizon-bounded reachable STATE tube:
 
 ```text
-𝔠_A^[0,T](x)
+𝔖_A^[0,T](x)
 =
 {
-C(Φ_τ(A(x)))
+Φ_τ(A(x))
 |
 A is executable in the declared local regime,
 0 ≤ τ ≤ T
 }
 ```
+
+Then the corresponding consequence tube is its projection:
+
+```text
+𝔠_A^[0,T](x)
+=
+C(𝔖_A^[0,T](x))
+```
+
+State / trajectory space and consequence projection space are therefore kept
+distinct.
 
 Freeze:
 
@@ -582,7 +672,63 @@ COMPARISON BASIS
 Do not infer prevented consequence merely from non-occurrence. Counterfactual
 exclusion requires an earned comparison basis.
 
-## 9. INVARIANTS, IDENTITY, AND HISTORICAL DISTINCTNESS
+## 9. OBSERVATION, EVIDENCE, LINEAGE, INVARIANTS, AND IDENTITY
+
+Actual consequence is not identical to observation of consequence.
+
+Provisionally let:
+
+```text
+O : 𝓒 → 𝓨
+```
+
+map consequence into an available observation / evidence surface.
+
+Freeze:
+
+```text
+REALIZED CONSEQUENCE
+!=
+OBSERVATION
+!=
+EVIDENCE OBJECT
+!=
+QUALIFIED STANDING
+
+O(C₁) = O(C₂)
+does not imply
+C₁ = C₂
+```
+
+Where the Lab requires it, preserve:
+
+```text
+TRAJECTORY
+!=
+LINEAGE
+```
+
+with:
+
+```text
+TRAJECTORY
+=
+the realized / projected path through state and consequence
+
+LINEAGE
+=
+qualified relational provenance and dependence correspondence over history:
+what descended from what,
+which basis supports that correspondence,
+what was conserved,
+what superseded what,
+and why the relation has standing
+```
+
+Lineage is therefore path-dependent provenance structure, not merely another
+instantaneous state coordinate.
+
+## 9A. INVARIANTS, IDENTITY, AND HISTORICAL DISTINCTNESS
 
 Let:
 
@@ -888,10 +1034,10 @@ operator set.
 For recurring action regime `A` and propagation horizon `T`, let:
 
 ```text
-𝔠_A^[0,T](x)
+𝔖_A^[0,T](x)
 ```
 
-denote its horizon-bounded consequence tube.
+denote its horizon-bounded reachable STATE tube.
 
 Let:
 
@@ -899,16 +1045,24 @@ Let:
 𝔯_𝓖,𝓘(x)
 ```
 
-denote the region from which a qualified corrective trajectory can reach the
-declared viability region `𝓖` while preserving every required conservation
+denote the STATE region from which a qualified corrective trajectory can reach
+the declared viability region `𝓖` while preserving every required conservation
 invariant in `𝓘`.
 
 Candidate stability condition:
 
 ```text
-𝔠_A^[0,T](x)
+𝔖_A^[0,T](x)
 ⊆
 𝔯_𝓖,𝓘(x)
+```
+
+Consequence remains a projection over these state / trajectory relations:
+
+```text
+𝔠_A^[0,T](x)
+=
+C(𝔖_A^[0,T](x))
 ```
 
 Verbally:
@@ -916,24 +1070,28 @@ Verbally:
 ```text
 FOR THE RELEVANT PROPAGATION HORIZON:
 
-THE CONSEQUENCE TUBE ADMITTED
+THE STATE TRAJECTORIES ADMITTED
 TO A RECURRING ACTION REGIME
-SHOULD REMAIN INSIDE THE REGION
+SHOULD REMAIN INSIDE THE STATE REGION
 FROM WHICH QUALIFIED CORRECTIVE TRAJECTORIES
 CAN REACH A VALID RECOVERY / VIABILITY REGION
 WHILE PRESERVING REQUIRED CONSERVATION INVARIANTS.
+
+CONSEQUENCE AND OBSERVATION MAPS
+THEN PROJECT WHAT THOSE TRAJECTORIES DO
+AND WHAT EVIDENCE OF THEM IS AVAILABLE.
 ```
 
 This is a **pressure hypothesis**, not yet law.
 
 ## 14. UNCOVERED CONSEQUENTIAL REGION
 
-Define provisionally:
+Define provisionally in STATE space:
 
 ```text
-𝓓_uncorrected^[0,T]
+𝓓_uncovered^[0,T]
 =
-𝔠_A^[0,T](x)
+𝔖_A^[0,T](x)
 \
 𝔯_𝓖,𝓘(x)
 ```
@@ -941,8 +1099,19 @@ Define provisionally:
 This is the:
 
 ```text
-UNCOVERED CONSEQUENTIAL REGION
+UNCOVERED REACHABLE STATE REGION
 ```
+
+Its consequence projection may be examined as:
+
+```text
+C(𝓓_uncovered^[0,T])
+```
+
+when that projection is meaningful.
+
+This prevents state recoverability and consequence projection from being
+silently treated as the same mathematical domain.
 
 Interpretively:
 
@@ -1113,7 +1282,80 @@ PRESSURE FAILURE
 ARCHITECTURE REQUIRED
 ```
 
-## 18. DEVELOPMENT DEBT AS GEOMETRY
+## 18. REALIZATION / HOSTING BOUNDARY
+
+Atlas objects are not treated as disembodied abstractions.
+
+A represented informational process may depend on a realizing computational
+and physical environment.
+
+Provisionally preserve a realization ladder such as:
+
+```text
+PHYSICAL SUPPORT
+↓
+COMPUTATIONAL SUBSTRATE
+↓
+RUNTIME / PROCESS
+↓
+INFORMATIONAL STATE
+↓
+RELATIONAL / SEMANTIC STATE
+↓
+SOCIAL / INSTITUTIONAL CONSEQUENCE
+```
+
+This is representational only.
+
+DRACI does NOT require proportional, complete, or physically exhaustive
+modeling of each layer.
+
+It requires enough representation to preserve causally relevant support
+dependencies when they matter.
+
+Freeze:
+
+```text
+REPRESENTED PROCESS
+!=
+REALIZING SUBSTRATE
+
+SEMANTIC AVAILABILITY
+MAY DEPEND ON
+COMPUTATIONAL / PHYSICAL SUPPORT
+
+HOSTING / SUBSTRATE CONTROL
+!=
+SEMANTIC AUTHORITY
+```
+
+Candidate hosting relation:
+
+```text
+HOSTING_RELATION
+=
+one domain materially enabling another process / domain to exist or act
+```
+
+Examples of causally relevant substrate transformations may include:
+
+```text
+process start / termination
+power loss
+memory exhaustion
+storage loss
+network loss
+credential removal
+runtime replacement
+resource allocation change
+```
+
+No universal physics model is installed.
+
+The Lab remains the territory-facing process for pressure against physical
+reality and scientific modeling.
+
+## 18A. DEVELOPMENT DEBT AS GEOMETRY
 
 Debt should be projected where possible as a local mismatch between:
 
@@ -1208,6 +1450,8 @@ multiple previously disconnected qualified mechanisms become jointly usable
 For any development object, attempt to project:
 
 ```text
+RELATION IDENTITY / CORRESPONDENCE BASIS
+
 RELATIONAL SUBJECT
 
 OBJECT / REFERENT
@@ -1274,9 +1518,17 @@ UNCOVERED CONSEQUENTIAL REGION
 
 CURRENTNESS DEPENDENCIES
 
-OBSERVABILITY
+OBSERVABILITY / OBSERVATION OPERATOR
+
+EVIDENCE OBJECTS / EVIDENCE LIMITS
 
 TRAJECTORY
+
+LINEAGE / PROVENANCE CORRESPONDENCE
+
+REALIZATION / HOSTING DEPENDENCIES
+
+SUBSTRATE SUPPORT WHERE CAUSALLY RELEVANT
 
 PRESSURE VECTOR
 
@@ -1432,16 +1684,19 @@ THE CONSERVATION INVARIANTS REQUIRED BY THE DECLARED SCOPE.
 
 H8:
 FOR A RELEVANT PROPAGATION HORIZON,
-RECURRING CONSEQUENCE TUBES SHOULD REMAIN INSIDE
-QUALIFIED RECOVERY BASINS.
+RECURRING REACHABLE STATE TUBES SHOULD REMAIN INSIDE
+QUALIFIED STATE-SPACE RECOVERY BASINS.
+
+CONSEQUENCE AND OBSERVATION ARE PROJECTIONS OVER THOSE TRAJECTORIES.
 
 H9:
 THE DIFFERENCE BETWEEN THOSE REGIONS
 IS A USEFUL DEVELOPMENT PRESSURE SURFACE.
 
 H10:
-AUTHORITY IS LOCALLY RELATIONAL
-AND CONSTRAINS ADMISSIBLE OPERATOR SETS.
+AUTHORITY IS LOCALLY RELATIONAL, OPERATION- AND SCOPE-SPECIFIC,
+CURRENT, NON-INHERITING BY DEFAULT, AND MUST NOT BE INFERRED FROM
+A CARRIER / WARRANT / ROLE / IDENTITY ALONE.
 
 H11:
 BOUNDED OPERATOR REGIME IS ONE USEFUL PROJECTION OF A SEAT,
@@ -1473,6 +1728,22 @@ AND MUST REMAIN DISTINCT WHERE THE LAB REQUIRES THEM.
 H17:
 CONSERVATION, TERMINALITY, RECOVERY / VIABILITY, AND REUSABILITY
 MAY BE DISTINCT MECHANISM-RELATIVE CONDITIONS.
+
+H18:
+RELATION IDENTITY, RELATION STATE, AND OBSERVATION COORDINATE
+ARE NON-EQUIVALENT.
+
+H19:
+REALIZED CONSEQUENCE, OBSERVATION, EVIDENCE OBJECT, AND QUALIFIED
+STANDING ARE NON-EQUIVALENT.
+
+H20:
+TRAJECTORY AND LINEAGE ARE NON-EQUIVALENT;
+LINEAGE IS QUALIFIED PATH-DEPENDENT PROVENANCE / DEPENDENCE CORRESPONDENCE.
+
+H21:
+REPRESENTED INFORMATIONAL PROCESSES MAY DEPEND CAUSALLY ON COMPUTATIONAL
+AND PHYSICAL REALIZATION SUPPORT WITHOUT REQUIRING A COMPLETE PHYSICS MODEL.
 ```
 
 ## 25. NON-CLAIMS
@@ -1480,6 +1751,7 @@ MAY BE DISTINCT MECHANISM-RELATIVE CONDITIONS.
 `DRACI_v0` does not claim:
 
 - reality is fundamentally geometric;
+- the Atlas is disembodied from its computational / physical realization;
 - consequence space has these exact dimensions;
 - `θ` is literally angular;
 - derivatives are always numerically measurable;
@@ -1821,3 +2093,156 @@ TYPED_AUTHORITY_EDGE_GEOMETRY
 The next review should remain narrow: determine whether current Lab evidence
 already forces multiple authority relation types that DRACI's generic
 AUTHORIZED standing cannot preserve.
+
+
+## 31. AUTHORITY REVIEW STALEMATE — v0.3
+
+Current typed-authority review reached bounded stalemate.
+
+The Lab does NOT presently force a global authority-type ontology.
+
+It DOES force authority standing to remain attached to exact relational edges.
+
+```text
+AUTHORITY_EDGE E
+=
+(
+actor,
+subject,
+operation,
+basis,
+scope,
+currentness,
+consequence_envelope,
+lifetime / consumption state where earned
+)
+```
+
+Preserve:
+
+```text
+AUTHORITY CARRIER PRESENT
+!=
+AUTHORITY ESTABLISHED
+
+AUTHORIZE / ACTIVATE
+!=
+SYSTEM_WRITE / MODIFY
+!=
+EXECUTE EFFECT
+!=
+PROMOTE / CHANGE CURRENT STANDING
+
+AUTHORIZED OBJECTIVE
+!=
+AUTHORIZED REALIZATION / PATH
+
+CURRENT BOUNDED AUTHORITY
+!=
+CONTINUED / SUCCESSOR AUTHORITY
+
+QUALIFIED ADJUDICATOR
+!=
+AUTHORITY PRINCIPAL
+
+CURRENT OPERATIONAL HUMAN AUTHORITY
+!=
+HUMAN IDENTITY
+!=
+MECHANICALLY CLOSED AUTHORITY BASIS
+```
+
+Remain unresolved:
+
+```text
+AUTHORITY TO REQUEST
+AUTHORITY TO CORRECT
+AUTHORITY TO REVOKE
+AUTHORITY TO DELEGATE
+AUTHORITY TO BIND ANOTHER ACTOR
+AUTHORITY TO CREATE NEW AUTHORITY
+```
+
+No further authority split is promoted without fresh Lab-backed pressure.
+
+## 32. CAUSAL ROLE / ECOLOGY PROJECTION
+
+Current Lab ownership distinctions suggest a useful, non-canonical projection:
+
+```text
+SEMANTIC LAW OWNER
+!=
+EVIDENCE REALIZER
+!=
+CURRENTNESS OWNER
+!=
+ADMISSION OWNER
+!=
+AUTHORITY EDGE CARRIER / ESTABLISHER
+!=
+EXECUTION OWNER
+!=
+RECEIPT / WITNESS OWNER
+!=
+RECOVERY OWNER
+```
+
+These are causal roles around a relation / edge.
+
+They are NOT required to map one-to-one onto agents.
+
+They do NOT create authority by role label.
+
+They may nevertheless become useful stable ecology projections where pressure
+shows that preserving distinct ownership domains improves observability,
+noninheritance, correction, or consequence control.
+
+## 33. CURRENT INTEGRATION POSTURE
+
+DRACI_v0 now intentionally separates:
+
+```text
+RELATION IDENTITY
+RELATION STATE
+TRANSFORMATION / TRAJECTORY
+CONSEQUENCE
+OBSERVATION
+EVIDENCE
+QUALIFIED STANDING
+LINEAGE
+AUTHORITY
+EXECUTION
+RECOVERY
+REALIZATION / HOSTING SUPPORT
+```
+
+without claiming these are final primitives.
+
+Current development loop:
+
+```text
+EVIDENCE
+↓
+MAP
+↓
+PREDICTED WOUND / LEVERAGE
+↓
+PRESSURE
+↓
+REAL TRAJECTORY
+↓
+OBSERVATION / EVIDENCE
+↓
+MAP CORRECTION
+↓
+BETTER PRESSURE SELECTION
+```
+
+The Lab remains territory-facing.
+
+The Atlas remains map-facing.
+
+Neither owns the other.
+
+Convergence between them, if it occurs, must be earned through repeated pressure
+rather than assumed as an architectural goal.
