@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/live_qualified_upstream_relation_v0.schema.json",
+  "title": "LIVE_QUALIFIED_UPSTREAM_RELATION_v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "relation_type",
+    "standing",
+    "basis_ref",
+    "producer",
+    "version"
+  ],
+  "properties": {
+    "schema": {
+      "const": "LIVE_QUALIFIED_UPSTREAM_RELATION_v0"
+    },
+    "relation_type": {
+      "enum": [
+        "UNIT_COMPLETION_STANDING",
+        "COMPLETION_BLOCKER_STATUS"
+      ]
+    },
+    "standing": {
+      "enum": [
+        "QUALIFIED",
+        "NONE_ESTABLISHED",
+        "FORBIDS_COMPLETION"
+      ]
+    },
+    "basis_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "producer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}
