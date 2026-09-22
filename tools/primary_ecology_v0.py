@@ -38,11 +38,13 @@ MISSINGNESS_WITNESS_FIELDS = {
 }
 SOURCE_ENCOUNTER_FIELDS = {
     "schema","encounter_id","seat_id","occupant_id","invocation_id",
-    "source_ref","encounter_kind","basis_ref","authority_effect","execution_effect",
+    "source_ref","encounter_kind","basis_ref","observation_basis_ref",
+    "authority_effect","execution_effect",
 }
 MISSINGNESS_WITNESS_ENCOUNTER_FIELDS = {
     "schema","encounter_id","seat_id","occupant_id","invocation_id",
-    "witness_ref","encounter_kind","basis_ref","authority_effect","execution_effect",
+    "witness_ref","encounter_kind","basis_ref","observation_basis_ref",
+    "authority_effect","execution_effect",
 }
 BINDING_FIELDS = {
     "schema","binding_id","role_id","seat_id","occupant_id","invocation_id",
@@ -266,7 +268,7 @@ def validate_source_encounter(encounter: Mapping[str, Any]) -> None:
         raise EcologyError("wrong source encounter schema")
     for field in (
         "encounter_id","seat_id","occupant_id","invocation_id",
-        "source_ref","basis_ref",
+        "source_ref","basis_ref","observation_basis_ref",
     ):
         _nonempty_string(encounter[field], field)
     if encounter["encounter_kind"] != "PRESENTED_TO_INVOCATION":
@@ -318,6 +320,8 @@ def validate_source_encounter_grounding(
             raise EcologyError("SOURCE_ENCOUNTER_INVOCATION_MISMATCH")
         if encounter["basis_ref"] != basis["basis_ref"]:
             raise EcologyError("SOURCE_ENCOUNTER_BASIS_MISMATCH")
+        if encounter["observation_basis_ref"] != observation_basis_ref(basis):
+            raise EcologyError("SOURCE_ENCOUNTER_EXACT_BASIS_MISMATCH")
 
 
 def validate_missingness_witness_encounter(encounter: Mapping[str, Any]) -> None:
@@ -330,7 +334,7 @@ def validate_missingness_witness_encounter(encounter: Mapping[str, Any]) -> None
         raise EcologyError("wrong missingness witness encounter schema")
     for field in (
         "encounter_id","seat_id","occupant_id","invocation_id",
-        "witness_ref","basis_ref",
+        "witness_ref","basis_ref","observation_basis_ref",
     ):
         _nonempty_string(encounter[field], field)
     if encounter["encounter_kind"] != "PRESENTED_TO_INVOCATION":
@@ -385,6 +389,8 @@ def validate_missingness_witness_encounter_grounding(
             raise EcologyError("MISSINGNESS_WITNESS_ENCOUNTER_INVOCATION_MISMATCH")
         if encounter["basis_ref"] != basis["basis_ref"]:
             raise EcologyError("MISSINGNESS_WITNESS_ENCOUNTER_BASIS_MISMATCH")
+        if encounter["observation_basis_ref"] != observation_basis_ref(basis):
+            raise EcologyError("MISSINGNESS_WITNESS_ENCOUNTER_EXACT_BASIS_MISMATCH")
 
 
 def validate_binding(binding: Mapping[str, Any]) -> None:
@@ -1067,6 +1073,7 @@ def run_pressure() -> dict[str, Any]:
         "source_ref":p3_source_ref,
         "encounter_kind":"PRESENTED_TO_INVOCATION",
         "basis_ref":p3_basis["basis_ref"],
+        "observation_basis_ref":observation_basis_ref(p3_basis),
         "authority_effect":"NONE",
         "execution_effect":"NONE",
     }
@@ -1417,6 +1424,7 @@ def run_pressure() -> dict[str, Any]:
         "source_ref":r_source_ref,
         "encounter_kind":"PRESENTED_TO_INVOCATION",
         "basis_ref":r_basis["basis_ref"],
+        "observation_basis_ref":observation_basis_ref(r_basis),
         "authority_effect":"NONE",
         "execution_effect":"NONE",
     }
@@ -1442,6 +1450,7 @@ def run_pressure() -> dict[str, Any]:
         "source_ref":"observation-source://OTHER@opaque:other",
         "encounter_kind":"PRESENTED_TO_INVOCATION",
         "basis_ref":r_basis["basis_ref"],
+        "observation_basis_ref":observation_basis_ref(r_basis),
         "authority_effect":"NONE",
         "execution_effect":"NONE",
     }
@@ -1467,6 +1476,7 @@ def run_pressure() -> dict[str, Any]:
         "source_ref":r_source_ref,
         "encounter_kind":"PRESENTED_TO_INVOCATION",
         "basis_ref":r_basis["basis_ref"],
+        "observation_basis_ref":observation_basis_ref(r_basis),
         "authority_effect":"NONE",
         "execution_effect":"NONE",
     }
@@ -1588,6 +1598,7 @@ def run_pressure() -> dict[str, Any]:
         "witness_ref":s_witness_ref,
         "encounter_kind":"PRESENTED_TO_INVOCATION",
         "basis_ref":s_basis["basis_ref"],
+        "observation_basis_ref":observation_basis_ref(s_basis),
         "authority_effect":"NONE",
         "execution_effect":"NONE",
     }
@@ -1619,6 +1630,7 @@ def run_pressure() -> dict[str, Any]:
         "witness_ref":"missingness-witness://OTHER@opaque:other",
         "encounter_kind":"PRESENTED_TO_INVOCATION",
         "basis_ref":s_basis["basis_ref"],
+        "observation_basis_ref":observation_basis_ref(s_basis),
         "authority_effect":"NONE",
         "execution_effect":"NONE",
     }
@@ -1650,6 +1662,7 @@ def run_pressure() -> dict[str, Any]:
         "witness_ref":s_witness_ref,
         "encounter_kind":"PRESENTED_TO_INVOCATION",
         "basis_ref":s_basis["basis_ref"],
+        "observation_basis_ref":observation_basis_ref(s_basis),
         "authority_effect":"NONE",
         "execution_effect":"NONE",
     }
@@ -1848,6 +1861,184 @@ def run_pressure() -> dict[str, Any]:
         "relation":"BASIS_SILENCE_DOES_NOT_MANUFACTURE_NEGATIVE_EPISTEMIC_STANDING",
     }
 
+    # Q10 / W1 -- source encounter has the same friendly basis coordinate but
+    # pins the predecessor basis bytes while the binding correctly pins new bytes.
+    w1_source = {
+        "schema":"observation_source_v0",
+        "source_id":"SOURCE_Q10_W1",
+        "object_id":"Q10_OBJECT",
+        "identity":"opaque:Q10-A",
+        "authority_effect":"NONE",
+        "execution_effect":"NONE",
+    }
+    w1_source_ref = observation_source_ref(w1_source)
+    w1_basis_a = fresh_basis(
+        clean_basis(),
+        seat_id="SCIENCE_TEST_01",
+        occupant_id="LABOIB_CANDIDATE",
+        invocation_id="INVOCATION_W1",
+        basis_id="OBSERVATION_BASIS_W1",
+        observed_objects=[{
+            "object_id":"Q10_OBJECT",
+            "identity":"opaque:Q10-A",
+            "source_ref":w1_source_ref,
+        }],
+        source_refs=[w1_source_ref],
+    )
+    w1_binding_a = clean_binding()
+    w1_binding_a["binding_id"] = "BINDING:SCIENCE_TEST_01:LABOIB_CANDIDATE:INVOCATION_W1"
+    w1_binding_a["invocation_id"] = "INVOCATION_W1"
+    w1_binding_a["observation_basis_ref"] = observation_basis_ref(w1_basis_a)
+    w1_seat = occupied_seat(
+        seat=clean_empty_seat("SCIENCE_TEST_01"),
+        occupant_id="LABOIB_CANDIDATE",
+        invocation_id="INVOCATION_W1",
+    )
+    w1_old_encounter = {
+        "schema":"source_encounter_v0",
+        "encounter_id":"ENCOUNTER_W1_OLD",
+        "seat_id":w1_binding_a["seat_id"],
+        "occupant_id":w1_binding_a["occupant_id"],
+        "invocation_id":w1_binding_a["invocation_id"],
+        "source_ref":w1_source_ref,
+        "encounter_kind":"PRESENTED_TO_INVOCATION",
+        "basis_ref":w1_basis_a["basis_ref"],
+        "observation_basis_ref":observation_basis_ref(w1_basis_a),
+        "authority_effect":"NONE",
+        "execution_effect":"NONE",
+    }
+    w1_basis_b = copy.deepcopy(w1_basis_a)
+    w1_basis_b["basis_id"] = "OBSERVATION_BASIS_W1_MUTATED"
+    # Friendly coordinate intentionally remains identical.
+    w1_binding_b = copy.deepcopy(w1_binding_a)
+    w1_binding_b["observation_basis_ref"] = observation_basis_ref(w1_basis_b)
+    try:
+        validate_correspondence(
+            role=role, seat=w1_seat, binding=w1_binding_b, basis=w1_basis_b,
+            source_carriers=[w1_source],
+            source_encounters=[w1_old_encounter],
+        )
+        w1_result = "FRACTURE"
+    except EcologyError as exc:
+        w1_result = (
+            "PASS"
+            if str(exc) == "SOURCE_ENCOUNTER_EXACT_BASIS_MISMATCH"
+            else "FRACTURE"
+        )
+    cells["W1"] = {
+        "result":w1_result,
+        "relation":"SOURCE_ENCOUNTER_SAME_FRIENDLY_BASIS_REF_DIFFERENT_EXACT_BASIS_REJECTED",
+    }
+
+    # W2 -- same attack on the missingness witness encounter.
+    w2_witness = {
+        "schema":"missingness_witness_v0",
+        "witness_id":"WITNESS_Q10_W2",
+        "object_id":"Q10_MISSING_OBJECT",
+        "standing":"UNAVAILABLE_AT_BASIS",
+        "reason":"PERMISSION_DENIED",
+        "authority_effect":"NONE",
+        "execution_effect":"NONE",
+    }
+    w2_witness_ref = missingness_witness_ref(w2_witness)
+    w2_basis_a = fresh_basis(
+        clean_basis(),
+        seat_id="SCIENCE_TEST_01",
+        occupant_id="LABOIB_CANDIDATE",
+        invocation_id="INVOCATION_W2",
+        basis_id="OBSERVATION_BASIS_W2",
+        explicit_missing_objects=[{
+            "object_id":"Q10_MISSING_OBJECT",
+            "reason":"PERMISSION_DENIED",
+            "witness_ref":w2_witness_ref,
+        }],
+    )
+    w2_binding_a = clean_binding()
+    w2_binding_a["binding_id"] = "BINDING:SCIENCE_TEST_01:LABOIB_CANDIDATE:INVOCATION_W2"
+    w2_binding_a["invocation_id"] = "INVOCATION_W2"
+    w2_binding_a["observation_basis_ref"] = observation_basis_ref(w2_basis_a)
+    w2_seat = occupied_seat(
+        seat=clean_empty_seat("SCIENCE_TEST_01"),
+        occupant_id="LABOIB_CANDIDATE",
+        invocation_id="INVOCATION_W2",
+    )
+    w2_old_encounter = {
+        "schema":"missingness_witness_encounter_v0",
+        "encounter_id":"MISSINGNESS_ENCOUNTER_W2_OLD",
+        "seat_id":w2_binding_a["seat_id"],
+        "occupant_id":w2_binding_a["occupant_id"],
+        "invocation_id":w2_binding_a["invocation_id"],
+        "witness_ref":w2_witness_ref,
+        "encounter_kind":"PRESENTED_TO_INVOCATION",
+        "basis_ref":w2_basis_a["basis_ref"],
+        "observation_basis_ref":observation_basis_ref(w2_basis_a),
+        "authority_effect":"NONE",
+        "execution_effect":"NONE",
+    }
+    w2_basis_b = copy.deepcopy(w2_basis_a)
+    w2_basis_b["basis_id"] = "OBSERVATION_BASIS_W2_MUTATED"
+    w2_binding_b = copy.deepcopy(w2_binding_a)
+    w2_binding_b["observation_basis_ref"] = observation_basis_ref(w2_basis_b)
+    try:
+        validate_correspondence(
+            role=role, seat=w2_seat, binding=w2_binding_b, basis=w2_basis_b,
+            missingness_witnesses=[w2_witness],
+            missingness_witness_encounters=[w2_old_encounter],
+        )
+        w2_result = "FRACTURE"
+    except EcologyError as exc:
+        w2_result = (
+            "PASS"
+            if str(exc) == "MISSINGNESS_WITNESS_ENCOUNTER_EXACT_BASIS_MISMATCH"
+            else "FRACTURE"
+        )
+    cells["W2"] = {
+        "result":w2_result,
+        "relation":"MISSINGNESS_ENCOUNTER_SAME_FRIENDLY_BASIS_REF_DIFFERENT_EXACT_BASIS_REJECTED",
+    }
+
+    # W3 -- encounter explicitly pinned to the exact current basis is admissible.
+    w3_encounter = copy.deepcopy(w1_old_encounter)
+    w3_encounter["encounter_id"] = "ENCOUNTER_W3_CURRENT"
+    w3_encounter["observation_basis_ref"] = observation_basis_ref(w1_basis_b)
+    try:
+        validate_correspondence(
+            role=role, seat=w1_seat, binding=w1_binding_b, basis=w1_basis_b,
+            source_carriers=[w1_source],
+            source_encounters=[w3_encounter],
+        )
+        w3_result = "PASS"
+    except EcologyError:
+        w3_result = "FRACTURE"
+    cells["W3"] = {
+        "result":w3_result,
+        "relation":"ENCOUNTER_EXACT_CURRENT_BASIS_IDENTITY_IS_ADMISSIBLE",
+    }
+
+    # W4 -- mutating any basis byte and repinning the binding invalidates an old
+    # encounter even when subject/carrier/friendly-basis coordinates are unchanged.
+    w4_basis = copy.deepcopy(w1_basis_b)
+    w4_basis["source_refs"] = list(w4_basis["source_refs"]) + ["fixture://Q10/EXTRA"]
+    w4_binding = copy.deepcopy(w1_binding_b)
+    w4_binding["observation_basis_ref"] = observation_basis_ref(w4_basis)
+    try:
+        validate_correspondence(
+            role=role, seat=w1_seat, binding=w4_binding, basis=w4_basis,
+            source_carriers=[w1_source],
+            source_encounters=[w3_encounter],
+        )
+        w4_result = "FRACTURE"
+    except EcologyError as exc:
+        w4_result = (
+            "PASS"
+            if str(exc) == "SOURCE_ENCOUNTER_EXACT_BASIS_MISMATCH"
+            else "FRACTURE"
+        )
+    cells["W4"] = {
+        "result":w4_result,
+        "relation":"BASIS_BYTE_MUTATION_INVALIDATES_PRIOR_ENCOUNTER",
+    }
+
     evaluation_key = _load(FIXTURE_DIR / "EVALUATION_KEY_v0.json")
     expected_cells = evaluation_key.get("cells", {}) if isinstance(evaluation_key, dict) else {}
     key_matches = all(expected_cells.get(cell_id) == cell["result"] for cell_id, cell in cells.items()) and set(expected_cells) == set(cells)
@@ -1879,6 +2070,7 @@ def run_pressure() -> dict[str, Any]:
             "observed_status_semantic_ceiling":"PASS" if all(cells[x]["result"] == "PASS" for x in ("T1","T2","T3")) else "FRACTURE",
             "missing_status_semantic_ceiling":"PASS" if all(cells[x]["result"] == "PASS" for x in ("U1","U2","U3")) else "FRACTURE",
             "unknown_status_semantic_ceiling":"PASS" if all(cells[x]["result"] == "PASS" for x in ("V1","V2","V3")) else "FRACTURE",
+            "encounter_exact_current_basis_identity":"PASS" if all(cells[x]["result"] == "PASS" for x in ("W1","W2","W3","W4")) else "FRACTURE",
         },
         "role_vocabulary_status":"PROVISIONAL_EXTENSIBLE",
         "durable_ecology_installed":False,
@@ -1913,6 +2105,8 @@ def run_pressure() -> dict[str, Any]:
         "silent_current_standing":"NO_CURRENT_REPRESENTED_CLAIM",
         "unknown_standing":"NOT_ESTABLISHED",
         "basis_exhaustiveness":"NOT_ESTABLISHED",
+        "encounter_basis_identity":"EXACT_OBSERVATION_BASIS_CONTENT_IDENTITY",
+        "friendly_basis_ref_identity_sufficient":"NO",
         "function_needs_seat":"NOT_TESTED",
         "stop":True,
     }
