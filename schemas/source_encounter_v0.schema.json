@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/source_encounter_v0.schema.json",
+  "title": "Source Encounter v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "encounter_id",
+    "seat_id",
+    "occupant_id",
+    "invocation_id",
+    "source_ref",
+    "encounter_kind",
+    "basis_ref",
+    "observation_basis_ref",
+    "authority_effect",
+    "execution_effect"
+  ],
+  "properties": {
+    "schema": {
+      "const": "source_encounter_v0"
+    },
+    "encounter_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "seat_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occupant_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "invocation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "encounter_kind": {
+      "const": "PRESENTED_TO_INVOCATION"
+    },
+    "basis_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_effect": {
+      "const": "NONE"
+    },
+    "execution_effect": {
+      "const": "NONE"
+    },
+    "observation_basis_ref": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

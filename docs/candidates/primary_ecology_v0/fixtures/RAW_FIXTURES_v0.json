@@ -1,0 +1,97 @@
+{
+  "schema": "primary_ecology_raw_fixtures_v0",
+  "source_carriers": [
+    {
+      "schema": "observation_source_v0",
+      "source_id": "SOURCE_OBSERVED_OBJECT",
+      "object_id": "OBSERVED_OBJECT",
+      "identity": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    }
+  ],
+  "missingness_witnesses": [
+    {
+      "schema": "missingness_witness_v0",
+      "witness_id": "MISSINGNESS_WITNESS_MISSING_OBJECT",
+      "object_id": "MISSING_OBJECT",
+      "standing": "UNAVAILABLE_AT_BASIS",
+      "reason": "SOURCE_NOT_AVAILABLE_AT_BASIS",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE"
+    }
+  ],
+  "observation_basis": {
+    "schema": "observation_basis_v0",
+    "basis_id": "OBSERVATION_BASIS_TEST_001",
+    "observer_seat_id": "SCIENCE_TEST_01",
+    "observer_occupant_id": "LABOIB_CANDIDATE",
+    "observer_invocation_id": "INVOCATION_A",
+    "basis_ref": "fixture://PRIMARY_ECOLOGY_GRAMMAR_001/BASIS_A",
+    "observed_objects": [
+      {
+        "object_id": "OBSERVED_OBJECT",
+        "identity": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_ref": "observation-source://SOURCE_OBSERVED_OBJECT@sha256:30e752e16f453e7f87bddc97bc3099f5e818039e0d777395457fdd2662b30cdd"
+      }
+    ],
+    "explicit_missing_objects": [
+      {
+        "object_id": "MISSING_OBJECT",
+        "reason": "SOURCE_NOT_AVAILABLE_AT_BASIS",
+        "witness_ref": "missingness-witness://MISSINGNESS_WITNESS_MISSING_OBJECT@sha256:858fdb475f58b31ef84886d2b9d730b6261b26cd59ddc62e51698d0fdef50ca3"
+      }
+    ],
+    "source_refs": [
+      "fixture://PRIMARY_ECOLOGY_GRAMMAR_001",
+      "observation-source://SOURCE_OBSERVED_OBJECT@sha256:30e752e16f453e7f87bddc97bc3099f5e818039e0d777395457fdd2662b30cdd"
+    ],
+    "authority_effect": "NONE",
+    "execution_effect": "NONE"
+  },
+  "engagement_binding": {
+    "schema": "ecology_engagement_binding_v0",
+    "binding_id": "BINDING:SCIENCE_TEST_01:LABOIB_CANDIDATE:INVOCATION_A",
+    "role_id": "SCIENTIST",
+    "seat_id": "SCIENCE_TEST_01",
+    "occupant_id": "LABOIB_CANDIDATE",
+    "invocation_id": "INVOCATION_A",
+    "observation_basis_ref": "observation-basis://OBSERVATION_BASIS_TEST_001@sha256:751f2f1efc473b390b0e67a88e4bb5c674c96c9732edeea6ce4d1890ec0dc237",
+    "task_ref": "task://PRIMARY_ECOLOGY_GRAMMAR_001",
+    "work_claim_ref": null,
+    "standing_refs": [],
+    "authority_refs": [],
+    "authority_effect": "NONE",
+    "execution_effect": "NONE"
+  },
+  "source_encounters": [
+    {
+      "schema": "source_encounter_v0",
+      "encounter_id": "ENCOUNTER_OBSERVED_OBJECT_INVOCATION_A",
+      "seat_id": "SCIENCE_TEST_01",
+      "occupant_id": "LABOIB_CANDIDATE",
+      "invocation_id": "INVOCATION_A",
+      "source_ref": "observation-source://SOURCE_OBSERVED_OBJECT@sha256:30e752e16f453e7f87bddc97bc3099f5e818039e0d777395457fdd2662b30cdd",
+      "encounter_kind": "PRESENTED_TO_INVOCATION",
+      "basis_ref": "fixture://PRIMARY_ECOLOGY_GRAMMAR_001/BASIS_A",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE",
+      "observation_basis_ref": "observation-basis://OBSERVATION_BASIS_TEST_001@sha256:751f2f1efc473b390b0e67a88e4bb5c674c96c9732edeea6ce4d1890ec0dc237"
+    }
+  ],
+  "missingness_witness_encounters": [
+    {
+      "schema": "missingness_witness_encounter_v0",
+      "encounter_id": "MISSINGNESS_ENCOUNTER_MISSING_OBJECT_INVOCATION_A",
+      "seat_id": "SCIENCE_TEST_01",
+      "occupant_id": "LABOIB_CANDIDATE",
+      "invocation_id": "INVOCATION_A",
+      "witness_ref": "missingness-witness://MISSINGNESS_WITNESS_MISSING_OBJECT@sha256:858fdb475f58b31ef84886d2b9d730b6261b26cd59ddc62e51698d0fdef50ca3",
+      "encounter_kind": "PRESENTED_TO_INVOCATION",
+      "basis_ref": "fixture://PRIMARY_ECOLOGY_GRAMMAR_001/BASIS_A",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE",
+      "observation_basis_ref": "observation-basis://OBSERVATION_BASIS_TEST_001@sha256:751f2f1efc473b390b0e67a88e4bb5c674c96c9732edeea6ce4d1890ec0dc237"
+    }
+  ]
+}
