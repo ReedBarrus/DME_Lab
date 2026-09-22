@@ -1,0 +1,23 @@
+name: live-completion-evidence-001-review-002
+
+on:
+  push:
+    branches:
+      - live-completion-evidence-001-review-002-v0
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  adversarial-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Review pressure
+        run: python -m unittest -v tests.runtime.test_live_completion_evidence_review_002
