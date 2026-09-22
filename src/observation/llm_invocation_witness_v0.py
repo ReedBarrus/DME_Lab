@@ -15,15 +15,32 @@ WITNESS_TYPE = "RAW_LLM_INVOCATION_WITNESS_V0"
 UNRESOLVED = "UNRESOLVED"
 
 TOOL_REQUEST = "TOOL_REQUEST"
+TOOL_EXECUTION = "TOOL_EXECUTION"
 TOOL_RESULT = "TOOL_RESULT"
+TOOL_RESULT_SUBMISSION = "TOOL_RESULT_SUBMISSION"
+MODEL_RECEIPT_OF_TOOL_RESULT = "MODEL_RECEIPT_OF_TOOL_RESULT"
 MODEL_CLAIM_ABOUT_TOOL_RESULT = "MODEL_CLAIM_ABOUT_TOOL_RESULT"
 TOOL_TRACE_KINDS = (
     TOOL_REQUEST,
+    TOOL_EXECUTION,
     TOOL_RESULT,
+    TOOL_RESULT_SUBMISSION,
+    MODEL_RECEIPT_OF_TOOL_RESULT,
     MODEL_CLAIM_ABOUT_TOOL_RESULT,
 )
 
-_TOOL_TRACE_KEYS = frozenset({"ordinal", "kind", "raw_ref"})
+MEASURED = "MEASURED"
+DERIVED = "DERIVED"
+INTERPRETED = "INTERPRETED"
+UNRESOLVED_TRACE_RELATION = "UNRESOLVED"
+TOOL_TRACE_EPISTEMIC_CLASSES = (
+    MEASURED,
+    DERIVED,
+    INTERPRETED,
+    UNRESOLVED_TRACE_RELATION,
+)
+
+_TOOL_TRACE_KEYS = frozenset({"ordinal", "kind", "raw_ref", "epistemic_class"})
 _CLASSIFIABLE_FIELDS = frozenset(
     {
         "invocation_id",
@@ -82,7 +99,7 @@ def _tool_trace_list(
         if not isinstance(entry, Mapping) or set(entry) != _TOOL_TRACE_KEYS:
             raise InvocationWitnessInputError(
                 "each tool_trace_refs entry must contain exactly "
-                "ordinal, kind, and raw_ref"
+                "ordinal, kind, raw_ref, and epistemic_class"
             )
         ordinal = entry["ordinal"]
         if isinstance(ordinal, bool) or ordinal != expected_ordinal:
@@ -95,7 +112,22 @@ def _tool_trace_list(
         raw_ref = _required_text(
             entry["raw_ref"], f"tool_trace_refs[{expected_ordinal}].raw_ref"
         )
-        retained.append({"ordinal": ordinal, "kind": kind, "raw_ref": raw_ref})
+        epistemic_class = _required_text(
+            entry["epistemic_class"],
+            f"tool_trace_refs[{expected_ordinal}].epistemic_class",
+        )
+        if epistemic_class not in TOOL_TRACE_EPISTEMIC_CLASSES:
+            raise InvocationWitnessInputError(
+                f"unsupported tool trace epistemic class: {epistemic_class!r}"
+            )
+        retained.append(
+            {
+                "ordinal": ordinal,
+                "kind": kind,
+                "raw_ref": raw_ref,
+                "epistemic_class": epistemic_class,
+            }
+        )
     return retained
 
 
@@ -118,7 +150,8 @@ def build_raw_invocation_witness(
 ) -> dict[str, Any]:
     """Return a deterministic, append-free witness from supplied observations.
 
-    ``tool_trace_refs`` preserves three distinct raw boundary kinds.  An
+    ``tool_trace_refs`` preserves distinct raw boundary relations and their
+    caller-supplied epistemic classes.  An
     external effect is deliberately not an accepted assertion: references to
     observed crossings can be retained, while effect establishment remains
     unresolved in this witness.
@@ -128,6 +161,7 @@ def build_raw_invocation_witness(
     retained_model_identity = _optional_text(model_identity, "model_identity")
     retained_start_frame_ref = _optional_text(start_frame_ref, "start_frame_ref")
     retained_end_frame_ref = _optional_text(end_frame_ref, "end_frame_ref")
+    retained_tool_trace_refs = _tool_trace_list(tool_trace_refs)
 
     measured_fields = []
     if retained_invocation_id is not None:
@@ -146,6 +180,11 @@ def build_raw_invocation_witness(
         ]
     )
     unresolved_fields = ["tool_trace_completeness", "external_effect"]
+    if retained_tool_trace_refs and not any(
+        entry["kind"] == MODEL_RECEIPT_OF_TOOL_RESULT
+        for entry in retained_tool_trace_refs
+    ):
+        unresolved_fields.append("model_receipt_of_tool_result")
     if retained_invocation_id is None:
         unresolved_fields.append("invocation_id")
 
@@ -186,7 +225,7 @@ def build_raw_invocation_witness(
         "adapter_identity": _required_text(adapter_identity, "adapter_identity"),
         "model_identity": retained_model_identity or UNRESOLVED,
         "declared_basis_refs": _text_list(declared_basis_refs, "declared_basis_refs"),
-        "tool_trace_refs": _tool_trace_list(tool_trace_refs),
+        "tool_trace_refs": retained_tool_trace_refs,
         "raw_output_identity": _required_text(
             raw_output_identity, "raw_output_identity"
         ),

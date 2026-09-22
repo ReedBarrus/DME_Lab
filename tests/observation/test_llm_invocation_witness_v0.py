@@ -7,10 +7,14 @@ from pathlib import Path
 from unittest import mock
 
 from src.observation.llm_invocation_witness_v0 import (
+    DERIVED,
     InvocationWitnessInputError,
+    MEASURED,
     MODEL_CLAIM_ABOUT_TOOL_RESULT,
+    TOOL_EXECUTION,
     TOOL_REQUEST,
     TOOL_RESULT,
+    TOOL_RESULT_SUBMISSION,
     UNRESOLVED,
     build_raw_invocation_witness,
 )
@@ -112,12 +116,23 @@ class RawInvocationWitnessV0Tests(unittest.TestCase):
 
     def test_tool_request_result_and_model_claim_remain_distinct(self) -> None:
         traces = [
-            {"ordinal": 1, "kind": TOOL_REQUEST, "raw_ref": "trace://request/1"},
-            {"ordinal": 2, "kind": TOOL_RESULT, "raw_ref": "trace://result/1"},
+            {
+                "ordinal": 1,
+                "kind": TOOL_REQUEST,
+                "raw_ref": "trace://request/1",
+                "epistemic_class": MEASURED,
+            },
+            {
+                "ordinal": 2,
+                "kind": TOOL_RESULT,
+                "raw_ref": "trace://result/1",
+                "epistemic_class": MEASURED,
+            },
             {
                 "ordinal": 3,
                 "kind": MODEL_CLAIM_ABOUT_TOOL_RESULT,
                 "raw_ref": "trace://model-claim/1",
+                "epistemic_class": MEASURED,
             },
         ]
         witness = self.build(tool_trace_refs=traces)
@@ -127,15 +142,93 @@ class RawInvocationWitnessV0Tests(unittest.TestCase):
             [TOOL_REQUEST, TOOL_RESULT, MODEL_CLAIM_ABOUT_TOOL_RESULT],
         )
 
+    def test_real_tool_boundary_relations_and_epistemic_classes_remain_distinct(self) -> None:
+        traces = [
+            {
+                "ordinal": 1,
+                "kind": TOOL_REQUEST,
+                "raw_ref": "trace://request/1",
+                "epistemic_class": DERIVED,
+            },
+            {
+                "ordinal": 2,
+                "kind": TOOL_EXECUTION,
+                "raw_ref": "trace://execution/1",
+                "epistemic_class": MEASURED,
+            },
+            {
+                "ordinal": 3,
+                "kind": TOOL_RESULT,
+                "raw_ref": "trace://result/1",
+                "epistemic_class": MEASURED,
+            },
+            {
+                "ordinal": 4,
+                "kind": TOOL_RESULT_SUBMISSION,
+                "raw_ref": "trace://submission/1",
+                "epistemic_class": MEASURED,
+            },
+            {
+                "ordinal": 5,
+                "kind": MODEL_CLAIM_ABOUT_TOOL_RESULT,
+                "raw_ref": "trace://model-claim/1",
+                "epistemic_class": MEASURED,
+            },
+        ]
+        witness = self.build(tool_trace_refs=traces)
+        self.assertEqual(witness["tool_trace_refs"], traces)
+        self.assertEqual(
+            [entry["kind"] for entry in witness["tool_trace_refs"]],
+            [
+                TOOL_REQUEST,
+                TOOL_EXECUTION,
+                TOOL_RESULT,
+                TOOL_RESULT_SUBMISSION,
+                MODEL_CLAIM_ABOUT_TOOL_RESULT,
+            ],
+        )
+        self.assertEqual(
+            [entry["epistemic_class"] for entry in witness["tool_trace_refs"]],
+            [DERIVED, MEASURED, MEASURED, MEASURED, MEASURED],
+        )
+        self.assertIn("model_receipt_of_tool_result", witness["unresolved_fields"])
+
+    def test_unknown_tool_trace_epistemic_class_is_rejected(self) -> None:
+        with self.assertRaisesRegex(
+            InvocationWitnessInputError,
+            "unsupported tool trace epistemic class",
+        ):
+            self.build(
+                tool_trace_refs=[
+                    {
+                        "ordinal": 1,
+                        "kind": TOOL_REQUEST,
+                        "raw_ref": "trace://request/1",
+                        "epistemic_class": "ASSUMED",
+                    }
+                ]
+            )
+
     def test_external_effect_is_not_inferred_from_trace_or_model_claim(self) -> None:
         witness = self.build(
             tool_trace_refs=[
-                {"ordinal": 1, "kind": TOOL_REQUEST, "raw_ref": "trace://request/1"},
-                {"ordinal": 2, "kind": TOOL_RESULT, "raw_ref": "trace://result/1"},
+                {
+                    "ordinal": 1,
+                    "kind": TOOL_REQUEST,
+                    "raw_ref": "trace://request/1",
+                    "epistemic_class": MEASURED,
+                },
+                {
+                    "ordinal": 2,
+                    "kind": TOOL_RESULT,
+                    "raw_ref": "trace://result/1",
+                    "epistemic_class": MEASURED,
+                },
                 {
                     "ordinal": 3,
                     "kind": MODEL_CLAIM_ABOUT_TOOL_RESULT,
                     "raw_ref": "trace://model-claim/1",
+                    "epistemic_class": MEASURED,
                 },
             ],
             external_crossing_refs=["trace://external-crossing/1"],
