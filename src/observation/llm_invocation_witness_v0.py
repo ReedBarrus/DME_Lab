@@ -24,6 +24,23 @@ TOOL_TRACE_KINDS = (
 )
 
 _TOOL_TRACE_KEYS = frozenset({"ordinal", "kind", "raw_ref"})
+_CLASSIFIABLE_FIELDS = frozenset(
+    {
+        "invocation_id",
+        "input_identity",
+        "raw_input_ref",
+        "adapter_identity",
+        "model_identity",
+        "declared_basis_refs",
+        "tool_trace_refs",
+        "raw_output_identity",
+        "raw_output_ref",
+        "start_frame_ref",
+        "end_frame_ref",
+        "external_crossing_refs",
+        "observer_limitations",
+    }
+)
 
 
 class InvocationWitnessInputError(ValueError):
@@ -84,7 +101,7 @@ def _tool_trace_list(
 
 def build_raw_invocation_witness(
     *,
-    invocation_id: str,
+    invocation_id: str | None,
     input_identity: str,
     raw_input_ref: str,
     adapter_identity: str,
@@ -97,6 +114,7 @@ def build_raw_invocation_witness(
     model_identity: str | None = None,
     start_frame_ref: str | None = None,
     end_frame_ref: str | None = None,
+    derived_field_names: Sequence[str] = (),
 ) -> dict[str, Any]:
     """Return a deterministic, append-free witness from supplied observations.
 
@@ -106,23 +124,30 @@ def build_raw_invocation_witness(
     unresolved in this witness.
     """
 
+    retained_invocation_id = _optional_text(invocation_id, "invocation_id")
     retained_model_identity = _optional_text(model_identity, "model_identity")
     retained_start_frame_ref = _optional_text(start_frame_ref, "start_frame_ref")
     retained_end_frame_ref = _optional_text(end_frame_ref, "end_frame_ref")
 
-    measured_fields = [
-        "invocation_id",
-        "input_identity",
-        "raw_input_ref",
-        "adapter_identity",
-        "declared_basis_refs",
-        "tool_trace_refs",
-        "raw_output_identity",
-        "raw_output_ref",
-        "external_crossing_refs",
-        "observer_limitations",
-    ]
+    measured_fields = []
+    if retained_invocation_id is not None:
+        measured_fields.append("invocation_id")
+    measured_fields.extend(
+        [
+            "input_identity",
+            "raw_input_ref",
+            "adapter_identity",
+            "declared_basis_refs",
+            "tool_trace_refs",
+            "raw_output_identity",
+            "raw_output_ref",
+            "external_crossing_refs",
+            "observer_limitations",
+        ]
+    )
     unresolved_fields = ["tool_trace_completeness", "external_effect"]
+    if retained_invocation_id is None:
+        unresolved_fields.append("invocation_id")
 
     optional_fields = (
         ("model_identity", retained_model_identity),
@@ -135,9 +160,27 @@ def build_raw_invocation_witness(
         else:
             measured_fields.append(field)
 
+    requested_derived_fields = _text_list(
+        derived_field_names, "derived_field_names"
+    )
+    if len(set(requested_derived_fields)) != len(requested_derived_fields):
+        raise InvocationWitnessInputError("derived_field_names must be unique")
+    derived_fields: list[str] = []
+    for field in requested_derived_fields:
+        if field not in _CLASSIFIABLE_FIELDS:
+            raise InvocationWitnessInputError(
+                f"unsupported derived field name: {field!r}"
+            )
+        if field not in measured_fields:
+            raise InvocationWitnessInputError(
+                f"unavailable field cannot be classified as derived: {field!r}"
+            )
+        measured_fields.remove(field)
+        derived_fields.append(field)
+
     witness = {
         "witness_type": WITNESS_TYPE,
-        "invocation_id": _required_text(invocation_id, "invocation_id"),
+        "invocation_id": retained_invocation_id or UNRESOLVED,
         "input_identity": _required_text(input_identity, "input_identity"),
         "raw_input_ref": _required_text(raw_input_ref, "raw_input_ref"),
         "adapter_identity": _required_text(adapter_identity, "adapter_identity"),
@@ -157,7 +200,7 @@ def build_raw_invocation_witness(
             observer_limitations, "observer_limitations", nonempty=True
         ),
         "measured_fields": measured_fields,
-        "derived_fields": [],
+        "derived_fields": derived_fields,
         "interpreted_fields": [],
         "unresolved_fields": unresolved_fields,
     }

@@ -7,6 +7,7 @@ from pathlib import Path
 from unittest import mock
 
 from src.observation.llm_invocation_witness_v0 import (
+    InvocationWitnessInputError,
     MODEL_CLAIM_ABOUT_TOOL_RESULT,
     TOOL_REQUEST,
     TOOL_RESULT,
@@ -74,6 +75,40 @@ class RawInvocationWitnessV0Tests(unittest.TestCase):
                 "end_frame_ref",
             ],
         )
+
+    def test_unavailable_provider_invocation_id_remains_unresolved(self) -> None:
+        witness = self.build(invocation_id=None)
+        self.assertEqual(witness["invocation_id"], UNRESOLVED)
+        self.assertIn("invocation_id", witness["unresolved_fields"])
+        self.assertNotIn("invocation_id", witness["measured_fields"])
+
+    def test_observer_computed_identities_can_be_classified_as_derived(self) -> None:
+        witness = self.build(
+            derived_field_names=[
+                "input_identity",
+                "raw_input_ref",
+                "raw_output_identity",
+                "raw_output_ref",
+            ]
+        )
+        self.assertEqual(
+            witness["derived_fields"],
+            [
+                "input_identity",
+                "raw_input_ref",
+                "raw_output_identity",
+                "raw_output_ref",
+            ],
+        )
+        for field in witness["derived_fields"]:
+            self.assertNotIn(field, witness["measured_fields"])
+
+    def test_unavailable_field_cannot_be_classified_as_derived(self) -> None:
+        with self.assertRaisesRegex(
+            InvocationWitnessInputError,
+            "unavailable field cannot be classified as derived",
+        ):
+            self.build(invocation_id=None, derived_field_names=["invocation_id"])
 
     def test_tool_request_result_and_model_claim_remain_distinct(self) -> None:
         traces = [
