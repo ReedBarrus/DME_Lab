@@ -38,7 +38,7 @@ CURRENT WORLD
 !=
 OBSERVATION BASIS
 
-MISSING
+MISSINGNESS CLAIM
 !=
 ABSENT
 
@@ -248,7 +248,7 @@ OBJECT NOT REPRESENTED
 !=
 OBJECT ABSENT
 
-EXPLICITLY MISSING
+MISSINGNESS CLAIM REPRESENTED
 !=
 ABSENT
 
@@ -330,7 +330,8 @@ qualify an identity scheme, require SHA-256, authenticate the source, or establi
 that the source's semantic claim is true.
 
 The `explicit_missing_objects[]` channel is separately grounded by exact typed
-`missingness_witness_v0` carriers. Each missingness row carries a
+`missingness_witness_v0` carriers. The structural field name does not itself
+establish bare MISSING standing. Each missingness row carries a
 `witness_ref`, and the exact represented witness must agree on:
 
 ```text
@@ -355,7 +356,7 @@ REASON STRING PRESENT
 !=
 UNAVAILABILITY BASIS REPRESENTED
 
-MISSING
+MISSINGNESS_CLAIM_REPRESENTED
 !=
 ABSENT
 
@@ -432,7 +433,7 @@ inspection, consumption, attention, parsing, or another separately qualified
 relation. This candidate does not preselect which mechanism should eventually
 earn that standing.
 
-The MISSING channel retains a separate specimen-specific encounter carrier:
+The missingness channel retains a separate specimen-specific encounter carrier:
 `missingness_witness_encounter_v0`. A current missingness claim is
 composition-valid only when its exact missingness witness corresponds and an
 encounter with that exact witness is represented for the same current:
@@ -469,6 +470,33 @@ WITNESS ENCOUNTERED
 MISSINGNESS-REASON UNDERSTANDING
 ```
 
+The strongest standing earned by the present missingness-side chain is:
+
+```text
+basis row alone
+=
+MISSINGNESS_CLAIM_REPRESENTED
+
+exact witness correspondence
++
+PRESENTED_TO_INVOCATION witness encounter
+=
+MISSINGNESS_WITNESS_PRESENTED
+```
+
+and explicitly not:
+
+```text
+MISSINGNESS_WITNESS_PRESENTED
+=
+MISSING
+```
+
+Bare `MISSING` standing is reserved for stronger future machinery that
+establishes a retrieval attempt, direct retrieval failure, or another separately
+qualified relation. This candidate does not preselect which mechanism should
+eventually earn that standing.
+
 The predecessor basis remains separately recoverable by exact identity, but its
 payload is not current observation. A typed historical-consultation relation is
 still future work and is not manufactured by this repair.
@@ -503,9 +531,9 @@ A green pressure may establish only:
 > represented source/object/identity correspondence for current source-claim
 > rows, exact current-invocation source-encounter correspondence, a bounded
 > SOURCE_PRESENTED standing ceiling, exact represented missingness witness
-> correspondence, and exact current-invocation missingness-witness encounter
-> correspondence while avoiding the tested identity/authority/missingness
-> collapses.
+> correspondence, exact current-invocation missingness-witness encounter
+> correspondence, and a bounded MISSINGNESS_WITNESS_PRESENTED standing ceiling
+> while avoiding the tested identity/authority/missingness collapses.
 
 It does not establish:
 
@@ -530,6 +558,8 @@ source inspection / consumption / attention / parsing
 missingness witness truth / authenticity
 missingness witness encounter truth / authenticity
 missingness-reason understanding
+MISSING standing
+retrieval attempt / direct retrieval failure
 generic epistemic-carrier encounter abstraction
 universal retrieval impossibility
 representation succession
