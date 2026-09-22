@@ -118,7 +118,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
 
     def test_H_unobserved_world_object_is_unknown(self):
         basis = clean_basis()
-        self.assertEqual(basis_claim_status(basis, "WORLD_OBJECT_NOT_IN_BASIS"), "UNKNOWN")
+        self.assertEqual(basis_claim_status(basis, "WORLD_OBJECT_NOT_IN_BASIS"), "UNREPRESENTED_AT_BASIS")
 
     def test_I_explicit_missing_is_not_absent(self):
         basis = clean_basis()
@@ -130,7 +130,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         later_world = {"objects":["LATER_WORLD_OBJECT"]}
         after = basis_claim_status(basis, "LATER_WORLD_OBJECT")
         self.assertIn("LATER_WORLD_OBJECT", later_world["objects"])
-        self.assertEqual((before, after), ("UNKNOWN", "UNKNOWN"))
+        self.assertEqual((before, after), ("UNREPRESENTED_AT_BASIS", "UNREPRESENTED_AT_BASIS"))
 
     def test_K_placeholder_occupant_is_rejected(self):
         seat = clean_empty_seat()
@@ -256,7 +256,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             clean_binding(), old, "INVOCATION_P1"
         )
 
-        self.assertEqual(basis_claim_status(new_basis, "POISON_SENTINEL"), "UNKNOWN")
+        self.assertEqual(basis_claim_status(new_basis, "POISON_SENTINEL"), "UNREPRESENTED_AT_BASIS")
         self.assertEqual(new_basis["observed_objects"], [])
         self.assertEqual(new_basis["explicit_missing_objects"], [])
         self.assertEqual(new_basis["source_refs"], [])
@@ -277,7 +277,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         )
 
         self.assertEqual(
-            basis_claim_status(new_basis, "MISSING_POISON_SENTINEL"), "UNKNOWN"
+            basis_claim_status(new_basis, "MISSING_POISON_SENTINEL"), "UNREPRESENTED_AT_BASIS"
         )
         self.assertEqual(new_basis["explicit_missing_objects"], [])
         self.assertEqual(new_basis["source_refs"], [])
@@ -383,7 +383,7 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         self.assertNotEqual(historical_ref, current_ref)
         self.assertEqual(current_binding["observation_basis_ref"], current_ref)
         self.assertEqual(
-            basis_claim_status(current_basis, "POISON_SENTINEL"), "UNKNOWN"
+            basis_claim_status(current_basis, "POISON_SENTINEL"), "UNREPRESENTED_AT_BASIS"
         )
 
     def test_fresh_basis_requires_explicit_current_payload(self):
@@ -947,6 +947,52 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         self.assertNotEqual(basis_status, "MISSING")
         self.assertNotEqual(current_status, "MISSING")
 
+    def test_V1_basis_silence_is_unrepresented_not_unknown(self):
+        bundle = clean_bundle()
+        self.assertEqual(
+            basis_claim_status(bundle["basis"], "PROJECT_X"),
+            "UNREPRESENTED_AT_BASIS",
+        )
+
+    def test_V2_validated_bundle_silence_is_no_current_represented_claim(self):
+        bundle = clean_bundle()
+        self.assertEqual(
+            current_epistemic_status(
+                role=bundle["role"],
+                seat=bundle["seat"],
+                binding=bundle["binding"],
+                basis=bundle["basis"],
+                object_id="PROJECT_X",
+                source_carriers=bundle["sources"],
+                missingness_witnesses=bundle["missingness_witnesses"],
+                source_encounters=bundle["source_encounters"],
+                missingness_witness_encounters=bundle[
+                    "missingness_witness_encounters"
+                ],
+            ),
+            "NO_CURRENT_REPRESENTED_CLAIM",
+        )
+
+    def test_V3_basis_silence_does_not_emit_negative_epistemic_fact(self):
+        bundle = clean_bundle()
+        basis_status = basis_claim_status(bundle["basis"], "PROJECT_X")
+        current_status = current_epistemic_status(
+            role=bundle["role"],
+            seat=bundle["seat"],
+            binding=bundle["binding"],
+            basis=bundle["basis"],
+            object_id="PROJECT_X",
+            source_carriers=bundle["sources"],
+            missingness_witnesses=bundle["missingness_witnesses"],
+            source_encounters=bundle["source_encounters"],
+            missingness_witness_encounters=bundle[
+                "missingness_witness_encounters"
+            ],
+        )
+        forbidden = {"UNKNOWN", "ABSENT", "MISSING", "FALSE", "UNAVAILABLE"}
+        self.assertNotIn(basis_status, forbidden)
+        self.assertNotIn(current_status, forbidden)
+
     def test_observation_basis_ref_pins_exact_basis_bytes(self):
         b = clean_bundle()
         original_ref = observation_basis_ref(b["basis"])
@@ -1004,6 +1050,10 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
             result["core_relations"]["missing_status_semantic_ceiling"],
             "PASS",
         )
+        self.assertEqual(
+            result["core_relations"]["unknown_status_semantic_ceiling"],
+            "PASS",
+        )
         self.assertFalse(result["durable_ecology_installed"])
         self.assertEqual(result["authority_effect"], "NONE")
         self.assertEqual(result["execution_effect"], "NONE")
@@ -1059,6 +1109,14 @@ class PrimaryEcologyGrammarTests(unittest.TestCase):
         self.assertEqual(
             result["retrieval_attempt_or_failure"], "NOT_ESTABLISHED"
         )
+        self.assertEqual(
+            result["silent_basis_standing"], "UNREPRESENTED_AT_BASIS"
+        )
+        self.assertEqual(
+            result["silent_current_standing"], "NO_CURRENT_REPRESENTED_CLAIM"
+        )
+        self.assertEqual(result["unknown_standing"], "NOT_ESTABLISHED")
+        self.assertEqual(result["basis_exhaustiveness"], "NOT_ESTABLISHED")
 
 
 if __name__ == "__main__":
