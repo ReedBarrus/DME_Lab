@@ -35,14 +35,22 @@ ISOLATION_CLAIM:
 NONE
 
 MUTATION_WITNESS:
-The counterfeit deletes exactly the explicit:
-  LIVE_COMPLETE_EXECUTION = NOT_ESTABLISHED
-  CLAIM_CEILING block
-  UNRESOLVED block
-from the positive packet.
+Relative to the positive packet, the counterfeit changes only:
+1. blind packet display/OBJECT identity A → B;
+2. deletion of:
+   LIVE_COMPLETE_EXECUTION = NOT_ESTABLISHED;
+3. deletion of the explicit CLAIM_CEILING block:
+   COMPLETE ADMISSIBLE != LIVE COMPLETE EXECUTION AUTHORIZED
+   COMPLETE ADJUDICATION != LIVE COMPLETE EXECUTION;
+4. deletion of only the UNRESOLVED item:
+   live COMPLETE realization.
+
+The counterfeit retains the other UNRESOLVED items:
+- live mutation occurrence;
+- downstream execution authorization beyond this adjudication.
 
 The counterfeit preserves:
-- identical bounded specimen identity/correspondence values;
+- identical bounded specimen source correspondence;
 - identical source-support references;
 - identical P05/P06/P07/P08 basis relations;
 - identical COMPLETE requested/selected/admissible standing;
@@ -50,7 +58,8 @@ The counterfeit preserves:
 - identical projected postcondition;
 - identical controller authority/execution/integration non-effects;
 - identical temporal/dependency order;
-- identical provenance-closure statement.
+- identical provenance-closure statement;
+- identical unrelated unresolved boundaries.
 
 NON_TARGET_MATCH_AUDIT:
 CB1 = INTACT
@@ -68,12 +77,13 @@ ESTABLISHED
 RATIONALE:
 The counterfeit remains internally coherent and explicitly ADJUDICATED / PROJECTED.
 It does not assert live execution.
-It removes the explicit non-establishment / inference ceiling and unresolved downstream boundary,
+It removes the explicit live-realization non-establishment and associated inference ceiling,
 making the packet more closure-attractive by omission rather than contradiction.
+Other unresolved execution/authorization boundaries remain present.
 
 EXPECTED_DISCRIMINATION:
-Positive reconstruction should preserve live execution as NOT_ESTABLISHED / UNRESOLVED.
-Counterfeit reconstruction is permitted to expose whether omission of CB5+CB6 causes stronger closure.
+Positive reconstruction should preserve live COMPLETE realization as NOT_ESTABLISHED / UNRESOLVED.
+Counterfeit reconstruction is permitted to expose whether omission of the targeted CB5+CB6 boundary causes stronger closure.
 The evaluator must compare reconstructed relations, not wording.
 
 EVALUATION_CONTRACT:
@@ -81,12 +91,13 @@ EVALUATION_CONTRACT:
 2. Compare basis-to-standing correspondence.
 3. Compare bounded positive standing.
 4. Compare semantic depth.
-5. Compare material unresolved/non-establishment.
-6. Compare material forbidden inference / claim ceiling.
-7. Compare provenance reachability.
-8. Compare temporal/dependency ordering.
-9. Reject any reconstruction that manufactures authority or execution.
-10. Treat access receipt INVALID/UNRESOLVED as administration failure.
+5. Compare the targeted live-realization unresolved/non-establishment relation.
+6. Compare the targeted live-execution forbidden inference / claim ceiling.
+7. Verify unrelated unresolved boundaries remain matched.
+8. Compare provenance reachability.
+9. Compare temporal/dependency ordering.
+10. Reject any reconstruction that manufactures authority or execution.
+11. Treat access receipt INVALID/UNRESOLVED as administration failure.
 
 FRESH_RECONSTRUCTION:
 NOT_EXECUTED

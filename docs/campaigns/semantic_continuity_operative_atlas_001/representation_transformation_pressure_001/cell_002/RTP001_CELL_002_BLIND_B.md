@@ -80,4 +80,8 @@ source claim/lane/request/basis
 
 PROVENANCE_CLOSURE:
 the exact support references above remain recoverably addressable
+
+UNRESOLVED:
+live mutation occurrence
+downstream execution authorization beyond this adjudication
 ```
