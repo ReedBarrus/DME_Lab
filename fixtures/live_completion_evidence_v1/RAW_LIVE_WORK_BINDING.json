@@ -1,0 +1,24 @@
+{
+  "schema": "LIVE_WORK_UNIT_BINDING_v1",
+  "bounded_unit_id": "sha256:04b2e895c290296693d880ec521acdc810ee8f3278a8d50f28397dea9188d363",
+  "lane_id": "LANE_A",
+  "claim_id": "FIRST_TWO_LANE_TRIAL-LANE_A-CLAIM-001",
+  "claim_blob": "5f0a134655c0c45287ef61b29ed46072d47c6895",
+  "occupant_id": "FIRST_TWO_LANE_TRIAL-LANE_A-OPERATOR-001",
+  "invocation_id": "FIRST_TWO_LANE_TRIAL-LANE_A-INVOCATION-001",
+  "branch": "lane-a-cockpit-coordination-v0",
+  "claim_basis_head": "de667390d81c1219abfee063d2a3b1fe13d1ba71",
+  "target_lineage": "TWO_LANE_OPERATING_BOOTSTRAP_RECONCILIATION_001",
+  "campaign_id": "FIRST_BOUNDED_REAL_WORK_TWO_LANE_TRIAL",
+  "pressure_id": "FIRST_BOUNDED_REAL_WORK_TWO_LANE_TRIAL-LANE_A-001",
+  "consequence_envelope_id": "FIRST_TWO_LANE_TRIAL-LANE_A-CANDIDATE-DOC-ONLY",
+  "artifact_scopes": [
+    "docs/candidates/live_two_lane_trial_lane_a_v0"
+  ],
+  "mutation_paths": [
+    "docs/candidates/live_two_lane_trial_lane_a_v0/LANE_A_OPERATING_BOOTSTRAP_DELTA_001.md"
+  ],
+  "source_claim_ref": "git:b36ae5c4a120e31f9f404791c65acfa8c8d69301:coordination/active_work_claim.json@5f0a134655c0c45287ef61b29ed46072d47c6895",
+  "completion_criterion_ref": "repo://fixtures/live_completion_evidence_v1/RAW_COMPLETION_CRITERION.json",
+  "work_evidence_bundle_ref": "repo://fixtures/live_completion_evidence_v1/RAW_WORK_EVIDENCE.json"
+}
