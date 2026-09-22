@@ -1,0 +1,37 @@
+{
+  "schema": "LIVE_COMPLETION_PRODUCER_QUALIFICATION_REGISTRY_v1",
+  "object_id": "LIVE_COMPLETION_EVIDENCE_001-PRODUCER-QUALIFICATION-REGISTRY-002",
+  "qualification_evidence": {
+    "path": "docs/candidates/live_completion_evidence_v1/QUALIFICATION_EVIDENCE_002.json",
+    "blob": "f409214e74e7dd43b8acf18e3d78056cd0c21962",
+    "ci_run_id": 35673529399,
+    "candidate_pressure_head": "61ed2adc1de0ab5775d696920307a3412a2b8ce7"
+  },
+  "qualified_producers": {
+    "LIVE_UNIT_COMPLETION_STANDING_PRODUCER@v1": {
+      "relation_types": [
+        "UNIT_COMPLETION_STANDING"
+      ],
+      "implementation_path": "tools/live_unit_completion_standing_producer_v1.py",
+      "implementation_blob": "06d57d1498aea07c0476dd861a31bbf9d0c1ede4",
+      "qualification_evidence_path": "docs/candidates/live_completion_evidence_v1/QUALIFICATION_EVIDENCE_002.json",
+      "qualification_evidence_blob": "f409214e74e7dd43b8acf18e3d78056cd0c21962",
+      "qualification_receipt_path": "docs/candidates/live_completion_evidence_v1/P07_PRODUCER_QUALIFICATION_002.md",
+      "qualification_receipt_blob": "18dcdc9b2895304d91a74f93b7167af7e2163b0f",
+      "status": "QUALIFIED"
+    },
+    "LIVE_COMPLETION_BLOCKER_STATUS_PRODUCER@v1": {
+      "relation_types": [
+        "COMPLETION_BLOCKER_STATUS"
+      ],
+      "implementation_path": "tools/live_completion_blocker_status_producer_v1.py",
+      "implementation_blob": "717d2b0ac3f9ffa94c955b3b003bc811d5c28459",
+      "qualification_evidence_path": "docs/candidates/live_completion_evidence_v1/QUALIFICATION_EVIDENCE_002.json",
+      "qualification_evidence_blob": "f409214e74e7dd43b8acf18e3d78056cd0c21962",
+      "qualification_receipt_path": "docs/candidates/live_completion_evidence_v1/P08_PRODUCER_QUALIFICATION_002.md",
+      "qualification_receipt_blob": "6d42057b7fc61c05feda17b0265c7728e7bfe49b",
+      "status": "QUALIFIED"
+    }
+  },
+  "claim_ceiling": "BOUNDED_LIVE_COMPLETION_EVIDENCE_REPAIR_V1_ONLY"
+}
