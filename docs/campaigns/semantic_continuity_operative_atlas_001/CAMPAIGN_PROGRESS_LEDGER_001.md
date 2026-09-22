@@ -618,7 +618,8 @@ Legend:
 - [!] Cell 001 isolated-CB1 falsifier — mutation coupled
 - [!] Cell 002 CF-A exact pair — forensic fracture
 - [X] Cell 002 dependency geometry reconstruction
-- [~] BASIS-RELATION DEPENDENCY PRESSURE
+- [X] BASIS-RELATION DEPENDENCY PRESSURE
+- [~] REFERENCE-ADMISSION / DERIVED-BASIS PROPERTY PRESSURE
 - [ ] admissible repaired Cell-002 counterfeit
 - [ ] formal Cell-002 blinded reconstruction
 
@@ -648,20 +649,22 @@ These stay parked until upstream pressure forces their shape.
 ## Semantic continuity front
 
 ```text
-BASIS-RELATION DEPENDENCY PRESSURE
+REFERENCE-ADMISSION / DERIVED-BASIS PROPERTY PRESSURE
 ```
 
-Determine whether:
+Lane A has now resolved the prior basis-relation question to the following bounded result:
 
-A. exact controller-basis identity itself is required because it carries the claim ceiling;
+- exact controller identity: partial / challenge handle;
+- exact controller content: not required;
+- derived non-mutating adjudicative property: required;
+- derived claim-ceiling property: required under PACKET_ONLY reconstruction;
+- CB2 core relation: minimal;
+- CB7 current use: over-strong if reachability is treated as automatic semantic import;
+- reference reachability and reference admission are separate relations.
 
-B. only a smaller derived property of that basis must travel;
+Next pressure should test whether a compact packet can carry the derived claim-ceiling property plus an exact challenge handle while keeping referenced source content cold unless explicitly admitted.
 
-C. reference-mediated provenance is currently too semantically strong for the desired counterfeit class;
-
-D. Cell 002 requires a different specimen or transform class.
-
-Do not design another counterfeit before this pressure resolves.
+Do not design a generic provenance system or semantic cursor.
 
 ## Invocation witness front
 
@@ -709,4 +712,243 @@ FROM RETAINED RELATIONS,
 
 THE PRESSURE HAS EXPOSED
 REDUNDANT SEMANTIC SUPPORT.
+```
+
+
+---
+
+# 11. Basis-Relation Dependency Result — Reference Admission Boundary
+
+## Lane-A result
+
+The basis-relation dependency pressure returned:
+
+```text
+DERIVED_BASIS_PROPERTY_SUFFICIENT
++
+REFERENCE_ADMISSION_BOUNDARY_REQUIRED
+```
+
+with:
+
+```text
+CHALLENGE_HANDLE_SUFFICIENT
+FOR SOURCE CHALLENGEABILITY
+```
+
+and exact basis identity required only as a recoverable support handle under the current specimen's support geometry, not as automatically admitted semantic content.
+
+## Exact controller identity / content
+
+```text
+EXACT_CONTROLLER_IDENTITY:
+PARTIAL
+
+EXACT_CONTROLLER_CONTENT:
+NOT_REQUIRED
+```
+
+The exact controller identity anchors which support law produced the bounded standing and remains useful for challenge / revalidation.
+
+The controller's full semantic content need not travel inline if the necessary bounded derived property is carried faithfully.
+
+Freeze:
+
+```text
+EXACT SUPPORT IDENTITY
+!=
+ALL SUPPORT SEMANTICS ADMITTED
+
+SOURCE RECOVERABLE
+!=
+SOURCE CONTENT MUST BE IMPORTED
+```
+
+## Derived operative properties
+
+Current evidence requires a packet-local derived property equivalent to:
+
+```text
+THIS IS AN ADJUDICATIVE / PROJECTIVE RESULT,
+NOT LIVE EXECUTION
+```
+
+and a derived claim-ceiling property equivalent to:
+
+```text
+COMPLETE ADJUDICATED ADMISSIBLE
+DOES NOT ESTABLISH
+LIVE COMPLETE EXECUTION
+
+PROJECTED RESULTING STATE
+DOES NOT ESTABLISH
+REALIZED LIVE WORLD STATE
+```
+
+These may be verified by reference, but under PACKET_ONLY reconstruction the reference alone is not the operative semantic carrier.
+
+## CB2 / CB7 refinement
+
+```text
+CB2_CURRENT_FORM:
+MINIMAL
+```
+
+CB2 requires correspondence between standing and support basis.
+
+It does not require all semantics of the referenced basis to become reconstruction input.
+
+```text
+CB7_CURRENT_FORM:
+OVER_STRONG
+IN THE CURRENT CELL-002 USE
+IF REACHABILITY IS TREATED AS AUTOMATIC SEMANTIC IMPORT
+```
+
+Narrowed candidate:
+
+```text
+CB7-N:
+CAUSAL_SUPPORT_CHALLENGE_REACHABILITY
+```
+
+Meaning:
+
+- exact causal support remains identifiable;
+- recoverable;
+- content-checkable;
+- independently challengeable;
+
+but does not automatically become operative reconstruction evidence.
+
+Freeze:
+
+```text
+BASIS CORRESPONDS
+!=
+BASIS CONTENT ADMITTED
+
+REFERENCE AVAILABLE FOR CHALLENGE
+!=
+REFERENCE CONTENT ADMITTED INTO RECONSTRUCTION BASIS
+
+CHALLENGEABILITY
+!=
+AUTOMATIC SEMANTIC CONSUMPTION
+```
+
+## Reference-admission boundary
+
+Current bounded result:
+
+```text
+REFERENCE_REACHABILITY:
+SUPPORTED AS A DISTINCT RELATION
+
+REFERENCE_ADMISSION:
+SEPARATE REQUIRED RELATION
+
+REFERENCE_CONTENT_AUTO_ADMITTED:
+NO
+```
+
+Under PACKET_ONLY administration, exact Git references cannot lawfully function as hidden semantic side channels.
+
+This repairs an over-strong interpretation in prior Cell-002 dependency reasoning.
+
+## Minimum basis relation candidate
+
+```text
+1. EXACT SUPPORT HANDLE
+
++
+
+2. PACKET-LOCAL DERIVED CLAIM-CEILING / NON-MUTATING
+   ADJUDICATIVE PROPERTY
+
++
+
+3. EXPLICIT REFERENCE-ADMISSION STATUS
+```
+
+Large source/controller content may remain cold and externally recoverable.
+
+## Cell-002 consequence
+
+The current Cell-002 diagnosis becomes:
+
+```text
+CELL_002 CONFOUNDS:
+
+REFERENCE REACHABILITY
+
+WITH
+
+REFERENCE CONTENT ADMISSION
+```
+
+Therefore neither of these is lawful:
+
+```text
+EXACT CONTROLLER REFERENCE RETAINED
+->
+DELETED CLAIM CEILING AUTOMATICALLY RESTORED
+```
+
+nor:
+
+```text
+SOURCE CONTENT NOT INLINE
+->
+SOURCE SUPPORT DESTROYED
+```
+
+The correct split is:
+
+```text
+DID THE TRAVELING POSTURE LOSE THE CEILING?
+
+!=
+
+DOES THE COLD SOURCE BASIS STILL CONTAIN THE CEILING?
+```
+
+## Next lawful Lane-B pressure
+
+Pressure:
+
+```text
+REFERENCE REACHABILITY
+!=
+REFERENCE ADMISSION
+```
+
+with a matched representation pair where:
+
+- exact support handle is identical;
+- source content remains externally recoverable;
+- admission state differs explicitly;
+- compact derived claim-ceiling property is retained or removed;
+- no controller content is silently imported.
+
+Primary test:
+
+```text
+DERIVED CLAIM-CEILING PROPERTY
++
+EXACT CHALLENGE HANDLE
+
+SUFFICIENT FOR FRESH BOUNDED RECONSTRUCTION
+
+WITHOUT IMPORTING FULL CONTROLLER CONTENT?
+```
+
+Do not yet design a generic provenance loader, generic continuity schema, or semantic cursor.
+
+Final annotation:
+
+```text
+CAN I FETCH THE BONE?
+!=
+DID THIS RECONSTRUCTION EAT THE BONE?
 ```
