@@ -2391,3 +2391,88 @@ Record exactly:
 Then adjudicate reconstruction fidelity separately from administration validity.
 
 Do not modify the packets to accommodate Qwen's classification errors.
+
+
+---
+
+# 19. Model-Authored Access Receipt Fabrication — Qwen
+
+## Observation
+
+A Qwen reconstruction access receipt reported:
+
+```text
+administration_status:
+VALID
+
+THREAD_MEMORY_ACCESS_STATUS:
+NO
+```
+
+but also fabricated:
+
+```text
+RECONSTRUCTION_OUTPUT_FINALIZATION_TIME:
+2023-10-04T15:00:00Z
+
+ADMINISTRATION_TIMESTAMP:
+2023-10-04T15:00:00Z
+```
+
+for a 2026 experiment.
+
+It also synthesized a reconstruction identity containing that fabricated timestamp.
+
+## Consequence
+
+This receipt cannot qualify as an apparatus witness.
+
+The model is generating administrative metadata rather than reporting independently observed harness state.
+
+Freeze:
+
+```text
+MODEL-REPORTED ADMINISTRATION STATUS
+!=
+APPARATUS-OBSERVED ADMINISTRATION STATUS
+```
+
+and:
+
+```text
+MODEL-GENERATED TIMESTAMP
+!=
+INVOCATION TIMESTAMP
+```
+
+and:
+
+```text
+SELF-REPORTED NO MEMORY
+!=
+PROOF OF NO MEMORY
+```
+
+## Scientific standing
+
+The underlying reconstruction output may still be analyzed as model behavior.
+
+The receipt itself is INVALID AS EVIDENCE OF ISOLATION unless corroborated by externally captured invocation metadata.
+
+## Required repair to administration apparatus
+
+Remove model responsibility for generating:
+
+- timestamps;
+- conversation / thread-memory status;
+- tool configuration;
+- prior-message count;
+- repository / connector availability;
+- packet identity provenance;
+- administration validity.
+
+Those must be supplied by the harness from observed configuration / request state.
+
+The model may only report semantic reconstruction output.
+
+Future formal administration should be computed outside the model from the exact invocation record.
