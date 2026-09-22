@@ -1,0 +1,31 @@
+name: live-completion-evidence-001-qualification
+
+on:
+  push:
+    branches:
+      - live-completion-evidence-001-qualification-v0
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit qualification
+        run: python -m unittest -v tests.runtime.test_live_completion_evidence_v0
+      - name: Produce deterministic qualification evidence
+        run: |
+          python tools/run_live_completion_evidence_pressure_v0.py --output qualification-evidence-a.json
+          python tools/run_live_completion_evidence_pressure_v0.py --output qualification-evidence-b.json
+          cmp qualification-evidence-a.json qualification-evidence-b.json
+      - name: Upload qualification evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: live-completion-evidence-001-qualification
+          path: qualification-evidence-a.json
