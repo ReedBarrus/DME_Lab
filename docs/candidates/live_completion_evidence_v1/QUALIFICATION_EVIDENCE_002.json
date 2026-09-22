@@ -1,0 +1,46 @@
+{
+  "schema": "LIVE_COMPLETION_REPAIR_QUALIFICATION_EVIDENCE_v1",
+  "object_id": "LIVE_COMPLETION_EVIDENCE_001-REPAIR-V1-CANDIDATE-QUALIFICATION-001",
+  "candidate_pressure_head": "61ed2adc1de0ab5775d696920307a3412a2b8ce7",
+  "source_ci_run": 35673529399,
+  "source_ci_conclusion": "success",
+  "pass": true,
+  "implementation_blobs": {
+    "raw_evaluator": "91757d9b9eb1293048ae11a0fa5b331c2269f894",
+    "p07_producer": "06d57d1498aea07c0476dd861a31bbf9d0c1ede4",
+    "p08_producer": "717d2b0ac3f9ffa94c955b3b003bc811d5c28459"
+  },
+  "candidate_producer_qualification": {
+    "P07": {
+      "pass": true,
+      "relation_type": "UNIT_COMPLETION_STANDING",
+      "version": "v1"
+    },
+    "P08": {
+      "pass": true,
+      "relation_type": "COMPLETION_BLOCKER_STATUS",
+      "version": "v1"
+    }
+  },
+  "cell_checks": {
+    "A": true,
+    "B": true,
+    "C": true,
+    "D": true,
+    "G": true,
+    "H": true,
+    "I": true,
+    "K": true,
+    "L": true,
+    "M": true
+  },
+  "repaired_fractures_supported": [
+    "Q1",
+    "Q2",
+    "Q3-candidate/runtime-separation",
+    "Q6"
+  ],
+  "lifecycle_execution": "NONE",
+  "lane_mutation": "NONE",
+  "merge": "NONE"
+}
