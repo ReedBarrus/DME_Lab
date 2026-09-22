@@ -739,8 +739,18 @@ def rotate_occupant(
     return out, new_basis
 
 def authority_standing(binding: Mapping[str, Any]) -> str:
+    """Return only authority-reference standing represented by this binding.
+
+    An empty local reference list is not an exhaustive authority inventory and
+    therefore cannot establish authority absence, denial, revocation, or
+    invalidity.
+    """
     validate_binding(binding)
-    return "UNADJUDICATED" if binding["authority_refs"] else "ABSENT"
+    return (
+        "UNADJUDICATED"
+        if binding["authority_refs"]
+        else "NO_AUTHORITY_REF_REPRESENTED"
+    )
 
 
 def _correspondence_cell(
@@ -824,8 +834,8 @@ def run_pressure() -> dict[str, Any]:
     with_claim["work_claim_ref"] = "claim://CANDIDATE"
     validate_binding(with_claim)
     cells["F"] = {
-        "result":"PASS" if authority_standing(with_claim) == "ABSENT" else "FRACTURE",
-        "relation":"WORK_CLAIM_DISTINCT_FROM_AUTHORITY",
+        "result":"PASS" if authority_standing(with_claim) == "NO_AUTHORITY_REF_REPRESENTED" else "FRACTURE",
+        "relation":"WORK_CLAIM_REPRESENTED_DISTINCT_FROM_AUTHORITY_REF_REPRESENTED",
     }
 
     bad_role = copy.deepcopy(role)
@@ -2039,6 +2049,51 @@ def run_pressure() -> dict[str, Any]:
         "relation":"BASIS_BYTE_MUTATION_INVALIDATES_PRIOR_ENCOUNTER",
     }
 
+    # Q11 / X1 -- an empty authority_refs list earns only local
+    # nonrepresentation, not authority absence.
+    x1_binding = clean_binding()
+    x1_binding["authority_refs"] = []
+    x1_status = authority_standing(x1_binding)
+    cells["X1"] = {
+        "result":"PASS" if x1_status == "NO_AUTHORITY_REF_REPRESENTED" else "FRACTURE",
+        "relation":"EMPTY_AUTHORITY_REFS_EARN_NO_AUTHORITY_REF_REPRESENTED_NOT_ABSENT",
+    }
+
+    # X2 -- a represented authority reference remains unadjudicated and does
+    # not manufacture authorization.
+    x2_binding = clean_binding()
+    x2_binding["authority_refs"] = ["authority://Q11-UNQUALIFIED"]
+    x2_status = authority_standing(x2_binding)
+    cells["X2"] = {
+        "result":"PASS" if x2_status == "UNADJUDICATED" else "FRACTURE",
+        "relation":"UNQUALIFIED_AUTHORITY_REF_REMAINS_UNADJUDICATED",
+    }
+
+    # X3 -- reference silence must not manufacture a negative authority fact.
+    forbidden_authority_silence = {
+        "ABSENT","DENIED","UNAUTHORIZED","REVOKED","INVALID",
+    }
+    cells["X3"] = {
+        "result":"PASS" if x1_status not in forbidden_authority_silence else "FRACTURE",
+        "relation":"AUTHORITY_REF_SILENCE_DOES_NOT_MANUFACTURE_NEGATIVE_AUTHORITY_STANDING",
+    }
+
+    # X4 -- a work claim may be represented while authority refs remain locally
+    # unrepresented; the work claim does not establish authority or its absence.
+    x4_binding = clean_binding()
+    x4_binding["work_claim_ref"] = "claim://Q11-CANDIDATE"
+    x4_binding["authority_refs"] = []
+    validate_binding(x4_binding)
+    x4_status = authority_standing(x4_binding)
+    cells["X4"] = {
+        "result":"PASS" if (
+            x4_binding["work_claim_ref"] == "claim://Q11-CANDIDATE"
+            and x4_status == "NO_AUTHORITY_REF_REPRESENTED"
+            and x4_binding["authority_effect"] == "NONE"
+        ) else "FRACTURE",
+        "relation":"WORK_CLAIM_REPRESENTED_DOES_NOT_MANUFACTURE_AUTHORITY_OR_AUTHORITY_ABSENCE",
+    }
+
     evaluation_key = _load(FIXTURE_DIR / "EVALUATION_KEY_v0.json")
     expected_cells = evaluation_key.get("cells", {}) if isinstance(evaluation_key, dict) else {}
     key_matches = all(expected_cells.get(cell_id) == cell["result"] for cell_id, cell in cells.items()) and set(expected_cells) == set(cells)
@@ -2071,6 +2126,7 @@ def run_pressure() -> dict[str, Any]:
             "missing_status_semantic_ceiling":"PASS" if all(cells[x]["result"] == "PASS" for x in ("U1","U2","U3")) else "FRACTURE",
             "unknown_status_semantic_ceiling":"PASS" if all(cells[x]["result"] == "PASS" for x in ("V1","V2","V3")) else "FRACTURE",
             "encounter_exact_current_basis_identity":"PASS" if all(cells[x]["result"] == "PASS" for x in ("W1","W2","W3","W4")) else "FRACTURE",
+            "authority_absence_semantic_ceiling":"PASS" if all(cells[x]["result"] == "PASS" for x in ("X1","X2","X3","X4")) else "FRACTURE",
         },
         "role_vocabulary_status":"PROVISIONAL_EXTENSIBLE",
         "durable_ecology_installed":False,
@@ -2107,6 +2163,10 @@ def run_pressure() -> dict[str, Any]:
         "basis_exhaustiveness":"NOT_ESTABLISHED",
         "encounter_basis_identity":"EXACT_OBSERVATION_BASIS_CONTENT_IDENTITY",
         "friendly_basis_ref_identity_sufficient":"NO",
+        "empty_authority_ref_standing":"NO_AUTHORITY_REF_REPRESENTED",
+        "represented_authority_ref_standing":"UNADJUDICATED",
+        "authority_absence_standing":"NOT_ESTABLISHED",
+        "authority_denial_standing":"NOT_ESTABLISHED",
         "function_needs_seat":"NOT_TESTED",
         "stop":True,
     }
