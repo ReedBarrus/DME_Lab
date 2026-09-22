@@ -1,0 +1,34 @@
+name: live-completion-evidence-001-repair-v1
+
+on:
+  push:
+    branches:
+      - live-completion-evidence-001-repair-v1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  candidate-pressure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Candidate tests
+        run: python -m unittest -v tests.runtime.test_live_completion_evidence_v1
+      - name: Produce deterministic candidate qualification evidence
+        run: |
+          python tools/run_live_completion_evidence_pressure_v1.py --output candidate-evidence-a.json
+          python tools/run_live_completion_evidence_pressure_v1.py --output candidate-evidence-b.json
+          cmp candidate-evidence-a.json candidate-evidence-b.json
+          cat candidate-evidence-a.json
+      - name: Upload candidate qualification evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: live-completion-evidence-001-repair-v1-candidate
+          path: candidate-evidence-a.json
