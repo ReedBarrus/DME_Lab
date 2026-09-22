@@ -1130,3 +1130,389 @@ THE HANDLE ISN'T LEAKING.
 
 THE MEMBRANE IS.
 ```
+
+
+---
+
+# 13. Candidate Architecture Pressure — Adaptive Attention Aperture Controller
+
+## Status
+
+```text
+CANDIDATE EXPERIMENT:
+RECORDED
+
+PROMOTION:
+NO
+
+IMPLEMENTATION:
+NONE
+
+SCHEMA_FREEZE:
+NO
+```
+
+## Motivation
+
+A new candidate control decomposition emerged from separating:
+
+```text
+GENERATIVE COGNITION
+
+STOCHASTIC / ADAPTIVE IMPULSE
+
+DETERMINISTIC CONSEQUENCE
+```
+
+The candidate hypothesis is that continuous agentic control may not require
+a full recurrent LLM loop if continuity, state, memory, authority, admissibility,
+and consequence are already externalized into the DME field / chassis.
+
+Instead, a much smaller controller may function as an adaptive attention aperture.
+
+Candidate role:
+
+```text
+EVENT
+->
+SEAT PROJECTION
+->
+NOISE + MOMENTUM
+->
+ATTENTION APERTURE
+->
+FILTER / OPERATOR PROJECTION
+->
+CANDIDATE IMPULSE
+->
+DETERMINISTIC DME MEMBRANES
+->
+EFFECT
+->
+OBSERVATION
+->
+UPDATED MOMENTUM / PRESSURE
+```
+
+## Candidate mathematical form
+
+Let the seat expose a bounded projection:
+
+```text
+h_t = P_S(x_t)
+```
+
+Inject trajectory bias and perturbation:
+
+```text
+q_t = h_t + alpha * m_t + sigma * epsilon_t
+```
+
+Apply a small attention transform:
+
+```text
+a_t = Attention(q_t, K(x_t), V(x_t))
+```
+
+Project/filter into the currently available operator geometry:
+
+```text
+u_t = F(a_t, Omega_t)
+```
+
+Update momentum from consequential direction rather than mere neural activation:
+
+```text
+m_(t+1) = beta * m_t + (1-beta) * Delta_t
+```
+
+where `Delta_t` should be defined, if earned, from observed consequential change.
+
+## Candidate role split
+
+```text
+SMALL CONTROLLER:
+points / selects / biases attention
+
+DME CHASSIS:
+determines possibility, reachability, admissibility,
+currentness, authority, execution qualification,
+and consequence
+
+LLM / GENERATIVE MODEL:
+wakes episodically for ambiguity, repair, reconstruction,
+novelty, model revision, or stalled dynamics
+```
+
+Freeze:
+
+```text
+STOCHASTIC IMPULSE
+!=
+ADMISSIBILITY
+!=
+AUTHORITY
+!=
+EXECUTION
+```
+
+and:
+
+```text
+ATTENTION DIRECTION
+!=
+TOOL EFFECT
+```
+
+and:
+
+```text
+BAD IMPULSE
+!=
+BAD CONSEQUENCE
+```
+
+provided the deterministic membranes actually reject inadmissible propagation.
+
+## Seat interpretation
+
+Candidate interpretation:
+
+```text
+SEAT
+=
+HIGH-DIMENSIONAL PROJECTION / APERTURE MEMBRANE
+```
+
+A seat may bound:
+
+- visible state;
+- available operators;
+- tools;
+- claims;
+- authority edges;
+- currentness relations;
+- event subscriptions;
+- consequence envelope.
+
+Under this interpretation, the adaptive controller need not model the whole system.
+
+It only acts over the seat-local field.
+
+Freeze:
+
+```text
+SEAT PROJECTION
+!=
+GLOBAL STATE
+```
+
+## Momentum hypothesis
+
+Without momentum:
+
+```text
+current state + noise
+->
+repeated stochastic classification
+```
+
+With momentum:
+
+```text
+current state
++
+consequential trajectory
++
+noise
+->
+directionally biased impulse
+```
+
+Candidate distinction:
+
+```text
+STATE IDENTITY
+!=
+TRAJECTORY IDENTITY
+```
+
+and:
+
+```text
+CURRENT CONFIGURATION
++
+CONSEQUENTIAL MOMENTUM
+->
+ATTENTION BIAS
+```
+
+This suggests a possible directional derivative over the relational / consequential field.
+
+Not established.
+
+## Rejection-pressure hypothesis
+
+Repeated rejected impulses may become observable pressure:
+
+```text
+impulse -> reject
+impulse -> reject
+impulse -> reject
+->
+STALL / NOVELTY PRESSURE
+->
+EVENT
+->
+WAKE GENERATIVE COGNITION
+```
+
+Candidate consequence:
+
+```text
+REPEATED REJECTION
+MAY BECOME
+MODEL / SEAT / OPERATOR REPAIR PRESSURE
+```
+
+Do not assume this is stable; runaway rejection loops are an explicit failure mode.
+
+## Controller-class experiment
+
+Do not assume a transformer is required.
+
+Future bounded comparison should hold the DME chassis constant and vary only the impulse controller:
+
+```text
+LINEAR POLICY
+
+MLP
+
+SINGLE ATTENTION BLOCK
+
+SMALL RECURRENT / SSM CONTROLLER
+
+JEV-LIKE BOUNDED DECISION MODEL
+
+SMALL LLM
+```
+
+Primary scientific question:
+
+```text
+HOW SIMPLE CAN THE CONTROLLER BECOME
+BEFORE INTELLIGENT CONSEQUENTIAL BEHAVIOR FAILS?
+```
+
+This separates:
+
+```text
+INTELLIGENCE IN THE CONTROLLER
+
+from
+
+INTELLIGENCE EMBODIED IN:
+STATE REPRESENTATION
+MEMORY
+RELATIONAL GEOMETRY
+CONSTRAINTS
+AUTHORITY
+EVENT ROUTING
+CONSEQUENCE
+RECOVERY
+```
+
+## Required adversarial pressure before implementation
+
+Attack at minimum:
+
+1. controller confidence laundering into authority;
+2. option-set construction secretly encoding the answer;
+3. seat projection omitting globally material relations;
+4. event firing becoming an ungoverned authority surface;
+5. repeated rejected impulses creating runaway cognition;
+6. tool-result feedback collapsing observation into interpretation / standing;
+7. the "small impulse controller" silently becoming another opaque agent loop;
+8. momentum preserving stale or harmful trajectory;
+9. local optimization defeating global consequential constraints;
+10. adaptive filters acquiring hidden policy authority.
+
+## Candidate experimental ladder
+
+```text
+A1:
+STATIC BOUNDED FIELD
++
+SIMPLE IMPULSE CONTROLLER
++
+NO TOOLS
+
+A2:
+ADD MOMENTUM
+
+A3:
+ADD NOISE / STOCHASTIC EXPLORATION
+
+A4:
+ADD DETERMINISTIC ADMISSION / AUTHORITY MEMBRANES
+
+A5:
+ADD EVENT-BASED FIRING
+
+A6:
+ADD READ-ONLY TOOLING
+
+A7:
+ADD REJECTION-PRESSURE -> GENERATIVE WAKEUP
+
+A8:
+COMPARE CONTROLLER CLASSES UNDER SAME CHASSIS
+```
+
+At each step preserve:
+
+```text
+IMPULSE
+!=
+SELECTION STANDING
+!=
+ADMISSIBILITY
+!=
+AUTHORITY
+!=
+EXECUTION
+!=
+OBSERVED CONSEQUENCE
+```
+
+## Current interpretation ceiling
+
+Do NOT claim:
+
+- a single transformer layer is sufficient;
+- an LLM can be removed from all loops;
+- momentum is inherently beneficial;
+- the seat is already a complete control membrane;
+- DME already embodies enough intelligence for a trivial controller;
+- Jev or any particular model is required;
+- event firing is safe by construction;
+- controller simplicity implies system simplicity.
+
+Current status is only:
+
+```text
+CANDIDATE ARCHITECTURE PRESSURE:
+EXTERNALIZE CONTINUITY / CONSEQUENCE,
+MINIMIZE THE CONTROLLER,
+THEN MEASURE WHAT CAPABILITY REMAINS.
+```
+
+Final annotation:
+
+```text
+HOW STUPID CAN THE CONTROLLER BECOME
+BEFORE THE ORGANISM STOPS BEHAVING INTELLIGENTLY?
+```
+
+This experiment should remain parked until the current semantic-continuity
+and witness fronts have produced enough stable machinery to hold the chassis constant.
