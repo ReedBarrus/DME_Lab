@@ -34,7 +34,7 @@
       "result": "PASS"
     },
     "I": {
-      "relation": "MISSING_DISTINCT_FROM_ABSENT",
+      "relation": "MISSINGNESS_CLAIM_REPRESENTED_DISTINCT_FROM_ABSENT",
       "result": "PASS"
     },
     "J": {
@@ -200,6 +200,18 @@
     "T3": {
       "relation": "OBSERVED_STANDING_REQUIRES_STRONGER_FUTURE_MACHINERY",
       "result": "PASS"
+    },
+    "U1": {
+      "relation": "BASIS_MISSINGNESS_ROW_DOES_NOT_MANUFACTURE_MISSING_STANDING",
+      "result": "PASS"
+    },
+    "U2": {
+      "relation": "PRESENTED_WITNESS_EARNS_MISSINGNESS_WITNESS_PRESENTED_NOT_MISSING",
+      "result": "PASS"
+    },
+    "U3": {
+      "relation": "MISSING_STANDING_REQUIRES_STRONGER_FUTURE_MACHINERY",
+      "result": "PASS"
     }
   },
   "core_relations": {
@@ -211,6 +223,7 @@
     "fresh_observation_payload_noninheritance": "PASS",
     "fresh_observation_source_relation": "PASS",
     "invocation_ne_work_claim": "PASS",
+    "missing_status_semantic_ceiling": "PASS",
     "observation_source_object_identity_correspondence": "PASS",
     "observed_status_semantic_ceiling": "PASS",
     "occupant_ne_invocation": "PASS",
@@ -227,6 +240,7 @@
   "historical_basis_reuse": "SEPARATE_TYPED_RELATION_REQUIRED_NOT_MODELED",
   "integration_effect": "NONE",
   "legacy_seat_migration": "NOT_TESTED",
+  "missing_standing": "NOT_ESTABLISHED",
   "missingness_reason_understanding": "NOT_CLAIMED",
   "missingness_witness_correspondence": "TESTED_EXACT_OBJECT_REASON",
   "missingness_witness_encounter_correspondence": "TESTED_CURRENT_SEAT_OCCUPANT_INVOCATION_WITNESS_BASIS",
@@ -238,8 +252,10 @@
   "observation_source_identity_correspondence": "TESTED_EXACT_OPAQUE_CORRESPONDENCE",
   "observation_source_truth": "NOT_TESTED",
   "occupant_binding_effect": "NONE",
+  "presented_missingness_standing": "MISSINGNESS_WITNESS_PRESENTED",
   "presented_source_standing": "SOURCE_PRESENTED",
   "representation_succession": "NOT_TESTED",
+  "retrieval_attempt_or_failure": "NOT_ESTABLISHED",
   "role_vocabulary_status": "PROVISIONAL_EXTENSIBLE",
   "source_encounter_correspondence": "TESTED_CURRENT_SEAT_OCCUPANT_INVOCATION_SOURCE_BASIS",
   "source_encounter_truth": "NOT_TESTED",
