@@ -1,0 +1,17 @@
+{
+  "schema": "LIVE_COMPLETION_CRITERION_v1",
+  "criterion_id": "FIRST_TWO_LANE_TRIAL-LANE_A-COMPLETION-CRITERION-V1-001",
+  "bounded_unit_id": "sha256:04b2e895c290296693d880ec521acdc810ee8f3278a8d50f28397dea9188d363",
+  "criterion_basis_ref": "git:b36ae5c4a120e31f9f404791c65acfa8c8d69301:coordination/active_work_claim.json@5f0a134655c0c45287ef61b29ed46072d47c6895",
+  "criterion_basis_commit": "b36ae5c4a120e31f9f404791c65acfa8c8d69301",
+  "criterion_basis_blob": "5f0a134655c0c45287ef61b29ed46072d47c6895",
+  "source_derivation_rule": "EXACT_PREWORK_CLAIM_FIELDS",
+  "work_interval_rule": "AFTER_ACTIVATION_TO_EVALUATED_HEAD",
+  "consequence_envelope_id": "FIRST_TWO_LANE_TRIAL-LANE_A-CANDIDATE-DOC-ONLY",
+  "required_final_artifacts": [
+    "docs/candidates/live_two_lane_trial_lane_a_v0/LANE_A_OPERATING_BOOTSTRAP_DELTA_001.md"
+  ],
+  "allowed_mutation_paths": [
+    "docs/candidates/live_two_lane_trial_lane_a_v0/LANE_A_OPERATING_BOOTSTRAP_DELTA_001.md"
+  ]
+}
