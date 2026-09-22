@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/live_completion_blocker_scope_v0.schema.json",
+  "title": "LIVE_COMPLETION_BLOCKER_SCOPE_v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "scope_id",
+    "work_unit_id",
+    "criterion_ref",
+    "evaluated_basis_head",
+    "blocker_classes",
+    "required_source_refs",
+    "scope_closure_rule"
+  ],
+  "properties": {
+    "schema": {
+      "const": "LIVE_COMPLETION_BLOCKER_SCOPE_v0"
+    },
+    "scope_id": {
+      "type": "string"
+    },
+    "work_unit_id": {
+      "type": "string"
+    },
+    "criterion_ref": {
+      "type": "string"
+    },
+    "evaluated_basis_head": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "blocker_classes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "required_source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "scope_closure_rule": {
+      "const": "ALL_DECLARED_CLASSES_EXPLICITLY_EVALUATED"
+    }
+  }
+}
