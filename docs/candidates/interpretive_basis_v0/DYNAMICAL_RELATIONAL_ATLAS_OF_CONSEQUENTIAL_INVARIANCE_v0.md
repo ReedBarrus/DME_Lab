@@ -315,7 +315,7 @@ or repositioning the relation toward a recoverable regime
 The same transformation may function as influence in one relation and
 correction in another.
 
-## 6. OPERATOR POSSIBILITY, REACHABILITY, AND ADMISSIBILITY
+## 6. OPERATOR POSSIBILITY, REACHABILITY, ADMISSIBILITY, AUTHORITY, AND EXECUTION
 
 Let:
 
@@ -325,17 +325,26 @@ Let:
 operators / actions that exist from or around state x
 ```
 
-Distinguish three geometries:
+Distinguish at least these non-equivalent operator standings:
 
 ```text
-POSSIBILITY GEOMETRY:
-what transformations exist in principle
+POSSIBLE:
+the transformation exists in principle
 
-REACHABILITY GEOMETRY:
-what transformations can actually be reached from the current state
+REACHABLE:
+the transformation can actually be reached from the current state
 
-ADMISSIBILITY GEOMETRY:
-what transformations have sufficient local basis to be exercised
+ADMISSIBLE:
+the transformation survives the relevant local qualification / standing gates
+
+AUTHORIZED:
+the transformation has a current authority carrier for this subject / action / basis
+
+EXECUTABLE:
+the transformation has the concrete execution conditions / surface required now
+
+EXECUTED:
+the transformation actually occurred
 ```
 
 Freeze the distinction:
@@ -346,27 +355,34 @@ MECHANISM EXISTS
 MECHANISM REACHABLE
 !=
 MECHANISM ADMISSIBLE
+!=
+MECHANISM AUTHORIZED
+!=
+MECHANISM EXECUTABLE
+!=
+MECHANISM EXECUTED
 ```
 
-Let an admissibility predicate be provisionally:
+The Atlas may represent these as separate masks / standing functions, but MUST NOT
+assume a universal binary admissibility predicate or a universal nesting relation.
+
+Where a specific mechanism earns containment, a local chain may look like:
 
 ```text
-α(A, x, b) ∈ {0,1}
+𝓤_exec
+⊆
+𝓤_auth
+⊆
+𝓤_adm
+⊆
+𝓤_reach
+⊆
+𝓤_poss
 ```
 
-or later some richer standing space if binary admission proves inadequate.
+but this containment is itself an earned relation, not a global law.
 
-Then:
-
-```text
-𝓤_A^adm(x,b)
-=
-{ A ∈ 𝓤(x) : α(A,x,b)=1 }
-```
-
-Authority therefore is not an identity property.
-
-It provisionally constrains which operators are locally admissible.
+Authority therefore is not an identity property and is not reducible to admissibility.
 
 ## 7. LOCAL AUTHORITY
 
@@ -442,22 +458,66 @@ INFORMATIONALLY DESPOTIC
 PERMANENT BY IDENTITY
 ```
 
-## 8. CONSEQUENTIAL REACH
+## 8. CONSEQUENTIAL REACH AND TRAJECTORY
+
+Immediate action image is not the whole consequence.
 
 Let:
 
 ```text
-𝓡_A(x)
+x' = A(x)
+```
+
+and let:
+
+```text
+Φ_τ(x')
+```
+
+provisionally represent state evolution for horizon `τ` after the action.
+
+Then a consequence trajectory may be represented as:
+
+```text
+Γ_A(x,τ)
+=
+C(Φ_τ(A(x)))
+```
+
+and a horizon-bounded consequence tube as:
+
+```text
+𝔠_A^[0,T](x)
 =
 {
-C(A(x)) - C(x)
+C(Φ_τ(A(x)))
 |
-A ∈ 𝓤_A^adm(x)
+A is executable in the declared local regime,
+0 ≤ τ ≤ T
 }
 ```
 
-This is the currently admissible consequential region reachable through
-the local action surface.
+Freeze:
+
+```text
+ACTION IMAGE
+!=
+CONSEQUENCE TRAJECTORY
+
+IMMEDIATE CONSEQUENCE
+!=
+PROPAGATED CONSEQUENCE
+!=
+TERMINAL CONSEQUENCE
+
+INVOCATION ENDED
+!=
+EFFECT ENDED
+
+EXECUTION OCCURRED
+!=
+OPERATION COMPLETED
+```
 
 Important:
 
@@ -471,7 +531,9 @@ A small number of actions may span a large consequence region.
 
 A large number of actions may remain locally inconsequential.
 
-## 9. INVARIANTS AND IDENTITY
+No metric or topology over consequence space is assumed yet.
+
+## 9. INVARIANTS, IDENTITY, AND HISTORICAL DISTINCTNESS
 
 Let:
 
@@ -479,20 +541,18 @@ Let:
 𝓘 = {I₁, I₂, ..., Iₙ}
 ```
 
-be the declared invariants relevant to the local transformation.
+be declared conservation invariants relevant to the local transformation.
 
 These may include:
 
 ```text
-identity
 lineage
 provenance
-authority boundary
+authority boundaries
 claim correspondence
 historical conservation
 subject continuity
-recoverability constraints
-etc.
+other declared conservation relations
 ```
 
 Define equivalence under the declared invariant set:
@@ -501,7 +561,7 @@ Define equivalence under the declared invariant set:
 x ~_𝓘 y
 ```
 
-iff relevant invariants remain equivalent within declared tolerances.
+iff the declared conserved relations remain equivalent within stated tolerances.
 
 Therefore:
 
@@ -515,19 +575,38 @@ can coexist with:
 x' ~_𝓘 x
 ```
 
-Freeze:
+But freeze the stronger distinction:
 
 ```text
-TRANSFORMATION
+INVARIANT EQUIVALENCE
 !=
-LOSS OF RELEVANT IDENTITY
+IDENTITY EQUALITY
+
+HISTORICAL NONCURRENT IDENTITY
+!=
+ABSENCE
+
+RECOVERED POSTURE
+!=
+RECOVERED PRIOR OCCUPANT IDENTITY
 ```
 
-Identity in this Atlas is therefore not literal state equality.
+The Atlas MUST preserve cases where two states share many invariants while still
+representing distinct historical identities.
 
-It is recoverable / conserved equivalence under a declared scope.
+Identity is therefore not defined solely by `~_𝓘`.
 
-## 10. CORRECTIVE PATHS AND RECOVERABILITY
+Succession / noninheritance remains a partially unresolved geometry involving:
+
+```text
+what must be conserved
+what must remain distinct
+what must explicitly not transfer
+```
+
+No general succession ontology is installed here.
+
+## 10. CORRECTIVE PATHS, VIABILITY, AND RECOVERABILITY
 
 Suppose:
 
@@ -535,35 +614,65 @@ Suppose:
 x' = A(x)
 ```
 
-`A` is recoverable under invariant set `𝓘` only where there exists an
-admissible reachable corrective path `K` such that:
+Let:
+
+```text
+𝓖(x)
+```
+
+provisionally denote the declared viable recovery region relative to the
+original subject / history / scope.
+
+`A` is recoverable only where there exists a reachable, admissible, and where
+required authorized corrective trajectory `K` such that:
+
+```text
+K(A(x)) ∈ 𝓖(x)
+```
+
+while preserving every conservation invariant that must survive the recovery.
+
+The older restoration form:
 
 ```text
 K(A(x)) ~_𝓘 x
 ```
 
-within declared bounds on:
+is only a special case when rollback / restoration to the prior equivalence
+class is actually required.
+
+Freeze:
 
 ```text
-time
-cost
-error
-consequence
-risk
-distance
-or other relevant dimensions
+RECOVERABLE
+!=
+REVERSIBLE
+
+ROLLBACK
+!=
+REPAIR
+!=
+CONTAINMENT
+!=
+FORWARD RECOVERY
+
+CONSERVATION INVARIANT
+!=
+RECOVERY / VIABILITY CONDITION
 ```
 
-Thus:
+Thus recoverability requires at least:
 
 ```text
-RECOVERABILITY
-=
 CORRECTIVE POSSIBILITY
 +
 CORRECTIVE REACHABILITY
 +
-INVARIANT RESTORATION
+CORRECTIVE ADMISSIBILITY / AUTHORITY WHERE REQUIRED
++
+REACHABILITY OF A VALID VIABILITY REGION
++
+PRESERVATION OF REQUIRED CONSERVATION INVARIANTS
 ```
 
 Not:
@@ -574,6 +683,23 @@ Not:
 
 A corrective mechanism that cannot be reached from the failure state
 does not establish recoverability.
+
+PARKED PRESSURE QUESTION:
+
+```text
+CONSERVATION CONDITION
+!=
+TERMINAL CONDITION
+!=
+RECOVERY CONDITION ?
+```
+
+Standing:
+
+```text
+UNRESOLVED
+DO NOT INSTALL WITHOUT PRESSURE
+```
 
 ## 11. CURRENTNESS
 
@@ -625,7 +751,7 @@ Staleness can alter the reachable consequence geometry.
 
 ## 12. SEATS
 
-A seat is provisionally modeled as a bounded operator regime:
+A seat may be projected as supplying a bounded operator regime:
 
 ```text
 Σ_q(x,b)
@@ -653,9 +779,13 @@ may alter:
 Σ_q
 ```
 
-Freeze:
+But freeze:
 
 ```text
+SEAT-AS-OPERATOR-REGIME
+!=
+FULL SEAT IDENTITY
+
 SEAT IDENTITY
 !=
 OCCUPANT IDENTITY
@@ -664,54 +794,57 @@ INVOCATION IDENTITY
 !=
 WORK CLAIM
 !=
+AUTHORITY
+!=
 AVAILABLE OPERATOR SET
 ```
 
-A seat is therefore **not** required to be modeled as a mystical persistent agent.
+The operator regime is one useful Atlas projection of a seat, not its identity
+definition.
 
-It may initially be treated as:
-
-```text
-A BOUNDED RELATIONAL REGIME
-DETERMINING WHICH TRANSFORMATIONS
-ARE AVAILABLE FROM AN OPERATING POSITION.
-```
+A seat is therefore **not** required to be modeled as a mystical persistent agent,
+nor may its historical identity be collapsed into its currently available
+operator set.
 
 ## 13. PRIMARY STABILITY HYPOTHESIS
 
-For recurring action regime `A`, let:
+For recurring action regime `A` and propagation horizon `T`, let:
 
 ```text
-𝔠_A(x)
-=
-its admitted consequential reach
+𝔠_A^[0,T](x)
 ```
+
+denote its horizon-bounded consequence tube.
 
 Let:
 
 ```text
-𝔯_𝓘(x)
-=
-the region from which an admissible corrective path can restore
-the required invariant set
+𝔯_𝓖,𝓘(x)
 ```
+
+denote the region from which a qualified corrective trajectory can reach the
+declared viability region `𝓖` while preserving every required conservation
+invariant in `𝓘`.
 
 Candidate stability condition:
 
 ```text
-𝔠_A(x)
+𝔠_A^[0,T](x)
 ⊆
-𝔯_𝓘(x)
+𝔯_𝓖,𝓘(x)
 ```
 
 Verbally:
 
 ```text
-THE CONSEQUENTIAL REACH ADMITTED
+FOR THE RELEVANT PROPAGATION HORIZON:
+
+THE CONSEQUENCE TUBE ADMITTED
 TO A RECURRING ACTION REGIME
 SHOULD REMAIN INSIDE THE REGION
-FROM WHICH REQUIRED INVARIANTS
-REMAIN RECOVERABLE.
+FROM WHICH QUALIFIED CORRECTIVE TRAJECTORIES
+CAN REACH A VALID RECOVERY / VIABILITY REGION
+WHILE PRESERVING REQUIRED CONSERVATION INVARIANTS.
 ```
 
 This is a **pressure hypothesis**, not yet law.
@@ -721,10 +854,11 @@ This is a **pressure hypothesis**, not yet law.
 Define provisionally:
 
 ```text
-𝓓_uncorrected
+𝓓_uncorrected^[0,T]
 =
-𝔠_A(x)
-𝔯_𝓘(x)
+𝔠_A^[0,T](x)
+\
+𝔯_𝓖,𝓘(x)
 ```
 
 This is the:
@@ -951,20 +1085,22 @@ IRREVERSIBLE ACTION WITHOUT ADEQUATE PRE-ACTION BASIS
 
 ## 19. LEVERAGE
 
-Leverage is not yet formally defined.
+Leverage is not yet formally defined or metrized.
 
-Candidate interpretation:
+Candidate directional interpretation:
 
 ```text
-LEVERAGE
+LEVERAGE ALONG INTERVENTION DIRECTION v
 ≈
-CONSEQUENTIAL DISPLACEMENT OBTAINABLE
-PER UNIT OF ADMITTED TRANSFORMATION,
-CORRECTIVE BURDEN,
-AND DEVELOPMENT COST
+CHANGE IN USEFUL ADMISSIBLE + RECOVERABLE FIELD
+RELATIVE TO
+BOUNDED DEVELOPMENT / CORRECTIVE BURDEN ALONG v
 ```
 
-Do not freeze a scalar ratio yet.
+This is qualitative only.
+
+Do not assign a scalar leverage value where consequence dimensions, recovery
+burden, or development distance lack an earned metric.
 
 High-leverage development surfaces are likely those where:
 
@@ -1003,25 +1139,41 @@ CURRENT BASIS
 
 CURRENT STATE
 
-AVAILABLE OPERATORS
+POSSIBLE OPERATORS
 
 REACHABLE OPERATORS
 
 ADMISSIBLE OPERATORS
 
-EXPECTED CONSEQUENCE DELTA
+AUTHORIZED OPERATORS
 
-OBSERVED CONSEQUENCE DELTA
+EXECUTABLE OPERATORS
 
-DECLARED INVARIANTS
+EXECUTED OPERATORS / OBSERVED EXECUTION
 
-IDENTITY / EQUIVALENCE BASIS
+EXPECTED IMMEDIATE CONSEQUENCE
+
+OBSERVED IMMEDIATE CONSEQUENCE
+
+PROJECTED / OBSERVED CONSEQUENCE TRAJECTORY
+
+PROPAGATION HORIZON
+
+CONSEQUENCE TUBE
+
+CONSERVATION INVARIANTS
+
+RECOVERY / VIABILITY CONDITIONS
+
+IDENTITY / HISTORICAL DISTINCTNESS BASIS
+
+SUCCESSION / NONINHERITANCE CONSTRAINTS
 
 CORRECTIVE OPERATORS
 
 CORRECTIVE REACH
 
-RECOVERABLE REGION
+RECOVERY BASIN / VIABILITY REGION
 
 UNCOVERED CONSEQUENTIAL REGION
 
@@ -1037,7 +1189,7 @@ BUFFER / THRESHOLD
 
 RECOVERY PATH
 
-LEVERAGE
+LEVERAGE DIRECTION
 
 UNRESOLVED COORDINATES
 ```
@@ -1165,24 +1317,26 @@ INFLUENCE AND CORRECTION ARE RELATIONAL ROLES,
 NOT FIXED SUBSTANCES OR IDENTITIES.
 
 H4:
-POSSIBILITY, REACHABILITY, AND ADMISSIBILITY
-ARE NON-EQUIVALENT GEOMETRIES.
+POSSIBILITY, REACHABILITY, ADMISSIBILITY, AUTHORIZATION,
+EXECUTABILITY, AND EXECUTION ARE NON-EQUIVALENT STANDINGS.
 
 H5:
 CURRENTNESS CHANGES THE LOCAL REACHABLE FIELD.
 
 H6:
-IDENTITY CAN BE REPRESENTED PROVISIONALLY
-AS EQUIVALENCE UNDER DECLARED INVARIANTS.
+INVARIANT EQUIVALENCE IS A USEFUL CONSERVATION PROJECTION
+BUT DOES NOT BY ITSELF ESTABLISH IDENTITY EQUALITY,
+SUCCESSION, OR NONINHERITANCE.
 
 H7:
-RECOVERABILITY REQUIRES
-REACHABLE INVARIANT-RESTORING CORRECTION.
+RECOVERABILITY REQUIRES A QUALIFIED CORRECTIVE TRAJECTORY
+TO A VALID VIABILITY REGION WHILE PRESERVING
+THE CONSERVATION INVARIANTS REQUIRED BY THE DECLARED SCOPE.
 
 H8:
-RECURRING CONSEQUENTIAL REACH
-SHOULD REMAIN INSIDE
-RECOVERABLE REACH.
+FOR A RELEVANT PROPAGATION HORIZON,
+RECURRING CONSEQUENCE TUBES SHOULD REMAIN INSIDE
+QUALIFIED RECOVERY BASINS.
 
 H9:
 THE DIFFERENCE BETWEEN THOSE REGIONS
@@ -1193,9 +1347,8 @@ AUTHORITY IS LOCALLY RELATIONAL
 AND CONSTRAINS ADMISSIBLE OPERATOR SETS.
 
 H11:
-SEATS CAN BE INTERPRETED AS
-BOUNDED OPERATOR REGIMES
-WITHOUT ASSUMING PERSISTENT AGENT ONTOLOGY.
+BOUNDED OPERATOR REGIME IS ONE USEFUL PROJECTION OF A SEAT,
+NOT A COMPLETE DEFINITION OF SEAT IDENTITY.
 
 H12:
 A PLAN IS ONLY A PROJECTION
@@ -1223,9 +1376,13 @@ THAT ITS GEOMETRY IS WRONG.
 - all relations are smooth;
 - all actions are reversible;
 - all invariants are continuous;
-- authority is binary;
-- recoverability is scalar;
+- admissibility or authority are universally binary;
+- operator standings always form one clean nested chain;
+- recoverability is scalar or equivalent to reversibility;
 - seats are fully described by operator sets;
+- invariant equivalence establishes identity equality;
+- historical noncurrent identity is equivalent to absence;
+- succession / noninheritance already has a complete geometry;
 - influence and correction have final definitions;
 - the stability subset condition is universally sufficient;
 - all DME debt can be geometrically represented;
@@ -1331,3 +1488,110 @@ THE MAP MAY GUIDE THE EXPEDITION.
 
 THE MAP DOES NOT OWN THE TERRITORY.
 ```
+
+
+## 29. ADVERSARIAL REVIEW REPAIRS — v0.1
+
+The first trajectory projection against the four seat-loop candidates exposed
+additional bounded Atlas fractures.
+
+These repairs are integrated into the candidate above and recorded here for
+review traceability.
+
+```text
+R1
+ADMISSIBLE
+!=
+AUTHORIZED
+!=
+EXECUTABLE
+!=
+EXECUTED
+
+R2
+RECOVERABLE
+!=
+REVERSIBLE
+
+R3
+ACTION IMAGE
+!=
+CONSEQUENCE TRAJECTORY
+
+R4
+CONSERVATION INVARIANT
+!=
+RECOVERY / VIABILITY CONDITION
+
+R5
+INVARIANT EQUIVALENCE
+!=
+IDENTITY EQUALITY
+
+R6
+HISTORICAL NONCURRENT IDENTITY
+!=
+ABSENCE
+
+R7
+SEAT-AS-OPERATOR-REGIME
+!=
+FULL SEAT IDENTITY
+
+R8
+NONINHERITANCE / SUCCESSION
+IS NOT YET FULLY REPRESENTED
+
+R9
+LEVERAGE REMAINS QUALITATIVE
+UNTIL RELEVANT METRICS ARE EARNED
+
+R10
+BINARY ADMISSIBILITY IS TOO WEAK
+FOR MULTI-STAGE LAB STANDING
+```
+
+The following remains parked rather than installed:
+
+```text
+CONSERVATION CONDITION
+!=
+TERMINAL CONDITION
+!=
+RECOVERY CONDITION ?
+```
+
+Standing:
+
+```text
+UNRESOLVED
+PRESSURE REQUIRED
+```
+
+Trajectory review result:
+
+```text
+EXECUTION_PREFLIGHT_COMPOSITION_001
+→
+LANE_A_COMPLETE_REVALIDATION_AND_DISPOSITION_001
+→
+PRIMARY_ECOLOGY_POSTMERGE_COMPOSITION_001
+→
+FIRST_LIVE_FRESH_OCCUPANT_TURNOVER_001
+
+TRAJECTORY_SURVIVES
+
+BUT:
+
+NOT FROZEN EXECUTION ORDER
+NOT ATLAS-PROVEN OPTIMUM
+NOT EXECUTION AUTHORITY
+```
+
+The bounded reason for survival is that the trajectory presently increases
+consequential exposure gradually while first adding currentness, admissibility,
+and identity / noninheritance coverage.
+
+The trajectory does not validate DRACI.
+
+It merely survives one adversarial projection through the current candidate map.
