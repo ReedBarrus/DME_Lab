@@ -105,9 +105,9 @@ def evaluate()->dict[str,Any]:
     sig=str(inspect.signature(adapter.evaluate))
     try:
         adapter.evaluate(ROOT, controller_receipt_outcome="ARBITRARY")
-        e={"accepted":true}
+        e={"accepted":True}
     except TypeError as exc:
-        e={"accepted":false,"error":str(exc)}
+        e={"accepted":False,"error":str(exc)}
     out["E"]={"signature":sig,"caller_outcome_accepted":e["accepted"]}
 
     # F exact candidate producer bytes but no qualified runtime registry
