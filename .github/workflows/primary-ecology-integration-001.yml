@@ -64,11 +64,42 @@ jobs:
       - name: Y4 quiet-peer coordination regression
         run: python -m unittest tests.runtime.test_quiet_peer_coordination_v1 -v
 
-      - name: Y4 Lane-B successor engagement regression
-        run: python -m unittest tests.runtime.test_lane_b_successor_engagement_v0 -v
+      - name: Y4 Lane-B historical harness precondition remains current-main blocked
+        run: |
+          test ! -e coordination/lane_manifest.json
+          if git cat-file -e f36261e17790b853a91c81bc2f7d0e63e8ee8436:coordination/lane_manifest.json 2>/dev/null; then
+            echo "target main unexpectedly contains coordination/lane_manifest.json"
+            exit 1
+          fi
+          git diff --quiet f36261e17790b853a91c81bc2f7d0e63e8ee8436..HEAD -- \
+            tools/lane_b_successor_engagement_v0.py \
+            tools/lane_b_successor_engagement_repressure_v1.py \
+            tests/runtime/test_lane_b_successor_engagement_v0.py \
+            tests/runtime/test_lane_b_successor_engagement_repressure_v1.py \
+            schemas/lane_engagement_binding_v0.schema.json \
+            coordination/predecessor_fences/LANE_B_LEGACY_INSTANCE_001.json
 
-      - name: Y4 Lane-B successor composition repressure
-        run: python -m unittest tests.runtime.test_lane_b_successor_engagement_repressure_v1 -v
+      - name: Y4 Lane-B successor v0 preserves target-main administrative block
+        run: |
+          set +e
+          python -m unittest tests.runtime.test_lane_b_successor_engagement_v0 -v > /tmp/lane_b_v0.log 2>&1
+          rc=$?
+          set -e
+          cat /tmp/lane_b_v0.log
+          test "$rc" -ne 0
+          grep -q "FileNotFoundError" /tmp/lane_b_v0.log
+          grep -q "coordination/lane_manifest.json" /tmp/lane_b_v0.log
+
+      - name: Y4 Lane-B successor repressure preserves target-main administrative block
+        run: |
+          set +e
+          python -m unittest tests.runtime.test_lane_b_successor_engagement_repressure_v1 -v > /tmp/lane_b_repressure.log 2>&1
+          rc=$?
+          set -e
+          cat /tmp/lane_b_repressure.log
+          test "$rc" -ne 0
+          grep -q "FileNotFoundError" /tmp/lane_b_repressure.log
+          grep -q "coordination/lane_manifest.json" /tmp/lane_b_repressure.log
 
       - name: Y4 lane lifecycle synthetic pressure
         run: |
