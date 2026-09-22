@@ -1,0 +1,25 @@
+{
+  "schema": "LIVE_COMPLETION_PRODUCER_CANDIDATES_v1",
+  "raw_evaluator": {
+    "implementation_path": "tools/live_completion_raw_evaluator_v1.py",
+    "implementation_blob": "91757d9b9eb1293048ae11a0fa5b331c2269f894"
+  },
+  "producer_candidates": {
+    "LIVE_UNIT_COMPLETION_STANDING_PRODUCER@v1": {
+      "relation_types": [
+        "UNIT_COMPLETION_STANDING"
+      ],
+      "implementation_path": "tools/live_unit_completion_standing_producer_v1.py",
+      "implementation_blob": "06d57d1498aea07c0476dd861a31bbf9d0c1ede4",
+      "qualification_status": "CANDIDATE_UNDER_QUALIFICATION"
+    },
+    "LIVE_COMPLETION_BLOCKER_STATUS_PRODUCER@v1": {
+      "relation_types": [
+        "COMPLETION_BLOCKER_STATUS"
+      ],
+      "implementation_path": "tools/live_completion_blocker_status_producer_v1.py",
+      "implementation_blob": "717d2b0ac3f9ffa94c955b3b003bc811d5c28459",
+      "qualification_status": "CANDIDATE_UNDER_QUALIFICATION"
+    }
+  }
+}
