@@ -1,0 +1,16 @@
+{
+  "schema": "LIVE_COMPLETION_FROZEN_SPECIMEN_v0",
+  "authoritative_main": "f36261e17790b853a91c81bc2f7d0e63e8ee8436",
+  "lane_a_head": "61ed8e8a3cea8aa3bc29adb0df361c214da7aeba",
+  "lane_b_head": "a88d1d56d0b624cf00239cc8c2621522b45b4b08",
+  "lane_a_claim_path": "coordination/active_work_claim.json",
+  "lane_a_claim_blob": "5f0a134655c0c45287ef61b29ed46072d47c6895",
+  "lane_a_manifest_path": "coordination/lane_manifest.json",
+  "lane_a_manifest_blob": "9f5459fc2707091dd7512d86f3a2b795e64e32bf",
+  "activation_basis": "de667390d81c1219abfee063d2a3b1fe13d1ba71",
+  "activation_commit": "b36ae5c4a120e31f9f404791c65acfa8c8d69301",
+  "initial_work_commit": "afc276fbe2f1213d69d83000245c6e2a4f949903",
+  "followup_work_commit": "61ed8e8a3cea8aa3bc29adb0df361c214da7aeba",
+  "final_artifact_path": "docs/candidates/live_two_lane_trial_lane_a_v0/LANE_A_OPERATING_BOOTSTRAP_DELTA_001.md",
+  "final_artifact_blob": "74abc78eeb91b791d9525c6485935905fbe3a06a"
+}
