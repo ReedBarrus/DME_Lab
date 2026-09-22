@@ -13,6 +13,7 @@
     "source_ref",
     "encounter_kind",
     "basis_ref",
+    "observation_basis_ref",
     "authority_effect",
     "execution_effect"
   ],
@@ -52,6 +53,10 @@
     },
     "execution_effect": {
       "const": "NONE"
+    },
+    "observation_basis_ref": {
+      "type": "string",
+      "minLength": 1
     }
   }
 }
