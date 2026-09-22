@@ -376,6 +376,7 @@ def evaluate(repo_root: str | Path) -> dict[str, Any]:
         raise AdapterInvalid("CONTROLLER_CLAIM_PROJECTION_RETURN_MISMATCH")
 
     return {
+        "schema": "LIVE_COMPLETION_ADAPTER_RECEIPT_v0",
         "adapter_contract_id": contract["contract_id"],
         "adapter_implementation_blob": contract["adapter_implementation"]["blob"],
         "authoritative_controller": {
