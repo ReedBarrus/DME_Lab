@@ -153,6 +153,18 @@ REFERENCE VALID
 AUTHORITY REF PRESENT
 !=
 AUTHORITY ESTABLISHED
+
+AUTHORITY REF SILENT
+!=
+AUTHORITY ABSENT
+
+NO LOCAL AUTHORITY REF
+!=
+NO EXTERNAL AUTHORITY
+
+NO REPRESENTED AUTHORITY
+!=
+AUTHORITY DENIED
 ```
 
 A fresh occupant or invocation must not silently inherit prior invocation-local
@@ -216,6 +228,19 @@ VALID COMPOSED ECOLOGY BUNDLE
 The seat and engagement binding therefore cannot disagree about which current
 work claim exists. Mutual null is a valid no-current-claim state; a non-null
 current claim is valid only when both surfaces carry the exact same reference.
+
+Authority references remain a separate, deliberately non-exhaustive surface:
+
+```text
+authority_refs = []
+→ NO_AUTHORITY_REF_REPRESENTED
+
+authority_refs nonempty
+→ UNADJUDICATED
+```
+
+Neither state establishes authority validity, authority absence, authority
+denial, or execution permission.
 
 An older observation basis may later be carried as historical provenance only
 through an explicitly typed historical-basis relation. That relation is not
@@ -598,9 +623,10 @@ A green pressure may establish only:
 > SOURCE_PRESENTED standing ceiling, exact represented missingness witness
 > correspondence, exact current-invocation missingness-witness encounter
 > correspondence, exact encounter-to-current-basis content identity for both
-> encounter types, a bounded MISSINGNESS_WITNESS_PRESENTED standing ceiling, and
+> encounter types, a bounded MISSINGNESS_WITNESS_PRESENTED standing ceiling,
 > bounded silence standings of UNREPRESENTED_AT_BASIS /
-> NO_CURRENT_REPRESENTED_CLAIM while avoiding the tested
+> NO_CURRENT_REPRESENTED_CLAIM, and bounded authority-reference standings of
+> NO_AUTHORITY_REF_REPRESENTED / UNADJUDICATED while avoiding the tested
 > identity/authority/missingness collapses.
 
 It does not establish:
@@ -614,6 +640,8 @@ persistent occupant identity
 standing inheritance
 claim validity
 authority validity
+authority absence / denial / revocation standing
+external authority exhaustiveness
 execution permission
 historical-basis reuse semantics
 observation identity-scheme semantics
