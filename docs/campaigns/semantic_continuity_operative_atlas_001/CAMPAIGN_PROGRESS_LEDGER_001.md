@@ -619,7 +619,8 @@ Legend:
 - [!] Cell 002 CF-A exact pair — forensic fracture
 - [X] Cell 002 dependency geometry reconstruction
 - [X] BASIS-RELATION DEPENDENCY PRESSURE
-- [~] REFERENCE-ADMISSION / DERIVED-BASIS PROPERTY PRESSURE
+- [!] REFERENCE-ADMISSION / DERIVED-BASIS PROPERTY PRESSURE — packet geometry survives, reconstruction membrane interferes
+- [~] RECONSTRUCTION MEMBRANE NEUTRALITY REPAIR
 - [ ] admissible repaired Cell-002 counterfeit
 - [ ] formal Cell-002 blinded reconstruction
 
@@ -951,4 +952,181 @@ Final annotation:
 CAN I FETCH THE BONE?
 !=
 DID THIS RECONSTRUCTION EAT THE BONE?
+```
+
+
+---
+
+# 12. Reference-Admission Forensic Review — Reconstruction Membrane Interference
+
+## Disposition
+
+```text
+EXPERIMENTAL_DESIGN:
+SURVIVES_WITH_BOUNDED_FRACTURE
+
+READY_FOR_EXACT_MATERIALIZATION:
+NO
+```
+
+The reference-admission distinction itself survives the adversarial review.
+
+The exact support handle does not materially leak controller execution semantics.
+
+Current bounded result:
+
+```text
+SUPPORT_HANDLE_SEMANTIC_LEAKAGE:
+NONE
+
+REFERENCE_SIDE_CHANNEL_CLOSED_AT_DESIGN_LEVEL:
+YES
+```
+
+The remaining fracture is instead:
+
+```text
+RECONSTRUCTION_MEMBRANE_INTERFERENCE
+```
+
+## Local recoverability
+
+Lane B successfully removed the explicit packet-local derived ceiling.
+
+However the shared reconstruction instruction still contains an anti-strengthening fallback equivalent to:
+
+```text
+IF RELATION NOT ESTABLISHED
+->
+RETURN UNRESOLVED / NOT_ESTABLISHED
+```
+
+This provides an alternate route from missing live-execution evidence to the very epistemic standing being pressure-tested.
+
+Therefore:
+
+```text
+PACKET-LOCAL CEILING REMOVAL
+!=
+EXPERIMENTAL CEILING REMOVAL
+```
+
+when the reconstruction membrane can regenerate the ceiling.
+
+Current standing:
+
+```text
+LOCAL_CEILING_RECOVERABILITY:
+PARTIAL
+
+SYNONYMOUS_CEILING_CARRIER:
+PRESENT
+
+NON_TARGET_MATCH:
+FRACTURES
+
+CLOSURE_ATTRACTIVENESS:
+UNRESOLVED
+```
+
+## Critical distinction exposed
+
+The experiment must distinguish:
+
+```text
+PACKET DOES NOT ESTABLISH LIVE EXECUTION
+```
+
+from:
+
+```text
+PACKET ESTABLISHES:
+LIVE EXECUTION NOT_ESTABLISHED
+```
+
+Absence of positive support must not automatically manufacture a positive non-establishment relation.
+
+Freeze:
+
+```text
+ABSENCE OF ESTABLISHMENT
+!=
+ESTABLISHED NON-ESTABLISHMENT
+```
+
+and:
+
+```text
+NEUTRAL RECONSTRUCTION DISCIPLINE
+!=
+TARGET RELATION SYNTHESIS
+```
+
+## Secondary carrier
+
+The phrase:
+
+```text
+RESULTING_STATE_REPRESENTATION
+```
+
+weakly carries a representation-versus-realization distinction.
+
+It is not independently fatal, but its necessity for CB3 / CB8 must be reviewed before exact materialization.
+
+Do not delete it merely to force the experiment to succeed.
+
+## Experimental honesty
+
+Reference non-admission is enforceable only through the actual cognition-access membrane.
+
+Future valid access receipt must establish at minimum:
+
+```text
+repository_access: NO
+reference_resolution_access: NO
+cold_source_content_exposed: NO
+other_packet_variant_access: NO
+evaluation_contract_exposed: NO
+target_mutation_exposed: NO
+lane_a_candidate_basis_exposed: NO
+external_context_used: NO
+reconstruction_output_finalized_before_evaluation: YES
+```
+
+Prior cold-source knowledge must be NO or explicitly UNRESOLVED.
+
+## Next lawful pressure
+
+```text
+RECONSTRUCTION MEMBRANE NEUTRALITY REPAIR
+```
+
+Preserve the packet geometry.
+
+Repair only the reconstruction instruction so it can faithfully report:
+
+```text
+NO PACKET-LOCAL STANDING RECOVERED
+```
+
+or equivalent,
+
+without converting missing positive evidence into:
+
+```text
+LIVE EXECUTION:
+UNRESOLVED / NOT_ESTABLISHED
+```
+
+Also review whether `RESULTING_STATE_REPRESENTATION` is required by CB3 / CB8 or can be replaced with a more neutral relation-preserving surface.
+
+Do not materialize the pair until this membrane interference is removed or explicitly reclassified.
+
+Final annotation:
+
+```text
+THE HANDLE ISN'T LEAKING.
+
+THE MEMBRANE IS.
 ```
