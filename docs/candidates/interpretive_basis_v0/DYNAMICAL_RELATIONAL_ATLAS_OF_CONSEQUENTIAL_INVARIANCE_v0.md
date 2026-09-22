@@ -325,7 +325,7 @@ Let:
 operators / actions that exist from or around state x
 ```
 
-Distinguish at least these non-equivalent operator standings:
+Distinguish at least these non-equivalent operator standings / relations:
 
 ```text
 POSSIBLE:
@@ -334,8 +334,14 @@ the transformation exists in principle
 REACHABLE:
 the transformation can actually be reached from the current state
 
+REQUESTED:
+a particular transformation has been explicitly requested where the mechanism exposes request semantics
+
+SELECTED / OPERATIVE:
+a particular branch or operator has become the operative candidate under the mechanism's dispatch relation
+
 ADMISSIBLE:
-the transformation survives the relevant local qualification / standing gates
+the selected / candidate transformation survives the relevant local qualification / standing gates
 
 AUTHORIZED:
 the transformation has a current authority carrier for this subject / action / basis
@@ -345,23 +351,34 @@ the transformation has the concrete execution conditions / surface required now
 
 EXECUTED:
 the transformation actually occurred
+
+RESULTING STATE:
+the state produced after execution or adjudication
 ```
 
-Freeze the distinction:
+Freeze the distinction where the mechanism exposes these relations:
 
 ```text
-MECHANISM EXISTS
+POSSIBLE
 !=
-MECHANISM REACHABLE
+REACHABLE
 !=
-MECHANISM ADMISSIBLE
+REQUESTED
 !=
-MECHANISM AUTHORIZED
+SELECTED / OPERATIVE
 !=
-MECHANISM EXECUTABLE
+ADMISSIBLE
 !=
-MECHANISM EXECUTED
+AUTHORIZED
+!=
+EXECUTABLE
+!=
+EXECUTED
+!=
+RESULTING STATE
 ```
+
+Do not assume a universal dispatch chain. Request / selection coordinates are mechanism-relative.
 
 The Atlas may represent these as separate masks / standing functions, but MUST NOT
 assume a universal binary admissibility predicate or a universal nesting relation.
@@ -458,7 +475,7 @@ INFORMATIONALLY DESPOTIC
 PERMANENT BY IDENTITY
 ```
 
-## 8. CONSEQUENTIAL REACH AND TRAJECTORY
+## 8. CONSEQUENTIAL REACH, TRAJECTORY, AND PREVENTION
 
 Immediate action image is not the whole consequence.
 
@@ -532,6 +549,38 @@ A small number of actions may span a large consequence region.
 A large number of actions may remain locally inconsequential.
 
 No metric or topology over consequence space is assumed yet.
+
+The Atlas must also preserve explicit preventive / exclusion relations where the
+Lab has evidence that an otherwise reachable or operative path was blocked.
+
+Freeze:
+
+```text
+PREVENTED CONSEQUENCE
+!=
+OBSERVED ZERO CONSEQUENCE
+!=
+ABSENT ACTION
+
+PRE-ACTION EXCLUSION
+!=
+POST-EFFECT CORRECTION / RECOVERY
+```
+
+A bounded prevention projection may include:
+
+```text
+REACHABLE / ATTEMPTED PATH
++
+EXCLUSION BASIS
++
+PREVENTED EFFECT
++
+COMPARISON BASIS
+```
+
+Do not infer prevented consequence merely from non-occurrence. Counterfactual
+exclusion requires an earned comparison basis.
 
 ## 9. INVARIANTS, IDENTITY, AND HISTORICAL DISTINCTNESS
 
@@ -684,21 +733,32 @@ Not:
 A corrective mechanism that cannot be reached from the failure state
 does not establish recoverability.
 
-PARKED PRESSURE QUESTION:
+Where a mechanism already earns the distinction, project separately:
 
 ```text
-CONSERVATION CONDITION
+CONSERVATION CONDITIONS
 !=
-TERMINAL CONDITION
+TERMINAL CONDITIONS
 !=
-RECOVERY CONDITION ?
+RECOVERY / VIABILITY CONDITIONS
+!=
+REUSABILITY CONDITIONS
 ```
 
-Standing:
+Do not globalize this into a universal lifecycle ontology.
+
+Freeze:
 
 ```text
-UNRESOLVED
-DO NOT INSTALL WITHOUT PRESSURE
+TERMINAL
+!=
+RECOVERED
+!=
+REUSABLE
+
+NONTERMINAL CONTAINMENT
+!=
+FAILED RECOVERY
 ```
 
 ## 11. CURRENTNESS
@@ -736,14 +796,31 @@ and therefore available / reachable / admissible operators may differ.
 Currentness provisionally means:
 
 ```text
-THE TIME-LOCAL CONDITIONING
+THE LOCAL CONDITIONING
 OF WHICH RELATIONS,
 OPERATORS,
 BASES,
 CORRECTIVE PATHS,
 AND CONSEQUENCE SURFACES
-ARE ACTUALLY AVAILABLE NOW.
+ARE ACTUALLY APPLICABLE NOW.
 ```
+
+Time / recency may contribute to currentness, but currentness is not reducible
+to clock time.
+
+It may depend on mechanism-relative correspondence such as:
+
+```text
+subject identity
+source lineage
+dependency identity
+observation recency
+non-supersession
+non-intervening mutation
+peer / claim correspondence
+```
+
+where the Lab has earned those requirements.
 
 Staleness is therefore not merely bad metadata.
 
@@ -1139,9 +1216,23 @@ CURRENT BASIS
 
 CURRENT STATE
 
+EVIDENCE OBJECTS
+
+SEMANTIC STANDING
+
+QUALIFICATION BASIS / PRODUCER
+
+CURRENT APPLICABILITY
+
+LAWFUL CONSUMER ROLE
+
 POSSIBLE OPERATORS
 
 REACHABLE OPERATORS
+
+REQUESTED OPERATOR / TRANSITION
+
+SELECTED / OPERATIVE OPERATOR / BRANCH
 
 ADMISSIBLE OPERATORS
 
@@ -1163,7 +1254,11 @@ CONSEQUENCE TUBE
 
 CONSERVATION INVARIANTS
 
+TERMINAL CONDITIONS
+
 RECOVERY / VIABILITY CONDITIONS
+
+REUSABILITY CONDITIONS
 
 IDENTITY / HISTORICAL DISTINCTNESS BASIS
 
@@ -1317,11 +1412,13 @@ INFLUENCE AND CORRECTION ARE RELATIONAL ROLES,
 NOT FIXED SUBSTANCES OR IDENTITIES.
 
 H4:
-POSSIBILITY, REACHABILITY, ADMISSIBILITY, AUTHORIZATION,
-EXECUTABILITY, AND EXECUTION ARE NON-EQUIVALENT STANDINGS.
+POSSIBILITY, REACHABILITY, REQUEST, SELECTION / OPERATIVE STANDING,
+ADMISSIBILITY, AUTHORIZATION, EXECUTABILITY, EXECUTION, AND RESULTING
+STATE ARE NON-EQUIVALENT WHERE THE MECHANISM EXPOSES THEM.
 
 H5:
-CURRENTNESS CHANGES THE LOCAL REACHABLE FIELD.
+CURRENTNESS CHANGES THE LOCAL REACHABLE / APPLICABLE FIELD AND IS NOT
+REDUCIBLE TO RECENCY OR CLOCK TIME.
 
 H6:
 INVARIANT EQUIVALENCE IS A USEFUL CONSERVATION PROJECTION
@@ -1363,6 +1460,19 @@ H14:
 THE ATLAS SHOULD BE UPDATED
 WHEN EVIDENCE DEMONSTRATES
 THAT ITS GEOMETRY IS WRONG.
+
+H15:
+PREVENTIVE EXCLUSION IS A DISTINCT CONSEQUENTIAL RELATION
+FROM OBSERVED ZERO EFFECT OR POST-EFFECT RECOVERY.
+
+H16:
+RAW EVIDENCE, SEMANTIC STANDING, QUALIFICATION LINEAGE,
+CURRENT APPLICABILITY, AND LAWFUL CONSUMER ROLE MAY BE NON-EQUIVALENT
+AND MUST REMAIN DISTINCT WHERE THE LAB REQUIRES THEM.
+
+H17:
+CONSERVATION, TERMINALITY, RECOVERY / VIABILITY, AND REUSABILITY
+MAY BE DISTINCT MECHANISM-RELATIVE CONDITIONS.
 ```
 
 ## 25. NON-CLAIMS
@@ -1595,3 +1705,119 @@ and identity / noninheritance coverage.
 The trajectory does not validate DRACI.
 
 It merely survives one adversarial projection through the current candidate map.
+
+
+## 30. ADVERSARIAL REVIEW REPAIRS — v0.2
+
+The second adversarial review against target head
+`a37721763a9a8038c94094b9154cf64032544ee1` established four additional
+Lab-backed distinction collapses.
+
+These are integrated into the candidate above.
+
+```text
+R11
+REQUESTED
+!=
+SELECTED / OPERATIVE
+!=
+ADMISSIBLE
+!=
+RESULTING STATE
+
+R12
+PREVENTED CONSEQUENCE
+!=
+OBSERVED ZERO CONSEQUENCE
+!=
+ABSENT ACTION
+
+PRE-ACTION EXCLUSION
+!=
+POST-ACTION CORRECTION / RECOVERY
+
+R13
+RAW EVIDENCE
+!=
+BASIS
+!=
+QUALIFIED STANDING
+!=
+CURRENT APPLICABILITY
+!=
+LAWFUL CONSUMER ROLE
+!=
+SCORER / DERIVATION ASSERTION
+
+R14
+CONSERVATION SATISFIED
+!=
+TERMINAL STATE REACHED
+!=
+RECOVERY / VIABILITY CONDITION REACHED
+!=
+REUSABILITY CONDITION REACHED
+
+NONTERMINAL CONTAINMENT
+!=
+FAILED RECOVERY
+```
+
+The following remain unresolved and MUST NOT be generalized without fresh
+Lab-backed pressure:
+
+```text
+U1:
+TYPED_AUTHORITY_EDGE_GEOMETRY
+
+candidate distinctions may include:
+AUTHORITY TO REQUEST
+AUTHORITY TO ADJUDICATE
+AUTHORITY TO AUTHORIZE
+AUTHORITY TO EXECUTE
+AUTHORITY TO CORRECT
+AUTHORITY TO REVOKE
+
+U2:
+CURRENTNESS_AS_FIRST_CLASS_RELATIONAL_CORRESPONDENCE
+
+U3:
+EXPLICIT_SUCCESSION_TRANSFER_GEOMETRY
+```
+
+The Atlas must not hide unresolved relations inside an elastic `b` merely
+because the basis coordinate can syntactically contain them.
+
+Trajectory disposition remains:
+
+```text
+EXECUTION_PREFLIGHT_COMPOSITION_001
+→
+LANE_A_COMPLETE_REVALIDATION_AND_DISPOSITION_001
+→
+PRIMARY_ECOLOGY_POSTMERGE_COMPOSITION_001
+→
+FIRST_LIVE_FRESH_OCCUPANT_TURNOVER_001
+
+TRAJECTORY_SURVIVES
+
+REORDERED_EDGE:
+NONE
+
+NOT:
+FROZEN EXECUTION ORDER
+ATLAS-PROVEN OPTIMUM
+EXECUTION AUTHORITY
+```
+
+Review stalemate has NOT yet been reached.
+
+Next highest-value Atlas fracture:
+
+```text
+TYPED_AUTHORITY_EDGE_GEOMETRY
+```
+
+The next review should remain narrow: determine whether current Lab evidence
+already forces multiple authority relation types that DRACI's generic
+AUTHORIZED standing cannot preserve.
