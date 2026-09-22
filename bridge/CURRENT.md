@@ -54,3 +54,18 @@ MODEL OUTPUT
 !=
 REPO MUTATION AUTHORITY
 ```
+
+## LOCAL TRUST ROOT STATUS
+
+NOT YET INSTALLED.
+
+The repository currently contains only the public/reference bridge implementation and request surface.
+The intended authority-bearing local trust root must be created separately on the operator machine outside the repository.
+
+Recommended location:
+
+```text
+%USERPROFILE%\\.dme_lab_bridge\\
+```
+
+The local trust root should contain the pinned executor and local policy and must not auto-update from the public repository.
