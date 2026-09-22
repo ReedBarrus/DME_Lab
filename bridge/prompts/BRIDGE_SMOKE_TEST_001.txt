@@ -1,0 +1,4 @@
+Return exactly:
+DME_LOCAL_BRIDGE_OK
+
+Do not add any other text.
