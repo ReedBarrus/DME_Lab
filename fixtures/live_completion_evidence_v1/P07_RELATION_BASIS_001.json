@@ -1,0 +1,34 @@
+{
+  "schema": "LIVE_COMPLETION_RELATION_BASIS_v1",
+  "basis_ref": "basis://live-completion-evidence-v1/p07",
+  "relation_type": "UNIT_COMPLETION_STANDING",
+  "bounded_unit_id": "sha256:04b2e895c290296693d880ec521acdc810ee8f3278a8d50f28397dea9188d363",
+  "historical_claim_ref": "git:61ed8e8a3cea8aa3bc29adb0df361c214da7aeba:coordination/active_work_claim.json@5f0a134655c0c45287ef61b29ed46072d47c6895",
+  "pinned_inputs": {
+    "binding": {
+      "path": "fixtures/live_completion_evidence_v1/RAW_LIVE_WORK_BINDING.json",
+      "blob": "59c7c4ecbcfe97a11e301218b9b96b26689c92db"
+    },
+    "criterion": {
+      "path": "fixtures/live_completion_evidence_v1/RAW_COMPLETION_CRITERION.json",
+      "blob": "a6f1c7b533e22ca0e492a7bd1ccb9e758436613d"
+    },
+    "evidence": {
+      "path": "fixtures/live_completion_evidence_v1/RAW_WORK_EVIDENCE.json",
+      "blob": "7d5547311cb75245acc6a52f0e7a57b2a045dc5b"
+    },
+    "raw_evaluator": {
+      "path": "tools/live_completion_raw_evaluator_v1.py",
+      "blob": "91757d9b9eb1293048ae11a0fa5b331c2269f894"
+    },
+    "producer": {
+      "path": "tools/live_unit_completion_standing_producer_v1.py",
+      "blob": "06d57d1498aea07c0476dd861a31bbf9d0c1ede4"
+    },
+    "qualification_registry": {
+      "path": "fixtures/live_completion_evidence_v1/PRODUCER_QUALIFICATION_REGISTRY_002.json",
+      "blob": "cd70692b5d8d8f79cdea7d660b6449f10d9a86cd"
+    }
+  },
+  "reproduction_rule": "RELOAD_PINNED_INPUTS_AND_REEXECUTE_EXACT_PRODUCER"
+}
