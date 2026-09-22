@@ -1,4 +1,6 @@
 {
+  "authority_absence_standing": "NOT_ESTABLISHED",
+  "authority_denial_standing": "NOT_ESTABLISHED",
   "authority_effect": "NONE",
   "basis_exhaustiveness": "NOT_ESTABLISHED",
   "cells": {
@@ -23,7 +25,7 @@
       "result": "PASS"
     },
     "F": {
-      "relation": "WORK_CLAIM_DISTINCT_FROM_AUTHORITY",
+      "relation": "WORK_CLAIM_REPRESENTED_DISTINCT_FROM_AUTHORITY_REF_REPRESENTED",
       "result": "PASS"
     },
     "G": {
@@ -241,9 +243,26 @@
     "W4": {
       "relation": "BASIS_BYTE_MUTATION_INVALIDATES_PRIOR_ENCOUNTER",
       "result": "PASS"
+    },
+    "X1": {
+      "relation": "EMPTY_AUTHORITY_REFS_EARN_NO_AUTHORITY_REF_REPRESENTED_NOT_ABSENT",
+      "result": "PASS"
+    },
+    "X2": {
+      "relation": "UNQUALIFIED_AUTHORITY_REF_REMAINS_UNADJUDICATED",
+      "result": "PASS"
+    },
+    "X3": {
+      "relation": "AUTHORITY_REF_SILENCE_DOES_NOT_MANUFACTURE_NEGATIVE_AUTHORITY_STANDING",
+      "result": "PASS"
+    },
+    "X4": {
+      "relation": "WORK_CLAIM_REPRESENTED_DOES_NOT_MANUFACTURE_AUTHORITY_OR_AUTHORITY_ABSENCE",
+      "result": "PASS"
     }
   },
   "core_relations": {
+    "authority_absence_semantic_ceiling": "PASS",
     "cross_object_identity_correspondence": "PASS",
     "current_invocation_missingness_witness_encounter": "PASS",
     "current_invocation_source_encounter": "PASS",
@@ -266,6 +285,7 @@
   "direct_object_perception": "NOT_CLAIMED",
   "direct_observation_standing": "NOT_ESTABLISHED",
   "durable_ecology_installed": false,
+  "empty_authority_ref_standing": "NO_AUTHORITY_REF_REPRESENTED",
   "encounter_basis_identity": "EXACT_OBSERVATION_BASIS_CONTENT_IDENTITY",
   "execution_effect": "NONE",
   "friendly_basis_ref_identity_sufficient": "NO",
@@ -288,6 +308,7 @@
   "presented_missingness_standing": "MISSINGNESS_WITNESS_PRESENTED",
   "presented_source_standing": "SOURCE_PRESENTED",
   "representation_succession": "NOT_TESTED",
+  "represented_authority_ref_standing": "UNADJUDICATED",
   "retrieval_attempt_or_failure": "NOT_ESTABLISHED",
   "role_vocabulary_status": "PROVISIONAL_EXTENSIBLE",
   "silent_basis_standing": "UNREPRESENTED_AT_BASIS",
