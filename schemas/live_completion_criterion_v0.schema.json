@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/live_completion_criterion_v0.schema.json",
+  "title": "LIVE_COMPLETION_CRITERION_v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "criterion_id",
+    "work_unit_id",
+    "criterion_basis_ref",
+    "criterion_basis_commit",
+    "criterion_basis_blob",
+    "provenance_rule",
+    "first_work_commit",
+    "final_work_head",
+    "required_final_artifacts",
+    "allowed_mutation_paths",
+    "required_work_commits",
+    "required_upstream_relations",
+    "blocker_relation"
+  ],
+  "properties": {
+    "schema": {
+      "const": "LIVE_COMPLETION_CRITERION_v0"
+    },
+    "criterion_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "work_unit_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "criterion_basis_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "criterion_basis_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "criterion_basis_blob": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "provenance_rule": {
+      "const": "BASIS_PRECEDES_FIRST_WORK_COMMIT"
+    },
+    "first_work_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "final_work_head": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "required_final_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "allowed_mutation_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "required_work_commits": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{40}$"
+      },
+      "minItems": 1
+    },
+    "required_upstream_relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "relation_type",
+          "standing"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "relation_type": {
+            "type": "string"
+          },
+          "standing": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "blocker_relation": {
+      "type": "object",
+      "required": [
+        "relation_type",
+        "required_standing"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "relation_type": {
+          "const": "COMPLETION_BLOCKER_STATUS"
+        },
+        "required_standing": {
+          "const": "NONE_ESTABLISHED"
+        }
+      }
+    }
+  }
+}
