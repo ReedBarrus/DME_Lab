@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dme-lab.invalid/schemas/live_work_evidence_bundle_v0.schema.json",
+  "title": "LIVE_WORK_EVIDENCE_BUNDLE_v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "bundle_id",
+    "work_unit_id",
+    "lane_head",
+    "activation_basis",
+    "activation_commit",
+    "work_commits",
+    "commit_changed_paths",
+    "final_artifacts"
+  ],
+  "properties": {
+    "schema": {
+      "const": "LIVE_WORK_EVIDENCE_BUNDLE_v0"
+    },
+    "bundle_id": {
+      "type": "string"
+    },
+    "work_unit_id": {
+      "type": "string"
+    },
+    "lane_head": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "activation_basis": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "activation_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "work_commits": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{40}$"
+      },
+      "minItems": 1
+    },
+    "commit_changed_paths": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "final_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "blob"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "blob": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{40}$"
+          }
+        }
+      },
+      "minItems": 1
+    }
+  }
+}
