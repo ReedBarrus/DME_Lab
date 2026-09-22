@@ -1,0 +1,165 @@
+{
+  "schema": "lane_lifecycle_evaluation_key_v0",
+  "cells": {
+    "A": {
+      "status": "VALID",
+      "requested_transition": "COMPLETE",
+      "selected_branch": "COMPLETE",
+      "admissible": true,
+      "blocking_predicate": null,
+      "resulting_state": {
+        "claim_status": "COMPLETED",
+        "lane_status": "READY_UNCLAIMED",
+        "occupant_binding": null
+      }
+    },
+    "B": {
+      "status": "VALID",
+      "requested_transition": "RELEASE",
+      "selected_branch": "RELEASE",
+      "admissible": true,
+      "blocking_predicate": null,
+      "resulting_state": {
+        "claim_status": "RELEASED",
+        "lane_status": "READY_UNCLAIMED",
+        "occupant_binding": null
+      },
+      "required_refs": [
+        "PROV-REF-01"
+      ]
+    },
+    "C": {
+      "status": "VALID",
+      "requested_transition": "MARK_BLOCKED",
+      "selected_branch": "MARK_BLOCKED",
+      "admissible": true,
+      "blocking_predicate": null,
+      "resulting_state": {
+        "claim_status": "BLOCKED",
+        "lane_status": "HELD",
+        "occupant_binding": "OCCUPANT-X"
+      }
+    },
+    "D": {
+      "status": "INVALID_LIFECYCLE_STATE",
+      "subcells": {
+        "D1": "D1",
+        "D2": "D2",
+        "D3": "D3"
+      }
+    },
+    "E": {
+      "status": "INVALID_LIFECYCLE_RESULT",
+      "violation": "HISTORICAL_CLAIM_NOT_RETAINED"
+    },
+    "F": {
+      "status": "INVALID_LIFECYCLE_RESULT",
+      "violation": "REQUIRED_REFS_NOT_PRESERVED"
+    },
+    "G": {
+      "status": "INVALID_LIFECYCLE_RESULT",
+      "violation": "RESULTING_STATE_DOES_NOT_MATCH_SELECTED_BRANCH"
+    },
+    "H": {
+      "status": "INVALID",
+      "violation": "AUTHORITY_OR_EFFECT_MANUFACTURED"
+    },
+    "I": {
+      "status": "INVALID",
+      "reason_code": "OLD_CLAIM_RESURRECTION_WITHOUT_FRESH_BINDING",
+      "blocking_predicate": "P17"
+    },
+    "N1": {
+      "status": "CAUSAL_GUARD_OBSERVED",
+      "selected_branch": "COMPLETE",
+      "baseline_admissible": true,
+      "intervention_admissible": false,
+      "blocking_predicate": "P02"
+    },
+    "N2": {
+      "status": "CAUSAL_GUARD_OBSERVED",
+      "selected_branch": "RELEASE",
+      "baseline_admissible": true,
+      "intervention_admissible": false,
+      "blocking_predicate": "P02"
+    },
+    "N3": {
+      "status": "CAUSAL_GUARD_OBSERVED",
+      "selected_branch": "MARK_BLOCKED",
+      "baseline_admissible": true,
+      "intervention_admissible": false,
+      "blocking_predicate": "P02"
+    },
+    "N4": {
+      "status": "CAUSAL_GUARD_OBSERVED",
+      "selected_branch": "MARK_BLOCKED",
+      "baseline_admissible": true,
+      "intervention_admissible": false,
+      "blocking_predicate": "P03"
+    },
+    "N6A": {
+      "status": "CAUSAL_GUARD_OBSERVED",
+      "selected_branch": "COMPLETE",
+      "baseline_admissible": true,
+      "intervention_admissible": false,
+      "blocking_predicate": "P01"
+    },
+    "N6B": {
+      "status": "CAUSAL_GUARD_OBSERVED",
+      "selected_branch": "RELEASE",
+      "baseline_admissible": true,
+      "intervention_admissible": false,
+      "blocking_predicate": "P01"
+    },
+    "N6C": {
+      "status": "CAUSAL_GUARD_OBSERVED",
+      "selected_branch": "MARK_BLOCKED",
+      "baseline_admissible": true,
+      "intervention_admissible": false,
+      "blocking_predicate": "P01"
+    },
+    "N7A": {
+      "status": "CAUSAL_GUARD_OBSERVED",
+      "selected_branch": "COMPLETE",
+      "baseline_admissible": true,
+      "intervention_admissible": false,
+      "blocking_predicate": "P03"
+    },
+    "N7B": {
+      "status": "CAUSAL_GUARD_OBSERVED",
+      "selected_branch": "RELEASE",
+      "baseline_admissible": true,
+      "intervention_admissible": false,
+      "blocking_predicate": "P03"
+    },
+    "N5A": {
+      "status": "DISPATCH_CAUSALITY_OBSERVED",
+      "baseline_selected_branch": "COMPLETE",
+      "intervention_selected_branch": "RELEASE",
+      "intervention_admissible": true,
+      "resulting_state": {
+        "claim_status": "RELEASED",
+        "lane_status": "READY_UNCLAIMED",
+        "occupant_binding": null
+      }
+    },
+    "N5B": {
+      "status": "DISPATCH_CAUSALITY_OBSERVED",
+      "baseline_selected_branch": "RELEASE",
+      "intervention_selected_branch": "MARK_BLOCKED",
+      "intervention_admissible": true,
+      "resulting_state": {
+        "claim_status": "BLOCKED",
+        "lane_status": "HELD",
+        "occupant_binding": "OCCUPANT-X"
+      }
+    },
+    "N5C": {
+      "status": "DISPATCH_CAUSALITY_OBSERVED",
+      "baseline_selected_branch": "MARK_BLOCKED",
+      "intervention_selected_branch": "COMPLETE",
+      "intervention_admissible": false,
+      "blocking_predicate": "P08"
+    }
+  }
+}

@@ -1,0 +1,997 @@
+# TWO_LANE_COMPLETION_001 — Execution Envelope v0
+
+## Object
+
+```text
+OBJECT_TYPE:
+EXECUTION_ENVELOPE
+
+OBJECT_ID:
+TWO_LANE_COMPLETION_001
+
+STATUS:
+R1-R10 LIFECYCLE REPAIR APPLIED FOR FRESH REVIEW
+
+EXECUTION:
+NOT AUTHORIZED BY THIS FILE
+
+MERGE:
+NOT AUTHORIZED
+
+LANE_C:
+NOT AUTHORIZED
+```
+
+## Purpose
+
+Complete the first two-lane operating loop without rewriting the live Lane-B
+negative specimen and without collapsing reusable candidate science into
+ephemeral operating state.
+
+Completion ultimately requires:
+
+```text
+QUALIFIED COORDINATION
++
+ONE REAL BOUNDED ACTIVATION
++
+QUALIFIED LIFECYCLE DISPOSITION LAW
++
+ADMISSIBLE HISTORICAL LANE-B RELEASE
++
+OCCUPANT RELEASE FOR THAT RELEASE BRANCH
++
+CLEAN CANDIDATE EXTRACTION
++
+REPLAYABLE RECEIPTS
+```
+
+Freeze:
+
+```text
+LIFECYCLE DISPOSITION
+!=
+ALWAYS TERMINAL
+
+LIFECYCLE DISPOSITION
+!=
+ALWAYS OCCUPANT RELEASE
+```
+
+## Exact current basis
+
+```text
+repository:
+ReedBarrus/DME_Lab
+
+main:
+c49f13450fe69691988810ca6cb8ccaca1f42231
+
+qualified TWO_LANE_COORDINATION_001:
+ee178c23124cac68bd8b5a3bc75ce16a486845b9
+
+Lane A:
+lane-a-cockpit-coordination-v0
+de667390d81c1219abfee063d2a3b1fe13d1ba71
+READY_UNCLAIMED
+
+Lane B:
+lane-b-recovery-continuity-v0
+41316921b211c1daf75c9b71b8147e0eb67d372d
+
+PR #69:
+OPEN / DRAFT
+seat-handshake workflow SUCCESS
+two-lane regression SUCCESS
+
+INVOCATION_EFFECT_PROVENANCE_001 warrant:
+PR #70
+0abe90380b24576a16cb8b87fc3ee1b793011d2a
+target pressure not executed
+```
+
+Current Lane-B operating records still state:
+
+```text
+lane status = ACTIVE
+occupant binding = WARRANT:SEAT_ENGAGEMENT_HANDSHAKE_001:LANE_B:WORKSHOP:INVOCATION-001
+work claim = SEAT_ENGAGEMENT_HANDSHAKE_001-LANE_B-CLAIM-001
+work claim status = ACTIVE
+```
+
+This envelope does not change those records.
+
+## Earned wounds
+
+### W1 — lifecycle status values exist but transition law is unqualified
+
+The qualified schemas already admit:
+
+```text
+claim:
+ACTIVE | RELEASED | COMPLETED | BLOCKED
+
+lane:
+READY_UNCLAIMED | ACTIVE | HELD | CLOSED
+```
+
+Freeze:
+
+```text
+STATUS VALUES EXIST
+!=
+TRANSITIONS QUALIFIED
+```
+
+The repaired lifecycle candidate now proposes only:
+
+```text
+ACTIVE
+├─ COMPLETE ─────→ COMPLETED
+│                  READY_UNCLAIMED
+│                  occupant null
+│
+├─ RELEASE ──────→ RELEASED
+│                  READY_UNCLAIMED
+│                  occupant null
+│
+└─ MARK_BLOCKED ─→ BLOCKED
+                   HELD
+                   occupant preserved
+```
+
+Every other lifecycle edge remains unqualified.
+
+### W2 — candidate artifacts and operating state share one branch
+
+PR #69 contains both reusable seat-handshake artifacts and live Lane-B
+coordination state.
+
+Freeze:
+
+```text
+QUALIFIED CANDIDATE ARTIFACTS
+!=
+OPERATING LANE STATE
+```
+
+### W3 — live effect attribution remains unresolved
+
+The Lane-B branch advanced while its active claim named one invocation, but
+repository evidence does not mechanically establish that invocation as the
+cause of every durable effect.
+
+Freeze:
+
+```text
+WORK CLAIM OWNERSHIP
+!=
+WORK CLAIM EXERCISE
+
+GREEN CANDIDATE
+!=
+KNOWN EFFECT ACTOR
+```
+
+This wound remains preserved for INVOCATION_EFFECT_PROVENANCE_001.
+
+### W4 — source candidate still contains live-origin assignment language
+
+The seat-handshake contract on PR #69 preserves historical warrant and
+Lane-B operating-assignment material inside the candidate document itself.
+
+Freeze:
+
+```text
+SOURCE PROVENANCE
+!=
+CURRENT OPERATING ASSIGNMENT
+
+HISTORICAL WARRANT
+!=
+CURRENT GRANT
+```
+
+A clean integration candidate must retain the historical source coordinate
+without presenting that source assignment as current authority.
+
+## Lifecycle laws carried by Gate 1
+
+Freeze before any future lifecycle execution:
+
+```text
+REQUEST
+!=
+ADMISSIBILITY
+!=
+RESULTING STATE
+
+UPSTREAM STANDING
+!=
+LIFECYCLE VERDICT
+
+REPRESENTABLE RELEASE
+!=
+HISTORICAL RELEASE ADMISSIBILITY
+
+BLOCKED
+!=
+TERMINAL
+
+MARK_BLOCKED
+!=
+OCCUPANT RELEASE
+
+NON_ACTIVE
+!=
+TERMINAL
+!=
+REUSABLE
+```
+
+Experimental membrane:
+
+```text
+INPUT:
+current operating state
++
+raw source objects
++
+requested transition
++
+qualified upstream relations
+with recoverable basis
+
+CANDIDATE DERIVES:
+admissibility
+postcondition claim state
+postcondition lane state
+postcondition occupant posture
+required conserved debt
+
+SCORER OWNS:
+expected verdict
+expected postconditions
+expected debt preservation
+```
+
+Freeze:
+
+```text
+QUALIFIED UPSTREAM RELATION:
+ALLOWED
+
+LIFECYCLE-SHAPED ANSWER:
+FORBIDDEN
+```
+
+F11 closes that membrane to exactly two semantic input classes:
+
+```text
+A.
+RAW_INPUT
+→ predicate mechanically derived from exact supplied raw objects
+under the frozen local law
+
+B.
+QUALIFIED_UPSTREAM_STANDING
+→ relation_type
+→ standing
+→ basis_ref
+→ producer
+→ version
+→ recoverable basis
+→ producer/version qualified for that relation_type
+
+NO THIRD INPUT CATEGORY
+```
+
+Gate 1 must reject administration if a controller outcome depends on any
+semantic predicate whose derivation boundary is not recoverable.
+
+Freeze:
+
+```text
+TYPED
+!=
+QUALIFIED
+
+PREDICATE PRESENT
+!=
+PREDICATE ESTABLISHED
+
+ABSENCE CLAIM
+!=
+ABSENCE OF INPUT
+
+SOURCE BASIS
+!=
+QUALIFIED STANDING
+```
+
+The exhaustive repaired controller registry is P01-P18 in
+`LANE_LIFECYCLE_DISPOSITION_001.md`; Gate 1 may not silently add another
+consumed predicate.
+
+## Ordered completion gates
+
+### Gate 0 — revalidate source coordinates
+
+Before any future execution, resolve current main, both lane heads, PR #69,
+its coordination objects, and all historical specimen refs.
+
+If a relevant source changed:
+
+```text
+STOP FOR AMENDMENT
+```
+
+No lifecycle or integration action follows automatically.
+
+### Gate 1 — qualify lane lifecycle controller
+
+Materialize and pressure LANE_LIFECYCLE_DISPOSITION_001 only under separate
+future authorization.
+
+The bounded controller under review has exactly three requested transition
+families:
+
+```text
+COMPLETE
+RELEASE
+MARK_BLOCKED
+```
+
+Required branch-specific postconditions:
+
+```text
+COMPLETE
+→ claim COMPLETED
+→ lane READY_UNCLAIMED
+→ occupant null
+→ required disposition / debt evidence retained
+
+RELEASE
+→ claim RELEASED
+→ lane READY_UNCLAIMED
+→ occupant null
+→ required historical / unresolved refs retained
+
+MARK_BLOCKED
+→ claim BLOCKED
+→ lane HELD
+→ occupant preserved
+→ blocking relation basis retained
+```
+
+Required source-state guard geometry:
+
+```text
+EVERY qualified arrow requires:
+
+P01 SOURCE_CLAIM_STATUS_IS_ACTIVE = true
+P02 SOURCE_LANE_STATUS_IS_ACTIVE = true
+P03 SOURCE_OCCUPANT_BINDING != null
+```
+
+Branch-specific conjunctions:
+
+```text
+COMPLETE:
+P01
+AND P02
+AND P03 non-null
+AND P04 = COMPLETE
+AND existing COMPLETE prerequisites
+
+RELEASE:
+P01
+AND P02
+AND P03 non-null
+AND P04 = RELEASE
+AND existing RELEASE prerequisites
+
+MARK_BLOCKED:
+P01
+AND P02
+AND P03 non-null
+AND P04 = MARK_BLOCKED
+AND existing MARK_BLOCKED prerequisites
+```
+
+For MARK_BLOCKED:
+
+```text
+occupant_binding_after
+=
+exact occupant_binding_before
+=
+exact supplied non-null P03 identity
+```
+
+Freeze:
+
+```text
+REGISTERED SOURCE-STATE PREDICATE
+!=
+CAUSALLY EFFECTIVE SOURCE-STATE GUARD
+```
+
+Gate 1 qualifies only the latter.
+
+
+F13 additionally requires P04 to be the exclusive dispatch relation:
+
+```text
+P04 REQUESTED_TRANSITION
+        ↓
+EXACTLY ONE OPERATIVE BRANCH
+```
+
+```text
+P04 = COMPLETE
+→ COMPLETE law only
+
+P04 = RELEASE
+→ RELEASE law only
+
+P04 = MARK_BLOCKED
+→ MARK_BLOCKED law only
+```
+
+The other two branch laws are excluded from evaluation for that administration.
+
+Freeze:
+
+```text
+REQUEST TOKEN VALID
+!=
+REQUEST SELECTS BRANCH
+
+BRANCH PREREQUISITES SATISFIED
+!=
+BRANCH REQUESTED
+
+SCORER REJECTS WRONG OUTPUT
+!=
+CONTROLLER DISPATCH QUALIFIED
+```
+
+No Gate-1 path may satisfy:
+
+```text
+P04 = X
+operative branch = Y
+X != Y
+```
+
+No branch may produce an ACTIVE-source transition when:
+
+```text
+P01 = false
+or
+P02 = false
+or
+P03 = null
+```
+
+and no MARK_BLOCKED result may violate D3:
+
+```text
+BLOCKED
++
+HELD
++
+occupant null
+→ INVALID
+```
+
+Gate 1 must establish the requested transition law from:
+
+```text
+raw current state
++
+raw source objects
++
+requested transition
++
+qualified upstream relations
+with recoverable basis
+```
+
+without:
+
+```text
+retroactive attribution
+answer-key leakage
+authority creation
+silent deletion
+history erasure
+timeout-based claim expiry
+generic occupant release
+BLOCKED terminalization
+BLOCKED lane reuse
+```
+
+Reusable-lane invariant:
+
+```text
+READY_UNCLAIMED admissible only if:
+
+claim status ∈ {RELEASED, COMPLETED}
+
+AND
+
+occupant_binding = null
+
+AND
+
+required lifecycle disposition evidence is reachable
+```
+
+Required negative pressure includes:
+
+```text
+D1
+claim ACTIVE
+lane READY_UNCLAIMED
+occupant null
+→ INVALID
+
+D2
+claim BLOCKED
+lane READY_UNCLAIMED
+→ INVALID
+
+D3
+claim BLOCKED
+lane HELD
+occupant null
+→ INVALID
+```
+
+F12 additionally requires independent held-out source-guard interventions:
+
+```text
+N1
+COMPLETE
+only P02 flipped from ACTIVE baseline
+→ inadmissible because P02
+
+N2
+RELEASE
+only P02 flipped from ACTIVE baseline
+→ inadmissible because P02
+
+N3
+MARK_BLOCKED
+only P02 flipped from ACTIVE baseline
+→ inadmissible because P02
+
+N4
+MARK_BLOCKED
+only P03 flipped from non-null baseline to null
+→ inadmissible because P03
+```
+
+All unrelated branch prerequisites remain conserved in each intervention.
+
+F13 additionally requires held-out request-dispatch interventions:
+
+```text
+N5A
+
+baseline:
+otherwise-valid COMPLETE basis
+
+change only:
+P04 COMPLETE → RELEASE
+
+required:
+selected branch = RELEASE
+COMPLETE excluded
+MARK_BLOCKED excluded
+
+RELEASE alone supplies admissibility/result
+
+
+N5B
+
+baseline:
+otherwise-valid RELEASE basis
+
+change only:
+P04 RELEASE → MARK_BLOCKED
+
+required:
+selected branch = MARK_BLOCKED
+COMPLETE excluded
+RELEASE excluded
+
+MARK_BLOCKED alone supplies admissibility/result
+
+
+N5C
+
+baseline:
+otherwise-valid MARK_BLOCKED basis
+
+change only:
+P04 MARK_BLOCKED → COMPLETE
+
+required:
+selected branch = COMPLETE
+RELEASE excluded
+MARK_BLOCKED excluded
+
+COMPLETE alone supplies admissibility/result
+```
+
+Generalized property:
+
+```text
+ALL NON-P04 INPUTS IDENTICAL
++
+P04 CHANGES
+→
+OPERATIVE BRANCH CHANGES
+```
+
+The newly selected branch may admit or reject according to its own law. The
+previously supported branch must never remain operative merely because its
+prerequisites are still present.
+
+F14 requires complete intervention coverage for every declared edge-defining
+predicate across all three branches:
+
+```text
+                     COMPLETE      RELEASE       MARK_BLOCKED
+
+P01 claim guard      N6A           N6B           N6C
+P02 lane guard       N1            N2            N3
+P03 occupant guard   N7A           N7B           N4
+P04 request dispatch N5A           N5B           N5C
+```
+
+Qualification target:
+
+```text
+12 / 12 matrix cells explicitly pressureable
+```
+
+For P01 / P02 / P03:
+
+```text
+target guard alone changes
++
+all unrelated branch requirements remain valid
++
+selected branch remains fixed
+→
+admissibility changes as required by that guard
+```
+
+For P04:
+
+```text
+P04 alone changes
++
+all non-P04 inputs remain identical
+→
+selected branch changes exactly with P04
+```
+
+Freeze:
+
+```text
+FROZEN LAW CORRECT
+!=
+PRESSURE COVERAGE COMPLETE
+
+PREDICATE CAUSALLY REQUIRED
+!=
+CAUSAL REQUIREMENT DEMONSTRATED
+
+POSITIVE FIXTURE SUPPLIES VALID VALUE
+!=
+NEGATIVE INTERVENTION QUALIFIES GUARD
+```
+
+No live Lane-B mutation occurs during Gate 1.
+
+### Gate 2 — evaluate historical Lane-B RELEASE request
+
+Only after Gate 1 is independently qualified and after a fresh bounded
+authorization may the historical Lane-B lifecycle request be evaluated.
+
+Requested transition:
+
+```text
+RELEASE
+```
+
+Historical target shape, if RELEASE is found admissible:
+
+```text
+claim:
+RELEASED
+
+lane:
+READY_UNCLAIMED
+
+occupant_binding:
+null
+
+historical claim artifact:
+retained
+
+unresolved provenance ref:
+retained
+```
+
+But freeze:
+
+```text
+HISTORICAL LANE-B REQUEST:
+RELEASE
+
+LIVE RELEASE ADMISSIBILITY:
+NOT PRE-ESTABLISHED
+```
+
+The fact that the representation can express the target shape does not
+adjudicate the live historical specimen.
+
+```text
+REPRESENTABLE RELEASE
+!=
+HISTORICAL RELEASE ADMISSIBILITY
+```
+
+If future evaluation finds RELEASE inadmissible:
+
+```text
+DO NOT FORCE RELEASE
+DO NOT SUBSTITUTE COMPLETE
+DO NOT MARK BLOCKED WITHOUT AN EXPLICIT REQUEST + BASIS
+DO NOT NULL THE OCCUPANT BY CONVENIENCE
+```
+
+If future evaluation finds RELEASE admissible, RELEASE means only:
+
+```text
+future ownership relinquished
+```
+
+and does not assert:
+
+```text
+named invocation caused all historical effects
+historical ambiguity resolved
+historical authority restored
+claim validly completed
+```
+
+Freeze:
+
+```text
+RELEASE
+!=
+COMPLETION
+
+RELEASE
+!=
+RETROACTIVE ATTRIBUTION
+
+RELEASE
+!=
+ERASURE
+```
+
+### Gate 3 — cleanly extract the reusable seat-handshake candidate
+
+Only after a separately authorized Gate 2 historical disposition has actually
+produced an admitted reusable Lane-B posture may a clean extraction be
+considered.
+
+Create a fresh integration branch from then-current admitted main using:
+
+```text
+docs/operating/SEAT_ENGAGEMENT_CLEAN_EXTRACTION_001.md
+```
+
+Do not import live coordination state from Lane B.
+
+Exact implementation/schema/test material may be copied only through the
+allowlisted boundary.
+
+Contract/report material carrying historical Lane-B assignment or warrant
+context must be de-operationalized so source provenance is preserved without
+becoming current authority.
+
+Then produce fresh clean-basis qualification evidence and re-run:
+
+```text
+SEAT_ENGAGEMENT_HANDSHAKE_001 focused suite
+TWO_LANE_COORDINATION_001 regression suite
+```
+
+Freeze:
+
+```text
+SOURCE QUALIFICATION EVIDENCE
+!=
+CLEAN-BASIS QUALIFICATION RECEIPT
+```
+
+### Gate 4 — fresh review
+
+Fresh review checks:
+
+```text
+source preservation
+operating-state exclusion
+clean-basis qualification
+unchanged claim ceiling
+preserved provenance wound
+zero live authority effects
+```
+
+### Gate 5 — integration decision
+
+Only after Gate 4 may Reed separately decide whether the clean candidate should
+be merged.
+
+## Completion predicate
+
+A future successful completion may be reported only when:
+
+```text
+TWO_LANE_COMPLETION_001
+=
+qualified two-lane coordination
++
+qualified three-arrow lifecycle controller
++
+historical Lane-B RELEASE separately evaluated as admissible
++
+historical Lane-B RELEASE actually disposed under separate authority
++
+Lane B satisfies reusable-lane invariant
++
+Lane A remains mechanically legible
++
+seat-handshake candidate cleanly separated from operating state
++
+historical assignment/warrant context demoted to source provenance
++
+fresh clean-basis qualification evidence
+```
+
+INVOCATION_EFFECT_PROVENANCE_001 is not required to retroactively solve the
+historical specimen before a RELEASE request can be evaluated.
+
+It remains required that unresolved provenance debt be conserved if RELEASE is
+admitted.
+
+## After completion
+
+Independent next pressure candidates:
+
+```text
+1. INVOCATION_EFFECT_PROVENANCE_001
+2. MULTI_PEER_COORDINATION_001
+3. Lane C planning/science candidate
+4. INVOCATION_RECOVERY_001 held-out realization
+5. AUTHORITY_POLICY_001 qualification
+6. cursor + working-state fresh-occupant reconstruction
+7. CONTINUITY_CONTROL_001
+```
+
+Only the first two are currently strong prerequisites before treating a third
+mutating lane as mature.
+
+Remaining order stays a planning question.
+
+## Explicit non-authorizations
+
+This repaired envelope does not authorize:
+
+```text
+lifecycle pressure execution
+fixture freeze execution
+live Lane-A mutation
+live Lane-B release
+live claim status mutation
+live occupant release
+PR #69 mutation
+PR #70 mutation
+clean extraction execution
+new integration branch
+main mutation
+merge
+INVOCATION_EFFECT_PROVENANCE_001 execution
+MULTI_PEER_COORDINATION_001 execution
+Lane C creation
+planner-seat materialization
+seat activation
+scheduler / wake
+authority-policy activation
+external consequence
+```
+
+## Repair-pass boundary
+
+This repair pass is limited to documentation semantics in:
+
+```text
+docs/candidates/two_lane_lifecycle_v0/
+LANE_LIFECYCLE_DISPOSITION_001.md
+
+docs/candidates/two_lane_lifecycle_v0/
+PRESSURE_DESIGN_001.md
+
+docs/operating/
+TWO_LANE_COMPLETION_001.md
+```
+
+After those repairs:
+
+```text
+STOP
+→
+FRESH REVIEW
+```
+
+Required fresh-review verdict:
+
+```text
+ADMISSIBLE_EXECUTION_ENVELOPE
+or
+BOUNDED_FRACTURE
+```
+
+No pressure execution follows automatically.
+
+## Terminal disposition
+
+```text
+OBJECT_TYPE:
+DISPOSITION
+
+OBJECT_ID:
+TWO_LANE_COMPLETION_001_REPAIR_DISPOSITION
+
+R1-R10 LIFECYCLE LAW:
+MATERIALIZED FOR FRESH REVIEW
+
+LIFECYCLE PRESSURE:
+UNEXECUTED
+
+HISTORICAL LANE-B RELEASE:
+UNEXECUTED
+
+CLEAN EXTRACTION:
+UNEXECUTED
+
+PR #69:
+UNTOUCHED
+
+PR #70:
+UNTOUCHED
+
+LANE A:
+UNTOUCHED
+
+LANE B:
+UNTOUCHED
+
+MAIN:
+UNTOUCHED
+
+MERGE:
+NO
+
+NEXT:
+FRESH REVIEW
+```
