@@ -91,9 +91,32 @@ claims, or integration effects.
 
 ### Y4 — Current-main regression
 
-The integrated descendant must preserve the currently relevant two-lane,
-quiet-peer, Lane-B successor, successor repressure, and lifecycle pressure
-behavior.
+The integrated descendant must preserve the currently runnable two-lane,
+quiet-peer, and lifecycle pressure behavior.
+
+The first integration run established a separate current-main baseline fact:
+`coordination/lane_manifest.json` is absent at the exact target base
+`f36261e...`. The historical Lane-B successor v0 and successor-repressure
+harnesses therefore terminate administratively on current main before their
+synthetic engagement pressure can run.
+
+That baseline is preserved rather than "repaired" during ecology integration:
+
+```text
+INTEGRATION REGRESSION
+!=
+HISTORICAL HARNESS NOT RUNNABLE ON CURRENT MAIN
+
+CURRENT-MAIN FILE ABSENT
+!=
+INTEGRATION MAY MATERIALIZE LIVE LANE STATE
+```
+
+Y4 therefore requires both:
+
+1. currently runnable adjacent suites remain green; and
+2. the historical Lane-B apparatus remains byte-unchanged from target main and
+   retains the same explicit missing-live-manifest administrative block.
 
 ### Y5 — Byte preservation
 
