@@ -1,5 +1,6 @@
 {
   "authority_effect": "NONE",
+  "basis_exhaustiveness": "NOT_ESTABLISHED",
   "cells": {
     "A": {
       "relation": "SEAT_EXISTS_WITHOUT_OCCUPANT",
@@ -212,6 +213,18 @@
     "U3": {
       "relation": "MISSING_STANDING_REQUIRES_STRONGER_FUTURE_MACHINERY",
       "result": "PASS"
+    },
+    "V1": {
+      "relation": "BASIS_SILENCE_EARNS_UNREPRESENTED_AT_BASIS_NOT_UNKNOWN",
+      "result": "PASS"
+    },
+    "V2": {
+      "relation": "VALIDATED_BUNDLE_SILENCE_EARNS_NO_CURRENT_REPRESENTED_CLAIM",
+      "result": "PASS"
+    },
+    "V3": {
+      "relation": "BASIS_SILENCE_DOES_NOT_MANUFACTURE_NEGATIVE_EPISTEMIC_STANDING",
+      "result": "PASS"
     }
   },
   "core_relations": {
@@ -230,6 +243,7 @@
     "role_ne_seat": "PASS",
     "seat_binding_work_claim_correspondence": "PASS",
     "seat_ne_occupant": "PASS",
+    "unknown_status_semantic_ceiling": "PASS",
     "work_claim_ne_authority": "PASS"
   },
   "direct_object_perception": "NOT_CLAIMED",
@@ -257,6 +271,8 @@
   "representation_succession": "NOT_TESTED",
   "retrieval_attempt_or_failure": "NOT_ESTABLISHED",
   "role_vocabulary_status": "PROVISIONAL_EXTENSIBLE",
+  "silent_basis_standing": "UNREPRESENTED_AT_BASIS",
+  "silent_current_standing": "NO_CURRENT_REPRESENTED_CLAIM",
   "source_encounter_correspondence": "TESTED_CURRENT_SEAT_OCCUPANT_INVOCATION_SOURCE_BASIS",
   "source_encounter_truth": "NOT_TESTED",
   "source_inspection_or_consumption": "NOT_ESTABLISHED",
@@ -264,5 +280,6 @@
   "status": "QUALIFIED_SYNTHETIC_GRAMMAR",
   "stop": true,
   "universal_unavailability": "NOT_CLAIMED",
+  "unknown_standing": "NOT_ESTABLISHED",
   "work_claim_effect": "NONE"
 }
