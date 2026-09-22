@@ -394,7 +394,8 @@ basis_ref
 
 A current `observed_objects[]` row is composition-valid only when the exact
 source carrier corresponds and a source encounter is represented for the same
-current seat, occupant, invocation, exact source ref, and basis coordinate.
+current seat, occupant, invocation, exact source ref, friendly basis coordinate,
+and exact current observation-basis content identity.
 
 ```text
 SOURCE CARRIER SUPPLIED
@@ -456,6 +457,28 @@ occupant_id
 invocation_id
 witness_ref
 basis_ref
+observation_basis_ref
+```
+
+The friendly `basis_ref` is a coordinate, not sufficient identity. Both
+encounter types must additionally pin:
+
+```text
+encounter.observation_basis_ref
+=
+observation_basis_ref(current_basis)
+```
+
+Thus:
+
+```text
+SAME BASIS COORDINATE STRING
+!=
+SAME BASIS CONTENT IDENTITY
+
+ENCOUNTER CORRESPONDS TO BASIS LABEL
+!=
+ENCOUNTER CORRESPONDS TO EXACT CURRENT BASIS
 ```
 
 No generic epistemic-encounter abstraction is claimed from these two specimens.
@@ -574,7 +597,8 @@ A green pressure may establish only:
 > rows, exact current-invocation source-encounter correspondence, a bounded
 > SOURCE_PRESENTED standing ceiling, exact represented missingness witness
 > correspondence, exact current-invocation missingness-witness encounter
-> correspondence, a bounded MISSINGNESS_WITNESS_PRESENTED standing ceiling, and
+> correspondence, exact encounter-to-current-basis content identity for both
+> encounter types, a bounded MISSINGNESS_WITNESS_PRESENTED standing ceiling, and
 > bounded silence standings of UNREPRESENTED_AT_BASIS /
 > NO_CURRENT_REPRESENTED_CLAIM while avoiding the tested
 > identity/authority/missingness collapses.
