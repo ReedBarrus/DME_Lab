@@ -1,0 +1,202 @@
+{
+  "base": "f36261e17790b853a91c81bc2f7d0e63e8ee8436",
+  "basis_recovery": {
+    "git:b36ae5c4a120e31f9f404791c65acfa8c8d69301:coordination/active_work_claim.json@5f0a134655c0c45287ef61b29ed46072d47c6895": true,
+    "repo://fixtures/live_completion_evidence_v0/RAW_BLOCKER_SCOPE.json": true,
+    "repo://fixtures/live_completion_evidence_v0/RAW_COMPLETION_CRITERION.json": true,
+    "repo://fixtures/live_completion_evidence_v0/RAW_LIVE_WORK_BINDING.json": true,
+    "repo://fixtures/live_completion_evidence_v0/RAW_WORK_EVIDENCE.json": true
+  },
+  "cell_checks": {
+    "A": true,
+    "B": true,
+    "C": true,
+    "D": true,
+    "E": true,
+    "F": true,
+    "G": true,
+    "H": true,
+    "I": true,
+    "J": true,
+    "K": true
+  },
+  "cells": {
+    "A": {
+      "P05": "MATCHES"
+    },
+    "B": {
+      "P05": "DOES_NOT_MATCH"
+    },
+    "C": {
+      "reason": "STALE_LIVE_BASIS",
+      "status": "ADMINISTRATION_INVALID"
+    },
+    "D": {
+      "P06": "NOT_ESTABLISHED",
+      "reason": "MISSING_CRITERION"
+    },
+    "E": {
+      "P07": "NOT_ESTABLISHED",
+      "reason": "PRODUCER_VERSION_NOT_QUALIFIED"
+    },
+    "F": {
+      "reason": "LIVE_SUBJECT_IDENTITY_MISMATCH",
+      "status": "REJECT"
+    },
+    "G": {
+      "P08": "NOT_ESTABLISHED",
+      "reason": "BLOCKER_SCOPE_NOT_CLOSED"
+    },
+    "H": {
+      "P08": "FORBIDS_COMPLETION"
+    },
+    "I": {
+      "P08": "NONE_ESTABLISHED"
+    },
+    "J": {
+      "composition": "COMPLETE_EVALUABLE",
+      "transition_executed": false
+    },
+    "K": {
+      "reason": "CRITERION_PROVENANCE_INVALID",
+      "status": "ADMINISTRATION_INVALID"
+    }
+  },
+  "fixture_sha256": {
+    "EVALUATION_KEY.json": "9c9b5b8f9f27ad6474deb0457d4cf373f18a0a983865fe15333f3792dc88e85b",
+    "FROZEN_LANE_A_SPECIMEN.json": "6e7f7bb9008f3c29d271570d5e1529dec4408c9364072a998c4892e797efde56",
+    "PRESSURE_CELLS_A_K.json": "a2ca3ca1ee9796af91ee4520df23077af8de84aab613c35da0b990ad900919d0",
+    "PRODUCER_CANDIDATES.json": "0eaf881de69750bfaf2d6db86821a76b2cb49bde8ffa650764103f9410ce8f26",
+    "RAW_BLOCKER_SCOPE.json": "c0214e941198e9188751b3936c345f8f64664104b2d07bea49fef2e06f389191",
+    "RAW_COMPLETION_CRITERION.json": "bcd15bda1255556c8d5374c2e5dd2937502ce464e237c3e6df1e5a6ec1df840c",
+    "RAW_LIVE_WORK_BINDING.json": "9e0010ad1a76292a2db6dec2c192b1e1845c11b83d884a0d0ffdfcd52302bcf3",
+    "RAW_WORK_EVIDENCE.json": "72340fb7716fef1d7e3640c4880d17bbaa6ffa1441001b967fa913d90988448b"
+  },
+  "frozen_specimen": {
+    "lane_a": "61ed8e8a3cea8aa3bc29adb0df361c214da7aeba",
+    "lane_b": "a88d1d56d0b624cf00239cc8c2621522b45b4b08"
+  },
+  "implementation_blobs": {
+    "p07_producer": "34a10daa982820d9bc142d749f4eb7916bf41571",
+    "p08_producer": "8991c4f08f4f2c8c81cbff797cddddd527c3a591",
+    "raw_evaluator": "6215561411885e1f718617c71d3cb3754f5fb905"
+  },
+  "lane_mutation": "NONE",
+  "lifecycle_effect": "NONE",
+  "merge_effect": "NONE",
+  "object_id": "LIVE_COMPLETION_EVIDENCE_001-QUALIFICATION-001",
+  "object_type": "BOUNDED_QUALIFICATION_EVIDENCE",
+  "pass": true,
+  "producer_qualification": {
+    "P07": {
+      "pass": true,
+      "positive": {
+        "reason": "LIVE_UNIT_COMPLETION_STANDING_PRODUCED",
+        "relation": {
+          "basis_ref": "repo://fixtures/live_completion_evidence_v0/RAW_WORK_EVIDENCE.json",
+          "producer": "LIVE_UNIT_COMPLETION_STANDING_PRODUCER",
+          "relation_type": "UNIT_COMPLETION_STANDING",
+          "schema": "LIVE_QUALIFIED_UPSTREAM_RELATION_v0",
+          "standing": "QUALIFIED",
+          "version": "v0"
+        },
+        "status": "ESTABLISHED",
+        "work_unit_id": "FIRST_TWO_LANE_TRIAL-LANE_A-WORK-UNIT-001"
+      },
+      "tampered_identity": {
+        "reason": "PRODUCER_VERSION_NOT_QUALIFIED",
+        "relation": null,
+        "status": "NOT_ESTABLISHED"
+      }
+    },
+    "P08": {
+      "blocker_clear": {
+        "evaluated_classes": [
+          "WORK_UNIT_IDENTITY_MISMATCH",
+          "CRITERION_BASIS_STALE",
+          "REQUIRED_RAW_TERM_UNSATISFIED",
+          "UNAUTHORIZED_MUTATION_PRESENT",
+          "REQUIRED_UPSTREAM_STANDING_MISSING_OR_UNQUALIFIED"
+        ],
+        "reason": "CLOSED_BLOCKER_SCOPE_EVALUATED",
+        "relation": {
+          "basis_ref": "repo://fixtures/live_completion_evidence_v0/RAW_BLOCKER_SCOPE.json",
+          "producer": "LIVE_COMPLETION_BLOCKER_STATUS_PRODUCER",
+          "relation_type": "COMPLETION_BLOCKER_STATUS",
+          "schema": "LIVE_QUALIFIED_UPSTREAM_RELATION_v0",
+          "standing": "NONE_ESTABLISHED",
+          "version": "v0"
+        },
+        "status": "ESTABLISHED"
+      },
+      "blocker_positive": {
+        "evaluated_classes": [
+          "WORK_UNIT_IDENTITY_MISMATCH",
+          "CRITERION_BASIS_STALE",
+          "REQUIRED_RAW_TERM_UNSATISFIED",
+          "UNAUTHORIZED_MUTATION_PRESENT",
+          "REQUIRED_UPSTREAM_STANDING_MISSING_OR_UNQUALIFIED"
+        ],
+        "reason": "CLOSED_BLOCKER_SCOPE_EVALUATED",
+        "relation": {
+          "basis_ref": "repo://fixtures/live_completion_evidence_v0/RAW_BLOCKER_SCOPE.json",
+          "producer": "LIVE_COMPLETION_BLOCKER_STATUS_PRODUCER",
+          "relation_type": "COMPLETION_BLOCKER_STATUS",
+          "schema": "LIVE_QUALIFIED_UPSTREAM_RELATION_v0",
+          "standing": "FORBIDS_COMPLETION",
+          "version": "v0"
+        },
+        "status": "ESTABLISHED"
+      },
+      "missing_evaluations": {
+        "reason": "BLOCKER_SCOPE_NOT_CLOSED",
+        "relation": null,
+        "status": "NOT_ESTABLISHED"
+      },
+      "partial_scope": {
+        "reason": "BLOCKER_SCOPE_NOT_CLOSED",
+        "relation": null,
+        "status": "NOT_ESTABLISHED"
+      },
+      "pass": true,
+      "tampered_identity": {
+        "reason": "PRODUCER_VERSION_NOT_QUALIFIED",
+        "relation": null,
+        "status": "NOT_ESTABLISHED"
+      }
+    }
+  },
+  "raw_derivation": {
+    "P05": {
+      "historical_claim_ref": "git:61ed8e8a3cea8aa3bc29adb0df361c214da7aeba:coordination/active_work_claim.json@5f0a134655c0c45287ef61b29ed46072d47c6895",
+      "mismatches": [],
+      "predicate": "P05",
+      "status": "MATCHES",
+      "work_unit_id": "FIRST_TWO_LANE_TRIAL-LANE_A-WORK-UNIT-001"
+    },
+    "P06": {
+      "criterion_provenance": {
+        "basis_blob": "5f0a134655c0c45287ef61b29ed46072d47c6895",
+        "basis_commit": "b36ae5c4a120e31f9f404791c65acfa8c8d69301",
+        "first_work_commit": "afc276fbe2f1213d69d83000245c6e2a4f949903",
+        "rule": "BASIS_PRECEDES_FIRST_WORK_COMMIT",
+        "valid": true
+      },
+      "evaluated_head": "61ed8e8a3cea8aa3bc29adb0df361c214da7aeba",
+      "predicate": "P06",
+      "reason": "RAW_COMPLETION_TERMS_SATISFIED",
+      "required_work_commits": [
+        "afc276fbe2f1213d69d83000245c6e2a4f949903",
+        "61ed8e8a3cea8aa3bc29adb0df361c214da7aeba"
+      ],
+      "status": "SATISFIED"
+    }
+  },
+  "raw_fixture_forbidden_answer_fields": {
+    "FROZEN_LANE_A_SPECIMEN.json": [],
+    "RAW_BLOCKER_SCOPE.json": [],
+    "RAW_COMPLETION_CRITERION.json": [],
+    "RAW_LIVE_WORK_BINDING.json": [],
+    "RAW_WORK_EVIDENCE.json": []
+  }
+}
