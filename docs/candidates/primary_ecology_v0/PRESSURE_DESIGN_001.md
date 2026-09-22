@@ -144,8 +144,8 @@ H -- world object not in observation basis
 Expected: UNKNOWN.
 CURRENT WORLD != OBSERVATION BASIS
 
-I -- explicitly missing object
-Expected: MISSING, not ABSENT.
+I -- represented missingness claim
+Expected: MISSINGNESS_CLAIM_REPRESENTED, not ABSENT.
 
 J -- later world changes
 Later synthetic world contains an object omitted from the prior basis.
@@ -358,8 +358,8 @@ Expected: reject SOURCE_ENCOUNTER_BASIS_MISMATCH.
 The encounter carrier is not an event-runtime claim and does not qualify whether
 the represented encounter itself is truthful.
 
-Q6 pressures the symmetric MISSING-side encounter relation without generalizing
-the two encounter carriers into one abstraction.
+Q6 pressures the symmetric missingness-side encounter relation without
+generalizing the two encounter carriers into one abstraction.
 
 A typed `missingness_witness_encounter_v0` represents only that one exact
 missingness witness was presented to one current seat / occupant / invocation at
@@ -456,6 +456,47 @@ OBSERVED under the present machinery.
 Stronger future standing such as OBSERVED requires additional machinery for
 inspection, consumption, attention, parsing, or another explicitly qualified
 relation. Q7 does not choose that future mechanism.
+
+Q8 pressures the symmetric semantic ceiling on the missingness side.
+
+```text
+FIELD NAME explicit_missing_objects
+!=
+MISSING STANDING
+
+MISSINGNESS WITNESS PRESENTED
+!=
+RETRIEVAL ATTEMPT PERFORMED
+
+MISSINGNESS WITNESS PRESENTED
+!=
+RETRIEVAL FAILURE DIRECTLY EXPERIENCED
+
+MISSINGNESS WITNESS PRESENTED
+!=
+OBJECT ABSENT
+
+MISSINGNESS WITNESS PRESENTED
+!=
+WITNESS TRUE
+```
+
+U1 -- basis row alone
+A basis row in `explicit_missing_objects[]` earns only:
+MISSINGNESS_CLAIM_REPRESENTED.
+
+U2 -- full current chain
+Exact witness + object/reason correspondence + exact current witness encounter
+with encounter_kind = PRESENTED_TO_INVOCATION earns:
+MISSINGNESS_WITNESS_PRESENTED.
+
+U3 -- semantic ceiling
+Neither basis-only status nor the fully validated current status may emit
+MISSING under the present machinery.
+
+Stronger future standing such as MISSING or RETRIEVAL_FAILED requires additional
+machinery establishing the relevant retrieval or failure relation. Q8 does not
+choose that future mechanism.
 
 A separate focused regression mutates the contents of an otherwise matching
 observation basis while retaining the old `observation_basis_ref`. Expected:
