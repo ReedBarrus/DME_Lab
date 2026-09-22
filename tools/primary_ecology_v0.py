@@ -469,7 +469,7 @@ def basis_claim_status(basis: Mapping[str, Any], object_id: str) -> str:
         return "SOURCE_CLAIM_REPRESENTED"
     if any(row["object_id"] == object_id for row in basis["explicit_missing_objects"]):
         return "MISSINGNESS_CLAIM_REPRESENTED"
-    return "UNKNOWN"
+    return "UNREPRESENTED_AT_BASIS"
 
 
 def current_epistemic_status(
@@ -500,6 +500,8 @@ def current_epistemic_status(
         return "SOURCE_PRESENTED"
     if raw == "MISSINGNESS_CLAIM_REPRESENTED":
         return "MISSINGNESS_WITNESS_PRESENTED"
+    if raw == "UNREPRESENTED_AT_BASIS":
+        return "NO_CURRENT_REPRESENTED_CLAIM"
     return raw
 
 
@@ -830,7 +832,7 @@ def run_pressure() -> dict[str, Any]:
     cells["G"] = {"result":g,"relation":"ROLE_DOES_NOT_MANUFACTURE_AUTHORITY"}
 
     cells["H"] = {
-        "result":"PASS" if basis_claim_status(basis, "WORLD_OBJECT_NOT_IN_BASIS") == "UNKNOWN" else "FRACTURE",
+        "result":"PASS" if basis_claim_status(basis, "WORLD_OBJECT_NOT_IN_BASIS") == "UNREPRESENTED_AT_BASIS" else "FRACTURE",
         "relation":"CURRENT_WORLD_DISTINCT_FROM_OBSERVATION_BASIS",
     }
 
@@ -843,7 +845,7 @@ def run_pressure() -> dict[str, Any]:
     later_world = {"objects":["LATER_WORLD_OBJECT"]}
     after = basis_claim_status(basis, "LATER_WORLD_OBJECT")
     cells["J"] = {
-        "result":"PASS" if before == "UNKNOWN" and after == "UNKNOWN" and "LATER_WORLD_OBJECT" in later_world["objects"] else "FRACTURE",
+        "result":"PASS" if before == "UNREPRESENTED_AT_BASIS" and after == "UNREPRESENTED_AT_BASIS" and "LATER_WORLD_OBJECT" in later_world["objects"] else "FRACTURE",
         "relation":"DECISION_TIME_BASIS_DISTINCT_FROM_LATER_WORLD",
     }
 
@@ -1005,7 +1007,7 @@ def run_pressure() -> dict[str, Any]:
         p_binding, p_old, "INVOCATION_P1"
     )
     cells["P1"] = {
-        "result":"PASS" if basis_claim_status(p_new_basis, "POISON_SENTINEL") == "UNKNOWN" and not p_new_basis["observed_objects"] else "FRACTURE",
+        "result":"PASS" if basis_claim_status(p_new_basis, "POISON_SENTINEL") == "UNREPRESENTED_AT_BASIS" and not p_new_basis["observed_objects"] else "FRACTURE",
         "relation":"OLD_OBSERVED_OBJECT_MUST_NOT_AUTO_PROPAGATE_TO_FRESH_INVOCATION",
     }
 
@@ -1023,7 +1025,7 @@ def run_pressure() -> dict[str, Any]:
         clean_binding(), p2_old, "INVOCATION_P2"
     )
     cells["P2"] = {
-        "result":"PASS" if basis_claim_status(p2_new_basis, "MISSING_POISON_SENTINEL") == "UNKNOWN" and not p2_new_basis["explicit_missing_objects"] else "FRACTURE",
+        "result":"PASS" if basis_claim_status(p2_new_basis, "MISSING_POISON_SENTINEL") == "UNREPRESENTED_AT_BASIS" and not p2_new_basis["explicit_missing_objects"] else "FRACTURE",
         "relation":"OLD_MISSINGNESS_MUST_NOT_AUTO_PROPAGATE_TO_FRESH_INVOCATION",
     }
 
@@ -1086,7 +1088,7 @@ def run_pressure() -> dict[str, Any]:
     historical_ref = observation_basis_ref(p_old)
     current_ref = observation_basis_ref(p4_current_basis)
     cells["P4"] = {
-        "result":"PASS" if historical_ref != current_ref and p4_current_binding["observation_basis_ref"] == current_ref and basis_claim_status(p4_current_basis, "POISON_SENTINEL") == "UNKNOWN" else "FRACTURE",
+        "result":"PASS" if historical_ref != current_ref and p4_current_binding["observation_basis_ref"] == current_ref and basis_claim_status(p4_current_basis, "POISON_SENTINEL") == "UNREPRESENTED_AT_BASIS" else "FRACTURE",
         "relation":"HISTORICAL_BASIS_REFERENCE_DISTINCT_FROM_CURRENT_OBSERVATION",
     }
 
@@ -1799,6 +1801,53 @@ def run_pressure() -> dict[str, Any]:
         "relation":"MISSING_STANDING_REQUIRES_STRONGER_FUTURE_MACHINERY",
     }
 
+    # Q9 / V1 -- basis silence earns only a structural nonrepresentation status.
+    v_bundle = clean_bundle()
+    v1_status = basis_claim_status(v_bundle["basis"], "PROJECT_X")
+    cells["V1"] = {
+        "result":"PASS" if v1_status == "UNREPRESENTED_AT_BASIS" else "FRACTURE",
+        "relation":"BASIS_SILENCE_EARNS_UNREPRESENTED_AT_BASIS_NOT_UNKNOWN",
+    }
+
+    # V2 -- even after the current bundle validates, silence about X earns only
+    # NO_CURRENT_REPRESENTED_CLAIM.
+    v2_status = "INVALID"
+    try:
+        v2_status = current_epistemic_status(
+            role=v_bundle["role"],
+            seat=v_bundle["seat"],
+            binding=v_bundle["binding"],
+            basis=v_bundle["basis"],
+            object_id="PROJECT_X",
+            source_carriers=v_bundle["sources"],
+            missingness_witnesses=v_bundle["missingness_witnesses"],
+            source_encounters=v_bundle["source_encounters"],
+            missingness_witness_encounters=v_bundle["missingness_witness_encounters"],
+        )
+        v2_result = (
+            "PASS"
+            if v2_status == "NO_CURRENT_REPRESENTED_CLAIM"
+            else "FRACTURE"
+        )
+    except EcologyError:
+        v2_result = "FRACTURE"
+    cells["V2"] = {
+        "result":v2_result,
+        "relation":"VALIDATED_BUNDLE_SILENCE_EARNS_NO_CURRENT_REPRESENTED_CLAIM",
+    }
+
+    # V3 -- silence must not manufacture a negative epistemic or ontic fact.
+    forbidden_silence_standings = {
+        "UNKNOWN","ABSENT","MISSING","FALSE","UNAVAILABLE",
+    }
+    cells["V3"] = {
+        "result":"PASS" if (
+            v1_status not in forbidden_silence_standings
+            and v2_status not in forbidden_silence_standings
+        ) else "FRACTURE",
+        "relation":"BASIS_SILENCE_DOES_NOT_MANUFACTURE_NEGATIVE_EPISTEMIC_STANDING",
+    }
+
     evaluation_key = _load(FIXTURE_DIR / "EVALUATION_KEY_v0.json")
     expected_cells = evaluation_key.get("cells", {}) if isinstance(evaluation_key, dict) else {}
     key_matches = all(expected_cells.get(cell_id) == cell["result"] for cell_id, cell in cells.items()) and set(expected_cells) == set(cells)
@@ -1829,6 +1878,7 @@ def run_pressure() -> dict[str, Any]:
             "current_invocation_missingness_witness_encounter":"PASS" if all(cells[x]["result"] == "PASS" for x in ("S1","S2","S3","S4","S5","S6","S7")) else "FRACTURE",
             "observed_status_semantic_ceiling":"PASS" if all(cells[x]["result"] == "PASS" for x in ("T1","T2","T3")) else "FRACTURE",
             "missing_status_semantic_ceiling":"PASS" if all(cells[x]["result"] == "PASS" for x in ("U1","U2","U3")) else "FRACTURE",
+            "unknown_status_semantic_ceiling":"PASS" if all(cells[x]["result"] == "PASS" for x in ("V1","V2","V3")) else "FRACTURE",
         },
         "role_vocabulary_status":"PROVISIONAL_EXTENSIBLE",
         "durable_ecology_installed":False,
@@ -1859,6 +1909,10 @@ def run_pressure() -> dict[str, Any]:
         "presented_missingness_standing":"MISSINGNESS_WITNESS_PRESENTED",
         "missing_standing":"NOT_ESTABLISHED",
         "retrieval_attempt_or_failure":"NOT_ESTABLISHED",
+        "silent_basis_standing":"UNREPRESENTED_AT_BASIS",
+        "silent_current_standing":"NO_CURRENT_REPRESENTED_CLAIM",
+        "unknown_standing":"NOT_ESTABLISHED",
+        "basis_exhaustiveness":"NOT_ESTABLISHED",
         "function_needs_seat":"NOT_TESTED",
         "stop":True,
     }
