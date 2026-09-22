@@ -2476,3 +2476,123 @@ Those must be supplied by the harness from observed configuration / request stat
 The model may only report semantic reconstruction output.
 
 Future formal administration should be computed outside the model from the exact invocation record.
+
+
+---
+
+# 20. Cross-Reconstructor Pressure — Phi-4
+
+## Surface
+
+A second local model was used as a reconstruction substrate:
+
+```text
+microsoft/phi-4
+```
+
+The supplied runs were isolated at the LM Studio conversation level with no tools, repository access, connectors, or prior supplied campaign material reported.
+
+As with Qwen, any model-authored access receipt is not by itself sufficient apparatus evidence.
+
+## Positive packet behavior
+
+Phi-4 recovered the key positive target direction:
+
+```text
+COMPLETE ADJUDICATED ADMISSIBLE
+DOES NOT ESTABLISH
+LIVE COMPLETE EXECUTION
+
+COMPLETE RESULT STATE VALUES
+DO NOT ESTABLISH
+REALIZED LIVE WORLD STATE
+```
+
+and preserved the reference non-admission boundary.
+
+However it misclassified several explicit packet relations, including:
+
+- treating REPOSITORY_ACCESS = NONE as no standing recovered rather than an explicit negative standing;
+- incompletely reconstructing supplied support-handle and dependency relations;
+- reducing the packet-local ceiling to a loose narrative summary rather than preserving the full response-state semantics.
+
+## Negative packet behavior
+
+Phi-4 did not regenerate the removed packet-local execution / realization ceiling.
+
+It preserved:
+
+```text
+REFERENCE_CONTENT_ADMITTED = NO
+NO_NEW_AUTHORITY_ESTABLISHED
+NONE_ESTABLISHED integration standing
+```
+
+and did not strengthen the packet to live execution.
+
+However it again showed significant reconstruction-fidelity defects:
+
+- explicit packet fields were omitted or downgraded;
+- packet-local standing was not consistently mapped into the four-state vocabulary;
+- claim ceilings were under-reconstructed.
+
+## Cross-reconstructor observation
+
+Both local reconstruction substrates so far show the same broad target-sensitive direction:
+
+```text
+POSITIVE A:
+execution / realization ceiling recovered
+
+NEGATIVE B:
+deleted execution ceiling not regenerated
+```
+
+but both also show different forms of imperfect general reconstruction fidelity.
+
+Therefore current bounded result is:
+
+```text
+CROSS_RECONSTRUCTOR_TARGET_SENSITIVITY:
+PRESENT
+
+CROSS_RECONSTRUCTOR_EXACT_RECONSTRUCTION_FIDELITY:
+NOT_ESTABLISHED
+
+GENERAL RECONSTRUCTION COMPETENCE:
+MODEL-DEPENDENT / FRACTURED
+```
+
+Freeze:
+
+```text
+TARGET DISCRIMINATION
+!=
+FULL POSTURE RECONSTRUCTION FIDELITY
+```
+
+and:
+
+```text
+A MODEL CAN DETECT THE WOUNDED RELATION
+WHILE STILL MISCLASSIFYING OTHER EXPLICIT RELATIONS
+```
+
+## Consequence for Cell-002
+
+Do not modify the packet pair to accommodate Phi-4.
+
+The same frozen pair has now produced the intended directional discrimination across at least two different local model substrates, while reconstruction-quality defects differ by model.
+
+This increases confidence that the A/B target signal is carried by the packet geometry rather than by one model-specific quirk, but does not yet establish a formal conserved semantic relation.
+
+## Next lawful move
+
+A formal evaluator should score each frozen reconstruction on two orthogonal axes:
+
+```text
+1. TARGET RELATION DISCRIMINATION
+2. WHOLE-POSTURE RECONSTRUCTION FIDELITY
+```
+
+Administration validity should be established from the LM Studio / invocation apparatus rather than model-authored receipts.
