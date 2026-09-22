@@ -1,0 +1,31 @@
+{
+  "schema": "LIVE_COMPLETION_CRITERION_v0",
+  "criterion_id": "FIRST_TWO_LANE_TRIAL-LANE_A-COMPLETION-CRITERION-001",
+  "work_unit_id": "FIRST_TWO_LANE_TRIAL-LANE_A-WORK-UNIT-001",
+  "criterion_basis_ref": "git:b36ae5c4a120e31f9f404791c65acfa8c8d69301:coordination/active_work_claim.json@5f0a134655c0c45287ef61b29ed46072d47c6895",
+  "criterion_basis_commit": "b36ae5c4a120e31f9f404791c65acfa8c8d69301",
+  "criterion_basis_blob": "5f0a134655c0c45287ef61b29ed46072d47c6895",
+  "provenance_rule": "BASIS_PRECEDES_FIRST_WORK_COMMIT",
+  "first_work_commit": "afc276fbe2f1213d69d83000245c6e2a4f949903",
+  "final_work_head": "61ed8e8a3cea8aa3bc29adb0df361c214da7aeba",
+  "required_final_artifacts": [
+    "docs/candidates/live_two_lane_trial_lane_a_v0/LANE_A_OPERATING_BOOTSTRAP_DELTA_001.md"
+  ],
+  "allowed_mutation_paths": [
+    "docs/candidates/live_two_lane_trial_lane_a_v0/LANE_A_OPERATING_BOOTSTRAP_DELTA_001.md"
+  ],
+  "required_work_commits": [
+    "afc276fbe2f1213d69d83000245c6e2a4f949903",
+    "61ed8e8a3cea8aa3bc29adb0df361c214da7aeba"
+  ],
+  "required_upstream_relations": [
+    {
+      "relation_type": "UNIT_COMPLETION_STANDING",
+      "standing": "QUALIFIED"
+    }
+  ],
+  "blocker_relation": {
+    "relation_type": "COMPLETION_BLOCKER_STATUS",
+    "required_standing": "NONE_ESTABLISHED"
+  }
+}
