@@ -530,9 +530,44 @@ Genuine UNKNOWN standing would require stronger future machinery such as a
 declared exhaustive scope plus a qualified relation between the queried object
 and that scope. Q9 does not invent such machinery.
 
-A separate focused regression mutates the contents of an otherwise matching
-observation basis while retaining the old `observation_basis_ref`. Expected:
-reject `BINDING_OBSERVATION_BASIS_REF_MISMATCH`.
+Q10 pressures the cross-layer identity of both encounter types.
+
+```text
+SAME BASIS COORDINATE STRING
+!=
+SAME BASIS CONTENT IDENTITY
+
+ENCOUNTER CORRESPONDS TO BASIS LABEL
+!=
+ENCOUNTER CORRESPONDS TO EXACT CURRENT BASIS
+```
+
+Both `source_encounter_v0` and
+`missingness_witness_encounter_v0` retain the friendly `basis_ref` coordinate
+but must additionally pin the exact current `observation_basis_ref` produced by
+`observation_basis_ref(current_basis)`.
+
+W1 -- source encounter / same friendly label / different basis bytes
+Binding correctly pins the mutated current basis. Reusing the predecessor source
+encounter must reject SOURCE_ENCOUNTER_EXACT_BASIS_MISMATCH.
+
+W2 -- missingness encounter / same friendly label / different basis bytes
+Binding correctly pins the mutated current basis. Reusing the predecessor
+missingness encounter must reject
+MISSINGNESS_WITNESS_ENCOUNTER_EXACT_BASIS_MISMATCH.
+
+W3 -- exact current basis identity
+Encounter and binding both pin the exact current basis identity.
+Expected: admissible.
+
+W4 -- mutate any basis byte after encounter
+Keep seat / occupant / invocation / carrier / friendly basis coordinate stable,
+repin the binding to the new exact basis, and reuse the old encounter.
+Expected: old encounter no longer establishes current presentation.
+
+A separate focused regression still verifies that mutating basis contents while
+retaining an old binding `observation_basis_ref` rejects
+`BINDING_OBSERVATION_BASIS_REF_MISMATCH`.
 
 ## Terminal result
 
