@@ -620,7 +620,8 @@ Legend:
 - [X] Cell 002 dependency geometry reconstruction
 - [X] BASIS-RELATION DEPENDENCY PRESSURE
 - [!] REFERENCE-ADMISSION / DERIVED-BASIS PROPERTY PRESSURE — packet geometry survives, reconstruction membrane interferes
-- [~] RECONSTRUCTION MEMBRANE NEUTRALITY REPAIR
+- [X] RECONSTRUCTION MEMBRANE NEUTRALITY REPAIR
+- [~] FORENSIC REPRESSURE OF REPAIRED MEMBRANE
 - [ ] admissible repaired Cell-002 counterfeit
 - [ ] formal Cell-002 blinded reconstruction
 
@@ -1516,3 +1517,192 @@ BEFORE THE ORGANISM STOPS BEHAVING INTELLIGENTLY?
 
 This experiment should remain parked until the current semantic-continuity
 and witness fronts have produced enough stable machinery to hold the chassis constant.
+
+
+---
+
+# 14. Cell-002 Reconstruction Membrane Neutrality Repair
+
+## Lane-B repair result
+
+The reconstruction membrane was repaired without redesigning the packet geometry.
+
+New bounded response vocabulary:
+
+```text
+ESTABLISHED
+
+EXPLICITLY_NOT_ESTABLISHED
+
+UNRESOLVED
+
+NO_PACKET_LOCAL_STANDING_RECOVERED
+```
+
+Primary distinction:
+
+```text
+NO_PACKET_LOCAL_STANDING_RECOVERED
+!=
+EXPLICITLY_NOT_ESTABLISHED
+!=
+UNRESOLVED
+!=
+ESTABLISHED
+```
+
+This repairs the prior membrane wound where absence of support could be transformed into an explicit non-establishment or unresolved standing.
+
+## Repaired instruction principle
+
+The repaired membrane now requires:
+
+- reconstruct explicit or lawfully derived standing only;
+- distinguish explicit non-establishment from absence of support;
+- preserve unresolvedness only when unresolvedness itself is represented or derivable;
+- report NO_PACKET_LOCAL_STANDING_RECOVERED when no local standing is supported;
+- do not import external context;
+- do not strengthen claims;
+- do not treat cold references as admitted content.
+
+Freeze:
+
+```text
+ABSENCE OF ESTABLISHMENT
+!=
+ESTABLISHED NON-ESTABLISHMENT
+```
+
+## Result-state neutralization
+
+The wording:
+
+```text
+RESULTING_STATE_REPRESENTATION
+```
+
+was found replaceable because it weakly carries:
+
+```text
+REPRESENTED RESULT
+!=
+UNQUALIFIED LIVE WORLD STATE
+```
+
+Neutral replacement candidate:
+
+```text
+COMPLETE_RESULT_STATE_VALUES
+```
+
+with:
+
+```text
+claim = COMPLETED
+lane = READY_UNCLAIMED
+occupant = null
+```
+
+and dependency order:
+
+```text
+qualified completion basis
+->
+lifecycle COMPLETE adjudication
+->
+COMPLETE result state values
+```
+
+Current Lane-B audit says CB3 and CB8 remain intact under this replacement.
+
+## Pressure fairness
+
+The same repaired instruction and vocabulary must be byte-identical across positive and negative packets.
+
+Under the repair:
+
+```text
+POSITIVE:
+LIVE COMPLETE EXECUTION
+EXPLICITLY_NOT_ESTABLISHED
+```
+
+may be reconstructed when supported by the packet-local derived ceiling.
+
+The negative may instead return:
+
+```text
+LIVE COMPLETE EXECUTION:
+NO_PACKET_LOCAL_STANDING_RECOVERED
+```
+
+without being forced into either execution or non-establishment.
+
+## Current standing
+
+```text
+POSITIVE_TARGET_RECOVERABLE:
+YES
+
+NEGATIVE_TARGET_REMOVED:
+YES
+
+NEGATIVE_FORCED_TO_NONESTABLISHMENT_BY_INSTRUCTION:
+NO
+
+NEGATIVE_FORCED_TO_STRENGTHENING_BY_INSTRUCTION:
+NO
+
+INSTRUCTION_TARGET_NEUTRALITY:
+ESTABLISHED
+
+REFERENCE_ADMISSION_DISCIPLINE:
+PRESERVED
+
+CB1:
+INTACT
+
+CB2:
+INTACT
+
+CB3:
+INTACT
+
+CB7-N:
+INTACT
+
+CB8:
+INTACT
+```
+
+## Qualification ceiling
+
+This is still design-level evidence only.
+
+```text
+READY_FOR_FORENSIC_REPRESSURE:
+YES
+
+READY_FOR_EXACT_MATERIALIZATION:
+NO
+
+FRESH_RECONSTRUCTION:
+NOT_EXECUTED
+```
+
+Next lawful move:
+
+```text
+FORENSIC REPRESSURE
+```
+
+Attack specifically:
+
+- hidden anti-realization cues;
+- hidden absence -> unresolved coercion;
+- CB3 preservation;
+- CB8 preservation;
+- reference-admission leakage;
+- positive/negative symmetry.
+
+Do not materialize the pair until the repaired membrane survives this re-pressure.
