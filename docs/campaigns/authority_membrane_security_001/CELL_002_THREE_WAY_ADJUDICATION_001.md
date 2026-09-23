@@ -105,3 +105,79 @@ FREEZE:
 CANDIDATE CONSUMPTION SURVIVAL
 !=
 OPERATIVE AUTHORITY CONSUMPTION
+
+
+---
+
+## Post-push exact-byte inspection correction
+
+The canonical pushed bytes were inspected after the initial three-way adjudication.
+
+A material omission was found:
+
+The V0 authority envelope implemented in
+src/runtime/local_authority_consumption_v0.py
+does NOT contain principal_id / authorized-consumer identity.
+
+Implemented envelope fields are:
+
+object_type
+capability_id
+approval_id
+request_sha256
+input_sha256
+model
+endpoint_identity
+executor_sha256
+policy_sha256
+use_limit
+remaining_uses
+status
+issued_at
+expires_at
+
+Lane A requires the minimum operative authority relation to bind:
+
+capability
+× principal
+× scope
+× current policy
+× current executor
+× remaining consumable use.
+
+Therefore the exact pushed candidate does NOT yet instantiate
+the full Lane-A minimum envelope relation.
+
+REVISED STANDING:
+
+CELL_002_CONSUMPTION_ORDERING:
+SUPPORTED IN CANDIDATE HARNESS
+
+CELL_002_EXACT_REPLAY_DENIAL:
+SUPPORTED IN CANDIDATE HARNESS
+
+CELL_002_PRINCIPAL_BINDING:
+MISSING
+
+CELL_002_CANDIDATE_APPARATUS:
+APPARATUS_PARTIAL / REPAIR_REQUIRED
+
+CELL_002_INSTALLED_TRUST_ROOT:
+DO NOT PROMOTE YET
+
+Required repair:
+
+- add principal_id to the authority envelope;
+- validate principal_id as authority-material;
+- persist it in issuance / reservation / receipt / denial history where relevant;
+- require attempted consumption principal identity to correspond to issued authority;
+- add matched control and wrong-principal pressure;
+- preserve the existing exact replay pressure unchanged;
+- do not broaden capability class;
+- do not begin Cell 003.
+
+FREEZE:
+
+COUNT-BOUNDED AUTHORITY
+!=
+PRINCIPAL-BOUND AUTHORITY
