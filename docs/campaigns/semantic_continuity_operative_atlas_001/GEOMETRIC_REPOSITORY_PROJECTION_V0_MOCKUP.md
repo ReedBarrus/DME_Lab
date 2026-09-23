@@ -19,7 +19,7 @@ ALL ADDRESSABLE REPOSITORY OBJECTS
 +
 MECHANICAL RELATIONS
 →
-ONE CONTINUOUS NAVIGABLE 2D FIELD
+ONE CONTINUOUS NAVIGABLE 3D FIELD
 
 PRIMARY LAW:
 
@@ -56,7 +56,7 @@ This is NOT:
 
 This IS:
 
-- one continuous 2D projection surface;
+- one continuous 3D projection surface;
 - every repository object placed in the same navigable field;
 - object identity stable under camera movement and basis change;
 - geometry derived from source-bound relations;
@@ -65,6 +65,16 @@ This IS:
 The address fabric remains the source substrate.
 
 The projection is a view over it.
+
+The V0 field is allowed to be visually rough.
+
+The first requirement is not beauty.
+
+The first requirement is:
+
+THE SYSTEM MUST BECOME
+A REAL NAVIGABLE GEOMETRIC OBJECT
+THAT CAN LATER BE PRESSURED.
 
 # ==================================================
 # 2. PRIMARY COORDINATE BASIS
@@ -97,26 +107,147 @@ STRUCTURAL_BASIS_V0
 with strong weight on containment
 and secondary weight on dependency/reference relations.
 
+Important refinement:
+
+FILESYSTEM PATH
+IS THE PRIMARY NAVIGATION COORDINATE,
+NOT THE ULTIMATE FILE IDENTITY.
+
+Across transformations:
+
+PATH MAY CHANGE.
+CONTENT MAY CHANGE.
+ROLE MAY CHANGE.
+
+Therefore the stronger continuity basis is:
+
+SOURCE ADDRESS
++
+OBJECT / VERSION IDENTITY
++
+PROVENANCE RELATION.
+
+FREEZE:
+
+FILE IDENTITY
+!=
+PATH
+
+PATH
+!=
+CONTENT
+
+FILE
+!=
+FILE VERSION
+
 # ==================================================
-# 3. GEOMETRIC MODEL
+# 3. BASE SPACE + LOCAL STATE
 # ==================================================
 
-Use a simple, pressureable relation-driven embedding.
+The repository address fabric is the base space.
+
+For every addressed object x, preserve a resting structural position:
+
+S(x)
+
+derived from:
+
+containment
+dependency/reference
+version/content relation
+
+Then attach changing local state over that same object:
+
+LOCAL_STATE(x,t) =
+
+STRUCTURE
+AUTHORITY
+CONSEQUENCE
+OBSERVABILITY
+SCIENTIFIC_STANDING
+RUNTIME_ACTIVITY
+CURRENTNESS
+
+The structural position does not disappear when local state changes.
+
+Instead, dynamic fields may deform or annotate the same source-bound object.
+
+Conceptual law:
+
+P(x,t)
+=
+S(x)
++
+dynamic field contribution
+
+The exact numerical form is not fixed by this frame.
+
+What IS fixed:
+
+STRUCTURAL ADDRESS
+REMAINS RECOVERABLE
+THROUGH DYNAMIC DEFORMATION.
+
+# ==================================================
+# 4. FIRST DYNAMIC FIELD PAIR
+# ==================================================
+
+For the first operational telemetry pressure,
+use the two dynamic fields currently most relevant to the Lab:
+
+AUTHORITY FIELD
+
+A(x,t)
+=
+current authority / admissibility / capability pressure
+associated with addressed object x
+
+and
+
+CONSEQUENCE FIELD
+
+C(x,t)
+=
+observed realized activity / state-change / consequence pressure
+associated with addressed object x
+
+Interpretation:
+
+AUTHORITY
+=
+WHAT MAY CAUSE
+
+CONSEQUENCE
+=
+WHAT IS ACTUALLY CAUSING / CHANGING
+
+These are chosen V0 operator dimensions.
+
+Do NOT claim they are globally optimal or statistically dominant forever.
+
+Later telemetry may determine other high-variance basis components.
+
+# ==================================================
+# 5. 3D GEOMETRIC MODEL
+# ==================================================
+
+Use a simple, pressureable relation-driven 3D embedding.
 
 Preferred V0:
 
-HIERARCHICAL FORCE / RADIAL HYBRID
+HIERARCHICAL FORCE / RADIAL / VOLUME HYBRID
 
 Interpretation:
 
 - repository root = global anchor;
-- directories = containment wells / cluster anchors;
+- directories = containment wells / local volumes;
 - files = stable points within directory regions;
-- file versions = smaller attached points or local satellites;
+- file versions = attached local points / satellites;
 - dependency/reference edges = cross-region attraction links;
-- containment prevents unrelated objects from collapsing into one cluster.
+- containment prevents unrelated objects from collapsing together.
 
-The exact algorithm is not sacred.
+The exact visual algorithm is not sacred.
 
 The invariant is:
 
@@ -126,62 +257,168 @@ NOT ALPHABETICAL ORDER OR SCROLL ORDER.
 A deterministic seed / stable layout basis is required so the same source state
 does not randomly reshuffle on every load.
 
+The projection must support a true camera:
+
+PAN / TRANSLATE
+ROTATE
+ZOOM / DOLLY
+FOCUS SELECTED
+RESET WHOLE FIELD
+
 # ==================================================
-# 4. BASIS WEIGHT MODEL
+# 6. STRUCTURAL REST POSITION + FIELD DEFORMATION
 # ==================================================
 
-V0 supports one explicit mutable basis weighting object.
+Each object has:
 
-Example:
+STRUCTURAL REST POSITION:
+S(x)
 
-basis = {
+Dynamic fields may produce a visible displacement, extrusion,
+local vector, field line, glow, curvature, or other pressureable mark.
+
+Conceptually:
+
+P(x,t)
+=
+S(x)
++
+α * AUTHORITY_CONTRIBUTION(x,t)
++
+β * CONSEQUENCE_CONTRIBUTION(x,t)
+
+This is a conceptual decomposition only.
+
+Codex may choose a simpler stable rendering if needed.
+
+The required law is:
+
+DYNAMIC TELEMETRY
+MUST NOT DESTROY
+STRUCTURAL RECOVERABILITY.
+
+The operator must be able to distinguish:
+
+WHERE THE OBJECT BELONGS STRUCTURALLY
+
+from
+
+WHAT IS HAPPENING TO / THROUGH IT NOW.
+
+# ==================================================
+# 7. BASIS WEIGHT MODEL
+# ==================================================
+
+V0 supports explicit mutable basis weights.
+
+Structural example:
+
+basis.structural = {
   containment: 1.0,
   dependency: 0.35,
   version: 0.10
 }
 
-Changing weights must deform the same object field.
+Dynamic example:
+
+basis.dynamic = {
+  authority: 0.50,
+  consequence: 0.50
+}
+
+Changing weights must deform the SAME object field.
 
 NO object recreation.
 NO identity remapping.
 NO new data model.
 
-Later modes may add:
+The user must be able to WATCH the transformation.
 
-runtime_interaction
-authority_relation
-scientific_relation
-semantic_relation
-temporal_relation
+This is the first direct pressure of:
 
-but V0 need only prove one mutable structural basis.
+BASIS CHANGE
+→ GEOMETRIC DEFORMATION
+
+while:
+
+OBJECT IDENTITY
+SOURCE ADDRESS
+CONTENT IDENTITY
+SELECTION
+PROVENANCE
+
+remain recoverable.
 
 # ==================================================
-# 5. CAMERA / NAVIGATION
+# 8. GENERAL DOMAIN VS OPERATOR OVERLAY
+# ==================================================
+
+The generic navigable world and operator-specific projection are separate layers.
+
+GENERAL DOMAIN:
+
+stable source-bound navigation
+over repository structure
+
+OPERATOR OVERLAY:
+
+additional local dimensions / relations
+projected over the SAME world
+
+Future operator examples:
+
+STRUCTURAL
+RUNTIME
+SCIENTIFIC
+AUTHORITY
+SEMANTIC
+
+Same source objects.
+Same addresses.
+Different relational emphasis.
+
+FREEZE:
+
+OPERATOR CHANGE
+!=
+NEW WORLD
+
+OVERLAY CHANGE
+!=
+OBJECT REPLACEMENT
+
+PROJECTION DOMAIN
+!=
+TYPED INSPECTOR
+
+# ==================================================
+# 9. CAMERA / NAVIGATION
 # ==================================================
 
 Required:
 
-- continuous pan;
-- continuous zoom;
-- zoom-to-selected;
-- reset-to-whole-repository;
+- continuous 3D camera movement;
+- rotate/orbit;
+- pan/translate;
+- zoom/dolly;
+- focus selected object;
+- reset to whole repository;
 - click object to select;
-- preserve selected object identity while camera changes;
-- preserve selected object identity while basis weights change.
+- preserve selected identity while camera changes;
+- preserve selected identity while basis weights change.
 
 Optional if cheap:
 
-- drag-to-rotate if using pseudo-3D presentation;
-- minimap;
-- search-to-focus by exact path/address.
+- search-to-focus by exact path/address;
+- minimap / orientation compass;
+- bookmark current camera coordinate.
 
 Search is an accelerator only.
 
 Search MUST NOT become the primary navigation model.
 
 # ==================================================
-# 6. VISUAL ENCODING
+# 10. VISUAL ENCODING
 # ==================================================
 
 Keep V0 minimal.
@@ -190,7 +427,7 @@ Repository:
 global anchor / outer field
 
 Directory:
-cluster boundary / region well
+cluster boundary / containment volume
 
 File:
 primary node
@@ -199,13 +436,19 @@ File version:
 secondary / satellite node
 
 Dependency/reference:
-visible edge
+visible edge / tether
 
 Containment:
-encoded spatially and optionally by weak boundary/edge
+encoded spatially and optionally by boundary / weak relation
 
 Selected object:
-visually emphasized without moving identity
+visually emphasized without losing structural position
+
+Authority:
+first dynamic field channel
+
+Consequence:
+second dynamic field channel
 
 Unknown semantic standing:
 visible normally
@@ -213,64 +456,61 @@ not dimmed into irrelevance
 
 Do NOT add decorative pseudo-physics unrelated to source relations.
 
+GEOMETRY
+!=
+MYSTERY ANIMATION.
+
 # ==================================================
-# 7. MOCKUP — WHOLE REPOSITORY
+# 11. WHOLE-REPOSITORY MOCKUP
 # ==================================================
 
 Conceptual only:
 
-                      docs/
-                 .  .  .  .  .
-              .                 .
-            .      campaign      .
-           .                     .
-          .                       .
+                   docs volume
+              . . . . . . . . .
+           .                   .
+        .                         .
+       .                           .
 
-                   src/
-          . . . . . . . . . . . . .
-       .                               .
-      . cockpit/        runtime/        .
-      .   o--o--o          o--o         .
-      .    \  |            \ |         .
-      .     o  o             o          .
-       .                               .
-          . . . . . . . . . . . . .
+                 src volume
+       . . . . . . . . . . . . . .
+     .                               .
+    . cockpit         runtime         .
+    .  o---o---o        o---o         .
+    .   \  |             \ |          .
+    .    o  o              o          .
+     .                               .
+       . . . . . . . . . . . . . .
 
-                     tests/
-                .  .  .  .  .
+                  tests volume
+              . . . . . . .
 
-Cross-region dependency edges may bridge clusters.
+Cross-region dependency edges bridge containment regions.
 
 The operator should perceive:
+
 clusters
 bridges
 isolates
 dense regions
 cross-directory dependencies
+dynamic hotspots
 
 without reading 1200 labels.
 
 # ==================================================
-# 8. MOCKUP — ZOOMED REGION
+# 12. ZOOM / SCALE CONTINUITY
 # ==================================================
 
 WHOLE REPO
-→ zoom toward src/cockpit/observer
+→ move toward src/cockpit/observer
 
-Field resolves more detail:
+Field resolves more local detail.
 
-observer/
-   app.mjs ----------------------+
-      |                          |
-      v                          v
-perceptual_instrument.mjs ---> repository_fabric_app.mjs
-      |                          |
-      +----> runtime_live.mjs    +----> repository_fabric_model.mjs
-
-Labels may appear progressively with zoom.
+Labels / fine edges may progressively appear.
 
 Same objects.
-Same coordinates.
+Same source coordinates.
 More resolved presentation.
 
 FREEZE:
@@ -279,49 +519,20 @@ ZOOM
 !=
 SEMANTIC PROMOTION
 
-# ==================================================
-# 9. BASIS TRANSFORMATION BEHAVIOR
-# ==================================================
+LOD CHANGE
+!=
+OBJECT CREATION
 
-Add one visible basis control.
-
-Example:
-
-STRUCTURAL BASIS
-
-containment  [##########] 1.00
-dependency   [###       ] 0.35
-version      [#         ] 0.10
-
-If dependency weight increases:
-
-- cross-directory dependencies pull related nodes closer;
-- containment still provides continuity;
-- objects visibly move;
-- edges persist;
-- selected identity persists;
-- camera may preserve focus.
-
-The user must be able to WATCH the transformation.
-
-This is the first proof that:
-
-BASIS CHANGE
-→ GEOMETRIC DEFORMATION
-
-while:
-
-OBJECT IDENTITY
-and
-SOURCE ADDRESS
-
-remain invariant.
+CAMERA MOTION
+!=
+SOURCE CHANGE
 
 # ==================================================
-# 10. LOCAL INSPECTOR
+# 13. LOCAL INSPECTOR / SYMBOLIC OVERLAY
 # ==================================================
 
-Selecting an object opens a small inspector WITHOUT replacing the field.
+Selecting an object may open a symbolic / typed inspector
+WITHOUT replacing the geometric field.
 
 Inspector may show:
 
@@ -332,84 +543,219 @@ commit
 blob/content identity
 mechanical relations
 semantic standing
+authority standing
+runtime standing
+witness references
+scientific standing
 
 Inspector is subordinate to geometry.
 
-Do NOT let typed fields consume the primary surface.
+The primary surface remains spatial.
+
+Do NOT let typed fields consume the primary field.
+
+Symbolic precision exists AFTER attention has landed on an object.
 
 # ==================================================
-# 11. CELL 002 FUTURE OVERLAY SEAM
+# 14. TIME / FRAME TELEMETRY
 # ==================================================
 
-Do NOT implement full Cell-002 runtime overlay yet.
+The projection must be designed to admit time.
 
-But preserve a seam where addressed objects participating in Cell 002 can later
-receive projected relations.
+At minimum preserve the future seam:
 
-Future example:
+FRAME t0
+→ transformation
+→ FRAME t1
+
+Dynamic field state changes over time.
+
+Potential future runtime events:
+
+LOADED
+CALLED
+READ
+WROTE
+SPAWNED
+INVOKED
+EMITTED
+
+The V0 implementation does not need full live instrumentation,
+but it must not prevent time-indexed field updates.
+
+Important law:
+
+EVENT ENDS
+!=
+EVENT DISAPPEARS.
+
+After active consequence ends,
+a witness / trace / receipt / event marker may remain attached
+to the addressed environment.
+
+This creates recoverable environmental memory.
+
+# ==================================================
+# 15. SCIENTIFIC / INVARIANCE OPERATOR
+# ==================================================
+
+Scientific projection is NOT the base world.
+
+It is an evaluative operator over transformations of the same addressed world.
+
+First scientific dimensions:
+
+HELD_FIXED
+CHANGED
+WITNESSED
+UNRESOLVED
+
+Given:
+
+FRAME t0
+→ transformation
+→ FRAME t1
+
+Scientific mode asks:
+
+WHAT REMAINED INVARIANT?
+WHAT CHANGED?
+WHAT WAS ACTUALLY OBSERVED?
+WHAT REMAINS UNRESOLVED?
+
+The scientific operator may reweight / annotate / deform the same field.
+
+It MUST retain exact source coordinates.
+
+# ==================================================
+# 16. CELL 002 AS FUTURE CONSEQUENCE OVERLAY
+# ==================================================
+
+Do NOT duplicate Cell-002 objects into a disconnected viewer model.
+
+Preserve a seam where the recorded Cell-002 consequence path can project
+onto the same addressed repository objects.
+
+Example:
 
 authority module
 → bridge
 → model boundary
 
-and a recorded consequence trace may animate:
+Dynamic sequence:
 
 CAP ACTIVE / 1
 → reservation
-→ invocation
-→ consumed
+→ CONSUMING / 0
+→ invocation boundary
+→ CONSUMED
 → replay
-→ deny
+→ DENY / AUTHORITY_EXHAUSTED
 
-over the SAME repository nodes.
+Scientific overlay on the same region may show:
 
-The geometric repository projection must not require Cell-002-specific object duplication.
+HELD FIXED:
+bridge hash
+policy hash
+declared principal relation
+
+CHANGED:
+remaining_uses 1 → 0
+
+WITNESSED:
+reservation before invocation
+
+UNRESOLVED:
+crash atomicity
+concurrency
+principal authentication
+
+SAME WORLD.
+
+DIFFERENT OPERATOR.
 
 # ==================================================
-# 12. FUTURE OPERATOR MODES
+# 17. AUTONOMOUS LIFECYCLE SEAM
 # ==================================================
 
-Do not implement these yet.
+The field must eventually support the full bounded lifecycle:
 
-The architecture must allow future basis modes over the same object manifold:
+OBSERVE
+→ EVALUATE
+→ ELIGIBILITY
+→ AUTHORITY REQUEST / DECISION
+→ EXECUTION
+→ CONSEQUENCE
+→ WITNESS
+→ RE-EVALUATE
 
-STRUCTURAL
-RUNTIME
-SCIENTIFIC
-AUTHORITY
-SEMANTIC
+Each phase should be able to address the same objects.
 
-Each mode exposes different relation weights/dimension sets.
+Authority and consequence are not merely labels.
 
-Same addresses.
-Same object identities.
-Different local projection.
+They are candidate dynamic fields over the shared world.
 
-Example future scientific basis:
+Natural coordination target:
 
-held_fixed
+AUTHORITY FIELD
+and
+CONSEQUENCE FIELD
+
+should expose mismatches such as:
+
+high authority / low consequence
+low authority / high consequence
+authorized active consequence
+historical consequence residue
+stale authority
+unresolved consequence without witness
+
+No autonomous authority is established by this visualization.
+
+# ==================================================
+# 18. FUTURE DATA-DRIVEN BASIS DISCOVERY
+# ==================================================
+
+Do NOT implement this in V0.
+
+Once enough real telemetry exists,
+the system may ask over a time window Δt:
+
+WHICH RELATIONAL DIMENSIONS
+EXHIBITED THE MOST VARIANCE?
+
+WHICH REMAINED MOST INVARIANT?
+
+WHICH COVARIANCE STRUCTURE DOMINATED?
+
+This may later support data-derived projection axes
+or PCA / eigenspace-like candidate bases.
+
+But V0 uses declared pressureable bases:
+
+INVARIANT / NAVIGATION BASIS:
+repository structure
+
+DYNAMIC BASIS:
+authority
+consequence
+
+TIME:
+frame sequence
+
+SCIENTIFIC OPERATOR:
+held-fixed
 changed
 witnessed
 unresolved
 
-Example future runtime basis:
-
-loaded
-called
-read
-wrote
-spawned
-invoked
-emitted
-
 # ==================================================
-# 13. FIRST HUMAN PRESSURES
+# 19. FIRST HUMAN PRESSURES
 # ==================================================
 
 PRESSURE 1 — WHOLE-REPO LEGIBILITY
 
-Question:
-Can the operator see the entire repository as one coherent object
+Can the operator perceive the repository as one coherent spatial object
 without scrolling through every file?
 
 Expected:
@@ -417,8 +763,7 @@ YES
 
 PRESSURE 2 — REGION RECOVERY
 
-Question:
-Can the operator visually recover the src/cockpit region and move into it
+Can the operator visually recover and enter src/cockpit
 without traversing an alphabetical list?
 
 Expected:
@@ -426,16 +771,15 @@ YES
 
 PRESSURE 3 — RELATIONAL DIFFERENCE
 
-Question:
-Do dependency-connected files appear geometrically different from merely co-located files?
+Do dependency-connected files appear geometrically distinct
+from merely co-located files?
 
 Expected:
-YES, where dependency relations are mechanically available.
+YES where dependency relations are mechanically available.
 
 PRESSURE 4 — BASIS DEFORMATION
 
-Question:
-Can changing a basis weight visibly deform the projection
+Can changing structural / dynamic weights visibly deform the same field
 while preserving exact object identity?
 
 Expected:
@@ -443,14 +787,35 @@ YES
 
 PRESSURE 5 — UNKNOWN != INVISIBLE
 
-Question:
-Does an uninterpreted file remain present in the geometric field?
+Does an uninterpreted file remain present?
+
+Expected:
+YES
+
+PRESSURE 6 — STRUCTURE VS ACTIVITY
+
+Can the operator distinguish structural resting position
+from active authority / consequence field state?
+
+Expected:
+YES
+
+PRESSURE 7 — INVARIANT RECOVERY
+
+After basis deformation,
+can the operator recover:
+
+object identity
+source address
+content identity
+selection
+provenance
 
 Expected:
 YES
 
 # ==================================================
-# 14. MACHINE PRESSURES
+# 20. MACHINE PRESSURES
 # ==================================================
 
 The same selected object must expose a canonical source address usable by a seat.
@@ -468,14 +833,44 @@ Do not implement seat transport in V0.
 Preserve the address seam.
 
 # ==================================================
-# 15. REQUIRED IMPLEMENTATION RETURN
+# 21. FIRST INSTRUMENT QUALITY LEDGER
+# ==================================================
+
+After human use, record only:
+
+MORE VISIBLE:
+...
+
+EASIER TO REASON ABOUT:
+...
+
+HARDER / NOISIER:
+...
+
+MISSING RELATION:
+...
+
+ACTION IT ENABLED:
+...
+
+ERROR IT CAUSED:
+...
+
+The instrument earns complexity only where these observations justify it.
+
+OBSERVABILITY GAIN
+!=
+COGNITIVE GAIN.
+
+# ==================================================
+# 22. REQUIRED IMPLEMENTATION RETURN
 # ==================================================
 
 Return:
 
-A. exact files added/modified;
+A. exact files added / modified;
 
-B. exact layout algorithm selected;
+B. exact 3D layout algorithm selected;
 
 C. exact mechanically derived relations used;
 
@@ -483,52 +878,109 @@ D. deterministic layout / seed strategy;
 
 E. exact camera interactions;
 
-F. basis-weight controls implemented;
+F. structural and dynamic basis controls implemented;
 
 G. how object identity is preserved during deformation;
 
-H. how zoom changes presentation without changing model identity;
+H. how structural rest position remains recoverable;
 
-I. total rendered objects and relations;
+I. how zoom / LOD changes presentation without changing identity;
 
-J. performance at whole-repo scale;
+J. total rendered objects and relations;
 
-K. tests proving:
+K. whole-repo performance;
+
+L. whether authority / consequence data are real, derived, fixture-bound,
+   or unavailable in V0;
+
+M. tests proving:
    - all objects remain addressable;
    - unknown objects remain visible;
    - basis change preserves identity;
    - camera movement preserves identity;
+   - structural resting coordinates remain recoverable;
    - no semantic inference is introduced;
-   - no authority/execution/control path is introduced;
+   - no authority / execution / control path is introduced;
 
-L. one screenshot if possible;
+N. one screenshot if possible;
 
-M. explicit confirmation:
+O. explicit confirmation:
 
 GEOMETRY IS RELATION-DRIVEN
 NOT LIST-ORDER-DRIVEN
 
 OBJECT IDENTITY SURVIVES BASIS CHANGE
 
+STRUCTURAL BASE SPACE
+!=
+DYNAMIC FIELD STATE
+
+AUTHORITY
+!=
+CONSEQUENCE
+
+SCIENTIFIC OPERATOR
+!=
+SOURCE TRUTH
+
 NO NEW AUTHORITY
 NO NEW EXECUTION
 NO NEW CONTROL PATH
 
 # ==================================================
-# 16. STOP CONDITION
+# 23. STOP CONDITION
 # ==================================================
 
-STOP when there is one real continuous 2D repository projection
-that can render the existing address fabric at whole-repo scale
-and visibly deform under at least one basis-weight change.
+STOP when there is one real continuous 3D repository projection
+that can render the existing address fabric at whole-repo scale,
+support continuous camera navigation,
+and visibly preserve object identity while at least one declared basis
+or field weight changes.
+
+If real authority / consequence telemetry is not yet available,
+use explicit UNAVAILABLE / FIXTURE-BOUND status.
+
+DO NOT fabricate live state.
 
 Do NOT proceed to:
 
-runtime animation
-scientific invariance overlay
-authority overlay
+full runtime animation
+autonomous authority
+scientific promotion
 semantic role inference
 Town Square
 seat invocation
 
 until this projection itself is human-tested.
+
+# ==================================================
+# CLAIM CEILING
+# ==================================================
+
+This mock-up establishes an implementation target only.
+
+It does NOT establish:
+
+formal manifold structure
+formal fiber geometry
+correct physical analogy
+optimal projection basis
+true runtime causality
+complete authority telemetry
+complete consequence telemetry
+scientific validity of visual clustering
+autonomous coordination
+global semantic coherence
+
+The first goal is narrower:
+
+MAKE THE LAB
+A SINGLE SOURCE-BOUND,
+NAVIGABLE,
+PRESSUREABLE GEOMETRIC OBJECT
+
+WITHOUT LOSING
+IDENTITY,
+ADDRESS,
+PROVENANCE,
+OR CLAIM CEILINGS.
