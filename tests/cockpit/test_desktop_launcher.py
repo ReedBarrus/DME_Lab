@@ -13,6 +13,7 @@ from src.cockpit.desktop_launcher import (
     choose_freshness_ref,
     is_repo_root,
     launch_edge_app,
+    generate_projection_for_launch,
     _ref_exists,
     _subprocess_creationflags,
     resolve_repo_root,
@@ -135,6 +136,36 @@ class DesktopCockpitLauncherTest(unittest.TestCase):
                 server.shutdown()
                 server.server_close()
                 thread.join(timeout=5.0)
+
+    def test_launch_generation_materializes_both_semantic_and_address_projections(self) -> None:
+        repo = Path("C:/synthetic/repo")
+        semantic_model = {"repository_state": {"source_commit": "a" * 40}}
+        with (
+            patch(
+                "src.cockpit.generate_projection.generate_projection",
+                return_value=semantic_model,
+            ) as semantic,
+            patch(
+                "src.cockpit.repository_address_fabric.generate_repository_address_fabric",
+                return_value={"source_commit": "a" * 40},
+            ) as fabric,
+        ):
+            result = generate_projection_for_launch(
+                repo,
+                source_ref="HEAD",
+                freshness_ref="origin/main",
+            )
+
+        self.assertEqual(result, semantic_model)
+        self.assertEqual(
+            semantic.call_args.kwargs["output"],
+            repo / "generated" / "cockpit_projection.json",
+        )
+        self.assertEqual(
+            fabric.call_args.kwargs["output"],
+            repo / "generated" / "repository_address_fabric.json",
+        )
+        self.assertEqual(fabric.call_args.kwargs["source_ref"], "HEAD")
 
     def test_projection_failure_prevents_server_start(self) -> None:
         fake_repo = Path("/synthetic/repo")

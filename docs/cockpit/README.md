@@ -230,7 +230,15 @@ Generate its ignored, derived JSON input:
 
 ```text
 python -m src.cockpit.generate_projection --repo . --source-ref HEAD --freshness-ref origin/main --output generated/cockpit_projection.json
+python -m src.cockpit.repository_address_fabric --repo . --source-ref HEAD --output generated/repository_address_fabric.json
 ```
+
+The second command creates the separate commit-bound Repository Address Fabric
+V0. It walks Git objects at the resolved commit, not the mutable worktree, and
+defaults every repository object's semantic standing to `UNINTERPRETED`.
+Inside the composed Cockpit, open `TOPOLOGY` and then `REPOSITORY FABRIC` to
+inspect exact repository, directory, file, and file-version addresses. The
+desktop launcher generates both derived inputs before serving the Cockpit.
 
 Serve the repository and open the observer:
 

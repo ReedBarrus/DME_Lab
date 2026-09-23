@@ -7,8 +7,11 @@ import { startRuntimeProjection } from '../../src/cockpit/observer/runtime_live.
 import {
   CELL002_SPECIMEN_URL,
   CONSEQUENCE_SURFACE_NAMES,
+  REPOSITORY_FABRIC_URL,
+  TOPOLOGY_SURFACE_NAMES,
   consequenceRuntimeStatus,
   createCell002SpecimenEmbed,
+  createRepositoryFabricEmbed,
 } from '../../src/cockpit/observer/perceptual_instrument.mjs';
 
 const ROOT = new URL('../../', import.meta.url);
@@ -126,6 +129,33 @@ test('composed specimen seam adds no control transport or synthetic runtime snap
   assert.match(cellApp, /cache: 'no-store'/);
   assert.doesNotMatch(cellApp, /EventSource|WebSocket|startControlAdapter|control-prefill/);
   assert.doesNotMatch(cellApp, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
+});
+
+test('composed Topology surface exposes the commit-bound repository fabric in-shell', async () => {
+  assert.deepEqual(TOPOLOGY_SURFACE_NAMES, ['SEMANTIC', 'REPOSITORY_FABRIC']);
+  assert.equal(REPOSITORY_FABRIC_URL, './repository_fabric.html');
+
+  const priorDocument = globalThis.document;
+  globalThis.document = fakeDocument();
+  try {
+    const panel = createRepositoryFabricEmbed();
+    assert.equal(panel.className, 'instrument-specimen-panel');
+    assert.equal(panel.dataset.projectionStanding, 'DERIVED_READ_ONLY');
+    const frame = panel.children.find((item) => item.tagName === 'IFRAME');
+    assert.ok(frame);
+    assert.equal(frame.src, './repository_fabric.html');
+    assert.match(frame.title, /commit-bound repository address fabric/i);
+  } finally {
+    globalThis.document = priorDocument;
+  }
+
+  const instrument = await readFile(
+    new URL('src/cockpit/observer/perceptual_instrument.mjs', ROOT),
+    'utf8',
+  );
+  assert.match(instrument, /REPOSITORY FABRIC/);
+  assert.match(instrument, /dataset\.topologySurface/);
+  assert.doesNotMatch(instrument, /buildRepositoryFabricModel|repository_address_fabric\.json/);
 });
 
 test('unconfigured control remains explicitly unavailable and creates no client', () => {
