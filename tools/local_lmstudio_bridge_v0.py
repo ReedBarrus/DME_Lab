@@ -45,6 +45,42 @@ def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+def input_identity_rejection_witness(
+    manifest: dict[str, Any],
+    prompt_bytes: bytes,
+) -> dict[str, Any] | None:
+    """Return a deterministic apparatus rejection for an input mismatch.
+
+    A matching identity returns ``None`` and leaves the existing approval and
+    invocation path unchanged.  The witness is authored before approval or any
+    LM Studio call and contains no model-produced evidence.
+    """
+
+    declared_input_sha256 = str(manifest["input_sha256"])
+    observed_input_sha256 = sha256_bytes(prompt_bytes)
+    if observed_input_sha256 == declared_input_sha256:
+        return None
+
+    return {
+        "object_type": "LOCAL_LMSTUDIO_INPUT_IDENTITY_REJECTION_V0",
+        "request_id": str(manifest["request_id"]),
+        "declared_input_sha256": declared_input_sha256,
+        "observed_input_sha256": observed_input_sha256,
+        "executor_sha256": sha256_bytes(Path(__file__).resolve().read_bytes()),
+        "policy_sha256": sha256_bytes(POLICY_PATH.read_bytes()),
+        "decision": "REJECT",
+        "reason": "INPUT_SHA256_MISMATCH",
+        "lmstudio_invoked": False,
+    }
+
+
+def emit_rejection_witness(witness: dict[str, Any]) -> None:
+    print(
+        "[REJECT] "
+        + json.dumps(witness, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
+    )
+
+
 def run_git(*args: str, check: bool = True) -> subprocess.CompletedProcess[bytes]:
     cmd = ["git", "-C", str(ROOT), *args]
     proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -309,12 +345,12 @@ def process_once(policy: dict[str, Any]) -> int:
             print(f"[REJECT] {request_path}: cannot read immutable prompt: {e}")
             continue
 
-        actual_prompt_sha = sha256_bytes(prompt_bytes)
-        if actual_prompt_sha != manifest["input_sha256"]:
-            print(
-                f"[REJECT] {request_path}: input SHA mismatch "
-                f"(expected {manifest['input_sha256']}, got {actual_prompt_sha})"
-            )
+        identity_rejection = input_identity_rejection_witness(
+            manifest,
+            prompt_bytes,
+        )
+        if identity_rejection is not None:
+            emit_rejection_witness(identity_rejection)
             continue
 
         if len(prompt_bytes) > int(policy["max_prompt_bytes"]):

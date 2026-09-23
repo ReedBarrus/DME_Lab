@@ -45,8 +45,8 @@ The human operator should normally perform at most:
 
 ```text
 OPEN ONE BUNDLE
-COPY ONCE
-PASTE ONCE
+COPY twice
+PASTE twice
 RETURN RESULT ONCE
 ```
 
