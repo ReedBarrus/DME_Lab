@@ -274,3 +274,230 @@ I. full regression count;
 J. explicit remaining bypass / crash / concurrency limits.
 
 STOP BEFORE INSTALLATION.
+
+
+# ==================================================
+# REVIEW FEEDBACK INTEGRATION — REQUIRED
+# ==================================================
+
+The following constraints are now part of the implementation frame.
+
+## 1. Declared principal correspondence only
+
+principal_id remains a DECLARED principal identity.
+
+The wrong-principal pressure may establish only:
+
+DECLARED PRINCIPAL CORRESPONDENCE
+IS ENFORCED
+
+It may NOT establish:
+
+PRINCIPAL IDENTITY
+IS AUTHENTICATED
+
+Do not introduce authentication claims.
+
+## 2. Approval-to-envelope coordinate conservation
+
+Human approval must bind the exact same authority-material coordinates
+that are written into the minted envelope.
+
+The implementation must preserve, without recomputation/substitution drift:
+
+request identity
+input identity
+model
+endpoint identity
+executor identity
+policy identity
+principal_id
+invocation parameters that are authority-material
+
+Freeze:
+
+APPROVED COORDINATES
+=
+MINTED ENVELOPE COORDINATES
+=
+EXECUTION-BOUND COORDINATES
+
+Any material mismatch must revalidate or stop.
+
+Do not mint from a later independently reconstructed view of the request
+if that could differ from the approved object.
+
+## 3. Pre-call consumption ordering
+
+Required V0 logical order:
+
+ACTIVE
+→ durable CONSUMING / one-use reservation
+→ current authority unavailable to second admission
+→ invoke_lmstudio
+→ CONSUMED receipt
+
+Crash recovery remains UNQUALIFIED.
+
+The implementation must keep visible that:
+
+CONSUMING
+does not prove consequence completed
+
+and:
+
+MODEL INVOCATION OCCURRED
+does not prove final consumption receipt persisted
+
+Do not infer exactly-once crash-safe semantics.
+
+## 4. Replay pressure must reuse the exact same capability object
+
+The replay test must retain and deliberately resubmit the first issued
+capability object.
+
+It must NOT:
+- request a new approval;
+- mint a fresh capability;
+- clone equivalent fields into a new authority instance;
+- reset local state.
+
+Freeze:
+
+SAME FIELD VALUES
+!=
+SAME CAPABILITY INSTANCE
+
+The pressure target is reuse of the exact consumed capability instance.
+
+## 5. Promotion tooling is consequential
+
+The promotion script must be intentionally dumb.
+
+It may ONLY:
+
+- verify exact current installed bridge SHA256;
+- verify exact installed authority-module SHA256;
+- verify exact installed policy SHA256;
+- verify exact candidate bridge SHA256;
+- create a backup of the installed bridge;
+- replace the installed bridge from the already-reviewed candidate artifact;
+- verify destination SHA256;
+- stop.
+
+It MUST NOT:
+
+- fetch latest;
+- rebuild the candidate;
+- regenerate source;
+- edit policy;
+- install dependencies;
+- mutate authority state;
+- invoke the model;
+- choose branches / commits dynamically.
+
+Promotion tooling itself must return a clear transformation witness:
+
+SOURCE OBJECT / HASH
+→ COPY / REPLACE
+→ DESTINATION OBJECT / HASH
+
+## 6. Single governed invocation chokepoint
+
+All ordinary governed LM Studio calls in the candidate bridge must cross
+the same authority-consumption chokepoint.
+
+If any ordinary path can call invoke_lmstudio without:
+
+approval
+→ Cell-001 revalidation
+→ authority issue
+→ principal correspondence
+→ pre-call reservation
+
+then the implementation must explicitly report that bypass and the claim
+must remain scoped only to the wrapped path.
+
+Required audit:
+
+enumerate every call site / reachable ordinary path to invoke_lmstudio
+and show whether it is governed.
+
+Do not claim bridge-wide bypass resistance unless every ordinary path
+is demonstrated governed and separately pressured as necessary.
+
+## 7. Capability / approval identity construction
+
+"Unique enough" is not acceptable for authority-instance identity.
+
+Use an explicit collision-resistant construction.
+
+Preferred acceptable V0 choices:
+
+- cryptographically random UUID / nonce;
+or
+- deterministic content-addressed identity including a unique issuance nonce.
+
+The implementation must state the exact construction.
+
+A freshly minted authority instance with equivalent fields is not the
+same capability for replay purposes.
+
+## 8. Required risk posture in return
+
+Return an explicit posture:
+
+DESIGN BOUNDARY:
+GOOD | FRACTURED | PARTIAL
+
+CAPABILITY EXPANSION:
+NONE | DESCRIBE
+
+HUMAN AUTHORITY:
+PRESERVED | FRACTURED
+
+REPLAY TARGET:
+CLEAN | CONFOUNDED
+
+DECLARED PRINCIPAL CORRESPONDENCE:
+QUALIFIED_CANDIDATE | FRACTURED
+
+PRINCIPAL AUTHENTICATION:
+NOT ESTABLISHED
+
+CRASH ATOMICITY:
+NOT ESTABLISHED
+
+CONCURRENCY:
+NOT ESTABLISHED
+
+BYPASS RESISTANCE:
+GOVERNED PATH ONLY | BROADER BASIS EXPLICITLY SHOWN
+
+INSTALLATION:
+NOT AUTHORIZED IN THIS STEP
+
+## 9. Claim tattoo
+
+The result must preserve this exact claim ceiling in substance:
+
+CELL 002 MAY QUALIFY
+ONE-SHOT CONSUMPTION
+ON THE GOVERNED BRIDGE PATH.
+
+IT DOES NOT QUALIFY
+PRINCIPAL AUTHENTICATION,
+CRASH RECOVERY,
+CONCURRENCY,
+OR BRIDGE-WIDE BYPASS RESISTANCE.
+
+# ==================================================
+# ADDITIONAL REQUIRED RETURN
+# ==================================================
+
+K. exact approval → envelope coordinate mapping;
+L. exact capability_id / approval_id construction;
+M. invoke_lmstudio call-site / bypass audit;
+N. replay proof that the same capability instance was reused;
+O. promotion-script behavior audit;
+P. explicit risk posture above.
