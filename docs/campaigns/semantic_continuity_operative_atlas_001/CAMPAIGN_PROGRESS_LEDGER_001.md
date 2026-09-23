@@ -2740,3 +2740,57 @@ THEN RERUN ONLY THE CROSS-RECONSTRUCTOR ADJUDICATION
 FROM THE TWO VALID INDIVIDUAL EVALUATOR RESULTS
 PLUS THE CORRECT CURRENT MATERIALIZATION ARTIFACTS.
 ```
+
+
+---
+
+# 22. Security Checkpoint Before Further Autonomous Capability
+
+A separate adjacent campaign has been opened:
+
+```text
+AUTHORITY_MEMBRANE_SECURITY_CAMPAIGN_001
+```
+
+This does NOT modify the semantic-continuity campaign's scientific standing.
+
+Reason for checkpoint:
+
+The local LM Studio invocation bridge now has an operator-reported installed trust root and a successful happy-path invocation. Before that mechanism is used as a basis for broader autonomous capability, the existing invocation authority membrane must be adversarially pressured.
+
+Freeze:
+
+```text
+HAPPY_PATH_WORKING
+!=
+SECURITY_PRESSURE_QUALIFIED
+```
+
+and:
+
+```text
+SEMANTIC CONTINUITY PRESSURE
+!=
+AUTHORITY SECURITY PRESSURE
+```
+
+The first security cell is intentionally minimal:
+
+```text
+CELL_001:
+POST-REVIEW INPUT IDENTITY MUTATION
+```
+
+Question:
+
+```text
+IF THE REVIEWED INPUT IDENTITY CHANGES
+BEFORE CONSEQUENCE,
+
+DOES THE BRIDGE
+REVALIDATE OR STOP?
+```
+
+No repo-write, network, CLI, persistent-seat, merge, or policy authority is promoted by this checkpoint.
+
+The campaigns may exchange earned distinctions and evidence links, but their claims remain separately bounded.
