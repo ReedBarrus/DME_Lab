@@ -90,3 +90,42 @@ CODEX:
 did the apparatus actually instantiate that pressure and witness the consequence boundary?
 
 STOP before Cell 002.
+
+
+---
+
+## Three-way adjudication update
+
+CELL_001:
+NOT YET SURVIVED
+
+CURRENT_RESULT:
+APPARATUS_PARTIAL / TARGET PRESSURE NOT YET INSTANTIATED
+
+Earned narrow result:
+
+PRE-APPROVAL INPUT IDENTITY MISMATCH
+→ REJECT BEFORE APPROVAL
+→ NO INVOCATION
+
+Remaining target:
+
+APPROVE A
+→ SUBSTITUTE EXECUTION CANDIDATE B
+→ A != B
+→ FRESH PRE-CALL REVALIDATION
+→ NO INVOCATION
+
+Next send packet:
+
+CELL001_APPARATUS_REPAIR_001
+
+Dependency:
+
+LANE A RESULT
++
+LANE B RESULT
++
+THREE-WAY ADJUDICATION 001
+
+Cell 002 remains LOCKED.
