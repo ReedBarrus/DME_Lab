@@ -179,3 +179,59 @@ NEXT REQUIRED STEP:
 3. perform final Cell-001 adjudication;
 4. decide whether reference-executor Cell-001 standing is BOUNDEDLY_QUALIFIED;
 5. keep installed authoritative executor qualification separate.
+
+
+---
+
+## Cell 001 reference-executor standing
+
+CELL_001_REFERENCE_EXECUTOR:
+BOUNDEDLY_QUALIFIED
+
+CLAIM:
+
+At the tested executor/policy coordinates,
+a one-byte post-approval input identity substitution
+was detected by fresh pre-call revalidation and
+did not reach the model invocation boundary.
+
+CLAIM CEILING:
+
+This standing applies to the tested reference executor / policy coordinates only.
+
+It does NOT establish:
+- installed authoritative executor qualification;
+- replay resistance;
+- denial closure;
+- executor mutation safety;
+- policy mutation safety;
+- endpoint integrity generally;
+- model invocation security generally;
+- broader capability safety.
+
+## Next phase
+
+PROMOTION TARGET:
+INSTALLED AUTHORITATIVE EXECUTOR
+
+SEQUENCE:
+
+1. canonicalize / push the exact Cell-001 implementation and trace;
+2. verify the pushed implementation bytes;
+3. deliberately promote the reviewed executor/policy into the local trust root;
+4. record installed executor hash and policy hash;
+5. rerun Cell-001 control and pressure against the installed authority-bearing path;
+6. require the same claim ceiling and fail-closed result;
+7. only after installed-path qualification consider Cell 002 replay.
+
+FREEZE:
+
+REFERENCE EXECUTOR QUALIFIED
+!=
+INSTALLED EXECUTOR QUALIFIED
+
+and:
+
+CANDIDATE SECURITY PROPERTY
+!=
+OPERATIVE AUTHORITY PROPERTY
