@@ -26,7 +26,7 @@ import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -79,6 +79,48 @@ def emit_rejection_witness(witness: dict[str, Any]) -> None:
         "[REJECT] "
         + json.dumps(witness, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
     )
+
+
+def retained_reviewed_input_candidate(
+    manifest: dict[str, Any],
+    reviewed_prompt_bytes: bytes,
+) -> bytes:
+    """Return the reviewed bytes on the ordinary production path."""
+
+    del manifest
+    return reviewed_prompt_bytes
+
+
+def postapproval_input_identity_rejection_witness(
+    manifest: dict[str, Any],
+    reviewed_prompt_bytes: bytes,
+    execution_candidate_bytes: bytes,
+    manifest_sha256: str,
+) -> dict[str, Any] | None:
+    """Revalidate the execution candidate after approval and before invocation."""
+
+    reviewed_input_sha256 = sha256_bytes(reviewed_prompt_bytes)
+    execution_candidate_sha256 = sha256_bytes(execution_candidate_bytes)
+    if execution_candidate_sha256 == reviewed_input_sha256:
+        return None
+
+    return {
+        "object_type": "LOCAL_LMSTUDIO_POSTAPPROVAL_REVALIDATION_V0",
+        "request_id": str(manifest["request_id"]),
+        "request_manifest_sha256": manifest_sha256,
+        "source_ref": str(manifest["source_ref"]),
+        "input_path": str(manifest["input_path"]),
+        "declared_input_sha256": str(manifest["input_sha256"]),
+        "reviewed_input_sha256": reviewed_input_sha256,
+        "execution_candidate_sha256": execution_candidate_sha256,
+        "executor_sha256": sha256_bytes(Path(__file__).resolve().read_bytes()),
+        "policy_sha256": sha256_bytes(POLICY_PATH.read_bytes()),
+        "approval_occurred": True,
+        "rejection_after_approval": True,
+        "decision": "REVALIDATE",
+        "reason": "POST_APPROVAL_INPUT_SHA256_MISMATCH",
+        "lmstudio_invoked": False,
+    }
 
 
 def run_git(*args: str, check: bool = True) -> subprocess.CompletedProcess[bytes]:
@@ -316,7 +358,14 @@ def approve(manifest: dict[str, Any], prompt_bytes: bytes) -> bool:
     return answer == "y"
 
 
-def process_once(policy: dict[str, Any]) -> int:
+def process_once(
+    policy: dict[str, Any],
+    *,
+    execution_candidate_provider: Callable[[dict[str, Any], bytes], bytes] = (
+        retained_reviewed_input_candidate
+    ),
+    rejection_witness_sink: Callable[[dict[str, Any]], None] = emit_rejection_witness,
+) -> int:
     remote_head = fetch_remote(policy)
     request_paths = list_request_paths(remote_head, policy)
     executed = 0
@@ -350,7 +399,7 @@ def process_once(policy: dict[str, Any]) -> int:
             prompt_bytes,
         )
         if identity_rejection is not None:
-            emit_rejection_witness(identity_rejection)
+            rejection_witness_sink(identity_rejection)
             continue
 
         if len(prompt_bytes) > int(policy["max_prompt_bytes"]):
@@ -367,10 +416,27 @@ def process_once(policy: dict[str, Any]) -> int:
             print(f"[SKIP] {manifest['request_id']}: local authorization not granted")
             continue
 
+        execution_candidate_bytes = execution_candidate_provider(
+            manifest,
+            prompt_bytes,
+        )
+        if not isinstance(execution_candidate_bytes, bytes):
+            raise TypeError("execution_candidate_provider must return bytes")
+
+        postapproval_rejection = postapproval_input_identity_rejection_witness(
+            manifest,
+            prompt_bytes,
+            execution_candidate_bytes,
+            manifest_sha,
+        )
+        if postapproval_rejection is not None:
+            rejection_witness_sink(postapproval_rejection)
+            continue
+
         try:
             witness = invoke_lmstudio(
                 manifest,
-                prompt_bytes,
+                execution_candidate_bytes,
                 manifest_sha,
                 policy,
                 request_path,
