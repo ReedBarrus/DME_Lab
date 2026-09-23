@@ -940,3 +940,423 @@ DEPENDENCE
 UNRESOLVED BOUNDARY.
 
 Then repeat with the second and third distinction cells.
+
+
+# ==================================================
+# 19. DEPENDENCE PRECEDES DISTINCTION — OPERATIONAL REFINEMENT
+# ==================================================
+
+CURRENT REFINEMENT:
+
+DISTINCTION IS NOT THE PRIMITIVE SOURCE OF STRUCTURE.
+
+DEPENDENCE / LOAD MAY EXIST
+AND MAY ALREADY CARRY CONSEQUENCE
+BEFORE AN ACTOR SYMBOLICALLY RESOLVES IT.
+
+Operational order:
+
+RELATION
+→
+DEPENDENCE
+→
+LOAD
+→
+RUPTURE CONSEQUENCE
+→
+OBSERVATION / WITNESS
+→
+DISTINCTION
+→
+CORRECTION / ACTION
+
+Thus:
+
+TOPOLOGY
+=
+THE RELATIONAL FIELD THAT CARRIES CONTINUITY
+
+DEPENDENCE
+=
+WHERE CONTINUITY RELIES ON ANOTHER REFERENT
+
+LOAD
+=
+WHAT CONTINUITY IS BORNE BY THAT DEPENDENCE
+
+STAKE
+=
+POTENTIAL CONTINUITY LOSS
+UNDER THREAT / RUPTURE OF THAT DEPENDENCE
+
+DISTINCTION
+=
+A LOCAL RESOLUTION OPERATOR
+THAT MAKES THE STRUCTURE LEGIBLE
+AND OPERABLE TO AN ACTOR
+
+CORRECTION
+=
+A TRANSFORMATION THAT REPOSITIONS
+THE LOAD / DEPENDENCE TOPOLOGY
+AFTER PRESSURE REVEALS A WOUND
+
+INVARIANCE
+=
+THE META-TEST OF WHAT SURVIVED
+THE PRESSURE / TRANSFORMATION
+
+# ==================================================
+# 20. WITNESSABILITY AS A DEPENDENCE PROPERTY
+# ==================================================
+
+A dependence rupture may destroy the machinery needed to witness the
+rupture locally.
+
+FREEZE:
+
+NO LOCAL FAILURE RECEIPT
+!=
+NO FAILURE
+
+LOCAL EXPERIENCE
+IS NOT ALWAYS
+SUFFICIENT TO DISCOVER
+LOCAL DEPENDENCE.
+
+Candidate provisional witness classes:
+
+SELF_WITNESSABLE
+
+EXTERNALLY_WITNESSABLE
+
+POST_HOC_RECONSTRUCTABLE
+
+TERMINAL_UNWITNESSED
+
+These are pressure categories, not a frozen ontology.
+
+A TERMINAL dependence rupture is one in which the affected local process
+loses the observation / recording / reconstruction capacity required to
+witness the failure from inside the affected process.
+
+Consequently, dependence topology may impose minimum witness
+architecture requirements:
+
+- external witness;
+- redundant witness;
+- upstream witness;
+- downstream reconstruction;
+- independent monitor;
+- structurally preserved dependence knowledge.
+
+# ==================================================
+# 21. CORRECTIVE INDEPENDENCE
+# ==================================================
+
+A corrective path does not cover a rupture region if it collapses under
+the same dependence failure as the target.
+
+Candidate law:
+
+A CORRECTIVE PATH
+THAT COLLAPSES UNDER
+THE SAME DEPENDENCE RUPTURE
+AS ITS TARGET
+
+DOES NOT COVER
+THAT RUPTURE REGION.
+
+Therefore the Atlas should eventually pressure:
+
+- target dependencies;
+- corrector dependencies;
+- shared failure coupling;
+- corrective independence;
+- recovery path survivability.
+
+# ==================================================
+# 22. STAKE REFINEMENT — ACTOR / DEPENDENCE / DISRUPTOR
+# ==================================================
+
+Earlier shorthand:
+
+STAKE(A → B)
+=
+continuity loss in A under degradation / loss of B
+
+is insufficiently explicit for action analysis.
+
+Refined candidate:
+
+A
+=
+subject / actor / continuity-bearing system
+
+C
+=
+continuity source / dependency
+
+B
+=
+candidate disruptor / perturbation / action
+
+A DEPENDS_ON C
+
+B ACTS_ON C
+or
+B ACTS_ON THE A↔C DEPENDENCE
+
+STAKE_A(B | C)
+=
+POTENTIAL CONSEQUENTIAL DIFFERENCE
+TO A'S CONTINUITY
+IF B DEGRADES OR RUPTURES
+THE DEPENDENCE ON C
+
+The actual realized loss is a consequence event.
+
+Stake is the pre-action evaluative potential induced by the dependence
+and the candidate disruption.
+
+This separates:
+
+STAKE
+!=
+REALIZED LOSS
+
+STAKE
+!=
+GENERIC RELATIONAL PRESSURE
+
+STAKE
+!=
+CONSEQUENTIAL DISTORTION
+
+Consequential distortion is gradual degradation / friction / deformation
+that may increase rupture probability or load concentration without yet
+constituting explicit rupture.
+
+# ==================================================
+# 23. LOAD REDISTRIBUTION AND CASCADE
+# ==================================================
+
+Architectural transformation should ask not only:
+
+WHAT CHANGED?
+
+but:
+
+WHERE DID THE LOAD GO?
+
+Candidate structural events:
+
+LOAD_CONCENTRATION
+
+LOAD_DISPERSION
+
+REDUNDANCY_GAIN
+
+REDUNDANCY_LOSS
+
+CONTINUITY_BOTTLENECK
+
+LOAD_TRANSFER
+
+DEPENDENCE_BIFURCATION
+
+RUPTURE_CASCADE
+
+ISOLATED_FAILURE
+
+CONTAINED_FAILURE
+
+RECOVERABLE_SEVERANCE
+
+TERMINAL_FAILURE
+
+These labels are candidate typed distinctions over observed dependence
+topology, not automatic Atlas truths.
+
+# ==================================================
+# 24. NESTED CONTINUITY HORIZONS
+# ==================================================
+
+A dependence may have multiple distinct horizons:
+
+H_observe
+=
+beyond this region local observation becomes insufficient
+
+H_correct
+=
+beyond this region corrective recovery is unavailable
+
+H_reconstruct
+=
+beyond this region reconstruction loses required provenance
+
+H_authority
+=
+beyond this region authority standing becomes invalid / unresolved
+
+H_operate
+=
+beyond this region the subject ceases to operate
+
+The ordering of these horizons may differ by topology.
+
+Therefore:
+
+CONTINUITY HORIZON
+IS NOT NECESSARILY
+ONE SCALAR BOUNDARY.
+
+It may be a nested family of failure / recovery frontiers.
+
+# ==================================================
+# 25. STATE EXISTENCE != ADMISSIBILITY
+# ==================================================
+
+Do NOT make raw state existence depend on evaluative admission.
+
+That would risk erasing unknown / unadmitted reality.
+
+Freeze:
+
+STATE EXISTS
+!=
+STATE IS ADMITTED
+
+STATE IS OBSERVED
+!=
+STATE IS ADMITTED
+
+STATE IS ADMITTED
+!=
+STATE IS AUTHORIZED
+
+A useful relation is instead:
+
+ADMITTED_STATE_PROJECTION
+DEPENDS_ON
+ADMISSIBILITY
+
+while:
+
+SOURCE / ENVIRONMENTAL STATE
+MAY EXIST
+OUTSIDE THE CURRENT ADMISSION BOUNDARY.
+
+This preserves unresolved external reality.
+
+# ==================================================
+# 26. AUTHORITY != DEPENDENCE; SOVEREIGNTY != AUTARKY
+# ==================================================
+
+Authority is not reducible to dependence.
+
+Current relation:
+
+AUTHORITY
+=
+CONSEQUENCE-LICENSING RELATIONAL STANDING
+
+Authority itself may depend on:
+
+- principal identity;
+- provenance;
+- currentness;
+- scope;
+- capability;
+- corrective coverage.
+
+Likewise:
+
+SOVEREIGNTY
+!=
+SELF-DEPENDENCE
+!=
+NO DEPENDENCIES
+
+A more useful candidate:
+
+SOVEREIGNTY
+=
+BOUNDED SELF-GOVERNANCE
+OVER A LEGIBLE DEPENDENCY PROFILE
+
+with the ability to:
+
+- recognize dependencies;
+- choose or replace dependencies where possible;
+- maintain corrective paths;
+- resist unauthorized external control;
+- preserve continuity across expected perturbations.
+
+Interdependence can be compatible with sovereignty.
+
+# ==================================================
+# 27. SPECULATIVE HYPOTHESIS — STOCHASTICITY / MICRO-RUPTURE
+# ==================================================
+
+Operator hypothesis:
+
+some forms of lossy model behavior may be usefully pressured as
+micro-discontinuities in local symbolic / attentional continuity.
+
+CURRENT STANDING:
+
+SPECULATIVE
+NOT ESTABLISHED
+
+Do not equate stochasticity with rupture without dedicated tests.
+
+Potential future pressure:
+
+hold input / model / sampling controls where possible;
+measure reconstruction / distinction continuity across repeated local
+trajectories;
+test whether observed variance corresponds to identifiable continuity
+breaks or merely ordinary probabilistic variation.
+
+# ==================================================
+# 28. UPDATED IDEA / ATTRIBUTION RECEIPT
+# ==================================================
+
+OPERATOR / REED CONTRIBUTIONS:
+
+- emphasized that dependence can be existentially primary to distinction;
+- identified self-witnessability as a major epistemic property of
+  dependence;
+- proposed environmental witnessing as evidence-pool architecture;
+- refined stake into an actor / continuity-source / disruptor relation;
+- distinguished potential stake from realized loss and from gradual
+  consequential distortion;
+- emphasized rupture cascades and load-bearing continuity joints;
+- proposed dependence + distinction as a fabric for knitting Atlas
+  regions together;
+- questioned authority/dependence and sovereignty/self-dependence,
+  prompting explicit non-collapses.
+
+ASSISTANT / GPT-5.6 SOL CONTRIBUTIONS:
+
+- formalized dependence witness classes;
+- formalized corrective independence;
+- proposed nested continuity horizons;
+- distinguished raw state existence from admissibility-dependent
+  projection;
+- preserved authority as consequence-licensing standing rather than
+  generic dependence;
+- reframed sovereignty as bounded self-governance over a legible
+  dependency profile rather than autarky;
+- preserved stochasticity-as-micro-rupture only as a speculative future
+  pressure target.
+
+CURRENT_STANDING:
+
+PROVISIONAL
++
+ACTIVE DEVELOPMENTAL REGIME
++
+REQUIRES EMPIRICAL PRESSURE
