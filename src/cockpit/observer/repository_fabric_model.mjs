@@ -73,12 +73,26 @@ export function visibleRepositoryObjects(model) {
   const query = model.query.trim().toLowerCase();
   if (!query) return model.objects;
   return model.objects.filter((object) => [
+    object.object_id,
     object.object_kind,
     object.path || '/',
     object.semantic_standing,
     object.git_blob_identity,
     object.content_identity,
+    JSON.stringify(object.address),
   ].some((value) => String(value ?? '').toLowerCase().includes(query)));
+}
+
+export const repositoryQueryMatches = visibleRepositoryObjects;
+
+export function exactRepositoryQueryMatch(model) {
+  const query = model.query.trim();
+  if (!query) return null;
+  return model.objects.find((object) => (
+    object.object_id === query
+    || (object.path || '/') === query
+    || JSON.stringify(object.address) === query
+  )) || visibleRepositoryObjects(model)[0] || null;
 }
 
 export function repositoryObjectRelations(model, objectId) {

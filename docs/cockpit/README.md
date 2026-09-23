@@ -237,8 +237,16 @@ The second command creates the separate commit-bound Repository Address Fabric
 V0. It walks Git objects at the resolved commit, not the mutable worktree, and
 defaults every repository object's semantic standing to `UNINTERPRETED`.
 Inside the composed Cockpit, open `TOPOLOGY` and then `REPOSITORY FABRIC` to
-inspect exact repository, directory, file, and file-version addresses. The
-desktop launcher generates both derived inputs before serving the Cockpit.
+enter the Geometric Repository Projection V0. The projection places every
+repository, directory, file, and file-version object in one deterministic
+relation-driven 3D field while retaining exact addresses in a subordinate
+inspector. Drag to orbit, shift-drag or right-drag to pan, use the wheel to
+dolly, and click to select. Search is focus-only: it highlights and focuses an
+address without deleting non-matches from the field. Structural basis sliders
+deform the same identity-bearing nodes; source rest coordinates remain
+recoverable. Dependency, authority, and consequence channels display
+`UNAVAILABLE` unless their exact source relations exist. The desktop launcher
+generates both derived inputs before serving the Cockpit.
 
 Serve the repository and open the observer:
 
