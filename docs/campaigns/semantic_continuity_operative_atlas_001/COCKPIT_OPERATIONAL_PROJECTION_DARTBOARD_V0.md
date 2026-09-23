@@ -1325,6 +1325,334 @@ because its purpose is to preserve developmental possibility
 without confusing possibility with standing.
 
 # ==================================================
+# 22. HISTORICAL WOUND REPLAY / CROSS-SEAT COHERENCE
+# ==================================================
+
+PURPOSE:
+
+Use known historical wounds as adversarial specimens for testing whether
+the Atlas and seat ecology preserve semantic continuity across:
+
+different seats
+different local frames
+different projection bases
+different invocation times
+
+without requiring identical internal representations.
+
+TARGET LAW:
+
+SAME SOURCE WOUND
++
+DIFFERENT SEAT
++
+DIFFERENT LOCAL FRAME
+
+MUST STILL PRESERVE
+CHALLENGEABLE SOURCE IDENTITY
+AND
+TRANSLATABLE CORE DISTINCTIONS.
+
+Candidate old wound families:
+
+stale currentness
+reference reachability != reference admission
+historical authority != current authority
+message delivered != message accepted
+seat != occupant != invocation
+qualified != currently applicable
+declaration != enforcement
+current truth != decision-time basis
+path identity != content identity
+same object != same projection
+
+Pressure shape:
+
+1. anchor historical wound as addressed Atlas object;
+2. preserve exact source / witness / version basis;
+3. give bounded reconstruction work to Seat A;
+4. give same source object under different local frame to Seat B;
+5. compare emitted distinctions;
+6. identify conserved distinctions;
+7. identify translation wound;
+8. pressure disagreement;
+9. require provenance back to source;
+10. forbid silent canonical merge.
+
+Questions:
+
+Can two seats independently recover the same operational non-collapse?
+
+Can they disagree locally while remaining globally source-compatible?
+
+Can one seat identify a distinction the other missed?
+
+Can a third evaluator reconstruct why the disagreement arose?
+
+Can later invocation recover the wound without replaying the whole conversation?
+
+Can a seat use the recovered distinction in a new task
+without inheriting stale authority?
+
+Candidate success criterion:
+
+CROSS-SEAT SEMANTIC COHERENCE
+=
+independent local reconstructions
+remain mutually translatable
+through shared source-bound addresses
+and explicit distinctions.
+
+Do NOT define coherence as identical prose.
+
+# ==================================================
+# 23. INVOCATION-ENVELOPE LEVERAGE AFTER COHERENCE
+# ==================================================
+
+If cross-seat semantic coherence survives pressure,
+combine it with bounded invocation envelopes.
+
+Target:
+
+shared addressed world
++
+translatable local frames
++
+bounded one-shot / counted authority
++
+recoverable receipts
+
+→
+multiple seats may perform serious coordinated work
+without ambient shared authority.
+
+Candidate pressure:
+
+Seat A evaluates object X.
+
+Seat B receives exact address X
+plus Seat A's registered distinction object.
+
+Seat B independently recognizes:
+source basis
+current standing
+authority standing
+
+Seat B receives bounded invocation authority.
+
+Expected:
+
+semantic continuity survives handoff
+
+authority does NOT transfer from Seat A
+
+execution remains separately admitted
+
+receipt chain preserves which seat caused which consequence.
+
+# ==================================================
+# 24. REAL CONSEQUENCE MEMBRANE — POST-SIMULATION ARC
+# ==================================================
+
+DO NOT FORGET:
+
+Simulation / projection / observability work
+does NOT replace a real security membrane.
+
+After the simulation exploration arc has produced enough evidence,
+build and pressure a genuine consequence membrane at the boundary where
+internal decisions can affect external systems.
+
+Target architecture:
+
+INTERNAL ECOLOGY
+→ ELIGIBILITY
+→ AUTHORITY BOND
+→ CONSEQUENCE MONITOR
+→ ENVIRONMENTAL MEMBRANE
+→ EXTERNAL CONSEQUENCE
+
+Three required contacts:
+
+CONTACT 1 — AUTHORITY BOND
+
+May this consequence begin?
+
+CONTACT 2 — CONSEQUENCE MONITOR
+
+Is realized activity still within the warranted envelope?
+
+CONTACT 3 — ENVIRONMENTAL MEMBRANE
+
+Can out-of-envelope consequence physically / logically propagate?
+
+Core requirement:
+
+AUTHORIZED CONSEQUENCE
+REQUIRES
+A CORRECTIVE RELATION
+THAT CAN ACT ON
+THE SAME CHOKEPOINT.
+
+Corrective authority may:
+
+DENY
+REQUIRE_REVALIDATION
+FREEZE
+REVOKE
+EXPIRE
+REDUCE_REMAINING_USES
+STOP_MANAGED_INSTANCE
+INVALIDATE_MANAGED_CREDENTIAL
+CLOSE_MANAGED_ROUTE
+MARK_RECOVERY_REQUIRED
+QUARANTINE_STATE
+ESCALATE
+
+Corrective authority may NOT:
+
+self-expand its warrant
+mint ambient consequence authority
+bypass the same membrane it governs
+
+Security target:
+
+WHEN SOMETHING DEVIATES,
+
+MAXIMUM UNCORRECTED CONSEQUENCE
+
+SHOULD BE:
+
+SMALL
+LEGIBLE
+BOUNDED
+RECOVERABLE
+AND
+INSIDE A TESTED CORRECTIVE RANGE.
+
+Membrane pressure families:
+
+M01
+stale authority
+
+M02
+wrong principal
+
+M03
+replay
+
+M04
+concurrency
+
+M05
+crash / retry ambiguity
+
+M06
+tool / endpoint substitution
+
+M07
+filesystem escape
+
+M08
+network escape
+
+M09
+process spawning
+
+M10
+credential persistence
+
+M11
+corrective latency
+
+M12
+monitor failure
+
+M13
+membrane bypass
+
+M14
+authority-recognition mismatch
+
+M15
+high consequence + low corrective coverage
+
+Promotion gate:
+
+NO BROAD AUTONOMOUS EXTERNAL CONSEQUENCE
+
+until the real membrane has been independently pressured
+against the relevant consequence classes.
+
+# ==================================================
+# 25. PRIORITY DARTBOARD — EXTENSION
+# ==================================================
+
+After D10:
+
+D11
+Historical wound replay in Atlas.
+
+D12
+Cross-seat semantic coherence.
+
+D13
+Shared operator / seat address selection.
+
+D14
+Frame translation pressure.
+
+D15
+Combine semantic handoff with bounded invocation envelope.
+
+D16
+Persistent event / witness markers.
+
+D17
+External document registration.
+
+D18
+Seat distinction registration.
+
+D19
+Conversation-history ingestion specimen.
+
+D20
+Data-derived high-variance projection bases.
+
+D21
+Adaptive local operator geometry.
+
+D22
+Live runtime field telemetry.
+
+D23
+Bounded autonomous lifecycle projection.
+
+FINAL SECURITY ARC:
+
+D24
+Build real consequence membrane.
+
+D25
+Pressure authority bond.
+
+D26
+Pressure consequence monitor.
+
+D27
+Pressure environmental containment.
+
+D28
+Pressure corrective authority integrity.
+
+D29
+Pressure bypass / crash / concurrency / persistence.
+
+D30
+Only then evaluate broader autonomous external consequence.
+
+# ==================================================
 # CLAIM CEILING
 # ==================================================
 
@@ -1344,5 +1672,7 @@ observation-induced causal effects
 optimal temporal regime
 formal human-machine coupling
 automatic conversation metabolism
+cross-seat semantic coherence
+security membrane correctness
 
 Those remain pressure targets.
