@@ -12,6 +12,10 @@ import {
   aggregateTransitionEmissions,
   emissionScaleRegime,
 } from './repository_temporal_lineage.mjs';
+import {
+  distinctionsForObject,
+  reconstructionHandleFor,
+} from './typed_distinction_registry.mjs';
 
 function escapeHtml(value) {
   return String(value ?? '')
@@ -144,6 +148,44 @@ function renderMissingTemporalSelection(temporalView) {
   `;
 }
 
+function renderDistinctions(object, temporalView) {
+  const registry = temporalView?.typedDistinctionRegistry;
+  const distinctions = distinctionsForObject(registry, object);
+  if (!distinctions.length) {
+    return `
+      <section class="typed-distinction-section">
+        <p class="fabric-kicker">DISTINCTIONS</p>
+        <p class="fabric-missing">NO ADMITTED SOURCE-BOUND DISTINCTIONS</p>
+      </section>
+    `;
+  }
+  return `
+    <section class="typed-distinction-section">
+      <p class="fabric-kicker">DISTINCTIONS</p>
+      ${distinctions.map((distinction) => {
+        const reconstruction = reconstructionHandleFor(registry, distinction.distinction_id);
+        return `
+          <article class="typed-distinction is-${escapeHtml(distinction.standing.toLowerCase())}">
+            <h3>${escapeHtml(distinction.value.left)} != ${escapeHtml(distinction.value.right)}</h3>
+            <dl>
+              ${field('RELATION_TYPE', value(distinction.relation_type))}
+              ${field('STANDING', value(distinction.standing))}
+              ${field('CURRENTNESS', value(distinction.currentness))}
+              ${field('SOURCE_HANDLES', `<pre>${escapeHtml(JSON.stringify(distinction.resolved_source_handles, null, 2))}</pre>`)}
+              ${field('CLAIM_CEILING', value(distinction.claim_ceiling))}
+              ${field('DEPENDENCIES', `<pre>${escapeHtml(JSON.stringify(distinction.dependencies, null, 2))}</pre>`)}
+              ${field('UNRESOLVED', `<pre>${escapeHtml(JSON.stringify(distinction.unresolved, null, 2))}</pre>`)}
+              ${field('CHALLENGE / RECONSTRUCTION HANDLE', reconstruction
+                ? `<pre>${escapeHtml(JSON.stringify(reconstruction, null, 2))}</pre>`
+                : '<span class="fabric-missing">UNAVAILABLE</span>')}
+            </dl>
+          </article>
+        `;
+      }).join('')}
+    </section>
+  `;
+}
+
 function renderInspector(model, geometricField, episode, operatorState, temporalView) {
   const object = selectedRepositoryObject(model);
   if (!object) return '<aside class="fabric-inspector">NO OBJECT SELECTED</aside>';
@@ -172,6 +214,7 @@ function renderInspector(model, geometricField, episode, operatorState, temporal
         : ''}
       ${renderMissingTemporalSelection(temporalView)}
       ${renderTransitionChallenge(temporalView)}
+      ${renderDistinctions(object, temporalView)}
       <dl>
         ${field('OBJECT_ID', value(object.object_id))}
         ${field('OBJECT_KIND', value(object.object_kind))}

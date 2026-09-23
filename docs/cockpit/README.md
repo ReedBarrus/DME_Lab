@@ -231,6 +231,8 @@ Generate its ignored, derived JSON input:
 ```text
 python -m src.cockpit.generate_projection --repo . --source-ref HEAD --freshness-ref origin/main --output generated/cockpit_projection.json
 python -m src.cockpit.repository_address_fabric --repo . --source-ref HEAD --output generated/repository_address_fabric.json
+python -m src.cockpit.repository_temporal_lineage --repo . --source-ref HEAD --output generated/repository_temporal_lineage.json
+python -m src.cockpit.typed_distinction_registry --registry docs/campaigns/semantic_continuity_operative_atlas_001/TYPED_DISTINCTION_REGISTRY_V0.jsonl --temporal-lineage generated/repository_temporal_lineage.json --output generated/typed_distinction_registry_v0.json
 ```
 
 The second command creates the separate commit-bound Repository Address Fabric
@@ -782,3 +784,21 @@ The first wound replay follows
 `PATH_IDENTITY != CONTENT_IDENTITY`. It establishes exact commit, path, blob,
 and transition relations while leaving seat attribution and semantic cause
 unresolved.
+
+## Typed distinction registry Cell 001
+
+The source-controlled V0 registry contains one bounded candidate relation:
+`PATH_IDENTITY != CONTENT_IDENTITY` for the exact historical
+`repository_fabric_app.mjs` specimen. At launch, the deterministic registry
+projection resolves its exact adjacent commits, trees, path, and blobs against
+the temporal lineage before it can become `ADMITTED_BOUNDED`.
+
+The Atlas inspector projects that admitted distinction over the same file
+object. It exposes standing, historical currentness, exact source handles,
+claim ceiling, dependencies, unresolveds, and a reconstruction handle. The
+projection does not create a second repository object, a mechanical edge, a
+dependence relation, authority, execution standing, or semantic causation.
+
+The canonical JSONL record is source truth for this candidate cell; the JSON
+under `generated/` is derived read-only projection data and fails closed when
+the source specimen cannot be resolved.

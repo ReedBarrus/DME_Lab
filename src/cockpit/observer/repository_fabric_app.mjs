@@ -45,6 +45,10 @@ import {
   setWoundStep,
   toggleActorLayer,
 } from './repository_temporal_lineage.mjs';
+import {
+  TYPED_DISTINCTION_REGISTRY_PATH,
+  buildTypedDistinctionRegistryModel,
+} from './typed_distinction_registry.mjs';
 
 const root = document.querySelector('#repository-fabric-root');
 let model = null;
@@ -58,10 +62,16 @@ let temporalLineage = null;
 let temporalState = null;
 let emissionLedger = null;
 let episodeTrace = null;
+let typedDistinctionRegistry = null;
 
 function temporalView() {
   if (!temporalLineage || !temporalState) return null;
-  return {lineage: temporalLineage, state: temporalState, emissionLedger};
+  return {
+    lineage: temporalLineage,
+    state: temporalState,
+    emissionLedger,
+    typedDistinctionRegistry,
+  };
 }
 
 function updateCameraCoordinate() {
@@ -326,11 +336,14 @@ function moveToTemporalFrame(frameIndex, stateOverride = null) {
 
 async function load() {
   try {
-    const [response, temporalResponse] = await Promise.all([
+    const [response, temporalResponse, distinctionResponse] = await Promise.all([
       fetch(REPOSITORY_FABRIC_PATH, {
         method: 'GET', cache: 'no-store', credentials: 'same-origin',
       }),
       fetch(REPOSITORY_TEMPORAL_LINEAGE_PATH, {
+        method: 'GET', cache: 'no-store', credentials: 'same-origin',
+      }),
+      fetch(TYPED_DISTINCTION_REGISTRY_PATH, {
         method: 'GET', cache: 'no-store', credentials: 'same-origin',
       }),
     ]);
@@ -340,6 +353,12 @@ async function load() {
       model = reconstructTemporalFrame(temporalLineage, temporalLineage.frames.length - 1);
       temporalState = createTemporalOperatorState(temporalLineage, model);
       emissionLedger = buildTransitionEmissionLedger(model);
+      if (distinctionResponse.ok) {
+        typedDistinctionRegistry = buildTypedDistinctionRegistryModel(
+          await distinctionResponse.json(),
+          temporalLineage,
+        );
+      }
     } else {
       model = buildRepositoryFabricModel(await response.json());
     }

@@ -23,6 +23,9 @@ REPOSITORY_FABRIC_RELATIVE_PATH = Path(
 REPOSITORY_TEMPORAL_LINEAGE_RELATIVE_PATH = Path(
     "generated/repository_temporal_lineage.json"
 )
+TYPED_DISTINCTION_REGISTRY_RELATIVE_PATH = Path(
+    "generated/typed_distinction_registry_v0.json"
+)
 CONFIG_FILENAME = "cockpit.json"
 APP_NAME = "DME Cockpit"
 
@@ -222,6 +225,10 @@ def generate_projection_for_launch(
     from src.cockpit.repository_temporal_lineage import (
         generate_repository_temporal_lineage,
     )
+    from src.cockpit.typed_distinction_registry import (
+        REGISTRY_RELATIVE_PATH,
+        generate_typed_distinction_registry_projection,
+    )
 
     model = generate_projection(
         repo=repo_root,
@@ -234,10 +241,15 @@ def generate_projection_for_launch(
         source_ref=source_ref,
         output=repo_root / REPOSITORY_FABRIC_RELATIVE_PATH,
     )
-    generate_repository_temporal_lineage(
+    temporal_model = generate_repository_temporal_lineage(
         repo=repo_root,
         source_ref=source_ref,
         output=repo_root / REPOSITORY_TEMPORAL_LINEAGE_RELATIVE_PATH,
+    )
+    generate_typed_distinction_registry_projection(
+        registry_path=repo_root / REGISTRY_RELATIVE_PATH,
+        temporal_lineage=temporal_model,
+        output=repo_root / TYPED_DISTINCTION_REGISTRY_RELATIVE_PATH,
     )
     return model
 

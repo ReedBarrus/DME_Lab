@@ -137,7 +137,7 @@ class DesktopCockpitLauncherTest(unittest.TestCase):
                 server.server_close()
                 thread.join(timeout=5.0)
 
-    def test_launch_generation_materializes_semantic_address_and_temporal_projections(self) -> None:
+    def test_launch_generation_materializes_semantic_address_temporal_and_distinction_projections(self) -> None:
         repo = Path("C:/synthetic/repo")
         semantic_model = {"repository_state": {"source_commit": "a" * 40}}
         with (
@@ -153,6 +153,10 @@ class DesktopCockpitLauncherTest(unittest.TestCase):
                 "src.cockpit.repository_temporal_lineage.generate_repository_temporal_lineage",
                 return_value={"source_commit": "a" * 40},
             ) as temporal,
+            patch(
+                "src.cockpit.typed_distinction_registry.generate_typed_distinction_registry_projection",
+                return_value={"counts": {"admitted_bounded": 1}},
+            ) as distinctions,
         ):
             result = generate_projection_for_launch(
                 repo,
@@ -175,6 +179,14 @@ class DesktopCockpitLauncherTest(unittest.TestCase):
             repo / "generated" / "repository_temporal_lineage.json",
         )
         self.assertEqual(temporal.call_args.kwargs["source_ref"], "HEAD")
+        self.assertEqual(
+            distinctions.call_args.kwargs["output"],
+            repo / "generated" / "typed_distinction_registry_v0.json",
+        )
+        self.assertEqual(
+            distinctions.call_args.kwargs["temporal_lineage"],
+            {"source_commit": "a" * 40},
+        )
 
     def test_projection_failure_prevents_server_start(self) -> None:
         fake_repo = Path("/synthetic/repo")

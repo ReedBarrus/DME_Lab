@@ -88,6 +88,11 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; over
 .temporal-challenge h3 { color: var(--amber); font-size: .8rem; }
 .temporal-missing-selection { border-left: 3px solid #d79cff; }
 .temporal-missing-selection strong, .temporal-missing-selection code { display: block; margin-bottom: .35rem; }
+.typed-distinction-section { padding: .8rem; border-bottom: 1px solid var(--line); background: linear-gradient(135deg, rgb(90 215 223 / 7%), transparent 72%); }
+.typed-distinction { border: 1px solid rgb(90 215 223 / 42%); }
+.typed-distinction h3 { margin: 0; padding: .65rem; color: var(--cyan); font: 750 .76rem ui-monospace, monospace; }
+.typed-distinction dl { padding: 0 .65rem .65rem; }
+.typed-distinction .fabric-field pre { max-height: 13rem; overflow: auto; overflow-wrap: anywhere; }
 .fabric-episode-operator.is-active { box-shadow: inset 3px 0 0 var(--green); }
 .fabric-episode-operator > button { width: 100%; border-color: var(--green); color: var(--green); }
 .fabric-episode-operator details { margin-top: .65rem; color: var(--muted); font-size: .65rem; }
