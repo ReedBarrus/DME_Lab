@@ -129,3 +129,53 @@ LANE B RESULT
 THREE-WAY ADJUDICATION 001
 
 Cell 002 remains LOCKED.
+
+
+---
+
+## Codex post-approval repair result
+
+STATUS:
+LOCAL / UNCOMMITTED / UNPUSHED
+
+REPORTED CONTROL:
+
+approve
+→ fresh revalidate
+→ invoke
+
+approval calls = 1
+invoke_lmstudio calls = 1
+reviewed hash = execution candidate hash
+
+REPORTED PRESSURE:
+
+approve
+→ post-approval candidate substitution
+→ fresh revalidate
+→ reject
+
+approval calls = 1
+invoke_lmstudio calls = 0
+reviewed hash A != execution candidate hash B
+decision = REVALIDATE
+lmstudio_invoked = false
+mutated bytes = exactly 1
+
+REPORTED REGRESSIONS:
+Cell tests 2/2 PASS
+combined regressions 39/39 PASS
+py_compile PASS
+git diff --check PASS
+
+BOUNDARY:
+
+This evidence is not yet canonical repo evidence because Codex did not commit or push the modified executor, test, or trace artifact.
+
+NEXT REQUIRED STEP:
+
+1. commit/push only the intended Cell-001 repair artifacts;
+2. verify exact pushed bytes;
+3. perform final Cell-001 adjudication;
+4. decide whether reference-executor Cell-001 standing is BOUNDEDLY_QUALIFIED;
+5. keep installed authoritative executor qualification separate.
