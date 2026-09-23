@@ -47,6 +47,9 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; over
 .fabric-legend .directory::before { background: var(--violet); }
 .fabric-legend .file::before { background: var(--cyan); }
 .fabric-legend .file-version::before { background: var(--green); }
+.fabric-legend .seat::before { width: .7rem; height: .7rem; background: #ff7bd5; }
+.fabric-legend .cursor::before { background: var(--amber); }
+.fabric-legend .transition-emission::before { background: transparent; border: 2px solid var(--amber); }
 .fabric-legend .scientific-changed::before { background: #ff9966; }
 .fabric-legend .scientific-held::before { background: #67b7ff; }
 .fabric-legend .scientific-witnessed::before { background: var(--green); }
@@ -72,6 +75,19 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; over
 .fabric-inspector-actions { margin-top: .65rem; display: flex; flex-wrap: wrap; gap: .45rem; }
 .fabric-inspector dl { margin: 0; padding: 0 .8rem; }
 .fabric-episode-operator { background: linear-gradient(135deg, rgb(103 183 255 / 6%), transparent 70%); }
+.fabric-temporal-operator { background: linear-gradient(135deg, rgb(255 190 92 / 8%), transparent 72%); }
+.fabric-temporal-operator > code, .fabric-temporal-operator > small { display: block; margin: .4rem 0; overflow-wrap: anywhere; }
+.fabric-temporal-operator dl { margin: .7rem 0; }
+.fabric-temporal-operator button { margin: .25rem .25rem .25rem 0; }
+.temporal-frame-control { display: grid; gap: .4rem; color: var(--amber); font: 700 .6rem ui-monospace, monospace; }
+.temporal-frame-control input { width: 100%; accent-color: var(--amber); }
+.wound-replay-controls { margin-top: .65rem; padding: .6rem; border: 1px solid rgb(255 190 92 / 45%); }
+.wound-replay-controls strong, .wound-replay-controls button { display: block; width: 100%; margin-bottom: .35rem; }
+.wound-replay-controls button.is-current { border-color: var(--amber); color: var(--amber); }
+.temporal-challenge, .temporal-missing-selection { padding: .8rem; border-bottom: 1px solid var(--line); background: rgb(255 190 92 / 5%); }
+.temporal-challenge h3 { color: var(--amber); font-size: .8rem; }
+.temporal-missing-selection { border-left: 3px solid #d79cff; }
+.temporal-missing-selection strong, .temporal-missing-selection code { display: block; margin-bottom: .35rem; }
 .fabric-episode-operator.is-active { box-shadow: inset 3px 0 0 var(--green); }
 .fabric-episode-operator > button { width: 100%; border-color: var(--green); color: var(--green); }
 .fabric-episode-operator details { margin-top: .65rem; color: var(--muted); font-size: .65rem; }

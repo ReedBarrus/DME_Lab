@@ -137,7 +137,7 @@ class DesktopCockpitLauncherTest(unittest.TestCase):
                 server.server_close()
                 thread.join(timeout=5.0)
 
-    def test_launch_generation_materializes_both_semantic_and_address_projections(self) -> None:
+    def test_launch_generation_materializes_semantic_address_and_temporal_projections(self) -> None:
         repo = Path("C:/synthetic/repo")
         semantic_model = {"repository_state": {"source_commit": "a" * 40}}
         with (
@@ -149,6 +149,10 @@ class DesktopCockpitLauncherTest(unittest.TestCase):
                 "src.cockpit.repository_address_fabric.generate_repository_address_fabric",
                 return_value={"source_commit": "a" * 40},
             ) as fabric,
+            patch(
+                "src.cockpit.repository_temporal_lineage.generate_repository_temporal_lineage",
+                return_value={"source_commit": "a" * 40},
+            ) as temporal,
         ):
             result = generate_projection_for_launch(
                 repo,
@@ -166,6 +170,11 @@ class DesktopCockpitLauncherTest(unittest.TestCase):
             repo / "generated" / "repository_address_fabric.json",
         )
         self.assertEqual(fabric.call_args.kwargs["source_ref"], "HEAD")
+        self.assertEqual(
+            temporal.call_args.kwargs["output"],
+            repo / "generated" / "repository_temporal_lineage.json",
+        )
+        self.assertEqual(temporal.call_args.kwargs["source_ref"], "HEAD")
 
     def test_projection_failure_prevents_server_start(self) -> None:
         fake_repo = Path("/synthetic/repo")

@@ -20,6 +20,7 @@ import {
 import {
   drawGeometricRepositoryField,
   pickGeometricRepositoryObject,
+  pickTransitionEmission,
   renderRepositoryFabric,
   renderRepositoryFabricUnavailable,
 } from './repository_fabric_render.mjs';
@@ -31,6 +32,19 @@ import {
   toggleAtlasInspector,
   toggleScientificEpisode,
 } from './cell002_episode_overlay.mjs';
+import {
+  REPOSITORY_TEMPORAL_LINEAGE_PATH,
+  activateWoundReplay,
+  buildTemporalLineageModel,
+  buildTransitionEmissionLedger,
+  createTemporalOperatorState,
+  moveTemporalFrame,
+  recordTemporalSelection,
+  reconstructTemporalFrame,
+  selectTransitionEmission,
+  setWoundStep,
+  toggleActorLayer,
+} from './repository_temporal_lineage.mjs';
 
 const root = document.querySelector('#repository-fabric-root');
 let model = null;
@@ -40,6 +54,15 @@ let resizeObserver = null;
 let episode = null;
 let episodeError = null;
 let operatorState = createAtlasOperatorState(null);
+let temporalLineage = null;
+let temporalState = null;
+let emissionLedger = null;
+let episodeTrace = null;
+
+function temporalView() {
+  if (!temporalLineage || !temporalState) return null;
+  return {lineage: temporalLineage, state: temporalState, emissionLedger};
+}
 
 function updateCameraCoordinate() {
   const output = root.querySelector('[data-camera-coordinate]');
@@ -57,6 +80,7 @@ function draw() {
     geometricField,
     episode,
     operatorState,
+    temporalView(),
   );
   updateCameraCoordinate();
 }
@@ -95,9 +119,16 @@ function bindCanvas() {
     pointer.active = false;
     if (!pointer.moved && frame) {
       const point = pointerCoordinate(canvas, event);
+      const emissionId = pickTransitionEmission(frame, point.x, point.y);
+      if (emissionId && temporalState) {
+        temporalState = selectTransitionEmission(temporalState, emissionId);
+        render();
+        return;
+      }
       const objectId = pickGeometricRepositoryObject(frame, geometricField, point.x, point.y);
       if (objectId) {
         model = selectRepositoryObject(model, objectId);
+        if (temporalState) temporalState = recordTemporalSelection(temporalState, model.objectById[objectId]);
         render();
       }
     }
@@ -145,12 +176,32 @@ function render() {
     operatorState,
     episode,
     episodeError,
+    temporalView(),
   );
   bindCanvas();
   draw();
 }
 
 root.addEventListener('click', async (event) => {
+  if (event.target.closest('[data-toggle-actor-layer]') && temporalState) {
+    temporalState = toggleActorLayer(temporalState);
+    render();
+    return;
+  }
+  if (event.target.closest('[data-activate-wound]') && temporalState && temporalLineage) {
+    const next = activateWoundReplay(temporalState, temporalLineage);
+    moveToTemporalFrame(next.frameIndex, next);
+    return;
+  }
+  const woundStep = event.target.closest('[data-wound-step]');
+  if (woundStep && temporalState && temporalLineage) {
+    const next = setWoundStep(temporalState, temporalLineage, woundStep.dataset.woundStep);
+    moveToTemporalFrame(next.frameIndex, next);
+    const eventId = temporalLineage.woundReplay.steps[next.woundStep]?.event_id;
+    temporalState = selectTransitionEmission(temporalState, eventId);
+    render();
+    return;
+  }
   if (event.target.closest('[data-toggle-episode]')) {
     operatorState = toggleScientificEpisode(operatorState, episode);
     render();
@@ -198,6 +249,10 @@ root.addEventListener('click', async (event) => {
 });
 
 root.addEventListener('input', (event) => {
+  if (event.target.matches('[data-temporal-frame]') && temporalState && temporalLineage) {
+    moveToTemporalFrame(event.target.value);
+    return;
+  }
   if (event.target.matches('[data-repository-query]')) {
     model = setRepositoryQuery(model, event.target.value);
     const count = root.querySelector('[data-query-count]');
@@ -229,19 +284,65 @@ root.addEventListener('keydown', (event) => {
   const object = exactRepositoryQueryMatch(model);
   if (!object) return;
   model = selectRepositoryObject(model, object.object_id);
+  if (temporalState) temporalState = recordTemporalSelection(temporalState, object);
   focusFieldObject(geometricField, object.object_id);
   render();
 });
 
+function rebuildEpisodeForFrame() {
+  const inspectorCollapsed = operatorState.inspectorCollapsed;
+  if (!episodeTrace || (temporalLineage
+      && model.source.source_commit !== temporalLineage.source.source_commit)) {
+    episode = null;
+    episodeError = 'Cell 002 episode basis is not present at the selected historical frame.';
+    operatorState = {...createAtlasOperatorState(null), inspectorCollapsed};
+    return;
+  }
+  try {
+    episode = buildCell002EpisodeOverlay(model, episodeTrace);
+    episodeError = null;
+    operatorState = {...createAtlasOperatorState(episode), inspectorCollapsed};
+  } catch (error) {
+    episode = null;
+    episodeError = error instanceof Error ? error.message : String(error);
+    operatorState = {...createAtlasOperatorState(null), inspectorCollapsed};
+  }
+}
+
+function moveToTemporalFrame(frameIndex, stateOverride = null) {
+  if (!temporalLineage || !temporalState) return;
+  const camera = structuredClone(geometricField.camera);
+  const weights = structuredClone(geometricField.weights);
+  const moved = moveTemporalFrame(stateOverride || temporalState, temporalLineage, frameIndex, model);
+  model = moved.model;
+  temporalState = moved.state;
+  geometricField = buildGeometricRepositoryField(model);
+  geometricField.camera = camera;
+  setGeometricBasisWeights(geometricField, weights);
+  emissionLedger = buildTransitionEmissionLedger(model);
+  rebuildEpisodeForFrame();
+  render();
+}
+
 async function load() {
   try {
-    const response = await fetch(REPOSITORY_FABRIC_PATH, {
-      method: 'GET',
-      cache: 'no-store',
-      credentials: 'same-origin',
-    });
+    const [response, temporalResponse] = await Promise.all([
+      fetch(REPOSITORY_FABRIC_PATH, {
+        method: 'GET', cache: 'no-store', credentials: 'same-origin',
+      }),
+      fetch(REPOSITORY_TEMPORAL_LINEAGE_PATH, {
+        method: 'GET', cache: 'no-store', credentials: 'same-origin',
+      }),
+    ]);
     if (!response.ok) throw new Error(`source fetch failed with HTTP ${response.status}`);
-    model = buildRepositoryFabricModel(await response.json());
+    if (temporalResponse.ok) {
+      temporalLineage = buildTemporalLineageModel(await temporalResponse.json());
+      model = reconstructTemporalFrame(temporalLineage, temporalLineage.frames.length - 1);
+      temporalState = createTemporalOperatorState(temporalLineage, model);
+      emissionLedger = buildTransitionEmissionLedger(model);
+    } else {
+      model = buildRepositoryFabricModel(await response.json());
+    }
     geometricField = buildGeometricRepositoryField(model);
     try {
       const episodeResponse = await fetch(CELL002_EPISODE_TRACE_PATH, {
@@ -252,9 +353,24 @@ async function load() {
       if (!episodeResponse.ok) {
         throw new Error(`episode source fetch failed with HTTP ${episodeResponse.status}`);
       }
-      episode = buildCell002EpisodeOverlay(model, await episodeResponse.json());
-      operatorState = createAtlasOperatorState(episode);
+      episodeTrace = await episodeResponse.json();
+      rebuildEpisodeForFrame();
       const requestedView = new URL(window.location.href).searchParams;
+      if (temporalState && temporalLineage) {
+        if (requestedView.has('wound')) {
+          const next = setWoundStep(temporalState, temporalLineage, requestedView.get('wound'));
+          moveToTemporalFrame(next.frameIndex, next);
+          temporalState = selectTransitionEmission(
+            temporalState,
+            temporalLineage.woundReplay.steps[temporalState.woundStep]?.event_id,
+          );
+        } else if (requestedView.has('frame')) {
+          moveToTemporalFrame(requestedView.get('frame'));
+        }
+        if (requestedView.get('actors') === 'on' && !temporalState.actorLayer) {
+          temporalState = toggleActorLayer(temporalState);
+        }
+      }
       if (requestedView.get('overlay') === 'cell002') {
         operatorState = toggleScientificEpisode(operatorState, episode);
       }
@@ -264,6 +380,7 @@ async function load() {
         const object = exactRepositoryQueryMatch(model);
         if (object) {
           model = selectRepositoryObject(model, object.object_id);
+          if (temporalState) temporalState = recordTemporalSelection(temporalState, object);
           focusFieldObject(geometricField, object.object_id);
         }
       }

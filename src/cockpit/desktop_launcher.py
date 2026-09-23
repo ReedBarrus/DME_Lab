@@ -20,6 +20,9 @@ PROJECTION_RELATIVE_PATH = Path("generated/cockpit_projection.json")
 REPOSITORY_FABRIC_RELATIVE_PATH = Path(
     "generated/repository_address_fabric.json"
 )
+REPOSITORY_TEMPORAL_LINEAGE_RELATIVE_PATH = Path(
+    "generated/repository_temporal_lineage.json"
+)
 CONFIG_FILENAME = "cockpit.json"
 APP_NAME = "DME Cockpit"
 
@@ -216,6 +219,9 @@ def generate_projection_for_launch(
     from src.cockpit.repository_address_fabric import (
         generate_repository_address_fabric,
     )
+    from src.cockpit.repository_temporal_lineage import (
+        generate_repository_temporal_lineage,
+    )
 
     model = generate_projection(
         repo=repo_root,
@@ -227,6 +233,11 @@ def generate_projection_for_launch(
         repo=repo_root,
         source_ref=source_ref,
         output=repo_root / REPOSITORY_FABRIC_RELATIVE_PATH,
+    )
+    generate_repository_temporal_lineage(
+        repo=repo_root,
+        source_ref=source_ref,
+        output=repo_root / REPOSITORY_TEMPORAL_LINEAGE_RELATIVE_PATH,
     )
     return model
 

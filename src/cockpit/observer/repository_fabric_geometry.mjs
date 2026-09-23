@@ -9,8 +9,10 @@ export const DYNAMIC_BASIS_V0 = Object.freeze({
   consequence: 0.50,
 });
 
-const DEPENDENCY_RELATIONS = new Set(['DEPENDS_ON', 'IMPORTS', 'REFERENCES']);
-const STRUCTURAL_RELATIONS = new Set(['CONTAINS', 'HAS_VERSION']);
+const DEPENDENCY_RELATIONS = new Set([
+  'DEPENDS_ON', 'IMPORTS', 'REFERENCES', 'SEAT_HAS_CURSOR', 'CURSOR_REFERENCES_STATE',
+]);
+const STRUCTURAL_RELATIONS = new Set(['CONTAINS', 'HAS_VERSION', 'PROJECTS_ACTOR']);
 const GOLDEN_ANGLE = Math.PI * (3 - Math.sqrt(5));
 
 const zero = () => ({x: 0, y: 0, z: 0});
@@ -60,6 +62,8 @@ function orderedChildren(children, objectById) {
 
 function localRadius(parent, child, depth, siblingCount) {
   if (child.object_kind === 'file_version') return 0;
+  if (child.object_kind === 'seat') return 520;
+  if (child.object_kind === 'cursor') return 430;
   const density = Math.max(1, Math.cbrt(siblingCount));
   if (parent.object_kind === 'repository') {
     return child.object_kind === 'directory'
@@ -131,7 +135,8 @@ export function buildGeometricRepositoryField(model) {
     for (let index = 0; index < childIds.length; index += 1) {
       const childId = childIds[index];
       const child = model.objectById[childId];
-      const unit = deterministicUnit(`${model.source.source_commit}:${objectId}`, index, childIds.length);
+      const layoutIdentity = model.source.layout_identity || model.source.source_commit;
+      const unit = deterministicUnit(`${layoutIdentity}:${objectId}`, index, childIds.length);
       const radius = localRadius(object, child, depth + 1, childIds.length);
       const jitter = 0.82 + (hash32(childId) % 3700) / 10000;
       place(childId, add(parentPosition, scale(unit, radius * jitter)), depth + 1);
@@ -341,9 +346,13 @@ export function projectFieldPoint(point, camera, width, height) {
 }
 
 export function repositoryFieldRelationCounts(field) {
-  return {
+  const counts = {
     containment: field.structuralEdges.filter((edge) => edge.relation === 'CONTAINS').length,
     version: field.structuralEdges.filter((edge) => edge.relation === 'HAS_VERSION').length,
-    dependency: field.dependencyEdges.length,
+    dependency: field.dependencyEdges.filter((edge) => DEPENDENCY_RELATIONS.has(edge.relation)
+      && !['SEAT_HAS_CURSOR', 'CURSOR_REFERENCES_STATE'].includes(edge.relation)).length,
   };
+  const actor = field.dependencyEdges.filter((edge) => ['SEAT_HAS_CURSOR', 'CURSOR_REFERENCES_STATE'].includes(edge.relation)).length;
+  if (actor) counts.actor = actor;
+  return counts;
 }

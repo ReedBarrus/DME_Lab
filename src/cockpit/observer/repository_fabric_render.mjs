@@ -8,6 +8,10 @@ import {
   selectedRepositoryObject,
 } from './repository_fabric_model.mjs';
 import { classificationsForObject } from './cell002_episode_overlay.mjs';
+import {
+  aggregateTransitionEmissions,
+  emissionScaleRegime,
+} from './repository_temporal_lineage.mjs';
 
 function escapeHtml(value) {
   return String(value ?? '')
@@ -96,7 +100,51 @@ function renderScientificChallenge(episode, object) {
   `;
 }
 
-function renderInspector(model, geometricField, episode, operatorState) {
+function renderTransitionChallenge(temporalView) {
+  const eventId = temporalView?.state?.selectedEmissionId;
+  const emission = eventId ? temporalView.emissionLedger?.eventById[eventId] : null;
+  if (!emission) return '';
+  const event = emission.mechanical_diff;
+  return `
+    <section class="temporal-challenge">
+      <p class="fabric-kicker">TRANSITION CHALLENGE - SOURCE-SUPPORTED EMISSION</p>
+      <h3>${escapeHtml(event.classifications.join(' + '))}</h3>
+      <dl>
+        ${field('FROM_FRAME', value(emission.from_frame_id))}
+        ${field('TO_FRAME', value(emission.to_frame_id))}
+        ${field('SOURCE_OBJECT', value(event.old_path, 'NOT_PRESENT'))}
+        ${field('DESTINATION_OBJECT', value(event.new_path, 'NOT_PRESENT'))}
+        ${field('MECHANICAL_DIFF', `<pre>${escapeHtml(JSON.stringify({status: event.status, old_mode: event.old_mode, new_mode: event.new_mode}, null, 2))}</pre>`)}
+        ${field('BLOB IDENTITIES', `<pre>${escapeHtml(JSON.stringify({before: event.old_object_sha, after: event.new_object_sha}, null, 2))}</pre>`)}
+        ${field('RELATIONS ADDED / REMOVED', `<pre>${escapeHtml(JSON.stringify(event.relation_changes, null, 2))}</pre>`)}
+        ${field('DECLARED OPERATIONAL RELATIONS', `<pre>${escapeHtml(JSON.stringify(event.declared_operational_relations || [], null, 2))}</pre>`)}
+        ${field('IDENTITY BASIS', value(event.identity_basis))}
+        ${field('ACTOR LINEAGE', value(emission.actor_lineage))}
+        ${field('SEMANTIC LINEAGE', value(emission.semantic_lineage))}
+        ${field('SOURCE HANDLES', renderSourceHandles(emission.source_handles.map((handle) => ({
+          handleKind: handle.handle_kind,
+          observedValue: handle,
+        }))))}
+      </dl>
+    </section>
+  `;
+}
+
+function renderMissingTemporalSelection(temporalView) {
+  const state = temporalView?.state;
+  if (!state || state.selectionStanding === 'PRESENT_IN_FRAME') return '';
+  return `
+    <section class="temporal-missing-selection">
+      <strong>${escapeHtml(state.selectionStanding)}</strong>
+      <code>${escapeHtml(state.missingSelection?.temporalIdentity)}</code>
+      ${state.missingSelection?.transitionEventId
+        ? `<code>${escapeHtml(state.missingSelection.transitionEventId)}</code>` : ''}
+      <p>No synthetic persistence or rename continuity was created.</p>
+    </section>
+  `;
+}
+
+function renderInspector(model, geometricField, episode, operatorState, temporalView) {
   const object = selectedRepositoryObject(model);
   if (!object) return '<aside class="fabric-inspector">NO OBJECT SELECTED</aside>';
   if (operatorState?.inspectorCollapsed) {
@@ -122,6 +170,8 @@ function renderInspector(model, geometricField, episode, operatorState) {
       ${operatorState?.overlay === 'SCIENTIFIC_EPISODE' && episode
         ? renderScientificChallenge(episode, object)
         : ''}
+      ${renderMissingTemporalSelection(temporalView)}
+      ${renderTransitionChallenge(temporalView)}
       <dl>
         ${field('OBJECT_ID', value(object.object_id))}
         ${field('OBJECT_KIND', value(object.object_kind))}
@@ -137,11 +187,76 @@ function renderInspector(model, geometricField, episode, operatorState) {
         ${field('CONTENT_IDENTITY', value(object.content_identity))}
         ${field('EXISTENCE_STANDING', value(object.existence_standing))}
         ${field('SEMANTIC_STANDING', value(object.semantic_standing))}
+        ${object.object_kind === 'seat' || object.object_kind === 'cursor'
+          ? field('ACTOR SOURCE', `<pre>${escapeHtml(JSON.stringify(object.source_artifact, null, 2))}</pre>`)
+          : ''}
+        ${object.object_kind === 'seat'
+          ? field('SEAT / OCCUPANT / AUTHORITY', `<pre>${escapeHtml(JSON.stringify({
+            seat_id: object.seat_id,
+            consumer_id: object.consumer_id,
+            trigger_state: object.trigger_state,
+            occupant_binding: object.occupant_binding,
+            authority_effect: object.authority_effect,
+            execution_effect: object.execution_effect,
+          }, null, 2))}</pre>`)
+          : ''}
+        ${object.object_kind === 'cursor'
+          ? field('CURSOR COORDINATE', `<pre>${escapeHtml(JSON.stringify({
+            consumer_id: object.consumer_id,
+            cursor_state: object.cursor_state,
+            last_seen_event_id: object.last_seen_event_id,
+            bootstrap_mode: object.bootstrap_mode,
+          }, null, 2))}</pre>`)
+          : ''}
         ${field('TYPED_PROJECTIONS', typed)}
         ${field('MECHANICAL_RELATIONS', renderRelations(model, object))}
         ${field('CANONICAL_ADDRESS', `<pre class="fabric-address">${escapeHtml(address)}</pre>`)}
       </dl>
     </aside>
+  `;
+}
+
+function renderTemporalOperator(temporalView) {
+  if (!temporalView?.lineage) {
+    return `<section class="fabric-temporal-operator is-unavailable"><p class="fabric-kicker">TEMPORAL LINEAGE</p><strong>UNAVAILABLE</strong></section>`;
+  }
+  const {lineage, state, emissionLedger} = temporalView;
+  const frame = lineage.frames[state.frameIndex];
+  const incoming = emissionLedger?.transition;
+  const wound = lineage.woundReplay;
+  const woundStep = state.woundActive ? wound.steps[state.woundStep] : null;
+  return `
+    <section class="fabric-temporal-operator">
+      <p class="fabric-kicker">TEMPORAL LINEAGE OPERATOR V0</p>
+      <label class="temporal-frame-control">
+        <span>FRAME ${state.frameIndex + 1} / ${lineage.frames.length}</span>
+        <input type="range" min="0" max="${lineage.frames.length - 1}" step="1"
+          value="${state.frameIndex}" data-temporal-frame>
+      </label>
+      <code>${escapeHtml(frame.commit_sha)}</code>
+      <small>${escapeHtml(frame.subject)}</small>
+      <dl>
+        ${field('FRAME_ID', value(frame.frame_id))}
+        ${field('TREE_IDENTITY', value(frame.tree_sha))}
+        ${field('GIT_AUTHOR - METADATA ONLY', `<pre>${escapeHtml(JSON.stringify(frame.git_author, null, 2))}</pre>`)}
+        ${field('SEAT_ACTOR', value('UNRESOLVED UNLESS EXPLICIT SOURCE BINDS TRANSITION'))}
+        ${field('INCOMING_TRANSITION', value(incoming?.transition_id, 'ROOT FRAME'))}
+        ${field('TRANSITION EVENTS', value(incoming?.event_count, '0'))}
+      </dl>
+      <button type="button" data-toggle-actor-layer>${state.actorLayer ? 'HIDE' : 'SHOW'} SEATS / CURSORS</button>
+      <button type="button" data-activate-wound>${state.woundActive ? 'RESTART' : 'REPLAY'} PATH IDENTITY WOUND</button>
+      ${state.woundActive ? `
+        <div class="wound-replay-controls">
+          <strong>${escapeHtml(wound.family)}</strong>
+          ${wound.steps.map((step, index) => `
+            <button type="button" data-wound-step="${index}" class="${index === state.woundStep ? 'is-current' : ''}">
+              ${index + 1}. ${escapeHtml(step.mechanical_diff.classifications.join(' + '))}
+            </button>
+          `).join('')}
+          <p>ACTOR: ${escapeHtml(woundStep.actor_lineage)} / SEMANTIC CAUSE: ${escapeHtml(woundStep.semantic_lineage)}</p>
+        </div>
+      ` : ''}
+    </section>
   `;
 }
 
@@ -202,6 +317,7 @@ export function renderRepositoryFabric(
   operatorState = {overlay: 'NONE', episodeStep: 0, inspectorCollapsed: false},
   episode = null,
   episodeError = null,
+  temporalView = null,
 ) {
   const source = model.source;
   const counts = repositoryFieldRelationCounts(geometricField);
@@ -252,6 +368,8 @@ export function renderRepositoryFabric(
             <span class="directory">DIRECTORY VOLUME</span>
             <span class="file">FILE</span>
             <span class="file-version">FILE VERSION</span>
+            ${temporalView?.state?.actorLayer ? '<span class="seat">SEAT</span><span class="cursor">CURSOR</span>' : ''}
+            ${temporalView?.emissionLedger?.events?.length ? '<span class="transition-emission">TRANSITION EMISSION</span>' : ''}
             <span>ALL SEMANTIC STANDING VISIBLE</span>
             ${operatorState.overlay === 'SCIENTIFIC_EPISODE' ? `
               <span class="scientific-changed">CHANGED</span>
@@ -264,6 +382,7 @@ export function renderRepositoryFabric(
         </section>
         <aside class="fabric-dock" data-independent-inspector-dock>
           <div class="fabric-operators">
+          ${renderTemporalOperator(temporalView)}
           ${renderEpisodeOperator(episode, operatorState, episodeError)}
           <section class="fabric-structural-operator">
             <p class="fabric-kicker">STRUCTURAL_BASIS_V0</p>
@@ -284,10 +403,11 @@ export function renderRepositoryFabric(
               <div><dt>CONTAINS</dt><dd>${counts.containment}</dd></div>
               <div><dt>HAS_VERSION</dt><dd>${counts.version}</dd></div>
               <div><dt>DEPENDENCY / REFERENCE</dt><dd>${counts.dependency || 'UNAVAILABLE'}</dd></div>
+              <div><dt>EXPLICIT ACTOR RELATIONS</dt><dd>${counts.actor || 'NONE IN FRAME'}</dd></div>
             </dl>
           </section>
           </div>
-          ${renderInspector(model, geometricField, episode, operatorState)}
+          ${renderInspector(model, geometricField, episode, operatorState, temporalView)}
         </aside>
       </div>
       <section class="fabric-ceiling">
@@ -314,11 +434,14 @@ function canvasSize(canvas) {
 }
 
 function nodeColor(kind) {
-  return {repository: '#f0f5f3', directory: '#b8a1ff', file: '#5ad7df', file_version: '#78d99a'}[kind] || '#e5eef2';
+  return {
+    repository: '#f0f5f3', directory: '#b8a1ff', file: '#5ad7df', file_version: '#78d99a',
+    seat: '#ff7bd5', cursor: '#ffbe5c',
+  }[kind] || '#e5eef2';
 }
 
 function nodeRadius(kind) {
-  return {repository: 7, directory: 4.5, file: 2.5, file_version: 1.8}[kind] || 2;
+  return {repository: 7, directory: 4.5, file: 2.5, file_version: 1.8, seat: 10, cursor: 5.5}[kind] || 2;
 }
 
 function classificationColor(category) {
@@ -337,6 +460,7 @@ export function drawGeometricRepositoryField(
   geometricField,
   episode = null,
   operatorState = null,
+  temporalView = null,
 ) {
   const {width, height, ratio} = canvasSize(canvas);
   const context = canvas.getContext('2d');
@@ -365,6 +489,9 @@ export function drawGeometricRepositoryField(
 
   let renderedRelations = 0;
   for (const edge of [...geometricField.structuralEdges, ...geometricField.dependencyEdges]) {
+    const actorEdge = ['seat', 'cursor'].includes(model.objectById[edge.source_id]?.object_kind)
+      || ['seat', 'cursor'].includes(model.objectById[edge.target_id]?.object_kind);
+    if (actorEdge && !temporalView?.state?.actorLayer) continue;
     const source = projectedById[edge.source_id];
     const target = projectedById[edge.target_id];
     if (!source?.visible || !target?.visible) continue;
@@ -386,6 +513,7 @@ export function drawGeometricRepositoryField(
   const matches = new Set(model.query ? repositoryQueryMatches(model).map((object) => object.object_id) : []);
   const painterOrder = [...geometricField.nodes]
     .filter((node) => projectedById[node.objectId].visible)
+    .filter((node) => !['seat', 'cursor'].includes(node.objectKind) || temporalView?.state?.actorLayer)
     .sort((left, right) => projectedById[right.objectId].depth - projectedById[left.objectId].depth);
   const selectedProjected = projectedById[model.selectedObjectId];
   let localDetailLabels = 0;
@@ -453,6 +581,28 @@ export function drawGeometricRepositoryField(
     }
     renderedObjects += 1;
   }
+  const emissionHits = [];
+  const regime = emissionScaleRegime(geometricField.camera.distance);
+  const emissionGroups = temporalView?.emissionLedger
+    ? aggregateTransitionEmissions(temporalView.emissionLedger, regime)
+    : [];
+  for (const group of emissionGroups) {
+    const points = group.object_ids
+      .map((objectId) => projectedById[objectId])
+      .filter((point) => point?.visible);
+    if (!points.length) continue;
+    const x = points.reduce((sum, point) => sum + point.x, 0) / points.length;
+    const y = points.reduce((sum, point) => sum + point.y, 0) / points.length;
+    const radius = Math.min(30, 7 + Math.sqrt(group.event_ids.length) * 3.4);
+    context.beginPath(); context.arc(x, y, radius, 0, Math.PI * 2);
+    context.strokeStyle = group.classifications.includes('DISAPPEARED') ? '#ff667d'
+      : group.classifications.includes('APPEARED') ? '#78d99a'
+        : group.classifications.includes('IDENTITY_UNRESOLVED') ? '#d79cff' : '#ffbe5c';
+    context.lineWidth = regime === 'LOCAL' ? 1.8 : 2.6;
+    context.setLineDash?.(group.classifications.includes('IDENTITY_UNRESOLVED') ? [4, 4] : []);
+    context.stroke(); context.setLineDash?.([]);
+    emissionHits.push({x, y, radius: radius + 6, event_ids: group.event_ids, aggregate_id: group.aggregate_id});
+  }
   return {
     width,
     height,
@@ -461,7 +611,23 @@ export function drawGeometricRepositoryField(
     renderedRelations,
     overlayClassifiedObjects,
     outOfScopeObjects,
+    emissionRegime: regime,
+    emissionGroups,
+    emissionHits,
   };
+}
+
+export function pickTransitionEmission(frame, x, y) {
+  let best = null;
+  let distanceBest = Infinity;
+  for (const emission of frame?.emissionHits || []) {
+    const distance = Math.hypot(emission.x - x, emission.y - y);
+    if (distance <= emission.radius && distance < distanceBest) {
+      best = emission.event_ids[0] || null;
+      distanceBest = distance;
+    }
+  }
+  return best;
 }
 
 export function pickGeometricRepositoryObject(frame, geometricField, x, y) {

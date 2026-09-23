@@ -748,3 +748,37 @@ Each additional degree of liveness or authority must be earned.
 
 The Cockpit remains an observer-facing projection unless a future pressure
 explicitly requires otherwise.
+
+## Temporal lineage and actor projection V0
+
+The Atlas launch now derives a compact read-only first-parent Git lineage in
+`generated/repository_temporal_lineage.json`. Each frame binds repository
+identity, exact commit, exact root tree, and source-ref context. The first
+frame is reconstructed from its Git tree; every later frame is reconstructed
+by replaying exact adjacent mechanical deltas.
+
+Object identity is conserved only across an adjacent same-path transition or
+an exact Git `R100` rename. A weaker rename score starts a new identity and is
+shown as `IDENTITY_UNRESOLVED`. Missing objects are reported as
+`OBJECT_NOT_PRESENT_IN_FRAME`; they are not silently persisted.
+
+Transition emissions are perceptual projections over the same event ledger.
+Local, regional, and global aggregation retain the exact member event IDs and
+do not create additional evidence or semantic cause.
+
+Seats and cursors appear only from admitted continuity JSON sources. The V0
+actor layer admits the LABBOIB seat manifest and valid cursor files. It can
+derive only:
+
+- `SEAT_HAS_CURSOR` from the exact seat manifest;
+- `CURSOR_REFERENCES_STATE` from the exact cursor coordinate;
+- `CURSOR_ADVANCED_TO` from adjacent, source-bound cursor versions.
+
+Git author and committer metadata remain a separate mechanical layer. They do
+not establish a seat actor, intention, authority, or semantic cause.
+
+The first wound replay follows
+`src/cockpit/observer/repository_fabric_app.mjs` and pressures
+`PATH_IDENTITY != CONTENT_IDENTITY`. It establishes exact commit, path, blob,
+and transition relations while leaving seat attribution and semantic cause
+unresolved.

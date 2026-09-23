@@ -1,6 +1,6 @@
 export const REPOSITORY_FABRIC_PATH = '../../../generated/repository_address_fabric.json';
 
-const ALLOWED_KINDS = new Set(['repository', 'directory', 'file', 'file_version']);
+const ALLOWED_KINDS = new Set(['repository', 'directory', 'file', 'file_version', 'seat', 'cursor']);
 
 function required(object, key, scope) {
   if (object === null || typeof object !== 'object' || !(key in object)) {
