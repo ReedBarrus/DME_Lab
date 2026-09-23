@@ -57,15 +57,29 @@ REPO MUTATION AUTHORITY
 
 ## LOCAL TRUST ROOT STATUS
 
-NOT YET INSTALLED.
+OPERATOR-REPORTED INSTALLED AND HAPPY-PATH EXECUTED.
 
-The repository currently contains only the public/reference bridge implementation and request surface.
-The intended authority-bearing local trust root must be created separately on the operator machine outside the repository.
-
-Recommended location:
+Authoritative local trust-root location:
 
 ```text
 %USERPROFILE%\\.dme_lab_bridge\\
 ```
 
-The local trust root should contain the pinned executor and local policy and must not auto-update from the public repository.
+The installed executor and policy are outside the repository and do not auto-update from GitHub.
+
+Current scientific/security standing:
+
+```text
+TRUST ROOT INSTALLED
+!=
+TRUST ROOT PRESSURE-QUALIFIED
+```
+
+The next authorized security pressure is:
+
+```text
+AUTHORITY_MEMBRANE_SECURITY_CELL_001
+POST-REVIEW INPUT IDENTITY MUTATION
+```
+
+No additional capability class is qualified by the happy-path invocation alone.
