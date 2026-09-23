@@ -23,12 +23,23 @@ import {
   renderRepositoryFabric,
   renderRepositoryFabricUnavailable,
 } from './repository_fabric_render.mjs';
+import {
+  CELL002_EPISODE_TRACE_PATH,
+  buildCell002EpisodeOverlay,
+  createAtlasOperatorState,
+  setEpisodeStep,
+  toggleAtlasInspector,
+  toggleScientificEpisode,
+} from './cell002_episode_overlay.mjs';
 
 const root = document.querySelector('#repository-fabric-root');
 let model = null;
 let geometricField = null;
 let frame = null;
 let resizeObserver = null;
+let episode = null;
+let episodeError = null;
+let operatorState = createAtlasOperatorState(null);
 
 function updateCameraCoordinate() {
   const output = root.querySelector('[data-camera-coordinate]');
@@ -40,7 +51,13 @@ function updateCameraCoordinate() {
 function draw() {
   const canvas = root.querySelector('[data-geometric-field]');
   if (!canvas || !model || !geometricField) return;
-  frame = drawGeometricRepositoryField(canvas, model, geometricField);
+  frame = drawGeometricRepositoryField(
+    canvas,
+    model,
+    geometricField,
+    episode,
+    operatorState,
+  );
   updateCameraCoordinate();
 }
 
@@ -122,12 +139,34 @@ function bindCanvas() {
 }
 
 function render() {
-  root.innerHTML = renderRepositoryFabric(model, geometricField);
+  root.innerHTML = renderRepositoryFabric(
+    model,
+    geometricField,
+    operatorState,
+    episode,
+    episodeError,
+  );
   bindCanvas();
   draw();
 }
 
 root.addEventListener('click', async (event) => {
+  if (event.target.closest('[data-toggle-episode]')) {
+    operatorState = toggleScientificEpisode(operatorState, episode);
+    render();
+    return;
+  }
+  const episodeStep = event.target.closest('[data-episode-step]');
+  if (episodeStep) {
+    operatorState = setEpisodeStep(operatorState, episode, episodeStep.dataset.episodeStep);
+    render();
+    return;
+  }
+  if (event.target.closest('[data-toggle-inspector]')) {
+    operatorState = toggleAtlasInspector(operatorState);
+    render();
+    return;
+  }
   if (event.target.closest('[data-focus-selected]')) {
     focusFieldObject(geometricField, model.selectedObjectId);
     draw();
@@ -204,6 +243,34 @@ async function load() {
     if (!response.ok) throw new Error(`source fetch failed with HTTP ${response.status}`);
     model = buildRepositoryFabricModel(await response.json());
     geometricField = buildGeometricRepositoryField(model);
+    try {
+      const episodeResponse = await fetch(CELL002_EPISODE_TRACE_PATH, {
+        method: 'GET',
+        cache: 'no-store',
+        credentials: 'same-origin',
+      });
+      if (!episodeResponse.ok) {
+        throw new Error(`episode source fetch failed with HTTP ${episodeResponse.status}`);
+      }
+      episode = buildCell002EpisodeOverlay(model, await episodeResponse.json());
+      operatorState = createAtlasOperatorState(episode);
+      const requestedView = new URL(window.location.href).searchParams;
+      if (requestedView.get('overlay') === 'cell002') {
+        operatorState = toggleScientificEpisode(operatorState, episode);
+      }
+      const requestedFocus = requestedView.get('focus');
+      if (requestedFocus) {
+        model = setRepositoryQuery(model, requestedFocus);
+        const object = exactRepositoryQueryMatch(model);
+        if (object) {
+          model = selectRepositoryObject(model, object.object_id);
+          focusFieldObject(geometricField, object.object_id);
+        }
+      }
+    } catch (error) {
+      episodeError = error instanceof Error ? error.message : String(error);
+      operatorState = createAtlasOperatorState(null);
+    }
     render();
   } catch (error) {
     root.innerHTML = renderRepositoryFabricUnavailable(

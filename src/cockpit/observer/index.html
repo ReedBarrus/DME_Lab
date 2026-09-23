@@ -4,32 +4,54 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <title>DME Cockpit — Bounded Projection</title>
+  <title>DME Cockpit - Atlas</title>
   <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./atlas_landing.css">
 </head>
-<body>
+<body class="cockpit-atlas-primary">
   <noscript>
     <section class="load-failure has-diagnostic">
-      <h1>PROJECTION UNAVAILABLE</h1>
-      <p>The plain observer requires JavaScript to render the supplied normalized JSON.</p>
+      <h1>ATLAS UNAVAILABLE</h1>
+      <p>The source-bound geometric Atlas requires JavaScript.</p>
     </section>
   </noscript>
-  <div id="failure-root"></div>
-  <header id="repository-root" aria-live="polite">
-    <p class="loading">Loading normalized Cockpit projection…</p>
+  <header class="atlas-landing-header">
+    <div>
+      <span>DME COCKPIT</span>
+      <strong>ATLAS</strong>
+      <small>ONE WORLD - MANY BASIS-DEPENDENT PROJECTIONS</small>
+    </div>
+    <nav aria-label="Cockpit primary surfaces">
+      <button type="button" data-cockpit-surface="ATLAS" aria-pressed="true">ATLAS</button>
+      <button type="button" data-cockpit-surface="LEGACY_OBSERVER" aria-pressed="false">LEGACY OBSERVER</button>
+    </nav>
   </header>
-  <nav id="navigation-root" aria-label="Current repository navigation"></nav>
-  <div id="view-navigation-root"></div>
-  <section id="instrument-root" aria-live="polite"></section>
-  <section id="runtime-root" aria-live="polite"></section>
-  <section id="control-root" aria-live="polite"></section>
-  <main>
-    <div id="view-root"></div>
-    <div id="diagnostics-root" aria-live="polite"></div>
+  <main id="atlas-primary-root" data-default-cockpit-surface="ATLAS">
+    <iframe
+      id="atlas-primary-frame"
+      src="./repository_fabric.html"
+      title="Primary source-bound geometric repository Atlas"
+    ></iframe>
   </main>
-  <footer>
-    <p>Derived read-only observer. Repository evidence remains authoritative.</p>
-  </footer>
+  <section id="legacy-observer-shell" hidden>
+    <div id="failure-root"></div>
+    <header id="repository-root" aria-live="polite">
+      <p class="loading">Loading normalized Cockpit projection...</p>
+    </header>
+    <nav id="navigation-root" aria-label="Current repository navigation"></nav>
+    <div id="view-navigation-root"></div>
+    <section id="instrument-root" aria-live="polite"></section>
+    <section id="runtime-root" aria-live="polite"></section>
+    <section id="control-root" aria-live="polite"></section>
+    <main>
+      <div id="view-root"></div>
+      <div id="diagnostics-root" aria-live="polite"></div>
+    </main>
+    <footer>
+      <p>Derived read-only observer. Repository evidence remains authoritative.</p>
+    </footer>
+  </section>
   <script type="module" src="./app.mjs"></script>
+  <script type="module" src="./atlas_landing.mjs"></script>
 </body>
 </html>

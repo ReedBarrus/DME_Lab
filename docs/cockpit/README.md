@@ -236,17 +236,26 @@ python -m src.cockpit.repository_address_fabric --repo . --source-ref HEAD --out
 The second command creates the separate commit-bound Repository Address Fabric
 V0. It walks Git objects at the resolved commit, not the mutable worktree, and
 defaults every repository object's semantic standing to `UNINTERPRETED`.
-Inside the composed Cockpit, open `TOPOLOGY` and then `REPOSITORY FABRIC` to
-enter the Geometric Repository Projection V0. The projection places every
+The composed Cockpit now opens directly into the Geometric Repository
+Projection V0 as its primary `ATLAS` surface. The legacy observer remains
+reachable from the landing header without recreating the Atlas. The projection places every
 repository, directory, file, and file-version object in one deterministic
 relation-driven 3D field while retaining exact addresses in a subordinate
-inspector. Drag to orbit, shift-drag or right-drag to pan, use the wheel to
+independently scrolling right dock. Drag to orbit, shift-drag or right-drag to pan, use the wheel to
 dolly, and click to select. Search is focus-only: it highlights and focuses an
 address without deleting non-matches from the field. Structural basis sliders
 deform the same identity-bearing nodes; source rest coordinates remain
 recoverable. Dependency, authority, and consequence channels display
 `UNAVAILABLE` unless their exact source relations exist. The desktop launcher
 generates both derived inputs before serving the Cockpit.
+
+The first source-bound operator is `EPISODE_SCIENTIFIC_OVERLAY_V0` over the
+recorded Cell-002 installed qualification. Its episode identity is derived from
+the exact repository commit and primary-witness content identity. `CHANGED`,
+`HELD_FIXED`, `WITNESSED`, and `UNRESOLVED` markings retain exact source or
+trace-field handles; every other Atlas object is `OUT_OF_SCOPE`, not held fixed.
+The overlay is derived read-only state and creates no live authority, execution,
+control transport, or synthetic runtime state.
 
 Serve the repository and open the observer:
 

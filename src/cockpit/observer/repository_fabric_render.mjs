@@ -7,6 +7,7 @@ import {
   repositoryQueryMatches,
   selectedRepositoryObject,
 } from './repository_fabric_model.mjs';
+import { classificationsForObject } from './cell002_episode_overlay.mjs';
 
 function escapeHtml(value) {
   return String(value ?? '')
@@ -58,9 +59,49 @@ function coordinate(point) {
   return `${point.x.toFixed(3)}, ${point.y.toFixed(3)}, ${point.z.toFixed(3)}`;
 }
 
-function renderInspector(model, geometricField) {
+function renderSourceHandles(handles) {
+  return `<ol class="scientific-source-handles">${handles.map((handle) => `
+    <li>
+      <strong>${escapeHtml(handle.handleKind)}</strong>
+      ${handle.path ? `<code>${escapeHtml(handle.path)}</code>` : ''}
+      ${handle.jsonPointer ? `<code>${escapeHtml(handle.jsonPointer)}</code>` : ''}
+      ${'observedValue' in handle ? `<pre>${escapeHtml(JSON.stringify(handle.observedValue, null, 2))}</pre>` : ''}
+      ${handle.contentIdentity ? `<code>${escapeHtml(handle.contentIdentity)}</code>` : ''}
+    </li>
+  `).join('')}</ol>`;
+}
+
+function renderScientificChallenge(episode, object) {
+  const classifications = classificationsForObject(episode, object);
+  return `
+    <section class="scientific-challenge">
+      <p class="fabric-kicker">SCIENTIFIC CHALLENGE - CLICKED SOURCE OBJECT</p>
+      ${classifications.map((classification) => `
+        <article class="scientific-classification is-${classification.category.toLowerCase()}">
+          <header>
+            <span>${escapeHtml(classification.category)}</span>
+            <strong>${escapeHtml(classification.title)}</strong>
+          </header>
+          <dl>
+            ${field('SOURCE_SUPPORT', value(classification.supportStatus))}
+            ${field('WHAT_CHANGED', value(classification.whatChanged.join('; '), 'NONE CLAIMED'))}
+            ${field('WHAT_DID_NOT_CHANGE', value(classification.whatDidNotChange.join('; '), 'NONE CLAIMED'))}
+            ${field('CLAIM_CEILING', value(classification.claimCeiling))}
+            ${field('UNRESOLVED', value(classification.unresolved.join('; '), 'NONE RECORDED'))}
+            ${field('SOURCE_ARTIFACTS / WITNESS HANDLES', renderSourceHandles(classification.sourceHandles))}
+          </dl>
+        </article>
+      `).join('')}
+    </section>
+  `;
+}
+
+function renderInspector(model, geometricField, episode, operatorState) {
   const object = selectedRepositoryObject(model);
   if (!object) return '<aside class="fabric-inspector">NO OBJECT SELECTED</aside>';
+  if (operatorState?.inspectorCollapsed) {
+    return `<aside class="fabric-inspector is-collapsed"><button type="button" data-toggle-inspector>OPEN INSPECTOR</button></aside>`;
+  }
   const node = geometricField.nodeById[object.object_id];
   const typed = object.typed_projections?.length
     ? `<ul>${object.typed_projections.map((item) => `<li>${escapeHtml(JSON.stringify(item))}</li>`).join('')}</ul>`
@@ -75,8 +116,12 @@ function renderInspector(model, geometricField) {
         <div class="fabric-inspector-actions">
           <button type="button" data-focus-selected>FOCUS SELECTED</button>
           <button type="button" data-copy-repository-address="${escapeHtml(object.object_id)}">COPY EXACT ADDRESS</button>
+          <button type="button" data-toggle-inspector>COLLAPSE INSPECTOR</button>
         </div>
       </header>
+      ${operatorState?.overlay === 'SCIENTIFIC_EPISODE' && episode
+        ? renderScientificChallenge(episode, object)
+        : ''}
       <dl>
         ${field('OBJECT_ID', value(object.object_id))}
         ${field('OBJECT_KIND', value(object.object_kind))}
@@ -100,6 +145,46 @@ function renderInspector(model, geometricField) {
   `;
 }
 
+function renderEpisodeOperator(episode, operatorState, episodeError) {
+  if (!episode) {
+    return `
+      <section class="fabric-episode-operator is-unavailable">
+        <p class="fabric-kicker">OPERATOR - SCIENTIFIC EPISODE</p>
+        <strong>EPISODE UNAVAILABLE</strong>
+        <p>${escapeHtml(episodeError || 'No exact source-bound episode was loaded.')}</p>
+      </section>
+    `;
+  }
+  const active = operatorState.overlay === 'SCIENTIFIC_EPISODE';
+  const step = episode.sequence[operatorState.episodeStep];
+  return `
+    <section class="fabric-episode-operator ${active ? 'is-active' : ''}">
+      <p class="fabric-kicker">OPERATOR BASIS</p>
+      <dl class="operator-coordinate">
+        <div><dt>BASE</dt><dd>STRUCTURAL</dd></div>
+        <div><dt>OVERLAY</dt><dd>${active ? 'SCIENTIFIC EPISODE' : 'NONE'}</dd></div>
+        <div><dt>EPISODE</dt><dd>CELL 002</dd></div>
+      </dl>
+      <button type="button" data-toggle-episode>${active ? 'DISABLE' : 'ENABLE'} SCIENTIFIC EPISODE</button>
+      <details ${active ? 'open' : ''}>
+        <summary>EPISODE ADDRESS / BASIS</summary>
+        <code>${escapeHtml(episode.episodeId)}</code>
+        <pre>${escapeHtml(JSON.stringify(episode.episodeAddress, null, 2))}</pre>
+      </details>
+      ${active ? `
+        <div class="episode-sequence" aria-label="recorded Cell 002 sequence">
+          ${episode.sequence.map((item, index) => `
+            <button type="button" data-episode-step="${index}" class="${index === operatorState.episodeStep ? 'is-current' : ''}">
+              <span>${index + 1}</span>${escapeHtml(item.label)}
+            </button>
+          `).join('')}
+        </div>
+        <p class="episode-current-step">RECORDED STEP ${operatorState.episodeStep + 1}: ${escapeHtml(step.label)}</p>
+      ` : ''}
+    </section>
+  `;
+}
+
 function slider({channel, label, value: sliderValue, minimum, maximum, step, disabled = false}) {
   return `
     <label class="fabric-basis-control ${disabled ? 'is-unavailable' : ''}">
@@ -111,13 +196,19 @@ function slider({channel, label, value: sliderValue, minimum, maximum, step, dis
   `;
 }
 
-export function renderRepositoryFabric(model, geometricField) {
+export function renderRepositoryFabric(
+  model,
+  geometricField,
+  operatorState = {overlay: 'NONE', episodeStep: 0, inspectorCollapsed: false},
+  episode = null,
+  episodeError = null,
+) {
   const source = model.source;
   const counts = repositoryFieldRelationCounts(geometricField);
   const matches = model.query ? repositoryQueryMatches(model).length : model.objects.length;
   const dependencyUnavailable = counts.dependency === 0;
   return `
-    <main class="geometric-fabric">
+    <main class="geometric-fabric ${operatorState.inspectorCollapsed ? 'inspector-collapsed' : ''}" data-atlas-primary-surface>
       <header class="fabric-hero">
         <div>
           <p class="fabric-kicker">GEOMETRIC REPOSITORY PROJECTION V0 - DERIVED READ-ONLY</p>
@@ -162,10 +253,19 @@ export function renderRepositoryFabric(model, geometricField) {
             <span class="file">FILE</span>
             <span class="file-version">FILE VERSION</span>
             <span>ALL SEMANTIC STANDING VISIBLE</span>
+            ${operatorState.overlay === 'SCIENTIFIC_EPISODE' ? `
+              <span class="scientific-changed">CHANGED</span>
+              <span class="scientific-held">HELD FIXED</span>
+              <span class="scientific-witnessed">WITNESSED</span>
+              <span class="scientific-unresolved">UNRESOLVED</span>
+              <span class="scientific-out">OUT OF SCOPE - STILL VISIBLE</span>
+            ` : ''}
           </div>
         </section>
-        <aside class="fabric-operators">
-          <section>
+        <aside class="fabric-dock" data-independent-inspector-dock>
+          <div class="fabric-operators">
+          ${renderEpisodeOperator(episode, operatorState, episodeError)}
+          <section class="fabric-structural-operator">
             <p class="fabric-kicker">STRUCTURAL_BASIS_V0</p>
             ${slider({channel: 'containment', label: 'CONTAINMENT', value: geometricField.weights.structural.containment, minimum: 0.35, maximum: 1.65, step: 0.05})}
             ${slider({channel: 'dependency', label: `DEPENDENCY (${dependencyUnavailable ? 'UNAVAILABLE' : counts.dependency})`, value: geometricField.weights.structural.dependency, minimum: 0, maximum: 0.8, step: 0.05, disabled: dependencyUnavailable})}
@@ -186,8 +286,9 @@ export function renderRepositoryFabric(model, geometricField) {
               <div><dt>DEPENDENCY / REFERENCE</dt><dd>${counts.dependency || 'UNAVAILABLE'}</dd></div>
             </dl>
           </section>
+          </div>
+          ${renderInspector(model, geometricField, episode, operatorState)}
         </aside>
-        ${renderInspector(model, geometricField)}
       </div>
       <section class="fabric-ceiling">
         <p class="fabric-kicker">CLAIM CEILING</p>
@@ -220,7 +321,23 @@ function nodeRadius(kind) {
   return {repository: 7, directory: 4.5, file: 2.5, file_version: 1.8}[kind] || 2;
 }
 
-export function drawGeometricRepositoryField(canvas, model, geometricField) {
+function classificationColor(category) {
+  return {
+    CHANGED: '#ff9966',
+    HELD_FIXED: '#67b7ff',
+    WITNESSED: '#78d99a',
+    UNRESOLVED: '#d79cff',
+    UNCLASSIFIED: '#9aa8af',
+  }[category] || '#596770';
+}
+
+export function drawGeometricRepositoryField(
+  canvas,
+  model,
+  geometricField,
+  episode = null,
+  operatorState = null,
+) {
   const {width, height, ratio} = canvasSize(canvas);
   const context = canvas.getContext('2d');
   context.setTransform(ratio, 0, 0, ratio, 0, 0);
@@ -263,11 +380,18 @@ export function drawGeometricRepositoryField(canvas, model, geometricField) {
     renderedRelations += 1;
   }
 
+  const overlayActive = operatorState?.overlay === 'SCIENTIFIC_EPISODE' && episode;
+  const activeStep = overlayActive ? episode.sequence[operatorState.episodeStep] : null;
+  const activeStepObjects = new Set(activeStep?.objectIds || []);
   const matches = new Set(model.query ? repositoryQueryMatches(model).map((object) => object.object_id) : []);
   const painterOrder = [...geometricField.nodes]
     .filter((node) => projectedById[node.objectId].visible)
     .sort((left, right) => projectedById[right.objectId].depth - projectedById[left.objectId].depth);
+  const selectedProjected = projectedById[model.selectedObjectId];
+  let localDetailLabels = 0;
   let renderedObjects = 0;
+  let overlayClassifiedObjects = 0;
+  let outOfScopeObjects = 0;
   for (const node of painterOrder) {
     const projected = projectedById[node.objectId];
     const selected = node.objectId === model.selectedObjectId;
@@ -275,24 +399,69 @@ export function drawGeometricRepositoryField(canvas, model, geometricField) {
     const radius = nodeRadius(node.objectKind) + (selected ? 2.5 : 0);
     context.beginPath(); context.arc(projected.x, projected.y, radius, 0, Math.PI * 2);
     context.fillStyle = nodeColor(node.objectKind);
-    context.globalAlpha = Math.max(0.38, Math.min(1, 1150 / projected.depth));
+    const explicitlyClassified = overlayActive
+      ? (episode.classificationByObjectId[node.objectId] || [])
+      : [];
+    const outOfScope = overlayActive && !episode.admittedObjectIds.has(node.objectId);
+    const baseAlpha = Math.max(0.38, Math.min(1, 1150 / projected.depth));
+    context.globalAlpha = outOfScope ? Math.max(0.22, baseAlpha * 0.48) : baseAlpha;
     context.fill(); context.globalAlpha = 1;
     if (selected || matched) {
       context.beginPath(); context.arc(projected.x, projected.y, radius + 5, 0, Math.PI * 2);
       context.strokeStyle = selected ? '#ffffff' : '#ffbe5c';
       context.lineWidth = selected ? 2 : 1.2; context.stroke();
     }
+    if (overlayActive) {
+      if (outOfScope) outOfScopeObjects += 1;
+      if (explicitlyClassified.length) {
+        overlayClassifiedObjects += 1;
+        explicitlyClassified.slice(0, 4).forEach((classification, index) => {
+          context.beginPath();
+          context.arc(projected.x, projected.y, radius + 4 + index * 3, 0, Math.PI * 2);
+          context.strokeStyle = classificationColor(classification.category);
+          context.lineWidth = classification.category === 'CHANGED' ? 2.4 : 1.4;
+          context.setLineDash?.(classification.category === 'UNRESOLVED' ? [3, 3] : []);
+          context.stroke();
+          context.setLineDash?.([]);
+        });
+      }
+      if (activeStepObjects.has(node.objectId)) {
+        context.beginPath();
+        context.arc(projected.x, projected.y, radius + 12, 0, Math.PI * 2);
+        context.strokeStyle = '#ffffff';
+        context.lineWidth = 2.5;
+        context.stroke();
+      }
+    }
     const topDirectory = node.objectKind === 'directory' && node.depth === 1;
-    const showLabel = selected || matched || node.objectKind === 'repository' || topDirectory
-      || (geometricField.camera.distance < 520 && node.objectKind !== 'file_version');
+    const nearSelected = selectedProjected?.visible
+      && Math.hypot(projected.x - selectedProjected.x, projected.y - selectedProjected.y) < 190;
+    const localDetail = geometricField.camera.distance < 520
+      && nearSelected
+      && node.objectKind !== 'file_version'
+      && localDetailLabels < 36;
+    const showLabel = selected || matched || explicitlyClassified.length
+      || node.objectKind === 'repository' || topDirectory
+      || localDetail;
     if (showLabel) {
+      if (localDetail && !selected && !matched && !explicitlyClassified.length) {
+        localDetailLabels += 1;
+      }
       context.fillStyle = selected ? '#ffffff' : nodeColor(node.objectKind);
       context.font = selected ? '600 12px ui-monospace, monospace' : '10px ui-monospace, monospace';
       context.fillText(node.sourceObject.path || node.sourceObject.repository_identity, projected.x + radius + 5, projected.y - 3);
     }
     renderedObjects += 1;
   }
-  return {width, height, projectedById, renderedObjects, renderedRelations};
+  return {
+    width,
+    height,
+    projectedById,
+    renderedObjects,
+    renderedRelations,
+    overlayClassifiedObjects,
+    outOfScopeObjects,
+  };
 }
 
 export function pickGeometricRepositoryObject(frame, geometricField, x, y) {
