@@ -29,7 +29,7 @@ RETURN:
 LANE_B_CELL_001_PRESSURE_RESULT.md
 
 STATUS:
-PENDING
+RETURNED
 
 ### Codex
 SEND:
@@ -37,6 +37,20 @@ CODEX_CELL_001_IMPLEMENTATION_PACKET.md
 
 CURRENT AUTHORIZATION:
 IMPLEMENT / INSPECT ONLY WITHIN CELL 001
+
+STATUS:
+IMPLEMENTED LOCALLY / TESTED / NOT YET COMMITTED OR PUSHED
+
+CODEX-REPORTED RESULTS:
+- Cell tests: 2/2 PASS
+- Combined regressions: 39/39 PASS
+- py_compile: PASS
+- git diff --check: PASS
+- pressure: declared hash != observed hash
+- approval calls: 0
+- invoke_lmstudio calls: 0
+- rejection witness emitted
+- authoritative installed trust root: NOT MODIFIED
 
 REQUIRED BEFORE FINAL EXECUTION-READY STANDING:
 - Lane A result
@@ -62,7 +76,7 @@ without changing unrelated executor / policy / route semantics.
 
 ## Next coordinator action
 
-Wait for Lane-B result and Codex apparatus result.
+Push the exact Codex implementation diff from the local worktree, then perform a three-way adjudication.
 
 Then perform a three-way adjudication:
 
