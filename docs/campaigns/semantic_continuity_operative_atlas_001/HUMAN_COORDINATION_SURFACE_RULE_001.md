@@ -158,3 +158,66 @@ RIGID VALIDITY CONDITION
 
 A scientifically valid round is not invalidated because it required additional transport actions.
 The surface should reduce unnecessary coordination work, especially work concentrated on the human operator, without forcing agents to optimize against a counterfeit one-copy/one-paste constraint.
+
+
+---
+
+## Transformation-frame sufficiency
+
+The governing coordination objective is not an arbitrary copy/paste count.
+
+A delegated transformation should be reconstructable from explicit before/after relational frames.
+
+For a requested object transformation, provide enough information to identify:
+
+SOURCE OBJECT
+SOURCE LOCATION / CONTAINER
+CURRENT IDENTITY / VERSION WHEN MATERIAL
+
+TRANSFORMATION
+
+DESTINATION OBJECT
+DESTINATION LOCATION / CONTAINER
+EXPECTED POST-STATE
+VERIFICATION / SUCCESS WITNESS
+
+OPTIONALLY:
+UNCHANGED SURFACES / FORBIDDEN MUTATIONS
+
+Core law:
+
+A REQUESTED TRANSFORMATION IS NOT COORDINATION-COMPLETE
+IF THE OPERATOR CANNOT RECONSTRUCT
+WHAT OBJECT MUST CHANGE,
+FROM WHICH STATE / LOCATION,
+INTO WHICH STATE / LOCATION,
+AND HOW SUCCESS IS VERIFIED.
+
+This law is actor-general.
+It applies to biological humans, AI seats, cursors, tools, and other operators capable of executing transformations.
+
+Examples:
+
+"Promote Cell 002" is insufficient by itself.
+
+A sufficient frame names:
+- the exact candidate file/object;
+- its source path;
+- the transformation to perform;
+- the installed destination path;
+- what must remain unchanged;
+- the post-state / hash or other witness proving the transform occurred.
+
+Freeze:
+
+DELEGATION
+!=
+TRANSFORMATION FRAME
+
+INTENT
+!=
+EXECUTABLE COORDINATION
+
+LOCATION / CONTAINER RELATION
+IS PART OF OBJECT IDENTITY
+WHEN REQUIRED TO RECONSTRUCT THE TRANSFORMATION.
