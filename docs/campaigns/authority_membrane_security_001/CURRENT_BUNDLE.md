@@ -129,3 +129,109 @@ LANE B RESULT
 THREE-WAY ADJUDICATION 001
 
 Cell 002 remains LOCKED.
+
+
+---
+
+## Codex post-approval repair result
+
+STATUS:
+LOCAL / UNCOMMITTED / UNPUSHED
+
+REPORTED CONTROL:
+
+approve
+→ fresh revalidate
+→ invoke
+
+approval calls = 1
+invoke_lmstudio calls = 1
+reviewed hash = execution candidate hash
+
+REPORTED PRESSURE:
+
+approve
+→ post-approval candidate substitution
+→ fresh revalidate
+→ reject
+
+approval calls = 1
+invoke_lmstudio calls = 0
+reviewed hash A != execution candidate hash B
+decision = REVALIDATE
+lmstudio_invoked = false
+mutated bytes = exactly 1
+
+REPORTED REGRESSIONS:
+Cell tests 2/2 PASS
+combined regressions 39/39 PASS
+py_compile PASS
+git diff --check PASS
+
+BOUNDARY:
+
+This evidence is not yet canonical repo evidence because Codex did not commit or push the modified executor, test, or trace artifact.
+
+NEXT REQUIRED STEP:
+
+1. commit/push only the intended Cell-001 repair artifacts;
+2. verify exact pushed bytes;
+3. perform final Cell-001 adjudication;
+4. decide whether reference-executor Cell-001 standing is BOUNDEDLY_QUALIFIED;
+5. keep installed authoritative executor qualification separate.
+
+
+---
+
+## Cell 001 reference-executor standing
+
+CELL_001_REFERENCE_EXECUTOR:
+BOUNDEDLY_QUALIFIED
+
+CLAIM:
+
+At the tested executor/policy coordinates,
+a one-byte post-approval input identity substitution
+was detected by fresh pre-call revalidation and
+did not reach the model invocation boundary.
+
+CLAIM CEILING:
+
+This standing applies to the tested reference executor / policy coordinates only.
+
+It does NOT establish:
+- installed authoritative executor qualification;
+- replay resistance;
+- denial closure;
+- executor mutation safety;
+- policy mutation safety;
+- endpoint integrity generally;
+- model invocation security generally;
+- broader capability safety.
+
+## Next phase
+
+PROMOTION TARGET:
+INSTALLED AUTHORITATIVE EXECUTOR
+
+SEQUENCE:
+
+1. canonicalize / push the exact Cell-001 implementation and trace;
+2. verify the pushed implementation bytes;
+3. deliberately promote the reviewed executor/policy into the local trust root;
+4. record installed executor hash and policy hash;
+5. rerun Cell-001 control and pressure against the installed authority-bearing path;
+6. require the same claim ceiling and fail-closed result;
+7. only after installed-path qualification consider Cell 002 replay.
+
+FREEZE:
+
+REFERENCE EXECUTOR QUALIFIED
+!=
+INSTALLED EXECUTOR QUALIFIED
+
+and:
+
+CANDIDATE SECURITY PROPERTY
+!=
+OPERATIVE AUTHORITY PROPERTY
