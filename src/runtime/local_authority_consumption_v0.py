@@ -24,6 +24,7 @@ ISSUANCE_TYPE = "LOCAL_AUTHORITY_ISSUANCE_RECORD_V0"
 RESERVATION_TYPE = "LOCAL_AUTHORITY_CONSUMPTION_RESERVATION_V0"
 RECEIPT_TYPE = "LOCAL_AUTHORITY_CONSUMPTION_RECEIPT_V0"
 DENIAL_TYPE = "LOCAL_AUTHORITY_REPLAY_DENIAL_V0"
+PRINCIPAL_DENIAL_TYPE = "LOCAL_AUTHORITY_PRINCIPAL_DENIAL_V0"
 FAILURE_TYPE = "LOCAL_AUTHORITY_INVOCATION_FAILURE_V0"
 
 ACTIVE = "ACTIVE"
@@ -41,6 +42,7 @@ AUTHORITY_ENVELOPE_KEYS = frozenset(
         "object_type",
         "capability_id",
         "approval_id",
+        "principal_id",
         "request_sha256",
         "input_sha256",
         "model",
@@ -110,6 +112,7 @@ def validate_authority_envelope(envelope: Mapping[str, Any]) -> dict[str, Any]:
         raise AuthorityEnvelopeError("unsupported authority envelope type")
     _required_id(retained["capability_id"], "capability_id")
     _required_id(retained["approval_id"], "approval_id")
+    _required_id(retained["principal_id"], "principal_id")
     for field in (
         "request_sha256",
         "input_sha256",
@@ -155,6 +158,7 @@ class LocalAuthorityStateStore:
                 "object_type": ISSUANCE_TYPE,
                 "capability_id": capability_id,
                 "approval_id": retained["approval_id"],
+                "principal_id": retained["principal_id"],
                 "issued_at": retained["issued_at"],
                 "remaining_uses": 1,
                 "status": ACTIVE,
@@ -210,6 +214,7 @@ class LocalAuthorityStateStore:
 def consume_authority_once(
     envelope: Mapping[str, Any],
     *,
+    attempting_principal_id: str,
     store: LocalAuthorityStateStore,
     invoke: Callable[[], Any],
     clock: Callable[[], str],
@@ -222,6 +227,9 @@ def consume_authority_once(
     """
 
     retained = validate_authority_envelope(envelope)
+    attempted_principal = _required_id(
+        attempting_principal_id, "attempting_principal_id"
+    )
     capability_id = retained["capability_id"]
     attempted_envelope_sha256 = canonical_sha256(retained)
 
@@ -233,6 +241,33 @@ def consume_authority_once(
         current = state["envelope"]
         status_before = current.get("status")
         remaining_before = current.get("remaining_uses")
+        issued_principal = current.get("principal_id")
+        if attempted_principal != issued_principal:
+            denial_basis = {
+                "object_type": PRINCIPAL_DENIAL_TYPE,
+                "capability_id": capability_id,
+                "approval_id": retained["approval_id"],
+                "principal_id": issued_principal,
+                "issued_principal_id": issued_principal,
+                "attempting_principal_id": attempted_principal,
+                "remaining_uses_before": remaining_before,
+                "remaining_uses_after": remaining_before,
+                "status_before": status_before,
+                "status_after": status_before,
+                "decision": "DENY",
+                "reason": "PRINCIPAL_MISMATCH",
+                "lmstudio_invoked": False,
+                "invocation_count": 0,
+                "executor_sha256": retained["executor_sha256"],
+                "policy_sha256": retained["policy_sha256"],
+                "denied_at": _required_text(clock(), "denied_at"),
+            }
+            denial = dict(denial_basis)
+            denial["denial_id"] = _record_id("denial", denial_basis)
+            state["history"].append(denial)
+            store._write_unlocked(store.state_path(capability_id), state)
+            return {"decision": "DENY", "witness": copy.deepcopy(denial)}
+
         if status_before != ACTIVE or remaining_before != 1:
             prior_receipt = next(
                 (
@@ -246,6 +281,9 @@ def consume_authority_once(
                 "object_type": DENIAL_TYPE,
                 "capability_id": capability_id,
                 "approval_id": retained["approval_id"],
+                "principal_id": retained["principal_id"],
+                "issued_principal_id": issued_principal,
+                "attempting_principal_id": attempted_principal,
                 "attempted_envelope_sha256": attempted_envelope_sha256,
                 "request_sha256": retained["request_sha256"],
                 "input_sha256": retained["input_sha256"],
@@ -278,6 +316,7 @@ def consume_authority_once(
             "object_type": RESERVATION_TYPE,
             "capability_id": capability_id,
             "approval_id": retained["approval_id"],
+            "principal_id": retained["principal_id"],
             "pre_use_remaining_uses": 1,
             "post_use_remaining_uses": 0,
             "status_before": ACTIVE,
@@ -300,6 +339,7 @@ def consume_authority_once(
                 "object_type": FAILURE_TYPE,
                 "capability_id": capability_id,
                 "approval_id": retained["approval_id"],
+                "principal_id": retained["principal_id"],
                 "reservation_id": reservation["reservation_id"],
                 "remaining_uses": 0,
                 "status": RECOVERY_REQUIRED,
@@ -319,6 +359,7 @@ def consume_authority_once(
             "object_type": RECEIPT_TYPE,
             "capability_id": capability_id,
             "approval_id": retained["approval_id"],
+            "principal_id": retained["principal_id"],
             "issued_envelope_sha256": attempted_envelope_sha256,
             "request_sha256": retained["request_sha256"],
             "input_sha256": retained["input_sha256"],

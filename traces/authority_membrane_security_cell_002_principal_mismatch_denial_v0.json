@@ -1,0 +1,20 @@
+{
+  "approval_id": "AUTHORITY_MEMBRANE_CELL_002_APPROVAL_002",
+  "attempting_principal_id": "CODEX_PRINCIPAL_002",
+  "capability_id": "AUTHORITY_MEMBRANE_CELL_002_CAPABILITY_002",
+  "decision": "DENY",
+  "denial_id": "denial:sha256:5db60556625f35970c9fec6edceafd9b19bd45081f60a9bcf21612be24df2870",
+  "denied_at": "2026-09-22T18:00:01+00:00",
+  "executor_sha256": "bfbbb929f0a0b55a745b5095fd2abd16541757b88f3151d69e7e7bb325e57303",
+  "invocation_count": 0,
+  "issued_principal_id": "CODEX_PRINCIPAL_001",
+  "lmstudio_invoked": false,
+  "object_type": "LOCAL_AUTHORITY_PRINCIPAL_DENIAL_V0",
+  "policy_sha256": "c10b572c1d128798805737a4ed6d47480fa2e7ec6e0587bf0c42df83bd672d12",
+  "principal_id": "CODEX_PRINCIPAL_001",
+  "reason": "PRINCIPAL_MISMATCH",
+  "remaining_uses_after": 1,
+  "remaining_uses_before": 1,
+  "status_after": "ACTIVE",
+  "status_before": "ACTIVE"
+}
