@@ -1,0 +1,36 @@
+DME Cell 002 — Promotion Frame
+
+OBJECT A
+  local_authority_consumption_v0.py
+
+SOURCE A
+  <DME_Lab repo>\src\runtime\local_authority_consumption_v0.py
+
+TRANSFORMATION
+  Copy exact bytes into the local trust-root namespace.
+
+OBJECT B
+  local_authority_consumption_v0.py
+
+DESTINATION B
+  %USERPROFILE%\.dme_lab_bridge\local_authority_consumption_v0.py
+
+EXPECTED DIFFERENCE
+  Before: trust root has no installed Cell 002 authority-consumption module.
+  After:  trust root contains an exact-byte copy of the reviewed candidate module.
+
+UNCHANGED
+  %USERPROFILE%\.dme_lab_bridge\bridge.py
+  %USERPROFILE%\.dme_lab_bridge\policy.json
+
+VERIFICATION
+  Source SHA256 == destination SHA256.
+
+COMMAND
+  Run from the DME_Lab repository root:
+
+  powershell -ExecutionPolicy Bypass -File .\promote_cell002_authority_module.ps1
+
+NEXT TRANSFORMATION
+  Bind the installed bridge invocation path to the promoted authority module.
+  That is a separate transformation and should use a separately reviewed artifact.
