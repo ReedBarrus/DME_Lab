@@ -235,3 +235,138 @@ and:
 CANDIDATE SECURITY PROPERTY
 !=
 OPERATIVE AUTHORITY PROPERTY
+
+
+---
+
+## Installed trust-root promotion receipt
+
+OPERATOR_REPORTED_PROMOTION:
+COMPLETE
+
+INSTALLED_EXECUTOR_PATH:
+C:\Users\Admin\.dme_lab_bridge\bridge.py
+
+INSTALLED_EXECUTOR_SHA256:
+5a4c466595ec4820bd8430ee3ee91f5a38437e55bfb48a8a756dfa53c87d7fdb
+
+INSTALLED_POLICY_PATH:
+C:\Users\Admin\.dme_lab_bridge\policy.json
+
+INSTALLED_POLICY_SHA256:
+65f2ce8c3ce1cd5147940ff851cb61a9f04b7db220dadb4c77e1d5352e28200b
+
+IDENTITY_OUTPUT:
+LOCAL PINNED V0 / HUMAN APPROVAL REQUIRED
+
+CELL001_FEATURE:
+POST-APPROVAL INPUT IDENTITY REVALIDATION ENABLED
+
+PROMOTION_STANDING:
+
+REVIEWED PROMOTION CANDIDATE HASH
+=
+INSTALLED EXECUTOR HASH
+
+Therefore:
+
+CELL_001_REFERENCE_EXECUTOR:
+BOUNDEDLY_QUALIFIED
+
+CELL_001_INSTALLED_EXECUTOR:
+PROMOTED / NOT YET PRESSURE-QUALIFIED
+
+NEXT GATE:
+
+Run the exact Cell-001 matched control / post-approval A→B pressure
+against the installed executor bytes without modifying the installed executor.
+
+FREEZE:
+
+PROMOTED
+!=
+PRESSURE-QUALIFIED
+
+
+---
+
+## Cell 001 installed-executor pressure result
+
+INSTALLED_EXECUTOR_SHA256:
+5a4c466595ec4820bd8430ee3ee91f5a38437e55bfb48a8a756dfa53c87d7fdb
+
+INSTALLED_POLICY_SHA256:
+65f2ce8c3ce1cd5147940ff851cb61a9f04b7db220dadb4c77e1d5352e28200b
+
+CONTROL:
+
+approval_calls = 1
+invoke_lmstudio_calls = 1
+
+PRESSURE:
+
+approval_calls = 1
+invoke_lmstudio_calls = 0
+
+reviewed_input_sha256:
+891131990062b2244aa472b860b070d19d871b797eefbbfc5cef40d564bc251e
+
+execution_candidate_sha256:
+15c467a7bee6c46016fcb3454d400a8a7c79827e77ab4f438d1631eec53f4dd0
+
+decision:
+REVALIDATE
+
+lmstudio_invoked:
+false
+
+DURABLE_LOCAL_RESULT:
+C:\Users\Admin\.dme_lab_bridge\cell001_installed_pressure_result.json
+
+REAL_LM_STUDIO_HTTP_CALL:
+NONE
+
+## Installed Cell 001 standing
+
+CELL_001_INSTALLED_EXECUTOR:
+BOUNDEDLY_QUALIFIED
+
+CLAIM:
+
+At the tested installed executor/policy coordinates,
+a one-byte post-approval input identity substitution
+was detected by fresh pre-call revalidation and
+did not reach the model invocation boundary.
+
+CLAIM CEILING:
+
+This establishes only the tested post-approval input-identity relation
+for the installed one-shot local-model invocation path.
+
+It does not establish replay resistance,
+denial closure,
+executor/policy mutation resistance,
+endpoint/model substitution resistance,
+tool-state integrity,
+or general bridge security.
+
+## Downstream gate
+
+CELL_002:
+UNLOCKED FOR DESIGN
+
+TARGET:
+ONE-SHOT AUTHORITY / CAPABILITY REPLAY
+
+Cell 002 may now test whether a historically valid,
+already-consumed one-shot authority can be reused.
+
+FREEZE:
+
+HISTORICAL VALIDITY
+!=
+CURRENT AUTHORITY
+
+CONSUMED
+!=
+REUSABLE
