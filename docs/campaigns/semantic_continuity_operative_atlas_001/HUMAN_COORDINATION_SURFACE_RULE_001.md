@@ -83,3 +83,78 @@ HUMAN ERROR TOLERANCE
 ```
 
 The coordinator should prepare seat-ready packets rather than asking the human operator to reconstruct packet membership from repo history or chat history.
+
+
+---
+
+## Transport Friction Clarification
+
+The earlier shorthand:
+
+```text
+OPEN ONE BUNDLE
+COPY ONCE
+PASTE ONCE
+RETURN RESULT ONCE
+```
+
+was a coordination-direction target, not a literal lower bound on physical copy/paste actions.
+
+A normal manual seat round has at least two transport directions:
+
+```text
+COORDINATOR → SEAT
+SEAT → COORDINATOR
+```
+
+Therefore a realistic low-friction target is:
+
+```text
+ONE OUTBOUND TRANSFER
++
+ONE RETURN TRANSFER
+
+PER SEAT
+PER ROUND
+```
+
+Typical manual realization:
+
+```text
+OPEN CURRENT BUNDLE
+→ COPY SEND PACKET
+→ PASTE TO SEAT
+→ COPY RETURNED RESULT
+→ PASTE BACK TO COORDINATOR
+```
+
+The governing objective is:
+
+```text
+MINIMIZE COORDINATION FRICTION
+AND OPERATOR TRANSPORT BURDEN
+
+NOT
+
+MINIMIZE COPY/PASTE COUNT
+TO AN IMPOSSIBLE ABSTRACT NUMBER
+```
+
+Especially:
+
+```text
+NECESSARY HUMAN COORDINATION
+!=
+AVOIDABLE HUMAN TRANSPORT BURDEN
+```
+
+and:
+
+```text
+HUMAN COORDINATION TARGET
+!=
+RIGID VALIDITY CONDITION
+```
+
+A scientifically valid round is not invalidated because it required additional transport actions.
+The surface should reduce unnecessary coordination work, especially work concentrated on the human operator, without forcing agents to optimize against a counterfeit one-copy/one-paste constraint.
