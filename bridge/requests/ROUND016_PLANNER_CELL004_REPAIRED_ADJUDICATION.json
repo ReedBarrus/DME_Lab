@@ -1,0 +1,12 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0",
+  "request_id": "ROUND016_PLANNER_CELL004_REPAIRED_ADJUDICATION",
+  "enabled": true,
+  "source_ref": "b094ccf47f4e6e91a91af6e92d1611583b087831",
+  "input_path": "bridge/prompts/ROUND016_PLANNER_CELL004_REPAIRED_ADJUDICATION_BUNDLE.md",
+  "input_sha256": "af3cd355a2937465a3772a035861b5d8d3807a53ea078e6d9e7e64cc60e187d8",
+  "model": "microsoft/phi-4",
+  "temperature": 0.0,
+  "max_tokens": 4096,
+  "purpose": "Repair planner Cell 004 adjudication by enforcing consistency between horizon-restatement findings and the final fidelity disposition."
+}
