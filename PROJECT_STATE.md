@@ -291,6 +291,41 @@ Relevant decisions:
 - `docs/decisions/cross_cutting/four_root_authority_spine_compression_candidate_v0.md`
 - `docs/decisions/cross_cutting/four_root_round_trip_basis_failure_v0.md`
 
+## Operative surface discovery
+
+A repository-wide current-state map of operational surfaces, leverage, authority,
+and risk now lives at [OPERATIVE_SURFACE_MAP.md](OPERATIVE_SURFACE_MAP.md).
+
+Use it when asking questions such as:
+
+- what tooling already exists?
+- what can a seat actually read, write, invoke, or observe?
+- which surfaces are live, operable, candidate, parked, or unauthorized?
+- what authority boundary applies to each surface?
+- what leverage and failure modes become available if a surface is connected?
+
+This map is descriptive and navigational only. It does not promote candidate
+machinery or override the evidence, implementation, policy, or adjudicated
+standing it summarizes.
+
+The Local LM Studio bridge is currently **OPERABLE_V0 as a bounded invocation
+transport**. It supports immutable Git-addressed prompts, local human approval,
+localhost-only model invocation, and witnessed JSON results. It does **not**
+currently provide model repo access, tools, connectors, network access,
+previous-response state, or automatic result publication.
+
+A current bridge wound is explicit:
+
+```text
+PACKET REFERENCES EVIDENCE FILES
+!=
+MODEL RECEIVES THOSE EVIDENCE FILES
+```
+
+Self-contained packets work through the bridge. Reference-only packets require a
+future bounded evidence-bundle assembler or another explicit evidence-delivery
+mechanism before they can be treated as valid model adjudications.
+
 ## Current navigation
 
 Scientific navigation:
