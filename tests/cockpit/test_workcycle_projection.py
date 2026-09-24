@@ -6,6 +6,7 @@ import unittest
 from pathlib import Path
 
 from src.cockpit.workcycle_projection import build_workcycle_projection
+from src.cockpit.workcycle_control import LocalWorkcycleControlStore
 from src.coordination import workcycle_v0 as wc
 
 
@@ -123,6 +124,55 @@ class WorkcycleProjectionTests(unittest.TestCase):
             self.assertTrue(projection["projection_errors"])
             self.assertTrue(projection["current_unresolved"])
             self.assertIsNone(projection["wake_budget"])
+
+    def test_local_operator_control_and_durable_seat_are_projected_separately(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            seat_dir = repo / "continuity" / "seats"
+            seat_dir.mkdir(parents=True)
+            (seat_dir / "labboib.json").write_text(
+                json.dumps(
+                    {
+                        "seat_id": "LABBOIB",
+                        "consumer_id": "labboib",
+                        "seat_class": "TEST_SEAT",
+                        "role": "test",
+                        "trigger": {"state": "UNBOUND"},
+                        "occupant": {"binding": "UNBOUND"},
+                        "authority_effect": "NONE",
+                        "execution_effect": "NONE",
+                    }
+                ),
+                encoding="utf-8",
+            )
+            control_path = Path(tmp) / "operator" / "control.json"
+            store = LocalWorkcycleControlStore(path=control_path, repo=repo)
+            preview = store.preview({"verb": "ENABLE", "gesture_id": "G1"})
+            store.commit(
+                preview=preview["preview"],
+                preview_sha256=preview["preview_sha256"],
+                confirmed_by="REED",
+            )
+
+            projection = build_workcycle_projection(
+                repo,
+                local_control_path=control_path,
+            )
+            self.assertEqual(projection["operator_summary"]["workflow"], "ON")
+            self.assertEqual(projection["operator_summary"]["seat_work"], "ENABLED")
+            self.assertTrue(projection["operator_summary"]["local_control_admitted"])
+            self.assertEqual(
+                projection["operative_control"]["status"],
+                "LOCAL_OPERATOR_CONTROL_ACTIVE",
+            )
+            self.assertEqual(
+                projection["seat_ecology"]["durable_seats"][0]["seat_id"],
+                "LABBOIB",
+            )
+            self.assertEqual(
+                projection["seat_ecology"]["occupied_seat_count"],
+                0,
+            )
 
     def test_projection_reads_control_state_without_turning_it_into_authority(self):
         with tempfile.TemporaryDirectory() as tmp:
