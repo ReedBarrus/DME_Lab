@@ -1,0 +1,12 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0",
+  "request_id": "ROUND019_SINGLE_SEAT_PLANNER_FINITE_SELECTION",
+  "enabled": true,
+  "source_ref": "9ecdecd116af243167b0bb510443d3f5a50d87d6",
+  "input_path": "bridge/prompts/ROUND019_SINGLE_SEAT_PLANNER_FINITE_SELECTION.md",
+  "input_sha256": "a3f279061de032ae689607301c31ee081280c55fbfae787f72dd65af41754e52",
+  "model": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 512,
+  "purpose": "Test repaired planner specificity by forcing one bounded next-pressure selection from a finite single-seat operation set while preserving qualified versus candidate state."
+}
