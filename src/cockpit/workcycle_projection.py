@@ -43,7 +43,13 @@ def _verified_optional(
     return value, None
 
 
-def build_workcycle_projection(repo_root: str | Path) -> dict[str, Any]:
+def build_workcycle_projection(
+    repo_root: str | Path,
+    *,
+    local_control_path: str | Path | None = None,
+    runtime_seats: list[dict[str, Any]] | None = None,
+    active_operations: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     repo = Path(repo_root).resolve()
     progress = wc.derive_campaign_progress(repo)
     consequence, consequence_error = _verified_optional(repo, CONSEQUENCE_PATH)
@@ -56,7 +62,7 @@ def build_workcycle_projection(repo_root: str | Path) -> dict[str, Any]:
         if repair_result_path.is_file()
         else None
     )
-    control = _load_optional(repo, CONTROL_PATH) or {
+    requested_control = _load_optional(repo, CONTROL_PATH) or {
         "workflow_enabled": False,
         "campaign_enabled": False,
         "seat_work_enabled": False,
@@ -64,6 +70,21 @@ def build_workcycle_projection(repo_root: str | Path) -> dict[str, Any]:
         "auto_continuation_limit": 0,
         "operator_posture": "UNCONFIGURED",
     }
+
+    local_control = None
+    local_control_error = None
+    if local_control_path is not None:
+        path = Path(local_control_path).expanduser().resolve()
+        try:
+            local_control = json.loads(path.read_text(encoding="utf-8"))
+        except FileNotFoundError:
+            local_control = None
+        except Exception as exc:
+            local_control_error = f"{type(exc).__name__}: {exc}"
+
+    seats = list(runtime_seats or [])
+    active_ops = dict(active_operations or {})
+    occupied_seats = list(active_ops.get("occupied_seats") or [])
 
     eligibility = None
     if budget is not None:
@@ -103,7 +124,7 @@ def build_workcycle_projection(repo_root: str | Path) -> dict[str, Any]:
 
     projection_errors = [
         error
-        for error in (consequence_error, evaluation_error, budget_error)
+        for error in (consequence_error, evaluation_error, budget_error, local_control_error)
         if error is not None
     ]
 
@@ -145,26 +166,44 @@ def build_workcycle_projection(repo_root: str | Path) -> dict[str, Any]:
             "claim_ceiling": "No cumulative campaign spend cap is mechanically enforced yet.",
         },
         "eligibility": eligibility,
-        "requested_control": control,
+        "requested_control": requested_control,
         "operative_control": {
-            "status": "LOCAL_OPERATOR_CONTROL_NOT_IMPLEMENTED",
-            "workflow_enabled": False,
-            "seat_work_enabled": False,
-            "wake_requested": False,
-            "auto_continuation_limit": 0,
+            "status": (
+                "LOCAL_OPERATOR_CONTROL_ACTIVE"
+                if local_control is not None
+                else "LOCAL_OPERATOR_CONTROL_UNAVAILABLE"
+            ),
+            "workflow_enabled": bool(local_control.get("workflow_enabled")) if local_control else False,
+            "seat_work_enabled": bool(local_control.get("seat_work_enabled")) if local_control else False,
+            "wake_requested": bool(local_control.get("wake_requested")) if local_control else False,
+            "auto_continuation_limit": int(local_control.get("auto_continuation_limit", 0)) if local_control else 0,
+            "lifecycle_state": local_control.get("lifecycle_state") if local_control else "UNAVAILABLE",
+            "current_admission": local_control.get("current_admission") if local_control else None,
+            "wake_generation": int(local_control.get("wake_generation", 0)) if local_control else 0,
             "repo_control_has_execution_effect": False,
+            "source": str(Path(local_control_path).expanduser().resolve()) if local_control_path is not None else None,
+        },
+        "seat_ecology": {
+            "registered_runtime_seats": seats,
+            "occupied_runtime_seats": occupied_seats,
+            "runtime_seat_count": len(seats),
+            "occupied_seat_count": len(occupied_seats),
+            "claim_ceiling": (
+                "Runtime seat rows are projected when configured; absence of rows "
+                "does not prove no durable seat identity exists."
+            ),
         },
         "operator_summary": {
-            "workflow": "OFF",
-            "campaign": "ACTIVE" if control.get("campaign_enabled") else "PAUSED",
-            "seat_work": "DISABLED",
-            "wake_requested": False,
-            "requested_workflow": "ON" if control.get("workflow_enabled") else "OFF",
-            "requested_seat_work": "ENABLED" if control.get("seat_work_enabled") else "DISABLED",
-            "requested_wake": bool(control.get("wake_requested")),
-            "auto_continuation_limit": 0,
-            "control_source": "REPO_REQUEST_ONLY",
-            "local_control_admitted": False,
+            "workflow": "ON" if local_control and local_control.get("workflow_enabled") else "OFF",
+            "campaign": "ACTIVE" if requested_control.get("campaign_enabled") else "PAUSED",
+            "seat_work": "ENABLED" if local_control and local_control.get("seat_work_enabled") else "DISABLED",
+            "wake_requested": bool(local_control.get("wake_requested")) if local_control else False,
+            "requested_workflow": "ON" if requested_control.get("workflow_enabled") else "OFF",
+            "requested_seat_work": "ENABLED" if requested_control.get("seat_work_enabled") else "DISABLED",
+            "requested_wake": bool(requested_control.get("wake_requested")),
+            "auto_continuation_limit": int(local_control.get("auto_continuation_limit", 0)) if local_control else 0,
+            "control_source": "LOCAL_OPERATOR_STORE" if local_control else "UNAVAILABLE",
+            "local_control_admitted": local_control is not None,
             "reed_action": (
                 "REVIEW_NEXT_PRESSURE"
                 if progress["next_pressure"] in {"T2_ADJUDICATION", "T6_PRESSURE", "T7_PRESSURE"}
