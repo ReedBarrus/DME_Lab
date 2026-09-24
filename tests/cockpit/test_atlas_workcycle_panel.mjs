@@ -6,6 +6,7 @@ import {
 } from '../../src/cockpit/observer/atlas_landing.mjs';
 import {
   renderWorkcycleOperator,
+  renderWorkcycleRail,
 } from '../../src/cockpit/observer/repository_fabric_render.mjs';
 
 test('Atlas landing forwards runtime sidecar endpoint into repository fabric iframe', () => {
@@ -26,7 +27,9 @@ test('workcycle operator visibly exposes currentness consequence budget and read
     campaign_id: 'WORKCYCLE_STABILIZATION_001',
     active_horizon: 'COMPRESSION_HISTORY_CONSERVATION',
     next_pressure: 'T2_ADJUDICATION',
-    current_work_item: 'W1',
+    active_work_item: null,
+    latest_completed_work_item: 'W1',
+    next_eligible_work_item: null,
     campaign_progress: {
       T0: {posture: 'BOUNDED_PASS'},
       T1: {posture: 'BOUNDED_PASS'},
@@ -43,11 +46,17 @@ test('workcycle operator visibly exposes currentness consequence budget and read
     latest_consequence_evaluation: {
       disposition: 'CONSEQUENCE_MATCHED',
     },
-    budget: {
+    wake_budget: {
       work_items: {consumed: 0, reserved: 0, allowed_per_wake: 1},
       seat_invocations: {consumed: 0, reserved: 0, allowed_per_wake: 1},
       repair_attempts: {consumed: 0, reserved: 0, allowed: 0},
     },
+    eligibility: {
+      posture: 'PARTIAL_COORDINATES_ONLY',
+      eligible: null,
+      unresolved_coordinates: ['seat_available', 'authority_satisfied'],
+    },
+    current_unresolved: ['bounded claim ceiling remains'],
     operator_summary: {
       workflow: 'OFF',
       campaign: 'ACTIVE',
@@ -74,6 +83,33 @@ test('workcycle operator visibly exposes currentness consequence budget and read
   assert.ok(html.includes('<button type="button" disabled>PAUSE</button>'));
   assert.ok(html.includes('<button type="button" disabled>STOP</button>'));
   assert.doesNotMatch(html, /data-authorize|data-execute|data-control-write/);
+});
+
+test('workcycle witness rail is persistent-left content with truthful partial eligibility', () => {
+  const html = renderWorkcycleRail({
+    next_pressure: 'T2_ADJUDICATION',
+    active_work_item: null,
+    latest_completed_work_item: 'W1',
+    latest_consequence: {observations: {delta_bytes: -565}},
+    latest_consequence_evaluation: {disposition: 'CONSEQUENCE_MATCHED'},
+    wake_budget: {work_items: {consumed: 0, reserved: 0, allowed_per_wake: 1}},
+    eligibility: {posture: 'PARTIAL_COORDINATES_ONLY'},
+    current_unresolved: ['bounded claim ceiling remains'],
+    operator_summary: {
+      workflow: 'OFF',
+      campaign: 'ACTIVE',
+      reed_action: 'REVIEW_NEXT_PRESSURE',
+    },
+  });
+  for (const phrase of [
+    'WORKCYCLE / METABOLISM',
+    'T2_ADJUDICATION',
+    'PARTIAL_COORDINATES_ONLY',
+    'W1',
+    'OPEN SCIENTIFIC DETAIL',
+    '1 CURRENT UNRESOLVED',
+  ]) assert.ok(html.includes(phrase), phrase);
+  assert.ok(html.includes('<button type="button" disabled>WAKE</button>'));
 });
 
 test('workcycle operator fails visibly when runtime projection is unavailable', () => {
