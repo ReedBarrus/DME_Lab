@@ -165,11 +165,46 @@ def fetch_remote(policy: dict[str, Any]) -> str:
 
 
 def git_show(ref: str, path: str) -> bytes:
+    """Read one immutable blob without constructing a long ref:path argument.
+
+    On Windows, Git may stat the combined revision/path argument before
+    revision parsing. Long campaign paths can therefore hit the Win32
+    filename-length limit even though the repository object itself is valid.
+
+    Resolve the blob with ls-tree using ref and path as separate arguments,
+    then read the object by its short blob SHA. This preserves the immutable
+    commit binding while avoiding the long combined argument.
+    """
+
     if not SHA40_RE.fullmatch(ref):
         raise ValueError("source_ref must be an exact 40-character lowercase commit SHA")
     if path.startswith("/") or "\\" in path or ".." in Path(path).parts:
         raise ValueError("unsafe repo-relative path")
-    return run_git("show", f"{ref}:{path}").stdout
+
+    proc = run_git("ls-tree", "-z", ref, "--", path)
+    entries = [entry for entry in proc.stdout.split(b"\\x00") if entry]
+    if len(entries) != 1:
+        raise RuntimeError(
+            f"immutable prompt path resolved to {len(entries)} objects: {path}"
+        )
+
+    try:
+        metadata, resolved_path = entries[0].split(b"\\t", 1)
+        _mode, object_type, blob_sha = metadata.decode("ascii").split()
+        resolved_path_text = resolved_path.decode("utf-8")
+    except Exception as e:
+        raise RuntimeError(f"unexpected ls-tree response for {path!r}") from e
+
+    if object_type != "blob":
+        raise RuntimeError(f"immutable prompt path is not a blob: {path}")
+    if resolved_path_text != path:
+        raise RuntimeError(
+            f"immutable prompt path mismatch: requested={path!r}, resolved={resolved_path_text!r}"
+        )
+    if not SHA40_RE.fullmatch(blob_sha):
+        raise RuntimeError(f"unexpected blob SHA for {path!r}: {blob_sha!r}")
+
+    return run_git("cat-file", "blob", blob_sha).stdout
 
 
 def list_request_paths(remote_head: str, policy: dict[str, Any]) -> list[str]:
