@@ -1,0 +1,12 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0",
+  "request_id": "ROUND014_COMPRESSION_CELL002_ADJUDICATION",
+  "enabled": true,
+  "source_ref": "6bdb0142bdcb091bddc334ac5910fc97bb6681f4",
+  "input_path": "docs/campaigns/semantic_continuity_operative_atlas_001/ATLAS_METABOLIC_COMPRESSION_CELL_002_READY_TO_SEND_ADJUDICATION_PACKET.md",
+  "input_sha256": "706906833fd02a32947417e072b4ab3d2480ab114af8474781fcdc5eda7d948a",
+  "model": "microsoft/phi-4",
+  "temperature": 0.0,
+  "max_tokens": 4096,
+  "purpose": "Fresh local adjudication of the further-reduced metabolic compression specimen using only the frozen evidence named by the packet."
+}
