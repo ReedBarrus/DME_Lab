@@ -8,6 +8,8 @@ import unittest
 from unittest.mock import Mock, patch
 from urllib.request import urlopen
 
+from src.cockpit import live_runtime_projection as live_runtime_projection
+
 from src.cockpit.desktop_launcher import (
     CockpitLaunchError,
     cockpit_url_with_runtime,
@@ -65,6 +67,28 @@ class DesktopCockpitLauncherTest(unittest.TestCase):
                     allow_picker=False,
                     saved_config_path=Path(temporary) / "config.json",
                 )
+
+    def test_runtime_git_probe_suppresses_child_console_on_windows(self) -> None:
+        completed = Mock(returncode=0, stdout="abc123\n", stderr="")
+        with (
+            patch("src.cockpit.live_runtime_projection.__import__") as importer,
+            patch.object(
+                live_runtime_projection.subprocess,
+                "CREATE_NO_WINDOW",
+                0x08000000,
+                create=True,
+            ),
+            patch(
+                "src.cockpit.live_runtime_projection.subprocess.run",
+                return_value=completed,
+            ) as run,
+        ):
+            fake_os = Mock()
+            fake_os.name = "nt"
+            importer.return_value = fake_os
+            head = live_runtime_projection._repo_head(Path("C:/repo"))
+        self.assertEqual(head, "abc123")
+        self.assertEqual(run.call_args.kwargs["creationflags"], 0x08000000)
 
     def test_windows_creationflags_suppress_child_console(self) -> None:
         with (
