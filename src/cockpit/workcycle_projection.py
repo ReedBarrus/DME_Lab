@@ -43,6 +43,32 @@ def _verified_optional(
     return value, None
 
 
+def _durable_seat_manifests(repo: Path) -> list[dict[str, Any]]:
+    root = repo / "continuity" / "seats"
+    if not root.is_dir():
+        return []
+    seats: list[dict[str, Any]] = []
+    for path in sorted(root.glob("*.json")):
+        try:
+            value = json.loads(path.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        seats.append(
+            {
+                "seat_id": value.get("seat_id"),
+                "consumer_id": value.get("consumer_id"),
+                "seat_class": value.get("seat_class"),
+                "role": value.get("role"),
+                "trigger_state": (value.get("trigger") or {}).get("state"),
+                "occupant_binding": (value.get("occupant") or {}).get("binding"),
+                "authority_effect": value.get("authority_effect"),
+                "execution_effect": value.get("execution_effect"),
+                "source": str(path.relative_to(repo)),
+            }
+        )
+    return seats
+
+
 def build_workcycle_projection(
     repo_root: str | Path,
     *,
@@ -82,7 +108,8 @@ def build_workcycle_projection(
         except Exception as exc:
             local_control_error = f"{type(exc).__name__}: {exc}"
 
-    seats = list(runtime_seats or [])
+    live_seats = list(runtime_seats or [])
+    durable_seats = _durable_seat_manifests(repo)
     active_ops = dict(active_operations or {})
     occupied_seats = list(active_ops.get("occupied_seats") or [])
 
@@ -184,13 +211,15 @@ def build_workcycle_projection(
             "source": str(Path(local_control_path).expanduser().resolve()) if local_control_path is not None else None,
         },
         "seat_ecology": {
-            "registered_runtime_seats": seats,
+            "durable_seats": durable_seats,
+            "registered_runtime_seats": live_seats,
             "occupied_runtime_seats": occupied_seats,
-            "runtime_seat_count": len(seats),
+            "durable_seat_count": len(durable_seats),
+            "runtime_seat_count": len(live_seats),
             "occupied_seat_count": len(occupied_seats),
             "claim_ceiling": (
-                "Runtime seat rows are projected when configured; absence of rows "
-                "does not prove no durable seat identity exists."
+                "Durable seat identity and live occupancy are projected separately. "
+                "Seat existence does not prove a live occupant or execution authority."
             ),
         },
         "operator_summary": {
