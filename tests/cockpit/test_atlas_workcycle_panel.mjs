@@ -103,6 +103,20 @@ test('workcycle operator visibly exposes currentness consequence budget and read
         ],
       },
     },
+    basis_record: {
+      basis_posture: 'SUPPORTED',
+      basis_id: 'basis:sha256:fixture',
+    },
+    pressure_justification: {
+      pressure_posture: 'JUSTIFIED',
+      proposed_pressure: 'T7_PRESSURE',
+      next_work_posture: 'RESOLVE_LOAD_BEARING_GAP',
+      load_bearing_relation: 'operator currentness and control truth',
+      if_resolved: {
+        expected_operating_change: 'replace operator-projection uncertainty',
+      },
+      if_nothing_changes: 'DO_NOT_RUN',
+    },
     operator_summary: {
       workflow: 'OFF',
       campaign: 'ACTIVE',
@@ -132,6 +146,9 @@ test('workcycle operator visibly exposes currentness consequence budget and read
     'QUALIFICATION READINESS',
     'T7:IMPLEMENTED_UNPRESSURED',
     'TEMPORAL_HORIZON:UNFROZEN',
+    'BASIS / PRESSURE JUSTIFICATION',
+    'operator currentness and control truth',
+    'DO_NOT_RUN',
   ]) {
     assert.ok(html.includes(phrase), phrase);
   }
@@ -199,6 +216,20 @@ test('workcycle witness rail is persistent-left content with truthful partial el
         ],
       },
     },
+    basis_record: {
+      basis_posture: 'SUPPORTED',
+      basis_id: 'basis:sha256:fixture',
+    },
+    pressure_justification: {
+      pressure_posture: 'JUSTIFIED',
+      proposed_pressure: 'T7_PRESSURE',
+      next_work_posture: 'RESOLVE_LOAD_BEARING_GAP',
+      load_bearing_relation: 'operator currentness and control truth',
+      if_resolved: {
+        expected_operating_change: 'replace operator-projection uncertainty',
+      },
+      if_nothing_changes: 'DO_NOT_RUN',
+    },
     operator_summary: {
       workflow: 'OFF',
       campaign: 'ACTIVE',
@@ -223,6 +254,10 @@ test('workcycle witness rail is persistent-left content with truthful partial el
     'SUPPORTED / SUPPORTED / SUPPORTED',
     'BOUNDED QUALIFICATION',
     'SELF-MOVING QUALIFICATION',
+    'PRESSURE JUSTIFICATION',
+    'JUSTIFIED',
+    'T7_PRESSURE',
+    'RESOLVE_LOAD_BEARING_GAP',
   ]) assert.ok(html.includes(phrase), phrase);
   assert.ok(html.includes('data-workcycle-control="ADMIT_ONE"'));
   assert.match(html, /data-workcycle-control="ADMIT_ONE"\s+disabled/);
