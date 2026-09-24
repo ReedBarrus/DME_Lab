@@ -448,3 +448,47 @@ def evaluate_eligibility(
         "coordinates": coordinates,
         "blockers": blockers,
     }
+
+
+def evaluate_one_successor_continuation(
+    *,
+    control: Mapping[str, Any],
+    dependency_satisfied: bool,
+    frame_current: bool,
+    seat_available: bool,
+    no_hold: bool,
+    authority_satisfied: bool,
+    budget: Mapping[str, Any],
+) -> dict[str, Any]:
+    """Decide whether one successor may be admitted for execution.
+
+    This function never invokes a model or mutates the supplied budget.
+    """
+    eligibility = evaluate_eligibility(
+        dependency_satisfied=dependency_satisfied,
+        frame_current=frame_current,
+        seat_available=seat_available,
+        no_hold=no_hold,
+        authority_satisfied=authority_satisfied,
+        budget=budget,
+    )
+    control_coordinates = {
+        "workflow_enabled": bool(control.get("workflow_enabled")),
+        "campaign_enabled": bool(control.get("campaign_enabled")),
+        "seat_work_enabled": bool(control.get("seat_work_enabled")),
+        "wake_requested": bool(control.get("wake_requested")),
+        "auto_continuation_available": int(control.get("auto_continuation_limit", 0)) >= 1,
+    }
+    blockers = list(eligibility["blockers"])
+    blockers.extend(
+        key for key, value in control_coordinates.items() if not value
+    )
+    return {
+        "admit_one_successor": not blockers,
+        "lifecycle_coordinates": eligibility["coordinates"],
+        "control_coordinates": control_coordinates,
+        "blockers": blockers,
+        "max_successors_admitted": 1 if not blockers else 0,
+        "execution_performed": False,
+        "authority_effect": "NONE",
+    }
