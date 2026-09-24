@@ -1,0 +1,12 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0",
+  "request_id": "ROUND025_AUTHORITY_CONSUMPTION_ORTHOGONALITY",
+  "enabled": true,
+  "source_ref": "a04b6e82fcdf9e67c19b3dce49df29ae69aa6d0e",
+  "input_path": "bridge/prompts/ROUND025_AUTHORITY_CONSUMPTION_ORTHOGONALITY_READY_TO_SEND.md",
+  "input_sha256": "0bda4ea0bf06ab399bd4b25138f8dd37700a9e5c9971d402fee6249cf1ed26ef",
+  "model": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 512,
+  "purpose": "Pressure one-shot authority consumption as an orthogonal coordinate to seat lifecycle state without collapsing authorization into execution or seat stop."
+}
