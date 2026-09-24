@@ -1,0 +1,60 @@
+{
+  "object_type": "LOCAL_LMSTUDIO_INVOCATION_WITNESS_V0",
+  "request_id": "ROUND019_REPLAY_RECEIPT_PROBE",
+  "purpose": "Pressure the new durable invocation receipt by approving one request expected to fail model loading, then verify later watch cycles hold it instead of replaying.",
+  "request_manifest_path": "bridge/requests/ROUND019_REPLAY_RECEIPT_PROBE.json",
+  "request_manifest_sha256": "0be5b4f7baf3a554c85b196f7794b90fe63a10ea0008fa26e5f13e6e3abd7641",
+  "source_ref": "b21551e9bdd374e80ef8650596de49e7be535b8e",
+  "input_path": "bridge/prompts/ROUND019_REPLAY_RECEIPT_PROBE.md",
+  "input_sha256": "7aedc4084c14426ea244d3dd202705739ca9f39e60dd959b57f2590436ab42e7",
+  "model_requested": "qwen/qwq-32b",
+  "temperature": 0.0,
+  "max_tokens": 64,
+  "lmstudio_url": "http://127.0.0.1:1234/v1/chat/completions",
+  "http_status": 200,
+  "observed_started_at_utc": "2026-09-24T09:16:11.955548+00:00",
+  "observed_finished_at_utc": "2026-09-24T09:17:00.629344+00:00",
+  "observed_wall_seconds": 48.673794,
+  "prompt_tokens_observed": 87,
+  "completion_tokens_observed": 64,
+  "total_tokens_observed": 151,
+  "end_to_end_output_tokens_per_second": 1.314876,
+  "messages_count": 1,
+  "tools_supplied": false,
+  "previous_response_id_supplied": false,
+  "repository_context_supplied_to_model": false,
+  "connectors_supplied_to_model": false,
+  "external_retrieval_supplied_to_model": false,
+  "request_body_sha256": "f5124c9f69531b2320d732c5b295a11d22e3c5a877b22b447e732e615add1cff",
+  "response_body_sha256": "0aa12e2f186de30d661fc423fbd552959a848b36159d6ed9063516f542e5f8a3",
+  "assistant_text": "",
+  "raw_response": {
+    "id": "chatcmpl-nknzd45ygfovtntiv1iaan",
+    "object": "chat.completion",
+    "created": 1790241392,
+    "model": "qwen/qwq-32b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "",
+          "reasoning_content": "\nOkay, let's see what this user is asking for. The query is about the ROUND 019 — REPLAY RECEIPT PROBE. The OBJECT_TYPE is BRIDGE_REPLAY_RECEIPTRPROBE. The purpose is to exercise the bridge invocation-start receipt under a model-load failure. Expected",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 87,
+      "completion_tokens": 64,
+      "total_tokens": 151,
+      "completion_tokens_details": {
+        "reasoning_tokens": 62
+      }
+    },
+    "stats": {},
+    "system_fingerprint": "qwen/qwq-32b"
+  }
+}
