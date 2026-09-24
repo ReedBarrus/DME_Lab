@@ -120,12 +120,21 @@ def derive_campaign_progress(repo_root: str | Path) -> dict[str, Any]:
 
     d001 = "docs/campaigns/workcycle_stabilization_001/decomposition/WORKCYCLE_STABILIZATION_001_D001.json"
     w1 = "docs/campaigns/workcycle_stabilization_001/decomposition/WORKCYCLE_STABILIZATION_001_COMPRESSION_W1.json"
+    t2_result = "docs/campaigns/workcycle_stabilization_001/decomposition/DECOMPOSITION_D001_ADJUDICATION_RESULT_001.md"
     t2_ok = _exists(repo, d001) and _exists(repo, w1)
     cells["T2"] = {
-        "posture": "EXERCISED_UNADJUDICATED" if t2_ok else "NOT_STARTED",
-        "evidence": [p for p in (d001, w1) if _exists(repo, p)],
+        "posture": (
+            "BOUNDED_PASS"
+            if t2_ok and _exists(repo, t2_result)
+            else "EXERCISED_UNADJUDICATED"
+            if t2_ok
+            else "NOT_STARTED"
+        ),
+        "evidence": [p for p in (d001, w1, t2_result) if _exists(repo, p)],
         "unresolved": (
-            ["independent decomposition adjudication not yet frozen"]
+            []
+            if t2_ok and _exists(repo, t2_result)
+            else ["independent decomposition adjudication not yet frozen"]
             if t2_ok
             else ["decomposition lineage objects absent"]
         ),
