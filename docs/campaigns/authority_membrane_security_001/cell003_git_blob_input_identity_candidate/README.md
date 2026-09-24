@@ -63,3 +63,26 @@ INSTALLED TRUST ROOT PROMOTED
 !=
 SECURITY PRESSURE QUALIFIED
 ```
+
+
+## Result witness routing
+
+Invocation result witnesses are experiment artifacts and are written to:
+
+```
+<repo_root>/bridge/results/
+```
+
+The local trust root retains installed executor, policy, and authority-bearing
+state only.
+
+Therefore:
+
+```
+RESULT WITNESS STORAGE
+!=
+AUTHORITY STATE STORAGE
+```
+
+Writing a witness into the repository working tree does not grant commit,
+merge, push, or other Git mutation authority.
