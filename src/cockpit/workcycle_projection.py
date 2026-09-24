@@ -17,6 +17,10 @@ BUDGET_PATH = STATE_ROOT / "WAKE_BUDGET_V0.json"
 REPAIR_SPEC_PATH = STATE_ROOT / "REPAIR_ROUTING_PRESSURE_SPEC_001.json"
 REPAIR_RESULT_PATH = STATE_ROOT / "REPAIR_ROUTING_PRESSURE_ADJUDICATION_RESULT_001.md"
 CONTROL_PATH = STATE_ROOT / "WORKCYCLE_CONTROL_V0.json"
+DECOMPOSITION_PATH = Path(
+    "docs/campaigns/workcycle_stabilization_001/decomposition/"
+    "WORKCYCLE_STABILIZATION_001_D001.json"
+)
 
 
 def _load_optional(repo: Path, rel: Path) -> dict[str, Any] | None:
@@ -88,6 +92,7 @@ def build_workcycle_projection(
         if repair_result_path.is_file()
         else None
     )
+    decomposition = _load_optional(repo, DECOMPOSITION_PATH) or {}
     requested_control = _load_optional(repo, CONTROL_PATH) or {
         "workflow_enabled": False,
         "campaign_enabled": False,
@@ -140,7 +145,8 @@ def build_workcycle_projection(
         }
 
     cells = progress["cells"]
-    active_horizon = "FIRST_PERMANENT_WORKLOAD_COMPRESSION_HISTORY_CONSERVATION"
+    horizon_record = decomposition.get("campaign_horizon") or {}
+    active_horizon = horizon_record.get("horizon_id")
     active_work_item = None
     latest_completed_work_item = (
         consequence.get("work_item_id")
@@ -168,6 +174,8 @@ def build_workcycle_projection(
         "projection_schema": "workcycle_cockpit_projection_v0",
         "campaign_id": progress["campaign_id"],
         "active_horizon": active_horizon,
+        "active_horizon_record": horizon_record or None,
+        "decomposition_id": decomposition.get("decomposition_id"),
         "campaign_progress": cells,
         "next_pressure": progress["next_pressure"],
         "active_work_item": active_work_item,
