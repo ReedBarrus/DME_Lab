@@ -297,6 +297,10 @@ def start_runtime_projection_server(
     return server, thread, url
 
 
+def cockpit_url_with_runtime(base_url: str, runtime_url: str) -> str:
+    return base_url + "?" + urlencode({"runtime": runtime_url})
+
+
 def find_edge() -> Path | None:
     discovered = shutil.which("msedge")
     if discovered:
@@ -381,7 +385,7 @@ def run_cockpit(
         runtime_server, runtime_thread, runtime_url = start_runtime_projection_server(
             repo_root
         )
-        url = base_url + "?" + urlencode({"runtime": runtime_url})
+        url = cockpit_url_with_runtime(base_url, runtime_url)
 
         if open_mode == "edge-app":
             process = launch_edge_app(url)
