@@ -171,13 +171,16 @@ test('Atlas inspector shows exact bounded distinction without changing object id
   assert.doesNotMatch(html, /data-authorize|data-execute|data-control/);
 });
 
-test('browser surfaces remain read-only and do not mint authority', async () => {
+test('typed distinction projection stays non-authoritative while Atlas uses bounded live transport', async () => {
   const [registrySource, appSource, renderSource] = await Promise.all([
     readFile(new URL('src/cockpit/observer/typed_distinction_registry.mjs', ROOT), 'utf8'),
     readFile(new URL('src/cockpit/observer/repository_fabric_app.mjs', ROOT), 'utf8'),
     readFile(new URL('src/cockpit/observer/repository_fabric_render.mjs', ROOT), 'utf8'),
   ]);
-  assert.doesNotMatch(appSource, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
+  assert.match(appSource, /EventSource/);
+  assert.match(appSource, /\/workcycle\/control\/preview/);
+  assert.match(appSource, /\/workcycle\/control\/commit/);
+  assert.doesNotMatch(registrySource, /fetch\(|EventSource|WebSocket|method:\s*['"]POST['"]/i);
   assert.doesNotMatch(`${registrySource}\n${appSource}\n${renderSource}`,
-    /invoke_lmstudio|evaluate_branch|startControlAdapter|EventSource|WebSocket/);
+    /invoke_lmstudio|evaluate_branch|startControlAdapter|WebSocket/);
 });
