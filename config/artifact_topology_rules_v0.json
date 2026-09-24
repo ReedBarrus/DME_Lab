@@ -1,0 +1,25 @@
+{
+  "schema_version": "ARTIFACT_TOPOLOGY_RULES_V0",
+  "soft_review_threshold": 15,
+  "default_batch_threshold": 20,
+  "families": [
+    {
+      "scope": "docs/campaigns/semantic_continuity_operative_atlas_001",
+      "match_prefix": "CONVERSATION_",
+      "canonical_folder": "conversation_candidates",
+      "relation": "conversation candidate extraction and related conversation-source pressure artifacts"
+    },
+    {
+      "scope": "docs/campaigns/semantic_continuity_operative_atlas_001",
+      "match_prefix": "RELATIONAL_HORIZON_",
+      "canonical_folder": "relational_horizons",
+      "relation": "relational horizon planning, planner-seat, and routing pressure artifacts"
+    },
+    {
+      "scope": "docs/campaigns/semantic_continuity_operative_atlas_001",
+      "match_prefix": "ATLAS_",
+      "canonical_folder": "atlas",
+      "relation": "Atlas-named continuity, metabolism, planning, workflow, and load-transfer artifacts"
+    }
+  ]
+}
