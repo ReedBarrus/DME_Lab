@@ -182,14 +182,14 @@ def git_show(ref: str, path: str) -> bytes:
         raise ValueError("unsafe repo-relative path")
 
     proc = run_git("ls-tree", "-z", ref, "--", path)
-    entries = [entry for entry in proc.stdout.split(b"\\x00") if entry]
+    entries = [entry for entry in proc.stdout.split(b"\x00") if entry]
     if len(entries) != 1:
         raise RuntimeError(
             f"immutable prompt path resolved to {len(entries)} objects: {path}"
         )
 
     try:
-        metadata, resolved_path = entries[0].split(b"\\t", 1)
+        metadata, resolved_path = entries[0].split(b"\t", 1)
         _mode, object_type, blob_sha = metadata.decode("ascii").split()
         resolved_path_text = resolved_path.decode("utf-8")
     except Exception as e:
