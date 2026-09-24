@@ -12,6 +12,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from src.cockpit.workcycle_projection import build_workcycle_projection
 from src.cockpit.temporal_horizon_closure import derive_temporal_horizon_closure
+from src.cockpit.workcycle_qualification import build_workcycle_qualification_readiness
 
 
 def main() -> int:
@@ -34,6 +35,9 @@ def main() -> int:
     projection["temporal_horizon_closure"] = derive_temporal_horizon_closure(
         temporal_lineage=temporal,
         workcycle=projection,
+    )
+    projection["qualification_readiness"] = build_workcycle_qualification_readiness(
+        repo
     )
     print(json.dumps(projection, indent=2, sort_keys=True))
     return 0
