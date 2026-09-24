@@ -5,7 +5,9 @@ from pathlib import Path
 import subprocess
 from tempfile import TemporaryDirectory
 import unittest
+from unittest.mock import Mock, patch
 
+import src.cockpit.repository_temporal_lineage as temporal_lineage
 from src.cockpit.repository_temporal_lineage import (
     WOUND_PATH,
     build_repository_temporal_lineage,
@@ -140,6 +142,55 @@ class RepositoryTemporalLineageTest(unittest.TestCase):
                 self.assertEqual(step["actor_lineage"], "UNRESOLVED")
                 self.assertEqual(step["semantic_lineage"], "UNRESOLVED")
                 self.assertTrue(all(item["source_handles"] for item in step["distinctions"]))
+
+    def test_raw_diff_falls_back_when_diff_tree_fails_without_detail(self) -> None:
+        raw = (
+            b":100644 100644 "
+            b"1111111111111111111111111111111111111111 "
+            b"2222222222222222222222222222222222222222 M\x00"
+            b"example.txt\x00"
+        )
+        with patch.object(
+            temporal_lineage,
+            "_git",
+            side_effect=[
+                temporal_lineage.RepositoryTemporalLineageError(
+                    "git diff-tree failed rc=1: no stderr/stdout emitted"
+                ),
+                raw,
+            ],
+        ) as git_call:
+            rows = temporal_lineage._raw_diff(
+                Path("."),
+                "a" * 40,
+                "b" * 40,
+            )
+        self.assertEqual(rows[0]["status"], "M")
+        self.assertEqual(rows[0]["old_path"], "example.txt")
+        self.assertEqual(rows[0]["new_path"], "example.txt")
+        self.assertEqual(git_call.call_count, 2)
+        self.assertEqual(git_call.call_args_list[1].args[1], "diff")
+
+    def test_temporal_git_subprocess_uses_no_window_flag_on_windows(self) -> None:
+        completed = Mock(returncode=0, stdout=b"abc\n", stderr=b"")
+        with (
+            patch("src.cockpit.repository_temporal_lineage.__import__") as importer,
+            patch.object(
+                temporal_lineage.subprocess,
+                "CREATE_NO_WINDOW",
+                0x08000000,
+                create=True,
+            ),
+            patch(
+                "src.cockpit.repository_temporal_lineage.subprocess.run",
+                return_value=completed,
+            ) as run,
+        ):
+            fake_os = Mock()
+            fake_os.name = "nt"
+            importer.return_value = fake_os
+            temporal_lineage._git(Path("."), "rev-parse", "HEAD")
+        self.assertEqual(run.call_args.kwargs["creationflags"], 0x08000000)
 
     def test_generation_is_atomic_and_read_only(self) -> None:
         with TemporaryDirectory() as temporary:
