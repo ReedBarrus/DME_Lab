@@ -10,6 +10,7 @@ from urllib.request import urlopen
 
 from src.cockpit.desktop_launcher import (
     CockpitLaunchError,
+    cockpit_url_with_runtime,
     choose_freshness_ref,
     is_repo_root,
     launch_edge_app,
@@ -137,6 +138,13 @@ class DesktopCockpitLauncherTest(unittest.TestCase):
                 server.shutdown()
                 server.server_close()
                 thread.join(timeout=5.0)
+
+    def test_cockpit_url_carries_runtime_sidecar_endpoint(self) -> None:
+        url = cockpit_url_with_runtime(
+            "http://127.0.0.1:9000/src/cockpit/observer/",
+            "http://127.0.0.1:8765/runtime/events",
+        )
+        self.assertIn("?runtime=http%3A%2F%2F127.0.0.1%3A8765%2Fruntime%2Fevents", url)
 
     def test_runtime_sidecar_is_loopback_read_only_and_contains_workcycle(self) -> None:
         with TemporaryDirectory() as temporary:
