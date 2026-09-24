@@ -66,6 +66,7 @@ let typedDistinctionRegistry = null;
 let workcycleRuntime = null;
 let workcycleRuntimeError = null;
 let workcycleSource = null;
+let workcycleControlBase = null;
 
 function temporalView() {
   if (!temporalLineage || !temporalState) return null;
@@ -192,12 +193,78 @@ function render() {
     temporalView(),
     workcycleRuntime,
     workcycleRuntimeError,
+    Boolean(workcycleControlBase),
   );
   bindCanvas();
   draw();
 }
 
+function generatedWorkcycleGestureId() {
+  if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
+  return 'workcycle-' + Date.now() + '-' + Math.floor(Math.random() * 1e9);
+}
+
+function controlUrl(suffix) {
+  return String(workcycleControlBase || '').replace(/\/$/, '') + suffix;
+}
+
+async function postControl(suffix, payload) {
+  if (!workcycleControlBase) throw new Error('local workcycle control unavailable');
+  const response = await fetch(controlUrl(suffix), {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(payload),
+  });
+  const value = await response.json();
+  if (!response.ok) throw new Error(value?.error || 'workcycle control rejected');
+  return value;
+}
+
+async function commitWorkcycleGesture(verb) {
+  const previewed = await postControl('/workcycle/control/preview', {
+    verb,
+    gesture_id: generatedWorkcycleGestureId(),
+    reason: 'Cockpit operator gesture',
+  });
+  const next = previewed?.preview?.next_state || {};
+  const confirmed = globalThis.confirm(
+    [
+      'CONFIRM WORKCYCLE CONTROL',
+      '',
+      'VERB: ' + verb,
+      'LIFECYCLE: ' + (next.lifecycle_state || 'UNKNOWN'),
+      'WORKFLOW: ' + (next.workflow_enabled ? 'ON' : 'OFF'),
+      'SEAT WORK: ' + (next.seat_work_enabled ? 'ENABLED' : 'DISABLED'),
+      'WAKE: ' + (next.wake_requested ? 'REQUESTED' : 'CLEAR'),
+      'ADMISSION: ' + (next.current_admission?.work_item_id || 'NONE'),
+      '',
+      'Commit this exact local operator state transition?',
+    ].join('\n'),
+  );
+  if (!confirmed) return null;
+  return postControl('/workcycle/control/commit', {
+    preview: previewed.preview,
+    preview_sha256: previewed.preview_sha256,
+    confirmed_by: 'REED',
+  });
+}
+
 root.addEventListener('click', async (event) => {
+  const workcycleControl = event.target.closest('[data-workcycle-control]');
+  if (workcycleControl) {
+    const verb = workcycleControl.dataset.workcycleControl;
+    workcycleControl.disabled = true;
+    const original = workcycleControl.textContent;
+    workcycleControl.textContent = verb + '…';
+    try {
+      const result = await commitWorkcycleGesture(verb);
+      workcycleControl.textContent = result ? 'COMMITTED' : original;
+    } catch (error) {
+      workcycleControl.textContent = 'REJECTED';
+      globalThis.alert('WORKCYCLE CONTROL REJECTED\n' + error);
+    }
+    return;
+  }
   if (event.target.closest('[data-toggle-actor-layer]') && temporalState) {
     temporalState = toggleActorLayer(temporalState);
     render();
@@ -306,7 +373,17 @@ root.addEventListener('keydown', (event) => {
 
 function startWorkcycleRuntimeProjection() {
   const params = new URL(window.location.href).searchParams;
-  const endpoint = params.get('runtime');
+  let endpoint = params.get('runtime');
+  workcycleControlBase = params.get('control');
+  if (!endpoint) {
+    try {
+      endpoint = new URL(window.parent.location.href).searchParams.get('runtime');
+      workcycleControlBase = workcycleControlBase
+        || new URL(window.parent.location.href).searchParams.get('control');
+    } catch {
+      // Same-origin parent fallback unavailable; retain explicit missing posture.
+    }
+  }
   if (!endpoint) {
     workcycleRuntime = null;
     workcycleRuntimeError = 'Runtime sidecar not configured for Atlas workcycle projection.';
