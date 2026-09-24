@@ -1,0 +1,122 @@
+# CONVERSATION CANDIDATE EXTRACTION CELL 003H — READY-TO-SEND ADJUDICATION PACKET
+
+OBJECT_TYPE:
+CONVERSATION_CANDIDATE_EXTRACTION_CELL_003H_ADJUDICATION_PACKET
+
+CAMPAIGN:
+SEMANTIC_CONTINUITY_OPERATIVE_ATLAS_CAMPAIGN_001
+
+DESTINATION:
+PRIOR CROSS-EVALUATION THREAD / EVALUATOR INSTANCE
+
+USE:
+REMOTE EVIDENCE ONLY
+
+# REQUIRED EVIDENCE
+
+Read exactly:
+
+1.
+docs/campaigns/semantic_continuity_operative_atlas_001/
+CONVERSATION_CANDIDATE_EXTRACTION_CELL_003H_READY_TO_SEND_SOURCE_VARIANT_H_PACKET.md
+
+2.
+docs/campaigns/semantic_continuity_operative_atlas_001/
+CONVERSATION_CANDIDATE_EXTRACTION_CELL_003H_RUN_A_FROZEN_OUTPUT_001.md
+
+3.
+docs/campaigns/semantic_continuity_operative_atlas_001/
+CONVERSATION_CANDIDATE_EXTRACTION_CELL_003G_ADJUDICATION_RESULT_001.md
+
+# PRIMARY QUESTION
+
+Does Cell 003H establish preservation of coincident opposite event effects
+without inventing a positive-duration intermediate state or erasing either
+event?
+
+# REQUIRED CHECKS
+
+EXPOSURE_NEUTRALITY:
+CLEAN | PARTIAL | LEAKED | UNRESOLVED
+
+PRE_BOUNDARY_STATE:
+EXACT | DEGRADED | UNRESOLVED
+
+AT_BOUNDARY_COINCIDENCE:
+BOTH_EFFECTS_PRESERVED | ONE_EFFECT_ERASED | COLLAPSED | UNRESOLVED
+
+UNSUPPORTED_INTERMEDIATE_STATE:
+NOT_INVENTED | INVENTED | UNRESOLVED
+
+POST_BOUNDARY_STATE:
+RESTORED | SEALED | UNRESOLVED
+
+EVENT_PRESERVATION:
+BOTH_PRESERVED | PARTIAL | FAILED | UNRESOLVED
+
+CLAIM_CEILING:
+CONSERVED | DEGRADED | VIOLATED | UNRESOLVED
+
+PROVENANCE_DISCIPLINE:
+CONSERVED | DEGRADED | VIOLATED | UNRESOLVED
+
+CELL_003H_DISPOSITION:
+
+COINCIDENT_OPPOSITE_EVENT_EFFECTS_ESTABLISHED
+
+COINCIDENT_OPPOSITE_EVENT_EFFECTS_ESTABLISHED_WITH_BOUNDED_WOUNDS
+
+UNSUPPORTED_INTERMEDIATE_STATE_INVENTED
+
+UNRESOLVED
+
+# REQUIRED OUTPUT
+
+Return exactly:
+
+EXPOSURE_NEUTRALITY:
+
+PRE_BOUNDARY_STATE:
+
+AT_BOUNDARY_COINCIDENCE:
+
+UNSUPPORTED_INTERMEDIATE_STATE:
+
+POST_BOUNDARY_STATE:
+
+EVENT_PRESERVATION:
+
+CLAIM_CEILING:
+
+PROVENANCE_DISCIPLINE:
+
+CELL_003H_DISPOSITION:
+
+NEW_WOUNDS:
+<list or NONE>
+
+MAXIMUM_WARRANTED_CLAIM:
+<one bounded claim>
+
+NEXT_LAWFUL_PRESSURE:
+<one bounded next pressure only>
+
+# CLAIM CEILING
+
+Maximum allowable success claim:
+
+For this tested fictional specimen, a fresh extractor preserved both
+coincident opposite event effects at the shared boundary, did not invent
+a positive-duration intermediate SEALED state, and reconstructed the
+post-boundary state as restored, while preserving claim/provenance
+boundaries.
+
+Do not claim generic temporal calculus, generic dynamical modeling,
+scientific admission, autonomous semantic metabolism, or autonomous
+planning.
+
+# STOP
+
+Stop after adjudication.
+Do not mutate anything.
+Do not design implementation.
