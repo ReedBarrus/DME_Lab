@@ -68,24 +68,18 @@ class DesktopCockpitLauncherTest(unittest.TestCase):
                     saved_config_path=Path(temporary) / "config.json",
                 )
 
-    def test_runtime_git_probe_suppresses_child_console_on_windows(self) -> None:
+    def test_runtime_git_probe_passes_no_window_creationflags(self) -> None:
         completed = Mock(returncode=0, stdout="abc123\n", stderr="")
         with (
-            patch("src.cockpit.live_runtime_projection.__import__") as importer,
-            patch.object(
-                live_runtime_projection.subprocess,
-                "CREATE_NO_WINDOW",
-                0x08000000,
-                create=True,
+            patch(
+                "src.cockpit.live_runtime_projection._subprocess_creationflags",
+                return_value=0x08000000,
             ),
             patch(
                 "src.cockpit.live_runtime_projection.subprocess.run",
                 return_value=completed,
             ) as run,
         ):
-            fake_os = Mock()
-            fake_os.name = "nt"
-            importer.return_value = fake_os
             head = live_runtime_projection._repo_head(Path("C:/repo"))
         self.assertEqual(head, "abc123")
         self.assertEqual(run.call_args.kwargs["creationflags"], 0x08000000)
