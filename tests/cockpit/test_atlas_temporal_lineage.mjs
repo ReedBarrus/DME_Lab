@@ -7,6 +7,7 @@ import {selectRepositoryObject} from '../../src/cockpit/observer/repository_fabr
 import {renderRepositoryFabric} from '../../src/cockpit/observer/repository_fabric_render.mjs';
 import {
   aggregateTransitionEmissions,
+  bindCurrentTemporalContext,
   buildTemporalLineageModel,
   buildTransitionEmissionLedger,
   createTemporalOperatorState,
@@ -78,6 +79,36 @@ function sourceFixture() {
     },
   };
 }
+
+test('current fabric binds exact temporal head without historical reconstruction', () => {
+  const lineage = buildTemporalLineageModel(sourceFixture());
+  const current = reconstructTemporalFrame(lineage, lineage.frames.length - 1);
+  const stripped = structuredClone(current);
+  delete stripped.temporalContext;
+
+  bindCurrentTemporalContext(lineage, stripped);
+
+  assert.equal(stripped.source.source_commit, lineage.frames.at(-1).commit_sha);
+  assert.equal(stripped.temporalContext.frameIndex, lineage.frames.length - 1);
+  assert.equal(stripped.temporalContext.currentFabricStanding, 'DIRECT_CURRENT_FABRIC');
+  assert.equal(
+    stripped.temporalContext.objectTemporalIdentityStanding,
+    'UNRESOLVED_UNLESS_SOURCE_BOUND',
+  );
+});
+
+test('current fabric refuses stale temporal head binding', () => {
+  const lineage = buildTemporalLineageModel(sourceFixture());
+  const current = reconstructTemporalFrame(lineage, lineage.frames.length - 1);
+  const stripped = structuredClone(current);
+  delete stripped.temporalContext;
+  stripped.source.source_commit = 'f'.repeat(40);
+
+  assert.throws(
+    () => bindCurrentTemporalContext(lineage, stripped),
+    /does not match temporal head/,
+  );
+});
 
 test('T01 same exact commit reconstructs the same source frame', () => {
   const lineage = buildTemporalLineageModel(sourceFixture());
@@ -192,6 +223,23 @@ test('render exposes temporal, actor, wound, authorship, and no-causation contro
   for (const phrase of ['TEMPORAL LINEAGE OPERATOR V0', 'GIT_AUTHOR - METADATA ONLY', 'SHOW SEATS / CURSORS', 'REPLAY PATH IDENTITY WOUND', 'SEAT_ACTOR']) {
     assert.match(html, new RegExp(phrase));
   }
+});
+
+test('Atlas boot renders current fabric before background temporal attachment', async () => {
+  const appSource = await readFile(
+    new URL('src/cockpit/observer/repository_fabric_app.mjs', ROOT),
+    'utf8',
+  );
+  const currentFetch = appSource.indexOf("fetchJsonResponse(\n      REPOSITORY_FABRIC_PATH");
+  const firstRender = appSource.indexOf('render();\n    startWorkcycleRuntimeProjection();');
+  const historyAttach = appSource.indexOf('void attachHistoricalContext(requestedView);');
+  assert.ok(currentFetch >= 0);
+  assert.ok(firstRender > currentFetch);
+  assert.ok(historyAttach > firstRender);
+  assert.doesNotMatch(
+    appSource,
+    /model\s*=\s*reconstructTemporalFrame\(temporalLineage,\s*temporalLineage\.frames\.length\s*-\s*1\)/,
+  );
 });
 
 test('implementation permits read-only runtime observation plus bounded local workcycle control only', async () => {
