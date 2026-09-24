@@ -166,6 +166,51 @@ class WorkcycleV0Tests(unittest.TestCase):
         self.assertFalse(second["admit_one_successor"])
         self.assertIn("budget_reservable", second["blockers"])
 
+    def test_result_file_existence_does_not_create_t2_or_t6_pass(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            decomp = repo / "docs/campaigns/workcycle_stabilization_001/decomposition"
+            state = repo / "docs/campaigns/workcycle_stabilization_001/state"
+            decomp.mkdir(parents=True)
+            state.mkdir(parents=True)
+            (decomp / "WORKCYCLE_STABILIZATION_001_D001.json").write_text("{}", encoding="utf-8")
+            (decomp / "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1.json").write_text("{}", encoding="utf-8")
+            (decomp / "DECOMPOSITION_D001_ADJUDICATION_RESULT_001.md").write_text(
+                "DISPOSITION:\n\nDECOMPOSITION_FRACTURED\n",
+                encoding="utf-8",
+            )
+            (state / "REPAIR_ROUTING_PRESSURE_SPEC_001.json").write_text("{}", encoding="utf-8")
+            (state / "REPAIR_ROUTING_PRESSURE_ADJUDICATION_RESULT_001.md").write_text(
+                "ALL_FOUR_CLASSES_DISCRIMINATED:\n\nNO\n",
+                encoding="utf-8",
+            )
+            projection = wc.derive_campaign_progress(repo)
+            self.assertEqual(
+                projection["cells"]["T2"]["posture"],
+                "ADJUDICATED_NOT_MATCHED",
+            )
+            self.assertEqual(
+                projection["cells"]["T6"]["posture"],
+                "ADJUDICATED_NOT_MATCHED",
+            )
+
+    def test_malformed_consequence_cannot_create_t3_pass(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            state = repo / "docs/campaigns/workcycle_stabilization_001/state"
+            state.mkdir(parents=True)
+            (state / "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1_OBSERVED_CONSEQUENCE.json").write_text(
+                '{"object_type":"OBSERVED_CONSEQUENCE_V0","integrity_sha256":"bad"}',
+                encoding="utf-8",
+            )
+            (state / "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1_CONSEQUENCE_EVALUATION.json").write_text(
+                '{"object_type":"CONSEQUENCE_EVALUATION_V0","integrity_sha256":"bad"}',
+                encoding="utf-8",
+            )
+            projection = wc.derive_campaign_progress(repo)
+            self.assertEqual(projection["cells"]["T3"]["posture"], "UNRESOLVED")
+            self.assertTrue(projection["cells"]["T3"]["unresolved"])
+
     def test_progress_projection_reports_missing_evidence_not_standing(self):
         with tempfile.TemporaryDirectory() as tmp:
             projection = wc.derive_campaign_progress(tmp)
