@@ -31,6 +31,7 @@ from typing import Any, Callable
 
 ROOT = Path(__file__).resolve().parents[1]
 POLICY_PATH = ROOT / "bridge" / "policy_v0.json"
+RECEIPT_DIR = ROOT / "bridge" / "local" / "invocation_receipts"
 
 REQUEST_ID_RE = re.compile(r"^[A-Z0-9][A-Z0-9_.-]{2,95}$")
 SHA40_RE = re.compile(r"^[0-9a-f]{40}$")
@@ -296,6 +297,72 @@ def result_path_for(request_id: str, policy: dict[str, Any]) -> Path:
     return out
 
 
+def invocation_receipt_path(request_id: str) -> Path:
+    RECEIPT_DIR.mkdir(parents=True, exist_ok=True)
+    return RECEIPT_DIR / f"{request_id}.json"
+
+
+def write_invocation_receipt(
+    manifest: dict[str, Any],
+    manifest_sha256: str,
+    prompt_bytes: bytes,
+    request_path: str,
+) -> Path:
+    """Persist invocation start before calling LM Studio.
+
+    Creation is exclusive. An existing receipt means the request has already
+    crossed the authorization -> invocation-start boundary and must not replay
+    automatically.
+    """
+
+    path = invocation_receipt_path(str(manifest["request_id"]))
+    receipt = {
+        "object_type": "LOCAL_LMSTUDIO_INVOCATION_RECEIPT_V0",
+        "request_id": str(manifest["request_id"]),
+        "request_manifest_path": request_path,
+        "request_manifest_sha256": manifest_sha256,
+        "source_ref": str(manifest["source_ref"]),
+        "input_path": str(manifest["input_path"]),
+        "input_sha256": sha256_bytes(prompt_bytes),
+        "model_requested": str(manifest["model"]),
+        "authorized_at_utc": now_iso(),
+        "state": "AUTHORIZED_INVOCATION_STARTED",
+        "automatic_replay_allowed": False,
+    }
+
+    try:
+        with path.open("x", encoding="utf-8") as handle:
+            json.dump(receipt, handle, indent=2, ensure_ascii=False)
+            handle.write("\n")
+    except FileExistsError as exc:
+        raise RuntimeError(
+            f"invocation receipt already exists for {manifest['request_id']}; "
+            "automatic replay denied"
+        ) from exc
+    return path
+
+
+def finalize_invocation_receipt(receipt_path: Path, result_path: Path) -> None:
+    receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+    receipt["state"] = "RESULT_WITNESS_WRITTEN"
+    receipt["result_path"] = str(result_path.relative_to(ROOT)).replace("\\", "/")
+    receipt["settled_locally_at_utc"] = now_iso()
+    receipt_path.write_text(
+        json.dumps(receipt, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+
+
+def clear_invocation_receipt(request_id: str) -> bool:
+    if not REQUEST_ID_RE.fullmatch(request_id):
+        raise ValueError("invalid request_id")
+    path = invocation_receipt_path(request_id)
+    if not path.exists():
+        return False
+    path.unlink()
+    return True
+
+
 def invoke_lmstudio(
     manifest: dict[str, Any],
     prompt_bytes: bytes,
@@ -448,6 +515,14 @@ def process_once(
         if out_path.exists():
             continue
 
+        receipt_path = invocation_receipt_path(manifest["request_id"])
+        if receipt_path.exists():
+            print(
+                f"[HOLD] {manifest['request_id']}: invocation receipt exists; "
+                "automatic replay denied"
+            )
+            continue
+
         try:
             prompt_bytes = git_show(manifest["source_ref"], manifest["input_path"])
         except Exception as e:
@@ -494,6 +569,17 @@ def process_once(
             continue
 
         try:
+            receipt_path = write_invocation_receipt(
+                manifest,
+                manifest_sha,
+                execution_candidate_bytes,
+                request_path,
+            )
+        except Exception as e:
+            print(f"[HOLD] {manifest['request_id']}: {e}")
+            continue
+
+        try:
             witness = invoke_lmstudio(
                 manifest,
                 execution_candidate_bytes,
@@ -502,13 +588,17 @@ def process_once(
                 request_path,
             )
         except Exception as e:
-            print(f"[ERROR] {manifest['request_id']}: {e}")
+            print(
+                f"[ERROR] {manifest['request_id']}: {e}; "
+                "receipt retained, automatic replay denied"
+            )
             continue
 
         out_path.write_text(
             json.dumps(witness, indent=2, ensure_ascii=False) + "\n",
             encoding="utf-8",
         )
+        finalize_invocation_receipt(receipt_path, out_path)
         print(f"[OK] wrote {out_path.relative_to(ROOT)}")
         executed += 1
 
@@ -520,10 +610,24 @@ def main() -> int:
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--once", action="store_true", help="fetch and process queue once")
     mode.add_argument("--watch", action="store_true", help="poll continuously")
+    mode.add_argument(
+        "--clear-receipt",
+        metavar="REQUEST_ID",
+        help="explicitly clear one local invocation receipt to permit a manual retry",
+    )
     parser.add_argument("--poll-seconds", type=int, default=120)
     args = parser.parse_args()
 
     policy = load_policy()
+
+    if args.clear_receipt is not None:
+        cleared = clear_invocation_receipt(args.clear_receipt)
+        if cleared:
+            print(f"[OK] cleared invocation receipt for {args.clear_receipt}")
+            print("A future invocation still requires local approval.")
+        else:
+            print(f"[NOOP] no invocation receipt exists for {args.clear_receipt}")
+        return 0
 
     if args.once:
         process_once(policy)
