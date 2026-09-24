@@ -439,22 +439,34 @@ export function renderWorkcycleRail(
   const eligibility = workcycle.eligibility || {};
   const currentUnresolved = workcycle.current_unresolved || [];
   const seatEcology = workcycle.seat_ecology || {};
-  const seats = seatEcology.registered_runtime_seats || [];
+  const runtimeSeats = seatEcology.registered_runtime_seats || [];
+  const durableSeats = seatEcology.durable_seats || [];
   const occupied = new Set(
     (seatEcology.occupied_runtime_seats || []).map((seat) => seat.seat_id),
   );
-  const seatRows = seats.length
-    ? seats.slice(0, 8).map((seat) => `
-        <div class="workcycle-seat-row">
-          <strong>${escapeHtml(seat.seat_id || 'UNKNOWN')}</strong>
-          <span>${escapeHtml(
-            occupied.has(seat.seat_id)
-              ? 'OCCUPIED'
-              : seat.occupancy_state || 'REGISTERED',
-          )}</span>
-        </div>
-      `).join('')
-    : '<p class="fabric-missing">NO LIVE RUNTIME SEATS CONFIGURED</p>';
+  const runtimeById = new Map(runtimeSeats.map((seat) => [seat.seat_id, seat]));
+  const seatIds = [...new Set([
+    ...durableSeats.map((seat) => seat.seat_id),
+    ...runtimeSeats.map((seat) => seat.seat_id),
+  ].filter(Boolean))];
+  const seatRows = seatIds.length
+    ? seatIds.slice(0, 8).map((seatId) => {
+        const runtime = runtimeById.get(seatId);
+        const durable = durableSeats.find((seat) => seat.seat_id === seatId);
+        const posture = occupied.has(seatId)
+          ? 'OCCUPIED'
+          : runtime?.occupancy_state
+            || durable?.occupant_binding
+            || durable?.trigger_state
+            || 'REGISTERED';
+        return `
+          <div class="workcycle-seat-row">
+            <strong>${escapeHtml(seatId)}</strong>
+            <span>${escapeHtml(posture)}</span>
+          </div>
+        `;
+      }).join('')
+    : '<p class="fabric-missing">NO DURABLE OR LIVE SEATS OBSERVED</p>';
 
   const workflowEnabled = summary.workflow === 'ON';
   const wakeRequested = Boolean(summary.wake_requested);
