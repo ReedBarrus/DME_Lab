@@ -40,6 +40,7 @@ def _git(repo: Path, *args: str) -> subprocess.CompletedProcess[bytes]:
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         check=False,
+        creationflags=_subprocess_creationflags(),
     )
 
 
