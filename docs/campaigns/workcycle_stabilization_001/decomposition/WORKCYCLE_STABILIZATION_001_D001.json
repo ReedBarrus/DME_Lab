@@ -1,0 +1,38 @@
+{
+  "object_type": "CAMPAIGN_DECOMPOSITION_RECORD_V0",
+  "decomposition_id": "WORKCYCLE_STABILIZATION_001_D001",
+  "campaign_handle": {
+    "path": "docs/campaigns/workcycle_stabilization_001/WORKCYCLE_STABILIZATION_CAMPAIGN_001.md",
+    "git_blob_sha": "b15d71c05f20509b47162bcd1b81c69849fe6115"
+  },
+  "campaign_horizon": {
+    "horizon_id": "FIRST_PERMANENT_WORKLOAD_COMPRESSION_HISTORY_CONSERVATION",
+    "source_section": "FIRST PERMANENT WORKLOAD — COMPRESSION / HISTORY CONSERVATION",
+    "target_relation": "Reduce hot repository/context burden while preserving reconstructable consequence, lineage, provenance, and unresolved boundaries."
+  },
+  "decomposition_basis": [
+    {
+      "path": "docs/campaigns/workcycle_stabilization_001/SYMBOLIC_CONSEQUENCE_DECOMPOSITION_V0.md",
+      "git_blob_sha": "871fd46c441eaba75e545c258ce198a2347f2bb9"
+    },
+    {
+      "path": "docs/campaigns/workcycle_stabilization_001/ATLAS_COMPRESSION_SPECIMEN_001.md",
+      "git_blob_sha": "7b67fec7f469c1bc72a91f3a108f3c2478f27b45"
+    }
+  ],
+  "distinctions_applied": [
+    "COMPRESS != DELETE",
+    "COLD_SOURCE != HOT_OPERATIVE_STATE",
+    "RECONSTRUCT != REGENERATE_FROM_MODEL_MEMORY",
+    "WORK_COMPLETION != CAMPAIGN_PROGRESS",
+    "SOURCE_RETENTION != HOT_CONTEXT_RETENTION"
+  ],
+  "work_item_ids": [
+    "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1"
+  ],
+  "expected_composition": "One bounded non-destructive compression candidate and conservation report provide evidence about whether exact historical coordination posture can be made cheaper to keep hot without losing challengeability.",
+  "authority_effect": "NONE",
+  "scientific_standing_effect": "NONE",
+  "executive_automation_effect": "NONE",
+  "claim_ceiling": "One campaign-derived compression work item; no claim of generic automated decomposition."
+}
