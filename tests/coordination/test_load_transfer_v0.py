@@ -247,7 +247,10 @@ class LoadTransferV0Tests(unittest.TestCase):
             receipt["output_object_identities"], [output["integrity_sha256"]]
         )
         self.assertIn(frame["integrity_sha256"], receipt["input_object_identities"])
-        self.assertIn(claimed["integrity_sha256"], receipt["input_object_identities"])
+        self.assertEqual(
+            claimed["integrity_sha256"],
+            receipt["input_work_item_identity"],
+        )
 
     def test_t07_handoff_grants_no_authority(self):
         frame = sealed_frame()
