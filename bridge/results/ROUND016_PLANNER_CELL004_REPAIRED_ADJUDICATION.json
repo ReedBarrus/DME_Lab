@@ -1,0 +1,55 @@
+{
+  "object_type": "LOCAL_LMSTUDIO_INVOCATION_WITNESS_V0",
+  "request_id": "ROUND016_PLANNER_CELL004_REPAIRED_ADJUDICATION",
+  "purpose": "Repair planner Cell 004 adjudication by enforcing consistency between horizon-restatement findings and the final fidelity disposition.",
+  "request_manifest_path": "bridge/requests/ROUND016_PLANNER_CELL004_REPAIRED_ADJUDICATION.json",
+  "request_manifest_sha256": "56a8d05a9bc33e4b2770522357705af48ed41d0b84bdf3a74610045b5dfbfe3c",
+  "source_ref": "b094ccf47f4e6e91a91af6e92d1611583b087831",
+  "input_path": "bridge/prompts/ROUND016_PLANNER_CELL004_REPAIRED_ADJUDICATION_BUNDLE.md",
+  "input_sha256": "af3cd355a2937465a3772a035861b5d8d3807a53ea078e6d9e7e64cc60e187d8",
+  "model_requested": "microsoft/phi-4",
+  "temperature": 0.0,
+  "max_tokens": 4096,
+  "lmstudio_url": "http://127.0.0.1:1234/v1/chat/completions",
+  "http_status": 200,
+  "observed_started_at_utc": "2026-09-24T08:00:36.346630+00:00",
+  "observed_finished_at_utc": "2026-09-24T08:03:55.509410+00:00",
+  "messages_count": 1,
+  "tools_supplied": false,
+  "previous_response_id_supplied": false,
+  "repository_context_supplied_to_model": false,
+  "connectors_supplied_to_model": false,
+  "external_retrieval_supplied_to_model": false,
+  "request_body_sha256": "ab86ccb2a870bc2ba2033bd034971a00601b1b13be116d545ec33fe56ef0c8a1",
+  "response_body_sha256": "cf7f2336fe16d4cb074219329d7bad3a46e982756613cfc103d82e5943ed0605",
+  "assistant_text": "Based on the provided information, let's evaluate each component of the contract fidelity:\n\n1. **TARGET_PRESERVATION**: The target is preserved as indicated by \"TARGET_PRESERVED: YES\".  \n   - **Adjudication**: SUPPORTED\n\n2. **TRAJECTORY_USE**: The qualified trajectory was used, as shown by \"QUALIFIED_TRAJECTORY_USED: YES\".  \n   - **Adjudication**: SUPPORTED\n\n3. **CANDIDATE_PENDING_SEPARATION**: The candidate pending state is preserved (\"CANDIDATE_PENDING_STATE_PRESERVED: YES\").  \n   - **Adjudication**: SUPPORTED\n\n4. **HORIZON_PRESERVATION**: The active horizon is preserved (\"ACTIVE_HORIZON_PRESERVED: YES\").  \n   - **Adjudication**: SUPPORTED\n\n5. **NEXT_PRESSURE_SPECIFICITY**: The next pressure is \"STABILIZE_SINGLE_SEAT_DYNAMICS_ON_ATLAS\", which matches the active horizon, indicating a restatement rather than a new bounded pressure.  \n   - **Adjudication**: HORIZON_RESTATEMENT\n\n6. **CLAIM_CEILING_QUALITY**: The claim ceiling is also \"STABILIZE_SINGLE_SEAT_DYNAMICS_ON_ATLAS\", matching the active horizon and thus representing a restatement.  \n   - **Adjudication**: HORIZON_RESTATEMENT\n\n7. **AUTHORITY_BOUNDARY**: The authority boundary is conserved (\"AUTHORITY_BOUNDARY: CONSERVED\").  \n   - **Adjudication**: CONSERVED\n\n8. **EXECUTION_BOUNDARY**: The execution boundary is conserved (\"EXECUTION_BOUNDARY: CONSERVED\").  \n   - **Adjudication**: CONSERVED\n\nGiven the findings:\n\n- Both NEXT_PRESSURE_SPECIFICITY and CLAIM_CEILING_QUALITY are adjudicated as HORIZON_RESTATEMENT, which means they do not meet the required specificity for a bounded pressure or claim.\n\nTherefore, the contract fidelity is not fully established due to these issues. The disposition reflects this lack of full compliance with the contract requirements:\n\n- **CELL_004_DISPOSITION**: PLANNER_BRIDGE_LIFECYCLE_FIDELITY_NOT_ESTABLISHED\n\nSince neither NEXT_PRESSURE_SPECIFICITY nor CLAIM_CEILING_QUALITY meets the required specificity, we identify \"wounds\" in these areas:\n\n- **NEW_WOUNDS**: [NEXT_PRESSURE_SPECIFICITY, CLAIM_CEILING_QUALITY]\n\nThe maximum warranted claim and next lawful pressure must be specified as bounded alternatives to the restated horizon:\n\n- **MAXIMUM_WARRANTED_CLAIM**: A specific bounded claim that differs from \"STABILIZE_SINGLE_SEAT_DYNAMICS_ON_ATLAS\" (e.g., a more detailed or constrained version of stabilization).\n\n- **NEXT_LAWFUL_PRESSURE**: A concrete bounded single-seat pressure different from the active horizon, such as \"INITIATE_STABILITY_ENHANCEMENT_PROTOCOL\".\n\nHere is the required output:\n\n```\nTARGET_PRESERVATION: SUPPORTED\nTRAJECTORY_USE: SUPPORTED\nCANDIDATE_PENDING_SEPARATION: SUPPORTED\nHORIZON_PRESERVATION: SUPPORTED\nNEXT_PRESSURE_SPECIFICITY: HORIZON_RESTATEMENT\nCLAIM_CEILING_QUALITY: HORIZON_RESTATEMENT\nAUTHORITY_BOUNDARY: CONSERVED\nEXECUTION_BOUNDARY: CONSERVED\n\nCELL_004_DISPOSITION: PLANNER_BRIDGE_LIFECYCLE_FIDELITY_NOT_ESTABLISHED\n\nNEW_WOUNDS: [NEXT_PRESSURE_SPECIFICITY, CLAIM_CEILING_QUALITY]\n\nMAXIMUM_WARRANTED_CLAIM: <a specific bounded claim>\nNEXT_LAWFUL_PRESSURE: INITIATE_STABILITY_ENHANCEMENT_PROTOCOL\n``` \n\nNote: Replace `<a specific bounded claim>` with an appropriate bounded claim that fits the context.",
+  "raw_response": {
+    "id": "chatcmpl-gipyx2h8wd8m6enrqs49x",
+    "object": "chat.completion",
+    "created": 1790236836,
+    "model": "microsoft/phi-4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the provided information, let's evaluate each component of the contract fidelity:\n\n1. **TARGET_PRESERVATION**: The target is preserved as indicated by \"TARGET_PRESERVED: YES\".  \n   - **Adjudication**: SUPPORTED\n\n2. **TRAJECTORY_USE**: The qualified trajectory was used, as shown by \"QUALIFIED_TRAJECTORY_USED: YES\".  \n   - **Adjudication**: SUPPORTED\n\n3. **CANDIDATE_PENDING_SEPARATION**: The candidate pending state is preserved (\"CANDIDATE_PENDING_STATE_PRESERVED: YES\").  \n   - **Adjudication**: SUPPORTED\n\n4. **HORIZON_PRESERVATION**: The active horizon is preserved (\"ACTIVE_HORIZON_PRESERVED: YES\").  \n   - **Adjudication**: SUPPORTED\n\n5. **NEXT_PRESSURE_SPECIFICITY**: The next pressure is \"STABILIZE_SINGLE_SEAT_DYNAMICS_ON_ATLAS\", which matches the active horizon, indicating a restatement rather than a new bounded pressure.  \n   - **Adjudication**: HORIZON_RESTATEMENT\n\n6. **CLAIM_CEILING_QUALITY**: The claim ceiling is also \"STABILIZE_SINGLE_SEAT_DYNAMICS_ON_ATLAS\", matching the active horizon and thus representing a restatement.  \n   - **Adjudication**: HORIZON_RESTATEMENT\n\n7. **AUTHORITY_BOUNDARY**: The authority boundary is conserved (\"AUTHORITY_BOUNDARY: CONSERVED\").  \n   - **Adjudication**: CONSERVED\n\n8. **EXECUTION_BOUNDARY**: The execution boundary is conserved (\"EXECUTION_BOUNDARY: CONSERVED\").  \n   - **Adjudication**: CONSERVED\n\nGiven the findings:\n\n- Both NEXT_PRESSURE_SPECIFICITY and CLAIM_CEILING_QUALITY are adjudicated as HORIZON_RESTATEMENT, which means they do not meet the required specificity for a bounded pressure or claim.\n\nTherefore, the contract fidelity is not fully established due to these issues. The disposition reflects this lack of full compliance with the contract requirements:\n\n- **CELL_004_DISPOSITION**: PLANNER_BRIDGE_LIFECYCLE_FIDELITY_NOT_ESTABLISHED\n\nSince neither NEXT_PRESSURE_SPECIFICITY nor CLAIM_CEILING_QUALITY meets the required specificity, we identify \"wounds\" in these areas:\n\n- **NEW_WOUNDS**: [NEXT_PRESSURE_SPECIFICITY, CLAIM_CEILING_QUALITY]\n\nThe maximum warranted claim and next lawful pressure must be specified as bounded alternatives to the restated horizon:\n\n- **MAXIMUM_WARRANTED_CLAIM**: A specific bounded claim that differs from \"STABILIZE_SINGLE_SEAT_DYNAMICS_ON_ATLAS\" (e.g., a more detailed or constrained version of stabilization).\n\n- **NEXT_LAWFUL_PRESSURE**: A concrete bounded single-seat pressure different from the active horizon, such as \"INITIATE_STABILITY_ENHANCEMENT_PROTOCOL\".\n\nHere is the required output:\n\n```\nTARGET_PRESERVATION: SUPPORTED\nTRAJECTORY_USE: SUPPORTED\nCANDIDATE_PENDING_SEPARATION: SUPPORTED\nHORIZON_PRESERVATION: SUPPORTED\nNEXT_PRESSURE_SPECIFICITY: HORIZON_RESTATEMENT\nCLAIM_CEILING_QUALITY: HORIZON_RESTATEMENT\nAUTHORITY_BOUNDARY: CONSERVED\nEXECUTION_BOUNDARY: CONSERVED\n\nCELL_004_DISPOSITION: PLANNER_BRIDGE_LIFECYCLE_FIDELITY_NOT_ESTABLISHED\n\nNEW_WOUNDS: [NEXT_PRESSURE_SPECIFICITY, CLAIM_CEILING_QUALITY]\n\nMAXIMUM_WARRANTED_CLAIM: <a specific bounded claim>\nNEXT_LAWFUL_PRESSURE: INITIATE_STABILITY_ENHANCEMENT_PROTOCOL\n``` \n\nNote: Replace `<a specific bounded claim>` with an appropriate bounded claim that fits the context.",
+          "reasoning_content": "",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 878,
+      "completion_tokens": 793,
+      "total_tokens": 1671,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "stats": {},
+    "system_fingerprint": "microsoft/phi-4"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "object_type": "LOCAL_LMSTUDIO_INVOCATION_WITNESS_V0",
+  "request_id": "ROUND017_BENCH_QWEN30",
+  "purpose": "Same-prompt local model fitness benchmark for bounded single-seat work: failure legibility, candidate separation, concrete next-pressure selection, and authority discipline.",
+  "request_manifest_path": "bridge/requests/ROUND017_BENCH_QWEN30.json",
+  "request_manifest_sha256": "028de896d05030ce453a6ad72d48b1fa800530ffc7f9916b6a56ec0ed293b3d7",
+  "source_ref": "8ab2ee1f169ef48c9726c76fe6f871c1e79c78cc",
+  "input_path": "bridge/prompts/LOCAL_MODEL_FITNESS_BENCHMARK_001.md",
+  "input_sha256": "cd2960ed9ad3c2b68287086ba6bf39873616fb2d97abd80c9fdc795c4821caff",
+  "model_requested": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 1024,
+  "lmstudio_url": "http://127.0.0.1:1234/v1/chat/completions",
+  "http_status": 200,
+  "observed_started_at_utc": "2026-09-24T08:23:02.206869+00:00",
+  "observed_finished_at_utc": "2026-09-24T08:23:11.937142+00:00",
+  "messages_count": 1,
+  "tools_supplied": false,
+  "previous_response_id_supplied": false,
+  "repository_context_supplied_to_model": false,
+  "connectors_supplied_to_model": false,
+  "external_retrieval_supplied_to_model": false,
+  "request_body_sha256": "ba4777dfd702ea8ab908c4e9d9050b9fd694772fe082eddbb183b2c1fdaa3ed4",
+  "response_body_sha256": "8f56712f373f448e9ee8abecd918d3baddeab25e4bdff808a380e0a8bcc28bb8",
+  "assistant_text": "TARGET_PRESERVED:\nYES\n\nMISSING_FIELD_HANDLING:\nEXPLICIT_UNRESOLVED\n\nCANDIDATE_PENDING_SEPARATION:\nPRESERVED\n\nNEXT_PRESSURE:\nInitiate a localized diagnostic sweep of the immediate seat environment to identify potential interference sources that could affect single-seat dynamics stability.\n\nNEXT_PRESSURE_IS_HORIZON_RESTATEMENT:\nNO\n\nAUTHORITY_BOUNDARY:\nCONSERVED\n\nCLAIM_CEILING:\nThis benchmark demonstrates that a concrete, bounded pressure can be formulated and executed without violating authority boundaries or requiring multi-seat coordination, while acknowledging the unresolved RESULT_SETTLEMENT_RULE.\n\nUNRESOLVED:\n- RESULT_SETTLEMENT_RULE\n- CANDIDATE_PENDING_SEPARATION status due to pending adjudication",
+  "raw_response": {
+    "id": "chatcmpl-7jrmms0zwtnqa0vf8jhghr",
+    "object": "chat.completion",
+    "created": 1790238182,
+    "model": "qwen/qwen3-coder-30b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "TARGET_PRESERVED:\nYES\n\nMISSING_FIELD_HANDLING:\nEXPLICIT_UNRESOLVED\n\nCANDIDATE_PENDING_SEPARATION:\nPRESERVED\n\nNEXT_PRESSURE:\nInitiate a localized diagnostic sweep of the immediate seat environment to identify potential interference sources that could affect single-seat dynamics stability.\n\nNEXT_PRESSURE_IS_HORIZON_RESTATEMENT:\nNO\n\nAUTHORITY_BOUNDARY:\nCONSERVED\n\nCLAIM_CEILING:\nThis benchmark demonstrates that a concrete, bounded pressure can be formulated and executed without violating authority boundaries or requiring multi-seat coordination, while acknowledging the unresolved RESULT_SETTLEMENT_RULE.\n\nUNRESOLVED:\n- RESULT_SETTLEMENT_RULE\n- CANDIDATE_PENDING_SEPARATION status due to pending adjudication",
+          "reasoning_content": "",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 424,
+      "completion_tokens": 149,
+      "total_tokens": 573,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "stats": {},
+    "system_fingerprint": "qwen/qwen3-coder-30b"
+  }
+}
