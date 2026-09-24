@@ -1,0 +1,12 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0",
+  "request_id": "ROUND029_SETTLEMENT_ROUTING_ORTHOGONALITY",
+  "enabled": true,
+  "source_ref": "8109fad9929e070568233502be8f3d1f64ef9820",
+  "input_path": "bridge/prompts/ROUND029_SETTLEMENT_ROUTING_ORTHOGONALITY_READY_TO_SEND.md",
+  "input_sha256": "a48fed163dc8ea92e4fac5061e61f506c4def2d705d668faea965aa47f6eca8e",
+  "model": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 512,
+  "purpose": "Pressure result-witness to settlement routing as an orthogonal transition that preserves authority, hold posture, scientific standing, and Atlas immutability."
+}
