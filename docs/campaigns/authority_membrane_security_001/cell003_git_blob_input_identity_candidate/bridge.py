@@ -120,7 +120,10 @@ def load_policy() -> dict[str, Any]:
         fail(f"Configured repo_root does not exist: {repo}")
     p["_repo_root_resolved"] = str(repo)
 
-    result_dir = Path(os.path.expandvars(os.path.expanduser(str(p["result_dir"])))).resolve()
+    # Result witnesses are experiment artifacts, not authority state.
+    # Keep them on the repository working surface while the trust root retains
+    # only installed executor/policy/authority-bearing local state.
+    result_dir = (repo / "bridge" / "results").resolve()
     result_dir.mkdir(parents=True, exist_ok=True)
     p["_result_dir_resolved"] = str(result_dir)
     return p
