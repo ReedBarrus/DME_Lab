@@ -398,7 +398,13 @@ function startWorkcycleRuntimeProjection() {
   workcycleSource.addEventListener('runtime_projection', (event) => {
     try {
       const snapshot = JSON.parse(event.data);
-      workcycleRuntime = snapshot?.state?.workcycle || null;
+      const projectedWorkcycle = snapshot?.state?.workcycle || null;
+      workcycleRuntime = projectedWorkcycle
+        ? {
+            ...projectedWorkcycle,
+            temporal_horizon_closure: snapshot?.state?.temporal_horizon_closure || null,
+          }
+        : null;
       workcycleRuntimeError = workcycleRuntime
         ? null
         : 'Runtime snapshot does not contain state.workcycle.';
