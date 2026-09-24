@@ -58,22 +58,39 @@ def build_workcycle_projection(repo_root: str | Path) -> dict[str, Any]:
 
     eligibility = None
     if budget is not None:
-        eligibility = wc.evaluate_eligibility(
-            dependency_satisfied=True,
-            frame_current=True,
-            seat_available=True,
-            no_hold=True,
-            authority_satisfied=True,
-            budget=budget,
+        budget_reservable = all(
+            budget[field]["reserved"] + budget[field]["consumed"]
+            < budget[field]["allowed_per_wake"]
+            for field in ("work_items", "seat_invocations")
         )
+        eligibility = {
+            "posture": "PARTIAL_COORDINATES_ONLY",
+            "eligible": None,
+            "known_coordinates": {
+                "wake_budget_reservable": budget_reservable,
+            },
+            "unresolved_coordinates": [
+                "dependency_satisfied",
+                "frame_current",
+                "seat_available",
+                "no_hold",
+                "authority_satisfied",
+            ],
+            "claim_ceiling": (
+                "Budget-side eligibility only; real work eligibility is unresolved "
+                "until runtime coordinates are source-bound."
+            ),
+        }
 
     cells = progress["cells"]
     active_horizon = "FIRST_PERMANENT_WORKLOAD_COMPRESSION_HISTORY_CONSERVATION"
-    current_work = (
-        "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1"
-        if consequence is not None
+    active_work_item = None
+    latest_completed_work_item = (
+        consequence.get("work_item_id")
+        if consequence is not None and evaluation is not None
         else None
     )
+    next_eligible_work_item = None
 
     return {
         "projection_schema": "workcycle_cockpit_projection_v0",
@@ -81,15 +98,33 @@ def build_workcycle_projection(repo_root: str | Path) -> dict[str, Any]:
         "active_horizon": active_horizon,
         "campaign_progress": cells,
         "next_pressure": progress["next_pressure"],
-        "current_work_item": current_work,
+        "active_work_item": active_work_item,
+        "latest_completed_work_item": latest_completed_work_item,
+        "next_eligible_work_item": next_eligible_work_item,
         "latest_consequence": consequence,
         "latest_consequence_evaluation": evaluation,
+        "current_unresolved": (
+            list(evaluation.get("unresolved", []))
+            if evaluation is not None
+            else list(consequence.get("unresolved", []))
+            if consequence is not None
+            else []
+        ),
+        "historical_unresolved": (
+            list(consequence.get("unresolved", []))
+            if consequence is not None
+            else []
+        ),
         "repair_routing": {
             "spec": repair_spec,
             "result": repair_result,
             "result_present": repair_result is not None,
         },
-        "budget": budget,
+        "wake_budget": budget,
+        "campaign_cumulative_budget": {
+            "status": "NOT_IMPLEMENTED",
+            "claim_ceiling": "No cumulative campaign spend cap is mechanically enforced yet.",
+        },
         "eligibility": eligibility,
         "control": control,
         "operator_summary": {
