@@ -88,6 +88,21 @@ test('workcycle operator visibly exposes currentness consequence budget and read
         coordination: {direction: 'INCREASING'},
       },
     },
+    qualification_readiness: {
+      bounded_workcycle: {
+        qualification_readiness: 'HELD',
+        blockers: ['T7:IMPLEMENTED_UNPRESSURED', 'TEMPORAL_HORIZON:UNFROZEN'],
+      },
+      self_moving_workcycle: {
+        qualification_readiness: 'HELD',
+        blockers: [
+          'T7:IMPLEMENTED_UNPRESSURED',
+          'TEMPORAL_HORIZON:UNFROZEN',
+          'ONE_SUCCESSOR:UNFROZEN',
+          'ATOMIC_ADMISSION:UNFROZEN',
+        ],
+      },
+    },
     operator_summary: {
       workflow: 'OFF',
       campaign: 'ACTIVE',
@@ -114,6 +129,9 @@ test('workcycle operator visibly exposes currentness consequence budget and read
     'SIX LOAD DIMENSIONS',
     'identity_address',
     'functional',
+    'QUALIFICATION READINESS',
+    'T7:IMPLEMENTED_UNPRESSURED',
+    'TEMPORAL_HORIZON:UNFROZEN',
   ]) {
     assert.ok(html.includes(phrase), phrase);
   }
@@ -166,6 +184,21 @@ test('workcycle witness rail is persistent-left content with truthful partial el
       registered_runtime_seats: [],
       occupied_runtime_seats: [],
     },
+    qualification_readiness: {
+      bounded_workcycle: {
+        qualification_readiness: 'HELD',
+        blockers: ['T7:IMPLEMENTED_UNPRESSURED', 'TEMPORAL_HORIZON:UNFROZEN'],
+      },
+      self_moving_workcycle: {
+        qualification_readiness: 'HELD',
+        blockers: [
+          'T7:IMPLEMENTED_UNPRESSURED',
+          'TEMPORAL_HORIZON:UNFROZEN',
+          'ONE_SUCCESSOR:UNFROZEN',
+          'ATOMIC_ADMISSION:UNFROZEN',
+        ],
+      },
+    },
     operator_summary: {
       workflow: 'OFF',
       campaign: 'ACTIVE',
@@ -188,6 +221,8 @@ test('workcycle witness rail is persistent-left content with truthful partial el
     'H_reconstruct',
     'HORIZON_MATCHED',
     'SUPPORTED / SUPPORTED / SUPPORTED',
+    'BOUNDED QUALIFICATION',
+    'SELF-MOVING QUALIFICATION',
   ]) assert.ok(html.includes(phrase), phrase);
   assert.ok(html.includes('data-workcycle-control="ADMIT_ONE"'));
   assert.match(html, /data-workcycle-control="ADMIT_ONE"\s+disabled/);
