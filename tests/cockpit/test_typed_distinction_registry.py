@@ -13,6 +13,7 @@ from src.cockpit.typed_distinction_registry import (
     TypedDistinctionRegistryError,
     build_reconstruction_packet,
     build_typed_distinction_registry_projection,
+    build_unavailable_typed_distinction_registry_projection,
     evaluate_distinction_record,
     generate_typed_distinction_registry_projection,
     load_registry_records,
@@ -207,6 +208,26 @@ class TypedDistinctionRegistryTest(unittest.TestCase):
             self.assertEqual(projection["counts"]["admitted_bounded"], 1)
             self.assertEqual(projection["authority_effect"], "NONE")
             self.assertFalse(output.with_name("registry.json.tmp").exists())
+
+    def test_unavailable_overlay_preserves_zero_effect_and_temporal_coordinate(self) -> None:
+        projection = build_unavailable_typed_distinction_registry_projection(
+            registry_path=self.registry_path,
+            temporal_lineage=self.temporal,
+            reason="fixture unavailable",
+        )
+        self.assertEqual(projection["projection_standing"], "UNAVAILABLE")
+        self.assertEqual(projection["records"], [])
+        self.assertEqual(projection["authority_effect"], "NONE")
+        self.assertEqual(projection["execution_effect"], "NONE")
+        self.assertEqual(projection["control_effect"], "NONE")
+        self.assertEqual(
+            projection["temporal_source_commit"],
+            self.temporal["source_commit"],
+        )
+        self.assertEqual(
+            projection["source_registry"]["path"],
+            REGISTRY_RELATIVE_PATH.as_posix(),
+        )
 
     def test_projection_builder_never_mutates_canonical_record(self) -> None:
         before = self.registry_path.read_bytes()
