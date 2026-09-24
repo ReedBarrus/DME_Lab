@@ -230,12 +230,18 @@ test('Atlas boot renders current fabric before background temporal attachment', 
     new URL('src/cockpit/observer/repository_fabric_app.mjs', ROOT),
     'utf8',
   );
-  const currentFetch = appSource.indexOf("fetchJsonResponse(\n      REPOSITORY_FABRIC_PATH");
+  const currentFetch = appSource.indexOf('REPOSITORY_FABRIC_PATH');
+  const currentModel = appSource.indexOf('model = buildRepositoryFabricModel');
+  const currentGeometry = appSource.indexOf('geometricField = buildGeometricRepositoryField');
   const firstRender = appSource.indexOf('render();\n    startWorkcycleRuntimeProjection();');
   const historyAttach = appSource.indexOf('void attachHistoricalContext(requestedView);');
-  assert.ok(currentFetch >= 0);
-  assert.ok(firstRender > currentFetch);
-  assert.ok(historyAttach > firstRender);
+
+  assert.ok(currentFetch >= 0, 'current repository fabric fetch must exist');
+  assert.ok(currentModel > currentFetch, 'current model must be built after current fabric fetch');
+  assert.ok(currentGeometry > currentModel, 'current geometry must be built after current model');
+  assert.ok(firstRender > currentGeometry, 'current world must render after current geometry');
+  assert.ok(historyAttach > firstRender, 'historical context must attach after first render');
+
   assert.doesNotMatch(
     appSource,
     /model\s*=\s*reconstructTemporalFrame\(temporalLineage,\s*temporalLineage\.frames\.length\s*-\s*1\)/,
