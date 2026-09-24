@@ -1,0 +1,12 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0",
+  "request_id": "ROUND013_PLANNER_SUCCESSION_ADJUDICATION",
+  "enabled": true,
+  "source_ref": "9bb7aa2729e496038d7440cdde38d9b4969f27e1",
+  "input_path": "docs/campaigns/semantic_continuity_operative_atlas_001/RELATIONAL_HORIZON_PLANNER_SEAT_PRESSURE_CELL_003_READY_TO_SEND_ADJUDICATION_PACKET.md",
+  "input_sha256": "5bfcadc7ad5284c70f5bf2650154191b53b0a79b3928fc1e26d5d12182ee2827",
+  "model": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 4096,
+  "purpose": "Fresh local adjudication of planner-seat occupant succession continuity using only the frozen remote evidence named by the packet."
+}
