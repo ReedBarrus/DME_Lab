@@ -328,6 +328,45 @@ def build_typed_distinction_registry_projection(
     }
 
 
+def build_unavailable_typed_distinction_registry_projection(
+    *,
+    registry_path: str | Path,
+    temporal_lineage: Mapping[str, Any],
+    reason: str,
+) -> dict[str, Any]:
+    registry_file = Path(registry_path)
+    registry_coordinate = registry_file.as_posix()
+    canonical_suffix = REGISTRY_RELATIVE_PATH.as_posix()
+    if registry_coordinate.endswith(canonical_suffix):
+        registry_coordinate = canonical_suffix
+    return {
+        "object_type": OBJECT_TYPE,
+        "projection_standing": "UNAVAILABLE",
+        "source_registry": {
+            "path": registry_coordinate,
+            "sha256": "UNAVAILABLE",
+        },
+        "temporal_source_commit": temporal_lineage.get("source_commit"),
+        "authority_effect": "NONE",
+        "execution_effect": "NONE",
+        "control_effect": "NONE",
+        "records": [],
+        "reconstruction_packets": [],
+        "reconstruction_results": [],
+        "counts": {
+            "records": 0,
+            "admitted_bounded": 0,
+            "not_admitted": 0,
+            "unresolved": 0,
+        },
+        "unavailable_reason": reason,
+        "claim_ceiling": (
+            "The typed distinction overlay is unavailable. No distinction standing, "
+            "authority, execution, control, or semantic causation is inferred."
+        ),
+    }
+
+
 def generate_typed_distinction_registry_projection(
     *,
     registry_path: str | Path,
