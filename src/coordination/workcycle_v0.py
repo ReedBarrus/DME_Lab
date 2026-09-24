@@ -164,9 +164,13 @@ def derive_campaign_progress(repo_root: str | Path) -> dict[str, Any]:
 
     repair = "docs/campaigns/workcycle_stabilization_001/state/REPAIR_ROUTING_PRESSURE_RESULT_001.json"
     cells["T6"] = {
-        "posture": "BOUNDED_PASS" if _exists(repo, repair) else "NOT_STARTED",
+        "posture": "IMPLEMENTED_UNPRESSURED" if _exists(repo, repair) else "NOT_STARTED",
         "evidence": [repair] if _exists(repo, repair) else [],
-        "unresolved": [] if _exists(repo, repair) else ["typed repair routing not yet pressure-frozen"],
+        "unresolved": (
+            ["typed repair routing requires independent pressure"]
+            if _exists(repo, repair)
+            else ["typed repair routing not yet implemented"]
+        ),
     }
 
     cockpit = "src/cockpit/workcycle_projection.py"
@@ -198,15 +202,28 @@ def derive_campaign_progress(repo_root: str | Path) -> dict[str, Any]:
 
 
 def _next_pressure(cells: Mapping[str, Mapping[str, Any]]) -> str:
-    order = ("T0", "T1", "T2", "T3", "T4", "T5", "T6", "T7")
-    passish = {"BOUNDED_PASS", "EXERCISED_UNADJUDICATED", "IMPLEMENTED_UNPRESSURED"}
-    for cell in order:
-        if cells[cell]["posture"] not in passish:
-            return cell
+    if cells["T0"]["posture"] != "BOUNDED_PASS":
+        return "T0"
+    if cells["T1"]["posture"] != "BOUNDED_PASS":
+        return "T1"
     if cells["T2"]["posture"] == "EXERCISED_UNADJUDICATED":
         return "T2_ADJUDICATION"
+    if cells["T2"]["posture"] != "BOUNDED_PASS":
+        return "T2"
+    if cells["T3"]["posture"] != "BOUNDED_PASS":
+        return "T3"
+    if cells["T4"]["posture"] != "BOUNDED_PASS":
+        return "T4"
+    if cells["T5"]["posture"] != "BOUNDED_PASS":
+        return "T5"
+    if cells["T6"]["posture"] == "IMPLEMENTED_UNPRESSURED":
+        return "T6_PRESSURE"
+    if cells["T6"]["posture"] != "BOUNDED_PASS":
+        return "T6"
     if cells["T7"]["posture"] == "IMPLEMENTED_UNPRESSURED":
         return "T7_PRESSURE"
+    if cells["T7"]["posture"] != "BOUNDED_PASS":
+        return "T7"
     return "AUTO_CONTINUATION_PRESSURE"
 
 
