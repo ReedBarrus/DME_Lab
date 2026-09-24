@@ -96,6 +96,37 @@ WORKFLOW ON
 UNBOUNDED CONTINUATION
 ```
 
+## CONCURRENCY CLAIM CEILING
+
+This pressure is intentionally single-threaded.
+
+The current decision helper does not atomically acquire a seat lease or reserve
+budget. Therefore:
+
+```
+SINGLE-CALL ADMISSION LAW
+!=
+CONCURRENCY-SAFE PRODUCTION ADMISSION
+```
+
+Before real self-motion, production admission must bind in one fail-closed
+operation:
+
+```
+ELIGIBILITY CHECK
++
+SEAT / OCCUPANT LEASE
++
+WORK ATTEMPT IDENTITY
++
+WAKE-BUDGET RESERVATION
++
+AUTHORITY COORDINATE
+```
+
+Two racing callers over the same pristine snapshot are outside the claim ceiling
+of this pressure.
+
 ## REQUIRED RETURN
 
 Return only:
