@@ -1,0 +1,133 @@
+"""Read-only qualification readiness for WORKCYCLE_STABILIZATION_001.
+
+This module does not create scientific standing. It only determines whether
+bounded evidence prerequisites are present for an independent qualifier.
+"""
+
+from __future__ import annotations
+
+from pathlib import Path
+from typing import Any
+
+from src.coordination.workcycle_v0 import derive_campaign_progress
+
+
+OBJECT_TYPE = "WORKCYCLE_QUALIFICATION_READINESS_V0"
+
+HORIZON_RESULT = Path(
+    "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
+    "ATLAS_TEMPORAL_HORIZON_CLOSURE_001_ADJUDICATION_RESULT.md"
+)
+ONE_SUCCESSOR_RESULT = Path(
+    "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
+    "ONE_SUCCESSOR_CONTINUATION_PRESSURE_RESULT_001.md"
+)
+ATOMIC_ADMISSION_RESULT = Path(
+    "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
+    "ATOMIC_ADMISSION_PRESSURE_RESULT_001.md"
+)
+
+
+def _markdown_field(path: Path, field: str) -> str | None:
+    if not path.is_file():
+        return None
+    lines = path.read_text(encoding="utf-8").splitlines()
+    target = field.strip().rstrip(":")
+    for index, line in enumerate(lines):
+        if line.strip().rstrip(":") != target:
+            continue
+        for candidate in lines[index + 1:]:
+            value = candidate.strip()
+            if value:
+                return value
+    return None
+
+
+def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, Any]:
+    repo = Path(repo_root).resolve()
+    progress = derive_campaign_progress(repo)
+    cells = progress["cells"]
+
+    cell_postures = {name: item["posture"] for name, item in cells.items()}
+    bounded_cells_ready = all(
+        cell_postures.get(f"T{index}") == "BOUNDED_PASS"
+        for index in range(8)
+    )
+
+    horizon_path = repo / HORIZON_RESULT
+    horizon_disposition = _markdown_field(horizon_path, "DISPOSITION")
+    horizon_ready = horizon_disposition == "HORIZON_MATCHED"
+
+    successor_path = repo / ONE_SUCCESSOR_RESULT
+    successor_disposition = _markdown_field(successor_path, "DISPOSITION")
+    successor_ready = successor_disposition == "ONE_SUCCESSOR_MATCHED"
+
+    admission_path = repo / ATOMIC_ADMISSION_RESULT
+    admission_disposition = _markdown_field(admission_path, "DISPOSITION")
+    admission_ready = admission_disposition == "ATOMIC_ADMISSION_MATCHED"
+
+    bounded_blockers: list[str] = []
+    if not bounded_cells_ready:
+        for name in [f"T{i}" for i in range(8)]:
+            if cell_postures.get(name) != "BOUNDED_PASS":
+                bounded_blockers.append(f"{name}:{cell_postures.get(name, 'MISSING')}")
+    if not horizon_ready:
+        bounded_blockers.append(
+            f"TEMPORAL_HORIZON:{horizon_disposition or 'UNFROZEN'}"
+        )
+
+    self_moving_blockers = list(bounded_blockers)
+    if not successor_ready:
+        self_moving_blockers.append(
+            f"ONE_SUCCESSOR:{successor_disposition or 'UNFROZEN'}"
+        )
+    if not admission_ready:
+        self_moving_blockers.append(
+            f"ATOMIC_ADMISSION:{admission_disposition or 'UNFROZEN'}"
+        )
+
+    return {
+        "object_type": OBJECT_TYPE,
+        "campaign_id": "WORKCYCLE_STABILIZATION_001",
+        "cell_postures": cell_postures,
+        "temporal_horizon": {
+            "result_path": HORIZON_RESULT.as_posix(),
+            "disposition": horizon_disposition,
+            "ready": horizon_ready,
+        },
+        "one_successor": {
+            "result_path": ONE_SUCCESSOR_RESULT.as_posix(),
+            "disposition": successor_disposition,
+            "ready": successor_ready,
+        },
+        "atomic_admission": {
+            "result_path": ATOMIC_ADMISSION_RESULT.as_posix(),
+            "disposition": admission_disposition,
+            "ready": admission_ready,
+        },
+        "bounded_workcycle": {
+            "qualification_readiness": (
+                "READY_FOR_INDEPENDENT_QUALIFICATION"
+                if not bounded_blockers
+                else "HELD"
+            ),
+            "blockers": bounded_blockers,
+            "standing_effect": "NONE",
+        },
+        "self_moving_workcycle": {
+            "qualification_readiness": (
+                "READY_FOR_INDEPENDENT_QUALIFICATION"
+                if not self_moving_blockers
+                else "HELD"
+            ),
+            "blockers": self_moving_blockers,
+            "standing_effect": "NONE",
+        },
+        "authority_effect": "NONE",
+        "execution_effect": "NONE",
+        "scientific_standing_effect": "NONE",
+        "claim_ceiling": (
+            "Read-only qualification readiness only. READY does not create "
+            "scientific standing, execution authority, or campaign progress."
+        ),
+    }
