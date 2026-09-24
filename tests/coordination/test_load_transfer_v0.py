@@ -308,6 +308,42 @@ class LoadTransferV0Tests(unittest.TestCase):
                 claimed_at="2026-09-24T12:32:00Z",
             )
 
+    def test_handoff_preserves_claimed_and_terminal_work_identities(self):
+        frame = sealed_frame()
+        claimed = lt.claim_work_item(
+            frame,
+            sealed_work(),
+            seat_id="SEAT-A",
+            seat_role="IMPLEMENTER",
+            claimed_at="2026-09-24T12:32:00Z",
+        )
+        claimed_identity = claimed["integrity_sha256"]
+        output = sealed_output()
+        completed, receipt = lt.complete_work_item(
+            frame,
+            claimed,
+            seat_id="SEAT-A",
+            completed_at="2026-09-24T12:34:00Z",
+            result_posture="COMPLETED",
+            output_objects=[output],
+            unresolved=[],
+            stop_reason="done",
+            handoff_id="LT001-H1",
+        )
+        self.assertEqual(receipt["input_work_item_identity"], claimed_identity)
+        self.assertEqual(
+            receipt["terminal_work_item_identity"],
+            completed["integrity_sha256"],
+        )
+        self.assertNotEqual(
+            receipt["input_work_item_identity"],
+            receipt["terminal_work_item_identity"],
+        )
+        reconstructed = lt.reconstruct_handoff(
+            frame, completed, receipt, output_objects=[output]
+        )
+        self.assertEqual(reconstructed["work_item_id"], "LT001-W1")
+
     def test_t10_live_chat_context_not_required_by_reconstruction(self):
         frame = sealed_frame()
         claimed = lt.claim_work_item(
