@@ -63,6 +63,9 @@ let temporalState = null;
 let emissionLedger = null;
 let episodeTrace = null;
 let typedDistinctionRegistry = null;
+let workcycleRuntime = null;
+let workcycleRuntimeError = null;
+let workcycleSource = null;
 
 function temporalView() {
   if (!temporalLineage || !temporalState) return null;
@@ -187,6 +190,8 @@ function render() {
     episode,
     episodeError,
     temporalView(),
+    workcycleRuntime,
+    workcycleRuntimeError,
   );
   bindCanvas();
   draw();
@@ -299,6 +304,44 @@ root.addEventListener('keydown', (event) => {
   render();
 });
 
+function startWorkcycleRuntimeProjection() {
+  const params = new URL(window.location.href).searchParams;
+  const endpoint = params.get('runtime');
+  if (!endpoint) {
+    workcycleRuntime = null;
+    workcycleRuntimeError = 'Runtime sidecar not configured for Atlas workcycle projection.';
+    if (model && geometricField) render();
+    return null;
+  }
+
+  workcycleRuntimeError = 'Connecting to workcycle runtime projection...';
+  workcycleSource?.close?.();
+  workcycleSource = new EventSource(endpoint);
+
+  workcycleSource.addEventListener('runtime_projection', (event) => {
+    try {
+      const snapshot = JSON.parse(event.data);
+      workcycleRuntime = snapshot?.state?.workcycle || null;
+      workcycleRuntimeError = workcycleRuntime
+        ? null
+        : 'Runtime snapshot does not contain state.workcycle.';
+      if (model && geometricField) render();
+    } catch (error) {
+      workcycleRuntime = null;
+      workcycleRuntimeError = `Workcycle runtime parse failure: ${error}`;
+      if (model && geometricField) render();
+    }
+  });
+
+  workcycleSource.onerror = () => {
+    if (!workcycleRuntime) {
+      workcycleRuntimeError = 'Live runtime sidecar unavailable for Atlas workcycle projection.';
+      if (model && geometricField) render();
+    }
+  };
+  return workcycleSource;
+}
+
 function rebuildEpisodeForFrame() {
   const inspectorCollapsed = operatorState.inspectorCollapsed;
   if (!episodeTrace || (temporalLineage
@@ -408,6 +451,7 @@ async function load() {
       operatorState = createAtlasOperatorState(null);
     }
     render();
+    startWorkcycleRuntimeProjection();
   } catch (error) {
     root.innerHTML = renderRepositoryFabricUnavailable(
       error instanceof Error ? error.message : String(error),
