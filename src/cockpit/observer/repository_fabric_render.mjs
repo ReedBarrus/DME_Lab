@@ -357,7 +357,7 @@ export function renderWorkcycleOperator(workcycle, runtimeError = null) {
   const summary = workcycle.operator_summary || {};
   const consequence = workcycle.latest_consequence;
   const evaluation = workcycle.latest_consequence_evaluation;
-  const budget = workcycle.budget;
+  const budget = workcycle.wake_budget;
   const cells = workcycle.campaign_progress || {};
   const cellRows = Object.entries(cells).map(([cell, state]) => `
     <div class="workcycle-cell">
@@ -372,7 +372,7 @@ export function renderWorkcycleOperator(workcycle, runtimeError = null) {
   const observations = consequence?.observations || {};
 
   return `
-    <section class="fabric-workcycle-operator">
+    <section class="fabric-workcycle-operator" id="workcycle-detail">
       <p class="fabric-kicker">WORKCYCLE / METABOLISM</p>
       <dl class="operator-coordinate workcycle-coordinate">
         <div><dt>WORKFLOW</dt><dd>${escapeHtml(summary.workflow || 'UNKNOWN')}</dd></div>
@@ -383,7 +383,9 @@ export function renderWorkcycleOperator(workcycle, runtimeError = null) {
         ${field('CAMPAIGN', value(workcycle.campaign_id))}
         ${field('ACTIVE HORIZON', value(workcycle.active_horizon))}
         ${field('NEXT PRESSURE', value(workcycle.next_pressure))}
-        ${field('CURRENT WORK ITEM', value(workcycle.current_work_item, 'NONE'))}
+        ${field('ACTIVE WORK ITEM', value(workcycle.active_work_item, 'NONE'))}
+        ${field('LATEST COMPLETED', value(workcycle.latest_completed_work_item, 'NONE'))}
+        ${field('NEXT ELIGIBLE', value(workcycle.next_eligible_work_item, 'UNRESOLVED'))}
         ${field('REED ACTION', value(summary.reed_action, 'NONE'))}
       </dl>
       <div class="workcycle-cells" aria-label="workcycle campaign cells">
@@ -398,7 +400,7 @@ export function renderWorkcycleOperator(workcycle, runtimeError = null) {
         <div class="workcycle-stat"><span>EVALUATION</span><strong>${escapeHtml(evaluation?.disposition || 'UNRESOLVED')}</strong></div>
       </div>
       <div class="workcycle-budget">
-        <p class="fabric-kicker">CONSEQUENCE BUDGET</p>
+        <p class="fabric-kicker">WAKE BUDGET</p>
         <div class="workcycle-stat"><span>WORK ITEMS</span><strong>${escapeHtml(workBudget ? `${workBudget.consumed}+${workBudget.reserved}/${workBudget.allowed_per_wake}` : '—')}</strong></div>
         <div class="workcycle-stat"><span>SEAT INVOCATIONS</span><strong>${escapeHtml(seatBudget ? `${seatBudget.consumed}+${seatBudget.reserved}/${seatBudget.allowed_per_wake}` : '—')}</strong></div>
         <div class="workcycle-stat"><span>REPAIRS</span><strong>${escapeHtml(repairBudget ? `${repairBudget.consumed}+${repairBudget.reserved}/${repairBudget.allowed}` : '—')}</strong></div>
@@ -411,6 +413,54 @@ export function renderWorkcycleOperator(workcycle, runtimeError = null) {
       </div>
       <p class="fabric-unavailable-note">CONTROL WRITE NOT YET ADMITTED · DISPLAYED CONTROL STATE ≠ EXECUTION AUTHORITY</p>
     </section>
+  `;
+}
+
+export function renderWorkcycleRail(workcycle, runtimeError = null) {
+  if (!workcycle) {
+    return `
+      <aside class="workcycle-rail is-unavailable" aria-label="workcycle witness rail">
+        <p class="fabric-kicker">WORKCYCLE</p>
+        <strong>UNAVAILABLE</strong>
+        <p>${escapeHtml(runtimeError || 'No runtime projection.')}</p>
+      </aside>
+    `;
+  }
+
+  const summary = workcycle.operator_summary || {};
+  const observation = workcycle.latest_consequence?.observations || {};
+  const evaluation = workcycle.latest_consequence_evaluation?.disposition || 'UNRESOLVED';
+  const budget = workcycle.wake_budget;
+  const workBudget = budget?.work_items;
+  const eligibility = workcycle.eligibility || {};
+  const currentUnresolved = workcycle.current_unresolved || [];
+
+  return `
+    <aside class="workcycle-rail" aria-label="workcycle witness rail">
+      <p class="fabric-kicker">WORKCYCLE / METABOLISM</p>
+      <div class="workcycle-rail-state">
+        <strong>${escapeHtml(summary.workflow || 'UNKNOWN')}</strong>
+        <span>${escapeHtml(summary.campaign || 'UNKNOWN')}</span>
+      </div>
+      <dl>
+        <div><dt>NEXT</dt><dd>${escapeHtml(workcycle.next_pressure || 'UNRESOLVED')}</dd></div>
+        <div><dt>ACTIVE</dt><dd>${escapeHtml(workcycle.active_work_item || 'NONE')}</dd></div>
+        <div><dt>LATEST</dt><dd>${escapeHtml(workcycle.latest_completed_work_item || 'NONE')}</dd></div>
+        <div><dt>EVAL</dt><dd>${escapeHtml(evaluation)}</dd></div>
+        <div><dt>DELTA</dt><dd>${escapeHtml(observation.delta_bytes ?? '—')}</dd></div>
+        <div><dt>WAKE BUDGET</dt><dd>${escapeHtml(workBudget ? `${workBudget.consumed}+${workBudget.reserved}/${workBudget.allowed_per_wake}` : '—')}</dd></div>
+        <div><dt>ELIGIBILITY</dt><dd>${escapeHtml(eligibility.posture || 'UNRESOLVED')}</dd></div>
+        <div><dt>REED</dt><dd>${escapeHtml(summary.reed_action || 'NONE')}</dd></div>
+      </dl>
+      <div class="workcycle-rail-controls">
+        <button type="button" disabled>WAKE</button>
+        <button type="button" disabled>PAUSE</button>
+        <button type="button" disabled>STOP</button>
+      </div>
+      <a class="workcycle-detail-link" href="#workcycle-detail">OPEN SCIENTIFIC DETAIL</a>
+      <p class="workcycle-rail-debt">${escapeHtml(currentUnresolved.length ? `${currentUnresolved.length} CURRENT UNRESOLVED` : 'NO CURRENT UNRESOLVED DEBT')}</p>
+      <p class="fabric-unavailable-note">CONTROL WRITE NOT YET ADMITTED</p>
+    </aside>
   `;
 }
 
@@ -472,6 +522,7 @@ export function renderRepositoryFabric(
         </div>
       </section>
       <div class="fabric-workbench">
+        ${renderWorkcycleRail(workcycle, workcycleError)}
         <section class="fabric-spatial-stage" aria-label="continuous repository field">
           <canvas class="fabric-canvas" data-geometric-field tabindex="0"
             aria-label="Navigable 3D repository field. Drag to orbit, shift-drag to pan, wheel to dolly, click to select."></canvas>
