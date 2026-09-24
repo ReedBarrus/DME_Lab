@@ -294,6 +294,17 @@ class Cell003GitBlobInputIdentityCandidateTest(unittest.TestCase):
         self.assertIsNone(result["approved"][0]["input_blob_sha"])
         self.assertEqual(result["approved"][0]["input_sha256"], sha256_bytes(PROMPT_A))
 
+    def test_result_witness_path_is_repo_bridge_results(self) -> None:
+        repo_root = self.root / "repo"
+        repo_root.mkdir(exist_ok=True)
+        policy = dict(self.policy)
+        policy["_repo_root_resolved"] = str(repo_root)
+        out = bridge.result_path_for("CELL003_RESULT_ROUTE", policy)
+        self.assertEqual(
+            out,
+            (repo_root / "bridge" / "results" / "CELL003_RESULT_ROUTE.json").resolve(),
+        )
+
     def test_only_model_call_site_remains_inside_authority_consumer(self) -> None:
         source = CANDIDATE_PATH.read_text(encoding="utf-8")
         tree = ast.parse(source)
