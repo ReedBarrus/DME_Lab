@@ -1,0 +1,12 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0",
+  "request_id": "ROUND013_COMPRESSION_VARIANT_RUN_A",
+  "enabled": true,
+  "source_ref": "c87aa48b41b445c761a184c7e7512bfc03da975f",
+  "input_path": "docs/campaigns/semantic_continuity_operative_atlas_001/ATLAS_METABOLIC_COMPRESSION_CELL_002_READY_TO_SEND_RUN_A_PACKET.md",
+  "input_sha256": "f7236f40a02ddcad4600359eaee244510078a74d501d5a086ea581e4955d3fa8",
+  "model": "microsoft/phi-4",
+  "temperature": 0.0,
+  "max_tokens": 4096,
+  "purpose": "Fresh local reconstruction pressure for the further-reduced metabolic compression specimen with no tools, history, or outside context."
+}
