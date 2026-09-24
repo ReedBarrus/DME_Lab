@@ -270,3 +270,24 @@ button:focus-visible, input:focus-visible, canvas:focus-visible { outline: 2px s
 @media (max-width: 860px) {
   .workcycle-rail { position: static; max-height: none; }
 }
+
+.workcycle-seat-ecology {
+  margin-top: .7rem;
+  padding-top: .6rem;
+  border-top: 1px solid rgb(120 217 154 / 24%);
+}
+.workcycle-seat-row {
+  display: flex;
+  justify-content: space-between;
+  gap: .4rem;
+  padding: .35rem .1rem;
+  border-bottom: 1px solid var(--line);
+  font: 650 .55rem ui-monospace, monospace;
+}
+.workcycle-seat-row strong { color: var(--violet); }
+.workcycle-seat-row span { color: var(--muted); text-align: right; }
+.workcycle-control-status {
+  margin: .55rem 0 0;
+  color: var(--green);
+  font: 750 .52rem ui-monospace, monospace;
+}
