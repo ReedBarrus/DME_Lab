@@ -61,6 +61,33 @@ test('workcycle operator visibly exposes currentness consequence budget and read
       unresolved_coordinates: ['seat_available', 'authority_satisfied'],
     },
     current_unresolved: ['bounded claim ceiling remains'],
+    temporal_horizon_closure: {
+      disposition: 'HORIZON_MATCHED',
+      history_posture: 'SUPPORTED',
+      currentness_posture: 'SUPPORTED',
+      upcoming_work_posture: 'SUPPORTED',
+      primary_horizon: {
+        family: 'H_reconstruct',
+        subject: 'campaign-to-work decomposition lineage',
+      },
+      seven_surfaces: {
+        identity_address: {posture: 'SUPPORTED'},
+        mechanical: {posture: 'SUPPORTED'},
+        symbolic_semantic: {posture: 'SUPPORTED'},
+        relational_topological: {posture: 'SUPPORTED'},
+        consequence_environmental: {posture: 'SUPPORTED'},
+        provenance: {posture: 'SUPPORTED'},
+        invariance_meta: {posture: 'SUPPORTED'},
+      },
+      six_load_dimensions: {
+        functional: {direction: 'INCREASING'},
+        semantic: {direction: 'REDISTRIBUTED'},
+        authority: {direction: 'STABLE'},
+        provenance: {direction: 'STABLE'},
+        temporal: {direction: 'INCREASING'},
+        coordination: {direction: 'INCREASING'},
+      },
+    },
     operator_summary: {
       workflow: 'OFF',
       campaign: 'ACTIVE',
@@ -80,6 +107,13 @@ test('workcycle operator visibly exposes currentness consequence budget and read
     '3486',
     'REVIEW_NEXT_PRESSURE',
     'OPERATOR CONTROL IS LOCAL + PREVIEWED + CONFIRMED',
+    'RELATIONAL HORIZON',
+    'H_reconstruct',
+    'HORIZON_MATCHED',
+    'SEVEN CONSERVATION SURFACES',
+    'SIX LOAD DIMENSIONS',
+    'identity_address',
+    'functional',
   ]) {
     assert.ok(html.includes(phrase), phrase);
   }
@@ -100,6 +134,33 @@ test('workcycle witness rail is persistent-left content with truthful partial el
     wake_budget: {work_items: {consumed: 0, reserved: 0, allowed_per_wake: 1}},
     eligibility: {posture: 'PARTIAL_COORDINATES_ONLY', eligible: null},
     current_unresolved: ['bounded claim ceiling remains'],
+    temporal_horizon_closure: {
+      disposition: 'HORIZON_MATCHED',
+      history_posture: 'SUPPORTED',
+      currentness_posture: 'SUPPORTED',
+      upcoming_work_posture: 'SUPPORTED',
+      primary_horizon: {
+        family: 'H_reconstruct',
+        subject: 'campaign-to-work decomposition lineage',
+      },
+      seven_surfaces: {
+        identity_address: {posture: 'SUPPORTED'},
+        mechanical: {posture: 'SUPPORTED'},
+        symbolic_semantic: {posture: 'SUPPORTED'},
+        relational_topological: {posture: 'SUPPORTED'},
+        consequence_environmental: {posture: 'SUPPORTED'},
+        provenance: {posture: 'SUPPORTED'},
+        invariance_meta: {posture: 'SUPPORTED'},
+      },
+      six_load_dimensions: {
+        functional: {direction: 'INCREASING'},
+        semantic: {direction: 'REDISTRIBUTED'},
+        authority: {direction: 'STABLE'},
+        provenance: {direction: 'STABLE'},
+        temporal: {direction: 'INCREASING'},
+        coordination: {direction: 'INCREASING'},
+      },
+    },
     seat_ecology: {
       durable_seats: [{seat_id: 'LABBOIB', occupant_binding: 'UNBOUND'}],
       registered_runtime_seats: [],
@@ -124,6 +185,9 @@ test('workcycle witness rail is persistent-left content with truthful partial el
     'LOCAL OPERATOR CONTROL CONNECTED',
     'data-workcycle-control="ENABLE"',
     'data-workcycle-control="STOP"',
+    'H_reconstruct',
+    'HORIZON_MATCHED',
+    'SUPPORTED / SUPPORTED / SUPPORTED',
   ]) assert.ok(html.includes(phrase), phrase);
   assert.ok(html.includes('data-workcycle-control="ADMIT_ONE"'));
   assert.match(html, /data-workcycle-control="ADMIT_ONE"\s+disabled/);
