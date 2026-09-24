@@ -18,6 +18,7 @@ from typing import Any, Iterator
 from urllib.parse import urlparse
 
 from src.cockpit.development_horizon_projection import derive_development_horizons
+from src.cockpit.workcycle_projection import build_workcycle_projection
 
 
 class LiveRuntimeProjectionError(RuntimeError):
@@ -505,6 +506,7 @@ def build_runtime_state(sources: RuntimeSources) -> dict[str, Any]:
     }
 
     state["development_horizons"] = derive_development_horizons(state)
+    state["workcycle"] = build_workcycle_projection(sources.repo)
     return state
 
 
