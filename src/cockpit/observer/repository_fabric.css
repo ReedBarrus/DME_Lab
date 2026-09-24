@@ -156,3 +156,54 @@ button:focus-visible, input:focus-visible, canvas:focus-visible { outline: 2px s
   .fabric-coordinate { grid-template-columns: 1fr; }
   .fabric-camera-controls { display: grid; }
 }
+
+.fabric-workcycle-operator {
+  background: linear-gradient(135deg, rgb(120 217 154 / 8%), rgb(90 215 223 / 3%) 62%, transparent);
+  box-shadow: inset 3px 0 0 rgb(120 217 154 / 62%);
+}
+.fabric-workcycle-operator.is-unavailable {
+  box-shadow: inset 3px 0 0 #596770;
+  color: var(--muted);
+}
+.workcycle-coordinate { margin-bottom: .55rem; }
+.workcycle-ledger { margin: 0; }
+.workcycle-cells {
+  margin-top: .55rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .28rem;
+}
+.workcycle-cell,
+.workcycle-stat {
+  display: flex;
+  justify-content: space-between;
+  gap: .55rem;
+  align-items: baseline;
+  padding: .35rem .45rem;
+  border: 1px solid rgb(38 54 65 / 78%);
+  background: rgb(7 12 17 / 42%);
+  font: 650 .56rem ui-monospace, monospace;
+}
+.workcycle-cell span,
+.workcycle-stat span { color: var(--muted); }
+.workcycle-cell strong { color: var(--cyan); text-align: right; overflow-wrap: anywhere; }
+.workcycle-consequence,
+.workcycle-budget {
+  margin-top: .65rem;
+  padding: .55rem;
+  border: 1px solid rgb(120 217 154 / 28%);
+}
+.workcycle-consequence .workcycle-stat strong { color: var(--green); }
+.workcycle-budget .workcycle-stat strong { color: var(--amber); }
+.workcycle-controls {
+  margin-top: .65rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .3rem;
+}
+.workcycle-controls button:disabled {
+  cursor: not-allowed;
+  color: #596770;
+  border-color: #263641;
+  background: rgb(7 12 17 / 62%);
+}
