@@ -70,7 +70,7 @@ class WorkcycleProjectionTests(unittest.TestCase):
             (state / "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1_CONSEQUENCE_EVALUATION.json").write_text(
                 json.dumps(evaluation), encoding="utf-8"
             )
-            (state / "CAMPAIGN_BUDGET_V0.json").write_text(
+            (state / "WAKE_BUDGET_V0.json").write_text(
                 json.dumps(budget), encoding="utf-8"
             )
 
@@ -115,7 +115,7 @@ class WorkcycleProjectionTests(unittest.TestCase):
                 / "state"
             )
             state.mkdir(parents=True)
-            (state / "CAMPAIGN_BUDGET_V0.json").write_text(
+            (state / "WAKE_BUDGET_V0.json").write_text(
                 '{"object_type":"WAKE_BUDGET_V0","integrity_sha256":"bad"}',
                 encoding="utf-8",
             )
