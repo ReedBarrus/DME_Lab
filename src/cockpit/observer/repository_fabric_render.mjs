@@ -370,6 +370,16 @@ export function renderWorkcycleOperator(workcycle, runtimeError = null) {
   const seatBudget = budget?.seat_invocations;
   const repairBudget = budget?.repair_attempts;
   const observations = consequence?.observations || {};
+  const horizonClosure = workcycle.temporal_horizon_closure || {};
+  const horizon = horizonClosure.primary_horizon || {};
+  const surfaces = horizonClosure.seven_surfaces || {};
+  const loads = horizonClosure.six_load_dimensions || {};
+  const surfaceRows = Object.entries(surfaces).map(([name, item]) => `
+    <div class="workcycle-stat"><span>${escapeHtml(name)}</span><strong>${escapeHtml(item?.posture || 'UNRESOLVED')}</strong></div>
+  `).join('');
+  const loadRows = Object.entries(loads).map(([name, item]) => `
+    <div class="workcycle-stat"><span>${escapeHtml(name)}</span><strong>${escapeHtml(item?.direction || 'UNRESOLVED')}</strong></div>
+  `).join('');
 
   return `
     <section class="fabric-workcycle-operator" id="workcycle-detail">
@@ -390,6 +400,20 @@ export function renderWorkcycleOperator(workcycle, runtimeError = null) {
       </dl>
       <div class="workcycle-cells" aria-label="workcycle campaign cells">
         ${cellRows || '<span class="fabric-missing">NO CELL PROJECTION</span>'}
+      </div>
+      <div class="workcycle-consequence">
+        <p class="fabric-kicker">RELATIONAL HORIZON</p>
+        <div class="workcycle-stat"><span>FAMILY</span><strong>${escapeHtml(horizon.family || 'UNRESOLVED')}</strong></div>
+        <div class="workcycle-stat"><span>SUBJECT</span><strong>${escapeHtml(horizon.subject || 'UNRESOLVED')}</strong></div>
+        <div class="workcycle-stat"><span>POSTURE</span><strong>${escapeHtml(horizonClosure.disposition || 'UNRESOLVED')}</strong></div>
+      </div>
+      <div class="workcycle-consequence">
+        <p class="fabric-kicker">SEVEN CONSERVATION SURFACES</p>
+        ${surfaceRows || '<span class="fabric-missing">SURFACE POSTURE UNAVAILABLE</span>'}
+      </div>
+      <div class="workcycle-consequence">
+        <p class="fabric-kicker">SIX LOAD DIMENSIONS</p>
+        ${loadRows || '<span class="fabric-missing">LOAD POSTURE UNAVAILABLE</span>'}
       </div>
       <div class="workcycle-consequence">
         <p class="fabric-kicker">LATEST CONSEQUENCE</p>
@@ -438,6 +462,8 @@ export function renderWorkcycleRail(
   const workBudget = budget?.work_items;
   const eligibility = workcycle.eligibility || {};
   const currentUnresolved = workcycle.current_unresolved || [];
+  const horizonClosure = workcycle.temporal_horizon_closure || {};
+  const primaryHorizon = horizonClosure.primary_horizon || {};
   const seatEcology = workcycle.seat_ecology || {};
   const runtimeSeats = seatEcology.registered_runtime_seats || [];
   const durableSeats = seatEcology.durable_seats || [];
@@ -489,6 +515,15 @@ export function renderWorkcycleRail(
         <div><dt>WAKE BUDGET</dt><dd>${escapeHtml(workBudget ? `${workBudget.consumed}+${workBudget.reserved}/${workBudget.allowed_per_wake}` : '—')}</dd></div>
         <div><dt>ELIGIBILITY</dt><dd>${escapeHtml(eligibility.posture || 'UNRESOLVED')}</dd></div>
         <div><dt>REED</dt><dd>${escapeHtml(summary.reed_action || 'NONE')}</dd></div>
+        <div><dt>RELATIONAL HORIZON</dt><dd>${escapeHtml(primaryHorizon.family || 'UNRESOLVED')}</dd></div>
+        <div><dt>HORIZON POSTURE</dt><dd>${escapeHtml(horizonClosure.disposition || 'UNRESOLVED')}</dd></div>
+        <div><dt>HISTORY / CURRENT / UPCOMING</dt><dd>${escapeHtml(
+          [
+            horizonClosure.history_posture || 'UNRESOLVED',
+            horizonClosure.currentness_posture || 'UNRESOLVED',
+            horizonClosure.upcoming_work_posture || 'UNRESOLVED',
+          ].join(' / '),
+        )}</dd></div>
       </dl>
       <div class="workcycle-seat-ecology">
         <p class="fabric-kicker">SEATS / OCCUPANTS</p>
