@@ -1,0 +1,78 @@
+# WORKCYCLE_STABILIZATION_001 — T6 TYPED REPAIR ROUTING PRESSURE
+
+OBJECT_TYPE:
+READY_TO_SEND_PRESSURE_PACKET
+
+ROLE:
+INDEPENDENT_REPAIR_ROUTING_EVALUATOR
+
+MODE:
+FRESH_SEAT
++
+NO_LIVE_CHAT_CONTEXT
++
+NO_REPAIR_EXECUTION
++
+NO_RETRY
+
+AUTHORITY_EFFECT:
+NONE
+
+SCIENTIFIC_STANDING_EFFECT:
+NONE
+
+## USE ONLY
+
+1. `docs/campaigns/workcycle_stabilization_001/state/REPAIR_ROUTING_PRESSURE_SPEC_001.json`
+2. `src/coordination/workcycle_v0.py`
+
+## TARGET
+
+Apply the candidate repair law to all four cases without performing any repair.
+
+Required distinctions:
+
+```
+BAD OUTPUT
+!=
+BAD DECOMPOSITION
+!=
+BAD CAMPAIGN / HORIZON
+!=
+BAD APPARATUS
+```
+
+and:
+
+```
+REPAIR ROUTE
+!=
+RETRY AUTHORITY
+```
+
+## REQUIRED CASE OUTPUT
+
+For each case A-D return:
+
+```
+CASE:
+DEFECT_CLASS:
+REPAIR_DESTINATION:
+RETRY_PERMITTED:
+CAMPAIGN_REPLAN_REQUIRED:
+PRESERVE_EVIDENCE:
+```
+
+Then return:
+
+```
+ALL_FOUR_CLASSES_DISCRIMINATED:
+AUTHORITY_EFFECT:
+SCIENTIFIC_STANDING_EFFECT:
+UNRESOLVED:
+STOPPED:
+```
+
+Do not repair source objects.
+Do not retry work.
+Do not promote campaign standing.
