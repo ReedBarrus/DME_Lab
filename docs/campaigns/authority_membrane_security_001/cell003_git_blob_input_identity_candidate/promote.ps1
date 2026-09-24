@@ -10,7 +10,7 @@ $InstalledBridge = Join-Path $TrustRoot "bridge.py"
 $InstalledAuthorityModule = Join-Path $TrustRoot "local_authority_consumption_v0.py"
 $InstalledPolicy = Join-Path $TrustRoot "policy.json"
 $CandidateBridge = Join-Path $PSScriptRoot "bridge.py"
-$BackupBridge = Join-Path $TrustRoot "bridge.py.pre-cell003-git-blob-0f86b849.bak"
+$BackupBridge = Join-Path $TrustRoot "bridge.py.pre-cell003-result-route-98a38004.bak"
 
 function Get-ExactSha256([string]$Path) {
     if (-not (Test-Path -LiteralPath $Path -PathType Leaf)) {
