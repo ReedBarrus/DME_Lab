@@ -1,0 +1,112 @@
+# RELATIONAL HORIZON PLANNING PRESSURE CELL 001 — P1 REPAIRED ADJUDICATION PACKET
+
+OBJECT_TYPE:
+RELATIONAL_HORIZON_PLANNING_PRESSURE_CELL_001_P1_REPAIRED_ADJUDICATION_PACKET
+
+CAMPAIGN:
+RELATIONAL_HORIZON_SCIENTIFIC_PLANNING_CAMPAIGN_001
+
+DESTINATION:
+FRESH PLANNING EVALUATOR / CROSS-EVALUATION THREAD
+
+USE:
+REMOTE EVIDENCE ONLY
+
+# REQUIRED EVIDENCE
+
+Read exactly:
+
+1.
+docs/campaigns/semantic_continuity_operative_atlas_001/
+RELATIONAL_HORIZON_PLANNING_PRESSURE_CELL_001_P1_FROZEN_OUTPUT_001.md
+
+2.
+docs/campaigns/semantic_continuity_operative_atlas_001/
+RELATIONAL_HORIZON_PLANNING_PRESSURE_CELL_001_P1_REPAIRED_READY_TO_SEND_ROUTING_RECONSTRUCTION_PACKET.md
+
+3.
+docs/campaigns/semantic_continuity_operative_atlas_001/
+RELATIONAL_HORIZON_PLANNING_PRESSURE_CELL_001_P1_REPAIRED_FROZEN_OUTPUT_001.md
+
+# PRIMARY QUESTION
+
+Did the repaired P1 establish bounded reconstruction of a next destination
+class from result identity, recoverable source/adjudication state, and one
+declared workflow relation, while preserving failure legibility and no
+execution authority?
+
+# REQUIRED CHECKS
+
+REPAIR_CAUSALITY:
+Did adding only NEXT_LAWFUL_PRESSURE convert the prior UNRESOLVED result
+into a bounded recovered destination under R1?
+YES | NO | PARTIAL | UNRESOLVED
+
+DECLARED_RELATION_USE:
+EXACT | PARTIAL | IMPORTED_CONTEXT | UNRESOLVED
+
+DESTINATION_BOUNDING:
+EXACT_CLASS_ONLY | OVERBROAD | UNDERDEFINED | UNRESOLVED
+
+OPERATOR_MEMORY_INDEPENDENCE:
+SUPPORTED | PARTIAL | UNSUPPORTED | UNRESOLVED
+
+FAILURE_LEGIBILITY:
+SUPPORTED | PARTIAL | UNSUPPORTED | UNRESOLVED
+
+AUTHORITY_BOUNDARY:
+CONSERVED | DEGRADED | VIOLATED | UNRESOLVED
+
+CELL_P1_DISPOSITION:
+
+BOUNDED_NEXT_DESTINATION_RECONSTRUCTION_ESTABLISHED
+
+BOUNDED_NEXT_DESTINATION_RECONSTRUCTION_ESTABLISHED_WITH_BOUNDED_WOUNDS
+
+REPAIR_DID_NOT_ESTABLISH_RECONSTRUCTION
+
+UNRESOLVED
+
+# REQUIRED OUTPUT
+
+Return exactly:
+
+REPAIR_CAUSALITY:
+
+DECLARED_RELATION_USE:
+
+DESTINATION_BOUNDING:
+
+OPERATOR_MEMORY_INDEPENDENCE:
+
+FAILURE_LEGIBILITY:
+
+AUTHORITY_BOUNDARY:
+
+CELL_P1_DISPOSITION:
+
+NEW_WOUNDS:
+<list or NONE>
+
+MAXIMUM_WARRANTED_CLAIM:
+<one bounded claim>
+
+NEXT_LAWFUL_PRESSURE:
+<one bounded next pressure only>
+
+# CLAIM CEILING
+
+Maximum allowable success claim:
+
+For this tested routing specimen, once the missing
+NEXT_LAWFUL_PRESSURE field was supplied, a fresh reconstructor used only
+the declared R1 relation and bounded result/adjudication state to recover
+the destination class SCIENCE_INTEGRATION_NEXT_PRESSURE_MATERIALIZATION
+without operator-memory context or execution authority.
+
+Do not claim concrete routing execution, generic destination uniqueness,
+autonomous routing, autonomous planning, or production-ready orchestration.
+
+# STOP
+
+Stop after adjudication.
