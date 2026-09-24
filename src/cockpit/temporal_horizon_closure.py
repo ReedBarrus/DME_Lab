@@ -122,6 +122,15 @@ def derive_temporal_horizon_closure(
     operative_control = workcycle.get("operative_control") or {}
     seat_ecology = workcycle.get("seat_ecology") or {}
 
+    history_ok = history["posture"] == "SUPPORTED"
+    current_ok = bool(campaign_id and active_horizon and not workcycle.get("projection_errors"))
+    upcoming_ok = bool(next_pressure)
+    disposition = (
+        "HORIZON_MATCHED"
+        if history_ok and current_ok and upcoming_ok
+        else "HORIZON_UNRESOLVED"
+    )
+
     temporal_handle = str(
         (history.get("recent_transition") or {}).get("transition_id") or "TEMPORAL_UNRESOLVED"
     )
@@ -235,6 +244,11 @@ def derive_temporal_horizon_closure(
         "evidence_debt": current_unresolved,
         "stop_condition": "stop after one bounded pressure result; do not auto-admit successor work",
         "repair_destination": "TYPED_REPAIR_ROUTING",
+        "candidate_posture": (
+            "PROPOSED_NOT_ADMITTED"
+            if disposition == "HORIZON_MATCHED"
+            else "HELD_UNRESOLVED_HORIZON"
+        ),
         "admission_effect": "NONE",
         "execution_effect": "NONE",
     }
@@ -263,6 +277,10 @@ def derive_temporal_horizon_closure(
             "source": "WORKCYCLE_DERIVED_CURRENTNESS",
             "execution_effect": "NONE",
         },
+        "disposition": disposition,
+        "history_posture": "SUPPORTED" if history_ok else "UNRESOLVED",
+        "currentness_posture": "SUPPORTED" if current_ok else "UNRESOLVED",
+        "upcoming_work_posture": "SUPPORTED" if upcoming_ok else "UNRESOLVED",
         "primary_horizon": {
             "family": rule["family"],
             "subject": rule["subject"],
