@@ -6,7 +6,7 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CAMPAIGN = ROOT / "docs" / "campaigns" / "semantic_continuity_operative_atlas_001"
+CAMPAIGN = ROOT / "docs" / "campaigns" / "sca001"
 
 RULES = [
     ("CONVERSATION_", "conversation_candidates"),
