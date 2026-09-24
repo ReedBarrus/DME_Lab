@@ -13,6 +13,7 @@ if str(REPO_ROOT) not in sys.path:
 from src.cockpit.workcycle_projection import build_workcycle_projection
 from src.cockpit.temporal_horizon_closure import derive_temporal_horizon_closure
 from src.cockpit.workcycle_qualification import build_workcycle_qualification_readiness
+from src.cockpit.pressure_justification import build_basis_record, build_pressure_justification
 
 
 def main() -> int:
@@ -38,6 +39,16 @@ def main() -> int:
     )
     projection["qualification_readiness"] = build_workcycle_qualification_readiness(
         repo
+    )
+    projection["basis_record"] = build_basis_record(
+        workcycle=projection,
+        horizon_closure=projection["temporal_horizon_closure"],
+        qualification=projection["qualification_readiness"],
+    )
+    projection["pressure_justification"] = build_pressure_justification(
+        workcycle=projection,
+        horizon_closure=projection["temporal_horizon_closure"],
+        qualification=projection["qualification_readiness"],
     )
     print(json.dumps(projection, indent=2, sort_keys=True))
     return 0
