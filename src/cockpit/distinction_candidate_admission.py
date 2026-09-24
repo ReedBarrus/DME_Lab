@@ -25,7 +25,7 @@ EVALUATOR_FUNCTION = "evaluate_distinction_record"
 EVALUATOR_SOURCE_BLOB_SHA = "a78d1c7317f83ed0a73161cd03902840c62795f6"
 SOURCE_SEAT = {"seat": "LABBOIB", "model": "QWEN"}
 ADMISSION_REGISTRY_RELATIVE_PATH = Path(
-    "docs/campaigns/semantic_continuity_operative_atlas_001/"
+    "docs/campaigns/sca001/"
     "DISTINCTION_ADMISSION_REGISTRY_V0.jsonl"
 )
 
