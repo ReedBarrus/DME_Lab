@@ -64,6 +64,7 @@ WORK_REQUIRED = frozenset(
         "status",
         "role",
         "source_objects",
+        "required_handoff_ids",
         "requested_transformation",
         "allowed_consequences",
         "forbidden_consequences",
@@ -300,6 +301,7 @@ def validate_work_item(item: Mapping[str, Any]) -> dict[str, Any]:
         _require_text(item[field], field)
     for field in (
         "source_objects",
+        "required_handoff_ids",
         "allowed_consequences",
         "forbidden_consequences",
         "required_evidence",
@@ -335,6 +337,7 @@ def claim_work_item(
     seat_id: str,
     seat_role: str,
     claimed_at: str,
+    available_handoffs: Sequence[Mapping[str, Any]] = (),
 ) -> dict[str, Any]:
     current = read_current_frame(frame)
     retained = validate_work_item(item)
@@ -353,6 +356,17 @@ def claim_work_item(
     if retained["role"] != seat_role:
         raise WorkItemRejected(
             f"ROLE_MISMATCH required={retained['role']} observed={seat_role}"
+        )
+
+    required_handoff_ids = set(retained["required_handoff_ids"])
+    observed_handoff_ids: set[str] = set()
+    for handoff in available_handoffs:
+        validated = validate_handoff(handoff)
+        observed_handoff_ids.add(validated["handoff_id"])
+    missing_handoffs = sorted(required_handoff_ids - observed_handoff_ids)
+    if missing_handoffs:
+        raise WorkItemRejected(
+            f"REQUIRED_HANDOFF_UNAVAILABLE {missing_handoffs}"
         )
 
     retained["status"] = "CLAIMED"
