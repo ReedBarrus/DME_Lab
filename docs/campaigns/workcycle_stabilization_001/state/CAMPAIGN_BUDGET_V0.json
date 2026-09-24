@@ -1,5 +1,5 @@
 {
-  "object_type": "CAMPAIGN_BUDGET_V0",
+  "object_type": "WAKE_BUDGET_V0",
   "campaign_id": "WORKCYCLE_STABILIZATION_001",
   "work_items": {
     "allowed_per_wake": 1,
@@ -30,5 +30,5 @@
       "SOURCE_DELETION"
     ]
   },
-  "integrity_sha256": "f46bf9aa23064ed8a171b6caa62bc526ae8381e4b89a58023555e00998c4075b"
+  "integrity_sha256": "b2dd7fadc3f8a09e493baa146fb0983898e6f6019c0d95f506a019ae66fcfe02"
 }
