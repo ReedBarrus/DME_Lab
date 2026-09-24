@@ -5,10 +5,22 @@ export function selectCockpitSurface(state, surface) {
   return COCKPIT_SURFACES.includes(surface) ? {...state, surface} : state;
 }
 
+export function atlasFrameUrlWithRuntime(pageHref, frameSrc) {
+  const page = new URL(pageHref);
+  const frame = new URL(frameSrc, page);
+  const runtime = page.searchParams.get('runtime');
+  if (runtime) frame.searchParams.set('runtime', runtime);
+  return frame.toString();
+}
+
 function startAtlasLanding() {
   const atlas = document.querySelector('#atlas-primary-root');
   const legacy = document.querySelector('#legacy-observer-shell');
+  const atlasFrame = document.querySelector('#atlas-primary-frame');
   if (!atlas || !legacy) return null;
+  if (atlasFrame) {
+    atlasFrame.src = atlasFrameUrlWithRuntime(window.location.href, atlasFrame.getAttribute('src'));
+  }
   let state = {surface: DEFAULT_COCKPIT_SURFACE};
 
   function render() {
