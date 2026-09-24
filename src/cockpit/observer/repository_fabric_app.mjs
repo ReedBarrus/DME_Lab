@@ -35,6 +35,7 @@ import {
 import {
   REPOSITORY_TEMPORAL_LINEAGE_PATH,
   activateWoundReplay,
+  bindCurrentTemporalContext,
   buildTemporalLineageModel,
   buildTransitionEmissionLedger,
   createTemporalOperatorState,
@@ -67,6 +68,39 @@ let workcycleRuntime = null;
 let workcycleRuntimeError = null;
 let workcycleSource = null;
 let workcycleControlBase = null;
+
+const LOAD_TIMEOUT_MS = 15000;
+
+function renderLoadStage(stage, detail = '') {
+  root.innerHTML = `
+    <main class="fabric-unavailable fabric-loading-stage" data-load-stage="${stage}">
+      <p class="fabric-kicker">ATLAS BOOT · ${stage}</p>
+      <h1>${detail || stage}</h1>
+    </main>
+  `;
+}
+
+async function fetchJsonResponse(url, label) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), LOAD_TIMEOUT_MS);
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      cache: 'no-store',
+      credentials: 'same-origin',
+      signal: controller.signal,
+    });
+    if (!response.ok) throw new Error(`${label} fetch failed with HTTP ${response.status}`);
+    return response;
+  } catch (error) {
+    if (error?.name === 'AbortError') {
+      throw new Error(`${label} fetch exceeded ${LOAD_TIMEOUT_MS}ms`);
+    }
+    throw error;
+  } finally {
+    clearTimeout(timer);
+  }
+}
 
 function temporalView() {
   if (!temporalLineage || !temporalState) return null;
@@ -463,23 +497,28 @@ function moveToTemporalFrame(frameIndex, stateOverride = null) {
 
 async function load() {
   try {
+    const bootStarted = performance.now();
+    renderLoadStage('FETCHING SOURCES', 'Loading current fabric + temporal evidence...');
+
     const [response, temporalResponse, distinctionResponse] = await Promise.all([
-      fetch(REPOSITORY_FABRIC_PATH, {
-        method: 'GET', cache: 'no-store', credentials: 'same-origin',
-      }),
-      fetch(REPOSITORY_TEMPORAL_LINEAGE_PATH, {
-        method: 'GET', cache: 'no-store', credentials: 'same-origin',
-      }),
-      fetch(TYPED_DISTINCTION_REGISTRY_PATH, {
-        method: 'GET', cache: 'no-store', credentials: 'same-origin',
-      }),
+      fetchJsonResponse(REPOSITORY_FABRIC_PATH, 'repository fabric'),
+      fetch(REPOSITORY_TEMPORAL_LINEAGE_PATH, 'temporal lineage').catch((error) => ({ok: false, error})),
+      fetch(TYPED_DISTINCTION_REGISTRY_PATH, 'typed distinction registry').catch((error) => ({ok: false, error})),
     ]);
-    if (!response.ok) throw new Error(`source fetch failed with HTTP ${response.status}`);
+
+    renderLoadStage('BUILDING CURRENT MODEL', 'Constructing current source-bound repository model...');
+    model = buildRepositoryFabricModel(await response.json());
+
+    renderLoadStage('BUILDING GEOMETRY', `Laying out ${model.objects.length} addressed objects...`);
+    geometricField = buildGeometricRepositoryField(model);
+
     if (temporalResponse.ok) {
+      renderLoadStage('ATTACHING TEMPORAL CONTEXT', 'Binding current world to exact temporal head...');
       temporalLineage = buildTemporalLineageModel(await temporalResponse.json());
-      model = reconstructTemporalFrame(temporalLineage, temporalLineage.frames.length - 1);
+      bindCurrentTemporalContext(temporalLineage, model);
       temporalState = createTemporalOperatorState(temporalLineage, model);
       emissionLedger = buildTransitionEmissionLedger(model);
+
       if (distinctionResponse.ok) {
         typedDistinctionRegistry = buildTypedDistinctionRegistryModel(
           await distinctionResponse.json(),
@@ -487,9 +526,10 @@ async function load() {
         );
       }
     } else {
-      model = buildRepositoryFabricModel(await response.json());
+      episodeError = `Temporal lineage unavailable at boot: ${temporalResponse.error || 'unknown error'}`;
     }
-    geometricField = buildGeometricRepositoryField(model);
+
+    renderLoadStage('RENDERING', `Painting current Atlas after ${Math.round(performance.now() - bootStarted)}ms...`);
     try {
       const episodeResponse = await fetch(CELL002_EPISODE_TRACE_PATH, {
         method: 'GET',
