@@ -22,7 +22,7 @@ PROGRESS_TYPE = "WORKCYCLE_CAMPAIGN_PROGRESS_V0"
 CONSEQUENCE_TYPE = "OBSERVED_CONSEQUENCE_V0"
 EVALUATION_TYPE = "CONSEQUENCE_EVALUATION_V0"
 REPAIR_ROUTE_TYPE = "REPAIR_ROUTE_V0"
-BUDGET_TYPE = "CAMPAIGN_BUDGET_V0"
+BUDGET_TYPE = "WAKE_BUDGET_V0"
 
 CONSEQUENCE_DISPOSITIONS = frozenset(
     {
@@ -96,6 +96,51 @@ def _contains(repo: Path, rel: str, needle: str) -> bool:
     return path.is_file() and needle in _text(path)
 
 
+def _markdown_field(repo: Path, rel: str, field: str) -> str | None:
+    path = repo / rel
+    if not path.is_file():
+        return None
+    lines = path.read_text(encoding="utf-8").splitlines()
+    target = field.strip().rstrip(":")
+    for index, line in enumerate(lines):
+        if line.strip().rstrip(":") != target:
+            continue
+        for candidate in lines[index + 1:]:
+            value = candidate.strip()
+            if value:
+                return value
+    return None
+
+
+def _validated_consequence_pair(
+    repo: Path,
+    consequence_rel: str,
+    evaluation_rel: str,
+) -> tuple[bool, list[str]]:
+    consequence_path = repo / consequence_rel
+    evaluation_path = repo / evaluation_rel
+    if not consequence_path.is_file() or not evaluation_path.is_file():
+        return False, ["observed consequence/evaluation not yet both present"]
+    try:
+        consequence = _load_json(consequence_path)
+        evaluation = _load_json(evaluation_path)
+        verify_seal(consequence)
+        verify_seal(evaluation)
+    except Exception as exc:
+        return False, [f"consequence/evaluation validation failed: {type(exc).__name__}: {exc}"]
+    if consequence.get("object_type") != CONSEQUENCE_TYPE:
+        return False, ["observed consequence object_type mismatch"]
+    if evaluation.get("object_type") != EVALUATION_TYPE:
+        return False, ["consequence evaluation object_type mismatch"]
+    if evaluation.get("work_item_id") != consequence.get("work_item_id"):
+        return False, ["work-item identity mismatch between consequence and evaluation"]
+    if evaluation.get("consequence_id") != consequence.get("consequence_id"):
+        return False, ["consequence identity mismatch between witness and evaluation"]
+    if evaluation.get("disposition") != "CONSEQUENCE_MATCHED":
+        return False, [f"consequence disposition is {evaluation.get('disposition', 'MISSING')}"]
+    return True, []
+
+
 def derive_campaign_progress(repo_root: str | Path) -> dict[str, Any]:
     """Derive current campaign posture from explicit evidence artifacts.
 
@@ -122,10 +167,14 @@ def derive_campaign_progress(repo_root: str | Path) -> dict[str, Any]:
     w1 = "docs/campaigns/workcycle_stabilization_001/decomposition/WORKCYCLE_STABILIZATION_001_COMPRESSION_W1.json"
     t2_result = "docs/campaigns/workcycle_stabilization_001/decomposition/DECOMPOSITION_D001_ADJUDICATION_RESULT_001.md"
     t2_ok = _exists(repo, d001) and _exists(repo, w1)
+    t2_disposition = _markdown_field(repo, t2_result, "DISPOSITION")
+    t2_pass = t2_ok and t2_disposition == "DECOMPOSITION_MATCHED"
     cells["T2"] = {
         "posture": (
             "BOUNDED_PASS"
-            if t2_ok and _exists(repo, t2_result)
+            if t2_pass
+            else "ADJUDICATED_NOT_MATCHED"
+            if t2_ok and t2_disposition is not None
             else "EXERCISED_UNADJUDICATED"
             if t2_ok
             else "NOT_STARTED"
@@ -133,7 +182,9 @@ def derive_campaign_progress(repo_root: str | Path) -> dict[str, Any]:
         "evidence": [p for p in (d001, w1, t2_result) if _exists(repo, p)],
         "unresolved": (
             []
-            if t2_ok and _exists(repo, t2_result)
+            if t2_pass
+            else [f"decomposition adjudication disposition: {t2_disposition}"]
+            if t2_ok and t2_disposition is not None
             else ["independent decomposition adjudication not yet frozen"]
             if t2_ok
             else ["decomposition lineage objects absent"]
@@ -142,24 +193,23 @@ def derive_campaign_progress(repo_root: str | Path) -> dict[str, Any]:
 
     consequence = "docs/campaigns/workcycle_stabilization_001/state/WORKCYCLE_STABILIZATION_001_COMPRESSION_W1_OBSERVED_CONSEQUENCE.json"
     evaluation = "docs/campaigns/workcycle_stabilization_001/state/WORKCYCLE_STABILIZATION_001_COMPRESSION_W1_CONSEQUENCE_EVALUATION.json"
+    t3_pass, t3_unresolved = _validated_consequence_pair(
+        repo, consequence, evaluation
+    )
     cells["T3"] = {
         "posture": (
             "BOUNDED_PASS"
-            if _exists(repo, consequence) and _exists(repo, evaluation)
-            else "PARTIAL"
-            if _exists(repo, consequence)
+            if t3_pass
+            else "UNRESOLVED"
+            if _exists(repo, consequence) or _exists(repo, evaluation)
             else "NOT_STARTED"
         ),
         "evidence": [p for p in (consequence, evaluation) if _exists(repo, p)],
-        "unresolved": (
-            []
-            if _exists(repo, consequence) and _exists(repo, evaluation)
-            else ["observed consequence/evaluation not yet both first-class"]
-        ),
+        "unresolved": t3_unresolved,
     }
 
     review = "docs/campaigns/workcycle_stabilization_001/compression/ATLAS_COORDINATION_ROUNDS_010_012_REVIEW.md"
-    review_pass = _contains(repo, review, "DISPOSITION:\nCONSEQUENCE_MATCHED")
+    review_pass = _markdown_field(repo, review, "DISPOSITION") == "CONSEQUENCE_MATCHED"
     cells["T4"] = {
         "posture": "BOUNDED_PASS" if review_pass else "UNRESOLVED",
         "evidence": [review] if _exists(repo, review) else [],
@@ -173,9 +223,15 @@ def derive_campaign_progress(repo_root: str | Path) -> dict[str, Any]:
 
     repair_spec = "docs/campaigns/workcycle_stabilization_001/state/REPAIR_ROUTING_PRESSURE_SPEC_001.json"
     repair_result = "docs/campaigns/workcycle_stabilization_001/state/REPAIR_ROUTING_PRESSURE_ADJUDICATION_RESULT_001.md"
+    t6_discriminated = _markdown_field(
+        repo, repair_result, "ALL_FOUR_CLASSES_DISCRIMINATED"
+    )
+    t6_pass = t6_discriminated == "YES"
     cells["T6"] = {
         "posture": (
             "BOUNDED_PASS"
+            if t6_pass
+            else "ADJUDICATED_NOT_MATCHED"
             if _exists(repo, repair_result)
             else "IMPLEMENTED_UNPRESSURED"
             if _exists(repo, repair_spec)
@@ -184,6 +240,8 @@ def derive_campaign_progress(repo_root: str | Path) -> dict[str, Any]:
         "evidence": [p for p in (repair_spec, repair_result) if _exists(repo, p)],
         "unresolved": (
             []
+            if t6_pass
+            else [f"repair routing discrimination result: {t6_discriminated or 'MISSING'}"]
             if _exists(repo, repair_result)
             else ["typed repair routing requires independent pressure"]
             if _exists(repo, repair_spec)
