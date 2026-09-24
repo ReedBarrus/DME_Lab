@@ -66,6 +66,7 @@ def sealed_work(
         "source_objects": [
             "docs/campaigns/load_transfer_001/CURRENT_OPERATIVE_FRAME_V0.json"
         ],
+        "required_handoff_ids": [],
         "requested_transformation": (
             "Create one bounded candidate note describing the exact observed "
             "coordination load and no more."
@@ -170,6 +171,52 @@ class LoadTransferV0Tests(unittest.TestCase):
                 seat_role="IMPLEMENTER",
                 claimed_at="2026-09-24T12:33:00Z",
             )
+
+    def test_reviewer_item_waits_for_exact_predecessor_handoff(self):
+        frame = sealed_frame()
+        frame["current_work_item_ids"].append("LT001-W2")
+        frame = lt.seal_object(frame)
+        reviewer = sealed_work(role="REVIEWER")
+        reviewer["work_item_id"] = "LT001-W2"
+        reviewer["required_handoff_ids"] = ["LT001-H1"]
+        reviewer = lt.seal_object(reviewer)
+
+        with self.assertRaisesRegex(lt.WorkItemRejected, "REQUIRED_HANDOFF_UNAVAILABLE"):
+            lt.claim_work_item(
+                frame,
+                reviewer,
+                seat_id="SEAT-B",
+                seat_role="REVIEWER",
+                claimed_at="2026-09-24T12:35:00Z",
+            )
+
+        implementer = lt.claim_work_item(
+            frame,
+            sealed_work(),
+            seat_id="SEAT-A",
+            seat_role="IMPLEMENTER",
+            claimed_at="2026-09-24T12:32:00Z",
+        )
+        _, h1 = lt.complete_work_item(
+            frame,
+            implementer,
+            seat_id="SEAT-A",
+            completed_at="2026-09-24T12:34:00Z",
+            result_posture="COMPLETED",
+            output_objects=[sealed_output()],
+            unresolved=[],
+            stop_reason="done",
+            handoff_id="LT001-H1",
+        )
+        claimed_reviewer = lt.claim_work_item(
+            frame,
+            reviewer,
+            seat_id="SEAT-B",
+            seat_role="REVIEWER",
+            claimed_at="2026-09-24T12:35:00Z",
+            available_handoffs=[h1],
+        )
+        self.assertEqual(claimed_reviewer["status"], "CLAIMED")
 
     def test_t06_completion_emits_exact_input_output_identities(self):
         frame = sealed_frame()
