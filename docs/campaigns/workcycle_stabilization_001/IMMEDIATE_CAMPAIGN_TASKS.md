@@ -23,6 +23,8 @@ SEAT A:
 `docs/campaigns/load_transfer_001/LOAD_TRANSFER_001_SEAT_A_READY_TO_SEND.md`
 
 SEAT B:
+`docs/campaigns/load_transfer_001/LOAD_TRANSFER_001_SEAT_B_READY_TO_SEND.md`
+
 becomes eligible only after exact H1 exists and validates.
 
 PASS TARGET:
