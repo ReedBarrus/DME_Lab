@@ -273,18 +273,26 @@ def start_loopback_server(
     return server, thread, url
 
 
+def workcycle_control_path() -> Path:
+    return config_dir() / "workcycle_control.json"
+
+
 def start_runtime_projection_server(
     repo_root: Path,
     *,
     port: int = 0,
     poll_interval: float = 0.5,
+    control_path: Path | None = None,
 ) -> tuple[ThreadingHTTPServer, threading.Thread, str]:
     from src.cockpit.live_runtime_projection import (
         RuntimeProjectionServer,
         RuntimeSources,
     )
 
-    sources = RuntimeSources(repo=repo_root)
+    sources = RuntimeSources(
+        repo=repo_root,
+        workcycle_control_path=control_path,
+    )
     server = RuntimeProjectionServer(("127.0.0.1", port), sources, poll_interval)
     thread = threading.Thread(
         target=server.serve_forever,
@@ -297,8 +305,41 @@ def start_runtime_projection_server(
     return server, thread, url
 
 
-def cockpit_url_with_runtime(base_url: str, runtime_url: str) -> str:
-    return base_url + "?" + urlencode({"runtime": runtime_url})
+def start_workcycle_control_server(
+    repo_root: Path,
+    *,
+    port: int = 0,
+    state_path: Path | None = None,
+) -> tuple[ThreadingHTTPServer, threading.Thread, str]:
+    from src.cockpit.workcycle_control import (
+        LocalWorkcycleControlStore,
+        WorkcycleControlServer,
+    )
+
+    control_path = state_path or workcycle_control_path()
+    store = LocalWorkcycleControlStore(path=control_path, repo=repo_root)
+    store.read()
+    server = WorkcycleControlServer(("127.0.0.1", port), store)
+    thread = threading.Thread(
+        target=server.serve_forever,
+        name="dme-cockpit-workcycle-control",
+        daemon=True,
+    )
+    thread.start()
+    actual_port = int(server.server_address[1])
+    url = f"http://127.0.0.1:{actual_port}"
+    return server, thread, url
+
+
+def cockpit_url_with_runtime(
+    base_url: str,
+    runtime_url: str,
+    control_url: str | None = None,
+) -> str:
+    values = {"runtime": runtime_url}
+    if control_url is not None:
+        values["control"] = control_url
+    return base_url + "?" + urlencode(values)
 
 
 def find_edge() -> Path | None:
@@ -381,11 +422,19 @@ def run_cockpit(
     server, thread, base_url = start_loopback_server(repo_root, port=port)
     runtime_server = None
     runtime_thread = None
+    control_server = None
+    control_thread = None
     try:
+        control_path = workcycle_control_path()
         runtime_server, runtime_thread, runtime_url = start_runtime_projection_server(
-            repo_root
+            repo_root,
+            control_path=control_path,
         )
-        url = cockpit_url_with_runtime(base_url, runtime_url)
+        control_server, control_thread, control_url = start_workcycle_control_server(
+            repo_root,
+            state_path=control_path,
+        )
+        url = cockpit_url_with_runtime(base_url, runtime_url, control_url)
 
         if open_mode == "edge-app":
             process = launch_edge_app(url)
@@ -413,6 +462,11 @@ def run_cockpit(
 
         raise CockpitLaunchError(f"unknown open mode: {open_mode}")
     finally:
+        if control_server is not None:
+            control_server.shutdown()
+            control_server.server_close()
+        if control_thread is not None:
+            control_thread.join(timeout=5.0)
         if runtime_server is not None:
             runtime_server.shutdown()
             runtime_server.server_close()
