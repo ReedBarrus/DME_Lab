@@ -13,6 +13,7 @@ import sys
 import threading
 from typing import Sequence
 import webbrowser
+from urllib.parse import urlencode
 
 
 OBSERVER_RELATIVE_PATH = Path("src/cockpit/observer/index.html")
@@ -272,6 +273,30 @@ def start_loopback_server(
     return server, thread, url
 
 
+def start_runtime_projection_server(
+    repo_root: Path,
+    *,
+    port: int = 0,
+    poll_interval: float = 0.5,
+) -> tuple[ThreadingHTTPServer, threading.Thread, str]:
+    from src.cockpit.live_runtime_projection import (
+        RuntimeProjectionServer,
+        RuntimeSources,
+    )
+
+    sources = RuntimeSources(repo=repo_root)
+    server = RuntimeProjectionServer(("127.0.0.1", port), sources, poll_interval)
+    thread = threading.Thread(
+        target=server.serve_forever,
+        name="dme-cockpit-runtime",
+        daemon=True,
+    )
+    thread.start()
+    actual_port = int(server.server_address[1])
+    url = f"http://127.0.0.1:{actual_port}/runtime/events"
+    return server, thread, url
+
+
 def find_edge() -> Path | None:
     discovered = shutil.which("msedge")
     if discovered:
@@ -349,8 +374,15 @@ def run_cockpit(
         freshness_ref=freshness,
     )
 
-    server, thread, url = start_loopback_server(repo_root, port=port)
+    server, thread, base_url = start_loopback_server(repo_root, port=port)
+    runtime_server = None
+    runtime_thread = None
     try:
+        runtime_server, runtime_thread, runtime_url = start_runtime_projection_server(
+            repo_root
+        )
+        url = base_url + "?" + urlencode({"runtime": runtime_url})
+
         if open_mode == "edge-app":
             process = launch_edge_app(url)
             process.wait()
@@ -377,6 +409,11 @@ def run_cockpit(
 
         raise CockpitLaunchError(f"unknown open mode: {open_mode}")
     finally:
+        if runtime_server is not None:
+            runtime_server.shutdown()
+            runtime_server.server_close()
+        if runtime_thread is not None:
+            runtime_thread.join(timeout=5.0)
         server.shutdown()
         server.server_close()
         thread.join(timeout=5.0)
