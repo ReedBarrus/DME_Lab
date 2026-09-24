@@ -15,6 +15,12 @@ EXISTENCE_STANDING = "EXISTS_AT_SOURCE_COMMIT"
 SEMANTIC_STANDING = "UNINTERPRETED"
 
 
+
+def _subprocess_creationflags() -> int:
+    if __import__("os").name != "nt":
+        return 0
+    return int(getattr(subprocess, "CREATE_NO_WINDOW", 0))
+
 class RepositoryAddressFabricError(RuntimeError):
     pass
 
@@ -26,6 +32,7 @@ def _git(repo: Path, *args: str, check: bool = True) -> bytes:
         check=False,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
+        creationflags=_subprocess_creationflags(),
     )
     if check and completed.returncode != 0:
         detail = completed.stderr.decode("utf-8", errors="replace").strip()
@@ -107,6 +114,7 @@ def _branch_coordinate(repo: Path, source_ref: str) -> str | None:
         check=False,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
+        creationflags=_subprocess_creationflags(),
     )
     if completed.returncode != 0:
         return None
@@ -124,6 +132,7 @@ def _git_object_contents(repo: Path, identities: list[str]) -> dict[str, bytes]:
         check=False,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
+        creationflags=_subprocess_creationflags(),
     )
     if completed.returncode != 0:
         detail = completed.stderr.decode("utf-8", errors="replace").strip()
