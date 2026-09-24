@@ -278,7 +278,9 @@ def validate_manifest(manifest: dict[str, Any], p: dict[str, Any]) -> None:
 
 
 def result_path_for(request_id: str, p: dict[str, Any]) -> Path:
-    base = Path(p["_result_dir_resolved"])
+    repo = Path(p["_repo_root_resolved"]).resolve()
+    base = (repo / "bridge" / "results").resolve()
+    base.mkdir(parents=True, exist_ok=True)
     out = (base / f"{request_id}.json").resolve()
     if out.parent != base:
         fail("result path escaped result directory")
