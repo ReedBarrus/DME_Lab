@@ -24,6 +24,12 @@ EVENT_TYPES = {
 }
 
 
+
+def _subprocess_creationflags() -> int:
+    if __import__("os").name != "nt":
+        return 0
+    return int(getattr(subprocess, "CREATE_NO_WINDOW", 0))
+
 class ActionSurfaceError(RuntimeError):
     pass
 
