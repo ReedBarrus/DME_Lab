@@ -343,6 +343,77 @@ function renderEpisodeOperator(episode, operatorState, episodeError) {
   `;
 }
 
+export function renderWorkcycleOperator(workcycle, runtimeError = null) {
+  if (!workcycle) {
+    return `
+      <section class="fabric-workcycle-operator is-unavailable">
+        <p class="fabric-kicker">WORKCYCLE / METABOLISM</p>
+        <strong>RUNTIME PROJECTION UNAVAILABLE</strong>
+        <p>${escapeHtml(runtimeError || 'No workcycle runtime snapshot received.')}</p>
+      </section>
+    `;
+  }
+
+  const summary = workcycle.operator_summary || {};
+  const consequence = workcycle.latest_consequence;
+  const evaluation = workcycle.latest_consequence_evaluation;
+  const budget = workcycle.budget;
+  const cells = workcycle.campaign_progress || {};
+  const cellRows = Object.entries(cells).map(([cell, state]) => `
+    <div class="workcycle-cell">
+      <span>${escapeHtml(cell)}</span>
+      <strong>${escapeHtml(state?.posture || 'UNKNOWN')}</strong>
+    </div>
+  `).join('');
+
+  const workBudget = budget?.work_items;
+  const seatBudget = budget?.seat_invocations;
+  const repairBudget = budget?.repair_attempts;
+  const observations = consequence?.observations || {};
+
+  return `
+    <section class="fabric-workcycle-operator">
+      <p class="fabric-kicker">WORKCYCLE / METABOLISM</p>
+      <dl class="operator-coordinate workcycle-coordinate">
+        <div><dt>WORKFLOW</dt><dd>${escapeHtml(summary.workflow || 'UNKNOWN')}</dd></div>
+        <div><dt>CAMPAIGN</dt><dd>${escapeHtml(summary.campaign || 'UNKNOWN')}</dd></div>
+        <div><dt>SEAT WORK</dt><dd>${escapeHtml(summary.seat_work || 'UNKNOWN')}</dd></div>
+      </dl>
+      <dl class="workcycle-ledger">
+        ${field('CAMPAIGN', value(workcycle.campaign_id))}
+        ${field('ACTIVE HORIZON', value(workcycle.active_horizon))}
+        ${field('NEXT PRESSURE', value(workcycle.next_pressure))}
+        ${field('CURRENT WORK ITEM', value(workcycle.current_work_item, 'NONE'))}
+        ${field('REED ACTION', value(summary.reed_action, 'NONE'))}
+      </dl>
+      <div class="workcycle-cells" aria-label="workcycle campaign cells">
+        ${cellRows || '<span class="fabric-missing">NO CELL PROJECTION</span>'}
+      </div>
+      <div class="workcycle-consequence">
+        <p class="fabric-kicker">LATEST CONSEQUENCE</p>
+        <div class="workcycle-stat"><span>SOURCE BYTES</span><strong>${escapeHtml(observations.source_bytes ?? '—')}</strong></div>
+        <div class="workcycle-stat"><span>CANDIDATE BYTES</span><strong>${escapeHtml(observations.candidate_bytes ?? '—')}</strong></div>
+        <div class="workcycle-stat"><span>DELTA BYTES</span><strong>${escapeHtml(observations.delta_bytes ?? '—')}</strong></div>
+        <div class="workcycle-stat"><span>REDUCTION</span><strong>${escapeHtml(observations.reduction_ratio ?? '—')}</strong></div>
+        <div class="workcycle-stat"><span>EVALUATION</span><strong>${escapeHtml(evaluation?.disposition || 'UNRESOLVED')}</strong></div>
+      </div>
+      <div class="workcycle-budget">
+        <p class="fabric-kicker">CONSEQUENCE BUDGET</p>
+        <div class="workcycle-stat"><span>WORK ITEMS</span><strong>${escapeHtml(workBudget ? `${workBudget.consumed}+${workBudget.reserved}/${workBudget.allowed_per_wake}` : '—')}</strong></div>
+        <div class="workcycle-stat"><span>SEAT INVOCATIONS</span><strong>${escapeHtml(seatBudget ? `${seatBudget.consumed}+${seatBudget.reserved}/${seatBudget.allowed_per_wake}` : '—')}</strong></div>
+        <div class="workcycle-stat"><span>REPAIRS</span><strong>${escapeHtml(repairBudget ? `${repairBudget.consumed}+${repairBudget.reserved}/${repairBudget.allowed}` : '—')}</strong></div>
+        <div class="workcycle-stat"><span>AUTO CONTINUATION</span><strong>${escapeHtml(summary.auto_continuation_limit ?? 0)}</strong></div>
+      </div>
+      <div class="workcycle-controls" aria-label="workcycle controls not yet admitted">
+        <button type="button" disabled>WAKE</button>
+        <button type="button" disabled>PAUSE</button>
+        <button type="button" disabled>STOP</button>
+      </div>
+      <p class="fabric-unavailable-note">CONTROL WRITE NOT YET ADMITTED · DISPLAYED CONTROL STATE ≠ EXECUTION AUTHORITY</p>
+    </section>
+  `;
+}
+
 function slider({channel, label, value: sliderValue, minimum, maximum, step, disabled = false}) {
   return `
     <label class="fabric-basis-control ${disabled ? 'is-unavailable' : ''}">
@@ -361,6 +432,8 @@ export function renderRepositoryFabric(
   episode = null,
   episodeError = null,
   temporalView = null,
+  workcycle = null,
+  workcycleError = null,
 ) {
   const source = model.source;
   const counts = repositoryFieldRelationCounts(geometricField);
@@ -427,6 +500,7 @@ export function renderRepositoryFabric(
           <div class="fabric-operators">
           ${renderTemporalOperator(temporalView)}
           ${renderEpisodeOperator(episode, operatorState, episodeError)}
+          ${renderWorkcycleOperator(workcycle, workcycleError)}
           <section class="fabric-structural-operator">
             <p class="fabric-kicker">STRUCTURAL_BASIS_V0</p>
             ${slider({channel: 'containment', label: 'CONTAINMENT', value: geometricField.weights.structural.containment, minimum: 0.35, maximum: 1.65, step: 0.05})}
