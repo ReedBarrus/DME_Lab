@@ -10,7 +10,7 @@ It does not invoke a model or mutate repository source.
 from __future__ import annotations
 
 import copy
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime, timezone
 import hashlib
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -75,7 +75,7 @@ def _write_atomic(path: Path, value: Mapping[str, Any]) -> None:
 class LocalWorkcycleControlStore:
     path: Path
     repo: Path
-    lock: threading.RLock = threading.RLock()
+    lock: threading.RLock = field(default_factory=threading.RLock)
 
     def read(self) -> dict[str, Any]:
         with self.lock:
