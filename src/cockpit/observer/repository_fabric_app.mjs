@@ -438,6 +438,8 @@ function startWorkcycleRuntimeProjection() {
             ...projectedWorkcycle,
             temporal_horizon_closure: snapshot?.state?.temporal_horizon_closure || null,
             qualification_readiness: snapshot?.state?.workcycle_qualification || null,
+            basis_record: snapshot?.state?.workcycle_basis || null,
+            pressure_justification: snapshot?.state?.pressure_justification || null,
           }
         : null;
       workcycleRuntimeError = workcycleRuntime
