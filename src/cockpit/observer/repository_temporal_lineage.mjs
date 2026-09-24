@@ -317,6 +317,26 @@ export function reconstructTemporalFrame(lineage, requestedFrameIndex) {
   return model;
 }
 
+export function bindCurrentTemporalContext(lineage, model) {
+  if (!lineage?.frames?.length) throw new TypeError('temporal lineage is unavailable');
+  const frameIndex = lineage.frames.length - 1;
+  const frame = lineage.frames[frameIndex];
+  if (model?.source?.source_commit !== frame.commit_sha) {
+    throw new TypeError(
+      `current fabric commit ${model?.source?.source_commit || 'UNAVAILABLE'} does not match temporal head ${frame.commit_sha}`,
+    );
+  }
+  model.temporalContext = {
+    frameIndex,
+    frame,
+    incomingTransition: frameIndex ? lineage.transitions[frameIndex - 1] : null,
+    activeActorSources: activeActorSources(lineage, frameIndex),
+    currentFabricStanding: 'DIRECT_CURRENT_FABRIC',
+    objectTemporalIdentityStanding: 'UNRESOLVED_UNLESS_SOURCE_BOUND',
+  };
+  return model;
+}
+
 export function temporalIdentityForObject(object) {
   return object?.temporal_identity || null;
 }
