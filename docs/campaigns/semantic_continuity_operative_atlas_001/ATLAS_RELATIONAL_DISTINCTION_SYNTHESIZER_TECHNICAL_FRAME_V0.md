@@ -557,3 +557,329 @@ It does NOT establish:
 - authority correctness.
 
 Those must be earned experimentally.
+
+
+# ==================================================
+# 21. LABBOI IMPLEMENTATION-WARRANT INTEGRATION
+# ==================================================
+
+SOURCE:
+ATLAS_TYPED_DISTINCTION_ENGINE_V0_IMPLEMENTATION_WARRANT
+
+INTEGRATION_MODE:
+APPEND / PRESERVE / DO NOT FLATTEN
+
+RATIONALE:
+
+The Labboi warrant independently converged on the same V0 primitive while
+adding several useful operational non-collapses and stop conditions.
+
+This section incorporates only the additional constraints that sharpen
+the existing synthesizer frame.
+
+The prior technical sections remain authoritative as historical design
+trajectory; this section refines rather than replaces them.
+
+# ==================================================
+# 22. ADDITIONAL CORE NON-COLLAPSES
+# ==================================================
+
+SERIALIZABLE
+!=
+SCIENTIFICALLY_RECONSTRUCTABLE
+
+REGISTERED
+!=
+ADMITTED
+
+VISIBLE_EDGE
+!=
+SOURCE_SUPPORTED_RELATION
+
+OBJECT_IDENTITY
+!=
+RELATION_IDENTITY
+
+MULTIPLE_RELATION_FAMILIES
+MAY_COEXIST
+BETWEEN_THE_SAME_OBJECTS
+
+APPEND_OR_REGISTER
+!=
+PROMOTE_STANDING
+
+SCHEMA_VALID
+!=
+SCIENTIFICALLY_ADMISSIBLE
+
+PATH_RESOLVES
+!=
+CONTENT_IDENTITY_RESOLVES
+
+DEPENDENCY_OMITTED
+!=
+DEPENDENCY_ABSENT
+
+PROJECTION
+!=
+SOURCE_OF_TRUTH
+
+DRAWN_PROXIMITY
+MUST_NOT
+CREATE_RELATION_STANDING
+
+These are now explicit synthesizer constraints.
+
+# ==================================================
+# 23. MINIMUM DISTINCTION CELL — IMPLEMENTATION PRESSURE
+# ==================================================
+
+The current implementation already carries a richer record than the
+minimum candidate cell.
+
+For future schema reduction pressure, the irreducible candidate core is:
+
+distinction_id
+subject_address
+relation_type
+object_address | value
+source_handles
+constructed_by
+standing
+currentness
+claim_ceiling
+dependencies
+unresolveds
+
+Optional fields should remain pressure-earned rather than assumed:
+
+source_episode
+evaluated_by
+admitted_by
+supersedes
+
+The current implementation is NOT required to delete already useful
+fields merely to match this minimum.
+
+MINIMAL_SCHEMA
+!=
+REQUIRED_SCHEMA_REWRITE
+
+# ==================================================
+# 24. ADDRESS RESOLUTION DISCIPLINE
+# ==================================================
+
+Address resolution must preserve distinct questions:
+
+DOES THE SUBJECT ADDRESS RESOLVE?
+
+DOES THE OBJECT / VALUE TARGET RESOLVE?
+
+DO THE SOURCE HANDLES RESOLVE?
+
+DO DECLARED DEPENDENCIES RESOLVE?
+
+Candidate resolution states:
+
+RESOLVED
+UNRESOLVED
+MISSING
+
+Do not silently repair:
+
+stale paths
+renamed objects
+missing objects
+missing source handles
+
+For path-based objects:
+
+PATH RESOLUTION
+DOES NOT ESTABLISH
+CONTENT IDENTITY.
+
+This constraint is directly required by Cell D001.
+
+# ==================================================
+# 25. STANDING EVALUATION DISCIPLINE
+# ==================================================
+
+The standing evaluator does not decide truth.
+
+It determines whether the cell carries sufficient bounded reconstruction
+support for its declared standing.
+
+Useful candidate standing vocabulary remains intentionally small:
+
+CANDIDATE
+SOURCE_BOUND
+PRESSURED
+BOUNDED
+SUPERSEDED
+
+The currently implemented standing vocabulary does not need to be
+renamed merely to match this candidate list.
+
+Standing pressure should verify:
+
+subject correspondence
+source support
+claim ceiling
+dependency status
+currentness
+forbidden authority promotion
+
+No broad standing ontology is authorized.
+
+# ==================================================
+# 26. DEPENDENCY OMISSION LAW
+# ==================================================
+
+Fresh reconstruction must distinguish:
+
+NO_DEPENDENCIES_DECLARED
+
+from:
+
+KNOWN_DEPENDENCY_UNRESOLVED
+
+from:
+
+DECLARED_DEPENDENCY_MISSING
+
+Therefore:
+
+DEPENDENCY OMITTED
+!=
+DEPENDENCY ABSENT
+
+Do not infer global transitive closure.
+
+Do not fill missing dependence from semantic similarity.
+
+# ==================================================
+# 27. RECONSTRUCTION RESULT STATES
+# ==================================================
+
+A reconstruction pressure may return only a bounded disposition such as:
+
+SAME_BOUNDED_POSTURE
+
+DIFFERENT_BOUNDED_POSTURE
+
+UNRESOLVED
+
+ADMINISTRATION_INVALID
+
+Success remains:
+
+OPERATIONAL POSTURE CONSERVED
+
+not:
+
+IDENTICAL PROSE.
+
+# ==================================================
+# 28. VISUAL PROJECTION DISCIPLINE
+# ==================================================
+
+The Atlas may render:
+
+A --[RELATION_TYPE]--> B
+
+only when a source-bound registered relation supports that edge.
+
+Rendering may expose:
+
+subject node
+typed relation
+object / value target
+standing
+source indicator
+dependency indicator
+unresolved indicator
+
+But:
+
+VISUAL PROXIMITY
+!=
+RELATIONAL STANDING
+
+VISUAL EDGE
+!=
+SOURCE SUPPORT
+
+PROJECTION
+!=
+SOURCE OF TRUTH
+
+# ==================================================
+# 29. IMPLEMENTATION STOP MEMBRANE
+# ==================================================
+
+STOP / ESCALATE IF THE WORK ATTEMPTS TO INTRODUCE:
+
+1. a generic ontology;
+
+2. autonomous extractor implementation before extractor pressure;
+
+3. authority activation from symbolic registration;
+
+4. visual geometry as evidence;
+
+5. standing inferred from schema validity;
+
+6. generic dependency closure / graph inference;
+
+7. automatic promotion;
+
+8. semantic similarity replacing exact subject relation;
+
+9. broad ingestion merely to validate the primitive;
+
+10. reconstruction skipped because the registry appears correct.
+
+The first job remains:
+
+prove that a bounded distinction can:
+
+ENTER
+→
+REMAIN SOURCE_BOUND
+→
+BE CHALLENGED
+→
+BE PROJECTED
+→
+SURVIVE TRANSFORMATION
+→
+BE RECONSTRUCTED
+
+without becoming more authoritative than the evidence earns.
+
+# ==================================================
+# 30. LABBOI CONVERGENCE RECEIPT
+# ==================================================
+
+The Labboi warrant independently reinforced:
+
+- minimal distinction-cell structure;
+- source-bound admission;
+- explicit currentness;
+- dependency status;
+- projection/source separation;
+- reconstruction as the success criterion;
+- authority non-minting;
+- stop conditions against premature ontology / extractor expansion.
+
+This convergence is informative but is not itself scientific admission.
+
+INDEPENDENT DESIGN CONVERGENCE
+!=
+EMPIRICAL VALIDATION
+
+The next pressure remains empirical:
+fresh-seat reconstruction,
+cross-seat conservation,
+dependency admission,
+and wound replay.
