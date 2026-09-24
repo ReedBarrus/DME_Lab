@@ -495,6 +495,59 @@ function moveToTemporalFrame(frameIndex, stateOverride = null) {
   render();
 }
 
+async function loadOptionalEpisodeOverlay(requestedView) {
+  try {
+    const episodeResponse = await fetchJsonResponse(
+      CELL002_EPISODE_TRACE_PATH,
+      'Cell 002 episode trace',
+    );
+    episodeTrace = await episodeResponse.json();
+    rebuildEpisodeForFrame();
+    if (requestedView.get('overlay') === 'cell002') {
+      operatorState = toggleScientificEpisode(operatorState, episode);
+    }
+  } catch (error) {
+    episodeError = `Optional scientific episode unavailable: ${error instanceof Error ? error.message : String(error)}`;
+    operatorState = createAtlasOperatorState(null);
+  }
+  if (model && geometricField) render();
+}
+
+function applyRequestedView(requestedView) {
+  if (temporalState && temporalLineage) {
+    if (requestedView.has('wound')) {
+      const next = setWoundStep(
+        temporalState,
+        temporalLineage,
+        requestedView.get('wound'),
+      );
+      moveToTemporalFrame(next.frameIndex, next);
+      temporalState = selectTransitionEmission(
+        temporalState,
+        temporalLineage.woundReplay.steps[temporalState.woundStep]?.event_id,
+      );
+    } else if (requestedView.has('frame')) {
+      moveToTemporalFrame(requestedView.get('frame'));
+    }
+    if (requestedView.get('actors') === 'on' && !temporalState.actorLayer) {
+      temporalState = toggleActorLayer(temporalState);
+    }
+  }
+
+  const requestedFocus = requestedView.get('focus');
+  if (requestedFocus) {
+    model = setRepositoryQuery(model, requestedFocus);
+    const object = exactRepositoryQueryMatch(model);
+    if (object) {
+      model = selectRepositoryObject(model, object.object_id);
+      if (temporalState) {
+        temporalState = recordTemporalSelection(temporalState, object);
+      }
+      focusFieldObject(geometricField, object.object_id);
+    }
+  }
+}
+
 async function load() {
   try {
     const bootStarted = performance.now();
@@ -502,80 +555,70 @@ async function load() {
 
     const [response, temporalResponse, distinctionResponse] = await Promise.all([
       fetchJsonResponse(REPOSITORY_FABRIC_PATH, 'repository fabric'),
-      fetch(REPOSITORY_TEMPORAL_LINEAGE_PATH, 'temporal lineage').catch((error) => ({ok: false, error})),
-      fetch(TYPED_DISTINCTION_REGISTRY_PATH, 'typed distinction registry').catch((error) => ({ok: false, error})),
+      fetchJsonResponse(REPOSITORY_TEMPORAL_LINEAGE_PATH, 'temporal lineage')
+        .catch((error) => ({ok: false, error})),
+      fetchJsonResponse(TYPED_DISTINCTION_REGISTRY_PATH, 'typed distinction registry')
+        .catch((error) => ({ok: false, error})),
     ]);
 
-    renderLoadStage('BUILDING CURRENT MODEL', 'Constructing current source-bound repository model...');
+    renderLoadStage(
+      'BUILDING CURRENT MODEL',
+      'Constructing current source-bound repository model...',
+    );
     model = buildRepositoryFabricModel(await response.json());
 
-    renderLoadStage('BUILDING GEOMETRY', `Laying out ${model.objects.length} addressed objects...`);
+    renderLoadStage(
+      'BUILDING GEOMETRY',
+      `Laying out ${model.objects.length} addressed objects...`,
+    );
     geometricField = buildGeometricRepositoryField(model);
 
     if (temporalResponse.ok) {
-      renderLoadStage('ATTACHING TEMPORAL CONTEXT', 'Binding current world to exact temporal head...');
-      temporalLineage = buildTemporalLineageModel(await temporalResponse.json());
-      bindCurrentTemporalContext(temporalLineage, model);
-      temporalState = createTemporalOperatorState(temporalLineage, model);
-      emissionLedger = buildTransitionEmissionLedger(model);
-
-      if (distinctionResponse.ok) {
-        typedDistinctionRegistry = buildTypedDistinctionRegistryModel(
-          await distinctionResponse.json(),
-          temporalLineage,
+      try {
+        renderLoadStage(
+          'ATTACHING TEMPORAL CONTEXT',
+          'Binding current world to exact temporal head...',
         );
+        temporalLineage = buildTemporalLineageModel(await temporalResponse.json());
+        bindCurrentTemporalContext(temporalLineage, model);
+        temporalState = createTemporalOperatorState(temporalLineage, model);
+        emissionLedger = buildTransitionEmissionLedger(model);
+      } catch (error) {
+        temporalLineage = null;
+        temporalState = null;
+        emissionLedger = null;
+        episodeError = `Temporal context unavailable: ${error instanceof Error ? error.message : String(error)}`;
       }
     } else {
       episodeError = `Temporal lineage unavailable at boot: ${temporalResponse.error || 'unknown error'}`;
     }
 
-    renderLoadStage('RENDERING', `Painting current Atlas after ${Math.round(performance.now() - bootStarted)}ms...`);
-    try {
-      const episodeResponse = await fetch(CELL002_EPISODE_TRACE_PATH, {
-        method: 'GET',
-        cache: 'no-store',
-        credentials: 'same-origin',
-      });
-      if (!episodeResponse.ok) {
-        throw new Error(`episode source fetch failed with HTTP ${episodeResponse.status}`);
+    if (temporalLineage && distinctionResponse.ok) {
+      try {
+        typedDistinctionRegistry = buildTypedDistinctionRegistryModel(
+          await distinctionResponse.json(),
+          temporalLineage,
+        );
+      } catch (error) {
+        typedDistinctionRegistry = null;
+        episodeError = [
+          episodeError,
+          `Typed distinction overlay unavailable: ${error instanceof Error ? error.message : String(error)}`,
+        ].filter(Boolean).join(' | ');
       }
-      episodeTrace = await episodeResponse.json();
-      rebuildEpisodeForFrame();
-      const requestedView = new URL(window.location.href).searchParams;
-      if (temporalState && temporalLineage) {
-        if (requestedView.has('wound')) {
-          const next = setWoundStep(temporalState, temporalLineage, requestedView.get('wound'));
-          moveToTemporalFrame(next.frameIndex, next);
-          temporalState = selectTransitionEmission(
-            temporalState,
-            temporalLineage.woundReplay.steps[temporalState.woundStep]?.event_id,
-          );
-        } else if (requestedView.has('frame')) {
-          moveToTemporalFrame(requestedView.get('frame'));
-        }
-        if (requestedView.get('actors') === 'on' && !temporalState.actorLayer) {
-          temporalState = toggleActorLayer(temporalState);
-        }
-      }
-      if (requestedView.get('overlay') === 'cell002') {
-        operatorState = toggleScientificEpisode(operatorState, episode);
-      }
-      const requestedFocus = requestedView.get('focus');
-      if (requestedFocus) {
-        model = setRepositoryQuery(model, requestedFocus);
-        const object = exactRepositoryQueryMatch(model);
-        if (object) {
-          model = selectRepositoryObject(model, object.object_id);
-          if (temporalState) temporalState = recordTemporalSelection(temporalState, object);
-          focusFieldObject(geometricField, object.object_id);
-        }
-      }
-    } catch (error) {
-      episodeError = error instanceof Error ? error.message : String(error);
-      operatorState = createAtlasOperatorState(null);
     }
+
+    const requestedView = new URL(window.location.href).searchParams;
+    applyRequestedView(requestedView);
+
+    renderLoadStage(
+      'RENDERING CURRENT WORLD',
+      `Painting current Atlas after ${Math.round(performance.now() - bootStarted)}ms...`,
+    );
     render();
     startWorkcycleRuntimeProjection();
+
+    void loadOptionalEpisodeOverlay(requestedView);
   } catch (error) {
     root.innerHTML = renderRepositoryFabricUnavailable(
       error instanceof Error ? error.message : String(error),
