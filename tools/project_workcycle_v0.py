@@ -11,6 +11,7 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from src.cockpit.workcycle_projection import build_workcycle_projection
+from src.cockpit.temporal_horizon_closure import derive_temporal_horizon_closure
 
 
 def main() -> int:
@@ -23,7 +24,17 @@ def main() -> int:
         help="repository root (default: current directory)",
     )
     args = parser.parse_args()
-    projection = build_workcycle_projection(Path(args.repo))
+    repo = Path(args.repo).resolve()
+    projection = build_workcycle_projection(repo)
+    temporal_path = repo / "generated" / "repository_temporal_lineage.json"
+    try:
+        temporal = json.loads(temporal_path.read_text(encoding="utf-8"))
+    except (FileNotFoundError, OSError, json.JSONDecodeError):
+        temporal = {}
+    projection["temporal_horizon_closure"] = derive_temporal_horizon_closure(
+        temporal_lineage=temporal,
+        workcycle=projection,
+    )
     print(json.dumps(projection, indent=2, sort_keys=True))
     return 0
 
