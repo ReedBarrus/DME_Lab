@@ -20,6 +20,7 @@ from urllib.parse import urlparse
 from src.cockpit.development_horizon_projection import derive_development_horizons
 from src.cockpit.workcycle_projection import build_workcycle_projection
 from src.cockpit.temporal_horizon_closure import derive_temporal_horizon_closure
+from src.cockpit.workcycle_qualification import build_workcycle_qualification_readiness
 
 
 class LiveRuntimeProjectionError(RuntimeError):
@@ -539,6 +540,9 @@ def build_runtime_state(sources: RuntimeSources) -> dict[str, Any]:
         development_horizons=state["development_horizons"],
     )
     state["temporal_horizon_closure"]["temporal_source_status"] = temporal_source_status
+    state["workcycle_qualification"] = build_workcycle_qualification_readiness(
+        sources.repo
+    )
     return state
 
 
