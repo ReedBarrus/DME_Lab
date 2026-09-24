@@ -150,17 +150,21 @@ def derive_campaign_progress(repo_root: str | Path) -> dict[str, Any]:
     cells: dict[str, dict[str, Any]] = {}
 
     t0 = "docs/campaigns/load_transfer_001/LOAD_TRANSFER_001_MECHANICAL_TEST_RESULT_001.md"
+    t0_suite = _markdown_field(repo, t0, "MECHANICAL_TEST_SUITE")
+    t0_pass = t0_suite == "18 / 18 PASS"
     cells["T0"] = {
-        "posture": "BOUNDED_PASS" if _contains(repo, t0, "18 / 18 PASS") else "UNRESOLVED",
+        "posture": "BOUNDED_PASS" if t0_pass else "UNRESOLVED",
         "evidence": [t0] if _exists(repo, t0) else [],
-        "unresolved": [] if _exists(repo, t0) else ["mechanical result absent"],
+        "unresolved": [] if t0_pass else [f"mechanical suite result: {t0_suite or 'MISSING'}"],
     }
 
     t1 = "docs/campaigns/load_transfer_001/LOAD_TRANSFER_001_LIVE_TWO_SEAT_PRESSURE_RESULT_001.md"
+    t1_result = _markdown_field(repo, t1, "RESULT")
+    t1_pass = t1_result == "BOUNDED PASS"
     cells["T1"] = {
-        "posture": "BOUNDED_PASS" if _contains(repo, t1, "RESULT:\nBOUNDED PASS") else "UNRESOLVED",
+        "posture": "BOUNDED_PASS" if t1_pass else "UNRESOLVED",
         "evidence": [t1] if _exists(repo, t1) else [],
-        "unresolved": [] if _exists(repo, t1) else ["live two-seat pressure result absent"],
+        "unresolved": [] if t1_pass else [f"live two-seat result: {t1_result or 'MISSING'}"],
     }
 
     d001 = "docs/campaigns/workcycle_stabilization_001/decomposition/WORKCYCLE_STABILIZATION_001_D001.json"
