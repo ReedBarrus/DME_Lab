@@ -171,24 +171,18 @@ class RepositoryTemporalLineageTest(unittest.TestCase):
         self.assertEqual(git_call.call_count, 2)
         self.assertEqual(git_call.call_args_list[1].args[1], "diff")
 
-    def test_temporal_git_subprocess_uses_no_window_flag_on_windows(self) -> None:
+    def test_temporal_git_subprocess_passes_no_window_creationflags(self) -> None:
         completed = Mock(returncode=0, stdout=b"abc\n", stderr=b"")
         with (
-            patch("src.cockpit.repository_temporal_lineage.__import__") as importer,
-            patch.object(
-                temporal_lineage.subprocess,
-                "CREATE_NO_WINDOW",
-                0x08000000,
-                create=True,
+            patch(
+                "src.cockpit.repository_temporal_lineage._subprocess_creationflags",
+                return_value=0x08000000,
             ),
             patch(
                 "src.cockpit.repository_temporal_lineage.subprocess.run",
                 return_value=completed,
             ) as run,
         ):
-            fake_os = Mock()
-            fake_os.name = "nt"
-            importer.return_value = fake_os
             temporal_lineage._git(Path("."), "rev-parse", "HEAD")
         self.assertEqual(run.call_args.kwargs["creationflags"], 0x08000000)
 
