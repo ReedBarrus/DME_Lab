@@ -228,6 +228,8 @@ def generate_projection_for_launch(
     )
     from src.cockpit.typed_distinction_registry import (
         REGISTRY_RELATIVE_PATH,
+        TypedDistinctionRegistryError,
+        build_unavailable_typed_distinction_registry_projection,
         generate_typed_distinction_registry_projection,
     )
 
@@ -247,11 +249,27 @@ def generate_projection_for_launch(
         source_ref=source_ref,
         output=repo_root / REPOSITORY_TEMPORAL_LINEAGE_RELATIVE_PATH,
     )
-    generate_typed_distinction_registry_projection(
-        registry_path=repo_root / REGISTRY_RELATIVE_PATH,
-        temporal_lineage=temporal_model,
-        output=repo_root / TYPED_DISTINCTION_REGISTRY_RELATIVE_PATH,
-    )
+    registry_path = repo_root / REGISTRY_RELATIVE_PATH
+    registry_output = repo_root / TYPED_DISTINCTION_REGISTRY_RELATIVE_PATH
+    try:
+        generate_typed_distinction_registry_projection(
+            registry_path=registry_path,
+            temporal_lineage=temporal_model,
+            output=registry_output,
+        )
+    except (TypedDistinctionRegistryError, OSError, UnicodeError, json.JSONDecodeError) as exc:
+        unavailable = build_unavailable_typed_distinction_registry_projection(
+            registry_path=registry_path,
+            temporal_lineage=temporal_model,
+            reason=f"{type(exc).__name__}: {exc}",
+        )
+        registry_output.parent.mkdir(parents=True, exist_ok=True)
+        temporary = registry_output.with_suffix(registry_output.suffix + ".tmp")
+        temporary.write_text(
+            json.dumps(unavailable, indent=2, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
+        temporary.replace(registry_output)
     return model
 
 
