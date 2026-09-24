@@ -311,6 +311,26 @@ class Cell003GitBlobInputIdentityCandidateTest(unittest.TestCase):
         self.assertIn("authority_consumer(", process_source)
         self.assertIn("invoke=lambda: invoke_lmstudio(", process_source)
 
+    def test_promotion_script_is_fixed_hash_copy_only(self) -> None:
+        script = CANDIDATE_PATH.with_name("promote.ps1").read_text(encoding="utf-8")
+        for expected_hash in (
+            "0f86b8499c269ee42ed50285e4429c504ff5e6f93a6e65836128e98ef9d2bb21",
+            "bfbbb929f0a0b55a745b5095fd2abd16541757b88f3151d69e7e7bb325e57303",
+            "65f2ce8c3ce1cd5147940ff851cb61a9f04b7db220dadb4c77e1d5352e28200b",
+            "98a380044712bfd04e4f64c1a1982dbb0662aa3f646beda3dfdc882ab7ef8918",
+        ):
+            self.assertIn(expected_hash, script)
+        self.assertEqual(script.count("Copy-Item"), 2)
+        for forbidden in (
+            "git ",
+            "Invoke-WebRequest",
+            "Start-Process",
+            "Remove-Item",
+            "New-Item",
+            "invoke_lmstudio",
+        ):
+            self.assertNotIn(forbidden, script)
+
 
 if __name__ == "__main__":
     unittest.main()
