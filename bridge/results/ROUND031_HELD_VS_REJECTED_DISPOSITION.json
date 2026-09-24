@@ -1,0 +1,60 @@
+{
+  "object_type": "LOCAL_LMSTUDIO_INVOCATION_WITNESS_V0",
+  "request_id": "ROUND031_HELD_VS_REJECTED_DISPOSITION",
+  "purpose": "Pressure held-versus-rejected candidate settlement semantics while preserving qualification, authority, witness, and Atlas boundaries.",
+  "request_manifest_path": "bridge/requests/ROUND031_HELD_VS_REJECTED_DISPOSITION.json",
+  "request_manifest_sha256": "547e1c62692d217a5c24920f35d7b5644d6d29db08b7e0fbf1b0aa6732689cc6",
+  "source_ref": "42848b41a1bb7c9be4b10eb202931c38163a20f6",
+  "input_path": "bridge/prompts/ROUND031_HELD_VS_REJECTED_DISPOSITION_READY_TO_SEND.md",
+  "input_sha256": "26f11c861ed52fb3522b53657999b52e6dee3861e8de059061e449c98d722c1f",
+  "model_requested": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 384,
+  "lmstudio_url": "http://127.0.0.1:1234/v1/chat/completions",
+  "http_status": 200,
+  "observed_started_at_utc": "2026-09-24T11:27:56.450202+00:00",
+  "observed_finished_at_utc": "2026-09-24T11:28:05.053236+00:00",
+  "observed_wall_seconds": 8.603039,
+  "prompt_tokens_observed": 588,
+  "completion_tokens_observed": 124,
+  "total_tokens_observed": 712,
+  "end_to_end_output_tokens_per_second": 14.413511,
+  "messages_count": 1,
+  "tools_supplied": false,
+  "previous_response_id_supplied": false,
+  "repository_context_supplied_to_model": false,
+  "connectors_supplied_to_model": false,
+  "external_retrieval_supplied_to_model": false,
+  "request_body_sha256": "80989e6c710cdba23364e66150db7113542bfb543ea9a6e9e7bc76e85393c9b2",
+  "response_body_sha256": "6528c759ccaa55993c521f83a56be360f6582230c4c9789058c480f6742b74cd",
+  "assistant_text": "FIELD_A_DISPOSITION:\nCANDIDATE_ACCEPTED\n\nFIELD_B_DISPOSITION:\nCANDIDATE_HELD\n\nFIELD_C_DISPOSITION:\nCANDIDATE_REJECTED\n\nHELD_REJECTED_SEPARATION:\nPRESERVED\n\nSCIENTIFIC_STANDING_EFFECT:\nNONE\n\nAUTHORITY_EFFECT:\nNONE\n\nRESULT_WITNESS_STATUS:\nPRESERVED_IMMUTABLE\n\nATLAS_MUTATION_STATUS:\nNONE\n\nMAXIMUM_WARRANTED_CLAIM:\nFIELD_A is accepted, FIELD_B is held, and FIELD_C is rejected, with no collapse between insufficient evidence and rejection.\n\nUNRESOLVED:\n[]",
+  "raw_response": {
+    "id": "chatcmpl-sy1xx9ucoxfqi47o7fcj4d",
+    "object": "chat.completion",
+    "created": 1790249276,
+    "model": "qwen/qwen3-coder-30b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "FIELD_A_DISPOSITION:\nCANDIDATE_ACCEPTED\n\nFIELD_B_DISPOSITION:\nCANDIDATE_HELD\n\nFIELD_C_DISPOSITION:\nCANDIDATE_REJECTED\n\nHELD_REJECTED_SEPARATION:\nPRESERVED\n\nSCIENTIFIC_STANDING_EFFECT:\nNONE\n\nAUTHORITY_EFFECT:\nNONE\n\nRESULT_WITNESS_STATUS:\nPRESERVED_IMMUTABLE\n\nATLAS_MUTATION_STATUS:\nNONE\n\nMAXIMUM_WARRANTED_CLAIM:\nFIELD_A is accepted, FIELD_B is held, and FIELD_C is rejected, with no collapse between insufficient evidence and rejection.\n\nUNRESOLVED:\n[]",
+          "reasoning_content": "",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 588,
+      "completion_tokens": 124,
+      "total_tokens": 712,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "stats": {},
+    "system_fingerprint": "qwen/qwen3-coder-30b"
+  }
+}
