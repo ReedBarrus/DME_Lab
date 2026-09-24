@@ -54,10 +54,10 @@ Observed class:
 32B, Q4_K_M, ~19.9 GB
 
 Exact local identifier:
-VISIBLE_FROM_UI_AS qwen/qwq-32b
+qwen/qwq-32b
 
 Bridge standing:
-NOT_YET_ALLOWLISTED
+ALLOWLISTED_FOR_BENCHMARK / HUMAN_APPROVAL_REQUIRED
 
 Candidate role:
 - high-depth evaluator / adversarial reasoning
@@ -69,10 +69,10 @@ Observed class:
 7B, Q4_K_M, ~6.0 GB
 
 Exact local identifier:
-VISIBLE_FROM_UI_AS qwen/qwen2.5-vl-7b
+qwen/qwen2.5-vl-7b
 
 Bridge standing:
-NOT_YET_ALLOWLISTED
+ALLOWLISTED_FOR_BENCHMARK / HUMAN_APPROVAL_REQUIRED
 
 Candidate role:
 - visual / multimodal evidence work
@@ -84,10 +84,10 @@ Observed class:
 3B, Q4_K_M, ~2.0 GB
 
 Exact local identifier:
-NEEDS_CONFIRMATION_FROM_LMS_LS
+hermes-3-llama-3.2-3b
 
 Bridge standing:
-NOT_YET_ALLOWLISTED
+ALLOWLISTED_FOR_BENCHMARK / HUMAN_APPROVAL_REQUIRED
 
 Candidate role:
 - cheap mechanical extractor
@@ -100,10 +100,10 @@ Observed class:
 8B, Q4_K_M, ~4.9 GB
 
 Exact local identifier:
-VISIBLE_FROM_UI_AS meta-llama-3.1-8b-instruct
+meta-llama-3.1-8b-instruct
 
 Bridge standing:
-NOT_YET_ALLOWLISTED
+ALLOWLISTED_FOR_BENCHMARK / HUMAN_APPROVAL_REQUIRED
 
 Candidate role:
 - fast general bounded worker
@@ -115,10 +115,10 @@ Observed class:
 27B, Q4_K_M, ~19.9 GB
 
 Exact local identifier:
-NEEDS_CONFIRMATION_FROM_LMS_LS
+qwen3.8-27b-turbo-fable-cold-fusion-735-882-heretic-uncensored-neo-coder-max-mtp
 
 Bridge standing:
-NOT_YET_ALLOWLISTED
+ALLOWLISTED_FOR_BENCHMARK / HUMAN_APPROVAL_REQUIRED
 
 Candidate role:
 - alternative medium/heavy worker
