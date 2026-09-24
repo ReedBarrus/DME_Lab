@@ -1,0 +1,31 @@
+{
+  "object_type": "CONSEQUENCE_EVALUATION_V0",
+  "evaluation_id": "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1_EVALUATION_001",
+  "work_item_id": "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1",
+  "consequence_id": "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1_CONSEQUENCE_001",
+  "disposition": "CONSEQUENCE_MATCHED",
+  "conservation_surfaces": {
+    "identity_address": "MATCHED",
+    "mechanical": "MATCHED_WITH_SOURCE_RETENTION_PRESENT",
+    "symbolic_semantic": "MATCHED",
+    "relational_topological": "MATCHED",
+    "consequence_environmental": "MATCHED",
+    "provenance": "MATCHED",
+    "invariance_meta": "MATCHED_BY_FRESH_RECONSTRUCTION"
+  },
+  "load_dimensions": {
+    "functional": "MATCHED",
+    "semantic": "MATCHED",
+    "authority": "MATCHED",
+    "provenance": "MATCHED",
+    "temporal": "MATCHED",
+    "coordination": "MATCHED"
+  },
+  "unresolved": [
+    "No generic compression equivalence established beyond this bounded three-bundle specimen."
+  ],
+  "campaign_progress_effect": "NONE",
+  "scientific_standing_effect": "NONE",
+  "authority_effect": "NONE",
+  "integrity_sha256": "a653c3e387744237d9f9a99d603b98f6d7190eac49cd53b1ac39138c827de549"
+}
