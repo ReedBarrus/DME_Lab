@@ -1,0 +1,12 @@
+{
+  "object_type": "WORKCYCLE_CONTROL_V0",
+  "campaign_id": "WORKCYCLE_STABILIZATION_001",
+  "workflow_enabled": false,
+  "campaign_enabled": true,
+  "seat_work_enabled": false,
+  "wake_requested": false,
+  "auto_continuation_limit": 0,
+  "operator_posture": "MANUAL_PRESSURE_ONLY",
+  "authority_effect": "NONE",
+  "execution_effect": "NONE"
+}
