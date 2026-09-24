@@ -19,6 +19,7 @@ from urllib.parse import urlparse
 
 from src.cockpit.development_horizon_projection import derive_development_horizons
 from src.cockpit.workcycle_projection import build_workcycle_projection
+from src.cockpit.temporal_horizon_closure import derive_temporal_horizon_closure
 
 
 class LiveRuntimeProjectionError(RuntimeError):
@@ -520,6 +521,24 @@ def build_runtime_state(sources: RuntimeSources) -> dict[str, Any]:
         runtime_seats=state.get("seats", []),
         active_operations=state.get("active_operations", {}),
     )
+
+    temporal_path = sources.repo / "generated" / "repository_temporal_lineage.json"
+    try:
+        temporal_lineage = json.loads(temporal_path.read_text(encoding="utf-8"))
+        temporal_source_status = "AVAILABLE"
+    except FileNotFoundError:
+        temporal_lineage = {}
+        temporal_source_status = "MISSING"
+    except (OSError, json.JSONDecodeError) as exc:
+        temporal_lineage = {}
+        temporal_source_status = f"UNAVAILABLE:{type(exc).__name__}"
+
+    state["temporal_horizon_closure"] = derive_temporal_horizon_closure(
+        temporal_lineage=temporal_lineage,
+        workcycle=state["workcycle"],
+        development_horizons=state["development_horizons"],
+    )
+    state["temporal_horizon_closure"]["temporal_source_status"] = temporal_source_status
     return state
 
 
