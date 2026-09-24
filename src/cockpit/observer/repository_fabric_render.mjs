@@ -377,6 +377,8 @@ export function renderWorkcycleOperator(workcycle, runtimeError = null) {
   const qualification = workcycle.qualification_readiness || {};
   const boundedQualification = qualification.bounded_workcycle || {};
   const selfMovingQualification = qualification.self_moving_workcycle || {};
+  const basisRecord = workcycle.basis_record || {};
+  const pressureJustification = workcycle.pressure_justification || {};
   const surfaceRows = Object.entries(surfaces).map(([name, item]) => `
     <div class="workcycle-stat"><span>${escapeHtml(name)}</span><strong>${escapeHtml(item?.posture || 'UNRESOLVED')}</strong></div>
   `).join('');
@@ -424,6 +426,16 @@ export function renderWorkcycleOperator(workcycle, runtimeError = null) {
         <div class="workcycle-stat"><span>SELF-MOVING WORKCYCLE</span><strong>${escapeHtml(selfMovingQualification.qualification_readiness || 'UNRESOLVED')}</strong></div>
         <div class="workcycle-stat"><span>BOUNDED BLOCKERS</span><strong>${escapeHtml((boundedQualification.blockers || []).join(' | ') || 'NONE')}</strong></div>
         <div class="workcycle-stat"><span>SELF-MOVING BLOCKERS</span><strong>${escapeHtml((selfMovingQualification.blockers || []).join(' | ') || 'NONE')}</strong></div>
+      </div>
+      <div class="workcycle-consequence">
+        <p class="fabric-kicker">BASIS / PRESSURE JUSTIFICATION</p>
+        <div class="workcycle-stat"><span>BASIS</span><strong>${escapeHtml(basisRecord.basis_posture || 'UNRESOLVED')}</strong></div>
+        <div class="workcycle-stat"><span>LOAD-BEARING RELATION</span><strong>${escapeHtml(pressureJustification.load_bearing_relation || 'UNRESOLVED')}</strong></div>
+        <div class="workcycle-stat"><span>PRESSURE POSTURE</span><strong>${escapeHtml(pressureJustification.pressure_posture || 'UNRESOLVED')}</strong></div>
+        <div class="workcycle-stat"><span>PROPOSED PRESSURE</span><strong>${escapeHtml(pressureJustification.proposed_pressure || 'NONE')}</strong></div>
+        <div class="workcycle-stat"><span>EXPECTED OPERATING CHANGE</span><strong>${escapeHtml(pressureJustification.if_resolved?.expected_operating_change || 'UNRESOLVED')}</strong></div>
+        <div class="workcycle-stat"><span>IF NOTHING CHANGES</span><strong>${escapeHtml(pressureJustification.if_nothing_changes || 'DO_NOT_RUN')}</strong></div>
+        <div class="workcycle-stat"><span>NEXT WORK POSTURE</span><strong>${escapeHtml(pressureJustification.next_work_posture || 'HOLD_NO_JUSTIFIED_WORK')}</strong></div>
       </div>
       <div class="workcycle-consequence">
         <p class="fabric-kicker">LATEST CONSEQUENCE</p>
@@ -477,6 +489,8 @@ export function renderWorkcycleRail(
   const qualification = workcycle.qualification_readiness || {};
   const boundedQualification = qualification.bounded_workcycle || {};
   const selfMovingQualification = qualification.self_moving_workcycle || {};
+  const basisRecord = workcycle.basis_record || {};
+  const pressureJustification = workcycle.pressure_justification || {};
   const seatEcology = workcycle.seat_ecology || {};
   const runtimeSeats = seatEcology.registered_runtime_seats || [];
   const durableSeats = seatEcology.durable_seats || [];
@@ -542,6 +556,15 @@ export function renderWorkcycleRail(
         )}</dd></div>
         <div><dt>SELF-MOVING QUALIFICATION</dt><dd>${escapeHtml(
           selfMovingQualification.qualification_readiness || 'UNRESOLVED'
+        )}</dd></div>
+        <div><dt>PRESSURE JUSTIFICATION</dt><dd>${escapeHtml(
+          pressureJustification.pressure_posture || 'UNRESOLVED'
+        )}</dd></div>
+        <div><dt>JUSTIFIED PRESSURE</dt><dd>${escapeHtml(
+          pressureJustification.proposed_pressure || 'NONE'
+        )}</dd></div>
+        <div><dt>NEXT WORK POSTURE</dt><dd>${escapeHtml(
+          pressureJustification.next_work_posture || 'HOLD_NO_JUSTIFIED_WORK'
         )}</dd></div>
       </dl>
       <div class="workcycle-seat-ecology">
