@@ -4,7 +4,7 @@
   "enabled": true,
   "source_ref": "334b85e17d00ff0301d32fe2d329fc18f30060b7",
   "input_path": "bridge/prompts/ROUND030_FIELD_CLASSIFICATION_WITHOUT_QUALIFICATION_READY_TO_SEND.md",
-  "input_sha256": "d4834ebee736b72a6d74e9c56bda076641596bd379c52ee2f4df66436844cd82",
+  "input_sha256": "ef3e4985c612b2c4fad9df01905f177f2bf5220b86e58de08885d8f6ca522a02",
   "model": "qwen/qwen3-coder-30b",
   "temperature": 0.0,
   "max_tokens": 512,
