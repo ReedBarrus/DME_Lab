@@ -1,0 +1,12 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0",
+  "request_id": "ROUND020_RESULT_SETTLEMENT_CELL_001",
+  "enabled": true,
+  "source_ref": "ab94d275bd2050ab3419f0a1a1e2b1959530a71f",
+  "input_path": "bridge/prompts/ROUND020_RESULT_SETTLEMENT_CELL_001.md",
+  "input_sha256": "679c83176bc0156c84eb3bdb1193f3a6efd586c4ef60eaa06e67f28e14084c0e",
+  "model": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 768,
+  "purpose": "Pressure the candidate field-level result-settlement rule against the Round019 planner result while preserving witness, candidate, qualification, and authority separation."
+}
