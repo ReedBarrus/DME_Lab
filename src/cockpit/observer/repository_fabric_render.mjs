@@ -416,7 +416,11 @@ export function renderWorkcycleOperator(workcycle, runtimeError = null) {
   `;
 }
 
-export function renderWorkcycleRail(workcycle, runtimeError = null) {
+export function renderWorkcycleRail(
+  workcycle,
+  runtimeError = null,
+  controlAvailable = false,
+) {
   if (!workcycle) {
     return `
       <aside class="workcycle-rail is-unavailable" aria-label="workcycle witness rail">
@@ -434,6 +438,28 @@ export function renderWorkcycleRail(workcycle, runtimeError = null) {
   const workBudget = budget?.work_items;
   const eligibility = workcycle.eligibility || {};
   const currentUnresolved = workcycle.current_unresolved || [];
+  const seatEcology = workcycle.seat_ecology || {};
+  const seats = seatEcology.registered_runtime_seats || [];
+  const occupied = new Set(
+    (seatEcology.occupied_runtime_seats || []).map((seat) => seat.seat_id),
+  );
+  const seatRows = seats.length
+    ? seats.slice(0, 8).map((seat) => `
+        <div class="workcycle-seat-row">
+          <strong>${escapeHtml(seat.seat_id || 'UNKNOWN')}</strong>
+          <span>${escapeHtml(
+            occupied.has(seat.seat_id)
+              ? 'OCCUPIED'
+              : seat.occupancy_state || 'REGISTERED',
+          )}</span>
+        </div>
+      `).join('')
+    : '<p class="fabric-missing">NO LIVE RUNTIME SEATS CONFIGURED</p>';
+
+  const workflowEnabled = summary.workflow === 'ON';
+  const wakeRequested = Boolean(summary.wake_requested);
+  const admitReady = workcycle.next_eligible_work_item
+    && workcycle.eligibility?.eligible === true;
 
   return `
     <aside class="workcycle-rail" aria-label="workcycle witness rail">
@@ -452,14 +478,32 @@ export function renderWorkcycleRail(workcycle, runtimeError = null) {
         <div><dt>ELIGIBILITY</dt><dd>${escapeHtml(eligibility.posture || 'UNRESOLVED')}</dd></div>
         <div><dt>REED</dt><dd>${escapeHtml(summary.reed_action || 'NONE')}</dd></div>
       </dl>
-      <div class="workcycle-rail-controls">
-        <button type="button" disabled>WAKE</button>
-        <button type="button" disabled>PAUSE</button>
-        <button type="button" disabled>STOP</button>
+      <div class="workcycle-seat-ecology">
+        <p class="fabric-kicker">SEATS / OCCUPANTS</p>
+        ${seatRows}
       </div>
+      <div class="workcycle-rail-controls" aria-label="operator-local workcycle controls">
+        <button type="button" data-workcycle-control="ENABLE"
+          ${controlAvailable && !workflowEnabled ? '' : 'disabled'}>ENABLE</button>
+        <button type="button" data-workcycle-control="WAKE"
+          ${controlAvailable && workflowEnabled && !wakeRequested ? '' : 'disabled'}>WAKE</button>
+        <button type="button" data-workcycle-control="ADMIT_ONE"
+          ${controlAvailable && admitReady ? '' : 'disabled'}>ADMIT ONE</button>
+        <button type="button" data-workcycle-control="PAUSE"
+          ${controlAvailable && workflowEnabled ? '' : 'disabled'}>PAUSE</button>
+        <button type="button" data-workcycle-control="STOP"
+          ${controlAvailable ? '' : 'disabled'}>STOP</button>
+      </div>
+      <p class="workcycle-control-status">
+        ${controlAvailable
+          ? 'LOCAL OPERATOR CONTROL CONNECTED'
+          : 'LOCAL OPERATOR CONTROL UNAVAILABLE'}
+      </p>
       <a class="workcycle-detail-link" href="#workcycle-detail">OPEN SCIENTIFIC DETAIL</a>
       <p class="workcycle-rail-debt">${escapeHtml(currentUnresolved.length ? `${currentUnresolved.length} CURRENT UNRESOLVED` : 'NO CURRENT UNRESOLVED DEBT')}</p>
-      <p class="fabric-unavailable-note">CONTROL WRITE NOT YET ADMITTED</p>
+      <p class="fabric-unavailable-note">
+        OPERATOR CONTROL IS LOCAL + PREVIEWED + CONFIRMED · ADMISSION ≠ MODEL INVOCATION
+      </p>
     </aside>
   `;
 }
@@ -484,6 +528,7 @@ export function renderRepositoryFabric(
   temporalView = null,
   workcycle = null,
   workcycleError = null,
+  workcycleControlAvailable = false,
 ) {
   const source = model.source;
   const counts = repositoryFieldRelationCounts(geometricField);
@@ -522,7 +567,7 @@ export function renderRepositoryFabric(
         </div>
       </section>
       <div class="fabric-workbench">
-        ${renderWorkcycleRail(workcycle, workcycleError)}
+        ${renderWorkcycleRail(workcycle, workcycleError, workcycleControlAvailable)}
         <section class="fabric-spatial-stage" aria-label="continuous repository field">
           <canvas class="fabric-canvas" data-geometric-field tabindex="0"
             aria-label="Navigable 3D repository field. Drag to orbit, shift-drag to pan, wheel to dolly, click to select."></canvas>
