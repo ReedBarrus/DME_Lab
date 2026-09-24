@@ -1,0 +1,40 @@
+{
+  "object_type": "OBSERVED_CONSEQUENCE_V0",
+  "consequence_id": "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1_CONSEQUENCE_001",
+  "work_item_id": "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1",
+  "decomposition_id": "WORKCYCLE_STABILIZATION_001_D001",
+  "input_state_identity": "458f43f1f0c27c0d08ce3434b50940aeb027dfba",
+  "output_artifact_identities": [
+    "gitblob:7acd8410e6cc4124ca50906a81e7b0ae1400ec2f",
+    "gitblob:9bf3e9c757dd999878c0ec978fa2411b2f727c70"
+  ],
+  "observations": {
+    "source_bytes": 4051,
+    "candidate_bytes": 3486,
+    "delta_bytes": -565,
+    "reduction_ratio": 0.139472
+  },
+  "declared_changes_observed": {
+    "hot_representation_size": "DECREASED",
+    "source_bytes": "UNCHANGED"
+  },
+  "unchanged_coordinates_observed": {
+    "original_sources": "UNCHANGED",
+    "operative_round_order": "PRESERVED",
+    "task_identity": "PRESERVED",
+    "packet_challengeability": "PRESERVED",
+    "parallel_isolation_contract": "PRESERVED",
+    "authority_effect": "NONE",
+    "scientific_standing_effect": "NONE"
+  },
+  "evidence_handles": [
+    "docs/campaigns/workcycle_stabilization_001/compression/ATLAS_COORDINATION_ROUNDS_010_012_COMPRESSED_CANDIDATE.md",
+    "docs/campaigns/workcycle_stabilization_001/compression/ATLAS_COORDINATION_ROUNDS_010_012_CONSERVATION_REPORT.md"
+  ],
+  "unresolved": [
+    "Independent conservation review required to adjudicate bounded consequence."
+  ],
+  "authority_effect": "NONE",
+  "scientific_standing_effect": "NONE",
+  "integrity_sha256": "af89d65bd3012e090a0528b1021e08341feb445d5d1f1de5e0b6d4edc17b3df4"
+}
