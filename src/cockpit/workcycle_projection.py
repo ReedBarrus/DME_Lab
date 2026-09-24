@@ -145,13 +145,26 @@ def build_workcycle_projection(repo_root: str | Path) -> dict[str, Any]:
             "claim_ceiling": "No cumulative campaign spend cap is mechanically enforced yet.",
         },
         "eligibility": eligibility,
-        "control": control,
+        "requested_control": control,
+        "operative_control": {
+            "status": "LOCAL_OPERATOR_CONTROL_NOT_IMPLEMENTED",
+            "workflow_enabled": False,
+            "seat_work_enabled": False,
+            "wake_requested": False,
+            "auto_continuation_limit": 0,
+            "repo_control_has_execution_effect": False,
+        },
         "operator_summary": {
-            "workflow": "ON" if control.get("workflow_enabled") else "OFF",
+            "workflow": "OFF",
             "campaign": "ACTIVE" if control.get("campaign_enabled") else "PAUSED",
-            "seat_work": "ENABLED" if control.get("seat_work_enabled") else "DISABLED",
-            "wake_requested": bool(control.get("wake_requested")),
-            "auto_continuation_limit": int(control.get("auto_continuation_limit", 0)),
+            "seat_work": "DISABLED",
+            "wake_requested": False,
+            "requested_workflow": "ON" if control.get("workflow_enabled") else "OFF",
+            "requested_seat_work": "ENABLED" if control.get("seat_work_enabled") else "DISABLED",
+            "requested_wake": bool(control.get("wake_requested")),
+            "auto_continuation_limit": 0,
+            "control_source": "REPO_REQUEST_ONLY",
+            "local_control_admitted": False,
             "reed_action": (
                 "REVIEW_NEXT_PRESSURE"
                 if progress["next_pressure"] in {"T2_ADJUDICATION", "T6_PRESSURE", "T7_PRESSURE"}
