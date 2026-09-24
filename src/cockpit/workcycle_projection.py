@@ -26,20 +26,29 @@ def _load_optional(repo: Path, rel: Path) -> dict[str, Any] | None:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def _verified_optional(repo: Path, rel: Path) -> dict[str, Any] | None:
-    value = _load_optional(repo, rel)
+def _verified_optional(
+    repo: Path,
+    rel: Path,
+) -> tuple[dict[str, Any] | None, str | None]:
+    try:
+        value = _load_optional(repo, rel)
+    except Exception as exc:
+        return None, f"{rel}: {type(exc).__name__}: {exc}"
     if value is None:
-        return None
-    wc.verify_seal(value)
-    return value
+        return None, None
+    try:
+        wc.verify_seal(value)
+    except Exception as exc:
+        return None, f"{rel}: {type(exc).__name__}: {exc}"
+    return value, None
 
 
 def build_workcycle_projection(repo_root: str | Path) -> dict[str, Any]:
     repo = Path(repo_root).resolve()
     progress = wc.derive_campaign_progress(repo)
-    consequence = _verified_optional(repo, CONSEQUENCE_PATH)
-    evaluation = _verified_optional(repo, EVALUATION_PATH)
-    budget = _verified_optional(repo, BUDGET_PATH)
+    consequence, consequence_error = _verified_optional(repo, CONSEQUENCE_PATH)
+    evaluation, evaluation_error = _verified_optional(repo, EVALUATION_PATH)
+    budget, budget_error = _verified_optional(repo, BUDGET_PATH)
     repair_spec = _load_optional(repo, REPAIR_SPEC_PATH)
     repair_result_path = repo / REPAIR_RESULT_PATH
     repair_result = (
@@ -92,6 +101,21 @@ def build_workcycle_projection(repo_root: str | Path) -> dict[str, Any]:
     )
     next_eligible_work_item = None
 
+    projection_errors = [
+        error
+        for error in (consequence_error, evaluation_error, budget_error)
+        if error is not None
+    ]
+
+    current_unresolved = (
+        list(evaluation.get("unresolved", []))
+        if evaluation is not None
+        else list(consequence.get("unresolved", []))
+        if consequence is not None
+        else []
+    )
+    current_unresolved.extend(projection_errors)
+
     return {
         "projection_schema": "workcycle_cockpit_projection_v0",
         "campaign_id": progress["campaign_id"],
@@ -103,13 +127,8 @@ def build_workcycle_projection(repo_root: str | Path) -> dict[str, Any]:
         "next_eligible_work_item": next_eligible_work_item,
         "latest_consequence": consequence,
         "latest_consequence_evaluation": evaluation,
-        "current_unresolved": (
-            list(evaluation.get("unresolved", []))
-            if evaluation is not None
-            else list(consequence.get("unresolved", []))
-            if consequence is not None
-            else []
-        ),
+        "current_unresolved": current_unresolved,
+        "projection_errors": projection_errors,
         "historical_unresolved": (
             list(consequence.get("unresolved", []))
             if consequence is not None
