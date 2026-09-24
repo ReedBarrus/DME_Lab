@@ -1,0 +1,60 @@
+{
+  "object_type": "LOCAL_LMSTUDIO_INVOCATION_WITNESS_V0",
+  "request_id": "ROUND025_AUTHORITY_CONSUMPTION_ORTHOGONALITY",
+  "purpose": "Pressure one-shot authority consumption as an orthogonal coordinate to seat lifecycle state without collapsing authorization into execution or seat stop.",
+  "request_manifest_path": "bridge/requests/ROUND025_AUTHORITY_CONSUMPTION_ORTHOGONALITY.json",
+  "request_manifest_sha256": "8e875c981f7ca69528179dc336004453275b78a6652b2c37aaa33c6341a0aaf0",
+  "source_ref": "a04b6e82fcdf9e67c19b3dce49df29ae69aa6d0e",
+  "input_path": "bridge/prompts/ROUND025_AUTHORITY_CONSUMPTION_ORTHOGONALITY_READY_TO_SEND.md",
+  "input_sha256": "0bda4ea0bf06ab399bd4b25138f8dd37700a9e5c9971d402fee6249cf1ed26ef",
+  "model_requested": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 512,
+  "lmstudio_url": "http://127.0.0.1:1234/v1/chat/completions",
+  "http_status": 200,
+  "observed_started_at_utc": "2026-09-24T11:00:10.052863+00:00",
+  "observed_finished_at_utc": "2026-09-24T11:00:22.050835+00:00",
+  "observed_wall_seconds": 11.997978,
+  "prompt_tokens_observed": 862,
+  "completion_tokens_observed": 172,
+  "total_tokens_observed": 1034,
+  "end_to_end_output_tokens_per_second": 14.335749,
+  "messages_count": 1,
+  "tools_supplied": false,
+  "previous_response_id_supplied": false,
+  "repository_context_supplied_to_model": false,
+  "connectors_supplied_to_model": false,
+  "external_retrieval_supplied_to_model": false,
+  "request_body_sha256": "65bd8f0ada2c3510b6d97d2548eba9caa437ae9e5f015ffddeaf51bcafd96486",
+  "response_body_sha256": "ab8b90d86b49d0f49602936a2b088f8222360a4d2df4544d6bc4c0e1fae3ad97",
+  "assistant_text": "SEAT_STATE_AFTER_EVENT_1:\nINVOCATION_STARTED\n\nAUTHORITY_STATE_AFTER_EVENT_1:\nCONSUMED\n\nSEAT_AUTHORITY_ORTHOGONALITY:\nPRESERVED\n\nSECOND_INVOCATION_UNDER_AUTH_025_001:\nALLOWED\n\nDENIAL_BASIS:\nHistorical authorization does not preclude reuse for a new invocation attempt.\n\nHISTORICAL_AUTHORIZATION_REUSABLE:\nYES\n\nFRESH_AUTHORIZATION_REQUIRED_FOR_LATER_ATTEMPT:\nNO\n\nSEAT_MUST_STOP_WHEN_AUTHORITY_IS_CONSUMED:\nNO\n\nSCIENTIFIC_STANDING_EFFECT:\nNONE\n\nAUTHORITY_EXPANSION:\nNONE\n\nMAXIMUM_WARRANTED_CLAIM:\nAuthority consumption may occur independently of seat lifecycle without collapsing the orthogonal relationship between authority state and seat state.\n\nUNRESOLVED:\nNONE",
+  "raw_response": {
+    "id": "chatcmpl-1eil6gpq7jogn2i5lga9rf",
+    "object": "chat.completion",
+    "created": 1790247610,
+    "model": "qwen/qwen3-coder-30b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "SEAT_STATE_AFTER_EVENT_1:\nINVOCATION_STARTED\n\nAUTHORITY_STATE_AFTER_EVENT_1:\nCONSUMED\n\nSEAT_AUTHORITY_ORTHOGONALITY:\nPRESERVED\n\nSECOND_INVOCATION_UNDER_AUTH_025_001:\nALLOWED\n\nDENIAL_BASIS:\nHistorical authorization does not preclude reuse for a new invocation attempt.\n\nHISTORICAL_AUTHORIZATION_REUSABLE:\nYES\n\nFRESH_AUTHORIZATION_REQUIRED_FOR_LATER_ATTEMPT:\nNO\n\nSEAT_MUST_STOP_WHEN_AUTHORITY_IS_CONSUMED:\nNO\n\nSCIENTIFIC_STANDING_EFFECT:\nNONE\n\nAUTHORITY_EXPANSION:\nNONE\n\nMAXIMUM_WARRANTED_CLAIM:\nAuthority consumption may occur independently of seat lifecycle without collapsing the orthogonal relationship between authority state and seat state.\n\nUNRESOLVED:\nNONE",
+          "reasoning_content": "",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 862,
+      "completion_tokens": 172,
+      "total_tokens": 1034,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "stats": {},
+    "system_fingerprint": "qwen/qwen3-coder-30b"
+  }
+}
