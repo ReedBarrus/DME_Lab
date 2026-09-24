@@ -1,0 +1,12 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0",
+  "request_id": "ROUND015_PLANNER_CELL004_CONTRACT_ADJUDICATION",
+  "enabled": true,
+  "source_ref": "9f9c3832f4073401b34414cab4b46b32fe286950",
+  "input_path": "bridge/prompts/ROUND015_PLANNER_CELL004_ADJUDICATION_BUNDLE.md",
+  "input_sha256": "0cb56696079612ea48b92507218f33b0028d15d3a6925f81fd24b4e9ca53c5a8",
+  "model": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 4096,
+  "purpose": "Adjudicate whether planner Cell 004 produced a genuine bounded next pressure or merely restated the active horizon while preserving authority boundaries."
+}
