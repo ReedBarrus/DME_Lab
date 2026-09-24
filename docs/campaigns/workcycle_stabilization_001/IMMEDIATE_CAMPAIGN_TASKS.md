@@ -1,5 +1,28 @@
 # WORKCYCLE_STABILIZATION_001 — IMMEDIATE CAMPAIGN TASKS
 
+## CURRENTNESS NOTICE
+
+This file is a planning seed, not the authoritative current campaign projection.
+
+Current workcycle posture must be derived mechanically with:
+
+```powershell
+python tools/project_workcycle_v0.py
+```
+
+or consumed from the read-only Cockpit live-runtime `workcycle` projection.
+
+```
+PLANNING FILE
+!=
+CURRENT CAMPAIGN STATE
+
+ARTIFACT EXISTS
+!=
+CAMPAIGN STANDING ADVANCED
+```
+
+
 STATUS:
 ACTIVE_CANDIDATE_SEQUENCE
 
