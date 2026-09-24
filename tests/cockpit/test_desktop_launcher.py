@@ -19,6 +19,7 @@ from src.cockpit.desktop_launcher import (
     resolve_repo_root,
     run_cockpit,
     start_loopback_server,
+    start_runtime_projection_server,
 )
 
 
@@ -132,6 +133,27 @@ class DesktopCockpitLauncherTest(unittest.TestCase):
                 with urlopen(url, timeout=2.0) as response:
                     body = response.read().decode("utf-8")
                 self.assertIn("COCKPIT_FIXTURE", body)
+            finally:
+                server.shutdown()
+                server.server_close()
+                thread.join(timeout=5.0)
+
+    def test_runtime_sidecar_is_loopback_read_only_and_contains_workcycle(self) -> None:
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            server, thread, event_url = start_runtime_projection_server(root)
+            try:
+                self.assertEqual(server.server_address[0], "127.0.0.1")
+                snapshot_url = event_url.replace("/runtime/events", "/runtime/snapshot.json")
+                with urlopen(snapshot_url, timeout=2.0) as response:
+                    payload = json.loads(response.read().decode("utf-8"))
+                self.assertIn("workcycle", payload["state"])
+                self.assertEqual(
+                    payload["state"]["workcycle"]["projection_boundary"]["read_only"],
+                    True,
+                )
+                self.assertEqual(payload["state"]["authority_effect"], "NONE")
+                self.assertEqual(payload["state"]["execution_effect"], "NONE")
             finally:
                 server.shutdown()
                 server.server_close()
