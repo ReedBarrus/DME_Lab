@@ -1,0 +1,34 @@
+{
+  "object_type": "REPAIR_ROUTING_PRESSURE_SPEC_V0",
+  "campaign_id": "WORKCYCLE_STABILIZATION_001",
+  "candidate_law": {
+    "output_defect": "WORK_OUTPUT_REPAIR",
+    "decomposition_defect": "REDECOMPOSE_WORK_FAMILY",
+    "campaign_horizon_defect": "HOLD_FOR_CAMPAIGN_REPLAN",
+    "apparatus_defect": "APPARATUS_REPAIR"
+  },
+  "cases": [
+    {
+      "case_id": "A",
+      "observation": "candidate output is malformed while work envelope/campaign basis remain valid"
+    },
+    {
+      "case_id": "B",
+      "observation": "local work succeeds mechanically but its consequence cannot support the declared campaign horizon"
+    },
+    {
+      "case_id": "C",
+      "observation": "new evidence contradicts a load-bearing campaign/horizon assumption"
+    },
+    {
+      "case_id": "D",
+      "observation": "review packet omitted a required source, so adjudication basis is incomplete"
+    }
+  ],
+  "constraints": [
+    "no automatic retry",
+    "preserve frozen evidence",
+    "no authority effect",
+    "no scientific-standing effect"
+  ]
+}
