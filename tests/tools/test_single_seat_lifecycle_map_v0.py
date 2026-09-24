@@ -1,7 +1,7 @@
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-MAP = ROOT / "docs" / "campaigns" / "semantic_continuity_operative_atlas_001" / "SINGLE_SEAT_ATLAS_LIFECYCLE_OPERATOR_MAP_V0_CANDIDATE.md"
+MAP = ROOT / "docs" / "campaigns" / "sca001" / "SINGLE_SEAT_ATLAS_LIFECYCLE_OPERATOR_MAP_V0_CANDIDATE.md"
 
 
 def main() -> None:
