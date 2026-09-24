@@ -153,8 +153,14 @@ class WorkcycleProjectionTests(unittest.TestCase):
                 encoding="utf-8",
             )
             projection = build_workcycle_projection(repo)
-            self.assertEqual(projection["operator_summary"]["workflow"], "ON")
-            self.assertTrue(projection["operator_summary"]["wake_requested"])
+            self.assertEqual(projection["operator_summary"]["workflow"], "OFF")
+            self.assertFalse(projection["operator_summary"]["wake_requested"])
+            self.assertEqual(projection["operator_summary"]["requested_workflow"], "ON")
+            self.assertTrue(projection["operator_summary"]["requested_wake"])
+            self.assertFalse(projection["operator_summary"]["local_control_admitted"])
+            self.assertFalse(
+                projection["operative_control"]["repo_control_has_execution_effect"]
+            )
             self.assertFalse(
                 projection["projection_boundary"]["creates_authority"]
             )
