@@ -8,8 +8,10 @@ export function selectCockpitSurface(state, surface) {
 export function atlasFrameUrlWithRuntime(pageHref, frameSrc) {
   const page = new URL(pageHref);
   const frame = new URL(frameSrc, page);
-  const runtime = page.searchParams.get('runtime');
-  if (runtime) frame.searchParams.set('runtime', runtime);
+  for (const key of ['runtime', 'control']) {
+    const value = page.searchParams.get(key);
+    if (value) frame.searchParams.set(key, value);
+  }
   return frame.toString();
 }
 
