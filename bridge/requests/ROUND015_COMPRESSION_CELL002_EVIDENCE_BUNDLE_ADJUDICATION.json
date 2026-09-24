@@ -1,0 +1,12 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0",
+  "request_id": "ROUND015_COMPRESSION_CELL002_EVIDENCE_BUNDLE_ADJUDICATION",
+  "enabled": true,
+  "source_ref": "52103092a16fdbca0b0ed31f854032d6b485b86e",
+  "input_path": "bridge/prompts/ROUND015_COMPRESSION_CELL002_EVIDENCE_BUNDLE.md",
+  "input_sha256": "f9e5b963a82f378e8dbeeb80540bd631eff1f1703c9bb09b52cb37318653f02f",
+  "model": "microsoft/phi-4",
+  "temperature": 0.0,
+  "max_tokens": 4096,
+  "purpose": "Re-run compression Cell 002 adjudication with all required evidence assembled into one self-contained immutable model-visible bundle."
+}
