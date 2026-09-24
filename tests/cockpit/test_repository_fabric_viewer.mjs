@@ -225,7 +225,7 @@ test('source-unavailable rendering fails closed without fabricated field data', 
   assert.doesNotMatch(html, /opaque\/mystery/);
 });
 
-test('browser loader and geometric controls remain read-only with no operative transport', async () => {
+test('browser loader permits read-only runtime observation with no operative control transport', async () => {
   const [app, geometry, renderer] = await Promise.all([
     readFile(new URL('../../src/cockpit/observer/repository_fabric_app.mjs', import.meta.url), 'utf8'),
     readFile(new URL('../../src/cockpit/observer/repository_fabric_geometry.mjs', import.meta.url), 'utf8'),
@@ -233,7 +233,8 @@ test('browser loader and geometric controls remain read-only with no operative t
   ]);
   assert.match(app, /method: 'GET'/);
   assert.match(app, /cache: 'no-store'/);
-  assert.doesNotMatch(app, /EventSource|WebSocket|startControlAdapter/);
+  assert.match(app, /EventSource/);
+  assert.doesNotMatch(app, /WebSocket|startControlAdapter/);
   assert.doesNotMatch(app, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
   assert.doesNotMatch(`${app}\n${geometry}\n${renderer}`, /data-authorize|data-execute|data-control|invoke_lmstudio|evaluate_branch/);
 });
