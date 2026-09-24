@@ -1,0 +1,60 @@
+{
+  "object_type": "LOCAL_LMSTUDIO_INVOCATION_WITNESS_V0",
+  "request_id": "ROUND032_POST_SETTLEMENT_NONLINEAR_ROUTING",
+  "purpose": "Pressure nonlinear post-settlement routing without forced adjudication, qualification, authority change, witness mutation, Atlas mutation, or execution authority.",
+  "request_manifest_path": "bridge/requests/ROUND032_POST_SETTLEMENT_NONLINEAR_ROUTING.json",
+  "request_manifest_sha256": "2e56aaef1c143fbca82be26400fb7c842ed51c8349152e85dc65902c0cc03c9b",
+  "source_ref": "a9086c52f39043d9eec363416fb85d8181248c94",
+  "input_path": "bridge/prompts/ROUND032_POST_SETTLEMENT_NONLINEAR_ROUTING_READY_TO_SEND.md",
+  "input_sha256": "88dfd91855d388bed220b6b49be71513fb9d3c7904fbc9df9f07d4a8c302dd82",
+  "model_requested": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 512,
+  "lmstudio_url": "http://127.0.0.1:1234/v1/chat/completions",
+  "http_status": 200,
+  "observed_started_at_utc": "2026-09-24T11:37:55.702184+00:00",
+  "observed_finished_at_utc": "2026-09-24T11:38:08.397594+00:00",
+  "observed_wall_seconds": 12.695415,
+  "prompt_tokens_observed": 840,
+  "completion_tokens_observed": 169,
+  "total_tokens_observed": 1009,
+  "end_to_end_output_tokens_per_second": 13.311892,
+  "messages_count": 1,
+  "tools_supplied": false,
+  "previous_response_id_supplied": false,
+  "repository_context_supplied_to_model": false,
+  "connectors_supplied_to_model": false,
+  "external_retrieval_supplied_to_model": false,
+  "request_body_sha256": "3e5fe1f5ed236fec330589c89d7ecb249ed0aee870f6e2d778acbfe4e6946b65",
+  "response_body_sha256": "1ab794af358d31d36f50b30c2e398d0cc1f32be5cafd1223cf7adfcef76809bf",
+  "assistant_text": "SETTLEMENT_A_ROUTE: ROUTE_TO_ADJUDICATION  \nSETTLEMENT_B_ROUTE: ROUTE_TO_HOLD  \nSETTLEMENT_C_ROUTE: ROUTE_TO_ADJUDICATION  \nSETTLEMENT_D_ROUTE: RETURN_READY_NO_PROMOTION  \n\nACCEPTED_IMPLIES_QUALIFIED: NO  \nHELD_REJECTED_SEPARATION: PRESERVED  \nREJECTED_IMPLIES_STOP: NO  \nADJUDICATION_FORCED_FOR_ALL_SETTLEMENTS: NO  \nSCIENTIFIC_STANDING_EFFECT: NONE  \nAUTHORITY_EFFECT: NONE  \nATLAS_MUTATION_STATUS: NONE  \nNONLINEAR_ROUTING: PRESERVED  \n\nMAXIMUM_WARRANTED_CLAIM:  \nPost-settlement nonlinear routing permits local field dispositions to determine lawful route selection without invoking adjudication, qualification, or Atlas mutation.\n\nUNRESOLVED:  \nNone",
+  "raw_response": {
+    "id": "chatcmpl-95e2x2a1d5ee5kithtslk",
+    "object": "chat.completion",
+    "created": 1790249875,
+    "model": "qwen/qwen3-coder-30b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "SETTLEMENT_A_ROUTE: ROUTE_TO_ADJUDICATION  \nSETTLEMENT_B_ROUTE: ROUTE_TO_HOLD  \nSETTLEMENT_C_ROUTE: ROUTE_TO_ADJUDICATION  \nSETTLEMENT_D_ROUTE: RETURN_READY_NO_PROMOTION  \n\nACCEPTED_IMPLIES_QUALIFIED: NO  \nHELD_REJECTED_SEPARATION: PRESERVED  \nREJECTED_IMPLIES_STOP: NO  \nADJUDICATION_FORCED_FOR_ALL_SETTLEMENTS: NO  \nSCIENTIFIC_STANDING_EFFECT: NONE  \nAUTHORITY_EFFECT: NONE  \nATLAS_MUTATION_STATUS: NONE  \nNONLINEAR_ROUTING: PRESERVED  \n\nMAXIMUM_WARRANTED_CLAIM:  \nPost-settlement nonlinear routing permits local field dispositions to determine lawful route selection without invoking adjudication, qualification, or Atlas mutation.\n\nUNRESOLVED:  \nNone",
+          "reasoning_content": "",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 840,
+      "completion_tokens": 169,
+      "total_tokens": 1009,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "stats": {},
+    "system_fingerprint": "qwen/qwen3-coder-30b"
+  }
+}
