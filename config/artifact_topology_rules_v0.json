@@ -21,5 +21,50 @@
       "canonical_folder": "atlas",
       "relation": "Atlas-named continuity, metabolism, planning, workflow, and load-transfer artifacts"
     }
-  ]
+  ],
+  "canonical_subfamilies": {
+    "docs/campaigns/semantic_continuity_operative_atlas_001/conversation_candidates": [
+      "cell_001",
+      "cell_002",
+      "cell_002b",
+      "cell_002c",
+      "cell_002d",
+      "cell_002e",
+      "cell_002f",
+      "cell_003a",
+      "cell_003b",
+      "cell_003c",
+      "cell_003d",
+      "cell_003e",
+      "cell_003f",
+      "cell_003g",
+      "cell_003h",
+      "cell_003i",
+      "cell_003j",
+      "cell_003k",
+      "cell_003l",
+      "cell_003m",
+      "cell_003n",
+      "apparatus"
+    ],
+    "docs/campaigns/semantic_continuity_operative_atlas_001/relational_horizons": [
+      "planner_seat",
+      "planning_pressure/base",
+      "planning_pressure/p1",
+      "planning_pressure/p2",
+      "planning_pressure/p3",
+      "planning_pressure/p4",
+      "planning_pressure/p5",
+      "planning_pressure/p6"
+    ],
+    "docs/campaigns/semantic_continuity_operative_atlas_001/atlas": [
+      "bridge",
+      "coordination_rounds",
+      "horizon_reviews",
+      "load_transfer",
+      "metabolism",
+      "planner",
+      "temporal_wounds"
+    ]
+  }
 }
