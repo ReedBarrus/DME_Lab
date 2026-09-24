@@ -111,6 +111,61 @@ class WorkcycleV0Tests(unittest.TestCase):
         self.assertEqual(route["repair_destination"], "NONE")
         self.assertFalse(route["campaign_replan_required"])
 
+    def test_continuation_gate_blocks_when_workflow_is_off(self):
+        budget = wc.new_budget(campaign_id="C1")
+        decision = wc.evaluate_one_successor_continuation(
+            control={
+                "workflow_enabled": False,
+                "campaign_enabled": True,
+                "seat_work_enabled": True,
+                "wake_requested": True,
+                "auto_continuation_limit": 1,
+            },
+            dependency_satisfied=True,
+            frame_current=True,
+            seat_available=True,
+            no_hold=True,
+            authority_satisfied=True,
+            budget=budget,
+        )
+        self.assertFalse(decision["admit_one_successor"])
+        self.assertIn("workflow_enabled", decision["blockers"])
+        self.assertFalse(decision["execution_performed"])
+
+    def test_continuation_gate_admits_one_then_budget_blocks_second(self):
+        budget = wc.new_budget(campaign_id="C1")
+        control = {
+            "workflow_enabled": True,
+            "campaign_enabled": True,
+            "seat_work_enabled": True,
+            "wake_requested": True,
+            "auto_continuation_limit": 1,
+        }
+        first = wc.evaluate_one_successor_continuation(
+            control=control,
+            dependency_satisfied=True,
+            frame_current=True,
+            seat_available=True,
+            no_hold=True,
+            authority_satisfied=True,
+            budget=budget,
+        )
+        self.assertTrue(first["admit_one_successor"])
+        self.assertEqual(first["max_successors_admitted"], 1)
+
+        reserved = wc.reserve_one_item(budget)
+        second = wc.evaluate_one_successor_continuation(
+            control=control,
+            dependency_satisfied=True,
+            frame_current=True,
+            seat_available=True,
+            no_hold=True,
+            authority_satisfied=True,
+            budget=reserved,
+        )
+        self.assertFalse(second["admit_one_successor"])
+        self.assertIn("budget_reservable", second["blockers"])
+
     def test_progress_projection_reports_missing_evidence_not_standing(self):
         with tempfile.TemporaryDirectory() as tmp:
             projection = wc.derive_campaign_progress(tmp)
