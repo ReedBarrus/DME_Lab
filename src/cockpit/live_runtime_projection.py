@@ -37,6 +37,7 @@ class RuntimeSources:
     assignment_db: Path | None = None
     wake_source_db: Path | None = None
     comparison_basis_refs: tuple[str, ...] = ()
+    workcycle_control_path: Path | None = None
 
 
 def _canonical_bytes(value: Any) -> bytes:
@@ -506,7 +507,12 @@ def build_runtime_state(sources: RuntimeSources) -> dict[str, Any]:
     }
 
     state["development_horizons"] = derive_development_horizons(state)
-    state["workcycle"] = build_workcycle_projection(sources.repo)
+    state["workcycle"] = build_workcycle_projection(
+        sources.repo,
+        local_control_path=sources.workcycle_control_path,
+        runtime_seats=state.get("seats", []),
+        active_operations=state.get("active_operations", {}),
+    )
     return state
 
 
@@ -659,6 +665,7 @@ def main(argv: list[str] | None = None) -> int:
         assignment_db=_optional_path(args.assignment_db),
         wake_source_db=_optional_path(args.wake_source_db),
         comparison_basis_refs=tuple(args.comparison_basis_ref),
+        workcycle_control_path=None,
     )
 
     if args.snapshot:
