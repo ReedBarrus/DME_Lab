@@ -14,7 +14,8 @@ STATE_ROOT = Path("docs/campaigns/workcycle_stabilization_001/state")
 CONSEQUENCE_PATH = STATE_ROOT / "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1_OBSERVED_CONSEQUENCE.json"
 EVALUATION_PATH = STATE_ROOT / "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1_CONSEQUENCE_EVALUATION.json"
 BUDGET_PATH = STATE_ROOT / "CAMPAIGN_BUDGET_V0.json"
-REPAIR_PATH = STATE_ROOT / "REPAIR_ROUTING_PRESSURE_RESULT_001.json"
+REPAIR_SPEC_PATH = STATE_ROOT / "REPAIR_ROUTING_PRESSURE_SPEC_001.json"
+REPAIR_RESULT_PATH = STATE_ROOT / "REPAIR_ROUTING_PRESSURE_ADJUDICATION_RESULT_001.md"
 CONTROL_PATH = STATE_ROOT / "WORKCYCLE_CONTROL_V0.json"
 
 
@@ -39,7 +40,13 @@ def build_workcycle_projection(repo_root: str | Path) -> dict[str, Any]:
     consequence = _verified_optional(repo, CONSEQUENCE_PATH)
     evaluation = _verified_optional(repo, EVALUATION_PATH)
     budget = _verified_optional(repo, BUDGET_PATH)
-    repair = _load_optional(repo, REPAIR_PATH)
+    repair_spec = _load_optional(repo, REPAIR_SPEC_PATH)
+    repair_result_path = repo / REPAIR_RESULT_PATH
+    repair_result = (
+        repair_result_path.read_text(encoding="utf-8")
+        if repair_result_path.is_file()
+        else None
+    )
     control = _load_optional(repo, CONTROL_PATH) or {
         "workflow_enabled": False,
         "campaign_enabled": False,
@@ -77,7 +84,11 @@ def build_workcycle_projection(repo_root: str | Path) -> dict[str, Any]:
         "current_work_item": current_work,
         "latest_consequence": consequence,
         "latest_consequence_evaluation": evaluation,
-        "repair_routing": repair,
+        "repair_routing": {
+            "spec": repair_spec,
+            "result": repair_result,
+            "result_present": repair_result is not None,
+        },
         "budget": budget,
         "eligibility": eligibility,
         "control": control,
