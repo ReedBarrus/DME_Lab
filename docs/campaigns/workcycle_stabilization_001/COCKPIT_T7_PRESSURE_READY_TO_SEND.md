@@ -57,6 +57,49 @@ Check that the projection itself:
 - advances no campaign/scientific standing;
 - does not infer PASS from implementation existence alone.
 
+## ADVERSARIAL CURRENTNESS QUESTIONS
+
+The evaluator must explicitly test:
+
+1. Does "active work item" mean actually active, rather than merely latest completed?
+2. Is latest completed work separated from next eligible work?
+3. Can result-file existence alone create BOUNDED_PASS?
+4. Can malformed, stale, or identity-mismatched consequence/evaluation state create a positive projection?
+5. Is real eligibility distinguished from budget-only/partial eligibility when seat, authority, frame, dependency, or hold coordinates are unresolved?
+6. Can historical unresolved debt remain visible without being misrepresented as current unresolved load after a later evaluation?
+7. Is the current budget honestly labeled as per-wake capacity rather than cumulative campaign budget?
+8. Can repository-authored requested control state silently become operative execution control?
+9. Are repair specification and repair result kept distinct?
+10. Is the Workcycle witness/control surface visibly reachable without scrolling through unrelated inspector content?
+
+Required non-collapses:
+
+```
+RESULT FILE EXISTS
+!=
+RESULT SUPPORTS PASS
+
+HISTORICAL UNRESOLVED
+!=
+CURRENT UNRESOLVED
+
+LATEST COMPLETED
+!=
+ACTIVE
+
+PARTIAL ELIGIBILITY COORDINATES
+!=
+REAL ELIGIBILITY
+
+REPO CONTROL REQUEST
+!=
+LOCAL EXECUTION AUTHORITY
+
+WAKE BUDGET
+!=
+CUMULATIVE CAMPAIGN BUDGET
+```
+
 ## REQUIRED RETURN
 
 Return only:
