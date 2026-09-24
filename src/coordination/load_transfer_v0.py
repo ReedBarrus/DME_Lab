@@ -93,6 +93,8 @@ HANDOFF_REQUIRED = frozenset(
         "seat_id",
         "work_item_id",
         "input_frame_id",
+        "input_work_item_identity",
+        "terminal_work_item_identity",
         "input_object_identities",
         "output_object_identities",
         "result_posture",
@@ -442,9 +444,10 @@ def complete_work_item(
             "seat_id": seat_id,
             "work_item_id": completed["work_item_id"],
             "input_frame_id": current["frame_id"],
+            "input_work_item_identity": item["integrity_sha256"],
+            "terminal_work_item_identity": completed["integrity_sha256"],
             "input_object_identities": [
                 current["integrity_sha256"],
-                item["integrity_sha256"],
                 *[str(value) for value in completed["source_objects"]],
             ],
             "output_object_identities": output_ids,
@@ -473,6 +476,8 @@ def validate_handoff(receipt: Mapping[str, Any]) -> dict[str, Any]:
         "seat_id",
         "work_item_id",
         "input_frame_id",
+        "input_work_item_identity",
+        "terminal_work_item_identity",
         "result_posture",
         "next_eligible_destination",
         "stop_reason",
@@ -530,6 +535,8 @@ def reconstruct_handoff(
         raise HandoffUnresolved("handoff source work is not terminal")
     if work["result_posture"] != handoff["result_posture"]:
         raise HandoffUnresolved("work/handoff result posture mismatch")
+    if handoff["terminal_work_item_identity"] != work["integrity_sha256"]:
+        raise HandoffUnresolved("terminal work-item identity mismatch")
 
     observed_output_ids = _normalize_output_objects(output_objects)
     if observed_output_ids != handoff["output_object_identities"]:
@@ -539,7 +546,6 @@ def reconstruct_handoff(
 
     expected_inputs = {
         current["integrity_sha256"],
-        item["integrity_sha256"],
         *[str(value) for value in work["source_objects"]],
     }
     if not expected_inputs.issubset(set(handoff["input_object_identities"])):
