@@ -1,0 +1,12 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0",
+  "request_id": "ROUND032_POST_SETTLEMENT_NONLINEAR_ROUTING",
+  "enabled": true,
+  "source_ref": "a9086c52f39043d9eec363416fb85d8181248c94",
+  "input_path": "bridge/prompts/ROUND032_POST_SETTLEMENT_NONLINEAR_ROUTING_READY_TO_SEND.md",
+  "input_sha256": "PENDING_OBSERVED_HASH",
+  "model": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 512,
+  "purpose": "Pressure nonlinear post-settlement routing without forced adjudication, qualification, authority change, witness mutation, Atlas mutation, or execution authority."
+}
