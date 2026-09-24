@@ -194,14 +194,16 @@ test('render exposes temporal, actor, wound, authorship, and no-causation contro
   }
 });
 
-test('implementation permits read-only runtime observation but no authority, execution, or control transport', async () => {
+test('implementation permits read-only runtime observation plus bounded local workcycle control only', async () => {
   const [modelSource, appSource] = await Promise.all([
     readFile(new URL('src/cockpit/observer/repository_temporal_lineage.mjs', ROOT), 'utf8'),
     readFile(new URL('src/cockpit/observer/repository_fabric_app.mjs', ROOT), 'utf8'),
   ]);
   assert.match(appSource, /EventSource/);
+  assert.match(appSource, /\/workcycle\/control\/preview/);
+  assert.match(appSource, /\/workcycle\/control\/commit/);
   assert.doesNotMatch(`${modelSource}\n${appSource}`, /WebSocket|startControlAdapter|invoke_lmstudio|evaluate_branch/);
-  assert.doesNotMatch(appSource, /method:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/i);
+  assert.doesNotMatch(appSource, /method:\s*['"](?:PUT|PATCH|DELETE)['"]/i);
   const source = sourceFixture();
   assert.equal(source.authority_effect, 'NONE');
   assert.equal(source.execution_effect, 'NONE');
