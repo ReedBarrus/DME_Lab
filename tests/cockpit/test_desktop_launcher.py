@@ -21,6 +21,7 @@ from src.cockpit.desktop_launcher import (
     run_cockpit,
     start_loopback_server,
     start_runtime_projection_server,
+    start_workcycle_control_server,
 )
 
 
@@ -143,8 +144,32 @@ class DesktopCockpitLauncherTest(unittest.TestCase):
         url = cockpit_url_with_runtime(
             "http://127.0.0.1:9000/src/cockpit/observer/",
             "http://127.0.0.1:8765/runtime/events",
+            "http://127.0.0.1:8770",
         )
-        self.assertIn("?runtime=http%3A%2F%2F127.0.0.1%3A8765%2Fruntime%2Fevents", url)
+        self.assertIn("runtime=http%3A%2F%2F127.0.0.1%3A8765%2Fruntime%2Fevents", url)
+        self.assertIn("control=http%3A%2F%2F127.0.0.1%3A8770", url)
+
+    def test_workcycle_control_server_is_loopback_and_persists_local_state(self) -> None:
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            repo = root / "repo"
+            repo.mkdir()
+            state_path = root / "operator" / "workcycle_control.json"
+            server, thread, base = start_workcycle_control_server(
+                repo,
+                state_path=state_path,
+            )
+            try:
+                self.assertEqual(server.server_address[0], "127.0.0.1")
+                with urlopen(base + "/workcycle/control/state", timeout=2.0) as response:
+                    payload = json.loads(response.read().decode("utf-8"))
+                self.assertEqual(payload["state"]["lifecycle_state"], "PAUSED")
+                self.assertFalse(payload["state"]["workflow_enabled"])
+                self.assertTrue(state_path.is_file())
+            finally:
+                server.shutdown()
+                server.server_close()
+                thread.join(timeout=5.0)
 
     def test_runtime_sidecar_is_loopback_read_only_and_contains_workcycle(self) -> None:
         with TemporaryDirectory() as temporary:
