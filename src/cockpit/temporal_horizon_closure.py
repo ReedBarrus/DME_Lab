@@ -116,7 +116,7 @@ def derive_temporal_horizon_closure(
     active_horizon = workcycle.get("active_horizon")
     current_unresolved = list(workcycle.get("current_unresolved") or [])
     evaluation = workcycle.get("latest_consequence_evaluation") or {}
-    disposition = evaluation.get("disposition")
+    consequence_disposition = evaluation.get("disposition")
     cells = workcycle.get("campaign_progress") or {}
     eligibility = workcycle.get("eligibility") or {}
     operative_control = workcycle.get("operative_control") or {}
@@ -125,7 +125,7 @@ def derive_temporal_horizon_closure(
     history_ok = history["posture"] == "SUPPORTED"
     current_ok = bool(campaign_id and active_horizon and not workcycle.get("projection_errors"))
     upcoming_ok = bool(next_pressure)
-    disposition = (
+    horizon_disposition = (
         "HORIZON_MATCHED"
         if history_ok and current_ok and upcoming_ok
         else "HORIZON_UNRESOLVED"
@@ -160,9 +160,9 @@ def derive_temporal_horizon_closure(
             None if cells else "campaign cell topology unavailable",
         ),
         "consequence_environmental": _surface(
-            "SUPPORTED" if disposition == "CONSEQUENCE_MATCHED" else "AT_RISK",
+            "SUPPORTED" if consequence_disposition == "CONSEQUENCE_MATCHED" else "AT_RISK",
             list((workcycle.get("latest_consequence") or {}).get("evidence_handles") or []),
-            None if disposition == "CONSEQUENCE_MATCHED" else "latest consequence not independently matched",
+            None if consequence_disposition == "CONSEQUENCE_MATCHED" else "latest consequence not independently matched",
         ),
         "provenance": _surface(
             "SUPPORTED" if history["posture"] == "SUPPORTED" else "UNRESOLVED",
@@ -171,11 +171,11 @@ def derive_temporal_horizon_closure(
         ),
         "invariance_meta": _surface(
             "SUPPORTED"
-            if disposition == "CONSEQUENCE_MATCHED" and not workcycle.get("projection_errors")
+            if consequence_disposition == "CONSEQUENCE_MATCHED" and not workcycle.get("projection_errors")
             else "AT_RISK",
             [workcycle_handle],
             None
-            if disposition == "CONSEQUENCE_MATCHED" and not workcycle.get("projection_errors")
+            if consequence_disposition == "CONSEQUENCE_MATCHED" and not workcycle.get("projection_errors")
             else "reconstruction/projection debt remains",
         ),
     }
@@ -246,7 +246,7 @@ def derive_temporal_horizon_closure(
         "repair_destination": "TYPED_REPAIR_ROUTING",
         "candidate_posture": (
             "PROPOSED_NOT_ADMITTED"
-            if disposition == "HORIZON_MATCHED"
+            if horizon_disposition == "HORIZON_MATCHED"
             else "HELD_UNRESOLVED_HORIZON"
         ),
         "admission_effect": "NONE",
@@ -277,7 +277,7 @@ def derive_temporal_horizon_closure(
             "source": "WORKCYCLE_DERIVED_CURRENTNESS",
             "execution_effect": "NONE",
         },
-        "disposition": disposition,
+        "disposition": horizon_disposition,
         "history_posture": "SUPPORTED" if history_ok else "UNRESOLVED",
         "currentness_posture": "SUPPORTED" if current_ok else "UNRESOLVED",
         "upcoming_work_posture": "SUPPORTED" if upcoming_ok else "UNRESOLVED",
