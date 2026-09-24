@@ -21,6 +21,7 @@ from src.cockpit.development_horizon_projection import derive_development_horizo
 from src.cockpit.workcycle_projection import build_workcycle_projection
 from src.cockpit.temporal_horizon_closure import derive_temporal_horizon_closure
 from src.cockpit.workcycle_qualification import build_workcycle_qualification_readiness
+from src.cockpit.pressure_justification import build_basis_record, build_pressure_justification
 
 
 class LiveRuntimeProjectionError(RuntimeError):
@@ -542,6 +543,16 @@ def build_runtime_state(sources: RuntimeSources) -> dict[str, Any]:
     state["temporal_horizon_closure"]["temporal_source_status"] = temporal_source_status
     state["workcycle_qualification"] = build_workcycle_qualification_readiness(
         sources.repo
+    )
+    state["workcycle_basis"] = build_basis_record(
+        workcycle=state["workcycle"],
+        horizon_closure=state["temporal_horizon_closure"],
+        qualification=state["workcycle_qualification"],
+    )
+    state["pressure_justification"] = build_pressure_justification(
+        workcycle=state["workcycle"],
+        horizon_closure=state["temporal_horizon_closure"],
+        qualification=state["workcycle_qualification"],
     )
     return state
 
