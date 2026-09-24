@@ -146,6 +146,30 @@ COCKPIT_PROJECTION_FRACTURED
 COCKPIT_PROJECTION_UNRESOLVED
 ```
 
+## BOOT / CURRENT-WORLD QUESTIONS
+
+Also pressure startup truth:
+
+1. Does the current repository fabric render without reconstructing the entire temporal history?
+2. Is exact temporal-head metadata attached only when the current fabric commit matches?
+3. Can temporal lineage failure degrade the temporal layer without hiding the current mechanical world?
+4. Can typed distinction failure degrade its overlay without hiding the current world?
+5. Can the optional scientific episode fail/timeout without blocking first render?
+6. Does the loading surface identify the current boot stage rather than presenting indefinite generic construction?
+7. Is historical reconstruction deferred until the operator explicitly moves to a historical frame?
+
+Required non-collapse:
+
+```
+CURRENT WORLD
+!=
+REPLAY ENTIRE HISTORY
+
+OPTIONAL OVERLAY FAILURE
+!=
+CURRENT WORLD FAILURE
+```
+
 ## REQUIRED RETURN
 
 Return only:
