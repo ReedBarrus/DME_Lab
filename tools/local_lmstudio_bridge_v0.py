@@ -323,6 +323,7 @@ def invoke_lmstudio(
     url = f"{base}/chat/completions"
 
     started = now_iso()
+    started_perf = time.perf_counter()
     req = urllib.request.Request(
         url,
         data=body,
@@ -338,6 +339,7 @@ def invoke_lmstudio(
         raise RuntimeError(f"LM Studio request failed: {e}") from e
 
     finished = now_iso()
+    elapsed_seconds = time.perf_counter() - started_perf
 
     response_obj = json.loads(response_bytes.decode("utf-8"))
     assistant_text = None
@@ -345,6 +347,20 @@ def invoke_lmstudio(
         assistant_text = response_obj["choices"][0]["message"]["content"]
     except Exception:
         pass
+
+    usage_obj = response_obj.get("usage") if isinstance(response_obj, dict) else None
+    prompt_tokens = (
+        usage_obj.get("prompt_tokens") if isinstance(usage_obj, dict) else None
+    )
+    completion_tokens = (
+        usage_obj.get("completion_tokens") if isinstance(usage_obj, dict) else None
+    )
+    total_tokens = (
+        usage_obj.get("total_tokens") if isinstance(usage_obj, dict) else None
+    )
+    end_to_end_output_tps = None
+    if isinstance(completion_tokens, int) and elapsed_seconds > 0:
+        end_to_end_output_tps = completion_tokens / elapsed_seconds
 
     witness = {
         "object_type": "LOCAL_LMSTUDIO_INVOCATION_WITNESS_V0",
