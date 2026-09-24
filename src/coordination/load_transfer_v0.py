@@ -165,6 +165,40 @@ def object_identity(obj: Mapping[str, Any]) -> str:
     return verify_seal(obj)
 
 
+def artifact_descriptor(repo_path: str, content: bytes) -> dict[str, Any]:
+    """Bind one repository-local artifact without granting any write authority."""
+    _require_text(repo_path, "repo_path")
+    if repo_path.startswith("/") or "\\" in repo_path or ".." in Path(repo_path).parts:
+        raise CoordinationError("repo_path must be safe repository-relative syntax")
+    if not isinstance(content, bytes):
+        raise CoordinationError("artifact content must be bytes")
+    return seal_object(
+        {
+            "object_type": "REPO_ARTIFACT_IDENTITY_V0",
+            "repo_path": repo_path,
+            "content_sha256": hashlib.sha256(content).hexdigest(),
+            "size_bytes": len(content),
+            "integrity_sha256": "",
+        }
+    )
+
+
+def verify_artifact_descriptor(
+    descriptor: Mapping[str, Any], content: bytes
+) -> str:
+    verify_seal(descriptor)
+    if descriptor.get("object_type") != "REPO_ARTIFACT_IDENTITY_V0":
+        raise CoordinationError("unsupported artifact descriptor")
+    if not isinstance(content, bytes):
+        raise CoordinationError("artifact content must be bytes")
+    if descriptor.get("size_bytes") != len(content):
+        raise CoordinationError("artifact size mismatch")
+    observed = hashlib.sha256(content).hexdigest()
+    if descriptor.get("content_sha256") != observed:
+        raise CoordinationError("artifact byte identity mismatch")
+    return descriptor["integrity_sha256"]
+
+
 def _require_exact_keys(obj: Mapping[str, Any], required: frozenset[str], label: str) -> None:
     if not isinstance(obj, Mapping) or set(obj) != required:
         missing = sorted(required - set(obj))
