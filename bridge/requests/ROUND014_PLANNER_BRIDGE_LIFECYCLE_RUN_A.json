@@ -1,0 +1,12 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0",
+  "request_id": "ROUND014_PLANNER_BRIDGE_LIFECYCLE_RUN_A",
+  "enabled": true,
+  "source_ref": "ef6d1dd402751f3c210762578a9d030821a8e21f",
+  "input_path": "docs/campaigns/semantic_continuity_operative_atlas_001/RELATIONAL_HORIZON_PLANNER_SEAT_PRESSURE_CELL_004_READY_TO_SEND_BRIDGE_LIFECYCLE_PACKET.md",
+  "input_sha256": "b6c3cfa6538d69957c1edc55774afb73ed6f7e925923a80424c6e6dbc02d3d0c",
+  "model": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 4096,
+  "purpose": "Fresh local planner-seat lifecycle Run A over current Atlas-carried single-seat state with no tools, history, repo access, or execution authority."
+}
