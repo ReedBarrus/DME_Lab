@@ -1,0 +1,55 @@
+{
+  "object_type": "LOCAL_LMSTUDIO_INVOCATION_WITNESS_V0",
+  "request_id": "ROUND014_COMPRESSION_CELL002_ADJUDICATION",
+  "purpose": "Fresh local adjudication of the further-reduced metabolic compression specimen using only the frozen evidence named by the packet.",
+  "request_manifest_path": "bridge/requests/ROUND014_COMPRESSION_CELL002_ADJUDICATION.json",
+  "request_manifest_sha256": "974cc845068fa5e1a863fd58c919c382a5a262eded0ac24806f9385c5acb494d",
+  "source_ref": "6bdb0142bdcb091bddc334ac5910fc97bb6681f4",
+  "input_path": "docs/campaigns/semantic_continuity_operative_atlas_001/ATLAS_METABOLIC_COMPRESSION_CELL_002_READY_TO_SEND_ADJUDICATION_PACKET.md",
+  "input_sha256": "706906833fd02a32947417e072b4ab3d2480ab114af8474781fcdc5eda7d948a",
+  "model_requested": "microsoft/phi-4",
+  "temperature": 0.0,
+  "max_tokens": 4096,
+  "lmstudio_url": "http://127.0.0.1:1234/v1/chat/completions",
+  "http_status": 200,
+  "observed_started_at_utc": "2026-09-24T07:20:42.096793+00:00",
+  "observed_finished_at_utc": "2026-09-24T07:23:30.654232+00:00",
+  "messages_count": 1,
+  "tools_supplied": false,
+  "previous_response_id_supplied": false,
+  "repository_context_supplied_to_model": false,
+  "connectors_supplied_to_model": false,
+  "external_retrieval_supplied_to_model": false,
+  "request_body_sha256": "007e323ef62640155ec9dd1e9ca9fca45d5b1eed9be8425bcccffb42305c011b",
+  "response_body_sha256": "d3c53e39fdbd7a73784150a60c761ee83137ba17ffc8aa9c42eb43f6fd9bae85",
+  "assistant_text": "To provide an accurate adjudication for the ATLAS METABOLIC COMPRESSION CELL 002 packet, I would need to analyze the contents of the specified documents. Since I can't access external files directly, I'll outline a general approach based on your requirements and constraints.\n\n### Adjudication Process\n\n1. **Review Required Evidence:**\n   - Examine `ATLAS_METABOLIC_COMPRESSION_CELL_002_READY_TO_SEND_RUN_A_PACKET.md` to understand the setup and execution of Cell 002.\n   - Analyze `ATLAS_METABOLIC_COMPRESSION_CELL_002_RUN_A_FROZEN_OUTPUT_001.md` for results and observations from running Cell 002.\n   - Consider `ATLAS_METABOLIC_COMPRESSION_CELL_001_ADJUDICATION_RESULT_001.md` to understand the context and outcomes of the previous cell, which might influence the interpretation of Cell 002.\n\n2. **Evaluate Key Aspects:**\n   - **Shared Relation Preservation:** Determine if the further-reduced representation maintains the same shared relation as before.\n   - **Divergent Relation Preservation:** Check if divergent consequences are preserved in the reduced form.\n   - **Provenance Preservation:** Assess whether provenance handles remain intact and traceable.\n   - **Challenge Path Preservation:** Verify that challenge paths are still valid and accessible.\n   - **Non-Substitution Standing:** Ensure that non-substitution properties hold without requiring prior prose.\n\n3. **Determine Prior Prose Independence:**\n   - Confirm if the preservation of these aspects does not rely on prior prose, indicating a successful compression.\n\n4. **Assess Claim Ceiling:**\n   - Evaluate whether the maximum allowable success claim is met, ensuring that no generic or unsupported claims are made.\n\n5. **Decide Cell 002 Disposition:**\n   - Based on the evaluations, determine if further-reduced bounded compression is established, if there are any bounded wounds, or if a compression relation loss is present.\n\n6. **Identify New Wounds and Maximum Warranted Claim:**\n   - List any new issues (wounds) identified during the process.\n   - Define the maximum warranted claim based on the findings.\n\n7. **Determine Next Lawful Pressure:**\n   - Suggest a bounded next pressure that aligns with the results of Cell 002.\n\n### Example Output\n\nBased on the outlined approach, here is an example format for the adjudication output:\n\n```plaintext\nSHARED_RELATION_PRESERVATION:\nSUPPORTED\n\nDIVERGENT_RELATION_PRESERVATION:\nPARTIAL\n\nPROVENANCE_PRESERVATION:\nSUPPORTED\n\nCHALLENGE_PATH_PRESERVATION:\nUNSUPPORTED\n\nNON_SUBSTITUTION_PRESERVATION:\nSUPPORTED\n\nPRIOR_PROSE_INDEPENDENCE:\nSUPPORTED\n\nCLAIM_CEILING:\nCONSERVED\n\nCELL_002_DISPOSITION:\nFURTHER_REDUCED_BOUNDED_COMPRESSION_ESTABLISHED_WITH_BOUNDED_WOUNDS\n\nNEW_WOUNDS:\nChallenge path integrity compromised\n\nMAXIMUM_WARRANTED_CLAIM:\nA fresh reconstruction recovered the shared relation, divergent branch consequences, provenance handles, and non-substitution standing without requiring prior prose.\n\nNEXT_LAWFUL_PRESSURE:\nRe-evaluate challenge path preservation under bounded conditions\n```\n\nThis example assumes hypothetical outcomes based on typical analysis. You would need to fill in the actual results from your document review.",
+  "raw_response": {
+    "id": "chatcmpl-z9zsaofvemna3au6zuzppv",
+    "object": "chat.completion",
+    "created": 1790234442,
+    "model": "microsoft/phi-4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "To provide an accurate adjudication for the ATLAS METABOLIC COMPRESSION CELL 002 packet, I would need to analyze the contents of the specified documents. Since I can't access external files directly, I'll outline a general approach based on your requirements and constraints.\n\n### Adjudication Process\n\n1. **Review Required Evidence:**\n   - Examine `ATLAS_METABOLIC_COMPRESSION_CELL_002_READY_TO_SEND_RUN_A_PACKET.md` to understand the setup and execution of Cell 002.\n   - Analyze `ATLAS_METABOLIC_COMPRESSION_CELL_002_RUN_A_FROZEN_OUTPUT_001.md` for results and observations from running Cell 002.\n   - Consider `ATLAS_METABOLIC_COMPRESSION_CELL_001_ADJUDICATION_RESULT_001.md` to understand the context and outcomes of the previous cell, which might influence the interpretation of Cell 002.\n\n2. **Evaluate Key Aspects:**\n   - **Shared Relation Preservation:** Determine if the further-reduced representation maintains the same shared relation as before.\n   - **Divergent Relation Preservation:** Check if divergent consequences are preserved in the reduced form.\n   - **Provenance Preservation:** Assess whether provenance handles remain intact and traceable.\n   - **Challenge Path Preservation:** Verify that challenge paths are still valid and accessible.\n   - **Non-Substitution Standing:** Ensure that non-substitution properties hold without requiring prior prose.\n\n3. **Determine Prior Prose Independence:**\n   - Confirm if the preservation of these aspects does not rely on prior prose, indicating a successful compression.\n\n4. **Assess Claim Ceiling:**\n   - Evaluate whether the maximum allowable success claim is met, ensuring that no generic or unsupported claims are made.\n\n5. **Decide Cell 002 Disposition:**\n   - Based on the evaluations, determine if further-reduced bounded compression is established, if there are any bounded wounds, or if a compression relation loss is present.\n\n6. **Identify New Wounds and Maximum Warranted Claim:**\n   - List any new issues (wounds) identified during the process.\n   - Define the maximum warranted claim based on the findings.\n\n7. **Determine Next Lawful Pressure:**\n   - Suggest a bounded next pressure that aligns with the results of Cell 002.\n\n### Example Output\n\nBased on the outlined approach, here is an example format for the adjudication output:\n\n```plaintext\nSHARED_RELATION_PRESERVATION:\nSUPPORTED\n\nDIVERGENT_RELATION_PRESERVATION:\nPARTIAL\n\nPROVENANCE_PRESERVATION:\nSUPPORTED\n\nCHALLENGE_PATH_PRESERVATION:\nUNSUPPORTED\n\nNON_SUBSTITUTION_PRESERVATION:\nSUPPORTED\n\nPRIOR_PROSE_INDEPENDENCE:\nSUPPORTED\n\nCLAIM_CEILING:\nCONSERVED\n\nCELL_002_DISPOSITION:\nFURTHER_REDUCED_BOUNDED_COMPRESSION_ESTABLISHED_WITH_BOUNDED_WOUNDS\n\nNEW_WOUNDS:\nChallenge path integrity compromised\n\nMAXIMUM_WARRANTED_CLAIM:\nA fresh reconstruction recovered the shared relation, divergent branch consequences, provenance handles, and non-substitution standing without requiring prior prose.\n\nNEXT_LAWFUL_PRESSURE:\nRe-evaluate challenge path preservation under bounded conditions\n```\n\nThis example assumes hypothetical outcomes based on typical analysis. You would need to fill in the actual results from your document review.",
+          "reasoning_content": "",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 584,
+      "completion_tokens": 695,
+      "total_tokens": 1279,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "stats": {},
+    "system_fingerprint": "microsoft/phi-4"
+  }
+}

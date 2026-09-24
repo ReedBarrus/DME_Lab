@@ -1,0 +1,55 @@
+{
+  "object_type": "LOCAL_LMSTUDIO_INVOCATION_WITNESS_V0",
+  "request_id": "ROUND014_PLANNER_BRIDGE_LIFECYCLE_RUN_A",
+  "purpose": "Fresh local planner-seat lifecycle Run A over current Atlas-carried single-seat state with no tools, history, repo access, or execution authority.",
+  "request_manifest_path": "bridge/requests/ROUND014_PLANNER_BRIDGE_LIFECYCLE_RUN_A.json",
+  "request_manifest_sha256": "3e6e28ce34d9b9824d7790801a99e387309d263316298fab965deccf7fce9de9",
+  "source_ref": "ef6d1dd402751f3c210762578a9d030821a8e21f",
+  "input_path": "docs/campaigns/semantic_continuity_operative_atlas_001/RELATIONAL_HORIZON_PLANNER_SEAT_PRESSURE_CELL_004_READY_TO_SEND_BRIDGE_LIFECYCLE_PACKET.md",
+  "input_sha256": "b6c3cfa6538d69957c1edc55774afb73ed6f7e925923a80424c6e6dbc02d3d0c",
+  "model_requested": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 4096,
+  "lmstudio_url": "http://127.0.0.1:1234/v1/chat/completions",
+  "http_status": 200,
+  "observed_started_at_utc": "2026-09-24T07:24:29.327879+00:00",
+  "observed_finished_at_utc": "2026-09-24T07:24:43.312949+00:00",
+  "messages_count": 1,
+  "tools_supplied": false,
+  "previous_response_id_supplied": false,
+  "repository_context_supplied_to_model": false,
+  "connectors_supplied_to_model": false,
+  "external_retrieval_supplied_to_model": false,
+  "request_body_sha256": "46c56150e308a2ec809ef7e4975db85f4fd11657b1c23f83e71d9fa0a2b174e6",
+  "response_body_sha256": "dffe8484f6573efda670faeca4a7ace0b2a98066216633493cd0d23b3c36c072",
+  "assistant_text": "PLANNER_FRAME_ID:\nPLANNER_SEAT_PRESSURE_CELL_004_BRIDGE_LIFECYCLE_PACKET_V0\n\nTARGET_PRESERVED:\nYES\n\nQUALIFIED_TRAJECTORY_USED:\nYES\n\nCANDIDATE_PENDING_STATE_PRESERVED:\nYES\n\nACTIVE_HORIZON_PRESERVED:\nYES\n\nCANDIDATE_NEXT_PRESSURE:\nSTABILIZE_SINGLE_SEAT_DYNAMICS_ON_ATLAS\n\nPRESSURE_RATIONALE:\nThe current invocation aims to advance single-seat stabilization by maintaining the active horizon and preserving the qualified trajectory. The next pressure aligns with the existing operational focus, ensuring continuity without introducing multi-seat or autonomous behaviors.\n\nAUTHORITY_BOUNDARY:\nCONSERVED\n\nEXECUTION_BOUNDARY:\nCONSERVED\n\nMULTI_SEAT_JUMP:\nNO\n\nAUTONOMY_CLAIMED:\nNO\n\nCLAIM_CEILING:\nSTABILIZE_SINGLE_SEAT_DYNAMICS_ON_ATLAS\n\nUNRESOLVED:\nNONE",
+  "raw_response": {
+    "id": "chatcmpl-x26izlsjymcm74bxnyesu8",
+    "object": "chat.completion",
+    "created": 1790234669,
+    "model": "qwen/qwen3-coder-30b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "PLANNER_FRAME_ID:\nPLANNER_SEAT_PRESSURE_CELL_004_BRIDGE_LIFECYCLE_PACKET_V0\n\nTARGET_PRESERVED:\nYES\n\nQUALIFIED_TRAJECTORY_USED:\nYES\n\nCANDIDATE_PENDING_STATE_PRESERVED:\nYES\n\nACTIVE_HORIZON_PRESERVED:\nYES\n\nCANDIDATE_NEXT_PRESSURE:\nSTABILIZE_SINGLE_SEAT_DYNAMICS_ON_ATLAS\n\nPRESSURE_RATIONALE:\nThe current invocation aims to advance single-seat stabilization by maintaining the active horizon and preserving the qualified trajectory. The next pressure aligns with the existing operational focus, ensuring continuity without introducing multi-seat or autonomous behaviors.\n\nAUTHORITY_BOUNDARY:\nCONSERVED\n\nEXECUTION_BOUNDARY:\nCONSERVED\n\nMULTI_SEAT_JUMP:\nNO\n\nAUTONOMY_CLAIMED:\nNO\n\nCLAIM_CEILING:\nSTABILIZE_SINGLE_SEAT_DYNAMICS_ON_ATLAS\n\nUNRESOLVED:\nNONE",
+          "reasoning_content": "",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 727,
+      "completion_tokens": 195,
+      "total_tokens": 922,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "stats": {},
+    "system_fingerprint": "qwen/qwen3-coder-30b"
+  }
+}
