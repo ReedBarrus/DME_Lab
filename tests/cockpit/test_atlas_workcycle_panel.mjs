@@ -11,7 +11,7 @@ import {
 
 test('Atlas landing forwards runtime sidecar endpoint into repository fabric iframe', () => {
   const result = atlasFrameUrlWithRuntime(
-    'http://127.0.0.1:9000/src/cockpit/observer/?runtime=http%3A%2F%2F127.0.0.1%3A8765%2Fruntime%2Fevents',
+    'http://127.0.0.1:9000/src/cockpit/observer/?runtime=http%3A%2F%2F127.0.0.1%3A8765%2Fruntime%2Fevents&control=http%3A%2F%2F127.0.0.1%3A8770',
     './repository_fabric.html',
   );
   const url = new URL(result);
@@ -19,6 +19,10 @@ test('Atlas landing forwards runtime sidecar endpoint into repository fabric ifr
   assert.equal(
     url.searchParams.get('runtime'),
     'http://127.0.0.1:8765/runtime/events',
+  );
+  assert.equal(
+    url.searchParams.get('control'),
+    'http://127.0.0.1:8770',
   );
 });
 
@@ -75,13 +79,13 @@ test('workcycle operator visibly exposes currentness consequence budget and read
     '4051',
     '3486',
     'REVIEW_NEXT_PRESSURE',
-    'CONTROL WRITE NOT YET ADMITTED',
+    'OPERATOR CONTROL IS LOCAL + PREVIEWED + CONFIRMED',
   ]) {
     assert.ok(html.includes(phrase), phrase);
   }
-  assert.ok(html.includes('<button type="button" disabled>WAKE</button>'));
-  assert.ok(html.includes('<button type="button" disabled>PAUSE</button>'));
-  assert.ok(html.includes('<button type="button" disabled>STOP</button>'));
+  assert.ok(html.includes('WAKE'));
+  assert.ok(html.includes('PAUSE'));
+  assert.ok(html.includes('STOP'));
   assert.doesNotMatch(html, /data-authorize|data-execute|data-control-write/);
 });
 
@@ -90,17 +94,25 @@ test('workcycle witness rail is persistent-left content with truthful partial el
     next_pressure: 'T2_ADJUDICATION',
     active_work_item: null,
     latest_completed_work_item: 'W1',
+    next_eligible_work_item: null,
     latest_consequence: {observations: {delta_bytes: -565}},
     latest_consequence_evaluation: {disposition: 'CONSEQUENCE_MATCHED'},
     wake_budget: {work_items: {consumed: 0, reserved: 0, allowed_per_wake: 1}},
-    eligibility: {posture: 'PARTIAL_COORDINATES_ONLY'},
+    eligibility: {posture: 'PARTIAL_COORDINATES_ONLY', eligible: null},
     current_unresolved: ['bounded claim ceiling remains'],
+    seat_ecology: {
+      durable_seats: [{seat_id: 'LABBOIB', occupant_binding: 'UNBOUND'}],
+      registered_runtime_seats: [],
+      occupied_runtime_seats: [],
+    },
     operator_summary: {
       workflow: 'OFF',
       campaign: 'ACTIVE',
+      seat_work: 'DISABLED',
+      wake_requested: false,
       reed_action: 'REVIEW_NEXT_PRESSURE',
     },
-  });
+  }, null, true);
   for (const phrase of [
     'WORKCYCLE / METABOLISM',
     'T2_ADJUDICATION',
@@ -108,8 +120,13 @@ test('workcycle witness rail is persistent-left content with truthful partial el
     'W1',
     'OPEN SCIENTIFIC DETAIL',
     '1 CURRENT UNRESOLVED',
+    'LABBOIB',
+    'LOCAL OPERATOR CONTROL CONNECTED',
+    'data-workcycle-control="ENABLE"',
+    'data-workcycle-control="STOP"',
   ]) assert.ok(html.includes(phrase), phrase);
-  assert.ok(html.includes('<button type="button" disabled>WAKE</button>'));
+  assert.ok(html.includes('data-workcycle-control="ADMIT_ONE"'));
+  assert.match(html, /data-workcycle-control="ADMIT_ONE"\s+disabled/);
 });
 
 test('workcycle operator fails visibly when runtime projection is unavailable', () => {
