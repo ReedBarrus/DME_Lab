@@ -55,6 +55,12 @@ def _utc_now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+def _subprocess_creationflags() -> int:
+    if __import__("os").name != "nt":
+        return 0
+    return int(getattr(subprocess, "CREATE_NO_WINDOW", 0))
+
+
 def _repo_head(repo: Path) -> str:
     result = subprocess.run(
         ["git", "-C", str(repo), "rev-parse", "HEAD"],
@@ -62,6 +68,7 @@ def _repo_head(repo: Path) -> str:
         stderr=subprocess.PIPE,
         text=True,
         check=False,
+        creationflags=_subprocess_creationflags(),
     )
     if result.returncode != 0:
         raise LiveRuntimeProjectionError(
