@@ -100,6 +100,41 @@ WAKE BUDGET
 CUMULATIVE CAMPAIGN BUDGET
 ```
 
+## OPERATOR-LOCAL CONTROL QUESTIONS
+
+Also pressure the connected left-rail control membrane:
+
+1. Is operator-local control state stored outside the repository?
+2. Does repository-requested ON remain non-operative?
+3. Does local ENABLE change the operative workflow projection to ON?
+4. Does WAKE fail while the workflow is disabled?
+5. Does local WAKE create a new wake generation and visible wake request?
+6. Do PAUSE and STOP visibly close further local motion?
+7. Does ADMIT_ONE fail closed while real eligibility coordinates remain unresolved?
+8. Is durable seat identity visible independently of live occupancy?
+9. Does a seat's existence remain distinct from occupant binding and execution authority?
+10. Does every local control mutation require preview identity + explicit REED confirmation?
+
+Required non-collapses:
+
+```
+REPO REQUESTED CONTROL
+!=
+OPERATIVE LOCAL CONTROL
+
+REGISTERED SEAT
+!=
+LIVE OCCUPANT
+!=
+EXECUTION AUTHORITY
+
+WAKE REQUEST
+!=
+WORK ADMISSION
+!=
+MODEL INVOCATION
+```
+
 ## REQUIRED RETURN
 
 Return only:
