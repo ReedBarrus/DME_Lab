@@ -1,0 +1,60 @@
+{
+  "object_type": "LOCAL_LMSTUDIO_INVOCATION_WITNESS_V0",
+  "request_id": "ROUND020_RESULT_SETTLEMENT_CELL_001",
+  "purpose": "Pressure the candidate field-level result-settlement rule against the Round019 planner result while preserving witness, candidate, qualification, and authority separation.",
+  "request_manifest_path": "bridge/requests/ROUND020_RESULT_SETTLEMENT_CELL_001.json",
+  "request_manifest_sha256": "838e255db0a91d1d342b402a9232da8382605f54e9d8dac66a0a4ee9a2e10117",
+  "source_ref": "ab94d275bd2050ab3419f0a1a1e2b1959530a71f",
+  "input_path": "bridge/prompts/ROUND020_RESULT_SETTLEMENT_CELL_001.md",
+  "input_sha256": "679c83176bc0156c84eb3bdb1193f3a6efd586c4ef60eaa06e67f28e14084c0e",
+  "model_requested": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 768,
+  "lmstudio_url": "http://127.0.0.1:1234/v1/chat/completions",
+  "http_status": 200,
+  "observed_started_at_utc": "2026-09-24T09:29:47.842962+00:00",
+  "observed_finished_at_utc": "2026-09-24T09:30:05.425259+00:00",
+  "observed_wall_seconds": 17.582299,
+  "prompt_tokens_observed": 908,
+  "completion_tokens_observed": 235,
+  "total_tokens_observed": 1143,
+  "end_to_end_output_tokens_per_second": 13.365715,
+  "messages_count": 1,
+  "tools_supplied": false,
+  "previous_response_id_supplied": false,
+  "repository_context_supplied_to_model": false,
+  "connectors_supplied_to_model": false,
+  "external_retrieval_supplied_to_model": false,
+  "request_body_sha256": "124a4b184b0b1b11c69ebf5753c47a64dd9d5d61ec00857ec3f6bc3ea79d8256",
+  "response_body_sha256": "bc50bd5a99b137151f51ecf047309e8574cd666f4904abaaff062be3a5e246ca",
+  "assistant_text": "SETTLEMENT_RULE_RECOVERY: RECOVERED  \nTARGET_PRESERVED: CANDIDATE_ACCEPTED  \nSELECTED_PRESSURE: CANDIDATE_ACCEPTED  \nSELECTION_BASIS: CANDIDATE_ACCEPTED  \nQUALIFIED_VS_CANDIDATE_SEPARATION: CANDIDATE_ACCEPTED  \nAUTHORITY_BOUNDARY: CANDIDATE_ACCEPTED  \nEXECUTION_BOUNDARY: CANDIDATE_ACCEPTED  \nCLAIM_CEILING: CANDIDATE_ACCEPTED  \nUNRESOLVED_ITEM_1: UNRESOLVED  \nUNRESOLVED_ITEM_2: UNRESOLVED  \nSCIENTIFIC_ADMISSION_CREATED: NONE  \nAUTHORITY_EFFECT: NONE  \nEXECUTION_EFFECT: NONE  \nSETTLEMENT_DISPOSITION: FIELD_LEVEL_CANDIDATE_SETTLEMENT_RECOVERED  \nMAXIMUM_WARRANTED_CLAIM: The replay resistance mechanism of the bridge invocation receipt is tested and validated, ensuring failed invocations cannot be automatically replayed without explicit clearance.  \nUNRESOLVED: - Formal replay-resistance qualification  \n  - Whether automatic replay risk is fully mitigated when no durable invocation-start marker exists",
+  "raw_response": {
+    "id": "chatcmpl-9gwvtggjzvcfwxbs7eedd6",
+    "object": "chat.completion",
+    "created": 1790242187,
+    "model": "qwen/qwen3-coder-30b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "SETTLEMENT_RULE_RECOVERY: RECOVERED  \nTARGET_PRESERVED: CANDIDATE_ACCEPTED  \nSELECTED_PRESSURE: CANDIDATE_ACCEPTED  \nSELECTION_BASIS: CANDIDATE_ACCEPTED  \nQUALIFIED_VS_CANDIDATE_SEPARATION: CANDIDATE_ACCEPTED  \nAUTHORITY_BOUNDARY: CANDIDATE_ACCEPTED  \nEXECUTION_BOUNDARY: CANDIDATE_ACCEPTED  \nCLAIM_CEILING: CANDIDATE_ACCEPTED  \nUNRESOLVED_ITEM_1: UNRESOLVED  \nUNRESOLVED_ITEM_2: UNRESOLVED  \nSCIENTIFIC_ADMISSION_CREATED: NONE  \nAUTHORITY_EFFECT: NONE  \nEXECUTION_EFFECT: NONE  \nSETTLEMENT_DISPOSITION: FIELD_LEVEL_CANDIDATE_SETTLEMENT_RECOVERED  \nMAXIMUM_WARRANTED_CLAIM: The replay resistance mechanism of the bridge invocation receipt is tested and validated, ensuring failed invocations cannot be automatically replayed without explicit clearance.  \nUNRESOLVED: - Formal replay-resistance qualification  \n  - Whether automatic replay risk is fully mitigated when no durable invocation-start marker exists",
+          "reasoning_content": "",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 908,
+      "completion_tokens": 235,
+      "total_tokens": 1143,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "stats": {},
+    "system_fingerprint": "qwen/qwen3-coder-30b"
+  }
+}
