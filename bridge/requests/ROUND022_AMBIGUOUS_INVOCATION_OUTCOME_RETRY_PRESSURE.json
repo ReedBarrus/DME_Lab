@@ -1,0 +1,12 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0",
+  "request_id": "ROUND022_AMBIGUOUS_INVOCATION_OUTCOME_RETRY_PRESSURE",
+  "enabled": true,
+  "source_ref": "e8f120cd567fb9af60e81fc1432c3dab2cce6e1e",
+  "input_path": "bridge/prompts/ROUND022_AMBIGUOUS_INVOCATION_OUTCOME_RETRY_PRESSURE.md",
+  "input_sha256": "ae12f40a239448e9f76115b748accf9003320b7524f6715d482eae1defc2edfd",
+  "model": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 512,
+  "purpose": "Pressure request-versus-attempt identity, ambiguous invocation outcome holding, non-replay, fresh retry identity, fresh authorization, and monotonic invocation budget semantics."
+}
