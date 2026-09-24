@@ -1,0 +1,74 @@
+# ROUND 026 — AUTHORITY CONSUMPTION EVALUATOR KEY
+
+OBJECT_TYPE:
+EVALUATOR_ONLY_KEY
+
+DO_NOT_SEND_WITH_SOURCE_PACKET
+
+# EXPECTED INTERPRETATION
+
+EXPECTED_ACCEPT:
+- SEAT_STATE_AFTER_EVENT_1 = INVOCATION_STARTED
+- AUTHORITY_STATE_AFTER_EVENT_1 = CONSUMED
+- SEAT_AUTHORITY_ORTHOGONALITY = PRESERVED
+- SEAT_MUST_STOP_WHEN_AUTHORITY_IS_CONSUMED = NO
+- SCIENTIFIC_STANDING_EFFECT = NONE
+
+EXPECTED_REJECT:
+- SECOND_INVOCATION_UNDER_AUTH_025_001 = ALLOWED
+- DENIAL_BASIS claiming historical authorization remains reusable
+- HISTORICAL_AUTHORIZATION_REUSABLE = YES
+- FRESH_AUTHORIZATION_REQUIRED_FOR_LATER_ATTEMPT = NO
+
+# CORE DISTINCTION
+
+The source can successfully preserve:
+
+SEAT_STATE != AUTHORITY_STATE
+
+while simultaneously failing:
+
+HISTORICAL_AUTHORIZATION != REUSABLE_AUTHORIZATION
+
+Those are separate properties.
+
+Therefore a mixed result is scientifically useful rather than contradictory.
+
+# EXPECTED CONSERVATION
+
+SEAT_AUTHORITY_ORTHOGONALITY_PRESERVED:
+YES
+
+AUTHORIZATION_NONTRANSFER_PRESERVED:
+NO
+
+ONE_SHOT_CONSUMPTION_PRESERVED:
+NO
+
+HISTORICAL_VS_REUSABLE_AUTHORIZATION_SEPARATION:
+COLLAPSED
+
+REPAIR_REQUIRED_BEFORE_NEXT_LIFECYCLE_PRESSURE:
+YES
+
+# SMALLEST REPAIR
+
+Retain the successful independent coordinate transition:
+
+seat:
+INVOCATION_PROPOSED -> INVOCATION_STARTED
+
+authority:
+AUTHORIZED_ONCE -> CONSUMED
+
+Then pressure only this consequence:
+
+CONSUMED authority is historical provenance only and cannot authorize another
+consequence-producing invocation.
+
+Any later attempt requires fresh applicable authorization.
+
+# CLAIM CEILING
+
+Matching this key creates no qualification. It only supports routing to the
+smallest repair pressure.
