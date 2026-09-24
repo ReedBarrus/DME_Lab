@@ -20,6 +20,12 @@ class RepositoryTemporalLineageError(RuntimeError):
     pass
 
 
+def _subprocess_creationflags() -> int:
+    if __import__("os").name != "nt":
+        return 0
+    return int(getattr(subprocess, "CREATE_NO_WINDOW", 0))
+
+
 def _git(repo: Path, *args: str, check: bool = True) -> bytes:
     completed = subprocess.run(
         ["git", "-c", f"safe.directory={repo}", *args],
@@ -27,11 +33,14 @@ def _git(repo: Path, *args: str, check: bool = True) -> bytes:
         check=False,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
+        creationflags=_subprocess_creationflags(),
     )
     if check and completed.returncode != 0:
-        detail = completed.stderr.decode("utf-8", errors="replace").strip()
+        stderr = completed.stderr.decode("utf-8", errors="replace").strip()
+        stdout = completed.stdout.decode("utf-8", errors="replace").strip()
+        detail = stderr or stdout or "no stderr/stdout emitted"
         raise RepositoryTemporalLineageError(
-            f"git {' '.join(args)} failed: {detail or 'unknown git failure'}"
+            f"git {' '.join(args)} failed rc={completed.returncode}: {detail}"
         )
     return completed.stdout
 
@@ -112,17 +121,35 @@ def _tree_entries(repo: Path, commit: str) -> list[dict[str, str]]:
 
 
 def _raw_diff(repo: Path, before: str, after: str) -> list[dict[str, str | None]]:
-    raw = _git(
-        repo,
-        "diff-tree",
-        "--no-commit-id",
-        "--raw",
-        "-z",
-        "-r",
-        "-M50%",
-        before,
-        after,
-    )
+    try:
+        raw = _git(
+            repo,
+            "diff-tree",
+            "--no-commit-id",
+            "--raw",
+            "-z",
+            "-r",
+            "-M50%",
+            before,
+            after,
+        )
+    except RepositoryTemporalLineageError as primary:
+        try:
+            raw = _git(
+                repo,
+                "diff",
+                "--raw",
+                "-z",
+                "-M50%",
+                before,
+                after,
+                "--",
+            )
+        except RepositoryTemporalLineageError as fallback:
+            raise RepositoryTemporalLineageError(
+                "temporal adjacent diff unavailable; "
+                f"primary=[{primary}] fallback=[{fallback}]"
+            ) from fallback
     parts = raw.split(b"\0")
     while parts and parts[-1] == b"":
         parts.pop()
@@ -171,9 +198,14 @@ def _object_contents(repo: Path, identities: set[str]) -> dict[str, bytes]:
         check=False,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
+        creationflags=_subprocess_creationflags(),
     )
     if completed.returncode:
-        raise RepositoryTemporalLineageError("git cat-file --batch failed")
+        stderr = completed.stderr.decode("utf-8", errors="replace").strip()
+        raise RepositoryTemporalLineageError(
+            f"git cat-file --batch failed rc={completed.returncode}: "
+            f"{stderr or 'no stderr emitted'}"
+        )
     result: dict[str, bytes] = {}
     offset = 0
     for requested in ordered:
