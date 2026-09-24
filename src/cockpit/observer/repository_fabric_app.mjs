@@ -550,18 +550,59 @@ function applyRequestedView(requestedView) {
   }
 }
 
+async function attachHistoricalContext(requestedView) {
+  const [temporalResponse, distinctionResponse] = await Promise.all([
+    fetchJsonResponse(REPOSITORY_TEMPORAL_LINEAGE_PATH, 'temporal lineage')
+      .catch((error) => ({ok: false, error})),
+    fetchJsonResponse(TYPED_DISTINCTION_REGISTRY_PATH, 'typed distinction registry')
+      .catch((error) => ({ok: false, error})),
+  ]);
+
+  if (temporalResponse.ok) {
+    try {
+      temporalLineage = buildTemporalLineageModel(await temporalResponse.json());
+      bindCurrentTemporalContext(temporalLineage, model);
+      temporalState = createTemporalOperatorState(temporalLineage, model);
+      emissionLedger = buildTransitionEmissionLedger(model);
+    } catch (error) {
+      temporalLineage = null;
+      temporalState = null;
+      emissionLedger = null;
+      episodeError = `Temporal context unavailable: ${error instanceof Error ? error.message : String(error)}`;
+    }
+  } else {
+    episodeError = `Temporal lineage unavailable: ${temporalResponse.error || 'unknown error'}`;
+  }
+
+  if (temporalLineage && distinctionResponse.ok) {
+    try {
+      typedDistinctionRegistry = buildTypedDistinctionRegistryModel(
+        await distinctionResponse.json(),
+        temporalLineage,
+      );
+    } catch (error) {
+      typedDistinctionRegistry = null;
+      episodeError = [
+        episodeError,
+        `Typed distinction overlay unavailable: ${error instanceof Error ? error.message : String(error)}`,
+      ].filter(Boolean).join(' | ');
+    }
+  }
+
+  applyRequestedView(requestedView);
+  if (model && geometricField) render();
+  void loadOptionalEpisodeOverlay(requestedView);
+}
+
 async function load() {
   try {
     const bootStarted = performance.now();
-    renderLoadStage('FETCHING SOURCES', 'Loading current fabric + temporal evidence...');
+    renderLoadStage('FETCHING CURRENT FABRIC', 'Loading the current addressed world...');
 
-    const [response, temporalResponse, distinctionResponse] = await Promise.all([
-      fetchJsonResponse(REPOSITORY_FABRIC_PATH, 'repository fabric'),
-      fetchJsonResponse(REPOSITORY_TEMPORAL_LINEAGE_PATH, 'temporal lineage')
-        .catch((error) => ({ok: false, error})),
-      fetchJsonResponse(TYPED_DISTINCTION_REGISTRY_PATH, 'typed distinction registry')
-        .catch((error) => ({ok: false, error})),
-    ]);
+    const response = await fetchJsonResponse(
+      REPOSITORY_FABRIC_PATH,
+      'repository fabric',
+    );
 
     renderLoadStage(
       'BUILDING CURRENT MODEL',
@@ -575,41 +616,6 @@ async function load() {
     );
     geometricField = buildGeometricRepositoryField(model);
 
-    if (temporalResponse.ok) {
-      try {
-        renderLoadStage(
-          'ATTACHING TEMPORAL CONTEXT',
-          'Binding current world to exact temporal head...',
-        );
-        temporalLineage = buildTemporalLineageModel(await temporalResponse.json());
-        bindCurrentTemporalContext(temporalLineage, model);
-        temporalState = createTemporalOperatorState(temporalLineage, model);
-        emissionLedger = buildTransitionEmissionLedger(model);
-      } catch (error) {
-        temporalLineage = null;
-        temporalState = null;
-        emissionLedger = null;
-        episodeError = `Temporal context unavailable: ${error instanceof Error ? error.message : String(error)}`;
-      }
-    } else {
-      episodeError = `Temporal lineage unavailable at boot: ${temporalResponse.error || 'unknown error'}`;
-    }
-
-    if (temporalLineage && distinctionResponse.ok) {
-      try {
-        typedDistinctionRegistry = buildTypedDistinctionRegistryModel(
-          await distinctionResponse.json(),
-          temporalLineage,
-        );
-      } catch (error) {
-        typedDistinctionRegistry = null;
-        episodeError = [
-          episodeError,
-          `Typed distinction overlay unavailable: ${error instanceof Error ? error.message : String(error)}`,
-        ].filter(Boolean).join(' | ');
-      }
-    }
-
     const requestedView = new URL(window.location.href).searchParams;
     applyRequestedView(requestedView);
 
@@ -620,7 +626,7 @@ async function load() {
     render();
     startWorkcycleRuntimeProjection();
 
-    void loadOptionalEpisodeOverlay(requestedView);
+    void attachHistoricalContext(requestedView);
   } catch (error) {
     root.innerHTML = renderRepositoryFabricUnavailable(
       error instanceof Error ? error.message : String(error),
