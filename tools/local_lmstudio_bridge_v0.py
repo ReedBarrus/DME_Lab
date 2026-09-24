@@ -362,6 +362,15 @@ def invoke_lmstudio(
         "http_status": status,
         "observed_started_at_utc": started,
         "observed_finished_at_utc": finished,
+        "observed_wall_seconds": round(elapsed_seconds, 6),
+        "prompt_tokens_observed": prompt_tokens,
+        "completion_tokens_observed": completion_tokens,
+        "total_tokens_observed": total_tokens,
+        "end_to_end_output_tokens_per_second": (
+            round(end_to_end_output_tps, 6)
+            if end_to_end_output_tps is not None
+            else None
+        ),
         "messages_count": 1,
         "tools_supplied": False,
         "previous_response_id_supplied": False,
