@@ -254,11 +254,29 @@ def derive_campaign_progress(repo_root: str | Path) -> dict[str, Any]:
     }
 
     cockpit = "src/cockpit/workcycle_projection.py"
+    t7_result = (
+        "docs/campaigns/workcycle_stabilization_001/state/"
+        "COCKPIT_T7_PRESSURE_RESULT_001.md"
+    )
+    t7_disposition = _markdown_field(repo, t7_result, "DISPOSITION")
+    t7_pass = t7_disposition == "COCKPIT_PROJECTION_MATCHED"
     cells["T7"] = {
-        "posture": "IMPLEMENTED_UNPRESSURED" if _exists(repo, cockpit) else "NOT_STARTED",
-        "evidence": [cockpit] if _exists(repo, cockpit) else [],
+        "posture": (
+            "BOUNDED_PASS"
+            if t7_pass
+            else "ADJUDICATED_NOT_MATCHED"
+            if _exists(repo, t7_result)
+            else "IMPLEMENTED_UNPRESSURED"
+            if _exists(repo, cockpit)
+            else "NOT_STARTED"
+        ),
+        "evidence": [p for p in (cockpit, t7_result) if _exists(repo, p)],
         "unresolved": (
-            ["operator projection requires pressure against current repository state"]
+            []
+            if t7_pass
+            else [f"cockpit pressure disposition: {t7_disposition or 'MISSING'}"]
+            if _exists(repo, t7_result)
+            else ["operator projection requires pressure against current repository state"]
             if _exists(repo, cockpit)
             else ["workcycle cockpit projection absent"]
         ),
