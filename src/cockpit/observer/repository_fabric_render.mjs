@@ -374,6 +374,9 @@ export function renderWorkcycleOperator(workcycle, runtimeError = null) {
   const horizon = horizonClosure.primary_horizon || {};
   const surfaces = horizonClosure.seven_surfaces || {};
   const loads = horizonClosure.six_load_dimensions || {};
+  const qualification = workcycle.qualification_readiness || {};
+  const boundedQualification = qualification.bounded_workcycle || {};
+  const selfMovingQualification = qualification.self_moving_workcycle || {};
   const surfaceRows = Object.entries(surfaces).map(([name, item]) => `
     <div class="workcycle-stat"><span>${escapeHtml(name)}</span><strong>${escapeHtml(item?.posture || 'UNRESOLVED')}</strong></div>
   `).join('');
@@ -414,6 +417,13 @@ export function renderWorkcycleOperator(workcycle, runtimeError = null) {
       <div class="workcycle-consequence">
         <p class="fabric-kicker">SIX LOAD DIMENSIONS</p>
         ${loadRows || '<span class="fabric-missing">LOAD POSTURE UNAVAILABLE</span>'}
+      </div>
+      <div class="workcycle-consequence">
+        <p class="fabric-kicker">QUALIFICATION READINESS</p>
+        <div class="workcycle-stat"><span>BOUNDED WORKCYCLE</span><strong>${escapeHtml(boundedQualification.qualification_readiness || 'UNRESOLVED')}</strong></div>
+        <div class="workcycle-stat"><span>SELF-MOVING WORKCYCLE</span><strong>${escapeHtml(selfMovingQualification.qualification_readiness || 'UNRESOLVED')}</strong></div>
+        <div class="workcycle-stat"><span>BOUNDED BLOCKERS</span><strong>${escapeHtml((boundedQualification.blockers || []).join(' | ') || 'NONE')}</strong></div>
+        <div class="workcycle-stat"><span>SELF-MOVING BLOCKERS</span><strong>${escapeHtml((selfMovingQualification.blockers || []).join(' | ') || 'NONE')}</strong></div>
       </div>
       <div class="workcycle-consequence">
         <p class="fabric-kicker">LATEST CONSEQUENCE</p>
@@ -464,6 +474,9 @@ export function renderWorkcycleRail(
   const currentUnresolved = workcycle.current_unresolved || [];
   const horizonClosure = workcycle.temporal_horizon_closure || {};
   const primaryHorizon = horizonClosure.primary_horizon || {};
+  const qualification = workcycle.qualification_readiness || {};
+  const boundedQualification = qualification.bounded_workcycle || {};
+  const selfMovingQualification = qualification.self_moving_workcycle || {};
   const seatEcology = workcycle.seat_ecology || {};
   const runtimeSeats = seatEcology.registered_runtime_seats || [];
   const durableSeats = seatEcology.durable_seats || [];
@@ -523,6 +536,12 @@ export function renderWorkcycleRail(
             horizonClosure.currentness_posture || 'UNRESOLVED',
             horizonClosure.upcoming_work_posture || 'UNRESOLVED',
           ].join(' / '),
+        )}</dd></div>
+        <div><dt>BOUNDED QUALIFICATION</dt><dd>${escapeHtml(
+          boundedQualification.qualification_readiness || 'UNRESOLVED'
+        )}</dd></div>
+        <div><dt>SELF-MOVING QUALIFICATION</dt><dd>${escapeHtml(
+          selfMovingQualification.qualification_readiness || 'UNRESOLVED'
         )}</dd></div>
       </dl>
       <div class="workcycle-seat-ecology">
