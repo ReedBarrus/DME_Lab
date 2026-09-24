@@ -12,7 +12,7 @@ RECORD_TYPE = "TYPED_DISTINCTION_RECORD_V0"
 CELL_ID = "DISTINCTION_PATH_IDENTITY_NE_CONTENT_IDENTITY_001"
 CELL_PATH = "src/cockpit/observer/repository_fabric_app.mjs"
 REGISTRY_RELATIVE_PATH = Path(
-    "docs/campaigns/semantic_continuity_operative_atlas_001/"
+    "docs/campaigns/sca001/"
     "TYPED_DISTINCTION_REGISTRY_V0.jsonl"
 )
 DEFAULT_OUTPUT = Path("generated/typed_distinction_registry_v0.json")
