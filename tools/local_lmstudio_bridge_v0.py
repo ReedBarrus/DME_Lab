@@ -165,6 +165,40 @@ def fetch_remote(policy: dict[str, Any]) -> str:
     return head
 
 
+def resolve_git_blob_sha(ref: str, path: str) -> str:
+    """Resolve one immutable repo path to its exact Git blob object id."""
+
+    if not SHA40_RE.fullmatch(ref):
+        raise ValueError("source_ref must be an exact 40-character lowercase commit SHA")
+    if path.startswith("/") or "\\" in path or ".." in Path(path).parts:
+        raise ValueError("unsafe repo-relative path")
+
+    proc = run_git("ls-tree", "-z", ref, "--", path)
+    entries = [entry for entry in proc.stdout.split(b"\x00") if entry]
+    if len(entries) != 1:
+        raise RuntimeError(
+            f"immutable prompt path resolved to {len(entries)} objects: {path}"
+        )
+
+    try:
+        metadata, resolved_path = entries[0].split(b"\t", 1)
+        _mode, object_type, blob_sha = metadata.decode("ascii").split()
+        resolved_path_text = resolved_path.decode("utf-8")
+    except Exception as e:
+        raise RuntimeError(f"unexpected ls-tree response for {path!r}") from e
+
+    if object_type != "blob":
+        raise RuntimeError(f"immutable prompt path is not a blob: {path}")
+    if resolved_path_text != path:
+        raise RuntimeError(
+            f"immutable prompt path mismatch: requested={path!r}, resolved={resolved_path_text!r}"
+        )
+    if not SHA40_RE.fullmatch(blob_sha):
+        raise RuntimeError(f"unexpected blob SHA for {path!r}: {blob_sha!r}")
+
+    return blob_sha
+
+
 def git_show(ref: str, path: str) -> bytes:
     """Read one immutable blob without constructing a long ref:path argument.
 
@@ -222,25 +256,29 @@ def list_request_paths(remote_head: str, policy: dict[str, Any]) -> list[str]:
 def parse_manifest(raw: bytes) -> dict[str, Any]:
     manifest = json.loads(raw.decode("utf-8"))
 
-    allowed_keys = {
+    schema_version = manifest.get("schema_version")
+    base_keys = {
         "schema_version",
         "request_id",
         "enabled",
         "source_ref",
         "input_path",
-        "input_sha256",
         "model",
         "temperature",
         "max_tokens",
         "purpose",
     }
+    if schema_version == "LOCAL_INVOCATION_REQUEST_V0":
+        allowed_keys = base_keys | {"input_sha256"}
+    elif schema_version == "LOCAL_INVOCATION_REQUEST_V0_1":
+        allowed_keys = base_keys | {"input_blob_sha"}
+    else:
+        raise ValueError("unsupported schema_version")
+
     if set(manifest) != allowed_keys:
         extra = sorted(set(manifest) - allowed_keys)
         missing = sorted(allowed_keys - set(manifest))
         raise ValueError(f"manifest key mismatch; extra={extra}, missing={missing}")
-
-    if manifest["schema_version"] != "LOCAL_INVOCATION_REQUEST_V0":
-        raise ValueError("unsupported schema_version")
 
     request_id = manifest["request_id"]
     if not isinstance(request_id, str) or not REQUEST_ID_RE.fullmatch(request_id):
@@ -252,8 +290,12 @@ def parse_manifest(raw: bytes) -> dict[str, Any]:
     if not isinstance(manifest["source_ref"], str) or not SHA40_RE.fullmatch(manifest["source_ref"]):
         raise ValueError("source_ref must be exact 40-char lowercase SHA")
 
-    if not isinstance(manifest["input_sha256"], str) or not SHA256_RE.fullmatch(manifest["input_sha256"]):
-        raise ValueError("invalid input_sha256")
+    if schema_version == "LOCAL_INVOCATION_REQUEST_V0":
+        if not isinstance(manifest["input_sha256"], str) or not SHA256_RE.fullmatch(manifest["input_sha256"]):
+            raise ValueError("invalid input_sha256")
+    else:
+        if not isinstance(manifest["input_blob_sha"], str) or not SHA40_RE.fullmatch(manifest["input_blob_sha"]):
+            raise ValueError("invalid input_blob_sha")
 
     if not isinstance(manifest["temperature"], (int, float)):
         raise ValueError("temperature must be numeric")
@@ -323,6 +365,9 @@ def write_invocation_receipt(
         "request_manifest_sha256": manifest_sha256,
         "source_ref": str(manifest["source_ref"]),
         "input_path": str(manifest["input_path"]),
+        "input_blob_sha": resolve_git_blob_sha(
+            str(manifest["source_ref"]), str(manifest["input_path"])
+        ),
         "input_sha256": sha256_bytes(prompt_bytes),
         "model_requested": str(manifest["model"]),
         "authorized_at_utc": now_iso(),
@@ -475,7 +520,11 @@ def approve(manifest: dict[str, Any], prompt_bytes: bytes) -> bool:
     print(f"model      : {manifest['model']}")
     print(f"source_ref : {manifest['source_ref']}")
     print(f"input_path : {manifest['input_path']}")
-    print(f"input_sha  : {manifest['input_sha256']}")
+    if manifest["schema_version"] == "LOCAL_INVOCATION_REQUEST_V0":
+        print(f"input_sha  : {manifest['input_sha256']}")
+    else:
+        print(f"input_blob : {manifest['input_blob_sha']}")
+        print(f"input_sha  : {sha256_bytes(prompt_bytes)}")
     print(f"bytes      : {len(prompt_bytes)}")
     print(f"temperature: {manifest['temperature']}")
     print(f"max_tokens : {manifest['max_tokens']}")
@@ -529,13 +578,35 @@ def process_once(
             print(f"[REJECT] {request_path}: cannot read immutable prompt: {e}")
             continue
 
-        identity_rejection = input_identity_rejection_witness(
-            manifest,
-            prompt_bytes,
-        )
-        if identity_rejection is not None:
-            rejection_witness_sink(identity_rejection)
-            continue
+        if manifest["schema_version"] == "LOCAL_INVOCATION_REQUEST_V0":
+            identity_rejection = input_identity_rejection_witness(
+                manifest,
+                prompt_bytes,
+            )
+            if identity_rejection is not None:
+                rejection_witness_sink(identity_rejection)
+                continue
+        else:
+            observed_blob_sha = resolve_git_blob_sha(
+                str(manifest["source_ref"]),
+                str(manifest["input_path"]),
+            )
+            if observed_blob_sha != str(manifest["input_blob_sha"]):
+                rejection_witness_sink(
+                    {
+                        "object_type": "LOCAL_LMSTUDIO_INPUT_BLOB_IDENTITY_REJECTION_V0_1",
+                        "request_id": str(manifest["request_id"]),
+                        "declared_input_blob_sha": str(manifest["input_blob_sha"]),
+                        "observed_input_blob_sha": observed_blob_sha,
+                        "observed_input_sha256": sha256_bytes(prompt_bytes),
+                        "executor_sha256": sha256_bytes(Path(__file__).resolve().read_bytes()),
+                        "policy_sha256": sha256_bytes(POLICY_PATH.read_bytes()),
+                        "decision": "REJECT",
+                        "reason": "INPUT_BLOB_SHA_MISMATCH",
+                        "lmstudio_invoked": False,
+                    }
+                )
+                continue
 
         if len(prompt_bytes) > int(policy["max_prompt_bytes"]):
             print(f"[REJECT] {request_path}: prompt exceeds size ceiling")
