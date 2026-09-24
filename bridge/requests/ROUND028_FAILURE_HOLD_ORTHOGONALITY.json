@@ -1,0 +1,12 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0",
+  "request_id": "ROUND028_FAILURE_HOLD_ORTHOGONALITY",
+  "enabled": true,
+  "source_ref": "5f08b404ac1d471356bfd941ecc2fdd9bc94303d",
+  "input_path": "bridge/prompts/ROUND028_FAILURE_HOLD_ORTHOGONALITY_READY_TO_SEND.md",
+  "input_sha256": "4584ec0e1ecb8738c24717d872b5ed4b0e7c75487cd13b7d161457bcee534014",
+  "model": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 512,
+  "purpose": "Pressure failure/hold posture as an orthogonal coordinate to seat lifecycle, authority state, and scientific standing."
+}
