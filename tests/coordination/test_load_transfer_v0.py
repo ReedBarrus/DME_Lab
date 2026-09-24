@@ -348,6 +348,15 @@ class LoadTransferV0Tests(unittest.TestCase):
         with self.assertRaises(lt.CoordinationError):
             lt.validate_handoff(mutated_receipt)
 
+    def test_artifact_descriptor_detects_byte_mutation(self):
+        descriptor = lt.artifact_descriptor(
+            "docs/campaigns/load_transfer_001/pressure_runs/O1.md",
+            b"original\n",
+        )
+        lt.verify_artifact_descriptor(descriptor, b"original\n")
+        with self.assertRaises(lt.CoordinationError):
+            lt.verify_artifact_descriptor(descriptor, b"mutated\n")
+
     def test_t15_fresh_reconstruction_from_serialized_repo_state_succeeds(self):
         frame = sealed_frame()
         claimed = lt.claim_work_item(
