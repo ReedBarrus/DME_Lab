@@ -1,9 +1,9 @@
 $ErrorActionPreference = "Stop"
 
-$ExpectedInstalledBridgePrestateSha256 = "0241a20a948119ed710d485d29f04bad284b965faa245ca5d9b38f3a84aad879"
+$ExpectedInstalledBridgePrestateSha256 = "98a380044712bfd04e4f64c1a1982dbb0662aa3f646beda3dfdc882ab7ef8918"
 $ExpectedAuthorityModuleSha256 = "bfbbb929f0a0b55a745b5095fd2abd16541757b88f3151d69e7e7bb325e57303"
 $ExpectedPolicySha256 = "65f2ce8c3ce1cd5147940ff851cb61a9f04b7db220dadb4c77e1d5352e28200b"
-$ExpectedCandidateBridgeSha256 = "98a380044712bfd04e4f64c1a1982dbb0662aa3f646beda3dfdc882ab7ef8918"
+$ExpectedCandidateBridgeSha256 = "0241a20a948119ed710d485d29f04bad284b965faa245ca5d9b38f3a84aad879"
 
 $TrustRoot = Join-Path $env:USERPROFILE ".dme_lab_bridge"
 $InstalledBridge = Join-Path $TrustRoot "bridge.py"
