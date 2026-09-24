@@ -162,13 +162,22 @@ def derive_campaign_progress(repo_root: str | Path) -> dict[str, Any]:
         "unresolved": [] if review_pass else ["compression consequence not matched"],
     }
 
-    repair = "docs/campaigns/workcycle_stabilization_001/state/REPAIR_ROUTING_PRESSURE_RESULT_001.json"
+    repair_spec = "docs/campaigns/workcycle_stabilization_001/state/REPAIR_ROUTING_PRESSURE_SPEC_001.json"
+    repair_result = "docs/campaigns/workcycle_stabilization_001/state/REPAIR_ROUTING_PRESSURE_ADJUDICATION_RESULT_001.md"
     cells["T6"] = {
-        "posture": "IMPLEMENTED_UNPRESSURED" if _exists(repo, repair) else "NOT_STARTED",
-        "evidence": [repair] if _exists(repo, repair) else [],
+        "posture": (
+            "BOUNDED_PASS"
+            if _exists(repo, repair_result)
+            else "IMPLEMENTED_UNPRESSURED"
+            if _exists(repo, repair_spec)
+            else "NOT_STARTED"
+        ),
+        "evidence": [p for p in (repair_spec, repair_result) if _exists(repo, p)],
         "unresolved": (
-            ["typed repair routing requires independent pressure"]
-            if _exists(repo, repair)
+            []
+            if _exists(repo, repair_result)
+            else ["typed repair routing requires independent pressure"]
+            if _exists(repo, repair_spec)
             else ["typed repair routing not yet implemented"]
         ),
     }
