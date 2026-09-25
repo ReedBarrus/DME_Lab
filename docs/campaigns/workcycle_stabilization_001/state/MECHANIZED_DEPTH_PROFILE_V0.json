@@ -28,9 +28,10 @@
       "evidence": "ATOMIC_ADMISSION_MATCHED"
     },
     "authority_verification": {
-      "posture": "IMPLEMENTED_UNPRESSURED",
-      "pressure": "AUTHORITY_BINDING_PRESSURE_001",
-      "claim": "Read-only source-bound current-authority verification exists but has not yet been independently witnessed/adjudicated."
+      "posture": "QUALIFIED",
+      "evidence": "AUTHORITY_BINDING_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/AUTHORITY_BINDING_PRESSURE_RESULT_001.md",
+      "claim": "One exact locally issued authority envelope was read-only verified against current single-process local authority state as ACTIVE with one remaining use at bound principal/request/input/model/executor/policy coordinates."
     },
     "thread_contention": {
       "posture": "QUALIFIED",
@@ -99,9 +100,9 @@
     }
   },
   "next_load_bearing_coordinate": {
-    "coordinate": "authority_verification",
-    "pressure": "AUTHORITY_BINDING_PRESSURE_001",
-    "selection_basis": "Atomic admission currently carries caller-supplied authority testimony. A read-only verifier against current local authority state is staged and directly removes that load-bearing ambiguity."
+    "coordinate": "successor_identity_binding",
+    "pressure": "SUCCESSOR_IDENTITY_CONSERVATION_PRESSURE_001",
+    "selection_basis": "Authority verification is now matched. The nearest load-bearing unpressured relation is deterministic successor candidate identity derived from exact basis/work/reconciliation/posture coordinates."
   },
   "downstream_frontier": [
     "pressure deterministic successor identity conservation",
