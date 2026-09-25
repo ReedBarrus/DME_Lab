@@ -297,9 +297,21 @@ def derive_next_work_posture(
     standing = qualification.get("scientific_standing")
     application_status = application.get("application_status")
     effect_class = consequence.get("effect_class")
+    reconciliation_disposition = (
+        None if reconciliation is None else reconciliation.get("disposition")
+    )
 
     reason = ""
-    if (
+    if reconciliation_disposition == "SATISFIED":
+        posture = "CLOSE_BASIS"
+        reason = "fresh basis reconciliation is satisfied"
+    elif reconciliation_disposition == "INVALIDATED":
+        posture = "HOLD_NO_JUSTIFIED_WORK"
+        reason = "fresh basis reconciliation invalidates the active basis"
+    elif reconciliation_disposition in {"PARTIALLY_SATISFIED", "REFRAMED"}:
+        posture = "RESOLVE_LOAD_BEARING_GAP"
+        reason = "fresh basis reconciliation leaves one justified pressure"
+    elif (
         application_status == "APPLIED"
         and consequence.get("required_if_applied") is True
         and effect_class in {None, "NOT_YET_OBSERVABLE"}
@@ -313,9 +325,6 @@ def derive_next_work_posture(
     ):
         posture = "APPLY_QUALIFIED_RESULT"
         reason = "qualified result is application-eligible"
-    elif reconciliation is not None and reconciliation.get("disposition") == "SATISFIED":
-        posture = "CLOSE_BASIS"
-        reason = "basis reconciliation is satisfied"
     elif basis.get("basis_status") == "SATISFIED":
         posture = "CLOSE_BASIS"
         reason = "basis is already satisfied"
