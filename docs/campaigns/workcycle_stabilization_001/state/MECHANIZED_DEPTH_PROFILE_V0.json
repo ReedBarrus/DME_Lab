@@ -100,15 +100,13 @@
       "posture": "UNTESTED"
     },
     "second_successor_mechanically_derived": {
-      "posture": "WITNESSED_AWAITING_ADJUDICATION",
-      "implementation": "src/coordination/basis_workcycle_v1.py::derive_successor_candidate",
-      "observer": "tools/observe_second_successor_from_reconciliation_v0.py",
-      "witness": "second_successor_from_reconciliation_observation.json",
-      "witness_source_ref": "4d5b2cd824885201b73ca694f7dcf1817a09f143",
-      "witness_transport_ref": "1dda81cc05f43e1cc6c9627f8a438a947eb62b59",
-      "adjudication_packet": "docs/campaigns/workcycle_stabilization_001/SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-      "observed": "STILL_BLOCKED routes to OBSERVE_APPLICATION_CONSEQUENCE as expected; PARTIALLY_SATISFIED, SATISFIED, and INVALIDATED also route to OBSERVE_APPLICATION_CONSEQUENCE. Partial successor identity still binds the reconciliation next-pressure basis.",
-      "claim": "No second-successor standing; independent adjudication must determine whether the composition is FRACTURED."
+      "posture": "FRACTURE_FROZEN_REPAIR_READY",
+      "fracture_evidence": "SECOND_SUCCESSOR_FROM_RECONCILIATION_FRACTURED",
+      "fracture_result": "docs/campaigns/workcycle_stabilization_001/pressure_runs/SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_RESULT_001.md",
+      "implementation": "src/coordination/basis_workcycle_v1.py::derive_next_work_posture + derive_successor_candidate",
+      "repair": "Fresh reconciliation now controls next-work posture for SATISFIED, INVALIDATED, PARTIALLY_SATISFIED, and REFRAMED; STILL_BLOCKED retains prior application/consequence-state fallback.",
+      "repair_packet": "docs/campaigns/workcycle_stabilization_001/SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_001_READY_TO_RUN.md",
+      "claim": "No repaired second-successor standing; exact runtime repressure required."
     },
     "repeated_metabolic_loop": {
       "posture": "UNTESTED",
@@ -151,13 +149,12 @@
   },
   "next_load_bearing_coordinate": {
     "coordinate": "second_successor_mechanically_derived",
-    "pressure": "SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_001_ADJUDICATION",
-    "selection_basis": "A clean witness-only transport preserves the apparent reconciliation-to-successor composition fracture. Independent adjudication is required before repair."
+    "pressure": "SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_001",
+    "selection_basis": "The fracture is independently adjudicated and frozen. One narrow precedence repair is staged; the same composition matrix must be reobserved before any stronger claim."
   },
   "downstream_frontier": [
-    "independently adjudicate second-successor composition fracture",
-    "repair only the exact precedence seam if FRACTURED",
-    "repressure second successor composition",
+    "repressure repaired fresh reconciliation -> next posture -> exact second successor",
+    "independently adjudicate repaired composition if witnessed cleanly",
     "repeat metabolic loop",
     "seat consequential/meta-feedback",
     "memory compression/reconstruction under persistent load",
