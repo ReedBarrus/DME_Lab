@@ -26,6 +26,14 @@ ATOMIC_ADMISSION_RESULT = Path(
     "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
     "ATOMIC_ADMISSION_PRESSURE_RESULT_001.md"
 )
+AUTHORITY_BINDING_RESULT = Path(
+    "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
+    "AUTHORITY_BINDING_PRESSURE_RESULT_001.md"
+)
+REPEATED_METABOLIC_LOOP_RESULT = Path(
+    "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
+    "REPEATED_METABOLIC_LOOP_PRESSURE_RESULT_001.md"
+)
 
 
 def _markdown_field(path: Path, field: str) -> str | None:
@@ -66,6 +74,22 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
     admission_disposition = _markdown_field(admission_path, "DISPOSITION")
     admission_ready = admission_disposition == "ATOMIC_ADMISSION_MATCHED"
 
+    authority_binding_path = repo / AUTHORITY_BINDING_RESULT
+    authority_binding_disposition = _markdown_field(
+        authority_binding_path, "DISPOSITION"
+    )
+    authority_binding_ready = (
+        authority_binding_disposition == "AUTHORITY_BINDING_MATCHED"
+    )
+
+    metabolic_loop_path = repo / REPEATED_METABOLIC_LOOP_RESULT
+    metabolic_loop_disposition = _markdown_field(
+        metabolic_loop_path, "DISPOSITION"
+    )
+    metabolic_loop_ready = (
+        metabolic_loop_disposition == "REPEATED_METABOLIC_LOOP_MATCHED"
+    )
+
     bounded_blockers: list[str] = []
     if not bounded_cells_ready:
         for name in [f"T{i}" for i in range(8)]:
@@ -84,6 +108,14 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
     if not admission_ready:
         self_moving_blockers.append(
             f"ATOMIC_ADMISSION:{admission_disposition or 'UNFROZEN'}"
+        )
+    if not authority_binding_ready:
+        self_moving_blockers.append(
+            f"AUTHORITY_BINDING:{authority_binding_disposition or 'UNFROZEN'}"
+        )
+    if not metabolic_loop_ready:
+        self_moving_blockers.append(
+            f"REPEATED_METABOLIC_LOOP:{metabolic_loop_disposition or 'UNFROZEN'}"
         )
 
     return {
@@ -104,6 +136,16 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
             "result_path": ATOMIC_ADMISSION_RESULT.as_posix(),
             "disposition": admission_disposition,
             "ready": admission_ready,
+        },
+        "authority_binding": {
+            "result_path": AUTHORITY_BINDING_RESULT.as_posix(),
+            "disposition": authority_binding_disposition,
+            "ready": authority_binding_ready,
+        },
+        "repeated_metabolic_loop": {
+            "result_path": REPEATED_METABOLIC_LOOP_RESULT.as_posix(),
+            "disposition": metabolic_loop_disposition,
+            "ready": metabolic_loop_ready,
         },
         "bounded_workcycle": {
             "qualification_readiness": (
