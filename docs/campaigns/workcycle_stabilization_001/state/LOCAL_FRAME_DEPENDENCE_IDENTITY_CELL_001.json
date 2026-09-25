@@ -18,7 +18,7 @@
       "docs/campaigns/workcycle_stabilization_001/PRESSURE_JUSTIFICATION_001_READY_TO_SEND.md"
     ],
     "desired_consequence": {
-      "statement": "One bounded specimen distinguishes a merely source-supported relation from a candidate semantic-reconstruction dependence by observed consequence under an evidence-aperture perturbation."
+      "statement": "One bounded matched-pair specimen distinguishes a merely source-supported relation from a candidate reconstruction dependence by an observed difference on the declared SEMANTIC_RECONSTRUCTION measure under a controlled evidence-aperture perturbation."
     },
     "current_obstruction": {
       "statement": "Without perturbation evidence, Atlas cannot know whether a relation actually bears continuity load or is only correlated/redundant support, weakening decomposition and horizon relevance."
@@ -37,9 +37,9 @@
     },
     "selection_basis": "A workcycle evidence edge should not acquire dependence standing merely because it exists; dependence requires observed continuity difference under a bounded perturbation.",
     "expected_information_gain": {
-      "statement": "Whether withholding one exact related evidence object changes fresh-seat semantic reconstruction of the same addressed workcycle subject."
+      "statement": "Whether withholding one exact related evidence object changes the declared semantic-reconstruction measure for the same addressed workcycle subject under the same observable inference contract."
     },
-    "application_dependency": "If a bounded dependence candidate is supported, Atlas can represent dependency standing with an explicit load dimension and intervention basis rather than treating every relation as load-bearing.",
+    "application_dependency": "If the matched-pair observation strengthens a bounded reconstruction-dependence candidate, Atlas may represent dependency standing as subject + dependency target + declared load dimension + evidence aperture + scope + temporal coordinate + standing, while retaining the generic relation separately.",
     "stop_if_resolved_by_existing_evidence": true,
     "priority_basis": "BLOCKS_RECONSTRUCTION",
     "load_bearing_effects": [
@@ -65,13 +65,13 @@
       "INFER_CAUSATION_FROM_TEMPORAL_ORDER"
     ],
     "success_condition": {
-      "statement": "Matched fresh reconstruction runs isolate one evidence-aperture perturbation and an independent evaluator can classify continuity as unchanged, degraded, lost, multi-load/confounded, or unresolved."
+      "statement": "Matched fresh reconstruction runs differ only in the declared evidence aperture across all required observable coordinates, and an independent evaluator can classify one observed matched-pair difference on the declared SEMANTIC_RECONSTRUCTION measure."
     },
     "failure_condition": {
-      "statement": "The two runs differ in more than the declared evidence aperture, or the evaluator cannot localize any observed difference to the declared semantic-reconstruction load."
+      "statement": "Required observable inference coordinates differ, or the runs cannot support a bounded comparison of the declared semantic-reconstruction measure."
     },
     "unresolved_condition": {
-      "statement": "The perturbation outcome is not sufficient to distinguish redundancy, dependence, confounding, or reconstruction noise."
+      "statement": "The single matched pair is insufficient to distinguish redundancy, candidate reconstruction dependence, confounding, or residual inference variance."
     },
     "pressure_budget": {
       "max_rounds": 1,
@@ -91,22 +91,24 @@
     "authority_effect": "NONE",
     "qualification_basis": "",
     "unresolved_load_bearing_questions": [
-      "Does the candidate evidence relation bear SEMANTIC_RECONSTRUCTION load for this exact subject and scope?"
+      "Does the candidate evidence relation affect the declared SEMANTIC_RECONSTRUCTION measure for this exact subject, aperture, scope, source ref, and matched observable inference regime?",
+      "Orthogonal load dimensions are not evaluated.",
+      "Reproducibility is not established by one A/B pair."
     ]
   },
   "application": {
     "required": true,
     "target_surface": "ATLAS",
     "proposed_change": {
-      "statement": "Represent any supported local dependence as subject + dependency target + declared load dimension + scope + temporal coordinate + standing, while retaining the underlying generic relation separately."
+      "statement": "Represent any supported candidate reconstruction dependence as subject + dependency target + declared load dimension + evidence aperture + scope + temporal coordinate + standing, while retaining the underlying generic relation separately."
     },
     "executable_change_ref": null,
     "application_status": "NOT_YET_ELIGIBLE",
-    "withholding_basis": "Requires fresh matched reconstruction and independent adjudication."
+    "withholding_basis": "Requires one clean matched-pair observation and independent adjudication; reproducibility and orthogonal load exclusion remain unearned."
   },
   "consequence_observation": {
     "required_if_applied": true,
-    "expected_effect": "Future Atlas decomposition can distinguish relation existence from intervention-supported load-bearing dependence.",
+    "expected_effect": "Future Atlas decomposition can distinguish generic relation existence from bounded evidence-aperture reconstruction dependence without claiming whole-system existential dependence.",
     "observed_effect": null,
     "effect_class": "NOT_YET_OBSERVABLE",
     "evidence_refs": [],
