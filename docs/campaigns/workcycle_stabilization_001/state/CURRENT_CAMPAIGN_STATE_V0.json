@@ -92,7 +92,8 @@
       "docs/campaigns/workcycle_stabilization_001/pressure_runs/ONE_SUCCESSOR_CONTINUATION_PRESSURE_RESULT_001.md",
       "docs/campaigns/workcycle_stabilization_001/state/FOLLOW_BEHIND_ADVERSARIAL_CLAIM_CORRECTION_001.md",
       "docs/campaigns/workcycle_stabilization_001/pressure_runs/ATOMIC_ADMISSION_PRESSURE_RESULT_001.md",
-      "docs/campaigns/workcycle_stabilization_001/AUTHORITY_BINDING_PRESSURE_001_READY_TO_RUN.md"
+      "docs/campaigns/workcycle_stabilization_001/AUTHORITY_BINDING_PRESSURE_001_READY_TO_RUN.md",
+      "docs/campaigns/workcycle_stabilization_001/state/MECHANIZED_DEPTH_PROFILE_V0.json"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
@@ -159,5 +160,6 @@
       "reason": "Atomic replace does not establish fsync/directory durability or power-loss safety.",
       "priority": "DEFERRED_NONBLOCKING"
     }
-  ]
+  ],
+  "mechanized_depth_profile": "docs/campaigns/workcycle_stabilization_001/state/MECHANIZED_DEPTH_PROFILE_V0.json"
 }
