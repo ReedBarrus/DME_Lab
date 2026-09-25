@@ -50,6 +50,10 @@ INVOCATION_RESULT_WITNESS_RESULT = Path(
     "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
     "INVOCATION_RESULT_WITNESS_PRESSURE_RESULT_001.md"
 )
+INVOCATION_RESULT_SETTLEMENT_RESULT = Path(
+    "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
+    "INVOCATION_RESULT_SETTLEMENT_PRESSURE_RESULT_001.md"
+)
 REPEATED_METABOLIC_LOOP_RESULT = Path(
     "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
     "REPEATED_METABOLIC_LOOP_PRESSURE_RESULT_001.md"
@@ -145,6 +149,15 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
         == "INVOCATION_RESULT_WITNESS_MATCHED"
     )
 
+    invocation_result_settlement_path = repo / INVOCATION_RESULT_SETTLEMENT_RESULT
+    invocation_result_settlement_disposition = _markdown_field(
+        invocation_result_settlement_path, "DISPOSITION"
+    )
+    invocation_result_settlement_ready = (
+        invocation_result_settlement_disposition
+        == "INVOCATION_RESULT_SETTLEMENT_MATCHED"
+    )
+
     metabolic_loop_path = repo / REPEATED_METABOLIC_LOOP_RESULT
     metabolic_loop_disposition = _markdown_field(
         metabolic_loop_path, "DISPOSITION"
@@ -199,6 +212,11 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
             "INVOCATION_RESULT_WITNESS:"
             + (invocation_result_witness_disposition or "UNFROZEN")
         )
+    if not invocation_result_settlement_ready:
+        self_moving_blockers.append(
+            "INVOCATION_RESULT_SETTLEMENT:"
+            + (invocation_result_settlement_disposition or "UNFROZEN")
+        )
     if not metabolic_loop_ready:
         self_moving_blockers.append(
             f"REPEATED_METABOLIC_LOOP:{metabolic_loop_disposition or 'UNFROZEN'}"
@@ -252,6 +270,11 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
             "result_path": INVOCATION_RESULT_WITNESS_RESULT.as_posix(),
             "disposition": invocation_result_witness_disposition,
             "ready": invocation_result_witness_ready,
+        },
+        "invocation_result_settlement": {
+            "result_path": INVOCATION_RESULT_SETTLEMENT_RESULT.as_posix(),
+            "disposition": invocation_result_settlement_disposition,
+            "ready": invocation_result_settlement_ready,
         },
         "repeated_metabolic_loop": {
             "result_path": REPEATED_METABOLIC_LOOP_RESULT.as_posix(),
