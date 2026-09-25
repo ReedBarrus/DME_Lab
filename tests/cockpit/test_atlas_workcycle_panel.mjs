@@ -299,3 +299,50 @@ test('post-control commit triggers immediate runtime snapshot refresh', async ()
   assert.match(appSource, /\/runtime\/snapshot\.json/);
   assert.match(appSource, /function applyRuntimeSnapshot\(/);
 });
+
+
+test('primary Atlas defers iframe navigation until runtime binding', async () => {
+  const {readFile} = await import('node:fs/promises');
+  const [indexSource, landingSource] = await Promise.all([
+    readFile(
+      new URL('../../src/cockpit/observer/index.html', import.meta.url),
+      'utf8',
+    ),
+    readFile(
+      new URL('../../src/cockpit/observer/atlas_landing.mjs', import.meta.url),
+      'utf8',
+    ),
+  ]);
+
+  assert.match(indexSource, /id="atlas-primary-frame"[\s\S]*data-src="\.\/repository_fabric\.html"/);
+  assert.doesNotMatch(
+    indexSource,
+    /id="atlas-primary-frame"[\s\S]{0,160}\ssrc="\.\/repository_fabric\.html"/,
+  );
+  assert.match(landingSource, /atlasFrame\.dataset\.src/);
+  assert.match(landingSource, /atlasFrame\.src\s*=\s*atlasFrameUrlWithRuntime/);
+});
+
+test('runtime snapshots patch workcycle surfaces without reconstructing Atlas world', async () => {
+  const {readFile} = await import('node:fs/promises');
+  const appSource = await readFile(
+    new URL('../../src/cockpit/observer/repository_fabric_app.mjs', import.meta.url),
+    'utf8',
+  );
+
+  const applyStart = appSource.indexOf('function applyRuntimeSnapshot(');
+  const applyEnd = appSource.indexOf('\nfunction runtimeSnapshotUrl(', applyStart);
+  assert.ok(applyStart >= 0 && applyEnd > applyStart);
+  const applySource = appSource.slice(applyStart, applyEnd);
+  assert.match(applySource, /patchWorkcycleProjection\(\)/);
+  assert.doesNotMatch(applySource, /\brender\(\)/);
+
+  const patchStart = appSource.indexOf('function patchWorkcycleProjection(');
+  const patchEnd = appSource.indexOf('\nfunction applyRuntimeSnapshot(', patchStart);
+  assert.ok(patchStart >= 0 && patchEnd > patchStart);
+  const patchSource = appSource.slice(patchStart, patchEnd);
+  assert.match(patchSource, /renderWorkcycleRail/);
+  assert.match(patchSource, /renderWorkcycleOperator/);
+  assert.doesNotMatch(patchSource, /model\s*=/);
+  assert.doesNotMatch(patchSource, /geometricField\s*=/);
+});
