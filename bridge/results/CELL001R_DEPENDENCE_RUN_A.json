@@ -1,0 +1,60 @@
+{
+  "object_type": "LOCAL_LMSTUDIO_INVOCATION_WITNESS_V0",
+  "executor_path": "C:\\Users\\Admin\\.dme_lab_bridge\\bridge.py",
+  "executor_sha256": "ed17044261a5510daa10f2fb92de36aea89170115c334c80df665e719c775008",
+  "policy_path": "C:\\Users\\Admin\\.dme_lab_bridge\\policy.json",
+  "policy_sha256": "65f2ce8c3ce1cd5147940ff851cb61a9f04b7db220dadb4c77e1d5352e28200b",
+  "request_id": "CELL001R_DEPENDENCE_RUN_A",
+  "purpose": "Cell 001R full-aperture reconstruction under externally attested matched local invocation coordinates.",
+  "request_manifest_path": "bridge/requests/CELL001R_DEPENDENCE_RUN_A.json",
+  "request_manifest_sha256": "f09e898cd1f18df3de035111f08d44186569453e8aa08d246f1ff4cfc631b391",
+  "source_ref": "9cf813142ffd8b72ec1accd99b69208c13d5de3a",
+  "input_path": "bridge/prompts/CELL001R_DEPENDENCE_RUN_A_READY_TO_SEND.md",
+  "input_blob_sha": "df5744c4e7f39f82cd97d5584a3bff4c701dd376",
+  "input_sha256": "7be745c4ac07c615e2737d0241b8d42850bf276cf3d73c3a6639cc727504618c",
+  "model_requested": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 1800,
+  "lmstudio_url": "http://127.0.0.1:1234/v1/chat/completions",
+  "http_status": 200,
+  "observed_started_at_utc": "2026-09-25T03:08:05.285353+00:00",
+  "observed_finished_at_utc": "2026-09-25T03:10:57.948412+00:00",
+  "messages_count": 1,
+  "tools_supplied": false,
+  "previous_response_state_supplied": false,
+  "repository_context_supplied_to_model": false,
+  "connectors_supplied_to_model": false,
+  "external_retrieval_supplied_to_model": false,
+  "request_body_sha256": "7302ad9de8ba58abbdd602739d2d86e8c48f46d762305833860c0209db8d44fe",
+  "response_body_sha256": "6e8681a4d37ca304d1ffc176a72a9259db59f90f27ecd8acdbcd1205721ed231",
+  "assistant_text": "<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Campaign identity is WORKCYCLE_STABILIZATION_001, as declared in the workflow unit and campaign document.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Campaign target is to establish a bounded, observable, repairable campaign→decomposition→seat-work lifecycle that reduces contextual burden while preserving reconstructability, as stated in the campaign document.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Relational horizon role is defined by the pressure justification as load-bearing, specifically concerning the coordination burden of overlapping prose artifacts and the need to preserve campaign, decomposition, justification, application, consequence, and stopping semantics without redundant documentation.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: The work relates to the campaign through the workflow unit's identity linking it to WORKCYCLE_STABILIZATION_001 and its basis identifying it as part of the compression workload within that campaign.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Basis governed pressure justification is grounded in the need to reduce seat reconstruction and coordination burden through compression, with the active workcycle represented by overlapping hot prose increasing these burdens.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Distinction vs task is maintained as distinctions (like SOURCE RETENTION != HOT CONTEXT RETENTION) make structure legible, while tasks are consequence-oriented applications of distinctions to bounded regions.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Expected vs observed consequence shows that the expected effect is future seats reconstructing the same bounded workcycle from materially less hot context while exact challenge handles remain available, and the observed effect is not yet observable as the compression has not been executed.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Work completion vs campaign advance indicates that work completion does not automatically equate to campaign progress; progress requires observed consequence evaluated against the campaign/horizon envelope, which has not yet occurred.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Qualification vs authority shows that qualification is based on independent reconstruction and conservation match, while authority remains none as per the qualification section of the workflow unit.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Application consequence basis reconciliation indicates that the proposed change is to use the compressed candidate as preferred hot workcycle reconstruction surface while retaining all exact source artifacts as cold evidence, which aligns with the campaign's goal of preserving reconstructability.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Hold no justified work role is indicated by the pressure justification stating that no work proposal may become admitted until the load-bearing gap is resolved, and the current posture is HOLD_NO_JUSTIFIED_WORK.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Budget and stop boundaries are defined in the campaign document with maximums for work items per wake, seat invocations, repository mutation scope, changed bytes/files, model/token/tool expenditure, unresolved debt tolerance, repair attempts, authority class permitted, and wall-clock/external-cost ceiling.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Source handles and claim ceiling are defined in the symbolic consequence decomposition as including provenance handles, claim ceilings for distinctions, and dependencies that must remain challengeable.\n\nBOUNDED_OPERATIVE_POSTURE:\nPRESERVED\n\nUNRESOLVED:\n- Fresh independent reconstruction required (as noted in qualification)\n- Compression has not yet been executed or independently reconstructed\n- The candidate bytes are not yet smaller than the combined source bytes\n- No fresh independent seat has yet reconstructed the bounded operative posture\n\nAUTHORITY_EFFECT:\nNONE\n\nSCIENTIFIC_STANDING_EFFECT:\nNONE\n\nSTOPPED:\nYES",
+  "raw_response": {
+    "id": "chatcmpl-34z2to28w9stfnkmo0vxd",
+    "object": "chat.completion",
+    "created": 1790305718,
+    "model": "qwen/qwen3-coder-30b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Campaign identity is WORKCYCLE_STABILIZATION_001, as declared in the workflow unit and campaign document.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Campaign target is to establish a bounded, observable, repairable campaign→decomposition→seat-work lifecycle that reduces contextual burden while preserving reconstructability, as stated in the campaign document.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Relational horizon role is defined by the pressure justification as load-bearing, specifically concerning the coordination burden of overlapping prose artifacts and the need to preserve campaign, decomposition, justification, application, consequence, and stopping semantics without redundant documentation.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: The work relates to the campaign through the workflow unit's identity linking it to WORKCYCLE_STABILIZATION_001 and its basis identifying it as part of the compression workload within that campaign.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Basis governed pressure justification is grounded in the need to reduce seat reconstruction and coordination burden through compression, with the active workcycle represented by overlapping hot prose increasing these burdens.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Distinction vs task is maintained as distinctions (like SOURCE RETENTION != HOT CONTEXT RETENTION) make structure legible, while tasks are consequence-oriented applications of distinctions to bounded regions.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Expected vs observed consequence shows that the expected effect is future seats reconstructing the same bounded workcycle from materially less hot context while exact challenge handles remain available, and the observed effect is not yet observable as the compression has not been executed.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Work completion vs campaign advance indicates that work completion does not automatically equate to campaign progress; progress requires observed consequence evaluated against the campaign/horizon envelope, which has not yet occurred.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Qualification vs authority shows that qualification is based on independent reconstruction and conservation match, while authority remains none as per the qualification section of the workflow unit.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Application consequence basis reconciliation indicates that the proposed change is to use the compressed candidate as preferred hot workcycle reconstruction surface while retaining all exact source artifacts as cold evidence, which aligns with the campaign's goal of preserving reconstructability.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Hold no justified work role is indicated by the pressure justification stating that no work proposal may become admitted until the load-bearing gap is resolved, and the current posture is HOLD_NO_JUSTIFIED_WORK.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Budget and stop boundaries are defined in the campaign document with maximums for work items per wake, seat invocations, repository mutation scope, changed bytes/files, model/token/tool expenditure, unresolved debt tolerance, repair attempts, authority class permitted, and wall-clock/external-cost ceiling.\n\n<COORDINATE>:\nPOSTURE: SUPPORTED\nBASIS: Source handles and claim ceiling are defined in the symbolic consequence decomposition as including provenance handles, claim ceilings for distinctions, and dependencies that must remain challengeable.\n\nBOUNDED_OPERATIVE_POSTURE:\nPRESERVED\n\nUNRESOLVED:\n- Fresh independent reconstruction required (as noted in qualification)\n- Compression has not yet been executed or independently reconstructed\n- The candidate bytes are not yet smaller than the combined source bytes\n- No fresh independent seat has yet reconstructed the bounded operative posture\n\nAUTHORITY_EFFECT:\nNONE\n\nSCIENTIFIC_STANDING_EFFECT:\nNONE\n\nSTOPPED:\nYES",
+          "reasoning_content": "",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 6606,
+      "completion_tokens": 794,
+      "total_tokens": 7400,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "stats": {},
+    "system_fingerprint": "qwen/qwen3-coder-30b"
+  }
+}
