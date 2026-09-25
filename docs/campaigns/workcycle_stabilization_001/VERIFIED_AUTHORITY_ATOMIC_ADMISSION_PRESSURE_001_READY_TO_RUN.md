@@ -34,7 +34,12 @@ AUTHORITY_BINDING_MATCHED
 SUCCESSOR_IDENTITY_MATCHED
 BASIS_RECONCILIATION_MATCHED
 ATOMIC_ADMISSION_MATCHED
+ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_MATCHED
 ```
+
+The prior composition witness produced during the failed Windows prerequisite
+run is ineligible and MUST NOT be reused. A fresh witness must exercise the
+current repaired source.
 
 # TARGET
 
