@@ -11,14 +11,18 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+import sys
 import tempfile
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from src.cockpit.workcycle_control import LocalWorkcycleControlStore, WorkcycleControlError
 from src.cockpit.workcycle_projection import build_workcycle_projection
 from src.coordination import workcycle_v0 as wc
 
 
-ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "t7r_runtime_observation.json"
 
 
