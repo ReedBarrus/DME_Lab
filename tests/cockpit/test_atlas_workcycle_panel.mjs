@@ -117,6 +117,14 @@ test('workcycle operator visibly exposes currentness consequence budget and read
       },
       if_nothing_changes: 'DO_NOT_RUN',
     },
+    operative_control: {
+      lifecycle_state: 'PAUSED',
+      wake_generation: 2,
+      updated_at: '2026-09-24T19:00:00-07:00',
+      last_operator_gesture: {
+        verb: 'PAUSE',
+      },
+    },
     operator_summary: {
       workflow: 'OFF',
       campaign: 'ACTIVE',
@@ -150,6 +158,8 @@ test('workcycle operator visibly exposes currentness consequence budget and read
     'BASIS / PRESSURE JUSTIFICATION',
     'operator currentness and control truth',
     'DO_NOT_RUN',
+    'PAUSED',
+    'PAUSE',
   ]) {
     assert.ok(html.includes(phrase), phrase);
   }
@@ -231,6 +241,14 @@ test('workcycle witness rail is persistent-left content with truthful partial el
       },
       if_nothing_changes: 'DO_NOT_RUN',
     },
+    operative_control: {
+      lifecycle_state: 'ACTIVE',
+      wake_generation: 3,
+      updated_at: '2026-09-24T19:01:00-07:00',
+      last_operator_gesture: {
+        verb: 'ENABLE',
+      },
+    },
     operator_summary: {
       workflow: 'OFF',
       campaign: 'ACTIVE',
@@ -268,4 +286,16 @@ test('workcycle operator fails visibly when runtime projection is unavailable', 
   const html = renderWorkcycleOperator(null, 'runtime missing');
   assert.match(html, /RUNTIME PROJECTION UNAVAILABLE/);
   assert.match(html, /runtime missing/);
+});
+
+
+test('post-control commit triggers immediate runtime snapshot refresh', async () => {
+  const {readFile} = await import('node:fs/promises');
+  const appSource = await readFile(
+    new URL('../../src/cockpit/observer/repository_fabric_app.mjs', import.meta.url),
+    'utf8',
+  );
+  assert.match(appSource, /await refreshWorkcycleRuntimeNow\(\)/);
+  assert.match(appSource, /\/runtime\/snapshot\.json/);
+  assert.match(appSource, /function applyRuntimeSnapshot\(/);
 });
