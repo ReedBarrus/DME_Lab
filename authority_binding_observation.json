@@ -1,0 +1,66 @@
+{
+  "object_type": "AUTHORITY_BINDING_OBSERVATION_V0",
+  "repo_head": "0dbde59667451fa624e6373b7659aadf69fe18d8",
+  "fixture_posture": "DISPOSABLE_LOCAL_AUTHORITY_STATE_FIXTURE",
+  "verified_binding": {
+    "object_type": "CURRENT_AUTHORITY_BINDING_V0",
+    "verification_posture": "VERIFIED_CURRENT_ACTIVE_ONE_USE",
+    "capability_id": "CAP.OBS.001",
+    "approval_id": "APP.OBS.001",
+    "principal_id": "CODEX_PRINCIPAL_001",
+    "request_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+    "input_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+    "model": "test/model",
+    "endpoint_identity": "local-test-endpoint",
+    "executor_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+    "policy_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+    "issued_envelope_sha256": "1a97e5b28989fe48cc2bab5b3e1e1ac6a04d890f335759b72640f7a13285f087",
+    "authority_state_sha256": "9d80a6934e957c457d64f1bce6f940d2cb525b58ed5092406e48be70e10f2234",
+    "remaining_uses": 1,
+    "status": "ACTIVE",
+    "authority_source": "LOCAL_TRUST_ROOT_AUTHORITY_STATE",
+    "authority_effect": "NONE",
+    "consumption_effect": "NONE",
+    "execution_effect": "NONE",
+    "model_invocation_effect": "NONE",
+    "binding_id": "current-authority-binding:sha256:83a4d54de8ae781fb45aaef17d01a807f32e4bc3183cb9a3de8d7383b783291d",
+    "claim_ceiling": "Read-only verification that one exact locally issued authority envelope is currently ACTIVE with one remaining use for the bound principal and request/input/model/executor/policy coordinates. This does not consume, grant, transfer, or extend authority and performs no invocation."
+  },
+  "wrong_principal_case": {
+    "label": "wrong_principal",
+    "blocked": true,
+    "error_type": "AuthorityBindingError",
+    "error": "attempting principal does not match envelope principal"
+  },
+  "altered_envelope_case": {
+    "label": "altered_envelope",
+    "blocked": true,
+    "error_type": "AuthorityBindingError",
+    "error": "supplied envelope differs from issued authority"
+  },
+  "consumed_authority_case": {
+    "label": "consumed_authority",
+    "blocked": true,
+    "error_type": "AuthorityBindingError",
+    "error": "current authority is not ACTIVE: CONSUMED"
+  },
+  "assertions": {
+    "fresh_exact_verified": true,
+    "fresh_remaining_uses_one": true,
+    "fresh_status_active": true,
+    "fresh_store_read_only": true,
+    "wrong_principal_blocked": true,
+    "altered_envelope_blocked": true,
+    "consumed_authority_blocked": true,
+    "no_authority_effect": true,
+    "no_consumption_effect": true,
+    "no_execution_effect": true,
+    "no_model_invocation_effect": true
+  },
+  "all_assertions_pass": true,
+  "claim_ceiling": "Read-only verification of one exact authority envelope against the current single-process local authority state. This fixture does not grant, consume, transfer, extend, or invoke authority and does not establish cross-process authority-state atomicity.",
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "scientific_standing_effect": "NONE",
+  "stopped": "YES"
+}
