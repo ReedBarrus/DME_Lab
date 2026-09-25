@@ -9,6 +9,8 @@ or rewrite the source witness.
 from __future__ import annotations
 
 import copy
+import hashlib
+import json
 from typing import Any, Mapping
 
 from src.observation.invocation_result_witness_v0 import WITNESS_TYPE
@@ -82,6 +84,21 @@ def _validate_witness(witness: Mapping[str, Any]) -> dict[str, Any]:
         raise ResultSettlementError(
             "source witness must not infer external effect"
         )
+
+    try:
+        raw_output_bytes = json.dumps(
+            retained["raw_output"],
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=False,
+            allow_nan=False,
+        ).encode("utf-8")
+    except (TypeError, ValueError) as exc:
+        raise ResultSettlementError(
+            "source witness raw output is not canonical-JSON serializable"
+        ) from exc
+    if hashlib.sha256(raw_output_bytes).hexdigest() != retained["raw_output_sha256"]:
+        raise ResultSettlementError("source witness raw output digest mismatch")
 
     limitations = retained.get("observer_limitations")
     if not isinstance(limitations, list) or not all(
