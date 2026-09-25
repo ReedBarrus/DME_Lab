@@ -113,14 +113,17 @@
       "posture": "UNTESTED"
     },
     "admitted_authority_consumption": {
-      "posture": "UNTESTED",
-      "claim": "Exact composed admission has not yet been bound to one-shot authority consumption at the invocation boundary."
+      "posture": "IMPLEMENTED_UNPRESSURED",
+      "implementation": "src/coordination/admitted_authority_consumption_v0.py::consume_admitted_authority_once",
+      "tests": "tests/coordination/test_admitted_authority_consumption_v0.py",
+      "pressure_packet": "docs/campaigns/workcycle_stabilization_001/ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_READY_TO_RUN.md",
+      "claim": "Candidate same-process admission-to-one-shot-authority-consumption composition only. Runtime pressure remains required."
     }
   },
   "next_load_bearing_coordinate": {
     "coordinate": "admitted_authority_consumption",
     "pressure": "ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001",
-    "selection_basis": "Verified authority + exact successor + atomic admission is matched. The next untested relation is crossing from admitted successor to one-shot authority consumption and bounded invocation without replay or identity substitution."
+    "selection_basis": "The exact authority/successor/admission composition is qualified. The planner now exposes one-shot authority consumption and post-reservation failure conservation as the nearest unqualified relation."
   },
   "downstream_frontier": [
     "bind exact admitted successor to one-shot authority consumption and invocation boundary",
