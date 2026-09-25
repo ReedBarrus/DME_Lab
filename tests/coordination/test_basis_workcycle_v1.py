@@ -354,6 +354,112 @@ class BasisWorkcycleV1Tests(unittest.TestCase):
         self.assertEqual(successor["candidate_posture"], "NO_SUCCESSOR")
         self.assertIsNone(successor["successor_id"])
 
+    def _sealed_consequence(self, unit, disposition):
+        return bw.wc.seal_object(
+            {
+                "object_type": "CONSEQUENCE_EVALUATION_V0",
+                "evaluation_id": "EVAL-001",
+                "work_item_id": unit["identity"]["work_item_id"],
+                "consequence_id": "CONSEQ-001",
+                "disposition": disposition,
+                "integrity_sha256": "",
+            }
+        )
+
+    def test_reconciliation_qualified_not_applied_stays_blocked(self):
+        unit = unit_fixture()
+        unit["qualification"]["scientific_standing"] = "QUALIFIED"
+        unit["application"]["application_status"] = "ELIGIBLE"
+        result = bw.derive_basis_reconciliation_from_evidence(
+            unit,
+            consequence_evaluation=None,
+            current_obstruction_posture="REMAINS",
+        )
+        self.assertEqual(result["disposition"], "STILL_BLOCKED")
+        self.assertIn("not been applied", result["remaining_gap"])
+
+    def test_reconciliation_applied_without_consequence_stays_blocked(self):
+        unit = unit_fixture()
+        unit["qualification"]["scientific_standing"] = "QUALIFIED"
+        unit["application"]["application_status"] = "APPLIED"
+        unit["consequence_observation"]["effect_class"] = "NOT_YET_OBSERVABLE"
+        result = bw.derive_basis_reconciliation_from_evidence(
+            unit,
+            consequence_evaluation=None,
+            current_obstruction_posture="REMAINS",
+        )
+        self.assertEqual(result["disposition"], "STILL_BLOCKED")
+        self.assertIn("lacks consequence evidence", result["remaining_gap"])
+
+    def test_reconciliation_matched_and_resolved_satisfies_basis(self):
+        unit = unit_fixture()
+        unit["qualification"]["scientific_standing"] = "QUALIFIED"
+        unit["application"]["application_status"] = "APPLIED"
+        unit["consequence_observation"]["effect_class"] = "OBSERVED"
+        evaluation = self._sealed_consequence(unit, "CONSEQUENCE_MATCHED")
+        result = bw.derive_basis_reconciliation_from_evidence(
+            unit,
+            consequence_evaluation=evaluation,
+            current_obstruction_posture="RESOLVED",
+        )
+        self.assertEqual(result["disposition"], "SATISFIED")
+        self.assertIsNone(result["remaining_gap"])
+        self.assertFalse(result["next_pressure_allowed"])
+
+    def test_reconciliation_matched_but_obstruction_remains_is_partial(self):
+        unit = unit_fixture()
+        unit["qualification"]["scientific_standing"] = "QUALIFIED"
+        unit["application"]["application_status"] = "APPLIED"
+        unit["consequence_observation"]["effect_class"] = "OBSERVED"
+        evaluation = self._sealed_consequence(unit, "CONSEQUENCE_MATCHED")
+        result = bw.derive_basis_reconciliation_from_evidence(
+            unit,
+            consequence_evaluation=evaluation,
+            current_obstruction_posture="REMAINS",
+            remaining_gap="one source-supported obstruction remains",
+        )
+        self.assertEqual(result["disposition"], "PARTIALLY_SATISFIED")
+        self.assertTrue(result["next_pressure_allowed"])
+
+    def test_reconciliation_contradiction_invalidates_basis(self):
+        unit = unit_fixture()
+        unit["qualification"]["scientific_standing"] = "QUALIFIED"
+        unit["application"]["application_status"] = "APPLIED"
+        unit["consequence_observation"]["effect_class"] = "OBSERVED"
+        evaluation = self._sealed_consequence(unit, "CONSEQUENCE_CONTRADICTED")
+        result = bw.derive_basis_reconciliation_from_evidence(
+            unit,
+            consequence_evaluation=evaluation,
+            current_obstruction_posture="REMAINS",
+        )
+        self.assertEqual(result["disposition"], "INVALIDATED")
+        self.assertFalse(result["next_pressure_allowed"])
+
+    def test_reconciliation_changed_obstruction_requires_explicit_reframe(self):
+        unit = unit_fixture()
+        unit["qualification"]["scientific_standing"] = "QUALIFIED"
+        unit["application"]["application_status"] = "APPLIED"
+        unit["consequence_observation"]["effect_class"] = "OBSERVED"
+        evaluation = self._sealed_consequence(unit, "CONSEQUENCE_MATCHED")
+
+        invalidated = bw.derive_basis_reconciliation_from_evidence(
+            unit,
+            consequence_evaluation=evaluation,
+            current_obstruction_posture="CHANGED",
+        )
+        reframed = bw.derive_basis_reconciliation_from_evidence(
+            unit,
+            consequence_evaluation=evaluation,
+            current_obstruction_posture="CHANGED",
+            reframed_basis="source-supported replacement basis B2",
+        )
+        self.assertEqual(invalidated["disposition"], "INVALIDATED")
+        self.assertEqual(reframed["disposition"], "REFRAMED")
+        self.assertEqual(
+            reframed["next_pressure_basis"],
+            "source-supported replacement basis B2",
+        )
+
     def test_remaining_gap_requires_explicit_next_pressure_basis(self):
         unit = unit_fixture()
         with self.assertRaises(bw.BasisWorkcycleError):
