@@ -68,6 +68,7 @@ let workcycleRuntime = null;
 let workcycleRuntimeError = null;
 let workcycleSource = null;
 let workcycleControlBase = null;
+let workcycleRuntimeEndpoint = null;
 
 const LOAD_TIMEOUT_MS = 15000;
 
@@ -233,6 +234,51 @@ function render() {
   draw();
 }
 
+function applyRuntimeSnapshot(snapshot) {
+  const projectedWorkcycle = snapshot?.state?.workcycle || null;
+  workcycleRuntime = projectedWorkcycle
+    ? {
+        ...projectedWorkcycle,
+        temporal_horizon_closure: snapshot?.state?.temporal_horizon_closure || null,
+        qualification_readiness: snapshot?.state?.workcycle_qualification || null,
+        basis_record: snapshot?.state?.workcycle_basis || null,
+        pressure_justification: snapshot?.state?.pressure_justification || null,
+      }
+    : null;
+  workcycleRuntimeError = workcycleRuntime
+    ? null
+    : 'Runtime snapshot does not contain state.workcycle.';
+  if (model && geometricField) render();
+}
+
+function runtimeSnapshotUrl() {
+  if (!workcycleRuntimeEndpoint) return null;
+  try {
+    const url = new URL(workcycleRuntimeEndpoint, window.location.href);
+    if (url.pathname.endsWith('/runtime/events')) {
+      url.pathname = url.pathname.slice(0, -'/runtime/events'.length) + '/runtime/snapshot.json';
+      url.search = '';
+      url.hash = '';
+      return url.toString();
+    }
+  } catch {
+    return null;
+  }
+  return null;
+}
+
+async function refreshWorkcycleRuntimeNow() {
+  const snapshotUrl = runtimeSnapshotUrl();
+  if (!snapshotUrl) return false;
+  const response = await fetch(snapshotUrl, {
+    method: 'GET',
+    cache: 'no-store',
+  });
+  if (!response.ok) throw new Error(`runtime refresh failed with HTTP ${response.status}`);
+  applyRuntimeSnapshot(await response.json());
+  return true;
+}
+
 function generatedWorkcycleGestureId() {
   if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
   return 'workcycle-' + Date.now() + '-' + Math.floor(Math.random() * 1e9);
@@ -276,11 +322,13 @@ async function commitWorkcycleGesture(verb) {
     ].join('\n'),
   );
   if (!confirmed) return null;
-  return postControl('/workcycle/control/commit', {
+  const committed = await postControl('/workcycle/control/commit', {
     preview: previewed.preview,
     preview_sha256: previewed.preview_sha256,
     confirmed_by: 'REED',
   });
+  await refreshWorkcycleRuntimeNow();
+  return committed;
 }
 
 root.addEventListener('click', async (event) => {
@@ -419,33 +467,21 @@ function startWorkcycleRuntimeProjection() {
     }
   }
   if (!endpoint) {
+    workcycleRuntimeEndpoint = null;
     workcycleRuntime = null;
     workcycleRuntimeError = 'Runtime sidecar not configured for Atlas workcycle projection.';
     if (model && geometricField) render();
     return null;
   }
 
+  workcycleRuntimeEndpoint = endpoint;
   workcycleRuntimeError = 'Connecting to workcycle runtime projection...';
   workcycleSource?.close?.();
   workcycleSource = new EventSource(endpoint);
 
   workcycleSource.addEventListener('runtime_projection', (event) => {
     try {
-      const snapshot = JSON.parse(event.data);
-      const projectedWorkcycle = snapshot?.state?.workcycle || null;
-      workcycleRuntime = projectedWorkcycle
-        ? {
-            ...projectedWorkcycle,
-            temporal_horizon_closure: snapshot?.state?.temporal_horizon_closure || null,
-            qualification_readiness: snapshot?.state?.workcycle_qualification || null,
-            basis_record: snapshot?.state?.workcycle_basis || null,
-            pressure_justification: snapshot?.state?.pressure_justification || null,
-          }
-        : null;
-      workcycleRuntimeError = workcycleRuntime
-        ? null
-        : 'Runtime snapshot does not contain state.workcycle.';
-      if (model && geometricField) render();
+      applyRuntimeSnapshot(JSON.parse(event.data));
     } catch (error) {
       workcycleRuntime = null;
       workcycleRuntimeError = `Workcycle runtime parse failure: ${error}`;
