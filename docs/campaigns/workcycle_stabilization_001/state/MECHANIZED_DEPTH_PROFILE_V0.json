@@ -134,21 +134,23 @@
       "claim": "One immutable result witness is qualified receiving externally supplied field-level candidate dispositions and explicit bases in a deterministic settlement record without qualification, authority, execution, external consequence, or Atlas mutation."
     },
     "settlement_consequence_reconciliation": {
-      "posture": "IMPLEMENTED_READY_FOR_PRESSURE",
+      "posture": "WITNESSED_AWAITING_ADJUDICATION",
       "implementation": "src/coordination/settlement_consequence_reconciliation_v0.py",
       "tests": "tests/coordination/test_settlement_consequence_reconciliation_v0.py",
-      "observer": "tools/observe_settlement_consequence_reconciliation_v0.py",
-      "pressure_packet": "docs/campaigns/workcycle_stabilization_001/SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001_READY_TO_RUN.md",
-      "claim": "Candidate composition ready for runtime pressure: settlement remains insufficient without consequence evidence; independently supplied consequence observation/evaluation may drive existing basis reconciliation."
+      "witness": "settlement_consequence_reconciliation_observation.json",
+      "witness_source_ref": "e2cf0968006de627ae8ffcecd3ef6c2bcb97e181",
+      "witness_transport_ref": "1ec4717e9dfdc6e0ef8021c030b33f02b4b2342e",
+      "adjudication_packet": "docs/campaigns/workcycle_stabilization_001/SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+      "claim": "The same deterministic candidate settlement is witnessed remaining STILL_BLOCKED without consequence evidence, reaching SATISFIED under independently supplied matched consequence with resolved obstruction, and reaching INVALIDATED under independently supplied contradicted consequence; independent adjudication remains required."
     }
   },
   "next_load_bearing_coordinate": {
     "coordinate": "settlement_consequence_reconciliation",
-    "pressure": "SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001",
-    "selection_basis": "Field-level settlement is qualified and the consequence-reconciliation apparatus is now staged. Runtime observation is the next required relation."
+    "pressure": "SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001_ADJUDICATION",
+    "selection_basis": "The consequence-reconciliation relation has a clean witness-only transport and must be independently adjudicated before second-successor derivation becomes eligible."
   },
   "downstream_frontier": [
-    "complete and pressure settlement != consequence plus independent consequence -> basis reconciliation",
+    "independently adjudicate settlement + independent consequence -> basis reconciliation",
     "derive second successor from full qualified chain without manual selection",
     "repeat metabolic loop",
     "seat consequential/meta-feedback",
