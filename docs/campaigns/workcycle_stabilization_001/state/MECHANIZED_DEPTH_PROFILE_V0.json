@@ -36,13 +36,12 @@
       "claim": "One exact locally issued authority envelope was read-only verified against current single-process local authority state as ACTIVE with one remaining use at bound principal/request/input/model/executor/policy coordinates."
     },
     "thread_contention": {
-      "posture": "REPAIR_WITNESSED_AWAITING_ADJUDICATION",
-      "prior_evidence": "ATOMIC_ADMISSION_MATCHED",
+      "posture": "QUALIFIED_CURRENT_SOURCE_SAME_PROCESS",
+      "evidence": "ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_RESULT_001.md",
+      "source_ref": "11da60ee7b6de02dcea39537301c6c317cd44d9b",
       "implementation": "src/coordination/atomic_admission_v0.py::_acquire_lock",
-      "repair_tests": "tests/coordination/test_atomic_admission_v0.py",
-      "claim": "Prior frozen same-process contention standing is retained historically, but the repaired current source requires a fresh witness before use as a composition predecessor.",
-      "witness": "atomic_admission_observation.json",
-      "witness_source_ref": "11da60ee7b6de02dcea39537301c6c317cd44d9b"
+      "claim": "Same-process two-caller local-filesystem atomic admission re-earned at repaired source; Windows PermissionError is bounded contention and persistent acquisition failure remains fail-closed."
     },
     "process_contention": {
       "posture": "UNTESTED"
@@ -88,7 +87,7 @@
       "implementation": "src/coordination/basis_workcycle_v1.py::derive_successor_candidate"
     },
     "verified_authority_to_atomic_admission": {
-      "posture": "IMPLEMENTED_UNPRESSURED_BLOCKED_BY_ATOMIC_REPAIR_REOBSERVATION",
+      "posture": "IMPLEMENTED_UNPRESSURED",
       "implementation": "src/coordination/verified_authority_admission_v0.py::try_verified_authority_atomic_admission",
       "tests": "tests/coordination/test_verified_authority_admission_v0.py",
       "pressure_packet": "docs/campaigns/workcycle_stabilization_001/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001_READY_TO_RUN.md",
@@ -115,13 +114,12 @@
     }
   },
   "next_load_bearing_coordinate": {
-    "coordinate": "thread_contention",
-    "pressure": "ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_001_ADJUDICATION",
-    "selection_basis": "The repaired current source has a clean witness-only transport. Independent adjudication must re-earn same-process current-source atomic standing before composition pressure resumes."
+    "coordinate": "verified_authority_to_atomic_admission",
+    "pressure": "VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001",
+    "selection_basis": "Current-source same-process atomic contention has been re-earned after the Windows repair. The next unqualified relation is verified current authority + exact sealed successor + repaired atomic admission."
   },
   "downstream_frontier": [
-    "re-witness repaired same-process atomic-admission contention",
-    "pressure verified current authority + exact derived successor composition into atomic admission",
+    "pressure verified current authority + exact derived successor composition into repaired atomic admission",
     "real bounded execution + witnessed consequence + settlement",
     "second successor derived without manual selection",
     "repeated metabolic loop",
