@@ -49,6 +49,12 @@ class WorkcycleQualificationReadinessTests(unittest.TestCase):
                 for item in self_moving
             )
         )
+        self.assertTrue(
+            any(
+                item.startswith("INVOCATION_RESULT_WITNESS:")
+                for item in self_moving
+            )
+        )
         self.assertTrue(any(item.startswith("REPEATED_METABOLIC_LOOP:") for item in self_moving))
 
 
