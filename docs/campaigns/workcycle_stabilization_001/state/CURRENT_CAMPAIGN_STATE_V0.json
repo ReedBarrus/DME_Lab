@@ -93,17 +93,17 @@
     }
   },
   "current_unresolved": [
-    "A successful one-shot invocation callback can return data, but no immutable result witness is yet bound to the admitted work attempt and authority-consumption receipt.",
+    "Invocation-result witness is implemented but unpressured.",
     "Settlement over immutable result evidence remains unearned.",
-    "Consequence reconciliation, second mechanically derived successor, and repeated metabolism remain unearned."
+    "External consequence reconciliation, second mechanically derived successor, and repeated metabolism remain unearned."
   ],
   "next_pressure": {
-    "pressure_id": "INVOCATION_RESULT_WITNESS_PRESSURE_001_IMPLEMENTATION",
+    "pressure_id": "INVOCATION_RESULT_WITNESS_PRESSURE_001",
     "work_item_id": "WORKCYCLE_STABILIZATION_001_INVOCATION_RESULT_WITNESS",
-    "destination": "LOCAL_RESULT_WITNESS_IMPLEMENTATION",
-    "packet": null,
-    "selection_basis": "ADMITTED_AUTHORITY_CONSUMPTION_MATCHED is frozen. The next load-bearing untested relation is callback-return-to-immutable-result-witness while preserving RESULT_WITNESS != SETTLEMENT != QUALIFIED_STANDING.",
-    "expected_operating_change": "Bind one successful admitted-authority-consumption attempt to a deterministic immutable result witness containing exact attempt/admission/consumption/output identities without interpreting or settling the output.",
+    "destination": "LOCAL_IMMUTABLE_RESULT_WITNESS",
+    "packet": "docs/campaigns/workcycle_stabilization_001/INVOCATION_RESULT_WITNESS_PRESSURE_001_READY_TO_RUN.md",
+    "selection_basis": "ADMITTED_AUTHORITY_CONSUMPTION_MATCHED is frozen. Qualification and pressure selection now expose INVOCATION_RESULT_WITNESS as the next blocker before settlement or repeated-loop pressure.",
+    "expected_operating_change": "Demonstrate one exact admitted and one-shot-consumed attempt binding its exact raw callback return into a deterministic immutable result witness, with output mutation changing identity, chain tampering rejected, unknown metadata unresolved, and no interpretation/settlement/external-effect inference.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -152,7 +152,11 @@
       "docs/campaigns/workcycle_stabilization_001/ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_READY_TO_RUN.md",
       "docs/campaigns/workcycle_stabilization_001/ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
       "admitted_authority_consumption_observation.json",
-      "docs/campaigns/workcycle_stabilization_001/pressure_runs/ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_RESULT_001.md"
+      "docs/campaigns/workcycle_stabilization_001/pressure_runs/ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_RESULT_001.md",
+      "src/observation/invocation_result_witness_v0.py",
+      "tests/observation/test_invocation_result_witness_v0.py",
+      "tools/observe_invocation_result_witness_v0.py",
+      "docs/campaigns/workcycle_stabilization_001/INVOCATION_RESULT_WITNESS_PRESSURE_001_READY_TO_RUN.md"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
