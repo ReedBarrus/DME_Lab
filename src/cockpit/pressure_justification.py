@@ -105,6 +105,10 @@ def _expected_change(pressure: str) -> str:
             "bind verified current authority and a derived successor identity into "
             "one fail-closed atomic admission transition"
         ),
+        "ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE": (
+            "bind one exact admitted successor to the same current one-use authority "
+            "and cross one bounded invocation boundary with replay denied"
+        ),
         "REPEATED_METABOLIC_LOOP_PRESSURE": (
             "establish or fracture two consecutive basis-bound workcycle transitions "
             "whose successor selection is derived from prior witnessed consequence"
@@ -159,6 +163,11 @@ def _select_pressure(
         if blocker.startswith("VERIFIED_AUTHORITY_ATOMIC_ADMISSION:"):
             return (
                 "VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE",
+                "SELF_MOVING_QUALIFICATION_BLOCKER",
+            )
+        if blocker.startswith("ADMITTED_AUTHORITY_CONSUMPTION:"):
+            return (
+                "ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE",
                 "SELF_MOVING_QUALIFICATION_BLOCKER",
             )
         if blocker.startswith("REPEATED_METABOLIC_LOOP:"):
