@@ -121,6 +121,10 @@ def _expected_change(pressure: str) -> str:
             "keep settlement distinct from consequence and bind independent consequence "
             "evidence into bounded basis reconciliation"
         ),
+        "SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE": (
+            "pressure whether fresh reconciliation changes next-work posture and exact "
+            "successor projection without manual successor selection"
+        ),
         "REPEATED_METABOLIC_LOOP_PRESSURE": (
             "establish or fracture two consecutive basis-bound workcycle transitions "
             "whose successor selection is derived from prior witnessed consequence"
@@ -195,6 +199,11 @@ def _select_pressure(
         if blocker.startswith("SETTLEMENT_CONSEQUENCE_RECONCILIATION:"):
             return (
                 "SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE",
+                "SELF_MOVING_QUALIFICATION_BLOCKER",
+            )
+        if blocker.startswith("SECOND_SUCCESSOR_FROM_RECONCILIATION:"):
+            return (
+                "SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE",
                 "SELF_MOVING_QUALIFICATION_BLOCKER",
             )
         if blocker.startswith("REPEATED_METABOLIC_LOOP:"):
