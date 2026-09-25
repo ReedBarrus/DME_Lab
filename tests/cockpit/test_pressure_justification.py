@@ -124,6 +124,38 @@ class PressureJustificationTests(unittest.TestCase):
         self.assertIsNone(result["proposed_pressure"])
         self.assertEqual(result["next_work_posture"], "HOLD_NO_JUSTIFIED_WORK")
 
+    def test_authority_binding_blocker_selects_authority_pressure(self):
+        workcycle = workcycle_fixture("AUTO_CONTINUATION_PRESSURE")
+        workcycle["campaign_progress"]["T7"] = {"posture": "BOUNDED_PASS"}
+        result = build_pressure_justification(
+            workcycle=workcycle,
+            horizon_closure=horizon_fixture(),
+            qualification=qualification_fixture(
+                self_moving=[
+                    "AUTHORITY_BINDING:UNFROZEN",
+                    "REPEATED_METABOLIC_LOOP:UNFROZEN",
+                ],
+            ),
+        )
+        self.assertEqual(result["pressure_posture"], "JUSTIFIED")
+        self.assertEqual(result["proposed_pressure"], "AUTHORITY_BINDING_PRESSURE")
+
+    def test_repeated_metabolic_loop_is_selected_after_authority_binding(self):
+        workcycle = workcycle_fixture("AUTO_CONTINUATION_PRESSURE")
+        workcycle["campaign_progress"]["T7"] = {"posture": "BOUNDED_PASS"}
+        result = build_pressure_justification(
+            workcycle=workcycle,
+            horizon_closure=horizon_fixture(),
+            qualification=qualification_fixture(
+                self_moving=["REPEATED_METABOLIC_LOOP:UNFROZEN"],
+            ),
+        )
+        self.assertEqual(result["pressure_posture"], "JUSTIFIED")
+        self.assertEqual(
+            result["proposed_pressure"],
+            "REPEATED_METABOLIC_LOOP_PRESSURE",
+        )
+
     def test_basis_identity_is_deterministic(self):
         one = build_basis_record(
             workcycle=workcycle_fixture(),
