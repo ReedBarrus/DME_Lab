@@ -148,6 +148,7 @@ def build_invocation_result_witness(
         "adapter_identity": adapter,
         "model_identity": model,
         "raw_output_sha256": raw_output_sha256,
+        "observer_limitations": limitations,
     }
 
     unresolved_fields = []
