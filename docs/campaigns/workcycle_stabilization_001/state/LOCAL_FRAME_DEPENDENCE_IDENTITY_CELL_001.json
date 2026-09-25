@@ -1,0 +1,131 @@
+{
+  "object_type": "WORKFLOW_UNIT_V1",
+  "identity": {
+    "work_item_id": "WORKCYCLE_STABILIZATION_001_LOCAL_FRAME_DEPENDENCE_CELL_001",
+    "campaign_id": "WORKCYCLE_STABILIZATION_001",
+    "parent_work_item_id": "WORKCYCLE_STABILIZATION_001_RELATIONAL_COMPRESSION_W2",
+    "operative_frame_ref": "d5a47606ce0ed8a08ea444638e5ae4b90c59ea91",
+    "created_from_event": "RELATION_DEPENDENCE_LOAD_CONSEQUENCE_PRESSURE_001"
+  },
+  "basis": {
+    "basis_id": "LOCAL_FRAME_DEPENDENCE_IDENTITY_BASIS_001",
+    "basis_type": "LOAD_BEARING_UNCERTAINTY",
+    "statement": "Atlas currently represents source-supported relations and load-bearing work, but the distinction between generic relation, dependence, load, and consequence is not yet intervention-grounded.",
+    "evidence_refs": [
+      "docs/campaigns/workcycle_stabilization_001/state/WORKCYCLE_STABILIZATION_001_RELATIONAL_COMPRESSION_W2.json",
+      "docs/campaigns/workcycle_stabilization_001/SYMBOLIC_CONSEQUENCE_DECOMPOSITION_V0.md",
+      "docs/campaigns/workcycle_stabilization_001/WORKCYCLE_STABILIZATION_CAMPAIGN_001.md",
+      "docs/campaigns/workcycle_stabilization_001/PRESSURE_JUSTIFICATION_001_READY_TO_SEND.md"
+    ],
+    "desired_consequence": {
+      "statement": "One bounded specimen distinguishes a merely source-supported relation from a candidate semantic-reconstruction dependence by observed consequence under an evidence-aperture perturbation."
+    },
+    "current_obstruction": {
+      "statement": "Without perturbation evidence, Atlas cannot know whether a relation actually bears continuity load or is only correlated/redundant support, weakening decomposition and horizon relevance."
+    },
+    "relevance_test": {
+      "question": "Would distinguishing relation from load-bearing dependence change how Atlas selects, compresses, reconstructs, or repairs work?",
+      "failure_if_unanswered": true
+    },
+    "basis_status": "SUPPORTED"
+  },
+  "pressure_selection": {
+    "pressure_id": "LOCAL_FRAME_DEPENDENCE_IDENTITY_PRESSURE_001",
+    "target_distinction": {
+      "lhs": "SOURCE_SUPPORTED_RELATION",
+      "rhs": "LOAD_BEARING_DEPENDENCE"
+    },
+    "selection_basis": "A workcycle evidence edge should not acquire dependence standing merely because it exists; dependence requires observed continuity difference under a bounded perturbation.",
+    "expected_information_gain": {
+      "statement": "Whether withholding one exact related evidence object changes fresh-seat semantic reconstruction of the same addressed workcycle subject."
+    },
+    "application_dependency": "If a bounded dependence candidate is supported, Atlas can represent dependency standing with an explicit load dimension and intervention basis rather than treating every relation as load-bearing.",
+    "stop_if_resolved_by_existing_evidence": true,
+    "priority_basis": "BLOCKS_RECONSTRUCTION",
+    "load_bearing_effects": [
+      "RECONSTRUCTION",
+      "OBSERVABILITY",
+      "BASIS"
+    ]
+  },
+  "pressure_contract": {
+    "allowed_operations": [
+      "OBSERVE",
+      "RECONSTRUCT",
+      "COMPARE",
+      "FALSIFY",
+      "ADJUDICATE"
+    ],
+    "prohibited_operations": [
+      "SELF_PROMOTE",
+      "CREATE_AUTHORITY",
+      "EXPAND_SCOPE_WITHOUT_BASIS",
+      "SPAWN_UNBOUNDED_PRESSURES",
+      "MUTATE_SOURCE",
+      "INFER_CAUSATION_FROM_TEMPORAL_ORDER"
+    ],
+    "success_condition": {
+      "statement": "Matched fresh reconstruction runs isolate one evidence-aperture perturbation and an independent evaluator can classify continuity as unchanged, degraded, lost, multi-load/confounded, or unresolved."
+    },
+    "failure_condition": {
+      "statement": "The two runs differ in more than the declared evidence aperture, or the evaluator cannot localize any observed difference to the declared semantic-reconstruction load."
+    },
+    "unresolved_condition": {
+      "statement": "The perturbation outcome is not sufficient to distinguish redundancy, dependence, confounding, or reconstruction noise."
+    },
+    "pressure_budget": {
+      "max_rounds": 1,
+      "max_branch_count": 2,
+      "max_unresolved_children": 0
+    }
+  },
+  "result": {
+    "source_result_ref": null,
+    "distinctions": [],
+    "apparatus_failures": [],
+    "semantic_failures": []
+  },
+  "qualification": {
+    "adjudication_ref": null,
+    "scientific_standing": "NONE",
+    "authority_effect": "NONE",
+    "qualification_basis": "",
+    "unresolved_load_bearing_questions": [
+      "Does the candidate evidence relation bear SEMANTIC_RECONSTRUCTION load for this exact subject and scope?"
+    ]
+  },
+  "application": {
+    "required": true,
+    "target_surface": "ATLAS",
+    "proposed_change": {
+      "statement": "Represent any supported local dependence as subject + dependency target + declared load dimension + scope + temporal coordinate + standing, while retaining the underlying generic relation separately."
+    },
+    "executable_change_ref": null,
+    "application_status": "NOT_YET_ELIGIBLE",
+    "withholding_basis": "Requires fresh matched reconstruction and independent adjudication."
+  },
+  "consequence_observation": {
+    "required_if_applied": true,
+    "expected_effect": "Future Atlas decomposition can distinguish relation existence from intervention-supported load-bearing dependence.",
+    "observed_effect": null,
+    "effect_class": "NOT_YET_OBSERVABLE",
+    "evidence_refs": [],
+    "regression_detected": false
+  },
+  "basis_reconciliation": {
+    "original_basis_id": "LOCAL_FRAME_DEPENDENCE_IDENTITY_BASIS_001",
+    "disposition": null,
+    "remaining_gap": "No bounded intervention evidence yet distinguishes relation from dependence.",
+    "next_pressure_allowed": false,
+    "next_pressure_basis": null,
+    "termination_reason": null
+  },
+  "sanity_check": {
+    "if_this_work_succeeds": {
+      "what_changes_in_the_operating_world": "Atlas gains an evidence-based rule for whether a relation should influence reconstruction/decomposition as a load-bearing dependency, reducing arbitrary task relevance and false topology weight."
+    },
+    "if_nothing_would_change": {
+      "posture": "DO_NOT_RUN"
+    }
+  }
+}
