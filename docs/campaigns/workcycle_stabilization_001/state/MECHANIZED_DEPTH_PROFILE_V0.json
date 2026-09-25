@@ -10,10 +10,12 @@
       "claim": "Single-threaded continuation eligibility under externally serialized reservation."
     },
     "successor_identity_binding": {
-      "posture": "IMPLEMENTED_UNPRESSURED",
+      "posture": "QUALIFIED",
+      "evidence": "SUCCESSOR_IDENTITY_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/SUCCESSOR_IDENTITY_CONSERVATION_PRESSURE_RESULT_001.md",
       "implementation": "src/coordination/basis_workcycle_v1.py::derive_successor_candidate",
       "tests": "tests/coordination/test_basis_workcycle_v1.py",
-      "claim": "Exact basis/work/reconciliation/posture coordinates deterministically project at most one successor candidate identity; HOLD/CLOSE project no successor. Independent runtime pressure remains required."
+      "claim": "Under exact supplied campaign/work/basis/frame/reconciliation/posture coordinates, successor candidate identity is deterministic and reconstructable; material reconciliation change changes identity; CLOSE/HOLD produce no successor candidate."
     },
     "budget_reservation": {
       "posture": "QUALIFIED_SAME_PROCESS_TWO_CALLER",
@@ -73,7 +75,9 @@
       ]
     },
     "exact_successor_identity_derivation": {
-      "posture": "IMPLEMENTED_UNPRESSURED",
+      "posture": "QUALIFIED",
+      "evidence": "SUCCESSOR_IDENTITY_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/SUCCESSOR_IDENTITY_CONSERVATION_PRESSURE_RESULT_001.md",
       "implementation": "src/coordination/basis_workcycle_v1.py::derive_successor_candidate"
     },
     "verified_authority_to_atomic_admission": {
@@ -100,12 +104,11 @@
     }
   },
   "next_load_bearing_coordinate": {
-    "coordinate": "successor_identity_binding",
-    "pressure": "SUCCESSOR_IDENTITY_CONSERVATION_PRESSURE_001",
-    "selection_basis": "Authority verification is now matched. The nearest load-bearing unpressured relation is deterministic successor candidate identity derived from exact basis/work/reconciliation/posture coordinates."
+    "coordinate": "basis_reconciliation",
+    "pressure": "BASIS_RECONCILIATION_PRESSURE_001",
+    "selection_basis": "Successor identity conservation is now matched. The nearest load-bearing unpressured relation is mechanical basis reconciliation from qualification, application, consequence, and current-obstruction inputs."
   },
   "downstream_frontier": [
-    "pressure deterministic successor identity conservation",
     "pressure mechanical basis reconciliation",
     "bind verified current authority into atomic admission",
     "real bounded execution + witnessed consequence + settlement",
