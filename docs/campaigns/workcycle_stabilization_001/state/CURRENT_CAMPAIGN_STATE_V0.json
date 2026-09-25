@@ -23,17 +23,18 @@
     ]
   },
   "current_unresolved": [
-    "RELATIONAL_COMPRESSION_W2 has not yet been executed.",
-    "The strengthened reconstruction-dependence candidate has not yet been tested for conservation through compression.",
-    "Hot-context burden remains distributed across overlapping explanatory artifacts."
+    "RELATIONAL_COMPRESSION_W2 is held pending a fresh explicit local retry after a started LM Studio invocation ended with a local runtime channel failure and produced no admitted result.",
+    "T7 operator-visibility pressure remains implemented but not independently frozen.",
+    "Temporal-horizon closure remains implemented but not independently qualified."
   ],
   "next_pressure": {
-    "pressure_id": "RELATIONAL_COMPRESSION_W2_EXECUTION",
-    "work_item_id": "WORKCYCLE_STABILIZATION_001_RELATIONAL_COMPRESSION_W2",
-    "destination": "FRESH_IMPLEMENTER_SEAT",
-    "packet": "docs/campaigns/workcycle_stabilization_001/RELATIONAL_COMPRESSION_W2_READY_TO_SEND.md",
-    "selection_basis": "Compression is the active permanent workload, and Cell 001R now identifies a strengthened semantic-reconstruction dependence candidate that W2 must preserve or expose as loss.",
-    "expected_operating_change": "One smaller hot operative representation is produced and then independently tested against the original hot set, with the strengthened reconstruction relation explicitly conserved or falsified.",
+    "pressure_id": "COCKPIT_T7_PRESSURE",
+    "work_item_id": "WORKCYCLE_STABILIZATION_001_T7_OPERATOR_VISIBILITY",
+    "destination": "FRESH_INDEPENDENT_EVALUATOR",
+    "packet": "docs/campaigns/workcycle_stabilization_001/COCKPIT_T7_PRESSURE_READY_TO_SEND.md",
+    "precondition": "Local tests tests.coordination.test_workcycle_v0 and tests.cockpit.test_workcycle_projection must pass; capture current output of python tools/project_workcycle_v0.py.",
+    "selection_basis": "W2 can retry independently under a fresh explicit attempt, while T7 is an existing implemented-but-unfrozen bounded-workcycle seam required for qualification.",
+    "expected_operating_change": "Freeze whether current operator projection truthfully exposes campaign, horizon, consequence, repair, budget, control, next pressure, and Reed-action state without authority or execution effects.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -51,5 +52,18 @@
   },
   "authority_effect": "NONE",
   "execution_effect": "NONE",
-  "scientific_standing_effect": "NONE"
+  "scientific_standing_effect": "NONE",
+  "recorded_fractures": [
+    {
+      "fracture_id": "W2_LOCAL_RUNTIME_CHANNEL_FAILURE_001",
+      "work_item_id": "WORKCYCLE_STABILIZATION_001_RELATIONAL_COMPRESSION_W2",
+      "class": "APPARATUS_DEFECT",
+      "posture": "HELD",
+      "invocation_started": "YES",
+      "model_result_produced": "NO",
+      "scientific_result": "NONE",
+      "retry_posture": "FRESH_EXPLICIT_ATTEMPT_ONLY",
+      "priority": "DEFERRED_NONBLOCKING"
+    }
+  ]
 }
