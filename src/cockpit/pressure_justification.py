@@ -125,6 +125,10 @@ def _expected_change(pressure: str) -> str:
             "pressure whether fresh reconciliation changes next-work posture and exact "
             "successor projection without manual successor selection"
         ),
+        "SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE": (
+            "bind one exact successor projection to one explicit bounded work spec "
+            "and materialize a complete next workflow unit without admission or execution"
+        ),
         "REPEATED_METABOLIC_LOOP_PRESSURE": (
             "establish or fracture two consecutive basis-bound workcycle transitions "
             "whose successor selection is derived from prior witnessed consequence"
@@ -204,6 +208,11 @@ def _select_pressure(
         if blocker.startswith("SECOND_SUCCESSOR_FROM_RECONCILIATION:"):
             return (
                 "SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE",
+                "SELF_MOVING_QUALIFICATION_BLOCKER",
+            )
+        if blocker.startswith("SUCCESSOR_WORK_UNIT_MATERIALIZATION:"):
+            return (
+                "SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE",
                 "SELF_MOVING_QUALIFICATION_BLOCKER",
             )
         if blocker.startswith("REPEATED_METABOLIC_LOOP:"):
