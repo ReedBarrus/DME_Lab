@@ -103,17 +103,17 @@
     }
   },
   "current_unresolved": [
-    "Settlement is qualified, but settlement alone is not observed consequence.",
-    "Settlement-to-independent-consequence-to-basis-reconciliation composition is implemented at candidate level but its pressure apparatus is not yet complete.",
-    "Second mechanically derived successor, repeated metabolism, and seat consequential/meta-feedback remain unearned."
+    "Settlement-to-independent-consequence-to-basis-reconciliation composition is implemented and ready for runtime pressure.",
+    "Second mechanically derived successor from the full execution/settlement/consequence chain remains unearned.",
+    "Repeated metabolism and seat consequential/meta-feedback remain unearned."
   ],
   "next_pressure": {
-    "pressure_id": "SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001_IMPLEMENTATION",
+    "pressure_id": "SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001",
     "work_item_id": "WORKCYCLE_STABILIZATION_001_SETTLEMENT_CONSEQUENCE_RECONCILIATION",
-    "destination": "LOCAL_COMPOSITION_IMPLEMENTATION",
-    "packet": null,
-    "selection_basis": "INVOCATION_RESULT_SETTLEMENT_MATCHED is frozen. The nearest load-bearing untested relation is SETTLEMENT != OBSERVED_CONSEQUENCE and the composition of independently supplied consequence evidence into the already-qualified basis reconciliation law.",
-    "expected_operating_change": "Demonstrate that settlement alone leaves the basis blocked, while independent consequence observation plus explicit consequence evaluation can deterministically yield satisfied, partial, invalidated, reframed, or still-blocked reconciliation without rewriting settlement or creating authority.",
+    "destination": "LOCAL_CONSEQUENCE_RECONCILIATION_WITNESS",
+    "packet": "docs/campaigns/workcycle_stabilization_001/SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001_READY_TO_RUN.md",
+    "selection_basis": "INVOCATION_RESULT_SETTLEMENT_MATCHED is frozen. The next load-bearing relation is SETTLEMENT != OBSERVED_CONSEQUENCE plus independent consequence observation/evaluation driving the already-qualified basis reconciliation law.",
+    "expected_operating_change": "Demonstrate that settlement alone leaves the basis STILL_BLOCKED, matched consequence plus resolved obstruction yields SATISFIED, and contradicted consequence yields INVALIDATED, with the same settlement identity and no successor derivation or authority effect.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -177,7 +177,10 @@
       "docs/campaigns/workcycle_stabilization_001/INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
       "invocation_result_settlement_observation.json",
       "docs/campaigns/workcycle_stabilization_001/pressure_runs/INVOCATION_RESULT_SETTLEMENT_PRESSURE_RESULT_001.md",
-      "src/coordination/settlement_consequence_reconciliation_v0.py"
+      "src/coordination/settlement_consequence_reconciliation_v0.py",
+      "tests/coordination/test_settlement_consequence_reconciliation_v0.py",
+      "tools/observe_settlement_consequence_reconciliation_v0.py",
+      "docs/campaigns/workcycle_stabilization_001/SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001_READY_TO_RUN.md"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
