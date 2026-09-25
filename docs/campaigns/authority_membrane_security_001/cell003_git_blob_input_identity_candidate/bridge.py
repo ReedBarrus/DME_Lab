@@ -488,6 +488,14 @@ def invoke_lmstudio(
         with urllib.request.urlopen(req, timeout=600) as resp:
             response_bytes = resp.read()
             status = int(resp.status)
+    except urllib.error.HTTPError as e:
+        error_body = e.read()
+        error_text = error_body.decode("utf-8", errors="replace")
+        if len(error_text) > 16000:
+            error_text = error_text[:16000] + "...<truncated>"
+        raise RuntimeError(
+            f"LM Studio HTTP {e.code} {e.reason}: {error_text}"
+        ) from e
     except urllib.error.URLError as e:
         raise RuntimeError(f"LM Studio request failed: {e}") from e
     finished = now_iso()
