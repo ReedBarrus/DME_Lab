@@ -62,17 +62,17 @@
     }
   },
   "current_unresolved": [
-    "Authority validity is not yet mechanically source-bound into atomic admission; current atomic witness carried a caller-supplied precondition only.",
-    "Repeated metabolic loop standing remains unearned until result→reconciliation→derived successor→admit→execute→settle→repeat is observed.",
-    "Cross-process contention, crash recovery, stale-lock recovery, and power-loss durability remain explicit deferred challenge surfaces rather than current standing."
+    "Authority-binding runtime witness is frozen and awaits independent adjudication.",
+    "Successor identity derivation is implemented but remains unpressured.",
+    "Repeated metabolic loop standing remains unearned until result→reconciliation→derived successor→verified authority→atomic admission→execution→settlement→repeat is observed."
   ],
   "next_pressure": {
-    "pressure_id": "AUTHORITY_BINDING_PRESSURE_001",
+    "pressure_id": "AUTHORITY_BINDING_PRESSURE_001_ADJUDICATION",
     "work_item_id": "WORKCYCLE_STABILIZATION_001_AUTHORITY_BINDING",
-    "destination": "LOCAL_RUNTIME_WITNESS_THEN_FRESH_INDEPENDENT_EVALUATOR",
-    "packet": "docs/campaigns/workcycle_stabilization_001/AUTHORITY_BINDING_PRESSURE_001_READY_TO_RUN.md",
-    "selection_basis": "Follow-behind adversarial review showed that atomic admission currently carries caller-supplied authority testimony. Existing trust-root authority state can provide a source-bound current-authority witness without granting or consuming authority.",
-    "expected_operating_change": "Replace caller-supplied authority truth with a read-only verified current-authority binding that can later be consumed by atomic admission.",
+    "destination": "FRESH_INDEPENDENT_CURRENT_AUTHORITY_BINDING_ADJUDICATOR",
+    "packet": "docs/campaigns/workcycle_stabilization_001/AUTHORITY_BINDING_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+    "selection_basis": "The refreshed authority-binding witness is current to implementation source b0614e7bdad86e485589846d5caf4929475b3c6e and passed all declared positive/negative runtime assertions. Independent adjudication is now the load-bearing next step.",
+    "expected_operating_change": "Freeze AUTHORITY_BINDING_MATCHED/PARTIAL/FRACTURED/UNRESOLVED within the read-only single-process authority-verification ceiling.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -93,7 +93,9 @@
       "docs/campaigns/workcycle_stabilization_001/state/FOLLOW_BEHIND_ADVERSARIAL_CLAIM_CORRECTION_001.md",
       "docs/campaigns/workcycle_stabilization_001/pressure_runs/ATOMIC_ADMISSION_PRESSURE_RESULT_001.md",
       "docs/campaigns/workcycle_stabilization_001/AUTHORITY_BINDING_PRESSURE_001_READY_TO_RUN.md",
-      "docs/campaigns/workcycle_stabilization_001/state/MECHANIZED_DEPTH_PROFILE_V0.json"
+      "docs/campaigns/workcycle_stabilization_001/state/MECHANIZED_DEPTH_PROFILE_V0.json",
+      "authority_binding_observation.json",
+      "docs/campaigns/workcycle_stabilization_001/AUTHORITY_BINDING_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
