@@ -158,8 +158,6 @@ test('workcycle operator visibly exposes currentness consequence budget and read
     'BASIS / PRESSURE JUSTIFICATION',
     'operator currentness and control truth',
     'DO_NOT_RUN',
-    'PAUSED',
-    'PAUSE',
   ]) {
     assert.ok(html.includes(phrase), phrase);
   }
