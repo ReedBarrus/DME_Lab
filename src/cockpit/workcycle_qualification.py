@@ -62,6 +62,10 @@ SECOND_SUCCESSOR_FROM_RECONCILIATION_RESULT = Path(
     "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
     "SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_RESULT_001.md"
 )
+SUCCESSOR_WORK_UNIT_MATERIALIZATION_RESULT = Path(
+    "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
+    "SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_RESULT_001.md"
+)
 REPEATED_METABOLIC_LOOP_RESULT = Path(
     "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
     "REPEATED_METABOLIC_LOOP_PRESSURE_RESULT_001.md"
@@ -186,6 +190,17 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
         == "SECOND_SUCCESSOR_FROM_RECONCILIATION_MATCHED"
     )
 
+    successor_work_unit_materialization_path = (
+        repo / SUCCESSOR_WORK_UNIT_MATERIALIZATION_RESULT
+    )
+    successor_work_unit_materialization_disposition = _markdown_field(
+        successor_work_unit_materialization_path, "DISPOSITION"
+    )
+    successor_work_unit_materialization_ready = (
+        successor_work_unit_materialization_disposition
+        == "SUCCESSOR_WORK_UNIT_MATERIALIZATION_MATCHED"
+    )
+
     metabolic_loop_path = repo / REPEATED_METABOLIC_LOOP_RESULT
     metabolic_loop_disposition = _markdown_field(
         metabolic_loop_path, "DISPOSITION"
@@ -255,6 +270,11 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
             "SECOND_SUCCESSOR_FROM_RECONCILIATION:"
             + (second_successor_disposition or "UNFROZEN")
         )
+    if not successor_work_unit_materialization_ready:
+        self_moving_blockers.append(
+            "SUCCESSOR_WORK_UNIT_MATERIALIZATION:"
+            + (successor_work_unit_materialization_disposition or "UNFROZEN")
+        )
     if not metabolic_loop_ready:
         self_moving_blockers.append(
             f"REPEATED_METABOLIC_LOOP:{metabolic_loop_disposition or 'UNFROZEN'}"
@@ -323,6 +343,11 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
             "result_path": SECOND_SUCCESSOR_FROM_RECONCILIATION_RESULT.as_posix(),
             "disposition": second_successor_disposition,
             "ready": second_successor_ready,
+        },
+        "successor_work_unit_materialization": {
+            "result_path": SUCCESSOR_WORK_UNIT_MATERIALIZATION_RESULT.as_posix(),
+            "disposition": successor_work_unit_materialization_disposition,
+            "ready": successor_work_unit_materialization_ready,
         },
         "repeated_metabolic_loop": {
             "result_path": REPEATED_METABOLIC_LOOP_RESULT.as_posix(),
