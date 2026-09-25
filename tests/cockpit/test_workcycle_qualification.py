@@ -34,6 +34,8 @@ class WorkcycleQualificationReadinessTests(unittest.TestCase):
         self.assertTrue(bounded.issubset(self_moving))
         self.assertTrue(any(item.startswith("ONE_SUCCESSOR:") for item in self_moving))
         self.assertTrue(any(item.startswith("ATOMIC_ADMISSION:") for item in self_moving))
+        self.assertTrue(any(item.startswith("AUTHORITY_BINDING:") for item in self_moving))
+        self.assertTrue(any(item.startswith("REPEATED_METABOLIC_LOOP:") for item in self_moving))
 
 
 if __name__ == "__main__":
