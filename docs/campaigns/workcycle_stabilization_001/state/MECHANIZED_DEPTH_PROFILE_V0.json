@@ -120,14 +120,17 @@
       "claim": "One exact admitted successor is qualified crossing one-shot authority consumption and a disposable invocation callback with replay denied and post-reservation failure conserved as RECOVERY_REQUIRED."
     },
     "invocation_result_witness": {
-      "posture": "UNTESTED",
-      "claim": "Callback return has not yet been bound to immutable result evidence for the exact work attempt/admission/consumption chain."
+      "posture": "IMPLEMENTED_UNPRESSURED",
+      "implementation": "src/observation/invocation_result_witness_v0.py::build_invocation_result_witness",
+      "tests": "tests/observation/test_invocation_result_witness_v0.py",
+      "pressure_packet": "docs/campaigns/workcycle_stabilization_001/INVOCATION_RESULT_WITNESS_PRESSURE_001_READY_TO_RUN.md",
+      "claim": "Candidate deterministic immutable result witness for one exact admitted and one-shot-consumed callback return only. Runtime pressure remains required."
     }
   },
   "next_load_bearing_coordinate": {
     "coordinate": "invocation_result_witness",
     "pressure": "INVOCATION_RESULT_WITNESS_PRESSURE_001",
-    "selection_basis": "One-shot consumption/invocation-boundary continuity is matched. The next unqualified relation is immutable result witnessing without settlement or semantic interpretation."
+    "selection_basis": "Admitted one-shot authority consumption is qualified. The planner now exposes immutable result witnessing as the nearest unqualified relation before settlement."
   },
   "downstream_frontier": [
     "bind one successful invocation return to immutable attempt/admission/consumption result witness",
