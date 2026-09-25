@@ -127,20 +127,23 @@
       "claim": "One exact admitted and one-shot-consumed attempt is qualified binding its raw callback return into one deterministic immutable result witness without semantic interpretation, settlement, external-effect inference, authority, or standing."
     },
     "invocation_result_settlement": {
-      "posture": "IMPLEMENTED_UNPRESSURED",
+      "posture": "WITNESSED_AWAITING_ADJUDICATION",
       "implementation": "src/coordination/invocation_result_settlement_v0.py::build_candidate_settlement",
       "tests": "tests/coordination/test_invocation_result_settlement_v0.py",
-      "pressure_packet": "docs/campaigns/workcycle_stabilization_001/INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_READY_TO_RUN.md",
-      "claim": "Candidate deterministic field-level settlement over one immutable result witness using externally supplied classifications and explicit bases only."
+      "witness": "invocation_result_settlement_observation.json",
+      "witness_source_ref": "af385f8eead27460826bbdbc2160b8d21da5c5be",
+      "witness_transport_ref": "8bc95bf9cedb02a32da667beb07dde8565431875",
+      "adjudication_packet": "docs/campaigns/workcycle_stabilization_001/INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+      "claim": "One immutable result witness is witnessed receiving externally supplied field-level candidate dispositions and explicit bases in a deterministic settlement record; independent adjudication remains required."
     }
   },
   "next_load_bearing_coordinate": {
     "coordinate": "invocation_result_settlement",
-    "pressure": "INVOCATION_RESULT_SETTLEMENT_PRESSURE_001",
-    "selection_basis": "Immutable result witnessing is qualified. The next unqualified relation is field-level candidate settlement without qualification, authority change, execution, or Atlas mutation."
+    "pressure": "INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_ADJUDICATION",
+    "selection_basis": "The settlement relation has a clean witness-only transport and must be independently adjudicated before consequence/basis pressure becomes eligible."
   },
   "downstream_frontier": [
-    "pressure immutable result witness -> field-level candidate settlement",
+    "independently adjudicate immutable result witness -> field-level candidate settlement",
     "connect settled result to observed consequence and basis reconciliation",
     "derive second successor without manual selection",
     "repeated metabolic loop",
