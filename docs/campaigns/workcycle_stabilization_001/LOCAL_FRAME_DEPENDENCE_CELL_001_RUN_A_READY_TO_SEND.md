@@ -3,6 +3,26 @@
 OBJECT_TYPE:
 READY_TO_SEND_RECONSTRUCTION_PACKET
 
+INFERENCE_PROFILE:
+docs/campaigns/workcycle_stabilization_001/state/LOCAL_FRAME_DEPENDENCE_IDENTITY_CELL_001_INFERENCE_PROFILE.json
+
+REQUIRED OBSERVABLE PROFILE:
+MODEL_ID: GPT-5.6 Sol
+MODEL_FAMILY: GPT-5.6
+REASONING_PROFILE: Medium
+TOOL_POLICY: GitHub read-only exact listed repository files only
+LIVE_CHAT_CONTEXT_POLICY: PROHIBITED
+EXTERNAL_RETRIEVAL_POLICY: PROHIBITED
+
+PROVIDER-MANAGED / UNOBSERVED:
+temperature
+sampling seed
+hidden runtime scheduler state
+other provider-internal sampling state
+
+These unobserved coordinates remain an explicit limitation.
+They do not count as controlled matched coordinates.
+
 RUN_ID:
 LOCAL_FRAME_DEPENDENCE_IDENTITY_CELL_001_RUN_A
 
@@ -52,6 +72,18 @@ Do not repair absent coordinates.
 Do not infer support from conceptual plausibility.
 
 FINAL FIELDS:
+
+OBSERVED_INFERENCE_PROFILE:
+MODEL_ID:
+MODEL_FAMILY:
+REASONING_PROFILE:
+TOOL_POLICY:
+LIVE_CHAT_CONTEXT_POLICY:
+EXTERNAL_RETRIEVAL_POLICY:
+
+PROFILE_MATCH_CLAIM:
+THIS RUN ONLY RECORDS ITS OWN OBSERVED PROFILE.
+CROSS-RUN MATCHING IS EVALUATOR-ONLY.
 
 BOUNDED_OPERATIVE_POSTURE:
 PRESERVED | DEGRADED | LOST | UNRESOLVED
