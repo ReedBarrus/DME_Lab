@@ -59,20 +59,26 @@
         "work execution",
         "self-moving-workcycle standing"
       ]
+    },
+    "authority_binding": {
+      "standing": "AUTHORITY_BINDING_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/AUTHORITY_BINDING_PRESSURE_RESULT_001.md",
+      "claim_ceiling": "One exact locally issued authority envelope was read-only verified against current single-process local authority state as ACTIVE with one remaining use for the bound principal/request/input/model/executor/policy coordinates."
     }
   },
   "current_unresolved": [
-    "Authority-binding runtime witness is frozen and awaits independent adjudication.",
-    "Successor identity derivation is implemented but remains unpressured.",
-    "Repeated metabolic loop standing remains unearned until result→reconciliation→derived successor→verified authority→atomic admission→execution→settlement→repeat is observed."
+    "Successor identity derivation is implemented and now selected for runtime pressure.",
+    "Basis reconciliation remains implemented but unpressured.",
+    "Verified authority has not yet been composed into atomic admission with a derived successor.",
+    "Repeated metabolic loop standing remains unearned."
   ],
   "next_pressure": {
-    "pressure_id": "AUTHORITY_BINDING_PRESSURE_001_ADJUDICATION",
-    "work_item_id": "WORKCYCLE_STABILIZATION_001_AUTHORITY_BINDING",
-    "destination": "FRESH_INDEPENDENT_CURRENT_AUTHORITY_BINDING_ADJUDICATOR",
-    "packet": "docs/campaigns/workcycle_stabilization_001/AUTHORITY_BINDING_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-    "selection_basis": "The refreshed authority-binding witness is current to implementation source b0614e7bdad86e485589846d5caf4929475b3c6e and passed all declared positive/negative runtime assertions. Independent adjudication is now the load-bearing next step.",
-    "expected_operating_change": "Freeze AUTHORITY_BINDING_MATCHED/PARTIAL/FRACTURED/UNRESOLVED within the read-only single-process authority-verification ceiling.",
+    "pressure_id": "SUCCESSOR_IDENTITY_CONSERVATION_PRESSURE_001",
+    "work_item_id": "WORKCYCLE_STABILIZATION_001_SUCCESSOR_IDENTITY",
+    "destination": "LOCAL_RUNTIME_WITNESS_THEN_FRESH_INDEPENDENT_EVALUATOR",
+    "packet": "docs/campaigns/workcycle_stabilization_001/SUCCESSOR_IDENTITY_CONSERVATION_PRESSURE_001_READY_TO_RUN.md",
+    "selection_basis": "Authority verification is matched. The nearest load-bearing unpressured mechanized-depth coordinate is deterministic successor candidate identity conservation.",
+    "expected_operating_change": "Replace planner-supplied successor identity with one reconstructable source-bound candidate identity before later atomic admission composition.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -95,7 +101,9 @@
       "docs/campaigns/workcycle_stabilization_001/AUTHORITY_BINDING_PRESSURE_001_READY_TO_RUN.md",
       "docs/campaigns/workcycle_stabilization_001/state/MECHANIZED_DEPTH_PROFILE_V0.json",
       "authority_binding_observation.json",
-      "docs/campaigns/workcycle_stabilization_001/AUTHORITY_BINDING_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md"
+      "docs/campaigns/workcycle_stabilization_001/AUTHORITY_BINDING_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+      "docs/campaigns/workcycle_stabilization_001/pressure_runs/AUTHORITY_BINDING_PRESSURE_RESULT_001.md",
+      "docs/campaigns/workcycle_stabilization_001/SUCCESSOR_IDENTITY_CONSERVATION_PRESSURE_001_READY_TO_RUN.md"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
