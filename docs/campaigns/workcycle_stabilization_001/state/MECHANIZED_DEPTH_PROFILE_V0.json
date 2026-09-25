@@ -145,23 +145,28 @@
       "claim": "The same settlement can remain STILL_BLOCKED without consequence, reach SATISFIED under independently supplied matched consequence with resolved obstruction, or reach INVALIDATED under contradicted consequence; no successor derivation is established."
     },
     "successor_work_unit_materialization": {
-      "posture": "IMPLEMENTED_READY_FOR_PRESSURE",
+      "posture": "WITNESSED_AWAITING_ADJUDICATION",
       "implementation": "src/coordination/successor_work_unit_materialization_v0.py",
       "tests": "tests/coordination/test_successor_work_unit_materialization_v0.py",
       "observer": "tools/observe_successor_work_unit_materialization_v0.py",
-      "pressure_packet": "docs/campaigns/workcycle_stabilization_001/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001_READY_TO_RUN.md",
-      "claim": "Candidate membrane only: exact successor + explicit externally supplied work spec -> complete next workflow unit. No automatic work-spec generation, admission, authority, execution, or standing."
+      "witness": "successor_work_unit_materialization_observation.json",
+      "witness_source_ref": "0c6eec42366ab715029e5c645cf9d5baae22ff79",
+      "witness_transport_ref": "94ff342c43996fd7ed3dc061f28b8b07242f2eaa",
+      "adjudication_packet": "docs/campaigns/workcycle_stabilization_001/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+      "observed": "One exact deterministic successor plus one explicit externally supplied bounded work spec materializes one complete valid next workflow unit. The unit preserves exact successor/reconciliation/next-pressure lineage, changed work specs change unit identity without changing successor identity, tampering is rejected, and pressure admissibility remains distinct from admission.",
+      "claim": "No materialization standing until independent adjudication."
     }
   },
   "next_load_bearing_coordinate": {
     "coordinate": "successor_work_unit_materialization",
-    "pressure": "SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001",
-    "selection_basis": "The successor-to-work-unit membrane is implemented and staged. Runtime observation is the next required relation before any repeated-loop composition."
+    "pressure": "SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001_ADJUDICATION",
+    "selection_basis": "The successor-to-work-unit membrane has a clean witness-only transport. Independent adjudication is required before fresh authority/admission composition is eligible."
   },
   "downstream_frontier": [
-    "materialize exact successor + explicit bounded work spec into one complete next workflow unit",
-    "carry materialized successor across fresh authority/admission/execution/settlement/reconciliation",
-    "repeat metabolic loop",
+    "independently adjudicate successor + explicit work spec -> complete next workflow unit",
+    "bind fresh authority and atomic admission to the materialized successor unit",
+    "execute/witness/settle/reconcile the materialized successor attempt",
+    "derive successor3 and repeat metabolic loop",
     "planner-seat generation of bounded work specs",
     "seat consequential/meta-feedback",
     "memory compression/reconstruction under persistent load",
