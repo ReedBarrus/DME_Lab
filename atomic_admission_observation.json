@@ -1,6 +1,6 @@
 {
   "object_type": "ATOMIC_ADMISSION_OBSERVATION_V0",
-  "repo_head": "3a96f87599b6e5da03565b3bf8fba3000704c528",
+  "repo_head": "11da60ee7b6de02dcea39537301c6c317cd44d9b",
   "fixture_posture": "DISPOSABLE_LOCAL_CONCURRENCY_FIXTURE",
   "serial_first": {
     "object_type": "ATOMIC_ADMISSION_DECISION_V0",
@@ -18,13 +18,14 @@
       "authority_coordinate": "AUTH_COORD_OBS_001",
       "pre_state_sha256": "93defec9265518e2acc6e5479bbe7f0f26d1557c861e3ac81d8b9e7e3c7d621e",
       "reserved_budget_sha256": "619174b637ae54dd845d84492aedd976ebbeeeeb17be012e780cfa9d551c231c",
-      "authority_was_pre_satisfied": true,
+      "authority_input_posture": "CALLER_SUPPLIED_PRECONDITION",
+      "authority_verification": "NOT_PERFORMED",
       "authority_effect": "NONE",
       "execution_performed": false,
       "model_invocation_effect": "NONE",
-      "claim_ceiling": "Atomic repo-local admission receipt only. It binds a pre-satisfied authority coordinate but grants no authority and performs no model invocation."
+      "claim_ceiling": "Atomic local admission receipt over caller-supplied preconditions only. Authority validity is not verified here; no authority is granted and no model invocation is performed."
     },
-    "state_sha256": "366bbd202ea4186b0377717198307901aedf79d0d7a12cb40048b8b2501c2beb",
+    "state_sha256": "bc0ff58208422ec65c3e9925dcbb01488be807e42dead519045c4de2500c486a",
     "execution_performed": false,
     "model_invocation_effect": "NONE",
     "authority_effect": "NONE"
@@ -38,7 +39,7 @@
       "seat_available"
     ],
     "receipt": null,
-    "state_sha256": "366bbd202ea4186b0377717198307901aedf79d0d7a12cb40048b8b2501c2beb",
+    "state_sha256": "bc0ff58208422ec65c3e9925dcbb01488be807e42dead519045c4de2500c486a",
     "execution_performed": false,
     "model_invocation_effect": "NONE",
     "authority_effect": "NONE"
@@ -72,13 +73,14 @@
         "authority_coordinate": "AUTH_COORD_OBS_001",
         "pre_state_sha256": "93defec9265518e2acc6e5479bbe7f0f26d1557c861e3ac81d8b9e7e3c7d621e",
         "reserved_budget_sha256": "619174b637ae54dd845d84492aedd976ebbeeeeb17be012e780cfa9d551c231c",
-        "authority_was_pre_satisfied": true,
+        "authority_input_posture": "CALLER_SUPPLIED_PRECONDITION",
+        "authority_verification": "NOT_PERFORMED",
         "authority_effect": "NONE",
         "execution_performed": false,
         "model_invocation_effect": "NONE",
-        "claim_ceiling": "Atomic repo-local admission receipt only. It binds a pre-satisfied authority coordinate but grants no authority and performs no model invocation."
+        "claim_ceiling": "Atomic local admission receipt over caller-supplied preconditions only. Authority validity is not verified here; no authority is granted and no model invocation is performed."
       },
-      "state_sha256": "50d81b932112db2376baed0a52b8a28babb158692096cb2d50137fcfe7cfc878",
+      "state_sha256": "6afae14e60efa08e1de715c8581de6fdf7473a6a5caaf1f7e5977cdbc84670a2",
       "execution_performed": false,
       "model_invocation_effect": "NONE",
       "authority_effect": "NONE"
@@ -92,7 +94,7 @@
         "seat_available"
       ],
       "receipt": null,
-      "state_sha256": "50d81b932112db2376baed0a52b8a28babb158692096cb2d50137fcfe7cfc878",
+      "state_sha256": "6afae14e60efa08e1de715c8581de6fdf7473a6a5caaf1f7e5977cdbc84670a2",
       "execution_performed": false,
       "model_invocation_effect": "NONE",
       "authority_effect": "NONE"
