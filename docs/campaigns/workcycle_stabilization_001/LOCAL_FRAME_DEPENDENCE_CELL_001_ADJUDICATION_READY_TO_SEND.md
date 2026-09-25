@@ -22,15 +22,19 @@ READ EXACTLY:
 1. docs/campaigns/workcycle_stabilization_001/state/
    LOCAL_FRAME_DEPENDENCE_IDENTITY_CELL_001_SPEC.json
 
-2. frozen Run A output
+2. docs/campaigns/workcycle_stabilization_001/state/
+   LOCAL_FRAME_DEPENDENCE_IDENTITY_CELL_001_INFERENCE_PROFILE.json
 
-3. frozen Run B output
+3. frozen Run A output
+
+4. frozen Run B output
 
 QUESTION:
 
-Did withholding the one declared candidate-support object produce a reproducible
-difference in the subject's SEMANTIC_RECONSTRUCTION continuity, under the
-matched bounded reconstruction contract?
+Did the one matched A/B pair exhibit an observed difference on the declared
+SEMANTIC_RECONSTRUCTION continuity measure that is consistent with the one
+declared evidence-aperture intervention, after checking the observable inference
+profile coordinates?
 
 DO NOT:
 - infer causation from temporal order;
@@ -49,17 +53,26 @@ UNCHANGED | DEGRADED | LOST | UNRESOLVED
 
 DEPENDENCE_POSTURE:
 NOT_ESTABLISHED
-| BOUNDED_DEPENDENCE_CANDIDATE_STRENGTHENED
-| MULTI_LOAD_OR_CONFOUNDED
+| BOUNDED_RECONSTRUCTION_DEPENDENCE_CANDIDATE_STRENGTHENED
+| CONFOUNDED
 | UNRESOLVED
 
-LOAD_LOCALIZATION:
-SEMANTIC_RECONSTRUCTION_ONLY
-| NOT_LOCALIZED
+DECLARED_LOAD_EFFECT:
+OBSERVED
+| NOT_OBSERVED
 | UNRESOLVED
+
+ORTHOGONAL_LOADS_EVALUATED:
+NO
 
 RUN_COMPARABILITY:
-MATCHED | FRACTURED | UNRESOLVED
+MATCHED_OBSERVABLE_PROFILE
+| FRACTURED
+| UNRESOLVED
+
+RESIDUAL_INFERENCE_VARIANCE:
+UNRESOLVED_PROVIDER_MANAGED
+| NOT_APPLICABLE
 
 REQUIRED NON-COLLAPSES:
 
@@ -70,10 +83,18 @@ STATE_DIFFERENCE != RELATIONAL_UPDATE
 TEMPORAL_SUCCESSION != CAUSATION
 
 MAXIMUM_WARRANTED_CLAIM:
-one sentence, bounded to this exact specimen
+one sentence, bounded to this exact subject, evidence aperture, declared load,
+scope, source ref, observable inference profile, and single matched pair.
+
+FORBIDDEN CLAIMS:
+- reproducibility;
+- semantic reconstruction is the only affected load;
+- whole-workcycle existential dependence;
+- causal necessity;
+- generic Atlas dependence law.
 
 APPLICATION_ELIGIBILITY:
-ELIGIBLE_AS_CANDIDATE_RULE
+ELIGIBLE_AS_BOUNDED_RECONSTRUCTION_DEPENDENCE_CANDIDATE
 | WITHHELD
 | NOT_APPLICABLE
 
