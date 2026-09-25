@@ -93,6 +93,18 @@ def _expected_change(pressure: str) -> str:
             "replace caller-supplied authority testimony with a source-bound current "
             "authority verification that grants and consumes nothing"
         ),
+        "SUCCESSOR_IDENTITY_PRESSURE": (
+            "replace planner-invented continuation identity with one deterministic "
+            "source-bound successor candidate identity"
+        ),
+        "BASIS_RECONCILIATION_PRESSURE": (
+            "establish or fracture deterministic reconciliation of observed consequence "
+            "against the original load-bearing basis"
+        ),
+        "VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE": (
+            "bind verified current authority and a derived successor identity into "
+            "one fail-closed atomic admission transition"
+        ),
         "REPEATED_METABOLIC_LOOP_PRESSURE": (
             "establish or fracture two consecutive basis-bound workcycle transitions "
             "whose successor selection is derived from prior witnessed consequence"
@@ -140,6 +152,15 @@ def _select_pressure(
             return "ATOMIC_ADMISSION_PRESSURE", "SELF_MOVING_QUALIFICATION_BLOCKER"
         if blocker.startswith("AUTHORITY_BINDING:"):
             return "AUTHORITY_BINDING_PRESSURE", "SELF_MOVING_QUALIFICATION_BLOCKER"
+        if blocker.startswith("SUCCESSOR_IDENTITY:"):
+            return "SUCCESSOR_IDENTITY_PRESSURE", "SELF_MOVING_QUALIFICATION_BLOCKER"
+        if blocker.startswith("BASIS_RECONCILIATION:"):
+            return "BASIS_RECONCILIATION_PRESSURE", "SELF_MOVING_QUALIFICATION_BLOCKER"
+        if blocker.startswith("VERIFIED_AUTHORITY_ATOMIC_ADMISSION:"):
+            return (
+                "VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE",
+                "SELF_MOVING_QUALIFICATION_BLOCKER",
+            )
         if blocker.startswith("REPEATED_METABOLIC_LOOP:"):
             return "REPEATED_METABOLIC_LOOP_PRESSURE", "SELF_MOVING_QUALIFICATION_BLOCKER"
 
