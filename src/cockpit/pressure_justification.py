@@ -109,6 +109,10 @@ def _expected_change(pressure: str) -> str:
             "bind one exact admitted successor to the same current one-use authority "
             "and cross one bounded invocation boundary with replay denied"
         ),
+        "INVOCATION_RESULT_WITNESS_PRESSURE": (
+            "bind one successful consumed invocation return into an immutable result "
+            "witness without semantic interpretation or settlement"
+        ),
         "REPEATED_METABOLIC_LOOP_PRESSURE": (
             "establish or fracture two consecutive basis-bound workcycle transitions "
             "whose successor selection is derived from prior witnessed consequence"
@@ -168,6 +172,11 @@ def _select_pressure(
         if blocker.startswith("ADMITTED_AUTHORITY_CONSUMPTION:"):
             return (
                 "ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE",
+                "SELF_MOVING_QUALIFICATION_BLOCKER",
+            )
+        if blocker.startswith("INVOCATION_RESULT_WITNESS:"):
+            return (
+                "INVOCATION_RESULT_WITNESS_PRESSURE",
                 "SELF_MOVING_QUALIFICATION_BLOCKER",
             )
         if blocker.startswith("REPEATED_METABOLIC_LOOP:"):
