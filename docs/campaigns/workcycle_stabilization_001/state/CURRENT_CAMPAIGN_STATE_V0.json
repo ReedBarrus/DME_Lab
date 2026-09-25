@@ -108,17 +108,17 @@
     }
   },
   "current_unresolved": [
-    "Second-successor derivation has not yet been composed with the qualified settlement/consequence/reconciliation chain.",
-    "Current successor-posture precedence may allow stale workflow consequence fields to outrank a supplied reconciliation; this must be pressured before repair.",
+    "Second-successor composition is staged and ready for pressure; no standing is earned yet.",
+    "A precedence wound is suspected: stale workflow consequence state may outrank fresh reconciliation in next-posture derivation.",
     "Repeated metabolism and seat consequential/meta-feedback remain unearned."
   ],
   "next_pressure": {
     "pressure_id": "SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_001",
     "work_item_id": "WORKCYCLE_STABILIZATION_001_SECOND_SUCCESSOR_FROM_RECONCILIATION",
-    "destination": "LOCAL_SECOND_SUCCESSOR_COMPOSITION_PRESSURE",
+    "destination": "LOCAL_RECONCILIATION_TO_SUCCESSOR_COMPOSITION_WITNESS",
     "packet": "docs/campaigns/workcycle_stabilization_001/SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_001_READY_TO_RUN.md",
-    "selection_basis": "SETTLEMENT_CONSEQUENCE_RECONCILIATION_MATCHED is frozen. Existing successor identity derivation is qualified in isolation, but composition with fresh reconciliation is unpressured and precedence between stale workflow consequence fields and supplied reconciliation may be incorrect.",
-    "expected_operating_change": "Observe whether STILL_BLOCKED routes to consequence observation, PARTIALLY_SATISFIED derives one exact successor from its next-pressure basis, SATISFIED closes with no successor, and INVALIDATED holds with no successor.",
+    "selection_basis": "SETTLEMENT_CONSEQUENCE_RECONCILIATION_MATCHED is frozen. The observer now pressures composition between fresh reconciliation and successor projection without repair or manual successor selection.",
+    "expected_operating_change": "Either observe exact routing through STILL_BLOCKED/PARTIALLY_SATISFIED/SATISFIED/INVALIDATED into lawful next postures and successor projections, or preserve the exact fractured routing for narrow repair.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -188,7 +188,9 @@
       "docs/campaigns/workcycle_stabilization_001/SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001_READY_TO_RUN.md",
       "docs/campaigns/workcycle_stabilization_001/SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
       "settlement_consequence_reconciliation_observation.json",
-      "docs/campaigns/workcycle_stabilization_001/pressure_runs/SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_RESULT_001.md"
+      "docs/campaigns/workcycle_stabilization_001/pressure_runs/SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_RESULT_001.md",
+      "docs/campaigns/workcycle_stabilization_001/SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_001_READY_TO_RUN.md",
+      "tools/observe_second_successor_from_reconciliation_v0.py"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
