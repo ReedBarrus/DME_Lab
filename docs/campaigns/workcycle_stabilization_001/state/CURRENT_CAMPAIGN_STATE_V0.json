@@ -105,21 +105,26 @@
       "standing": "SETTLEMENT_CONSEQUENCE_RECONCILIATION_MATCHED",
       "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_RESULT_001.md",
       "claim_ceiling": "At the exact supplied source, one deterministic candidate settlement remains insufficient without independent consequence evidence; independently supplied matched consequence can drive SATISFIED under resolved obstruction, while contradicted consequence can drive INVALIDATED. No successor derivation, authority, execution, Atlas mutation, or production-world consequence is established."
+    },
+    "second_successor_from_reconciliation_fracture": {
+      "standing": "SECOND_SUCCESSOR_FROM_RECONCILIATION_FRACTURED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_RESULT_001.md",
+      "claim_ceiling": "Fresh PARTIALLY_SATISFIED, SATISFIED, and INVALIDATED reconciliations were witnessed routing through stale OBSERVE_APPLICATION_CONSEQUENCE next-work posture while partial successor identity still bound the fresh reconciliation basis. Component standing remained intact."
     }
   },
   "current_unresolved": [
-    "Second-successor composition is witnessed and awaits independent adjudication.",
-    "Observed routing suggests stale workflow consequence state may outrank fresh reconciliation for next-posture derivation.",
-    "No repair is admitted until the fracture adjudication is frozen.",
+    "The second-successor composition fracture is frozen.",
+    "A narrow next-work-posture precedence repair is implemented and ready for repressure.",
+    "No repaired second-successor standing is earned yet.",
     "Repeated metabolism and seat consequential/meta-feedback remain unearned."
   ],
   "next_pressure": {
-    "pressure_id": "SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_001_ADJUDICATION",
-    "work_item_id": "WORKCYCLE_STABILIZATION_001_SECOND_SUCCESSOR_FROM_RECONCILIATION",
-    "destination": "FRESH_INDEPENDENT_SECOND_SUCCESSOR_COMPOSITION_ADJUDICATOR",
-    "packet": "docs/campaigns/workcycle_stabilization_001/SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-    "selection_basis": "The second-successor composition witness exercised repo head 4d5b2cd824885201b73ca694f7dcf1817a09f143 and was transported alone in 1dda81cc05f43e1cc6c9627f8a438a947eb62b59. The witness preserves a valid settlement-only route but shows PARTIALLY_SATISFIED, SATISFIED, and INVALIDATED all routing through OBSERVE_APPLICATION_CONSEQUENCE. Independent adjudication is required before any repair.",
-    "expected_operating_change": "Freeze MATCHED/PARTIAL/FRACTURED/UNRESOLVED for fresh reconciliation -> next-work posture -> second-successor composition, preserving component standing and exact fracture geometry.",
+    "pressure_id": "SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_001",
+    "work_item_id": "WORKCYCLE_STABILIZATION_001_SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR",
+    "destination": "LOCAL_RECONCILIATION_TO_SUCCESSOR_REPAIR_WITNESS",
+    "packet": "docs/campaigns/workcycle_stabilization_001/SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_001_READY_TO_RUN.md",
+    "selection_basis": "The frozen fracture isolates stale workflow consequence posture outranking fresh reconciliation in next-work derivation. The repair changes only precedence: SATISFIED/INVALIDATED/PARTIAL/REFRAMED reconciliation controls current next posture; STILL_BLOCKED falls back to prior observation routing.",
+    "expected_operating_change": "Repressure the exact four-case matrix and establish whether the narrow precedence repair restores lawful reconciliation-to-successor composition without history rewrite, admission, authority, or execution.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -193,7 +198,9 @@
       "docs/campaigns/workcycle_stabilization_001/SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_001_READY_TO_RUN.md",
       "tools/observe_second_successor_from_reconciliation_v0.py",
       "docs/campaigns/workcycle_stabilization_001/SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-      "second_successor_from_reconciliation_observation.json"
+      "second_successor_from_reconciliation_observation.json",
+      "docs/campaigns/workcycle_stabilization_001/pressure_runs/SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_RESULT_001.md",
+      "docs/campaigns/workcycle_stabilization_001/SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_001_READY_TO_RUN.md"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
@@ -260,8 +267,8 @@
       "settlement + independent consequence -> basis reconciliation independently matched"
     ],
     "unresolved_components": [
-      "second-successor composition awaits independent adjudication",
-      "fresh reconciliation may not control next-work posture due to stale workflow state precedence",
+      "second-successor precedence repair awaits runtime pressure",
+      "repaired second-successor composition has no standing yet",
       "repeat without manual successor selection has not yet been observed"
     ]
   },
