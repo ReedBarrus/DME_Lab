@@ -77,17 +77,17 @@
     }
   },
   "current_unresolved": [
-    "Verified-authority/successor atomic-admission composition is implemented but unpressured.",
-    "Real bounded execution, consequence settlement, and second mechanically derived successor remain unobserved.",
-    "Repeated metabolic loop standing remains unearned."
+    "Windows same-process atomic-admission lock contention repair is implemented but unpressured at the current source.",
+    "The composition witness generated during the failed prerequisite run is ineligible and must be regenerated after the atomic repair is re-witnessed.",
+    "Real bounded execution, consequence settlement, second mechanically derived successor, and repeated metabolism remain unearned."
   ],
   "next_pressure": {
-    "pressure_id": "VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001",
-    "work_item_id": "WORKCYCLE_STABILIZATION_001_VERIFIED_AUTHORITY_ATOMIC_ADMISSION",
-    "destination": "LOCAL_COMPOSITION_WITNESS",
-    "packet": "docs/campaigns/workcycle_stabilization_001/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001_READY_TO_RUN.md",
-    "selection_basis": "The narrow composition layer now binds a current verified authority request/input identity to the exact sealed successor candidate before using the already-qualified same-process atomic admission primitive. Runtime pressure remains required.",
-    "expected_operating_change": "Produce a source-bound witness that exact verified authority for successor A admits A, rejects B/tampering/consumed authority, and still admits only one of two same-process callers without consuming authority or executing work.",
+    "pressure_id": "ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_001",
+    "work_item_id": "WORKCYCLE_STABILIZATION_001_ATOMIC_ADMISSION_WINDOWS_REPAIR",
+    "destination": "LOCAL_ATOMIC_ADMISSION_REPAIR_WITNESS",
+    "packet": "docs/campaigns/workcycle_stabilization_001/ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_001_READY_TO_RUN.md",
+    "selection_basis": "The prerequisite suite exposed a Windows PermissionError at O_EXCL sentinel acquisition during the raw two-caller atomic-admission race. The narrow bounded-contention repair changed the qualified primitive source, so current-source thread-contention standing must be re-witnessed before composition pressure resumes.",
+    "expected_operating_change": "Restore a source-bound same-process two-caller atomic-admission witness at the repaired source while preserving fail-closed timeout behavior.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -123,7 +123,8 @@
       "src/coordination/verified_authority_admission_v0.py",
       "tests/coordination/test_verified_authority_admission_v0.py",
       "tools/observe_verified_authority_atomic_admission_v0.py",
-      "docs/campaigns/workcycle_stabilization_001/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001_READY_TO_RUN.md"
+      "docs/campaigns/workcycle_stabilization_001/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001_READY_TO_RUN.md",
+      "docs/campaigns/workcycle_stabilization_001/ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_001_READY_TO_RUN.md"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
@@ -149,6 +150,16 @@
       "scientific_result": "NONE",
       "retry_posture": "FRESH_EXPLICIT_ATTEMPT_ONLY",
       "priority": "DEFERRED_NONBLOCKING"
+    },
+    {
+      "fracture_id": "ATOMIC_ADMISSION_WINDOWS_LOCK_PERMISSION_RACE_001",
+      "work_item_id": "WORKCYCLE_STABILIZATION_001_VERIFIED_AUTHORITY_ATOMIC_ADMISSION",
+      "class": "APPARATUS_DEFECT",
+      "posture": "REPAIR_IMPLEMENTED_UNPRESSURED",
+      "observed": "Windows PermissionError during O_CREAT|O_EXCL sentinel acquisition in the raw two-caller atomic-admission prerequisite test.",
+      "witness_effect": "verified_authority_atomic_admission_observation.json generated in the same run is ineligible because the prerequisite suite failed.",
+      "repair": "Treat FileExistsError and PermissionError as bounded acquisition contention; persistent failure remains fail-closed via AtomicAdmissionError timeout.",
+      "priority": "BLOCKING_CURRENT_FRONTIER"
     }
   ],
   "current_obstruction": {
