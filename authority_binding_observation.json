@@ -1,6 +1,6 @@
 {
   "object_type": "AUTHORITY_BINDING_OBSERVATION_V0",
-  "repo_head": "0dbde59667451fa624e6373b7659aadf69fe18d8",
+  "repo_head": "b0614e7bdad86e485589846d5caf4929475b3c6e",
   "fixture_posture": "DISPOSABLE_LOCAL_AUTHORITY_STATE_FIXTURE",
   "verified_binding": {
     "object_type": "CURRENT_AUTHORITY_BINDING_V0",
