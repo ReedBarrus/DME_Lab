@@ -4,10 +4,12 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
+from unittest.mock import patch
 
 from src.coordination import workcycle_v0 as wc
 from src.coordination.atomic_admission_v0 import (
     AtomicAdmissionError,
+    _acquire_lock,
     try_atomic_admission,
 )
 
@@ -110,6 +112,38 @@ class AtomicAdmissionV0Tests(unittest.TestCase):
         self.assertFalse(result["admitted"])
         self.assertIn("authority_satisfied", result["blockers"])
         self.assertIsNone(result["receipt"])
+
+    def test_windows_permission_error_is_bounded_lock_contention(self):
+        with TemporaryDirectory() as tmp:
+            lock_path = Path(tmp) / "atomic_admission.lock"
+            with (
+                patch(
+                    "src.coordination.atomic_admission_v0.os.open",
+                    side_effect=[
+                        PermissionError(13, "permission denied"),
+                        PermissionError(13, "permission denied"),
+                        123,
+                    ],
+                ) as mocked_open,
+                patch("src.coordination.atomic_admission_v0.time.sleep"),
+            ):
+                fd = _acquire_lock(lock_path, attempts=3, delay=0)
+
+        self.assertEqual(fd, 123)
+        self.assertEqual(mocked_open.call_count, 3)
+
+    def test_persistent_permission_error_fails_closed(self):
+        with TemporaryDirectory() as tmp:
+            lock_path = Path(tmp) / "atomic_admission.lock"
+            with (
+                patch(
+                    "src.coordination.atomic_admission_v0.os.open",
+                    side_effect=PermissionError(13, "permission denied"),
+                ),
+                patch("src.coordination.atomic_admission_v0.time.sleep"),
+            ):
+                with self.assertRaises(AtomicAdmissionError):
+                    _acquire_lock(lock_path, attempts=2, delay=0)
 
     def test_malformed_persisted_state_fails_closed(self):
         with TemporaryDirectory() as tmp:
