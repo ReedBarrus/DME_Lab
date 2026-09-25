@@ -21,7 +21,10 @@ function startAtlasLanding() {
   const atlasFrame = document.querySelector('#atlas-primary-frame');
   if (!atlas || !legacy) return null;
   if (atlasFrame) {
-    atlasFrame.src = atlasFrameUrlWithRuntime(window.location.href, atlasFrame.getAttribute('src'));
+    const frameSource = atlasFrame.dataset.src || atlasFrame.getAttribute('src');
+    if (frameSource) {
+      atlasFrame.src = atlasFrameUrlWithRuntime(window.location.href, frameSource);
+    }
   }
   let state = {surface: DEFAULT_COCKPIT_SURFACE};
 
