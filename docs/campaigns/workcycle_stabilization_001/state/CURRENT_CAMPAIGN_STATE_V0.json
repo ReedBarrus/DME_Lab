@@ -83,17 +83,17 @@
     }
   },
   "current_unresolved": [
-    "Verified current authority and exact sealed successor have not yet survived composition into the repaired atomic-admission source.",
-    "Real bounded execution, consequence settlement, and second mechanically derived successor remain unobserved.",
+    "Verified-authority/exact-successor atomic-admission composition is witnessed and awaits independent adjudication.",
+    "Real bounded execution, witnessed consequence, settlement, and second mechanically derived successor remain unobserved.",
     "Repeated metabolic loop standing remains unearned."
   ],
   "next_pressure": {
-    "pressure_id": "VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001",
+    "pressure_id": "VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001_ADJUDICATION",
     "work_item_id": "WORKCYCLE_STABILIZATION_001_VERIFIED_AUTHORITY_ATOMIC_ADMISSION",
-    "destination": "LOCAL_COMPOSITION_WITNESS",
-    "packet": "docs/campaigns/workcycle_stabilization_001/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001_READY_TO_RUN.md",
-    "selection_basis": "ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_MATCHED restores the repaired current-source same-process contention relation. The next load-bearing coordinate is composition of current verified one-use authority with the exact sealed successor into the repaired atomic admission path.",
-    "expected_operating_change": "Produce a fresh source-bound composition witness against the repaired source. Exact authority for successor A must admit A, reject B/tampering/consumed authority, and preserve one winner under two same-process callers without consuming authority or executing work.",
+    "destination": "FRESH_INDEPENDENT_VERIFIED_AUTHORITY_ATOMIC_ADMISSION_ADJUDICATOR",
+    "packet": "docs/campaigns/workcycle_stabilization_001/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+    "selection_basis": "The repaired-source composition witness exercised repo head 55e3902e013284acc62851075338f3c7f90d6d2d and was transported alone in d887ef69f43a3d4f4060fbf6dfb083eae4f5119d. Independent adjudication is required before the composition may become a current load-bearing predecessor.",
+    "expected_operating_change": "Freeze MATCHED/PARTIAL/FRACTURED/UNRESOLVED for verified current authority + exact sealed successor + same-process atomic admission, without consuming authority or executing work.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -132,7 +132,9 @@
       "docs/campaigns/workcycle_stabilization_001/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001_READY_TO_RUN.md",
       "docs/campaigns/workcycle_stabilization_001/ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_001_READY_TO_RUN.md",
       "docs/campaigns/workcycle_stabilization_001/ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_001_ADJUDICATION_READY_TO_SEND.md",
-      "docs/campaigns/workcycle_stabilization_001/pressure_runs/ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_RESULT_001.md"
+      "docs/campaigns/workcycle_stabilization_001/pressure_runs/ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_RESULT_001.md",
+      "docs/campaigns/workcycle_stabilization_001/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+      "verified_authority_atomic_admission_observation.json"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
@@ -194,9 +196,9 @@
       "Windows current-source atomic-admission contention repair independently matched"
     ],
     "unresolved_components": [
-      "verified current authority and exact derived successor identity have not yet been composed inside repaired atomic admission",
-      "derived successor has not yet been atomically admitted and executed",
-      "consequence has not yet been settled into a new basis",
+      "verified current authority and exact derived successor composition awaits independent adjudication",
+      "derived successor has not yet been executed under consumed one-use authority",
+      "execution consequence has not yet been settled into a new basis",
       "repeat without manual successor selection has not yet been observed"
     ]
   },
