@@ -30,6 +30,18 @@ AUTHORITY_BINDING_RESULT = Path(
     "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
     "AUTHORITY_BINDING_PRESSURE_RESULT_001.md"
 )
+SUCCESSOR_IDENTITY_RESULT = Path(
+    "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
+    "SUCCESSOR_IDENTITY_CONSERVATION_PRESSURE_RESULT_001.md"
+)
+BASIS_RECONCILIATION_RESULT = Path(
+    "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
+    "BASIS_RECONCILIATION_PRESSURE_RESULT_001.md"
+)
+VERIFIED_AUTHORITY_ADMISSION_RESULT = Path(
+    "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
+    "VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_RESULT_001.md"
+)
 REPEATED_METABOLIC_LOOP_RESULT = Path(
     "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
     "REPEATED_METABOLIC_LOOP_PRESSURE_RESULT_001.md"
@@ -82,6 +94,31 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
         authority_binding_disposition == "AUTHORITY_BINDING_MATCHED"
     )
 
+    successor_identity_path = repo / SUCCESSOR_IDENTITY_RESULT
+    successor_identity_disposition = _markdown_field(
+        successor_identity_path, "DISPOSITION"
+    )
+    successor_identity_ready = (
+        successor_identity_disposition == "SUCCESSOR_IDENTITY_MATCHED"
+    )
+
+    basis_reconciliation_path = repo / BASIS_RECONCILIATION_RESULT
+    basis_reconciliation_disposition = _markdown_field(
+        basis_reconciliation_path, "DISPOSITION"
+    )
+    basis_reconciliation_ready = (
+        basis_reconciliation_disposition == "BASIS_RECONCILIATION_MATCHED"
+    )
+
+    verified_authority_admission_path = repo / VERIFIED_AUTHORITY_ADMISSION_RESULT
+    verified_authority_admission_disposition = _markdown_field(
+        verified_authority_admission_path, "DISPOSITION"
+    )
+    verified_authority_admission_ready = (
+        verified_authority_admission_disposition
+        == "VERIFIED_AUTHORITY_ATOMIC_ADMISSION_MATCHED"
+    )
+
     metabolic_loop_path = repo / REPEATED_METABOLIC_LOOP_RESULT
     metabolic_loop_disposition = _markdown_field(
         metabolic_loop_path, "DISPOSITION"
@@ -113,6 +150,19 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
         self_moving_blockers.append(
             f"AUTHORITY_BINDING:{authority_binding_disposition or 'UNFROZEN'}"
         )
+    if not successor_identity_ready:
+        self_moving_blockers.append(
+            f"SUCCESSOR_IDENTITY:{successor_identity_disposition or 'UNFROZEN'}"
+        )
+    if not basis_reconciliation_ready:
+        self_moving_blockers.append(
+            f"BASIS_RECONCILIATION:{basis_reconciliation_disposition or 'UNFROZEN'}"
+        )
+    if not verified_authority_admission_ready:
+        self_moving_blockers.append(
+            "VERIFIED_AUTHORITY_ATOMIC_ADMISSION:"
+            + (verified_authority_admission_disposition or "UNFROZEN")
+        )
     if not metabolic_loop_ready:
         self_moving_blockers.append(
             f"REPEATED_METABOLIC_LOOP:{metabolic_loop_disposition or 'UNFROZEN'}"
@@ -141,6 +191,21 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
             "result_path": AUTHORITY_BINDING_RESULT.as_posix(),
             "disposition": authority_binding_disposition,
             "ready": authority_binding_ready,
+        },
+        "successor_identity": {
+            "result_path": SUCCESSOR_IDENTITY_RESULT.as_posix(),
+            "disposition": successor_identity_disposition,
+            "ready": successor_identity_ready,
+        },
+        "basis_reconciliation": {
+            "result_path": BASIS_RECONCILIATION_RESULT.as_posix(),
+            "disposition": basis_reconciliation_disposition,
+            "ready": basis_reconciliation_ready,
+        },
+        "verified_authority_atomic_admission": {
+            "result_path": VERIFIED_AUTHORITY_ADMISSION_RESULT.as_posix(),
+            "disposition": verified_authority_admission_disposition,
+            "ready": verified_authority_admission_ready,
         },
         "repeated_metabolic_loop": {
             "result_path": REPEATED_METABOLIC_LOOP_RESULT.as_posix(),
