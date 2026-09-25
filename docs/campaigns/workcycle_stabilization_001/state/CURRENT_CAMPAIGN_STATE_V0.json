@@ -20,20 +20,26 @@
         "claim_ceiling": "No causation, reproducibility, load exclusivity, whole-system dependence, or generic Atlas law established.",
         "challenge_handle": "docs/campaigns/workcycle_stabilization_001/state/LOCAL_FRAME_DEPENDENCE_CELL_001R_ADJUDICATION_RESULT.json"
       }
-    ]
+    ],
+    "t7_operator_visibility": {
+      "standing": "BOUNDED_PASS",
+      "disposition": "COCKPIT_PROJECTION_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/state/COCKPIT_T7_PRESSURE_RESULT_001.md",
+      "claim_ceiling": "Bounded disposable runtime fixtures only; no packaged desktop end-to-end proof, execution authority, or scientific standing."
+    }
   },
   "current_unresolved": [
-    "T7 is substantively truthful but remains PARTIAL because three runtime behaviors are not yet directly witnessed in the frozen current-world evidence aperture.",
-    "RELATIONAL_COMPRESSION_W2 remains independently held/retryable under its separate apparatus/runtime lane.",
-    "Temporal-horizon closure remains downstream of T7 completion."
+    "T7 operator visibility is now BOUNDED_PASS under the bounded disposable-runtime claim ceiling.",
+    "Temporal-horizon closure remains the current bounded-workcycle qualification blocker.",
+    "RELATIONAL_COMPRESSION_W2 remains independently held/retryable under its separate apparatus/runtime lane."
   ],
   "next_pressure": {
-    "pressure_id": "COCKPIT_T7R_CURRENT_WORLD_OBSERVATION",
-    "work_item_id": "WORKCYCLE_STABILIZATION_001_T7R_RUNTIME_OBSERVATION",
-    "destination": "LOCAL_OPERATOR_RUNTIME_WITNESS",
-    "packet": "docs/campaigns/workcycle_stabilization_001/COCKPIT_T7R_CURRENT_WORLD_OBSERVATION_READY_TO_RUN.md",
-    "selection_basis": "T7 returned COCKPIT_PROJECTION_PARTIAL with only runtime-observation gaps; existing implementation/tests already cover the semantics, so the narrowest repair is to witness those paths in a bounded disposable current-code fixture.",
-    "expected_operating_change": "Replace implementation/test-only support for the three remaining T7 runtime classes with one explicit runtime witness, without mutating real operator control or widening T7 scope.",
+    "pressure_id": "ATLAS_TEMPORAL_HORIZON_CLOSURE_001",
+    "work_item_id": "WORKCYCLE_STABILIZATION_001_TEMPORAL_HORIZON_CLOSURE",
+    "destination": "FRESH_INDEPENDENT_RELATIONAL_HORIZON_EVALUATOR",
+    "packet": "docs/campaigns/workcycle_stabilization_001/ATLAS_TEMPORAL_HORIZON_CLOSURE_001_READY_TO_SEND.md",
+    "selection_basis": "T7 is now BOUNDED_PASS. The remaining bounded-workcycle qualification blocker is unfrozen temporal-horizon closure over history + current operative workcycle + declared upcoming work.",
+    "expected_operating_change": "Replace temporal-horizon uncertainty with one bounded challengeable horizon disposition without creating work admission, authority, execution, or scientific standing.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -41,14 +47,16 @@
       "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
       "docs/campaigns/workcycle_stabilization_001/state/LOCAL_FRAME_DEPENDENCE_CELL_001R_ADJUDICATION_RESULT.json",
       "docs/campaigns/workcycle_stabilization_001/state/WORKCYCLE_STABILIZATION_001_RELATIONAL_COMPRESSION_W2.json",
-      "docs/campaigns/workcycle_stabilization_001/state/COCKPIT_T7_PRESSURE_RESULT_001.md",
-      "docs/campaigns/workcycle_stabilization_001/COCKPIT_T7R_CURRENT_WORLD_OBSERVATION_READY_TO_RUN.md"
+      "docs/campaigns/workcycle_stabilization_001/state/COCKPIT_T7_PRESSURE_RESULT_001.md"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
       "bridge/results/CELL001R_DEPENDENCE_RUN_B.json",
       "docs/campaigns/workcycle_stabilization_001/LOCAL_FRAME_DEPENDENCE_CELL_001_RESULT.md",
-      "docs/campaigns/workcycle_stabilization_001/LOCAL_FRAME_DEPENDENCE_CELL_001R_ADJUDICATION_READY_TO_SEND.md"
+      "docs/campaigns/workcycle_stabilization_001/LOCAL_FRAME_DEPENDENCE_CELL_001R_ADJUDICATION_READY_TO_SEND.md",
+      "docs/campaigns/workcycle_stabilization_001/state/COCKPIT_T7_PRESSURE_RESULT_001_PARTIAL.md",
+      "t7r_runtime_observation.json",
+      "docs/campaigns/workcycle_stabilization_001/COCKPIT_T7R_ADJUDICATION_READY_TO_SEND.md"
     ]
   },
   "authority_effect": "NONE",
