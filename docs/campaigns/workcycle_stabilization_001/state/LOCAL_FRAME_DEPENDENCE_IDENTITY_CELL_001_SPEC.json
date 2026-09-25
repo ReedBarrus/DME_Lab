@@ -1,0 +1,64 @@
+{
+  "object_type": "LOCAL_FRAME_DEPENDENCE_IDENTITY_CELL_001",
+  "source_ref": "d5a47606ce0ed8a08ea444638e5ae4b90c59ea91",
+  "subject": {
+    "subject_id": "WORKCYCLE_STABILIZATION_001_LOCAL_FRAME_DEPENDENCE_CELL_001",
+    "continuity_target": "fresh-seat bounded reconstruction of WORKCYCLE_STABILIZATION_001 relational workcycle semantics",
+    "scope": "the exact W2 workcycle subject and four pinned evidence objects only"
+  },
+  "candidate_relation": {
+    "relation_type": "EVIDENCE_SUPPORTS_RECONSTRUCTION",
+    "subject": "WORKCYCLE_STABILIZATION_001_LOCAL_FRAME_DEPENDENCE_CELL_001",
+    "target_path": "docs/campaigns/workcycle_stabilization_001/SYMBOLIC_CONSEQUENCE_DECOMPOSITION_V0.md",
+    "target_blob_sha": "871fd46c441eaba75e545c258ce198a2347f2bb9",
+    "relation_standing": "SOURCE_SUPPORTED",
+    "dependence_standing": "UNRESOLVED"
+  },
+  "declared_load_dimension": "SEMANTIC_RECONSTRUCTION",
+  "fixed_evidence": [
+    {
+      "path": "docs/campaigns/workcycle_stabilization_001/state/WORKCYCLE_STABILIZATION_001_RELATIONAL_COMPRESSION_W2.json",
+      "blob_sha": "16c05667bd61399d526624805c4eeecbadc3a886"
+    },
+    {
+      "path": "docs/campaigns/workcycle_stabilization_001/WORKCYCLE_STABILIZATION_CAMPAIGN_001.md",
+      "blob_sha": "b15d71c05f20509b47162bcd1b81c69849fe6115"
+    },
+    {
+      "path": "docs/campaigns/workcycle_stabilization_001/PRESSURE_JUSTIFICATION_001_READY_TO_SEND.md",
+      "blob_sha": "92419f7709690d3b74018622805c3008af5b107b"
+    }
+  ],
+  "perturbed_evidence": {
+    "path": "docs/campaigns/workcycle_stabilization_001/SYMBOLIC_CONSEQUENCE_DECOMPOSITION_V0.md",
+    "blob_sha": "871fd46c441eaba75e545c258ce198a2347f2bb9",
+    "intervention": "WITHHELD_FROM_RUN_B_EVIDENCE_APERTURE_ONLY",
+    "repository_mutation": "NONE"
+  },
+  "matched_coordinates": [
+    "source_ref",
+    "reconstruction_contract",
+    "role",
+    "output_schema",
+    "claim_ceiling",
+    "authority_effect",
+    "execution_effect"
+  ],
+  "observation_classes": [
+    "UNCHANGED",
+    "DEGRADED",
+    "LOST",
+    "MULTI_LOAD_OR_CONFOUNDED",
+    "UNRESOLVED"
+  ],
+  "non_collapses": [
+    "RELATION != DEPENDENCE",
+    "DEPENDENCE != LOAD",
+    "LOAD != CONSEQUENCE",
+    "STATE_DIFFERENCE != RELATIONAL_UPDATE",
+    "TEMPORAL_SUCCESSION != CAUSATION"
+  ],
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "scientific_standing_effect": "NONE"
+}
