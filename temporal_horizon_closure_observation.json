@@ -1,31 +1,31 @@
 {
   "object_type": "ATLAS_TEMPORAL_HORIZON_CLOSURE_OBSERVATION_V0",
-  "repo_head": "e57086b49a38571edcf5ecc086f88647101ec2d3",
+  "repo_head": "3d9a6109ff89e8454f61e7f489a0eeeafbc68092",
   "temporal_lineage": {
     "path": "generated/repository_temporal_lineage.json",
-    "sha256": "34345c5bcbdb7caf65b58ad8929aa880c782728a9963e71f4a593dcabeda046c",
-    "source_commit": "d5a47606ce0ed8a08ea444638e5ae4b90c59ea91",
-    "transition_count": 902,
+    "sha256": "63d1f959105b76bad23f217976e353aa36a6244d8437edf8e934dbb9fc6fc0eb",
+    "source_commit": "3d9a6109ff89e8454f61e7f489a0eeeafbc68092",
+    "transition_count": 960,
     "recent_transition": {
-      "transition_id": "temporal-transition:sha256:2a3e7659b37d1508cdee62b01f7411beaf1939280da78b8a19744a52d7404bd6",
-      "transition_index": 901,
-      "from_frame_id": "temporal-frame:sha256:41666aafa9f211cfc06e3967e6fa78609662480753355ad50535b877fc7787a2",
-      "to_frame_id": "temporal-frame:sha256:b3015eb8601d04287ea55e30e797be3b006ba9e8d874ae975cc1305baccd651c",
-      "from_commit_sha": "ae05f8cf6c4594fa27d12f488b65e0505de03e95",
-      "to_commit_sha": "d5a47606ce0ed8a08ea444638e5ae4b90c59ea91",
+      "transition_id": "temporal-transition:sha256:675252cc390294778a092dfe1a99f96bcadd5eb4148725cdd6fa61eab3685717",
+      "transition_index": 959,
+      "from_frame_id": "temporal-frame:sha256:652a0cf252bc6b0bac4802ff527c332b9603aa6da5e1a656bc473366787628fd",
+      "to_frame_id": "temporal-frame:sha256:8e56905fd750eb445b1b4b1491a007e0765b88802eb6da56939e5566a5725da5",
+      "from_commit_sha": "7a04162a677caeca557638da77adaf1f0662183f",
+      "to_commit_sha": "3d9a6109ff89e8454f61e7f489a0eeeafbc68092",
       "events": [
         {
-          "event_id": "temporal-event:sha256:26d1c0cfffaba8ef7fca1c4912dfb54b69f3590c1b0fccf9427681f6e35f27e6",
+          "event_id": "temporal-event:sha256:38a13e57a5877e7264d4176fde26f2209771ad4d88734bc8f0a1d2504ff13bf0",
           "ordinal": 0,
           "status": "M",
-          "old_path": "tests/cockpit/test_atlas_workcycle_panel.mjs",
-          "new_path": "tests/cockpit/test_atlas_workcycle_panel.mjs",
+          "old_path": "docs/campaigns/authority_membrane_security_001/cell003_git_blob_input_identity_candidate/bridge.py",
+          "new_path": "docs/campaigns/authority_membrane_security_001/cell003_git_blob_input_identity_candidate/bridge.py",
           "old_mode": "100644",
           "new_mode": "100644",
-          "old_object_sha": "1a8ffd4459c12d2c4e968d5465edbe811582decf",
-          "new_object_sha": "2787c59dbc35112ebc45f9042802b4b3e04f4d77",
-          "lineage_id_before": "temporal-object:sha256:2e3a2c90ff2b7b59d57fce8c534decdda17ce8fa7a3d2109a9835bea67b81a65",
-          "lineage_id_after": "temporal-object:sha256:2e3a2c90ff2b7b59d57fce8c534decdda17ce8fa7a3d2109a9835bea67b81a65",
+          "old_object_sha": "18fa68abb38d58f7fba9fbf9556c4ccda5522c18",
+          "new_object_sha": "aa5f3d4dc3c830c9e819626406f2fa9dc8028b0a",
+          "lineage_id_before": "temporal-object:sha256:5f27185d2958dfd16f7dc72123db88e52400324f9cd54db60598f6dd0eabf6f5",
+          "lineage_id_after": "temporal-object:sha256:5f27185d2958dfd16f7dc72123db88e52400324f9cd54db60598f6dd0eabf6f5",
           "identity_basis": "SAME_PATH_ADJACENT_FIRST_PARENT_FRAMES",
           "classifications": [
             "PERSISTED",
@@ -34,20 +34,20 @@
             "RELATION_ADDED"
           ],
           "before": {
-            "path": "tests/cockpit/test_atlas_workcycle_panel.mjs",
+            "path": "docs/campaigns/authority_membrane_security_001/cell003_git_blob_input_identity_candidate/bridge.py",
             "git_mode": "100644",
             "git_object_type": "blob",
-            "git_object_sha": "1a8ffd4459c12d2c4e968d5465edbe811582decf",
-            "lineage_id": "temporal-object:sha256:2e3a2c90ff2b7b59d57fce8c534decdda17ce8fa7a3d2109a9835bea67b81a65",
-            "content_identity": "sha256:527b3832871a4b11176cc8aa46d91c125c37abcaa808e6e27f0a0bacda938320"
+            "git_object_sha": "18fa68abb38d58f7fba9fbf9556c4ccda5522c18",
+            "lineage_id": "temporal-object:sha256:5f27185d2958dfd16f7dc72123db88e52400324f9cd54db60598f6dd0eabf6f5",
+            "content_identity": "sha256:3376802742e10f5a891d87be7e36fed623b36725287f18d5dbda3152e1be2dac"
           },
           "after": {
-            "path": "tests/cockpit/test_atlas_workcycle_panel.mjs",
+            "path": "docs/campaigns/authority_membrane_security_001/cell003_git_blob_input_identity_candidate/bridge.py",
             "git_mode": "100644",
             "git_object_type": "blob",
-            "git_object_sha": "2787c59dbc35112ebc45f9042802b4b3e04f4d77",
-            "lineage_id": "temporal-object:sha256:2e3a2c90ff2b7b59d57fce8c534decdda17ce8fa7a3d2109a9835bea67b81a65",
-            "content_identity": "sha256:df860cce69933d3c8a1a03910ce7be00f3ab02cfa6d51f727493599052cb4577"
+            "git_object_sha": "aa5f3d4dc3c830c9e819626406f2fa9dc8028b0a",
+            "lineage_id": "temporal-object:sha256:5f27185d2958dfd16f7dc72123db88e52400324f9cd54db60598f6dd0eabf6f5",
+            "content_identity": "sha256:7fbba844964d95a16b8de12b273e6a951c62fea94c68222c88a3b3a6e3f59d8e"
           },
           "relation_changes": {
             "added": [
@@ -64,13 +64,13 @@
           "source_handles": [
             {
               "handle_kind": "GIT_ADJACENT_DIFF",
-              "from_commit_sha": "ae05f8cf6c4594fa27d12f488b65e0505de03e95",
-              "to_commit_sha": "d5a47606ce0ed8a08ea444638e5ae4b90c59ea91"
+              "from_commit_sha": "7a04162a677caeca557638da77adaf1f0662183f",
+              "to_commit_sha": "3d9a6109ff89e8454f61e7f489a0eeeafbc68092"
             },
             {
               "handle_kind": "GIT_OBJECT_PAIR",
-              "old_object_sha": "1a8ffd4459c12d2c4e968d5465edbe811582decf",
-              "new_object_sha": "2787c59dbc35112ebc45f9042802b4b3e04f4d77"
+              "old_object_sha": "18fa68abb38d58f7fba9fbf9556c4ccda5522c18",
+              "new_object_sha": "aa5f3d4dc3c830c9e819626406f2fa9dc8028b0a"
             }
           ],
           "declared_operational_relations": []
@@ -78,9 +78,9 @@
       ],
       "event_count": 1,
       "git_authorship": {
-        "name": "Reed Barrus",
+        "name": "ReedBarrus",
         "email": "reedbarrus@gmail.com",
-        "timestamp": "2026-09-24T19:30:38-07:00",
+        "timestamp": "2026-09-25T00:07:47-07:00",
         "standing": "GIT_METADATA_ONLY"
       },
       "seat_actor": "UNRESOLVED",
@@ -88,12 +88,12 @@
       "source_handles": [
         {
           "handle_kind": "GIT_COMMIT",
-          "commit_sha": "d5a47606ce0ed8a08ea444638e5ae4b90c59ea91",
-          "tree_sha": "d5864e78f685ebd5e08cfb03700d9dd8a067f8c9"
+          "commit_sha": "3d9a6109ff89e8454f61e7f489a0eeeafbc68092",
+          "tree_sha": "1a65862df42ba707ce5a3cc8d9c9e5e82f364362"
         },
         {
           "handle_kind": "GIT_PARENT",
-          "commit_sha": "ae05f8cf6c4594fa27d12f488b65e0505de03e95"
+          "commit_sha": "7a04162a677caeca557638da77adaf1f0662183f"
         }
       ]
     }
@@ -306,9 +306,9 @@
     "history": {
       "posture": "SUPPORTED",
       "recent_transition": {
-        "transition_id": "temporal-transition:sha256:2a3e7659b37d1508cdee62b01f7411beaf1939280da78b8a19744a52d7404bd6",
-        "from_commit_sha": "ae05f8cf6c4594fa27d12f488b65e0505de03e95",
-        "to_commit_sha": "d5a47606ce0ed8a08ea444638e5ae4b90c59ea91",
+        "transition_id": "temporal-transition:sha256:675252cc390294778a092dfe1a99f96bcadd5eb4148725cdd6fa61eab3685717",
+        "from_commit_sha": "7a04162a677caeca557638da77adaf1f0662183f",
+        "to_commit_sha": "3d9a6109ff89e8454f61e7f489a0eeeafbc68092",
         "event_count": 1,
         "classifications": [
           "CONTENT_CHANGED",
@@ -319,12 +319,12 @@
         "source_handles": [
           {
             "handle_kind": "GIT_COMMIT",
-            "commit_sha": "d5a47606ce0ed8a08ea444638e5ae4b90c59ea91",
-            "tree_sha": "d5864e78f685ebd5e08cfb03700d9dd8a067f8c9"
+            "commit_sha": "3d9a6109ff89e8454f61e7f489a0eeeafbc68092",
+            "tree_sha": "1a65862df42ba707ce5a3cc8d9c9e5e82f364362"
           },
           {
             "handle_kind": "GIT_PARENT",
-            "commit_sha": "ae05f8cf6c4594fa27d12f488b65e0505de03e95"
+            "commit_sha": "7a04162a677caeca557638da77adaf1f0662183f"
           }
         ]
       },
@@ -411,7 +411,7 @@
       "identity_address": {
         "posture": "SUPPORTED",
         "evidence_handles": [
-          "temporal-transition:sha256:2a3e7659b37d1508cdee62b01f7411beaf1939280da78b8a19744a52d7404bd6",
+          "temporal-transition:sha256:675252cc390294778a092dfe1a99f96bcadd5eb4148725cdd6fa61eab3685717",
           "campaign:WORKCYCLE_STABILIZATION_001",
           "horizon:FIRST_PERMANENT_WORKLOAD_COMPRESSION_HISTORY_CONSERVATION"
         ],
@@ -420,7 +420,7 @@
       "mechanical": {
         "posture": "SUPPORTED",
         "evidence_handles": [
-          "temporal-transition:sha256:2a3e7659b37d1508cdee62b01f7411beaf1939280da78b8a19744a52d7404bd6"
+          "temporal-transition:sha256:675252cc390294778a092dfe1a99f96bcadd5eb4148725cdd6fa61eab3685717"
         ],
         "risk": null
       },
@@ -450,7 +450,7 @@
       "provenance": {
         "posture": "SUPPORTED",
         "evidence_handles": [
-          "temporal-transition:sha256:2a3e7659b37d1508cdee62b01f7411beaf1939280da78b8a19744a52d7404bd6",
+          "temporal-transition:sha256:675252cc390294778a092dfe1a99f96bcadd5eb4148725cdd6fa61eab3685717",
           "docs/campaigns/workcycle_stabilization_001/compression/ATLAS_COORDINATION_ROUNDS_010_012_COMPRESSED_CANDIDATE.md",
           "docs/campaigns/workcycle_stabilization_001/compression/ATLAS_COORDINATION_ROUNDS_010_012_CONSERVATION_REPORT.md"
         ],
@@ -481,12 +481,12 @@
         "reason": "operator-local control may permit workflow motion but does not itself admit work"
       },
       "provenance": {
-        "bearing_object": "temporal-transition:sha256:2a3e7659b37d1508cdee62b01f7411beaf1939280da78b8a19744a52d7404bd6",
+        "bearing_object": "temporal-transition:sha256:675252cc390294778a092dfe1a99f96bcadd5eb4148725cdd6fa61eab3685717",
         "direction": "STABLE",
         "reason": "horizon must remain challengeable to exact temporal and workcycle evidence"
       },
       "temporal": {
-        "bearing_object": "temporal-transition:sha256:2a3e7659b37d1508cdee62b01f7411beaf1939280da78b8a19744a52d7404bd6",
+        "bearing_object": "temporal-transition:sha256:675252cc390294778a092dfe1a99f96bcadd5eb4148725cdd6fa61eab3685717",
         "direction": "INCREASING",
         "reason": "history/current/upcoming must remain distinct while composing one horizon candidate"
       },
