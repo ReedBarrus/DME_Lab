@@ -118,17 +118,18 @@
     }
   },
   "current_unresolved": [
-    "Successor work-unit materialization is implemented and ready for runtime pressure.",
-    "Automatic work-spec generation remains unearned; the materializer accepts only explicit externally supplied bounded work specs.",
+    "Successor work-unit materialization is witnessed and awaits independent adjudication.",
+    "Fresh authority/admission over the materialized successor unit remains unearned.",
+    "Automatic work-spec generation remains unearned.",
     "Repeated metabolism and seat consequential/meta-feedback remain unearned."
   ],
   "next_pressure": {
-    "pressure_id": "SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001",
+    "pressure_id": "SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001_ADJUDICATION",
     "work_item_id": "WORKCYCLE_STABILIZATION_001_SUCCESSOR_WORK_UNIT_MATERIALIZATION",
-    "destination": "LOCAL_SUCCESSOR_WORK_UNIT_MATERIALIZATION_WITNESS",
-    "packet": "docs/campaigns/workcycle_stabilization_001/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001_READY_TO_RUN.md",
-    "selection_basis": "A deterministic second-successor projection is qualified, but next_pressure_basis is not an executable work specification. The staged membrane binds one exact successor to one explicit bounded work spec and materializes a complete next workflow unit without inventing planning semantics.",
-    "expected_operating_change": "Demonstrate deterministic successor+work-spec -> complete workflow-unit materialization, exact lineage binding, spec-variation separation, tamper rejection, and zero admission/authority/execution/standing effects.",
+    "destination": "FRESH_INDEPENDENT_SUCCESSOR_WORK_UNIT_MATERIALIZATION_ADJUDICATOR",
+    "packet": "docs/campaigns/workcycle_stabilization_001/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+    "selection_basis": "The materialization witness exercised repo head 0c6eec42366ab715029e5c645cf9d5baae22ff79 and was transported alone in 94ff342c43996fd7ed3dc061f28b8b07242f2eaa. Independent adjudication is required before the materialized successor unit may be treated as an earned predecessor for fresh authority/admission.",
+    "expected_operating_change": "Freeze MATCHED/PARTIAL/FRACTURED/UNRESOLVED for exact successor + explicit externally supplied bounded work spec -> complete next workflow unit, preserving lineage and zero admission/authority/execution/standing effects.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -210,7 +211,9 @@
       "src/coordination/successor_work_unit_materialization_v0.py",
       "tests/coordination/test_successor_work_unit_materialization_v0.py",
       "tools/observe_successor_work_unit_materialization_v0.py",
-      "docs/campaigns/workcycle_stabilization_001/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001_READY_TO_RUN.md"
+      "docs/campaigns/workcycle_stabilization_001/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001_READY_TO_RUN.md",
+      "docs/campaigns/workcycle_stabilization_001/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+      "successor_work_unit_materialization_observation.json"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
@@ -278,7 +281,8 @@
       "fresh reconciliation -> lawful second successor projection independently repair-matched"
     ],
     "unresolved_components": [
-      "derived successor has not yet been materialized into a complete next workflow unit",
+      "successor work-unit materialization awaits independent adjudication",
+      "fresh authority/admission over the materialized successor unit has not been pressured",
       "repeat without manual successor selection has not yet been observed"
     ]
   },
