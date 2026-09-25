@@ -51,6 +51,9 @@ ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_MATCHED
 UNRESOLVED:
 []
 
+CLAIM_CEILING:
+At the exact repaired source, same-process two-caller local-filesystem atomic admission again yields exactly one admitted caller and one blocked caller under the bounded fixture. Windows PermissionError during O_EXCL sentinel acquisition is treated as bounded contention, while persistent inability to acquire remains fail-closed. This does not establish cross-process contention safety, stale-lock recovery, crash safety, power-loss durability, verified-authority composition, model invocation, work execution, or self-moving-workcycle standing.
+
 SCIENTIFIC_STANDING_EFFECT:
 NONE
 
