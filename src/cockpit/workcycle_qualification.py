@@ -42,6 +42,10 @@ VERIFIED_AUTHORITY_ADMISSION_RESULT = Path(
     "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
     "VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_RESULT_001.md"
 )
+ADMITTED_AUTHORITY_CONSUMPTION_RESULT = Path(
+    "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
+    "ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_RESULT_001.md"
+)
 REPEATED_METABOLIC_LOOP_RESULT = Path(
     "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
     "REPEATED_METABOLIC_LOOP_PRESSURE_RESULT_001.md"
@@ -119,6 +123,15 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
         == "VERIFIED_AUTHORITY_ATOMIC_ADMISSION_MATCHED"
     )
 
+    admitted_authority_consumption_path = repo / ADMITTED_AUTHORITY_CONSUMPTION_RESULT
+    admitted_authority_consumption_disposition = _markdown_field(
+        admitted_authority_consumption_path, "DISPOSITION"
+    )
+    admitted_authority_consumption_ready = (
+        admitted_authority_consumption_disposition
+        == "ADMITTED_AUTHORITY_CONSUMPTION_MATCHED"
+    )
+
     metabolic_loop_path = repo / REPEATED_METABOLIC_LOOP_RESULT
     metabolic_loop_disposition = _markdown_field(
         metabolic_loop_path, "DISPOSITION"
@@ -163,6 +176,11 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
             "VERIFIED_AUTHORITY_ATOMIC_ADMISSION:"
             + (verified_authority_admission_disposition or "UNFROZEN")
         )
+    if not admitted_authority_consumption_ready:
+        self_moving_blockers.append(
+            "ADMITTED_AUTHORITY_CONSUMPTION:"
+            + (admitted_authority_consumption_disposition or "UNFROZEN")
+        )
     if not metabolic_loop_ready:
         self_moving_blockers.append(
             f"REPEATED_METABOLIC_LOOP:{metabolic_loop_disposition or 'UNFROZEN'}"
@@ -206,6 +224,11 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
             "result_path": VERIFIED_AUTHORITY_ADMISSION_RESULT.as_posix(),
             "disposition": verified_authority_admission_disposition,
             "ready": verified_authority_admission_ready,
+        },
+        "admitted_authority_consumption": {
+            "result_path": ADMITTED_AUTHORITY_CONSUMPTION_RESULT.as_posix(),
+            "disposition": admitted_authority_consumption_disposition,
+            "ready": admitted_authority_consumption_ready,
         },
         "repeated_metabolic_loop": {
             "result_path": REPEATED_METABOLIC_LOOP_RESULT.as_posix(),
