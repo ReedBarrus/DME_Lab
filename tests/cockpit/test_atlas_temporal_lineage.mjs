@@ -238,14 +238,16 @@ test('Atlas boot renders current fabric before background temporal attachment', 
   const currentFetch = loadSource.indexOf('REPOSITORY_FABRIC_PATH');
   const currentModel = loadSource.indexOf('model = buildRepositoryFabricModel');
   const currentGeometry = loadSource.indexOf('geometricField = buildGeometricRepositoryField');
-  const firstRender = loadSource.indexOf('render();\n    startWorkcycleRuntimeProjection();');
-  const historyAttach = loadSource.indexOf('void attachHistoricalContext(requestedView);');
+  const firstRender = loadSource.indexOf('render();', currentGeometry);
+  const runtimeStart = loadSource.indexOf('startWorkcycleRuntimeProjection();', firstRender);
+  const historyAttach = loadSource.indexOf('void attachHistoricalContext(requestedView);', runtimeStart);
 
   assert.ok(currentFetch >= 0, 'current repository fabric fetch must exist');
   assert.ok(currentModel > currentFetch, 'current model must be built after current fabric fetch');
   assert.ok(currentGeometry > currentModel, 'current geometry must be built after current model');
   assert.ok(firstRender > currentGeometry, 'current world must render after current geometry');
-  assert.ok(historyAttach > firstRender, 'historical context must attach after first render');
+  assert.ok(runtimeStart > firstRender, 'runtime projection must start after first render');
+  assert.ok(historyAttach > runtimeStart, 'historical context must attach after first render');
 
   assert.doesNotMatch(
     loadSource,
