@@ -35,6 +35,14 @@ class WorkcycleQualificationReadinessTests(unittest.TestCase):
         self.assertTrue(any(item.startswith("ONE_SUCCESSOR:") for item in self_moving))
         self.assertTrue(any(item.startswith("ATOMIC_ADMISSION:") for item in self_moving))
         self.assertTrue(any(item.startswith("AUTHORITY_BINDING:") for item in self_moving))
+        self.assertTrue(any(item.startswith("SUCCESSOR_IDENTITY:") for item in self_moving))
+        self.assertTrue(any(item.startswith("BASIS_RECONCILIATION:") for item in self_moving))
+        self.assertTrue(
+            any(
+                item.startswith("VERIFIED_AUTHORITY_ATOMIC_ADMISSION:")
+                for item in self_moving
+            )
+        )
         self.assertTrue(any(item.startswith("REPEATED_METABOLIC_LOOP:") for item in self_moving))
 
 
