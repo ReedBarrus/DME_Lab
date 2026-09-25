@@ -36,11 +36,13 @@
       "claim": "One exact locally issued authority envelope was read-only verified against current single-process local authority state as ACTIVE with one remaining use at bound principal/request/input/model/executor/policy coordinates."
     },
     "thread_contention": {
-      "posture": "REPAIR_IMPLEMENTED_UNPRESSURED",
+      "posture": "REPAIR_WITNESSED_AWAITING_ADJUDICATION",
       "prior_evidence": "ATOMIC_ADMISSION_MATCHED",
       "implementation": "src/coordination/atomic_admission_v0.py::_acquire_lock",
       "repair_tests": "tests/coordination/test_atomic_admission_v0.py",
-      "claim": "Prior frozen same-process contention standing is retained historically, but the repaired current source requires a fresh witness before use as a composition predecessor."
+      "claim": "Prior frozen same-process contention standing is retained historically, but the repaired current source requires a fresh witness before use as a composition predecessor.",
+      "witness": "atomic_admission_observation.json",
+      "witness_source_ref": "11da60ee7b6de02dcea39537301c6c317cd44d9b"
     },
     "process_contention": {
       "posture": "UNTESTED"
@@ -114,8 +116,8 @@
   },
   "next_load_bearing_coordinate": {
     "coordinate": "thread_contention",
-    "pressure": "ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_001",
-    "selection_basis": "A prerequisite raw two-caller race exposed a Windows sentinel-acquisition apparatus defect. The repaired current atomic-admission source must be re-witnessed before verified-authority composition can proceed."
+    "pressure": "ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_001_ADJUDICATION",
+    "selection_basis": "The repaired current source has a clean witness-only transport. Independent adjudication must re-earn same-process current-source atomic standing before composition pressure resumes."
   },
   "downstream_frontier": [
     "re-witness repaired same-process atomic-admission contention",
