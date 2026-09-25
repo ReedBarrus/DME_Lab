@@ -573,6 +573,62 @@ def emit_authority_decision(witness: dict[str, Any]) -> None:
     )
 
 
+def write_apparatus_failure_witness(
+    *,
+    manifest: dict[str, Any],
+    manifest_sha256: str,
+    prompt_bytes: bytes,
+    request_path: str,
+    p: dict[str, Any],
+    approved: dict[str, Any],
+    envelope: dict[str, Any],
+    stage: str,
+    error: Exception,
+) -> Path:
+    """Persist an apparatus failure without manufacturing a model result."""
+
+    out_path = result_path_for(manifest["request_id"], p)
+    witness = {
+        "object_type": "LOCAL_LMSTUDIO_APPARATUS_FAILURE_WITNESS_V0",
+        "request_id": manifest["request_id"],
+        "request_manifest_path": request_path,
+        "request_manifest_sha256": manifest_sha256,
+        "source_ref": manifest["source_ref"],
+        "input_path": manifest["input_path"],
+        "input_blob_sha": (
+            manifest.get("input_blob_sha")
+            if manifest["schema_version"] == "LOCAL_INVOCATION_REQUEST_V0_1"
+            else None
+        ),
+        "input_sha256": sha256_bytes(prompt_bytes),
+        "prompt_bytes": len(prompt_bytes),
+        "model_requested": manifest["model"],
+        "temperature": float(manifest["temperature"]),
+        "max_tokens": int(manifest["max_tokens"]),
+        "endpoint_identity": approved["endpoint_identity"],
+        "executor_sha256": approved["executor_sha256"],
+        "policy_sha256": approved["policy_sha256"],
+        "principal_id": approved["principal_id"],
+        "capability_id": approved["capability_id"],
+        "approval_id": approved["approval_id"],
+        "authority_envelope_issued": True,
+        "authority_reservation_may_have_occurred": stage == "AUTHORITY_CONSUMPTION_OR_INVOCATION",
+        "failure_stage": stage,
+        "error_type": type(error).__name__,
+        "error_message": str(error),
+        "invocation_result_received": False,
+        "scientific_result_produced": False,
+        "automatic_retry_allowed": False,
+        "observed_at_utc": now_iso(),
+        "standing": "APPARATUS_FAILURE_ONLY",
+    }
+    out_path.write_text(
+        json.dumps(witness, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    return out_path
+
+
 def process_once(
     p: dict[str, Any],
     attempting_principal_id: str,
@@ -600,6 +656,21 @@ def process_once(
         try:
             raw_manifest = git_show(repo, remote_head, request_path)
             manifest_sha = sha256_bytes(raw_manifest)
+
+            # Queue hygiene: historical/disabled requests are inert before
+            # strict schema validation. This prevents archived manifest dialects
+            # from spamming the live watcher while preserving fail-closed
+            # validation for anything that is actually enabled.
+            try:
+                manifest_preview = json.loads(raw_manifest.decode("utf-8"))
+            except Exception:
+                manifest_preview = None
+            if (
+                isinstance(manifest_preview, dict)
+                and manifest_preview.get("enabled") is False
+            ):
+                continue
+
             manifest = parse_manifest(raw_manifest)
             validate_manifest(manifest, p)
         except Exception as e:
@@ -693,6 +764,11 @@ def process_once(
         envelope = mint_authority_envelope(approved, authority_clock())
         try:
             authority_store.issue(envelope)
+        except Exception as e:
+            print(f"[ERROR] {manifest['request_id']}: authority issue failed: {e}")
+            continue
+
+        try:
             authority_result = authority_consumer(
                 envelope,
                 attempting_principal_id=attempting_principal_id,
@@ -707,7 +783,21 @@ def process_once(
                 clock=authority_clock,
             )
         except Exception as e:
-            print(f"[ERROR] {manifest['request_id']}: {e}")
+            failure_path = write_apparatus_failure_witness(
+                manifest=manifest,
+                manifest_sha256=manifest_sha,
+                prompt_bytes=execution_candidate_bytes,
+                request_path=request_path,
+                p=p,
+                approved=approved,
+                envelope=envelope,
+                stage="AUTHORITY_CONSUMPTION_OR_INVOCATION",
+                error=e,
+            )
+            print(
+                f"[ERROR] {manifest['request_id']}: {e}; "
+                f"apparatus failure witness written to {failure_path}"
+            )
             continue
 
         if authority_result.get("decision") != "INVOKED":
