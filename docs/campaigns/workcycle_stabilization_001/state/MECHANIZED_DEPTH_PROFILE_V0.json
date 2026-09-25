@@ -87,14 +87,11 @@
       "implementation": "src/coordination/basis_workcycle_v1.py::derive_successor_candidate"
     },
     "verified_authority_to_atomic_admission": {
-      "posture": "WITNESSED_AWAITING_ADJUDICATION",
+      "posture": "QUALIFIED",
+      "evidence": "VERIFIED_AUTHORITY_ATOMIC_ADMISSION_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_RESULT_001.md",
       "implementation": "src/coordination/verified_authority_admission_v0.py::try_verified_authority_atomic_admission",
-      "tests": "tests/coordination/test_verified_authority_admission_v0.py",
-      "witness": "verified_authority_atomic_admission_observation.json",
-      "witness_source_ref": "55e3902e013284acc62851075338f3c7f90d6d2d",
-      "witness_transport_ref": "d887ef69f43a3d4f4060fbf6dfb083eae4f5119d",
-      "adjudication_packet": "docs/campaigns/workcycle_stabilization_001/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-      "claim": "Current verified one-use authority is witnessed binding the exact sealed successor into one same-process atomic admission; independent adjudication remains required."
+      "claim": "Current verified one-use authority for the exact sealed successor is qualified in one same-process atomic admission transition; authority remains unconsumed and no execution occurs."
     },
     "real_bounded_execution_in_chain": {
       "posture": "UNTESTED"
@@ -114,17 +111,21 @@
     },
     "noisy_workload_fitness": {
       "posture": "UNTESTED"
+    },
+    "admitted_authority_consumption": {
+      "posture": "UNTESTED",
+      "claim": "Exact composed admission has not yet been bound to one-shot authority consumption at the invocation boundary."
     }
   },
   "next_load_bearing_coordinate": {
-    "coordinate": "verified_authority_to_atomic_admission",
-    "pressure": "VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001_ADJUDICATION",
-    "selection_basis": "The composition relation has a clean witness-only transport and now requires independent adjudication before execution-chain pressure may begin."
+    "coordinate": "admitted_authority_consumption",
+    "pressure": "ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001",
+    "selection_basis": "Verified authority + exact successor + atomic admission is matched. The next untested relation is crossing from admitted successor to one-shot authority consumption and bounded invocation without replay or identity substitution."
   },
   "downstream_frontier": [
-    "independently adjudicate verified current authority + exact successor + atomic admission composition",
-    "real bounded execution + witnessed consequence + settlement",
-    "second successor derived without manual selection",
+    "bind exact admitted successor to one-shot authority consumption and invocation boundary",
+    "immutably witness bounded execution result and route settlement",
+    "reconcile consequence into basis and derive second successor without manual selection",
     "repeated metabolic loop",
     "controlled fracture injection",
     "noisy workload fitness"
