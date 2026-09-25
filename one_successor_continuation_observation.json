@@ -1,0 +1,125 @@
+{
+  "object_type": "ONE_SUCCESSOR_CONTINUATION_OBSERVATION_V0",
+  "repo_head": "3a96f87599b6e5da03565b3bf8fba3000704c528",
+  "fixture_posture": "DISPOSABLE_SINGLE_THREADED_FIXTURE",
+  "off_case": {
+    "admit_one_successor": false,
+    "lifecycle_coordinates": {
+      "dependency_satisfied": true,
+      "frame_current": true,
+      "seat_available": true,
+      "no_hold": true,
+      "authority_satisfied": true,
+      "budget_reservable": true
+    },
+    "control_coordinates": {
+      "workflow_enabled": false,
+      "campaign_enabled": true,
+      "seat_work_enabled": true,
+      "wake_requested": true,
+      "auto_continuation_available": true
+    },
+    "blockers": [
+      "workflow_enabled"
+    ],
+    "max_successors_admitted": 0,
+    "execution_performed": false,
+    "authority_effect": "NONE"
+  },
+  "one_unit_case": {
+    "admit_one_successor": true,
+    "lifecycle_coordinates": {
+      "dependency_satisfied": true,
+      "frame_current": true,
+      "seat_available": true,
+      "no_hold": true,
+      "authority_satisfied": true,
+      "budget_reservable": true
+    },
+    "control_coordinates": {
+      "workflow_enabled": true,
+      "campaign_enabled": true,
+      "seat_work_enabled": true,
+      "wake_requested": true,
+      "auto_continuation_available": true
+    },
+    "blockers": [],
+    "max_successors_admitted": 1,
+    "execution_performed": false,
+    "authority_effect": "NONE"
+  },
+  "reserved_budget": {
+    "object_type": "WAKE_BUDGET_V0",
+    "campaign_id": "WORKCYCLE_STABILIZATION_001",
+    "work_items": {
+      "allowed_per_wake": 1,
+      "reserved": 1,
+      "consumed": 0
+    },
+    "seat_invocations": {
+      "allowed_per_wake": 1,
+      "reserved": 1,
+      "consumed": 0
+    },
+    "repair_attempts": {
+      "allowed": 0,
+      "reserved": 0,
+      "consumed": 0
+    },
+    "mutation": {
+      "max_files_per_item": 4,
+      "source_deletions_allowed": 0,
+      "trust_root_mutations_allowed": 0
+    },
+    "authority": {
+      "allowed_classes": [
+        "REPO_LOCAL_CANDIDATE"
+      ],
+      "forbidden": [
+        "TRUST_ROOT_PROMOTION",
+        "SOURCE_DELETION"
+      ]
+    },
+    "integrity_sha256": "619174b637ae54dd845d84492aedd976ebbeeeeb17be012e780cfa9d551c231c"
+  },
+  "second_same_wake_case": {
+    "admit_one_successor": false,
+    "lifecycle_coordinates": {
+      "dependency_satisfied": true,
+      "frame_current": true,
+      "seat_available": true,
+      "no_hold": true,
+      "authority_satisfied": true,
+      "budget_reservable": false
+    },
+    "control_coordinates": {
+      "workflow_enabled": true,
+      "campaign_enabled": true,
+      "seat_work_enabled": true,
+      "wake_requested": true,
+      "auto_continuation_available": true
+    },
+    "blockers": [
+      "budget_reservable"
+    ],
+    "max_successors_admitted": 0,
+    "execution_performed": false,
+    "authority_effect": "NONE"
+  },
+  "assertions": {
+    "off_case_blocked": true,
+    "one_unit_case_admitted": true,
+    "one_unit_max_successors_one": true,
+    "second_same_wake_blocked": true,
+    "second_same_wake_budget_blocker": true,
+    "no_execution_performed": true,
+    "no_authority_effect": true
+  },
+  "all_assertions_pass": true,
+  "max_successors_observed": 1,
+  "claim_ceiling": "Single-threaded one-successor decision law only. This does not atomically acquire a seat lease, reserve production budget, bind a work-attempt identity, satisfy production authority, invoke a model, or establish concurrency-safe production admission.",
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "scientific_standing_effect": "NONE",
+  "stopped": "YES"
+}

@@ -1,0 +1,122 @@
+{
+  "object_type": "ATOMIC_ADMISSION_OBSERVATION_V0",
+  "repo_head": "3a96f87599b6e5da03565b3bf8fba3000704c528",
+  "fixture_posture": "DISPOSABLE_LOCAL_CONCURRENCY_FIXTURE",
+  "serial_first": {
+    "object_type": "ATOMIC_ADMISSION_DECISION_V0",
+    "admitted": true,
+    "blockers": [],
+    "receipt": {
+      "object_type": "ATOMIC_ADMISSION_RECEIPT_V0",
+      "admission_id": "atomic-admission:sha256:a6074b67f8f36dde57cd41d45fcb4a278fafb7a7f73c956844adc9c9114491ed",
+      "campaign_id": "WORKCYCLE_STABILIZATION_001",
+      "work_item_id": "W-NEXT",
+      "work_attempt_id": "SERIAL-A",
+      "seat_id": "LABBOIB",
+      "occupant_id": "occupant-SERIAL-A",
+      "wake_generation": 1,
+      "authority_coordinate": "AUTH_COORD_OBS_001",
+      "pre_state_sha256": "93defec9265518e2acc6e5479bbe7f0f26d1557c861e3ac81d8b9e7e3c7d621e",
+      "reserved_budget_sha256": "619174b637ae54dd845d84492aedd976ebbeeeeb17be012e780cfa9d551c231c",
+      "authority_was_pre_satisfied": true,
+      "authority_effect": "NONE",
+      "execution_performed": false,
+      "model_invocation_effect": "NONE",
+      "claim_ceiling": "Atomic repo-local admission receipt only. It binds a pre-satisfied authority coordinate but grants no authority and performs no model invocation."
+    },
+    "state_sha256": "366bbd202ea4186b0377717198307901aedf79d0d7a12cb40048b8b2501c2beb",
+    "execution_performed": false,
+    "model_invocation_effect": "NONE",
+    "authority_effect": "NONE"
+  },
+  "serial_second": {
+    "object_type": "ATOMIC_ADMISSION_DECISION_V0",
+    "admitted": false,
+    "blockers": [
+      "active_admission",
+      "budget_reservable",
+      "seat_available"
+    ],
+    "receipt": null,
+    "state_sha256": "366bbd202ea4186b0377717198307901aedf79d0d7a12cb40048b8b2501c2beb",
+    "execution_performed": false,
+    "model_invocation_effect": "NONE",
+    "authority_effect": "NONE"
+  },
+  "unsatisfied_authority_case": {
+    "object_type": "ATOMIC_ADMISSION_DECISION_V0",
+    "admitted": false,
+    "blockers": [
+      "authority_satisfied"
+    ],
+    "receipt": null,
+    "state_sha256": "93defec9265518e2acc6e5479bbe7f0f26d1557c861e3ac81d8b9e7e3c7d621e",
+    "execution_performed": false,
+    "model_invocation_effect": "NONE",
+    "authority_effect": "NONE"
+  },
+  "race_results": [
+    {
+      "object_type": "ATOMIC_ADMISSION_DECISION_V0",
+      "admitted": true,
+      "blockers": [],
+      "receipt": {
+        "object_type": "ATOMIC_ADMISSION_RECEIPT_V0",
+        "admission_id": "atomic-admission:sha256:0be4347e298901f3913b6b9e69f4480ecd1948f65cdee62a7e5653babb13a63e",
+        "campaign_id": "WORKCYCLE_STABILIZATION_001",
+        "work_item_id": "W-NEXT",
+        "work_attempt_id": "RACE-A",
+        "seat_id": "LABBOIB",
+        "occupant_id": "occupant-RACE-A",
+        "wake_generation": 1,
+        "authority_coordinate": "AUTH_COORD_OBS_001",
+        "pre_state_sha256": "93defec9265518e2acc6e5479bbe7f0f26d1557c861e3ac81d8b9e7e3c7d621e",
+        "reserved_budget_sha256": "619174b637ae54dd845d84492aedd976ebbeeeeb17be012e780cfa9d551c231c",
+        "authority_was_pre_satisfied": true,
+        "authority_effect": "NONE",
+        "execution_performed": false,
+        "model_invocation_effect": "NONE",
+        "claim_ceiling": "Atomic repo-local admission receipt only. It binds a pre-satisfied authority coordinate but grants no authority and performs no model invocation."
+      },
+      "state_sha256": "50d81b932112db2376baed0a52b8a28babb158692096cb2d50137fcfe7cfc878",
+      "execution_performed": false,
+      "model_invocation_effect": "NONE",
+      "authority_effect": "NONE"
+    },
+    {
+      "object_type": "ATOMIC_ADMISSION_DECISION_V0",
+      "admitted": false,
+      "blockers": [
+        "active_admission",
+        "budget_reservable",
+        "seat_available"
+      ],
+      "receipt": null,
+      "state_sha256": "50d81b932112db2376baed0a52b8a28babb158692096cb2d50137fcfe7cfc878",
+      "execution_performed": false,
+      "model_invocation_effect": "NONE",
+      "authority_effect": "NONE"
+    }
+  ],
+  "race_admitted_count": 1,
+  "race_blocked_count": 1,
+  "assertions": {
+    "first_serial_admitted": true,
+    "second_serial_blocked": true,
+    "second_serial_active_admission_blocker": true,
+    "second_serial_budget_blocker": true,
+    "unsatisfied_authority_blocked": true,
+    "unsatisfied_authority_named": true,
+    "race_exactly_one_admitted": true,
+    "race_exactly_one_blocked": true,
+    "no_model_invocation": true,
+    "no_execution_performed": true,
+    "no_new_authority": true
+  },
+  "all_assertions_pass": true,
+  "claim_ceiling": "Repo-local concurrency-safe admission candidate only. This fixture does not establish distributed/process-independent locking across arbitrary filesystems, does not grant authority, does not invoke a model, and does not execute admitted work.",
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "scientific_standing_effect": "NONE",
+  "stopped": "YES"
+}
