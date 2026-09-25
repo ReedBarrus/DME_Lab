@@ -1,13 +1,34 @@
 # WORKCYCLE_STABILIZATION_001 — T7 COCKPIT PROJECTION RESULT 001
 
 OBJECT_TYPE:
-PRESSURE_RESULT
+TERMINAL_PRESSURE_RESULT
 
 PRESSURE:
 COCKPIT_T7_PRESSURE
 
-EVIDENCE_SOURCE_REF:
-f3453f16f7bbe40d4a3febba44ff4b9e33a21966
+PRIOR_PARTIAL_RESULT:
+docs/campaigns/workcycle_stabilization_001/state/COCKPIT_T7_PRESSURE_RESULT_001_PARTIAL.md
+
+REPAIR_PRESSURE:
+COCKPIT_T7R_CURRENT_WORLD_OBSERVATION
+
+RUNTIME_WITNESS:
+t7r_runtime_observation.json
+
+CONTROL_TRANSITION_RUNTIME_OBSERVATION:
+OBSERVED
+
+MALFORMED_OPTIONAL_EVIDENCE_RUNTIME_OBSERVATION:
+OBSERVED
+
+CURRENT_STATE_WITHOUT_FULL_REPLAY_RUNTIME_OBSERVATION:
+OBSERVED
+
+REMAINING_LOAD_BEARING_WOUND:
+NO
+
+T7_FINAL_POSTURE:
+BOUNDED_PASS
 
 CAMPAIGN_VISIBLE:
 YES
@@ -39,28 +60,20 @@ YES
 PROJECTION_READ_ONLY:
 YES
 
-IMPLEMENTATION_TEST_SUPPORT:
-PARTIAL — supplied implementation/tests support read-only projection, result-existence != PASS, malformed sealed optional-state degradation, partial eligibility != admission, wake-budget != cumulative budget, repository-requested control != operative local control, durable seat != occupancy/authority, and preview-identity + explicit REED confirmation. Operator-local ENABLE/WAKE/PAUSE/STOP/ADMIT_ONE semantics are implemented, but the frozen projection does not currently exercise them.
+DISPOSITION:
+COCKPIT_PROJECTION_MATCHED
 
-CURRENT_RUNTIME_OBSERVATION_LIMIT:
-The frozen current projection observes LOCAL_OPERATOR_CONTROL_UNAVAILABLE, workflow OFF, no wake, no admission, zero occupied/runtime seats, PARTIAL_COORDINATES_ONLY eligibility, and T7_PRESSURE as next pressure. It therefore does not currently witness successful local ENABLE/WAKE/PAUSE/STOP/ADMIT_ONE transitions, malformed/stale optional-evidence degradation, or optional-overlay failure behavior. Those claims remain bounded to implementation/test support where supplied.
+UNRESOLVED:
+[]
+
+CLAIM_CEILING:
+This witness observes current code in bounded disposable runtime fixtures. It does not prove the packaged desktop UI exercised these exact paths, does not mutate real operator control, does not create execution authority, and does not establish scientific standing.
 
 AUTHORITY_EFFECT:
 NONE
 
 EXECUTION_EFFECT:
 NONE
-
-DISPOSITION:
-COCKPIT_PROJECTION_PARTIAL
-
-UNRESOLVED:
-- Operator-local control transition semantics are not exercised by the frozen current-world projection.
-- Malformed optional evidence has implementation/test support, but no malformed or stale optional-evidence case is currently observed in the frozen projection.
-- Current-world boot without full historical replay and graceful optional-layer degradation are not directly witnessed by the frozen projection within this evidence aperture.
-
-CLAIM_CEILING:
-The supplied evidence supports a substantively truthful bounded T7 operator projection at source ref f3453f16f7bbe40d4a3febba44ff4b9e33a21966, but does not elevate implementation/test-covered runtime behaviors into current live observations and does not qualify T7, create authority, perform execution, advance campaign progress, or create scientific standing.
 
 SCIENTIFIC_STANDING_EFFECT:
 NONE
