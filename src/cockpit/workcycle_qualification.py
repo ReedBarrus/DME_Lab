@@ -58,6 +58,10 @@ SETTLEMENT_CONSEQUENCE_RECONCILIATION_RESULT = Path(
     "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
     "SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_RESULT_001.md"
 )
+SECOND_SUCCESSOR_FROM_RECONCILIATION_RESULT = Path(
+    "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
+    "SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_RESULT_001.md"
+)
 REPEATED_METABOLIC_LOOP_RESULT = Path(
     "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
     "REPEATED_METABOLIC_LOOP_PRESSURE_RESULT_001.md"
@@ -173,6 +177,15 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
         == "SETTLEMENT_CONSEQUENCE_RECONCILIATION_MATCHED"
     )
 
+    second_successor_path = repo / SECOND_SUCCESSOR_FROM_RECONCILIATION_RESULT
+    second_successor_disposition = _markdown_field(
+        second_successor_path, "DISPOSITION"
+    )
+    second_successor_ready = (
+        second_successor_disposition
+        == "SECOND_SUCCESSOR_FROM_RECONCILIATION_MATCHED"
+    )
+
     metabolic_loop_path = repo / REPEATED_METABOLIC_LOOP_RESULT
     metabolic_loop_disposition = _markdown_field(
         metabolic_loop_path, "DISPOSITION"
@@ -237,6 +250,11 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
             "SETTLEMENT_CONSEQUENCE_RECONCILIATION:"
             + (settlement_consequence_reconciliation_disposition or "UNFROZEN")
         )
+    if not second_successor_ready:
+        self_moving_blockers.append(
+            "SECOND_SUCCESSOR_FROM_RECONCILIATION:"
+            + (second_successor_disposition or "UNFROZEN")
+        )
     if not metabolic_loop_ready:
         self_moving_blockers.append(
             f"REPEATED_METABOLIC_LOOP:{metabolic_loop_disposition or 'UNFROZEN'}"
@@ -300,6 +318,11 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
             "result_path": SETTLEMENT_CONSEQUENCE_RECONCILIATION_RESULT.as_posix(),
             "disposition": settlement_consequence_reconciliation_disposition,
             "ready": settlement_consequence_reconciliation_ready,
+        },
+        "second_successor_from_reconciliation": {
+            "result_path": SECOND_SUCCESSOR_FROM_RECONCILIATION_RESULT.as_posix(),
+            "disposition": second_successor_disposition,
+            "ready": second_successor_ready,
         },
         "repeated_metabolic_loop": {
             "result_path": REPEATED_METABOLIC_LOOP_RESULT.as_posix(),
