@@ -48,15 +48,20 @@ def _write_atomic(path: Path, value: Mapping[str, Any]) -> None:
 
 def _acquire_lock(lock_path: Path, *, attempts: int = 400, delay: float = 0.002) -> int:
     lock_path.parent.mkdir(parents=True, exist_ok=True)
+    last_contention: OSError | None = None
     for _ in range(attempts):
         try:
             return os.open(
                 str(lock_path),
                 os.O_CREAT | os.O_EXCL | os.O_WRONLY,
             )
-        except FileExistsError:
+        except (FileExistsError, PermissionError) as exc:
+            # Windows can surface EACCES/PermissionError rather than EEXIST while
+            # another caller owns or is releasing an O_EXCL sentinel. Treat both
+            # as bounded contention only; persistent failure still times out closed.
+            last_contention = exc
             time.sleep(delay)
-    raise AtomicAdmissionError("atomic admission lock timeout")
+    raise AtomicAdmissionError("atomic admission lock timeout") from last_contention
 
 
 def _release_lock(lock_path: Path, fd: int) -> None:
