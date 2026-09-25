@@ -246,6 +246,33 @@ class BasisWorkcycleV1Tests(unittest.TestCase):
         self.assertEqual(posture["posture"], "RESOLVE_LOAD_BEARING_GAP")
         self.assertFalse(posture["creates_work_item"])
 
+    def test_cell001_spec_narrows_reproducibility_and_load_exclusivity(self):
+        repo = Path(__file__).resolve().parents[2]
+        path = (
+            repo
+            / "docs/campaigns/workcycle_stabilization_001/state/"
+            "LOCAL_FRAME_DEPENDENCE_IDENTITY_CELL_001_SPEC.json"
+        )
+        spec = json.loads(path.read_text(encoding="utf-8"))
+        self.assertFalse(spec["reproducibility"]["established"])
+        self.assertEqual(
+            spec["reproducibility"]["cell_001_claim"],
+            "single matched-pair observation only",
+        )
+        self.assertFalse(spec["load_measurement"]["orthogonal_loads_evaluated"])
+        self.assertIn(
+            "forbidden_claim",
+            spec["load_measurement"],
+        )
+        self.assertEqual(
+            spec["local_dependence_candidate"]["candidate_form"],
+            "D_reconstruction(A,B,L,E,S,t,q)",
+        )
+        self.assertIn(
+            "evidence aperture",
+            spec["local_dependence_candidate"]["coordinates"]["E"].lower(),
+        )
+
     def test_remaining_gap_requires_explicit_next_pressure_basis(self):
         unit = unit_fixture()
         with self.assertRaises(bw.BasisWorkcycleError):
