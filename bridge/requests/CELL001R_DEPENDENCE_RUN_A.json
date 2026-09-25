@@ -1,0 +1,13 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0_1",
+  "request_id": "CELL001R_DEPENDENCE_RUN_A",
+  "enabled": false,
+  "source_ref": "9cf813142ffd8b72ec1accd99b69208c13d5de3a",
+  "input_path": "bridge/prompts/CELL001R_DEPENDENCE_RUN_A_READY_TO_SEND.md",
+  "input_blob_sha": "df5744c4e7f39f82cd97d5584a3bff4c701dd376",
+  "principal_id": "CODEX_PRINCIPAL_001",
+  "model": "qwen/qwen3-coder-30b",
+  "temperature": 0,
+  "max_tokens": 1800,
+  "purpose": "Cell 001R full-aperture reconstruction under externally attested matched local invocation coordinates."
+}
