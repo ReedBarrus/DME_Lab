@@ -1,0 +1,13 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0_1",
+  "request_id": "TEST006_W2_QWEN_HTTP_BODY_OBSERVABILITY",
+  "enabled": true,
+  "source_ref": "ea9351bac36984c25fbfbd3c2fdf1ba56c694b05",
+  "input_path": "bridge/prompts/RELATIONAL_COMPRESSION_W2_IMPLEMENTER_READY_TO_SEND.md",
+  "input_blob_sha": "d1fdbbf8cf3d01e11b958289d58634fd43c524ab",
+  "principal_id": "CODEX_PRINCIPAL_001",
+  "model": "qwen/qwen3-coder-30b",
+  "temperature": 0,
+  "max_tokens": 256,
+  "purpose": "Capture the LM Studio HTTP 400 response body for one bounded large-prompt invocation attempt after HTTP-error observability instrumentation; no scientific qualification or automatic retry."
+}
