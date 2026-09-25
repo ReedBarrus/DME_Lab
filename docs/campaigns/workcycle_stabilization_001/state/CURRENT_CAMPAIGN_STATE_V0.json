@@ -90,20 +90,25 @@
       "standing": "ADMITTED_AUTHORITY_CONSUMPTION_MATCHED",
       "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_RESULT_001.md",
       "claim_ceiling": "At the exact supplied source, one exact admitted successor in a disposable same-process fixture is rebound to the same current one-use authority and crosses one caller-supplied invocation callback under one-shot consumption; success consumes once and replay is denied; wrong successor blocks before consumption; post-reservation failure leaves RECOVERY_REQUIRED and replay denied."
+    },
+    "invocation_result_witness": {
+      "standing": "INVOCATION_RESULT_WITNESS_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/INVOCATION_RESULT_WITNESS_PRESSURE_RESULT_001.md",
+      "claim_ceiling": "At the exact supplied source, one exact admitted and one-shot-consumed work attempt in a disposable same-process fixture can bind its exact raw callback return into one deterministic immutable result witness; exact attempt/admission/consumption/output identity and observer limitations are conserved, chain tampering is rejected, and no semantic, settlement, external-effect, authority, or scientific-standing claim is created."
     }
   },
   "current_unresolved": [
-    "Invocation-result witness is witnessed and awaits independent adjudication.",
-    "Settlement over immutable result evidence remains unearned.",
-    "External consequence reconciliation, second mechanically derived successor, and repeated metabolism remain unearned."
+    "Field-level candidate settlement over immutable result evidence is implemented but unpressured.",
+    "Settled result fields have not yet been connected to observed external consequence or basis reconciliation.",
+    "Second mechanically derived successor, repeated metabolism, and seat consequential/meta-feedback remain unearned."
   ],
   "next_pressure": {
-    "pressure_id": "INVOCATION_RESULT_WITNESS_PRESSURE_001_ADJUDICATION",
-    "work_item_id": "WORKCYCLE_STABILIZATION_001_INVOCATION_RESULT_WITNESS",
-    "destination": "FRESH_INDEPENDENT_INVOCATION_RESULT_WITNESS_ADJUDICATOR",
-    "packet": "docs/campaigns/workcycle_stabilization_001/INVOCATION_RESULT_WITNESS_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-    "selection_basis": "The invocation-result witness exercised repo head 8f2215a9f6d206ad7d39b96167f139dbc808efcc and was transported alone in d990330542535f14dabd8e0a3a490d8680ed3b0b. Independent adjudication is required before settlement may consume this result witness relation as a predecessor.",
-    "expected_operating_change": "Freeze MATCHED/PARTIAL/FRACTURED/UNRESOLVED for deterministic immutable result witnessing over one exact admitted and one-shot-consumed work attempt, without semantic interpretation, external-effect inference, or settlement.",
+    "pressure_id": "INVOCATION_RESULT_SETTLEMENT_PRESSURE_001",
+    "work_item_id": "WORKCYCLE_STABILIZATION_001_INVOCATION_RESULT_SETTLEMENT",
+    "destination": "LOCAL_FIELD_LEVEL_CANDIDATE_SETTLEMENT_WITNESS",
+    "packet": "docs/campaigns/workcycle_stabilization_001/INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_READY_TO_RUN.md",
+    "selection_basis": "INVOCATION_RESULT_WITNESS_MATCHED is frozen. The next load-bearing untested relation is immutable result witness -> externally supplied field-level candidate settlement while preserving candidate acceptance != qualification and settlement != authority/execution/Atlas mutation.",
+    "expected_operating_change": "Demonstrate deterministic field-level candidate settlement over one immutable witness with accepted/held/rejected/unresolved preserved, source witness unchanged, raw-output tampering rejected, and no qualification/authority/execution/Atlas mutation.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -158,7 +163,12 @@
       "tools/observe_invocation_result_witness_v0.py",
       "docs/campaigns/workcycle_stabilization_001/INVOCATION_RESULT_WITNESS_PRESSURE_001_READY_TO_RUN.md",
       "docs/campaigns/workcycle_stabilization_001/INVOCATION_RESULT_WITNESS_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-      "invocation_result_witness_observation.json"
+      "invocation_result_witness_observation.json",
+      "docs/campaigns/workcycle_stabilization_001/pressure_runs/INVOCATION_RESULT_WITNESS_PRESSURE_RESULT_001.md",
+      "src/coordination/invocation_result_settlement_v0.py",
+      "tests/coordination/test_invocation_result_settlement_v0.py",
+      "tools/observe_invocation_result_settlement_v0.py",
+      "docs/campaigns/workcycle_stabilization_001/INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_READY_TO_RUN.md"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
@@ -219,12 +229,13 @@
       "deterministic basis reconciliation independently matched",
       "Windows current-source atomic-admission contention repair independently matched",
       "verified current authority + exact successor + same-process atomic admission independently matched",
-      "exact admitted successor + one-shot authority consumption independently matched"
+      "exact admitted successor + one-shot authority consumption independently matched",
+      "immutable invocation result witness independently matched"
     ],
     "unresolved_components": [
-      "invocation result witness awaits independent adjudication",
-      "immutable result witness has not yet been routed through settlement",
-      "settled consequence has not yet been reconciled into a fresh basis",
+      "field-level candidate settlement is implemented but unpressured",
+      "settled result has not yet been connected to observed consequence",
+      "observed consequence has not yet been reconciled into a fresh basis",
       "repeat without manual successor selection has not yet been observed"
     ]
   },
