@@ -573,6 +573,29 @@ def emit_authority_decision(witness: dict[str, Any]) -> None:
     )
 
 
+def exception_chain(error: BaseException) -> list[dict[str, str]]:
+    """Return the explicit Python cause/context chain without traceback text."""
+
+    chain: list[dict[str, str]] = []
+    seen: set[int] = set()
+    current: BaseException | None = error
+    while current is not None and id(current) not in seen:
+        seen.add(id(current))
+        chain.append(
+            {
+                "error_type": type(current).__name__,
+                "error_message": str(current),
+            }
+        )
+        if current.__cause__ is not None:
+            current = current.__cause__
+        elif current.__context__ is not None and not current.__suppress_context__:
+            current = current.__context__
+        else:
+            current = None
+    return chain
+
+
 def write_apparatus_failure_witness(
     *,
     manifest: dict[str, Any],
@@ -588,6 +611,8 @@ def write_apparatus_failure_witness(
     """Persist an apparatus failure without manufacturing a model result."""
 
     out_path = result_path_for(manifest["request_id"], p)
+    observed_exception_chain = exception_chain(error)
+    root_error = observed_exception_chain[-1]
     witness = {
         "object_type": "LOCAL_LMSTUDIO_APPARATUS_FAILURE_WITNESS_V0",
         "request_id": manifest["request_id"],
@@ -616,6 +641,9 @@ def write_apparatus_failure_witness(
         "failure_stage": stage,
         "error_type": type(error).__name__,
         "error_message": str(error),
+        "exception_chain": observed_exception_chain,
+        "root_error_type": root_error["error_type"],
+        "root_error_message": root_error["error_message"],
         "invocation_result_received": False,
         "scientific_result_produced": False,
         "automatic_retry_allowed": False,
