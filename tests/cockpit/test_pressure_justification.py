@@ -140,6 +140,61 @@ class PressureJustificationTests(unittest.TestCase):
         self.assertEqual(result["pressure_posture"], "JUSTIFIED")
         self.assertEqual(result["proposed_pressure"], "AUTHORITY_BINDING_PRESSURE")
 
+    def test_successor_identity_is_selected_after_authority_binding(self):
+        workcycle = workcycle_fixture("AUTO_CONTINUATION_PRESSURE")
+        workcycle["campaign_progress"]["T7"] = {"posture": "BOUNDED_PASS"}
+        result = build_pressure_justification(
+            workcycle=workcycle,
+            horizon_closure=horizon_fixture(),
+            qualification=qualification_fixture(
+                self_moving=[
+                    "SUCCESSOR_IDENTITY:UNFROZEN",
+                    "BASIS_RECONCILIATION:UNFROZEN",
+                    "VERIFIED_AUTHORITY_ATOMIC_ADMISSION:UNFROZEN",
+                    "REPEATED_METABOLIC_LOOP:UNFROZEN",
+                ],
+            ),
+        )
+        self.assertEqual(result["pressure_posture"], "JUSTIFIED")
+        self.assertEqual(result["proposed_pressure"], "SUCCESSOR_IDENTITY_PRESSURE")
+
+    def test_basis_reconciliation_is_selected_after_successor_identity(self):
+        workcycle = workcycle_fixture("AUTO_CONTINUATION_PRESSURE")
+        workcycle["campaign_progress"]["T7"] = {"posture": "BOUNDED_PASS"}
+        result = build_pressure_justification(
+            workcycle=workcycle,
+            horizon_closure=horizon_fixture(),
+            qualification=qualification_fixture(
+                self_moving=[
+                    "BASIS_RECONCILIATION:UNFROZEN",
+                    "VERIFIED_AUTHORITY_ATOMIC_ADMISSION:UNFROZEN",
+                    "REPEATED_METABOLIC_LOOP:UNFROZEN",
+                ],
+            ),
+        )
+        self.assertEqual(result["pressure_posture"], "JUSTIFIED")
+        self.assertEqual(result["proposed_pressure"], "BASIS_RECONCILIATION_PRESSURE")
+
+    def test_verified_authority_atomic_admission_is_selected_before_loop(self):
+        workcycle = workcycle_fixture("AUTO_CONTINUATION_PRESSURE")
+        workcycle["campaign_progress"]["T7"] = {"posture": "BOUNDED_PASS"}
+        result = build_pressure_justification(
+            workcycle=workcycle,
+            horizon_closure=horizon_fixture(),
+            qualification=qualification_fixture(
+                self_moving=[
+                    "VERIFIED_AUTHORITY_ATOMIC_ADMISSION:UNFROZEN",
+                    "REPEATED_METABOLIC_LOOP:UNFROZEN",
+                ],
+            ),
+        )
+        self.assertEqual(result["pressure_posture"], "JUSTIFIED")
+        self.assertEqual(
+            result["proposed_pressure"],
+            "VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE",
+        )
+
+
     def test_repeated_metabolic_loop_is_selected_after_authority_binding(self):
         workcycle = workcycle_fixture("AUTO_CONTINUATION_PRESSURE")
         workcycle["campaign_progress"]["T7"] = {"posture": "BOUNDED_PASS"}
