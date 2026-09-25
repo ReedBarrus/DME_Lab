@@ -58,7 +58,13 @@
         "model invocation",
         "work execution",
         "self-moving-workcycle standing"
-      ]
+      ],
+      "current_source_repair": {
+        "standing": "ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_MATCHED",
+        "source_ref": "11da60ee7b6de02dcea39537301c6c317cd44d9b",
+        "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_RESULT_001.md",
+        "claim_ceiling": "Same-process two-caller local-filesystem atomic admission is re-earned at the repaired Windows-compatible source; cross-process, stale-lock, crash, durability, verified-authority composition, invocation, and execution remain unearned."
+      }
     },
     "authority_binding": {
       "standing": "AUTHORITY_BINDING_MATCHED",
@@ -77,17 +83,17 @@
     }
   },
   "current_unresolved": [
-    "Repaired same-process atomic-admission witness is frozen and awaits independent adjudication.",
-    "Verified-authority/successor atomic-admission composition remains blocked until repaired current-source atomic standing is re-earned.",
-    "Real bounded execution, consequence settlement, second mechanically derived successor, and repeated metabolism remain unearned."
+    "Verified current authority and exact sealed successor have not yet survived composition into the repaired atomic-admission source.",
+    "Real bounded execution, consequence settlement, and second mechanically derived successor remain unobserved.",
+    "Repeated metabolic loop standing remains unearned."
   ],
   "next_pressure": {
-    "pressure_id": "ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_001_ADJUDICATION",
-    "work_item_id": "WORKCYCLE_STABILIZATION_001_ATOMIC_ADMISSION_WINDOWS_REPAIR",
-    "destination": "FRESH_INDEPENDENT_ATOMIC_ADMISSION_REPAIR_ADJUDICATOR",
-    "packet": "docs/campaigns/workcycle_stabilization_001/ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_001_ADJUDICATION_READY_TO_SEND.md",
-    "selection_basis": "The repaired current source produced a clean same-process two-caller witness at repo head 11da60ee7b6de02dcea39537301c6c317cd44d9b, transported alone in e63e467ea5d75f6c8f97c5cfd9966a2909720d62. Independent adjudication is required before the repaired source may be used as a composition predecessor.",
-    "expected_operating_change": "Freeze MATCHED/PARTIAL/FRACTURED/UNRESOLVED for the Windows lock repair without widening atomic-admission standing.",
+    "pressure_id": "VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001",
+    "work_item_id": "WORKCYCLE_STABILIZATION_001_VERIFIED_AUTHORITY_ATOMIC_ADMISSION",
+    "destination": "LOCAL_COMPOSITION_WITNESS",
+    "packet": "docs/campaigns/workcycle_stabilization_001/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001_READY_TO_RUN.md",
+    "selection_basis": "ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_MATCHED restores the repaired current-source same-process contention relation. The next load-bearing coordinate is composition of current verified one-use authority with the exact sealed successor into the repaired atomic admission path.",
+    "expected_operating_change": "Produce a fresh source-bound composition witness against the repaired source. Exact authority for successor A must admit A, reject B/tampering/consumed authority, and preserve one winner under two same-process callers without consuming authority or executing work.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -125,7 +131,8 @@
       "tools/observe_verified_authority_atomic_admission_v0.py",
       "docs/campaigns/workcycle_stabilization_001/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001_READY_TO_RUN.md",
       "docs/campaigns/workcycle_stabilization_001/ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_001_READY_TO_RUN.md",
-      "docs/campaigns/workcycle_stabilization_001/ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_001_ADJUDICATION_READY_TO_SEND.md"
+      "docs/campaigns/workcycle_stabilization_001/ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_001_ADJUDICATION_READY_TO_SEND.md",
+      "docs/campaigns/workcycle_stabilization_001/pressure_runs/ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_RESULT_001.md"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
@@ -156,14 +163,15 @@
       "fracture_id": "ATOMIC_ADMISSION_WINDOWS_LOCK_PERMISSION_RACE_001",
       "work_item_id": "WORKCYCLE_STABILIZATION_001_VERIFIED_AUTHORITY_ATOMIC_ADMISSION",
       "class": "APPARATUS_DEFECT",
-      "posture": "REPAIR_WITNESSED_AWAITING_ADJUDICATION",
+      "posture": "REPAIR_MATCHED",
       "observed": "Windows PermissionError during O_CREAT|O_EXCL sentinel acquisition in the raw two-caller atomic-admission prerequisite test.",
       "witness_effect": "verified_authority_atomic_admission_observation.json generated in the same run is ineligible because the prerequisite suite failed.",
       "repair": "Treat FileExistsError and PermissionError as bounded acquisition contention; persistent failure remains fail-closed via AtomicAdmissionError timeout.",
-      "priority": "BLOCKING_CURRENT_FRONTIER",
+      "priority": "RESOLVED_CURRENT_SOURCE",
       "witness_ref": "atomic_admission_observation.json",
       "witness_source_ref": "11da60ee7b6de02dcea39537301c6c317cd44d9b",
-      "witness_transport_ref": "e63e467ea5d75f6c8f97c5cfd9966a2909720d62"
+      "witness_transport_ref": "e63e467ea5d75f6c8f97c5cfd9966a2909720d62",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_RESULT_001.md"
     }
   ],
   "current_obstruction": {
@@ -182,10 +190,11 @@
       "same-process two-caller local-filesystem atomic admission pressured",
       "current authority binding independently verified against local trust-root state",
       "deterministic successor identity conservation independently matched",
-      "deterministic basis reconciliation independently matched"
+      "deterministic basis reconciliation independently matched",
+      "Windows current-source atomic-admission contention repair independently matched"
     ],
     "unresolved_components": [
-      "verified current authority and exact derived successor identity have not yet been composed inside atomic admission",
+      "verified current authority and exact derived successor identity have not yet been composed inside repaired atomic admission",
       "derived successor has not yet been atomically admitted and executed",
       "consequence has not yet been settled into a new basis",
       "repeat without manual successor selection has not yet been observed"
