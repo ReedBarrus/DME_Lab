@@ -1,0 +1,13 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0_1",
+  "request_id": "RELATIONAL_COMPRESSION_W2_IMPLEMENTER_ATTEMPT_002",
+  "enabled": true,
+  "source_ref": "ea9351bac36984c25fbfbd3c2fdf1ba56c694b05",
+  "input_path": "bridge/prompts/RELATIONAL_COMPRESSION_W2_IMPLEMENTER_READY_TO_SEND.md",
+  "input_blob_sha": "d1fdbbf8cf3d01e11b958289d58634fd43c524ab",
+  "principal_id": "CODEX_PRINCIPAL_001",
+  "model": "qwen/qwen3-coder-30b",
+  "temperature": 0,
+  "max_tokens": 3000,
+  "purpose": "Fresh explicit retry attempt for bounded W2 relational compression after prior LM Studio channel failure; same immutable prompt and claim ceiling, no reuse of prior one-shot authority."
+}
