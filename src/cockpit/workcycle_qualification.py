@@ -62,6 +62,10 @@ SECOND_SUCCESSOR_FROM_RECONCILIATION_RESULT = Path(
     "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
     "SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_RESULT_001.md"
 )
+SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_RESULT = Path(
+    "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
+    "SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_RESULT_001.md"
+)
 SUCCESSOR_WORK_UNIT_MATERIALIZATION_RESULT = Path(
     "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
     "SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_RESULT_001.md"
@@ -185,9 +189,17 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
     second_successor_disposition = _markdown_field(
         second_successor_path, "DISPOSITION"
     )
+    second_successor_repair_path = (
+        repo / SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_RESULT
+    )
+    second_successor_repair_disposition = _markdown_field(
+        second_successor_repair_path, "DISPOSITION"
+    )
     second_successor_ready = (
         second_successor_disposition
         == "SECOND_SUCCESSOR_FROM_RECONCILIATION_MATCHED"
+        or second_successor_repair_disposition
+        == "SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_MATCHED"
     )
 
     successor_work_unit_materialization_path = (
@@ -342,6 +354,8 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
         "second_successor_from_reconciliation": {
             "result_path": SECOND_SUCCESSOR_FROM_RECONCILIATION_RESULT.as_posix(),
             "disposition": second_successor_disposition,
+            "repair_result_path": SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_RESULT.as_posix(),
+            "repair_disposition": second_successor_repair_disposition,
             "ready": second_successor_ready,
         },
         "successor_work_unit_materialization": {
