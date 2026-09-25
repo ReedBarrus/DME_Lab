@@ -523,6 +523,8 @@ export function renderWorkcycleRail(
 
   const workflowEnabled = summary.workflow === 'ON';
   const wakeRequested = Boolean(summary.wake_requested);
+  const operativeControl = workcycle.operative_control || {};
+  const lastGesture = operativeControl.last_operator_gesture || {};
   const admitReady = workcycle.next_eligible_work_item
     && workcycle.eligibility?.eligible === true;
 
@@ -566,6 +568,18 @@ export function renderWorkcycleRail(
         <div><dt>NEXT WORK POSTURE</dt><dd>${escapeHtml(
           pressureJustification.next_work_posture || 'HOLD_NO_JUSTIFIED_WORK'
         )}</dd></div>
+        <div><dt>LIFECYCLE</dt><dd>${escapeHtml(
+          operativeControl.lifecycle_state || 'UNAVAILABLE'
+        )}</dd></div>
+        <div><dt>WAKE GENERATION</dt><dd>${escapeHtml(
+          operativeControl.wake_generation ?? 0
+        )}</dd></div>
+        <div><dt>LAST GESTURE</dt><dd>${escapeHtml(
+          lastGesture.verb || 'NONE'
+        )}</dd></div>
+        <div><dt>UPDATED</dt><dd>${escapeHtml(
+          operativeControl.updated_at || '—'
+        )}</dd></div>
       </dl>
       <div class="workcycle-seat-ecology">
         <p class="fabric-kicker">SEATS / OCCUPANTS</p>
@@ -585,7 +599,9 @@ export function renderWorkcycleRail(
       </div>
       <p class="workcycle-control-status">
         ${controlAvailable
-          ? 'LOCAL OPERATOR CONTROL CONNECTED'
+          ? `LOCAL OPERATOR CONTROL CONNECTED · ${escapeHtml(
+              operativeControl.lifecycle_state || 'UNAVAILABLE'
+            )} · LAST ${escapeHtml(lastGesture.verb || 'NONE')}`
           : 'LOCAL OPERATOR CONTROL UNAVAILABLE'}
       </p>
       <a class="workcycle-detail-link" href="#workcycle-detail">OPEN SCIENTIFIC DETAIL</a>
