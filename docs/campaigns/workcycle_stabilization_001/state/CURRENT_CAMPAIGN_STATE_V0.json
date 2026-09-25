@@ -4,8 +4,8 @@
   "campaign_posture": "ACTIVE",
   "operative_target": "Establish a boring, observable, repairable campaign→decomposition→seat-work lifecycle that reduces human/repository load while preserving reconstructability.",
   "current_horizon": {
-    "family": "H_reconstruct",
-    "subject": "compression/history conservation under bounded reconstruction",
+    "family": "H_operate",
+    "subject": "source-bound authority → atomic admission → executed successor → settlement → basis reconciliation",
     "posture": "ACTIVE"
   },
   "earned_state": {
@@ -39,17 +39,17 @@
     }
   },
   "current_unresolved": [
-    "Atomic admission witness is frozen and now eligible for independent adjudication because ONE_SUCCESSOR_MATCHED is canonical.",
-    "Self-moving-workcycle standing remains unearned until atomic admission is independently matched.",
-    "RELATIONAL_COMPRESSION_W2 remains on its separate runtime-diagnostic lane."
+    "Authority validity is not yet mechanically source-bound into atomic admission; current atomic witness carried a caller-supplied precondition only.",
+    "Repeated metabolic loop standing remains unearned until result→reconciliation→derived successor→admit→execute→settle→repeat is observed.",
+    "Cross-process contention, crash recovery, stale-lock recovery, and power-loss durability remain explicit deferred challenge surfaces rather than current standing."
   ],
   "next_pressure": {
-    "pressure_id": "ATOMIC_ADMISSION_PRESSURE_001_ADJUDICATION",
-    "work_item_id": "WORKCYCLE_STABILIZATION_001_ATOMIC_ADMISSION",
-    "destination": "FRESH_INDEPENDENT_ATOMIC_ADMISSION_ADJUDICATOR",
-    "packet": "docs/campaigns/workcycle_stabilization_001/ATOMIC_ADMISSION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-    "selection_basis": "ONE_SUCCESSOR_MATCHED is now frozen at the predecessor path required by the atomic-admission packet. The atomic runtime witness already exists and must now be independently adjudicated.",
-    "expected_operating_change": "Freeze ATOMIC_ADMISSION_MATCHED/PARTIAL/FRACTURED/UNRESOLVED within the repo-local concurrency claim ceiling, without model invocation, work execution, trust-root mutation, or authority grant.",
+    "pressure_id": "AUTHORITY_BINDING_PRESSURE_001",
+    "work_item_id": "WORKCYCLE_STABILIZATION_001_AUTHORITY_BINDING",
+    "destination": "LOCAL_RUNTIME_WITNESS_THEN_FRESH_INDEPENDENT_EVALUATOR",
+    "packet": "docs/campaigns/workcycle_stabilization_001/AUTHORITY_BINDING_PRESSURE_001_READY_TO_RUN.md",
+    "selection_basis": "Follow-behind adversarial review showed that atomic admission currently carries caller-supplied authority testimony. Existing trust-root authority state can provide a source-bound current-authority witness without granting or consuming authority.",
+    "expected_operating_change": "Replace caller-supplied authority truth with a read-only verified current-authority binding that can later be consumed by atomic admission.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -66,7 +66,8 @@
       "atomic_admission_observation.json",
       "docs/campaigns/workcycle_stabilization_001/ONE_SUCCESSOR_CONTINUATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
       "docs/campaigns/workcycle_stabilization_001/ATOMIC_ADMISSION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-      "docs/campaigns/workcycle_stabilization_001/pressure_runs/ONE_SUCCESSOR_CONTINUATION_PRESSURE_RESULT_001.md"
+      "docs/campaigns/workcycle_stabilization_001/pressure_runs/ONE_SUCCESSOR_CONTINUATION_PRESSURE_RESULT_001.md",
+      "docs/campaigns/workcycle_stabilization_001/state/FOLLOW_BEHIND_ADVERSARIAL_CLAIM_CORRECTION_001.md"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
@@ -93,5 +94,28 @@
       "retry_posture": "FRESH_EXPLICIT_ATTEMPT_ONLY",
       "priority": "DEFERRED_NONBLOCKING"
     }
-  ]
+  ],
+  "current_obstruction": {
+    "obstruction_id": "SELF_MOVING_METABOLIC_LOOP_OBSTRUCTION_001",
+    "statement": "QUALIFIED_BOUNDED_WORKCYCLE cannot yet source-bind verified current authority into atomic admission and then execute, settle, reconcile, and repeat a derived successor without manual selection.",
+    "load_dimensions": [
+      "authority",
+      "coordination",
+      "temporal",
+      "provenance",
+      "functional"
+    ],
+    "resolved_components": [
+      "bounded workcycle specimen qualified",
+      "single-threaded continuation eligibility pressured",
+      "same-process two-caller local-filesystem atomic admission pressured"
+    ],
+    "unresolved_components": [
+      "current authority binding is caller supplied rather than independently verified",
+      "real result has not yet been reconciled into a derived successor",
+      "derived successor has not yet been atomically admitted and executed",
+      "consequence has not yet been settled into a new basis",
+      "repeat without manual successor selection has not yet been observed"
+    ]
+  }
 }
