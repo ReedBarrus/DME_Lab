@@ -118,8 +118,8 @@
     }
   },
   "current_unresolved": [
-    "A deterministic successor identity is now qualified from fresh reconciliation, but no law yet materializes that successor into a complete next workflow unit.",
-    "Successor.next_pressure_basis does not itself specify a bounded operator, expected consequence, pressure contract, application target, stop condition, or repair semantics.",
+    "Successor work-unit materialization is implemented and ready for runtime pressure.",
+    "Automatic work-spec generation remains unearned; the materializer accepts only explicit externally supplied bounded work specs.",
     "Repeated metabolism and seat consequential/meta-feedback remain unearned."
   ],
   "next_pressure": {
@@ -127,8 +127,8 @@
     "work_item_id": "WORKCYCLE_STABILIZATION_001_SUCCESSOR_WORK_UNIT_MATERIALIZATION",
     "destination": "LOCAL_SUCCESSOR_WORK_UNIT_MATERIALIZATION_WITNESS",
     "packet": "docs/campaigns/workcycle_stabilization_001/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001_READY_TO_RUN.md",
-    "selection_basis": "SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_MATCHED is frozen. The next load-bearing missing relation is deterministic successor identity + explicit bounded work specification -> complete next workflow unit. next_pressure_basis alone is insufficient to invent executable work semantics.",
-    "expected_operating_change": "Demonstrate deterministic materialization of one complete next workflow unit from one exact successor plus one explicit work spec, while wrong successor/spec bindings fail closed and materialization creates no admission, authority, execution, or scientific standing.",
+    "selection_basis": "A deterministic second-successor projection is qualified, but next_pressure_basis is not an executable work specification. The staged membrane binds one exact successor to one explicit bounded work spec and materializes a complete next workflow unit without inventing planning semantics.",
+    "expected_operating_change": "Demonstrate deterministic successor+work-spec -> complete workflow-unit materialization, exact lineage binding, spec-variation separation, tamper rejection, and zero admission/authority/execution/standing effects.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -206,7 +206,11 @@
       "docs/campaigns/workcycle_stabilization_001/pressure_runs/SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_RESULT_001.md",
       "docs/campaigns/workcycle_stabilization_001/SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_001_READY_TO_RUN.md",
       "docs/campaigns/workcycle_stabilization_001/SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_001_ADJUDICATION_READY_TO_SEND.md",
-      "docs/campaigns/workcycle_stabilization_001/pressure_runs/SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_RESULT_001.md"
+      "docs/campaigns/workcycle_stabilization_001/pressure_runs/SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_RESULT_001.md",
+      "src/coordination/successor_work_unit_materialization_v0.py",
+      "tests/coordination/test_successor_work_unit_materialization_v0.py",
+      "tools/observe_successor_work_unit_materialization_v0.py",
+      "docs/campaigns/workcycle_stabilization_001/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001_READY_TO_RUN.md"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
