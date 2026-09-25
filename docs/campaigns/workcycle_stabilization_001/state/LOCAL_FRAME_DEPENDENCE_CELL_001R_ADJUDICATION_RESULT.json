@@ -1,0 +1,42 @@
+{
+  "object_type": "LOCAL_FRAME_DEPENDENCE_CELL_001R_ADJUDICATION_RESULT_V0",
+  "cell_id": "LOCAL_FRAME_DEPENDENCE_IDENTITY_CELL_001R",
+  "campaign_id": "WORKCYCLE_STABILIZATION_001",
+  "experimental_source_ref": "d5a47606ce0ed8a08ea444638e5ae4b90c59ea91",
+  "run_a_request_id": "CELL001R_DEPENDENCE_RUN_A",
+  "run_b_request_id": "CELL001R_DEPENDENCE_RUN_B",
+  "run_comparability": "MATCHED_EXTERNAL_PROFILE",
+  "observed_pairwise_difference": "YES",
+  "semantic_reconstruction_continuity": "DEGRADED",
+  "declared_load_effect": "OBSERVED",
+  "dependence_posture": "BOUNDED_RECONSTRUCTION_DEPENDENCE_CANDIDATE_STRENGTHENED",
+  "orthogonal_loads_evaluated": "NO",
+  "reproducibility": "NOT_ESTABLISHED",
+  "application_eligibility": "ELIGIBLE_AS_BOUNDED_RECONSTRUCTION_DEPENDENCE_CANDIDATE",
+  "candidate_relation": {
+    "subject": "WORKCYCLE_STABILIZATION_001_RELATIONAL_COMPRESSION_W2 bounded reconstruction",
+    "dependency_target": "docs/campaigns/workcycle_stabilization_001/SYMBOLIC_CONSEQUENCE_DECOMPOSITION_V0.md",
+    "load_dimension": "SEMANTIC_RECONSTRUCTION",
+    "evidence_aperture": "CELL001R matched A/B aperture intervention",
+    "scope": "exact W2 subject and experimental source frame",
+    "temporal_coordinate": "d5a47606ce0ed8a08ea444638e5ae4b90c59ea91",
+    "standing": "CANDIDATE_STRENGTHENED"
+  },
+  "maximum_warranted_claim": "For the exact WORKCYCLE_STABILIZATION_001 source frame and declared SEMANTIC_RECONSTRUCTION load, withholding SYMBOLIC_CONSEQUENCE_DECOMPOSITION_V0.md under the externally attested matched invocation profile coincided with degraded reconstruction continuity in this single A/B pair, strengthening a bounded reconstruction-dependence candidate without establishing causation, reproducibility, load exclusivity, or whole-system existential dependence.",
+  "claim_ceiling": {
+    "causation": "NOT_ESTABLISHED",
+    "reproducibility": "NOT_ESTABLISHED",
+    "load_exclusivity": "NOT_ESTABLISHED",
+    "whole_system_existential_dependence": "NOT_ESTABLISHED",
+    "generic_atlas_dependence_law": "NOT_ESTABLISHED"
+  },
+  "challenge_handles": [
+    "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
+    "bridge/results/CELL001R_DEPENDENCE_RUN_B.json",
+    "docs/campaigns/workcycle_stabilization_001/LOCAL_FRAME_DEPENDENCE_CELL_001R_ADJUDICATION_READY_TO_SEND.md",
+    "docs/campaigns/workcycle_stabilization_001/LOCAL_FRAME_DEPENDENCE_CELL_001_RESULT.md"
+  ],
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "scientific_standing_effect": "NONE"
+}
