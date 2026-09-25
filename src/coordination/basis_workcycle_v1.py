@@ -25,6 +25,7 @@ class BasisWorkcycleError(wc.WorkcycleError):
 ADMISSIBILITY_TYPE = "PRESSURE_ADMISSIBILITY_V1"
 NEXT_WORK_TYPE = "NEXT_WORK_POSTURE_V1"
 RECONCILIATION_TYPE = "BASIS_RECONCILIATION_V1"
+SUCCESSOR_CANDIDATE_TYPE = "SUCCESSOR_CANDIDATE_V1"
 
 BASIS_ACTIVE = frozenset({"DECLARED", "SUPPORTED"})
 BASIS_STATUSES = frozenset(
@@ -336,6 +337,90 @@ def derive_next_work_posture(
             "posture": posture,
             "reason": reason,
             "creates_work_item": False,
+            "authority_effect": "NONE",
+            "execution_effect": "NONE",
+            "scientific_standing_effect": "NONE",
+            "integrity_sha256": "",
+        }
+    )
+
+
+
+def derive_successor_candidate(
+    unit: Mapping[str, Any],
+    *,
+    admissibility: Mapping[str, Any],
+    reconciliation: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Derive at most one deterministic successor candidate identity.
+
+    This does not admit, execute, schedule, or authorize successor work.
+    HOLD_NO_JUSTIFIED_WORK and CLOSE_BASIS produce no successor identity.
+    """
+    posture = derive_next_work_posture(
+        unit,
+        admissibility=admissibility,
+        reconciliation=reconciliation,
+    )
+    wc.verify_seal(posture)
+
+    no_successor = posture["posture"] in {
+        "HOLD_NO_JUSTIFIED_WORK",
+        "CLOSE_BASIS",
+    }
+    if no_successor:
+        return wc.seal_object(
+            {
+                "object_type": SUCCESSOR_CANDIDATE_TYPE,
+                "campaign_id": unit["identity"]["campaign_id"],
+                "parent_work_item_id": unit["identity"]["work_item_id"],
+                "basis_id": unit["basis"]["basis_id"],
+                "successor_posture": posture["posture"],
+                "successor_id": None,
+                "candidate_posture": "NO_SUCCESSOR",
+                "selection_basis": posture["reason"],
+                "claim_ceiling": (
+                    "Deterministic no-successor projection only. "
+                    "No work is created, admitted, executed, or authorized."
+                ),
+                "work_admission_effect": "NONE",
+                "authority_effect": "NONE",
+                "execution_effect": "NONE",
+                "scientific_standing_effect": "NONE",
+                "integrity_sha256": "",
+            }
+        )
+
+    reconciliation_identity = (
+        reconciliation.get("integrity_sha256")
+        if reconciliation is not None
+        else "NO_RECONCILIATION"
+    )
+    material = {
+        "campaign_id": unit["identity"]["campaign_id"],
+        "parent_work_item_id": unit["identity"]["work_item_id"],
+        "basis_id": unit["basis"]["basis_id"],
+        "operative_frame_ref": unit["identity"]["operative_frame_ref"],
+        "successor_posture": posture["posture"],
+        "reconciliation_identity": reconciliation_identity,
+        "next_pressure_basis": (
+            None if reconciliation is None else reconciliation.get("next_pressure_basis")
+        ),
+    }
+    successor_id = f"successor:sha256:{wc.canonical_sha256(material)}"
+    return wc.seal_object(
+        {
+            "object_type": SUCCESSOR_CANDIDATE_TYPE,
+            **material,
+            "successor_id": successor_id,
+            "candidate_posture": "PROPOSED_NOT_ADMITTED",
+            "selection_basis": posture["reason"],
+            "claim_ceiling": (
+                "One deterministic successor candidate identity derived from exact "
+                "basis/work/reconciliation/posture coordinates. This does not admit, "
+                "execute, schedule, or authorize successor work."
+            ),
+            "work_admission_effect": "NONE",
             "authority_effect": "NONE",
             "execution_effect": "NONE",
             "scientific_standing_effect": "NONE",
