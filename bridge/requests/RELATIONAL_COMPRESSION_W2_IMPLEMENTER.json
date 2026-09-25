@@ -1,7 +1,7 @@
 {
   "schema_version": "LOCAL_INVOCATION_REQUEST_V0_1",
   "request_id": "RELATIONAL_COMPRESSION_W2_IMPLEMENTER",
-  "enabled": true,
+  "enabled": false,
   "source_ref": "ea9351bac36984c25fbfbd3c2fdf1ba56c694b05",
   "input_path": "bridge/prompts/RELATIONAL_COMPRESSION_W2_IMPLEMENTER_READY_TO_SEND.md",
   "input_blob_sha": "d1fdbbf8cf3d01e11b958289d58634fd43c524ab",
