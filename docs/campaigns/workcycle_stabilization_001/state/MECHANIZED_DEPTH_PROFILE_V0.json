@@ -100,13 +100,15 @@
       "posture": "UNTESTED"
     },
     "second_successor_mechanically_derived": {
-      "posture": "FRACTURE_FROZEN_REPAIR_READY",
+      "posture": "REPAIR_WITNESSED_AWAITING_ADJUDICATION",
       "fracture_evidence": "SECOND_SUCCESSOR_FROM_RECONCILIATION_FRACTURED",
       "fracture_result": "docs/campaigns/workcycle_stabilization_001/pressure_runs/SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_RESULT_001.md",
-      "implementation": "src/coordination/basis_workcycle_v1.py::derive_next_work_posture + derive_successor_candidate",
-      "repair": "Fresh reconciliation now controls next-work posture for SATISFIED, INVALIDATED, PARTIALLY_SATISFIED, and REFRAMED; STILL_BLOCKED retains prior application/consequence-state fallback.",
-      "repair_packet": "docs/campaigns/workcycle_stabilization_001/SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_001_READY_TO_RUN.md",
-      "claim": "No repaired second-successor standing; exact runtime repressure required."
+      "repaired_source_ref": "9dd552c0e15bd7e012eb625ded7f167e5074f3fb",
+      "witness_transport_ref": "60e37a439500d8c50f67a19c0ff8e074fed60011",
+      "witness": "second_successor_from_reconciliation_observation.json",
+      "adjudication_packet": "docs/campaigns/workcycle_stabilization_001/SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_001_ADJUDICATION_READY_TO_SEND.md",
+      "observed": "All assertions pass: STILL_BLOCKED -> OBSERVE_APPLICATION_CONSEQUENCE; PARTIALLY_SATISFIED -> RESOLVE_LOAD_BEARING_GAP with deterministic exact successor; SATISFIED -> CLOSE_BASIS with no successor; INVALIDATED -> HOLD_NO_JUSTIFIED_WORK with no successor.",
+      "claim": "No repaired second-successor standing until independent adjudication."
     },
     "repeated_metabolic_loop": {
       "posture": "UNTESTED",
@@ -149,8 +151,8 @@
   },
   "next_load_bearing_coordinate": {
     "coordinate": "second_successor_mechanically_derived",
-    "pressure": "SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_001",
-    "selection_basis": "The fracture is independently adjudicated and frozen. One narrow precedence repair is staged; the same composition matrix must be reobserved before any stronger claim."
+    "pressure": "SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_001_ADJUDICATION",
+    "selection_basis": "The narrow precedence repair has a clean witness-only transport under the unchanged observer. Independent adjudication is the next required relation."
   },
   "downstream_frontier": [
     "repressure repaired fresh reconciliation -> next posture -> exact second successor",
