@@ -35,7 +35,30 @@
     "one_successor": {
       "standing": "ONE_SUCCESSOR_MATCHED",
       "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/ONE_SUCCESSOR_CONTINUATION_PRESSURE_RESULT_001.md",
-      "claim_ceiling": "Single-threaded one-successor decision law only; no atomic production admission, model invocation, or authority grant."
+      "effective_claim": "Single-threaded continuation eligibility under externally serialized wake-budget reservation; once one unit is reserved, the next evaluation fails closed.",
+      "does_not_establish": [
+        "atomic admission",
+        "observed successor admission count",
+        "concurrency-safe production admission",
+        "model invocation",
+        "authority grant"
+      ]
+    },
+    "atomic_admission": {
+      "standing": "ATOMIC_ADMISSION_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/ATOMIC_ADMISSION_PRESSURE_RESULT_001.md",
+      "effective_claim": "Same-process two-caller local-filesystem atomic admission survived the frozen pressure with exactly one observed winner and one blocked contender.",
+      "authority_posture": "CALLER_SUPPLIED_PRECONDITION_ONLY",
+      "does_not_establish": [
+        "verified current authority",
+        "cross-process contention safety",
+        "crash recovery",
+        "stale-lock recovery",
+        "power-loss durability",
+        "model invocation",
+        "work execution",
+        "self-moving-workcycle standing"
+      ]
     }
   },
   "current_unresolved": [
@@ -67,7 +90,9 @@
       "docs/campaigns/workcycle_stabilization_001/ONE_SUCCESSOR_CONTINUATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
       "docs/campaigns/workcycle_stabilization_001/ATOMIC_ADMISSION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
       "docs/campaigns/workcycle_stabilization_001/pressure_runs/ONE_SUCCESSOR_CONTINUATION_PRESSURE_RESULT_001.md",
-      "docs/campaigns/workcycle_stabilization_001/state/FOLLOW_BEHIND_ADVERSARIAL_CLAIM_CORRECTION_001.md"
+      "docs/campaigns/workcycle_stabilization_001/state/FOLLOW_BEHIND_ADVERSARIAL_CLAIM_CORRECTION_001.md",
+      "docs/campaigns/workcycle_stabilization_001/pressure_runs/ATOMIC_ADMISSION_PRESSURE_RESULT_001.md",
+      "docs/campaigns/workcycle_stabilization_001/AUTHORITY_BINDING_PRESSURE_001_READY_TO_RUN.md"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
@@ -117,5 +142,22 @@
       "consequence has not yet been settled into a new basis",
       "repeat without manual successor selection has not yet been observed"
     ]
-  }
+  },
+  "deferred_challenge_backlog": [
+    {
+      "challenge_id": "ATOMIC_ADMISSION_CROSS_PROCESS_001",
+      "reason": "Mechanism suggests cross-process exclusivity, but only same-process two-caller contention has been pressured.",
+      "priority": "DEFERRED_NONBLOCKING"
+    },
+    {
+      "challenge_id": "ATOMIC_ADMISSION_STALE_LOCK_RECOVERY_001",
+      "reason": "Process death can leave the sentinel lock and eventual timeout; stale-lock recovery has not been pressured.",
+      "priority": "DEFERRED_NONBLOCKING"
+    },
+    {
+      "challenge_id": "ATOMIC_ADMISSION_DURABILITY_001",
+      "reason": "Atomic replace does not establish fsync/directory durability or power-loss safety.",
+      "priority": "DEFERRED_NONBLOCKING"
+    }
+  ]
 }
