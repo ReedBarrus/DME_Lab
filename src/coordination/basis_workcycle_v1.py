@@ -427,3 +427,136 @@ def derive_successor_candidate(
             "integrity_sha256": "",
         }
     )
+
+
+OBSTRUCTION_POSTURES = frozenset(
+    {"RESOLVED", "REMAINS", "CHANGED", "UNRESOLVED"}
+)
+CONSEQUENCE_DISPOSITIONS = frozenset(
+    {
+        "CONSEQUENCE_MATCHED",
+        "CONSEQUENCE_PARTIAL",
+        "CONSEQUENCE_CONTRADICTED",
+        "CONSEQUENCE_UNRESOLVED",
+    }
+)
+
+
+def derive_basis_reconciliation_from_evidence(
+    unit: Mapping[str, Any],
+    *,
+    consequence_evaluation: Mapping[str, Any] | None,
+    current_obstruction_posture: str,
+    remaining_gap: str | None = None,
+    reframed_basis: str | None = None,
+) -> dict[str, Any]:
+    """Derive one bounded basis reconciliation from declared evidence.
+
+    This function does not infer hidden world state. The current obstruction
+    posture and any reframed basis must be supplied by source-supported upstream
+    evidence. It does not create authority, admit work, execute, or invoke.
+    """
+    validate_workflow_unit(unit)
+
+    if current_obstruction_posture not in OBSTRUCTION_POSTURES:
+        raise BasisWorkcycleError("unsupported current_obstruction_posture")
+
+    qualification = _mapping(unit.get("qualification"), "qualification")
+    application = _mapping(unit.get("application"), "application")
+    consequence = _mapping(
+        unit.get("consequence_observation"), "consequence_observation"
+    )
+
+    scientific_standing = qualification.get("scientific_standing")
+    application_status = application.get("application_status")
+    regression_detected = consequence.get("regression_detected") is True
+    effect_class = consequence.get("effect_class")
+
+    consequence_disposition = None
+    consequence_identity = None
+    if consequence_evaluation is not None:
+        wc.verify_seal(consequence_evaluation)
+        if consequence_evaluation.get("work_item_id") != unit["identity"]["work_item_id"]:
+            raise BasisWorkcycleError("consequence evaluation/work identity mismatch")
+        consequence_disposition = consequence_evaluation.get("disposition")
+        if consequence_disposition not in CONSEQUENCE_DISPOSITIONS:
+            raise BasisWorkcycleError("unsupported consequence disposition")
+        consequence_identity = consequence_evaluation.get("integrity_sha256")
+
+    next_pressure_basis = None
+    disposition = "STILL_BLOCKED"
+    derived_remaining_gap = remaining_gap
+
+    if regression_detected or consequence_disposition == "CONSEQUENCE_CONTRADICTED":
+        if current_obstruction_posture == "CHANGED" and (reframed_basis or "").strip():
+            disposition = "REFRAMED"
+            derived_remaining_gap = remaining_gap or "original basis no longer describes current obstruction"
+            next_pressure_basis = reframed_basis.strip()
+        else:
+            disposition = "INVALIDATED"
+            derived_remaining_gap = remaining_gap or "observed consequence contradicts the active basis"
+    elif scientific_standing == "QUALIFIED" and application.get("required") is True and application_status != "APPLIED":
+        disposition = "STILL_BLOCKED"
+        derived_remaining_gap = remaining_gap or "qualified result has not been applied"
+        next_pressure_basis = "apply qualified result before basis closure"
+    elif application_status == "APPLIED" and (
+        consequence_evaluation is None
+        or consequence_disposition == "CONSEQUENCE_UNRESOLVED"
+        or effect_class in {None, "NOT_YET_OBSERVABLE"}
+    ):
+        disposition = "STILL_BLOCKED"
+        derived_remaining_gap = remaining_gap or "applied change still lacks consequence evidence"
+        next_pressure_basis = "observe application consequence before basis closure"
+    elif consequence_disposition == "CONSEQUENCE_PARTIAL":
+        disposition = "PARTIALLY_SATISFIED"
+        derived_remaining_gap = remaining_gap or "expected consequence only partially observed"
+        next_pressure_basis = "resolve remaining source-supported consequence gap"
+    elif consequence_disposition == "CONSEQUENCE_MATCHED":
+        if current_obstruction_posture == "RESOLVED":
+            disposition = "SATISFIED"
+            derived_remaining_gap = None
+        elif current_obstruction_posture == "REMAINS":
+            disposition = "PARTIALLY_SATISFIED"
+            derived_remaining_gap = remaining_gap or "expected consequence matched but obstruction remains"
+            next_pressure_basis = "resolve remaining source-supported obstruction"
+        elif current_obstruction_posture == "CHANGED":
+            if (reframed_basis or "").strip():
+                disposition = "REFRAMED"
+                derived_remaining_gap = remaining_gap or "obstruction changed after matched consequence"
+                next_pressure_basis = reframed_basis.strip()
+            else:
+                disposition = "INVALIDATED"
+                derived_remaining_gap = remaining_gap or "obstruction changed without a supported reframe"
+        else:
+            disposition = "STILL_BLOCKED"
+            derived_remaining_gap = remaining_gap or "current obstruction posture remains unresolved"
+            next_pressure_basis = "resolve current obstruction before basis closure"
+    else:
+        disposition = "STILL_BLOCKED"
+        derived_remaining_gap = remaining_gap or "no matched operational consequence supports basis closure"
+        next_pressure_basis = "obtain source-supported application/consequence evidence"
+
+    next_allowed = disposition in {"PARTIALLY_SATISFIED", "STILL_BLOCKED", "REFRAMED"}
+
+    return wc.seal_object(
+        {
+            "object_type": RECONCILIATION_TYPE,
+            "work_item_id": unit["identity"]["work_item_id"],
+            "original_basis_id": unit["basis"]["basis_id"],
+            "source_scientific_standing": scientific_standing,
+            "application_status": application_status,
+            "consequence_disposition": consequence_disposition,
+            "consequence_identity": consequence_identity,
+            "current_obstruction_posture": current_obstruction_posture,
+            "regression_detected": regression_detected,
+            "disposition": disposition,
+            "remaining_gap": derived_remaining_gap,
+            "next_pressure_allowed": next_allowed,
+            "next_pressure_basis": next_pressure_basis,
+            "reframed_basis": reframed_basis,
+            "authority_effect": "NONE",
+            "execution_effect": "NONE",
+            "scientific_standing_effect": "NONE",
+            "integrity_sha256": "",
+        }
+    )
