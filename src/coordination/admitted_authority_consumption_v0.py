@@ -207,7 +207,8 @@ def consume_admitted_authority_once(
         "authority_consumed": True,
         "invocation_performed": True,
         "invocation_count": authority_receipt["invocation_count"],
-        "authority_effect": "CONSUMED_ONE_USE",
+        "authority_effect": "NONE",
+        "consumption_effect": "CONSUMED_ONE_USE",
         "scientific_standing_effect": "NONE",
         "claim_ceiling": (
             "One exact composed admission was rebound to the same current "
@@ -225,6 +226,7 @@ def consume_admitted_authority_once(
         "receipt": receipt,
         "authority_consumption_receipt": authority_receipt,
         "invocation_result": invocation["invocation_result"],
-        "authority_effect": "CONSUMED_ONE_USE",
+        "authority_effect": "NONE",
+        "consumption_effect": "CONSUMED_ONE_USE",
         "scientific_standing_effect": "NONE",
     }
