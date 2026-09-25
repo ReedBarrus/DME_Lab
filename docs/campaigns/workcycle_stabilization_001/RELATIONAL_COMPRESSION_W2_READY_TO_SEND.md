@@ -21,20 +21,26 @@ NO_AUTHORITY_CHANGE
 NO_SELF_QUALIFICATION
 
 SOURCE_REF:
-783ef1058779b9e6715cd9a852e409d6a89e3f9b
+6a8cad4a04aff3452c8bfe2a81c592f3dd3a551a
 
 READ EXACTLY:
 
 1. docs/campaigns/workcycle_stabilization_001/state/
    WORKCYCLE_STABILIZATION_001_RELATIONAL_COMPRESSION_W2.json
 
-2. docs/campaigns/workcycle_stabilization_001/
-   SYMBOLIC_CONSEQUENCE_DECOMPOSITION_V0.md
+2. docs/campaigns/workcycle_stabilization_001/state/
+   CURRENT_CAMPAIGN_STATE_V0.json
 
-3. docs/campaigns/workcycle_stabilization_001/
-   WORKCYCLE_STABILIZATION_CAMPAIGN_001.md
+3. docs/campaigns/workcycle_stabilization_001/state/
+   LOCAL_FRAME_DEPENDENCE_CELL_001R_ADJUDICATION_RESULT.json
 
 4. docs/campaigns/workcycle_stabilization_001/
+   SYMBOLIC_CONSEQUENCE_DECOMPOSITION_V0.md
+
+5. docs/campaigns/workcycle_stabilization_001/
+   WORKCYCLE_STABILIZATION_CAMPAIGN_001.md
+
+6. docs/campaigns/workcycle_stabilization_001/
    PRESSURE_JUSTIFICATION_001_READY_TO_SEND.md
 
 TARGET OUTPUTS:
@@ -49,6 +55,38 @@ TARGET OUTPUTS:
 
 Reduce the three exact source artifacts into one smaller hot operative
 representation without changing or deleting the sources.
+
+The current state now contains one strengthened bounded reconstruction-dependence
+candidate:
+
+```
+WORKCYCLE_STABILIZATION_001_RELATIONAL_COMPRESSION_W2
+DEPENDS_ON_CANDIDATE
+SYMBOLIC_CONSEQUENCE_DECOMPOSITION_V0.md
+FOR
+SEMANTIC_RECONSTRUCTION
+```
+
+under the exact Cell 001R scope and claim ceiling.
+
+The compression must therefore preserve or explicitly falsify that candidate
+relation; it may not silently discard it as redundant prose.
+
+# CONSEQUENCE CRITERION
+
+```
+COMPRESSION SUCCESS
+REQUIRES BOTH:
+
+REPRESENTATIONAL BURDEN ↓
+
+AND
+
+OPERATIVE RECONSTRUCTION
+NOT MATERIALLY DEGRADED
+```
+
+A smaller file is not sufficient evidence of lower operational burden.
 
 Preserve enough structure for a fresh independent seat to recover:
 
@@ -91,6 +129,32 @@ Review all six load dimensions:
 Candidate must be smaller than the combined source bytes.
 
 SIZE REDUCTION ALONE DOES NOT PASS.
+
+Measure mechanically:
+
+- HOT_BYTES_BEFORE
+- HOT_BYTES_AFTER
+- FILES_REQUIRED_BEFORE
+- FILES_REQUIRED_AFTER
+- REQUIRED_OPERATIVE_RELATIONS_RECOVERED
+- UNRESOLVED_BOUNDARIES_RECOVERED
+- CHALLENGE_HANDLES_RECOVERED
+- strengthened Cell 001R reconstruction-dependence candidate preserved,
+  weakened, falsified, or unresolved
+
+Required comparison:
+
+```
+CONTROL:
+fresh reconstruction from original hot set
+
+EXPERIMENT:
+fresh reconstruction from compressed hot object only
+
+ORIGINAL HOT FILES:
+outside experiment reconstruction aperture
+but retained cold + challengeable
+```
 
 The implementation result must remain:
 
