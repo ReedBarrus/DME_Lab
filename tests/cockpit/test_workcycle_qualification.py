@@ -43,6 +43,12 @@ class WorkcycleQualificationReadinessTests(unittest.TestCase):
                 for item in self_moving
             )
         )
+        self.assertTrue(
+            any(
+                item.startswith("ADMITTED_AUTHORITY_CONSUMPTION:")
+                for item in self_moving
+            )
+        )
         self.assertTrue(any(item.startswith("REPEATED_METABOLIC_LOOP:") for item in self_moving))
 
 
