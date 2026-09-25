@@ -134,15 +134,18 @@
       "claim": "One immutable result witness is qualified receiving externally supplied field-level candidate dispositions and explicit bases in a deterministic settlement record without qualification, authority, execution, external consequence, or Atlas mutation."
     },
     "settlement_consequence_reconciliation": {
-      "posture": "IMPLEMENTATION_STARTED_UNPRESSURED",
+      "posture": "IMPLEMENTED_READY_FOR_PRESSURE",
       "implementation": "src/coordination/settlement_consequence_reconciliation_v0.py",
-      "claim": "Candidate composition only: settlement remains distinct from consequence; independently supplied consequence observation/evaluation may be bound into existing basis reconciliation. Test/observer pressure remains required."
+      "tests": "tests/coordination/test_settlement_consequence_reconciliation_v0.py",
+      "observer": "tools/observe_settlement_consequence_reconciliation_v0.py",
+      "pressure_packet": "docs/campaigns/workcycle_stabilization_001/SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001_READY_TO_RUN.md",
+      "claim": "Candidate composition ready for runtime pressure: settlement remains insufficient without consequence evidence; independently supplied consequence observation/evaluation may drive existing basis reconciliation."
     }
   },
   "next_load_bearing_coordinate": {
     "coordinate": "settlement_consequence_reconciliation",
-    "pressure": "SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001_IMPLEMENTATION",
-    "selection_basis": "Field-level settlement is qualified. The next unqualified relation is settlement + independent consequence evidence -> basis reconciliation, with settlement alone remaining insufficient."
+    "pressure": "SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001",
+    "selection_basis": "Field-level settlement is qualified and the consequence-reconciliation apparatus is now staged. Runtime observation is the next required relation."
   },
   "downstream_frontier": [
     "complete and pressure settlement != consequence plus independent consequence -> basis reconciliation",
