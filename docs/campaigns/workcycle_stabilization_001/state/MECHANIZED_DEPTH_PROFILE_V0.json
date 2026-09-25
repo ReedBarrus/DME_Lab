@@ -1,0 +1,122 @@
+{
+  "object_type": "MECHANIZED_DEPTH_PROFILE_V0",
+  "campaign_id": "WORKCYCLE_STABILIZATION_001",
+  "governing_law": "STRONGER_CLAIM_REQUIRES_ONE_NEW_MECHANICALLY_WITNESSED_RELATION",
+  "current_horizon": "H_operate",
+  "admission_depth": {
+    "eligibility": {
+      "posture": "QUALIFIED_NARROWED",
+      "evidence": "ONE_SUCCESSOR_MATCHED",
+      "claim": "Single-threaded continuation eligibility under externally serialized reservation."
+    },
+    "successor_identity_binding": {
+      "posture": "UNTESTED",
+      "claim": "No exact source-bound successor identity conservation pressure has yet been frozen."
+    },
+    "budget_reservation": {
+      "posture": "QUALIFIED_SAME_PROCESS_TWO_CALLER",
+      "evidence": "ATOMIC_ADMISSION_MATCHED"
+    },
+    "seat_lease_binding": {
+      "posture": "QUALIFIED_SAME_PROCESS_TWO_CALLER",
+      "evidence": "ATOMIC_ADMISSION_MATCHED"
+    },
+    "work_attempt_identity_binding": {
+      "posture": "QUALIFIED_SAME_PROCESS_TWO_CALLER",
+      "evidence": "ATOMIC_ADMISSION_MATCHED"
+    },
+    "authority_verification": {
+      "posture": "IMPLEMENTED_UNPRESSURED",
+      "pressure": "AUTHORITY_BINDING_PRESSURE_001",
+      "claim": "Read-only source-bound current-authority verification exists but has not yet been independently witnessed/adjudicated."
+    },
+    "thread_contention": {
+      "posture": "QUALIFIED",
+      "evidence": "ATOMIC_ADMISSION_MATCHED"
+    },
+    "process_contention": {
+      "posture": "UNTESTED"
+    },
+    "crash_recovery": {
+      "posture": "UNTESTED"
+    },
+    "durability": {
+      "posture": "UNTESTED"
+    },
+    "replay_resistance": {
+      "posture": "UNTESTED_AT_ADMISSION_LAYER"
+    },
+    "cross_host": {
+      "posture": "OUT_OF_SCOPE"
+    }
+  },
+  "metabolic_depth": {
+    "bounded_workcycle": {
+      "posture": "QUALIFIED",
+      "evidence": "QUALIFIED_BOUNDED_WORKCYCLE"
+    },
+    "basis_reconciliation": {
+      "posture": "IMPLEMENTED_UNPRESSURED",
+      "implementation": "src/coordination/basis_workcycle_v1.py"
+    },
+    "successor_posture_derivation": {
+      "posture": "IMPLEMENTED_UNPRESSURED",
+      "vocabulary": [
+        "APPLY_QUALIFIED_RESULT",
+        "OBSERVE_APPLICATION_CONSEQUENCE",
+        "RESOLVE_LOAD_BEARING_GAP",
+        "CLOSE_BASIS",
+        "HOLD_NO_JUSTIFIED_WORK"
+      ]
+    },
+    "exact_successor_identity_derivation": {
+      "posture": "UNTESTED"
+    },
+    "verified_authority_to_atomic_admission": {
+      "posture": "UNTESTED"
+    },
+    "real_bounded_execution_in_chain": {
+      "posture": "UNTESTED"
+    },
+    "consequence_settlement_in_chain": {
+      "posture": "UNTESTED"
+    },
+    "second_successor_mechanically_derived": {
+      "posture": "UNTESTED"
+    },
+    "repeated_metabolic_loop": {
+      "posture": "UNTESTED",
+      "required_standing": "REPEATED_METABOLIC_LOOP_MATCHED"
+    },
+    "injected_fracture_recovery": {
+      "posture": "UNTESTED_AT_CHAIN_LEVEL"
+    },
+    "noisy_workload_fitness": {
+      "posture": "UNTESTED"
+    }
+  },
+  "next_load_bearing_coordinate": {
+    "coordinate": "authority_verification",
+    "pressure": "AUTHORITY_BINDING_PRESSURE_001",
+    "selection_basis": "Atomic admission currently carries caller-supplied authority testimony. A read-only verifier against current local authority state is staged and directly removes that load-bearing ambiguity."
+  },
+  "downstream_frontier": [
+    "source-bound successor identity conservation",
+    "mechanical basis reconciliation pressure",
+    "verified authority bound into atomic admission",
+    "real bounded execution + witnessed consequence + settlement",
+    "second successor derived without manual selection",
+    "repeated metabolic loop",
+    "controlled fracture injection",
+    "noisy workload fitness"
+  ],
+  "deferred_nonblocking": [
+    "cross-process admission contention",
+    "stale-lock recovery",
+    "power-loss durability"
+  ],
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "scientific_standing_effect": "NONE",
+  "claim_ceiling": "Frontier map only. Coordinate posture does not itself create standing; each stronger claim requires one new mechanically witnessed relation."
+}
