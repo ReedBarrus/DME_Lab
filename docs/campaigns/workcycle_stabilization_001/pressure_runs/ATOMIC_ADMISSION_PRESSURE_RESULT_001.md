@@ -1,0 +1,66 @@
+# WORKCYCLE_STABILIZATION_001 — ATOMIC ADMISSION PRESSURE RESULT 001
+
+OBJECT_TYPE:
+TERMINAL_ADJUDICATION_RESULT
+
+PRESSURE_ID:
+ATOMIC_ADMISSION_PRESSURE_001
+
+PREDECESSOR_ONE_SUCCESSOR:
+MATCHED
+
+FROZEN_IMPLEMENTATION_SOURCE:
+3a96f87599b6e5da03565b3bf8fba3000704c528
+
+WITNESS_SOURCE_MATCHED:
+YES
+
+SERIAL_FIRST:
+MATCHED — admitted = true
+
+SERIAL_SECOND:
+MATCHED — admitted = false; blockers include active_admission, budget_reservable, seat_available
+
+UNSATISFIED_AUTHORITY_CASE:
+MATCHED — admitted = false; blocker includes authority_satisfied
+
+RACE_ADMITTED_COUNT:
+1
+
+RACE_BLOCKED_COUNT:
+1
+
+RECEIPT_IDENTITY_BINDING:
+MATCHED
+
+MODEL_INVOCATION_EFFECT:
+NONE
+
+EXECUTION_PERFORMED:
+false
+
+AUTHORITY_EFFECT:
+NONE
+
+LOCAL_CONCURRENCY_CLAIM_CEILING_PRESERVED:
+YES
+
+DISPOSITION:
+ATOMIC_ADMISSION_MATCHED
+
+UNRESOLVED:
+[]
+
+CLAIM_CEILING:
+Repo-local concurrency-safe admission candidate only.
+The fixture does not establish distributed/process-independent locking
+across arbitrary filesystems,
+does not grant authority,
+does not invoke a model,
+and does not execute admitted work.
+
+SCIENTIFIC_STANDING_EFFECT:
+NONE
+
+STOPPED:
+YES
