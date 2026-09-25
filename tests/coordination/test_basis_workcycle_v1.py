@@ -209,6 +209,81 @@ class BasisWorkcycleV1Tests(unittest.TestCase):
         )
         self.assertEqual(posture["posture"], "CLOSE_BASIS")
 
+    def test_fresh_still_blocked_falls_back_to_observe_consequence(self):
+        unit = unit_fixture()
+        unit["qualification"]["scientific_standing"] = "QUALIFIED"
+        unit["application"]["application_status"] = "APPLIED"
+        unit["consequence_observation"]["effect_class"] = "NOT_YET_OBSERVABLE"
+        admissibility = bw.pressure_admissibility(unit)
+        reconciliation = bw.basis_reconciliation(
+            unit,
+            disposition="STILL_BLOCKED",
+            remaining_gap="applied change still lacks consequence evidence",
+            next_pressure_basis="observe application consequence before basis closure",
+        )
+        posture = bw.derive_next_work_posture(
+            unit,
+            admissibility=admissibility,
+            reconciliation=reconciliation,
+        )
+        self.assertEqual(posture["posture"], "OBSERVE_APPLICATION_CONSEQUENCE")
+
+    def test_fresh_partial_reconciliation_outranks_stale_consequence_state(self):
+        unit = unit_fixture()
+        unit["qualification"]["scientific_standing"] = "QUALIFIED"
+        unit["application"]["application_status"] = "APPLIED"
+        unit["consequence_observation"]["effect_class"] = "NOT_YET_OBSERVABLE"
+        admissibility = bw.pressure_admissibility(unit)
+        reconciliation = bw.basis_reconciliation(
+            unit,
+            disposition="PARTIALLY_SATISFIED",
+            remaining_gap="one source-supported obstruction remains",
+            next_pressure_basis="resolve remaining source-supported obstruction",
+        )
+        posture = bw.derive_next_work_posture(
+            unit,
+            admissibility=admissibility,
+            reconciliation=reconciliation,
+        )
+        self.assertEqual(posture["posture"], "RESOLVE_LOAD_BEARING_GAP")
+
+    def test_fresh_satisfied_reconciliation_outranks_stale_consequence_state(self):
+        unit = unit_fixture()
+        unit["qualification"]["scientific_standing"] = "QUALIFIED"
+        unit["application"]["application_status"] = "APPLIED"
+        unit["consequence_observation"]["effect_class"] = "NOT_YET_OBSERVABLE"
+        admissibility = bw.pressure_admissibility(unit)
+        reconciliation = bw.basis_reconciliation(
+            unit,
+            disposition="SATISFIED",
+            remaining_gap=None,
+        )
+        posture = bw.derive_next_work_posture(
+            unit,
+            admissibility=admissibility,
+            reconciliation=reconciliation,
+        )
+        self.assertEqual(posture["posture"], "CLOSE_BASIS")
+
+    def test_fresh_invalidated_reconciliation_outranks_stale_consequence_state(self):
+        unit = unit_fixture()
+        unit["qualification"]["scientific_standing"] = "QUALIFIED"
+        unit["application"]["application_status"] = "APPLIED"
+        unit["consequence_observation"]["effect_class"] = "NOT_YET_OBSERVABLE"
+        admissibility = bw.pressure_admissibility(unit)
+        reconciliation = bw.basis_reconciliation(
+            unit,
+            disposition="INVALIDATED",
+            remaining_gap="observed consequence contradicts the active basis",
+        )
+        posture = bw.derive_next_work_posture(
+            unit,
+            admissibility=admissibility,
+            reconciliation=reconciliation,
+        )
+        self.assertEqual(posture["posture"], "HOLD_NO_JUSTIFIED_WORK")
+
+
     def test_repository_relational_compression_w2_is_basis_admissible(self):
         repo = Path(__file__).resolve().parents[2]
         path = (
