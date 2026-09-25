@@ -1,0 +1,344 @@
+"""Basis-bound workcycle wrapper V1.
+
+This module wraps the existing bounded seat/work lifecycle with the missing
+front and rear anchors:
+
+    BASIS -> PRESSURE ADMISSIBILITY -> existing lifecycle
+          -> APPLICATION -> CONSEQUENCE -> BASIS RECONCILIATION
+
+It does not execute work, invoke models, create authority, or create scientific
+standing.
+"""
+
+from __future__ import annotations
+
+import copy
+from typing import Any, Mapping, Sequence
+
+from src.coordination import workcycle_v0 as wc
+
+
+class BasisWorkcycleError(wc.WorkcycleError):
+    pass
+
+
+ADMISSIBILITY_TYPE = "PRESSURE_ADMISSIBILITY_V1"
+NEXT_WORK_TYPE = "NEXT_WORK_POSTURE_V1"
+RECONCILIATION_TYPE = "BASIS_RECONCILIATION_V1"
+
+BASIS_ACTIVE = frozenset({"DECLARED", "SUPPORTED"})
+BASIS_STATUSES = frozenset(
+    {"DECLARED", "SUPPORTED", "CHALLENGED", "SUPERSEDED", "SATISFIED"}
+)
+LOAD_BEARING_EFFECTS = frozenset(
+    {
+        "APPLICATION",
+        "AUTHORITY",
+        "SAFETY",
+        "RECONSTRUCTION",
+        "BASIS",
+        "OBSERVABILITY",
+    }
+)
+NEXT_WORK_POSTURES = frozenset(
+    {
+        "APPLY_QUALIFIED_RESULT",
+        "OBSERVE_APPLICATION_CONSEQUENCE",
+        "RESOLVE_LOAD_BEARING_GAP",
+        "CLOSE_BASIS",
+        "HOLD_NO_JUSTIFIED_WORK",
+    }
+)
+RECONCILIATION_DISPOSITIONS = frozenset(
+    {
+        "SATISFIED",
+        "PARTIALLY_SATISFIED",
+        "STILL_BLOCKED",
+        "INVALIDATED",
+        "REFRAMED",
+    }
+)
+
+
+def _mapping(value: Any, field: str) -> Mapping[str, Any]:
+    if not isinstance(value, Mapping):
+        raise BasisWorkcycleError(f"{field} must be an object")
+    return value
+
+
+def _statement(value: Any, field: str) -> str:
+    if not isinstance(value, str) or not value.strip():
+        raise BasisWorkcycleError(f"{field} must be a non-empty string")
+    return value.strip()
+
+
+def validate_workflow_unit(unit: Mapping[str, Any]) -> None:
+    identity = _mapping(unit.get("identity"), "identity")
+    basis = _mapping(unit.get("basis"), "basis")
+    pressure = _mapping(unit.get("pressure_selection"), "pressure_selection")
+    contract = _mapping(unit.get("pressure_contract"), "pressure_contract")
+    application = _mapping(unit.get("application"), "application")
+    consequence = _mapping(
+        unit.get("consequence_observation"), "consequence_observation"
+    )
+    reconciliation = _mapping(
+        unit.get("basis_reconciliation"), "basis_reconciliation"
+    )
+    sanity = _mapping(unit.get("sanity_check"), "sanity_check")
+
+    for field in ("work_item_id", "campaign_id", "operative_frame_ref"):
+        _statement(identity.get(field), f"identity.{field}")
+
+    _statement(basis.get("basis_id"), "basis.basis_id")
+    if basis.get("basis_status") not in BASIS_STATUSES:
+        raise BasisWorkcycleError("basis.basis_status is unsupported")
+    _statement(basis.get("statement"), "basis.statement")
+    desired = _mapping(basis.get("desired_consequence"), "basis.desired_consequence")
+    obstruction = _mapping(basis.get("current_obstruction"), "basis.current_obstruction")
+    _statement(desired.get("statement"), "basis.desired_consequence.statement")
+    _statement(obstruction.get("statement"), "basis.current_obstruction.statement")
+
+    distinction = _mapping(
+        pressure.get("target_distinction"), "pressure_selection.target_distinction"
+    )
+    _statement(distinction.get("lhs"), "pressure_selection.target_distinction.lhs")
+    _statement(distinction.get("rhs"), "pressure_selection.target_distinction.rhs")
+    _statement(
+        pressure.get("selection_basis"), "pressure_selection.selection_basis"
+    )
+    _statement(
+        pressure.get("application_dependency"),
+        "pressure_selection.application_dependency",
+    )
+
+    load_effects = pressure.get("load_bearing_effects")
+    if not isinstance(load_effects, Sequence) or isinstance(load_effects, (str, bytes)):
+        raise BasisWorkcycleError(
+            "pressure_selection.load_bearing_effects must be a list"
+        )
+
+    budget = _mapping(contract.get("pressure_budget"), "pressure_contract.pressure_budget")
+    for field in ("max_rounds", "max_branch_count", "max_unresolved_children"):
+        value = budget.get(field)
+        if not isinstance(value, int) or value < 0:
+            raise BasisWorkcycleError(
+                f"pressure_contract.pressure_budget.{field} must be nonnegative"
+            )
+
+    if not isinstance(application.get("required"), bool):
+        raise BasisWorkcycleError("application.required must be boolean")
+    if consequence.get("required_if_applied") is not True:
+        raise BasisWorkcycleError(
+            "consequence_observation.required_if_applied must be true"
+        )
+    _statement(
+        consequence.get("expected_effect"),
+        "consequence_observation.expected_effect",
+    )
+
+    _statement(
+        reconciliation.get("original_basis_id"),
+        "basis_reconciliation.original_basis_id",
+    )
+    if reconciliation.get("original_basis_id") != basis.get("basis_id"):
+        raise BasisWorkcycleError(
+            "basis_reconciliation.original_basis_id must bind basis.basis_id"
+        )
+
+    operating_change = _mapping(
+        sanity.get("if_this_work_succeeds"),
+        "sanity_check.if_this_work_succeeds",
+    )
+    _statement(
+        operating_change.get("what_changes_in_the_operating_world"),
+        "sanity_check.if_this_work_succeeds.what_changes_in_the_operating_world",
+    )
+    nothing = _mapping(
+        sanity.get("if_nothing_would_change"),
+        "sanity_check.if_nothing_would_change",
+    )
+    if nothing.get("posture") != "DO_NOT_RUN":
+        raise BasisWorkcycleError(
+            "sanity_check.if_nothing_would_change.posture must be DO_NOT_RUN"
+        )
+
+
+def pressure_admissibility(
+    unit: Mapping[str, Any],
+    *,
+    qualified_result_already_resolves: bool = False,
+) -> dict[str, Any]:
+    """Determine whether one pressure may consume scientific consequence capacity.
+
+    This is only an admissibility decision. It does not admit execution.
+    """
+    validate_workflow_unit(unit)
+    basis = unit["basis"]
+    pressure = unit["pressure_selection"]
+    sanity = unit["sanity_check"]
+
+    blockers: list[str] = []
+
+    if basis["basis_status"] not in BASIS_ACTIVE:
+        blockers.append("BASIS_NOT_ACTIVE")
+
+    obstruction = basis["current_obstruction"]["statement"].strip()
+    selection_basis = pressure["selection_basis"].strip()
+    distinction = pressure["target_distinction"]
+    if not obstruction:
+        blockers.append("CURRENT_OBSTRUCTION_MISSING")
+    if not selection_basis:
+        blockers.append("DISTINCTION_NOT_LINKED_TO_OBSTRUCTION")
+    if not distinction["lhs"].strip() or not distinction["rhs"].strip():
+        blockers.append("TARGET_DISTINCTION_MISSING")
+
+    effects = {
+        str(value).upper()
+        for value in pressure.get("load_bearing_effects") or []
+        if isinstance(value, str)
+    }
+    material_effects = sorted(effects & LOAD_BEARING_EFFECTS)
+    if not material_effects:
+        blockers.append("NO_LOAD_BEARING_EFFECT")
+
+    if qualified_result_already_resolves and pressure.get(
+        "stop_if_resolved_by_existing_evidence"
+    ) is True:
+        blockers.append("EXISTING_QUALIFIED_RESULT_RESOLVES")
+
+    operating_change = (
+        sanity["if_this_work_succeeds"]["what_changes_in_the_operating_world"]
+        .strip()
+        .upper()
+    )
+    if operating_change in {"NONE", "NO CHANGE", "NO_CHANGE", "NOTHING"}:
+        blockers.append("NO_OPERATING_CHANGE")
+
+    admissible = not blockers
+    return wc.seal_object(
+        {
+            "object_type": ADMISSIBILITY_TYPE,
+            "work_item_id": unit["identity"]["work_item_id"],
+            "basis_id": basis["basis_id"],
+            "pressure_id": pressure.get("pressure_id"),
+            "admissible": admissible,
+            "material_effects": material_effects,
+            "blockers": blockers,
+            "work_admission_effect": "NONE",
+            "authority_effect": "NONE",
+            "execution_effect": "NONE",
+            "scientific_standing_effect": "NONE",
+            "integrity_sha256": "",
+        }
+    )
+
+
+def basis_reconciliation(
+    unit: Mapping[str, Any],
+    *,
+    disposition: str,
+    remaining_gap: str | None,
+    next_pressure_basis: str | None = None,
+) -> dict[str, Any]:
+    validate_workflow_unit(unit)
+    if disposition not in RECONCILIATION_DISPOSITIONS:
+        raise BasisWorkcycleError("unsupported basis reconciliation disposition")
+
+    next_allowed = disposition in {"PARTIALLY_SATISFIED", "STILL_BLOCKED", "REFRAMED"}
+    if next_allowed and not (next_pressure_basis or "").strip():
+        raise BasisWorkcycleError(
+            "next_pressure_basis is required when another pressure remains eligible"
+        )
+
+    return wc.seal_object(
+        {
+            "object_type": RECONCILIATION_TYPE,
+            "work_item_id": unit["identity"]["work_item_id"],
+            "original_basis_id": unit["basis"]["basis_id"],
+            "disposition": disposition,
+            "remaining_gap": remaining_gap,
+            "next_pressure_allowed": next_allowed,
+            "next_pressure_basis": next_pressure_basis,
+            "authority_effect": "NONE",
+            "execution_effect": "NONE",
+            "scientific_standing_effect": "NONE",
+            "integrity_sha256": "",
+        }
+    )
+
+
+def derive_next_work_posture(
+    unit: Mapping[str, Any],
+    *,
+    admissibility: Mapping[str, Any],
+    reconciliation: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Derive the next lawful work posture without generating new work."""
+    validate_workflow_unit(unit)
+    wc.verify_seal(admissibility)
+    if admissibility.get("object_type") != ADMISSIBILITY_TYPE:
+        raise BasisWorkcycleError("admissibility object_type mismatch")
+    if admissibility.get("work_item_id") != unit["identity"]["work_item_id"]:
+        raise BasisWorkcycleError("admissibility/work identity mismatch")
+
+    if reconciliation is not None:
+        wc.verify_seal(reconciliation)
+        if reconciliation.get("object_type") != RECONCILIATION_TYPE:
+            raise BasisWorkcycleError("reconciliation object_type mismatch")
+        if reconciliation.get("work_item_id") != unit["identity"]["work_item_id"]:
+            raise BasisWorkcycleError("reconciliation/work identity mismatch")
+
+    qualification = _mapping(unit.get("qualification"), "qualification")
+    application = unit["application"]
+    consequence = unit["consequence_observation"]
+    basis = unit["basis"]
+
+    standing = qualification.get("scientific_standing")
+    application_status = application.get("application_status")
+    effect_class = consequence.get("effect_class")
+
+    reason = ""
+    if (
+        application_status == "APPLIED"
+        and consequence.get("required_if_applied") is True
+        and effect_class in {None, "NOT_YET_OBSERVABLE"}
+    ):
+        posture = "OBSERVE_APPLICATION_CONSEQUENCE"
+        reason = "applied change still owes consequence evidence"
+    elif (
+        standing == "QUALIFIED"
+        and application.get("required") is True
+        and application_status == "ELIGIBLE"
+    ):
+        posture = "APPLY_QUALIFIED_RESULT"
+        reason = "qualified result is application-eligible"
+    elif reconciliation is not None and reconciliation.get("disposition") == "SATISFIED":
+        posture = "CLOSE_BASIS"
+        reason = "basis reconciliation is satisfied"
+    elif basis.get("basis_status") == "SATISFIED":
+        posture = "CLOSE_BASIS"
+        reason = "basis is already satisfied"
+    elif admissibility.get("admissible") is True:
+        posture = "RESOLVE_LOAD_BEARING_GAP"
+        reason = "active basis has one admissible load-bearing pressure"
+    else:
+        posture = "HOLD_NO_JUSTIFIED_WORK"
+        reason = "no currently admissible load-bearing pressure"
+
+    if posture not in NEXT_WORK_POSTURES:
+        raise BasisWorkcycleError("derived unsupported next work posture")
+
+    return wc.seal_object(
+        {
+            "object_type": NEXT_WORK_TYPE,
+            "work_item_id": unit["identity"]["work_item_id"],
+            "basis_id": basis["basis_id"],
+            "posture": posture,
+            "reason": reason,
+            "creates_work_item": False,
+            "authority_effect": "NONE",
+            "execution_effect": "NONE",
+            "scientific_standing_effect": "NONE",
+            "integrity_sha256": "",
+        }
+    )
