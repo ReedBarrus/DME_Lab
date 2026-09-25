@@ -42,13 +42,19 @@
     "output_schema",
     "claim_ceiling",
     "authority_effect",
-    "execution_effect"
+    "execution_effect",
+    "model_id",
+    "model_family",
+    "reasoning_profile",
+    "tool_policy",
+    "allowed_evidence_policy",
+    "live_chat_context_policy",
+    "external_retrieval_policy"
   ],
   "observation_classes": [
     "UNCHANGED",
     "DEGRADED",
     "LOST",
-    "MULTI_LOAD_OR_CONFOUNDED",
     "UNRESOLVED"
   ],
   "non_collapses": [
@@ -60,5 +66,58 @@
   ],
   "authority_effect": "NONE",
   "execution_effect": "NONE",
-  "scientific_standing_effect": "NONE"
+  "scientific_standing_effect": "NONE",
+  "inference_profile": {
+    "profile_id": "CELL001_MATCHED_OBSERVABLE_INFERENCE_PROFILE_V0",
+    "required_same_across_runs": true,
+    "required_observable_coordinates": [
+      "model_id",
+      "model_family",
+      "reasoning_profile",
+      "tool_policy",
+      "allowed_evidence_policy",
+      "output_contract",
+      "live_chat_context_policy",
+      "external_retrieval_policy"
+    ],
+    "provider_managed_or_unobserved_coordinates": [
+      "sampling_seed",
+      "hidden_runtime_scheduler_state",
+      "other_provider_internal_sampling_state"
+    ],
+    "comparability_rule": "Any mismatch in a required observable coordinate => RUN_COMPARABILITY=FRACTURED.",
+    "claim_ceiling": "Observable inference regime may be matched; unobserved provider/runtime nondeterminism remains unresolved."
+  },
+  "evidence_aperture": {
+    "aperture_id_control": "CELL001_APERTURE_A_FULL",
+    "aperture_id_intervention": "CELL001_APERTURE_B_WITHHELD_ONE",
+    "subject_scope": "exact W2 workcycle subject at the frozen source ref",
+    "only_deliberate_difference": "availability of the declared candidate-support Git object",
+    "existential_claim": "NONE",
+    "reconstruction_claim_only": true
+  },
+  "load_measurement": {
+    "declared_load_dimension": "SEMANTIC_RECONSTRUCTION",
+    "orthogonal_loads_evaluated": false,
+    "allowed_claim": "effect observed or not observed on declared semantic-reconstruction measure",
+    "forbidden_claim": "semantic reconstruction is the only affected load dimension"
+  },
+  "reproducibility": {
+    "established": false,
+    "cell_001_claim": "single matched-pair observation only",
+    "replication_deferred_to": "CELL_002_OR_LATER"
+  },
+  "local_dependence_candidate": {
+    "candidate_form": "D_reconstruction(A,B,L,E,S,t,q)",
+    "coordinates": {
+      "A": "bounded fresh-seat reconstruction subject",
+      "B": "candidate evidence object",
+      "L": "SEMANTIC_RECONSTRUCTION",
+      "E": "declared evidence aperture",
+      "S": "exact bounded workcycle scope",
+      "t": "frozen source_ref temporal coordinate",
+      "q": "scientific standing / unresolved posture"
+    },
+    "non_claim": "does not establish operative or existential dependence of the whole workcycle"
+  }
 }
