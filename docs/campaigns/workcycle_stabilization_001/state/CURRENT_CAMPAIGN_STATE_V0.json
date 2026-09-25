@@ -85,20 +85,25 @@
       "standing": "VERIFIED_AUTHORITY_ATOMIC_ADMISSION_MATCHED",
       "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_RESULT_001.md",
       "claim_ceiling": "At the exact supplied source, one current verified one-use local authority binding issued for the exact sealed successor candidate is composed with that successor into one same-process atomic local admission transition; wrong successor, tampering, and consumed authority fail closed; authority remains unconsumed and no model invocation or work execution occurs."
+    },
+    "admitted_authority_consumption": {
+      "standing": "ADMITTED_AUTHORITY_CONSUMPTION_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_RESULT_001.md",
+      "claim_ceiling": "At the exact supplied source, one exact admitted successor in a disposable same-process fixture is rebound to the same current one-use authority and crosses one caller-supplied invocation callback under one-shot consumption; success consumes once and replay is denied; wrong successor blocks before consumption; post-reservation failure leaves RECOVERY_REQUIRED and replay denied."
     }
   },
   "current_unresolved": [
-    "Admitted-authority consumption is witnessed and awaits independent adjudication.",
-    "Immutable result witnessing and settlement remain unearned after the one-shot invocation boundary.",
-    "Second mechanically derived successor and repeated metabolic loop standing remain unearned."
+    "A successful one-shot invocation callback can return data, but no immutable result witness is yet bound to the admitted work attempt and authority-consumption receipt.",
+    "Settlement over immutable result evidence remains unearned.",
+    "Consequence reconciliation, second mechanically derived successor, and repeated metabolism remain unearned."
   ],
   "next_pressure": {
-    "pressure_id": "ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_ADJUDICATION",
-    "work_item_id": "WORKCYCLE_STABILIZATION_001_ADMITTED_AUTHORITY_CONSUMPTION",
-    "destination": "FRESH_INDEPENDENT_ADMITTED_AUTHORITY_CONSUMPTION_ADJUDICATOR",
-    "packet": "docs/campaigns/workcycle_stabilization_001/ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-    "selection_basis": "The admitted-authority-consumption witness exercised repo head e2456a535014d3ae47ef15802d679605f8182828 and was transported alone in 048255a4a8cfba109ec6214761e5eaac985f1c65. Independent adjudication is required before result-witness/settlement pressure may consume this relation as a predecessor.",
-    "expected_operating_change": "Freeze MATCHED/PARTIAL/FRACTURED/UNRESOLVED for one exact admitted successor crossing one-shot authority consumption and a disposable invocation callback, with replay denial and RECOVERY_REQUIRED after post-reservation failure.",
+    "pressure_id": "INVOCATION_RESULT_WITNESS_PRESSURE_001_IMPLEMENTATION",
+    "work_item_id": "WORKCYCLE_STABILIZATION_001_INVOCATION_RESULT_WITNESS",
+    "destination": "LOCAL_RESULT_WITNESS_IMPLEMENTATION",
+    "packet": null,
+    "selection_basis": "ADMITTED_AUTHORITY_CONSUMPTION_MATCHED is frozen. The next load-bearing untested relation is callback-return-to-immutable-result-witness while preserving RESULT_WITNESS != SETTLEMENT != QUALIFIED_STANDING.",
+    "expected_operating_change": "Bind one successful admitted-authority-consumption attempt to a deterministic immutable result witness containing exact attempt/admission/consumption/output identities without interpreting or settling the output.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -146,7 +151,8 @@
       "tools/observe_admitted_authority_consumption_v0.py",
       "docs/campaigns/workcycle_stabilization_001/ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_READY_TO_RUN.md",
       "docs/campaigns/workcycle_stabilization_001/ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-      "admitted_authority_consumption_observation.json"
+      "admitted_authority_consumption_observation.json",
+      "docs/campaigns/workcycle_stabilization_001/pressure_runs/ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_RESULT_001.md"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
@@ -206,12 +212,13 @@
       "deterministic successor identity conservation independently matched",
       "deterministic basis reconciliation independently matched",
       "Windows current-source atomic-admission contention repair independently matched",
-      "verified current authority + exact successor + same-process atomic admission independently matched"
+      "verified current authority + exact successor + same-process atomic admission independently matched",
+      "exact admitted successor + one-shot authority consumption independently matched"
     ],
     "unresolved_components": [
-      "admitted authority consumption awaits independent adjudication",
-      "immutable result witness and settlement are not yet composed with the invocation attempt",
-      "execution consequence has not yet been reconciled into a fresh basis",
+      "successful invocation callback has no immutable result witness bound to attempt/admission/consumption identity",
+      "result witness has not been routed through settlement",
+      "settled consequence has not been reconciled into a fresh basis",
       "repeat without manual successor selection has not yet been observed"
     ]
   },
