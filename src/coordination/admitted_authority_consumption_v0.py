@@ -47,6 +47,7 @@ def _blocked(blocker: str, *, error: str | None = None) -> dict[str, Any]:
         "receipt": None,
         "error": error,
         "authority_effect": "NONE",
+        "consumption_effect": "NONE",
         "scientific_standing_effect": "NONE",
     }
 
