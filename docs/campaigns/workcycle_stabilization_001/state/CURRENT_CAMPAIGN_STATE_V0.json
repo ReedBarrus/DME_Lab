@@ -80,20 +80,24 @@
       "standing": "BASIS_RECONCILIATION_MATCHED",
       "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/BASIS_RECONCILIATION_PRESSURE_RESULT_001.md",
       "claim_ceiling": "Bounded deterministic reconciliation over supplied qualification, application, consequence, and source-supported current-obstruction coordinates only."
+    },
+    "verified_authority_atomic_admission": {
+      "standing": "VERIFIED_AUTHORITY_ATOMIC_ADMISSION_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_RESULT_001.md",
+      "claim_ceiling": "At the exact supplied source, one current verified one-use local authority binding issued for the exact sealed successor candidate is composed with that successor into one same-process atomic local admission transition; wrong successor, tampering, and consumed authority fail closed; authority remains unconsumed and no model invocation or work execution occurs."
     }
   },
   "current_unresolved": [
-    "Verified-authority/exact-successor atomic-admission composition is witnessed and awaits independent adjudication.",
-    "Real bounded execution, witnessed consequence, settlement, and second mechanically derived successor remain unobserved.",
-    "Repeated metabolic loop standing remains unearned."
+    "The admitted exact successor has not yet crossed one-shot authority consumption into a bounded invocation boundary.",
+    "Post-reservation failure must conserve consumed authority and unresolved consequence without silent replay.",
+    "Result witnessing, settlement, second mechanically derived successor, and repeated metabolism remain unearned."
   ],
   "next_pressure": {
-    "pressure_id": "VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001_ADJUDICATION",
-    "work_item_id": "WORKCYCLE_STABILIZATION_001_VERIFIED_AUTHORITY_ATOMIC_ADMISSION",
-    "destination": "FRESH_INDEPENDENT_VERIFIED_AUTHORITY_ATOMIC_ADMISSION_ADJUDICATOR",
-    "packet": "docs/campaigns/workcycle_stabilization_001/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-    "selection_basis": "The repaired-source composition witness exercised repo head 55e3902e013284acc62851075338f3c7f90d6d2d and was transported alone in d887ef69f43a3d4f4060fbf6dfb083eae4f5119d. Independent adjudication is required before the composition may become a current load-bearing predecessor.",
-    "expected_operating_change": "Freeze MATCHED/PARTIAL/FRACTURED/UNRESOLVED for verified current authority + exact sealed successor + same-process atomic admission, without consuming authority or executing work.",
+    "pressure_id": "ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_IMPLEMENTATION",
+    "work_item_id": "WORKCYCLE_STABILIZATION_001_ADMITTED_AUTHORITY_CONSUMPTION",
+    "destination": "LOCAL_IMPLEMENTATION_AND_PRESSURE",
+    "selection_basis": "VERIFIED_AUTHORITY_ATOMIC_ADMISSION_MATCHED is frozen. The nearest load-bearing untested relation is admission-to-one-shot-authority-consumption: the exact admitted successor must cross the invocation boundary once without authority replay, identity substitution, or silent recovery after a post-reservation failure.",
+    "expected_operating_change": "Bind the exact composed admission receipt to the exact successor and current one-use authority, consume that authority once before a disposable invocation callback, deny replay, and preserve RECOVERY_REQUIRED on post-reservation failure.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -134,7 +138,8 @@
       "docs/campaigns/workcycle_stabilization_001/ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_001_ADJUDICATION_READY_TO_SEND.md",
       "docs/campaigns/workcycle_stabilization_001/pressure_runs/ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_RESULT_001.md",
       "docs/campaigns/workcycle_stabilization_001/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-      "verified_authority_atomic_admission_observation.json"
+      "verified_authority_atomic_admission_observation.json",
+      "docs/campaigns/workcycle_stabilization_001/pressure_runs/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_RESULT_001.md"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
@@ -193,12 +198,13 @@
       "current authority binding independently verified against local trust-root state",
       "deterministic successor identity conservation independently matched",
       "deterministic basis reconciliation independently matched",
-      "Windows current-source atomic-admission contention repair independently matched"
+      "Windows current-source atomic-admission contention repair independently matched",
+      "verified current authority + exact successor + same-process atomic admission independently matched"
     ],
     "unresolved_components": [
-      "verified current authority and exact derived successor composition awaits independent adjudication",
-      "derived successor has not yet been executed under consumed one-use authority",
-      "execution consequence has not yet been settled into a new basis",
+      "admitted exact successor has not yet crossed one-shot authority consumption into a bounded invocation boundary",
+      "post-reservation failure conservation has not yet been composed with admitted successor identity",
+      "execution result has not yet been immutably witnessed and settled",
       "repeat without manual successor selection has not yet been observed"
     ]
   },
