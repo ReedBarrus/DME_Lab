@@ -1,6 +1,6 @@
 {
   "object_type": "SECOND_SUCCESSOR_FROM_RECONCILIATION_OBSERVATION_V0",
-  "repo_head": "4d5b2cd824885201b73ca694f7dcf1817a09f143",
+  "repo_head": "9dd552c0e15bd7e012eb625ded7f167e5074f3fb",
   "fixture_posture": "DISPOSABLE_RECONCILIATION_TO_SUCCESSOR_COMPOSITION_FIXTURE",
   "source_settlement_id": "invocation-result-candidate-settlement:sha256:a1f992231d243f6453df65a2b8c490c1dcd06cf60233af37921ff504e999d965",
   "admissibility": {
@@ -77,11 +77,11 @@
       "integrity_sha256": "0ed126d75f379180a7fa9977b5f500bcc5d0b52c8863bc1c93ae64bf5c0eb3e9"
     },
     "successor": {
-      "successor_posture": "OBSERVE_APPLICATION_CONSEQUENCE",
+      "successor_posture": "RESOLVE_LOAD_BEARING_GAP",
       "candidate_posture": "PROPOSED_NOT_ADMITTED",
-      "successor_id": "successor:sha256:ae95c1c5b6fea345c99a1cdc9c02895b63a5f83b2934a1e0185ba33196ed6ac5",
+      "successor_id": "successor:sha256:b173f5837666fcda396b807f7b5629437876da4a5518eafe87ac243bbb26e7d2",
       "next_pressure_basis": "resolve remaining source-supported obstruction",
-      "selection_basis": "applied change still owes consequence evidence",
+      "selection_basis": "fresh basis reconciliation leaves one justified pressure",
       "authority_effect": "NONE",
       "execution_effect": "NONE",
       "scientific_standing_effect": "NONE"
@@ -111,11 +111,11 @@
       "integrity_sha256": "239804ae44e2eaec68f5e049d75ba30476ab70973c7796ee9061581b31174f55"
     },
     "successor": {
-      "successor_posture": "OBSERVE_APPLICATION_CONSEQUENCE",
-      "candidate_posture": "PROPOSED_NOT_ADMITTED",
-      "successor_id": "successor:sha256:af44658e16c31513e9f92b07274ee2f75fc7aaa663b41209e66d66cfdf6e3480",
+      "successor_posture": "CLOSE_BASIS",
+      "candidate_posture": "NO_SUCCESSOR",
+      "successor_id": null,
       "next_pressure_basis": null,
-      "selection_basis": "applied change still owes consequence evidence",
+      "selection_basis": "fresh basis reconciliation is satisfied",
       "authority_effect": "NONE",
       "execution_effect": "NONE",
       "scientific_standing_effect": "NONE"
@@ -145,11 +145,11 @@
       "integrity_sha256": "3bcd9c6c8defe1641eb7f7bb255e9bf7d76f351fee4b237aeff34168d62deca4"
     },
     "successor": {
-      "successor_posture": "OBSERVE_APPLICATION_CONSEQUENCE",
-      "candidate_posture": "PROPOSED_NOT_ADMITTED",
-      "successor_id": "successor:sha256:ba0a487eef6a77276063de9a2c79256977a1eab69ba519ca3292a5087e985a8a",
+      "successor_posture": "HOLD_NO_JUSTIFIED_WORK",
+      "candidate_posture": "NO_SUCCESSOR",
+      "successor_id": null,
       "next_pressure_basis": null,
-      "selection_basis": "applied change still owes consequence evidence",
+      "selection_basis": "fresh basis reconciliation invalidates the active basis",
       "authority_effect": "NONE",
       "execution_effect": "NONE",
       "scientific_standing_effect": "NONE"
@@ -157,15 +157,15 @@
   },
   "assertions": {
     "settlement_only_routes_to_observe_consequence": true,
-    "partial_reconciliation_routes_to_resolve_gap": false,
+    "partial_reconciliation_routes_to_resolve_gap": true,
     "partial_reconciliation_derives_exact_successor": true,
     "partial_successor_is_deterministic": true,
-    "satisfied_reconciliation_closes_basis": false,
-    "invalidated_reconciliation_holds_without_successor": false,
-    "reconciliation_changes_future_projection": false,
+    "satisfied_reconciliation_closes_basis": true,
+    "invalidated_reconciliation_holds_without_successor": true,
+    "reconciliation_changes_future_projection": true,
     "no_authority_execution_or_standing_effect": true
   },
-  "all_assertions_pass": false,
+  "all_assertions_pass": true,
   "claim_ceiling": "Disposable composition pressure only. It tests whether already-qualified basis reconciliation lawfully changes next-work posture and exact successor projection without manual successor selection. It does not admit, authorize, schedule, execute, or grant scientific standing to successor work.",
   "authority_effect": "NONE",
   "execution_effect": "NONE",
