@@ -22,7 +22,7 @@
     "temporal_coordinate": "d5a47606ce0ed8a08ea444638e5ae4b90c59ea91",
     "standing": "CANDIDATE_STRENGTHENED"
   },
-  "maximum_warranted_claim": "For the exact WORKCYCLE_STABILIZATION_001 source frame and declared SEMANTIC_RECONSTRUCTION load, withholding SYMBOLIC_CONSEQUENCE_DECOMPOSITION_V0.md under the externally attested matched invocation profile coincided with degraded reconstruction continuity in this single A/B pair, strengthening a bounded reconstruction-dependence candidate without establishing causation, reproducibility, load exclusivity, or whole-system existential dependence.",
+  "maximum_warranted_claim": "For the exact WORKCYCLE_STABILIZATION_001 source frame d5a47606ce0ed8a08ea444638e5ae4b90c59ea91 and declared SEMANTIC_RECONSTRUCTION load, withholding SYMBOLIC_CONSEQUENCE_DECOMPOSITION_V0.md under the externally attested matched invocation profile coincided with degraded reconstruction continuity in this single A/B pair, strengthening a bounded reconstruction-dependence candidate without establishing causation, reproducibility, load exclusivity, or whole-system existential dependence.",
   "claim_ceiling": {
     "causation": "NOT_ESTABLISHED",
     "reproducibility": "NOT_ESTABLISHED",
@@ -38,5 +38,16 @@
   ],
   "authority_effect": "NONE",
   "execution_effect": "NONE",
-  "scientific_standing_effect": "NONE"
+  "scientific_standing_effect": "NONE",
+  "unresolved": [
+    "Residual provider/model nondeterminism remains unresolved.",
+    "Temperature 0.0 does not establish deterministic execution.",
+    "Only one matched invocation pair was evaluated.",
+    "Orthogonal load dimensions were not evaluated.",
+    "Causation is not established.",
+    "Reproducibility is not established.",
+    "Load exclusivity is not established.",
+    "Whole-system existential dependence is not established."
+  ],
+  "stopped": "YES"
 }
