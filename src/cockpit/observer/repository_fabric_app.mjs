@@ -23,6 +23,8 @@ import {
   pickTransitionEmission,
   renderRepositoryFabric,
   renderRepositoryFabricUnavailable,
+  renderWorkcycleOperator,
+  renderWorkcycleRail,
 } from './repository_fabric_render.mjs';
 import {
   CELL002_EPISODE_TRACE_PATH,
@@ -234,6 +236,35 @@ function render() {
   draw();
 }
 
+function patchWorkcycleProjection() {
+  if (!model || !geometricField) return;
+  const rail = root.querySelector('.workcycle-rail');
+  const detail = root.querySelector('.fabric-workcycle-operator');
+
+  if (!rail || !detail) {
+    render();
+    return;
+  }
+
+  const railScrollTop = rail.scrollTop;
+  const dock = detail.closest('.fabric-dock');
+  const dockScrollTop = dock?.scrollTop ?? 0;
+
+  rail.outerHTML = renderWorkcycleRail(
+    workcycleRuntime,
+    workcycleRuntimeError,
+    Boolean(workcycleControlBase),
+  );
+  detail.outerHTML = renderWorkcycleOperator(
+    workcycleRuntime,
+    workcycleRuntimeError,
+  );
+
+  const nextRail = root.querySelector('.workcycle-rail');
+  if (nextRail) nextRail.scrollTop = railScrollTop;
+  if (dock) dock.scrollTop = dockScrollTop;
+}
+
 function applyRuntimeSnapshot(snapshot) {
   const projectedWorkcycle = snapshot?.state?.workcycle || null;
   workcycleRuntime = projectedWorkcycle
@@ -248,7 +279,7 @@ function applyRuntimeSnapshot(snapshot) {
   workcycleRuntimeError = workcycleRuntime
     ? null
     : 'Runtime snapshot does not contain state.workcycle.';
-  if (model && geometricField) render();
+  if (model && geometricField) patchWorkcycleProjection();
 }
 
 function runtimeSnapshotUrl() {
@@ -470,7 +501,7 @@ function startWorkcycleRuntimeProjection() {
     workcycleRuntimeEndpoint = null;
     workcycleRuntime = null;
     workcycleRuntimeError = 'Runtime sidecar not configured for Atlas workcycle projection.';
-    if (model && geometricField) render();
+    if (model && geometricField) patchWorkcycleProjection();
     return null;
   }
 
@@ -485,14 +516,14 @@ function startWorkcycleRuntimeProjection() {
     } catch (error) {
       workcycleRuntime = null;
       workcycleRuntimeError = `Workcycle runtime parse failure: ${error}`;
-      if (model && geometricField) render();
+      if (model && geometricField) patchWorkcycleProjection();
     }
   });
 
   workcycleSource.onerror = () => {
     if (!workcycleRuntime) {
       workcycleRuntimeError = 'Live runtime sidecar unavailable for Atlas workcycle projection.';
-      if (model && geometricField) render();
+      if (model && geometricField) patchWorkcycleProjection();
     }
   };
   return workcycleSource;
