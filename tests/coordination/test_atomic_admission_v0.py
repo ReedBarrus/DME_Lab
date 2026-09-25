@@ -53,7 +53,11 @@ class AtomicAdmissionV0Tests(unittest.TestCase):
         self.assertEqual(receipt["work_item_id"], "W-NEXT")
         self.assertEqual(receipt["seat_id"], "LABBOIB")
         self.assertEqual(receipt["authority_coordinate"], "AUTH_COORD_TEST_001")
-        self.assertTrue(receipt["authority_was_pre_satisfied"])
+        self.assertEqual(
+            receipt["authority_input_posture"],
+            "CALLER_SUPPLIED_PRECONDITION",
+        )
+        self.assertEqual(receipt["authority_verification"], "NOT_PERFORMED")
         self.assertFalse(result["execution_performed"])
         self.assertEqual(result["model_invocation_effect"], "NONE")
         self.assertEqual(result["authority_effect"], "NONE")
