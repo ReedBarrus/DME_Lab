@@ -215,6 +215,8 @@ def build_workcycle_projection(
             "lifecycle_state": local_control.get("lifecycle_state") if local_control else "UNAVAILABLE",
             "current_admission": local_control.get("current_admission") if local_control else None,
             "wake_generation": int(local_control.get("wake_generation", 0)) if local_control else 0,
+            "last_operator_gesture": local_control.get("last_operator_gesture") if local_control else None,
+            "updated_at": local_control.get("updated_at") if local_control else None,
             "repo_control_has_execution_effect": False,
             "source": str(Path(local_control_path).expanduser().resolve()) if local_control_path is not None else None,
         },
