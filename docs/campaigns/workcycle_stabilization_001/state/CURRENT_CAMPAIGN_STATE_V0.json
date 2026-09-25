@@ -29,16 +29,17 @@
     }
   },
   "current_unresolved": [
-    "Temporal-horizon local observation is frozen and internally current to source state 3d9a6109ff89e8454f61e7f489a0eeeafbc68092; independent adjudication remains required.",
-    "RELATIONAL_COMPRESSION_W2 remains independently held/retryable under its separate apparatus/runtime lane."
+    "Independent bounded-workcycle qualification remains pending over the matched T0–T7 plus temporal-horizon basis.",
+    "Self-moving workcycle remains out of scope and still requires separate one-successor and atomic-admission evidence.",
+    "RELATIONAL_COMPRESSION_W2 remains on its separate runtime-diagnostic lane."
   ],
   "next_pressure": {
-    "pressure_id": "ATLAS_TEMPORAL_HORIZON_CLOSURE_001_ADJUDICATION",
-    "work_item_id": "WORKCYCLE_STABILIZATION_001_TEMPORAL_HORIZON_CLOSURE",
-    "destination": "FRESH_INDEPENDENT_RELATIONAL_HORIZON_ADJUDICATOR",
-    "packet": "docs/campaigns/workcycle_stabilization_001/ATLAS_TEMPORAL_HORIZON_CLOSURE_001_ADJUDICATION_READY_TO_SEND.md",
-    "selection_basis": "The refreshed local temporal-horizon witness is current to its frozen source state and derives HORIZON_MATCHED/H_operate. The remaining blocker is independent adjudication of that frozen closure under explicit claim ceilings.",
-    "expected_operating_change": "Freeze HORIZON_MATCHED/PARTIAL/FRACTURED/UNRESOLVED for the bounded temporal-horizon closure without creating work admission, authority, execution, or scientific standing.",
+    "pressure_id": "WORKCYCLE_STABILIZATION_001_BOUNDED_QUALIFICATION_001",
+    "work_item_id": "WORKCYCLE_STABILIZATION_001_BOUNDED_QUALIFICATION",
+    "destination": "FRESH_INDEPENDENT_WORKCYCLE_QUALIFIER",
+    "packet": "docs/campaigns/workcycle_stabilization_001/WORKCYCLE_BOUNDED_QUALIFICATION_001_ADJUDICATION_READY_TO_SEND.md",
+    "selection_basis": "The bounded campaign cells and temporal-horizon result now meet the deterministic readiness prerequisites for an independent bounded qualification review.",
+    "expected_operating_change": "Freeze the bounded qualification disposition for this campaign specimen.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
