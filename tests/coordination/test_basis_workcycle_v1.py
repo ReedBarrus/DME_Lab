@@ -273,6 +273,87 @@ class BasisWorkcycleV1Tests(unittest.TestCase):
             spec["local_dependence_candidate"]["coordinates"]["E"].lower(),
         )
 
+    def test_same_reconciliation_derives_same_successor_identity(self):
+        unit = unit_fixture()
+        admissibility = bw.pressure_admissibility(unit)
+        reconciliation = bw.basis_reconciliation(
+            unit,
+            disposition="STILL_BLOCKED",
+            remaining_gap="one source-bound gap remains",
+            next_pressure_basis="same exact remaining load-bearing gap",
+        )
+        one = bw.derive_successor_candidate(
+            unit,
+            admissibility=admissibility,
+            reconciliation=reconciliation,
+        )
+        two = bw.derive_successor_candidate(
+            unit,
+            admissibility=admissibility,
+            reconciliation=reconciliation,
+        )
+        self.assertEqual(one["candidate_posture"], "PROPOSED_NOT_ADMITTED")
+        self.assertEqual(one["successor_id"], two["successor_id"])
+        self.assertEqual(one["basis_id"], two["basis_id"])
+        self.assertEqual(one["authority_effect"], "NONE")
+        self.assertEqual(one["execution_effect"], "NONE")
+
+    def test_different_reconciliation_basis_changes_successor_identity(self):
+        unit = unit_fixture()
+        admissibility = bw.pressure_admissibility(unit)
+        one_rec = bw.basis_reconciliation(
+            unit,
+            disposition="STILL_BLOCKED",
+            remaining_gap="gap one",
+            next_pressure_basis="basis one",
+        )
+        two_rec = bw.basis_reconciliation(
+            unit,
+            disposition="STILL_BLOCKED",
+            remaining_gap="gap two",
+            next_pressure_basis="basis two",
+        )
+        one = bw.derive_successor_candidate(
+            unit,
+            admissibility=admissibility,
+            reconciliation=one_rec,
+        )
+        two = bw.derive_successor_candidate(
+            unit,
+            admissibility=admissibility,
+            reconciliation=two_rec,
+        )
+        self.assertNotEqual(one["successor_id"], two["successor_id"])
+
+    def test_satisfied_basis_derives_no_successor(self):
+        unit = unit_fixture()
+        admissibility = bw.pressure_admissibility(unit)
+        reconciliation = bw.basis_reconciliation(
+            unit,
+            disposition="SATISFIED",
+            remaining_gap=None,
+        )
+        successor = bw.derive_successor_candidate(
+            unit,
+            admissibility=admissibility,
+            reconciliation=reconciliation,
+        )
+        self.assertEqual(successor["successor_posture"], "CLOSE_BASIS")
+        self.assertEqual(successor["candidate_posture"], "NO_SUCCESSOR")
+        self.assertIsNone(successor["successor_id"])
+
+    def test_hold_derives_no_successor(self):
+        unit = unit_fixture()
+        unit["pressure_selection"]["load_bearing_effects"] = ["CURIOSITY"]
+        admissibility = bw.pressure_admissibility(unit)
+        successor = bw.derive_successor_candidate(
+            unit,
+            admissibility=admissibility,
+        )
+        self.assertEqual(successor["successor_posture"], "HOLD_NO_JUSTIFIED_WORK")
+        self.assertEqual(successor["candidate_posture"], "NO_SUCCESSOR")
+        self.assertIsNone(successor["successor_id"])
+
     def test_remaining_gap_requires_explicit_next_pressure_basis(self):
         unit = unit_fixture()
         with self.assertRaises(bw.BasisWorkcycleError):
