@@ -89,6 +89,14 @@ def _expected_change(pressure: str) -> str:
             "establish or fracture one fail-closed admission transaction binding "
             "frame, horizon, work, seat/lease, attempt, authority, and wake budget"
         ),
+        "AUTHORITY_BINDING_PRESSURE": (
+            "replace caller-supplied authority testimony with a source-bound current "
+            "authority verification that grants and consumes nothing"
+        ),
+        "REPEATED_METABOLIC_LOOP_PRESSURE": (
+            "establish or fracture two consecutive basis-bound workcycle transitions "
+            "whose successor selection is derived from prior witnessed consequence"
+        ),
     }
     return changes.get(
         pressure,
@@ -130,6 +138,10 @@ def _select_pressure(
             return "ONE_SUCCESSOR_PRESSURE", "SELF_MOVING_QUALIFICATION_BLOCKER"
         if blocker.startswith("ATOMIC_ADMISSION:"):
             return "ATOMIC_ADMISSION_PRESSURE", "SELF_MOVING_QUALIFICATION_BLOCKER"
+        if blocker.startswith("AUTHORITY_BINDING:"):
+            return "AUTHORITY_BINDING_PRESSURE", "SELF_MOVING_QUALIFICATION_BLOCKER"
+        if blocker.startswith("REPEATED_METABOLIC_LOOP:"):
+            return "REPEATED_METABOLIC_LOOP_PRESSURE", "SELF_MOVING_QUALIFICATION_BLOCKER"
 
     if declared and declared != "AUTO_CONTINUATION_PRESSURE":
         return str(declared), "DECLARED_PRESSURE_UNMAPPED"
