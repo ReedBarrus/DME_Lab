@@ -61,8 +61,10 @@
       "evidence": "QUALIFIED_BOUNDED_WORKCYCLE"
     },
     "basis_reconciliation": {
-      "posture": "IMPLEMENTED_UNPRESSURED",
-      "implementation": "src/coordination/basis_workcycle_v1.py"
+      "posture": "QUALIFIED",
+      "evidence": "BASIS_RECONCILIATION_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/BASIS_RECONCILIATION_PRESSURE_RESULT_001.md",
+      "implementation": "src/coordination/basis_workcycle_v1.py::derive_basis_reconciliation_from_evidence"
     },
     "successor_posture_derivation": {
       "posture": "IMPLEMENTED_UNPRESSURED",
@@ -104,13 +106,12 @@
     }
   },
   "next_load_bearing_coordinate": {
-    "coordinate": "basis_reconciliation",
-    "pressure": "BASIS_RECONCILIATION_PRESSURE_001",
-    "selection_basis": "Successor identity conservation is now matched. The nearest load-bearing unpressured relation is mechanical basis reconciliation from qualification, application, consequence, and current-obstruction inputs."
+    "coordinate": "verified_authority_to_atomic_admission",
+    "pressure": "VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001",
+    "selection_basis": "Basis reconciliation is now matched. The nearest load-bearing untested relation is composition of current verified one-use authority with the exact sealed successor candidate inside same-process atomic admission."
   },
   "downstream_frontier": [
-    "pressure mechanical basis reconciliation",
-    "bind verified current authority into atomic admission",
+    "bind verified current authority and exact derived successor into atomic admission",
     "real bounded execution + witnessed consequence + settlement",
     "second successor derived without manual selection",
     "repeated metabolic loop",
