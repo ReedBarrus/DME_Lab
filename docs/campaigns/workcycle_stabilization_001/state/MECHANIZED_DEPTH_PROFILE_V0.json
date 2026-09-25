@@ -10,8 +10,10 @@
       "claim": "Single-threaded continuation eligibility under externally serialized reservation."
     },
     "successor_identity_binding": {
-      "posture": "UNTESTED",
-      "claim": "No exact source-bound successor identity conservation pressure has yet been frozen."
+      "posture": "IMPLEMENTED_UNPRESSURED",
+      "implementation": "src/coordination/basis_workcycle_v1.py::derive_successor_candidate",
+      "tests": "tests/coordination/test_basis_workcycle_v1.py",
+      "claim": "Exact basis/work/reconciliation/posture coordinates deterministically project at most one successor candidate identity; HOLD/CLOSE project no successor. Independent runtime pressure remains required."
     },
     "budget_reservation": {
       "posture": "QUALIFIED_SAME_PROCESS_TWO_CALLER",
@@ -70,7 +72,8 @@
       ]
     },
     "exact_successor_identity_derivation": {
-      "posture": "UNTESTED"
+      "posture": "IMPLEMENTED_UNPRESSURED",
+      "implementation": "src/coordination/basis_workcycle_v1.py::derive_successor_candidate"
     },
     "verified_authority_to_atomic_admission": {
       "posture": "UNTESTED"
@@ -101,9 +104,9 @@
     "selection_basis": "Atomic admission currently carries caller-supplied authority testimony. A read-only verifier against current local authority state is staged and directly removes that load-bearing ambiguity."
   },
   "downstream_frontier": [
-    "source-bound successor identity conservation",
-    "mechanical basis reconciliation pressure",
-    "verified authority bound into atomic admission",
+    "pressure deterministic successor identity conservation",
+    "pressure mechanical basis reconciliation",
+    "bind verified current authority into atomic admission",
     "real bounded execution + witnessed consequence + settlement",
     "second successor derived without manual selection",
     "repeated metabolic loop",
