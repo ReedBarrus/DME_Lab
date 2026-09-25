@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import copy
+import json
 import unittest
+from pathlib import Path
 
 from src.coordination import basis_workcycle_v1 as bw
 
@@ -206,6 +208,24 @@ class BasisWorkcycleV1Tests(unittest.TestCase):
             reconciliation=reconciliation,
         )
         self.assertEqual(posture["posture"], "CLOSE_BASIS")
+
+    def test_repository_relational_compression_w2_is_basis_admissible(self):
+        repo = Path(__file__).resolve().parents[2]
+        path = (
+            repo
+            / "docs/campaigns/workcycle_stabilization_001/state/"
+            "WORKCYCLE_STABILIZATION_001_RELATIONAL_COMPRESSION_W2.json"
+        )
+        unit = json.loads(path.read_text(encoding="utf-8"))
+        bw.validate_workflow_unit(unit)
+        admissibility = bw.pressure_admissibility(unit)
+        self.assertTrue(admissibility["admissible"], admissibility["blockers"])
+        posture = bw.derive_next_work_posture(
+            unit,
+            admissibility=admissibility,
+        )
+        self.assertEqual(posture["posture"], "RESOLVE_LOAD_BEARING_GAP")
+        self.assertFalse(posture["creates_work_item"])
 
     def test_remaining_gap_requires_explicit_next_pressure_basis(self):
         unit = unit_fixture()
