@@ -100,10 +100,12 @@
       "posture": "UNTESTED"
     },
     "second_successor_mechanically_derived": {
-      "posture": "COMPOSITION_PRESSURE_REQUIRED",
+      "posture": "IMPLEMENTED_READY_FOR_PRESSURE",
       "implementation": "src/coordination/basis_workcycle_v1.py::derive_successor_candidate",
-      "concern": "derive_next_work_posture checks workflow application/consequence fields before SATISFIED reconciliation and has no explicit INVALIDATED no-successor branch; composition must be pressured before repair.",
-      "claim": "No second-successor standing."
+      "observer": "tools/observe_second_successor_from_reconciliation_v0.py",
+      "pressure_packet": "docs/campaigns/workcycle_stabilization_001/SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_001_READY_TO_RUN.md",
+      "concern": "Composition may be fractured because derive_next_work_posture currently checks workflow application/consequence state before SATISFIED reconciliation and lacks an explicit INVALIDATED no-successor branch.",
+      "claim": "No second-successor standing; runtime pressure is required."
     },
     "repeated_metabolic_loop": {
       "posture": "UNTESTED",
@@ -147,7 +149,7 @@
   "next_load_bearing_coordinate": {
     "coordinate": "second_successor_mechanically_derived",
     "pressure": "SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_001",
-    "selection_basis": "Consequence-coupled basis reconciliation is qualified. The next relation is whether exact reconciled state mechanically changes next posture and successor identity without manual successor selection."
+    "selection_basis": "Consequence-coupled basis reconciliation is qualified and the no-repair composition observer is staged. Runtime observation is the next required relation."
   },
   "downstream_frontier": [
     "pressure fresh reconciliation -> next posture -> exact second successor",
