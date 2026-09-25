@@ -100,7 +100,10 @@
       "posture": "UNTESTED"
     },
     "second_successor_mechanically_derived": {
-      "posture": "UNTESTED"
+      "posture": "COMPOSITION_PRESSURE_REQUIRED",
+      "implementation": "src/coordination/basis_workcycle_v1.py::derive_successor_candidate",
+      "concern": "derive_next_work_posture checks workflow application/consequence fields before SATISFIED reconciliation and has no explicit INVALIDATED no-successor branch; composition must be pressured before repair.",
+      "claim": "No second-successor standing."
     },
     "repeated_metabolic_loop": {
       "posture": "UNTESTED",
@@ -134,24 +137,21 @@
       "claim": "One immutable result witness is qualified receiving externally supplied field-level candidate dispositions and explicit bases in a deterministic settlement record without qualification, authority, execution, external consequence, or Atlas mutation."
     },
     "settlement_consequence_reconciliation": {
-      "posture": "WITNESSED_AWAITING_ADJUDICATION",
+      "posture": "QUALIFIED",
+      "evidence": "SETTLEMENT_CONSEQUENCE_RECONCILIATION_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_RESULT_001.md",
       "implementation": "src/coordination/settlement_consequence_reconciliation_v0.py",
-      "tests": "tests/coordination/test_settlement_consequence_reconciliation_v0.py",
-      "witness": "settlement_consequence_reconciliation_observation.json",
-      "witness_source_ref": "e2cf0968006de627ae8ffcecd3ef6c2bcb97e181",
-      "witness_transport_ref": "1ec4717e9dfdc6e0ef8021c030b33f02b4b2342e",
-      "adjudication_packet": "docs/campaigns/workcycle_stabilization_001/SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-      "claim": "The same deterministic candidate settlement is witnessed remaining STILL_BLOCKED without consequence evidence, reaching SATISFIED under independently supplied matched consequence with resolved obstruction, and reaching INVALIDATED under independently supplied contradicted consequence; independent adjudication remains required."
+      "claim": "The same settlement can remain STILL_BLOCKED without consequence, reach SATISFIED under independently supplied matched consequence with resolved obstruction, or reach INVALIDATED under contradicted consequence; no successor derivation is established."
     }
   },
   "next_load_bearing_coordinate": {
-    "coordinate": "settlement_consequence_reconciliation",
-    "pressure": "SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001_ADJUDICATION",
-    "selection_basis": "The consequence-reconciliation relation has a clean witness-only transport and must be independently adjudicated before second-successor derivation becomes eligible."
+    "coordinate": "second_successor_mechanically_derived",
+    "pressure": "SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_001",
+    "selection_basis": "Consequence-coupled basis reconciliation is qualified. The next relation is whether exact reconciled state mechanically changes next posture and successor identity without manual successor selection."
   },
   "downstream_frontier": [
-    "independently adjudicate settlement + independent consequence -> basis reconciliation",
-    "derive second successor from full qualified chain without manual selection",
+    "pressure fresh reconciliation -> next posture -> exact second successor",
+    "repair only if the composition pressure fractures",
     "repeat metabolic loop",
     "seat consequential/meta-feedback",
     "memory compression/reconstruction under persistent load",
