@@ -117,6 +117,10 @@ def _expected_change(pressure: str) -> str:
             "bind externally supplied field-level candidate dispositions and bases "
             "to one immutable result witness without qualification or witness rewrite"
         ),
+        "SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE": (
+            "keep settlement distinct from consequence and bind independent consequence "
+            "evidence into bounded basis reconciliation"
+        ),
         "REPEATED_METABOLIC_LOOP_PRESSURE": (
             "establish or fracture two consecutive basis-bound workcycle transitions "
             "whose successor selection is derived from prior witnessed consequence"
@@ -186,6 +190,11 @@ def _select_pressure(
         if blocker.startswith("INVOCATION_RESULT_SETTLEMENT:"):
             return (
                 "INVOCATION_RESULT_SETTLEMENT_PRESSURE",
+                "SELF_MOVING_QUALIFICATION_BLOCKER",
+            )
+        if blocker.startswith("SETTLEMENT_CONSEQUENCE_RECONCILIATION:"):
+            return (
+                "SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE",
                 "SELF_MOVING_QUALIFICATION_BLOCKER",
             )
         if blocker.startswith("REPEATED_METABOLIC_LOOP:"):
