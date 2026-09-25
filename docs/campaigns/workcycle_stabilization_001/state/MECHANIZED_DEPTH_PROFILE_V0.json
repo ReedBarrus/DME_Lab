@@ -113,25 +113,26 @@
       "posture": "UNTESTED"
     },
     "admitted_authority_consumption": {
-      "posture": "WITNESSED_AWAITING_ADJUDICATION",
+      "posture": "QUALIFIED",
+      "evidence": "ADMITTED_AUTHORITY_CONSUMPTION_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_RESULT_001.md",
       "implementation": "src/coordination/admitted_authority_consumption_v0.py::consume_admitted_authority_once",
-      "tests": "tests/coordination/test_admitted_authority_consumption_v0.py",
-      "witness": "admitted_authority_consumption_observation.json",
-      "witness_source_ref": "e2456a535014d3ae47ef15802d679605f8182828",
-      "witness_transport_ref": "048255a4a8cfba109ec6214761e5eaac985f1c65",
-      "adjudication_packet": "docs/campaigns/workcycle_stabilization_001/ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-      "claim": "One exact admitted successor is witnessed crossing one-shot authority consumption and a disposable invocation callback with replay denied; independent adjudication remains required."
+      "claim": "One exact admitted successor is qualified crossing one-shot authority consumption and a disposable invocation callback with replay denied and post-reservation failure conserved as RECOVERY_REQUIRED."
+    },
+    "invocation_result_witness": {
+      "posture": "UNTESTED",
+      "claim": "Callback return has not yet been bound to immutable result evidence for the exact work attempt/admission/consumption chain."
     }
   },
   "next_load_bearing_coordinate": {
-    "coordinate": "admitted_authority_consumption",
-    "pressure": "ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_ADJUDICATION",
-    "selection_basis": "The one-shot consumption/invocation-boundary relation has a clean witness-only transport and must be independently adjudicated before result witnessing and settlement become eligible."
+    "coordinate": "invocation_result_witness",
+    "pressure": "INVOCATION_RESULT_WITNESS_PRESSURE_001",
+    "selection_basis": "One-shot consumption/invocation-boundary continuity is matched. The next unqualified relation is immutable result witnessing without settlement or semantic interpretation."
   },
   "downstream_frontier": [
-    "independently adjudicate admitted successor + one-shot authority consumption",
-    "immutably witness bounded invocation result and route settlement",
-    "reconcile consequence into basis and derive second successor without manual selection",
+    "bind one successful invocation return to immutable attempt/admission/consumption result witness",
+    "route immutable result witness through bounded settlement",
+    "reconcile settled consequence into basis and derive second successor without manual selection",
     "repeated metabolic loop",
     "controlled fracture injection",
     "noisy workload fitness"
