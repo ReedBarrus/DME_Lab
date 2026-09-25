@@ -217,13 +217,15 @@ def try_atomic_admission(
             "object_type": RECEIPT_TYPE,
             "admission_id": admission_id,
             **admission_material,
-            "authority_was_pre_satisfied": True,
+            "authority_input_posture": "CALLER_SUPPLIED_PRECONDITION",
+            "authority_verification": "NOT_PERFORMED",
             "authority_effect": "NONE",
             "execution_performed": False,
             "model_invocation_effect": "NONE",
             "claim_ceiling": (
-                "Atomic repo-local admission receipt only. It binds a pre-satisfied "
-                "authority coordinate but grants no authority and performs no model invocation."
+                "Atomic local admission receipt over caller-supplied preconditions only. "
+                "Authority validity is not verified here; no authority is granted and no "
+                "model invocation is performed."
             ),
         }
 
