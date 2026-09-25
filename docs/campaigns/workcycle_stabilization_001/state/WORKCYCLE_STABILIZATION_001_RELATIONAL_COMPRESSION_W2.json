@@ -1,0 +1,129 @@
+{
+  "object_type": "WORKFLOW_UNIT_V1",
+  "identity": {
+    "work_item_id": "WORKCYCLE_STABILIZATION_001_RELATIONAL_COMPRESSION_W2",
+    "campaign_id": "WORKCYCLE_STABILIZATION_001",
+    "parent_work_item_id": "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1",
+    "operative_frame_ref": "783ef1058779b9e6715cd9a852e409d6a89e3f9b",
+    "created_from_event": "PRESSURE_JUSTIFICATION_001"
+  },
+  "basis": {
+    "basis_id": "WORKCYCLE_HOT_CONTEXT_REDUCTION_BASIS_001",
+    "basis_type": "LOAD_BEARING_UNCERTAINTY",
+    "statement": "The active workcycle is represented by overlapping hot prose that increases seat reconstruction and coordination burden.",
+    "evidence_refs": [
+      "docs/campaigns/workcycle_stabilization_001/SYMBOLIC_CONSEQUENCE_DECOMPOSITION_V0.md",
+      "docs/campaigns/workcycle_stabilization_001/WORKCYCLE_STABILIZATION_CAMPAIGN_001.md",
+      "docs/campaigns/workcycle_stabilization_001/PRESSURE_JUSTIFICATION_001_READY_TO_SEND.md"
+    ],
+    "desired_consequence": {
+      "statement": "A smaller hot operative representation preserves the current campaign/workcycle/basis relations while exact originals remain cold and challengeable."
+    },
+    "current_obstruction": {
+      "statement": "Seats must currently re-ingest multiple overlapping prose artifacts to reconstruct the same operative workflow semantics."
+    },
+    "relevance_test": {
+      "question": "Would successful compression reduce live reconstruction burden while preserving bounded consequence and challengeability?",
+      "failure_if_unanswered": true
+    },
+    "basis_status": "SUPPORTED"
+  },
+  "pressure_selection": {
+    "pressure_id": "WORKCYCLE_RELATIONAL_COMPRESSION_PRESSURE_001",
+    "target_distinction": {
+      "lhs": "COLD_EXACT_EVIDENCE",
+      "rhs": "HOT_OPERATIVE_STATE"
+    },
+    "selection_basis": "The distinction is load-bearing because current workflow continuity depends on recovering campaign, decomposition, justification, application, consequence, and stopping semantics without repeatedly loading redundant prose.",
+    "expected_information_gain": {
+      "statement": "Whether a substantially smaller representation can preserve the operative workflow relations required by a fresh seat."
+    },
+    "application_dependency": "If fresh reconstruction and conservation review match, the compressed artifact may become the preferred hot workcycle context while exact originals remain cold-retained.",
+    "stop_if_resolved_by_existing_evidence": true,
+    "priority_basis": "BLOCKS_RECONSTRUCTION",
+    "load_bearing_effects": [
+      "RECONSTRUCTION",
+      "OBSERVABILITY",
+      "BASIS"
+    ]
+  },
+  "pressure_contract": {
+    "allowed_operations": [
+      "OBSERVE",
+      "RECONSTRUCT",
+      "COMPARE",
+      "FALSIFY",
+      "ADJUDICATE"
+    ],
+    "prohibited_operations": [
+      "SELF_PROMOTE",
+      "CREATE_AUTHORITY",
+      "EXPAND_SCOPE_WITHOUT_BASIS",
+      "SPAWN_UNBOUNDED_PRESSURES",
+      "DELETE_SOURCE"
+    ],
+    "success_condition": {
+      "statement": "Candidate bytes are smaller than the combined source bytes and a fresh independent seat reconstructs the bounded operative posture without load-bearing loss."
+    },
+    "failure_condition": {
+      "statement": "Any required campaign identity, workcycle relation, authority boundary, stopping law, application/consequence relation, provenance handle, or reconstruction capability is lost."
+    },
+    "unresolved_condition": {
+      "statement": "Fresh reconstruction cannot determine whether a potentially load-bearing relation survived."
+    },
+    "pressure_budget": {
+      "max_rounds": 1,
+      "max_branch_count": 1,
+      "max_unresolved_children": 0
+    }
+  },
+  "result": {
+    "source_result_ref": null,
+    "distinctions": [],
+    "apparatus_failures": [],
+    "semantic_failures": []
+  },
+  "qualification": {
+    "adjudication_ref": null,
+    "scientific_standing": "NONE",
+    "authority_effect": "NONE",
+    "qualification_basis": "",
+    "unresolved_load_bearing_questions": [
+      "fresh independent reconstruction required"
+    ]
+  },
+  "application": {
+    "required": true,
+    "target_surface": "WORKFLOW",
+    "proposed_change": {
+      "statement": "Use the compressed candidate as the preferred hot workcycle reconstruction surface while retaining all exact source artifacts as cold evidence."
+    },
+    "executable_change_ref": null,
+    "application_status": "NOT_YET_ELIGIBLE",
+    "withholding_basis": "Requires independent reconstruction and conservation match."
+  },
+  "consequence_observation": {
+    "required_if_applied": true,
+    "expected_effect": "Future seats reconstruct the same bounded workcycle from materially less hot context while exact challenge handles remain available.",
+    "observed_effect": null,
+    "effect_class": "NOT_YET_OBSERVABLE",
+    "evidence_refs": [],
+    "regression_detected": false
+  },
+  "basis_reconciliation": {
+    "original_basis_id": "WORKCYCLE_HOT_CONTEXT_REDUCTION_BASIS_001",
+    "disposition": null,
+    "remaining_gap": "Compression has not yet been executed or independently reconstructed.",
+    "next_pressure_allowed": false,
+    "next_pressure_basis": null,
+    "termination_reason": null
+  },
+  "sanity_check": {
+    "if_this_work_succeeds": {
+      "what_changes_in_the_operating_world": "A fresh seat can recover the current workcycle with less active context, making the workflow cheaper to coordinate and reducing pressure to keep redundant documentation hot."
+    },
+    "if_nothing_would_change": {
+      "posture": "DO_NOT_RUN"
+    }
+  }
+}
