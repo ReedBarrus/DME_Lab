@@ -26,20 +26,25 @@
       "disposition": "COCKPIT_PROJECTION_MATCHED",
       "result_handle": "docs/campaigns/workcycle_stabilization_001/state/COCKPIT_T7_PRESSURE_RESULT_001.md",
       "claim_ceiling": "Bounded disposable runtime fixtures only; no packaged desktop end-to-end proof, execution authority, or scientific standing."
+    },
+    "bounded_workcycle": {
+      "standing": "QUALIFIED_BOUNDED_WORKCYCLE",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/WORKCYCLE_BOUNDED_QUALIFICATION_001_RESULT.md",
+      "claim_ceiling": "One frozen WORKCYCLE_STABILIZATION_001 bounded workflow specimen only; no automatic execution authority, successor admission, generic decomposition/compression standing, or self-moving standing."
     }
   },
   "current_unresolved": [
-    "Independent bounded-workcycle qualification remains pending over the matched T0–T7 plus temporal-horizon basis.",
-    "Self-moving workcycle remains out of scope and still requires separate one-successor and atomic-admission evidence.",
+    "One-successor continuation remains unqualified.",
+    "Atomic production admission remains unqualified and is required before self-moving workcycle standing.",
     "RELATIONAL_COMPRESSION_W2 remains on its separate runtime-diagnostic lane."
   ],
   "next_pressure": {
-    "pressure_id": "WORKCYCLE_STABILIZATION_001_BOUNDED_QUALIFICATION_001",
-    "work_item_id": "WORKCYCLE_STABILIZATION_001_BOUNDED_QUALIFICATION",
-    "destination": "FRESH_INDEPENDENT_WORKCYCLE_QUALIFIER",
-    "packet": "docs/campaigns/workcycle_stabilization_001/WORKCYCLE_BOUNDED_QUALIFICATION_001_ADJUDICATION_READY_TO_SEND.md",
-    "selection_basis": "The bounded campaign cells and temporal-horizon result now meet the deterministic readiness prerequisites for an independent bounded qualification review.",
-    "expected_operating_change": "Freeze the bounded qualification disposition for this campaign specimen.",
+    "pressure_id": "ONE_SUCCESSOR_CONTINUATION_PRESSURE_001",
+    "work_item_id": "WORKCYCLE_STABILIZATION_001_ONE_SUCCESSOR_CONTINUATION",
+    "destination": "LOCAL_RUNTIME_WITNESS_THEN_FRESH_INDEPENDENT_EVALUATOR",
+    "packet": "docs/campaigns/workcycle_stabilization_001/ONE_SUCCESSOR_CONTINUATION_OBSERVATION_READY_TO_RUN.md",
+    "selection_basis": "Bounded workcycle standing is qualified. H_operate identifies one-successor bounded continuation as the next unresolved workcycle joint before atomic production admission.",
+    "expected_operating_change": "Witness whether the existing single-threaded continuation law admits at most one successor and blocks a second same-wake decision after reservation, without model invocation or authority effects.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -49,7 +54,9 @@
       "docs/campaigns/workcycle_stabilization_001/state/WORKCYCLE_STABILIZATION_001_RELATIONAL_COMPRESSION_W2.json",
       "docs/campaigns/workcycle_stabilization_001/state/COCKPIT_T7_PRESSURE_RESULT_001.md",
       "temporal_horizon_closure_observation.json",
-      "docs/campaigns/workcycle_stabilization_001/ATLAS_TEMPORAL_HORIZON_CLOSURE_001_ADJUDICATION_READY_TO_SEND.md"
+      "docs/campaigns/workcycle_stabilization_001/ATLAS_TEMPORAL_HORIZON_CLOSURE_001_ADJUDICATION_READY_TO_SEND.md",
+      "docs/campaigns/workcycle_stabilization_001/pressure_runs/WORKCYCLE_BOUNDED_QUALIFICATION_001_RESULT.md",
+      "docs/campaigns/workcycle_stabilization_001/ONE_SUCCESSOR_CONTINUATION_OBSERVATION_READY_TO_RUN.md"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
