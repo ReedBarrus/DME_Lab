@@ -1,0 +1,55 @@
+{
+  "object_type": "WORKCYCLE_CURRENT_CAMPAIGN_STATE_V0",
+  "campaign_id": "WORKCYCLE_STABILIZATION_001",
+  "campaign_posture": "ACTIVE",
+  "operative_target": "Establish a boring, observable, repairable campaign→decomposition→seat-work lifecycle that reduces human/repository load while preserving reconstructability.",
+  "current_horizon": {
+    "family": "H_reconstruct",
+    "subject": "compression/history conservation under bounded reconstruction",
+    "posture": "ACTIVE"
+  },
+  "earned_state": {
+    "bounded_reconstruction_dependence_candidates": [
+      {
+        "relation_id": "W2_RECONSTRUCTION_DEPENDENCE_ON_SYMBOLIC_DECOMPOSITION_001",
+        "subject": "WORKCYCLE_STABILIZATION_001_RELATIONAL_COMPRESSION_W2 bounded reconstruction",
+        "dependency_target": "docs/campaigns/workcycle_stabilization_001/SYMBOLIC_CONSEQUENCE_DECOMPOSITION_V0.md",
+        "load_dimension": "SEMANTIC_RECONSTRUCTION",
+        "standing": "CANDIDATE_STRENGTHENED",
+        "basis": "single externally matched A/B aperture intervention with observed degradation",
+        "claim_ceiling": "No causation, reproducibility, load exclusivity, whole-system dependence, or generic Atlas law established.",
+        "challenge_handle": "docs/campaigns/workcycle_stabilization_001/state/LOCAL_FRAME_DEPENDENCE_CELL_001R_ADJUDICATION_RESULT.json"
+      }
+    ]
+  },
+  "current_unresolved": [
+    "RELATIONAL_COMPRESSION_W2 has not yet been executed.",
+    "The strengthened reconstruction-dependence candidate has not yet been tested for conservation through compression.",
+    "Hot-context burden remains distributed across overlapping explanatory artifacts."
+  ],
+  "next_pressure": {
+    "pressure_id": "RELATIONAL_COMPRESSION_W2_EXECUTION",
+    "work_item_id": "WORKCYCLE_STABILIZATION_001_RELATIONAL_COMPRESSION_W2",
+    "destination": "FRESH_IMPLEMENTER_SEAT",
+    "packet": "docs/campaigns/workcycle_stabilization_001/RELATIONAL_COMPRESSION_W2_READY_TO_SEND.md",
+    "selection_basis": "Compression is the active permanent workload, and Cell 001R now identifies a strengthened semantic-reconstruction dependence candidate that W2 must preserve or expose as loss.",
+    "expected_operating_change": "One smaller hot operative representation is produced and then independently tested against the original hot set, with the strengthened reconstruction relation explicitly conserved or falsified.",
+    "if_nothing_changes": "DO_NOT_RUN"
+  },
+  "memory_posture": {
+    "hot": [
+      "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+      "docs/campaigns/workcycle_stabilization_001/state/LOCAL_FRAME_DEPENDENCE_CELL_001R_ADJUDICATION_RESULT.json",
+      "docs/campaigns/workcycle_stabilization_001/state/WORKCYCLE_STABILIZATION_001_RELATIONAL_COMPRESSION_W2.json"
+    ],
+    "cold_challengeable": [
+      "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
+      "bridge/results/CELL001R_DEPENDENCE_RUN_B.json",
+      "docs/campaigns/workcycle_stabilization_001/LOCAL_FRAME_DEPENDENCE_CELL_001_RESULT.md",
+      "docs/campaigns/workcycle_stabilization_001/LOCAL_FRAME_DEPENDENCE_CELL_001R_ADJUDICATION_READY_TO_SEND.md"
+    ]
+  },
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "scientific_standing_effect": "NONE"
+}
