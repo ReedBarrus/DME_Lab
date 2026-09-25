@@ -72,17 +72,17 @@
     }
   },
   "current_unresolved": [
-    "Basis reconciliation remains IMPLEMENTED_UNPRESSURED and now holds the next live mechanized-depth coordinate.",
+    "Basis-reconciliation runtime witness is frozen and awaits independent adjudication.",
     "Verified current authority has not yet been composed with a derived successor inside atomic admission.",
     "Repeated metabolic loop standing remains unearned."
   ],
   "next_pressure": {
-    "pressure_id": "BASIS_RECONCILIATION_PRESSURE_001",
+    "pressure_id": "BASIS_RECONCILIATION_PRESSURE_001_ADJUDICATION",
     "work_item_id": "WORKCYCLE_STABILIZATION_001_BASIS_RECONCILIATION",
-    "destination": "LOCAL_BASIS_RECONCILIATION_WITNESS",
-    "packet": "docs/campaigns/workcycle_stabilization_001/BASIS_RECONCILIATION_PRESSURE_001_READY_TO_RUN.md",
-    "selection_basis": "SUCCESSOR_IDENTITY_MATCHED is frozen. The nearest load-bearing unpressured relation is mechanical basis reconciliation over qualification, application, consequence, and current-obstruction coordinates.",
-    "expected_operating_change": "Produce a bounded basis-reconciliation runtime witness without admitting work, granting authority, invoking a model, or executing work.",
+    "destination": "FRESH_INDEPENDENT_BASIS_RECONCILIATION_ADJUDICATOR",
+    "packet": "docs/campaigns/workcycle_stabilization_001/BASIS_RECONCILIATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+    "selection_basis": "The basis-reconciliation witness passed all declared bounded reconciliation cases at frozen implementation source 54b62523b9f98cef2cdbc3727686da46bcd97cca. Independent adjudication is required before verified authority may be composed with a derived successor inside atomic admission.",
+    "expected_operating_change": "Freeze BASIS_RECONCILIATION_MATCHED/PARTIAL/FRACTURED/UNRESOLVED without admitting work, granting authority, invoking a model, scheduling, or executing work.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -111,7 +111,9 @@
       "successor_identity_observation.json",
       "docs/campaigns/workcycle_stabilization_001/SUCCESSOR_IDENTITY_CONSERVATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
       "docs/campaigns/workcycle_stabilization_001/pressure_runs/SUCCESSOR_IDENTITY_CONSERVATION_PRESSURE_RESULT_001.md",
-      "docs/campaigns/workcycle_stabilization_001/BASIS_RECONCILIATION_PRESSURE_001_READY_TO_RUN.md"
+      "docs/campaigns/workcycle_stabilization_001/BASIS_RECONCILIATION_PRESSURE_001_READY_TO_RUN.md",
+      "basis_reconciliation_observation.json",
+      "docs/campaigns/workcycle_stabilization_001/BASIS_RECONCILIATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
@@ -157,7 +159,7 @@
       "deterministic successor identity conservation independently matched"
     ],
     "unresolved_components": [
-      "basis reconciliation has not yet been independently pressured",
+      "basis reconciliation witness awaits independent adjudication",
       "verified current authority and derived successor have not yet been composed inside atomic admission",
       "derived successor has not yet been atomically admitted and executed",
       "consequence has not yet been settled into a new basis",
