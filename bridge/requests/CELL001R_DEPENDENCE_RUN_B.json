@@ -1,7 +1,7 @@
 {
   "schema_version": "LOCAL_INVOCATION_REQUEST_V0_1",
   "request_id": "CELL001R_DEPENDENCE_RUN_B",
-  "enabled": false,
+  "enabled": true,
   "source_ref": "164dbd41ca1ad10c98d10b02dcf28689c18fdce6",
   "input_path": "bridge/prompts/CELL001R_DEPENDENCE_RUN_B_READY_TO_SEND.md",
   "input_blob_sha": "c8faca3a8252563921a2881520ed2765931098cb",
