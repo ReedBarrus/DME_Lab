@@ -59,15 +59,18 @@
       "posture": "OUT_OF_SCOPE"
     },
     "materialized_unit_authority_binding": {
-      "posture": "FRACTURE_FROZEN_REPAIR_READY",
+      "posture": "REPAIR_WITNESSED_AWAITING_ADJUDICATION",
       "fracture_evidence": "MATERIALIZED_UNIT_AUTHORITY_BINDING_FRACTURED",
       "fracture_result": "docs/campaigns/workcycle_stabilization_001/pressure_runs/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_RESULT_001.md",
+      "repaired_source_ref": "9ce423bfc53610e0b650927709baeedfce360030",
+      "witness_transport_ref": "2529aec9996d796636fb5f1806563561c7bd6843",
       "repair_implementation": "src/coordination/materialized_unit_authority_admission_v0.py",
       "repair_tests": "tests/coordination/test_materialized_unit_authority_admission_v0.py",
       "repair_observer": "tools/observe_materialized_unit_authority_binding_repair_v0.py",
-      "repair_packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_001_READY_TO_RUN.md",
-      "repair": "Parallel exact-work authority coordinates bind successor identity, exact work-spec identity, and exact materialized-unit integrity; input_sha256 equals exact materialized-unit integrity. The old successor-bound authority layer remains unchanged.",
-      "claim": "No repaired exact materialized-work authority standing; runtime pressure is required."
+      "witness": "materialized_unit_authority_binding_repair_observation.json",
+      "adjudication_packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_001_ADJUDICATION_READY_TO_SEND.md",
+      "observed": "Exact authority for successor+spec A+unit A admits A; the same successor paired with spec B+unit B is blocked by authority_request_materialized_work_mismatch. The receipt binds exact successor, work-spec, and materialized-unit identities; authority remains unconsumed; no model invocation or execution occurs.",
+      "claim": "No repaired exact materialized-work authority standing until independent adjudication."
     }
   },
   "metabolic_depth": {
@@ -165,12 +168,11 @@
   },
   "next_load_bearing_coordinate": {
     "coordinate": "materialized_unit_authority_binding",
-    "pressure": "MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_001",
-    "selection_basis": "The fracture is independently adjudicated and frozen. A parallel exact-work authority repair is staged; runtime pressure is the next required relation."
+    "pressure": "MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_001_ADJUDICATION",
+    "selection_basis": "The exact materialized-work authority repair has a clean witness-only transport. Independent adjudication is the next required relation before authority consumption or invocation."
   },
   "downstream_frontier": [
-    "repressure exact successor + work spec + materialized-unit authority binding",
-    "independently adjudicate repaired exact-work authority/admission if witnessed cleanly",
+    "independently adjudicate exact materialized-work authority repair",
     "consume fresh exact-work authority and invoke one materialized successor attempt",
     "witness/settle/reconcile the materialized successor attempt",
     "derive successor3 and repeat metabolic loop",
