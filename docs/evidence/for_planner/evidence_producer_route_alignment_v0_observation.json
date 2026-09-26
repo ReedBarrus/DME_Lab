@@ -1,0 +1,60 @@
+{
+  "object_type": "EVIDENCE_PRODUCER_ROUTE_ALIGNMENT_V0_OBSERVATION",
+  "campaign_id": "EVIDENCE_PRODUCER_ROUTE_ALIGNMENT_001",
+  "pressure_id": "EVIDENCE_PRODUCER_ROUTE_ALIGNMENT_V0_PRESSURE_001",
+  "repo_head": "ed1a91184e836bfeb8b73e3126aa1b7e235fe07b",
+  "producer": {
+    "path": "tools/observe_horizon_gap_selector_v0.py",
+    "expected_blob": "54891e276f28a3f4fe4d61775d14b706cf56bd1e",
+    "actual_blob": "54891e276f28a3f4fe4d61775d14b706cf56bd1e",
+    "blob_matched": true,
+    "declared_output_path": "horizon_gap_selector_v0_observation.json"
+  },
+  "historical_evidence": {
+    "relocated_path": "docs/evidence/for_planner/horizon_gap_selector_v0_observation.json",
+    "expected_blob": "be23eba7c50f1b51a0e3b1412d9f5adc07dee1ff",
+    "blob_before": "be23eba7c50f1b51a0e3b1412d9f5adc07dee1ff",
+    "blob_after": "be23eba7c50f1b51a0e3b1412d9f5adc07dee1ff",
+    "blob_preserved": true,
+    "file_sha256_after": "129c3596f4d4a7f366e5ebe948f589431ae4354018b63e4bd251a3ed95e66bd1"
+  },
+  "producer_run": {
+    "exit_code": 0,
+    "stdout": "[OK] wrote horizon_gap_selector_v0_observation.json\n[OK] sha256 e1f673f43fd8ee0cc24e3f9008f52cc2a88d156327e73e13e4bc156f8efba19a\n[OK] all_assertions_pass True\n[OK] before_returns_exact_gap True\n[OK] after_returns_no_justified_work True\n[OK] multi_gap_rejected_not_ranked True\n",
+    "stderr": "",
+    "old_root_output_created": true,
+    "generated_root_git_blob": "4333eca449c24dfaa09a126afc7937be403e6af1",
+    "generated_root_sha256": "e1f673f43fd8ee0cc24e3f9008f52cc2a88d156327e73e13e4bc156f8efba19a",
+    "generated_root_size_bytes": 3920,
+    "generated_root_blob_ne_historical_blob": true
+  },
+  "cleanup": {
+    "attempted": true,
+    "old_root_output_absent_after_cleanup": true,
+    "relocated_historical_path_still_exists": true
+  },
+  "assembly": {
+    "precondition_old_root_absent": true,
+    "producer_run_succeeded": true,
+    "old_root_path_reoccupied_by_fresh_output": true,
+    "relocated_historical_blob_preserved": true,
+    "producer_output_route_migrated": false,
+    "stored_evidence_relocation_ne_producer_output_route_migration": "YES",
+    "pressure_cleanup_complete": true
+  },
+  "effects": {
+    "producer_repair_effect": "NONE",
+    "consumer_repair_effect": "NONE",
+    "generic_intake_router_effect": "NONE",
+    "archive_policy_effect": "NONE",
+    "cold_storage_admission_effect": "NONE",
+    "deletion_permission_effect": "NONE",
+    "automatic_reference_rewrite_effect": "NONE",
+    "planning_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE"
+  },
+  "claim_ceiling": "One bounded execution of tools/observe_horizon_gap_selector_v0.py. The pressure tests whether relocating its historical observation changes the unchanged producer's output route. A temporary root output is captured and deleted after observation; the relocated historical artifact remains unchanged. No generic routing, archive, cold-storage, repair, deletion, planning, authority, execution, or scientific-standing claim is created.",
+  "stopped": "YES"
+}
