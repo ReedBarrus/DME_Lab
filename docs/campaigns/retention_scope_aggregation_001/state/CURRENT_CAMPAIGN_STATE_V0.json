@@ -1,7 +1,7 @@
 {
   "object_type": "RETENTION_SCOPE_AGGREGATION_CURRENT_CAMPAIGN_STATE_V0",
   "campaign_id": "RETENTION_SCOPE_AGGREGATION_001",
-  "campaign_posture": "G9_IMPLEMENTED_READY_FOR_PRESSURE",
+  "campaign_posture": "G9_WITNESSED_AWAITING_ADJUDICATION",
   "campaign_basis": "Test whether multiple exact horizon-local hot-retention requirements for one distinction can be aggregated into one declared-scope posture without claiming global ecology completeness.",
   "predecessor": {
     "campaign_id": "DISTINCTION_RETENTION_CURRENTNESS_001",
@@ -13,14 +13,17 @@
   },
   "current_cell": {
     "cell_id": "RETENTION_SCOPE_AGGREGATION_G9",
-    "posture": "IMPLEMENTED_READY_FOR_PRESSURE",
+    "posture": "WITNESSED_AWAITING_ADJUDICATION",
     "target": "RETENTION_SCOPE_AGGREGATION_V0",
-    "distinction": "WORLD_CHANGE != METHOD_CHANGE"
+    "distinction": "WORLD_CHANGE != METHOD_CHANGE",
+    "witness": "retention_scope_aggregation_v0_observation.json",
+    "witness_source_ref": "49986d318667feab2dfbef4f13ff4f53ba4900f8",
+    "witness_transport_ref": "b6ba1e300ff9dffe7b602eb007db7ee68f407157"
   },
   "current_gap": {
-    "gap_id": "G9_RETENTION_SCOPE_AGGREGATION",
-    "gap_class": "OPERATIVE_RELATIONAL",
-    "statement": "G8 conditions retention per horizon, but the ecology has no earned mechanism for aggregating multiple horizon-local retention requirements into one bounded declared-scope posture.",
+    "gap_id": "G9_RETENTION_SCOPE_AGGREGATION_EVIDENTIARY_STANDING",
+    "gap_class": "EVIDENTIARY",
+    "statement": "The G9 declared-scope aggregation mechanic has a clean runtime witness, but its scope-aggregation standing has not yet been independently adjudicated.",
     "work_eligible": true
   },
   "aggregation_law": {
@@ -57,9 +60,9 @@
     "scientific standing"
   ],
   "next_pressure": {
-    "pressure_id": "RETENTION_SCOPE_AGGREGATION_V0_PRESSURE_001",
-    "destination": "LOCAL_G9_SCOPE_AGGREGATION_OBSERVATION",
-    "packet": "docs/campaigns/retention_scope_aggregation_001/RETENTION_SCOPE_AGGREGATION_V0_PRESSURE_001_READY_TO_RUN.md",
-    "if_nothing_changes": "RUN_ONCE"
+    "pressure_id": "RETENTION_SCOPE_AGGREGATION_V0_PRESSURE_001_ADJUDICATION",
+    "destination": "FRESH_INDEPENDENT_RETENTION_SCOPE_AGGREGATION_ADJUDICATOR",
+    "packet": "docs/campaigns/retention_scope_aggregation_001/RETENTION_SCOPE_AGGREGATION_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+    "if_nothing_changes": "DO_NOT_RUN"
   }
 }
