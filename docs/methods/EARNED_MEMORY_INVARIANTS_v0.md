@@ -211,12 +211,63 @@ authority, execution authority, or scientific standing.
 
 ---
 
-## Current nonclaim
-
-These seven entries are the current bounded invariant bank.
+## EMI-008 — Horizon-scoped hot retention is currentness-conditioned
 
 ```text
-seven earned invariants
+retention required for one declared horizon
+!=
+retention required regardless of that horizon's currentness
+```
+
+For the exact tested horizon:
+
+```text
+CURRENT
+→ hot requirement remains REQUIRED
+
+NONCURRENT
+→ hot requirement becomes NOT_REQUIRED_FOR_DECLARED_HORIZON
+
+UNRESOLVED
+→ hot requirement remains UNRESOLVED
+```
+
+while:
+
+```text
+GLOBAL_HOT_REQUIREMENT = UNRESOLVED
+EXACT_COLD_SOURCE_RETENTION_REQUIRED = YES
+```
+
+**Earned by:** G8 / `DISTINCTION_RETENTION_CURRENTNESS_V0_PRESSURE_001`.
+
+**Witness:** externally supplied currentness of
+`COGNITIVE_METHOD_APPLICABILITY_HORIZON_V0` conditioned the G7
+hot-retention requirement for `WORLD_CHANGE != METHOD_CHANGE` exactly as
+declared, without executing a retention transition.
+
+Frozen adjudication result:
+`docs/campaigns/distinction_retention_currentness_001/pressure_runs/DISTINCTION_RETENTION_CURRENTNESS_V0_PRESSURE_RESULT_001.md`
+(blob `e5f603fbea6ef05193f092245252cd26d6eae66a`).
+
+Runtime witness:
+`distinction_retention_currentness_v0_observation.json`
+(blob `949ff2b9333146ca16e68981123f338f6e4dfd15`).
+
+**Consequence:** horizon-scoped hot residency must not silently outlive the
+currentness of the exact horizon that required it. NONCURRENT removes only that
+horizon's hot requirement; it does not establish global irrelevance, global
+cooling authority, deletion permission, depreciation, retirement, or a
+quantitative carrying-cost optimum.
+
+---
+
+## Current nonclaim
+
+These eight entries are the current bounded invariant bank.
+
+```text
+eight earned invariants
 !=
 complete coordinate system of semantic memory
 ```
