@@ -1,0 +1,210 @@
+{
+  "object_type": "WORLD_METHOD_RECONCILIATION_V0_OBSERVATION",
+  "repo_head": "9c6a63c8ecb662ab4101968d943c975a035fdfff",
+  "campaign_id": "WORLD_METHOD_RECONCILIATION_001",
+  "gap_id": "G4_WORLD_METHOD_RECONCILIATION_FORK",
+  "source_witness": {
+    "path": "materialized_settlement_consequence_reconciliation_observation.json",
+    "blob_note": "repository-frozen predecessor witness",
+    "composition_id": "materialized-settlement-consequence-reconciliation:sha256:04719abab92fef5f17a63ee36500748894d4e7e47054c72f105a8b28c4fe06a7",
+    "reconciliation_identity": "091ad5b9dcdb6a40085d7f0318ab630bf0656d272d1046577500ae2e1ed66516"
+  },
+  "cases": {
+    "WORLD_ONLY": {
+      "object_type": "WORLD_METHOD_RECONCILIATION_V0",
+      "source_reconciliation_id": "materialized-settlement-consequence-reconciliation:sha256:04719abab92fef5f17a63ee36500748894d4e7e47054c72f105a8b28c4fe06a7",
+      "source_reconciliation_identity_sha256": "091ad5b9dcdb6a40085d7f0318ab630bf0656d272d1046577500ae2e1ed66516",
+      "world_axis": {
+        "posture_change": "CHANGED",
+        "evidence_refs": [
+          "fixture://world/changed"
+        ]
+      },
+      "method_axis": {
+        "cognitive_method_change": "UNCHANGED",
+        "evidence_refs": [
+          "fixture://method/unchanged"
+        ]
+      },
+      "representation_source": "EXTERNALLY_SUPPLIED",
+      "world_method_reconciliation_id": "world-method-reconciliation:sha256:63496876290bcc6b8ddd59e5f45891d78f45c0d93f49613911f12c93201c9837",
+      "causal_attribution_effect": "NONE",
+      "gap_selection_effect": "NONE",
+      "work_justification_effect": "NONE",
+      "planning_effect": "NONE",
+      "method_capitalization_effect": "NONE",
+      "policy_mutation_effect": "NONE",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE",
+      "scientific_standing_effect": "NONE",
+      "claim_ceiling": "One exact source reconciliation may carry separately evidenced world posture-change and cognitive-method-change axes. No causality, method improvement, capitalization, policy mutation, gap discovery, work selection, authority, execution, or scientific standing is established.",
+      "integrity_sha256": "07667282dc273b1fb5378568a141e4e05c594f21469b10e3e8e0c77d5d9f13cd"
+    },
+    "METHOD_ONLY": {
+      "object_type": "WORLD_METHOD_RECONCILIATION_V0",
+      "source_reconciliation_id": "materialized-settlement-consequence-reconciliation:sha256:04719abab92fef5f17a63ee36500748894d4e7e47054c72f105a8b28c4fe06a7",
+      "source_reconciliation_identity_sha256": "091ad5b9dcdb6a40085d7f0318ab630bf0656d272d1046577500ae2e1ed66516",
+      "world_axis": {
+        "posture_change": "UNCHANGED",
+        "evidence_refs": [
+          "fixture://world/unchanged"
+        ]
+      },
+      "method_axis": {
+        "cognitive_method_change": "CHANGED",
+        "evidence_refs": [
+          "fixture://method/changed"
+        ]
+      },
+      "representation_source": "EXTERNALLY_SUPPLIED",
+      "world_method_reconciliation_id": "world-method-reconciliation:sha256:92dbd4091e652811ac0163f252c42437ed08e1b47175ecef06e961d512a3d1ff",
+      "causal_attribution_effect": "NONE",
+      "gap_selection_effect": "NONE",
+      "work_justification_effect": "NONE",
+      "planning_effect": "NONE",
+      "method_capitalization_effect": "NONE",
+      "policy_mutation_effect": "NONE",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE",
+      "scientific_standing_effect": "NONE",
+      "claim_ceiling": "One exact source reconciliation may carry separately evidenced world posture-change and cognitive-method-change axes. No causality, method improvement, capitalization, policy mutation, gap discovery, work selection, authority, execution, or scientific standing is established.",
+      "integrity_sha256": "8a43ad20742dbfce3990cdf2be40353eaf7b0aeac1b98885679d47bfe921201a"
+    },
+    "BOTH": {
+      "object_type": "WORLD_METHOD_RECONCILIATION_V0",
+      "source_reconciliation_id": "materialized-settlement-consequence-reconciliation:sha256:04719abab92fef5f17a63ee36500748894d4e7e47054c72f105a8b28c4fe06a7",
+      "source_reconciliation_identity_sha256": "091ad5b9dcdb6a40085d7f0318ab630bf0656d272d1046577500ae2e1ed66516",
+      "world_axis": {
+        "posture_change": "CHANGED",
+        "evidence_refs": [
+          "fixture://world/changed"
+        ]
+      },
+      "method_axis": {
+        "cognitive_method_change": "CHANGED",
+        "evidence_refs": [
+          "fixture://method/changed"
+        ]
+      },
+      "representation_source": "EXTERNALLY_SUPPLIED",
+      "world_method_reconciliation_id": "world-method-reconciliation:sha256:e611f5d631c20b145523a0f29279c2e53ac6360ed6249474f3f345c85d88bdb0",
+      "causal_attribution_effect": "NONE",
+      "gap_selection_effect": "NONE",
+      "work_justification_effect": "NONE",
+      "planning_effect": "NONE",
+      "method_capitalization_effect": "NONE",
+      "policy_mutation_effect": "NONE",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE",
+      "scientific_standing_effect": "NONE",
+      "claim_ceiling": "One exact source reconciliation may carry separately evidenced world posture-change and cognitive-method-change axes. No causality, method improvement, capitalization, policy mutation, gap discovery, work selection, authority, execution, or scientific standing is established.",
+      "integrity_sha256": "e36dba74dfdea4c23ecc81410faecbb2d4fd46e29ff6039baaaa4e6a3dc5b242"
+    },
+    "NEITHER": {
+      "object_type": "WORLD_METHOD_RECONCILIATION_V0",
+      "source_reconciliation_id": "materialized-settlement-consequence-reconciliation:sha256:04719abab92fef5f17a63ee36500748894d4e7e47054c72f105a8b28c4fe06a7",
+      "source_reconciliation_identity_sha256": "091ad5b9dcdb6a40085d7f0318ab630bf0656d272d1046577500ae2e1ed66516",
+      "world_axis": {
+        "posture_change": "UNCHANGED",
+        "evidence_refs": [
+          "fixture://world/unchanged"
+        ]
+      },
+      "method_axis": {
+        "cognitive_method_change": "UNCHANGED",
+        "evidence_refs": [
+          "fixture://method/unchanged"
+        ]
+      },
+      "representation_source": "EXTERNALLY_SUPPLIED",
+      "world_method_reconciliation_id": "world-method-reconciliation:sha256:b0acc6a22f501cca6e9b341a3684d6ac84c5c8f3e894918da18130ecf613739c",
+      "causal_attribution_effect": "NONE",
+      "gap_selection_effect": "NONE",
+      "work_justification_effect": "NONE",
+      "planning_effect": "NONE",
+      "method_capitalization_effect": "NONE",
+      "policy_mutation_effect": "NONE",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE",
+      "scientific_standing_effect": "NONE",
+      "claim_ceiling": "One exact source reconciliation may carry separately evidenced world posture-change and cognitive-method-change axes. No causality, method improvement, capitalization, policy mutation, gap discovery, work selection, authority, execution, or scientific standing is established.",
+      "integrity_sha256": "9fc60dbb6788c8ae7010df74fce2111b6c780bc983eb1243f1d4d66961a09dd2"
+    },
+    "WORLD_UNRESOLVED": {
+      "object_type": "WORLD_METHOD_RECONCILIATION_V0",
+      "source_reconciliation_id": "materialized-settlement-consequence-reconciliation:sha256:04719abab92fef5f17a63ee36500748894d4e7e47054c72f105a8b28c4fe06a7",
+      "source_reconciliation_identity_sha256": "091ad5b9dcdb6a40085d7f0318ab630bf0656d272d1046577500ae2e1ed66516",
+      "world_axis": {
+        "posture_change": "UNRESOLVED",
+        "evidence_refs": [
+          "fixture://world/unresolved"
+        ]
+      },
+      "method_axis": {
+        "cognitive_method_change": "UNCHANGED",
+        "evidence_refs": [
+          "fixture://method/unchanged"
+        ]
+      },
+      "representation_source": "EXTERNALLY_SUPPLIED",
+      "world_method_reconciliation_id": "world-method-reconciliation:sha256:d74ece465e9fb777216a305b84e131f253fc2c19e1ad5698f7b5099f6804c48a",
+      "causal_attribution_effect": "NONE",
+      "gap_selection_effect": "NONE",
+      "work_justification_effect": "NONE",
+      "planning_effect": "NONE",
+      "method_capitalization_effect": "NONE",
+      "policy_mutation_effect": "NONE",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE",
+      "scientific_standing_effect": "NONE",
+      "claim_ceiling": "One exact source reconciliation may carry separately evidenced world posture-change and cognitive-method-change axes. No causality, method improvement, capitalization, policy mutation, gap discovery, work selection, authority, execution, or scientific standing is established.",
+      "integrity_sha256": "df62959458dacdc9dd2b7426a5789df2c71f1c24db4460bc0fb3c47e9c3a869a"
+    },
+    "METHOD_UNRESOLVED": {
+      "object_type": "WORLD_METHOD_RECONCILIATION_V0",
+      "source_reconciliation_id": "materialized-settlement-consequence-reconciliation:sha256:04719abab92fef5f17a63ee36500748894d4e7e47054c72f105a8b28c4fe06a7",
+      "source_reconciliation_identity_sha256": "091ad5b9dcdb6a40085d7f0318ab630bf0656d272d1046577500ae2e1ed66516",
+      "world_axis": {
+        "posture_change": "UNCHANGED",
+        "evidence_refs": [
+          "fixture://world/unchanged"
+        ]
+      },
+      "method_axis": {
+        "cognitive_method_change": "UNRESOLVED",
+        "evidence_refs": [
+          "fixture://method/unresolved"
+        ]
+      },
+      "representation_source": "EXTERNALLY_SUPPLIED",
+      "world_method_reconciliation_id": "world-method-reconciliation:sha256:87543786adcb11f484d972f3b9b33305f86bd0e48dd918d88246e951c63b31f0",
+      "causal_attribution_effect": "NONE",
+      "gap_selection_effect": "NONE",
+      "work_justification_effect": "NONE",
+      "planning_effect": "NONE",
+      "method_capitalization_effect": "NONE",
+      "policy_mutation_effect": "NONE",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE",
+      "scientific_standing_effect": "NONE",
+      "claim_ceiling": "One exact source reconciliation may carry separately evidenced world posture-change and cognitive-method-change axes. No causality, method improvement, capitalization, policy mutation, gap discovery, work selection, authority, execution, or scientific standing is established.",
+      "integrity_sha256": "e06e4f0380cc249c5d993c3769b8cda8d4e6c162b4475873b5fbd77823dc25e4"
+    }
+  },
+  "assertions": {
+    "predecessor_witness_matched_consequence": true,
+    "exact_source_composition_bound": true,
+    "exact_source_state_identity_bound": true,
+    "world_only_preserved": true,
+    "method_only_preserved": true,
+    "both_preserved": true,
+    "neither_preserved": true,
+    "unresolved_axes_remain_explicit": true,
+    "all_case_identities_distinct": true,
+    "fixed_inputs_deterministic": true,
+    "no_causal_learning_or_consequence_effects": true
+  },
+  "all_assertions_pass": true,
+  "claim_ceiling": "One exact predecessor reconciliation identity can carry independently supplied world-posture-change and cognitive-method-change axes across WORLD_ONLY, METHOD_ONLY, BOTH, NEITHER, and explicit UNRESOLVED cases. No causal attribution, method improvement or capitalization, policy mutation, gap discovery, work justification, planning, authority, execution, or scientific standing is created.",
+  "stopped": "YES"
+}
