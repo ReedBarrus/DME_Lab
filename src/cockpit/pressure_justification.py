@@ -145,6 +145,10 @@ def _expected_change(pressure: str) -> str:
             "bind one consumed exact materialized-work raw callback return into one "
             "immutable result witness with full successor/work-spec/unit lineage"
         ),
+        "MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE": (
+            "bind externally supplied field-level candidate dispositions to one "
+            "immutable exact materialized-work result witness without qualification or consequence"
+        ),
         "REPEATED_METABOLIC_LOOP_PRESSURE": (
             "establish or fracture two consecutive basis-bound workcycle transitions "
             "whose successor selection is derived from prior witnessed consequence"
@@ -249,6 +253,11 @@ def _select_pressure(
         if blocker.startswith("MATERIALIZED_INVOCATION_RESULT_WITNESS:"):
             return (
                 "MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE",
+                "SELF_MOVING_QUALIFICATION_BLOCKER",
+            )
+        if blocker.startswith("MATERIALIZED_INVOCATION_RESULT_SETTLEMENT:"):
+            return (
+                "MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE",
                 "SELF_MOVING_QUALIFICATION_BLOCKER",
             )
         if blocker.startswith("REPEATED_METABOLIC_LOOP:"):
