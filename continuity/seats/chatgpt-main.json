@@ -51,5 +51,6 @@
     "ACTION_REQUESTED != ACTION_AUTHORIZED != ACTION_EXECUTED"
   ],
   "authority_effect": "NONE_BY_MANIFEST",
-  "execution_effect": "NONE_BY_MANIFEST"
+  "execution_effect": "NONE_BY_MANIFEST",
+  "consumer_id": "chatgpt-main"
 }
