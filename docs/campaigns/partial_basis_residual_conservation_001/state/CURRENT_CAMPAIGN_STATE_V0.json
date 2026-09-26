@@ -1,7 +1,7 @@
 {
   "object_type": "PARTIAL_BASIS_RESIDUAL_CONSERVATION_CURRENT_CAMPAIGN_STATE_V0",
   "campaign_id": "PARTIAL_BASIS_RESIDUAL_CONSERVATION_001",
-  "campaign_posture": "G11_WITNESSED_AWAITING_ADJUDICATION",
+  "campaign_posture": "G11_MATCHED_CHECKPOINT_TERMINAL",
   "campaign_basis": "Test whether the exact unresolved residue exposed by the qualified G10 partial basis can be conserved in a smaller typed carrier without promoting that residue into a gap, work item, architecture requirement, or global claim.",
   "predecessor": {
     "campaign_id": "PARTIAL_BASIS_RETENTION_PROFILE_001",
@@ -12,31 +12,27 @@
   },
   "current_cell": {
     "cell_id": "PARTIAL_BASIS_RESIDUAL_CONSERVATION_G11",
-    "posture": "WITNESSED_AWAITING_ADJUDICATION",
+    "posture": "MATCHED_CHECKPOINT_TERMINAL",
     "target": "PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0",
+    "standing": "PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_MATCHED",
+    "result_handle": "docs/campaigns/partial_basis_residual_conservation_001/pressure_runs/PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_PRESSURE_RESULT_001.md",
+    "result_blob": "c31eefa748213c70a39713e2137343638ee4fb15",
     "distinction": "WORLD_CHANGE != METHOD_CHANGE",
     "implementation_source_ref": "bb5ecee077215d7b992e79ec2333c38e5a689125",
     "witness_transport_ref": "7d4deef2ab07574b034f212d1a0481b9c94ce4ea",
     "witness_handle": "partial_basis_residual_conservation_v0_observation.json",
     "witness_blob": "1736d63c13c27d37641f3a6f78825c9288428a50"
   },
-  "current_gap": {
-    "gap_id": "G11_PARTIAL_BASIS_RESIDUAL_CONSERVATION_EVIDENTIARY_STANDING",
-    "gap_class": "EVIDENTIARY",
-    "statement": "A passing G11 runtime witness exists with exact source identity and bounded claim ceiling, but independent adjudication has not yet established G11 evidentiary standing.",
-    "work_eligible": true
-  },
-  "required_residual": {
+  "current_gap": null,
+  "residual_carrier": {
     "interior_unresolved_members": [
       "H_C"
     ],
-    "exterior_posture": "UNRESOLVED",
     "nonresidual_members": [
       "H_A",
       "H_B"
-    ]
-  },
-  "required_standing": {
+    ],
+    "exterior_posture": "UNRESOLVED",
     "residual_conserved": "YES",
     "residual_gap_status": "NOT_ESTABLISHED",
     "residual_work_eligibility": "NOT_ESTABLISHED",
@@ -53,11 +49,13 @@
     "OBSERVABLE_INTELLIGENCE != CONSEQUENTIAL_BEHAVIOR"
   ],
   "explicitly_deferred": [
+    "residual gap standing",
+    "residual work eligibility",
+    "architecture requirement",
     "gap discovery",
     "gap selection",
     "work justification",
     "work materialization",
-    "architecture requirement",
     "global ecology coverage",
     "economic weighting",
     "retention transition",
@@ -69,9 +67,43 @@
     "scientific standing"
   ],
   "next_pressure": {
-    "pressure_id": "PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_PRESSURE_001",
-    "destination": "FRESH_INDEPENDENT_ADJUDICATION",
-    "packet": "docs/campaigns/partial_basis_residual_conservation_001/PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-    "if_nothing_changes": "ADJUDICATE_ONCE"
-  }
+    "pressure_id": "UNSELECTED",
+    "destination": "HORIZON_REINSPECTION",
+    "if_nothing_changes": "DO_NOT_INSTANTIATE_WORK"
+  },
+  "earned_cells": {
+    "PARTIAL_BASIS_RESIDUAL_CONSERVATION_G11": {
+      "standing": "PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_MATCHED",
+      "interior_unresolved_members": [
+        "H_C"
+      ],
+      "nonresidual_members": [
+        "H_A",
+        "H_B"
+      ],
+      "exterior_posture": "UNRESOLVED",
+      "residual_conserved": "YES",
+      "residual_gap_status": "NOT_ESTABLISHED",
+      "residual_work_eligibility": "NOT_ESTABLISHED",
+      "architecture_requirement": "NOT_ESTABLISHED",
+      "downstream_effects": "NONE",
+      "does_not_establish": [
+        "declared gap standing",
+        "work eligibility",
+        "actionability",
+        "architecture requirement",
+        "global ecology coverage",
+        "economic weighting",
+        "retention transition authority",
+        "raw source deletion",
+        "method capitalization",
+        "policy mutation",
+        "autonomous planning",
+        "authority",
+        "execution",
+        "scientific standing"
+      ]
+    }
+  },
+  "horizon_posture": "OPEN_FOR_REINSPECTION"
 }
