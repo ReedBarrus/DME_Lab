@@ -12,11 +12,14 @@
   },
   "current_cell": {
     "cell_id": "CONTROL_KERNEL_CELL_001",
-    "posture": "IMPLEMENTED_READY_FOR_PRESSURE",
+    "posture": "WITNESSED_AWAITING_ADJUDICATION",
     "specimen": "docs/campaigns/control_kernel_001/state/CONTROL_KERNEL_CELL_001_SPECIMEN_V0.json",
     "selection_source": "EXTERNALLY_SUPPLIED",
     "machine_selection_claimed": false,
-    "competing_gaps": 0
+    "competing_gaps": 0,
+    "witness": "control_kernel_cell_001_observation.json",
+    "witness_source_ref": "4ade4448871e30b630f72ded79335eeebde4d396",
+    "witness_transport_ref": "272a3c1b445923e40e5f1676522881b30dfd30c1"
   },
   "gap_stratification": {
     "evidentiary": "Has the claimed relation earned standing?",
@@ -24,9 +27,9 @@
     "architectural_capability": "What machinery is missing for later classes of relational gaps?"
   },
   "current_gap": {
-    "gap_id": "G1_STALE_SUCCESSOR_3_HANDOFF",
-    "gap_class": "OPERATIVE_RELATIONAL",
-    "externally_supplied": true,
+    "gap_id": "G0_CONTROL_KERNEL_CELL_001_EVIDENTIARY_STANDING",
+    "gap_class": "EVIDENTIARY",
+    "statement": "The one-horizon/one-gap calibration has a clean runtime witness but has not yet been independently adjudicated.",
     "work_eligible": true
   },
   "explicitly_deferred": [
@@ -40,9 +43,9 @@
     "concurrency and joint viability economics"
   ],
   "next_pressure": {
-    "pressure_id": "CONTROL_KERNEL_CELL_001_PRESSURE_001",
-    "destination": "LOCAL_EXTERNAL_ONE_GAP_CALIBRATION",
-    "packet": "docs/campaigns/control_kernel_001/CONTROL_KERNEL_CELL_001_PRESSURE_001_READY_TO_RUN.md",
+    "pressure_id": "CONTROL_KERNEL_CELL_001_PRESSURE_001_ADJUDICATION",
+    "destination": "FRESH_INDEPENDENT_EXTERNAL_ONE_GAP_CALIBRATION_ADJUDICATOR",
+    "packet": "docs/campaigns/control_kernel_001/CONTROL_KERNEL_CELL_001_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
     "if_nothing_changes": "DO_NOT_RUN"
   }
 }
