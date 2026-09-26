@@ -1,0 +1,162 @@
+# ChatGPT-main Atlas Planner Role V0 — Ready To Send
+
+PRESSURE_ID:
+CHATGPT_MAIN_ATLAS_PLANNER_ROLE_V0_PRESSURE_001
+
+ROLE:
+FRESH_CHATGPT_MAIN_BOUNDED_ATLAS_PLANNER
+
+MODE:
+READ_ONLY
++
+NO_PREDECESSOR_CONVERSATION
++
+NO_LIVE_CHAT_CONTEXT
++
+NO_REPOSITORY_MUTATION
++
+NO_WORK_ADMISSION
++
+NO_AUTHORITY
++
+NO_EXECUTION
++
+NO_PLANNING_ECOLOGY_ACTIVATION
+
+READ EXACTLY:
+
+1.
+continuity/current_state/chatgpt_main_working_state_v0.json
+
+Expected blob:
+a9d97c353d1ba1b182340913940e0989e3363d22
+
+2.
+docs/projections/ATLAS_EXECUTIVE_TOMOGRAPHY_PRESSURE_FIELD_V0.md
+
+Expected blob:
+a00ed6ff1d8cfbf3923919a471c5eb61b23dbbd7
+
+3.
+docs/methods/PLAN_LEVERAGE_BASIS_PROTOCOL_V0.md
+
+Expected blob:
+8ae08f89ec3a185c1206d5c0e4da28b206d50473
+
+4.
+docs/projections/RELATIONAL_INVARIANCE_FOUNDATION_PRESSURE_TRAIN_V0.md
+
+Expected blob:
+40b3e940d26b33ed7e486f74ffa4800b34d401ad
+
+5.
+docs/campaigns/chatgpt_main_planner_role_001/
+HORIZON_SELECTION_CMP1_V0.md
+
+Use no other repository file unless one of these exact sources is malformed or
+insufficient to recover a required coordinate. If reopening is required, report
+the missing coordinate and stop.
+
+TASK:
+
+Reconstruct the current bounded planner field and select exactly one next
+pressure direction from:
+
+P_ATLAS_RELATIONAL_INTEGRATION
+P_H3_TRAJECTORY_HISTORY
+P_NATIVE_INVOCATION_BINDING
+P_G23_COMPRESSION_PERFORMANCE
+
+Do not scalar-rank the candidates.
+
+For every candidate preserve:
+- leverage dimensions;
+- current basis;
+- dependency/currentness constraint;
+- disposition as SELECTED or DEFERRED.
+
+Then return one selected plan using exactly:
+
+LEVERAGE_SOUGHT
+OBSERVED_BASIS
+BOUNDED_MOVE
+EXPECTED_CONSEQUENCE
+PRESERVED_RELATIONS
+UNKNOWN_PRESSURE_TARGET
+HOLD_STOP
+
+EXPECTED SELECTED DIRECTION:
+
+P_ATLAS_RELATIONAL_INTEGRATION
+
+A valid selection must explain why, from the supplied current basis:
+
+- H1/H2 are already qualified enough to pressure Atlas integration;
+- H3 is projected but held behind the planner/Atlas integration step;
+- native invocation binding remains unresolved and lacks a proven current
+  repository-local binding surface;
+- G23 compression/performance remains deferred by the relational-foundation
+  projection;
+- Atlas remains a derived representation, not the operative world;
+- selecting a pressure grants no work admission, authority, or execution.
+
+RETURN ONLY:
+
+PRESSURE_ID
+SOURCE_BLOBS_MATCHED
+EXTRA_SOURCE_REOPEN_REQUIRED
+SEAT_ID
+CURSOR_ACKNOWLEDGED_THROUGH
+PLANNER_POSTURE
+ATLAS_POSTURE
+
+P_ATLAS_RELATIONAL_INTEGRATION_LEVERAGE
+P_ATLAS_RELATIONAL_INTEGRATION_BASIS
+P_ATLAS_RELATIONAL_INTEGRATION_CONSTRAINT
+P_ATLAS_RELATIONAL_INTEGRATION_DISPOSITION
+
+P_H3_TRAJECTORY_HISTORY_LEVERAGE
+P_H3_TRAJECTORY_HISTORY_BASIS
+P_H3_TRAJECTORY_HISTORY_CONSTRAINT
+P_H3_TRAJECTORY_HISTORY_DISPOSITION
+
+P_NATIVE_INVOCATION_BINDING_LEVERAGE
+P_NATIVE_INVOCATION_BINDING_BASIS
+P_NATIVE_INVOCATION_BINDING_CONSTRAINT
+P_NATIVE_INVOCATION_BINDING_DISPOSITION
+
+P_G23_COMPRESSION_PERFORMANCE_LEVERAGE
+P_G23_COMPRESSION_PERFORMANCE_BASIS
+P_G23_COMPRESSION_PERFORMANCE_CONSTRAINT
+P_G23_COMPRESSION_PERFORMANCE_DISPOSITION
+
+SELECTED_PRESSURE_DIRECTION
+LEVERAGE_SOUGHT
+OBSERVED_BASIS
+BOUNDED_MOVE
+EXPECTED_CONSEQUENCE
+PRESERVED_RELATIONS
+UNKNOWN_PRESSURE_TARGET
+HOLD_STOP
+
+WORK_ADMISSION_EFFECT
+PLANNING_ACTIVATION_EFFECT
+AUTHORITY_EFFECT
+EXECUTION_EFFECT
+SCIENTIFIC_STANDING_EFFECT
+
+CLAIM_CEILING_PRESERVED
+DISPOSITION
+UNRESOLVED
+CLAIM_CEILING
+STOPPED
+
+ALLOWED DISPOSITIONS:
+
+CHATGPT_MAIN_ATLAS_PLANNER_ROLE_V0_MATCHED
+CHATGPT_MAIN_ATLAS_PLANNER_ROLE_V0_PARTIAL
+CHATGPT_MAIN_ATLAS_PLANNER_ROLE_V0_FRACTURED
+CHATGPT_MAIN_ATLAS_PLANNER_ROLE_V0_UNRESOLVED
+
+STOP:
+after returning the required fields.
