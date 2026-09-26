@@ -1,7 +1,7 @@
 {
   "object_type": "DISTINCTION_RETENTION_CURRENTNESS_CURRENT_CAMPAIGN_STATE_V0",
   "campaign_id": "DISTINCTION_RETENTION_CURRENTNESS_001",
-  "campaign_posture": "G8_WITNESSED_AWAITING_ADJUDICATION",
+  "campaign_posture": "G8_MATCHED_CHECKPOINT_TERMINAL",
   "campaign_basis": "Test whether the G7 horizon-scoped hot-retention requirement is conditioned by externally supplied currentness of the exact declared horizon without inferring global cooling or executing a retention transition.",
   "predecessor": {
     "campaign_id": "DISTINCTION_RETENTION_MODE_001",
@@ -12,20 +12,14 @@
   },
   "current_cell": {
     "cell_id": "DISTINCTION_RETENTION_CURRENTNESS_G8",
-    "posture": "WITNESSED_AWAITING_ADJUDICATION",
+    "posture": "MATCHED_CHECKPOINT_TERMINAL",
     "target": "DISTINCTION_RETENTION_CURRENTNESS_V0",
+    "standing": "DISTINCTION_RETENTION_CURRENTNESS_V0_MATCHED",
+    "result_handle": "docs/campaigns/distinction_retention_currentness_001/pressure_runs/DISTINCTION_RETENTION_CURRENTNESS_V0_PRESSURE_RESULT_001.md",
     "horizon_id": "COGNITIVE_METHOD_APPLICABILITY_HORIZON_V0",
-    "distinction": "WORLD_CHANGE != METHOD_CHANGE",
-    "witness": "distinction_retention_currentness_v0_observation.json",
-    "witness_source_ref": "440be8a753d1e0c7414be25b95c06ef34a64a3f3",
-    "witness_transport_ref": "5311f7209e21afc280ef24724b63a22a0f15c5ed"
+    "distinction": "WORLD_CHANGE != METHOD_CHANGE"
   },
-  "current_gap": {
-    "gap_id": "G8_RETENTION_CURRENTNESS_EVIDENTIARY_STANDING",
-    "gap_class": "EVIDENTIARY",
-    "statement": "The G8 currentness membrane has a clean runtime witness, but its currentness-conditioned retention standing has not yet been independently adjudicated.",
-    "work_eligible": true
-  },
+  "current_gap": null,
   "currentness_input": {
     "source": "EXTERNALLY_SUPPLIED",
     "allowed": [
@@ -64,9 +58,35 @@
     "scientific standing"
   ],
   "next_pressure": {
-    "pressure_id": "DISTINCTION_RETENTION_CURRENTNESS_V0_PRESSURE_001_ADJUDICATION",
-    "destination": "FRESH_INDEPENDENT_DISTINCTION_RETENTION_CURRENTNESS_ADJUDICATOR",
-    "packet": "docs/campaigns/distinction_retention_currentness_001/DISTINCTION_RETENTION_CURRENTNESS_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-    "if_nothing_changes": "DO_NOT_RUN"
-  }
+    "pressure_id": "UNSELECTED",
+    "destination": "HORIZON_REINSPECTION",
+    "if_nothing_changes": "DO_NOT_INSTANTIATE_WORK"
+  },
+  "earned_cells": {
+    "DISTINCTION_RETENTION_CURRENTNESS_G8": {
+      "standing": "DISTINCTION_RETENTION_CURRENTNESS_V0_MATCHED",
+      "currentness_law": {
+        "CURRENT": "REQUIRED",
+        "NONCURRENT": "NOT_REQUIRED_FOR_DECLARED_HORIZON",
+        "UNRESOLVED": "UNRESOLVED"
+      },
+      "global_hot_requirement": "UNRESOLVED",
+      "exact_cold_source_retention_required": "YES",
+      "does_not_establish": [
+        "global cooling",
+        "retention transition authority",
+        "raw source deletion",
+        "depreciation",
+        "retirement",
+        "quantitative carrying-cost optimization",
+        "method improvement",
+        "method capitalization",
+        "autonomous planning",
+        "authority",
+        "execution",
+        "scientific standing"
+      ]
+    }
+  },
+  "horizon_posture": "OPEN_FOR_REINSPECTION"
 }
