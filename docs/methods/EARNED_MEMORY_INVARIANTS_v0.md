@@ -262,12 +262,60 @@ quantitative carrying-cost optimum.
 
 ---
 
-## Current nonclaim
-
-These eight entries are the current bounded invariant bank.
+## EMI-009 — Declared-scope retention aggregation is not global ecology retention
 
 ```text
-eight earned invariants
+deterministic aggregation over one exact declared horizon set
+!=
+global ecology hot-requirement standing
+```
+
+For one exact supplied set of horizon-local retention postures:
+
+```text
+ANY REQUIRED
+→ DECLARED_SCOPE_HOT_REQUIREMENT = REQUIRED
+
+else ANY UNRESOLVED
+→ DECLARED_SCOPE_HOT_REQUIREMENT = UNRESOLVED
+
+else
+→ DECLARED_SCOPE_HOT_REQUIREMENT = NOT_REQUIRED_FOR_DECLARED_SCOPE
+```
+
+while:
+
+```text
+DECLARED_SCOPE_COMPLETE_FOR_SUPPLIED_HORIZONS = YES
+GLOBAL_ECOLOGY_HOT_REQUIREMENT = UNRESOLVED
+EXACT_COLD_SOURCE_RETENTION_REQUIRED = YES
+```
+
+**Earned by:** G9 / `RETENTION_SCOPE_AGGREGATION_V0_PRESSURE_001`.
+
+Frozen adjudication result:
+`docs/campaigns/retention_scope_aggregation_001/pressure_runs/RETENTION_SCOPE_AGGREGATION_V0_PRESSURE_RESULT_001.md`
+(blob `94152a26078c527cabfef7cd2cf1e7e3b4990df1`).
+
+Runtime witness:
+`retention_scope_aggregation_v0_observation.json`
+(blob `212d7a9d4fb7bc982cb83b418ee6d5982008c574`).
+
+**Consequence:** a bounded declared scope can be aggregated without pretending
+that the scope exhausts the ecology. Scope-local closure is therefore usable
+while the exterior remains explicitly unresolved. This does not establish global
+cooling, retention-transition authority, deletion permission, depreciation,
+retirement, quantitative carrying-cost optimization, method capitalization,
+autonomous planning, authority, execution, or scientific standing.
+
+---
+
+## Current nonclaim
+
+These nine entries are the current bounded invariant bank.
+
+```text
+nine earned invariants
 !=
 complete coordinate system of semantic memory
 ```
