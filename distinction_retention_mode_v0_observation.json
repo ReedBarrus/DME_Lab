@@ -1,0 +1,77 @@
+{
+  "object_type": "DISTINCTION_RETENTION_MODE_V0_OBSERVATION",
+  "repo_head": "1c9a3aa5befaf5eda275d2ff72a758ace3553415",
+  "campaign_id": "DISTINCTION_RETENTION_MODE_001",
+  "gap_id": "G7_DISTINCTION_RETENTION_MODE",
+  "distinction_id": "WORLD_CHANGE_NE_METHOD_CHANGE",
+  "horizon_id": "COGNITIVE_METHOD_APPLICABILITY_HORIZON_V0",
+  "source_handles": {
+    "g4_result": "7a876e3e23b5a7f7d73f8ec86b393137da8f5ede",
+    "g4_witness": "a49d948432c9560310133557ce6c8102ce4931ac",
+    "g5_result": "d738dd57ae7866bdf584509b553a6b061cd714d7",
+    "g5_witness": "a334412ac95fd66a228dba49fb888ffc225a6e7f",
+    "g6_result": "bacc6f48a2c7c9a4658758cf663822b3b934557c",
+    "g6_witness": "3e9c7b24cacbf608d87d2f14175e265267cc0ef1"
+  },
+  "carrier": {
+    "object_type": "DISTINCTION_RETENTION_MODE_V0",
+    "distinction_id": "WORLD_CHANGE_NE_METHOD_CHANGE",
+    "horizon_id": "COGNITIVE_METHOD_APPLICABILITY_HORIZON_V0",
+    "method_axis_applicability_law": {
+      "CHANGED": "APPLICABLE",
+      "UNCHANGED": "NOT_APPLICABLE",
+      "UNRESOLVED": "UNRESOLVED"
+    },
+    "exact_source_handles": {
+      "g4_result": "7a876e3e23b5a7f7d73f8ec86b393137da8f5ede",
+      "g4_witness": "a49d948432c9560310133557ce6c8102ce4931ac",
+      "g5_result": "d738dd57ae7866bdf584509b553a6b061cd714d7",
+      "g5_witness": "a334412ac95fd66a228dba49fb888ffc225a6e7f",
+      "g6_result": "bacc6f48a2c7c9a4658758cf663822b3b934557c",
+      "g6_witness": "3e9c7b24cacbf608d87d2f14175e265267cc0ef1"
+    },
+    "unresolved_boundaries": [
+      "global ecology retention",
+      "quantitative carrying-cost optimum",
+      "method improvement",
+      "method capitalization",
+      "raw source deletion"
+    ],
+    "retention_mode_id": "distinction-retention-mode:sha256:078e9d01af0101900d84f13f559ca0c7dcd8679bbe85c44fd45ed163a203e24c",
+    "distinction_retention_required_for_declared_horizon": "YES",
+    "full_g4_g5_g6_inline_hot_required": "NO",
+    "minimal_hot_carrier_candidate": "YES",
+    "exact_cold_source_retention_required": "YES",
+    "raw_source_deletion_effect": "NONE",
+    "method_capitalization_effect": "NONE",
+    "policy_mutation_effect": "NONE",
+    "planning_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE",
+    "integrity_sha256": "1f638ee528a93568e1f5b07c0972fe275e2cece20f39e21d245a06442ae66ffa"
+  },
+  "reconstructed_horizon_outcomes": {
+    "WORLD_ONLY": "NOT_APPLICABLE",
+    "METHOD_ONLY": "APPLICABLE",
+    "BOTH": "APPLICABLE",
+    "NEITHER": "NOT_APPLICABLE",
+    "WORLD_UNRESOLVED": "NOT_APPLICABLE",
+    "METHOD_UNRESOLVED": "UNRESOLVED"
+  },
+  "assertions": {
+    "all_source_blobs_exact": true,
+    "g6_standing_matched": true,
+    "exact_horizon_reconstruction": true,
+    "richer_case_tables_not_inline": true,
+    "distinction_retention_required_for_declared_horizon": true,
+    "full_inline_hot_not_required": true,
+    "minimal_hot_carrier_candidate": true,
+    "exact_cold_source_retention_required": true,
+    "no_deletion_or_capitalization_effect": true,
+    "no_downstream_consequence_effects": true
+  },
+  "all_assertions_pass": true,
+  "claim_ceiling": "The exact G6 horizon dependence can be reconstructed from a minimal hot-memory carrier containing the distinction, horizon, method-axis applicability law, unresolved boundaries, and exact source handles. The richer G4/G5/G6 tables need not remain inline for this exact reconstruction, while exact cold source retention remains required. No raw-source deletion, quantitative optimum, global retention, method improvement, capitalization, planning authority, execution, or scientific standing is established.",
+  "stopped": "YES"
+}
