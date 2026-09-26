@@ -1,0 +1,132 @@
+{
+  "object_type": "PARTIAL_BASIS_RETENTION_PROFILE_V0_OBSERVATION",
+  "repo_head": "b2294fab67299d6093c87ae17b8ff9ac30b5fd2a",
+  "campaign_id": "PARTIAL_BASIS_RETENTION_PROFILE_001",
+  "gap_id": "G10_PARTIAL_DECLARED_BASIS_RETENTION_PROFILE",
+  "distinction_id": "WORLD_CHANGE_NE_METHOD_CHANGE",
+  "basis": {
+    "g9_result": "docs/campaigns/retention_scope_aggregation_001/pressure_runs/RETENTION_SCOPE_AGGREGATION_V0_PRESSURE_RESULT_001.md",
+    "g9_result_blob": "94152a26078c527cabfef7cd2cf1e7e3b4990df1",
+    "g9_witness": "retention_scope_aggregation_v0_observation.json",
+    "g9_witness_blob": "212d7a9d4fb7bc982cb83b418ee6d5982008c574"
+  },
+  "b0": {
+    "object_type": "PARTIAL_BASIS_RETENTION_PROFILE_V0",
+    "distinction_id": "WORLD_CHANGE_NE_METHOD_CHANGE",
+    "source_g9_result_blob_sha": "94152a26078c527cabfef7cd2cf1e7e3b4990df1",
+    "source_g9_witness_blob_sha": "212d7a9d4fb7bc982cb83b418ee6d5982008c574",
+    "basis_id": "B0",
+    "declared_horizon_requirements": {
+      "H_A": "REQUIRED",
+      "H_B": "NOT_REQUIRED_FOR_DECLARED_HORIZON"
+    },
+    "retention_profile": {
+      "required_members": [
+        "H_A"
+      ],
+      "unresolved_members": [],
+      "not_required_members": [
+        "H_B"
+      ],
+      "n_required": 1,
+      "n_unresolved": 0,
+      "n_not_required": 1,
+      "basis_size": 2
+    },
+    "declared_scope_hot_requirement": "REQUIRED",
+    "exterior_posture": "UNRESOLVED",
+    "global_ecology_hot_requirement": "UNRESOLVED",
+    "representation_source": "EXTERNALLY_SUPPLIED",
+    "profile_id": "partial-basis-retention-profile:sha256:567a81cdef4904e4b72dc326ec28e02a7bc9da71466cc31bbdb18e0989b5c396",
+    "retention_transition_effect": "NONE",
+    "raw_source_deletion_effect": "NONE",
+    "method_capitalization_effect": "NONE",
+    "policy_mutation_effect": "NONE",
+    "planning_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE",
+    "claim_ceiling": "One exact partial declared basis may carry a non-scalar retention profile over REQUIRED, UNRESOLVED, and NOT_REQUIRED member sets while the exterior remains explicitly unresolved. No global coverage, load weighting, scalar hotness, economic optimum, retention transition, authority, execution, or scientific standing is established.",
+    "integrity_sha256": "6106677fb1dce8d39bd9da7be2c5b99ca5f2fadeb29519c2615d561601ce488b"
+  },
+  "b1": {
+    "object_type": "PARTIAL_BASIS_RETENTION_PROFILE_V0",
+    "distinction_id": "WORLD_CHANGE_NE_METHOD_CHANGE",
+    "source_g9_result_blob_sha": "94152a26078c527cabfef7cd2cf1e7e3b4990df1",
+    "source_g9_witness_blob_sha": "212d7a9d4fb7bc982cb83b418ee6d5982008c574",
+    "basis_id": "B1",
+    "declared_horizon_requirements": {
+      "H_A": "REQUIRED",
+      "H_B": "NOT_REQUIRED_FOR_DECLARED_HORIZON",
+      "H_C": "UNRESOLVED"
+    },
+    "retention_profile": {
+      "required_members": [
+        "H_A"
+      ],
+      "unresolved_members": [
+        "H_C"
+      ],
+      "not_required_members": [
+        "H_B"
+      ],
+      "n_required": 1,
+      "n_unresolved": 1,
+      "n_not_required": 1,
+      "basis_size": 3
+    },
+    "declared_scope_hot_requirement": "REQUIRED",
+    "exterior_posture": "UNRESOLVED",
+    "global_ecology_hot_requirement": "UNRESOLVED",
+    "representation_source": "EXTERNALLY_SUPPLIED",
+    "profile_id": "partial-basis-retention-profile:sha256:1727532fd69214120cddfbb46b2a9f7dc1f2a3c5078f62f33aec28abd277d5b3",
+    "retention_transition_effect": "NONE",
+    "raw_source_deletion_effect": "NONE",
+    "method_capitalization_effect": "NONE",
+    "policy_mutation_effect": "NONE",
+    "planning_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE",
+    "claim_ceiling": "One exact partial declared basis may carry a non-scalar retention profile over REQUIRED, UNRESOLVED, and NOT_REQUIRED member sets while the exterior remains explicitly unresolved. No global coverage, load weighting, scalar hotness, economic optimum, retention transition, authority, execution, or scientific standing is established.",
+    "integrity_sha256": "a628a8eea0d6295a6ff4dbbb0130af58f653efa95d4cdc9fb2173c4092a5c41c"
+  },
+  "extension": {
+    "object_type": "PARTIAL_BASIS_RETENTION_PROFILE_EXTENSION_V0",
+    "base_profile_id": "partial-basis-retention-profile:sha256:567a81cdef4904e4b72dc326ec28e02a7bc9da71466cc31bbdb18e0989b5c396",
+    "extended_profile_id": "partial-basis-retention-profile:sha256:1727532fd69214120cddfbb46b2a9f7dc1f2a3c5078f62f33aec28abd277d5b3",
+    "base_basis_id": "B0",
+    "extended_basis_id": "B1",
+    "prior_local_coordinates_preserved": "YES",
+    "new_horizons": [
+      "H_C"
+    ],
+    "exterior_posture": "UNRESOLVED",
+    "extension_id": "partial-basis-retention-profile-extension:sha256:00abe68d1546d608becb9289ba21070876e02cfe0ba016acefd2107bc6d242d2",
+    "global_invariance_effect": "NONE",
+    "planning_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE",
+    "integrity_sha256": "2f9b127659152d57a22a96b2770274ea08ca1e2a53c43a9f2b6f7444d9e188de"
+  },
+  "assertions": {
+    "g9_result_blob_exact": true,
+    "g9_witness_blob_exact": true,
+    "g9_standing_matched": true,
+    "g9_scope_aggregation_witness_passed": true,
+    "b0_profile_exact": true,
+    "b1_profile_exact": true,
+    "b0_scope_requirement_required": true,
+    "b1_scope_requirement_required": true,
+    "prior_local_coordinates_preserved": true,
+    "new_horizon_exact": true,
+    "exterior_unresolved_both_bases": true,
+    "global_ecology_hot_unresolved_both_bases": true,
+    "no_scalar_hotness_fields": true,
+    "no_transition_or_downstream_effects": true
+  },
+  "all_assertions_pass": true,
+  "claim_ceiling": "One exact partial declared basis for WORLD_CHANGE != METHOD_CHANGE can carry a non-scalar retention profile over REQUIRED, UNRESOLVED, and NOT_REQUIRED member sets while the exterior remains explicitly UNRESOLVED. Extending B0 to B1 by adding H_C preserves unchanged prior horizon-local coordinates. Counts are occupancy only and do not establish load weights, scalar hotness, global ecology coverage, economic optimality, global invariance, cooling authority, retention transition, authority, execution, or scientific standing.",
+  "stopped": "YES"
+}
