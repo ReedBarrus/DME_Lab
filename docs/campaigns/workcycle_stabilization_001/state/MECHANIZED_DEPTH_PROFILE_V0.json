@@ -174,8 +174,8 @@
   },
   "next_load_bearing_coordinate": {
     "coordinate": "materialized_invocation_result_settlement",
-    "pressure": "MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001",
-    "selection_basis": "Exact materialized result witnessing is matched; candidate settlement at the same identity resolution is the next required relation."
+    "pressure": "MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_ADJUDICATION",
+    "selection_basis": "The exact materialized settlement witness has clean witness-only transport. Independent adjudication is required before consequence evidence composition."
   },
   "downstream_frontier": [
     "pressure exact materialized candidate settlement",
@@ -203,12 +203,16 @@
   },
   "settlement_depth": {
     "materialized_invocation_result_settlement": {
-      "posture": "IMPLEMENTED_READY_FOR_PRESSURE",
+      "posture": "WITNESSED_AWAITING_ADJUDICATION",
       "implementation": "src/coordination/materialized_invocation_result_settlement_v0.py",
       "tests": "tests/coordination/test_materialized_invocation_result_settlement_v0.py",
       "observer": "tools/observe_materialized_invocation_result_settlement_v0.py",
-      "pressure_packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_READY_TO_RUN.md",
-      "claim": "Candidate only: exact materialized result witness + externally supplied field dispositions/bases -> deterministic candidate settlement preserving full exact-work lineage; no qualification or consequence standing."
+      "witness": "materialized_invocation_result_settlement_observation.json",
+      "witness_source_ref": "8680b6a50f10acd43e34775cd272ddb5cfeeb4c3",
+      "witness_transport_ref": "3f363a06d865f75484838ea13e2a4dab8023c67a",
+      "adjudication_packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+      "observed": "One immutable exact materialized-work result witness receives externally supplied field-level candidate dispositions and explicit bases in one deterministic settlement record while conserving exact successor/work-spec/materialized-unit/admission/consumption/attempt/output lineage. Candidate acceptance creates no qualification; no external consequence, authority, execution, Atlas mutation, or standing is created.",
+      "claim": "No exact materialized settlement standing until independent adjudication."
     }
   }
 }
