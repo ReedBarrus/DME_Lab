@@ -1,0 +1,221 @@
+# DECLARATION_STANDING_INVARIANT_PROMOTION_001 — Independent Promotion Adjudication
+
+PRESSURE_ID:
+DECLARATION_STANDING_INVARIANT_PROMOTION_V0_ADJUDICATION
+
+ROLE:
+FRESH_INDEPENDENT_INVARIANT_PROMOTION_ADJUDICATOR
+
+MODE:
+READ_ONLY
++
+NO_LIVE_CHAT_CONTEXT
++
+NO_REDESIGN
++
+NO_REPAIR
++
+NO_LEDGER_MUTATION
++
+NO_GENERAL_GAP_DEFINITION
++
+NO_AUTOMATIC_DISCOVERY_INFERENCE
++
+NO_DOWNSTREAM_ELIGIBILITY
++
+NO_ARCHITECTURE_REQUIREMENT
++
+NO_GLOBAL_INVARIANCE
++
+NO_GLOBAL_ECOLOGY
++
+NO_ECONOMIC_WEIGHTING
++
+NO_PLANNING
++
+NO_AUTHORITY
++
+NO_EXECUTION
++
+NO_SCIENTIFIC_PROMOTION
+
+GOVERNING_LEDGER:
+docs/methods/EARNED_MEMORY_INVARIANTS_v0.md
+
+LEDGER_BLOB:
+210a055d42e8bbf55d3ff09cde2ee54b00f08cc0
+
+GOVERNING_PROMOTION_RULE:
+
+candidate relation
+→ pressure
+→ consequential failure or repeated reconstruction requirement
+→ bounded qualification
+→ ledger entry
+
+FROZEN_G13_RESULT:
+
+docs/campaigns/declaration_standing_reconstruction_001/pressure_runs/
+DECLARATION_STANDING_RECONSTRUCTION_V0_PRESSURE_RESULT_001.md
+
+blob:
+396604a594370b9d991fa30e18ec44c27a96c76e
+
+FROZEN_G13_WITNESS:
+
+docs/campaigns/declaration_standing_reconstruction_001/pressure_runs/
+DECLARATION_STANDING_RECONSTRUCTION_V0_PRESSURE_OBSERVATION_001.json
+
+blob:
+14e915cbc351447688ba8d22362496be35977893
+
+G13_REQUIRED_STANDING:
+
+DECLARATION_STANDING_RECONSTRUCTION_V0_MATCHED
+
+G13_EARNED_RELATION:
+
+CONTROL:
+DECLARATION_STANDING = EXTERNALLY_SUPPLIED_LIVE_GAP
+
+ABLATION:
+DECLARATION_STANDING = UNRESOLVED_FROM_CARRIER
+
+while both preserve:
+
+HORIZON_ID = H1_POST_CONSEQUENCE_PHASE_HANDOFF
+ITEM_ID = G1_STALE_SUCCESSOR_3_HANDOFF
+RELATION_TARGETS = {CONTROL_KERNEL_ACTIVATION, CAMPAIGN_HANDOFF, RECONSTRUCTION}
+POST_REPAIR_HORIZON_POSTURE = HORIZON_SATISFIED
+
+TARGET:
+
+Adjudicate only whether the exact G13 basis satisfies the existing invariant-ledger
+promotion rule strongly enough to admit the bounded proposed EMI-012 entry below.
+
+Do not mutate the ledger.
+
+Also adjudicate whether the wording remains inside the earned claim ceiling and
+does not become a general definition of gap, a machine-discovery rule, or a claim
+that explicit labels are universally necessary for standing.
+
+PROPOSED_LEDGER_ENTRY:
+
+## EMI-012 — Descriptive content is not explicit declaration standing
+
+```text
+descriptive / repair coordinates
+!=
+explicit declaration standing
+```
+
+for the tested externally supplied declaration-reconstruction class.
+
+For the exact G13 specimen, both carriers preserved:
+
+```text
+HORIZON_ID = H1_POST_CONSEQUENCE_PHASE_HANDOFF
+ITEM_ID = G1_STALE_SUCCESSOR_3_HANDOFF
+RELATION_TARGETS = {
+  CONTROL_KERNEL_ACTIVATION,
+  CAMPAIGN_HANDOFF,
+  RECONSTRUCTION
+}
+POST_REPAIR_HORIZON_POSTURE = HORIZON_SATISFIED
+```
+
+while only the control preserved:
+
+```text
+DECLARATION_STANDING = EXTERNALLY_SUPPLIED_LIVE_GAP
+```
+
+When that standing coordinate was ablated, an independent reconstructor returned:
+
+```text
+DECLARATION_STANDING = UNRESOLVED_FROM_CARRIER
+```
+
+despite retaining the same descriptive and repair coordinates.
+
+**Earned by:** G13 /
+`DECLARATION_STANDING_RECONSTRUCTION_V0_PRESSURE_001`.
+
+Frozen G13 result:
+`docs/campaigns/declaration_standing_reconstruction_001/pressure_runs/DECLARATION_STANDING_RECONSTRUCTION_V0_PRESSURE_RESULT_001.md`
+(blob `396604a594370b9d991fa30e18ec44c27a96c76e`).
+
+Runtime G13 witness:
+`docs/campaigns/declaration_standing_reconstruction_001/pressure_runs/DECLARATION_STANDING_RECONSTRUCTION_V0_PRESSURE_OBSERVATION_001.json`
+(blob `14e915cbc351447688ba8d22362496be35977893`).
+
+**Consequence:** when this class of bounded carrier must reconstruct exact
+externally supplied declaration standing without reopening cold evidence,
+descriptive content and matched repair correspondence alone are insufficient.
+Enough explicit declaration standing must be preserved to recover that coordinate.
+
+This does not establish a general definition of gap, automatic gap discovery,
+residual-to-gap transition law, downstream work eligibility, architecture
+requirement, global invariance, global ecology coverage, economic weighting,
+planning, authority, execution, or scientific standing.
+
+REQUIRED_NONCOLLAPSES:
+
+DECLARATION_STANDING_RECONSTRUCTION_LOAD
+!=
+GENERAL_GAP_DEFINITION
+
+EXTERNALLY_SUPPLIED_GAP
+!=
+MACHINE_DISCOVERED_GAP
+
+DECLARATION_STANDING
+!=
+DOWNSTREAM_ELIGIBILITY
+
+REPAIR_CORRESPONDENCE
+!=
+AUTOMATIC_DISCOVERY
+
+LEDGER_PROMOTION
+!=
+GLOBAL_INVARIANCE
+
+ALLOWED_DISPOSITIONS:
+
+DECLARATION_STANDING_INVARIANT_PROMOTION_V0_MATCHED
+DECLARATION_STANDING_INVARIANT_PROMOTION_V0_PARTIAL
+DECLARATION_STANDING_INVARIANT_PROMOTION_V0_FRACTURED
+DECLARATION_STANDING_INVARIANT_PROMOTION_V0_UNRESOLVED
+
+RETURN_ONLY:
+
+PRESSURE_ID
+GOVERNING_LEDGER_BLOB_MATCHED
+G13_MATCHED
+G13_RESULT_BLOB_MATCHED
+G13_WITNESS_BLOB_MATCHED
+CANDIDATE_RELATION
+PRESSURE_REQUIREMENT_SATISFIED
+CONSEQUENTIAL_FAILURE_OR_REPEATED_RECONSTRUCTION_REQUIREMENT_SATISFIED
+BOUNDED_QUALIFICATION_SATISFIED
+PROMOTION_RULE_SATISFIED
+PROPOSED_ENTRY_CLAIM_CEILING_PRESERVED
+PROPOSED_ENTRY_GLOBAL_WIDENING
+LEDGER_ENTRY_ELIGIBLE
+LEDGER_MUTATION_EFFECT
+GENERAL_GAP_DEFINITION_EFFECT
+AUTOMATIC_DISCOVERY_EFFECT
+DOWNSTREAM_ELIGIBILITY_EFFECT
+ARCHITECTURE_REQUIREMENT_EFFECT
+GLOBAL_INVARIANCE_EFFECT
+GLOBAL_ECOLOGY_EFFECT
+ECONOMIC_WEIGHTING_EFFECT
+PLANNING_EFFECT
+AUTHORITY_EFFECT
+EXECUTION_EFFECT
+SCIENTIFIC_STANDING_EFFECT
+DISPOSITION
+UNRESOLVED
+CLAIM_CEILING
+STOPPED
