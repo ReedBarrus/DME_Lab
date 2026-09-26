@@ -1,0 +1,189 @@
+{
+  "object_type": "RELATIONAL_CHANGE_STEWARDSHIP_V0_OBSERVATION",
+  "pressure_id": "RELATIONAL_CHANGE_STEWARDSHIP_V0_PRESSURE_001",
+  "cases": [
+    {
+      "case_id": "C1_COHERENT",
+      "result": {
+        "object_type": "RELATIONAL_CHANGE_STEWARDSHIP_V0_RESULT",
+        "relation_id": "C1_COHERENT",
+        "before": {
+          "endpoint": "A0",
+          "counterpart": "B0",
+          "edge": "E0"
+        },
+        "after": {
+          "endpoint": "A1",
+          "counterpart": "B0",
+          "edge": "E0"
+        },
+        "obligations": {
+          "endpoint": "CHANGE",
+          "counterpart": "PRESERVE",
+          "edge": "PRESERVE",
+          "flow": "PASS"
+        },
+        "checks": {
+          "endpoint_obligation_satisfied": true,
+          "counterpart_obligation_satisfied": true,
+          "edge_obligation_satisfied": true,
+          "flow_witness_required": true,
+          "flow_witness": "PASS",
+          "flow_obligation_satisfied": true
+        },
+        "closure_posture": "COHERENT",
+        "effects": {
+          "mutation_effect": "NONE",
+          "planning_effect": "NONE",
+          "authority_effect": "NONE",
+          "execution_effect": "NONE",
+          "scientific_standing_effect": "NONE"
+        }
+      }
+    },
+    {
+      "case_id": "C2_MISSING_FLOW",
+      "result": {
+        "object_type": "RELATIONAL_CHANGE_STEWARDSHIP_V0_RESULT",
+        "relation_id": "C2_MISSING_FLOW",
+        "before": {
+          "endpoint": "A0",
+          "counterpart": "B0",
+          "edge": "E0"
+        },
+        "after": {
+          "endpoint": "A1",
+          "counterpart": "B0",
+          "edge": "E0"
+        },
+        "obligations": {
+          "endpoint": "CHANGE",
+          "counterpart": "PRESERVE",
+          "edge": "PRESERVE",
+          "flow": "PASS"
+        },
+        "checks": {
+          "endpoint_obligation_satisfied": true,
+          "counterpart_obligation_satisfied": true,
+          "edge_obligation_satisfied": true,
+          "flow_witness_required": true,
+          "flow_witness": "ABSENT",
+          "flow_obligation_satisfied": false
+        },
+        "closure_posture": "HOLD",
+        "effects": {
+          "mutation_effect": "NONE",
+          "planning_effect": "NONE",
+          "authority_effect": "NONE",
+          "execution_effect": "NONE",
+          "scientific_standing_effect": "NONE"
+        }
+      }
+    },
+    {
+      "case_id": "C3_COUNTERPART_DRIFT",
+      "result": {
+        "object_type": "RELATIONAL_CHANGE_STEWARDSHIP_V0_RESULT",
+        "relation_id": "C3_COUNTERPART_DRIFT",
+        "before": {
+          "endpoint": "A0",
+          "counterpart": "B0",
+          "edge": "E0"
+        },
+        "after": {
+          "endpoint": "A1",
+          "counterpart": "B1",
+          "edge": "E0"
+        },
+        "obligations": {
+          "endpoint": "CHANGE",
+          "counterpart": "PRESERVE",
+          "edge": "PRESERVE",
+          "flow": "PASS"
+        },
+        "checks": {
+          "endpoint_obligation_satisfied": true,
+          "counterpart_obligation_satisfied": false,
+          "edge_obligation_satisfied": true,
+          "flow_witness_required": true,
+          "flow_witness": "PASS",
+          "flow_obligation_satisfied": true
+        },
+        "closure_posture": "HOLD",
+        "effects": {
+          "mutation_effect": "NONE",
+          "planning_effect": "NONE",
+          "authority_effect": "NONE",
+          "execution_effect": "NONE",
+          "scientific_standing_effect": "NONE"
+        }
+      }
+    },
+    {
+      "case_id": "C4_UNRESOLVED",
+      "result": {
+        "object_type": "RELATIONAL_CHANGE_STEWARDSHIP_V0_RESULT",
+        "relation_id": "C4_UNRESOLVED",
+        "before": {
+          "endpoint": "A0",
+          "counterpart": "B0",
+          "edge": "E0"
+        },
+        "after": {
+          "endpoint": "A1",
+          "counterpart": "B0",
+          "edge": "E0"
+        },
+        "obligations": {
+          "endpoint": "CHANGE",
+          "counterpart": "UNRESOLVED",
+          "edge": "PRESERVE",
+          "flow": "PASS"
+        },
+        "checks": {
+          "endpoint_obligation_satisfied": true,
+          "counterpart_obligation_satisfied": null,
+          "edge_obligation_satisfied": true,
+          "flow_witness_required": true,
+          "flow_witness": "PASS",
+          "flow_obligation_satisfied": true
+        },
+        "closure_posture": "UNRESOLVED",
+        "effects": {
+          "mutation_effect": "NONE",
+          "planning_effect": "NONE",
+          "authority_effect": "NONE",
+          "execution_effect": "NONE",
+          "scientific_standing_effect": "NONE"
+        }
+      }
+    }
+  ],
+  "expected_closure": {
+    "C1_COHERENT": "COHERENT",
+    "C2_MISSING_FLOW": "HOLD",
+    "C3_COUNTERPART_DRIFT": "HOLD",
+    "C4_UNRESOLVED": "UNRESOLVED"
+  },
+  "checks": {
+    "C1_COHERENT": true,
+    "C2_MISSING_FLOW": true,
+    "C3_COUNTERPART_DRIFT": true,
+    "C4_UNRESOLVED": true
+  },
+  "all_cases_match": true,
+  "candidate_relation": {
+    "local_transformation_success_ne_relational_closure": "YES",
+    "required_flow_witness_carries_closure_load": "YES",
+    "counterpart_preservation_carries_closure_load": "YES"
+  },
+  "effects": {
+    "mutation_effect": "NONE",
+    "planning_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE"
+  },
+  "claim_ceiling": "One deterministic four-case pressure over supplied relation states, supplied post-change obligations, and supplied flow witnesses. No relation discovery, propagation inference, planning activation, mutation authority, execution, or global coherence claim is created.",
+  "stopped": "YES"
+}
