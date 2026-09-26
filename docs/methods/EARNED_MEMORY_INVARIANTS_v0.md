@@ -429,12 +429,72 @@ execution, or scientific promotion.
 
 ---
 
-## Current nonclaim
-
-These eleven entries are the current bounded invariant bank.
+## EMI-012 — Descriptive content is not explicit declaration standing
 
 ```text
-eleven earned invariants
+descriptive / repair coordinates
+!=
+explicit declaration standing
+```
+
+for the tested externally supplied declaration-reconstruction class.
+
+For the exact G13 specimen, both carriers preserved:
+
+```text
+HORIZON_ID = H1_POST_CONSEQUENCE_PHASE_HANDOFF
+ITEM_ID = G1_STALE_SUCCESSOR_3_HANDOFF
+RELATION_TARGETS = {
+  CONTROL_KERNEL_ACTIVATION,
+  CAMPAIGN_HANDOFF,
+  RECONSTRUCTION
+}
+POST_REPAIR_HORIZON_POSTURE = HORIZON_SATISFIED
+```
+
+while only the control preserved:
+
+```text
+DECLARATION_STANDING = EXTERNALLY_SUPPLIED_LIVE_GAP
+```
+
+When that standing coordinate was ablated, an independent reconstructor returned:
+
+```text
+DECLARATION_STANDING = UNRESOLVED_FROM_CARRIER
+```
+
+despite retaining the same descriptive and repair coordinates.
+
+**Earned by:** G13 /
+`DECLARATION_STANDING_RECONSTRUCTION_V0_PRESSURE_001`.
+
+Frozen G13 result:
+`docs/campaigns/declaration_standing_reconstruction_001/pressure_runs/DECLARATION_STANDING_RECONSTRUCTION_V0_PRESSURE_RESULT_001.md`
+(blob `396604a594370b9d991fa30e18ec44c27a96c76e`).
+
+Runtime G13 witness:
+`docs/campaigns/declaration_standing_reconstruction_001/pressure_runs/DECLARATION_STANDING_RECONSTRUCTION_V0_PRESSURE_OBSERVATION_001.json`
+(blob `14e915cbc351447688ba8d22362496be35977893`).
+
+**Consequence:** when this class of bounded carrier must reconstruct exact
+externally supplied declaration standing without reopening cold evidence,
+descriptive content and matched repair correspondence alone are insufficient.
+Enough explicit declaration standing must be preserved to recover that coordinate.
+
+This does not establish a general definition of gap, automatic gap discovery,
+residual-to-gap transition law, downstream work eligibility, architecture
+requirement, global invariance, global ecology coverage, economic weighting,
+planning, authority, execution, or scientific standing.
+
+---
+
+## Current nonclaim
+
+These twelve entries are the current bounded invariant bank.
+
+```text
+twelve earned invariants
 !=
 complete coordinate system of semantic memory
 ```
