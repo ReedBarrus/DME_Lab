@@ -199,7 +199,7 @@ Frozen adjudication result:
 (blob `7d037362dd0e438ae7c1fb2553d452a9ae2fd233`).
 
 Runtime witness:
-`distinction_retention_mode_v0_observation.json`
+`docs/evidence/for_planner/distinction_retention_mode_v0_observation.json`
 (blob `1ff52354096371710ccdcdd77dfb9a6b2c1ada3b`).
 
 **Consequence:** hot memory may retain the smallest carrier required to preserve
@@ -251,7 +251,7 @@ Frozen adjudication result:
 (blob `e5f603fbea6ef05193f092245252cd26d6eae66a`).
 
 Runtime witness:
-`distinction_retention_currentness_v0_observation.json`
+`docs/evidence/for_planner/distinction_retention_currentness_v0_observation.json`
 (blob `949ff2b9333146ca16e68981123f338f6e4dfd15`).
 
 **Consequence:** horizon-scoped hot residency must not silently outlive the
@@ -298,7 +298,7 @@ Frozen adjudication result:
 (blob `94152a26078c527cabfef7cd2cf1e7e3b4990df1`).
 
 Runtime witness:
-`retention_scope_aggregation_v0_observation.json`
+`docs/evidence/for_planner/retention_scope_aggregation_v0_observation.json`
 (blob `212d7a9d4fb7bc982cb83b418ee6d5982008c574`).
 
 **Consequence:** a bounded declared scope can be aggregated without pretending
@@ -346,7 +346,7 @@ Frozen adjudication result:
 (blob `e0c27dd06b68ac7e3dc08d20093e60eee35509eb`).
 
 Runtime witness:
-`partial_basis_retention_profile_v0_observation.json`
+`docs/evidence/for_planner/partial_basis_retention_profile_v0_observation.json`
 (blob `4f4c7efef184c1f60ab362420d7ef09a1c43dab1`).
 
 **Consequence:** a partial declared relational basis may grow by adding a new
@@ -404,7 +404,7 @@ Frozen G11 adjudication result:
 (blob `c31eefa748213c70a39713e2137343638ee4fb15`).
 
 Runtime G11 witness:
-`partial_basis_residual_conservation_v0_observation.json`
+`docs/evidence/for_planner/partial_basis_residual_conservation_v0_observation.json`
 (blob `1736d63c13c27d37641f3a6f78825c9288428a50`).
 
 Frozen G12 adjudication result:
@@ -543,7 +543,7 @@ Frozen G14 result:
 (blob `329124a845fe1e935cd17bb87919ccb340199fe0`).
 
 Runtime G14 witness:
-`declaration_work_eligibility_selection_load_v0_observation.json`
+`docs/evidence/for_planner/declaration_work_eligibility_selection_load_v0_observation.json`
 (blob `54ab5157ec936474c6189f2d956127fc5cb1e0c0`).
 
 **Consequence:** in this tested selector class, declared-gap presence alone is
