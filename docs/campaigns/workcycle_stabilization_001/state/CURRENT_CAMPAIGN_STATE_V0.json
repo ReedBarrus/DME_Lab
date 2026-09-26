@@ -123,18 +123,18 @@
     }
   },
   "current_unresolved": [
-    "Successor work-unit materialization is independently matched.",
-    "Existing successor-bound authority/admission may not bind exact materialized workflow-unit or work-spec identity; diagnostic pressure is staged.",
-    "Fresh exact-work authority/admission remains unearned.",
+    "Materialized-unit authority binding is witnessed and awaits independent adjudication.",
+    "Observed routing suggests current successor-bound authority does not bind exact materialized workflow-unit or work-spec identity.",
+    "No authority-binding repair is admitted until the fracture adjudication is frozen.",
     "Repeated metabolism and seat consequential/meta-feedback remain unearned."
   ],
   "next_pressure": {
-    "pressure_id": "MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001",
+    "pressure_id": "MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_ADJUDICATION",
     "work_item_id": "WORKCYCLE_STABILIZATION_001_MATERIALIZED_UNIT_AUTHORITY_BINDING",
-    "destination": "LOCAL_MATERIALIZED_UNIT_AUTHORITY_BINDING_WITNESS",
-    "packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_READY_TO_RUN.md",
-    "selection_basis": "SUCCESSOR_WORK_UNIT_MATERIALIZATION_MATCHED is frozen. Because one successor can bind multiple distinct materialized work units, the next load-bearing relation is whether current successor-bound authority also binds exact materialized-unit/work-spec identity before admission.",
-    "expected_operating_change": "Observe whether two distinct units under the same successor share identical successor-bound authority coordinates and cross existing admission without exact materialized-unit identity. Preserve any fracture without repair.",
+    "destination": "FRESH_INDEPENDENT_MATERIALIZED_UNIT_AUTHORITY_BINDING_ADJUDICATOR",
+    "packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+    "selection_basis": "The authority-binding witness exercised repo head 1984164bf4f6797d8249ceaf49fae712aa2445bf and was transported alone in c34b37b681c717dcc1b426385c942522dfc71a15. The witness shows two distinct materialized units under the same successor sharing the same successor-bound authority coordinates and both crossing the existing admission decision without exact unit/work-spec binding. Independent adjudication is required before any repair.",
+    "expected_operating_change": "Freeze MATCHED/PARTIAL/FRACTURED/UNRESOLVED for successor-bound authority versus exact materialized-work authority while preserving prior component standing.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -221,7 +221,9 @@
       "successor_work_unit_materialization_observation.json",
       "docs/campaigns/workcycle_stabilization_001/pressure_runs/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_RESULT_001.md",
       "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_READY_TO_RUN.md",
-      "tools/observe_materialized_unit_authority_binding_v0.py"
+      "tools/observe_materialized_unit_authority_binding_v0.py",
+      "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+      "materialized_unit_authority_binding_observation.json"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
@@ -290,8 +292,8 @@
       "exact successor + explicit bounded work spec -> complete next workflow unit independently matched"
     ],
     "unresolved_components": [
-      "materialized-unit authority binding has not been pressured",
-      "exact work-unit authority/admission remains unearned",
+      "materialized-unit authority binding awaits independent adjudication",
+      "exact work-unit/work-spec authority remains unearned",
       "repeat without manual successor selection has not yet been observed"
     ]
   },
