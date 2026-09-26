@@ -1,0 +1,64 @@
+{
+  "object_type": "RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_CURRENT_CAMPAIGN_STATE_V0",
+  "campaign_id": "RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_001",
+  "campaign_posture": "G12_SELECTED_READY_FOR_RECONSTRUCTION_PRESSURE",
+  "predecessor": {
+    "campaign_id": "PARTIAL_BASIS_RESIDUAL_CONSERVATION_001",
+    "standing": "PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_MATCHED",
+    "result_handle": "docs/campaigns/partial_basis_residual_conservation_001/pressure_runs/PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_PRESSURE_RESULT_001.md",
+    "result_blob": "c31eefa748213c70a39713e2137343638ee4fb15",
+    "witness_blob": "1736d63c13c27d37641f3a6f78825c9288428a50"
+  },
+  "horizon": {
+    "horizon_id": "G11_RESIDUAL_RECONSTRUCTION_CONTINUITY_HORIZON_V0",
+    "selection_handle": "docs/campaigns/residual_conservation_reconstruction_load_001/HORIZON_SELECTION_G12_V0.md",
+    "selection_blob": "83fd917f5556c470de832eec5c745c1659ede283"
+  },
+  "current_gap": {
+    "gap_id": "G12_G11_RESIDUAL_RECONSTRUCTION_DEPENDENCE",
+    "gap_class": "OPERATIVE_RELATIONAL",
+    "statement": "The G11 relation is boundedly qualified but invariant promotion remains unearned because reconstruction load has not yet been demonstrated under a hot-carrier ablation with cold-source routability held constant.",
+    "work_eligible": true
+  },
+  "promotion_target": {
+    "governing_ledger": "docs/methods/EARNED_MEMORY_INVARIANTS_v0.md",
+    "posture": "PINNED_NOT_EARNED",
+    "missing_predicate": "CONSEQUENTIAL_FAILURE_OR_REPEATED_RECONSTRUCTION_REQUIREMENT",
+    "ledger_mutation_effect": "NONE"
+  },
+  "pressure_pair": {
+    "control_carrier": "docs/campaigns/residual_conservation_reconstruction_load_001/specimens/G11_RESIDUAL_RECONSTRUCTION_CONTROL_CARRIER_V0.json",
+    "control_blob": "3dbda7ca3cae52a02827d420bff431c3197eb9ad",
+    "ablation_carrier": "docs/campaigns/residual_conservation_reconstruction_load_001/specimens/G11_RESIDUAL_RECONSTRUCTION_ABLATION_CARRIER_V0.json",
+    "ablation_blob": "20740686e879dd5c853b0e2b7185672c831efb35"
+  },
+  "explicitly_deferred": [
+    "invariant ledger mutation",
+    "residual gap promotion",
+    "residual work-eligibility promotion",
+    "architecture requirement",
+    "functional current load",
+    "authority current load",
+    "provenance current load",
+    "temporal current load",
+    "global current load-bearing status",
+    "global ecology hot requirement",
+    "quantitative carrying cost",
+    "scalar hotness",
+    "multi-gap ranking",
+    "seven-surface/six-load global validation",
+    "planning authority",
+    "execution authority",
+    "scientific standing"
+  ],
+  "next_pressure": {
+    "pressure_id": "RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_V0_PRESSURE_001",
+    "destination": "TWO_FRESH_INDEPENDENT_RECONSTRUCTIONS",
+    "packet": "docs/campaigns/residual_conservation_reconstruction_load_001/RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_V0_PRESSURE_001_READY_TO_RUN.md",
+    "required_returns": [
+      "CONTROL_RETURN",
+      "ABLATION_RETURN"
+    ],
+    "if_nothing_changes": "RUN_ONCE_PER_CARRIER"
+  }
+}
