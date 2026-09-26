@@ -41,7 +41,7 @@ def _collapse(world: str, method: str) -> str:
 
 def build_method_distinction_load_ablation(
     *,
-    source_g4_observation_integrity_sha256: str,
+    source_g4_observation_blob_sha: str,
     cases: Mapping[str, Mapping[str, Any]],
     representation_source: str = "EXTERNALLY_SUPPLIED",
 ) -> dict[str, Any]:
@@ -50,11 +50,11 @@ def build_method_distinction_load_ablation(
             "v0 representation_source must be EXTERNALLY_SUPPLIED"
         )
     if (
-        not isinstance(source_g4_observation_integrity_sha256, str)
-        or len(source_g4_observation_integrity_sha256) != 64
+        not isinstance(source_g4_observation_blob_sha, str)
+        or len(source_g4_observation_blob_sha) != 40
     ):
         raise MethodDistinctionLoadError(
-            "source_g4_observation_integrity_sha256 must be sha256"
+            "source_g4_observation_blob_sha must be a Git blob SHA"
         )
     if not isinstance(cases, Mapping) or not cases:
         raise MethodDistinctionLoadError("cases must be a non-empty mapping")
@@ -102,8 +102,8 @@ def build_method_distinction_load_ablation(
 
     material = {
         "distinction_id": DISTINCTION_ID,
-        "source_g4_observation_integrity_sha256": (
-            source_g4_observation_integrity_sha256
+        "source_g4_observation_blob_sha": (
+            source_g4_observation_blob_sha
         ),
         "pre_ablation_cases": pre,
         "ablated_generic_change": ablated,
@@ -164,8 +164,8 @@ def validate_method_distinction_load_ablation(
         for name, coords in retained["pre_ablation_cases"].items()
     }
     expected = build_method_distinction_load_ablation(
-        source_g4_observation_integrity_sha256=retained[
-            "source_g4_observation_integrity_sha256"
+        source_g4_observation_blob_sha=retained[
+            "source_g4_observation_blob_sha"
         ],
         cases=reconstructed_cases,
         representation_source=retained["representation_source"],
