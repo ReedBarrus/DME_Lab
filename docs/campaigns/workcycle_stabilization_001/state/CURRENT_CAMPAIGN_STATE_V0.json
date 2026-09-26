@@ -143,18 +143,17 @@
     }
   },
   "current_unresolved": [
-    "Exact materialized-work immutable result witnessing is independently matched.",
-    "Exact materialized-work candidate settlement is implemented and ready for runtime pressure.",
+    "Exact materialized-work candidate settlement is witnessed and awaits independent adjudication.",
     "Exact materialized-work external consequence, reconciliation, and successor3 remain unearned.",
-    "Post-consequence control/economy projection remains dormant until successor3 freezes the consequence spine."
+    "Post-consequence six-load-economy projection is pinned but dormant until the consequence spine is frozen."
   ],
   "next_pressure": {
-    "pressure_id": "MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001",
+    "pressure_id": "MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_ADJUDICATION",
     "work_item_id": "WORKCYCLE_STABILIZATION_001_MATERIALIZED_INVOCATION_RESULT_SETTLEMENT",
-    "destination": "LOCAL_EXACT_MATERIALIZED_RESULT_SETTLEMENT_WITNESS",
-    "packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_READY_TO_RUN.md",
-    "selection_basis": "MATERIALIZED_INVOCATION_RESULT_WITNESS_MATCHED is frozen. The next required relation is externally supplied field-level candidate settlement over that exact immutable witness while preserving full exact-work lineage and creating no consequence or qualification standing.",
-    "expected_operating_change": "Observe deterministic exact-work candidate settlement, source-witness preservation, disposition sensitivity, exact-lineage tamper rejection, and zero qualification/consequence/authority/execution/Atlas/standing effects.",
+    "destination": "FRESH_INDEPENDENT_EXACT_MATERIALIZED_SETTLEMENT_ADJUDICATOR",
+    "packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+    "selection_basis": "The exact settlement witness exercised repo head 8680b6a50f10acd43e34775cd272ddb5cfeeb4c3 and was transported alone in 3f363a06d865f75484838ea13e2a4dab8023c67a. It preserves source-witness and exact-work lineage, records externally supplied candidate dispositions deterministically, and creates no qualification or consequence standing. Independent adjudication is required before consequence evidence composition.",
+    "expected_operating_change": "Freeze MATCHED/PARTIAL/FRACTURED/UNRESOLVED for exact materialized-work candidate settlement without widening candidate acceptance into qualification, semantic truth, consequence, reconciliation, authority, execution, or Atlas mutation.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -264,7 +263,9 @@
       "tests/observation/test_materialized_invocation_result_witness_v0.py",
       "tools/observe_materialized_invocation_result_witness_v0.py",
       "docs/campaigns/workcycle_stabilization_001/pressure_runs/MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_RESULT_001.md",
-      "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_READY_TO_RUN.md"
+      "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_READY_TO_RUN.md",
+      "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+      "materialized_invocation_result_settlement_observation.json"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
@@ -335,8 +336,8 @@
       "exact materialized-work one-shot authority consumption independently matched"
     ],
     "unresolved_components": [
-      "exact materialized-work candidate settlement awaits runtime pressure",
-      "exact materialized-work external consequence/reconciliation remains unearned",
+      "exact materialized-work candidate settlement awaits independent adjudication",
+      "exact external consequence evidence/reconciliation remains unearned",
       "successor3 has not yet been derived"
     ]
   },
