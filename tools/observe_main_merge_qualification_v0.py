@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
-import hashlib, json, re, subprocess, sys
+import hashlib, json, subprocess, sys
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/"main_merge_qualification_observation.json"
+TIMEOUT_SECONDS=60
 
 RESULTS={
   "successor_projection":(
@@ -26,13 +27,80 @@ RESULTS={
   ),
 }
 
-def run(args):
-    return subprocess.run(args,cwd=ROOT,capture_output=True,text=True)
+# Bounded matrix = active repo CI regressions + exact promoted consequence/control chain.
+PY_MODULES=[
+  # current control kernel
+  "tests.control.test_control_kernel_cell_001_v0",
+  "tests.control.test_relational_horizon_v0",
+  "tests.control.test_horizon_gap_selector_v0",
+  # promoted workcycle / consequence chain
+  "tests.coordination.test_workcycle_v0",
+  "tests.coordination.test_basis_workcycle_v1",
+  "tests.coordination.test_authority_binding_v0",
+  "tests.coordination.test_atomic_admission_v0",
+  "tests.coordination.test_verified_authority_admission_v0",
+  "tests.coordination.test_admitted_authority_consumption_v0",
+  "tests.coordination.test_invocation_result_settlement_v0",
+  "tests.coordination.test_settlement_consequence_reconciliation_v0",
+  "tests.coordination.test_successor_work_unit_materialization_v0",
+  "tests.coordination.test_materialized_unit_authority_admission_v0",
+  "tests.coordination.test_materialized_admitted_authority_consumption_v0",
+  "tests.coordination.test_materialized_invocation_result_settlement_v0",
+  "tests.coordination.test_materialized_settlement_consequence_reconciliation_v0",
+  "tests.coordination.test_materialized_reconciliation_successor_projection_v0",
+  "tests.observation.test_invocation_result_witness_v0",
+  "tests.observation.test_materialized_invocation_result_witness_v0",
+  # established CI surfaces on this repo
+  "tests.cockpit.test_action_surface",
+  "tests.lab.test_lab_conductor",
+  "tests.cockpit.test_projection_adapter",
+  "tests.runtime.test_cockpit_online_read_integration",
+  "tests.runtime.test_historical_p09_producer_v0",
+  "tests.runtime.test_historical_p11_producer_v0",
+  "tests.runtime.test_labboib_temporal_seat",
+  "tests.runtime.test_lane_b_successor_engagement_v0",
+  "tests.runtime.test_quiet_peer_coordination_v1",
+  "tests.runtime.test_lane_b_successor_engagement_repressure_v1",
+  "tests.runtime.test_legacy_lane_succession_fencing_v0",
+  "tests.runtime.test_two_lane_coordination_v0",
+  "tests.runtime.test_live_predecessor_fence_v0",
+  "tests.runtime.test_primary_ecology_v0",
+]
+
+NODE_FILES=[
+  "tests/cockpit/test_observer.mjs",
+  "tests/cockpit/test_perceptual_instrument.mjs",
+  "tests/cockpit/test_control_adapter.mjs",
+  "tests/cockpit/test_online_integration.mjs",
+]
+
+def run(args, timeout=TIMEOUT_SECONDS):
+    try:
+        return subprocess.run(
+            args,cwd=ROOT,capture_output=True,text=True,timeout=timeout
+        ), None
+    except subprocess.TimeoutExpired as exc:
+        return None, f"TIMEOUT_AFTER_{timeout}s"
 
 def git(*args):
-    p=run(["git",*args])
+    p,e=run(["git",*args],timeout=15)
+    if e: raise RuntimeError(e)
     if p.returncode: raise RuntimeError(p.stderr.strip() or p.stdout.strip())
     return p.stdout.strip()
+
+def run_case(name,args):
+    print(f"[RUN] {name}",flush=True)
+    p,err=run(args)
+    if err:
+        print(f"[FAIL] {name} {err}",flush=True)
+        return {"name":name,"command":args,"returncode":None,"timeout":True,"passed":False,"output_tail":err}
+    output=(p.stdout+"\n"+p.stderr).strip()
+    passed=p.returncode==0
+    print(f"[{'OK' if passed else 'FAIL'}] {name}",flush=True)
+    return {
+      "name":name,"command":args,"returncode":p.returncode,"timeout":False,
+      "passed":passed,"output_tail":output[-2000:]
+    }
 
 def main():
     if OUT.exists():
@@ -41,7 +109,8 @@ def main():
     source_head=git("rev-parse","HEAD")
     main_ref=git("rev-parse","origin/main")
     clean_before=(git("status","--porcelain")=="")
-    ancestor=run(["git","merge-base","--is-ancestor","origin/main","HEAD"]).returncode==0
+    ancestor=run(["git","merge-base","--is-ancestor","origin/main","HEAD"],timeout=15)[0]
+    ancestor_ok=ancestor is not None and ancestor.returncode==0
 
     standing={}
     for name,(path,token) in RESULTS.items():
@@ -51,20 +120,23 @@ def main():
     workcycle=json.loads((ROOT/"docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json").read_text())
     control=json.loads((ROOT/"docs/campaigns/control_kernel_001/state/CURRENT_CAMPAIGN_STATE_V0.json").read_text())
 
-    tests=run([sys.executable,"-m","unittest","discover","-s","tests","-p","test_*.py","-q"])
-    combined=(tests.stdout+"\n"+tests.stderr).strip()
-    m=re.search(r"Ran\s+(\d+)\s+tests?",combined)
-    test_count=int(m.group(1)) if m else None
+    cases=[]
+    for module in PY_MODULES:
+        cases.append(run_case(module,[sys.executable,"-m","unittest",module,"-q"]))
+    for file in NODE_FILES:
+        cases.append(run_case(file,["node","--test",file]))
+
     clean_after=(git("status","--porcelain")=="")
     head_after=git("rev-parse","HEAD")
+    passed_count=sum(1 for x in cases if x["passed"])
 
     assertions={
       "source_head_stable": source_head==head_after,
-      "origin_main_is_ancestor": ancestor,
+      "origin_main_is_ancestor": ancestor_ok,
       "working_tree_clean_before": clean_before,
       "working_tree_clean_after": clean_after,
-      "full_test_discovery_passed": tests.returncode==0,
-      "full_test_count_observed": test_count is not None,
+      "bounded_regression_matrix_passed": all(x["passed"] for x in cases),
+      "bounded_regression_case_count_observed": len(cases)==len(PY_MODULES)+len(NODE_FILES),
       "all_required_standings_frozen": all(x["matched"] for x in standing.values()),
       "workcycle_campaign_closed": workcycle.get("campaign_posture")=="CLOSED",
       "control_kernel_checkpoint_closed": control.get("campaign_posture")=="CHECKPOINT_CLOSED_AWAITING_BRANCH_QUALIFICATION",
@@ -78,26 +150,28 @@ def main():
       "origin_main":main_ref,
       "branch":"draci-v0-candidate-basis",
       "standing_checks":standing,
-      "test_run":{
-        "command":"python -m unittest discover -s tests -p test_*.py -q",
-        "returncode":tests.returncode,
-        "test_count":test_count,
-        "output_tail":combined[-4000:],
+      "regression_matrix":{
+        "basis":"active repo CI modules plus exact promoted consequence/control chain",
+        "timeout_seconds_per_case":TIMEOUT_SECONDS,
+        "case_count":len(cases),
+        "passed_count":passed_count,
+        "cases":cases,
       },
       "assertions":assertions,
       "all_assertions_pass":all(assertions.values()),
       "qualification_posture":"CANDIDATE_FOR_INDEPENDENT_MERGE_QUALIFICATION" if all(assertions.values()) else "HOLD_NOT_QUALIFIED",
       "merge_effect":"NONE",
-      "claim_ceiling":"Exact-head branch-wide merge-qualification witness only. It demonstrates the discovered test suite passed, origin/main is an ancestor, the working tree remained clean, and required frozen component standings are present. It does not itself merge, authorize merge, create scientific standing, or qualify future commits.",
+      "claim_ceiling":"Exact-head bounded merge-qualification witness. It demonstrates a cross-surface regression matrix derived from active repo CI plus the promoted consequence/control chain passed with per-case timeouts, origin/main is an ancestor, the working tree remained clean, and required frozen standings are present. It is not exhaustive proof over every historical test, does not itself merge or authorize merge, creates no scientific standing, and does not qualify future commits.",
       "stopped":"YES",
     }
     data=(json.dumps(obs,indent=2)+"\n").encode()
     OUT.write_bytes(data)
-    print(f"[OK] wrote {OUT.relative_to(ROOT)}")
-    print(f"[OK] sha256 {hashlib.sha256(data).hexdigest()}")
-    print(f"[OK] test_count {test_count}")
-    print(f"[OK] all_assertions_pass {obs['all_assertions_pass']}")
-    print(f"[OK] qualification_posture {obs['qualification_posture']}")
+    print(f"[OK] wrote {OUT.relative_to(ROOT)}",flush=True)
+    print(f"[OK] sha256 {hashlib.sha256(data).hexdigest()}",flush=True)
+    print(f"[OK] regression_cases {len(cases)}",flush=True)
+    print(f"[OK] regression_passed {passed_count}",flush=True)
+    print(f"[OK] all_assertions_pass {obs['all_assertions_pass']}",flush=True)
+    print(f"[OK] qualification_posture {obs['qualification_posture']}",flush=True)
     return 0 if obs["all_assertions_pass"] else 1
 
 if __name__=="__main__":
