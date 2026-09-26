@@ -1,0 +1,30 @@
+{
+  "object_type": "DECLARATION_STANDING_CONTROL_CARRIER_V0",
+  "horizon_id": "H1_POST_CONSEQUENCE_PHASE_HANDOFF",
+  "horizon_posture_before": "PARTIAL",
+  "item_id": "G1_STALE_SUCCESSOR_3_HANDOFF",
+  "item_statement": "The post-consequence projection requires SUCCESSOR_3 even though earned successor law establishes that SATISFIED reconciliation closes the basis with NO_SUCCESSOR and STOP.",
+  "relation_targets": [
+    "CONTROL_KERNEL_ACTIVATION",
+    "CAMPAIGN_HANDOFF",
+    "RECONSTRUCTION"
+  ],
+  "repair_receipt": {
+    "precondition_observed": true,
+    "postcondition_observed": true,
+    "bounded_delta_observed": true,
+    "post_repair_horizon_posture": "HORIZON_SATISFIED",
+    "remaining_item_ids": [],
+    "terminal_posture": "NO_JUSTIFIED_WORK"
+  },
+  "declaration_standing": "EXTERNALLY_SUPPLIED_LIVE_GAP",
+  "selection_source": "EXTERNALLY_SUPPLIED",
+  "machine_discovery_claimed": false,
+  "source_handles": {
+    "specimen_blob": "3875683a77294648cc84a522e40f467e5a8a2ddc",
+    "result_blob": "932e14cc6e6a99a2f4aa06115fd86d6c30879737",
+    "witness_blob": "32faec55330cf1243c858377241edf77f4822ce8"
+  },
+  "cold_source_reading_during_pressure": "DISALLOWED",
+  "missing_coordinate_rule": "RETURN_UNRESOLVED_FROM_CARRIER"
+}
