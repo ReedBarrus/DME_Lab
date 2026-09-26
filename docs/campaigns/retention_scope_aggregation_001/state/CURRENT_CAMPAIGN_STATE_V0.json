@@ -1,7 +1,7 @@
 {
   "object_type": "RETENTION_SCOPE_AGGREGATION_CURRENT_CAMPAIGN_STATE_V0",
   "campaign_id": "RETENTION_SCOPE_AGGREGATION_001",
-  "campaign_posture": "G9_WITNESSED_AWAITING_ADJUDICATION",
+  "campaign_posture": "G9_MATCHED_CHECKPOINT_TERMINAL",
   "campaign_basis": "Test whether multiple exact horizon-local hot-retention requirements for one distinction can be aggregated into one declared-scope posture without claiming global ecology completeness.",
   "predecessor": {
     "campaign_id": "DISTINCTION_RETENTION_CURRENTNESS_001",
@@ -13,19 +13,13 @@
   },
   "current_cell": {
     "cell_id": "RETENTION_SCOPE_AGGREGATION_G9",
-    "posture": "WITNESSED_AWAITING_ADJUDICATION",
+    "posture": "MATCHED_CHECKPOINT_TERMINAL",
     "target": "RETENTION_SCOPE_AGGREGATION_V0",
-    "distinction": "WORLD_CHANGE != METHOD_CHANGE",
-    "witness": "retention_scope_aggregation_v0_observation.json",
-    "witness_source_ref": "49986d318667feab2dfbef4f13ff4f53ba4900f8",
-    "witness_transport_ref": "b6ba1e300ff9dffe7b602eb007db7ee68f407157"
+    "standing": "RETENTION_SCOPE_AGGREGATION_V0_MATCHED",
+    "result_handle": "docs/campaigns/retention_scope_aggregation_001/pressure_runs/RETENTION_SCOPE_AGGREGATION_V0_PRESSURE_RESULT_001.md",
+    "distinction": "WORLD_CHANGE != METHOD_CHANGE"
   },
-  "current_gap": {
-    "gap_id": "G9_RETENTION_SCOPE_AGGREGATION_EVIDENTIARY_STANDING",
-    "gap_class": "EVIDENTIARY",
-    "statement": "The G9 declared-scope aggregation mechanic has a clean runtime witness, but its scope-aggregation standing has not yet been independently adjudicated.",
-    "work_eligible": true
-  },
+  "current_gap": null,
   "aggregation_law": {
     "any_required": "REQUIRED",
     "else_any_unresolved": "UNRESOLVED",
@@ -60,9 +54,34 @@
     "scientific standing"
   ],
   "next_pressure": {
-    "pressure_id": "RETENTION_SCOPE_AGGREGATION_V0_PRESSURE_001_ADJUDICATION",
-    "destination": "FRESH_INDEPENDENT_RETENTION_SCOPE_AGGREGATION_ADJUDICATOR",
-    "packet": "docs/campaigns/retention_scope_aggregation_001/RETENTION_SCOPE_AGGREGATION_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-    "if_nothing_changes": "DO_NOT_RUN"
-  }
+    "pressure_id": "UNSELECTED",
+    "destination": "HORIZON_REINSPECTION",
+    "if_nothing_changes": "DO_NOT_INSTANTIATE_WORK"
+  },
+  "earned_cells": {
+    "RETENTION_SCOPE_AGGREGATION_G9": {
+      "standing": "RETENTION_SCOPE_AGGREGATION_V0_MATCHED",
+      "aggregation_law": {
+        "any_required": "REQUIRED",
+        "else_any_unresolved": "UNRESOLVED",
+        "else": "NOT_REQUIRED_FOR_DECLARED_SCOPE"
+      },
+      "global_ecology_hot_requirement": "UNRESOLVED",
+      "does_not_establish": [
+        "global ecology completeness",
+        "global cooling",
+        "retention transition authority",
+        "raw source deletion",
+        "depreciation",
+        "retirement",
+        "quantitative carrying-cost optimization",
+        "method capitalization",
+        "autonomous planning",
+        "authority",
+        "execution",
+        "scientific standing"
+      ]
+    }
+  },
+  "horizon_posture": "OPEN_FOR_REINSPECTION"
 }
