@@ -16,7 +16,9 @@ TARGET_BASE:
 origin/main
 
 MODE:
-BRANCH_WIDE_TEST_DISCOVERY
+BOUNDED_CROSS_SURFACE_REGRESSION_MATRIX
++
+PER_CASE_TIMEOUTS
 +
 MAIN_ANCESTRY_CHECK
 +
@@ -47,8 +49,8 @@ At one exact branch head, can the branch demonstrate all of:
 
 1. origin/main is an ancestor of HEAD;
 2. working tree is clean before the qualification run;
-3. full unittest discovery under tests/ passes;
-4. working tree remains clean after tests;
+3. the bounded cross-surface regression matrix derived from active repo CI plus the promoted consequence/control chain passes;
+4. every regression case is bounded by an explicit timeout and the working tree remains clean after tests;
 5. required frozen result artifacts contain their exact MATCHED dispositions;
 6. WORKCYCLE_STABILIZATION_001 is CLOSED;
 7. CONTROL_KERNEL_001 is checkpoint-closed with no current gap;
@@ -69,7 +71,8 @@ Expected shape:
 
 ```
 [OK] wrote main_merge_qualification_observation.json
-[OK] test_count <observed integer>
+[OK] regression_cases <observed integer>
+[OK] regression_passed <same integer>
 [OK] all_assertions_pass True
 [OK] qualification_posture CANDIDATE_FOR_INDEPENDENT_MERGE_QUALIFICATION
 ```
@@ -94,9 +97,11 @@ It still requires fresh independent adjudication before the branch may be called
 
 # CLAIM CEILING
 
-Success establishes only that the exact observed branch head passed the discovered
-test suite, remained clean, retained the required frozen standing chain, and was
-not behind origin/main at observation time.
+Success establishes only that the exact observed branch head passed the bounded
+cross-surface regression matrix derived from active repository CI plus the promoted
+consequence/control chain, remained clean, retained the required frozen standing
+chain, and was not behind origin/main at observation time. It is not exhaustive
+proof over every historical test surface.
 
 It does not merge the branch, authorize merge, create scientific standing,
 qualify future commits, or establish the deferred G4+ capabilities.
