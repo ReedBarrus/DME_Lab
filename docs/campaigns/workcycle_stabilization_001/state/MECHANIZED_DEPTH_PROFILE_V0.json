@@ -59,12 +59,15 @@
       "posture": "OUT_OF_SCOPE"
     },
     "materialized_unit_authority_binding": {
-      "posture": "DIAGNOSTIC_READY_FOR_PRESSURE",
+      "posture": "WITNESSED_AWAITING_ADJUDICATION",
       "existing_implementation": "src/coordination/verified_authority_admission_v0.py::successor_authority_coordinates + try_verified_authority_atomic_admission",
       "observer": "tools/observe_materialized_unit_authority_binding_v0.py",
-      "pressure_packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_READY_TO_RUN.md",
-      "concern": "Current authority coordinates bind exact successor integrity but do not currently include materialized workflow-unit integrity or work-spec identity.",
-      "claim": "No exact materialized-unit authority standing."
+      "witness": "materialized_unit_authority_binding_observation.json",
+      "witness_source_ref": "1984164bf4f6797d8249ceaf49fae712aa2445bf",
+      "witness_transport_ref": "c34b37b681c717dcc1b426385c942522dfc71a15",
+      "adjudication_packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+      "observed": "Two distinct materialized units under the same successor share successor-bound authority coordinates; authority binds successor integrity but neither unit integrity; both disposable admissions succeed; admission receipts omit materialized-unit and work-spec identity.",
+      "claim": "No exact materialized-unit authority standing; independent adjudication must determine whether the composition is FRACTURED."
     }
   },
   "metabolic_depth": {
@@ -162,12 +165,12 @@
   },
   "next_load_bearing_coordinate": {
     "coordinate": "materialized_unit_authority_binding",
-    "pressure": "MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001",
-    "selection_basis": "Materialization is qualified and demonstrates multiple distinct work units can share one successor identity. The next pressure asks whether current successor-bound authority distinguishes exact executable work semantics before admission."
+    "pressure": "MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_ADJUDICATION",
+    "selection_basis": "A clean witness-only transport preserves the apparent authority-resolution fracture. Independent adjudication is required before repair."
   },
   "downstream_frontier": [
-    "pressure successor-bound authority against two distinct materialized units under the same successor",
-    "repair exact materialized-unit/work-spec authority binding only if fractured",
+    "independently adjudicate successor-bound authority versus exact materialized-work authority",
+    "repair exact materialized-unit/work-spec authority binding only if FRACTURED",
     "admit and consume fresh exact-work authority for the materialized successor unit",
     "execute/witness/settle/reconcile the materialized successor attempt",
     "derive successor3 and repeat metabolic loop",
