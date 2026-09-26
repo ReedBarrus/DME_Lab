@@ -1,0 +1,2558 @@
+{
+  "object_type": "EVIDENCE_RELOCATION_REFERENCE_CLOSURE_V0_OBSERVATION",
+  "campaign_id": "EVIDENCE_RELOCATION_REFERENCE_CLOSURE_001",
+  "pressure_id": "EVIDENCE_RELOCATION_REFERENCE_CLOSURE_V0_PRESSURE_001",
+  "head": "de860c833a45977202691b3b431a51bdac955eb6",
+  "inventory_path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+  "inventory_rows_parsed": 37,
+  "tracked_text_scan_posture": "MECHANICAL_OCCURRENCE_INVENTORY_ONLY",
+  "artifacts": [
+    {
+      "original_root_path": "PROMOTION_FRAME.txt",
+      "size_bytes": "996",
+      "expected_blob": "e35ff6bfe3edea2f5545f6ff131dbf138066281b",
+      "relocated_path": "docs/evidence/for_planner/PROMOTION_FRAME.txt",
+      "relocated_path_current_blob": "e35ff6bfe3edea2f5545f6ff131dbf138066281b",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 1,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 13,
+          "text": "| `PROMOTION_FRAME.txt` | 996 | `e35ff6bfe3edea2f5545f6ff131dbf138066281b` |"
+        }
+      ]
+    },
+    {
+      "original_root_path": "admitted_authority_consumption_observation.json",
+      "size_bytes": "6669",
+      "expected_blob": "493b1dac4a887788953da11b43df34675fdd4098",
+      "relocated_path": "docs/evidence/for_planner/admitted_authority_consumption_observation.json",
+      "relocated_path_current_blob": "493b1dac4a887788953da11b43df34675fdd4098",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 16,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 115,
+          "text": "`admitted_authority_consumption_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 134,
+          "text": "admitted_authority_consumption_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_READY_TO_RUN.md",
+          "line": 189,
+          "text": "Remove-Item admitted_authority_consumption_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_READY_TO_RUN.md",
+          "line": 205,
+          "text": "`admitted_authority_consumption_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 124,
+          "text": "`materialized_admitted_authority_consumption_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 143,
+          "text": "materialized_admitted_authority_consumption_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_READY_TO_RUN.md",
+          "line": 231,
+          "text": "Remove-Item materialized_admitted_authority_consumption_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_READY_TO_RUN.md",
+          "line": 245,
+          "text": "`materialized_admitted_authority_consumption_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 199,
+          "text": "      \"admitted_authority_consumption_observation.json\","
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 254,
+          "text": "      \"materialized_admitted_authority_consumption_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 14,
+          "text": "| `admitted_authority_consumption_observation.json` | 6669 | `493b1dac4a887788953da11b43df34675fdd4098` |"
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 27,
+          "text": "| `materialized_admitted_authority_consumption_observation.json` | 5301 | `b71914071d166f7e729ac01f03d9ccca8a64afaa` |"
+        },
+        {
+          "path": "tools/observe_admitted_authority_consumption_v0.py",
+          "line": 31,
+          "text": "OUT = ROOT / \"admitted_authority_consumption_observation.json\""
+        },
+        {
+          "path": "tools/observe_admitted_authority_consumption_v0.py",
+          "line": 127,
+          "text": "            \"admitted_authority_consumption_observation.json already exists; \""
+        },
+        {
+          "path": "tools/observe_materialized_admitted_authority_consumption_v0.py",
+          "line": 27,
+          "text": "OUT = ROOT / \"materialized_admitted_authority_consumption_observation.json\""
+        },
+        {
+          "path": "tools/observe_materialized_admitted_authority_consumption_v0.py",
+          "line": 42,
+          "text": "            \"remove existing materialized_admitted_authority_consumption_observation.json first\""
+        }
+      ]
+    },
+    {
+      "original_root_path": "atomic_admission_observation.json",
+      "size_bytes": "5150",
+      "expected_blob": "f5a2b06e489b2675889171c7a2d033835e314717",
+      "relocated_path": "docs/evidence/for_planner/atomic_admission_observation.json",
+      "relocated_path_current_blob": "f5a2b06e489b2675889171c7a2d033835e314717",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 19,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/ATOMIC_ADMISSION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 115,
+          "text": "`atomic_admission_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/ATOMIC_ADMISSION_PRESSURE_001_READY_TO_RUN.md",
+          "line": 80,
+          "text": "atomic_admission_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 145,
+          "text": "`atomic_admission_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 164,
+          "text": "atomic_admission_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_001_READY_TO_RUN.md",
+          "line": 91,
+          "text": "Remove-Item atomic_admission_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_001_READY_TO_RUN.md",
+          "line": 92,
+          "text": "Remove-Item verified_authority_atomic_admission_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 127,
+          "text": "`verified_authority_atomic_admission_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 146,
+          "text": "verified_authority_atomic_admission_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001_READY_TO_RUN.md",
+          "line": 168,
+          "text": "verified_authority_atomic_admission_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 165,
+          "text": "      \"atomic_admission_observation.json\","
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 192,
+          "text": "      \"verified_authority_atomic_admission_observation.json\","
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 296,
+          "text": "      \"witness_effect\": \"verified_authority_atomic_admission_observation.json generated in the same run is ineligible because the prerequisite suite failed.\","
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 299,
+          "text": "      \"witness_ref\": \"atomic_admission_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 15,
+          "text": "| `atomic_admission_observation.json` | 5150 | `f5a2b06e489b2675889171c7a2d033835e314717` |"
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 48,
+          "text": "| `verified_authority_atomic_admission_observation.json` | 10801 | `35da1b7edbf0be4d76c32a34bbe7a0003004435d` |"
+        },
+        {
+          "path": "tools/observe_atomic_admission_v0.py",
+          "line": 26,
+          "text": "OUT = ROOT / \"atomic_admission_observation.json\""
+        },
+        {
+          "path": "tools/observe_atomic_admission_v0.py",
+          "line": 74,
+          "text": "            \"atomic_admission_observation.json already exists; move/remove it before a fresh observation\""
+        },
+        {
+          "path": "tools/observe_verified_authority_atomic_admission_v0.py",
+          "line": 29,
+          "text": "OUT = ROOT / \"verified_authority_atomic_admission_observation.json\""
+        },
+        {
+          "path": "tools/observe_verified_authority_atomic_admission_v0.py",
+          "line": 122,
+          "text": "            \"verified_authority_atomic_admission_observation.json already exists; \""
+        }
+      ]
+    },
+    {
+      "original_root_path": "authority_binding_observation.json",
+      "size_bytes": "3162",
+      "expected_blob": "7077c023b1082e38f5390e9457664d6a8d170b02",
+      "relocated_path": "docs/evidence/for_planner/authority_binding_observation.json",
+      "relocated_path_current_blob": "7077c023b1082e38f5390e9457664d6a8d170b02",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 14,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/AUTHORITY_BINDING_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 95,
+          "text": "`authority_binding_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/AUTHORITY_BINDING_PRESSURE_001_READY_TO_RUN.md",
+          "line": 87,
+          "text": "authority_binding_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 108,
+          "text": "`materialized_unit_authority_binding_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 127,
+          "text": "materialized_unit_authority_binding_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_READY_TO_RUN.md",
+          "line": 194,
+          "text": "Remove-Item materialized_unit_authority_binding_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_READY_TO_RUN.md",
+          "line": 207,
+          "text": "`materialized_unit_authority_binding_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 173,
+          "text": "      \"authority_binding_observation.json\","
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 240,
+          "text": "      \"materialized_unit_authority_binding_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 16,
+          "text": "| `authority_binding_observation.json` | 3162 | `7077c023b1082e38f5390e9457664d6a8d170b02` |"
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 32,
+          "text": "| `materialized_unit_authority_binding_observation.json` | 4235 | `09675a38c133e02f89b498ae364cc414da69a6f0` |"
+        },
+        {
+          "path": "tools/observe_authority_binding_v0.py",
+          "line": 32,
+          "text": "OUT = ROOT / \"authority_binding_observation.json\""
+        },
+        {
+          "path": "tools/observe_authority_binding_v0.py",
+          "line": 89,
+          "text": "            \"authority_binding_observation.json already exists; \""
+        },
+        {
+          "path": "tools/observe_materialized_unit_authority_binding_v0.py",
+          "line": 30,
+          "text": "OUT = ROOT / \"materialized_unit_authority_binding_observation.json\""
+        },
+        {
+          "path": "tools/observe_materialized_unit_authority_binding_v0.py",
+          "line": 117,
+          "text": "            \"remove existing materialized_unit_authority_binding_observation.json first\""
+        }
+      ]
+    },
+    {
+      "original_root_path": "basis_reconciliation_observation.json",
+      "size_bytes": "7340",
+      "expected_blob": "877112ddeb9111a26407c661f45e88d9e689aa04",
+      "relocated_path": "docs/evidence/for_planner/basis_reconciliation_observation.json",
+      "relocated_path_current_blob": "877112ddeb9111a26407c661f45e88d9e689aa04",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 7,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/BASIS_RECONCILIATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 115,
+          "text": "`basis_reconciliation_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/BASIS_RECONCILIATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 132,
+          "text": "basis_reconciliation_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/BASIS_RECONCILIATION_PRESSURE_001_READY_TO_RUN.md",
+          "line": 125,
+          "text": "basis_reconciliation_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 181,
+          "text": "      \"basis_reconciliation_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 17,
+          "text": "| `basis_reconciliation_observation.json` | 7340 | `877112ddeb9111a26407c661f45e88d9e689aa04` |"
+        },
+        {
+          "path": "tools/observe_basis_reconciliation_v1.py",
+          "line": 22,
+          "text": "OUT = ROOT / \"basis_reconciliation_observation.json\""
+        },
+        {
+          "path": "tools/observe_basis_reconciliation_v1.py",
+          "line": 166,
+          "text": "            \"basis_reconciliation_observation.json already exists; \""
+        }
+      ]
+    },
+    {
+      "original_root_path": "control_kernel_cell_001_observation.json",
+      "size_bytes": "4296",
+      "expected_blob": "32faec55330cf1243c858377241edf77f4822ce8",
+      "relocated_path": "docs/evidence/for_planner/control_kernel_cell_001_observation.json",
+      "relocated_path_current_blob": "32faec55330cf1243c858377241edf77f4822ce8",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 5,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/control_kernel_001/CONTROL_KERNEL_CELL_001_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 56,
+          "text": "- control_kernel_cell_001_observation.json"
+        },
+        {
+          "path": "docs/campaigns/control_kernel_001/CONTROL_KERNEL_CELL_001_PRESSURE_001_READY_TO_RUN.md",
+          "line": 154,
+          "text": "Remove-Item control_kernel_cell_001_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 18,
+          "text": "| `control_kernel_cell_001_observation.json` | 4296 | `32faec55330cf1243c858377241edf77f4822ce8` |"
+        },
+        {
+          "path": "tools/observe_control_kernel_cell_001_v0.py",
+          "line": 17,
+          "text": "OUT = ROOT / \"control_kernel_cell_001_observation.json\""
+        },
+        {
+          "path": "tools/observe_control_kernel_cell_001_v0.py",
+          "line": 31,
+          "text": "        raise SystemExit(\"remove existing control_kernel_cell_001_observation.json first\")"
+        }
+      ]
+    },
+    {
+      "original_root_path": "current_horizon_distinction_dependence_v0_observation.json",
+      "size_bytes": "4603",
+      "expected_blob": "3e9c7b24cacbf608d87d2f14175e265267cc0ef1",
+      "relocated_path": "docs/evidence/for_planner/current_horizon_distinction_dependence_v0_observation.json",
+      "relocated_path_current_blob": "3e9c7b24cacbf608d87d2f14175e265267cc0ef1",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 8,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/current_horizon_distinction_dependence_001/CURRENT_HORIZON_DISTINCTION_DEPENDENCE_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 50,
+          "text": "current_horizon_distinction_dependence_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/current_horizon_distinction_dependence_001/CURRENT_HORIZON_DISTINCTION_DEPENDENCE_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 62,
+          "text": "current_horizon_distinction_dependence_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/current_horizon_distinction_dependence_001/CURRENT_HORIZON_DISTINCTION_DEPENDENCE_V0_PRESSURE_001_READY_TO_RUN.md",
+          "line": 244,
+          "text": "Remove-Item current_horizon_distinction_dependence_v0_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/distinction_retention_mode_001/DISTINCTION_RETENTION_MODE_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 101,
+          "text": "current_horizon_distinction_dependence_v0_observation.json"
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 19,
+          "text": "| `current_horizon_distinction_dependence_v0_observation.json` | 4603 | `3e9c7b24cacbf608d87d2f14175e265267cc0ef1` |"
+        },
+        {
+          "path": "tools/observe_current_horizon_distinction_dependence_v0.py",
+          "line": 22,
+          "text": "OUT = ROOT / \"current_horizon_distinction_dependence_v0_observation.json\""
+        },
+        {
+          "path": "tools/observe_current_horizon_distinction_dependence_v0.py",
+          "line": 48,
+          "text": "            \"remove existing current_horizon_distinction_dependence_v0_observation.json first\""
+        },
+        {
+          "path": "tools/observe_distinction_retention_mode_v0.py",
+          "line": 36,
+          "text": "    \"g6_witness\": \"current_horizon_distinction_dependence_v0_observation.json\","
+        }
+      ]
+    },
+    {
+      "original_root_path": "declaration_work_eligibility_selection_load_v0_observation.json",
+      "size_bytes": "7994",
+      "expected_blob": "54ab5157ec936474c6189f2d956127fc5cb1e0c0",
+      "relocated_path": "docs/evidence/for_planner/declaration_work_eligibility_selection_load_v0_observation.json",
+      "relocated_path_current_blob": "54ab5157ec936474c6189f2d956127fc5cb1e0c0",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 3,
+      "bare_or_root_style_occurrence_count": 12,
+      "qualified_route_occurrences": [
+        {
+          "path": "docs/campaigns/evidence_path_relocation_reachability_001/repairs/EVIDENCE_PATH_ROUTE_REPAIR_001.md",
+          "line": 32,
+          "text": "docs/evidence/for_planner/declaration_work_eligibility_selection_load_v0_observation.json"
+        },
+        {
+          "path": "docs/evidence/for_planner/evidence_path_relocation_reachability_v0_observation.json",
+          "line": 10,
+          "text": "      \"new_path\": \"docs/evidence/for_planner/declaration_work_eligibility_selection_load_v0_observation.json\","
+        },
+        {
+          "path": "docs/methods/EARNED_MEMORY_INVARIANTS_v0.md",
+          "line": 546,
+          "text": "`docs/evidence/for_planner/declaration_work_eligibility_selection_load_v0_observation.json`"
+        }
+      ],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/declaration_work_eligibility_invariant_promotion_001/DECLARATION_WORK_ELIGIBILITY_INVARIANT_PROMOTION_V0_ADJUDICATION_READY_TO_SEND.md",
+          "line": 66,
+          "text": "declaration_work_eligibility_selection_load_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/declaration_work_eligibility_invariant_promotion_001/DECLARATION_WORK_ELIGIBILITY_INVARIANT_PROMOTION_V0_ADJUDICATION_READY_TO_SEND.md",
+          "line": 161,
+          "text": "`declaration_work_eligibility_selection_load_v0_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/declaration_work_eligibility_selection_load_001/DECLARATION_WORK_ELIGIBILITY_SELECTION_LOAD_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 41,
+          "text": "declaration_work_eligibility_selection_load_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/declaration_work_eligibility_selection_load_001/DECLARATION_WORK_ELIGIBILITY_SELECTION_LOAD_V0_PRESSURE_001_READY_TO_RUN.md",
+          "line": 77,
+          "text": "Remove-Item declaration_work_eligibility_selection_load_v0_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/declaration_work_eligibility_selection_load_001/DECLARATION_WORK_ELIGIBILITY_SELECTION_LOAD_V0_PRESSURE_001_READY_TO_RUN.md",
+          "line": 91,
+          "text": "declaration_work_eligibility_selection_load_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/evidence_path_relocation_reachability_001/G16_CONTRACT_V0.md",
+          "line": 19,
+          "text": "1. declaration_work_eligibility_selection_load_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/evidence_path_relocation_reachability_001/HORIZON_SELECTION_G16_V0.md",
+          "line": 34,
+          "text": "- declaration_work_eligibility_selection_load_v0_observation.json"
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 20,
+          "text": "| `declaration_work_eligibility_selection_load_v0_observation.json` | 7994 | `54ab5157ec936474c6189f2d956127fc5cb1e0c0` |"
+        },
+        {
+          "path": "docs/evidence/for_planner/evidence_path_relocation_reachability_v0_observation.json",
+          "line": 9,
+          "text": "      \"old_path\": \"declaration_work_eligibility_selection_load_v0_observation.json\","
+        },
+        {
+          "path": "tools/observe_declaration_work_eligibility_selection_load_v0.py",
+          "line": 18,
+          "text": "OUT = ROOT / \"declaration_work_eligibility_selection_load_v0_observation.json\""
+        },
+        {
+          "path": "tools/observe_declaration_work_eligibility_selection_load_v0.py",
+          "line": 60,
+          "text": "            \"remove existing declaration_work_eligibility_selection_load_v0_observation.json first\""
+        },
+        {
+          "path": "tools/observe_evidence_path_relocation_reachability_v0.py",
+          "line": 16,
+          "text": "    \"declaration_work_eligibility_selection_load_v0_observation.json\":"
+        }
+      ]
+    },
+    {
+      "original_root_path": "distinction_retention_currentness_v0_observation.json",
+      "size_bytes": "6267",
+      "expected_blob": "949ff2b9333146ca16e68981123f338f6e4dfd15",
+      "relocated_path": "docs/evidence/for_planner/distinction_retention_currentness_v0_observation.json",
+      "relocated_path_current_blob": "949ff2b9333146ca16e68981123f338f6e4dfd15",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 3,
+      "bare_or_root_style_occurrence_count": 16,
+      "qualified_route_occurrences": [
+        {
+          "path": "docs/campaigns/evidence_path_relocation_reachability_001/repairs/EVIDENCE_PATH_ROUTE_REPAIR_001.md",
+          "line": 36,
+          "text": "docs/evidence/for_planner/distinction_retention_currentness_v0_observation.json"
+        },
+        {
+          "path": "docs/evidence/for_planner/evidence_path_relocation_reachability_v0_observation.json",
+          "line": 23,
+          "text": "      \"new_path\": \"docs/evidence/for_planner/distinction_retention_currentness_v0_observation.json\","
+        },
+        {
+          "path": "docs/methods/EARNED_MEMORY_INVARIANTS_v0.md",
+          "line": 254,
+          "text": "`docs/evidence/for_planner/distinction_retention_currentness_v0_observation.json`"
+        }
+      ],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/distinction_retention_currentness_001/DISTINCTION_RETENTION_CURRENTNESS_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 52,
+          "text": "distinction_retention_currentness_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/distinction_retention_currentness_001/DISTINCTION_RETENTION_CURRENTNESS_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 64,
+          "text": "distinction_retention_currentness_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/distinction_retention_currentness_001/DISTINCTION_RETENTION_CURRENTNESS_V0_PRESSURE_001_READY_TO_RUN.md",
+          "line": 167,
+          "text": "Remove-Item distinction_retention_currentness_v0_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/evidence_path_relocation_reachability_001/G16_CONTRACT_V0.md",
+          "line": 21,
+          "text": "2. distinction_retention_currentness_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/evidence_path_relocation_reachability_001/HORIZON_SELECTION_G16_V0.md",
+          "line": 35,
+          "text": "- distinction_retention_currentness_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/retention_scope_aggregation_001/RETENTION_SCOPE_AGGREGATION_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 97,
+          "text": "distinction_retention_currentness_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/retention_scope_aggregation_001/RETENTION_SCOPE_AGGREGATION_V0_PRESSURE_001_READY_TO_RUN.md",
+          "line": 64,
+          "text": "`distinction_retention_currentness_v0_observation.json`"
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 21,
+          "text": "| `distinction_retention_currentness_v0_observation.json` | 6267 | `949ff2b9333146ca16e68981123f338f6e4dfd15` |"
+        },
+        {
+          "path": "docs/evidence/for_planner/evidence_path_relocation_reachability_v0_observation.json",
+          "line": 22,
+          "text": "      \"old_path\": \"distinction_retention_currentness_v0_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/retention_scope_aggregation_v0_observation.json",
+          "line": 10,
+          "text": "    \"g8_witness\": \"distinction_retention_currentness_v0_observation.json\","
+        },
+        {
+          "path": "tools/observe_distinction_retention_currentness_v0.py",
+          "line": 18,
+          "text": "OUT = ROOT / \"distinction_retention_currentness_v0_observation.json\""
+        },
+        {
+          "path": "tools/observe_distinction_retention_currentness_v0.py",
+          "line": 42,
+          "text": "            \"remove existing distinction_retention_currentness_v0_observation.json first\""
+        },
+        {
+          "path": "tools/observe_evidence_path_relocation_reachability_v0.py",
+          "line": 18,
+          "text": "    \"distinction_retention_currentness_v0_observation.json\":"
+        },
+        {
+          "path": "tools/observe_retention_scope_aggregation_v0.py",
+          "line": 24,
+          "text": "G8_WITNESS = ROOT / \"distinction_retention_currentness_v0_observation.json\""
+        },
+        {
+          "path": "tools/observe_retention_scope_aggregation_v0.py",
+          "line": 55,
+          "text": "        \"HEAD:distinction_retention_currentness_v0_observation.json\","
+        },
+        {
+          "path": "tools/observe_retention_scope_aggregation_v0.py",
+          "line": 160,
+          "text": "            \"g8_witness\": \"distinction_retention_currentness_v0_observation.json\","
+        }
+      ]
+    },
+    {
+      "original_root_path": "distinction_retention_mode_v0_observation.json",
+      "size_bytes": "3677",
+      "expected_blob": "1ff52354096371710ccdcdd77dfb9a6b2c1ada3b",
+      "relocated_path": "docs/evidence/for_planner/distinction_retention_mode_v0_observation.json",
+      "relocated_path_current_blob": "1ff52354096371710ccdcdd77dfb9a6b2c1ada3b",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 3,
+      "bare_or_root_style_occurrence_count": 16,
+      "qualified_route_occurrences": [
+        {
+          "path": "docs/campaigns/evidence_path_relocation_reachability_001/repairs/EVIDENCE_PATH_ROUTE_REPAIR_001.md",
+          "line": 40,
+          "text": "docs/evidence/for_planner/distinction_retention_mode_v0_observation.json"
+        },
+        {
+          "path": "docs/evidence/for_planner/evidence_path_relocation_reachability_v0_observation.json",
+          "line": 36,
+          "text": "      \"new_path\": \"docs/evidence/for_planner/distinction_retention_mode_v0_observation.json\","
+        },
+        {
+          "path": "docs/methods/EARNED_MEMORY_INVARIANTS_v0.md",
+          "line": 202,
+          "text": "`docs/evidence/for_planner/distinction_retention_mode_v0_observation.json`"
+        }
+      ],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/distinction_retention_currentness_001/DISTINCTION_RETENTION_CURRENTNESS_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 97,
+          "text": "distinction_retention_mode_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/distinction_retention_currentness_001/DISTINCTION_RETENTION_CURRENTNESS_V0_PRESSURE_001_READY_TO_RUN.md",
+          "line": 63,
+          "text": "`distinction_retention_mode_v0_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/distinction_retention_mode_001/DISTINCTION_RETENTION_MODE_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 46,
+          "text": "distinction_retention_mode_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/distinction_retention_mode_001/DISTINCTION_RETENTION_MODE_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 58,
+          "text": "distinction_retention_mode_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/distinction_retention_mode_001/DISTINCTION_RETENTION_MODE_V0_PRESSURE_001_READY_TO_RUN.md",
+          "line": 237,
+          "text": "Remove-Item distinction_retention_mode_v0_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/evidence_path_relocation_reachability_001/G16_CONTRACT_V0.md",
+          "line": 23,
+          "text": "3. distinction_retention_mode_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/evidence_path_relocation_reachability_001/HORIZON_SELECTION_G16_V0.md",
+          "line": 36,
+          "text": "- distinction_retention_mode_v0_observation.json"
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 22,
+          "text": "| `distinction_retention_mode_v0_observation.json` | 3677 | `1ff52354096371710ccdcdd77dfb9a6b2c1ada3b` |"
+        },
+        {
+          "path": "docs/evidence/for_planner/distinction_retention_currentness_v0_observation.json",
+          "line": 11,
+          "text": "    \"g7_witness\": \"distinction_retention_mode_v0_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/evidence_path_relocation_reachability_v0_observation.json",
+          "line": 35,
+          "text": "      \"old_path\": \"distinction_retention_mode_v0_observation.json\","
+        },
+        {
+          "path": "tools/observe_distinction_retention_currentness_v0.py",
+          "line": 24,
+          "text": "G7_WITNESS = ROOT / \"distinction_retention_mode_v0_observation.json\""
+        },
+        {
+          "path": "tools/observe_distinction_retention_currentness_v0.py",
+          "line": 54,
+          "text": "        \"rev-parse\", \"HEAD:distinction_retention_mode_v0_observation.json\""
+        },
+        {
+          "path": "tools/observe_distinction_retention_currentness_v0.py",
+          "line": 135,
+          "text": "            \"g7_witness\": \"distinction_retention_mode_v0_observation.json\","
+        },
+        {
+          "path": "tools/observe_distinction_retention_mode_v0.py",
+          "line": 19,
+          "text": "OUT = ROOT / \"distinction_retention_mode_v0_observation.json\""
+        },
+        {
+          "path": "tools/observe_distinction_retention_mode_v0.py",
+          "line": 70,
+          "text": "            \"remove existing distinction_retention_mode_v0_observation.json first\""
+        },
+        {
+          "path": "tools/observe_evidence_path_relocation_reachability_v0.py",
+          "line": 20,
+          "text": "    \"distinction_retention_mode_v0_observation.json\":"
+        }
+      ]
+    },
+    {
+      "original_root_path": "horizon_gap_selector_v0_observation.json",
+      "size_bytes": "3920",
+      "expected_blob": "be23eba7c50f1b51a0e3b1412d9f5adc07dee1ff",
+      "relocated_path": "docs/evidence/for_planner/horizon_gap_selector_v0_observation.json",
+      "relocated_path_current_blob": "be23eba7c50f1b51a0e3b1412d9f5adc07dee1ff",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 5,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/control_kernel_001/HORIZON_GAP_SELECTOR_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 57,
+          "text": "- horizon_gap_selector_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/control_kernel_001/HORIZON_GAP_SELECTOR_V0_PRESSURE_001_READY_TO_RUN.md",
+          "line": 146,
+          "text": "Remove-Item horizon_gap_selector_v0_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 23,
+          "text": "| `horizon_gap_selector_v0_observation.json` | 3920 | `be23eba7c50f1b51a0e3b1412d9f5adc07dee1ff` |"
+        },
+        {
+          "path": "tools/observe_horizon_gap_selector_v0.py",
+          "line": 13,
+          "text": "OUT=ROOT/\"horizon_gap_selector_v0_observation.json\""
+        },
+        {
+          "path": "tools/observe_horizon_gap_selector_v0.py",
+          "line": 38,
+          "text": "        raise SystemExit(\"remove existing horizon_gap_selector_v0_observation.json first\")"
+        }
+      ]
+    },
+    {
+      "original_root_path": "invocation_result_settlement_observation.json",
+      "size_bytes": "8078",
+      "expected_blob": "5826a069d14ef8901953a488466f3ad0f57981f8",
+      "relocated_path": "docs/evidence/for_planner/invocation_result_settlement_observation.json",
+      "relocated_path_current_blob": "5826a069d14ef8901953a488466f3ad0f57981f8",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 17,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 121,
+          "text": "`invocation_result_settlement_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 140,
+          "text": "invocation_result_settlement_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_READY_TO_RUN.md",
+          "line": 200,
+          "text": "Remove-Item invocation_result_settlement_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_READY_TO_RUN.md",
+          "line": 218,
+          "text": "`invocation_result_settlement_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 125,
+          "text": "`materialized_invocation_result_settlement_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 144,
+          "text": "materialized_invocation_result_settlement_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_READY_TO_RUN.md",
+          "line": 208,
+          "text": "Remove-Item materialized_invocation_result_settlement_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_READY_TO_RUN.md",
+          "line": 222,
+          "text": "`materialized_invocation_result_settlement_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 213,
+          "text": "      \"invocation_result_settlement_observation.json\","
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 263,
+          "text": "      \"materialized_invocation_result_settlement_observation.json\""
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/MECHANIZED_DEPTH_PROFILE_V0.json",
+          "line": 210,
+          "text": "      \"witness\": \"materialized_invocation_result_settlement_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 24,
+          "text": "| `invocation_result_settlement_observation.json` | 8078 | `5826a069d14ef8901953a488466f3ad0f57981f8` |"
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 28,
+          "text": "| `materialized_invocation_result_settlement_observation.json` | 5406 | `2dc73570bab8fb35dec2ec0705c0cf82fd92e346` |"
+        },
+        {
+          "path": "tools/observe_invocation_result_settlement_v0.py",
+          "line": 31,
+          "text": "OUT = ROOT / \"invocation_result_settlement_observation.json\""
+        },
+        {
+          "path": "tools/observe_invocation_result_settlement_v0.py",
+          "line": 79,
+          "text": "            \"invocation_result_settlement_observation.json already exists; \""
+        },
+        {
+          "path": "tools/observe_materialized_invocation_result_settlement_v0.py",
+          "line": 28,
+          "text": "OUT = ROOT / \"materialized_invocation_result_settlement_observation.json\""
+        },
+        {
+          "path": "tools/observe_materialized_invocation_result_settlement_v0.py",
+          "line": 43,
+          "text": "            \"remove existing materialized_invocation_result_settlement_observation.json first\""
+        }
+      ]
+    },
+    {
+      "original_root_path": "invocation_result_witness_observation.json",
+      "size_bytes": "10858",
+      "expected_blob": "67d2ea8d8f34d3d973df192c6ec54ed6d861a9b6",
+      "relocated_path": "docs/evidence/for_planner/invocation_result_witness_observation.json",
+      "relocated_path_current_blob": "67d2ea8d8f34d3d973df192c6ec54ed6d861a9b6",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 15,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/INVOCATION_RESULT_WITNESS_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 115,
+          "text": "`invocation_result_witness_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/INVOCATION_RESULT_WITNESS_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 134,
+          "text": "invocation_result_witness_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/INVOCATION_RESULT_WITNESS_PRESSURE_001_READY_TO_RUN.md",
+          "line": 174,
+          "text": "Remove-Item invocation_result_witness_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/INVOCATION_RESULT_WITNESS_PRESSURE_001_READY_TO_RUN.md",
+          "line": 191,
+          "text": "`invocation_result_witness_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 110,
+          "text": "`materialized_invocation_result_witness_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 129,
+          "text": "materialized_invocation_result_witness_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_001_READY_TO_RUN.md",
+          "line": 197,
+          "text": "Remove-Item materialized_invocation_result_witness_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_001_READY_TO_RUN.md",
+          "line": 210,
+          "text": "`materialized_invocation_result_witness_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 206,
+          "text": "      \"invocation_result_witness_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 25,
+          "text": "| `invocation_result_witness_observation.json` | 10858 | `67d2ea8d8f34d3d973df192c6ec54ed6d861a9b6` |"
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 29,
+          "text": "| `materialized_invocation_result_witness_observation.json` | 5927 | `668512437d97f307bef75712038c813366088960` |"
+        },
+        {
+          "path": "tools/observe_invocation_result_witness_v0.py",
+          "line": 32,
+          "text": "OUT = ROOT / \"invocation_result_witness_observation.json\""
+        },
+        {
+          "path": "tools/observe_invocation_result_witness_v0.py",
+          "line": 106,
+          "text": "            \"invocation_result_witness_observation.json already exists; \""
+        },
+        {
+          "path": "tools/observe_materialized_invocation_result_witness_v0.py",
+          "line": 23,
+          "text": "OUT = ROOT / \"materialized_invocation_result_witness_observation.json\""
+        },
+        {
+          "path": "tools/observe_materialized_invocation_result_witness_v0.py",
+          "line": 38,
+          "text": "            \"remove existing materialized_invocation_result_witness_observation.json first\""
+        }
+      ]
+    },
+    {
+      "original_root_path": "main_merge_qualification_observation.json",
+      "size_bytes": "28781",
+      "expected_blob": "f10daace9419f06bc5b760d33b6b0d9284bd91d8",
+      "relocated_path": "docs/evidence/for_planner/main_merge_qualification_observation.json",
+      "relocated_path_current_blob": "f10daace9419f06bc5b760d33b6b0d9284bd91d8",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 5,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 26,
+          "text": "| `main_merge_qualification_observation.json` | 28781 | `f10daace9419f06bc5b760d33b6b0d9284bd91d8` |"
+        },
+        {
+          "path": "docs/qualification/MAIN_MERGE_QUALIFICATION_001_READY_TO_RUN.md",
+          "line": 68,
+          "text": "Remove-Item main_merge_qualification_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/qualification/MAIN_MERGE_QUALIFICATION_001_READY_TO_RUN.md",
+          "line": 76,
+          "text": "[OK] wrote main_merge_qualification_observation.json"
+        },
+        {
+          "path": "tools/observe_main_merge_qualification_v0.py",
+          "line": 8,
+          "text": "OUT=ROOT/\"main_merge_qualification_observation.json\""
+        },
+        {
+          "path": "tools/observe_main_merge_qualification_v0.py",
+          "line": 155,
+          "text": "        raise SystemExit(\"remove existing main_merge_qualification_observation.json first\")"
+        }
+      ]
+    },
+    {
+      "original_root_path": "materialized_admitted_authority_consumption_observation.json",
+      "size_bytes": "5301",
+      "expected_blob": "b71914071d166f7e729ac01f03d9ccca8a64afaa",
+      "relocated_path": "docs/evidence/for_planner/materialized_admitted_authority_consumption_observation.json",
+      "relocated_path_current_blob": "b71914071d166f7e729ac01f03d9ccca8a64afaa",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 8,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 124,
+          "text": "`materialized_admitted_authority_consumption_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 143,
+          "text": "materialized_admitted_authority_consumption_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_READY_TO_RUN.md",
+          "line": 231,
+          "text": "Remove-Item materialized_admitted_authority_consumption_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_READY_TO_RUN.md",
+          "line": 245,
+          "text": "`materialized_admitted_authority_consumption_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 254,
+          "text": "      \"materialized_admitted_authority_consumption_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 27,
+          "text": "| `materialized_admitted_authority_consumption_observation.json` | 5301 | `b71914071d166f7e729ac01f03d9ccca8a64afaa` |"
+        },
+        {
+          "path": "tools/observe_materialized_admitted_authority_consumption_v0.py",
+          "line": 27,
+          "text": "OUT = ROOT / \"materialized_admitted_authority_consumption_observation.json\""
+        },
+        {
+          "path": "tools/observe_materialized_admitted_authority_consumption_v0.py",
+          "line": 42,
+          "text": "            \"remove existing materialized_admitted_authority_consumption_observation.json first\""
+        }
+      ]
+    },
+    {
+      "original_root_path": "materialized_invocation_result_settlement_observation.json",
+      "size_bytes": "5406",
+      "expected_blob": "2dc73570bab8fb35dec2ec0705c0cf82fd92e346",
+      "relocated_path": "docs/evidence/for_planner/materialized_invocation_result_settlement_observation.json",
+      "relocated_path_current_blob": "2dc73570bab8fb35dec2ec0705c0cf82fd92e346",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 9,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 125,
+          "text": "`materialized_invocation_result_settlement_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 144,
+          "text": "materialized_invocation_result_settlement_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_READY_TO_RUN.md",
+          "line": 208,
+          "text": "Remove-Item materialized_invocation_result_settlement_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_READY_TO_RUN.md",
+          "line": 222,
+          "text": "`materialized_invocation_result_settlement_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 263,
+          "text": "      \"materialized_invocation_result_settlement_observation.json\""
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/MECHANIZED_DEPTH_PROFILE_V0.json",
+          "line": 210,
+          "text": "      \"witness\": \"materialized_invocation_result_settlement_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 28,
+          "text": "| `materialized_invocation_result_settlement_observation.json` | 5406 | `2dc73570bab8fb35dec2ec0705c0cf82fd92e346` |"
+        },
+        {
+          "path": "tools/observe_materialized_invocation_result_settlement_v0.py",
+          "line": 28,
+          "text": "OUT = ROOT / \"materialized_invocation_result_settlement_observation.json\""
+        },
+        {
+          "path": "tools/observe_materialized_invocation_result_settlement_v0.py",
+          "line": 43,
+          "text": "            \"remove existing materialized_invocation_result_settlement_observation.json first\""
+        }
+      ]
+    },
+    {
+      "original_root_path": "materialized_invocation_result_witness_observation.json",
+      "size_bytes": "5927",
+      "expected_blob": "668512437d97f307bef75712038c813366088960",
+      "relocated_path": "docs/evidence/for_planner/materialized_invocation_result_witness_observation.json",
+      "relocated_path_current_blob": "668512437d97f307bef75712038c813366088960",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 7,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 110,
+          "text": "`materialized_invocation_result_witness_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 129,
+          "text": "materialized_invocation_result_witness_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_001_READY_TO_RUN.md",
+          "line": 197,
+          "text": "Remove-Item materialized_invocation_result_witness_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_001_READY_TO_RUN.md",
+          "line": 210,
+          "text": "`materialized_invocation_result_witness_observation.json`"
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 29,
+          "text": "| `materialized_invocation_result_witness_observation.json` | 5927 | `668512437d97f307bef75712038c813366088960` |"
+        },
+        {
+          "path": "tools/observe_materialized_invocation_result_witness_v0.py",
+          "line": 23,
+          "text": "OUT = ROOT / \"materialized_invocation_result_witness_observation.json\""
+        },
+        {
+          "path": "tools/observe_materialized_invocation_result_witness_v0.py",
+          "line": 38,
+          "text": "            \"remove existing materialized_invocation_result_witness_observation.json first\""
+        }
+      ]
+    },
+    {
+      "original_root_path": "materialized_reconciliation_successor_projection_observation.json",
+      "size_bytes": "11653",
+      "expected_blob": "e22db46bdda9c7ab011f93173653839194960391",
+      "relocated_path": "docs/evidence/for_planner/materialized_reconciliation_successor_projection_observation.json",
+      "relocated_path_current_blob": "e22db46bdda9c7ab011f93173653839194960391",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 5,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_RECONCILIATION_SUCCESSOR_PROJECTION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 50,
+          "text": "- materialized_reconciliation_successor_projection_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_RECONCILIATION_SUCCESSOR_PROJECTION_PRESSURE_001_READY_TO_RUN.md",
+          "line": 105,
+          "text": "Remove-Item materialized_reconciliation_successor_projection_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 30,
+          "text": "| `materialized_reconciliation_successor_projection_observation.json` | 11653 | `e22db46bdda9c7ab011f93173653839194960391` |"
+        },
+        {
+          "path": "tools/observe_materialized_reconciliation_successor_projection_v0.py",
+          "line": 26,
+          "text": "OUT = ROOT / \"materialized_reconciliation_successor_projection_observation.json\""
+        },
+        {
+          "path": "tools/observe_materialized_reconciliation_successor_projection_v0.py",
+          "line": 41,
+          "text": "            \"remove existing materialized_reconciliation_successor_projection_observation.json first\""
+        }
+      ]
+    },
+    {
+      "original_root_path": "materialized_settlement_consequence_reconciliation_observation.json",
+      "size_bytes": "3608",
+      "expected_blob": "8a75f1b9c6cfde65b6b922355dcce87b46ae30e8",
+      "relocated_path": "docs/evidence/for_planner/materialized_settlement_consequence_reconciliation_observation.json",
+      "relocated_path_current_blob": "8a75f1b9c6cfde65b6b922355dcce87b46ae30e8",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 10,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 29,
+          "text": "materialized_settlement_consequence_reconciliation_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001_READY_TO_RUN.md",
+          "line": 141,
+          "text": "Remove-Item materialized_settlement_consequence_reconciliation_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/world_method_reconciliation_001/WORLD_METHOD_RECONCILIATION_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 81,
+          "text": "materialized_settlement_consequence_reconciliation_observation.json"
+        },
+        {
+          "path": "docs/campaigns/world_method_reconciliation_001/WORLD_METHOD_RECONCILIATION_V0_PRESSURE_001_READY_TO_RUN.md",
+          "line": 47,
+          "text": "`materialized_settlement_consequence_reconciliation_observation.json`"
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 31,
+          "text": "| `materialized_settlement_consequence_reconciliation_observation.json` | 3608 | `8a75f1b9c6cfde65b6b922355dcce87b46ae30e8` |"
+        },
+        {
+          "path": "docs/evidence/for_planner/world_method_reconciliation_v0_observation.json",
+          "line": 7,
+          "text": "    \"path\": \"materialized_settlement_consequence_reconciliation_observation.json\","
+        },
+        {
+          "path": "tools/observe_materialized_settlement_consequence_reconciliation_v0.py",
+          "line": 30,
+          "text": "OUT = ROOT / \"materialized_settlement_consequence_reconciliation_observation.json\""
+        },
+        {
+          "path": "tools/observe_materialized_settlement_consequence_reconciliation_v0.py",
+          "line": 45,
+          "text": "            \"remove existing materialized_settlement_consequence_reconciliation_observation.json first\""
+        },
+        {
+          "path": "tools/observe_world_method_reconciliation_v0.py",
+          "line": 14,
+          "text": "SOURCE_WITNESS=ROOT/\"materialized_settlement_consequence_reconciliation_observation.json\""
+        },
+        {
+          "path": "tools/observe_world_method_reconciliation_v0.py",
+          "line": 77,
+          "text": "            \"path\":\"materialized_settlement_consequence_reconciliation_observation.json\","
+        }
+      ]
+    },
+    {
+      "original_root_path": "materialized_unit_authority_binding_observation.json",
+      "size_bytes": "4235",
+      "expected_blob": "09675a38c133e02f89b498ae364cc414da69a6f0",
+      "relocated_path": "docs/evidence/for_planner/materialized_unit_authority_binding_observation.json",
+      "relocated_path_current_blob": "09675a38c133e02f89b498ae364cc414da69a6f0",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 8,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 108,
+          "text": "`materialized_unit_authority_binding_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 127,
+          "text": "materialized_unit_authority_binding_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_READY_TO_RUN.md",
+          "line": 194,
+          "text": "Remove-Item materialized_unit_authority_binding_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_READY_TO_RUN.md",
+          "line": 207,
+          "text": "`materialized_unit_authority_binding_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 240,
+          "text": "      \"materialized_unit_authority_binding_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 32,
+          "text": "| `materialized_unit_authority_binding_observation.json` | 4235 | `09675a38c133e02f89b498ae364cc414da69a6f0` |"
+        },
+        {
+          "path": "tools/observe_materialized_unit_authority_binding_v0.py",
+          "line": 30,
+          "text": "OUT = ROOT / \"materialized_unit_authority_binding_observation.json\""
+        },
+        {
+          "path": "tools/observe_materialized_unit_authority_binding_v0.py",
+          "line": 117,
+          "text": "            \"remove existing materialized_unit_authority_binding_observation.json first\""
+        }
+      ]
+    },
+    {
+      "original_root_path": "materialized_unit_authority_binding_repair_observation.json",
+      "size_bytes": "5290",
+      "expected_blob": "9f1f23ad3988e0515c859eb643a61c3fac6e8ed0",
+      "relocated_path": "docs/evidence/for_planner/materialized_unit_authority_binding_repair_observation.json",
+      "relocated_path_current_blob": "9f1f23ad3988e0515c859eb643a61c3fac6e8ed0",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 9,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 129,
+          "text": "`materialized_unit_authority_binding_repair_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 148,
+          "text": "materialized_unit_authority_binding_repair_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_001_READY_TO_RUN.md",
+          "line": 209,
+          "text": "Remove-Item materialized_unit_authority_binding_repair_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_001_READY_TO_RUN.md",
+          "line": 223,
+          "text": "`materialized_unit_authority_binding_repair_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 247,
+          "text": "      \"materialized_unit_authority_binding_repair_observation.json\","
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/MECHANIZED_DEPTH_PROFILE_V0.json",
+          "line": 70,
+          "text": "      \"witness\": \"materialized_unit_authority_binding_repair_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 33,
+          "text": "| `materialized_unit_authority_binding_repair_observation.json` | 5290 | `9f1f23ad3988e0515c859eb643a61c3fac6e8ed0` |"
+        },
+        {
+          "path": "tools/observe_materialized_unit_authority_binding_repair_v0.py",
+          "line": 33,
+          "text": "OUT = ROOT / \"materialized_unit_authority_binding_repair_observation.json\""
+        },
+        {
+          "path": "tools/observe_materialized_unit_authority_binding_repair_v0.py",
+          "line": 78,
+          "text": "            \"remove existing materialized_unit_authority_binding_repair_observation.json first\""
+        }
+      ]
+    },
+    {
+      "original_root_path": "method_distinction_load_ablation_v0_observation.json",
+      "size_bytes": "4671",
+      "expected_blob": "a334412ac95fd66a228dba49fb888ffc225a6e7f",
+      "relocated_path": "docs/evidence/for_planner/method_distinction_load_ablation_v0_observation.json",
+      "relocated_path_current_blob": "a334412ac95fd66a228dba49fb888ffc225a6e7f",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 13,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/current_horizon_distinction_dependence_001/CURRENT_HORIZON_DISTINCTION_DEPENDENCE_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 100,
+          "text": "method_distinction_load_ablation_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/current_horizon_distinction_dependence_001/CURRENT_HORIZON_DISTINCTION_DEPENDENCE_V0_PRESSURE_001_READY_TO_RUN.md",
+          "line": 63,
+          "text": "`method_distinction_load_ablation_v0_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/method_distinction_load_001/METHOD_DISTINCTION_LOAD_ABLATION_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 50,
+          "text": "method_distinction_load_ablation_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/method_distinction_load_001/METHOD_DISTINCTION_LOAD_ABLATION_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 62,
+          "text": "method_distinction_load_ablation_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/method_distinction_load_001/METHOD_DISTINCTION_LOAD_ABLATION_V0_PRESSURE_001_READY_TO_RUN.md",
+          "line": 222,
+          "text": "Remove-Item method_distinction_load_ablation_v0_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 34,
+          "text": "| `method_distinction_load_ablation_v0_observation.json` | 4671 | `a334412ac95fd66a228dba49fb888ffc225a6e7f` |"
+        },
+        {
+          "path": "docs/evidence/for_planner/current_horizon_distinction_dependence_v0_observation.json",
+          "line": 11,
+          "text": "    \"g5_witness\": \"method_distinction_load_ablation_v0_observation.json\","
+        },
+        {
+          "path": "tools/observe_current_horizon_distinction_dependence_v0.py",
+          "line": 24,
+          "text": "G5_WITNESS = ROOT / \"method_distinction_load_ablation_v0_observation.json\""
+        },
+        {
+          "path": "tools/observe_current_horizon_distinction_dependence_v0.py",
+          "line": 60,
+          "text": "        \"HEAD:method_distinction_load_ablation_v0_observation.json\","
+        },
+        {
+          "path": "tools/observe_current_horizon_distinction_dependence_v0.py",
+          "line": 170,
+          "text": "            \"g5_witness\": \"method_distinction_load_ablation_v0_observation.json\","
+        },
+        {
+          "path": "tools/observe_distinction_retention_mode_v0.py",
+          "line": 31,
+          "text": "    \"g5_witness\": \"method_distinction_load_ablation_v0_observation.json\","
+        },
+        {
+          "path": "tools/observe_method_distinction_load_ablation_v0.py",
+          "line": 18,
+          "text": "OUT = ROOT / \"method_distinction_load_ablation_v0_observation.json\""
+        },
+        {
+          "path": "tools/observe_method_distinction_load_ablation_v0.py",
+          "line": 40,
+          "text": "            \"remove existing method_distinction_load_ablation_v0_observation.json first\""
+        }
+      ]
+    },
+    {
+      "original_root_path": "one_successor_continuation_observation.json",
+      "size_bytes": "3618",
+      "expected_blob": "0dcae24eff5491c5cea9d142f15c764cb98dbbe9",
+      "relocated_path": "docs/evidence/for_planner/one_successor_continuation_observation.json",
+      "relocated_path_current_blob": "0dcae24eff5491c5cea9d142f15c764cb98dbbe9",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 7,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/ONE_SUCCESSOR_CONTINUATION_OBSERVATION_READY_TO_RUN.md",
+          "line": 72,
+          "text": "one_successor_continuation_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/ONE_SUCCESSOR_CONTINUATION_OBSERVATION_READY_TO_RUN.md",
+          "line": 114,
+          "text": "one_successor_continuation_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/ONE_SUCCESSOR_CONTINUATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 109,
+          "text": "`one_successor_continuation_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 164,
+          "text": "      \"one_successor_continuation_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 35,
+          "text": "| `one_successor_continuation_observation.json` | 3618 | `0dcae24eff5491c5cea9d142f15c764cb98dbbe9` |"
+        },
+        {
+          "path": "tools/observe_one_successor_continuation_v0.py",
+          "line": 22,
+          "text": "OUT = ROOT / \"one_successor_continuation_observation.json\""
+        },
+        {
+          "path": "tools/observe_one_successor_continuation_v0.py",
+          "line": 53,
+          "text": "            \"one_successor_continuation_observation.json already exists; \""
+        }
+      ]
+    },
+    {
+      "original_root_path": "partial_basis_residual_conservation_v0_observation.json",
+      "size_bytes": "3732",
+      "expected_blob": "1736d63c13c27d37641f3a6f78825c9288428a50",
+      "relocated_path": "docs/evidence/for_planner/partial_basis_residual_conservation_v0_observation.json",
+      "relocated_path_current_blob": "1736d63c13c27d37641f3a6f78825c9288428a50",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 3,
+      "bare_or_root_style_occurrence_count": 16,
+      "qualified_route_occurrences": [
+        {
+          "path": "docs/campaigns/evidence_path_relocation_reachability_001/repairs/EVIDENCE_PATH_ROUTE_REPAIR_001.md",
+          "line": 44,
+          "text": "docs/evidence/for_planner/partial_basis_residual_conservation_v0_observation.json"
+        },
+        {
+          "path": "docs/evidence/for_planner/evidence_path_relocation_reachability_v0_observation.json",
+          "line": 49,
+          "text": "      \"new_path\": \"docs/evidence/for_planner/partial_basis_residual_conservation_v0_observation.json\","
+        },
+        {
+          "path": "docs/methods/EARNED_MEMORY_INVARIANTS_v0.md",
+          "line": 407,
+          "text": "`docs/evidence/for_planner/partial_basis_residual_conservation_v0_observation.json`"
+        }
+      ],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/evidence_path_relocation_reachability_001/G16_CONTRACT_V0.md",
+          "line": 25,
+          "text": "4. partial_basis_residual_conservation_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/evidence_path_relocation_reachability_001/HORIZON_SELECTION_G16_V0.md",
+          "line": 37,
+          "text": "- partial_basis_residual_conservation_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/partial_basis_residual_conservation_001/PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 58,
+          "text": "partial_basis_residual_conservation_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/partial_basis_residual_conservation_001/PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 70,
+          "text": "partial_basis_residual_conservation_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/partial_basis_residual_conservation_001/PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_PRESSURE_001_READY_TO_RUN.md",
+          "line": 171,
+          "text": "Remove-Item partial_basis_residual_conservation_v0_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/partial_basis_residual_conservation_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 23,
+          "text": "    \"witness_handle\": \"partial_basis_residual_conservation_v0_observation.json\","
+        },
+        {
+          "path": "docs/campaigns/residual_conservation_invariant_promotion_001/RESIDUAL_CONSERVATION_INVARIANT_PROMOTION_V0_ADJUDICATION_READY_TO_SEND.md",
+          "line": 74,
+          "text": "partial_basis_residual_conservation_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/residual_conservation_invariant_promotion_001/RESIDUAL_CONSERVATION_INVARIANT_PROMOTION_V0_ADJUDICATION_READY_TO_SEND.md",
+          "line": 200,
+          "text": "`partial_basis_residual_conservation_v0_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/residual_conservation_reconstruction_load_001/HORIZON_SELECTION_G12_V0.md",
+          "line": 17,
+          "text": "partial_basis_residual_conservation_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/residual_conservation_reconstruction_load_001/RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 124,
+          "text": "partial_basis_residual_conservation_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/residual_conservation_reconstruction_load_001/specimens/G11_RESIDUAL_RECONSTRUCTION_CONTROL_CARRIER_V0.json",
+          "line": 48,
+          "text": "      \"path\": \"partial_basis_residual_conservation_v0_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 36,
+          "text": "| `partial_basis_residual_conservation_v0_observation.json` | 3732 | `1736d63c13c27d37641f3a6f78825c9288428a50` |"
+        },
+        {
+          "path": "docs/evidence/for_planner/evidence_path_relocation_reachability_v0_observation.json",
+          "line": 48,
+          "text": "      \"old_path\": \"partial_basis_residual_conservation_v0_observation.json\","
+        },
+        {
+          "path": "tools/observe_evidence_path_relocation_reachability_v0.py",
+          "line": 22,
+          "text": "    \"partial_basis_residual_conservation_v0_observation.json\":"
+        },
+        {
+          "path": "tools/observe_partial_basis_residual_conservation_v0.py",
+          "line": 18,
+          "text": "OUT = ROOT / \"partial_basis_residual_conservation_v0_observation.json\""
+        },
+        {
+          "path": "tools/observe_partial_basis_residual_conservation_v0.py",
+          "line": 42,
+          "text": "            \"remove existing partial_basis_residual_conservation_v0_observation.json first\""
+        }
+      ]
+    },
+    {
+      "original_root_path": "partial_basis_retention_profile_v0_observation.json",
+      "size_bytes": "6351",
+      "expected_blob": "4f4c7efef184c1f60ab362420d7ef09a1c43dab1",
+      "relocated_path": "docs/evidence/for_planner/partial_basis_retention_profile_v0_observation.json",
+      "relocated_path_current_blob": "4f4c7efef184c1f60ab362420d7ef09a1c43dab1",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 3,
+      "bare_or_root_style_occurrence_count": 17,
+      "qualified_route_occurrences": [
+        {
+          "path": "docs/campaigns/evidence_path_relocation_reachability_001/repairs/EVIDENCE_PATH_ROUTE_REPAIR_001.md",
+          "line": 48,
+          "text": "docs/evidence/for_planner/partial_basis_retention_profile_v0_observation.json"
+        },
+        {
+          "path": "docs/evidence/for_planner/evidence_path_relocation_reachability_v0_observation.json",
+          "line": 62,
+          "text": "      \"new_path\": \"docs/evidence/for_planner/partial_basis_retention_profile_v0_observation.json\","
+        },
+        {
+          "path": "docs/methods/EARNED_MEMORY_INVARIANTS_v0.md",
+          "line": 349,
+          "text": "`docs/evidence/for_planner/partial_basis_retention_profile_v0_observation.json`"
+        }
+      ],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/evidence_path_relocation_reachability_001/G16_CONTRACT_V0.md",
+          "line": 27,
+          "text": "5. partial_basis_retention_profile_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/evidence_path_relocation_reachability_001/HORIZON_SELECTION_G16_V0.md",
+          "line": 38,
+          "text": "- partial_basis_retention_profile_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/partial_basis_residual_conservation_001/PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 103,
+          "text": "partial_basis_retention_profile_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/partial_basis_residual_conservation_001/PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_PRESSURE_001_READY_TO_RUN.md",
+          "line": 66,
+          "text": "`partial_basis_retention_profile_v0_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/partial_basis_retention_profile_001/PARTIAL_BASIS_RETENTION_PROFILE_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 54,
+          "text": "partial_basis_retention_profile_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/partial_basis_retention_profile_001/PARTIAL_BASIS_RETENTION_PROFILE_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 66,
+          "text": "partial_basis_retention_profile_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/partial_basis_retention_profile_001/PARTIAL_BASIS_RETENTION_PROFILE_V0_PRESSURE_001_READY_TO_RUN.md",
+          "line": 217,
+          "text": "Remove-Item partial_basis_retention_profile_v0_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/residual_conservation_reconstruction_load_001/specimens/G11_RESIDUAL_RECONSTRUCTION_CONTROL_CARRIER_V0.json",
+          "line": 40,
+          "text": "      \"path\": \"partial_basis_retention_profile_v0_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 37,
+          "text": "| `partial_basis_retention_profile_v0_observation.json` | 6351 | `4f4c7efef184c1f60ab362420d7ef09a1c43dab1` |"
+        },
+        {
+          "path": "docs/evidence/for_planner/evidence_path_relocation_reachability_v0_observation.json",
+          "line": 61,
+          "text": "      \"old_path\": \"partial_basis_retention_profile_v0_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/partial_basis_residual_conservation_v0_observation.json",
+          "line": 10,
+          "text": "    \"g10_witness\": \"partial_basis_retention_profile_v0_observation.json\","
+        },
+        {
+          "path": "tools/observe_evidence_path_relocation_reachability_v0.py",
+          "line": 24,
+          "text": "    \"partial_basis_retention_profile_v0_observation.json\":"
+        },
+        {
+          "path": "tools/observe_partial_basis_residual_conservation_v0.py",
+          "line": 24,
+          "text": "G10_WITNESS = ROOT / \"partial_basis_retention_profile_v0_observation.json\""
+        },
+        {
+          "path": "tools/observe_partial_basis_residual_conservation_v0.py",
+          "line": 55,
+          "text": "        \"HEAD:partial_basis_retention_profile_v0_observation.json\","
+        },
+        {
+          "path": "tools/observe_partial_basis_residual_conservation_v0.py",
+          "line": 142,
+          "text": "            \"g10_witness\": \"partial_basis_retention_profile_v0_observation.json\","
+        },
+        {
+          "path": "tools/observe_partial_basis_retention_profile_v0.py",
+          "line": 19,
+          "text": "OUT = ROOT / \"partial_basis_retention_profile_v0_observation.json\""
+        },
+        {
+          "path": "tools/observe_partial_basis_retention_profile_v0.py",
+          "line": 43,
+          "text": "            \"remove existing partial_basis_retention_profile_v0_observation.json first\""
+        }
+      ]
+    },
+    {
+      "original_root_path": "promote_cell002_authority_module.ps1",
+      "size_bytes": "2338",
+      "expected_blob": "779b6dd593b8b6b6248e67fd23efdd50d2d03914",
+      "relocated_path": "docs/evidence/for_planner/promote_cell002_authority_module.ps1",
+      "relocated_path_current_blob": "779b6dd593b8b6b6248e67fd23efdd50d2d03914",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 2,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/evidence/for_planner/PROMOTION_FRAME.txt",
+          "line": 32,
+          "text": "  powershell -ExecutionPolicy Bypass -File .\\promote_cell002_authority_module.ps1"
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 38,
+          "text": "| `promote_cell002_authority_module.ps1` | 2338 | `779b6dd593b8b6b6248e67fd23efdd50d2d03914` |"
+        }
+      ]
+    },
+    {
+      "original_root_path": "relational_horizon_v0_observation.json",
+      "size_bytes": "4727",
+      "expected_blob": "a7f4e14c932f361db9c21178ef70edd5bc404a1d",
+      "relocated_path": "docs/evidence/for_planner/relational_horizon_v0_observation.json",
+      "relocated_path_current_blob": "a7f4e14c932f361db9c21178ef70edd5bc404a1d",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 5,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/control_kernel_001/RELATIONAL_HORIZON_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 57,
+          "text": "- relational_horizon_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/control_kernel_001/RELATIONAL_HORIZON_V0_PRESSURE_001_READY_TO_RUN.md",
+          "line": 143,
+          "text": "Remove-Item relational_horizon_v0_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 39,
+          "text": "| `relational_horizon_v0_observation.json` | 4727 | `a7f4e14c932f361db9c21178ef70edd5bc404a1d` |"
+        },
+        {
+          "path": "tools/observe_relational_horizon_v0.py",
+          "line": 16,
+          "text": "OUT = ROOT / \"relational_horizon_v0_observation.json\""
+        },
+        {
+          "path": "tools/observe_relational_horizon_v0.py",
+          "line": 46,
+          "text": "        raise SystemExit(\"remove existing relational_horizon_v0_observation.json first\")"
+        }
+      ]
+    },
+    {
+      "original_root_path": "retention_scope_aggregation_v0_observation.json",
+      "size_bytes": "8390",
+      "expected_blob": "212d7a9d4fb7bc982cb83b418ee6d5982008c574",
+      "relocated_path": "docs/evidence/for_planner/retention_scope_aggregation_v0_observation.json",
+      "relocated_path_current_blob": "212d7a9d4fb7bc982cb83b418ee6d5982008c574",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 3,
+      "bare_or_root_style_occurrence_count": 16,
+      "qualified_route_occurrences": [
+        {
+          "path": "docs/campaigns/evidence_path_relocation_reachability_001/repairs/EVIDENCE_PATH_ROUTE_REPAIR_001.md",
+          "line": 52,
+          "text": "docs/evidence/for_planner/retention_scope_aggregation_v0_observation.json"
+        },
+        {
+          "path": "docs/evidence/for_planner/evidence_path_relocation_reachability_v0_observation.json",
+          "line": 75,
+          "text": "      \"new_path\": \"docs/evidence/for_planner/retention_scope_aggregation_v0_observation.json\","
+        },
+        {
+          "path": "docs/methods/EARNED_MEMORY_INVARIANTS_v0.md",
+          "line": 301,
+          "text": "`docs/evidence/for_planner/retention_scope_aggregation_v0_observation.json`"
+        }
+      ],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/evidence_path_relocation_reachability_001/G16_CONTRACT_V0.md",
+          "line": 29,
+          "text": "6. retention_scope_aggregation_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/evidence_path_relocation_reachability_001/HORIZON_SELECTION_G16_V0.md",
+          "line": 39,
+          "text": "- retention_scope_aggregation_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/partial_basis_retention_profile_001/PARTIAL_BASIS_RETENTION_PROFILE_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 99,
+          "text": "retention_scope_aggregation_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/partial_basis_retention_profile_001/PARTIAL_BASIS_RETENTION_PROFILE_V0_PRESSURE_001_READY_TO_RUN.md",
+          "line": 68,
+          "text": "`retention_scope_aggregation_v0_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/retention_scope_aggregation_001/RETENTION_SCOPE_AGGREGATION_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 52,
+          "text": "retention_scope_aggregation_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/retention_scope_aggregation_001/RETENTION_SCOPE_AGGREGATION_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 64,
+          "text": "retention_scope_aggregation_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/retention_scope_aggregation_001/RETENTION_SCOPE_AGGREGATION_V0_PRESSURE_001_READY_TO_RUN.md",
+          "line": 183,
+          "text": "Remove-Item retention_scope_aggregation_v0_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 40,
+          "text": "| `retention_scope_aggregation_v0_observation.json` | 8390 | `212d7a9d4fb7bc982cb83b418ee6d5982008c574` |"
+        },
+        {
+          "path": "docs/evidence/for_planner/evidence_path_relocation_reachability_v0_observation.json",
+          "line": 74,
+          "text": "      \"old_path\": \"retention_scope_aggregation_v0_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/partial_basis_retention_profile_v0_observation.json",
+          "line": 10,
+          "text": "    \"g9_witness\": \"retention_scope_aggregation_v0_observation.json\","
+        },
+        {
+          "path": "tools/observe_evidence_path_relocation_reachability_v0.py",
+          "line": 26,
+          "text": "    \"retention_scope_aggregation_v0_observation.json\":"
+        },
+        {
+          "path": "tools/observe_partial_basis_retention_profile_v0.py",
+          "line": 25,
+          "text": "G9_WITNESS = ROOT / \"retention_scope_aggregation_v0_observation.json\""
+        },
+        {
+          "path": "tools/observe_partial_basis_retention_profile_v0.py",
+          "line": 55,
+          "text": "        \"rev-parse\", \"HEAD:retention_scope_aggregation_v0_observation.json\""
+        },
+        {
+          "path": "tools/observe_partial_basis_retention_profile_v0.py",
+          "line": 169,
+          "text": "            \"g9_witness\": \"retention_scope_aggregation_v0_observation.json\","
+        },
+        {
+          "path": "tools/observe_retention_scope_aggregation_v0.py",
+          "line": 18,
+          "text": "OUT = ROOT / \"retention_scope_aggregation_v0_observation.json\""
+        },
+        {
+          "path": "tools/observe_retention_scope_aggregation_v0.py",
+          "line": 42,
+          "text": "            \"remove existing retention_scope_aggregation_v0_observation.json first\""
+        }
+      ]
+    },
+    {
+      "original_root_path": "second_successor_from_reconciliation_observation.json",
+      "size_bytes": "8122",
+      "expected_blob": "1e6225bbcb23954c372ee6df1317af788e570f6e",
+      "relocated_path": "docs/evidence/for_planner/second_successor_from_reconciliation_observation.json",
+      "relocated_path_current_blob": "1e6225bbcb23954c372ee6df1317af788e570f6e",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 11,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 107,
+          "text": "`second_successor_from_reconciliation_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 126,
+          "text": "second_successor_from_reconciliation_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_001_READY_TO_RUN.md",
+          "line": 209,
+          "text": "Remove-Item second_successor_from_reconciliation_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/SECOND_SUCCESSOR_FROM_RECONCILIATION_PRESSURE_001_READY_TO_RUN.md",
+          "line": 222,
+          "text": "`second_successor_from_reconciliation_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 110,
+          "text": "`second_successor_from_reconciliation_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 129,
+          "text": "second_successor_from_reconciliation_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_001_READY_TO_RUN.md",
+          "line": 119,
+          "text": "Remove-Item second_successor_from_reconciliation_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 225,
+          "text": "      \"second_successor_from_reconciliation_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 41,
+          "text": "| `second_successor_from_reconciliation_observation.json` | 8122 | `1e6225bbcb23954c372ee6df1317af788e570f6e` |"
+        },
+        {
+          "path": "tools/observe_second_successor_from_reconciliation_v0.py",
+          "line": 28,
+          "text": "OUT = ROOT / \"second_successor_from_reconciliation_observation.json\""
+        },
+        {
+          "path": "tools/observe_second_successor_from_reconciliation_v0.py",
+          "line": 131,
+          "text": "            \"remove existing second_successor_from_reconciliation_observation.json first\""
+        }
+      ]
+    },
+    {
+      "original_root_path": "settlement_consequence_reconciliation_observation.json",
+      "size_bytes": "12797",
+      "expected_blob": "5470889ac1a93497a24cb7d506a4c73cd1a00ac4",
+      "relocated_path": "docs/evidence/for_planner/settlement_consequence_reconciliation_observation.json",
+      "relocated_path_current_blob": "5470889ac1a93497a24cb7d506a4c73cd1a00ac4",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 18,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 29,
+          "text": "materialized_settlement_consequence_reconciliation_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001_READY_TO_RUN.md",
+          "line": 141,
+          "text": "Remove-Item materialized_settlement_consequence_reconciliation_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 124,
+          "text": "`settlement_consequence_reconciliation_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 143,
+          "text": "settlement_consequence_reconciliation_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001_READY_TO_RUN.md",
+          "line": 190,
+          "text": "Remove-Item settlement_consequence_reconciliation_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_001_READY_TO_RUN.md",
+          "line": 204,
+          "text": "`settlement_consequence_reconciliation_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 220,
+          "text": "      \"settlement_consequence_reconciliation_observation.json\","
+        },
+        {
+          "path": "docs/campaigns/world_method_reconciliation_001/WORLD_METHOD_RECONCILIATION_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 81,
+          "text": "materialized_settlement_consequence_reconciliation_observation.json"
+        },
+        {
+          "path": "docs/campaigns/world_method_reconciliation_001/WORLD_METHOD_RECONCILIATION_V0_PRESSURE_001_READY_TO_RUN.md",
+          "line": 47,
+          "text": "`materialized_settlement_consequence_reconciliation_observation.json`"
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 31,
+          "text": "| `materialized_settlement_consequence_reconciliation_observation.json` | 3608 | `8a75f1b9c6cfde65b6b922355dcce87b46ae30e8` |"
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 42,
+          "text": "| `settlement_consequence_reconciliation_observation.json` | 12797 | `5470889ac1a93497a24cb7d506a4c73cd1a00ac4` |"
+        },
+        {
+          "path": "docs/evidence/for_planner/world_method_reconciliation_v0_observation.json",
+          "line": 7,
+          "text": "    \"path\": \"materialized_settlement_consequence_reconciliation_observation.json\","
+        },
+        {
+          "path": "tools/observe_materialized_settlement_consequence_reconciliation_v0.py",
+          "line": 30,
+          "text": "OUT = ROOT / \"materialized_settlement_consequence_reconciliation_observation.json\""
+        },
+        {
+          "path": "tools/observe_materialized_settlement_consequence_reconciliation_v0.py",
+          "line": 45,
+          "text": "            \"remove existing materialized_settlement_consequence_reconciliation_observation.json first\""
+        },
+        {
+          "path": "tools/observe_settlement_consequence_reconciliation_v0.py",
+          "line": 27,
+          "text": "OUT = ROOT / \"settlement_consequence_reconciliation_observation.json\""
+        },
+        {
+          "path": "tools/observe_settlement_consequence_reconciliation_v0.py",
+          "line": 47,
+          "text": "        raise SystemExit(\"remove existing settlement_consequence_reconciliation_observation.json first\")"
+        },
+        {
+          "path": "tools/observe_world_method_reconciliation_v0.py",
+          "line": 14,
+          "text": "SOURCE_WITNESS=ROOT/\"materialized_settlement_consequence_reconciliation_observation.json\""
+        },
+        {
+          "path": "tools/observe_world_method_reconciliation_v0.py",
+          "line": 77,
+          "text": "            \"path\":\"materialized_settlement_consequence_reconciliation_observation.json\","
+        }
+      ]
+    },
+    {
+      "original_root_path": "successor_identity_observation.json",
+      "size_bytes": "7137",
+      "expected_blob": "c0befd453db2dd86731580d57065197638396682",
+      "relocated_path": "docs/evidence/for_planner/successor_identity_observation.json",
+      "relocated_path_current_blob": "c0befd453db2dd86731580d57065197638396682",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 6,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/SUCCESSOR_IDENTITY_CONSERVATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 113,
+          "text": "`successor_identity_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/SUCCESSOR_IDENTITY_CONSERVATION_PRESSURE_001_READY_TO_RUN.md",
+          "line": 94,
+          "text": "successor_identity_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 177,
+          "text": "      \"successor_identity_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 43,
+          "text": "| `successor_identity_observation.json` | 7137 | `c0befd453db2dd86731580d57065197638396682` |"
+        },
+        {
+          "path": "tools/observe_successor_identity_v1.py",
+          "line": 24,
+          "text": "OUT = ROOT / \"successor_identity_observation.json\""
+        },
+        {
+          "path": "tools/observe_successor_identity_v1.py",
+          "line": 142,
+          "text": "            \"successor_identity_observation.json already exists; \""
+        }
+      ]
+    },
+    {
+      "original_root_path": "successor_work_unit_materialization_observation.json",
+      "size_bytes": "13925",
+      "expected_blob": "4cd6cc5232318e44324f113e2b9641f498453e79",
+      "relocated_path": "docs/evidence/for_planner/successor_work_unit_materialization_observation.json",
+      "relocated_path_current_blob": "4cd6cc5232318e44324f113e2b9641f498453e79",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 8,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 133,
+          "text": "`successor_work_unit_materialization_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 152,
+          "text": "successor_work_unit_materialization_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001_READY_TO_RUN.md",
+          "line": 245,
+          "text": "Remove-Item successor_work_unit_materialization_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001_READY_TO_RUN.md",
+          "line": 258,
+          "text": "`successor_work_unit_materialization_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 235,
+          "text": "      \"successor_work_unit_materialization_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 44,
+          "text": "| `successor_work_unit_materialization_observation.json` | 13925 | `4cd6cc5232318e44324f113e2b9641f498453e79` |"
+        },
+        {
+          "path": "tools/observe_successor_work_unit_materialization_v0.py",
+          "line": 24,
+          "text": "OUT = ROOT / \"successor_work_unit_materialization_observation.json\""
+        },
+        {
+          "path": "tools/observe_successor_work_unit_materialization_v0.py",
+          "line": 55,
+          "text": "            \"remove existing successor_work_unit_materialization_observation.json first\""
+        }
+      ]
+    },
+    {
+      "original_root_path": "t7_projection.json",
+      "size_bytes": "67076",
+      "expected_blob": "88a96691f726b1c880b63920a164b12a9e89091d",
+      "relocated_path": "docs/evidence/for_planner/t7_projection.json",
+      "relocated_path_current_blob": "88a96691f726b1c880b63920a164b12a9e89091d",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 5,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/COCKPIT_T7_PRESSURE_RUN_001_READY_TO_SEND.md",
+          "line": 63,
+          "text": "`t7_projection.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/COCKPIT_T7_PRESSURE_RUN_001_READY_TO_SEND.md",
+          "line": 72,
+          "text": "1. `t7_projection.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/T7_LOCAL_PRECONDITION_RESULT_001.md",
+          "line": 48,
+          "text": "python tools/project_workcycle_v0.py > t7_projection.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/T7_LOCAL_PRECONDITION_RESULT_001.md",
+          "line": 52,
+          "text": "t7_projection.json"
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 45,
+          "text": "| `t7_projection.json` | 67076 | `88a96691f726b1c880b63920a164b12a9e89091d` |"
+        }
+      ]
+    },
+    {
+      "original_root_path": "t7r_runtime_observation.json",
+      "size_bytes": "10251",
+      "expected_blob": "6b461efb75669d4a3871583206774cc5e163b8f5",
+      "relocated_path": "docs/evidence/for_planner/t7r_runtime_observation.json",
+      "relocated_path_current_blob": "6b461efb75669d4a3871583206774cc5e163b8f5",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 8,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/COCKPIT_T7R_ADJUDICATION_READY_TO_SEND.md",
+          "line": 75,
+          "text": "`t7r_runtime_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/COCKPIT_T7R_CURRENT_WORLD_OBSERVATION_READY_TO_RUN.md",
+          "line": 52,
+          "text": "t7r_runtime_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/COCKPIT_T7R_CURRENT_WORLD_OBSERVATION_READY_TO_RUN.md",
+          "line": 71,
+          "text": "`t7r_runtime_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/COCKPIT_T7_PRESSURE_RESULT_001.md",
+          "line": 16,
+          "text": "t7r_runtime_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 271,
+          "text": "      \"t7r_runtime_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 46,
+          "text": "| `t7r_runtime_observation.json` | 10251 | `6b461efb75669d4a3871583206774cc5e163b8f5` |"
+        },
+        {
+          "path": "tools/observe_t7r_runtime_v0.py",
+          "line": 26,
+          "text": "OUT = ROOT / \"t7r_runtime_observation.json\""
+        },
+        {
+          "path": "tools/observe_t7r_runtime_v0.py",
+          "line": 109,
+          "text": "        raise SystemExit(\"t7r_runtime_observation.json already exists; move/remove it before a fresh observation\")"
+        }
+      ]
+    },
+    {
+      "original_root_path": "temporal_horizon_closure_observation.json",
+      "size_bytes": "23716",
+      "expected_blob": "88900f4368f24fa82a15970afe793e0ad545fa24",
+      "relocated_path": "docs/evidence/for_planner/temporal_horizon_closure_observation.json",
+      "relocated_path_current_blob": "88900f4368f24fa82a15970afe793e0ad545fa24",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 8,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/ATLAS_TEMPORAL_HORIZON_CLOSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 68,
+          "text": "`temporal_horizon_closure_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/ATLAS_TEMPORAL_HORIZON_CLOSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 142,
+          "text": "temporal_horizon_closure_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/ATLAS_TEMPORAL_HORIZON_CLOSURE_001_OBSERVATION_READY_TO_RUN.md",
+          "line": 60,
+          "text": "temporal_horizon_closure_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/ATLAS_TEMPORAL_HORIZON_CLOSURE_001_OBSERVATION_READY_TO_RUN.md",
+          "line": 120,
+          "text": "temporal_horizon_closure_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 160,
+          "text": "      \"temporal_horizon_closure_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 47,
+          "text": "| `temporal_horizon_closure_observation.json` | 23716 | `88900f4368f24fa82a15970afe793e0ad545fa24` |"
+        },
+        {
+          "path": "tools/observe_temporal_horizon_closure_v0.py",
+          "line": 27,
+          "text": "OUT = ROOT / \"temporal_horizon_closure_observation.json\""
+        },
+        {
+          "path": "tools/observe_temporal_horizon_closure_v0.py",
+          "line": 46,
+          "text": "            \"temporal_horizon_closure_observation.json already exists; move/remove it before a fresh observation\""
+        }
+      ]
+    },
+    {
+      "original_root_path": "verified_authority_atomic_admission_observation.json",
+      "size_bytes": "10801",
+      "expected_blob": "35da1b7edbf0be4d76c32a34bbe7a0003004435d",
+      "relocated_path": "docs/evidence/for_planner/verified_authority_atomic_admission_observation.json",
+      "relocated_path_current_blob": "35da1b7edbf0be4d76c32a34bbe7a0003004435d",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 9,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_001_READY_TO_RUN.md",
+          "line": 92,
+          "text": "Remove-Item verified_authority_atomic_admission_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 127,
+          "text": "`verified_authority_atomic_admission_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 146,
+          "text": "verified_authority_atomic_admission_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_001_READY_TO_RUN.md",
+          "line": 168,
+          "text": "verified_authority_atomic_admission_observation.json"
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 192,
+          "text": "      \"verified_authority_atomic_admission_observation.json\","
+        },
+        {
+          "path": "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 296,
+          "text": "      \"witness_effect\": \"verified_authority_atomic_admission_observation.json generated in the same run is ineligible because the prerequisite suite failed.\","
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 48,
+          "text": "| `verified_authority_atomic_admission_observation.json` | 10801 | `35da1b7edbf0be4d76c32a34bbe7a0003004435d` |"
+        },
+        {
+          "path": "tools/observe_verified_authority_atomic_admission_v0.py",
+          "line": 29,
+          "text": "OUT = ROOT / \"verified_authority_atomic_admission_observation.json\""
+        },
+        {
+          "path": "tools/observe_verified_authority_atomic_admission_v0.py",
+          "line": 122,
+          "text": "            \"verified_authority_atomic_admission_observation.json already exists; \""
+        }
+      ]
+    },
+    {
+      "original_root_path": "world_method_reconciliation_v0_observation.json",
+      "size_bytes": "11228",
+      "expected_blob": "a49d948432c9560310133557ce6c8102ce4931ac",
+      "relocated_path": "docs/evidence/for_planner/world_method_reconciliation_v0_observation.json",
+      "relocated_path_current_blob": "a49d948432c9560310133557ce6c8102ce4931ac",
+      "relocated_path_present": true,
+      "relocated_blob_matches_inventory": true,
+      "qualified_route_occurrence_count": 0,
+      "bare_or_root_style_occurrence_count": 20,
+      "qualified_route_occurrences": [],
+      "bare_or_root_style_occurrences": [
+        {
+          "path": "docs/campaigns/current_horizon_distinction_dependence_001/CURRENT_HORIZON_DISTINCTION_DEPENDENCE_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 104,
+          "text": "world_method_reconciliation_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/current_horizon_distinction_dependence_001/CURRENT_HORIZON_DISTINCTION_DEPENDENCE_V0_PRESSURE_001_READY_TO_RUN.md",
+          "line": 55,
+          "text": "`world_method_reconciliation_v0_observation.json`"
+        },
+        {
+          "path": "docs/campaigns/method_distinction_load_001/METHOD_DISTINCTION_LOAD_ABLATION_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 95,
+          "text": "world_method_reconciliation_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/method_distinction_load_001/METHOD_DISTINCTION_LOAD_ABLATION_V0_PRESSURE_001_READY_TO_RUN.md",
+          "line": 59,
+          "text": "world_method_reconciliation_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/method_distinction_load_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
+          "line": 10,
+          "text": "    \"witness\": \"world_method_reconciliation_v0_observation.json\","
+        },
+        {
+          "path": "docs/campaigns/world_method_reconciliation_001/WORLD_METHOD_RECONCILIATION_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 44,
+          "text": "world_method_reconciliation_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/world_method_reconciliation_001/WORLD_METHOD_RECONCILIATION_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+          "line": 56,
+          "text": "world_method_reconciliation_v0_observation.json"
+        },
+        {
+          "path": "docs/campaigns/world_method_reconciliation_001/WORLD_METHOD_RECONCILIATION_V0_PRESSURE_001_READY_TO_RUN.md",
+          "line": 181,
+          "text": "Remove-Item world_method_reconciliation_v0_observation.json -ErrorAction SilentlyContinue"
+        },
+        {
+          "path": "docs/evidence/for_planner/ROOT_EVIDENCE_INVENTORY.md",
+          "line": 49,
+          "text": "| `world_method_reconciliation_v0_observation.json` | 11228 | `a49d948432c9560310133557ce6c8102ce4931ac` |"
+        },
+        {
+          "path": "docs/evidence/for_planner/current_horizon_distinction_dependence_v0_observation.json",
+          "line": 9,
+          "text": "    \"g4_witness\": \"world_method_reconciliation_v0_observation.json\","
+        },
+        {
+          "path": "docs/evidence/for_planner/method_distinction_load_ablation_v0_observation.json",
+          "line": 9,
+          "text": "    \"g4_witness\": \"world_method_reconciliation_v0_observation.json\","
+        },
+        {
+          "path": "tools/observe_current_horizon_distinction_dependence_v0.py",
+          "line": 23,
+          "text": "G4_WITNESS = ROOT / \"world_method_reconciliation_v0_observation.json\""
+        },
+        {
+          "path": "tools/observe_current_horizon_distinction_dependence_v0.py",
+          "line": 56,
+          "text": "        \"rev-parse\", \"HEAD:world_method_reconciliation_v0_observation.json\""
+        },
+        {
+          "path": "tools/observe_current_horizon_distinction_dependence_v0.py",
+          "line": 168,
+          "text": "            \"g4_witness\": \"world_method_reconciliation_v0_observation.json\","
+        },
+        {
+          "path": "tools/observe_distinction_retention_mode_v0.py",
+          "line": 26,
+          "text": "    \"g4_witness\": \"world_method_reconciliation_v0_observation.json\","
+        },
+        {
+          "path": "tools/observe_method_distinction_load_ablation_v0.py",
+          "line": 19,
+          "text": "G4_WITNESS = ROOT / \"world_method_reconciliation_v0_observation.json\""
+        },
+        {
+          "path": "tools/observe_method_distinction_load_ablation_v0.py",
+          "line": 46,
+          "text": "        \"rev-parse\", \"HEAD:world_method_reconciliation_v0_observation.json\""
+        },
+        {
+          "path": "tools/observe_method_distinction_load_ablation_v0.py",
+          "line": 126,
+          "text": "            \"g4_witness\": \"world_method_reconciliation_v0_observation.json\","
+        },
+        {
+          "path": "tools/observe_world_method_reconciliation_v0.py",
+          "line": 13,
+          "text": "OUT=ROOT/\"world_method_reconciliation_v0_observation.json\""
+        },
+        {
+          "path": "tools/observe_world_method_reconciliation_v0.py",
+          "line": 34,
+          "text": "        raise SystemExit(\"remove existing world_method_reconciliation_v0_observation.json first\")"
+        }
+      ]
+    }
+  ],
+  "assembly": {
+    "inventory_rows_parsed": 37,
+    "all_relocated_paths_present": true,
+    "all_relocated_blobs_match_inventory": true,
+    "total_qualified_route_occurrences": 18,
+    "total_bare_or_root_style_occurrences": 381,
+    "dependency_classification_performed": false
+  },
+  "noncollapses": {
+    "text_occurrence_ne_live_dependency": true,
+    "known_route_repair_ne_all_reference_closure": true,
+    "historical_mention_ne_current_route": true,
+    "reference_discovery_ne_reference_rewrite_authority": true
+  },
+  "effects": {
+    "dependency_standing_effect": "NONE",
+    "automatic_reference_rewrite_effect": "NONE",
+    "generic_relocation_resolver_effect": "NONE",
+    "archive_policy_effect": "NONE",
+    "cold_storage_admission_effect": "NONE",
+    "deletion_permission_effect": "NONE",
+    "planning_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE"
+  },
+  "claim_ceiling": "One tracked-tree mechanical occurrence inventory over the 37 exact artifacts listed in ROOT_EVIDENCE_INVENTORY.md. Bare/root-style text occurrences are not classified as live dependencies by this observer.",
+  "stopped": "YES"
+}
