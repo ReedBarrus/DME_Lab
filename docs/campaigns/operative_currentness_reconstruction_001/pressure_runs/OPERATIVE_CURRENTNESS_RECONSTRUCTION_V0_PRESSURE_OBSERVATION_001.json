@@ -1,0 +1,52 @@
+{
+  "object_type": "OPERATIVE_CURRENTNESS_RECONSTRUCTION_V0_OBSERVATION",
+  "campaign_id": "OPERATIVE_CURRENTNESS_RECONSTRUCTION_001",
+  "pressure_id": "OPERATIVE_CURRENTNESS_RECONSTRUCTION_V0_PRESSURE_001",
+  "frozen_setup_source": "cf2d62f175bfae784d3755dc83ab7ea1d4e33b2f",
+  "setup_carrier_blobs": {
+    "control": "00d6122d40ae3b4d9cf16b6ed2e3186c3cec7d47",
+    "ablation": "c9a87dada6fb1e3e860756a4772decb3b61e0c04"
+  },
+  "intervening_repository_move": {
+    "commit": "2ea35acb8d4fb61f55f4725a5af72510746460b5",
+    "posture": "PATH_ONLY_EVIDENCE_RELOCATION_PLUS_INVENTORY",
+    "g15_setup_blobs_changed": false,
+    "witness_transport_from_setup_is_witness_only": false
+  },
+  "control_return": {
+    "campaign_posture": "CLOSED",
+    "current_horizon_posture": "CLOSED",
+    "next_pressure": null,
+    "successor_posture": "NO_SUCCESSOR",
+    "next_pressure_allowed": false
+  },
+  "ablation_return": {
+    "campaign_posture": "UNRESOLVED_FROM_CARRIER",
+    "current_horizon_posture": "UNRESOLVED_FROM_CARRIER",
+    "next_pressure": "UNRESOLVED_FROM_CARRIER",
+    "successor_posture": "UNRESOLVED_FROM_CARRIER",
+    "next_pressure_allowed": "UNRESOLVED_FROM_CARRIER"
+  },
+  "assembly": {
+    "control_exact_match": "YES",
+    "ablation_exact_match": "YES",
+    "nonauthoritative_planning_surfaces_preserved_across_pair": "YES",
+    "operative_currentness_discrimination_present": "YES"
+  },
+  "candidate_relation": {
+    "planning_or_task_artifact_ne_current_operative_state": "YES",
+    "operative_currentness_reconstruction_load": "YES"
+  },
+  "effects": {
+    "generic_currentness_resolver_effect": "NONE",
+    "cross_campaign_precedence_effect": "NONE",
+    "task_ranking_effect": "NONE",
+    "planning_activation_effect": "NONE",
+    "work_selection_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE"
+  },
+  "claim_ceiling": "One bounded WORKCYCLE_STABILIZATION_001 reconstruction discrimination only. Control reconstructs exact current campaign posture, current-horizon posture, null next pressure, NO_SUCCESSOR, and next-pressure disallowance. With the authoritative current-state coordinate ablated, all five requested currentness coordinates become UNRESOLVED_FROM_CARRIER while the same non-authoritative planning/task surfaces remain visible. This does not establish a generic currentness resolver, cross-campaign precedence, task ranking, planning activation, work selection, authority, execution, or scientific standing.",
+  "stopped": "YES"
+}
