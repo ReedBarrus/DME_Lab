@@ -1,0 +1,122 @@
+# ChatGPT-main Seat Wake V0 Pressure 001 Result
+
+PRESSURE_ID:
+CHATGPT_MAIN_SEAT_WAKE_V0_PRESSURE_001
+
+FROZEN_SETUP_SOURCE:
+59edad244280f46c0d235ba1ff534c9617386e86
+
+WITNESS_TRANSPORT:
+c3e92c7d6e3e417063ae9bdc45bb7cf32ac8ccca
+
+WITNESS_ONLY_TRANSPORT:
+YES
+
+WITNESS:
+docs/evidence/for_planner/chatgpt_main_seat_wake_v0_observation.json
+
+WITNESS_BLOB:
+27a89203a610fff50ca9045eb66b925481356151
+
+OBSERVED:
+
+SEAT_ID:
+CHATGPT_MAIN
+
+WAKE_STATUS:
+READY
+
+REGISTRY_CONSUMER_ID:
+chatgpt-main
+
+WORKING_STATE_REF:
+continuity/current_state/chatgpt_main_working_state_v0.json
+
+CURSOR_ACKNOWLEDGED_THROUGH:
+CE-000006
+
+CONTINUITY_HEAD:
+CE-000041
+
+UNREAD_EVENT_COUNT:
+35
+
+UNREAD_RANGE:
+CE-000007..CE-000041
+
+WORKING_STATE_PREPARED_EVENT_COUNT:
+33
+
+WORKING_STATE_PREPARED_RANGE:
+CE-000007..CE-000039
+
+NEWER_THAN_WORKING_STATE_EVENTS:
+CE-000040
+CE-000041
+
+FRESH_OCCUPANT_RECONSTRUCTION_REQUIRED:
+true
+
+CURSOR_ADVANCEMENT_AUTHORIZED:
+false
+
+MANUAL_INVOCATION_ASSOCIATION:
+OPAQUE
+
+PLANNING_ACTIVATION_EFFECT:
+NONE
+
+AUTHORITY_EFFECT:
+NONE
+
+EXECUTION_EFFECT:
+NONE
+
+COCKPIT_DURABLE_SEAT_PRESENT:
+true
+
+COCKPIT_CONSUMER_ID:
+chatgpt-main
+
+COCKPIT_OCCUPANT_BINDING:
+MANUAL_TETHER_CANDIDATE
+
+COCKPIT_RUNTIME_OCCUPIED:
+false
+
+ALL_CHECKS_PASS:
+true
+
+CANDIDATE_RELATIONS:
+
+DURABLE_SEAT_BASIS_NE_LIVE_OCCUPANT = YES
+
+CURSOR_POSITION_NE_WORKING_SEMANTIC_STATE = YES
+
+WORKING_STATE_PREPARED_THROUGH_NE_CURRENT_CONTINUITY_HEAD = YES
+
+WAKE_READY_NE_FRESH_OCCUPANT_RECONSTRUCTION = YES
+
+REGISTRY_WORKING_STATE_BINDING_NE_NATIVE_INVOCATION_BINDING = YES
+
+COCKPIT_SEAT_DISCOVERABILITY_NE_LIVE_OCCUPANCY = YES
+
+DISPOSITION:
+CANDIDATE_CHATGPT_MAIN_DURABLE_WAKE_MATCHED_PENDING_FRESH_OCCUPANT_RECONSTRUCTION
+
+CLAIM_CEILING:
+
+One deterministic read-only wake over the exact ChatGPT-main durable seat
+candidate plus the existing Cockpit workcycle projection.
+
+The witness establishes only that the durable seat basis, registry working-state
+binding, cursor-relative continuity delta, prepared-vs-newer event split, and
+Cockpit durable-seat discoverability are mechanically reconstructable from the
+frozen basis.
+
+It does not establish fresh-model semantic reconstruction, native ChatGPT
+context injection, live occupancy, cursor acknowledgement, planner-role
+qualification, authority, execution, or subjective/model-instance continuity.
+
+STOPPED:
+YES
