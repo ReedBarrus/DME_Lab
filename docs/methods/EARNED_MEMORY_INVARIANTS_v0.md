@@ -672,12 +672,70 @@ execution, global invariance, global ecology coverage, or economic weighting.
 
 ---
 
-## Current nonclaim
-
-These fifteen entries are the current bounded invariant bank.
+## EMI-016 — Stored evidence relocation is not producer output route migration
 
 ```text
-fifteen earned invariants
+historical evidence relocated
+!=
+unchanged producer output route migrated
+```
+
+for the tested producer:
+
+`tools/observe_horizon_gap_selector_v0.py`.
+
+For the exact G18 specimen, the historical
+`horizon_gap_selector_v0_observation.json` had been relocated to
+`docs/evidence/for_planner/horizon_gap_selector_v0_observation.json`,
+with its historical blob preserved.
+
+The unchanged producer still declared:
+
+```text
+OUT = ROOT / "horizon_gap_selector_v0_observation.json"
+```
+
+A bounded fresh execution then established:
+
+```text
+OLD_ROOT_OUTPUT_CREATED = true
+PRODUCER_OUTPUT_ROUTE_MIGRATED = false
+RELOCATED_HISTORICAL_BLOB_PRESERVED = true
+```
+
+and the fresh output had a different Git blob from the relocated historical
+artifact.
+
+**Earned by:** G18 /
+`EVIDENCE_PRODUCER_ROUTE_ALIGNMENT_V0_PRESSURE_001`.
+
+Frozen G18 adjudication result:
+`docs/campaigns/evidence_producer_route_alignment_001/pressure_runs/EVIDENCE_PRODUCER_ROUTE_ALIGNMENT_V0_ADJUDICATION_RESULT_001.md`
+(blob `9dfa683c03420d793d100fcc90ca05bb81c14640`).
+
+Runtime G18 witness:
+`docs/evidence/for_planner/evidence_producer_route_alignment_v0_observation.json`
+(blob `9d6e627401c3c51b9cc30449d80f6c94a99711d7`).
+
+**Consequence:** for this tested producer, relocating preserved historical
+evidence does not redirect future evidence production. Without a separate
+producer-route change, a fresh execution can reoccupy the old output path while
+the relocated historical artifact remains intact.
+
+This does not establish producer repair authority, consumer repair authority,
+a generic evidence intake router, automatic reference rewriting, archive
+policy, cold-storage admission, deletion permission, planning, authority,
+execution, global invariance, global ecology coverage, economic weighting,
+or scientific standing.
+
+---
+
+## Current nonclaim
+
+These sixteen entries are the current bounded invariant bank.
+
+```text
+sixteen earned invariants
 !=
 complete coordinate system of semantic memory
 ```
