@@ -13,10 +13,20 @@ import sys
 import threading
 from typing import Sequence
 import webbrowser
+from urllib.parse import urlencode
 
 
 OBSERVER_RELATIVE_PATH = Path("src/cockpit/observer/index.html")
 PROJECTION_RELATIVE_PATH = Path("generated/cockpit_projection.json")
+REPOSITORY_FABRIC_RELATIVE_PATH = Path(
+    "generated/repository_address_fabric.json"
+)
+REPOSITORY_TEMPORAL_LINEAGE_RELATIVE_PATH = Path(
+    "generated/repository_temporal_lineage.json"
+)
+TYPED_DISTINCTION_REGISTRY_RELATIVE_PATH = Path(
+    "generated/typed_distinction_registry_v0.json"
+)
 CONFIG_FILENAME = "cockpit.json"
 APP_NAME = "DME Cockpit"
 
@@ -210,13 +220,57 @@ def generate_projection_for_launch(
     freshness_ref: str | None,
 ) -> dict[str, object]:
     from src.cockpit.generate_projection import generate_projection
+    from src.cockpit.repository_address_fabric import (
+        generate_repository_address_fabric,
+    )
+    from src.cockpit.repository_temporal_lineage import (
+        generate_repository_temporal_lineage,
+    )
+    from src.cockpit.typed_distinction_registry import (
+        REGISTRY_RELATIVE_PATH,
+        TypedDistinctionRegistryError,
+        build_unavailable_typed_distinction_registry_projection,
+        generate_typed_distinction_registry_projection,
+    )
 
-    return generate_projection(
+    model = generate_projection(
         repo=repo_root,
         source_ref=source_ref,
         freshness_ref=freshness_ref,
         output=repo_root / PROJECTION_RELATIVE_PATH,
     )
+    generate_repository_address_fabric(
+        repo=repo_root,
+        source_ref=source_ref,
+        output=repo_root / REPOSITORY_FABRIC_RELATIVE_PATH,
+    )
+    temporal_model = generate_repository_temporal_lineage(
+        repo=repo_root,
+        source_ref=source_ref,
+        output=repo_root / REPOSITORY_TEMPORAL_LINEAGE_RELATIVE_PATH,
+    )
+    registry_path = repo_root / REGISTRY_RELATIVE_PATH
+    registry_output = repo_root / TYPED_DISTINCTION_REGISTRY_RELATIVE_PATH
+    try:
+        generate_typed_distinction_registry_projection(
+            registry_path=registry_path,
+            temporal_lineage=temporal_model,
+            output=registry_output,
+        )
+    except (TypedDistinctionRegistryError, OSError, UnicodeError, json.JSONDecodeError) as exc:
+        unavailable = build_unavailable_typed_distinction_registry_projection(
+            registry_path=registry_path,
+            temporal_lineage=temporal_model,
+            reason=f"{type(exc).__name__}: {exc}",
+        )
+        registry_output.parent.mkdir(parents=True, exist_ok=True)
+        temporary = registry_output.with_suffix(registry_output.suffix + ".tmp")
+        temporary.write_text(
+            json.dumps(unavailable, indent=2, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
+        temporary.replace(registry_output)
+    return model
 
 
 def start_loopback_server(
@@ -235,6 +289,75 @@ def start_loopback_server(
     actual_port = int(server.server_address[1])
     url = f"http://127.0.0.1:{actual_port}/src/cockpit/observer/"
     return server, thread, url
+
+
+def workcycle_control_path() -> Path:
+    return config_dir() / "workcycle_control.json"
+
+
+def start_runtime_projection_server(
+    repo_root: Path,
+    *,
+    port: int = 0,
+    poll_interval: float = 0.5,
+    control_path: Path | None = None,
+) -> tuple[ThreadingHTTPServer, threading.Thread, str]:
+    from src.cockpit.live_runtime_projection import (
+        RuntimeProjectionServer,
+        RuntimeSources,
+    )
+
+    sources = RuntimeSources(
+        repo=repo_root,
+        workcycle_control_path=control_path,
+    )
+    server = RuntimeProjectionServer(("127.0.0.1", port), sources, poll_interval)
+    thread = threading.Thread(
+        target=server.serve_forever,
+        name="dme-cockpit-runtime",
+        daemon=True,
+    )
+    thread.start()
+    actual_port = int(server.server_address[1])
+    url = f"http://127.0.0.1:{actual_port}/runtime/events"
+    return server, thread, url
+
+
+def start_workcycle_control_server(
+    repo_root: Path,
+    *,
+    port: int = 0,
+    state_path: Path | None = None,
+) -> tuple[ThreadingHTTPServer, threading.Thread, str]:
+    from src.cockpit.workcycle_control import (
+        LocalWorkcycleControlStore,
+        WorkcycleControlServer,
+    )
+
+    control_path = state_path or workcycle_control_path()
+    store = LocalWorkcycleControlStore(path=control_path, repo=repo_root)
+    store.read()
+    server = WorkcycleControlServer(("127.0.0.1", port), store)
+    thread = threading.Thread(
+        target=server.serve_forever,
+        name="dme-cockpit-workcycle-control",
+        daemon=True,
+    )
+    thread.start()
+    actual_port = int(server.server_address[1])
+    url = f"http://127.0.0.1:{actual_port}"
+    return server, thread, url
+
+
+def cockpit_url_with_runtime(
+    base_url: str,
+    runtime_url: str,
+    control_url: str | None = None,
+) -> str:
+    values = {"runtime": runtime_url}
+    if control_url is not None:
+        values["control"] = control_url
+    return base_url + "?" + urlencode(values)
 
 
 def find_edge() -> Path | None:
@@ -314,8 +437,23 @@ def run_cockpit(
         freshness_ref=freshness,
     )
 
-    server, thread, url = start_loopback_server(repo_root, port=port)
+    server, thread, base_url = start_loopback_server(repo_root, port=port)
+    runtime_server = None
+    runtime_thread = None
+    control_server = None
+    control_thread = None
     try:
+        control_path = workcycle_control_path()
+        runtime_server, runtime_thread, runtime_url = start_runtime_projection_server(
+            repo_root,
+            control_path=control_path,
+        )
+        control_server, control_thread, control_url = start_workcycle_control_server(
+            repo_root,
+            state_path=control_path,
+        )
+        url = cockpit_url_with_runtime(base_url, runtime_url, control_url)
+
         if open_mode == "edge-app":
             process = launch_edge_app(url)
             process.wait()
@@ -342,6 +480,16 @@ def run_cockpit(
 
         raise CockpitLaunchError(f"unknown open mode: {open_mode}")
     finally:
+        if control_server is not None:
+            control_server.shutdown()
+            control_server.server_close()
+        if control_thread is not None:
+            control_thread.join(timeout=5.0)
+        if runtime_server is not None:
+            runtime_server.shutdown()
+            runtime_server.server_close()
+        if runtime_thread is not None:
+            runtime_thread.join(timeout=5.0)
         server.shutdown()
         server.server_close()
         thread.join(timeout=5.0)

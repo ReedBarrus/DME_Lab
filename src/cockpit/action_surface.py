@@ -24,6 +24,12 @@ EVENT_TYPES = {
 }
 
 
+
+def _subprocess_creationflags() -> int:
+    if __import__("os").name != "nt":
+        return 0
+    return int(getattr(subprocess, "CREATE_NO_WINDOW", 0))
+
 class ActionSurfaceError(RuntimeError):
     pass
 
@@ -34,6 +40,7 @@ def _git(repo: Path, *args: str) -> subprocess.CompletedProcess[bytes]:
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         check=False,
+        creationflags=_subprocess_creationflags(),
     )
 
 

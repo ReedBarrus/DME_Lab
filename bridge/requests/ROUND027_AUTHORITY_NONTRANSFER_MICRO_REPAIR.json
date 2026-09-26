@@ -1,0 +1,12 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0",
+  "request_id": "ROUND027_AUTHORITY_NONTRANSFER_MICRO_REPAIR",
+  "enabled": true,
+  "source_ref": "5a776539301ffc43be2437e8e8c56f65d98e4319",
+  "input_path": "bridge/prompts/ROUND027_AUTHORITY_NONTRANSFER_MICRO_REPAIR_READY_TO_SEND.md",
+  "input_sha256": "4e523d265c8534edc844a3662e86dccff5a62a379f0b5d4e3e21a27cbfd32ee6",
+  "model": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 512,
+  "purpose": "Repair only authority nontransfer after consumption while preserving seat-authority orthogonality and seat continuation."
+}

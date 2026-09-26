@@ -1,0 +1,63 @@
+{
+  "object_type": "CAMPAIGN_DERIVED_WORK_ITEM_V0",
+  "work_item_id": "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1",
+  "decomposition_id": "WORKCYCLE_STABILIZATION_001_D001",
+  "campaign_handle": {
+    "path": "docs/campaigns/workcycle_stabilization_001/WORKCYCLE_STABILIZATION_CAMPAIGN_001.md",
+    "git_blob_sha": "b15d71c05f20509b47162bcd1b81c69849fe6115"
+  },
+  "campaign_horizon_id": "FIRST_PERMANENT_WORKLOAD_COMPRESSION_HISTORY_CONSERVATION",
+  "role": "COMPRESSION_IMPLEMENTER",
+  "status": "READY_FOR_PRESSURE",
+  "input_addresses": [
+    "docs/campaigns/sca001/atlas/coordination_rounds/ATLAS_COORDINATION_ROUND_BUNDLE_010.md",
+    "docs/campaigns/sca001/atlas/coordination_rounds/ATLAS_COORDINATION_ROUND_BUNDLE_011.md",
+    "docs/campaigns/sca001/atlas/coordination_rounds/ATLAS_COORDINATION_ROUND_BUNDLE_012.md"
+  ],
+  "bounded_operator": "Construct one smaller additive hot representation plus one conservation report; do not mutate originals.",
+  "expected_consequence": {
+    "hot_representation_size": "DECREASES",
+    "source_bytes": "UNCHANGED",
+    "operative_round_order": "PRESERVED",
+    "task_identity": "PRESERVED",
+    "packet_challengeability": "PRESERVED",
+    "parallel_isolation_contract": "PRESERVED",
+    "authority_effect": "NONE",
+    "scientific_standing_effect": "NONE"
+  },
+  "conservation_surfaces": {
+    "identity_address": "PRESERVE_EXACT_SOURCE_AND_TASK_HANDLES",
+    "mechanical": "ORIGINALS_UNCHANGED_ADDITIVE_OUTPUT_ONLY",
+    "symbolic_semantic": "PRESERVE_OPERATIVE_PURPOSE_PROHIBITIONS_AND_CLAIM_CEILINGS",
+    "relational_topological": "PRESERVE_ROUND_ORDER_TASK_PAIRING_AND_A_B_ISOLATION",
+    "consequence_environmental": "ONLY_HOT_CONTEXT_BURDEN_MAY_DECREASE",
+    "provenance": "EVERY_COMPRESSED_ASSERTION_CHALLENGEABLE_TO_EXACT_SOURCE",
+    "invariance_meta": "FRESH_RECONSTRUCTION_REQUIRED"
+  },
+  "load_dimensions_to_review": [
+    "functional",
+    "semantic",
+    "authority",
+    "provenance",
+    "temporal",
+    "coordination"
+  ],
+  "evidence_debt": [
+    "measure source bytes and candidate bytes",
+    "fresh reconstruction from candidate plus exact source handles",
+    "surface-by-surface conservation comparison",
+    "load-dimension review for every omitted or merged element"
+  ],
+  "budget": {
+    "active_work_items": 1,
+    "automatic_repairs": 0,
+    "automatic_next_seat_invocations": 0,
+    "original_source_deletions": 0,
+    "trust_root_mutations": 0,
+    "authority_grants": 0
+  },
+  "authority_requirement": "NONE",
+  "stop_condition": "Stop after candidate compression artifact and conservation report are created. Do not delete, move, canonicalize, or route onward automatically.",
+  "repair_destination": "WORKCYCLE_STABILIZATION_001_COMPRESSION_REVIEW",
+  "claim_ceiling": "One bounded campaign-derived compression candidate only."
+}

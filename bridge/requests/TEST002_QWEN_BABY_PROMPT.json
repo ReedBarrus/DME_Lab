@@ -1,0 +1,13 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0_1",
+  "request_id": "TEST002_QWEN_BABY_PROMPT",
+  "enabled": true,
+  "source_ref": "12b78f04e621c698f9ee5a5c955e6dae0ed18a2a",
+  "input_path": "bridge/prompts/TEST002_QWEN_BABY_PROMPT.md",
+  "input_blob_sha": "722d390a5e0e7fb23afd5d73aa281e128b4690f2",
+  "principal_id": "CODEX_PRINCIPAL_001",
+  "model": "qwen/qwen3-coder-30b",
+  "temperature": 0,
+  "max_tokens": 32,
+  "purpose": "Discriminate basic bridge-mediated Qwen invocation viability from W2 prompt-size or runtime-context failure."
+}

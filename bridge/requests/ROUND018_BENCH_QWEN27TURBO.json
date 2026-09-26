@@ -1,0 +1,12 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0",
+  "request_id": "ROUND018_BENCH_QWEN27TURBO",
+  "enabled": true,
+  "source_ref": "8ab2ee1f169ef48c9726c76fe6f871c1e79c78cc",
+  "input_path": "bridge/prompts/LOCAL_MODEL_FITNESS_BENCHMARK_001.md",
+  "input_sha256": "cd2960ed9ad3c2b68287086ba6bf39873616fb2d97abd80c9fdc795c4821caff",
+  "model": "qwen3.8-27b-turbo-fable-cold-fusion-735-882-heretic-uncensored-neo-coder-max-mtp",
+  "temperature": 0,
+  "max_tokens": 1024,
+  "purpose": "Same-prompt continuation of local model fitness benchmark for bounded single-seat work: failure legibility, candidate separation, concrete next-pressure selection, and authority discipline."
+}

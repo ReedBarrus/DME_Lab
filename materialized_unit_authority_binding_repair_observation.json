@@ -1,0 +1,83 @@
+{
+  "object_type": "MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_OBSERVATION_V0",
+  "repo_head": "9ce423bfc53610e0b650927709baeedfce360030",
+  "fixture_posture": "DISPOSABLE_EXACT_MATERIALIZED_WORK_AUTHORITY_FIXTURE",
+  "successor_id": "successor:sha256:9738d8909163cf8997a7c6ca78f0225eb8872c8b28d9c64531679a95ee957531",
+  "successor_integrity_sha256": "cc09c7bf301a6c3e7dbb6bbee1d8a4c65351048a2f4977e7c7fc13226e8958dc",
+  "work_spec_a_id": "successor-work-spec:sha256:f954e25afe5de58e95b6e2155a77c04c186ef26e7c0e56f27a863158851967e6",
+  "work_spec_b_id": "successor-work-spec:sha256:64f4835e30d98b1787de0376893bb11f86395d9da500d29a16d8b7377443b38f",
+  "unit_a_integrity_sha256": "e40bf89e0a236c89946003f7326000effa018911e901f439101811f25a6fd397",
+  "unit_b_integrity_sha256": "3ab67cf06d2bb4b85b209cfdf895dfaf559d80edcf50f40625ef6f22b1dabdf2",
+  "authority_coordinates_a": {
+    "request_sha256": "1b07c8f731d9b9121711e713e9e4380c766fc4d636e931a7db333de4603a15ff",
+    "input_sha256": "e40bf89e0a236c89946003f7326000effa018911e901f439101811f25a6fd397"
+  },
+  "authority_coordinates_b": {
+    "request_sha256": "949e91543fccd66cc8d3229f7cf4d5fae4282c690b547f34315552e7c90fba7a",
+    "input_sha256": "3ab67cf06d2bb4b85b209cfdf895dfaf559d80edcf50f40625ef6f22b1dabdf2"
+  },
+  "exact_a": {
+    "admitted": true,
+    "blockers": [],
+    "receipt": {
+      "object_type": "MATERIALIZED_UNIT_VERIFIED_AUTHORITY_ATOMIC_ADMISSION_RECEIPT_V0",
+      "successor_id": "successor:sha256:9738d8909163cf8997a7c6ca78f0225eb8872c8b28d9c64531679a95ee957531",
+      "successor_integrity_sha256": "cc09c7bf301a6c3e7dbb6bbee1d8a4c65351048a2f4977e7c7fc13226e8958dc",
+      "materialized_work_item_id": "successor:sha256:9738d8909163cf8997a7c6ca78f0225eb8872c8b28d9c64531679a95ee957531",
+      "materialized_unit_integrity_sha256": "e40bf89e0a236c89946003f7326000effa018911e901f439101811f25a6fd397",
+      "work_spec_id": "successor-work-spec:sha256:f954e25afe5de58e95b6e2155a77c04c186ef26e7c0e56f27a863158851967e6",
+      "work_spec_integrity_sha256": "137e6bf380882f9abb9406ff7c048d3d1b6f7cb057f6d2ee0a527b6a81f9a2fd",
+      "authority_binding_id": "current-authority-binding:sha256:d821cb540403723393df7820a7a5e4996a7799f4086c896b8f139e0dc0fee813",
+      "authority_state_sha256": "2e6caab5ab75b3ca463e3065684ae1c2c9a39674ccc3434ff949f645947634fc",
+      "authority_request_sha256": "1b07c8f731d9b9121711e713e9e4380c766fc4d636e931a7db333de4603a15ff",
+      "authority_input_sha256": "e40bf89e0a236c89946003f7326000effa018911e901f439101811f25a6fd397",
+      "atomic_admission_id": "atomic-admission:sha256:1e0097214a1390c2abe9630569e85798b5714113567a6a4909df22eddc2c5116",
+      "work_attempt_id": "REPAIR-EXACT-A",
+      "seat_id": "LABBOIB",
+      "occupant_id": "occupant-REPAIR-EXACT-A",
+      "wake_generation": 1,
+      "composition_id": "materialized-unit-verified-authority-atomic-admission:sha256:06ef5c75c52fc7da85987eac437485342bd4c4c85217ee2b24ed5f6e923885b7",
+      "authority_input_posture": "VERIFIED_CURRENT_EXACT_MATERIALIZED_WORK_BINDING",
+      "authority_verification": "VERIFIED_CURRENT_ACTIVE_ONE_USE",
+      "authority_remaining_uses_at_verification": 1,
+      "authority_consumed": false,
+      "underlying_atomic_receipt_type": "ATOMIC_ADMISSION_RECEIPT_V0",
+      "underlying_atomic_receipt_claim_unchanged": true,
+      "authority_effect": "NONE",
+      "consumption_effect": "NONE",
+      "execution_effect": "NONE",
+      "execution_performed": false,
+      "model_invocation_effect": "NONE",
+      "claim_ceiling": "Same-process composition of one current verified one-use local authority binding for the exact sealed successor, exact sealed externally supplied work spec, and exact sealed materialized workflow unit into one existing atomic local admission transition. Authority is not consumed; no model invocation or work execution occurs. This does not establish cross-process authority/admission atomicity."
+    }
+  },
+  "wrong_b": {
+    "admitted": false,
+    "blockers": [
+      "authority_request_materialized_work_mismatch"
+    ],
+    "error": null
+  },
+  "assertions": {
+    "same_successor_id": true,
+    "work_specs_differ": true,
+    "materialized_units_differ": true,
+    "authority_coordinates_differ_by_materialized_work": true,
+    "authority_input_binds_exact_unit_a": true,
+    "authority_input_does_not_bind_unit_b": true,
+    "exact_unit_a_admitted": true,
+    "same_successor_wrong_unit_b_blocked": true,
+    "receipt_binds_exact_materialized_unit": true,
+    "receipt_binds_exact_work_spec": true,
+    "receipt_binds_exact_successor": true,
+    "authority_unconsumed": true,
+    "no_execution_or_model_invocation": true
+  },
+  "all_assertions_pass": true,
+  "claim_ceiling": "At the exact supplied repaired source, one current verified one-use authority envelope can bind the exact sealed successor, exact sealed externally supplied work spec, and exact sealed materialized workflow unit before one same-process atomic admission. Authority for one materialization rejects a different materialization under the same successor. Authority remains unconsumed and no model invocation or work execution occurs.",
+  "authority_effect": "NONE",
+  "consumption_effect": "NONE",
+  "execution_effect": "NONE",
+  "scientific_standing_effect": "NONE",
+  "stopped": "YES"
+}

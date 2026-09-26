@@ -1,0 +1,133 @@
+{
+  "object_type": "WORKFLOW_UNIT_V1",
+  "identity": {
+    "work_item_id": "WORKCYCLE_STABILIZATION_001_LOCAL_FRAME_DEPENDENCE_CELL_001",
+    "campaign_id": "WORKCYCLE_STABILIZATION_001",
+    "parent_work_item_id": "WORKCYCLE_STABILIZATION_001_RELATIONAL_COMPRESSION_W2",
+    "operative_frame_ref": "d5a47606ce0ed8a08ea444638e5ae4b90c59ea91",
+    "created_from_event": "RELATION_DEPENDENCE_LOAD_CONSEQUENCE_PRESSURE_001"
+  },
+  "basis": {
+    "basis_id": "LOCAL_FRAME_DEPENDENCE_IDENTITY_BASIS_001",
+    "basis_type": "LOAD_BEARING_UNCERTAINTY",
+    "statement": "Atlas currently represents source-supported relations and load-bearing work, but the distinction between generic relation, dependence, load, and consequence is not yet intervention-grounded.",
+    "evidence_refs": [
+      "docs/campaigns/workcycle_stabilization_001/state/WORKCYCLE_STABILIZATION_001_RELATIONAL_COMPRESSION_W2.json",
+      "docs/campaigns/workcycle_stabilization_001/SYMBOLIC_CONSEQUENCE_DECOMPOSITION_V0.md",
+      "docs/campaigns/workcycle_stabilization_001/WORKCYCLE_STABILIZATION_CAMPAIGN_001.md",
+      "docs/campaigns/workcycle_stabilization_001/PRESSURE_JUSTIFICATION_001_READY_TO_SEND.md"
+    ],
+    "desired_consequence": {
+      "statement": "One bounded matched-pair specimen distinguishes a merely source-supported relation from a candidate reconstruction dependence by an observed difference on the declared SEMANTIC_RECONSTRUCTION measure under a controlled evidence-aperture perturbation."
+    },
+    "current_obstruction": {
+      "statement": "Without perturbation evidence, Atlas cannot know whether a relation actually bears continuity load or is only correlated/redundant support, weakening decomposition and horizon relevance."
+    },
+    "relevance_test": {
+      "question": "Would distinguishing relation from load-bearing dependence change how Atlas selects, compresses, reconstructs, or repairs work?",
+      "failure_if_unanswered": true
+    },
+    "basis_status": "SUPPORTED"
+  },
+  "pressure_selection": {
+    "pressure_id": "LOCAL_FRAME_DEPENDENCE_IDENTITY_PRESSURE_001",
+    "target_distinction": {
+      "lhs": "SOURCE_SUPPORTED_RELATION",
+      "rhs": "LOAD_BEARING_DEPENDENCE"
+    },
+    "selection_basis": "A workcycle evidence edge should not acquire dependence standing merely because it exists; dependence requires observed continuity difference under a bounded perturbation.",
+    "expected_information_gain": {
+      "statement": "Whether withholding one exact related evidence object changes the declared semantic-reconstruction measure for the same addressed workcycle subject under the same observable inference contract."
+    },
+    "application_dependency": "If the matched-pair observation strengthens a bounded reconstruction-dependence candidate, Atlas may represent dependency standing as subject + dependency target + declared load dimension + evidence aperture + scope + temporal coordinate + standing, while retaining the generic relation separately.",
+    "stop_if_resolved_by_existing_evidence": true,
+    "priority_basis": "BLOCKS_RECONSTRUCTION",
+    "load_bearing_effects": [
+      "RECONSTRUCTION",
+      "OBSERVABILITY",
+      "BASIS"
+    ]
+  },
+  "pressure_contract": {
+    "allowed_operations": [
+      "OBSERVE",
+      "RECONSTRUCT",
+      "COMPARE",
+      "FALSIFY",
+      "ADJUDICATE"
+    ],
+    "prohibited_operations": [
+      "SELF_PROMOTE",
+      "CREATE_AUTHORITY",
+      "EXPAND_SCOPE_WITHOUT_BASIS",
+      "SPAWN_UNBOUNDED_PRESSURES",
+      "MUTATE_SOURCE",
+      "INFER_CAUSATION_FROM_TEMPORAL_ORDER"
+    ],
+    "success_condition": {
+      "statement": "Matched fresh reconstruction runs differ only in the declared evidence aperture across all required observable coordinates, and an independent evaluator can classify one observed matched-pair difference on the declared SEMANTIC_RECONSTRUCTION measure."
+    },
+    "failure_condition": {
+      "statement": "Required observable inference coordinates differ, or the runs cannot support a bounded comparison of the declared semantic-reconstruction measure."
+    },
+    "unresolved_condition": {
+      "statement": "The single matched pair is insufficient to distinguish redundancy, candidate reconstruction dependence, confounding, or residual inference variance."
+    },
+    "pressure_budget": {
+      "max_rounds": 1,
+      "max_branch_count": 2,
+      "max_unresolved_children": 0
+    }
+  },
+  "result": {
+    "source_result_ref": null,
+    "distinctions": [],
+    "apparatus_failures": [],
+    "semantic_failures": []
+  },
+  "qualification": {
+    "adjudication_ref": null,
+    "scientific_standing": "NONE",
+    "authority_effect": "NONE",
+    "qualification_basis": "",
+    "unresolved_load_bearing_questions": [
+      "Does the candidate evidence relation affect the declared SEMANTIC_RECONSTRUCTION measure for this exact subject, aperture, scope, source ref, and matched observable inference regime?",
+      "Orthogonal load dimensions are not evaluated.",
+      "Reproducibility is not established by one A/B pair."
+    ]
+  },
+  "application": {
+    "required": true,
+    "target_surface": "ATLAS",
+    "proposed_change": {
+      "statement": "Represent any supported candidate reconstruction dependence as subject + dependency target + declared load dimension + evidence aperture + scope + temporal coordinate + standing, while retaining the underlying generic relation separately."
+    },
+    "executable_change_ref": null,
+    "application_status": "NOT_YET_ELIGIBLE",
+    "withholding_basis": "Requires one clean matched-pair observation and independent adjudication; reproducibility and orthogonal load exclusion remain unearned."
+  },
+  "consequence_observation": {
+    "required_if_applied": true,
+    "expected_effect": "Future Atlas decomposition can distinguish generic relation existence from bounded evidence-aperture reconstruction dependence without claiming whole-system existential dependence.",
+    "observed_effect": null,
+    "effect_class": "NOT_YET_OBSERVABLE",
+    "evidence_refs": [],
+    "regression_detected": false
+  },
+  "basis_reconciliation": {
+    "original_basis_id": "LOCAL_FRAME_DEPENDENCE_IDENTITY_BASIS_001",
+    "disposition": null,
+    "remaining_gap": "No bounded intervention evidence yet distinguishes relation from dependence.",
+    "next_pressure_allowed": false,
+    "next_pressure_basis": null,
+    "termination_reason": null
+  },
+  "sanity_check": {
+    "if_this_work_succeeds": {
+      "what_changes_in_the_operating_world": "Atlas gains an evidence-based rule for whether a relation should influence reconstruction/decomposition as a load-bearing dependency, reducing arbitrary task relevance and false topology weight."
+    },
+    "if_nothing_would_change": {
+      "posture": "DO_NOT_RUN"
+    }
+  }
+}

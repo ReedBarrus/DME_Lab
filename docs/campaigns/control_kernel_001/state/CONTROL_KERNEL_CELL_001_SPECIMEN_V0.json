@@ -1,0 +1,41 @@
+{
+  "object_type": "EXTERNALLY_SUPPLIED_CONTROL_KERNEL_CELL_001_SPECIMEN_V0",
+  "campaign_id": "CONTROL_KERNEL_001",
+  "cell_id": "CONTROL_KERNEL_CELL_001",
+  "selection_source": "EXTERNALLY_SUPPLIED",
+  "machine_selection_claimed": false,
+  "operative_horizon": {
+    "horizon_id": "H1_POST_CONSEQUENCE_PHASE_HANDOFF",
+    "declared_purpose": "Enter the post-consequence control-kernel phase without manufacturing continuation after lawful no-successor closure.",
+    "posture": "PARTIAL"
+  },
+  "supplied_live_gaps": [
+    {
+      "gap_id": "G1_STALE_SUCCESSOR_3_HANDOFF",
+      "statement": "The post-consequence projection requires SUCCESSOR_3 even though earned successor law establishes that SATISFIED reconciliation closes the basis with NO_SUCCESSOR and STOP.",
+      "blocks": [
+        "CONTROL_KERNEL_ACTIVATION",
+        "CAMPAIGN_HANDOFF",
+        "RECONSTRUCTION"
+      ],
+      "work_eligible": true
+    }
+  ],
+  "competing_gaps": [],
+  "selection_problem": "NONE",
+  "bounded_transformation": {
+    "target_path": "docs/projections/POST_CONSEQUENCE_SPINE_CONTROL_ECONOMY_PROJECTIONS_V0.md",
+    "pre_change_ref": "235aceddfec91af6826e25baef469c82287fde99",
+    "post_change_ref": "331578bc44225d2810c9d5604606e83864553d0f",
+    "precondition_fragment": "DO_NOT_INSTANTIATE_UNTIL_EXACT_CONSEQUENCE_SPINE_IS_FROZEN_THROUGH_SUCCESSOR_3",
+    "required_postcondition_fragments": [
+      "DO_NOT_INSTANTIATE_UNTIL_EXACT_CONSEQUENCE_SPINE_IS_FROZEN_THROUGH_AN_INDEPENDENTLY_ADJUDICATED_SUCCESSOR_OR_NO_SUCCESSOR_TERMINAL_PROJECTION",
+      "SATISFIED and INVALIDATED terminal postures are allowed to end the chain with",
+      "NO_SUCCESSOR"
+    ],
+    "expected_delta_scope": "ONE_PROJECTION_DOCUMENT_ONLY"
+  },
+  "post_repair_expected_gap_ids": [],
+  "challenge_signal": "NONE",
+  "claim_ceiling": "Externally supplied one-horizon/one-gap calibration specimen only. No generalized relational-horizon representation, machine gap selection, multi-gap ranking, planning automation, authority, execution, or scientific standing is established."
+}

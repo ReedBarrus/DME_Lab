@@ -1,0 +1,82 @@
+{
+  "object_type": "MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_OBSERVATION_V0",
+  "repo_head": "8680b6a50f10acd43e34775cd272ddb5cfeeb4c3",
+  "fixture_posture": "DISPOSABLE_EXACT_MATERIALIZED_SETTLEMENT_FIXTURE",
+  "source_witness_id": "materialized-invocation-result-witness:sha256:a531bcc0e23d9a0488a925754b59f69ade0fe8b2f5b3c9ef8e4aa05e11327be0",
+  "successor_id": "successor:sha256:9738d8909163cf8997a7c6ca78f0225eb8872c8b28d9c64531679a95ee957531",
+  "work_spec_id": "successor-work-spec:sha256:f954e25afe5de58e95b6e2155a77c04c186ef26e7c0e56f27a863158851967e6",
+  "materialized_unit_integrity_sha256": "e40bf89e0a236c89946003f7326000effa018911e901f439101811f25a6fd397",
+  "consumption_id": "materialized-admitted-authority-consumption:sha256:29a4127991f16ac1e2c4b7d072fe7cd2da964f20b656dc0ad9018d5602b9d393",
+  "settlement": {
+    "object_type": "MATERIALIZED_INVOCATION_RESULT_CANDIDATE_SETTLEMENT_V0",
+    "source_witness_id": "materialized-invocation-result-witness:sha256:a531bcc0e23d9a0488a925754b59f69ade0fe8b2f5b3c9ef8e4aa05e11327be0",
+    "source_raw_output_sha256": "11fd413614dd8b15300c16b0001e6698fdbd1f7fbdb2658c6c157cf8d422084e",
+    "source_work_attempt_id": "ATTEMPT-MATERIALIZED-CONSUME-001",
+    "source_successor_id": "successor:sha256:9738d8909163cf8997a7c6ca78f0225eb8872c8b28d9c64531679a95ee957531",
+    "source_successor_integrity_sha256": "cc09c7bf301a6c3e7dbb6bbee1d8a4c65351048a2f4977e7c7fc13226e8958dc",
+    "source_work_spec_id": "successor-work-spec:sha256:f954e25afe5de58e95b6e2155a77c04c186ef26e7c0e56f27a863158851967e6",
+    "source_work_spec_integrity_sha256": "137e6bf380882f9abb9406ff7c048d3d1b6f7cb057f6d2ee0a527b6a81f9a2fd",
+    "source_materialized_work_item_id": "successor:sha256:9738d8909163cf8997a7c6ca78f0225eb8872c8b28d9c64531679a95ee957531",
+    "source_materialized_unit_integrity_sha256": "e40bf89e0a236c89946003f7326000effa018911e901f439101811f25a6fd397",
+    "source_consumption_id": "materialized-admitted-authority-consumption:sha256:29a4127991f16ac1e2c4b7d072fe7cd2da964f20b656dc0ad9018d5602b9d393",
+    "source_atomic_admission_id": "atomic-admission:sha256:0fa3724ebd7f92c55f9347de648dbb0fe864707cdb3f41fb994120cde9584c5f",
+    "settlement_actor_identity": "independent-materialized-settler-fixture-v0",
+    "field_dispositions": {
+      "count": "CANDIDATE_HELD",
+      "fixture_result": "CANDIDATE_ACCEPTED",
+      "work_item_id": "CANDIDATE_ACCEPTED"
+    },
+    "settlement_basis": {
+      "count": "count is observed but carries no semantic consequence standing",
+      "fixture_result": "explicit fixture return field retained without truth promotion",
+      "work_item_id": "exact work-item identity matches the bound witness lineage"
+    },
+    "settlement_id": "materialized-invocation-result-candidate-settlement:sha256:5c3c8e7d49d1ddc23c7352b5f1580982e7aa7417bd303c4a1aa8dbad98957788",
+    "accepted_fields": [
+      "fixture_result",
+      "work_item_id"
+    ],
+    "held_fields": [
+      "count"
+    ],
+    "rejected_fields": [],
+    "unresolved_fields": [],
+    "source_witness_preserved": true,
+    "classification_source": "EXTERNALLY_SUPPLIED",
+    "scientific_admission_created": false,
+    "qualification_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "external_consequence_effect": "NONE",
+    "atlas_mutation_effect": "NONE",
+    "scientific_standing_effect": "NONE",
+    "claim_ceiling": "Deterministic field-level candidate settlement over one immutable exact materialized-work result witness using externally supplied dispositions and bases. It conserves exact successor, work-spec, materialized-unit, admission, consumption, attempt, and output lineage. It does not establish semantic truth, external consequence, scientific qualification, authority, execution, or Atlas mutation."
+  },
+  "changed_disposition_settlement_id": "materialized-invocation-result-candidate-settlement:sha256:b24d3226e6c58c80b809b2d3adb25c4f744bd8c47681f74429df8efee5464cc8",
+  "tamper_case": {
+    "error_type": "MaterializedResultSettlementError",
+    "error": "result witness identity mismatch"
+  },
+  "assertions": {
+    "fixed_inputs_deterministic": true,
+    "source_witness_preserved": true,
+    "source_witness_id_bound": true,
+    "source_output_identity_bound": true,
+    "successor_lineage_bound": true,
+    "work_spec_lineage_bound": true,
+    "materialized_unit_lineage_bound": true,
+    "admission_consumption_attempt_lineage_bound": true,
+    "field_level_dispositions_recorded": true,
+    "classification_source_external": true,
+    "accepted_creates_no_qualification": true,
+    "disposition_change_changes_settlement": true,
+    "tampered_chain_rejected": true,
+    "no_consequence_authority_execution_atlas_or_standing_effect": true
+  },
+  "all_assertions_pass": true,
+  "claim_ceiling": "At the exact supplied source, one immutable exact materialized-work result witness can receive externally supplied field-level candidate dispositions and explicit bases in one deterministic settlement record while conserving exact successor, work-spec, materialized-unit, admission, consumption, attempt, and output lineage. Candidate acceptance creates no qualification and settlement creates no external consequence, authority, execution, Atlas mutation, or scientific standing.",
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "scientific_standing_effect": "NONE",
+  "stopped": "YES"
+}

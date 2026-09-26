@@ -1,0 +1,26 @@
+{
+  "object_type": "MATCHED_OBSERVABLE_INFERENCE_PROFILE_V0",
+  "profile_id": "CELL001_MATCHED_OBSERVABLE_INFERENCE_PROFILE_V0",
+  "required_same_across_runs": true,
+  "model_id": "GPT-5.6 Sol",
+  "model_family": "GPT-5.6",
+  "reasoning_profile": "Medium",
+  "interaction_mode": "fresh independent text thread",
+  "tool_policy": "GitHub repository read-only retrieval of exact packet-listed files only",
+  "allowed_evidence_policy": "only packet-listed repository evidence; no sibling output; no evaluator material",
+  "output_contract": "exact Cell 001 reconstruction schema; no extra repair or freeform expansion",
+  "live_chat_context_policy": "PROHIBITED",
+  "external_retrieval_policy": "PROHIBITED",
+  "memory_policy": "do not use prior conversation context or remembered project context",
+  "provider_managed_or_unobserved": {
+    "temperature": "UNAVAILABLE",
+    "sampling_seed": "UNAVAILABLE",
+    "hidden_runtime_scheduler_state": "UNAVAILABLE",
+    "other_provider_internal_sampling_state": "UNAVAILABLE"
+  },
+  "comparability_rule": "Any mismatch in an observable required field fractures RUN_COMPARABILITY. Provider-managed hidden nondeterminism remains an unresolved limitation even when observable fields match.",
+  "reproducibility_effect": "NONE",
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "scientific_standing_effect": "NONE"
+}

@@ -1,0 +1,12 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0",
+  "request_id": "ROUND030_FIELD_CLASSIFICATION_WITHOUT_QUALIFICATION",
+  "enabled": true,
+  "source_ref": "334b85e17d00ff0301d32fe2d329fc18f30060b7",
+  "input_path": "bridge/prompts/ROUND030_FIELD_CLASSIFICATION_WITHOUT_QUALIFICATION_READY_TO_SEND.md",
+  "input_sha256": "ef3e4985c612b2c4fad9df01905f177f2bf5220b86e58de08885d8f6ca522a02",
+  "model": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 512,
+  "purpose": "Pressure candidate field classification without qualification, authority change, witness mutation, or Atlas mutation."
+}

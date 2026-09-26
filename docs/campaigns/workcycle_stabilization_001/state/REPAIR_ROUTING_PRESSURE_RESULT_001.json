@@ -1,0 +1,37 @@
+{
+  "object_type": "REPAIR_ROUTING_PRESSURE_RESULT_V0",
+  "campaign_id": "WORKCYCLE_STABILIZATION_001",
+  "cases": [
+    {
+      "case_id": "A",
+      "defect_class": "OUTPUT_DEFECT",
+      "expected_destination": "WORK_OUTPUT_REPAIR",
+      "retry_permitted": false,
+      "preserve_evidence": true
+    },
+    {
+      "case_id": "B",
+      "defect_class": "DECOMPOSITION_DEFECT",
+      "expected_destination": "REDECOMPOSE_WORK_FAMILY",
+      "retry_permitted": false,
+      "preserve_evidence": true
+    },
+    {
+      "case_id": "C",
+      "defect_class": "CAMPAIGN_HORIZON_DEFECT",
+      "expected_destination": "HOLD_FOR_CAMPAIGN_REPLAN",
+      "retry_permitted": false,
+      "preserve_evidence": true
+    },
+    {
+      "case_id": "D",
+      "defect_class": "APPARATUS_DEFECT",
+      "expected_destination": "APPARATUS_REPAIR",
+      "retry_permitted": false,
+      "preserve_evidence": true
+    }
+  ],
+  "result_posture": "CANDIDATE_PRESSURE_READY",
+  "authority_effect": "NONE",
+  "scientific_standing_effect": "NONE"
+}

@@ -1440,6 +1440,63 @@ footer {
   color: var(--selected);
   box-shadow: inset 0 -3px 0 var(--selected);
 }
+.instrument-consequence-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 10px 18px;
+  border-bottom: 1px solid var(--border);
+  background: #090d11;
+}
+.instrument-live-status p {
+  margin: 4px 0 0;
+}
+.instrument-consequence-modes {
+  display: flex;
+  border: 1px solid var(--border-strong);
+}
+.instrument-consequence-mode {
+  padding: 8px 11px;
+  border: 0;
+  border-left: 1px solid var(--border-strong);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font: 700 10px "Cascadia Code", Consolas, monospace;
+  letter-spacing: 0.05em;
+}
+.instrument-consequence-mode:first-child {
+  border-left: 0;
+}
+.instrument-consequence-mode[data-active="true"] {
+  background: var(--panel-raised);
+  color: var(--selected);
+  box-shadow: inset 0 -3px 0 var(--selected);
+}
+.instrument-specimen-panel {
+  border: 1px solid var(--border-strong);
+  background: #090d11;
+}
+.instrument-specimen-heading {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.instrument-specimen-heading h2 {
+  margin: 5px 0;
+  font-size: 15px;
+}
+.instrument-specimen-heading p {
+  margin: 0;
+}
+.instrument-specimen-frame {
+  display: block;
+  width: 100%;
+  height: min(78vh, 70rem);
+  min-height: 44rem;
+  border: 0;
+  background: #071015;
+}
 .instrument-law-primary,
 .instrument-law {
   color: var(--muted);
@@ -1632,6 +1689,12 @@ body.instrument-active[data-instrument-projection="TOPOLOGY"] #view-navigation-r
     display: block;
   }
   .instrument-toggle {
+    margin-top: 10px;
+  }
+  .instrument-consequence-navigation {
+    display: block;
+  }
+  .instrument-consequence-modes {
     margin-top: 10px;
   }
   .instrument-world {

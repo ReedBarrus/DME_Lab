@@ -1,0 +1,12 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0",
+  "request_id": "ROUND031_HELD_VS_REJECTED_DISPOSITION",
+  "enabled": true,
+  "source_ref": "42848b41a1bb7c9be4b10eb202931c38163a20f6",
+  "input_path": "bridge/prompts/ROUND031_HELD_VS_REJECTED_DISPOSITION_READY_TO_SEND.md",
+  "input_sha256": "26f11c861ed52fb3522b53657999b52e6dee3861e8de059061e449c98d722c1f",
+  "model": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 384,
+  "purpose": "Pressure held-versus-rejected candidate settlement semantics while preserving qualification, authority, witness, and Atlas boundaries."
+}

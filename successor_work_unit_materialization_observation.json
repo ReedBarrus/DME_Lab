@@ -1,0 +1,312 @@
+{
+  "object_type": "SUCCESSOR_WORK_UNIT_MATERIALIZATION_OBSERVATION_V0",
+  "repo_head": "0c6eec42366ab715029e5c645cf9d5baae22ff79",
+  "fixture_posture": "DISPOSABLE_SUCCESSOR_PLUS_EXPLICIT_WORK_SPEC_FIXTURE",
+  "source_successor": {
+    "object_type": "SUCCESSOR_CANDIDATE_V1",
+    "campaign_id": "WORKCYCLE_STABILIZATION_001",
+    "parent_work_item_id": "W-COMPRESS-001",
+    "basis_id": "B-COMPRESSION-001",
+    "operative_frame_ref": "HEAD",
+    "successor_posture": "RESOLVE_LOAD_BEARING_GAP",
+    "reconciliation_identity": "52fb51a11aab7a4d5d4b3896b3227a6595195551a54f73515ad31c1e8b84438c",
+    "next_pressure_basis": "resolve remaining source-supported obstruction",
+    "successor_id": "successor:sha256:9738d8909163cf8997a7c6ca78f0225eb8872c8b28d9c64531679a95ee957531",
+    "candidate_posture": "PROPOSED_NOT_ADMITTED",
+    "selection_basis": "fresh basis reconciliation leaves one justified pressure",
+    "claim_ceiling": "One deterministic successor candidate identity derived from exact basis/work/reconciliation/posture coordinates. This does not admit, execute, schedule, or authorize successor work.",
+    "work_admission_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE",
+    "integrity_sha256": "cc09c7bf301a6c3e7dbb6bbee1d8a4c65351048a2f4977e7c7fc13226e8958dc"
+  },
+  "source_work_spec": {
+    "object_type": "SUCCESSOR_WORK_SPEC_V0",
+    "source_successor_id": "successor:sha256:9738d8909163cf8997a7c6ca78f0225eb8872c8b28d9c64531679a95ee957531",
+    "source_successor_integrity_sha256": "cc09c7bf301a6c3e7dbb6bbee1d8a4c65351048a2f4977e7c7fc13226e8958dc",
+    "source_reconciliation_identity": "52fb51a11aab7a4d5d4b3896b3227a6595195551a54f73515ad31c1e8b84438c",
+    "source_next_pressure_basis": "resolve remaining source-supported obstruction",
+    "evidence_refs": [
+      "fixture://reconciliation",
+      "fixture://remaining-gap"
+    ],
+    "desired_consequence": "The remaining source-supported obstruction is resolved.",
+    "relevance_question": "Would this bounded pressure resolve the exact remaining obstruction?",
+    "pressure_id": "P-SUCCESSOR-WORK-001",
+    "target_distinction": {
+      "lhs": "REMAINING_OBSTRUCTION",
+      "rhs": "RESOLVED_OBSTRUCTION"
+    },
+    "selection_basis": "Fresh reconciliation leaves one exact load-bearing gap.",
+    "expected_information_gain": "Whether the remaining obstruction can be resolved without widening scope.",
+    "application_dependency": "A qualified result must exist before any application.",
+    "priority_basis": "BLOCKS_METABOLIC_CONTINUATION",
+    "load_bearing_effects": [
+      "BASIS",
+      "OBSERVABILITY",
+      "COORDINATION"
+    ],
+    "allowed_operations": [
+      "OBSERVE",
+      "COMPARE",
+      "PROPOSE"
+    ],
+    "prohibited_operations": [
+      "GRANT_AUTHORITY",
+      "EXECUTE",
+      "SELF_PROMOTE"
+    ],
+    "success_condition": "One bounded result addresses the exact remaining obstruction.",
+    "failure_condition": "The pressure widens beyond the exact remaining obstruction.",
+    "unresolved_condition": "Evidence remains insufficient to resolve the obstruction.",
+    "pressure_budget": {
+      "max_rounds": 1,
+      "max_branch_count": 1,
+      "max_unresolved_children": 0
+    },
+    "application_required": true,
+    "target_surface": "DISPOSABLE_FIXTURE",
+    "proposed_change": "Apply one bounded candidate transformation to the remaining obstruction.",
+    "expected_effect": "The remaining obstruction becomes independently observable as resolved or still present.",
+    "operating_change": "The exact remaining load-bearing obstruction changes posture.",
+    "spec_source": "EXTERNALLY_SUPPLIED",
+    "work_spec_id": "successor-work-spec:sha256:f954e25afe5de58e95b6e2155a77c04c186ef26e7c0e56f27a863158851967e6",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE",
+    "integrity_sha256": "137e6bf380882f9abb9406ff7c048d3d1b6f7cb057f6d2ee0a527b6a81f9a2fd"
+  },
+  "materialized_unit": {
+    "identity": {
+      "work_item_id": "successor:sha256:9738d8909163cf8997a7c6ca78f0225eb8872c8b28d9c64531679a95ee957531",
+      "campaign_id": "WORKCYCLE_STABILIZATION_001",
+      "parent_work_item_id": "W-COMPRESS-001",
+      "operative_frame_ref": "HEAD",
+      "created_from_event": "successor-work-spec:sha256:f954e25afe5de58e95b6e2155a77c04c186ef26e7c0e56f27a863158851967e6"
+    },
+    "basis": {
+      "basis_id": "B-COMPRESSION-001",
+      "basis_type": "LOAD_BEARING_UNCERTAINTY",
+      "statement": "resolve remaining source-supported obstruction",
+      "evidence_refs": [
+        "fixture://reconciliation",
+        "fixture://remaining-gap"
+      ],
+      "desired_consequence": {
+        "statement": "The remaining source-supported obstruction is resolved."
+      },
+      "current_obstruction": {
+        "statement": "resolve remaining source-supported obstruction"
+      },
+      "relevance_test": {
+        "question": "Would this bounded pressure resolve the exact remaining obstruction?",
+        "failure_if_unanswered": true
+      },
+      "basis_status": "DECLARED"
+    },
+    "pressure_selection": {
+      "pressure_id": "P-SUCCESSOR-WORK-001",
+      "target_distinction": {
+        "lhs": "REMAINING_OBSTRUCTION",
+        "rhs": "RESOLVED_OBSTRUCTION"
+      },
+      "selection_basis": "Fresh reconciliation leaves one exact load-bearing gap.",
+      "expected_information_gain": {
+        "statement": "Whether the remaining obstruction can be resolved without widening scope."
+      },
+      "application_dependency": "A qualified result must exist before any application.",
+      "stop_if_resolved_by_existing_evidence": true,
+      "priority_basis": "BLOCKS_METABOLIC_CONTINUATION",
+      "load_bearing_effects": [
+        "BASIS",
+        "OBSERVABILITY",
+        "COORDINATION"
+      ]
+    },
+    "pressure_contract": {
+      "allowed_operations": [
+        "OBSERVE",
+        "COMPARE",
+        "PROPOSE"
+      ],
+      "prohibited_operations": [
+        "GRANT_AUTHORITY",
+        "EXECUTE",
+        "SELF_PROMOTE"
+      ],
+      "success_condition": {
+        "statement": "One bounded result addresses the exact remaining obstruction."
+      },
+      "failure_condition": {
+        "statement": "The pressure widens beyond the exact remaining obstruction."
+      },
+      "unresolved_condition": {
+        "statement": "Evidence remains insufficient to resolve the obstruction."
+      },
+      "pressure_budget": {
+        "max_rounds": 1,
+        "max_branch_count": 1,
+        "max_unresolved_children": 0
+      }
+    },
+    "result": {
+      "source_result_ref": null,
+      "distinctions": [],
+      "apparatus_failures": [],
+      "semantic_failures": []
+    },
+    "qualification": {
+      "adjudication_ref": null,
+      "scientific_standing": "NONE",
+      "authority_effect": "NONE",
+      "qualification_basis": "",
+      "unresolved_load_bearing_questions": []
+    },
+    "application": {
+      "required": true,
+      "target_surface": "DISPOSABLE_FIXTURE",
+      "proposed_change": {
+        "statement": "Apply one bounded candidate transformation to the remaining obstruction."
+      },
+      "executable_change_ref": null,
+      "application_status": "NOT_YET_ELIGIBLE",
+      "withholding_basis": "work unit is materialized but not qualified or admitted"
+    },
+    "consequence_observation": {
+      "required_if_applied": true,
+      "expected_effect": "The remaining obstruction becomes independently observable as resolved or still present.",
+      "observed_effect": null,
+      "effect_class": "NOT_YET_OBSERVABLE",
+      "evidence_refs": [],
+      "regression_detected": false
+    },
+    "basis_reconciliation": {
+      "original_basis_id": "B-COMPRESSION-001",
+      "disposition": null,
+      "remaining_gap": null,
+      "next_pressure_allowed": false,
+      "next_pressure_basis": null,
+      "termination_reason": null
+    },
+    "sanity_check": {
+      "if_this_work_succeeds": {
+        "what_changes_in_the_operating_world": "The exact remaining load-bearing obstruction changes posture."
+      },
+      "if_nothing_would_change": {
+        "posture": "DO_NOT_RUN"
+      }
+    },
+    "materialization": {
+      "object_type": "SUCCESSOR_WORK_UNIT_MATERIALIZATION_V0",
+      "source_successor_id": "successor:sha256:9738d8909163cf8997a7c6ca78f0225eb8872c8b28d9c64531679a95ee957531",
+      "source_successor_integrity_sha256": "cc09c7bf301a6c3e7dbb6bbee1d8a4c65351048a2f4977e7c7fc13226e8958dc",
+      "source_reconciliation_identity": "52fb51a11aab7a4d5d4b3896b3227a6595195551a54f73515ad31c1e8b84438c",
+      "source_next_pressure_basis": "resolve remaining source-supported obstruction",
+      "work_spec_id": "successor-work-spec:sha256:f954e25afe5de58e95b6e2155a77c04c186ef26e7c0e56f27a863158851967e6",
+      "work_spec_integrity_sha256": "137e6bf380882f9abb9406ff7c048d3d1b6f7cb057f6d2ee0a527b6a81f9a2fd",
+      "spec_source": "EXTERNALLY_SUPPLIED",
+      "work_admission_effect": "NONE",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE",
+      "scientific_standing_effect": "NONE"
+    },
+    "integrity_sha256": "e40bf89e0a236c89946003f7326000effa018911e901f439101811f25a6fd397"
+  },
+  "alternate_work_spec": {
+    "object_type": "SUCCESSOR_WORK_SPEC_V0",
+    "source_successor_id": "successor:sha256:9738d8909163cf8997a7c6ca78f0225eb8872c8b28d9c64531679a95ee957531",
+    "source_successor_integrity_sha256": "cc09c7bf301a6c3e7dbb6bbee1d8a4c65351048a2f4977e7c7fc13226e8958dc",
+    "source_reconciliation_identity": "52fb51a11aab7a4d5d4b3896b3227a6595195551a54f73515ad31c1e8b84438c",
+    "source_next_pressure_basis": "resolve remaining source-supported obstruction",
+    "evidence_refs": [
+      "fixture://reconciliation",
+      "fixture://remaining-gap"
+    ],
+    "desired_consequence": "The remaining source-supported obstruction is resolved.",
+    "relevance_question": "Would an alternate bounded pressure resolve the exact remaining obstruction?",
+    "pressure_id": "P-SUCCESSOR-WORK-ALT-001",
+    "target_distinction": {
+      "lhs": "REMAINING_OBSTRUCTION",
+      "rhs": "RESOLVED_OBSTRUCTION"
+    },
+    "selection_basis": "Fresh reconciliation leaves one exact load-bearing gap.",
+    "expected_information_gain": "Whether an alternate bounded transformation resolves the same exact gap.",
+    "application_dependency": "A qualified result must exist before any application.",
+    "priority_basis": "BLOCKS_METABOLIC_CONTINUATION",
+    "load_bearing_effects": [
+      "BASIS",
+      "OBSERVABILITY"
+    ],
+    "allowed_operations": [
+      "OBSERVE",
+      "COMPARE"
+    ],
+    "prohibited_operations": [
+      "GRANT_AUTHORITY",
+      "EXECUTE",
+      "SELF_PROMOTE"
+    ],
+    "success_condition": "One alternate bounded result addresses the exact remaining obstruction.",
+    "failure_condition": "The alternate pressure widens scope.",
+    "unresolved_condition": "Evidence remains insufficient.",
+    "pressure_budget": {
+      "max_rounds": 1,
+      "max_branch_count": 1,
+      "max_unresolved_children": 0
+    },
+    "application_required": true,
+    "target_surface": "DISPOSABLE_FIXTURE",
+    "proposed_change": "Apply one alternate bounded candidate transformation.",
+    "expected_effect": "The remaining obstruction becomes independently observable.",
+    "operating_change": "The exact remaining load-bearing obstruction changes posture.",
+    "spec_source": "EXTERNALLY_SUPPLIED",
+    "work_spec_id": "successor-work-spec:sha256:49b3c8a4609ad9eb54a922aba2240cdf11f9794a2e9fc5786c22fd96d7137268",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE",
+    "integrity_sha256": "7d475aa2ea9b754ef646a50133cd4955c1326409934056a5a96e20caa0897d0e"
+  },
+  "alternate_materialized_unit_identity": "185756f2b513a98babb75f6fe5f4d60e39df308c39b342b3043b08902332b2df",
+  "pressure_admissibility": {
+    "object_type": "PRESSURE_ADMISSIBILITY_V1",
+    "work_item_id": "successor:sha256:9738d8909163cf8997a7c6ca78f0225eb8872c8b28d9c64531679a95ee957531",
+    "basis_id": "B-COMPRESSION-001",
+    "pressure_id": "P-SUCCESSOR-WORK-001",
+    "admissible": true,
+    "material_effects": [
+      "BASIS",
+      "OBSERVABILITY"
+    ],
+    "blockers": [],
+    "work_admission_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE",
+    "integrity_sha256": "f48617768c68d1c0da019f001df2093f7cb890eeec3ed0c9b0fd5f0fb9e97500"
+  },
+  "tamper_case": {
+    "error_type": "SuccessorWorkUnitMaterializationError",
+    "error": "work_spec seal invalid: object integrity mismatch (expected 0a742bc80917ed2aac1e5e8314a41ff712fe95351a86e4ddc38338f4e2af4594, got 137e6bf380882f9abb9406ff7c048d3d1b6f7cb057f6d2ee0a527b6a81f9a2fd)"
+  },
+  "assertions": {
+    "successor_identity_becomes_work_item_identity": true,
+    "next_pressure_basis_becomes_declared_basis": true,
+    "source_successor_identity_bound": true,
+    "reconciliation_identity_bound": true,
+    "explicit_work_spec_bound": true,
+    "materialized_unit_valid": true,
+    "fixed_inputs_deterministic": true,
+    "materialized_pressure_admissible_but_not_admitted": true,
+    "changed_work_spec_changes_unit_not_successor": true,
+    "tampered_work_spec_rejected": true,
+    "no_qualification_authority_execution_or_standing_effect": true
+  },
+  "all_assertions_pass": true,
+  "claim_ceiling": "One exact deterministic successor candidate plus one externally supplied bounded work spec can materialize one complete basis_workcycle_v1-compatible next workflow unit while conserving successor/reconciliation/next-pressure identity. Materialization does not invent the work spec and creates no qualification, work admission, authority, execution, or scientific standing.",
+  "work_admission_effect": "NONE",
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "scientific_standing_effect": "NONE",
+  "stopped": "YES"
+}

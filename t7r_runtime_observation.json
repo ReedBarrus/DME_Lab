@@ -1,0 +1,262 @@
+{
+  "object_type": "T7R_RUNTIME_OBSERVATION_V0",
+  "repo_head": "be5d86e987213b74d6d906c62022d620e1919e36",
+  "fixture_posture": "DISPOSABLE_LOCAL_RUNTIME_FIXTURE",
+  "real_operator_control_store_mutated": false,
+  "repository_source_mutated": false,
+  "control_transition_observation": {
+    "initial": {
+      "state": {
+        "object_type": "WORKCYCLE_LOCAL_CONTROL_V0",
+        "campaign_id": "WORKCYCLE_STABILIZATION_001",
+        "lifecycle_state": "PAUSED",
+        "workflow_enabled": false,
+        "seat_work_enabled": false,
+        "wake_requested": false,
+        "wake_generation": 0,
+        "auto_continuation_limit": 0,
+        "current_admission": null,
+        "last_operator_gesture": null,
+        "updated_at": null,
+        "execution_effect": "LOCAL_WORKCYCLE_CONTROL_ONLY",
+        "authority_effect": "OPERATOR_LOCAL_CONTROL"
+      },
+      "state_sha256": "c807314fde18481aae27b0421a3fd98765a9a786bfa73d92f167cd2323f0f22d"
+    },
+    "transitions": [
+      {
+        "verb": "ENABLE",
+        "preview_sha256": "a8d9f75a409a20fcd0cdb0ca43b40cb580cf3ccda1234bd74af4f1aa227ffb26",
+        "result_status": "COMMITTED",
+        "state": {
+          "authority_effect": "OPERATOR_LOCAL_CONTROL",
+          "auto_continuation_limit": 0,
+          "campaign_id": "WORKCYCLE_STABILIZATION_001",
+          "current_admission": null,
+          "execution_effect": "LOCAL_WORKCYCLE_CONTROL_ONLY",
+          "last_operator_gesture": {
+            "gesture_id": "T7R-G1",
+            "verb": "ENABLE",
+            "confirmed_by": "REED",
+            "committed_at": "2026-09-25T06:49:44.188341+00:00"
+          },
+          "lifecycle_state": "ACTIVE",
+          "object_type": "WORKCYCLE_LOCAL_CONTROL_V0",
+          "seat_work_enabled": true,
+          "updated_at": "2026-09-25T06:49:44.188355+00:00",
+          "wake_generation": 0,
+          "wake_requested": false,
+          "workflow_enabled": true
+        },
+        "state_sha256": "88d02972055824836d08c1f1be4537bab42ca9b13e776901b9a6833a261a12d7",
+        "model_invocation_effect": "NONE",
+        "repository_mutation_effect": "NONE"
+      },
+      {
+        "verb": "WAKE",
+        "preview_sha256": "ad0a781f182843d57d3faa696f2676a510b86ee7076e53025fb561b690df55ff",
+        "result_status": "COMMITTED",
+        "state": {
+          "authority_effect": "OPERATOR_LOCAL_CONTROL",
+          "auto_continuation_limit": 0,
+          "campaign_id": "WORKCYCLE_STABILIZATION_001",
+          "current_admission": null,
+          "execution_effect": "LOCAL_WORKCYCLE_CONTROL_ONLY",
+          "last_operator_gesture": {
+            "gesture_id": "T7R-G2",
+            "verb": "WAKE",
+            "confirmed_by": "REED",
+            "committed_at": "2026-09-25T06:49:46.628182+00:00"
+          },
+          "lifecycle_state": "ACTIVE",
+          "object_type": "WORKCYCLE_LOCAL_CONTROL_V0",
+          "seat_work_enabled": true,
+          "updated_at": "2026-09-25T06:49:46.628192+00:00",
+          "wake_generation": 1,
+          "wake_requested": true,
+          "workflow_enabled": true
+        },
+        "state_sha256": "d30968627f27f07bc1defa0291e12bcc3c6b133348638f982075656f76489180",
+        "model_invocation_effect": "NONE",
+        "repository_mutation_effect": "NONE"
+      },
+      {
+        "verb": "PAUSE",
+        "preview_sha256": "c2fc843e396644a68fd322d18dce956185d2126b9d2a57a395d63ab905f99382",
+        "result_status": "COMMITTED",
+        "state": {
+          "authority_effect": "OPERATOR_LOCAL_CONTROL",
+          "auto_continuation_limit": 0,
+          "campaign_id": "WORKCYCLE_STABILIZATION_001",
+          "current_admission": null,
+          "execution_effect": "LOCAL_WORKCYCLE_CONTROL_ONLY",
+          "last_operator_gesture": {
+            "gesture_id": "T7R-G4",
+            "verb": "PAUSE",
+            "confirmed_by": "REED",
+            "committed_at": "2026-09-25T06:49:49.060240+00:00"
+          },
+          "lifecycle_state": "PAUSED",
+          "object_type": "WORKCYCLE_LOCAL_CONTROL_V0",
+          "seat_work_enabled": false,
+          "updated_at": "2026-09-25T06:49:49.060249+00:00",
+          "wake_generation": 1,
+          "wake_requested": false,
+          "workflow_enabled": false
+        },
+        "state_sha256": "f9eb4db23bab2064ba66e099889f4da131e881a06a361d74ccc79f8ff0967d7e",
+        "model_invocation_effect": "NONE",
+        "repository_mutation_effect": "NONE"
+      },
+      {
+        "verb": "ENABLE",
+        "preview_sha256": "a830a6c79bee88e5fd31c16dd2825ba90c483e9fab249fe54a7c2b6cb5117ed9",
+        "result_status": "COMMITTED",
+        "state": {
+          "authority_effect": "OPERATOR_LOCAL_CONTROL",
+          "auto_continuation_limit": 0,
+          "campaign_id": "WORKCYCLE_STABILIZATION_001",
+          "current_admission": null,
+          "execution_effect": "LOCAL_WORKCYCLE_CONTROL_ONLY",
+          "last_operator_gesture": {
+            "gesture_id": "T7R-G5",
+            "verb": "ENABLE",
+            "confirmed_by": "REED",
+            "committed_at": "2026-09-25T06:49:50.644327+00:00"
+          },
+          "lifecycle_state": "ACTIVE",
+          "object_type": "WORKCYCLE_LOCAL_CONTROL_V0",
+          "seat_work_enabled": true,
+          "updated_at": "2026-09-25T06:49:50.644337+00:00",
+          "wake_generation": 1,
+          "wake_requested": false,
+          "workflow_enabled": true
+        },
+        "state_sha256": "6aa34c05fa41108b985ce4c6d13d9470f327d580bd250fde4b56e4d2ace98a38",
+        "model_invocation_effect": "NONE",
+        "repository_mutation_effect": "NONE"
+      },
+      {
+        "verb": "STOP",
+        "preview_sha256": "6ebc4cad0a6c9f16375cc492edf0aebbb4fd9396a1e8230085e025b6d97b829b",
+        "result_status": "COMMITTED",
+        "state": {
+          "authority_effect": "OPERATOR_LOCAL_CONTROL",
+          "auto_continuation_limit": 0,
+          "campaign_id": "WORKCYCLE_STABILIZATION_001",
+          "current_admission": null,
+          "execution_effect": "LOCAL_WORKCYCLE_CONTROL_ONLY",
+          "last_operator_gesture": {
+            "gesture_id": "T7R-G6",
+            "verb": "STOP",
+            "confirmed_by": "REED",
+            "committed_at": "2026-09-25T06:49:51.916027+00:00"
+          },
+          "lifecycle_state": "STOPPED",
+          "object_type": "WORKCYCLE_LOCAL_CONTROL_V0",
+          "seat_work_enabled": false,
+          "updated_at": "2026-09-25T06:49:51.916037+00:00",
+          "wake_generation": 1,
+          "wake_requested": false,
+          "workflow_enabled": false
+        },
+        "state_sha256": "4a5945be1b9ca643b0f258dad769128f354d817ac8c509ef19221477731894f6",
+        "model_invocation_effect": "NONE",
+        "repository_mutation_effect": "NONE"
+      }
+    ],
+    "admit_one": {
+      "posture": "FAILED_CLOSED",
+      "error_type": "WorkcycleControlError",
+      "error": "no source-bound next eligible work item exists"
+    },
+    "final": {
+      "state": {
+        "authority_effect": "OPERATOR_LOCAL_CONTROL",
+        "auto_continuation_limit": 0,
+        "campaign_id": "WORKCYCLE_STABILIZATION_001",
+        "current_admission": null,
+        "execution_effect": "LOCAL_WORKCYCLE_CONTROL_ONLY",
+        "last_operator_gesture": {
+          "committed_at": "2026-09-25T06:49:51.916027+00:00",
+          "confirmed_by": "REED",
+          "gesture_id": "T7R-G6",
+          "verb": "STOP"
+        },
+        "lifecycle_state": "STOPPED",
+        "object_type": "WORKCYCLE_LOCAL_CONTROL_V0",
+        "seat_work_enabled": false,
+        "updated_at": "2026-09-25T06:49:51.916037+00:00",
+        "wake_generation": 1,
+        "wake_requested": false,
+        "workflow_enabled": false
+      },
+      "state_sha256": "4a5945be1b9ca643b0f258dad769128f354d817ac8c509ef19221477731894f6"
+    }
+  },
+  "current_projection_observation": {
+    "campaign_id": "WORKCYCLE_STABILIZATION_001",
+    "active_horizon": "FIRST_PERMANENT_WORKLOAD_COMPRESSION_HISTORY_CONSERVATION",
+    "active_work_item": null,
+    "latest_completed_work_item": "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1",
+    "next_eligible_work_item": null,
+    "eligibility": {
+      "posture": "PARTIAL_COORDINATES_ONLY",
+      "eligible": null,
+      "known_coordinates": {
+        "wake_budget_reservable": true
+      },
+      "unresolved_coordinates": [
+        "dependency_satisfied",
+        "frame_current",
+        "seat_available",
+        "no_hold",
+        "authority_satisfied"
+      ],
+      "claim_ceiling": "Budget-side eligibility only; real work eligibility is unresolved until runtime coordinates are source-bound."
+    },
+    "projection_boundary": {
+      "read_only": true,
+      "creates_authority": false,
+      "performs_execution": false,
+      "advances_campaign_standing": false,
+      "mutates_atlas": false
+    }
+  },
+  "malformed_optional_state_observation": {
+    "projection_errors": [
+      "docs\\campaigns\\workcycle_stabilization_001\\state\\WAKE_BUDGET_V0.json: WorkcycleError: missing or invalid integrity_sha256"
+    ],
+    "current_unresolved": [
+      "docs\\campaigns\\workcycle_stabilization_001\\state\\WAKE_BUDGET_V0.json: WorkcycleError: missing or invalid integrity_sha256"
+    ],
+    "wake_budget": null,
+    "projection_boundary": {
+      "read_only": true,
+      "creates_authority": false,
+      "performs_execution": false,
+      "advances_campaign_standing": false,
+      "mutates_atlas": false
+    }
+  },
+  "current_state_without_full_replay_observation": {
+    "current_state_file_count": 1,
+    "recovered": {
+      "CURRENT_STATE_ID": "T7R-CURRENT-001",
+      "ACTIVE_OPERATOR": "O0",
+      "TARGET": "P0",
+      "STATUS": "RESOLVED",
+      "VALUE": true,
+      "STANDING": "REPORTED",
+      "VERIFICATION_STANDING": "NOT_VERIFIED",
+      "SOURCE_EVENT": "CE-000003",
+      "SOURCE_BASIS_REF": "base_state_artifact.json"
+    },
+    "history_replay_performed": false
+  },
+  "claim_ceiling": "This witness observes current code in bounded disposable runtime fixtures. It does not prove the packaged desktop UI exercised these exact paths, does not mutate real operator control, does not create execution authority, and does not establish scientific standing.",
+  "authority_effect": "NONE",
+  "execution_effect": "DISPOSABLE_FIXTURE_ONLY",
+  "scientific_standing_effect": "NONE",
+  "stopped": "YES"
+}

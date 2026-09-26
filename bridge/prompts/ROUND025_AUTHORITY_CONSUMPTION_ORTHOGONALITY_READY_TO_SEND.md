@@ -1,0 +1,166 @@
+# ROUND 025 — AUTHORITY CONSUMPTION ORTHOGONALITY PRESSURE
+
+OBJECT_TYPE:
+READY_TO_SEND_SINGLE_SEAT_PRESSURE_PACKET
+
+STATUS:
+PREPARED_NOT_YET_CLEARED
+
+EXECUTION_GATE:
+RUN ONLY AFTER ROUND 024 / ANY REQUIRED ROUND 022 REPAIR PRESERVES
+AMBIGUOUS-OUTCOME IDENTITY AND RETRY-WARRANT SEMANTICS
+
+DESTINATION:
+LM STUDIO BOUNDED SOURCE MODEL
+
+PREFERRED_MODEL:
+qwen/qwen3-coder-30b
+
+ROLE:
+BOUNDED_AUTHORITY_LIFECYCLE_EVALUATOR
+
+MODE:
+SELF_CONTAINED
++ NO_TOOLS
++ NO_REPO_ACCESS
++ NO_NETWORK
++ NO_PUBLICATION
++ NO_AUTONOMY
+
+AUTHORITY_EFFECT:
+NONE
+
+EXECUTION_EFFECT:
+NONE
+
+# PURPOSE
+
+Pressure whether authority consumption can change independently of seat
+lifecycle state without collapsing authority into execution or turning the seat
+into a Cartesian-product state machine.
+
+# CORE LAW
+
+SEAT_LIFECYCLE_STATE
+!=
+AUTHORITY_STATE
+
+AUTHORIZATION_GRANTED
+!=
+INVOCATION_EXECUTED
+
+HISTORICAL_AUTHORIZATION
+!=
+REUSABLE_AUTHORIZATION
+
+AUTHORITY_CONSUMPTION
+!=
+SEAT_STOP
+
+A one-shot authorization may be consumed by one invocation start while the seat
+continues through its own lifecycle.
+
+# SPECIMEN
+
+SEAT_ID:
+SEAT-025-A
+
+REQUEST_ID:
+REQ-025
+
+ATTEMPT_1_ID:
+REQ-025::ATTEMPT-001
+
+AUTHORIZATION_ID:
+AUTH-025-001
+
+AUTHORIZATION_SCOPE:
+exactly ATTEMPT-001
+
+INITIAL_COORDINATES:
+
+SEAT_LIFECYCLE_STATE:
+INVOCATION_PROPOSED
+
+AUTHORITY_STATE:
+AUTHORIZED_ONCE
+
+SCIENTIFIC_STANDING:
+CANDIDATE_ONLY
+
+FAILURE_OR_HOLD_POSTURE:
+NONE
+
+EVENT_1:
+The operator invokes BEGIN_INVOCATION for ATTEMPT-001 under AUTH-025-001.
+
+EXPECTED INDEPENDENT COORDINATE MOVEMENT:
+
+SEAT_LIFECYCLE_STATE:
+INVOCATION_STARTED
+
+AUTHORITY_STATE:
+CONSUMED
+
+EVENT_2:
+Without issuing any new authorization, an actor proposes a second
+consequence-producing invocation under historical AUTH-025-001.
+
+# TASK
+
+Evaluate the lawful coordinate state after EVENT_1 and whether EVENT_2 may
+proceed.
+
+Do not invent fresh authorization.
+
+Do not create ATTEMPT-002 unless the task explicitly asks for a later lawful
+shape; the immediate question is whether historical AUTH-025-001 can authorize a
+second consequence-producing invocation.
+
+Do not change scientific standing.
+
+Do not encode authority consumption as a new combined seat state.
+
+# REQUIRED OUTPUT
+
+Return exactly:
+
+SEAT_STATE_AFTER_EVENT_1:
+INVOCATION_STARTED | OTHER | UNRESOLVED
+
+AUTHORITY_STATE_AFTER_EVENT_1:
+CONSUMED | AUTHORIZED_ONCE | OTHER | UNRESOLVED
+
+SEAT_AUTHORITY_ORTHOGONALITY:
+PRESERVED | COLLAPSED | UNRESOLVED
+
+SECOND_INVOCATION_UNDER_AUTH_025_001:
+DENIED | ALLOWED | UNRESOLVED
+
+DENIAL_BASIS:
+<one bounded statement>
+
+HISTORICAL_AUTHORIZATION_REUSABLE:
+NO | YES | UNRESOLVED
+
+FRESH_AUTHORIZATION_REQUIRED_FOR_LATER_ATTEMPT:
+YES | NO | UNRESOLVED
+
+SEAT_MUST_STOP_WHEN_AUTHORITY_IS_CONSUMED:
+NO | YES | UNRESOLVED
+
+SCIENTIFIC_STANDING_EFFECT:
+NONE | CHANGED | UNRESOLVED
+
+AUTHORITY_EXPANSION:
+NONE | EXPANDED | UNRESOLVED
+
+MAXIMUM_WARRANTED_CLAIM:
+<one bounded claim about authority-consumption orthogonality only>
+
+UNRESOLVED:
+<list>
+
+# STOP
+
+Return only the required output and stop.

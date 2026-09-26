@@ -1,0 +1,21 @@
+{
+  "approval_id": "AUTHORITY_MEMBRANE_CELL_002_APPROVAL_001",
+  "capability_id": "AUTHORITY_MEMBRANE_CELL_002_CAPABILITY_001",
+  "consumed_at": "2026-09-22T18:00:02+00:00",
+  "current_authority": "NONE",
+  "endpoint_identity": "http://127.0.0.1:1234/v1/chat/completions",
+  "executor_sha256": "90ff97ca67421ee30397099194628dfcbff20831501550018e894c1c3d0c24a4",
+  "input_sha256": "f9c71efe787dfd7140cc302907fa716ba06d7761f7fdeb34423f2ab90f2f4037",
+  "invocation_count": 1,
+  "issued_envelope_sha256": "f83d277990d4ff48d72ad6d11217f93dffc19b1807365046db06dd46724c8e87",
+  "model": "qwen/qwen3-coder-30b",
+  "object_type": "LOCAL_AUTHORITY_CONSUMPTION_RECEIPT_V0",
+  "policy_sha256": "c10b572c1d128798805737a4ed6d47480fa2e7ec6e0587bf0c42df83bd672d12",
+  "post_use_remaining_uses": 0,
+  "pre_use_remaining_uses": 1,
+  "receipt_id": "receipt:sha256:d4287d4a050788693d1b83cc4d4a49cfff5d6282b735d5dad7a4fbe8963a7a89",
+  "request_sha256": "e7831accfb3c5aef6cb8e4a6a3bf2460c59691c6f9459fe274789883446cca43",
+  "reservation_id": "reservation:sha256:d30e05dd166432e43566f144a9d5fe1e74e3b08822e64def7396aa23a8df9c1b",
+  "status": "CONSUMED",
+  "use_limit": 1
+}

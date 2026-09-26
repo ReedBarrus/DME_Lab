@@ -1,0 +1,60 @@
+{
+  "object_type": "LOCAL_LMSTUDIO_INVOCATION_WITNESS_V0",
+  "executor_path": "C:\\Users\\Admin\\.dme_lab_bridge\\bridge.py",
+  "executor_sha256": "ed17044261a5510daa10f2fb92de36aea89170115c334c80df665e719c775008",
+  "policy_path": "C:\\Users\\Admin\\.dme_lab_bridge\\policy.json",
+  "policy_sha256": "65f2ce8c3ce1cd5147940ff851cb61a9f04b7db220dadb4c77e1d5352e28200b",
+  "request_id": "TEST002_QWEN_BABY_PROMPT",
+  "purpose": "Discriminate basic bridge-mediated Qwen invocation viability from W2 prompt-size or runtime-context failure.",
+  "request_manifest_path": "bridge/requests/TEST002_QWEN_BABY_PROMPT.json",
+  "request_manifest_sha256": "b8c13b0e7d21e6278935c4bf80fa553340e1d355686dab117b588b96a209bf75",
+  "source_ref": "12b78f04e621c698f9ee5a5c955e6dae0ed18a2a",
+  "input_path": "bridge/prompts/TEST002_QWEN_BABY_PROMPT.md",
+  "input_blob_sha": "722d390a5e0e7fb23afd5d73aa281e128b4690f2",
+  "input_sha256": "54f7c9a3fa6e290232a133975b13f7afb1f771462bf1db33f75ead9d7671fcb9",
+  "model_requested": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 32,
+  "lmstudio_url": "http://127.0.0.1:1234/v1/chat/completions",
+  "http_status": 200,
+  "observed_started_at_utc": "2026-09-25T05:09:59.967538+00:00",
+  "observed_finished_at_utc": "2026-09-25T05:10:01.302865+00:00",
+  "messages_count": 1,
+  "tools_supplied": false,
+  "previous_response_state_supplied": false,
+  "repository_context_supplied_to_model": false,
+  "connectors_supplied_to_model": false,
+  "external_retrieval_supplied_to_model": false,
+  "request_body_sha256": "f95918c89050c8ca3997104eba16702f2ae673c43f5e3ddddbad508e4db1627d",
+  "response_body_sha256": "7e4dc0886fb69c25058fd741850978c066461ea9c3d401faf7aadece09a0b681",
+  "assistant_text": "BABY_PROMPT_OK",
+  "raw_response": {
+    "id": "chatcmpl-f8z3fiao4dshqyholtg2sv",
+    "object": "chat.completion",
+    "created": 1790312999,
+    "model": "qwen/qwen3-coder-30b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "BABY_PROMPT_OK",
+          "reasoning_content": "",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 56,
+      "completion_tokens": 6,
+      "total_tokens": 62,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "stats": {},
+    "system_fingerprint": "qwen/qwen3-coder-30b"
+  }
+}

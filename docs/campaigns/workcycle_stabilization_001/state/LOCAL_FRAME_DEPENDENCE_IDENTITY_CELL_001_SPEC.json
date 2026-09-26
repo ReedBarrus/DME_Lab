@@ -1,0 +1,123 @@
+{
+  "object_type": "LOCAL_FRAME_DEPENDENCE_IDENTITY_CELL_001",
+  "source_ref": "d5a47606ce0ed8a08ea444638e5ae4b90c59ea91",
+  "subject": {
+    "subject_id": "WORKCYCLE_STABILIZATION_001_LOCAL_FRAME_DEPENDENCE_CELL_001",
+    "continuity_target": "fresh-seat bounded reconstruction of WORKCYCLE_STABILIZATION_001 relational workcycle semantics",
+    "scope": "the exact W2 workcycle subject and four pinned evidence objects only"
+  },
+  "candidate_relation": {
+    "relation_type": "EVIDENCE_SUPPORTS_RECONSTRUCTION",
+    "subject": "WORKCYCLE_STABILIZATION_001_LOCAL_FRAME_DEPENDENCE_CELL_001",
+    "target_path": "docs/campaigns/workcycle_stabilization_001/SYMBOLIC_CONSEQUENCE_DECOMPOSITION_V0.md",
+    "target_blob_sha": "871fd46c441eaba75e545c258ce198a2347f2bb9",
+    "relation_standing": "SOURCE_SUPPORTED",
+    "dependence_standing": "UNRESOLVED"
+  },
+  "declared_load_dimension": "SEMANTIC_RECONSTRUCTION",
+  "fixed_evidence": [
+    {
+      "path": "docs/campaigns/workcycle_stabilization_001/state/WORKCYCLE_STABILIZATION_001_RELATIONAL_COMPRESSION_W2.json",
+      "blob_sha": "16c05667bd61399d526624805c4eeecbadc3a886"
+    },
+    {
+      "path": "docs/campaigns/workcycle_stabilization_001/WORKCYCLE_STABILIZATION_CAMPAIGN_001.md",
+      "blob_sha": "b15d71c05f20509b47162bcd1b81c69849fe6115"
+    },
+    {
+      "path": "docs/campaigns/workcycle_stabilization_001/PRESSURE_JUSTIFICATION_001_READY_TO_SEND.md",
+      "blob_sha": "92419f7709690d3b74018622805c3008af5b107b"
+    }
+  ],
+  "perturbed_evidence": {
+    "path": "docs/campaigns/workcycle_stabilization_001/SYMBOLIC_CONSEQUENCE_DECOMPOSITION_V0.md",
+    "blob_sha": "871fd46c441eaba75e545c258ce198a2347f2bb9",
+    "intervention": "WITHHELD_FROM_RUN_B_EVIDENCE_APERTURE_ONLY",
+    "repository_mutation": "NONE"
+  },
+  "matched_coordinates": [
+    "source_ref",
+    "reconstruction_contract",
+    "role",
+    "output_schema",
+    "claim_ceiling",
+    "authority_effect",
+    "execution_effect",
+    "model_id",
+    "model_family",
+    "reasoning_profile",
+    "tool_policy",
+    "allowed_evidence_policy",
+    "live_chat_context_policy",
+    "external_retrieval_policy"
+  ],
+  "observation_classes": [
+    "UNCHANGED",
+    "DEGRADED",
+    "LOST",
+    "UNRESOLVED"
+  ],
+  "non_collapses": [
+    "RELATION != DEPENDENCE",
+    "DEPENDENCE != LOAD",
+    "LOAD != CONSEQUENCE",
+    "STATE_DIFFERENCE != RELATIONAL_UPDATE",
+    "TEMPORAL_SUCCESSION != CAUSATION"
+  ],
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "scientific_standing_effect": "NONE",
+  "inference_profile": {
+    "profile_id": "CELL001_MATCHED_OBSERVABLE_INFERENCE_PROFILE_V0",
+    "required_same_across_runs": true,
+    "required_observable_coordinates": [
+      "model_id",
+      "model_family",
+      "reasoning_profile",
+      "tool_policy",
+      "allowed_evidence_policy",
+      "output_contract",
+      "live_chat_context_policy",
+      "external_retrieval_policy"
+    ],
+    "provider_managed_or_unobserved_coordinates": [
+      "sampling_seed",
+      "hidden_runtime_scheduler_state",
+      "other_provider_internal_sampling_state"
+    ],
+    "comparability_rule": "Any mismatch in a required observable coordinate => RUN_COMPARABILITY=FRACTURED.",
+    "claim_ceiling": "Observable inference regime may be matched; unobserved provider/runtime nondeterminism remains unresolved."
+  },
+  "evidence_aperture": {
+    "aperture_id_control": "CELL001_APERTURE_A_FULL",
+    "aperture_id_intervention": "CELL001_APERTURE_B_WITHHELD_ONE",
+    "subject_scope": "exact W2 workcycle subject at the frozen source ref",
+    "only_deliberate_difference": "availability of the declared candidate-support Git object",
+    "existential_claim": "NONE",
+    "reconstruction_claim_only": true
+  },
+  "load_measurement": {
+    "declared_load_dimension": "SEMANTIC_RECONSTRUCTION",
+    "orthogonal_loads_evaluated": false,
+    "allowed_claim": "effect observed or not observed on declared semantic-reconstruction measure",
+    "forbidden_claim": "semantic reconstruction is the only affected load dimension"
+  },
+  "reproducibility": {
+    "established": false,
+    "cell_001_claim": "single matched-pair observation only",
+    "replication_deferred_to": "CELL_002_OR_LATER"
+  },
+  "local_dependence_candidate": {
+    "candidate_form": "D_reconstruction(A,B,L,E,S,t,q)",
+    "coordinates": {
+      "A": "bounded fresh-seat reconstruction subject",
+      "B": "candidate evidence object",
+      "L": "SEMANTIC_RECONSTRUCTION",
+      "E": "declared evidence aperture",
+      "S": "exact bounded workcycle scope",
+      "t": "frozen source_ref temporal coordinate",
+      "q": "scientific standing / unresolved posture"
+    },
+    "non_claim": "does not establish operative or existential dependence of the whole workcycle"
+  }
+}

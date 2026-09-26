@@ -1,0 +1,12 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0",
+  "request_id": "EXAMPLE_DISABLED_001",
+  "enabled": false,
+  "source_ref": "0000000000000000000000000000000000000000",
+  "input_path": "bridge/prompts/EXAMPLE_PROMPT.txt",
+  "input_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "model": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 1024,
+  "purpose": "Documentation-only disabled example. Never executes."
+}

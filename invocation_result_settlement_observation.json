@@ -1,0 +1,162 @@
+{
+  "object_type": "INVOCATION_RESULT_SETTLEMENT_OBSERVATION_V0",
+  "repo_head": "af385f8eead27460826bbdbc2160b8d21da5c5be",
+  "fixture_posture": "DISPOSABLE_FIELD_LEVEL_CANDIDATE_SETTLEMENT_FIXTURE",
+  "source_result_witness": {
+    "object_type": "INVOCATION_RESULT_WITNESS_V0",
+    "consumption_id": "admitted-authority-consumption:sha256:7e3d296b156e4662c0376bb733c27318a366af8c8bfeea9b0426345d8d3f2428",
+    "composition_id": "verified-authority-atomic-admission:sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "atomic_admission_id": "atomic-admission:sha256:2222222222222222222222222222222222222222222222222222222222222222",
+    "successor_id": "successor:sha256:3333333333333333333333333333333333333333333333333333333333333333",
+    "successor_integrity_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+    "authority_binding_id": "current-authority-binding:sha256:5555555555555555555555555555555555555555555555555555555555555555",
+    "authority_consumption_receipt_id": "receipt:sha256:6666666666666666666666666666666666666666666666666666666666666666",
+    "authority_reservation_id": "reservation:sha256:7777777777777777777777777777777777777777777777777777777777777777",
+    "capability_id": "CAP.SETTLEMENT.OBS.001",
+    "work_attempt_id": "ATTEMPT-SETTLEMENT-OBS-001",
+    "adapter_identity": "disposable-callback-adapter-v0",
+    "model_identity": null,
+    "raw_output_sha256": "7da030770af327c68fbae2e33a26feddcab4f413f55f8be85390744c928db0af",
+    "observer_limitations": [
+      "callback return does not prove external consequence",
+      "source witness performs no semantic interpretation",
+      "source witness performs no settlement"
+    ],
+    "witness_id": "invocation-result-witness:sha256:b591e72c89dd016392566a5d027702be67ba8b5ed50c1b78434db07182c35bce",
+    "raw_output": {
+      "supported_value": 17,
+      "useful_but_unverified": "candidate",
+      "overclaim": "external effect definitely happened",
+      "unknown": null
+    },
+    "raw_output_canonical_json": "{\"overclaim\":\"external effect definitely happened\",\"supported_value\":17,\"unknown\":null,\"useful_but_unverified\":\"candidate\"}",
+    "measured_fields": [
+      "consumption_id",
+      "composition_id",
+      "atomic_admission_id",
+      "successor_id",
+      "successor_integrity_sha256",
+      "authority_binding_id",
+      "authority_consumption_receipt_id",
+      "authority_reservation_id",
+      "capability_id",
+      "work_attempt_id",
+      "adapter_identity",
+      "raw_output_sha256"
+    ],
+    "unresolved_fields": [
+      "model_identity"
+    ],
+    "semantic_interpretation": "NONE",
+    "settlement_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE",
+    "external_effect_inferred": false,
+    "claim_ceiling": "Deterministic immutable witness that one already-consumed exact work attempt returned the supplied raw callback output under the supplied adapter/model metadata. It does not establish semantic correctness, external consequence, settlement, qualification, or authority."
+  },
+  "settlement": {
+    "object_type": "INVOCATION_RESULT_CANDIDATE_SETTLEMENT_V0",
+    "source_witness_id": "invocation-result-witness:sha256:b591e72c89dd016392566a5d027702be67ba8b5ed50c1b78434db07182c35bce",
+    "source_raw_output_sha256": "7da030770af327c68fbae2e33a26feddcab4f413f55f8be85390744c928db0af",
+    "source_work_attempt_id": "ATTEMPT-SETTLEMENT-OBS-001",
+    "settlement_actor_identity": "independent-settler-fixture-v0",
+    "field_dispositions": {
+      "overclaim": "CANDIDATE_REJECTED",
+      "supported_value": "CANDIDATE_ACCEPTED",
+      "unknown": "UNRESOLVED",
+      "useful_but_unverified": "CANDIDATE_HELD"
+    },
+    "settlement_basis": {
+      "overclaim": "source witness explicitly infers no external effect",
+      "supported_value": "field is explicitly retained in immutable witness",
+      "unknown": "supplied field remains unresolved",
+      "useful_but_unverified": "candidate value lacks qualification"
+    },
+    "settlement_id": "invocation-result-candidate-settlement:sha256:2a17b0bc958bad9243721dd2af602a340e715f6a35ca44eb7ed170c44b99fdc4",
+    "accepted_fields": [
+      "supported_value"
+    ],
+    "held_fields": [
+      "useful_but_unverified"
+    ],
+    "rejected_fields": [
+      "overclaim"
+    ],
+    "unresolved_fields": [
+      "unknown"
+    ],
+    "source_witness_preserved": true,
+    "classification_source": "EXTERNALLY_SUPPLIED",
+    "scientific_admission_created": false,
+    "qualification_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "atlas_mutation_effect": "NONE",
+    "claim_ceiling": "Deterministic field-level candidate settlement over one immutable result witness using externally supplied dispositions and bases. It does not establish semantic truth, external consequence, scientific qualification, authority, execution, or Atlas mutation."
+  },
+  "changed_disposition_settlement": {
+    "object_type": "INVOCATION_RESULT_CANDIDATE_SETTLEMENT_V0",
+    "source_witness_id": "invocation-result-witness:sha256:b591e72c89dd016392566a5d027702be67ba8b5ed50c1b78434db07182c35bce",
+    "source_raw_output_sha256": "7da030770af327c68fbae2e33a26feddcab4f413f55f8be85390744c928db0af",
+    "source_work_attempt_id": "ATTEMPT-SETTLEMENT-OBS-001",
+    "settlement_actor_identity": "independent-settler-fixture-v0",
+    "field_dispositions": {
+      "overclaim": "CANDIDATE_REJECTED",
+      "supported_value": "CANDIDATE_ACCEPTED",
+      "unknown": "UNRESOLVED",
+      "useful_but_unverified": "CANDIDATE_ACCEPTED"
+    },
+    "settlement_basis": {
+      "overclaim": "source witness explicitly infers no external effect",
+      "supported_value": "field is explicitly retained in immutable witness",
+      "unknown": "supplied field remains unresolved",
+      "useful_but_unverified": "candidate value lacks qualification"
+    },
+    "settlement_id": "invocation-result-candidate-settlement:sha256:23e72cdb37d94d4e942e9574b3b7a6fd7b8ff4e6f1b14f31409810e9eccf8fd4",
+    "accepted_fields": [
+      "supported_value",
+      "useful_but_unverified"
+    ],
+    "held_fields": [],
+    "rejected_fields": [
+      "overclaim"
+    ],
+    "unresolved_fields": [
+      "unknown"
+    ],
+    "source_witness_preserved": true,
+    "classification_source": "EXTERNALLY_SUPPLIED",
+    "scientific_admission_created": false,
+    "qualification_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "atlas_mutation_effect": "NONE",
+    "claim_ceiling": "Deterministic field-level candidate settlement over one immutable result witness using externally supplied dispositions and bases. It does not establish semantic truth, external consequence, scientific qualification, authority, execution, or Atlas mutation."
+  },
+  "tamper_case": {
+    "error_type": "ResultSettlementError",
+    "error": "source witness raw output digest mismatch"
+  },
+  "assertions": {
+    "source_witness_preserved": true,
+    "settlement_binds_witness_id": true,
+    "settlement_binds_output_identity": true,
+    "field_dispositions_distinct": true,
+    "fixed_inputs_deterministic": true,
+    "disposition_change_changes_settlement_id": true,
+    "tampered_raw_output_rejected": true,
+    "classification_externally_supplied": true,
+    "accepted_does_not_qualify": true,
+    "no_authority_effect": true,
+    "no_execution_effect": true,
+    "no_atlas_mutation": true
+  },
+  "all_assertions_pass": true,
+  "claim_ceiling": "Same-process disposable evidence that externally supplied field-level candidate dispositions and explicit bases can be bound deterministically to one immutable invocation result witness while preserving accepted, held, rejected, and unresolved as distinct classes. Candidate acceptance does not create qualification, authority, execution, external consequence, or Atlas mutation.",
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "atlas_mutation_effect": "NONE",
+  "scientific_standing_effect": "NONE",
+  "stopped": "YES"
+}

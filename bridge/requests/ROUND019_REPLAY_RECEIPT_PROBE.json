@@ -1,0 +1,12 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0",
+  "request_id": "ROUND019_REPLAY_RECEIPT_PROBE",
+  "enabled": true,
+  "source_ref": "b21551e9bdd374e80ef8650596de49e7be535b8e",
+  "input_path": "bridge/prompts/ROUND019_REPLAY_RECEIPT_PROBE.md",
+  "input_sha256": "7aedc4084c14426ea244d3dd202705739ca9f39e60dd959b57f2590436ab42e7",
+  "model": "qwen/qwq-32b",
+  "temperature": 0.0,
+  "max_tokens": 64,
+  "purpose": "Pressure the new durable invocation receipt by approving one request expected to fail model loading, then verify later watch cycles hold it instead of replaying."
+}

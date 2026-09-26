@@ -1,0 +1,146 @@
+# WORKCYCLE_STABILIZATION_001 — BASIS RECONCILIATION PRESSURE 001
+
+OBJECT_TYPE:
+READY_TO_RUN_RUNTIME_OBSERVATION_PACKET
+
+PRESSURE_ID:
+BASIS_RECONCILIATION_PRESSURE_001
+
+STATUS:
+GATED_DOWNSTREAM_OF_SUCCESSOR_IDENTITY
+
+ROLE:
+LOCAL_BASIS_RECONCILIATION_WITNESS
+
+MODE:
+DISPOSABLE_EVIDENCE_BOUND_RECONCILIATION_FIXTURE
++
+NO_WORK_ADMISSION
++
+NO_AUTHORITY_GRANT
++
+NO_MODEL_INVOCATION
++
+NO_WORK_EXECUTION
+
+# GATE
+
+Do not treat this pressure as standing-bearing until:
+
+```
+SUCCESSOR_IDENTITY_MATCHED
+```
+
+is independently frozen.
+
+# TARGET
+
+Pressure the rear-anchor relation:
+
+```
+ORIGINAL BASIS
++
+QUALIFICATION POSTURE
++
+APPLICATION STATUS
++
+CONSEQUENCE EVALUATION
++
+CURRENT OBSTRUCTION POSTURE
+→
+ONE BOUNDED BASIS RECONCILIATION
+```
+
+# REQUIRED CASES
+
+```
+QUALIFIED BUT NOT APPLIED
+→ STILL_BLOCKED
+
+APPLIED BUT CONSEQUENCE NOT OBSERVED
+→ STILL_BLOCKED
+
+CONSEQUENCE_MATCHED + OBSTRUCTION_RESOLVED
+→ SATISFIED
+
+CONSEQUENCE_MATCHED + OBSTRUCTION_REMAINS
+→ PARTIALLY_SATISFIED
+
+CONSEQUENCE_CONTRADICTED
+→ INVALIDATED
+
+CHANGED OBSTRUCTION + NO SUPPORTED REFRAME
+→ INVALIDATED
+
+CHANGED OBSTRUCTION + EXPLICIT SUPPORTED REFRAME
+→ REFRAMED
+```
+
+# REQUIRED NON-COLLAPSES
+
+```
+QUALIFIED RESULT
+!=
+SATISFIED BASIS
+
+WORK ARTIFACT EXISTS
+!=
+OBSERVED CONSEQUENCE
+
+CONSEQUENCE_MATCHED
+!=
+OBSTRUCTION RESOLVED
+
+CHANGED OBSTRUCTION
+!=
+AUTOMATIC REFRAME
+
+INTERESTING RESULT
+!=
+JUSTIFIED SUCCESSOR
+
+RECONCILIATION
+!=
+WORK ADMISSION
+```
+
+# EXECUTION
+
+After predecessor standing is frozen:
+
+```powershell
+git pull
+
+python -m unittest `
+  tests.coordination.test_basis_workcycle_v1 `
+  tests.cockpit.test_workcycle_qualification `
+  tests.cockpit.test_pressure_justification
+
+python tools/observe_basis_reconciliation_v1.py
+```
+
+Expected witness:
+
+```
+basis_reconciliation_observation.json
+```
+
+# CLAIM CEILING
+
+This pressure may establish only deterministic reconciliation over the supplied
+application, consequence, and source-supported current-obstruction posture.
+
+It does not independently discover world state, validate the obstruction
+classification, admit work, create authority, schedule, execute, or invoke.
+
+AUTHORITY_EFFECT:
+NONE
+
+EXECUTION_EFFECT:
+NONE
+
+SCIENTIFIC_STANDING_EFFECT:
+NONE
+
+STOPPED:
+YES

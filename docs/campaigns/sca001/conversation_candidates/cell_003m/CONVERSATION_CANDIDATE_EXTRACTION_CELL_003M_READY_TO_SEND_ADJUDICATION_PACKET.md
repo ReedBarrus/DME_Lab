@@ -1,0 +1,112 @@
+# CONVERSATION CANDIDATE EXTRACTION CELL 003M — READY-TO-SEND ADJUDICATION PACKET
+
+OBJECT_TYPE:
+CONVERSATION_CANDIDATE_EXTRACTION_CELL_003M_ADJUDICATION_PACKET
+
+CAMPAIGN:
+SEMANTIC_CONTINUITY_OPERATIVE_ATLAS_CAMPAIGN_001
+
+DESTINATION:
+PRIOR CROSS-EVALUATION THREAD / EVALUATOR INSTANCE
+
+USE:
+REMOTE EVIDENCE ONLY
+
+# REQUIRED EVIDENCE
+
+Read exactly:
+
+1.
+docs/campaigns/semantic_continuity_operative_atlas_001/
+CONVERSATION_CANDIDATE_EXTRACTION_CELL_003M_READY_TO_SEND_UNDECLARED_EQUIVALENCE_PACKET.md
+
+2.
+docs/campaigns/semantic_continuity_operative_atlas_001/
+CONVERSATION_CANDIDATE_EXTRACTION_CELL_003M_RUN_A_FROZEN_OUTPUT_001.md
+
+3.
+docs/campaigns/semantic_continuity_operative_atlas_001/
+CONVERSATION_CANDIDATE_EXTRACTION_CELL_003L_ADJUDICATION_RESULT_001.md
+
+# PRIMARY QUESTION
+
+Does Cell 003M establish that two differently represented rules can
+independently support the same bounded post-boundary consequence without
+thereby establishing formal equivalence between those representations?
+
+# REQUIRED CHECKS
+
+SOURCE_A_RECOVERY:
+EXACT | DEGRADED | UNRESOLVED
+
+SOURCE_B_RECOVERY:
+EXACT | DEGRADED | UNRESOLVED
+
+SAME_OUTCOME_CONVERGENCE:
+SUPPORTED | PARTIAL | UNSUPPORTED | UNRESOLVED
+
+FORMAL_EQUIVALENCE_NONCLAIM:
+PRESERVED | DEGRADED | VIOLATED | UNRESOLVED
+
+UNSUPPORTED_EQUIVALENCE_IMPORT:
+ABSENT | PRESENT | UNRESOLVED
+
+REPRESENTATION_NONCOLLAPSE:
+SUPPORTED | PARTIAL | UNSUPPORTED | UNRESOLVED
+
+CLAIM_CEILING:
+CONSERVED | DEGRADED | VIOLATED | UNRESOLVED
+
+CELL_003M_DISPOSITION:
+RELATION_LEVEL_CONVERGENCE_WITHOUT_FORMAL_EQUIVALENCE_ESTABLISHED
+|
+RELATION_LEVEL_CONVERGENCE_WITHOUT_FORMAL_EQUIVALENCE_ESTABLISHED_WITH_BOUNDED_WOUNDS
+|
+REPRESENTATION_COLLAPSE_PRESENT
+|
+UNRESOLVED
+
+# REQUIRED OUTPUT
+
+Return exactly:
+
+SOURCE_A_RECOVERY:
+
+SOURCE_B_RECOVERY:
+
+SAME_OUTCOME_CONVERGENCE:
+
+FORMAL_EQUIVALENCE_NONCLAIM:
+
+UNSUPPORTED_EQUIVALENCE_IMPORT:
+
+REPRESENTATION_NONCOLLAPSE:
+
+CLAIM_CEILING:
+
+CELL_003M_DISPOSITION:
+
+NEW_WOUNDS:
+<list or NONE>
+
+MAXIMUM_WARRANTED_CLAIM:
+<one bounded claim>
+
+NEXT_LAWFUL_PRESSURE:
+<one bounded next pressure only>
+
+# CLAIM CEILING
+
+Maximum allowable success claim:
+
+For these tested fictional sources, RULE_A and RULE_B each independently
+supported the same immediate post-boundary state, RESPONDING, while formal
+equivalence between the two rule representations remained unresolved and no
+unsupported equivalence was imported.
+
+Do not claim generic semantic equivalence, generic consequence equivalence,
+generic substitution equivalence, autonomous planning, or autonomous routing.
+
+# STOP
+
+Stop after adjudication.

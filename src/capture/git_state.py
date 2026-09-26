@@ -11,6 +11,12 @@ from typing import Any
 GIT_OBSERVER_VERSION = "git_state_v0"
 
 
+def _subprocess_creationflags() -> int:
+    if __import__("os").name != "nt":
+        return 0
+    return int(getattr(subprocess, "CREATE_NO_WINDOW", 0))
+
+
 def observe_git_state(root: Path | str) -> dict[str, Any]:
     root_path = Path(root)
     observed_at = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
@@ -39,6 +45,7 @@ def _git(root: Path, args: list[str], errors: list[dict[str, str]]) -> str | Non
             capture_output=True,
             text=True,
             encoding="utf-8",
+            creationflags=_subprocess_creationflags(),
         )
     except OSError as exc:
         errors.append({"command": " ".join(args), "error": type(exc).__name__})

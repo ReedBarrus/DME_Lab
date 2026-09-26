@@ -1,0 +1,568 @@
+{
+  "object_type": "ATLAS_TEMPORAL_HORIZON_CLOSURE_OBSERVATION_V0",
+  "repo_head": "3d9a6109ff89e8454f61e7f489a0eeeafbc68092",
+  "temporal_lineage": {
+    "path": "generated/repository_temporal_lineage.json",
+    "sha256": "63d1f959105b76bad23f217976e353aa36a6244d8437edf8e934dbb9fc6fc0eb",
+    "source_commit": "3d9a6109ff89e8454f61e7f489a0eeeafbc68092",
+    "transition_count": 960,
+    "recent_transition": {
+      "transition_id": "temporal-transition:sha256:675252cc390294778a092dfe1a99f96bcadd5eb4148725cdd6fa61eab3685717",
+      "transition_index": 959,
+      "from_frame_id": "temporal-frame:sha256:652a0cf252bc6b0bac4802ff527c332b9603aa6da5e1a656bc473366787628fd",
+      "to_frame_id": "temporal-frame:sha256:8e56905fd750eb445b1b4b1491a007e0765b88802eb6da56939e5566a5725da5",
+      "from_commit_sha": "7a04162a677caeca557638da77adaf1f0662183f",
+      "to_commit_sha": "3d9a6109ff89e8454f61e7f489a0eeeafbc68092",
+      "events": [
+        {
+          "event_id": "temporal-event:sha256:38a13e57a5877e7264d4176fde26f2209771ad4d88734bc8f0a1d2504ff13bf0",
+          "ordinal": 0,
+          "status": "M",
+          "old_path": "docs/campaigns/authority_membrane_security_001/cell003_git_blob_input_identity_candidate/bridge.py",
+          "new_path": "docs/campaigns/authority_membrane_security_001/cell003_git_blob_input_identity_candidate/bridge.py",
+          "old_mode": "100644",
+          "new_mode": "100644",
+          "old_object_sha": "18fa68abb38d58f7fba9fbf9556c4ccda5522c18",
+          "new_object_sha": "aa5f3d4dc3c830c9e819626406f2fa9dc8028b0a",
+          "lineage_id_before": "temporal-object:sha256:5f27185d2958dfd16f7dc72123db88e52400324f9cd54db60598f6dd0eabf6f5",
+          "lineage_id_after": "temporal-object:sha256:5f27185d2958dfd16f7dc72123db88e52400324f9cd54db60598f6dd0eabf6f5",
+          "identity_basis": "SAME_PATH_ADJACENT_FIRST_PARENT_FRAMES",
+          "classifications": [
+            "PERSISTED",
+            "CONTENT_CHANGED",
+            "RELATION_REMOVED",
+            "RELATION_ADDED"
+          ],
+          "before": {
+            "path": "docs/campaigns/authority_membrane_security_001/cell003_git_blob_input_identity_candidate/bridge.py",
+            "git_mode": "100644",
+            "git_object_type": "blob",
+            "git_object_sha": "18fa68abb38d58f7fba9fbf9556c4ccda5522c18",
+            "lineage_id": "temporal-object:sha256:5f27185d2958dfd16f7dc72123db88e52400324f9cd54db60598f6dd0eabf6f5",
+            "content_identity": "sha256:3376802742e10f5a891d87be7e36fed623b36725287f18d5dbda3152e1be2dac"
+          },
+          "after": {
+            "path": "docs/campaigns/authority_membrane_security_001/cell003_git_blob_input_identity_candidate/bridge.py",
+            "git_mode": "100644",
+            "git_object_type": "blob",
+            "git_object_sha": "aa5f3d4dc3c830c9e819626406f2fa9dc8028b0a",
+            "lineage_id": "temporal-object:sha256:5f27185d2958dfd16f7dc72123db88e52400324f9cd54db60598f6dd0eabf6f5",
+            "content_identity": "sha256:7fbba844964d95a16b8de12b273e6a951c62fea94c68222c88a3b3a6e3f59d8e"
+          },
+          "relation_changes": {
+            "added": [
+              "CONTAINS",
+              "HAS_VERSION"
+            ],
+            "removed": [
+              "CONTAINS",
+              "HAS_VERSION"
+            ]
+          },
+          "actor_lineage": "UNRESOLVED",
+          "semantic_lineage": "UNRESOLVED",
+          "source_handles": [
+            {
+              "handle_kind": "GIT_ADJACENT_DIFF",
+              "from_commit_sha": "7a04162a677caeca557638da77adaf1f0662183f",
+              "to_commit_sha": "3d9a6109ff89e8454f61e7f489a0eeeafbc68092"
+            },
+            {
+              "handle_kind": "GIT_OBJECT_PAIR",
+              "old_object_sha": "18fa68abb38d58f7fba9fbf9556c4ccda5522c18",
+              "new_object_sha": "aa5f3d4dc3c830c9e819626406f2fa9dc8028b0a"
+            }
+          ],
+          "declared_operational_relations": []
+        }
+      ],
+      "event_count": 1,
+      "git_authorship": {
+        "name": "ReedBarrus",
+        "email": "reedbarrus@gmail.com",
+        "timestamp": "2026-09-25T00:07:47-07:00",
+        "standing": "GIT_METADATA_ONLY"
+      },
+      "seat_actor": "UNRESOLVED",
+      "semantic_cause": "UNRESOLVED",
+      "source_handles": [
+        {
+          "handle_kind": "GIT_COMMIT",
+          "commit_sha": "3d9a6109ff89e8454f61e7f489a0eeeafbc68092",
+          "tree_sha": "1a65862df42ba707ce5a3cc8d9c9e5e82f364362"
+        },
+        {
+          "handle_kind": "GIT_PARENT",
+          "commit_sha": "7a04162a677caeca557638da77adaf1f0662183f"
+        }
+      ]
+    }
+  },
+  "workcycle_currentness": {
+    "campaign_id": "WORKCYCLE_STABILIZATION_001",
+    "active_horizon": "FIRST_PERMANENT_WORKLOAD_COMPRESSION_HISTORY_CONSERVATION",
+    "active_work_item": null,
+    "latest_completed_work_item": "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1",
+    "next_eligible_work_item": null,
+    "next_pressure": "AUTO_CONTINUATION_PRESSURE",
+    "current_unresolved": [
+      "No generic compression equivalence established beyond this bounded three-bundle specimen."
+    ],
+    "projection_errors": [],
+    "eligibility": {
+      "posture": "PARTIAL_COORDINATES_ONLY",
+      "eligible": null,
+      "known_coordinates": {
+        "wake_budget_reservable": true
+      },
+      "unresolved_coordinates": [
+        "dependency_satisfied",
+        "frame_current",
+        "seat_available",
+        "no_hold",
+        "authority_satisfied"
+      ],
+      "claim_ceiling": "Budget-side eligibility only; real work eligibility is unresolved until runtime coordinates are source-bound."
+    },
+    "operative_control": {
+      "status": "LOCAL_OPERATOR_CONTROL_UNAVAILABLE",
+      "workflow_enabled": false,
+      "seat_work_enabled": false,
+      "wake_requested": false,
+      "auto_continuation_limit": 0,
+      "lifecycle_state": "UNAVAILABLE",
+      "current_admission": null,
+      "wake_generation": 0,
+      "last_operator_gesture": null,
+      "updated_at": null,
+      "repo_control_has_execution_effect": false,
+      "source": null
+    },
+    "seat_ecology": {
+      "durable_seats": [
+        {
+          "seat_id": "LABBOIB",
+          "consumer_id": "labboib",
+          "seat_class": "TEMPORAL_REENTRY_SEAT_CANDIDATE",
+          "role": "bounded semantic integrator, implementation collaborator, and continuity consumer",
+          "trigger_state": "UNBOUND",
+          "occupant_binding": "UNBOUND",
+          "authority_effect": "NONE_BY_MANIFEST",
+          "execution_effect": "NONE_BY_MANIFEST",
+          "source": "continuity\\seats\\labboib.json"
+        }
+      ],
+      "registered_runtime_seats": [],
+      "occupied_runtime_seats": [],
+      "durable_seat_count": 1,
+      "runtime_seat_count": 0,
+      "occupied_seat_count": 0,
+      "claim_ceiling": "Durable seat identity and live occupancy are projected separately. Seat existence does not prove a live occupant or execution authority."
+    },
+    "latest_consequence": {
+      "object_type": "OBSERVED_CONSEQUENCE_V0",
+      "consequence_id": "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1_CONSEQUENCE_001",
+      "work_item_id": "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1",
+      "decomposition_id": "WORKCYCLE_STABILIZATION_001_D001",
+      "input_state_identity": "458f43f1f0c27c0d08ce3434b50940aeb027dfba",
+      "output_artifact_identities": [
+        "gitblob:7acd8410e6cc4124ca50906a81e7b0ae1400ec2f",
+        "gitblob:9bf3e9c757dd999878c0ec978fa2411b2f727c70"
+      ],
+      "observations": {
+        "source_bytes": 4051,
+        "candidate_bytes": 3486,
+        "delta_bytes": -565,
+        "reduction_ratio": 0.139472
+      },
+      "declared_changes_observed": {
+        "hot_representation_size": "DECREASED",
+        "source_bytes": "UNCHANGED"
+      },
+      "unchanged_coordinates_observed": {
+        "original_sources": "UNCHANGED",
+        "operative_round_order": "PRESERVED",
+        "task_identity": "PRESERVED",
+        "packet_challengeability": "PRESERVED",
+        "parallel_isolation_contract": "PRESERVED",
+        "authority_effect": "NONE",
+        "scientific_standing_effect": "NONE"
+      },
+      "evidence_handles": [
+        "docs/campaigns/workcycle_stabilization_001/compression/ATLAS_COORDINATION_ROUNDS_010_012_COMPRESSED_CANDIDATE.md",
+        "docs/campaigns/workcycle_stabilization_001/compression/ATLAS_COORDINATION_ROUNDS_010_012_CONSERVATION_REPORT.md"
+      ],
+      "unresolved": [
+        "Independent conservation review required to adjudicate bounded consequence."
+      ],
+      "authority_effect": "NONE",
+      "scientific_standing_effect": "NONE",
+      "integrity_sha256": "af89d65bd3012e090a0528b1021e08341feb445d5d1f1de5e0b6d4edc17b3df4"
+    },
+    "latest_consequence_evaluation": {
+      "object_type": "CONSEQUENCE_EVALUATION_V0",
+      "evaluation_id": "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1_EVALUATION_001",
+      "work_item_id": "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1",
+      "consequence_id": "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1_CONSEQUENCE_001",
+      "disposition": "CONSEQUENCE_MATCHED",
+      "conservation_surfaces": {
+        "identity_address": "MATCHED",
+        "mechanical": "MATCHED_WITH_SOURCE_RETENTION_PRESENT",
+        "symbolic_semantic": "MATCHED",
+        "relational_topological": "MATCHED",
+        "consequence_environmental": "MATCHED",
+        "provenance": "MATCHED",
+        "invariance_meta": "MATCHED_BY_FRESH_RECONSTRUCTION"
+      },
+      "load_dimensions": {
+        "functional": "MATCHED",
+        "semantic": "MATCHED",
+        "authority": "MATCHED",
+        "provenance": "MATCHED",
+        "temporal": "MATCHED",
+        "coordination": "MATCHED"
+      },
+      "unresolved": [
+        "No generic compression equivalence established beyond this bounded three-bundle specimen."
+      ],
+      "campaign_progress_effect": "NONE",
+      "scientific_standing_effect": "NONE",
+      "authority_effect": "NONE",
+      "integrity_sha256": "a653c3e387744237d9f9a99d603b98f6d7190eac49cd53b1ac39138c827de549"
+    },
+    "campaign_progress": {
+      "T0": {
+        "posture": "BOUNDED_PASS",
+        "evidence": [
+          "docs/campaigns/load_transfer_001/LOAD_TRANSFER_001_MECHANICAL_TEST_RESULT_001.md"
+        ],
+        "unresolved": []
+      },
+      "T1": {
+        "posture": "BOUNDED_PASS",
+        "evidence": [
+          "docs/campaigns/load_transfer_001/LOAD_TRANSFER_001_LIVE_TWO_SEAT_PRESSURE_RESULT_001.md"
+        ],
+        "unresolved": []
+      },
+      "T2": {
+        "posture": "BOUNDED_PASS",
+        "evidence": [
+          "docs/campaigns/workcycle_stabilization_001/decomposition/WORKCYCLE_STABILIZATION_001_D001.json",
+          "docs/campaigns/workcycle_stabilization_001/decomposition/WORKCYCLE_STABILIZATION_001_COMPRESSION_W1.json",
+          "docs/campaigns/workcycle_stabilization_001/decomposition/DECOMPOSITION_D001_ADJUDICATION_RESULT_001.md"
+        ],
+        "unresolved": []
+      },
+      "T3": {
+        "posture": "BOUNDED_PASS",
+        "evidence": [
+          "docs/campaigns/workcycle_stabilization_001/state/WORKCYCLE_STABILIZATION_001_COMPRESSION_W1_OBSERVED_CONSEQUENCE.json",
+          "docs/campaigns/workcycle_stabilization_001/state/WORKCYCLE_STABILIZATION_001_COMPRESSION_W1_CONSEQUENCE_EVALUATION.json"
+        ],
+        "unresolved": []
+      },
+      "T4": {
+        "posture": "BOUNDED_PASS",
+        "evidence": [
+          "docs/campaigns/workcycle_stabilization_001/compression/ATLAS_COORDINATION_ROUNDS_010_012_REVIEW.md"
+        ],
+        "unresolved": []
+      },
+      "T5": {
+        "posture": "BOUNDED_PASS",
+        "evidence": [
+          "docs/campaigns/workcycle_stabilization_001/compression/ATLAS_COORDINATION_ROUNDS_010_012_REVIEW.md"
+        ],
+        "unresolved": []
+      },
+      "T6": {
+        "posture": "BOUNDED_PASS",
+        "evidence": [
+          "docs/campaigns/workcycle_stabilization_001/state/REPAIR_ROUTING_PRESSURE_SPEC_001.json",
+          "docs/campaigns/workcycle_stabilization_001/state/REPAIR_ROUTING_PRESSURE_ADJUDICATION_RESULT_001.md"
+        ],
+        "unresolved": []
+      },
+      "T7": {
+        "posture": "BOUNDED_PASS",
+        "evidence": [
+          "src/cockpit/workcycle_projection.py",
+          "docs/campaigns/workcycle_stabilization_001/state/COCKPIT_T7_PRESSURE_RESULT_001.md"
+        ],
+        "unresolved": []
+      }
+    },
+    "projection_boundary": {
+      "read_only": true,
+      "creates_authority": false,
+      "performs_execution": false,
+      "advances_campaign_standing": false,
+      "mutates_atlas": false
+    }
+  },
+  "closure": {
+    "object_type": "ATLAS_TEMPORAL_HORIZON_CLOSURE_V0",
+    "history": {
+      "posture": "SUPPORTED",
+      "recent_transition": {
+        "transition_id": "temporal-transition:sha256:675252cc390294778a092dfe1a99f96bcadd5eb4148725cdd6fa61eab3685717",
+        "from_commit_sha": "7a04162a677caeca557638da77adaf1f0662183f",
+        "to_commit_sha": "3d9a6109ff89e8454f61e7f489a0eeeafbc68092",
+        "event_count": 1,
+        "classifications": [
+          "CONTENT_CHANGED",
+          "PERSISTED",
+          "RELATION_ADDED",
+          "RELATION_REMOVED"
+        ],
+        "source_handles": [
+          {
+            "handle_kind": "GIT_COMMIT",
+            "commit_sha": "3d9a6109ff89e8454f61e7f489a0eeeafbc68092",
+            "tree_sha": "1a65862df42ba707ce5a3cc8d9c9e5e82f364362"
+          },
+          {
+            "handle_kind": "GIT_PARENT",
+            "commit_sha": "7a04162a677caeca557638da77adaf1f0662183f"
+          }
+        ]
+      },
+      "causation_claim": "NONE"
+    },
+    "current": {
+      "campaign_id": "WORKCYCLE_STABILIZATION_001",
+      "active_horizon": "FIRST_PERMANENT_WORKLOAD_COMPRESSION_HISTORY_CONSERVATION",
+      "active_work_item": null,
+      "latest_completed_work_item": "WORKCYCLE_STABILIZATION_001_COMPRESSION_W1",
+      "next_eligible_work_item": null,
+      "current_unresolved": [
+        "No generic compression equivalence established beyond this bounded three-bundle specimen."
+      ],
+      "eligibility": {
+        "posture": "PARTIAL_COORDINATES_ONLY",
+        "eligible": null,
+        "known_coordinates": {
+          "wake_budget_reservable": true
+        },
+        "unresolved_coordinates": [
+          "dependency_satisfied",
+          "frame_current",
+          "seat_available",
+          "no_hold",
+          "authority_satisfied"
+        ],
+        "claim_ceiling": "Budget-side eligibility only; real work eligibility is unresolved until runtime coordinates are source-bound."
+      },
+      "operative_control": {
+        "status": "LOCAL_OPERATOR_CONTROL_UNAVAILABLE",
+        "workflow_enabled": false,
+        "seat_work_enabled": false,
+        "wake_requested": false,
+        "auto_continuation_limit": 0,
+        "lifecycle_state": "UNAVAILABLE",
+        "current_admission": null,
+        "wake_generation": 0,
+        "last_operator_gesture": null,
+        "updated_at": null,
+        "repo_control_has_execution_effect": false,
+        "source": null
+      },
+      "seat_ecology": {
+        "durable_seats": [
+          {
+            "seat_id": "LABBOIB",
+            "consumer_id": "labboib",
+            "seat_class": "TEMPORAL_REENTRY_SEAT_CANDIDATE",
+            "role": "bounded semantic integrator, implementation collaborator, and continuity consumer",
+            "trigger_state": "UNBOUND",
+            "occupant_binding": "UNBOUND",
+            "authority_effect": "NONE_BY_MANIFEST",
+            "execution_effect": "NONE_BY_MANIFEST",
+            "source": "continuity\\seats\\labboib.json"
+          }
+        ],
+        "registered_runtime_seats": [],
+        "occupied_runtime_seats": [],
+        "durable_seat_count": 1,
+        "runtime_seat_count": 0,
+        "occupied_seat_count": 0,
+        "claim_ceiling": "Durable seat identity and live occupancy are projected separately. Seat existence does not prove a live occupant or execution authority."
+      }
+    },
+    "upcoming": {
+      "declared_next_pressure": "AUTO_CONTINUATION_PRESSURE",
+      "source": "WORKCYCLE_DERIVED_CURRENTNESS",
+      "execution_effect": "NONE"
+    },
+    "disposition": "HORIZON_MATCHED",
+    "history_posture": "SUPPORTED",
+    "currentness_posture": "SUPPORTED",
+    "upcoming_work_posture": "SUPPORTED",
+    "primary_horizon": {
+      "family": "H_operate",
+      "subject": "one-successor bounded continuation",
+      "support_predicate": "one successor can be admitted only after source-bound eligibility + lease + budget + authority",
+      "boundary_condition": "workcycle is otherwise pressure-clean but production admission is not concurrency-safe",
+      "pressure_direction": "pressure one bounded successor admission without model invocation",
+      "claim_ceiling": "one bounded horizon candidate derived from exact temporal/current/declared-upcoming evidence; no causal, standing, authority, or execution claim"
+    },
+    "seven_surfaces": {
+      "identity_address": {
+        "posture": "SUPPORTED",
+        "evidence_handles": [
+          "temporal-transition:sha256:675252cc390294778a092dfe1a99f96bcadd5eb4148725cdd6fa61eab3685717",
+          "campaign:WORKCYCLE_STABILIZATION_001",
+          "horizon:FIRST_PERMANENT_WORKLOAD_COMPRESSION_HISTORY_CONSERVATION"
+        ],
+        "risk": null
+      },
+      "mechanical": {
+        "posture": "SUPPORTED",
+        "evidence_handles": [
+          "temporal-transition:sha256:675252cc390294778a092dfe1a99f96bcadd5eb4148725cdd6fa61eab3685717"
+        ],
+        "risk": null
+      },
+      "symbolic_semantic": {
+        "posture": "SUPPORTED",
+        "evidence_handles": [
+          "campaign:WORKCYCLE_STABILIZATION_001",
+          "horizon:FIRST_PERMANENT_WORKLOAD_COMPRESSION_HISTORY_CONSERVATION"
+        ],
+        "risk": null
+      },
+      "relational_topological": {
+        "posture": "SUPPORTED",
+        "evidence_handles": [
+          "campaign:WORKCYCLE_STABILIZATION_001"
+        ],
+        "risk": null
+      },
+      "consequence_environmental": {
+        "posture": "SUPPORTED",
+        "evidence_handles": [
+          "docs/campaigns/workcycle_stabilization_001/compression/ATLAS_COORDINATION_ROUNDS_010_012_COMPRESSED_CANDIDATE.md",
+          "docs/campaigns/workcycle_stabilization_001/compression/ATLAS_COORDINATION_ROUNDS_010_012_CONSERVATION_REPORT.md"
+        ],
+        "risk": null
+      },
+      "provenance": {
+        "posture": "SUPPORTED",
+        "evidence_handles": [
+          "temporal-transition:sha256:675252cc390294778a092dfe1a99f96bcadd5eb4148725cdd6fa61eab3685717",
+          "docs/campaigns/workcycle_stabilization_001/compression/ATLAS_COORDINATION_ROUNDS_010_012_COMPRESSED_CANDIDATE.md",
+          "docs/campaigns/workcycle_stabilization_001/compression/ATLAS_COORDINATION_ROUNDS_010_012_CONSERVATION_REPORT.md"
+        ],
+        "risk": null
+      },
+      "invariance_meta": {
+        "posture": "SUPPORTED",
+        "evidence_handles": [
+          "campaign:WORKCYCLE_STABILIZATION_001"
+        ],
+        "risk": null
+      }
+    },
+    "six_load_dimensions": {
+      "functional": {
+        "bearing_object": "AUTO_CONTINUATION_PRESSURE",
+        "direction": "INCREASING",
+        "reason": "declared next pressure carries the next required transformation"
+      },
+      "semantic": {
+        "bearing_object": "FIRST_PERMANENT_WORKLOAD_COMPRESSION_HISTORY_CONSERVATION",
+        "direction": "REDISTRIBUTED",
+        "reason": "campaign intent is condensed into an explicit horizon/current-pressure relation"
+      },
+      "authority": {
+        "bearing_object": "LOCAL_OPERATOR_CONTROL_UNAVAILABLE",
+        "direction": "STABLE",
+        "reason": "operator-local control may permit workflow motion but does not itself admit work"
+      },
+      "provenance": {
+        "bearing_object": "temporal-transition:sha256:675252cc390294778a092dfe1a99f96bcadd5eb4148725cdd6fa61eab3685717",
+        "direction": "STABLE",
+        "reason": "horizon must remain challengeable to exact temporal and workcycle evidence"
+      },
+      "temporal": {
+        "bearing_object": "temporal-transition:sha256:675252cc390294778a092dfe1a99f96bcadd5eb4148725cdd6fa61eab3685717",
+        "direction": "INCREASING",
+        "reason": "history/current/upcoming must remain distinct while composing one horizon candidate"
+      },
+      "coordination": {
+        "bearing_object": "PARTIAL_COORDINATES_ONLY",
+        "direction": "INCREASING",
+        "reason": "seat/dependency/frame/authority coordinates constrain whether projected work can become admissible"
+      }
+    },
+    "distinctions_applied": [
+      "HISTORY != CURRENTNESS",
+      "TEMPORAL_SUCCESSION != CAUSATION",
+      "LATEST_COMPLETED != ACTIVE",
+      "PARTIAL_ELIGIBILITY != REAL_ELIGIBILITY",
+      "REPO_REQUESTED_CONTROL != OPERATIVE_LOCAL_CONTROL",
+      "REGISTERED_SEAT != LIVE_OCCUPANT != EXECUTION_AUTHORITY",
+      "WAKE_REQUEST != WORK_ADMISSION != MODEL_INVOCATION",
+      "WORK_COMPLETION != CAMPAIGN_ADVANCE"
+    ],
+    "next_work_candidate": {
+      "candidate_id": "WORKCYCLE_STABILIZATION_001::AUTO_CONTINUATION_PRESSURE",
+      "campaign_id": "WORKCYCLE_STABILIZATION_001",
+      "horizon_handle": "FIRST_PERMANENT_WORKLOAD_COMPRESSION_HISTORY_CONSERVATION",
+      "addressed_region": "one-successor bounded continuation",
+      "applicable_distinctions": [
+        "HISTORY != CURRENTNESS",
+        "TEMPORAL_SUCCESSION != CAUSATION",
+        "LATEST_COMPLETED != ACTIVE",
+        "PARTIAL_ELIGIBILITY != REAL_ELIGIBILITY",
+        "REPO_REQUESTED_CONTROL != OPERATIVE_LOCAL_CONTROL",
+        "REGISTERED_SEAT != LIVE_OCCUPANT != EXECUTION_AUTHORITY",
+        "WAKE_REQUEST != WORK_ADMISSION != MODEL_INVOCATION",
+        "WORK_COMPLETION != CAMPAIGN_ADVANCE"
+      ],
+      "bounded_operator": "pressure one bounded successor admission without model invocation",
+      "expected_consequence": "reduce the declared horizon boundary without changing authority or scientific standing merely by producing an artifact",
+      "seven_surface_conservation_envelope": {
+        "identity_address": "SUPPORTED",
+        "mechanical": "SUPPORTED",
+        "symbolic_semantic": "SUPPORTED",
+        "relational_topological": "SUPPORTED",
+        "consequence_environmental": "SUPPORTED",
+        "provenance": "SUPPORTED",
+        "invariance_meta": "SUPPORTED"
+      },
+      "six_load_review_debt": [
+        "functional",
+        "semantic",
+        "authority",
+        "provenance",
+        "temporal",
+        "coordination"
+      ],
+      "authority_requirement": "EXPLICITLY_UNRESOLVED_UNTIL_ADMISSION",
+      "wake_budget_requirement": "ONE_RESERVED_UNIT_REQUIRED_IF_EXECUTION_IS_LATER_ADMITTED",
+      "evidence_debt": [
+        "No generic compression equivalence established beyond this bounded three-bundle specimen."
+      ],
+      "stop_condition": "stop after one bounded pressure result; do not auto-admit successor work",
+      "repair_destination": "TYPED_REPAIR_ROUTING",
+      "candidate_posture": "PROPOSED_NOT_ADMITTED",
+      "admission_effect": "NONE",
+      "execution_effect": "NONE"
+    },
+    "development_horizon_summary": {
+      "available": false,
+      "state_counts": {}
+    },
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE",
+    "campaign_progress_effect": "NONE"
+  },
+  "claim_ceiling": "One bounded observation of temporal lineage + current workcycle + declared next pressure under current repository code. It does not establish semantic causation, work admission, authority, execution, campaign progress, or scientific standing.",
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "scientific_standing_effect": "NONE",
+  "stopped": "YES"
+}

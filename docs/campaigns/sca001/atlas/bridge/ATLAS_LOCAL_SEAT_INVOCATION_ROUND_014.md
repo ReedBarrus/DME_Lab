@@ -1,0 +1,62 @@
+# ATLAS LOCAL SEAT INVOCATION ROUND 014
+
+OBJECT_TYPE:
+LOCAL_SEAT_INVOCATION_ROUND
+
+OBJECT_ID:
+ATLAS_LOCAL_SEAT_INVOCATION_ROUND_014
+
+TRANSPORT:
+LOCAL_LMSTUDIO_BRIDGE_V0
+
+MODE:
+SINGLE_SEAT_STABILIZATION
+
+# TASK A — COMPRESSION CELL 002 ADJUDICATION
+
+REQUEST:
+bridge/requests/ROUND014_COMPRESSION_CELL002_ADJUDICATION.json
+
+MODEL:
+microsoft/phi-4
+
+PURPOSE:
+Adjudicate the further-reduced bounded compression variant.
+
+# TASK B — PLANNER BRIDGE LIFECYCLE RUN A
+
+REQUEST:
+bridge/requests/ROUND014_PLANNER_BRIDGE_LIFECYCLE_RUN_A.json
+
+MODEL:
+qwen/qwen3-coder-30b
+
+PURPOSE:
+Test one bridge-backed local planner invocation over current Atlas-carried
+single-seat state and require exactly one bounded next-pressure proposal.
+
+# AUTHORITY CONTRACT
+
+REMOTE REQUEST
+!=
+LOCAL AUTHORIZATION
+
+BRIDGE ONLINE
+!=
+MODEL INVOCATION AUTHORIZED
+
+MODEL INVOCATION
+!=
+EXECUTION AUTHORITY
+
+RESULT WITNESS
+!=
+AUTOMATIC PUBLICATION
+
+# RETURN CONTRACT
+
+ROUND014-A_RESULT:
+<assistant_text from compression Cell 002 adjudication witness>
+
+ROUND014-B_RESULT:
+<assistant_text from planner bridge lifecycle Run A witness>

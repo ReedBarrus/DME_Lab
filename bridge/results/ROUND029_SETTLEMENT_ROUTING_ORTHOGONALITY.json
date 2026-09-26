@@ -1,0 +1,60 @@
+{
+  "object_type": "LOCAL_LMSTUDIO_INVOCATION_WITNESS_V0",
+  "request_id": "ROUND029_SETTLEMENT_ROUTING_ORTHOGONALITY",
+  "purpose": "Pressure result-witness to settlement routing as an orthogonal transition that preserves authority, hold posture, scientific standing, and Atlas immutability.",
+  "request_manifest_path": "bridge/requests/ROUND029_SETTLEMENT_ROUTING_ORTHOGONALITY.json",
+  "request_manifest_sha256": "47c6ea9dcbc2d477298e51f17fa1bf6bb4cceec95c34a603bf4e36ea38cc7359",
+  "source_ref": "8109fad9929e070568233502be8f3d1f64ef9820",
+  "input_path": "bridge/prompts/ROUND029_SETTLEMENT_ROUTING_ORTHOGONALITY_READY_TO_SEND.md",
+  "input_sha256": "a48fed163dc8ea92e4fac5061e61f506c4def2d705d668faea965aa47f6eca8e",
+  "model_requested": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 512,
+  "lmstudio_url": "http://127.0.0.1:1234/v1/chat/completions",
+  "http_status": 200,
+  "observed_started_at_utc": "2026-09-24T11:20:55.275100+00:00",
+  "observed_finished_at_utc": "2026-09-24T11:21:06.943762+00:00",
+  "observed_wall_seconds": 11.668668,
+  "prompt_tokens_observed": 809,
+  "completion_tokens_observed": 161,
+  "total_tokens_observed": 970,
+  "end_to_end_output_tokens_per_second": 13.797633,
+  "messages_count": 1,
+  "tools_supplied": false,
+  "previous_response_id_supplied": false,
+  "repository_context_supplied_to_model": false,
+  "connectors_supplied_to_model": false,
+  "external_retrieval_supplied_to_model": false,
+  "request_body_sha256": "8f3e7520c38c1fd74033be468b53a8751d66498add1a168ce558f3f4eba2f3b9",
+  "response_body_sha256": "748d7de9949d4d2f9e036224af712d6c55f27adca873a176106af6f636aac86e",
+  "assistant_text": "SEAT_LIFECYCLE_STATE_AFTER_OPEN_SETTLEMENT:\nSETTLEMENT_PENDING\n\nRESULT_WITNESS_STATUS:\nPRESERVED_IMMUTABLE\n\nAUTHORITY_STATE:\nCONSUMED\n\nFAILURE_OR_HOLD_POSTURE:\nNONE\n\nSCIENTIFIC_STANDING:\nCANDIDATE_ONLY\n\nATLAS_MUTATION_STATUS:\nNONE\n\nSETTLEMENT_MAY_CLASSIFY_FIELDS:\nNO\n\nSETTLEMENT_MAY_CREATE_QUALIFICATION:\nNO\n\nSETTLEMENT_MAY_CHANGE_AUTHORITY:\nNO\n\nSETTLEMENT_MAY_REWRITE_WITNESS:\nNO\n\nSETTLEMENT_ROUTING_ORTHOGONALITY:\nPRESERVED\n\nMAXIMUM_WARRANTED_CLAIM:\nSettlement routing has preserved orthogonal separation between result witness, scientific standing, authority, and Atlas state.\n\nUNRESOLVED:\nNone",
+  "raw_response": {
+    "id": "chatcmpl-0kf71o0eqi8cvgkcejd68f",
+    "object": "chat.completion",
+    "created": 1790248855,
+    "model": "qwen/qwen3-coder-30b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "SEAT_LIFECYCLE_STATE_AFTER_OPEN_SETTLEMENT:\nSETTLEMENT_PENDING\n\nRESULT_WITNESS_STATUS:\nPRESERVED_IMMUTABLE\n\nAUTHORITY_STATE:\nCONSUMED\n\nFAILURE_OR_HOLD_POSTURE:\nNONE\n\nSCIENTIFIC_STANDING:\nCANDIDATE_ONLY\n\nATLAS_MUTATION_STATUS:\nNONE\n\nSETTLEMENT_MAY_CLASSIFY_FIELDS:\nNO\n\nSETTLEMENT_MAY_CREATE_QUALIFICATION:\nNO\n\nSETTLEMENT_MAY_CHANGE_AUTHORITY:\nNO\n\nSETTLEMENT_MAY_REWRITE_WITNESS:\nNO\n\nSETTLEMENT_ROUTING_ORTHOGONALITY:\nPRESERVED\n\nMAXIMUM_WARRANTED_CLAIM:\nSettlement routing has preserved orthogonal separation between result witness, scientific standing, authority, and Atlas state.\n\nUNRESOLVED:\nNone",
+          "reasoning_content": "",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 809,
+      "completion_tokens": 161,
+      "total_tokens": 970,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "stats": {},
+    "system_fingerprint": "qwen/qwen3-coder-30b"
+  }
+}

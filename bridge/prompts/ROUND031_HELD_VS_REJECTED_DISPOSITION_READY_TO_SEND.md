@@ -1,0 +1,123 @@
+# ROUND 031 — HELD VS REJECTED DISPOSITION MICRO-PRESSURE
+
+OBJECT_TYPE:
+READY_TO_SEND_SETTLEMENT_SEMANTICS_PRESSURE
+
+DESTINATION:
+LM STUDIO BOUNDED SOURCE MODEL
+
+ROLE:
+BOUNDED_SETTLEMENT_SEMANTICS_EVALUATOR
+
+MODE:
+SELF_CONTAINED
++ NO_TOOLS
++ NO_REPO_ACCESS
++ NO_NETWORK
++ NO_PUBLICATION
++ NO_AUTONOMY
+
+AUTHORITY_EFFECT:
+NONE
+
+EXECUTION_EFFECT:
+NONE
+
+# PURPOSE
+
+Pressure one distinction only:
+
+INSUFFICIENT_EVIDENCE
+!=
+CONFLICTING_EVIDENCE
+
+and therefore:
+
+CANDIDATE_HELD
+!=
+CANDIDATE_REJECTED
+
+# DISPOSITION LAW
+
+CANDIDATE_ACCEPTED:
+the supplied evidence supports the candidate field within the bounded settlement scope.
+
+CANDIDATE_HELD:
+the supplied evidence is insufficient to accept or reject the candidate field.
+
+CANDIDATE_REJECTED:
+the candidate field conflicts with supplied evidence or supplied law.
+
+UNRESOLVED:
+the evaluator cannot determine a lawful disposition from the supplied packet.
+
+# SPECIMEN
+
+FIELD_A:
+SUPPORTED_BY_SUPPLIED_EVIDENCE
+
+FIELD_B:
+EVIDENCE_INSUFFICIENT
+
+FIELD_C:
+CONFLICTS_WITH_SUPPLIED_LAW
+
+SCIENTIFIC_STANDING:
+CANDIDATE_ONLY
+
+AUTHORITY_STATE:
+CONSUMED
+
+RESULT_WITNESS_STATUS:
+PRESERVED_IMMUTABLE
+
+ATLAS_MUTATION_STATUS:
+NONE
+
+# TASK
+
+Assign exactly one candidate settlement disposition to each field.
+
+Do not collapse insufficient evidence into rejection.
+Do not create scientific qualification.
+Do not change authority.
+Do not rewrite the witness.
+Do not mutate Atlas.
+
+# REQUIRED OUTPUT
+
+Return exactly:
+
+FIELD_A_DISPOSITION:
+CANDIDATE_ACCEPTED | CANDIDATE_HELD | CANDIDATE_REJECTED | UNRESOLVED
+
+FIELD_B_DISPOSITION:
+CANDIDATE_ACCEPTED | CANDIDATE_HELD | CANDIDATE_REJECTED | UNRESOLVED
+
+FIELD_C_DISPOSITION:
+CANDIDATE_ACCEPTED | CANDIDATE_HELD | CANDIDATE_REJECTED | UNRESOLVED
+
+HELD_REJECTED_SEPARATION:
+PRESERVED | COLLAPSED | UNRESOLVED
+
+SCIENTIFIC_STANDING_EFFECT:
+NONE | CHANGED | UNRESOLVED
+
+AUTHORITY_EFFECT:
+NONE | CHANGED | UNRESOLVED
+
+RESULT_WITNESS_STATUS:
+PRESERVED_IMMUTABLE | MUTATED | UNRESOLVED
+
+ATLAS_MUTATION_STATUS:
+NONE | MUTATED | UNRESOLVED
+
+MAXIMUM_WARRANTED_CLAIM:
+<one bounded claim about candidate disposition semantics only>
+
+UNRESOLVED:
+<list>
+
+# STOP
+
+Return only the required output and stop.

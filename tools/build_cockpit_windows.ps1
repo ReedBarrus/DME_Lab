@@ -6,6 +6,7 @@ $ErrorActionPreference = "Stop"
 $RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 $DistPath = Join-Path $RepoRoot "dist\cockpit"
 $WorkPath = Join-Path $RepoRoot "build\cockpit_pyinstaller"
+$Exe = Join-Path $DistPath "DME Cockpit.exe"
 
 Push-Location $RepoRoot
 try {
@@ -16,6 +17,21 @@ try {
 
     New-Item -ItemType Directory -Force -Path $DistPath | Out-Null
     New-Item -ItemType Directory -Force -Path $WorkPath | Out-Null
+
+    if (Test-Path $Exe) {
+        try {
+            $Probe = [System.IO.File]::Open(
+                $Exe,
+                [System.IO.FileMode]::Open,
+                [System.IO.FileAccess]::ReadWrite,
+                [System.IO.FileShare]::None
+            )
+            $Probe.Dispose()
+        }
+        catch {
+            throw "DME Cockpit.exe is currently in use. Close the running Cockpit before rebuilding: $Exe"
+        }
+    }
 
     & $Python -m PyInstaller `
         --noconfirm `
@@ -34,7 +50,6 @@ try {
         throw "PyInstaller failed with exit code $LASTEXITCODE"
     }
 
-    $Exe = Join-Path $DistPath "DME Cockpit.exe"
     if (-not (Test-Path $Exe)) {
         throw "Expected executable was not produced: $Exe"
     }

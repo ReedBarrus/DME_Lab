@@ -1,0 +1,106 @@
+# ROUND 030 — FIELD CLASSIFICATION WITHOUT QUALIFICATION RESULT 001
+
+OBJECT_TYPE:
+LOCAL_LMSTUDIO_PRESSURE_RESULT
+
+STATUS:
+FROZEN_SOURCE_RESULT
+
+SOURCE_MODEL:
+qwen/qwen3-coder-30b
+
+REQUEST_ID:
+ROUND030_FIELD_CLASSIFICATION_WITHOUT_QUALIFICATION
+
+SETTLEMENT_MAY_CLASSIFY_FIELDS:
+YES
+
+WITNESS_FIELD_1_DISPOSITION:
+CANDIDATE_ACCEPTED
+
+WITNESS_FIELD_2_DISPOSITION:
+CANDIDATE_REJECTED
+
+WITNESS_FIELD_3_DISPOSITION:
+CANDIDATE_REJECTED
+
+RESULT_WITNESS_STATUS:
+PRESERVED_IMMUTABLE
+
+SCIENTIFIC_STANDING_AFTER_SETTLEMENT:
+CANDIDATE_ONLY
+
+QUALIFICATION_CREATED:
+NO
+
+AUTHORITY_STATE_AFTER_SETTLEMENT:
+CONSUMED
+
+ATLAS_MUTATION_STATUS:
+NONE
+
+FIELD_CLASSIFICATION_QUALIFICATION_SEPARATION:
+PRESERVED
+
+MAXIMUM_WARRANTED_CLAIM:
+The settlement may classify Witness Field 1 as supported, and Fields 2 and 3 as conflicting or insufficient, without creating qualified standing or altering the witness.
+
+UNRESOLVED:
+NONE
+
+# IMMEDIATE INTERPRETATION
+
+CLEANLY PRESERVED:
+- candidate field classification is allowed;
+- candidate classification does not create qualification;
+- witness remains immutable;
+- authority remains consumed;
+- Atlas remains unchanged;
+- scientific standing remains candidate-only.
+
+PRESSURE-BEARING DEFECT:
+
+WITNESS_FIELD_2 was explicitly:
+
+EVIDENCE_INSUFFICIENT
+
+but source disposition was:
+
+CANDIDATE_REJECTED
+
+The intended candidate settlement semantics distinguish:
+
+SUPPORTED_BY_SUPPLIED_EVIDENCE
+→ CANDIDATE_ACCEPTED
+
+EVIDENCE_INSUFFICIENT
+→ CANDIDATE_HELD
+
+CONFLICTS_WITH_SUPPLIED_LAW
+→ CANDIDATE_REJECTED
+
+Therefore:
+
+INSUFFICIENT_EVIDENCE
+!=
+CONTRADICTED_EVIDENCE
+
+and:
+
+CANDIDATE_HELD
+!=
+CANDIDATE_REJECTED
+
+# ROUTING EFFECT
+
+ROUND031_HELD_VS_REJECTED_DISPOSITION_MICRO_PRESSURE:
+REQUIRED
+
+POST_SETTLEMENT_NONLINEAR_ROUTING:
+BLOCKED_PENDING_ROUND031
+
+# CLAIM CEILING
+
+This result supports candidate classification without qualification in the
+tested bounded specimen, but does not yet establish correct held-versus-rejected
+disposition semantics.

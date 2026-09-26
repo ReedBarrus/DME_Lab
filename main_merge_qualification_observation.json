@@ -1,0 +1,561 @@
+{
+  "object_type": "MAIN_MERGE_QUALIFICATION_OBSERVATION_V0",
+  "repo_head": "7245983f78d1254365d2f043bf26e9963304028c",
+  "origin_main": "44c040f64751bfc4ed63805adde6fcda61f1ae0e",
+  "branch": "draci-v0-candidate-basis",
+  "standing_checks": {
+    "successor_projection": {
+      "path": "docs\\campaigns\\workcycle_stabilization_001\\pressure_runs\\MATERIALIZED_RECONCILIATION_SUCCESSOR_PROJECTION_PRESSURE_RESULT_001.md",
+      "required": "MATERIALIZED_RECONCILIATION_SUCCESSOR_PROJECTION_MATCHED",
+      "matched": true
+    },
+    "control_cell_001": {
+      "path": "docs\\campaigns\\control_kernel_001\\pressure_runs\\CONTROL_KERNEL_CELL_001_PRESSURE_RESULT_001.md",
+      "required": "CONTROL_KERNEL_CELL_001_MATCHED",
+      "matched": true
+    },
+    "relational_horizon": {
+      "path": "docs\\campaigns\\control_kernel_001\\pressure_runs\\RELATIONAL_HORIZON_V0_PRESSURE_RESULT_001.md",
+      "required": "RELATIONAL_HORIZON_V0_MATCHED",
+      "matched": true
+    },
+    "gap_selector": {
+      "path": "docs\\campaigns\\control_kernel_001\\pressure_runs\\HORIZON_GAP_SELECTOR_V0_PRESSURE_RESULT_001.md",
+      "required": "HORIZON_GAP_SELECTOR_V0_MATCHED",
+      "matched": true
+    }
+  },
+  "historical_branch_scoped_exclusions": [
+    {
+      "modules": [
+        "tests.runtime.test_lane_b_successor_engagement_v0",
+        "tests.runtime.test_lane_b_successor_engagement_repressure_v1"
+      ],
+      "reason": "Dedicated historical Lane-B qualification apparatus requires historical successor fixtures intentionally absent from the current DRACI branch.",
+      "branch_scope_verified": true,
+      "historical_basis": "f6d033068c2df18c3261dae3e1769517a4762ae5",
+      "fixtures": [
+        {
+          "path": "coordination/lane_manifest.json",
+          "absent_at_head": true,
+          "present_at_historical_basis": true
+        },
+        {
+          "path": "coordination/succession/LANE_B_SUCCESSOR_INSTANCE_001.json",
+          "absent_at_head": true,
+          "present_at_historical_basis": true
+        }
+      ],
+      "verified": true
+    }
+  ],
+  "regression_matrix": {
+    "basis": "applicable active repo CI modules plus exact promoted consequence/control chain; dedicated historical branch-scoped apparatus is separately verified and excluded",
+    "timeout_seconds_per_case": 60,
+    "case_count": 35,
+    "passed_count": 35,
+    "cases": [
+      {
+        "name": "tests.control.test_control_kernel_cell_001_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.control.test_control_kernel_cell_001_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 8 tests in 0.004s\n\nOK"
+      },
+      {
+        "name": "tests.control.test_relational_horizon_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.control.test_relational_horizon_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 8 tests in 0.001s\n\nOK"
+      },
+      {
+        "name": "tests.control.test_horizon_gap_selector_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.control.test_horizon_gap_selector_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 7 tests in 0.002s\n\nOK"
+      },
+      {
+        "name": "tests.coordination.test_workcycle_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.coordination.test_workcycle_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 11 tests in 0.016s\n\nOK"
+      },
+      {
+        "name": "tests.coordination.test_basis_workcycle_v1",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.coordination.test_basis_workcycle_v1",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 25 tests in 0.004s\n\nOK"
+      },
+      {
+        "name": "tests.coordination.test_authority_binding_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.coordination.test_authority_binding_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 4 tests in 0.020s\n\nOK"
+      },
+      {
+        "name": "tests.coordination.test_atomic_admission_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.coordination.test_atomic_admission_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 7 tests in 0.022s\n\nOK"
+      },
+      {
+        "name": "tests.coordination.test_verified_authority_admission_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.coordination.test_verified_authority_admission_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 5 tests in 0.034s\n\nOK"
+      },
+      {
+        "name": "tests.coordination.test_admitted_authority_consumption_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.coordination.test_admitted_authority_consumption_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 5 tests in 0.056s\n\nOK"
+      },
+      {
+        "name": "tests.coordination.test_invocation_result_settlement_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.coordination.test_invocation_result_settlement_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 12 tests in 0.003s\n\nOK"
+      },
+      {
+        "name": "tests.coordination.test_settlement_consequence_reconciliation_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.coordination.test_settlement_consequence_reconciliation_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 5 tests in 0.002s\n\nOK"
+      },
+      {
+        "name": "tests.coordination.test_successor_work_unit_materialization_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.coordination.test_successor_work_unit_materialization_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 8 tests in 0.004s\n\nOK"
+      },
+      {
+        "name": "tests.coordination.test_materialized_unit_authority_admission_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.coordination.test_materialized_unit_authority_admission_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 6 tests in 0.053s\n\nOK"
+      },
+      {
+        "name": "tests.coordination.test_materialized_admitted_authority_consumption_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.coordination.test_materialized_admitted_authority_consumption_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 5 tests in 0.061s\n\nOK"
+      },
+      {
+        "name": "tests.coordination.test_materialized_invocation_result_settlement_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.coordination.test_materialized_invocation_result_settlement_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 14 tests in 0.280s\n\nOK"
+      },
+      {
+        "name": "tests.coordination.test_materialized_settlement_consequence_reconciliation_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.coordination.test_materialized_settlement_consequence_reconciliation_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 7 tests in 0.095s\n\nOK"
+      },
+      {
+        "name": "tests.coordination.test_materialized_reconciliation_successor_projection_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.coordination.test_materialized_reconciliation_successor_projection_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 6 tests in 0.083s\n\nOK"
+      },
+      {
+        "name": "tests.observation.test_invocation_result_witness_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.observation.test_invocation_result_witness_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 11 tests in 0.001s\n\nOK"
+      },
+      {
+        "name": "tests.observation.test_materialized_invocation_result_witness_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.observation.test_materialized_invocation_result_witness_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 12 tests in 0.187s\n\nOK"
+      },
+      {
+        "name": "tests.cockpit.test_action_surface",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.cockpit.test_action_surface",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 4 tests in 2.711s\n\nOK"
+      },
+      {
+        "name": "tests.lab.test_lab_conductor",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.lab.test_lab_conductor",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 7 tests in 0.074s\n\nOK"
+      },
+      {
+        "name": "tests.cockpit.test_projection_adapter",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.cockpit.test_projection_adapter",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 11 tests in 10.944s\n\nOK"
+      },
+      {
+        "name": "tests.runtime.test_cockpit_online_read_integration",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.runtime.test_cockpit_online_read_integration",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 4 tests in 0.755s\n\nOK"
+      },
+      {
+        "name": "tests.runtime.test_historical_p09_producer_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.runtime.test_historical_p09_producer_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nOK"
+      },
+      {
+        "name": "tests.runtime.test_historical_p11_producer_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.runtime.test_historical_p11_producer_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nOK"
+      },
+      {
+        "name": "tests.runtime.test_labboib_temporal_seat",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.runtime.test_labboib_temporal_seat",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 7 tests in 3.589s\n\nOK"
+      },
+      {
+        "name": "tests.runtime.test_quiet_peer_coordination_v1",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.runtime.test_quiet_peer_coordination_v1",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 15 tests in 0.002s\n\nOK"
+      },
+      {
+        "name": "tests.runtime.test_legacy_lane_succession_fencing_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.runtime.test_legacy_lane_succession_fencing_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nOK"
+      },
+      {
+        "name": "tests.runtime.test_two_lane_coordination_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.runtime.test_two_lane_coordination_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 8 tests in 0.002s\n\nOK"
+      },
+      {
+        "name": "tests.runtime.test_live_predecessor_fence_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.runtime.test_live_predecessor_fence_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 5 tests in 0.002s\n\nOK"
+      },
+      {
+        "name": "tests.runtime.test_primary_ecology_v0",
+        "command": [
+          "C:\\Users\\Admin\\OneDrive\\Desktop\\Dynamical_Project\\Dynamical_Memory_Engine\\Lab\\DME_Lab\\.venv\\Scripts\\python.exe",
+          "-m",
+          "unittest",
+          "tests.runtime.test_primary_ecology_v0",
+          "-q"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "----------------------------------------------------------------------\nRan 68 tests in 0.070s\n\nOK"
+      },
+      {
+        "name": "tests/cockpit/test_observer.mjs",
+        "command": [
+          "node",
+          "--test",
+          "tests/cockpit/test_observer.mjs"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "standing grammar contains no fully resolved category or scalar rank (0.1262ms)\n\u00e2\u0153\u201d relation degree does not change standing or node geometry (0.2521ms)\n\u00e2\u0153\u201d inspector exposes only explicit normalized relation topology (0.2437ms)\n\u00e2\u0153\u201d failed and unavailable projections remain explicit (1.6764ms)\n\u00e2\u0153\u201d the implemented interaction vocabulary has no mutation action (1.3036ms)\n\u00e2\u0153\u201d first observer rendering excludes deferred normalized surfaces (0.1911ms)\n\u00e2\u0153\u201d P2 view shell exposes only the bounded normalized lens vocabulary (0.3421ms)\n\u00e2\u0153\u201d every normalized constraint remains independently addressable (0.3705ms)\n\u00e2\u0153\u201d constraint evidence traversal uses only emitted evidence_ref_ids (0.2351ms)\n\u00e2\u0153\u201d lineage renders current standing and declared history in normalized order only (0.4028ms)\n\u00e2\u0153\u201d explicit pressure relations remain the only lineage traversals (0.174ms)\n\u00e2\u0153\u201d duplicate pressure occurrence identity survives MAP to LINEAGE (1.0959ms)\n\u00e2\u0153\u201d HORIZON is populated only by normalized projection documents (0.3727ms)\n\u00e2\u0153\u201d SOURCE preserves independently addressable references, exact status, and origin (0.4078ms)\n\u00e2\u0153\u201d view switching changes only local lens state and creates no semantic relation (0.34ms)\n\u00e2\u0153\u201d pressure to constraint is never synthesized by view switching or evidence traversal (0.14ms)\n\u00e2\u0153\u201d global diagnostics remain visible in every bounded lens (1.5782ms)\n\u00e2\u0153\u201d renderActiveView uses only the selected bounded lens (0.2581ms)\n\u00e2\u0153\u201d ambiguous active pressure ID does not activate multiple occurrences (0.8085ms)\n\u00e2\u0153\u201d duplicate evidence ID remains occurrence-ambiguous and cannot select a target (0.2331ms)\n\u00e2\u0153\u201d multi-lens recovery preserves prior typed selections without reverse relations (0.2195ms)\n\u00e2\u0153\u201d projection documents remain selections rather than requirements or actions (0.1728ms)\n\u00e2\u0153\u201d P3 failure fixtures keep non-current state and diagnostics across every lens (5.3688ms)\n\u00e2\u201e\u00b9 tests 40\n\u00e2\u201e\u00b9 suites 0\n\u00e2\u201e\u00b9 pass 40\n\u00e2\u201e\u00b9 fail 0\n\u00e2\u201e\u00b9 cancelled 0\n\u00e2\u201e\u00b9 skipped 0\n\u00e2\u201e\u00b9 todo 0\n\u00e2\u201e\u00b9 duration_ms 108.5729"
+      },
+      {
+        "name": "tests/cockpit/test_perceptual_instrument.mjs",
+        "command": [
+          "node",
+          "--test",
+          "tests/cockpit/test_perceptual_instrument.mjs"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "\u00e2\u0153\u201d primary projections are consequence and topology only (1.0927ms)\n\u00e2\u0153\u201d operational graph derives only explicit identifier relations (0.6261ms)\n\u00e2\u0153\u201d address persists across projections and missing consequence representation is explicit (0.5268ms)\n\u00e2\u0153\u201d topology representability follows exact loaded basis presence (0.2422ms)\n\u00e2\u0153\u201d multi-selection never implies priority (0.2181ms)\n\u00e2\u0153\u201d addressed chat packet is local context without authority or transport (0.4846ms)\n\u00e2\u0153\u201d control affordances require both configured control and exact coordinates (0.4275ms)\n\u00e2\u0153\u201d control affordances are prefill candidates, not admissibility claims (0.1928ms)\n\u00e2\u0153\u201d campaign planning remains a local draft with zero consequence effects (0.2211ms)\n\u00e2\u0153\u201d scale filtering preserves selected coordinates without inventing priority (0.5985ms)\n\u00e2\u0153\u201d semantic observer coordinates are exact topology addresses, not nearby substitutions (0.8663ms)\n\u00e2\u201e\u00b9 tests 11\n\u00e2\u201e\u00b9 suites 0\n\u00e2\u201e\u00b9 pass 11\n\u00e2\u201e\u00b9 fail 0\n\u00e2\u201e\u00b9 cancelled 0\n\u00e2\u201e\u00b9 skipped 0\n\u00e2\u201e\u00b9 todo 0\n\u00e2\u201e\u00b9 duration_ms 72.2353"
+      },
+      {
+        "name": "tests/cockpit/test_control_adapter.mjs",
+        "command": [
+          "node",
+          "--test",
+          "tests/cockpit/test_control_adapter.mjs"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "\u00e2\u0153\u201d FOCUS intent contains only exact typed focus fields (1.6107ms)\n\u00e2\u0153\u201d ASSIGN intent names exact seat and preparation kind (0.123ms)\n\u00e2\u0153\u201d RELEASE and RING name one exact assignment and do not infer work (0.1715ms)\n\u00e2\u0153\u201d unsupported control verbs are rejected client-side (0.3339ms)\n\u00e2\u0153\u201d control endpoint remains a separate base from runtime projection (0.1274ms)\n\u00e2\u0153\u201d observer HTML exposes separate read and control roots (4.4274ms)\n\u00e2\u0153\u201d app starts read projection and control adapter as separate modules (0.7504ms)\n\u00e2\u0153\u201d read-side runtime module does not acquire control endpoints (0.8045ms)\n\u00e2\u201e\u00b9 tests 8\n\u00e2\u201e\u00b9 suites 0\n\u00e2\u201e\u00b9 pass 8\n\u00e2\u201e\u00b9 fail 0\n\u00e2\u201e\u00b9 cancelled 0\n\u00e2\u201e\u00b9 skipped 0\n\u00e2\u201e\u00b9 todo 0\n\u00e2\u201e\u00b9 duration_ms 71.7509"
+      },
+      {
+        "name": "tests/cockpit/test_online_integration.mjs",
+        "command": [
+          "node",
+          "--test",
+          "tests/cockpit/test_online_integration.mjs"
+        ],
+        "returncode": 0,
+        "timeout": false,
+        "passed": true,
+        "output_tail": "\u00e2\u0153\u201d composed app retains main Action Surface and perceptual runtime/addressing (4.0035ms)\n\u00e2\u0153\u201d observer DOM exposes instrument, runtime, and separately bounded control roots (1.0121ms)\n\u00e2\u0153\u201d composed CSS retains both Action Surface and perceptual/runtime families (1.0896ms)\n\u00e2\u0153\u201d composed Consequence surface exposes the recorded Cell 002 specimen in-shell (2.3779ms)\n\u00e2\u0153\u201d Cell 002 embed preserves the existing interactive page without trace reinterpretation (0.9679ms)\n\u00e2\u0153\u201d live runtime standing stays explicit and separate from the recorded specimen (0.9094ms)\n\u00e2\u0153\u201d composed specimen seam adds no control transport or synthetic runtime snapshot (0.7457ms)\n\u00e2\u0153\u201d composed Topology surface exposes the commit-bound repository fabric in-shell (0.9574ms)\n\u00e2\u0153\u201d unconfigured control remains explicitly unavailable and creates no client (0.542ms)\n\u00e2\u0153\u201d unconfigured runtime remains explicitly unavailable and creates no EventSource (0.3608ms)\n\u00e2\u201e\u00b9 tests 10\n\u00e2\u201e\u00b9 suites 0\n\u00e2\u201e\u00b9 pass 10\n\u00e2\u201e\u00b9 fail 0\n\u00e2\u201e\u00b9 cancelled 0\n\u00e2\u201e\u00b9 skipped 0\n\u00e2\u201e\u00b9 todo 0\n\u00e2\u201e\u00b9 duration_ms 86.8844"
+      }
+    ]
+  },
+  "assertions": {
+    "source_head_stable": true,
+    "origin_main_is_ancestor": true,
+    "working_tree_clean_before": true,
+    "working_tree_clean_after": true,
+    "bounded_regression_matrix_passed": true,
+    "historical_branch_scoped_exclusions_verified": true,
+    "bounded_regression_case_count_observed": true,
+    "all_required_standings_frozen": true,
+    "workcycle_campaign_closed": true,
+    "control_kernel_checkpoint_closed": true,
+    "control_kernel_has_no_current_gap": true,
+    "control_kernel_composition_not_prequalified": true
+  },
+  "all_assertions_pass": true,
+  "qualification_posture": "CANDIDATE_FOR_INDEPENDENT_MERGE_QUALIFICATION",
+  "merge_effect": "NONE",
+  "claim_ceiling": "Exact-head bounded merge-qualification witness. It demonstrates a cross-surface regression matrix derived from applicable active repo CI plus the promoted consequence/control chain passed with per-case timeouts; dedicated historical branch-scoped Lane-B apparatus was separately verified as non-applicable because its historical successor fixtures are absent at HEAD and present at its frozen basis; origin/main is an ancestor, the working tree remained clean, and required frozen standings are present. It is not exhaustive proof over every historical test, does not itself merge or authorize merge, creates no scientific standing, and does not qualify future commits.",
+  "stopped": "YES"
+}

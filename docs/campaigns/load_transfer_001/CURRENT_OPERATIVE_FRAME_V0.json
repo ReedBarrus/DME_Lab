@@ -1,0 +1,47 @@
+{
+  "object_type": "CURRENT_OPERATIVE_FRAME_V0",
+  "frame_id": "LOAD_TRANSFER_001_FRAME_001",
+  "created_at": "2026-09-24T12:35:00Z",
+  "repo_ref": "draci-v0-candidate-basis",
+  "repo_head": "1fe16a8d5c7566397b9d2474d43cb43786589fdc",
+  "target": "Transfer one bounded DME development handoff out of Reed's live coordination load.",
+  "qualified_standing": "CANDIDATE_ONLY",
+  "active_horizon": "LOAD_TRANSFER_001_FIRST_TWO_SEAT_HANDOFF",
+  "unresolved_load": [
+    "Run the first fresh-seat implementer to reviewer handoff pressure.",
+    "Legacy bridge request manifest mismatch remains unresolved and is explicitly out of scope for this cell.",
+    "No generic scheduling, autonomous routing, automatic retry, automatic qualification, or new authority is earned."
+  ],
+  "authority_posture": "Reed retains human authority over actual invocation approval, trust-root promotion, and other authority crossings; this coordination substrate grants none.",
+  "available_surfaces": [
+    "repository-carried CURRENT_OPERATIVE_FRAME_V0",
+    "repository-carried SEAT_WORK_ITEM_V0 queue",
+    "repository-carried HANDOFF_RECEIPT_V0 log",
+    "bounded repository-local candidate artifact creation/review",
+    "existing read-only project-state and operative-surface projections"
+  ],
+  "current_work_item_ids": [
+    "LOAD_TRANSFER_001_W1_IMPLEMENTER",
+    "LOAD_TRANSFER_001_W2_REVIEWER"
+  ],
+  "explicitly_noncurrent": [
+    "legacy bridge manifest cleanup",
+    "trust-root modification",
+    "automatic scheduler",
+    "automatic worker spawning",
+    "automatic authority",
+    "automatic qualification",
+    "generic multi-seat orchestration"
+  ],
+  "source_handles": [
+    "PROJECT_STATE.md",
+    "OPERATIVE_SURFACE_MAP.md",
+    "src/coordination/load_transfer_v0.py",
+    "tests/coordination/test_load_transfer_v0.py",
+    "LOAD_TRANSFER_001 implementation packet supplied by Reed"
+  ],
+  "claim_ceiling": "Candidate coordination state for one bounded repository-local two-seat handoff; no scientific promotion, authority grant, autonomy, or generic routing claim.",
+  "status": "OPERATIVE",
+  "superseded_by": null,
+  "integrity_sha256": "7f99b5d4988ec7b02827d74d667db4a617dace384d238a3dfc91d39b91a15145"
+}

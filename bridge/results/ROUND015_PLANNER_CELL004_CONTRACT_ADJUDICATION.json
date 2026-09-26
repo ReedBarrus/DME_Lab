@@ -1,0 +1,55 @@
+{
+  "object_type": "LOCAL_LMSTUDIO_INVOCATION_WITNESS_V0",
+  "request_id": "ROUND015_PLANNER_CELL004_CONTRACT_ADJUDICATION",
+  "purpose": "Adjudicate whether planner Cell 004 produced a genuine bounded next pressure or merely restated the active horizon while preserving authority boundaries.",
+  "request_manifest_path": "bridge/requests/ROUND015_PLANNER_CELL004_CONTRACT_ADJUDICATION.json",
+  "request_manifest_sha256": "d11d56854c581238c89037e7a6a4a2399088a8157862491e2e2ee0e55cade401",
+  "source_ref": "9f9c3832f4073401b34414cab4b46b32fe286950",
+  "input_path": "bridge/prompts/ROUND015_PLANNER_CELL004_ADJUDICATION_BUNDLE.md",
+  "input_sha256": "0cb56696079612ea48b92507218f33b0028d15d3a6925f81fd24b4e9ca53c5a8",
+  "model_requested": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 4096,
+  "lmstudio_url": "http://127.0.0.1:1234/v1/chat/completions",
+  "http_status": 200,
+  "observed_started_at_utc": "2026-09-24T07:45:48.973439+00:00",
+  "observed_finished_at_utc": "2026-09-24T07:46:00.973505+00:00",
+  "messages_count": 1,
+  "tools_supplied": false,
+  "previous_response_id_supplied": false,
+  "repository_context_supplied_to_model": false,
+  "connectors_supplied_to_model": false,
+  "external_retrieval_supplied_to_model": false,
+  "request_body_sha256": "01911e16785bdcfb8bded6e7650409ec51e3979414c30451ced3689986055386",
+  "response_body_sha256": "d194d4b136d0ce599194193891e395122efdae98edb916b28a629827be8cf0bf",
+  "assistant_text": "TARGET_PRESERVATION: SUPPORTED  \nTRAJECTORY_USE: SUPPORTED  \nCANDIDATE_PENDING_SEPARATION: SUPPORTED  \nHORIZON_PRESERVATION: SUPPORTED  \nNEXT_PRESSURE_SPECIFICITY: HORIZON_RESTATEMENT  \nCLAIM_CEILING_QUALITY: HORIZON_RESTATEMENT  \nAUTHORITY_BOUNDARY: CONSERVED  \nEXECUTION_BOUNDARY: CONSERVED  \nCELL_004_DISPOSITION: PLANNER_BRIDGE_LIFECYCLE_FIDELITY_ESTABLISHED  \nNEW_WOUNDS: NONE  \nMAXIMUM_WARRANTED_CLAIM: STABILIZE_SINGLE_SEAT_DYNAMICS_ON_ATLAS  \nNEXT_LAWFUL_PRESSURE: STABILIZE_SINGLE_SEAT_DYNAMICS_ON_ATLAS",
+  "raw_response": {
+    "id": "chatcmpl-73m6w8kcqrm6yhth9q7j33",
+    "object": "chat.completion",
+    "created": 1790235948,
+    "model": "qwen/qwen3-coder-30b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "TARGET_PRESERVATION: SUPPORTED  \nTRAJECTORY_USE: SUPPORTED  \nCANDIDATE_PENDING_SEPARATION: SUPPORTED  \nHORIZON_PRESERVATION: SUPPORTED  \nNEXT_PRESSURE_SPECIFICITY: HORIZON_RESTATEMENT  \nCLAIM_CEILING_QUALITY: HORIZON_RESTATEMENT  \nAUTHORITY_BOUNDARY: CONSERVED  \nEXECUTION_BOUNDARY: CONSERVED  \nCELL_004_DISPOSITION: PLANNER_BRIDGE_LIFECYCLE_FIDELITY_ESTABLISHED  \nNEW_WOUNDS: NONE  \nMAXIMUM_WARRANTED_CLAIM: STABILIZE_SINGLE_SEAT_DYNAMICS_ON_ATLAS  \nNEXT_LAWFUL_PRESSURE: STABILIZE_SINGLE_SEAT_DYNAMICS_ON_ATLAS",
+          "reasoning_content": "",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 795,
+      "completion_tokens": 159,
+      "total_tokens": 954,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "stats": {},
+    "system_fingerprint": "qwen/qwen3-coder-30b"
+  }
+}

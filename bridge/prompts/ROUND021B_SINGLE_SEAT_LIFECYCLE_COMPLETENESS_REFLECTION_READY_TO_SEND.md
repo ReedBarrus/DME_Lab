@@ -1,0 +1,229 @@
+# ROUND 021B — SINGLE-SEAT LIFECYCLE COMPLETENESS REFLECTION
+
+OBJECT_TYPE:
+READY_TO_SEND_REFLECTION_PACKET
+
+DESTINATION:
+FRESH MODEL / FRESH THREAD
+
+ROLE:
+INDEPENDENT_LIFECYCLE_REVIEWER
+
+MODE:
+NO_IMPLEMENTATION
++ NO_PROMOTION
++ TOPOLOGY_REVIEW
+
+AUTHORITY_EFFECT:
+NONE
+
+EXECUTION_EFFECT:
+NONE
+
+# TARGET
+
+Exhaust the basic relationship between one bounded planner seat and Atlas before
+multi-seat or autonomous operation.
+
+The seat should eventually support a coherent event-based loop while preserving
+scientific standing, provenance, authority, replay safety, and bounded
+consequence capacity.
+
+# CURRENT CANDIDATE LIFECYCLE
+
+STATES:
+
+S0 DORMANT
+S1 RECOVERING
+S2 READY
+S3 PRESSURE_SELECTED
+S4 INVOCATION_PROPOSED
+S5 AUTHORIZED
+S6 INVOCATION_STARTED
+S7 RESULT_WITNESSED
+S8 SETTLEMENT_PENDING
+S9 CANDIDATE_SETTLED
+S10 ADJUDICATION_PENDING
+S11 QUALIFIED_UPDATE
+S12 ATLAS_UPDATED
+S13 PAUSED
+S14 STOPPED
+
+OPERATORS:
+
+O1 RECOVER_STATE
+O2 SELECT_PRESSURE
+O3 BIND_INVOCATION
+O4 AUTHORIZE_ONCE
+O5 BEGIN_INVOCATION
+O6 WITNESS_RESULT
+O7 OPEN_SETTLEMENT
+O8 SETTLE_FIELDS
+O9 REQUEST_ADJUDICATION
+O10 APPLY_QUALIFICATION
+O11 UPDATE_ATLAS_STATE
+O12 RETURN_READY
+O13 PAUSE
+O14 RESUME
+O15 STOP
+O16 EXPLICIT_RETRY
+O17 OCCUPANT_SWAP
+O18 MODEL_PROFILE_SELECT
+
+FAILURE / HOLD STATES:
+
+F1 STATE_RECOVERY_UNRESOLVED
+F2 REQUEST_IDENTITY_REJECTED
+F3 MODEL_LOAD_FAILED_AFTER_RECEIPT
+F4 RESPONSE_WITNESS_FAILED
+F5 SETTLEMENT_UNRESOLVED
+F6 ADJUDICATION_REJECTED
+F7 ATLAS_UPDATE_CONFLICT
+
+# CURRENT RELATIONAL LOOP
+
+ATLAS STATE
+→ CELL / PRESSURE
+→ REQUEST
+→ AUTHORIZATION
+→ INVOCATION RECEIPT
+→ MODEL CONSEQUENCE
+→ RESULT WITNESS
+→ FIELD SETTLEMENT
+→ INDEPENDENT ADJUDICATION
+→ QUALIFIED CHANGE
+→ ATLAS STATE UPDATE
+→ NEXT RECOVERY
+
+# CURRENT CELL INTERFACE
+
+CELL_ID
+INPUT_STATE_IDENTITY
+PRESSURE_TARGET
+ALLOWED_OPERATOR
+EVIDENCE_APERTURE
+MODEL_PROFILE
+AUTHORITY_ENVELOPE
+BUDGET_ENVELOPE
+REQUIRED_OUTPUT
+FAILURE_POSTURE
+CLAIM_CEILING
+STOP_CONDITION
+
+# CURRENT METABOLIC POSTURE
+
+MODEL OUTPUT
+!=
+METABOLIZED STATE
+
+Candidate metabolic path requires:
+
+WITNESS
++ SETTLEMENT
++ QUALIFICATION
++ ATLAS UPDATE
+
+while preserving:
+
+identity
+provenance
+claim ceiling
+challenge path
+authority boundary
+unresolved load
+
+# CURRENT BUDGET CANDIDATES
+
+MAX_INVOCATIONS
+MAX_RETRIES
+MAX_PROMPT_TOKENS
+MAX_COMPLETION_TOKENS
+MAX_WALL_SECONDS
+MAX_MODEL_LOADS
+MAX_EVIDENCE_BYTES
+MAX_SETTLEMENT_PASSES
+MAX_ADJUDICATION_PASSES
+
+Candidate budget exhaustion behavior:
+
+BUDGET_EXHAUSTED
+→ PAUSE OR STOP
+→ NO SILENT CONTINUATION
+
+# KNOWN UNQUALIFIED SURFACES
+
+- field-level settlement
+- independent settlement evaluator rule
+- full failed-invocation replay resistance
+- pause/resume
+- stop semantics
+- Atlas state update after qualification
+- model swap under one seat contract
+- budget envelope
+- event-based firing
+- autonomous routing
+- automatic qualification
+- automatic Atlas mutation
+
+# REVIEW QUESTION
+
+Inspect the candidate topology only.
+
+Identify any missing BASIC single-seat lifecycle state, operator, guard,
+identity relation, failure posture, conservation law, or dependency edge that
+must exist before it is coherent to pressure the loop as a whole.
+
+Do not add multi-seat coordination.
+Do not add autonomous authority.
+Do not design a production orchestrator.
+Do not assume automatic settlement or automatic Atlas mutation.
+
+Prefer the smallest missing primitive over architectural expansion.
+
+# REQUIRED OUTPUT
+
+Return exactly:
+
+LIFECYCLE_TOPOLOGY_STATUS:
+COMPLETE_FOR_CURRENT_PRESSURE
+|
+MISSING_BASIC_PRIMITIVES
+|
+OVERBUILT
+|
+UNRESOLVED
+
+MISSING_STATES:
+<list or NONE>
+
+MISSING_OPERATORS:
+<list or NONE>
+
+MISSING_GUARDS:
+<list or NONE>
+
+MISSING_IDENTITY_RELATIONS:
+<list or NONE>
+
+MISSING_FAILURE_POSTURES:
+<list or NONE>
+
+MISSING_CONSERVATION_LAWS:
+<list or NONE>
+
+DEPENDENCY_ORDER_WOUNDS:
+<list or NONE>
+
+POTENTIAL_CONFLATIONS:
+<list or NONE>
+
+SMALLEST_NEXT_PRESSURE:
+<one bounded pressure only>
+
+MAXIMUM_WARRANTED_CLAIM:
+<one bounded claim about lifecycle completeness only>
+
+UNRESOLVED:
+<list>
+
+Return only the required review and stop.

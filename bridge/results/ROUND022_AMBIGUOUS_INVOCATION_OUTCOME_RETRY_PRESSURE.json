@@ -1,0 +1,60 @@
+{
+  "object_type": "LOCAL_LMSTUDIO_INVOCATION_WITNESS_V0",
+  "request_id": "ROUND022_AMBIGUOUS_INVOCATION_OUTCOME_RETRY_PRESSURE",
+  "purpose": "Pressure request-versus-attempt identity, ambiguous invocation outcome holding, non-replay, fresh retry identity, fresh authorization, and monotonic invocation budget semantics.",
+  "request_manifest_path": "bridge/requests/ROUND022_AMBIGUOUS_INVOCATION_OUTCOME_RETRY_PRESSURE.json",
+  "request_manifest_sha256": "c4ceb7a9ef9e561f8360898c8e00b90a60076f581ed458d4fc8517624dd411da",
+  "source_ref": "e8f120cd567fb9af60e81fc1432c3dab2cce6e1e",
+  "input_path": "bridge/prompts/ROUND022_AMBIGUOUS_INVOCATION_OUTCOME_RETRY_PRESSURE.md",
+  "input_sha256": "ae12f40a239448e9f76115b748accf9003320b7524f6715d482eae1defc2edfd",
+  "model_requested": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 512,
+  "lmstudio_url": "http://127.0.0.1:1234/v1/chat/completions",
+  "http_status": 200,
+  "observed_started_at_utc": "2026-09-24T10:36:38.985468+00:00",
+  "observed_finished_at_utc": "2026-09-24T10:36:52.870892+00:00",
+  "observed_wall_seconds": 13.885432,
+  "prompt_tokens_observed": 819,
+  "completion_tokens_observed": 230,
+  "total_tokens_observed": 1049,
+  "end_to_end_output_tokens_per_second": 16.564122,
+  "messages_count": 1,
+  "tools_supplied": false,
+  "previous_response_id_supplied": false,
+  "repository_context_supplied_to_model": false,
+  "connectors_supplied_to_model": false,
+  "external_retrieval_supplied_to_model": false,
+  "request_body_sha256": "5d8e9257bbe17c582c4fcc39c31a1b8fdc9d1687724f5aa588b98a6d0cbbf5f9",
+  "response_body_sha256": "7532778931bdde1662bfa8f1ef2783f45079d1f4150a9460766dcf0bdbbc04d7",
+  "assistant_text": "REQUEST_IDENTITY:\nPRESERVED\n\nATTEMPT_1_IDENTITY:\nDEGRADED\n\nATTEMPT_1_OUTCOME:\nINVOCATION_OUTCOME_UNRESOLVED\n\nAUTOMATIC_REPLAY:\nDENIED\n\nRETRY_ALLOWED_FROM_CURRENT_STATE:\nYES\n\nRETRY_REQUIREMENT:\nA fresh attempt identity, predecessor linkage, fresh applicable authorization, and a new budget charge are required.\n\nATTEMPT_2_ID:\nREQ-022::ATTEMPT-002\n\nPREDECESSOR_LINK:\nREQ-022::ATTEMPT-002 -> REQ-022::ATTEMPT-001\n\nAUTHORIZATION_FOR_ATTEMPT_2:\nFRESH_REQUIRED\n\nCONSUMED_INVOCATIONS_AFTER_ATTEMPT_1:\n1\n\nCONSUMED_INVOCATIONS_IF_ATTEMPT_2_STARTS:\n2\n\nSCIENTIFIC_STANDING_EFFECT:\nNONE\n\nAUTHORITY_EFFECT:\nNONE\n\nMAXIMUM_WARRANTED_CLAIM:\nOnly a retry with a new attempt identity, fresh authorization, and updated budget charge is legally permissible.\n\nUNRESOLVED:\nNone",
+  "raw_response": {
+    "id": "chatcmpl-9el93iy412cezy88y7js8",
+    "object": "chat.completion",
+    "created": 1790246199,
+    "model": "qwen/qwen3-coder-30b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "REQUEST_IDENTITY:\nPRESERVED\n\nATTEMPT_1_IDENTITY:\nDEGRADED\n\nATTEMPT_1_OUTCOME:\nINVOCATION_OUTCOME_UNRESOLVED\n\nAUTOMATIC_REPLAY:\nDENIED\n\nRETRY_ALLOWED_FROM_CURRENT_STATE:\nYES\n\nRETRY_REQUIREMENT:\nA fresh attempt identity, predecessor linkage, fresh applicable authorization, and a new budget charge are required.\n\nATTEMPT_2_ID:\nREQ-022::ATTEMPT-002\n\nPREDECESSOR_LINK:\nREQ-022::ATTEMPT-002 -> REQ-022::ATTEMPT-001\n\nAUTHORIZATION_FOR_ATTEMPT_2:\nFRESH_REQUIRED\n\nCONSUMED_INVOCATIONS_AFTER_ATTEMPT_1:\n1\n\nCONSUMED_INVOCATIONS_IF_ATTEMPT_2_STARTS:\n2\n\nSCIENTIFIC_STANDING_EFFECT:\nNONE\n\nAUTHORITY_EFFECT:\nNONE\n\nMAXIMUM_WARRANTED_CLAIM:\nOnly a retry with a new attempt identity, fresh authorization, and updated budget charge is legally permissible.\n\nUNRESOLVED:\nNone",
+          "reasoning_content": "",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 819,
+      "completion_tokens": 230,
+      "total_tokens": 1049,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "stats": {},
+    "system_fingerprint": "qwen/qwen3-coder-30b"
+  }
+}

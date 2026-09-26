@@ -1,0 +1,13 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0_1",
+  "request_id": "TEST003_W2_PHI4_RUNTIME",
+  "enabled": true,
+  "source_ref": "ea9351bac36984c25fbfbd3c2fdf1ba56c694b05",
+  "input_path": "bridge/prompts/RELATIONAL_COMPRESSION_W2_IMPLEMENTER_READY_TO_SEND.md",
+  "input_blob_sha": "d1fdbbf8cf3d01e11b958289d58634fd43c524ab",
+  "principal_id": "CODEX_PRINCIPAL_001",
+  "model": "microsoft/phi-4",
+  "temperature": 0,
+  "max_tokens": 3000,
+  "purpose": "Discriminate Qwen-specific W2 runtime failure from prompt-size/context/backend failure by invoking the exact same immutable W2 prompt through the same governed bridge with Phi-4."
+}

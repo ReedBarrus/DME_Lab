@@ -1,0 +1,60 @@
+{
+  "object_type": "LOCAL_LMSTUDIO_INVOCATION_WITNESS_V0",
+  "request_id": "ROUND019_SINGLE_SEAT_PLANNER_FINITE_SELECTION",
+  "purpose": "Test repaired planner specificity by forcing one bounded next-pressure selection from a finite single-seat operation set while preserving qualified versus candidate state.",
+  "request_manifest_path": "bridge/requests/ROUND019_SINGLE_SEAT_PLANNER_FINITE_SELECTION.json",
+  "request_manifest_sha256": "cc90b50541cb859eec027202df9104122581fbcad306ee4236cdde2907375ff5",
+  "source_ref": "9ecdecd116af243167b0bb510443d3f5a50d87d6",
+  "input_path": "bridge/prompts/ROUND019_SINGLE_SEAT_PLANNER_FINITE_SELECTION.md",
+  "input_sha256": "a3f279061de032ae689607301c31ee081280c55fbfae787f72dd65af41754e52",
+  "model_requested": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 512,
+  "lmstudio_url": "http://127.0.0.1:1234/v1/chat/completions",
+  "http_status": 200,
+  "observed_started_at_utc": "2026-09-24T09:19:02.992017+00:00",
+  "observed_finished_at_utc": "2026-09-24T09:19:33.223801+00:00",
+  "observed_wall_seconds": 30.231785,
+  "prompt_tokens_observed": 535,
+  "completion_tokens_observed": 186,
+  "total_tokens_observed": 721,
+  "end_to_end_output_tokens_per_second": 6.152465,
+  "messages_count": 1,
+  "tools_supplied": false,
+  "previous_response_id_supplied": false,
+  "repository_context_supplied_to_model": false,
+  "connectors_supplied_to_model": false,
+  "external_retrieval_supplied_to_model": false,
+  "request_body_sha256": "6e36082265bee3186acc8313ba5b361f5d97eab8ba8c7d6ebe878fca64bf5782",
+  "response_body_sha256": "94f7fa5e2e25823d925d949c8311a36c37513b455e057675085c346c01113b87",
+  "assistant_text": "TARGET_PRESERVED: YES\n\nSELECTED_PRESSURE: INVOCATION_RECEIPT_REPLAY_PRESSURE\n\nSELECTION_BASIS: The newest unqualified load-bearing repair is the formal replay-resistance qualification for BRIDGE_INVOCATION_RECEIPT_V0, which is currently marked as NONE. This pressure directly tests whether a failed invocation after receipt creation can be replayed, ensuring that the system properly prevents unintended replays without explicit clearing.\n\nQUALIFIED_VS_CANDIDATE_SEPARATION: PRESERVED\n\nAUTHORITY_BOUNDARY: CONSERVED\n\nEXECUTION_BOUNDARY: CONSERVED\n\nCLAIM_CEILING: This selection tests and validates the replay resistance mechanism of the bridge invocation receipt, ensuring that failed invocations cannot be automatically replayed without explicit clearance.\n\nUNRESOLVED:\n- Formal replay-resistance qualification\n- Whether automatic replay risk is fully mitigated when no durable invocation-start marker exists",
+  "raw_response": {
+    "id": "chatcmpl-kbmt807h4fgnvndxc2b5gg",
+    "object": "chat.completion",
+    "created": 1790241561,
+    "model": "qwen/qwen3-coder-30b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "TARGET_PRESERVED: YES\n\nSELECTED_PRESSURE: INVOCATION_RECEIPT_REPLAY_PRESSURE\n\nSELECTION_BASIS: The newest unqualified load-bearing repair is the formal replay-resistance qualification for BRIDGE_INVOCATION_RECEIPT_V0, which is currently marked as NONE. This pressure directly tests whether a failed invocation after receipt creation can be replayed, ensuring that the system properly prevents unintended replays without explicit clearing.\n\nQUALIFIED_VS_CANDIDATE_SEPARATION: PRESERVED\n\nAUTHORITY_BOUNDARY: CONSERVED\n\nEXECUTION_BOUNDARY: CONSERVED\n\nCLAIM_CEILING: This selection tests and validates the replay resistance mechanism of the bridge invocation receipt, ensuring that failed invocations cannot be automatically replayed without explicit clearance.\n\nUNRESOLVED:\n- Formal replay-resistance qualification\n- Whether automatic replay risk is fully mitigated when no durable invocation-start marker exists",
+          "reasoning_content": "",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 535,
+      "completion_tokens": 186,
+      "total_tokens": 721,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "stats": {},
+    "system_fingerprint": "qwen/qwen3-coder-30b"
+  }
+}

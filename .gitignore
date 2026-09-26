@@ -7,3 +7,8 @@ generated/
 # Local desktop packaging output.
 build/cockpit_pyinstaller/
 dist/cockpit/
+
+# Local DME trust-root / bridge state. Never commit.
+.dme-local/
+bridge/local/
+*.local.json

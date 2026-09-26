@@ -1,0 +1,95 @@
+{
+  "object_type": "CONTROL_KERNEL_CURRENT_CAMPAIGN_STATE_V0",
+  "campaign_id": "CONTROL_KERNEL_001",
+  "campaign_posture": "CHECKPOINT_CLOSED_AWAITING_BRANCH_QUALIFICATION",
+  "campaign_basis": "Prove governed-work semantics using one externally supplied horizon and one externally supplied live gap before introducing generalized horizon representation or machine selection.",
+  "predecessor_campaign": {
+    "campaign_id": "WORKCYCLE_STABILIZATION_001",
+    "posture": "CLOSED",
+    "terminal_disposition": "CLOSE_BASIS",
+    "terminal_candidate_posture": "NO_SUCCESSOR",
+    "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/MATERIALIZED_RECONCILIATION_SUCCESSOR_PROJECTION_PRESSURE_RESULT_001.md"
+  },
+  "current_cell": {
+    "cell_id": "CONTROL_KERNEL_CELL_003",
+    "posture": "MATCHED_CHECKPOINT_TERMINAL",
+    "target": "HORIZON_GAP_SELECTOR_V0",
+    "standing": "HORIZON_GAP_SELECTOR_V0_MATCHED",
+    "multi_gap_ranking": "UNSUPPORTED"
+  },
+  "gap_stratification": {
+    "evidentiary": "Has the claimed relation earned standing?",
+    "operative_relational": "What currently consequential relation is unresolved?",
+    "architectural_capability": "What machinery is missing for later classes of relational gaps?"
+  },
+  "current_gap": null,
+  "explicitly_deferred": [
+    "multi-gap ranking",
+    "challenge/discovery budget",
+    "world/method reconciliation fork",
+    "cognitive asset load probe",
+    "freshness/currentness membrane",
+    "concurrency and joint viability economics"
+  ],
+  "next_pressure": {
+    "pressure_id": "MAIN_MERGE_QUALIFICATION_001",
+    "destination": "LOCAL_BRANCH_WIDE_QUALIFICATION_PRESSURE",
+    "packet": "docs/qualification/MAIN_MERGE_QUALIFICATION_001_READY_TO_RUN.md",
+    "if_nothing_changes": "DO_NOT_RUN"
+  },
+  "earned_cells": {
+    "CONTROL_KERNEL_CELL_001": {
+      "standing": "CONTROL_KERNEL_CELL_001_MATCHED",
+      "result_handle": "docs/campaigns/control_kernel_001/pressure_runs/CONTROL_KERNEL_CELL_001_PRESSURE_RESULT_001.md",
+      "effective_claim": "One externally supplied operative horizon with exactly one externally supplied live gap and no competing gaps reconciles against one bounded observed repository repair to HORIZON_SATISFIED, empty supplied gap set, NO_JUSTIFIED_WORK, and STOP.",
+      "does_not_establish": [
+        "generalized relational-horizon representation",
+        "machine gap selection",
+        "multi-gap ranking",
+        "planning automation",
+        "authority",
+        "execution",
+        "scientific standing"
+      ]
+    },
+    "CONTROL_KERNEL_CELL_002": {
+      "standing": "RELATIONAL_HORIZON_V0_MATCHED",
+      "result_handle": "docs/campaigns/control_kernel_001/pressure_runs/RELATIONAL_HORIZON_V0_PRESSURE_RESULT_001.md",
+      "effective_claim": "One externally supplied relational horizon preserves stable logical horizon identity while state identity changes from PARTIAL with one declared live gap to CLOSED with an empty declared gap set.",
+      "does_not_establish": [
+        "gap selection",
+        "multi-gap ranking",
+        "work justification",
+        "planning",
+        "authority",
+        "execution",
+        "scientific standing"
+      ]
+    },
+    "CONTROL_KERNEL_CELL_003": {
+      "standing": "HORIZON_GAP_SELECTOR_V0_MATCHED",
+      "result_handle": "docs/campaigns/control_kernel_001/pressure_runs/HORIZON_GAP_SELECTOR_V0_PRESSURE_RESULT_001.md",
+      "effective_claim": "One validated represented horizon deterministically returns its exact sole already-declared work-eligible gap, returns NO_JUSTIFIED_WORK when none exists, and rejects multiple eligible gaps rather than ranking them.",
+      "does_not_establish": [
+        "semantic discovery of gaps",
+        "multi-gap optimization",
+        "planning",
+        "work materialization",
+        "work admission",
+        "authority",
+        "execution",
+        "scientific standing"
+      ]
+    }
+  },
+  "checkpoint_closure": {
+    "earned_minimal_governor": [
+      "CONTROL_KERNEL_CELL_001_MATCHED",
+      "RELATIONAL_HORIZON_V0_MATCHED",
+      "HORIZON_GAP_SELECTOR_V0_MATCHED"
+    ],
+    "composition_claim": "NOT_YET_BRANCH_QUALIFIED",
+    "merge_effect": "NONE",
+    "next_phase": "MAIN_MERGE_QUALIFICATION_001"
+  }
+}

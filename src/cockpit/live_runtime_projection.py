@@ -18,6 +18,10 @@ from typing import Any, Iterator
 from urllib.parse import urlparse
 
 from src.cockpit.development_horizon_projection import derive_development_horizons
+from src.cockpit.workcycle_projection import build_workcycle_projection
+from src.cockpit.temporal_horizon_closure import derive_temporal_horizon_closure
+from src.cockpit.workcycle_qualification import build_workcycle_qualification_readiness
+from src.cockpit.pressure_justification import build_basis_record, build_pressure_justification
 
 
 class LiveRuntimeProjectionError(RuntimeError):
@@ -36,6 +40,7 @@ class RuntimeSources:
     assignment_db: Path | None = None
     wake_source_db: Path | None = None
     comparison_basis_refs: tuple[str, ...] = ()
+    workcycle_control_path: Path | None = None
 
 
 def _canonical_bytes(value: Any) -> bytes:
@@ -53,6 +58,12 @@ def _utc_now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+def _subprocess_creationflags() -> int:
+    if __import__("os").name != "nt":
+        return 0
+    return int(getattr(subprocess, "CREATE_NO_WINDOW", 0))
+
+
 def _repo_head(repo: Path) -> str:
     result = subprocess.run(
         ["git", "-C", str(repo), "rev-parse", "HEAD"],
@@ -60,6 +71,7 @@ def _repo_head(repo: Path) -> str:
         stderr=subprocess.PIPE,
         text=True,
         check=False,
+        creationflags=_subprocess_creationflags(),
     )
     if result.returncode != 0:
         raise LiveRuntimeProjectionError(
@@ -505,6 +517,43 @@ def build_runtime_state(sources: RuntimeSources) -> dict[str, Any]:
     }
 
     state["development_horizons"] = derive_development_horizons(state)
+    state["workcycle"] = build_workcycle_projection(
+        sources.repo,
+        local_control_path=sources.workcycle_control_path,
+        runtime_seats=state.get("seats", []),
+        active_operations=state.get("active_operations", {}),
+    )
+
+    temporal_path = sources.repo / "generated" / "repository_temporal_lineage.json"
+    try:
+        temporal_lineage = json.loads(temporal_path.read_text(encoding="utf-8"))
+        temporal_source_status = "AVAILABLE"
+    except FileNotFoundError:
+        temporal_lineage = {}
+        temporal_source_status = "MISSING"
+    except (OSError, json.JSONDecodeError) as exc:
+        temporal_lineage = {}
+        temporal_source_status = f"UNAVAILABLE:{type(exc).__name__}"
+
+    state["temporal_horizon_closure"] = derive_temporal_horizon_closure(
+        temporal_lineage=temporal_lineage,
+        workcycle=state["workcycle"],
+        development_horizons=state["development_horizons"],
+    )
+    state["temporal_horizon_closure"]["temporal_source_status"] = temporal_source_status
+    state["workcycle_qualification"] = build_workcycle_qualification_readiness(
+        sources.repo
+    )
+    state["workcycle_basis"] = build_basis_record(
+        workcycle=state["workcycle"],
+        horizon_closure=state["temporal_horizon_closure"],
+        qualification=state["workcycle_qualification"],
+    )
+    state["pressure_justification"] = build_pressure_justification(
+        workcycle=state["workcycle"],
+        horizon_closure=state["temporal_horizon_closure"],
+        qualification=state["workcycle_qualification"],
+    )
     return state
 
 
@@ -657,6 +706,7 @@ def main(argv: list[str] | None = None) -> int:
         assignment_db=_optional_path(args.assignment_db),
         wake_source_db=_optional_path(args.wake_source_db),
         comparison_basis_refs=tuple(args.comparison_basis_ref),
+        workcycle_control_path=None,
     )
 
     if args.snapshot:

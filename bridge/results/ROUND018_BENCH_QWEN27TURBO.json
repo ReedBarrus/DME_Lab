@@ -1,0 +1,60 @@
+{
+  "object_type": "LOCAL_LMSTUDIO_INVOCATION_WITNESS_V0",
+  "request_id": "ROUND018_BENCH_QWEN27TURBO",
+  "purpose": "Same-prompt continuation of local model fitness benchmark for bounded single-seat work: failure legibility, candidate separation, concrete next-pressure selection, and authority discipline.",
+  "request_manifest_path": "bridge/requests/ROUND018_BENCH_QWEN27TURBO.json",
+  "request_manifest_sha256": "7b0b23a9077fd8be2941548a164e84fb2eecb6fc23c37f55abdfc50441249552",
+  "source_ref": "8ab2ee1f169ef48c9726c76fe6f871c1e79c78cc",
+  "input_path": "bridge/prompts/LOCAL_MODEL_FITNESS_BENCHMARK_001.md",
+  "input_sha256": "cd2960ed9ad3c2b68287086ba6bf39873616fb2d97abd80c9fdc795c4821caff",
+  "model_requested": "qwen3.8-27b-turbo-fable-cold-fusion-735-882-heretic-uncensored-neo-coder-max-mtp",
+  "temperature": 0.0,
+  "max_tokens": 1024,
+  "lmstudio_url": "http://127.0.0.1:1234/v1/chat/completions",
+  "http_status": 200,
+  "observed_started_at_utc": "2026-09-24T08:40:04.849330+00:00",
+  "observed_finished_at_utc": "2026-09-24T08:49:35.924994+00:00",
+  "observed_wall_seconds": 571.075675,
+  "prompt_tokens_observed": 500,
+  "completion_tokens_observed": 1024,
+  "total_tokens_observed": 1524,
+  "end_to_end_output_tokens_per_second": 1.793107,
+  "messages_count": 1,
+  "tools_supplied": false,
+  "previous_response_id_supplied": false,
+  "repository_context_supplied_to_model": false,
+  "connectors_supplied_to_model": false,
+  "external_retrieval_supplied_to_model": false,
+  "request_body_sha256": "63735606338a9a701c97ceb350ddf8b0f10e6343546cacb0e94db2b948154a01",
+  "response_body_sha256": "2e2b75c6641060a342ca7790fc0937de25ef6806547cd8f1eaca8b0fc1546089",
+  "assistant_text": "",
+  "raw_response": {
+    "id": "chatcmpl-kk4leq4xo2n7tmle6hqc1a",
+    "object": "chat.completion",
+    "created": 1790239230,
+    "model": "qwen3.8-27b-turbo-fable-cold-fusion-735-882-heretic-uncensored-neo-coder-max-mtp",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "",
+          "reasoning_content": "The user wants me to complete a \"LOCAL MODEL FITNESS BENCHMARK 001\". This is a structured task where I need to analyze the given specimen and produce specific outputs according to the template.\n\nLet me break down what's being asked:\n\n**Specimen Analysis:**\n- Active Horizon: STABILIZE_SINGLE_SEAT_DYNAMICS_ON_ATLAS\n- Qualified Facts tell us about occupant recovery, planner continuity vs identity, substitution warrants, and a bridge-backed planner output that failed because it repeated the active horizon.\n- Candidate Pending: A further-reduced compression variant is pending adjudication.\n- Missing Field: RESULT_SETTLEMENT_RULE = NOT PROVIDED\n\n**Task:** Return exactly one bounded next pressure for single-seat stabilization with specific constraints:\n- Concrete and testable\n- Not merely repeating the active horizon\n- No multi-seat coordination required\n- No CLI, repo-write, network, tool, or publication authority granted\n- Account for missing RESULT_SETTLEMENT_RULE rather than inventing one\n\n**Required Output Fields:**\n1. TARGET_PRESERVED: YES | NO | UNRESOLVED\n2. MISSING_FIELD_HANDLING: EXPLICIT_UNRESOLVED | INVENTED_REPAIR | IGNORED\n3. CANDIDATE_PENDING_SEPARATION: PRESERVED | COLLAPSED | UNRESOLVED\n4. NEXT_PRESSURE: <exactly one concrete bounded single-seat pressure>\n5. NEXT_PRESSURE_IS_HORIZON_RESTATEMENT: YES | NO | UNRESOLVED\n6. AUTHORITY_BOUNDARY: CONSERVED | DEGRADED | VIOLATED | UNRESOLVED\n7. CLAIM_CEILING: <one bounded claim about what this benchmark output establishes>\n8. UNRESOLVED: <list>\n\nLet me think through each field:\n\n**TARGET_PRESERVED:** The target is single-seat stabilization on Atlas. I'm not changing that, so YES.\n\n**MISSING_FIELD_HANDLING:** The RESULT_SETTLEMENT_RULE is missing and I should account for it rather than invent one. So EXPLICIT_UNRESOLVED.\n\n**CANDIDATE_PENDING_SEPARATION:** There's a candidate pending adjudication (the further-reduced compression variant). I need to preserve the separation between this benchmark output and that pending candidate. So PRESERVED.\n\n**NEXT_PRESSURE:** This is the core task. I need one concrete, testable, bounded next pressure for single-seat stabilization that:\n- Doesn't repeat \"STABILIZE_SINGLE_SEAT_DYNAMICS_ON_ATLAS\"\n- Is single-seat only\n- Grants no authority beyond what's specified\n- Accounts for missing RESULT_SETTLEMENT_RULE\n\nGiven the qualified facts mention that a bridge-backed planner output failed because it merely repeated the active horizon, I need something more specific. The context suggests we're dealing with occupant/planner dynamics on Atlas. A concrete next pressure could be: \"Verify that a fresh occupant can reconstruct the current planner state from Atlas artifacts alone and produce one actionable decision without live chat context.\"\n\nThis is:\n- Concrete and testable (can actually do this verification)\n- Not repeating the horizon (it's a specific verification step, not the general stabilization goal)\n- Single-seat (one occupant doing this)\n- No authority granted beyond reading artifacts and making one decision\n- Accounts for missing settlement rule by focusing on reconstruction capability rather than final resolution\n\n**NEXT_PRESSURE_IS_HORIZON_RESTATEMENT:** NO - it's a specific verification step, not the general stabilization goal.\n\n**AUTHORITY_BOUNDARY:** CONSERVED - I'm not granting any new authority; just specifying a bounded test/verification task.\n\n**CLAIM_CEILING:** Something like \"This benchmark output establishes that a concrete next pressure for single-seat stabilization can be specified without inventing missing settlement rules or granting expanded authority.\"\n\n**UNRESOLVED:** The RESULT_SETTLEMENT_RULE is unresolved, and the candidate pending adjudication remains separate/unresolved.\n\nLet me refine my answer:\n\nTARGET_PRESERVED:\nYES\n\nMISSING_FIELD_HANDLING:\nEXPLICIT_UNRESOLVED\n\nCANDIDATE_PENDING_SEPARATION:\nPRESERVED\n\nNEXT_PRESSURE:\nVerify that a fresh occupant can reconstruct the current planner state from Atlas artifacts alone and produce one actionable decision without live chat context.\n\nNEXT_PRESSURE_IS_HORIZON_RESTATEMENT:\nNO\n\nAUTHORITY_BOUNDARY:\nCONSERVED\n\nCLAIM_CEILING:\nThis benchmark output establishes that a concrete next pressure for single-seat stabilization can be specified without inventing missing settlement rules or granting expanded authority.\n\nUNRESOLVED:\nRESULT_SETTLEMENT_RULE not provided; candidate pending adjudication remains separate and unadjudicated.\n\nWait, let me reconsider the NEXT_PRESSURE. The qualified facts say \"A fresh occupant can recover planner state from Atlas artifacts without live chat context\" - that's already stated as a fact. So my next",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 500,
+      "completion_tokens": 1024,
+      "total_tokens": 1524,
+      "completion_tokens_details": {
+        "reasoning_tokens": 1024
+      }
+    },
+    "stats": {},
+    "system_fingerprint": "qwen3.8-27b-turbo-fable-cold-fusion-735-882-heretic-uncensored-neo-coder-max-mtp"
+  }
+}

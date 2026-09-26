@@ -1,0 +1,97 @@
+# ATLAS RELATION CONVERGENCE / REPRESENTATION NON-COLLAPSE CANDIDATE V0
+
+OBJECT_TYPE:
+DISTINCTION_CANDIDATE
+
+OBJECT_ID:
+ATLAS_RELATION_CONVERGENCE_NONCOLLAPSE_CANDIDATE_V0
+
+STANDING:
+CANDIDATE_ONLY
+
+SOURCE_BASIS:
+- Cell 003M frozen Run A output
+- Planning Cell 001 P5 frozen output
+
+SCIENTIFIC_STATUS:
+PENDING_ADJUDICATION
+
+# CANDIDATE DISTINCTIONS
+
+SAME RECOVERED CONSEQUENCE
+!=
+FORMAL EQUIVALENCE OF REPRESENTATIONS
+
+RELATION-LEVEL CONVERGENCE
+!=
+REPRESENTATION-LEVEL INTERCHANGEABILITY
+
+CONSEQUENCE EQUIVALENCE
+!=
+SUBSTITUTION EQUIVALENCE
+
+SEMANTIC PARAPHRASE
+!=
+PROTOCOL INTERCHANGEABILITY
+
+INDEPENDENTLY DERIVABLE RELATION
+!=
+DECLARED SYMBOLIC IDENTITY
+
+MEANING RECOVERY
+!=
+AUTHORITY TO SUBSTITUTE REPRESENTATIONS
+
+# CANDIDATE PROCEDURAL PRIMITIVE
+
+MULTIPLE REPRESENTATIONS
+→ MAY INDEPENDENTLY SUPPORT THE SAME CONSEQUENCE-BEARING RELATION
+
+BUT
+
+SUBSTITUTION BETWEEN REPRESENTATIONS
+→ REQUIRES SEPARATE WARRANT
+
+# METABOLIC INTERPRETATION
+
+A and B may independently support relation R while the relation A ≡ B remains unresolved.
+
+Candidate safe assimilation form:
+
+A
+→ evidence for R
+
+B
+→ evidence for R
+
+R
+→ candidate conserved consequential structure
+
+A ≡ B
+→ remains separately pressureable / unresolved
+
+This permits compression around consequence-bearing relation without requiring
+representation collapse.
+
+# DEVELOPMENT RELEVANCE
+
+Candidate horizon:
+
+CONSEQUENCE CONSERVATION
+WITHOUT
+REPRESENTATION EQUIVALENCE
+
+Second-order question:
+
+WHEN DOES RELATION-LEVEL CONVERGENCE BECOME SUFFICIENT FOR DOWNSTREAM USE
+WITHOUT BECOMING REPRESENTATION SUBSTITUTION?
+
+# CLAIM CEILING
+
+This artifact records a candidate distinction inferred from current frozen
+results.
+
+It is not scientifically admitted until the relevant outputs are adjudicated.
+
+No generic semantic equivalence, generic substitution law, autonomous routing,
+or foreign-system metabolism capability is established.

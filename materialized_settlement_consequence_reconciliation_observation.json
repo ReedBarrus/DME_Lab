@@ -1,0 +1,51 @@
+{
+  "object_type": "MATERIALIZED_SETTLEMENT_CONSEQUENCE_RECONCILIATION_OBSERVATION_V0",
+  "repo_head": "397e2e99f1cd86cabb81f9f3cd694509022c54be",
+  "fixture_posture": "DISPOSABLE_EXACT_MATERIALIZED_CONSEQUENCE_FIXTURE",
+  "successor_id": "successor:sha256:9738d8909163cf8997a7c6ca78f0225eb8872c8b28d9c64531679a95ee957531",
+  "work_spec_id": "successor-work-spec:sha256:f954e25afe5de58e95b6e2155a77c04c186ef26e7c0e56f27a863158851967e6",
+  "materialized_unit_integrity_sha256": "e40bf89e0a236c89946003f7326000effa018911e901f439101811f25a6fd397",
+  "settlement_id": "materialized-invocation-result-candidate-settlement:sha256:5c3c8e7d49d1ddc23c7352b5f1580982e7aa7417bd303c4a1aa8dbad98957788",
+  "settlement_only": {
+    "composition_id": "materialized-settlement-consequence-reconciliation:sha256:9170ec2f79be913fcb09b48d81eef412c7b848729d2ea1bd32ae6dbd144be72d",
+    "basis_disposition": "STILL_BLOCKED"
+  },
+  "matched": {
+    "composition_id": "materialized-settlement-consequence-reconciliation:sha256:04719abab92fef5f17a63ee36500748894d4e7e47054c72f105a8b28c4fe06a7",
+    "consequence_id": "materialized-settled-result-consequence:sha256:ef704e4ac57a395857d2dd3e0ae03c5d86cd295f63cd98c0af0154fcf14be9c1",
+    "evaluation_id": "materialized-settled-result-consequence-evaluation:sha256:58873d04fdd6c65844be0fff12f432381006e5b024ed664afdc540e7c06d6c94",
+    "reconciliation_identity": "091ad5b9dcdb6a40085d7f0318ab630bf0656d272d1046577500ae2e1ed66516",
+    "basis_disposition": "SATISFIED"
+  },
+  "contradicted": {
+    "composition_id": "materialized-settlement-consequence-reconciliation:sha256:4e616ec078cf3b08bb674fda149b9697b6289f0c101cbaf56d7e6c43a129e7ec",
+    "consequence_id": "materialized-settled-result-consequence:sha256:7562f8f0d99faa16561f024b645fbd0b0622af53709a7fdaeb7b9d4d0a96ca1e",
+    "evaluation_id": "materialized-settled-result-consequence-evaluation:sha256:ab00987183475b483a03816ffc0e5b3d08832bbaa1385794acccaff5f67fc208",
+    "reconciliation_identity": "7ac86bc1a86d237696c64a9d0597f7ceca2edacc8deef6f0f3eac1e85519466e",
+    "basis_disposition": "INVALIDATED"
+  },
+  "wrong_materialization": {
+    "error_type": "MaterializedSettlementConsequenceError",
+    "error": "settlement/materialized unit mismatch"
+  },
+  "assertions": {
+    "settlement_only_still_blocked": true,
+    "matched_consequence_satisfies": true,
+    "contradicted_consequence_invalidates": true,
+    "same_settlement_identity": true,
+    "consequence_identities_differ": true,
+    "evaluation_identities_differ": true,
+    "reconciliation_identities_differ": true,
+    "successor_lineage_bound": true,
+    "work_spec_lineage_bound": true,
+    "materialized_unit_lineage_bound": true,
+    "wrong_materialization_rejected": true,
+    "no_effects_created": true
+  },
+  "all_assertions_pass": true,
+  "claim_ceiling": "At the exact supplied source, one exact materialized candidate settlement remains insufficient to reconcile the active basis without separately supplied consequence evidence. Independently supplied matched consequence evidence drives the existing bounded reconciliation law to SATISFIED when the obstruction is supplied as RESOLVED, while contradicted consequence evidence drives it to INVALIDATED. The same settlement identity yields distinct bounded basis postures only under distinct consequence/evaluation evidence, while exact successor, work-spec, and materialized-unit lineage is conserved. No authority, execution, Atlas mutation, or scientific standing is created.",
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "scientific_standing_effect": "NONE",
+  "stopped": "YES"
+}

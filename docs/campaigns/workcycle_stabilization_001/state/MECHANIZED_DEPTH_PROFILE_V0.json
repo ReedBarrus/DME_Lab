@@ -1,0 +1,218 @@
+{
+  "object_type": "MECHANIZED_DEPTH_PROFILE_V0",
+  "campaign_id": "WORKCYCLE_STABILIZATION_001",
+  "governing_law": "STRONGER_CLAIM_REQUIRES_ONE_NEW_MECHANICALLY_WITNESSED_RELATION",
+  "current_horizon": "H_operate",
+  "admission_depth": {
+    "eligibility": {
+      "posture": "QUALIFIED_NARROWED",
+      "evidence": "ONE_SUCCESSOR_MATCHED",
+      "claim": "Single-threaded continuation eligibility under externally serialized reservation."
+    },
+    "successor_identity_binding": {
+      "posture": "QUALIFIED",
+      "evidence": "SUCCESSOR_IDENTITY_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/SUCCESSOR_IDENTITY_CONSERVATION_PRESSURE_RESULT_001.md",
+      "implementation": "src/coordination/basis_workcycle_v1.py::derive_successor_candidate",
+      "tests": "tests/coordination/test_basis_workcycle_v1.py",
+      "claim": "Under exact supplied campaign/work/basis/frame/reconciliation/posture coordinates, successor candidate identity is deterministic and reconstructable; material reconciliation change changes identity; CLOSE/HOLD produce no successor candidate."
+    },
+    "budget_reservation": {
+      "posture": "QUALIFIED_SAME_PROCESS_TWO_CALLER",
+      "evidence": "ATOMIC_ADMISSION_MATCHED"
+    },
+    "seat_lease_binding": {
+      "posture": "QUALIFIED_SAME_PROCESS_TWO_CALLER",
+      "evidence": "ATOMIC_ADMISSION_MATCHED"
+    },
+    "work_attempt_identity_binding": {
+      "posture": "QUALIFIED_SAME_PROCESS_TWO_CALLER",
+      "evidence": "ATOMIC_ADMISSION_MATCHED"
+    },
+    "authority_verification": {
+      "posture": "QUALIFIED",
+      "evidence": "AUTHORITY_BINDING_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/AUTHORITY_BINDING_PRESSURE_RESULT_001.md",
+      "claim": "One exact locally issued authority envelope was read-only verified against current single-process local authority state as ACTIVE with one remaining use at bound principal/request/input/model/executor/policy coordinates."
+    },
+    "thread_contention": {
+      "posture": "QUALIFIED_CURRENT_SOURCE_SAME_PROCESS",
+      "evidence": "ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/ATOMIC_ADMISSION_WINDOWS_LOCK_REPAIR_RESULT_001.md",
+      "source_ref": "11da60ee7b6de02dcea39537301c6c317cd44d9b",
+      "implementation": "src/coordination/atomic_admission_v0.py::_acquire_lock",
+      "claim": "Same-process two-caller local-filesystem atomic admission re-earned at repaired source; Windows PermissionError is bounded contention and persistent acquisition failure remains fail-closed."
+    },
+    "process_contention": {
+      "posture": "UNTESTED"
+    },
+    "crash_recovery": {
+      "posture": "UNTESTED"
+    },
+    "durability": {
+      "posture": "UNTESTED"
+    },
+    "replay_resistance": {
+      "posture": "UNTESTED_AT_ADMISSION_LAYER"
+    },
+    "cross_host": {
+      "posture": "OUT_OF_SCOPE"
+    },
+    "materialized_unit_authority_binding": {
+      "posture": "REPAIR_WITNESSED_AWAITING_ADJUDICATION",
+      "fracture_evidence": "MATERIALIZED_UNIT_AUTHORITY_BINDING_FRACTURED",
+      "fracture_result": "docs/campaigns/workcycle_stabilization_001/pressure_runs/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_RESULT_001.md",
+      "repaired_source_ref": "9ce423bfc53610e0b650927709baeedfce360030",
+      "witness_transport_ref": "2529aec9996d796636fb5f1806563561c7bd6843",
+      "repair_implementation": "src/coordination/materialized_unit_authority_admission_v0.py",
+      "repair_tests": "tests/coordination/test_materialized_unit_authority_admission_v0.py",
+      "repair_observer": "tools/observe_materialized_unit_authority_binding_repair_v0.py",
+      "witness": "materialized_unit_authority_binding_repair_observation.json",
+      "adjudication_packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_001_ADJUDICATION_READY_TO_SEND.md",
+      "observed": "Exact authority for successor+spec A+unit A admits A; the same successor paired with spec B+unit B is blocked by authority_request_materialized_work_mismatch. The receipt binds exact successor, work-spec, and materialized-unit identities; authority remains unconsumed; no model invocation or execution occurs.",
+      "claim": "No repaired exact materialized-work authority standing until independent adjudication."
+    },
+    "materialized_admitted_authority_consumption": {
+      "posture": "QUALIFIED",
+      "evidence": "MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_RESULT_001.md",
+      "claim": "Exact admitted materialized work crosses one one-shot callback under exact authority consumption; replay and wrong materialization are blocked; raw return remains uninterpreted."
+    }
+  },
+  "metabolic_depth": {
+    "bounded_workcycle": {
+      "posture": "QUALIFIED",
+      "evidence": "QUALIFIED_BOUNDED_WORKCYCLE"
+    },
+    "basis_reconciliation": {
+      "posture": "QUALIFIED",
+      "evidence": "BASIS_RECONCILIATION_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/BASIS_RECONCILIATION_PRESSURE_RESULT_001.md",
+      "implementation": "src/coordination/basis_workcycle_v1.py::derive_basis_reconciliation_from_evidence"
+    },
+    "successor_posture_derivation": {
+      "posture": "IMPLEMENTED_UNPRESSURED",
+      "vocabulary": [
+        "APPLY_QUALIFIED_RESULT",
+        "OBSERVE_APPLICATION_CONSEQUENCE",
+        "RESOLVE_LOAD_BEARING_GAP",
+        "CLOSE_BASIS",
+        "HOLD_NO_JUSTIFIED_WORK"
+      ]
+    },
+    "exact_successor_identity_derivation": {
+      "posture": "QUALIFIED",
+      "evidence": "SUCCESSOR_IDENTITY_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/SUCCESSOR_IDENTITY_CONSERVATION_PRESSURE_RESULT_001.md",
+      "implementation": "src/coordination/basis_workcycle_v1.py::derive_successor_candidate"
+    },
+    "verified_authority_to_atomic_admission": {
+      "posture": "QUALIFIED",
+      "evidence": "VERIFIED_AUTHORITY_ATOMIC_ADMISSION_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/VERIFIED_AUTHORITY_ATOMIC_ADMISSION_PRESSURE_RESULT_001.md",
+      "implementation": "src/coordination/verified_authority_admission_v0.py::try_verified_authority_atomic_admission",
+      "claim": "Current verified one-use authority for the exact sealed successor is qualified in one same-process atomic admission transition; authority remains unconsumed and no execution occurs."
+    },
+    "real_bounded_execution_in_chain": {
+      "posture": "UNTESTED"
+    },
+    "consequence_settlement_in_chain": {
+      "posture": "UNTESTED"
+    },
+    "second_successor_mechanically_derived": {
+      "posture": "QUALIFIED_REPAIRED",
+      "evidence": "SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_RESULT_001.md",
+      "repaired_source_ref": "9dd552c0e15bd7e012eb625ded7f167e5074f3fb",
+      "claim": "Fresh reconciliation controls next-work posture; PARTIALLY_SATISFIED derives one deterministic exact successor projection, SATISFIED closes with no successor, INVALIDATED holds with no successor, and history is preserved."
+    },
+    "repeated_metabolic_loop": {
+      "posture": "UNTESTED",
+      "required_standing": "REPEATED_METABOLIC_LOOP_MATCHED"
+    },
+    "injected_fracture_recovery": {
+      "posture": "UNTESTED_AT_CHAIN_LEVEL"
+    },
+    "noisy_workload_fitness": {
+      "posture": "UNTESTED"
+    },
+    "admitted_authority_consumption": {
+      "posture": "QUALIFIED",
+      "evidence": "ADMITTED_AUTHORITY_CONSUMPTION_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_RESULT_001.md",
+      "implementation": "src/coordination/admitted_authority_consumption_v0.py::consume_admitted_authority_once",
+      "claim": "One exact admitted successor is qualified crossing one-shot authority consumption and a disposable invocation callback with replay denied and post-reservation failure conserved as RECOVERY_REQUIRED."
+    },
+    "invocation_result_witness": {
+      "posture": "QUALIFIED",
+      "evidence": "INVOCATION_RESULT_WITNESS_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/INVOCATION_RESULT_WITNESS_PRESSURE_RESULT_001.md",
+      "implementation": "src/observation/invocation_result_witness_v0.py::build_invocation_result_witness",
+      "claim": "One exact admitted and one-shot-consumed attempt is qualified binding its raw callback return into one deterministic immutable result witness without semantic interpretation, settlement, external-effect inference, authority, or standing."
+    },
+    "invocation_result_settlement": {
+      "posture": "QUALIFIED",
+      "evidence": "INVOCATION_RESULT_SETTLEMENT_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/INVOCATION_RESULT_SETTLEMENT_PRESSURE_RESULT_001.md",
+      "implementation": "src/coordination/invocation_result_settlement_v0.py::build_candidate_settlement",
+      "claim": "One immutable result witness is qualified receiving externally supplied field-level candidate dispositions and explicit bases in a deterministic settlement record without qualification, authority, execution, external consequence, or Atlas mutation."
+    },
+    "settlement_consequence_reconciliation": {
+      "posture": "QUALIFIED",
+      "evidence": "SETTLEMENT_CONSEQUENCE_RECONCILIATION_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_RESULT_001.md",
+      "implementation": "src/coordination/settlement_consequence_reconciliation_v0.py",
+      "claim": "The same settlement can remain STILL_BLOCKED without consequence, reach SATISFIED under independently supplied matched consequence with resolved obstruction, or reach INVALIDATED under contradicted consequence; no successor derivation is established."
+    },
+    "successor_work_unit_materialization": {
+      "posture": "QUALIFIED",
+      "evidence": "SUCCESSOR_WORK_UNIT_MATERIALIZATION_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_RESULT_001.md",
+      "implementation": "src/coordination/successor_work_unit_materialization_v0.py",
+      "claim": "Exact successor + explicit externally supplied bounded work spec deterministically materializes one complete next workflow unit; successor identity and work-spec identity remain distinct; no admission, authority, execution, or standing is created."
+    }
+  },
+  "next_load_bearing_coordinate": {
+    "coordinate": "materialized_invocation_result_settlement",
+    "pressure": "MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_ADJUDICATION",
+    "selection_basis": "The exact materialized settlement witness has clean witness-only transport. Independent adjudication is required before consequence evidence composition."
+  },
+  "downstream_frontier": [
+    "pressure exact materialized candidate settlement",
+    "bind independent consequence evidence to exact materialized settlement",
+    "reconcile the exact materialized successor basis",
+    "derive successor3 and freeze the consequence spine",
+    "activate post-consequence control/economy projection"
+  ],
+  "deferred_nonblocking": [
+    "cross-process admission contention",
+    "stale-lock recovery",
+    "power-loss durability"
+  ],
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "scientific_standing_effect": "NONE",
+  "claim_ceiling": "Frontier map only. Coordinate posture does not itself create standing; each stronger claim requires one new mechanically witnessed relation.",
+  "observation_depth": {
+    "materialized_invocation_result_witness": {
+      "posture": "QUALIFIED",
+      "evidence": "MATERIALIZED_INVOCATION_RESULT_WITNESS_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_RESULT_001.md",
+      "claim": "Exact consumed materialized work plus raw callback return -> deterministic immutable result witness with full exact-work lineage; no interpretation, settlement, consequence, authority, execution standing, or scientific standing."
+    }
+  },
+  "settlement_depth": {
+    "materialized_invocation_result_settlement": {
+      "posture": "WITNESSED_AWAITING_ADJUDICATION",
+      "implementation": "src/coordination/materialized_invocation_result_settlement_v0.py",
+      "tests": "tests/coordination/test_materialized_invocation_result_settlement_v0.py",
+      "observer": "tools/observe_materialized_invocation_result_settlement_v0.py",
+      "witness": "materialized_invocation_result_settlement_observation.json",
+      "witness_source_ref": "8680b6a50f10acd43e34775cd272ddb5cfeeb4c3",
+      "witness_transport_ref": "3f363a06d865f75484838ea13e2a4dab8023c67a",
+      "adjudication_packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+      "observed": "One immutable exact materialized-work result witness receives externally supplied field-level candidate dispositions and explicit bases in one deterministic settlement record while conserving exact successor/work-spec/materialized-unit/admission/consumption/attempt/output lineage. Candidate acceptance creates no qualification; no external consequence, authority, execution, Atlas mutation, or standing is created.",
+      "claim": "No exact materialized settlement standing until independent adjudication."
+    }
+  }
+}

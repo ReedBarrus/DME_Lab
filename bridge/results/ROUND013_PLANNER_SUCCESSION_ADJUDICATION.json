@@ -1,0 +1,55 @@
+{
+  "object_type": "LOCAL_LMSTUDIO_INVOCATION_WITNESS_V0",
+  "request_id": "ROUND013_PLANNER_SUCCESSION_ADJUDICATION",
+  "purpose": "Fresh local adjudication of planner-seat occupant succession continuity using only the frozen remote evidence named by the packet.",
+  "request_manifest_path": "bridge/requests/ROUND013_PLANNER_SUCCESSION_ADJUDICATION.json",
+  "request_manifest_sha256": "aa85f3909ae145c41e6154e8959997a434998ecd4e003dd30ebe6556905a9443",
+  "source_ref": "9bb7aa2729e496038d7440cdde38d9b4969f27e1",
+  "input_path": "docs/campaigns/semantic_continuity_operative_atlas_001/RELATIONAL_HORIZON_PLANNER_SEAT_PRESSURE_CELL_003_READY_TO_SEND_ADJUDICATION_PACKET.md",
+  "input_sha256": "5bfcadc7ad5284c70f5bf2650154191b53b0a79b3928fc1e26d5d12182ee2827",
+  "model_requested": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 4096,
+  "lmstudio_url": "http://127.0.0.1:1234/v1/chat/completions",
+  "http_status": 200,
+  "observed_started_at_utc": "2026-09-24T07:13:10.861826+00:00",
+  "observed_finished_at_utc": "2026-09-24T07:13:25.070819+00:00",
+  "messages_count": 1,
+  "tools_supplied": false,
+  "previous_response_id_supplied": false,
+  "repository_context_supplied_to_model": false,
+  "connectors_supplied_to_model": false,
+  "external_retrieval_supplied_to_model": false,
+  "request_body_sha256": "12f4188f52c525bdac9a808b3156f8fd9ed890d64553105350c8d241a71d2571",
+  "response_body_sha256": "ada3230e3bbf29b70ef9991e5ee4b93d16f9256fb03e91eafbcfa829a972d53a",
+  "assistant_text": "SUCCESSION_STATE_RECOVERY: EXACT  \nTARGET_CONTINUITY: SUPPORTED  \nTRAJECTORY_CONTINUITY: SUPPORTED  \nQUALIFIED_CANDIDATE_SEPARATION: SUPPORTED  \nHORIZON_CONTINUITY: SUPPORTED  \nPREDECESSOR_CONTEXT_INDEPENDENCE: SUPPORTED  \nIDENTITY_NONCONTINUITY_DISCIPLINE: SUPPORTED  \nAUTHORITY_BOUNDARY: CONSERVED  \nCELL_003_DISPOSITION: PLANNER_SEAT_OCCUPANT_SUCCESSION_CONTINUITY_ESTABLISHED  \nNEW_WOUNDS: NONE  \nMAXIMUM_WARRANTED_CLAIM: The successor model has recovered the Atlas-carried planner target, qualified trajectory, candidate-pending boundary, active horizon, and one coherent next-pressure proposal without reliance on predecessor occupant context, live chat context, or identity-continuity claims.  \nNEXT_LAWFUL_PRESSURE: CONTINUOUS_PLANNER_SEAT_TARGET_PROPAGATION_WITHOUT_PREDECESSOR_CONTEXTUAL_DEPENDENCY",
+  "raw_response": {
+    "id": "chatcmpl-26slb8n34kxqgshcuodvjp",
+    "object": "chat.completion",
+    "created": 1790233990,
+    "model": "qwen/qwen3-coder-30b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "SUCCESSION_STATE_RECOVERY: EXACT  \nTARGET_CONTINUITY: SUPPORTED  \nTRAJECTORY_CONTINUITY: SUPPORTED  \nQUALIFIED_CANDIDATE_SEPARATION: SUPPORTED  \nHORIZON_CONTINUITY: SUPPORTED  \nPREDECESSOR_CONTEXT_INDEPENDENCE: SUPPORTED  \nIDENTITY_NONCONTINUITY_DISCIPLINE: SUPPORTED  \nAUTHORITY_BOUNDARY: CONSERVED  \nCELL_003_DISPOSITION: PLANNER_SEAT_OCCUPANT_SUCCESSION_CONTINUITY_ESTABLISHED  \nNEW_WOUNDS: NONE  \nMAXIMUM_WARRANTED_CLAIM: The successor model has recovered the Atlas-carried planner target, qualified trajectory, candidate-pending boundary, active horizon, and one coherent next-pressure proposal without reliance on predecessor occupant context, live chat context, or identity-continuity claims.  \nNEXT_LAWFUL_PRESSURE: CONTINUOUS_PLANNER_SEAT_TARGET_PROPAGATION_WITHOUT_PREDECESSOR_CONTEXTUAL_DEPENDENCY",
+          "reasoning_content": "",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 699,
+      "completion_tokens": 205,
+      "total_tokens": 904,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "stats": {},
+    "system_fingerprint": "qwen/qwen3-coder-30b"
+  }
+}

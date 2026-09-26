@@ -1,0 +1,12 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0",
+  "request_id": "ROUND024R_AMBIGUOUS_OUTCOME_RETRY_GATING_MICRO_REPAIR",
+  "enabled": true,
+  "source_ref": "faa19b6875d3ed18be6b37e8c8e863b4ee8bcd42",
+  "input_path": "bridge/prompts/ROUND024R_AMBIGUOUS_OUTCOME_RETRY_GATING_MICRO_REPAIR_READY_TO_SEND.md",
+  "input_sha256": "af12bfacc19861d5c927fa6b22ef25a532cf53bf4557781a9de972cf22a97f04",
+  "model": "qwen/qwen3-coder-30b",
+  "temperature": 0,
+  "max_tokens": 512,
+  "purpose": "Repair only attempt-identity conservation and retry-warrant gating after Round 024 independently confirmed both defects."
+}

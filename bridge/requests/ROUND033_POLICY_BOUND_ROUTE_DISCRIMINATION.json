@@ -1,0 +1,13 @@
+{
+  "schema_version": "LOCAL_INVOCATION_REQUEST_V0_1",
+  "request_id": "ROUND033_POLICY_BOUND_ROUTE_DISCRIMINATION",
+  "enabled": true,
+  "source_ref": "a2c10333b0aef30abb8a748a8455965c48e300bc",
+  "input_path": "bridge/prompts/ROUND033_POLICY_BOUND_ROUTE_DISCRIMINATION_READY_TO_SEND.md",
+  "input_blob_sha": "4af7f1b52a402a1312769d24899da7a6fc3bf14f",
+  "principal_id": "CODEX_PRINCIPAL_001",
+  "model": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 512,
+  "purpose": "Pressure policy-bound discrimination across all four post-settlement routes without qualification, authority change, witness mutation, Atlas mutation, or execution."
+}

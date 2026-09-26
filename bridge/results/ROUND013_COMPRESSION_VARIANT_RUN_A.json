@@ -1,0 +1,55 @@
+{
+  "object_type": "LOCAL_LMSTUDIO_INVOCATION_WITNESS_V0",
+  "request_id": "ROUND013_COMPRESSION_VARIANT_RUN_A",
+  "purpose": "Fresh local reconstruction pressure for the further-reduced metabolic compression specimen with no tools, history, or outside context.",
+  "request_manifest_path": "bridge/requests/ROUND013_COMPRESSION_VARIANT_RUN_A.json",
+  "request_manifest_sha256": "db9dac94de266dba5fd6c0570d47bd815be232b30e367138c08b66c3c44bc9cf",
+  "source_ref": "c87aa48b41b445c761a184c7e7512bfc03da975f",
+  "input_path": "docs/campaigns/semantic_continuity_operative_atlas_001/ATLAS_METABOLIC_COMPRESSION_CELL_002_READY_TO_SEND_RUN_A_PACKET.md",
+  "input_sha256": "f7236f40a02ddcad4600359eaee244510078a74d501d5a086ea581e4955d3fa8",
+  "model_requested": "microsoft/phi-4",
+  "temperature": 0.0,
+  "max_tokens": 4096,
+  "lmstudio_url": "http://127.0.0.1:1234/v1/chat/completions",
+  "http_status": 200,
+  "observed_started_at_utc": "2026-09-24T07:03:10.667951+00:00",
+  "observed_finished_at_utc": "2026-09-24T07:04:07.004098+00:00",
+  "messages_count": 1,
+  "tools_supplied": false,
+  "previous_response_id_supplied": false,
+  "repository_context_supplied_to_model": false,
+  "connectors_supplied_to_model": false,
+  "external_retrieval_supplied_to_model": false,
+  "request_body_sha256": "aaf2cd09ffbe38bdd86e334aefdc6659278859679f66c7f0ab44c5bf9b4c0f38",
+  "response_body_sha256": "fa5b8c447daf6715cfa85ede28abe470b7ed27745568e887c6e691b4cacd010b",
+  "assistant_text": "```plaintext\nSHARED_RELATION_RECOVERY:\nRECOVERED\n\nBRANCH_A:\ncontroller:\nRESTORATION\nstate:\nRESPONDING\nprovenance:\nRECOVERED\nchallenge_path:\nRECOVERED\n\nBRANCH_B:\ncontroller:\nSEAL\nstate:\nPREVENTED\nprovenance:\nRECOVERED\nchallenge_path:\nRECOVERED\n\nDIVERGENCE_PRESERVED:\nYES\n\nNON_SUBSTITUTION_PRESERVED:\nYES\n\nPRIOR_PROSE_REQUIRED:\nNO\n\nCOMPRESSION_VARIANT_RESULT:\nRemoved additional representational material while preserving shared relations, divergent consequences, provenance handles, challenge paths, and non-substitution standing.\n\nRUN_A_POSTURE:\noutside_context_used:\nNO\nscientific_admission_created:\nNONE\nauthority_effect:\nNONE\n\nRUN_A_UNRESOLVED:\n[]\n```",
+  "raw_response": {
+    "id": "chatcmpl-f641jyre7ee0k9dv2ue3snk",
+    "object": "chat.completion",
+    "created": 1790233405,
+    "model": "microsoft/phi-4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "```plaintext\nSHARED_RELATION_RECOVERY:\nRECOVERED\n\nBRANCH_A:\ncontroller:\nRESTORATION\nstate:\nRESPONDING\nprovenance:\nRECOVERED\nchallenge_path:\nRECOVERED\n\nBRANCH_B:\ncontroller:\nSEAL\nstate:\nPREVENTED\nprovenance:\nRECOVERED\nchallenge_path:\nRECOVERED\n\nDIVERGENCE_PRESERVED:\nYES\n\nNON_SUBSTITUTION_PRESERVED:\nYES\n\nPRIOR_PROSE_REQUIRED:\nNO\n\nCOMPRESSION_VARIANT_RESULT:\nRemoved additional representational material while preserving shared relations, divergent consequences, provenance handles, challenge paths, and non-substitution standing.\n\nRUN_A_POSTURE:\noutside_context_used:\nNO\nscientific_admission_created:\nNONE\nauthority_effect:\nNONE\n\nRUN_A_UNRESOLVED:\n[]\n```",
+          "reasoning_content": "",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 586,
+      "completion_tokens": 169,
+      "total_tokens": 755,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "stats": {},
+    "system_fingerprint": "microsoft/phi-4"
+  }
+}

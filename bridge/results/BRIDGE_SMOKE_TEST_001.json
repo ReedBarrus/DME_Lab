@@ -1,0 +1,55 @@
+{
+  "object_type": "LOCAL_LMSTUDIO_INVOCATION_WITNESS_V0",
+  "request_id": "BRIDGE_SMOKE_TEST_001",
+  "purpose": "Safe disabled smoke test for the local LM Studio invocation bridge.",
+  "request_manifest_path": "bridge/requests/BRIDGE_SMOKE_TEST_001.json",
+  "request_manifest_sha256": "8ba8330d846e8bbf8a86a84674c2e1c17c45a6d9bc605fb1a0724efdea486c6d",
+  "source_ref": "1a5116ac79b5a51056f256010bf9d5927078396b",
+  "input_path": "bridge/prompts/BRIDGE_SMOKE_TEST_001.txt",
+  "input_sha256": "555acb9c886e9f38e71768e5c02ea91e868fe9c75e7e392e06043b7519bb46a0",
+  "model_requested": "qwen/qwen3-coder-30b",
+  "temperature": 0.0,
+  "max_tokens": 64,
+  "lmstudio_url": "http://127.0.0.1:1234/v1/chat/completions",
+  "http_status": 200,
+  "observed_started_at_utc": "2026-09-22T15:49:27.255717+00:00",
+  "observed_finished_at_utc": "2026-09-22T15:49:28.401834+00:00",
+  "messages_count": 1,
+  "tools_supplied": false,
+  "previous_response_id_supplied": false,
+  "repository_context_supplied_to_model": false,
+  "connectors_supplied_to_model": false,
+  "external_retrieval_supplied_to_model": false,
+  "request_body_sha256": "7ce9bee94463b11d6145b171153fc8b2da16beee4900bd3b990b410de51b672d",
+  "response_body_sha256": "ccfdd468ac020dca5d9cbf026d9d20c807a7938e510c5c6b4700331a1e5cce6b",
+  "assistant_text": "DME_LOCAL_BRIDGE_OK",
+  "raw_response": {
+    "id": "chatcmpl-4iw7pw6ggzsauq01kypudw",
+    "object": "chat.completion",
+    "created": 1790092167,
+    "model": "qwen/qwen3-coder-30b",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "DME_LOCAL_BRIDGE_OK",
+          "reasoning_content": "",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 25,
+      "completion_tokens": 7,
+      "total_tokens": 32,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "stats": {},
+    "system_fingerprint": "qwen/qwen3-coder-30b"
+  }
+}

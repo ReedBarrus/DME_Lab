@@ -1,0 +1,81 @@
+{
+  "object_type": "MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_OBSERVATION_V0",
+  "repo_head": "793672dbce01ecd0a5ecdb0cfe79f8487eed53f2",
+  "fixture_posture": "DISPOSABLE_EXACT_MATERIALIZED_WORK_CONSUMPTION_FIXTURE",
+  "successor_id": "successor:sha256:9738d8909163cf8997a7c6ca78f0225eb8872c8b28d9c64531679a95ee957531",
+  "successor_integrity_sha256": "cc09c7bf301a6c3e7dbb6bbee1d8a4c65351048a2f4977e7c7fc13226e8958dc",
+  "work_spec_id": "successor-work-spec:sha256:f954e25afe5de58e95b6e2155a77c04c186ef26e7c0e56f27a863158851967e6",
+  "work_spec_integrity_sha256": "137e6bf380882f9abb9406ff7c048d3d1b6f7cb057f6d2ee0a527b6a81f9a2fd",
+  "materialized_work_item_id": "successor:sha256:9738d8909163cf8997a7c6ca78f0225eb8872c8b28d9c64531679a95ee957531",
+  "materialized_unit_integrity_sha256": "e40bf89e0a236c89946003f7326000effa018911e901f439101811f25a6fd397",
+  "admission_composition_id": "materialized-unit-verified-authority-atomic-admission:sha256:45d516c4038f4688f09064c839bdc6e12100b052e75bc9623accadf4270f26ca",
+  "authority_capability_id": "CAP.MATERIALIZED.CONSUME.001",
+  "consumption_receipt": {
+    "object_type": "MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_RECEIPT_V0",
+    "composition_id": "materialized-unit-verified-authority-atomic-admission:sha256:45d516c4038f4688f09064c839bdc6e12100b052e75bc9623accadf4270f26ca",
+    "atomic_admission_id": "atomic-admission:sha256:0fa3724ebd7f92c55f9347de648dbb0fe864707cdb3f41fb994120cde9584c5f",
+    "successor_id": "successor:sha256:9738d8909163cf8997a7c6ca78f0225eb8872c8b28d9c64531679a95ee957531",
+    "successor_integrity_sha256": "cc09c7bf301a6c3e7dbb6bbee1d8a4c65351048a2f4977e7c7fc13226e8958dc",
+    "materialized_work_item_id": "successor:sha256:9738d8909163cf8997a7c6ca78f0225eb8872c8b28d9c64531679a95ee957531",
+    "materialized_unit_integrity_sha256": "e40bf89e0a236c89946003f7326000effa018911e901f439101811f25a6fd397",
+    "work_spec_id": "successor-work-spec:sha256:f954e25afe5de58e95b6e2155a77c04c186ef26e7c0e56f27a863158851967e6",
+    "work_spec_integrity_sha256": "137e6bf380882f9abb9406ff7c048d3d1b6f7cb057f6d2ee0a527b6a81f9a2fd",
+    "authority_binding_id": "current-authority-binding:sha256:1e2b616c2f5e81c536836711d75ca6cdc30edd74cc04718774326afe6179cc37",
+    "authority_consumption_receipt_id": "receipt:sha256:9dfbbc39cbd0cbb2b8ea5c1fbc4052bc9b5c43bbea042ffd2cb7fbccd495993f",
+    "authority_reservation_id": "reservation:sha256:46a2f6fb7d66f589176820ae4676d1f94f165350c18bd113a3f163820d30e15e",
+    "capability_id": "CAP.MATERIALIZED.CONSUME.001",
+    "work_attempt_id": "ATTEMPT-MATERIALIZED-CONSUME-001",
+    "consumption_id": "materialized-admitted-authority-consumption:sha256:120098f94a08c97b5bf17c0f90bf190f0475a717340d755465fb4574703cac46",
+    "authority_status_after": "CONSUMED",
+    "authority_remaining_uses_after": 0,
+    "authority_consumed": true,
+    "invocation_performed": true,
+    "invocation_count": 1,
+    "authority_effect": "NONE",
+    "consumption_effect": "CONSUMED_ONE_USE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE",
+    "claim_ceiling": "One exact admitted materialized-work object was rebound to the same current one-use local authority state and crossed one caller-supplied callback under one-shot consumption. The receipt conserves exact successor, work-spec, and materialized-unit identities. This does not establish semantic correctness, external consequence, settlement, production execution, or cross-process atomicity."
+  },
+  "raw_callback_return": {
+    "fixture_result": "SUCCESS",
+    "count": 1,
+    "work_item_id": "successor:sha256:9738d8909163cf8997a7c6ca78f0225eb8872c8b28d9c64531679a95ee957531"
+  },
+  "replay": {
+    "consumed": false,
+    "blockers": [
+      "authority_verification_failed"
+    ],
+    "callback_calls": []
+  },
+  "wrong_materialization": {
+    "consumed": false,
+    "blockers": [
+      "admission_materialized_unit_integrity_sha256_mismatch"
+    ],
+    "callback_calls": [],
+    "authority_status_after": "ACTIVE",
+    "authority_remaining_uses_after": 1
+  },
+  "assertions": {
+    "exact_consumed": true,
+    "exact_callback_once": true,
+    "invocation_performed_once": true,
+    "raw_return_preserved": true,
+    "receipt_binds_exact_successor": true,
+    "receipt_binds_exact_work_spec": true,
+    "receipt_binds_exact_materialized_unit": true,
+    "authority_consumed_once": true,
+    "replay_blocked_without_callback": true,
+    "wrong_materialization_blocked_before_consumption": true,
+    "no_work_execution_or_standing_created": true
+  },
+  "all_assertions_pass": true,
+  "claim_ceiling": "At the exact supplied source, one exact admitted materialized-work object can be rebound to the same current one-use local authority and cross one caller-supplied callback exactly once under one-shot consumption while conserving exact successor, work-spec, and materialized-unit identities. Replay is denied and a different materialization is blocked before consumption. The raw callback return is preserved only as an un-interpreted return value; no result witness, settlement, external consequence, work execution, or scientific standing is established.",
+  "authority_effect": "NONE",
+  "consumption_effect": "CONSUMED_ONE_USE",
+  "execution_effect": "NONE",
+  "scientific_standing_effect": "NONE",
+  "stopped": "YES"
+}

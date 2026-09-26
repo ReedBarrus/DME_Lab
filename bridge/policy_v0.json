@@ -1,0 +1,30 @@
+{
+  "policy_version": "LOCAL_LMSTUDIO_BRIDGE_POLICY_V0",
+  "remote": "origin",
+  "branch": "draci-v0-candidate-basis",
+  "request_prefix": "bridge/requests/",
+  "result_prefix": "bridge/results/",
+  "allowed_input_prefixes": [
+    "docs/campaigns/",
+    "bridge/prompts/"
+  ],
+  "allowed_models": [
+    "qwen/qwen3-coder-30b",
+    "microsoft/phi-4",
+    "qwen/qwq-32b",
+    "qwen/qwen2.5-vl-7b",
+    "hermes-3-llama-3.2-3b",
+    "meta-llama-3.1-8b-instruct",
+    "qwen3.8-27b-turbo-fable-cold-fusion-735-882-heretic-uncensored-neo-coder-max-mtp"
+  ],
+  "lmstudio_base_url": "http://127.0.0.1:1234/v1",
+  "max_prompt_bytes": 200000,
+  "max_tokens_ceiling": 8192,
+  "temperature_min": 0,
+  "temperature_max": 1,
+  "require_local_approval": true,
+  "allow_tools": false,
+  "allow_previous_response_id": false,
+  "allow_arbitrary_system_prompt": false,
+  "allow_result_push": false
+}

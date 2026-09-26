@@ -1,0 +1,55 @@
+{
+  "object_type": "LOCAL_LMSTUDIO_INVOCATION_WITNESS_V0",
+  "request_id": "ROUND015_COMPRESSION_CELL002_EVIDENCE_BUNDLE_ADJUDICATION",
+  "purpose": "Re-run compression Cell 002 adjudication with all required evidence assembled into one self-contained immutable model-visible bundle.",
+  "request_manifest_path": "bridge/requests/ROUND015_COMPRESSION_CELL002_EVIDENCE_BUNDLE_ADJUDICATION.json",
+  "request_manifest_sha256": "22a5e5702b93097290b59c831a95cbee27b3e22e05980cfb1e7ccdbc94b055a2",
+  "source_ref": "52103092a16fdbca0b0ed31f854032d6b485b86e",
+  "input_path": "bridge/prompts/ROUND015_COMPRESSION_CELL002_EVIDENCE_BUNDLE.md",
+  "input_sha256": "f9e5b963a82f378e8dbeeb80540bd631eff1f1703c9bb09b52cb37318653f02f",
+  "model_requested": "microsoft/phi-4",
+  "temperature": 0.0,
+  "max_tokens": 4096,
+  "lmstudio_url": "http://127.0.0.1:1234/v1/chat/completions",
+  "http_status": 200,
+  "observed_started_at_utc": "2026-09-24T07:46:57.315771+00:00",
+  "observed_finished_at_utc": "2026-09-24T07:49:57.650233+00:00",
+  "messages_count": 1,
+  "tools_supplied": false,
+  "previous_response_id_supplied": false,
+  "repository_context_supplied_to_model": false,
+  "connectors_supplied_to_model": false,
+  "external_retrieval_supplied_to_model": false,
+  "request_body_sha256": "a722c03560e9f2f2633f0cb1fb1ff515a292da41b7823fbcc84c606c235d9178",
+  "response_body_sha256": "5e7a39acfbb8f4505acdf6aa86436ae73eff102b92a234442bae80d9820473a0",
+  "assistant_text": "Based on the provided evidence and requirements for adjudication, here is the analysis:\n\n1. **SHARED_RELATION_PRESERVATION**: The shared relation was preserved as indicated in Evidence B (\"SHARED_RELATION_RECOVERY: RECOVERED\").  \n   - **SUPPORTED**\n\n2. **DIVERGENT_RELATION_PRESERVATION**: Divergence was explicitly stated to be preserved in Evidence B (\"DIVERGENCE_PRESERVED: YES\").\n   - **SUPPORTED**\n\n3. **PROVENANCE_PRESERVATION**: Provenance handles were recovered and preserved as per Evidence B.\n   - **SUPPORTED**\n\n4. **CHALLENGE_PATH_PRESERVATION**: Challenge paths were also recovered and preserved according to Evidence B.\n   - **SUPPORTED**\n\n5. **NON_SUBSTITUTION_PRESERVATION**: Non-substitution standing was maintained, as noted in both Evidence A and B.\n   - **SUPPORTED**\n\n6. **PRIOR_PROSE_INDEPENDENCE**: It is explicitly stated that prior prose was not required (Evidence B: \"PRIOR_PROSE_REQUIRED: NO\").\n   - **SUPPORTED**\n\n7. **CLAIM_CEILING**: The claim ceiling is conserved as the further-reduced representation supports only this specific bounded compression without establishing broader claims.\n   - **CONSERVED**\n\n8. **CELL_002_DISPOSITION**: Given that all required elements were preserved, and no new wounds or issues were introduced, further-reduced bounded compression was established.\n   - **FURTHER_REDUCED_BOUNDED_COMPRESSION_ESTABLISHED**\n\n9. **NEW_WOUNDS**: No new wounds are reported in the evidence provided.\n   - **NONE**\n\n10. **MAXIMUM_WARRANTED_CLAIM**: The maximum allowable success claim is that a fresh reconstruction recovered all necessary elements without requiring prior prose, as specified.\n    - For this tested further-reduced compressed object, a fresh reconstruction recovered the shared relation, divergent branch consequences, provenance handles, challenge paths, and non-substitution standing without requiring prior prose.\n\n11. **NEXT_LAWFUL_PRESSURE**: The next lawful pressure is to apply another bounded compression variant that further reduces representational material while preserving all required elements.\n    - Apply one bounded compression variant that further reduces representational material while requiring preservation of the same shared relation, divergent branch consequences, provenance handles, challenge paths, and non-substitution standing.\n\nHere is the formatted output:\n\n```\nSHARED_RELATION_PRESERVATION: SUPPORTED\nDIVERGENT_RELATION_PRESERVATION: SUPPORTED\nPROVENANCE_PRESERVATION: SUPPORTED\nCHALLENGE_PATH_PRESERVATION: SUPPORTED\nNON_SUBSTITUTION_PRESERVATION: SUPPORTED\nPRIOR_PROSE_INDEPENDENCE: SUPPORTED\nCLAIM_CEILING: CONSERVED\nCELL_002_DISPOSITION: FURTHER_REDUCED_BOUNDED_COMPRESSION_ESTABLISHED\nNEW_WOUNDS: NONE\nMAXIMUM_WARRANTED_CLAIM: For this tested further-reduced compressed object, a fresh reconstruction recovered the shared relation, divergent branch consequences, provenance handles, challenge paths, and non-substitution standing without requiring prior prose.\nNEXT_LAWFUL_PRESSURE: Apply one bounded compression variant that further reduces representational material while requiring preservation of the same shared relation, divergent branch consequences, provenance handles, challenge paths, and non-substitution standing.\n```",
+  "raw_response": {
+    "id": "chatcmpl-yjlzew527qlhhrvawst0gr",
+    "object": "chat.completion",
+    "created": 1790236017,
+    "model": "microsoft/phi-4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Based on the provided evidence and requirements for adjudication, here is the analysis:\n\n1. **SHARED_RELATION_PRESERVATION**: The shared relation was preserved as indicated in Evidence B (\"SHARED_RELATION_RECOVERY: RECOVERED\").  \n   - **SUPPORTED**\n\n2. **DIVERGENT_RELATION_PRESERVATION**: Divergence was explicitly stated to be preserved in Evidence B (\"DIVERGENCE_PRESERVED: YES\").\n   - **SUPPORTED**\n\n3. **PROVENANCE_PRESERVATION**: Provenance handles were recovered and preserved as per Evidence B.\n   - **SUPPORTED**\n\n4. **CHALLENGE_PATH_PRESERVATION**: Challenge paths were also recovered and preserved according to Evidence B.\n   - **SUPPORTED**\n\n5. **NON_SUBSTITUTION_PRESERVATION**: Non-substitution standing was maintained, as noted in both Evidence A and B.\n   - **SUPPORTED**\n\n6. **PRIOR_PROSE_INDEPENDENCE**: It is explicitly stated that prior prose was not required (Evidence B: \"PRIOR_PROSE_REQUIRED: NO\").\n   - **SUPPORTED**\n\n7. **CLAIM_CEILING**: The claim ceiling is conserved as the further-reduced representation supports only this specific bounded compression without establishing broader claims.\n   - **CONSERVED**\n\n8. **CELL_002_DISPOSITION**: Given that all required elements were preserved, and no new wounds or issues were introduced, further-reduced bounded compression was established.\n   - **FURTHER_REDUCED_BOUNDED_COMPRESSION_ESTABLISHED**\n\n9. **NEW_WOUNDS**: No new wounds are reported in the evidence provided.\n   - **NONE**\n\n10. **MAXIMUM_WARRANTED_CLAIM**: The maximum allowable success claim is that a fresh reconstruction recovered all necessary elements without requiring prior prose, as specified.\n    - For this tested further-reduced compressed object, a fresh reconstruction recovered the shared relation, divergent branch consequences, provenance handles, challenge paths, and non-substitution standing without requiring prior prose.\n\n11. **NEXT_LAWFUL_PRESSURE**: The next lawful pressure is to apply another bounded compression variant that further reduces representational material while preserving all required elements.\n    - Apply one bounded compression variant that further reduces representational material while requiring preservation of the same shared relation, divergent branch consequences, provenance handles, challenge paths, and non-substitution standing.\n\nHere is the formatted output:\n\n```\nSHARED_RELATION_PRESERVATION: SUPPORTED\nDIVERGENT_RELATION_PRESERVATION: SUPPORTED\nPROVENANCE_PRESERVATION: SUPPORTED\nCHALLENGE_PATH_PRESERVATION: SUPPORTED\nNON_SUBSTITUTION_PRESERVATION: SUPPORTED\nPRIOR_PROSE_INDEPENDENCE: SUPPORTED\nCLAIM_CEILING: CONSERVED\nCELL_002_DISPOSITION: FURTHER_REDUCED_BOUNDED_COMPRESSION_ESTABLISHED\nNEW_WOUNDS: NONE\nMAXIMUM_WARRANTED_CLAIM: For this tested further-reduced compressed object, a fresh reconstruction recovered the shared relation, divergent branch consequences, provenance handles, challenge paths, and non-substitution standing without requiring prior prose.\nNEXT_LAWFUL_PRESSURE: Apply one bounded compression variant that further reduces representational material while requiring preservation of the same shared relation, divergent branch consequences, provenance handles, challenge paths, and non-substitution standing.\n```",
+          "reasoning_content": "",
+          "tool_calls": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 1002,
+      "completion_tokens": 701,
+      "total_tokens": 1703,
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    },
+    "stats": {},
+    "system_fingerprint": "microsoft/phi-4"
+  }
+}

@@ -8,16 +8,22 @@ import unittest
 from unittest.mock import Mock, patch
 from urllib.request import urlopen
 
+from src.cockpit import live_runtime_projection as live_runtime_projection
+
 from src.cockpit.desktop_launcher import (
     CockpitLaunchError,
+    cockpit_url_with_runtime,
     choose_freshness_ref,
     is_repo_root,
     launch_edge_app,
+    generate_projection_for_launch,
     _ref_exists,
     _subprocess_creationflags,
     resolve_repo_root,
     run_cockpit,
     start_loopback_server,
+    start_runtime_projection_server,
+    start_workcycle_control_server,
 )
 
 
@@ -61,6 +67,22 @@ class DesktopCockpitLauncherTest(unittest.TestCase):
                     allow_picker=False,
                     saved_config_path=Path(temporary) / "config.json",
                 )
+
+    def test_runtime_git_probe_passes_no_window_creationflags(self) -> None:
+        completed = Mock(returncode=0, stdout="abc123\n", stderr="")
+        with (
+            patch(
+                "src.cockpit.live_runtime_projection._subprocess_creationflags",
+                return_value=0x08000000,
+            ),
+            patch(
+                "src.cockpit.live_runtime_projection.subprocess.run",
+                return_value=completed,
+            ) as run,
+        ):
+            head = live_runtime_projection._repo_head(Path("C:/repo"))
+        self.assertEqual(head, "abc123")
+        self.assertEqual(run.call_args.kwargs["creationflags"], 0x08000000)
 
     def test_windows_creationflags_suppress_child_console(self) -> None:
         with (
@@ -135,6 +157,109 @@ class DesktopCockpitLauncherTest(unittest.TestCase):
                 server.shutdown()
                 server.server_close()
                 thread.join(timeout=5.0)
+
+    def test_cockpit_url_carries_runtime_sidecar_endpoint(self) -> None:
+        url = cockpit_url_with_runtime(
+            "http://127.0.0.1:9000/src/cockpit/observer/",
+            "http://127.0.0.1:8765/runtime/events",
+            "http://127.0.0.1:8770",
+        )
+        self.assertIn("runtime=http%3A%2F%2F127.0.0.1%3A8765%2Fruntime%2Fevents", url)
+        self.assertIn("control=http%3A%2F%2F127.0.0.1%3A8770", url)
+
+    def test_workcycle_control_server_is_loopback_and_persists_local_state(self) -> None:
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            repo = root / "repo"
+            repo.mkdir()
+            state_path = root / "operator" / "workcycle_control.json"
+            server, thread, base = start_workcycle_control_server(
+                repo,
+                state_path=state_path,
+            )
+            try:
+                self.assertEqual(server.server_address[0], "127.0.0.1")
+                with urlopen(base + "/workcycle/control/state", timeout=2.0) as response:
+                    payload = json.loads(response.read().decode("utf-8"))
+                self.assertEqual(payload["state"]["lifecycle_state"], "PAUSED")
+                self.assertFalse(payload["state"]["workflow_enabled"])
+                self.assertTrue(state_path.is_file())
+            finally:
+                server.shutdown()
+                server.server_close()
+                thread.join(timeout=5.0)
+
+    def test_runtime_sidecar_is_loopback_read_only_and_contains_workcycle(self) -> None:
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            server, thread, event_url = start_runtime_projection_server(root)
+            try:
+                self.assertEqual(server.server_address[0], "127.0.0.1")
+                snapshot_url = event_url.replace("/runtime/events", "/runtime/snapshot.json")
+                with urlopen(snapshot_url, timeout=2.0) as response:
+                    payload = json.loads(response.read().decode("utf-8"))
+                self.assertIn("workcycle", payload["state"])
+                self.assertEqual(
+                    payload["state"]["workcycle"]["projection_boundary"]["read_only"],
+                    True,
+                )
+                self.assertEqual(payload["state"]["authority_effect"], "NONE")
+                self.assertEqual(payload["state"]["execution_effect"], "NONE")
+            finally:
+                server.shutdown()
+                server.server_close()
+                thread.join(timeout=5.0)
+
+    def test_launch_generation_materializes_semantic_address_temporal_and_distinction_projections(self) -> None:
+        repo = Path("C:/synthetic/repo")
+        semantic_model = {"repository_state": {"source_commit": "a" * 40}}
+        with (
+            patch(
+                "src.cockpit.generate_projection.generate_projection",
+                return_value=semantic_model,
+            ) as semantic,
+            patch(
+                "src.cockpit.repository_address_fabric.generate_repository_address_fabric",
+                return_value={"source_commit": "a" * 40},
+            ) as fabric,
+            patch(
+                "src.cockpit.repository_temporal_lineage.generate_repository_temporal_lineage",
+                return_value={"source_commit": "a" * 40},
+            ) as temporal,
+            patch(
+                "src.cockpit.typed_distinction_registry.generate_typed_distinction_registry_projection",
+                return_value={"counts": {"admitted_bounded": 1}},
+            ) as distinctions,
+        ):
+            result = generate_projection_for_launch(
+                repo,
+                source_ref="HEAD",
+                freshness_ref="origin/main",
+            )
+
+        self.assertEqual(result, semantic_model)
+        self.assertEqual(
+            semantic.call_args.kwargs["output"],
+            repo / "generated" / "cockpit_projection.json",
+        )
+        self.assertEqual(
+            fabric.call_args.kwargs["output"],
+            repo / "generated" / "repository_address_fabric.json",
+        )
+        self.assertEqual(fabric.call_args.kwargs["source_ref"], "HEAD")
+        self.assertEqual(
+            temporal.call_args.kwargs["output"],
+            repo / "generated" / "repository_temporal_lineage.json",
+        )
+        self.assertEqual(temporal.call_args.kwargs["source_ref"], "HEAD")
+        self.assertEqual(
+            distinctions.call_args.kwargs["output"],
+            repo / "generated" / "typed_distinction_registry_v0.json",
+        )
+        self.assertEqual(
+            distinctions.call_args.kwargs["temporal_lineage"],
+            {"source_commit": "a" * 40},
+        )
 
     def test_projection_failure_prevents_server_start(self) -> None:
         fake_repo = Path("/synthetic/repo")

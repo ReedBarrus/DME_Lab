@@ -1,4 +1,14 @@
 export const PROJECTION_NAMES = Object.freeze(['CONSEQUENCE', 'TOPOLOGY']);
+export const CONSEQUENCE_SURFACE_NAMES = Object.freeze([
+  'LIVE',
+  'CELL002_SPECIMEN',
+]);
+export const CELL002_SPECIMEN_URL = './cell002.html';
+export const TOPOLOGY_SURFACE_NAMES = Object.freeze([
+  'SEMANTIC',
+  'REPOSITORY_FABRIC',
+]);
+export const REPOSITORY_FABRIC_URL = './repository_fabric.html';
 export const SCALE_NAMES = Object.freeze(['WORLD', 'CAMPAIGN', 'SEAT_PROCESS', 'OBJECT']);
 
 const array = (value) => Array.isArray(value) ? value : [];
@@ -655,6 +665,11 @@ function controlPrefill(verb, addresses, snapshot) {
 }
 
 function renderConsequence(field, state, fullGraph) {
+  if (state.consequenceSurface === 'CELL002_SPECIMEN') {
+    field.append(createCell002SpecimenEmbed());
+    return;
+  }
+
   const status = projectionAddressStatus(
     'CONSEQUENCE',
     state.addresses,
@@ -821,7 +836,130 @@ function renderConsequence(field, state, fullGraph) {
   field.append(relations);
 }
 
+export function consequenceRuntimeStatus(snapshot) {
+  return snapshot
+    ? 'LIVE RUNTIME: CONNECTED'
+    : 'LIVE RUNTIME: NOT CONNECTED';
+}
+
+export function createCell002SpecimenEmbed() {
+  const panel = element('section', '', 'instrument-specimen-panel');
+  panel.dataset.specimenStanding = 'RECORDED_SOURCE_BOUND_EVIDENCE';
+
+  const heading = element('div', '', 'instrument-specimen-heading');
+  heading.append(
+    element('span', 'RECORDED SPECIMEN', 'instrument-kicker'),
+    element('h2', 'CELL 002 — AUTHORITY REPLAY SPECIMEN'),
+    element(
+      'p',
+      'Recorded source-bound evidence. This surface is not a live runtime projection.',
+      'instrument-law',
+    ),
+  );
+
+  const frame = document.createElement('iframe');
+  frame.className = 'instrument-specimen-frame';
+  frame.src = CELL002_SPECIMEN_URL;
+  frame.title = 'Cell 002 recorded authority replay specimen';
+  frame.loading = 'eager';
+
+  panel.append(heading, frame);
+  return panel;
+}
+
+export function createRepositoryFabricEmbed() {
+  const panel = element('section', '', 'instrument-specimen-panel');
+  panel.dataset.projectionStanding = 'DERIVED_READ_ONLY';
+
+  const heading = element('div', '', 'instrument-specimen-heading');
+  heading.append(
+    element('span', 'SOURCE-BOUND SUBSTRATE', 'instrument-kicker'),
+    element('h2', 'REPOSITORY ADDRESS FABRIC V0'),
+    element(
+      'p',
+      'Git identity and containment only. Object existence does not establish semantic role, runtime consequence, or authority.',
+      'instrument-law',
+    ),
+  );
+
+  const frame = document.createElement('iframe');
+  frame.className = 'instrument-specimen-frame';
+  frame.src = REPOSITORY_FABRIC_URL;
+  frame.title = 'Commit-bound repository address fabric';
+  frame.loading = 'eager';
+
+  panel.append(heading, frame);
+  return panel;
+}
+
+function renderConsequenceSurfaceNavigation(state) {
+  const navigation = element('section', '', 'instrument-consequence-navigation');
+  navigation.dataset.runtimeStatus = state.snapshot ? 'CONNECTED' : 'NOT_CONNECTED';
+
+  const status = element('div', '', 'instrument-live-status');
+  status.append(
+    element('span', consequenceRuntimeStatus(state.snapshot), 'instrument-kicker'),
+    element(
+      'p',
+      'RECORDED SPECIMEN != LIVE RUNTIME',
+      'instrument-law',
+    ),
+  );
+
+  const modes = element('div', '', 'instrument-consequence-modes');
+  for (const surface of CONSEQUENCE_SURFACE_NAMES) {
+    const button = element(
+      'button',
+      surface === 'LIVE' ? 'LIVE' : 'CELL 002 SPECIMEN',
+      'instrument-consequence-mode',
+    );
+    button.type = 'button';
+    button.dataset.consequenceSurface = surface;
+    button.dataset.active = state.consequenceSurface === surface ? 'true' : 'false';
+    modes.append(button);
+  }
+
+  navigation.append(status, modes);
+  return navigation;
+}
+
+function renderTopologySurfaceNavigation(state) {
+  const navigation = element('section', '', 'instrument-consequence-navigation');
+  navigation.dataset.substrateStanding = 'DERIVED_READ_ONLY';
+
+  const status = element('div', '', 'instrument-live-status');
+  status.append(
+    element('span', 'GIT COMMIT SUBSTRATE', 'instrument-kicker'),
+    element(
+      'p',
+      'OBJECT IDENTITY != TYPED ROLE · UNKNOWN SEMANTICS != INVISIBLE OBJECT',
+      'instrument-law',
+    ),
+  );
+
+  const modes = element('div', '', 'instrument-consequence-modes');
+  for (const surface of TOPOLOGY_SURFACE_NAMES) {
+    const button = element(
+      'button',
+      surface === 'SEMANTIC' ? 'SEMANTIC' : 'REPOSITORY FABRIC',
+      'instrument-consequence-mode',
+    );
+    button.type = 'button';
+    button.dataset.topologySurface = surface;
+    button.dataset.active = state.topologySurface === surface ? 'true' : 'false';
+    modes.append(button);
+  }
+
+  navigation.append(status, modes);
+  return navigation;
+}
+
 function renderTopology(field, state, graph) {
+  if (state.topologySurface === 'REPOSITORY_FABRIC') {
+    field.append(createRepositoryFabricEmbed());
+    return;
+  }
+
   const grid = element('section', '', 'instrument-topology-grid');
   if (!state.addresses.length) {
     grid.append(
@@ -953,6 +1091,8 @@ export function createPerceptualInstrument(root) {
   const params = new URL(window.location.href).searchParams;
   const state = {
     projection: 'CONSEQUENCE',
+    consequenceSurface: 'LIVE',
+    topologySurface: 'SEMANTIC',
     scale: 'WORLD',
     addresses: [],
     snapshot: null,
@@ -1008,6 +1148,17 @@ export function createPerceptualInstrument(root) {
       ),
     );
 
+    const embeddedSurfaceActive =
+      (state.projection === 'CONSEQUENCE'
+        && state.consequenceSurface === 'CELL002_SPECIMEN')
+      || (state.projection === 'TOPOLOGY'
+        && state.topologySurface === 'REPOSITORY_FABRIC');
+    if (state.projection === 'CONSEQUENCE') {
+      root.append(renderConsequenceSurfaceNavigation(state));
+    } else {
+      root.append(renderTopologySurfaceNavigation(state));
+    }
+
     const scaleBar = element('div', '', 'instrument-scale');
     scaleBar.append(
       element('span', 'SCALE', 'instrument-kicker'),
@@ -1031,9 +1182,11 @@ export function createPerceptualInstrument(root) {
         'instrument-law',
       ),
     );
-    root.append(scaleBar);
+    if (!embeddedSurfaceActive) root.append(scaleBar);
 
     const body = element('div', '', 'instrument-body');
+    body.dataset.consequenceSurface = state.consequenceSurface;
+    body.dataset.topologySurface = state.topologySurface;
     const field = element('div', '', 'instrument-field');
     const graph = buildOperationalGraph(state.snapshot);
 
@@ -1170,13 +1323,31 @@ export function createPerceptualInstrument(root) {
       rail.append(box);
     }
 
-    body.append(rail);
+    if (!embeddedSurfaceActive) body.append(rail);
     root.append(body);
 
     root.querySelectorAll('[data-projection]').forEach((button) => {
       button.addEventListener('click', () => {
         state.projection = button.dataset.projection;
         render();
+      });
+    });
+
+    root.querySelectorAll('[data-consequence-surface]').forEach((button) => {
+      button.addEventListener('click', () => {
+        if (CONSEQUENCE_SURFACE_NAMES.includes(button.dataset.consequenceSurface)) {
+          state.consequenceSurface = button.dataset.consequenceSurface;
+          render();
+        }
+      });
+    });
+
+    root.querySelectorAll('[data-topology-surface]').forEach((button) => {
+      button.addEventListener('click', () => {
+        if (TOPOLOGY_SURFACE_NAMES.includes(button.dataset.topologySurface)) {
+          state.topologySurface = button.dataset.topologySurface;
+          render();
+        }
       });
     });
 
@@ -1258,6 +1429,8 @@ export function createPerceptualInstrument(root) {
     currentState() {
       return {
         projection: state.projection,
+        consequenceSurface: state.consequenceSurface,
+        topologySurface: state.topologySurface,
         scale: state.scale,
         addresses: structuredClone(state.addresses),
         runtime_state_sha256:

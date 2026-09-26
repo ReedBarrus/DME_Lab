@@ -1,0 +1,724 @@
+#!/usr/bin/env python3
+"""
+Trusted local LM Studio invocation bridge, V0.
+
+Security model:
+- Reads declarative request manifests from a fixed GitHub branch via git object access.
+- Never executes repo-provided shell commands.
+- Only reads prompt artifacts from allowlisted repo-relative prefixes.
+- Requires exact immutable commit SHA + prompt SHA256.
+- Only calls LM Studio chat completions with one user message.
+- Supplies no tools, no previous_response_id, no connectors, no repo access.
+- Requires local human approval before invocation.
+- Writes witnessed JSON results to a fixed result directory.
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import re
+import subprocess
+import sys
+import time
+import urllib.error
+import urllib.request
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Callable
+
+
+ROOT = Path(__file__).resolve().parents[1]
+POLICY_PATH = ROOT / "bridge" / "policy_v0.json"
+RECEIPT_DIR = ROOT / "bridge" / "local" / "invocation_receipts"
+
+REQUEST_ID_RE = re.compile(r"^[A-Z0-9][A-Z0-9_.-]{2,95}$")
+SHA40_RE = re.compile(r"^[0-9a-f]{40}$")
+SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+
+
+def now_iso() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+def sha256_bytes(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def input_identity_rejection_witness(
+    manifest: dict[str, Any],
+    prompt_bytes: bytes,
+) -> dict[str, Any] | None:
+    """Return a deterministic apparatus rejection for an input mismatch.
+
+    A matching identity returns ``None`` and leaves the existing approval and
+    invocation path unchanged.  The witness is authored before approval or any
+    LM Studio call and contains no model-produced evidence.
+    """
+
+    declared_input_sha256 = str(manifest["input_sha256"])
+    observed_input_sha256 = sha256_bytes(prompt_bytes)
+    if observed_input_sha256 == declared_input_sha256:
+        return None
+
+    return {
+        "object_type": "LOCAL_LMSTUDIO_INPUT_IDENTITY_REJECTION_V0",
+        "request_id": str(manifest["request_id"]),
+        "declared_input_sha256": declared_input_sha256,
+        "observed_input_sha256": observed_input_sha256,
+        "executor_sha256": sha256_bytes(Path(__file__).resolve().read_bytes()),
+        "policy_sha256": sha256_bytes(POLICY_PATH.read_bytes()),
+        "decision": "REJECT",
+        "reason": "INPUT_SHA256_MISMATCH",
+        "lmstudio_invoked": False,
+    }
+
+
+def emit_rejection_witness(witness: dict[str, Any]) -> None:
+    print(
+        "[REJECT] "
+        + json.dumps(witness, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
+    )
+
+
+def retained_reviewed_input_candidate(
+    manifest: dict[str, Any],
+    reviewed_prompt_bytes: bytes,
+) -> bytes:
+    """Return the reviewed bytes on the ordinary production path."""
+
+    del manifest
+    return reviewed_prompt_bytes
+
+
+def postapproval_input_identity_rejection_witness(
+    manifest: dict[str, Any],
+    reviewed_prompt_bytes: bytes,
+    execution_candidate_bytes: bytes,
+    manifest_sha256: str,
+) -> dict[str, Any] | None:
+    """Revalidate the execution candidate after approval and before invocation."""
+
+    reviewed_input_sha256 = sha256_bytes(reviewed_prompt_bytes)
+    execution_candidate_sha256 = sha256_bytes(execution_candidate_bytes)
+    if execution_candidate_sha256 == reviewed_input_sha256:
+        return None
+
+    return {
+        "object_type": "LOCAL_LMSTUDIO_POSTAPPROVAL_REVALIDATION_V0",
+        "request_id": str(manifest["request_id"]),
+        "request_manifest_sha256": manifest_sha256,
+        "source_ref": str(manifest["source_ref"]),
+        "input_path": str(manifest["input_path"]),
+        "declared_input_sha256": str(manifest["input_sha256"]),
+        "reviewed_input_sha256": reviewed_input_sha256,
+        "execution_candidate_sha256": execution_candidate_sha256,
+        "executor_sha256": sha256_bytes(Path(__file__).resolve().read_bytes()),
+        "policy_sha256": sha256_bytes(POLICY_PATH.read_bytes()),
+        "approval_occurred": True,
+        "rejection_after_approval": True,
+        "decision": "REVALIDATE",
+        "reason": "POST_APPROVAL_INPUT_SHA256_MISMATCH",
+        "lmstudio_invoked": False,
+    }
+
+
+def run_git(*args: str, check: bool = True) -> subprocess.CompletedProcess[bytes]:
+    cmd = ["git", "-C", str(ROOT), *args]
+    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    if check and proc.returncode != 0:
+        raise RuntimeError(
+            f"git command failed: {' '.join(cmd)}\n"
+            f"{proc.stderr.decode('utf-8', errors='replace')}"
+        )
+    return proc
+
+
+def load_policy() -> dict[str, Any]:
+    with POLICY_PATH.open("r", encoding="utf-8") as f:
+        policy = json.load(f)
+
+    if policy.get("policy_version") != "LOCAL_LMSTUDIO_BRIDGE_POLICY_V0":
+        raise RuntimeError("Unsupported bridge policy version")
+
+    if policy.get("allow_tools") is not False:
+        raise RuntimeError("V0 requires allow_tools=false")
+
+    if policy.get("allow_previous_response_id") is not False:
+        raise RuntimeError("V0 requires allow_previous_response_id=false")
+
+    if policy.get("require_local_approval") is not True:
+        raise RuntimeError("V0 requires require_local_approval=true")
+
+    return policy
+
+
+def fetch_remote(policy: dict[str, Any]) -> str:
+    remote = str(policy["remote"])
+    branch = str(policy["branch"])
+    run_git("fetch", "--quiet", remote, branch)
+    remote_ref = f"{remote}/{branch}"
+    head = run_git("rev-parse", remote_ref).stdout.decode().strip()
+    if not SHA40_RE.fullmatch(head):
+        raise RuntimeError(f"Unexpected remote head: {head!r}")
+    return head
+
+
+def resolve_git_blob_sha(ref: str, path: str) -> str:
+    """Resolve one immutable repo path to its exact Git blob object id."""
+
+    if not SHA40_RE.fullmatch(ref):
+        raise ValueError("source_ref must be an exact 40-character lowercase commit SHA")
+    if path.startswith("/") or "\\" in path or ".." in Path(path).parts:
+        raise ValueError("unsafe repo-relative path")
+
+    proc = run_git("ls-tree", "-z", ref, "--", path)
+    entries = [entry for entry in proc.stdout.split(b"\x00") if entry]
+    if len(entries) != 1:
+        raise RuntimeError(
+            f"immutable prompt path resolved to {len(entries)} objects: {path}"
+        )
+
+    try:
+        metadata, resolved_path = entries[0].split(b"\t", 1)
+        _mode, object_type, blob_sha = metadata.decode("ascii").split()
+        resolved_path_text = resolved_path.decode("utf-8")
+    except Exception as e:
+        raise RuntimeError(f"unexpected ls-tree response for {path!r}") from e
+
+    if object_type != "blob":
+        raise RuntimeError(f"immutable prompt path is not a blob: {path}")
+    if resolved_path_text != path:
+        raise RuntimeError(
+            f"immutable prompt path mismatch: requested={path!r}, resolved={resolved_path_text!r}"
+        )
+    if not SHA40_RE.fullmatch(blob_sha):
+        raise RuntimeError(f"unexpected blob SHA for {path!r}: {blob_sha!r}")
+
+    return blob_sha
+
+
+def git_show(ref: str, path: str) -> bytes:
+    """Read one immutable blob without constructing a long ref:path argument.
+
+    On Windows, Git may stat the combined revision/path argument before
+    revision parsing. Long campaign paths can therefore hit the Win32
+    filename-length limit even though the repository object itself is valid.
+
+    Resolve the blob with ls-tree using ref and path as separate arguments,
+    then read the object by its short blob SHA. This preserves the immutable
+    commit binding while avoiding the long combined argument.
+    """
+
+    if not SHA40_RE.fullmatch(ref):
+        raise ValueError("source_ref must be an exact 40-character lowercase commit SHA")
+    if path.startswith("/") or "\\" in path or ".." in Path(path).parts:
+        raise ValueError("unsafe repo-relative path")
+
+    proc = run_git("ls-tree", "-z", ref, "--", path)
+    entries = [entry for entry in proc.stdout.split(b"\x00") if entry]
+    if len(entries) != 1:
+        raise RuntimeError(
+            f"immutable prompt path resolved to {len(entries)} objects: {path}"
+        )
+
+    try:
+        metadata, resolved_path = entries[0].split(b"\t", 1)
+        _mode, object_type, blob_sha = metadata.decode("ascii").split()
+        resolved_path_text = resolved_path.decode("utf-8")
+    except Exception as e:
+        raise RuntimeError(f"unexpected ls-tree response for {path!r}") from e
+
+    if object_type != "blob":
+        raise RuntimeError(f"immutable prompt path is not a blob: {path}")
+    if resolved_path_text != path:
+        raise RuntimeError(
+            f"immutable prompt path mismatch: requested={path!r}, resolved={resolved_path_text!r}"
+        )
+    if not SHA40_RE.fullmatch(blob_sha):
+        raise RuntimeError(f"unexpected blob SHA for {path!r}: {blob_sha!r}")
+
+    return run_git("cat-file", "blob", blob_sha).stdout
+
+
+def list_request_paths(remote_head: str, policy: dict[str, Any]) -> list[str]:
+    prefix = str(policy["request_prefix"])
+    proc = run_git("ls-tree", "-r", "--name-only", remote_head, prefix)
+    paths = [
+        line.strip()
+        for line in proc.stdout.decode("utf-8", errors="strict").splitlines()
+        if line.strip().endswith(".json")
+    ]
+    return sorted(paths)
+
+
+def parse_manifest(raw: bytes) -> dict[str, Any]:
+    manifest = json.loads(raw.decode("utf-8"))
+
+    schema_version = manifest.get("schema_version")
+    base_keys = {
+        "schema_version",
+        "request_id",
+        "enabled",
+        "source_ref",
+        "input_path",
+        "model",
+        "temperature",
+        "max_tokens",
+        "purpose",
+    }
+    if schema_version == "LOCAL_INVOCATION_REQUEST_V0":
+        allowed_keys = base_keys | {"input_sha256"}
+    elif schema_version == "LOCAL_INVOCATION_REQUEST_V0_1":
+        allowed_keys = base_keys | {"input_blob_sha"}
+    else:
+        raise ValueError("unsupported schema_version")
+
+    if set(manifest) != allowed_keys:
+        extra = sorted(set(manifest) - allowed_keys)
+        missing = sorted(allowed_keys - set(manifest))
+        raise ValueError(f"manifest key mismatch; extra={extra}, missing={missing}")
+
+    request_id = manifest["request_id"]
+    if not isinstance(request_id, str) or not REQUEST_ID_RE.fullmatch(request_id):
+        raise ValueError("invalid request_id")
+
+    if not isinstance(manifest["enabled"], bool):
+        raise ValueError("enabled must be boolean")
+
+    if not isinstance(manifest["source_ref"], str) or not SHA40_RE.fullmatch(manifest["source_ref"]):
+        raise ValueError("source_ref must be exact 40-char lowercase SHA")
+
+    if schema_version == "LOCAL_INVOCATION_REQUEST_V0":
+        if not isinstance(manifest["input_sha256"], str) or not SHA256_RE.fullmatch(manifest["input_sha256"]):
+            raise ValueError("invalid input_sha256")
+    else:
+        if not isinstance(manifest["input_blob_sha"], str) or not SHA40_RE.fullmatch(manifest["input_blob_sha"]):
+            raise ValueError("invalid input_blob_sha")
+
+    if not isinstance(manifest["temperature"], (int, float)):
+        raise ValueError("temperature must be numeric")
+
+    if not isinstance(manifest["max_tokens"], int):
+        raise ValueError("max_tokens must be integer")
+
+    if not isinstance(manifest["purpose"], str) or not (1 <= len(manifest["purpose"]) <= 500):
+        raise ValueError("purpose must be 1..500 chars")
+
+    return manifest
+
+
+def validate_manifest(manifest: dict[str, Any], policy: dict[str, Any]) -> None:
+    model = manifest["model"]
+    if model not in policy["allowed_models"]:
+        raise ValueError(f"model not allowed: {model}")
+
+    path = manifest["input_path"]
+    if not isinstance(path, str):
+        raise ValueError("input_path must be string")
+    if path.startswith("/") or "\\" in path or ".." in Path(path).parts:
+        raise ValueError("unsafe input_path")
+    prefixes = tuple(str(p) for p in policy["allowed_input_prefixes"])
+    if not path.startswith(prefixes):
+        raise ValueError(f"input_path outside allowed prefixes: {path}")
+
+    temp = float(manifest["temperature"])
+    if not (float(policy["temperature_min"]) <= temp <= float(policy["temperature_max"])):
+        raise ValueError("temperature outside policy bounds")
+
+    max_tokens = int(manifest["max_tokens"])
+    if max_tokens < 1 or max_tokens > int(policy["max_tokens_ceiling"]):
+        raise ValueError("max_tokens outside policy bounds")
+
+
+def result_path_for(request_id: str, policy: dict[str, Any]) -> Path:
+    prefix = Path(str(policy["result_prefix"]))
+    out = ROOT / prefix / f"{request_id}.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    return out
+
+
+def invocation_receipt_path(request_id: str) -> Path:
+    RECEIPT_DIR.mkdir(parents=True, exist_ok=True)
+    return RECEIPT_DIR / f"{request_id}.json"
+
+
+def write_invocation_receipt(
+    manifest: dict[str, Any],
+    manifest_sha256: str,
+    prompt_bytes: bytes,
+    request_path: str,
+) -> Path:
+    """Persist invocation start before calling LM Studio.
+
+    Creation is exclusive. An existing receipt means the request has already
+    crossed the authorization -> invocation-start boundary and must not replay
+    automatically.
+    """
+
+    path = invocation_receipt_path(str(manifest["request_id"]))
+    receipt = {
+        "object_type": "LOCAL_LMSTUDIO_INVOCATION_RECEIPT_V0",
+        "request_id": str(manifest["request_id"]),
+        "request_manifest_path": request_path,
+        "request_manifest_sha256": manifest_sha256,
+        "source_ref": str(manifest["source_ref"]),
+        "input_path": str(manifest["input_path"]),
+        "input_blob_sha": resolve_git_blob_sha(
+            str(manifest["source_ref"]), str(manifest["input_path"])
+        ),
+        "input_sha256": sha256_bytes(prompt_bytes),
+        "model_requested": str(manifest["model"]),
+        "authorized_at_utc": now_iso(),
+        "state": "AUTHORIZED_INVOCATION_STARTED",
+        "automatic_replay_allowed": False,
+    }
+
+    try:
+        with path.open("x", encoding="utf-8") as handle:
+            json.dump(receipt, handle, indent=2, ensure_ascii=False)
+            handle.write("\n")
+    except FileExistsError as exc:
+        raise RuntimeError(
+            f"invocation receipt already exists for {manifest['request_id']}; "
+            "automatic replay denied"
+        ) from exc
+    return path
+
+
+def finalize_invocation_receipt(receipt_path: Path, result_path: Path) -> None:
+    receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+    receipt["state"] = "RESULT_WITNESS_WRITTEN"
+    receipt["result_path"] = str(result_path.relative_to(ROOT)).replace("\\", "/")
+    receipt["settled_locally_at_utc"] = now_iso()
+    receipt_path.write_text(
+        json.dumps(receipt, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+
+
+def clear_invocation_receipt(request_id: str) -> bool:
+    if not REQUEST_ID_RE.fullmatch(request_id):
+        raise ValueError("invalid request_id")
+    path = invocation_receipt_path(request_id)
+    if not path.exists():
+        return False
+    path.unlink()
+    return True
+
+
+def invoke_lmstudio(
+    manifest: dict[str, Any],
+    prompt_bytes: bytes,
+    manifest_sha256: str,
+    policy: dict[str, Any],
+    request_path: str,
+) -> dict[str, Any]:
+    prompt = prompt_bytes.decode("utf-8")
+
+    body_obj = {
+        "model": manifest["model"],
+        "messages": [
+            {
+                "role": "user",
+                "content": prompt,
+            }
+        ],
+        "temperature": float(manifest["temperature"]),
+        "max_tokens": int(manifest["max_tokens"]),
+        "stream": False,
+    }
+    body = json.dumps(body_obj, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+
+    base = str(policy["lmstudio_base_url"]).rstrip("/")
+    url = f"{base}/chat/completions"
+
+    started = now_iso()
+    started_perf = time.perf_counter()
+    req = urllib.request.Request(
+        url,
+        data=body,
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+
+    try:
+        with urllib.request.urlopen(req, timeout=600) as resp:
+            response_bytes = resp.read()
+            status = resp.status
+    except urllib.error.URLError as e:
+        raise RuntimeError(f"LM Studio request failed: {e}") from e
+
+    finished = now_iso()
+    elapsed_seconds = time.perf_counter() - started_perf
+
+    response_obj = json.loads(response_bytes.decode("utf-8"))
+    assistant_text = None
+    try:
+        assistant_text = response_obj["choices"][0]["message"]["content"]
+    except Exception:
+        pass
+
+    usage_obj = response_obj.get("usage") if isinstance(response_obj, dict) else None
+    prompt_tokens = (
+        usage_obj.get("prompt_tokens") if isinstance(usage_obj, dict) else None
+    )
+    completion_tokens = (
+        usage_obj.get("completion_tokens") if isinstance(usage_obj, dict) else None
+    )
+    total_tokens = (
+        usage_obj.get("total_tokens") if isinstance(usage_obj, dict) else None
+    )
+    end_to_end_output_tps = None
+    if isinstance(completion_tokens, int) and elapsed_seconds > 0:
+        end_to_end_output_tps = completion_tokens / elapsed_seconds
+
+    witness = {
+        "object_type": "LOCAL_LMSTUDIO_INVOCATION_WITNESS_V0",
+        "request_id": manifest["request_id"],
+        "purpose": manifest["purpose"],
+        "request_manifest_path": request_path,
+        "request_manifest_sha256": manifest_sha256,
+        "source_ref": manifest["source_ref"],
+        "input_path": manifest["input_path"],
+        "input_sha256": sha256_bytes(prompt_bytes),
+        "model_requested": manifest["model"],
+        "temperature": float(manifest["temperature"]),
+        "max_tokens": int(manifest["max_tokens"]),
+        "lmstudio_url": url,
+        "http_status": status,
+        "observed_started_at_utc": started,
+        "observed_finished_at_utc": finished,
+        "observed_wall_seconds": round(elapsed_seconds, 6),
+        "prompt_tokens_observed": prompt_tokens,
+        "completion_tokens_observed": completion_tokens,
+        "total_tokens_observed": total_tokens,
+        "end_to_end_output_tokens_per_second": (
+            round(end_to_end_output_tps, 6)
+            if end_to_end_output_tps is not None
+            else None
+        ),
+        "messages_count": 1,
+        "tools_supplied": False,
+        "previous_response_id_supplied": False,
+        "repository_context_supplied_to_model": False,
+        "connectors_supplied_to_model": False,
+        "external_retrieval_supplied_to_model": False,
+        "request_body_sha256": sha256_bytes(body),
+        "response_body_sha256": sha256_bytes(response_bytes),
+        "assistant_text": assistant_text,
+        "raw_response": response_obj,
+    }
+    return witness
+
+
+def approve(manifest: dict[str, Any], prompt_bytes: bytes) -> bool:
+    print("\n=== LOCAL INVOCATION REQUEST ===")
+    print(f"request_id : {manifest['request_id']}")
+    print(f"purpose    : {manifest['purpose']}")
+    print(f"model      : {manifest['model']}")
+    print(f"source_ref : {manifest['source_ref']}")
+    print(f"input_path : {manifest['input_path']}")
+    if manifest["schema_version"] == "LOCAL_INVOCATION_REQUEST_V0":
+        print(f"input_sha  : {manifest['input_sha256']}")
+    else:
+        print(f"input_blob : {manifest['input_blob_sha']}")
+        print(f"input_sha  : {sha256_bytes(prompt_bytes)}")
+    print(f"bytes      : {len(prompt_bytes)}")
+    print(f"temperature: {manifest['temperature']}")
+    print(f"max_tokens : {manifest['max_tokens']}")
+    print("tools      : NONE")
+    print("history    : NONE")
+    answer = input("Execute this local LM Studio invocation? [y/N] ").strip().lower()
+    return answer == "y"
+
+
+def process_once(
+    policy: dict[str, Any],
+    *,
+    execution_candidate_provider: Callable[[dict[str, Any], bytes], bytes] = (
+        retained_reviewed_input_candidate
+    ),
+    rejection_witness_sink: Callable[[dict[str, Any]], None] = emit_rejection_witness,
+) -> int:
+    remote_head = fetch_remote(policy)
+    request_paths = list_request_paths(remote_head, policy)
+    executed = 0
+
+    for request_path in request_paths:
+        raw_manifest = git_show(remote_head, request_path)
+        manifest_sha = sha256_bytes(raw_manifest)
+
+        try:
+            manifest = parse_manifest(raw_manifest)
+            validate_manifest(manifest, policy)
+        except Exception as e:
+            print(f"[REJECT] {request_path}: {e}")
+            continue
+
+        if not manifest["enabled"]:
+            continue
+
+        out_path = result_path_for(manifest["request_id"], policy)
+        if out_path.exists():
+            continue
+
+        receipt_path = invocation_receipt_path(manifest["request_id"])
+        if receipt_path.exists():
+            print(
+                f"[HOLD] {manifest['request_id']}: invocation receipt exists; "
+                "automatic replay denied"
+            )
+            continue
+
+        try:
+            prompt_bytes = git_show(manifest["source_ref"], manifest["input_path"])
+        except Exception as e:
+            print(f"[REJECT] {request_path}: cannot read immutable prompt: {e}")
+            continue
+
+        if manifest["schema_version"] == "LOCAL_INVOCATION_REQUEST_V0":
+            identity_rejection = input_identity_rejection_witness(
+                manifest,
+                prompt_bytes,
+            )
+            if identity_rejection is not None:
+                rejection_witness_sink(identity_rejection)
+                continue
+        else:
+            observed_blob_sha = resolve_git_blob_sha(
+                str(manifest["source_ref"]),
+                str(manifest["input_path"]),
+            )
+            if observed_blob_sha != str(manifest["input_blob_sha"]):
+                rejection_witness_sink(
+                    {
+                        "object_type": "LOCAL_LMSTUDIO_INPUT_BLOB_IDENTITY_REJECTION_V0_1",
+                        "request_id": str(manifest["request_id"]),
+                        "declared_input_blob_sha": str(manifest["input_blob_sha"]),
+                        "observed_input_blob_sha": observed_blob_sha,
+                        "observed_input_sha256": sha256_bytes(prompt_bytes),
+                        "executor_sha256": sha256_bytes(Path(__file__).resolve().read_bytes()),
+                        "policy_sha256": sha256_bytes(POLICY_PATH.read_bytes()),
+                        "decision": "REJECT",
+                        "reason": "INPUT_BLOB_SHA_MISMATCH",
+                        "lmstudio_invoked": False,
+                    }
+                )
+                continue
+
+        if len(prompt_bytes) > int(policy["max_prompt_bytes"]):
+            print(f"[REJECT] {request_path}: prompt exceeds size ceiling")
+            continue
+
+        try:
+            prompt_bytes.decode("utf-8")
+        except UnicodeDecodeError:
+            print(f"[REJECT] {request_path}: prompt is not UTF-8 text")
+            continue
+
+        if not approve(manifest, prompt_bytes):
+            print(f"[SKIP] {manifest['request_id']}: local authorization not granted")
+            continue
+
+        execution_candidate_bytes = execution_candidate_provider(
+            manifest,
+            prompt_bytes,
+        )
+        if not isinstance(execution_candidate_bytes, bytes):
+            raise TypeError("execution_candidate_provider must return bytes")
+
+        postapproval_rejection = postapproval_input_identity_rejection_witness(
+            manifest,
+            prompt_bytes,
+            execution_candidate_bytes,
+            manifest_sha,
+        )
+        if postapproval_rejection is not None:
+            rejection_witness_sink(postapproval_rejection)
+            continue
+
+        try:
+            receipt_path = write_invocation_receipt(
+                manifest,
+                manifest_sha,
+                execution_candidate_bytes,
+                request_path,
+            )
+        except Exception as e:
+            print(f"[HOLD] {manifest['request_id']}: {e}")
+            continue
+
+        try:
+            witness = invoke_lmstudio(
+                manifest,
+                execution_candidate_bytes,
+                manifest_sha,
+                policy,
+                request_path,
+            )
+        except Exception as e:
+            print(
+                f"[ERROR] {manifest['request_id']}: {e}; "
+                "receipt retained, automatic replay denied"
+            )
+            continue
+
+        out_path.write_text(
+            json.dumps(witness, indent=2, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
+        finalize_invocation_receipt(receipt_path, out_path)
+        print(f"[OK] wrote {out_path.relative_to(ROOT)}")
+        executed += 1
+
+    return executed
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    mode = parser.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--once", action="store_true", help="fetch and process queue once")
+    mode.add_argument("--watch", action="store_true", help="poll continuously")
+    mode.add_argument(
+        "--clear-receipt",
+        metavar="REQUEST_ID",
+        help="explicitly clear one local invocation receipt to permit a manual retry",
+    )
+    parser.add_argument("--poll-seconds", type=int, default=120)
+    args = parser.parse_args()
+
+    policy = load_policy()
+
+    if args.clear_receipt is not None:
+        cleared = clear_invocation_receipt(args.clear_receipt)
+        if cleared:
+            print(f"[OK] cleared invocation receipt for {args.clear_receipt}")
+            print("A future invocation still requires local approval.")
+        else:
+            print(f"[NOOP] no invocation receipt exists for {args.clear_receipt}")
+        return 0
+
+    if args.once:
+        process_once(policy)
+        return 0
+
+    if args.poll_seconds < 30:
+        print("poll interval must be at least 30 seconds", file=sys.stderr)
+        return 2
+
+    print("DME local LM Studio bridge V0 watching.")
+    print("Remote requests are proposals only; every invocation requires local approval.")
+    while True:
+        try:
+            process_once(policy)
+        except KeyboardInterrupt:
+            return 0
+        except Exception as e:
+            print(f"[WATCH ERROR] {e}", file=sys.stderr)
+        time.sleep(args.poll_seconds)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
