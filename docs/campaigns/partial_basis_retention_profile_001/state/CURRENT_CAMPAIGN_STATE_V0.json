@@ -1,7 +1,7 @@
 {
   "object_type": "PARTIAL_BASIS_RETENTION_PROFILE_CURRENT_CAMPAIGN_STATE_V0",
   "campaign_id": "PARTIAL_BASIS_RETENTION_PROFILE_001",
-  "campaign_posture": "G10_WITNESSED_AWAITING_ADJUDICATION",
+  "campaign_posture": "G10_MATCHED_CHECKPOINT_TERMINAL",
   "campaign_basis": "Test whether one exact partial declared basis can carry a non-scalar retention profile over supplied horizon-local requirements while the exterior remains explicitly unresolved, and whether basis extension preserves unchanged prior local coordinates.",
   "predecessor": {
     "campaign_id": "RETENTION_SCOPE_AGGREGATION_001",
@@ -12,19 +12,13 @@
   },
   "current_cell": {
     "cell_id": "PARTIAL_BASIS_RETENTION_PROFILE_G10",
-    "posture": "WITNESSED_AWAITING_ADJUDICATION",
+    "posture": "MATCHED_CHECKPOINT_TERMINAL",
     "target": "PARTIAL_BASIS_RETENTION_PROFILE_V0",
-    "distinction": "WORLD_CHANGE != METHOD_CHANGE",
-    "witness": "partial_basis_retention_profile_v0_observation.json",
-    "witness_source_ref": "b2294fab67299d6093c87ae17b8ff9ac30b5fd2a",
-    "witness_transport_ref": "6cd0ee4702607b54c54bba8ca3022aed29205eee"
+    "standing": "PARTIAL_BASIS_RETENTION_PROFILE_V0_MATCHED",
+    "result_handle": "docs/campaigns/partial_basis_retention_profile_001/pressure_runs/PARTIAL_BASIS_RETENTION_PROFILE_V0_PRESSURE_RESULT_001.md",
+    "distinction": "WORLD_CHANGE != METHOD_CHANGE"
   },
-  "current_gap": {
-    "gap_id": "G10_PARTIAL_BASIS_RETENTION_PROFILE_EVIDENTIARY_STANDING",
-    "gap_class": "EVIDENTIARY",
-    "statement": "The G10 partial-basis profile and extension relation have a clean runtime witness, but their standing has not yet been independently adjudicated.",
-    "work_eligible": true
-  },
+  "current_gap": null,
   "required_profile_coordinates": [
     "required_members",
     "unresolved_members",
@@ -62,9 +56,48 @@
     "scientific standing"
   ],
   "next_pressure": {
-    "pressure_id": "PARTIAL_BASIS_RETENTION_PROFILE_V0_PRESSURE_001_ADJUDICATION",
-    "destination": "FRESH_INDEPENDENT_PARTIAL_BASIS_RETENTION_PROFILE_ADJUDICATOR",
-    "packet": "docs/campaigns/partial_basis_retention_profile_001/PARTIAL_BASIS_RETENTION_PROFILE_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-    "if_nothing_changes": "DO_NOT_RUN"
-  }
+    "pressure_id": "UNSELECTED",
+    "destination": "HORIZON_REINSPECTION",
+    "if_nothing_changes": "DO_NOT_INSTANTIATE_WORK"
+  },
+  "earned_cells": {
+    "PARTIAL_BASIS_RETENTION_PROFILE_G10": {
+      "standing": "PARTIAL_BASIS_RETENTION_PROFILE_V0_MATCHED",
+      "b0_profile": {
+        "required": 1,
+        "unresolved": 0,
+        "not_required": 1,
+        "basis_size": 2
+      },
+      "b1_profile": {
+        "required": 1,
+        "unresolved": 1,
+        "not_required": 1,
+        "basis_size": 3
+      },
+      "prior_local_coordinates_preserved": "YES",
+      "new_horizons": [
+        "H_C"
+      ],
+      "exterior_posture": "UNRESOLVED",
+      "global_ecology_hot_requirement": "UNRESOLVED",
+      "scalar_hotness_established": "NOT_ESTABLISHED",
+      "does_not_establish": [
+        "global ecology coverage",
+        "load weights",
+        "scalar hotness",
+        "economic optimality",
+        "global invariance",
+        "cooling authority",
+        "retention transition authority",
+        "raw source deletion",
+        "method capitalization",
+        "autonomous planning",
+        "authority",
+        "execution",
+        "scientific standing"
+      ]
+    }
+  },
+  "horizon_posture": "OPEN_FOR_REINSPECTION"
 }
