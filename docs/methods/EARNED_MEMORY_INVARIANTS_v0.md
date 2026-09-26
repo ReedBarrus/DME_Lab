@@ -165,12 +165,58 @@ actually governed it.
 
 ---
 
-## Current nonclaim
-
-These six entries are the current bounded invariant bank.
+## EMI-007 — Horizon-scoped operative retention is not full inline retention
 
 ```text
-six earned invariants
+load-bearing distinction required by one declared horizon
+!=
+full generating evidence required inline in hot memory
+```
+
+when:
+
+```text
+the operative relation reconstructs exactly
++
+unresolved boundaries survive
++
+exact immutable routes to richer evidence survive
++
+cold retention remains undeleted
+```
+
+**Earned by:** G7 / `DISTINCTION_RETENTION_MODE_V0_PRESSURE_001`.
+
+**Witness:** the exact
+`COGNITIVE_METHOD_APPLICABILITY_HORIZON_V0` outcomes for
+`WORLD_CHANGE != METHOD_CHANGE` reconstructed from a minimal carrier containing
+the distinction id, horizon id, method-axis applicability law, unresolved
+boundaries, and exact source handles, while the richer G4/G5/G6 case and
+pressure structures remained non-inline.
+
+Frozen adjudication result:
+`docs/campaigns/distinction_retention_mode_001/pressure_runs/DISTINCTION_RETENTION_MODE_V0_PRESSURE_RESULT_001.md`
+(blob `7d037362dd0e438ae7c1fb2553d452a9ae2fd233`).
+
+Runtime witness:
+`distinction_retention_mode_v0_observation.json`
+(blob `1ff52354096371710ccdcdd77dfb9a6b2c1ada3b`).
+
+**Consequence:** hot memory may retain the smallest carrier required to preserve
+an exact horizon-scoped operative relation while richer pressure evidence moves
+out of line but remains exactly cold-routable. This does not authorize raw-source
+deletion, establish a quantitative carrying-cost optimum, establish global
+ecology retention, or imply method improvement, capitalization, planning
+authority, execution authority, or scientific standing.
+
+---
+
+## Current nonclaim
+
+These seven entries are the current bounded invariant bank.
+
+```text
+seven earned invariants
 !=
 complete coordinate system of semantic memory
 ```
