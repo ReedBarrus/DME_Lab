@@ -135,20 +135,26 @@
       "standing": "MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_MATCHED",
       "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_RESULT_001.md",
       "claim_ceiling": "One exact admitted materialized-work object crosses one caller-supplied callback exactly once under one-shot authority consumption while conserving exact successor/work-spec/unit lineage; replay and wrong materialization are blocked; raw return remains uninterpreted."
+    },
+    "materialized_invocation_result_witness": {
+      "standing": "MATERIALIZED_INVOCATION_RESULT_WITNESS_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_RESULT_001.md",
+      "claim_ceiling": "One already-consumed exact materialized-work attempt binds its exact raw callback return into one deterministic immutable result witness while conserving exact successor/work-spec/materialized-unit/admission/consumption/attempt lineage. No semantic interpretation, settlement, external effect, execution standing, authority, or scientific standing is created."
     }
   },
   "current_unresolved": [
-    "Exact materialized-work immutable result witnessing is witnessed and awaits independent adjudication.",
-    "Exact materialized-work settlement, consequence, reconciliation, and successor3 remain unearned.",
-    "Post-consequence control/economy projection is pinned but dormant until the consequence spine is frozen."
+    "Exact materialized-work immutable result witnessing is independently matched.",
+    "Exact materialized-work candidate settlement is implemented and ready for runtime pressure.",
+    "Exact materialized-work external consequence, reconciliation, and successor3 remain unearned.",
+    "Post-consequence control/economy projection remains dormant until successor3 freezes the consequence spine."
   ],
   "next_pressure": {
-    "pressure_id": "MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_001_ADJUDICATION",
-    "work_item_id": "WORKCYCLE_STABILIZATION_001_MATERIALIZED_INVOCATION_RESULT_WITNESS",
-    "destination": "FRESH_INDEPENDENT_EXACT_MATERIALIZED_RESULT_WITNESS_ADJUDICATOR",
-    "packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-    "selection_basis": "The exact result-witness observation exercised source 5aafa4cb88cf4be6f1f430cfd10b31cbc135d3dd and was transported alone in f6cdb2bfef3ed77a3f3883d4ba50b9398a1a3c87. Independent adjudication is required before exact-work settlement.",
-    "expected_operating_change": "Freeze MATCHED/PARTIAL/FRACTURED/UNRESOLVED for immutable exact-work result witnessing without semantic interpretation, settlement, consequence, execution standing, or scientific standing.",
+    "pressure_id": "MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001",
+    "work_item_id": "WORKCYCLE_STABILIZATION_001_MATERIALIZED_INVOCATION_RESULT_SETTLEMENT",
+    "destination": "LOCAL_EXACT_MATERIALIZED_RESULT_SETTLEMENT_WITNESS",
+    "packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_READY_TO_RUN.md",
+    "selection_basis": "MATERIALIZED_INVOCATION_RESULT_WITNESS_MATCHED is frozen. The next required relation is externally supplied field-level candidate settlement over that exact immutable witness while preserving full exact-work lineage and creating no consequence or qualification standing.",
+    "expected_operating_change": "Observe deterministic exact-work candidate settlement, source-witness preservation, disposition sensitivity, exact-lineage tamper rejection, and zero qualification/consequence/authority/execution/Atlas/standing effects.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -256,7 +262,9 @@
       "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_001_READY_TO_RUN.md",
       "src/observation/materialized_invocation_result_witness_v0.py",
       "tests/observation/test_materialized_invocation_result_witness_v0.py",
-      "tools/observe_materialized_invocation_result_witness_v0.py"
+      "tools/observe_materialized_invocation_result_witness_v0.py",
+      "docs/campaigns/workcycle_stabilization_001/pressure_runs/MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_RESULT_001.md",
+      "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_READY_TO_RUN.md"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
@@ -327,9 +335,9 @@
       "exact materialized-work one-shot authority consumption independently matched"
     ],
     "unresolved_components": [
-      "exact materialized-work immutable result witnessing awaits runtime pressure",
-      "exact materialized-work settlement/consequence/reconciliation remains unearned",
-      "repeat without manual successor selection has not yet been observed"
+      "exact materialized-work candidate settlement awaits runtime pressure",
+      "exact materialized-work external consequence/reconciliation remains unearned",
+      "successor3 has not yet been derived"
     ]
   },
   "deferred_challenge_backlog": [
