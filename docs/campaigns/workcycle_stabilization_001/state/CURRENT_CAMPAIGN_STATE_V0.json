@@ -129,22 +129,22 @@
     "materialized_unit_authority_binding": {
       "standing": "MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_MATCHED",
       "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_RESULT_001.md",
-      "claim_ceiling": "At the exact supplied repaired source, one current verified one-use local authority envelope can bind one exact sealed successor, one exact sealed externally supplied work specification, and one exact sealed materialized workflow unit before one same-process atomic admission. Authority for one materialization rejects a different materialization under the same successor. The admission receipt conserves exact successor, work-spec, materialized-unit, and authority coordinates. Authority remains unconsumed and no model invocation or work execution occurs."
+      "claim_ceiling": "Exact successor, work-spec, and materialized-unit coordinates are bound before one same-process atomic admission; wrong materialization is blocked; authority remains unconsumed; no model invocation or work execution occurs."
     }
   },
   "current_unresolved": [
     "Exact materialized-work authority/admission is independently repair-matched.",
-    "Exact admitted materialized-work authority consumption and one callback crossing are implemented and ready for runtime pressure.",
-    "Raw callback return has no result-witness, settlement, consequence, or reconciliation standing yet.",
-    "Repeated metabolism and seat consequential/meta-feedback remain unearned."
+    "Exact admitted materialized-work one-shot callback consumption is implemented and ready for runtime pressure.",
+    "The raw callback return has no result-witness, settlement, consequence, or reconciliation standing yet.",
+    "Repeated metabolism remains unearned."
   ],
   "next_pressure": {
     "pressure_id": "MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001",
     "work_item_id": "WORKCYCLE_STABILIZATION_001_MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION",
     "destination": "LOCAL_EXACT_MATERIALIZED_WORK_CONSUMPTION_WITNESS",
     "packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_READY_TO_RUN.md",
-    "selection_basis": "MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_MATCHED is frozen in canonical two-line form. The next relation is exact admitted materialized-work authority consumption plus one caller-supplied callback while conserving exact successor/work-spec/unit identity and preserving raw return as uninterpreted.",
-    "expected_operating_change": "Observe one exact one-shot consumption/callback, replay denial, wrong-materialization blocking before consumption, post-reservation recovery semantics, and zero work-execution/standing effects.",
+    "selection_basis": "The exact materialized-work admission repair is matched. Next pressure is one-shot callback consumption for that exact admitted work object while preserving successor/work-spec/unit lineage.",
+    "expected_operating_change": "Observe one exact one-shot callback crossing, replay denial, wrong-materialization blocking, and recovery semantics without result interpretation or consequence standing.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
