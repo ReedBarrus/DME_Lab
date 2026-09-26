@@ -66,7 +66,7 @@ UNRESOLVED on either axis
 Every reconciliation must bind:
 
 - one exact source reconciliation identity;
-- exact source reconciliation integrity;
+- exact source reconciliation state identity hash;
 - externally supplied world-change disposition;
 - externally supplied world evidence refs;
 - externally supplied method-change disposition;
