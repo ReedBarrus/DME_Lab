@@ -1,7 +1,7 @@
 {
   "object_type": "RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_CURRENT_CAMPAIGN_STATE_V0",
   "campaign_id": "RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_001",
-  "campaign_posture": "G12_SELECTED_READY_FOR_RECONSTRUCTION_PRESSURE",
+  "campaign_posture": "G12_INTERFACE_REPAIRED_READY_FOR_RECONSTRUCTION_RERUN",
   "predecessor": {
     "campaign_id": "PARTIAL_BASIS_RESIDUAL_CONSERVATION_001",
     "standing": "PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_MATCHED",
@@ -17,7 +17,7 @@
   "current_gap": {
     "gap_id": "G12_G11_RESIDUAL_RECONSTRUCTION_DEPENDENCE",
     "gap_class": "OPERATIVE_RELATIONAL",
-    "statement": "The G11 relation is boundedly qualified but invariant promotion remains unearned because reconstruction load has not yet been demonstrated under a hot-carrier ablation with cold-source routability held constant.",
+    "statement": "The G11 relation is boundedly qualified but invariant promotion remains unearned because reconstruction load has not yet been demonstrated. Pressure observation 001 exposed an under-specified observer interface; the carriers remain unchanged and the meta-reconstructability field has been replaced by an assembly-derived completeness check.",
     "work_eligible": true
   },
   "promotion_target": {
@@ -52,13 +52,21 @@
     "scientific standing"
   ],
   "next_pressure": {
-    "pressure_id": "RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_V0_PRESSURE_001",
+    "pressure_id": "RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_V0_PRESSURE_001_RERUN",
     "destination": "TWO_FRESH_INDEPENDENT_RECONSTRUCTIONS",
     "packet": "docs/campaigns/residual_conservation_reconstruction_load_001/RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_V0_PRESSURE_001_READY_TO_RUN.md",
     "required_returns": [
-      "CONTROL_RETURN",
-      "ABLATION_RETURN"
+      "CONTROL_RETURN_002",
+      "ABLATION_RETURN_002"
     ],
     "if_nothing_changes": "RUN_ONCE_PER_CARRIER"
+  },
+  "interface_failure_001": {
+    "observation_handle": "docs/campaigns/residual_conservation_reconstruction_load_001/pressure_runs/RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_V0_PRESSURE_OBSERVATION_001.json",
+    "failure_class": "APPARATUS_INTERFACE_UNDERSPECIFICATION",
+    "substantive_relation_adjudicated": "NO",
+    "carrier_change_required": "NO",
+    "repair": "Remove observer-requested meta-coordinate EXACT_G11_POSTURE_RECONSTRUCTABLE_FROM_CARRIER and derive completeness after the seven substantive returns.",
+    "standing_effect": "NONE"
   }
 }
