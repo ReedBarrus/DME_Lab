@@ -1,0 +1,146 @@
+# MATERIALIZED RECONCILIATION SUCCESSOR PROJECTION — INDEPENDENT ADJUDICATION
+
+PRESSURE_ID:
+MATERIALIZED_RECONCILIATION_SUCCESSOR_PROJECTION_PRESSURE_001
+
+ROLE:
+FRESH_INDEPENDENT_SUCCESSOR_OR_NO_SUCCESSOR_ADJUDICATOR
+
+MODE:
+READ_ONLY
++
+NO_LIVE_CHAT_CONTEXT
++
+NO_REPAIR
++
+NO_WORK_MATERIALIZATION
++
+NO_ADMISSION
++
+NO_AUTHORITY
++
+NO_EXECUTION
++
+NO_SCIENTIFIC_PROMOTION
+
+IMPLEMENTATION_SOURCE_REF:
+61aadc90fc2ae4411d3e71aadd70c093be447164
+
+WITNESS_TRANSPORT_REF:
+c9dd3af79a00b761e25940b02487eef3dba74bcb
+
+PREDECESSOR_RESULT:
+docs/campaigns/workcycle_stabilization_001/pressure_runs/MATERIALIZED_SETTLEMENT_CONSEQUENCE_RECONCILIATION_PRESSURE_RESULT_001.md
+
+PREDECESSOR_BLOB:
+449a2350139be10dd25b552515d1e51f3f6616dc
+
+PREDECESSOR_REQUIRED:
+MATERIALIZED_SETTLEMENT_CONSEQUENCE_RECONCILIATION_MATCHED
+
+FROZEN_EVIDENCE:
+- src/coordination/materialized_reconciliation_successor_projection_v0.py
+  blob c4a119242d7cb19c5a8f4da78da810f6e1f7073b
+- tests/coordination/test_materialized_reconciliation_successor_projection_v0.py
+  blob 6b6acef694447c813ec26f280d6eabfe1fdee90e
+- tools/observe_materialized_reconciliation_successor_projection_v0.py
+  blob 87f8492cb0514e8bcb02dfd34e09f2195c261a36
+- docs/campaigns/workcycle_stabilization_001/MATERIALIZED_RECONCILIATION_SUCCESSOR_PROJECTION_PRESSURE_001_READY_TO_RUN.md
+  blob bf7e5c42bd3ddc1e366482fdf41302f26ea3f04a
+- materialized_reconciliation_successor_projection_observation.json
+  at witness transport ref c9dd3af79a00b761e25940b02487eef3dba74bcb
+  blob e22db46bdda9c7ab011f93173653839194960391
+
+WITNESS_SOURCE:
+61aadc90fc2ae4411d3e71aadd70c093be447164
+
+WITNESS_ONLY_TRANSPORT_REQUIRED:
+YES
+
+TARGET:
+Adjudicate whether successor existence is a deterministic projection of fresh exact materialized reconciliation posture rather than default loop continuation.
+
+REQUIRED_CELLS:
+SATISFIED
+→ CLOSE_BASIS
+→ NO_SUCCESSOR
+→ next_pressure_allowed=false
+
+INVALIDATED
+→ HOLD_NO_JUSTIFIED_WORK
+→ NO_SUCCESSOR
+→ next_pressure_allowed=false
+
+PARTIALLY_SATISFIED
+→ RESOLVE_LOAD_BEARING_GAP
+→ PROPOSED_NOT_ADMITTED
+→ exactly one deterministic successor candidate
+→ next_pressure_allowed=true
+
+REQUIRED_PARTIAL_BINDING:
+The partial successor candidate must bind:
+- exact reconciliation identity
+- exact next-pressure basis
+
+REQUIRED_LINEAGE:
+Conserve:
+- source materialized reconciliation composition
+- source settlement/consequence/evaluation/reconciliation identities
+- source successor identity
+- source work-spec identity
+- source materialized-unit integrity
+
+REQUIRED_NON_COLLAPSES:
+RECONCILIATION != SUCCESSOR
+PARTIAL != AUTOMATIC_WORK_MATERIALIZATION
+SUCCESSOR_CANDIDATE != WORK_SPEC
+NO_SUCCESSOR != FAILURE
+CLOSE_BASIS != FIND_SOMETHING_ELSE
+
+REQUIRED_EFFECTS:
+work_created=false
+work_admission_effect=NONE
+authority_effect=NONE
+execution_effect=NONE
+scientific_standing_effect=NONE
+
+CLAIM_CEILING:
+At the exact supplied source, successor existence is a deterministic projection of exact materialized reconciliation posture rather than a default loop continuation. SATISFIED closes the basis with no successor; INVALIDATED holds with no successor; PARTIALLY_SATISFIED permits one deterministic unadmitted successor candidate bound to the exact reconciliation identity and next-pressure basis. Exact successor, work-spec, and materialized-unit lineage is preserved. No work is materialized, admitted, authorized, scheduled, or executed.
+
+ALLOWED_DISPOSITIONS:
+MATERIALIZED_RECONCILIATION_SUCCESSOR_PROJECTION_MATCHED
+MATERIALIZED_RECONCILIATION_SUCCESSOR_PROJECTION_PARTIAL
+MATERIALIZED_RECONCILIATION_SUCCESSOR_PROJECTION_FRACTURED
+MATERIALIZED_RECONCILIATION_SUCCESSOR_PROJECTION_UNRESOLVED
+
+RETURN_ONLY:
+PRESSURE_ID
+PREDECESSOR_MATERIALIZED_CONSEQUENCE_RECONCILIATION
+FROZEN_IMPLEMENTATION_SOURCE
+WITNESS_SOURCE_MATCHED
+WITNESS_ONLY_TRANSPORT
+SATISFIED_POSTURE
+SATISFIED_CANDIDATE_POSTURE
+SATISFIED_SUCCESSOR_ID
+SATISFIED_NEXT_PRESSURE_ALLOWED
+INVALIDATED_POSTURE
+INVALIDATED_CANDIDATE_POSTURE
+INVALIDATED_SUCCESSOR_ID
+INVALIDATED_NEXT_PRESSURE_ALLOWED
+PARTIAL_POSTURE
+PARTIAL_CANDIDATE_POSTURE
+PARTIAL_SUCCESSOR_PRESENT
+PARTIAL_SUCCESSOR_DETERMINISTIC
+PARTIAL_RECONCILIATION_BOUND
+PARTIAL_NEXT_PRESSURE_BASIS_BOUND
+EXACT_MATERIALIZED_LINEAGE_PRESERVED
+WORK_CREATED
+WORK_ADMISSION_EFFECT
+AUTHORITY_EFFECT
+EXECUTION_EFFECT
+SCIENTIFIC_STANDING_EFFECT
+CLAIM_CEILING_PRESERVED
+DISPOSITION
+UNRESOLVED
+CLAIM_CEILING
+STOPPED
