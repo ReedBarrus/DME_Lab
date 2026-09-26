@@ -617,12 +617,67 @@ or path-relocation semantics.
 
 ---
 
-## Current nonclaim
-
-These fourteen entries are the current bounded invariant bank.
+## EMI-015 — Content identity preservation is not witness path reachability
 
 ```text
-fourteen earned invariants
+exact content / blob identity preserved
+!=
+prior repository-relative witness path remains reachable
+```
+
+for the tested six invariant-ledger witness routes.
+
+For the exact G16 specimen, each tested witness satisfied:
+
+```text
+PRE_MOVE:
+old path → expected blob
+
+POST_MOVE:
+old path → absent
+
+POST_MOVE:
+relocated path → same expected blob
+```
+
+with:
+
+```text
+CONTENT_IDENTITY_PRESERVED = YES
+ORIGINAL_WITNESS_PATH_REACHABILITY_PRESERVED = NO
+RELOCATED_WITNESS_PATH_REACHABILITY = YES
+REFERENCE_ROUTE_BREAK_PRESENT = YES
+```
+
+**Earned by:** G16 /
+`EVIDENCE_PATH_RELOCATION_REACHABILITY_V0_PRESSURE_001`.
+
+Frozen G16 result:
+`docs/campaigns/evidence_path_relocation_reachability_001/pressure_runs/EVIDENCE_PATH_RELOCATION_REACHABILITY_V0_PRESSURE_RESULT_001.md`
+(blob `f1c515da6fc8e103d6aa1661fa3cf6bb7ae74edd`).
+
+Runtime G16 witness:
+`docs/evidence/for_planner/evidence_path_relocation_reachability_v0_observation.json`
+(blob `48cc1f189dc8ec0d2d54c26b9b3ee58536c979a1`).
+
+**Consequence:** for these tested repository-relative witness routes, preserving
+exact evidence content does not preserve the old route used by current references.
+A relocation may therefore preserve evidence identity while breaking an existing
+reconstruction/reachability dependency.
+
+This does not establish evidence loss, claim falsification, scientific-standing
+change, automatic reference-rewrite authority, a generic relocation resolver,
+archive policy, cold-storage admission, deletion permission, planning, authority,
+execution, global invariance, global ecology coverage, or economic weighting.
+
+---
+
+## Current nonclaim
+
+These fifteen entries are the current bounded invariant bank.
+
+```text
+fifteen earned invariants
 !=
 complete coordinate system of semantic memory
 ```
