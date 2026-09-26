@@ -141,6 +141,10 @@ def _expected_change(pressure: str) -> str:
             "consume the exact admitted materialized-work authority once and cross one "
             "bounded callback while preserving exact successor/work-spec/unit identity"
         ),
+        "MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE": (
+            "bind one consumed exact materialized-work raw callback return into one "
+            "immutable result witness with full successor/work-spec/unit lineage"
+        ),
         "REPEATED_METABOLIC_LOOP_PRESSURE": (
             "establish or fracture two consecutive basis-bound workcycle transitions "
             "whose successor selection is derived from prior witnessed consequence"
@@ -240,6 +244,11 @@ def _select_pressure(
         if blocker.startswith("MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION:"):
             return (
                 "MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE",
+                "SELF_MOVING_QUALIFICATION_BLOCKER",
+            )
+        if blocker.startswith("MATERIALIZED_INVOCATION_RESULT_WITNESS:"):
+            return (
+                "MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE",
                 "SELF_MOVING_QUALIFICATION_BLOCKER",
             )
         if blocker.startswith("REPEATED_METABOLIC_LOOP:"):
