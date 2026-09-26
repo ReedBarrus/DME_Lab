@@ -1,0 +1,57 @@
+{
+  "object_type": "CURRENT_HORIZON_DISTINCTION_DEPENDENCE_CURRENT_CAMPAIGN_STATE_V0",
+  "campaign_id": "CURRENT_HORIZON_DISTINCTION_DEPENDENCE_001",
+  "campaign_posture": "G6_IMPLEMENTED_READY_FOR_PRESSURE",
+  "campaign_basis": "Test whether the exact distinction WORLD_CHANGE != METHOD_CHANGE is currently load-bearing for one declared relational horizon because ablating it makes method-specific continuation applicability underdetermined.",
+  "predecessor": {
+    "campaign_id": "METHOD_DISTINCTION_LOAD_001",
+    "standing": "METHOD_DISTINCTION_LOAD_ABLATION_V0_MATCHED",
+    "result_handle": "docs/campaigns/method_distinction_load_001/pressure_runs/METHOD_DISTINCTION_LOAD_ABLATION_V0_PRESSURE_RESULT_001.md",
+    "result_blob": "d738dd57ae7866bdf584509b553a6b061cd714d7",
+    "current_load_bearing_status": "UNRESOLVED"
+  },
+  "current_cell": {
+    "cell_id": "CURRENT_HORIZON_DISTINCTION_DEPENDENCE_G6",
+    "posture": "IMPLEMENTED_READY_FOR_PRESSURE",
+    "target": "CURRENT_HORIZON_DISTINCTION_DEPENDENCE_V0",
+    "horizon_id": "COGNITIVE_METHOD_APPLICABILITY_HORIZON_V0",
+    "specimen_distinction": "WORLD_CHANGE != METHOD_CHANGE"
+  },
+  "current_gap": {
+    "gap_id": "G6_CURRENT_HORIZON_DISTINCTION_DEPENDENCE",
+    "gap_class": "OPERATIVE_RELATIONAL",
+    "statement": "The distinction carries semantic load in the exact G4 frame, but whether a current declared relational horizon depends on preserving that distinction remains unadjudicated.",
+    "work_eligible": true
+  },
+  "permitted_current_load_claims": {
+    "functional": "UNRESOLVED",
+    "semantic": "PRESSURE_TARGET",
+    "authority": "UNRESOLVED",
+    "provenance": "UNRESOLVED",
+    "temporal": "UNRESOLVED",
+    "coordination": "PRESSURE_TARGET"
+  },
+  "required_scope_split": {
+    "declared_horizon_load_bearing_status": "PRESSURE_TARGET",
+    "global_current_load_bearing_status": "UNRESOLVED"
+  },
+  "explicitly_deferred": [
+    "global ecology dependence",
+    "method improvement",
+    "retention justification",
+    "method capitalization",
+    "depreciation or retirement",
+    "causal benefit",
+    "automatic planning",
+    "policy mutation",
+    "authority",
+    "execution",
+    "scientific standing"
+  ],
+  "next_pressure": {
+    "pressure_id": "CURRENT_HORIZON_DISTINCTION_DEPENDENCE_V0_PRESSURE_001",
+    "destination": "LOCAL_G6_HORIZON_DEPENDENCE_OBSERVATION",
+    "packet": "docs/campaigns/current_horizon_distinction_dependence_001/CURRENT_HORIZON_DISTINCTION_DEPENDENCE_V0_PRESSURE_001_READY_TO_RUN.md",
+    "if_nothing_changes": "RUN_ONCE"
+  }
+}
