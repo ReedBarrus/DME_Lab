@@ -18,6 +18,8 @@ origin/main
 MODE:
 BOUNDED_CROSS_SURFACE_REGRESSION_MATRIX
 +
+HISTORICAL_BRANCH_SCOPED_EXCLUSION_VERIFICATION
++
 PER_CASE_TIMEOUTS
 +
 MAIN_ANCESTRY_CHECK
@@ -49,12 +51,13 @@ At one exact branch head, can the branch demonstrate all of:
 
 1. origin/main is an ancestor of HEAD;
 2. working tree is clean before the qualification run;
-3. the bounded cross-surface regression matrix derived from active repo CI plus the promoted consequence/control chain passes;
-4. every regression case is bounded by an explicit timeout and the working tree remains clean after tests;
-5. required frozen result artifacts contain their exact MATCHED dispositions;
-6. WORKCYCLE_STABILIZATION_001 is CLOSED;
-7. CONTROL_KERNEL_001 is checkpoint-closed with no current gap;
-8. the control-kernel checkpoint does NOT already claim branch qualification.
+3. the bounded cross-surface regression matrix derived from applicable active repo CI plus the promoted consequence/control chain passes;
+4. dedicated historical Lane-B qualification modules are excluded only if their branch scope is explicit and their required historical successor fixtures are absent at HEAD but present at their frozen basis;
+5. every applicable regression case is bounded by an explicit timeout and the working tree remains clean after tests;
+6. required frozen result artifacts contain their exact MATCHED dispositions;
+7. WORKCYCLE_STABILIZATION_001 is CLOSED;
+8. CONTROL_KERNEL_001 is checkpoint-closed with no current gap;
+9. the control-kernel checkpoint does NOT already claim branch qualification.
 
 # EXECUTION
 
@@ -98,10 +101,12 @@ It still requires fresh independent adjudication before the branch may be called
 # CLAIM CEILING
 
 Success establishes only that the exact observed branch head passed the bounded
-cross-surface regression matrix derived from active repository CI plus the promoted
-consequence/control chain, remained clean, retained the required frozen standing
-chain, and was not behind origin/main at observation time. It is not exhaustive
-proof over every historical test surface.
+cross-surface regression matrix derived from applicable active repository CI plus
+the promoted consequence/control chain; dedicated historical Lane-B qualification
+modules were excluded only after mechanical verification of branch scope and the
+absence-at-HEAD/presence-at-historical-basis fixture relation; the branch remained
+clean, retained the required frozen standing chain, and was not behind origin/main
+at observation time. It is not exhaustive proof over every historical test surface.
 
 It does not merge the branch, authorize merge, create scientific standing,
 qualify future commits, or establish the deferred G4+ capabilities.
