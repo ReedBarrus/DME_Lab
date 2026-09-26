@@ -1,0 +1,69 @@
+{
+  "object_type": "DISTINCTION_RETENTION_CURRENTNESS_CURRENT_CAMPAIGN_STATE_V0",
+  "campaign_id": "DISTINCTION_RETENTION_CURRENTNESS_001",
+  "campaign_posture": "G8_IMPLEMENTED_READY_FOR_PRESSURE",
+  "campaign_basis": "Test whether the G7 horizon-scoped hot-retention requirement is conditioned by externally supplied currentness of the exact declared horizon without inferring global cooling or executing a retention transition.",
+  "predecessor": {
+    "campaign_id": "DISTINCTION_RETENTION_MODE_001",
+    "standing": "DISTINCTION_RETENTION_MODE_V0_MATCHED",
+    "result_handle": "docs/campaigns/distinction_retention_mode_001/pressure_runs/DISTINCTION_RETENTION_MODE_V0_PRESSURE_RESULT_001.md",
+    "result_blob": "7d037362dd0e438ae7c1fb2553d452a9ae2fd233",
+    "witness_blob": "1ff52354096371710ccdcdd77dfb9a6b2c1ada3b"
+  },
+  "current_cell": {
+    "cell_id": "DISTINCTION_RETENTION_CURRENTNESS_G8",
+    "posture": "IMPLEMENTED_READY_FOR_PRESSURE",
+    "target": "DISTINCTION_RETENTION_CURRENTNESS_V0",
+    "horizon_id": "COGNITIVE_METHOD_APPLICABILITY_HORIZON_V0",
+    "distinction": "WORLD_CHANGE != METHOD_CHANGE"
+  },
+  "current_gap": {
+    "gap_id": "G8_RETENTION_CURRENTNESS_MEMBRANE",
+    "gap_class": "OPERATIVE_RELATIONAL",
+    "statement": "G7 established a horizon-scoped hot-retention requirement, but whether that requirement persists when the exact horizon is CURRENT, NONCURRENT, or UNRESOLVED remains untested.",
+    "work_eligible": true
+  },
+  "currentness_input": {
+    "source": "EXTERNALLY_SUPPLIED",
+    "allowed": [
+      "CURRENT",
+      "NONCURRENT",
+      "UNRESOLVED"
+    ],
+    "inference_effect": "NONE"
+  },
+  "required_scope_split": {
+    "declared_horizon_hot_requirement": "PRESSURE_TARGET",
+    "global_hot_requirement": "UNRESOLVED",
+    "exact_cold_source_retention_required": "YES"
+  },
+  "explicit_noncollapses": [
+    "HORIZON_NONCURRENT != GLOBAL_DISTINCTION_IRRELEVANCE",
+    "HOT_NOT_REQUIRED_FOR_THIS_HORIZON != SAFE_TO_DELETE",
+    "HOT_NOT_REQUIRED_FOR_THIS_HORIZON != GLOBAL_COOLING_AUTHORITY",
+    "CURRENTNESS != CLOCK_RECENCY",
+    "RETENTION_REQUIREMENT != RETENTION_ACTION",
+    "RETENTION_ACTION != AUTHORITY",
+    "OBSERVABLE_INTELLIGENCE != CONSEQUENTIAL_BEHAVIOR"
+  ],
+  "explicitly_deferred": [
+    "global cooling",
+    "global ecology retention",
+    "retention transition execution",
+    "raw source deletion",
+    "depreciation schedule",
+    "retirement",
+    "quantitative carrying-cost optimum",
+    "method improvement",
+    "method capitalization",
+    "planning authority",
+    "execution authority",
+    "scientific standing"
+  ],
+  "next_pressure": {
+    "pressure_id": "DISTINCTION_RETENTION_CURRENTNESS_V0_PRESSURE_001",
+    "destination": "LOCAL_G8_RETENTION_CURRENTNESS_OBSERVATION",
+    "packet": "docs/campaigns/distinction_retention_currentness_001/DISTINCTION_RETENTION_CURRENTNESS_V0_PRESSURE_001_READY_TO_RUN.md",
+    "if_nothing_changes": "RUN_ONCE"
+  }
+}
