@@ -1,0 +1,113 @@
+{
+  "object_type": "EVIDENCE_PATH_RELOCATION_REACHABILITY_V0_OBSERVATION",
+  "campaign_id": "EVIDENCE_PATH_RELOCATION_REACHABILITY_001",
+  "pressure_id": "EVIDENCE_PATH_RELOCATION_REACHABILITY_V0_PRESSURE_001",
+  "pre_move_source": "cf2d62f175bfae784d3755dc83ab7ea1d4e33b2f",
+  "relocation_commit": "2ea35acb8d4fb61f55f4725a5af72510746460b5",
+  "cases": [
+    {
+      "old_path": "declaration_work_eligibility_selection_load_v0_observation.json",
+      "new_path": "docs/evidence/for_planner/declaration_work_eligibility_selection_load_v0_observation.json",
+      "expected_blob": "54ab5157ec936474c6189f2d956127fc5cb1e0c0",
+      "pre_move_old_path_blob": "54ab5157ec936474c6189f2d956127fc5cb1e0c0",
+      "post_move_old_path_blob": null,
+      "post_move_new_path_blob": "54ab5157ec936474c6189f2d956127fc5cb1e0c0",
+      "control_old_path_resolves_expected_blob": true,
+      "relocation_old_path_absent": true,
+      "relocation_new_path_resolves_expected_blob": true,
+      "content_identity_preserved": true,
+      "original_path_reachability_preserved": false
+    },
+    {
+      "old_path": "distinction_retention_currentness_v0_observation.json",
+      "new_path": "docs/evidence/for_planner/distinction_retention_currentness_v0_observation.json",
+      "expected_blob": "949ff2b9333146ca16e68981123f338f6e4dfd15",
+      "pre_move_old_path_blob": "949ff2b9333146ca16e68981123f338f6e4dfd15",
+      "post_move_old_path_blob": null,
+      "post_move_new_path_blob": "949ff2b9333146ca16e68981123f338f6e4dfd15",
+      "control_old_path_resolves_expected_blob": true,
+      "relocation_old_path_absent": true,
+      "relocation_new_path_resolves_expected_blob": true,
+      "content_identity_preserved": true,
+      "original_path_reachability_preserved": false
+    },
+    {
+      "old_path": "distinction_retention_mode_v0_observation.json",
+      "new_path": "docs/evidence/for_planner/distinction_retention_mode_v0_observation.json",
+      "expected_blob": "1ff52354096371710ccdcdd77dfb9a6b2c1ada3b",
+      "pre_move_old_path_blob": "1ff52354096371710ccdcdd77dfb9a6b2c1ada3b",
+      "post_move_old_path_blob": null,
+      "post_move_new_path_blob": "1ff52354096371710ccdcdd77dfb9a6b2c1ada3b",
+      "control_old_path_resolves_expected_blob": true,
+      "relocation_old_path_absent": true,
+      "relocation_new_path_resolves_expected_blob": true,
+      "content_identity_preserved": true,
+      "original_path_reachability_preserved": false
+    },
+    {
+      "old_path": "partial_basis_residual_conservation_v0_observation.json",
+      "new_path": "docs/evidence/for_planner/partial_basis_residual_conservation_v0_observation.json",
+      "expected_blob": "1736d63c13c27d37641f3a6f78825c9288428a50",
+      "pre_move_old_path_blob": "1736d63c13c27d37641f3a6f78825c9288428a50",
+      "post_move_old_path_blob": null,
+      "post_move_new_path_blob": "1736d63c13c27d37641f3a6f78825c9288428a50",
+      "control_old_path_resolves_expected_blob": true,
+      "relocation_old_path_absent": true,
+      "relocation_new_path_resolves_expected_blob": true,
+      "content_identity_preserved": true,
+      "original_path_reachability_preserved": false
+    },
+    {
+      "old_path": "partial_basis_retention_profile_v0_observation.json",
+      "new_path": "docs/evidence/for_planner/partial_basis_retention_profile_v0_observation.json",
+      "expected_blob": "4f4c7efef184c1f60ab362420d7ef09a1c43dab1",
+      "pre_move_old_path_blob": "4f4c7efef184c1f60ab362420d7ef09a1c43dab1",
+      "post_move_old_path_blob": null,
+      "post_move_new_path_blob": "4f4c7efef184c1f60ab362420d7ef09a1c43dab1",
+      "control_old_path_resolves_expected_blob": true,
+      "relocation_old_path_absent": true,
+      "relocation_new_path_resolves_expected_blob": true,
+      "content_identity_preserved": true,
+      "original_path_reachability_preserved": false
+    },
+    {
+      "old_path": "retention_scope_aggregation_v0_observation.json",
+      "new_path": "docs/evidence/for_planner/retention_scope_aggregation_v0_observation.json",
+      "expected_blob": "212d7a9d4fb7bc982cb83b418ee6d5982008c574",
+      "pre_move_old_path_blob": "212d7a9d4fb7bc982cb83b418ee6d5982008c574",
+      "post_move_old_path_blob": null,
+      "post_move_new_path_blob": "212d7a9d4fb7bc982cb83b418ee6d5982008c574",
+      "control_old_path_resolves_expected_blob": true,
+      "relocation_old_path_absent": true,
+      "relocation_new_path_resolves_expected_blob": true,
+      "content_identity_preserved": true,
+      "original_path_reachability_preserved": false
+    }
+  ],
+  "assembly": {
+    "all_control_old_paths_resolve_expected_blobs": true,
+    "all_relocation_old_paths_absent": true,
+    "all_relocation_new_paths_resolve_expected_blobs": true,
+    "all_content_identities_preserved": true,
+    "original_witness_path_reachability_preserved": false,
+    "relocated_witness_path_reachability": true,
+    "reference_route_break_present": true
+  },
+  "candidate_relation": {
+    "content_identity_preservation_ne_witness_path_reachability": "YES"
+  },
+  "effects": {
+    "evidence_loss_effect": "NONE",
+    "claim_falsification_effect": "NONE",
+    "scientific_standing_effect": "NONE",
+    "automatic_reference_rewrite_effect": "NONE",
+    "generic_relocation_resolver_effect": "NONE",
+    "archive_policy_effect": "NONE",
+    "deletion_permission_effect": "NONE",
+    "planning_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE"
+  },
+  "claim_ceiling": "One bounded repository-path relocation pressure over six invariant-ledger witness references. Exact Git blob identity may remain preserved while the prior repository-relative path no longer resolves and the relocated path does resolve. No evidence-loss, claim-falsification, archive-policy, automatic-rewrite, generic relocation, authority, execution, or scientific-standing claim is created.",
+  "stopped": "YES"
+}
