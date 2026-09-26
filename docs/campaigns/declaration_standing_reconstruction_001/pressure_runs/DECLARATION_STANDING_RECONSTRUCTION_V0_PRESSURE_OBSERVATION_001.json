@@ -1,0 +1,51 @@
+{
+  "object_type": "DECLARATION_STANDING_RECONSTRUCTION_V0_OBSERVATION",
+  "campaign_id": "DECLARATION_STANDING_RECONSTRUCTION_001",
+  "pressure_id": "DECLARATION_STANDING_RECONSTRUCTION_V0_PRESSURE_001",
+  "frozen_setup_source": "be5795b4de248c1bc4619c8914168b59cb07d6e5",
+  "control_return": {
+    "declaration_standing": "EXTERNALLY_SUPPLIED_LIVE_GAP",
+    "horizon_id": "H1_POST_CONSEQUENCE_PHASE_HANDOFF",
+    "item_id": "G1_STALE_SUCCESSOR_3_HANDOFF",
+    "relation_targets": [
+      "CONTROL_KERNEL_ACTIVATION",
+      "CAMPAIGN_HANDOFF",
+      "RECONSTRUCTION"
+    ],
+    "post_repair_horizon_posture": "HORIZON_SATISFIED"
+  },
+  "ablation_return": {
+    "declaration_standing": "UNRESOLVED_FROM_CARRIER",
+    "horizon_id": "H1_POST_CONSEQUENCE_PHASE_HANDOFF",
+    "item_id": "G1_STALE_SUCCESSOR_3_HANDOFF",
+    "relation_targets": [
+      "CONTROL_KERNEL_ACTIVATION",
+      "CAMPAIGN_HANDOFF",
+      "RECONSTRUCTION"
+    ],
+    "post_repair_horizon_posture": "HORIZON_SATISFIED"
+  },
+  "assembly": {
+    "control_exact_match": "YES",
+    "ablation_exact_match": "YES",
+    "shared_coordinates_preserved": "YES",
+    "declaration_standing_discrimination_present": "YES"
+  },
+  "candidate_relation": {
+    "descriptive_content_ne_explicit_declaration_standing": "YES",
+    "declaration_standing_reconstruction_load": "YES"
+  },
+  "effects": {
+    "residual_gap_promotion_effect": "NONE",
+    "automatic_discovery_effect": "NONE",
+    "downstream_eligibility_effect": "NONE",
+    "architecture_requirement_effect": "NONE",
+    "global_claim_effect": "NONE",
+    "planning_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE"
+  },
+  "claim_ceiling": "This observation records only a bounded reconstruction discrimination over the matched Control Kernel Cell 001 specimen: the control carrier reconstructs explicit externally supplied declaration standing while the ablation carrier does not, with horizon id, item id, relation targets, and post-repair horizon posture preserved. Whether this establishes declaration-standing reconstruction load requires independent adjudication. No general transition criterion, automatic discovery, downstream eligibility, architecture requirement, global claim, planning, authority, execution, or scientific standing is established.",
+  "stopped": "YES"
+}
