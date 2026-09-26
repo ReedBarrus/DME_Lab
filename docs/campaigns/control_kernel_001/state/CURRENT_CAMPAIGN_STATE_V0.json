@@ -1,0 +1,48 @@
+{
+  "object_type": "CONTROL_KERNEL_CURRENT_CAMPAIGN_STATE_V0",
+  "campaign_id": "CONTROL_KERNEL_001",
+  "campaign_posture": "ACTIVE",
+  "campaign_basis": "Prove governed-work semantics using one externally supplied horizon and one externally supplied live gap before introducing generalized horizon representation or machine selection.",
+  "predecessor_campaign": {
+    "campaign_id": "WORKCYCLE_STABILIZATION_001",
+    "posture": "CLOSED",
+    "terminal_disposition": "CLOSE_BASIS",
+    "terminal_candidate_posture": "NO_SUCCESSOR",
+    "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/MATERIALIZED_RECONCILIATION_SUCCESSOR_PROJECTION_PRESSURE_RESULT_001.md"
+  },
+  "current_cell": {
+    "cell_id": "CONTROL_KERNEL_CELL_001",
+    "posture": "IMPLEMENTED_READY_FOR_PRESSURE",
+    "specimen": "docs/campaigns/control_kernel_001/state/CONTROL_KERNEL_CELL_001_SPECIMEN_V0.json",
+    "selection_source": "EXTERNALLY_SUPPLIED",
+    "machine_selection_claimed": false,
+    "competing_gaps": 0
+  },
+  "gap_stratification": {
+    "evidentiary": "Has the claimed relation earned standing?",
+    "operative_relational": "What currently consequential relation is unresolved?",
+    "architectural_capability": "What machinery is missing for later classes of relational gaps?"
+  },
+  "current_gap": {
+    "gap_id": "G1_STALE_SUCCESSOR_3_HANDOFF",
+    "gap_class": "OPERATIVE_RELATIONAL",
+    "externally_supplied": true,
+    "work_eligible": true
+  },
+  "explicitly_deferred": [
+    "RELATIONAL_HORIZON_V0 generalized representation",
+    "HORIZON_GAP_SELECTOR_V0 machine selection",
+    "multi-gap ranking",
+    "challenge/discovery budget",
+    "world/method reconciliation fork",
+    "cognitive asset load probe",
+    "freshness/currentness membrane",
+    "concurrency and joint viability economics"
+  ],
+  "next_pressure": {
+    "pressure_id": "CONTROL_KERNEL_CELL_001_PRESSURE_001",
+    "destination": "LOCAL_EXTERNAL_ONE_GAP_CALIBRATION",
+    "packet": "docs/campaigns/control_kernel_001/CONTROL_KERNEL_CELL_001_PRESSURE_001_READY_TO_RUN.md",
+    "if_nothing_changes": "DO_NOT_RUN"
+  }
+}
