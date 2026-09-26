@@ -73,16 +73,10 @@
       "claim": "No repaired exact materialized-work authority standing until independent adjudication."
     },
     "materialized_admitted_authority_consumption": {
-      "posture": "WITNESSED_AWAITING_ADJUDICATION",
-      "implementation": "src/coordination/materialized_admitted_authority_consumption_v0.py",
-      "tests": "tests/coordination/test_materialized_admitted_authority_consumption_v0.py",
-      "observer": "tools/observe_materialized_admitted_authority_consumption_v0.py",
-      "witness": "materialized_admitted_authority_consumption_observation.json",
-      "witness_source_ref": "793672dbce01ecd0a5ecdb0cfe79f8487eed53f2",
-      "witness_transport_ref": "7967ef73e862fa0d5beea0c5941d46b385820aaa",
-      "adjudication_packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-      "observed": "Exact admitted materialized work consumed one-use authority once, crossed one caller-supplied callback once, preserved exact successor/work-spec/unit lineage and raw return, blocked replay, blocked wrong materialization before consumption, and created no execution or scientific standing.",
-      "claim": "No consumption standing until independent adjudication."
+      "posture": "QUALIFIED",
+      "evidence": "MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_RESULT_001.md",
+      "claim": "Exact admitted materialized work crosses one one-shot callback under exact authority consumption; replay and wrong materialization are blocked; raw return remains uninterpreted."
     }
   },
   "metabolic_depth": {
@@ -179,20 +173,16 @@
     }
   },
   "next_load_bearing_coordinate": {
-    "coordinate": "materialized_admitted_authority_consumption",
-    "pressure": "MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_ADJUDICATION",
-    "selection_basis": "The one-shot exact-work consumption witness has clean witness-only transport. Independent adjudication is required before immutable result-witness composition."
+    "coordinate": "materialized_invocation_result_witness",
+    "pressure": "MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_001",
+    "selection_basis": "Exact materialized-work consumption is matched; immutable exact-work result witnessing is the next required relation."
   },
   "downstream_frontier": [
-    "independently adjudicate exact materialized-work authority repair",
-    "consume fresh exact-work authority and invoke one materialized successor attempt",
-    "witness/settle/reconcile the materialized successor attempt",
+    "pressure exact materialized-work immutable result witness",
+    "settle the exact materialized-work result witness",
+    "observe consequence and reconcile the materialized successor basis",
     "derive successor3 and repeat metabolic loop",
-    "planner-seat generation of bounded work specs",
-    "seat consequential/meta-feedback",
-    "memory compression/reconstruction under persistent load",
-    "controlled fracture injection",
-    "noisy workload fitness"
+    "introduce relational-horizon / cognitive-capital control kernel only after the exact consequence spine is frozen"
   ],
   "deferred_nonblocking": [
     "cross-process admission contention",
@@ -202,5 +192,15 @@
   "authority_effect": "NONE",
   "execution_effect": "NONE",
   "scientific_standing_effect": "NONE",
-  "claim_ceiling": "Frontier map only. Coordinate posture does not itself create standing; each stronger claim requires one new mechanically witnessed relation."
+  "claim_ceiling": "Frontier map only. Coordinate posture does not itself create standing; each stronger claim requires one new mechanically witnessed relation.",
+  "observation_depth": {
+    "materialized_invocation_result_witness": {
+      "posture": "IMPLEMENTED_READY_FOR_PRESSURE",
+      "implementation": "src/observation/materialized_invocation_result_witness_v0.py",
+      "tests": "tests/observation/test_materialized_invocation_result_witness_v0.py",
+      "observer": "tools/observe_materialized_invocation_result_witness_v0.py",
+      "pressure_packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_001_READY_TO_RUN.md",
+      "claim": "Candidate only: one already-consumed exact materialized-work attempt + raw callback return -> one deterministic immutable result witness with full exact-work lineage and zero semantic/settlement/consequence/standing effects."
+    }
+  }
 }
