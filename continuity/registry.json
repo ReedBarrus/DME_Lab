@@ -3,7 +3,7 @@
   "consumers": [
     {
       "consumer_id": "chatgpt-main",
-      "role": "semantic integrator and continuity consumer",
+      "role": "semantic integrator, continuity consumer, and bounded Atlas planner-seat candidate",
       "cursor_ref": "continuity/cursors/chatgpt.json",
       "tether_id": "local-tether-chatgpt-main-000001",
       "invocation_ref": "CHATGPT-MANUAL-TETHER-001",
@@ -11,7 +11,7 @@
       "association_basis": "MANUAL_ASSERTION",
       "resolution_status": "OPAQUE",
       "activity_state": "UNKNOWN",
-      "working_state_ref": null
+      "working_state_ref": "continuity/current_state/chatgpt_main_working_state_v0.json"
     },
     {
       "consumer_id": "codex-main",
