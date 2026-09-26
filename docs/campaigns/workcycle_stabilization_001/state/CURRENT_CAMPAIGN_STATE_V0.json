@@ -1,12 +1,12 @@
 {
   "object_type": "WORKCYCLE_CURRENT_CAMPAIGN_STATE_V0",
   "campaign_id": "WORKCYCLE_STABILIZATION_001",
-  "campaign_posture": "ACTIVE",
+  "campaign_posture": "CLOSED",
   "operative_target": "Establish a boring, observable, repairable campaign→decomposition→seat-work lifecycle that reduces human/repository load while preserving reconstructability.",
   "current_horizon": {
     "family": "H_operate",
     "subject": "source-bound authority → atomic admission → executed successor → settlement → basis reconciliation",
-    "posture": "ACTIVE"
+    "posture": "CLOSED"
   },
   "earned_state": {
     "bounded_reconstruction_dependence_candidates": [
@@ -140,19 +140,17 @@
       "standing": "MATERIALIZED_INVOCATION_RESULT_WITNESS_MATCHED",
       "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_RESULT_001.md",
       "claim_ceiling": "One already-consumed exact materialized-work attempt binds its exact raw callback return into one deterministic immutable result witness while conserving exact successor/work-spec/materialized-unit/admission/consumption/attempt lineage. No semantic interpretation, settlement, external effect, execution standing, authority, or scientific standing is created."
+    },
+    "materialized_reconciliation_successor_projection": {
+      "standing": "MATERIALIZED_RECONCILIATION_SUCCESSOR_PROJECTION_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/MATERIALIZED_RECONCILIATION_SUCCESSOR_PROJECTION_PRESSURE_RESULT_001.md",
+      "actual_satisfied_terminal_posture": "CLOSE_BASIS",
+      "actual_satisfied_candidate_posture": "NO_SUCCESSOR",
+      "claim_ceiling": "Successor existence is a deterministic projection of exact materialized reconciliation posture. SATISFIED closes the basis with no successor; INVALIDATED holds with no successor; PARTIALLY_SATISFIED permits one deterministic unadmitted successor candidate. No work is materialized, admitted, authorized, scheduled, or executed."
     }
   },
-  "current_unresolved": [
-    "G0 evidentiary gap: successor-or-no-successor projection is witnessed and awaits independent adjudication.",
-    "Consequence-spine closure is not yet frozen.",
-    "Control-kernel H1/G1 specimen remains future work and must not be claimed as machine-selected."
-  ],
-  "next_pressure": {
-    "pressure_id": "MATERIALIZED_RECONCILIATION_SUCCESSOR_PROJECTION_PRESSURE_001_ADJUDICATION",
-    "destination": "FRESH_INDEPENDENT_SUCCESSOR_OR_NO_SUCCESSOR_ADJUDICATOR",
-    "packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_RECONCILIATION_SUCCESSOR_PROJECTION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-    "if_nothing_changes": "DO_NOT_RUN"
-  },
+  "current_unresolved": [],
+  "next_pressure": null,
   "memory_posture": {
     "hot": [
       "docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json",
@@ -361,5 +359,12 @@
     "posture": "PROJECTION_ONLY",
     "activation_gate": "DO_NOT_INSTANTIATE_UNTIL_EXACT_CONSEQUENCE_SPINE_IS_FROZEN_THROUGH_SUCCESSOR_3",
     "standing_effect": "NONE"
+  },
+  "closure": {
+    "disposition": "CLOSE_BASIS",
+    "successor_posture": "NO_SUCCESSOR",
+    "next_pressure_allowed": false,
+    "closure_basis": "MATERIALIZED_RECONCILIATION_SUCCESSOR_PROJECTION_MATCHED",
+    "transition": "POST_CONSEQUENCE_CONTROL_KERNEL_HANDOFF"
   }
 }
