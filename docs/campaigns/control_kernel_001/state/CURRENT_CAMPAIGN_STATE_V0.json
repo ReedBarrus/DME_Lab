@@ -1,7 +1,7 @@
 {
   "object_type": "CONTROL_KERNEL_CURRENT_CAMPAIGN_STATE_V0",
   "campaign_id": "CONTROL_KERNEL_001",
-  "campaign_posture": "ACTIVE",
+  "campaign_posture": "CHECKPOINT_CLOSED_AWAITING_BRANCH_QUALIFICATION",
   "campaign_basis": "Prove governed-work semantics using one externally supplied horizon and one externally supplied live gap before introducing generalized horizon representation or machine selection.",
   "predecessor_campaign": {
     "campaign_id": "WORKCYCLE_STABILIZATION_001",
@@ -12,12 +12,9 @@
   },
   "current_cell": {
     "cell_id": "CONTROL_KERNEL_CELL_003",
-    "posture": "WITNESSED_AWAITING_ADJUDICATION",
+    "posture": "MATCHED_CHECKPOINT_TERMINAL",
     "target": "HORIZON_GAP_SELECTOR_V0",
-    "witness": "horizon_gap_selector_v0_observation.json",
-    "witness_source_ref": "e8cd3acd34e84c15279c275590950a6d304d2885",
-    "witness_transport_ref": "484750cc84d6e14b7b76b7fa31b2566c5bc1bfa0",
-    "machine_selection_scope": "EXACT_SINGLE_DECLARED_ELIGIBLE_GAP_OR_STOP",
+    "standing": "HORIZON_GAP_SELECTOR_V0_MATCHED",
     "multi_gap_ranking": "UNSUPPORTED"
   },
   "gap_stratification": {
@@ -25,12 +22,7 @@
     "operative_relational": "What currently consequential relation is unresolved?",
     "architectural_capability": "What machinery is missing for later classes of relational gaps?"
   },
-  "current_gap": {
-    "gap_id": "G3_HORIZON_GAP_SELECTOR_EVIDENTIARY_STANDING",
-    "gap_class": "EVIDENTIARY",
-    "statement": "HORIZON_GAP_SELECTOR_V0 has a clean runtime witness for exact single-gap selection, zero-gap NO_JUSTIFIED_WORK, and multi-gap rejection, but has not yet been independently adjudicated.",
-    "work_eligible": true
-  },
+  "current_gap": null,
   "explicitly_deferred": [
     "multi-gap ranking",
     "challenge/discovery budget",
@@ -40,9 +32,9 @@
     "concurrency and joint viability economics"
   ],
   "next_pressure": {
-    "pressure_id": "HORIZON_GAP_SELECTOR_V0_PRESSURE_001_ADJUDICATION",
-    "destination": "FRESH_INDEPENDENT_SINGLE_GAP_OR_STOP_SELECTOR_ADJUDICATOR",
-    "packet": "docs/campaigns/control_kernel_001/HORIZON_GAP_SELECTOR_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+    "pressure_id": "MAIN_MERGE_QUALIFICATION_001",
+    "destination": "LOCAL_BRANCH_WIDE_QUALIFICATION_PRESSURE",
+    "packet": "docs/qualification/MAIN_MERGE_QUALIFICATION_001_READY_TO_RUN.md",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "earned_cells": {
@@ -73,6 +65,31 @@
         "execution",
         "scientific standing"
       ]
+    },
+    "CONTROL_KERNEL_CELL_003": {
+      "standing": "HORIZON_GAP_SELECTOR_V0_MATCHED",
+      "result_handle": "docs/campaigns/control_kernel_001/pressure_runs/HORIZON_GAP_SELECTOR_V0_PRESSURE_RESULT_001.md",
+      "effective_claim": "One validated represented horizon deterministically returns its exact sole already-declared work-eligible gap, returns NO_JUSTIFIED_WORK when none exists, and rejects multiple eligible gaps rather than ranking them.",
+      "does_not_establish": [
+        "semantic discovery of gaps",
+        "multi-gap optimization",
+        "planning",
+        "work materialization",
+        "work admission",
+        "authority",
+        "execution",
+        "scientific standing"
+      ]
     }
+  },
+  "checkpoint_closure": {
+    "earned_minimal_governor": [
+      "CONTROL_KERNEL_CELL_001_MATCHED",
+      "RELATIONAL_HORIZON_V0_MATCHED",
+      "HORIZON_GAP_SELECTOR_V0_MATCHED"
+    ],
+    "composition_claim": "NOT_YET_BRANCH_QUALIFIED",
+    "merge_effect": "NONE",
+    "next_phase": "MAIN_MERGE_QUALIFICATION_001"
   }
 }
