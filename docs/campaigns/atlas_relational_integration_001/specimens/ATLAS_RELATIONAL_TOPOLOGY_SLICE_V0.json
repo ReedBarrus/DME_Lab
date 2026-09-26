@@ -1,0 +1,137 @@
+{
+  "object_type": "ATLAS_RELATIONAL_TOPOLOGY_SLICE_V0",
+  "slice_id": "RTL1_ATLAS_SLICE_001",
+  "projection_status": "DERIVED_PROJECTION_NOT_WORLD_TRUTH",
+  "atlas_projection_semantics": [
+    "RELATION_DRIVEN_FIELD",
+    "UNRESOLVED_REMAINS_VISIBLE",
+    "PROJECTION_NE_OPERATIVE_WORLD",
+    "NO_AUTHORITY_FROM_PROJECTION"
+  ],
+  "basis_handles": [
+    {
+      "role": "CHATGPT_MAIN_PLANNER_SELECTION",
+      "path": "docs/campaigns/chatgpt_main_planner_role_001/pressure_runs/CHATGPT_MAIN_ATLAS_PLANNER_ROLE_V0_PRESSURE_RESULT_001.md",
+      "blob": "67359516883662ad5ef02c5db71e279cc148bad4"
+    },
+    {
+      "role": "RIL1_RELATIONAL_CONFIGURATION",
+      "path": "docs/campaigns/relational_invariance_load_001/pressure_runs/RELATIONAL_INVARIANCE_LOAD_V0_ADJUDICATION_RESULT_001.md",
+      "blob": "d0fa23ee2301024e9a6b96dede95ec62b253156f"
+    },
+    {
+      "role": "RTL1_RELATIONAL_TOPOLOGY",
+      "path": "docs/campaigns/relational_topology_load_001/pressure_runs/RELATIONAL_TOPOLOGY_LOAD_V0_ADJUDICATION_RESULT_001.md",
+      "blob": "fc789514c9276f3857add4fe90402553d70b441d"
+    },
+    {
+      "role": "ATLAS_GEOMETRY",
+      "path": "src/cockpit/observer/repository_fabric_geometry.mjs",
+      "blob": "b2b8ccdd3854c15f586c1af609847a1baf655977"
+    }
+  ],
+  "local_relation": {
+    "relation_id": "FOCAL",
+    "relation_type": "LOAD_BEARING_DEPENDENCY",
+    "source": "A",
+    "target": "B",
+    "load": 2,
+    "target_incoming_capacity": 3,
+    "qualified_relation": "RELATIONAL_CONFIGURATION_CARRIES_CONSEQUENTIAL_LOAD_BEYOND_ENDPOINT_LOCAL_STATE",
+    "scope": "exact RIL1/RTL1 frozen synthetic fixtures only"
+  },
+  "surrounding_topology": {
+    "relation_ids": [
+      "CONTEXT"
+    ],
+    "relation_role": "SURROUNDING_INCIDENT_LOAD",
+    "note": "The surrounding relation is preserved as a distinct coordinate rather than flattened into the focal relation."
+  },
+  "represented_topology": {
+    "representation_id": "RTL1_T3_REPRESENTED",
+    "nodes": [
+      {
+        "node_id": "A",
+        "incoming_capacity": 99
+      },
+      {
+        "node_id": "B",
+        "incoming_capacity": 3
+      },
+      {
+        "node_id": "C",
+        "incoming_capacity": 99
+      },
+      {
+        "node_id": "D",
+        "incoming_capacity": 3
+      }
+    ],
+    "relations": [
+      {
+        "relation_id": "FOCAL",
+        "source": "A",
+        "target": "B",
+        "load": 2
+      }
+    ],
+    "predicted_focal_consequence": "SUPPORTED"
+  },
+  "qualified_specimen_topology": {
+    "representation_id": "RTL1_T3_QUALIFIED_SPECIMEN",
+    "source_posture": "FROZEN_ADJUDICATED_SYNTHETIC_SPECIMEN",
+    "nodes": [
+      {
+        "node_id": "A",
+        "incoming_capacity": 99
+      },
+      {
+        "node_id": "B",
+        "incoming_capacity": 3
+      },
+      {
+        "node_id": "C",
+        "incoming_capacity": 99
+      },
+      {
+        "node_id": "D",
+        "incoming_capacity": 3
+      }
+    ],
+    "relations": [
+      {
+        "relation_id": "FOCAL",
+        "source": "A",
+        "target": "B",
+        "load": 2
+      },
+      {
+        "relation_id": "CONTEXT",
+        "source": "C",
+        "target": "B",
+        "load": 2
+      }
+    ],
+    "observed_focal_consequence": "HOLD"
+  },
+  "represented_vs_qualified_gap": {
+    "status": "QUALIFIED_ON_EXACT_RTL1_SPECIMEN",
+    "relation_ids": [
+      "CONTEXT"
+    ],
+    "consequence_fracture": {
+      "represented_prediction": "SUPPORTED",
+      "qualified_specimen_result": "HOLD"
+    },
+    "relation": "REPRESENTED_RELATIONAL_TOPOLOGY_NE_OPERATIVE_RELATIONAL_TOPOLOGY",
+    "scope": "exact RTL1 observer-omission intervention only"
+  },
+  "unresolved_exterior": {
+    "status": "OPEN",
+    "statement": "No claim is made about couplings, relations, loads, or topology outside the exact frozen RIL1/RTL1 basis admitted by this slice.",
+    "currentness": "UNRESOLVED_OUTSIDE_DECLARED_BASIS"
+  },
+  "authority_effect": "NONE",
+  "execution_effect": "NONE",
+  "control_effect": "NONE"
+}
