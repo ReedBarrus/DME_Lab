@@ -21,7 +21,7 @@ SOURCE_INTEGRITY = (
 def build(world: str, method: str):
     return build_world_method_reconciliation(
         source_reconciliation_id=SOURCE_ID,
-        source_reconciliation_integrity_sha256=SOURCE_INTEGRITY,
+        source_reconciliation_identity_sha256=SOURCE_INTEGRITY,
         world_posture_change=world,
         world_evidence_refs=[f"fixture://world/{world.lower()}"],
         cognitive_method_change=method,
@@ -66,7 +66,7 @@ class WorldMethodReconciliationV0Tests(unittest.TestCase):
         ):
             build_world_method_reconciliation(
                 source_reconciliation_id=SOURCE_ID,
-                source_reconciliation_integrity_sha256=SOURCE_INTEGRITY,
+                source_reconciliation_identity_sha256=SOURCE_INTEGRITY,
                 world_posture_change="UNRESOLVED",
                 world_evidence_refs=[],
                 cognitive_method_change="UNCHANGED",
