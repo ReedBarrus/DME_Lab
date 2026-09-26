@@ -358,12 +358,83 @@ authority, execution authority, or scientific standing.
 
 ---
 
-## Current nonclaim
-
-These ten entries are the current bounded invariant bank.
+## EMI-011 — Unresolved membership is not conserved residual posture
 
 ```text
-ten earned invariants
+interior unresolved membership + unresolved exterior posture
+!=
+exact conserved residual classification / non-promotion posture
+```
+
+for the tested hot-memory reconstruction class.
+
+For the exact G11/G12 specimen:
+
+```text
+INTERIOR_UNRESOLVED_MEMBERS = {H_C}
+EXTERIOR_POSTURE = UNRESOLVED
+```
+
+alone did not reconstruct:
+
+```text
+NONRESIDUAL_MEMBERS = {H_A, H_B}
+RESIDUAL_CONSERVED = YES
+RESIDUAL_GAP_STATUS = NOT_ESTABLISHED
+RESIDUAL_WORK_ELIGIBILITY = NOT_ESTABLISHED
+ARCHITECTURE_REQUIREMENT = NOT_ESTABLISHED
+```
+
+when the G11 residual-conservation relation was ablated from the bounded hot
+carrier and cold sources remained routable but unread.
+
+**Earned by:** G11 /
+`PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_PRESSURE_001`
+and G12 /
+`RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_V0_PRESSURE_001`.
+
+**Witness:** G11 established the exact typed residual posture without promoting
+the residual into a gap, work eligibility, or architecture requirement. G12 then
+ablated that relation while preserving the same G10 membership/exterior basis
+and exact cold-source handles. The control reconstructed all seven requested
+G11 coordinates; the ablation left five coordinates unresolved.
+
+Frozen G11 adjudication result:
+`docs/campaigns/partial_basis_residual_conservation_001/pressure_runs/PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_PRESSURE_RESULT_001.md`
+(blob `c31eefa748213c70a39713e2137343638ee4fb15`).
+
+Runtime G11 witness:
+`partial_basis_residual_conservation_v0_observation.json`
+(blob `1736d63c13c27d37641f3a6f78825c9288428a50`).
+
+Frozen G12 adjudication result:
+`docs/campaigns/residual_conservation_reconstruction_load_001/pressure_runs/RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_V0_PRESSURE_RESULT_001.md`
+(blob `298e0449faee65c7c1ae615ea00363d0e0e52675`).
+
+Runtime G12 witness:
+`docs/campaigns/residual_conservation_reconstruction_load_001/pressure_runs/RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_V0_PRESSURE_OBSERVATION_002.json`
+(blob `c49f9dbc70be84fd61a02bf63dd7cba03c415e4d`).
+
+**Consequence:** when a bounded hot-memory handoff must reconstruct this class of
+residual posture without reopening cold evidence, unresolved membership and
+exterior posture alone are insufficient. The carrier must preserve enough
+qualified residual relation to recover explicit residual classification and
+non-promotion standing. This does not require all richer source evidence inline
+when exact cold routes remain available.
+
+This entry does not establish that a conserved residual is a declared gap,
+work-eligible, actionable, architecturally mandatory, globally invariant,
+globally complete, economically weighted, or authorized for planning,
+execution, or scientific promotion.
+
+---
+
+## Current nonclaim
+
+These eleven entries are the current bounded invariant bank.
+
+```text
+eleven earned invariants
 !=
 complete coordinate system of semantic memory
 ```
