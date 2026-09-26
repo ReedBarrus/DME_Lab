@@ -8,18 +8,12 @@
   },
   "current_cell": {
     "cell_id": "WORLD_METHOD_RECONCILIATION_G4",
-    "posture": "WITNESSED_AWAITING_ADJUDICATION",
+    "posture": "MATCHED_CHECKPOINT_TERMINAL",
     "target": "WORLD_METHOD_RECONCILIATION_V0",
-    "witness": "world_method_reconciliation_v0_observation.json",
-    "witness_source_ref": "9c6a63c8ecb662ab4101968d943c975a035fdfff",
-    "witness_transport_ref": "c6353895ec3961b87d6a7442a28c572ba4db5919"
+    "standing": "WORLD_METHOD_RECONCILIATION_V0_MATCHED",
+    "result_handle": "docs/campaigns/world_method_reconciliation_001/pressure_runs/WORLD_METHOD_RECONCILIATION_V0_PRESSURE_RESULT_001.md"
   },
-  "current_gap": {
-    "gap_id": "G4_WORLD_METHOD_RECONCILIATION_EVIDENTIARY_STANDING",
-    "gap_class": "EVIDENTIARY",
-    "statement": "WORLD_METHOD_RECONCILIATION_V0 has a clean runtime witness for orthogonal world/method change representation, but has not yet been independently adjudicated.",
-    "work_eligible": true
-  },
+  "current_gap": null,
   "explicitly_deferred": [
     "causal attribution",
     "automatic learning",
@@ -33,9 +27,28 @@
     "concurrency and joint viability economics"
   ],
   "next_pressure": {
-    "pressure_id": "WORLD_METHOD_RECONCILIATION_V0_PRESSURE_001_ADJUDICATION",
-    "destination": "FRESH_INDEPENDENT_WORLD_METHOD_RECONCILIATION_ADJUDICATOR",
-    "packet": "docs/campaigns/world_method_reconciliation_001/WORLD_METHOD_RECONCILIATION_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-    "if_nothing_changes": "DO_NOT_RUN"
-  }
+    "pressure_id": "UNSELECTED",
+    "destination": "HORIZON_REINSPECTION",
+    "if_nothing_changes": "DO_NOT_INSTANTIATE_WORK"
+  },
+  "earned_cells": {
+    "WORLD_METHOD_RECONCILIATION_G4": {
+      "standing": "WORLD_METHOD_RECONCILIATION_V0_MATCHED",
+      "effective_claim": "One exact predecessor reconciliation identity can carry separately evidenced deterministic non-causal world-posture-change and cognitive-method-change axes across WORLD_ONLY, METHOD_ONLY, BOTH, NEITHER, and explicit UNRESOLVED cases.",
+      "does_not_establish": [
+        "causal attribution",
+        "automatic learning",
+        "method improvement inference",
+        "method capitalization",
+        "policy update",
+        "gap discovery",
+        "work justification",
+        "planning",
+        "authority",
+        "execution",
+        "scientific standing"
+      ]
+    }
+  },
+  "horizon_posture": "OPEN_FOR_REINSPECTION"
 }
