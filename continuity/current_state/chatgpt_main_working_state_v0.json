@@ -1,31 +1,31 @@
 {
   "schema_version": "chatgpt_main_working_state_v0",
   "seat_id": "CHATGPT_MAIN",
-  "state_id": "CHATGPT_MAIN_STATE_000003",
+  "state_id": "CHATGPT_MAIN_STATE_000004",
   "materialization_basis": {
     "branch": "world-method-reconciliation-v0",
-    "base_commit": "4a95d23ffc5aae1646ca924b423022c0c8b6b5f4",
-    "continuity_events_blob": "40819870f2c65310fde12b5ca72d94a6a2fd0b73"
+    "base_commit": "110316be9aec3e8e4ee27dee4ac84eea2fe6137c",
+    "continuity_events_blob": "c6a3c423c416860bd7cde0cf1d804271bfb88aa2"
   },
   "campaign": {
     "campaign_id": "CHATGPT_MAIN_SEAT_ACTIVATION_001",
     "title": "Wake ChatGPT-main inside the Lab",
-    "status": "SEAT_RECONSTRUCTED_READY_FOR_PLANNER_PRESSURE",
+    "status": "BOUNDED_PLANNER_MATCHED_ATLAS_SLICE_PRESSURE_STAGED",
     "objective": "Materialize a reconstructable ChatGPT-main semantic/planner seat whose durable continuity, Atlas context, and bounded relational-invariance basis can survive occupant/thread replacement without cursor laundering or ambient execution authority."
   },
   "continuity": {
     "consumer": "chatgpt",
     "cursor_ref": "continuity/cursors/chatgpt.json",
-    "cursor_acknowledged_through": "CE-000043",
-    "observed_stream_head": "CE-000043",
+    "cursor_acknowledged_through": "CE-000045",
+    "observed_stream_head": "CE-000045",
     "delta_inspected_from": "CE-000007",
-    "delta_inspected_through": "CE-000043",
-    "delta_semantic_application": "FRESH_OCCUPANT_RECONSTRUCTED_RECONCILED_AND_PLANNER_PRESSURE_STAGED",
-    "cursor_advancement": "RECONCILED_THROUGH_CE_000043",
+    "delta_inspected_through": "CE-000045",
+    "delta_semantic_application": "FRESH_OCCUPANT_RECONSTRUCTED_RECONCILED_PLANNER_MATCHED_ATLAS_SLICE_STAGED",
+    "cursor_advancement": "RECONCILED_THROUGH_CE_000045",
     "historical_chat_imported": false,
     "fresh_occupant_reconstruction_ref": "docs/campaigns/chatgpt_main_seat_activation_001/pressure_runs/CHATGPT_MAIN_FRESH_OCCUPANT_RECONSTRUCTION_V0_RESULT_001.md"
   },
-  "current_frontier": "Run CHATGPT_MAIN_ATLAS_PLANNER_ROLE_V0_PRESSURE_001. If matched, stage one read-only Atlas relational/topology field-slice pressure from the selected direction; keep H3, native invocation binding, and G23 compression as explicit deferred alternatives.",
+  "current_frontier": "Run ATLAS_RELATIONAL_TOPOLOGY_SLICE_V0_PRESSURE_001. If matched, freeze + independently adjudicate, then review renderer integration versus H3 versus another bounded planner selection.",
   "qualified_relational_basis": [
     {
       "relation": "RELATIONAL_CONFIGURATION_CARRIES_CONSEQUENTIAL_LOAD_BEYOND_ENDPOINT_LOCAL_STATE",
@@ -60,11 +60,13 @@
     "reported_recent_summary": "Continuity reports geometric repository projection, Atlas-first overlays, temporal actor/wound replay, typed distinction Cell 001, environmental load-transfer pressure, and E03 decomposed-load pressure. These are recorded activity reports and must be source-verified when relied upon."
   },
   "planner_posture": {
-    "status": "PRESSURE_STAGED_AWAITING_FRESH_PLANNER_RESULT",
+    "status": "BOUNDED_SELECTION_MATCHED",
     "leverage_sought": "Use continuity + Atlas + qualified relational/invariance carriers to reduce reconstruction and nominate bounded pressure without activating autonomous planning authority.",
-    "next_pressure_after_seat_qualification": "CHATGPT_MAIN_ATLAS_PLANNER_ROLE_V0_PRESSURE_001",
-    "authority_effect": "NONE",
-    "current_pressure_ref": "docs/campaigns/chatgpt_main_planner_role_001/CHATGPT_MAIN_ATLAS_PLANNER_ROLE_V0_PRESSURE_001_READY_TO_SEND.md"
+    "selected_direction": "P_ATLAS_RELATIONAL_INTEGRATION",
+    "planner_result_ref": "docs/campaigns/chatgpt_main_planner_role_001/pressure_runs/CHATGPT_MAIN_ATLAS_PLANNER_ROLE_V0_PRESSURE_RESULT_001.md",
+    "current_pressure_ref": "docs/campaigns/atlas_relational_integration_001/ATLAS_RELATIONAL_TOPOLOGY_SLICE_V0_PRESSURE_001_READY_TO_RUN.md",
+    "planning_ecology_status": "PARKED_NOT_ACTIVE",
+    "authority_effect": "NONE"
   },
   "must_not_assume": [
     "continuity event presence establishes scientific standing",
@@ -78,7 +80,8 @@
     "manual ChatGPT invocation association remains opaque",
     "automatic Cockpit-to-ChatGPT native context injection is not established",
     "live runtime occupancy of CHATGPT_MAIN is not established",
-    "planner role is not yet qualified; CHATGPT_MAIN_ATLAS_PLANNER_ROLE_V0_PRESSURE_001 is staged awaiting a fresh result"
+    "ATLAS_RELATIONAL_TOPOLOGY_SLICE_V0_PRESSURE_001 is staged but not yet observed/adjudicated",
+    "PLANNING_ECOLOGY_001 remains PARKED_NOT_ACTIVE"
   ],
   "authority": {
     "standing": "NONE",
