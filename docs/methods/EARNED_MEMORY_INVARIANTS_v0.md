@@ -489,12 +489,79 @@ planning, authority, execution, or scientific standing.
 
 ---
 
-## Current nonclaim
-
-These twelve entries are the current bounded invariant bank.
+## EMI-013 — Declaration standing is not work eligibility
 
 ```text
-twelve earned invariants
+declared gap presence
+!=
+work eligibility
+```
+
+for the tested relational-horizon selector class.
+
+For the exact G14 specimen, both control and intervention preserve:
+
+```text
+HORIZON_ID = H1_POST_CONSEQUENCE_PHASE_HANDOFF
+GAP_ID = G1_STALE_SUCCESSOR_3_HANDOFF
+STATEMENT = declared eligible gap
+BLOCKS = {CONTROL_KERNEL_ACTIVATION}
+DECLARED_GAP_PRESENT = YES
+```
+
+while changing only:
+
+```text
+WORK_ELIGIBLE = true
+```
+
+to:
+
+```text
+WORK_ELIGIBLE = false
+```
+
+changes selector posture from:
+
+```text
+EXACT_ELIGIBLE_GAP
+```
+
+to:
+
+```text
+NO_JUSTIFIED_WORK
+```
+
+with the declared gap still represented.
+
+**Earned by:** G14 /
+`DECLARATION_WORK_ELIGIBILITY_SELECTION_LOAD_V0_PRESSURE_001`.
+
+Frozen G14 result:
+`docs/campaigns/declaration_work_eligibility_selection_load_001/pressure_runs/DECLARATION_WORK_ELIGIBILITY_SELECTION_LOAD_V0_PRESSURE_RESULT_001.md`
+(blob `329124a845fe1e935cd17bb87919ccb340199fe0`).
+
+Runtime G14 witness:
+`declaration_work_eligibility_selection_load_v0_observation.json`
+(blob `54ab5157ec936474c6189f2d956127fc5cb1e0c0`).
+
+**Consequence:** in this tested selector class, declared-gap presence alone is
+insufficient for selection. The separate work-eligibility coordinate carries
+bounded selection load.
+
+This does not establish criteria for granting eligibility, gap discovery,
+residual-to-gap transition, work admission, planning, authority, execution,
+global invariance, global ecology coverage, economic weighting, or scientific standing.
+
+---
+
+## Current nonclaim
+
+These thirteen entries are the current bounded invariant bank.
+
+```text
+thirteen earned invariants
 !=
 complete coordinate system of semantic memory
 ```
