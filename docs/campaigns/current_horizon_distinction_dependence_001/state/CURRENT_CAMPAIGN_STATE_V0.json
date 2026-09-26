@@ -1,7 +1,7 @@
 {
   "object_type": "CURRENT_HORIZON_DISTINCTION_DEPENDENCE_CURRENT_CAMPAIGN_STATE_V0",
   "campaign_id": "CURRENT_HORIZON_DISTINCTION_DEPENDENCE_001",
-  "campaign_posture": "G6_IMPLEMENTED_READY_FOR_PRESSURE",
+  "campaign_posture": "G6_WITNESSED_AWAITING_ADJUDICATION",
   "campaign_basis": "Test whether the exact distinction WORLD_CHANGE != METHOD_CHANGE is currently load-bearing for one declared relational horizon because ablating it makes method-specific continuation applicability underdetermined.",
   "predecessor": {
     "campaign_id": "METHOD_DISTINCTION_LOAD_001",
@@ -12,15 +12,18 @@
   },
   "current_cell": {
     "cell_id": "CURRENT_HORIZON_DISTINCTION_DEPENDENCE_G6",
-    "posture": "IMPLEMENTED_READY_FOR_PRESSURE",
+    "posture": "WITNESSED_AWAITING_ADJUDICATION",
     "target": "CURRENT_HORIZON_DISTINCTION_DEPENDENCE_V0",
     "horizon_id": "COGNITIVE_METHOD_APPLICABILITY_HORIZON_V0",
-    "specimen_distinction": "WORLD_CHANGE != METHOD_CHANGE"
+    "specimen_distinction": "WORLD_CHANGE != METHOD_CHANGE",
+    "witness": "current_horizon_distinction_dependence_v0_observation.json",
+    "witness_source_ref": "d4ffe74358c573749f75c6fd7059e93eadbc1a11",
+    "witness_transport_ref": "2eb595b5d1f535bcba3f6fb19461ecafca49ec78"
   },
   "current_gap": {
-    "gap_id": "G6_CURRENT_HORIZON_DISTINCTION_DEPENDENCE",
-    "gap_class": "OPERATIVE_RELATIONAL",
-    "statement": "The distinction carries semantic load in the exact G4 frame, but whether a current declared relational horizon depends on preserving that distinction remains unadjudicated.",
+    "gap_id": "G6_CURRENT_HORIZON_DISTINCTION_DEPENDENCE_EVIDENTIARY_STANDING",
+    "gap_class": "EVIDENTIARY",
+    "statement": "The G6 horizon-dependence mechanic has a clean runtime witness, but whether the exact declared horizon dependence earns standing has not yet been independently adjudicated.",
     "work_eligible": true
   },
   "permitted_current_load_claims": {
@@ -49,9 +52,9 @@
     "scientific standing"
   ],
   "next_pressure": {
-    "pressure_id": "CURRENT_HORIZON_DISTINCTION_DEPENDENCE_V0_PRESSURE_001",
-    "destination": "LOCAL_G6_HORIZON_DEPENDENCE_OBSERVATION",
-    "packet": "docs/campaigns/current_horizon_distinction_dependence_001/CURRENT_HORIZON_DISTINCTION_DEPENDENCE_V0_PRESSURE_001_READY_TO_RUN.md",
-    "if_nothing_changes": "RUN_ONCE"
+    "pressure_id": "CURRENT_HORIZON_DISTINCTION_DEPENDENCE_V0_PRESSURE_001_ADJUDICATION",
+    "destination": "FRESH_INDEPENDENT_CURRENT_HORIZON_DISTINCTION_DEPENDENCE_ADJUDICATOR",
+    "packet": "docs/campaigns/current_horizon_distinction_dependence_001/CURRENT_HORIZON_DISTINCTION_DEPENDENCE_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+    "if_nothing_changes": "DO_NOT_RUN"
   }
 }
