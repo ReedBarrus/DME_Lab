@@ -1,0 +1,73 @@
+{
+  "object_type": "HORIZON_GAP_SELECTOR_V0_OBSERVATION",
+  "repo_head": "e8cd3acd34e84c15279c275590950a6d304d2885",
+  "campaign_id": "CONTROL_KERNEL_001",
+  "cell_id": "CONTROL_KERNEL_CELL_003",
+  "before_selection": {
+    "object_type": "HORIZON_GAP_SELECTION_V0",
+    "source_horizon_id": "H1_POST_CONSEQUENCE_PHASE_HANDOFF",
+    "source_horizon_state_id": "relational-horizon-state:sha256:f98424cdddcb46f9668c4253729e0209869229e52ee47317984725b2889bbed5",
+    "source_horizon_integrity_sha256": "efe0fdbffaae4788268e41529edb6e0e81cffb31637137d670b6887a5f682b30",
+    "selection_posture": "EXACT_ELIGIBLE_GAP",
+    "selected_gap_id": "G1_STALE_SUCCESSOR_3_HANDOFF",
+    "selected_gap": {
+      "gap_id": "G1_STALE_SUCCESSOR_3_HANDOFF",
+      "statement": "declared eligible gap",
+      "blocks": [
+        "CONTROL_KERNEL_ACTIVATION"
+      ],
+      "work_eligible": true
+    },
+    "eligible_gap_count": 1,
+    "selection_basis": "EXACTLY_ONE_DECLARED_WORK_ELIGIBLE_GAP",
+    "stop_required": false,
+    "selection_id": "horizon-gap-selection:sha256:b1600b1e4e39d3a8f535a5f9f7824be9a089dd29180773d51bfe61b58c76b433",
+    "ranking_effect": "NONE",
+    "planning_effect": "NONE",
+    "work_materialization_effect": "NONE",
+    "work_admission_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE",
+    "claim_ceiling": "One deterministic selection over one validated represented horizon: exactly one already-declared work-eligible gap is returned, otherwise NO_JUSTIFIED_WORK. Multiple eligible gaps are rejected. No ranking, planning, work materialization, admission, authority, or execution is created.",
+    "integrity_sha256": "0fa15b1c801c8f3a0a6f595c3f286f6d5d9126475dfe32b71ae5e820f2efd911"
+  },
+  "after_selection": {
+    "object_type": "HORIZON_GAP_SELECTION_V0",
+    "source_horizon_id": "H1_POST_CONSEQUENCE_PHASE_HANDOFF",
+    "source_horizon_state_id": "relational-horizon-state:sha256:5c6dac87aa630f8f12fc87c92ef0afd9b9df0884e12fbe40482e8d199d510cac",
+    "source_horizon_integrity_sha256": "edf073c5e240a988c169fd11d6c03e745cddfcac21d2fc5c6e9d3811f92917aa",
+    "selection_posture": "NO_JUSTIFIED_WORK",
+    "selected_gap_id": null,
+    "selected_gap": null,
+    "eligible_gap_count": 0,
+    "selection_basis": "NO_DECLARED_WORK_ELIGIBLE_GAP",
+    "stop_required": true,
+    "selection_id": "horizon-gap-selection:sha256:9ec079f6bedf05453ab29015d55eec4d9ed785fac066ace0a7171f618fdc604a",
+    "ranking_effect": "NONE",
+    "planning_effect": "NONE",
+    "work_materialization_effect": "NONE",
+    "work_admission_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE",
+    "claim_ceiling": "One deterministic selection over one validated represented horizon: exactly one already-declared work-eligible gap is returned, otherwise NO_JUSTIFIED_WORK. Multiple eligible gaps are rejected. No ranking, planning, work materialization, admission, authority, or execution is created.",
+    "integrity_sha256": "4b99152f9a95ec8479818c0077d490faf7bbcee9de1791ca1a69fd9d24b0b358"
+  },
+  "multi_gap_pressure": {
+    "error_type": "HorizonGapSelectorError",
+    "error": "v0 does not rank or choose among multiple eligible gaps"
+  },
+  "assertions": {
+    "before_returns_exact_gap": true,
+    "after_returns_no_justified_work": true,
+    "same_logical_horizon": true,
+    "state_specific_binding": true,
+    "fixed_inputs_deterministic": true,
+    "multi_gap_rejected_not_ranked": true,
+    "neutral_downstream_effects": true
+  },
+  "all_assertions_pass": true,
+  "claim_ceiling": "One validated represented horizon yields the exact sole declared work-eligible gap, or NO_JUSTIFIED_WORK when none exists. Multiple eligible gaps are rejected rather than ranked. No planning, materialization, admission, authority, execution, or scientific standing is created.",
+  "stopped": "YES"
+}
