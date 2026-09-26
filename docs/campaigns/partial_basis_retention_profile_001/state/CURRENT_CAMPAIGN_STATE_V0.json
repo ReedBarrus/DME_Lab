@@ -1,7 +1,7 @@
 {
   "object_type": "PARTIAL_BASIS_RETENTION_PROFILE_CURRENT_CAMPAIGN_STATE_V0",
   "campaign_id": "PARTIAL_BASIS_RETENTION_PROFILE_001",
-  "campaign_posture": "G10_IMPLEMENTED_READY_FOR_PRESSURE",
+  "campaign_posture": "G10_WITNESSED_AWAITING_ADJUDICATION",
   "campaign_basis": "Test whether one exact partial declared basis can carry a non-scalar retention profile over supplied horizon-local requirements while the exterior remains explicitly unresolved, and whether basis extension preserves unchanged prior local coordinates.",
   "predecessor": {
     "campaign_id": "RETENTION_SCOPE_AGGREGATION_001",
@@ -12,14 +12,17 @@
   },
   "current_cell": {
     "cell_id": "PARTIAL_BASIS_RETENTION_PROFILE_G10",
-    "posture": "IMPLEMENTED_READY_FOR_PRESSURE",
+    "posture": "WITNESSED_AWAITING_ADJUDICATION",
     "target": "PARTIAL_BASIS_RETENTION_PROFILE_V0",
-    "distinction": "WORLD_CHANGE != METHOD_CHANGE"
+    "distinction": "WORLD_CHANGE != METHOD_CHANGE",
+    "witness": "partial_basis_retention_profile_v0_observation.json",
+    "witness_source_ref": "b2294fab67299d6093c87ae17b8ff9ac30b5fd2a",
+    "witness_transport_ref": "6cd0ee4702607b54c54bba8ca3022aed29205eee"
   },
   "current_gap": {
-    "gap_id": "G10_PARTIAL_DECLARED_BASIS_RETENTION_PROFILE",
-    "gap_class": "OPERATIVE_RELATIONAL",
-    "statement": "G9 can aggregate one exact declared horizon set, but the ecology has not yet mechanically represented a partial declared basis as a non-scalar retention profile with an unresolved exterior or tested whether basis extension preserves unchanged prior local coordinates.",
+    "gap_id": "G10_PARTIAL_BASIS_RETENTION_PROFILE_EVIDENTIARY_STANDING",
+    "gap_class": "EVIDENTIARY",
+    "statement": "The G10 partial-basis profile and extension relation have a clean runtime witness, but their standing has not yet been independently adjudicated.",
     "work_eligible": true
   },
   "required_profile_coordinates": [
@@ -59,9 +62,9 @@
     "scientific standing"
   ],
   "next_pressure": {
-    "pressure_id": "PARTIAL_BASIS_RETENTION_PROFILE_V0_PRESSURE_001",
-    "destination": "LOCAL_G10_PARTIAL_BASIS_PROFILE_OBSERVATION",
-    "packet": "docs/campaigns/partial_basis_retention_profile_001/PARTIAL_BASIS_RETENTION_PROFILE_V0_PRESSURE_001_READY_TO_RUN.md",
-    "if_nothing_changes": "RUN_ONCE"
+    "pressure_id": "PARTIAL_BASIS_RETENTION_PROFILE_V0_PRESSURE_001_ADJUDICATION",
+    "destination": "FRESH_INDEPENDENT_PARTIAL_BASIS_RETENTION_PROFILE_ADJUDICATOR",
+    "packet": "docs/campaigns/partial_basis_retention_profile_001/PARTIAL_BASIS_RETENTION_PROFILE_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+    "if_nothing_changes": "DO_NOT_RUN"
   }
 }
