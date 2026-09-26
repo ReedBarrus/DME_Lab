@@ -1,0 +1,253 @@
+# PARTIAL_BASIS_RESIDUAL_CONSERVATION_001 — G11 INDEPENDENT ADJUDICATION
+
+PRESSURE_ID:
+PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_PRESSURE_001
+
+GAP_ID:
+G11_PARTIAL_BASIS_RESIDUAL_CONSERVATION_EVIDENTIARY_STANDING
+
+ROLE:
+FRESH_INDEPENDENT_PARTIAL_BASIS_RESIDUAL_CONSERVATION_ADJUDICATOR
+
+MODE:
+READ_ONLY
++
+NO_LIVE_CHAT_CONTEXT
++
+NO_REDESIGN
++
+NO_REPAIR
++
+NO_GAP_DISCOVERY
++
+NO_GAP_SELECTION
++
+NO_WORK_JUSTIFICATION
++
+NO_WORK_MATERIALIZATION
++
+NO_ARCHITECTURE_REQUIREMENT_INFERENCE
++
+NO_GLOBAL_ECOLOGY_COVERAGE_INFERENCE
++
+NO_ECONOMIC_WEIGHTING
++
+NO_RETENTION_TRANSITION
++
+NO_RAW_SOURCE_DELETION
++
+NO_METHOD_CAPITALIZATION
++
+NO_POLICY_MUTATION
++
+NO_AUTOMATIC_PLANNING
++
+NO_AUTHORITY
++
+NO_EXECUTION
++
+NO_SCIENTIFIC_PROMOTION
+
+IMPLEMENTATION_SOURCE_REF:
+bb5ecee077215d7b992e79ec2333c38e5a689125
+
+WITNESS_TRANSPORT_REF:
+7d4deef2ab07574b034f212d1a0481b9c94ce4ea
+
+WITNESS:
+partial_basis_residual_conservation_v0_observation.json
+
+WITNESS_BLOB:
+1736d63c13c27d37641f3a6f78825c9288428a50
+
+REQUIRED_SOURCE_TO_TRANSPORT_RELATION:
+bb5ecee077215d7b992e79ec2333c38e5a689125
+→
+7d4deef2ab07574b034f212d1a0481b9c94ce4ea
+
+must be exactly one commit containing only:
+
+partial_basis_residual_conservation_v0_observation.json
+
+FROZEN G11 EVIDENCE:
+
+docs/campaigns/partial_basis_residual_conservation_001/
+PARTIAL_BASIS_RESIDUAL_CONSERVATION_G11_CONTRACT_V0.md
+blob:
+2591e00dbc77d8475ffe50a6a3d62232aedc4590
+
+src/control/partial_basis_residual_conservation_v0.py
+blob:
+4b131c4298486d0dacf4ecbc997f02d2da61398c
+
+tests/control/test_partial_basis_residual_conservation_v0.py
+blob:
+4281151a7803195f122aa34ac6f54513880a3abd
+
+tools/observe_partial_basis_residual_conservation_v0.py
+blob:
+57997b9364044909167a010b442184c8abcacb36
+
+docs/campaigns/partial_basis_residual_conservation_001/
+PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_PRESSURE_001_READY_TO_RUN.md
+blob:
+15950029c5aa51fb9a8aa3be0457c724378889fb
+
+FROZEN PREDECESSOR BASIS:
+
+docs/campaigns/partial_basis_retention_profile_001/pressure_runs/
+PARTIAL_BASIS_RETENTION_PROFILE_V0_PRESSURE_RESULT_001.md
+blob:
+e0c27dd06b68ac7e3dc08d20093e60eee35509eb
+
+partial_basis_retention_profile_v0_observation.json
+blob:
+4f4c7efef184c1f60ab362420d7ef09a1c43dab1
+
+REQUIRED PREDECESSOR STANDING:
+
+PARTIAL_BASIS_RETENTION_PROFILE_V0_MATCHED
+
+DISTINCTION:
+
+WORLD_CHANGE != METHOD_CHANGE
+
+TARGET:
+
+Adjudicate only whether the exact unresolved residue exposed by the qualified
+G10 partial basis can be conserved as a typed carrier preserving exact interior
+unresolved membership, unresolved exterior posture, nonresidual classification,
+and exact source identity without promoting the residue into a gap, work item,
+architecture requirement, or global claim.
+
+REQUIRED RESIDUAL:
+
+INTERIOR_UNRESOLVED_MEMBERS = {H_C}
+
+NONRESIDUAL_MEMBERS = {H_A, H_B}
+
+EXTERIOR_POSTURE = UNRESOLVED
+
+RESIDUAL_CONSERVED = YES
+
+RESIDUAL_GAP_STATUS = NOT_ESTABLISHED
+
+RESIDUAL_WORK_ELIGIBILITY = NOT_ESTABLISHED
+
+ARCHITECTURE_REQUIREMENT = NOT_ESTABLISHED
+
+REQUIRED SOURCE IDENTITY:
+
+G10_RESULT_BLOB =
+e0c27dd06b68ac7e3dc08d20093e60eee35509eb
+
+G10_WITNESS_BLOB =
+4f4c7efef184c1f60ab362420d7ef09a1c43dab1
+
+SOURCE_PROFILE_ID =
+partial-basis-retention-profile:sha256:1727532fd69214120cddfbb46b2a9f7dc1f2a3c5078f62f33aec28abd277d5b3
+
+SOURCE_EXTENSION_ID =
+partial-basis-retention-profile-extension:sha256:00abe68d1546d608becb9289ba21070876e02cfe0ba016acefd2107bc6d242d2
+
+REQUIRED NON-COLLAPSES:
+
+UNRESOLVED RESIDUAL
+!=
+DECLARED GAP
+
+DECLARED GAP
+!=
+WORK-ELIGIBLE GAP
+
+RESIDUAL
+!=
+WORK
+
+PRESSURE PASS
+!=
+SYSTEM COMPLETE
+
+PRESSURE FAILURE
+!=
+ARCHITECTURE REQUIRED
+
+UNRESOLVED EXTERIOR
+!=
+KNOWN EMPTY EXTERIOR
+
+RESIDUAL CONSERVATION
+!=
+GLOBAL COVERAGE
+
+OBSERVABLE INTELLIGENCE
+!=
+CONSEQUENTIAL BEHAVIOR
+
+REQUIRED EFFECT CEILING:
+
+gap_discovery_effect = NONE
+gap_selection_effect = NONE
+work_justification_effect = NONE
+work_materialization_effect = NONE
+retention_transition_effect = NONE
+raw_source_deletion_effect = NONE
+method_capitalization_effect = NONE
+policy_mutation_effect = NONE
+planning_effect = NONE
+authority_effect = NONE
+execution_effect = NONE
+scientific_standing_effect = NONE
+
+CLAIM CEILING:
+
+At the exact supplied source, the unresolved residue exposed by the qualified
+G10 partial basis may be established as conserved in a typed carrier containing
+interior unresolved {H_C}, unresolved exterior posture, exact nonresidual
+classification {H_A, H_B}, and exact source identity.
+
+This does not establish that the residue is a declared gap, work-eligible,
+actionable, architecturally mandatory, globally complete, economically weighted,
+or authorized for planning, execution, or scientific promotion.
+
+ALLOWED DISPOSITIONS:
+
+PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_MATCHED
+PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_PARTIAL
+PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_FRACTURED
+PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_UNRESOLVED
+
+RETURN ONLY:
+
+PRESSURE_ID
+FROZEN_IMPLEMENTATION_SOURCE
+WITNESS_SOURCE_MATCHED
+WITNESS_ONLY_TRANSPORT
+PREDECESSOR_G10_MATCHED
+G10_RESULT_BLOB_MATCHED
+G10_WITNESS_BLOB_MATCHED
+DISTINCTION
+INTERIOR_UNRESOLVED_MEMBERS
+NONRESIDUAL_MEMBERS
+EXTERIOR_POSTURE
+RESIDUAL_CONSERVED
+RESIDUAL_GAP_STATUS
+RESIDUAL_WORK_ELIGIBILITY
+ARCHITECTURE_REQUIREMENT
+GAP_DISCOVERY_EFFECT
+GAP_SELECTION_EFFECT
+WORK_JUSTIFICATION_EFFECT
+WORK_MATERIALIZATION_EFFECT
+RETENTION_TRANSITION_EFFECT
+RAW_SOURCE_DELETION_EFFECT
+METHOD_CAPITALIZATION_EFFECT
+POLICY_MUTATION_EFFECT
+PLANNING_EFFECT
+AUTHORITY_EFFECT
+EXECUTION_EFFECT
+SCIENTIFIC_STANDING_EFFECT
+CLAIM_CEILING_PRESERVED
+DISPOSITION
+UNRESOLVED
+CLAIM_CEILING
+STOPPED
