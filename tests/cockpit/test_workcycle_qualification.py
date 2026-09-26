@@ -47,6 +47,36 @@ class WorkcycleQualificationReadinessTests(unittest.TestCase):
         )
 
 
+    def test_materialized_authority_repair_result_counts_as_ready(self):
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            fracture = (
+                root
+                / "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
+                "MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_RESULT_001.md"
+            )
+            repair = (
+                root
+                / "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
+                "MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_RESULT_001.md"
+            )
+            fracture.parent.mkdir(parents=True, exist_ok=True)
+            fracture.write_text(
+                "DISPOSITION:\nMATERIALIZED_UNIT_AUTHORITY_BINDING_FRACTURED\n",
+                encoding="utf-8",
+            )
+            repair.write_text(
+                "DISPOSITION:\nMATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_MATCHED\n",
+                encoding="utf-8",
+            )
+            result = build_workcycle_qualification_readiness(root)
+        self.assertTrue(result["materialized_unit_authority_binding"]["ready"])
+        self.assertEqual(
+            result["materialized_unit_authority_binding"]["repair_disposition"],
+            "MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_MATCHED",
+        )
+
+
     def test_self_moving_readiness_is_stricter_than_bounded_readiness(self):
         with TemporaryDirectory() as temporary:
             root = Path(temporary)
