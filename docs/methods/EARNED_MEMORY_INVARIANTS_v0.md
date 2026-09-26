@@ -310,12 +310,60 @@ autonomous planning, authority, execution, or scientific standing.
 
 ---
 
-## Current nonclaim
-
-These nine entries are the current bounded invariant bank.
+## EMI-010 — Partial-basis extension is not prior-coordinate invalidation
 
 ```text
-nine earned invariants
+extend one exact declared basis
+!=
+mutate unchanged prior local coordinates
+```
+
+For the exact G10 specimen:
+
+```text
+B0:
+H_A = REQUIRED
+H_B = NOT_REQUIRED_FOR_DECLARED_HORIZON
+
+B1 = B0 + H_C
+H_C = UNRESOLVED
+
+PRIOR_LOCAL_COORDINATES_PRESERVED = YES
+```
+
+while:
+
+```text
+EXTERIOR_POSTURE = UNRESOLVED
+GLOBAL_ECOLOGY_HOT_REQUIREMENT = UNRESOLVED
+SCALAR_HOTNESS = NOT_ESTABLISHED
+```
+
+**Earned by:** G10 / `PARTIAL_BASIS_RETENTION_PROFILE_V0_PRESSURE_001`.
+
+Frozen adjudication result:
+`docs/campaigns/partial_basis_retention_profile_001/pressure_runs/PARTIAL_BASIS_RETENTION_PROFILE_V0_PRESSURE_RESULT_001.md`
+(blob `e0c27dd06b68ac7e3dc08d20093e60eee35509eb`).
+
+Runtime witness:
+`partial_basis_retention_profile_v0_observation.json`
+(blob `4f4c7efef184c1f60ab362420d7ef09a1c43dab1`).
+
+**Consequence:** a partial declared relational basis may grow by adding a new
+coordinate without silently rewriting unchanged prior local coordinates.
+Unresolved interior and exterior residue remain explicit. This does not
+establish global coverage, load weighting, scalar hotness, global invariance,
+economic optimality, cooling authority, retention transition, planning
+authority, execution authority, or scientific standing.
+
+---
+
+## Current nonclaim
+
+These ten entries are the current bounded invariant bank.
+
+```text
+ten earned invariants
 !=
 complete coordinate system of semantic memory
 ```
