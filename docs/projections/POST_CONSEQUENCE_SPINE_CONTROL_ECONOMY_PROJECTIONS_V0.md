@@ -16,7 +16,7 @@ EXECUTION_EFFECT:
 NONE
 
 ACTIVATION_GATE:
-DO_NOT_INSTANTIATE_UNTIL_EXACT_CONSEQUENCE_SPINE_IS_FROZEN_THROUGH_SUCCESSOR_3
+DO_NOT_INSTANTIATE_UNTIL_EXACT_CONSEQUENCE_SPINE_IS_FROZEN_THROUGH_AN_INDEPENDENTLY_ADJUDICATED_SUCCESSOR_OR_NO_SUCCESSOR_TERMINAL_PROJECTION
 
 PURPOSE:
 Provide a bounded transition map from the currently earned exact-work consequence spine into:
@@ -99,7 +99,12 @@ JUSTIFIED LIVE LOAD
 ## 2. HANDOFF BOUNDARY
 
 Current campaign ends only after one exact successor-derived unit completes the
-full consequence path and derives SUCCESSOR_3 without identity collapse.
+full consequence path and reaches an independently adjudicated terminal
+successor-or-no-successor projection without identity collapse.
+
+SATISFIED and INVALIDATED terminal postures are allowed to end the chain with
+NO_SUCCESSOR. Continuation is not required merely because the machinery can
+produce another unit.
 
 Only then introduce:
 
