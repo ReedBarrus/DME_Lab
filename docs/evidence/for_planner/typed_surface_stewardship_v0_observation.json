@@ -1,0 +1,309 @@
+{
+  "object_type": "TYPED_SURFACE_STEWARDSHIP_V0_OBSERVATION",
+  "pressure_id": "TYPED_SURFACE_STEWARDSHIP_V0_PRESSURE_001",
+  "frozen_basis": {
+    "expected_blobs": {
+      "g18_witness": "9d6e627401c3c51b9cc30449d80f6c94a99711d7",
+      "g19_witness": "5a9798384a1dcd7fe38bfdcd3406eed98306c98d",
+      "g19_adjudication": "b22483a5ecf9551bfdf9c22834367db4082640a5",
+      "g19_steward": "8dddd57779d2432dd87c92ce95056dee2be398b5",
+      "typed_adapter": "0beec144cb64aaccb4b022ff707248b69d96c9da"
+    },
+    "actual_blobs": {
+      "g18_witness": "9d6e627401c3c51b9cc30449d80f6c94a99711d7",
+      "g19_witness": "5a9798384a1dcd7fe38bfdcd3406eed98306c98d",
+      "g19_adjudication": "b22483a5ecf9551bfdf9c22834367db4082640a5",
+      "g19_steward": "8dddd57779d2432dd87c92ce95056dee2be398b5",
+      "typed_adapter": "0beec144cb64aaccb4b022ff707248b69d96c9da"
+    },
+    "blob_checks": {
+      "g18_witness": true,
+      "g19_witness": true,
+      "g19_adjudication": true,
+      "g19_steward": true,
+      "typed_adapter": true
+    }
+  },
+  "repository_surface": {
+    "object_type": "TYPED_SURFACE_STEWARDSHIP_V0_RESULT",
+    "relation_id": "G20_REPOSITORY_PRODUCER_ROUTE",
+    "surface_type": "REPOSITORY_PRODUCER_ROUTE",
+    "before_geometry": {
+      "surface_type": "REPOSITORY_PRODUCER_ROUTE",
+      "endpoint_fields": [
+        "output_blob",
+        "output_path",
+        "output_present"
+      ],
+      "counterpart_fields": [
+        "storage_blob",
+        "storage_path"
+      ],
+      "edge_fields": [
+        "alignment",
+        "declared_output_path",
+        "relation_kind",
+        "storage_path"
+      ]
+    },
+    "after_geometry": {
+      "surface_type": "REPOSITORY_PRODUCER_ROUTE",
+      "endpoint_fields": [
+        "output_blob",
+        "output_path",
+        "output_present"
+      ],
+      "counterpart_fields": [
+        "storage_blob",
+        "storage_path"
+      ],
+      "edge_fields": [
+        "alignment",
+        "declared_output_path",
+        "relation_kind",
+        "storage_path"
+      ]
+    },
+    "abstract_roles": [
+      "endpoint",
+      "counterpart",
+      "edge",
+      "flow"
+    ],
+    "stewardship": {
+      "object_type": "RELATIONAL_CHANGE_STEWARDSHIP_V0_RESULT",
+      "relation_id": "G20_REPOSITORY_PRODUCER_ROUTE",
+      "before": {
+        "endpoint": {
+          "output_present": false,
+          "output_path": "horizon_gap_selector_v0_observation.json",
+          "output_blob": null
+        },
+        "counterpart": {
+          "storage_path": "docs/evidence/for_planner/horizon_gap_selector_v0_observation.json",
+          "storage_blob": "be23eba7c50f1b51a0e3b1412d9f5adc07dee1ff"
+        },
+        "edge": {
+          "relation_kind": "PRODUCES_TO",
+          "declared_output_path": "horizon_gap_selector_v0_observation.json",
+          "storage_path": "docs/evidence/for_planner/horizon_gap_selector_v0_observation.json",
+          "alignment": "MISALIGNED"
+        }
+      },
+      "after": {
+        "endpoint": {
+          "output_present": true,
+          "output_path": "horizon_gap_selector_v0_observation.json",
+          "output_blob": "4333eca449c24dfaa09a126afc7937be403e6af1"
+        },
+        "counterpart": {
+          "storage_path": "docs/evidence/for_planner/horizon_gap_selector_v0_observation.json",
+          "storage_blob": "be23eba7c50f1b51a0e3b1412d9f5adc07dee1ff"
+        },
+        "edge": {
+          "relation_kind": "PRODUCES_TO",
+          "declared_output_path": "horizon_gap_selector_v0_observation.json",
+          "storage_path": "docs/evidence/for_planner/horizon_gap_selector_v0_observation.json",
+          "alignment": "MISALIGNED"
+        }
+      },
+      "obligations": {
+        "endpoint": "CHANGE",
+        "counterpart": "PRESERVE",
+        "edge": "PRESERVE",
+        "flow": "PASS"
+      },
+      "checks": {
+        "endpoint_obligation_satisfied": true,
+        "counterpart_obligation_satisfied": true,
+        "edge_obligation_satisfied": true,
+        "flow_witness_required": true,
+        "flow_witness": "FAIL",
+        "flow_obligation_satisfied": false
+      },
+      "closure_posture": "HOLD",
+      "effects": {
+        "mutation_effect": "NONE",
+        "planning_effect": "NONE",
+        "authority_effect": "NONE",
+        "execution_effect": "NONE",
+        "scientific_standing_effect": "NONE"
+      }
+    },
+    "effects": {
+      "surface_mutation_effect": "NONE",
+      "planning_effect": "NONE",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE",
+      "scientific_standing_effect": "NONE"
+    }
+  },
+  "callable_surface": {
+    "object_type": "TYPED_SURFACE_STEWARDSHIP_V0_RESULT",
+    "relation_id": "G20_PYTHON_CALLABLE_INVOCATION",
+    "surface_type": "PYTHON_CALLABLE_INVOCATION",
+    "before_geometry": {
+      "surface_type": "PYTHON_CALLABLE_INVOCATION",
+      "endpoint_fields": [
+        "endpoint_value",
+        "payload_kind",
+        "payload_shape"
+      ],
+      "counterpart_fields": [
+        "callable_path",
+        "code_blob",
+        "symbol"
+      ],
+      "edge_fields": [
+        "argument_names",
+        "binding_mode",
+        "relation_kind",
+        "return_coordinate"
+      ]
+    },
+    "after_geometry": {
+      "surface_type": "PYTHON_CALLABLE_INVOCATION",
+      "endpoint_fields": [
+        "endpoint_value",
+        "payload_kind",
+        "payload_shape"
+      ],
+      "counterpart_fields": [
+        "callable_path",
+        "code_blob",
+        "symbol"
+      ],
+      "edge_fields": [
+        "argument_names",
+        "binding_mode",
+        "relation_kind",
+        "return_coordinate"
+      ]
+    },
+    "abstract_roles": [
+      "endpoint",
+      "counterpart",
+      "edge",
+      "flow"
+    ],
+    "stewardship": {
+      "object_type": "RELATIONAL_CHANGE_STEWARDSHIP_V0_RESULT",
+      "relation_id": "G20_PYTHON_CALLABLE_INVOCATION",
+      "before": {
+        "endpoint": {
+          "payload_kind": "RELATION_STATE_ENDPOINT",
+          "endpoint_value": "A0",
+          "payload_shape": [
+            "endpoint",
+            "counterpart",
+            "edge"
+          ]
+        },
+        "counterpart": {
+          "callable_path": "src/control/relational_change_steward_v0.py",
+          "symbol": "steward_relation_change",
+          "code_blob": "8dddd57779d2432dd87c92ce95056dee2be398b5"
+        },
+        "edge": {
+          "relation_kind": "INVOKES",
+          "binding_mode": "KEYWORD_CALL",
+          "argument_names": [
+            "relation_id",
+            "before",
+            "after",
+            "obligations",
+            "flow_witness"
+          ],
+          "return_coordinate": "closure_posture"
+        }
+      },
+      "after": {
+        "endpoint": {
+          "payload_kind": "RELATION_STATE_ENDPOINT",
+          "endpoint_value": "A1",
+          "payload_shape": [
+            "endpoint",
+            "counterpart",
+            "edge"
+          ]
+        },
+        "counterpart": {
+          "callable_path": "src/control/relational_change_steward_v0.py",
+          "symbol": "steward_relation_change",
+          "code_blob": "8dddd57779d2432dd87c92ce95056dee2be398b5"
+        },
+        "edge": {
+          "relation_kind": "INVOKES",
+          "binding_mode": "KEYWORD_CALL",
+          "argument_names": [
+            "relation_id",
+            "before",
+            "after",
+            "obligations",
+            "flow_witness"
+          ],
+          "return_coordinate": "closure_posture"
+        }
+      },
+      "obligations": {
+        "endpoint": "CHANGE",
+        "counterpart": "PRESERVE",
+        "edge": "PRESERVE",
+        "flow": "PASS"
+      },
+      "checks": {
+        "endpoint_obligation_satisfied": true,
+        "counterpart_obligation_satisfied": true,
+        "edge_obligation_satisfied": true,
+        "flow_witness_required": true,
+        "flow_witness": "PASS",
+        "flow_obligation_satisfied": true
+      },
+      "closure_posture": "COHERENT",
+      "effects": {
+        "mutation_effect": "NONE",
+        "planning_effect": "NONE",
+        "authority_effect": "NONE",
+        "execution_effect": "NONE",
+        "scientific_standing_effect": "NONE"
+      }
+    },
+    "effects": {
+      "surface_mutation_effect": "NONE",
+      "planning_effect": "NONE",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE",
+      "scientific_standing_effect": "NONE"
+    }
+  },
+  "cross_surface": {
+    "abstract_roles_match": true,
+    "endpoint_fields_distinct": true,
+    "counterpart_fields_distinct": true,
+    "edge_fields_distinct": true,
+    "field_vocabularies_distinct": true,
+    "same_abstract_stewardship_role_ne_same_operative_configuration_geometry": "YES",
+    "typed_surface_binding_preserves_surface_specific_observation": "YES"
+  },
+  "checks": {
+    "frozen_blobs_match": true,
+    "repository_surface_hold": true,
+    "callable_surface_coherent": true,
+    "abstract_roles_match": true,
+    "field_vocabularies_distinct": true,
+    "repository_surface_type_preserved": true,
+    "callable_surface_type_preserved": true,
+    "source_effects_neutral": true
+  },
+  "all_checks_pass": true,
+  "effects": {
+    "relation_discovery_effect": "NONE",
+    "source_mutation_effect": "NONE",
+    "planning_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE"
+  },
+  "claim_ceiling": "Two exact digital specimens only: one repository producer-route surface reconstructed from the frozen G18 witness and one Python callable-invocation surface reconstructed from the frozen G19 witness. The pressure tests typed binding into the same abstract stewardship roles while preserving distinct surface geometry. No physical surface, universal schema, automatic relation discovery, planning activation, authority, execution, global invariance, or scientific standing is created.",
+  "stopped": "YES"
+}
