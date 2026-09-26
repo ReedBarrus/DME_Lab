@@ -11,15 +11,11 @@
     "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/MATERIALIZED_RECONCILIATION_SUCCESSOR_PROJECTION_PRESSURE_RESULT_001.md"
   },
   "current_cell": {
-    "cell_id": "CONTROL_KERNEL_CELL_001",
-    "posture": "WITNESSED_AWAITING_ADJUDICATION",
-    "specimen": "docs/campaigns/control_kernel_001/state/CONTROL_KERNEL_CELL_001_SPECIMEN_V0.json",
-    "selection_source": "EXTERNALLY_SUPPLIED",
-    "machine_selection_claimed": false,
-    "competing_gaps": 0,
-    "witness": "control_kernel_cell_001_observation.json",
-    "witness_source_ref": "4ade4448871e30b630f72ded79335eeebde4d396",
-    "witness_transport_ref": "272a3c1b445923e40e5f1676522881b30dfd30c1"
+    "cell_id": "CONTROL_KERNEL_CELL_002",
+    "posture": "IMPLEMENTED_READY_FOR_PRESSURE",
+    "target": "RELATIONAL_HORIZON_V0",
+    "representation_source": "EXTERNALLY_SUPPLIED",
+    "machine_selection_claimed": false
   },
   "gap_stratification": {
     "evidentiary": "Has the claimed relation earned standing?",
@@ -27,13 +23,12 @@
     "architectural_capability": "What machinery is missing for later classes of relational gaps?"
   },
   "current_gap": {
-    "gap_id": "G0_CONTROL_KERNEL_CELL_001_EVIDENTIARY_STANDING",
-    "gap_class": "EVIDENTIARY",
-    "statement": "The one-horizon/one-gap calibration has a clean runtime witness but has not yet been independently adjudicated.",
+    "gap_id": "G2_RELATIONAL_HORIZON_REPRESENTATION",
+    "gap_class": "ARCHITECTURAL_CAPABILITY",
+    "statement": "The governed-work semantics are earned for one externally supplied H1/G1 specimen, but no mechanical RELATIONAL_HORIZON_V0 representation yet has standing for the same before/after horizon state.",
     "work_eligible": true
   },
   "explicitly_deferred": [
-    "RELATIONAL_HORIZON_V0 generalized representation",
     "HORIZON_GAP_SELECTOR_V0 machine selection",
     "multi-gap ranking",
     "challenge/discovery budget",
@@ -43,9 +38,25 @@
     "concurrency and joint viability economics"
   ],
   "next_pressure": {
-    "pressure_id": "CONTROL_KERNEL_CELL_001_PRESSURE_001_ADJUDICATION",
-    "destination": "FRESH_INDEPENDENT_EXTERNAL_ONE_GAP_CALIBRATION_ADJUDICATOR",
-    "packet": "docs/campaigns/control_kernel_001/CONTROL_KERNEL_CELL_001_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+    "pressure_id": "RELATIONAL_HORIZON_V0_PRESSURE_001",
+    "destination": "LOCAL_RELATIONAL_HORIZON_REPRESENTATION_PRESSURE",
+    "packet": "docs/campaigns/control_kernel_001/RELATIONAL_HORIZON_V0_PRESSURE_001_READY_TO_RUN.md",
     "if_nothing_changes": "DO_NOT_RUN"
+  },
+  "earned_cells": {
+    "CONTROL_KERNEL_CELL_001": {
+      "standing": "CONTROL_KERNEL_CELL_001_MATCHED",
+      "result_handle": "docs/campaigns/control_kernel_001/pressure_runs/CONTROL_KERNEL_CELL_001_PRESSURE_RESULT_001.md",
+      "effective_claim": "One externally supplied operative horizon with exactly one externally supplied live gap and no competing gaps reconciles against one bounded observed repository repair to HORIZON_SATISFIED, empty supplied gap set, NO_JUSTIFIED_WORK, and STOP.",
+      "does_not_establish": [
+        "generalized relational-horizon representation",
+        "machine gap selection",
+        "multi-gap ranking",
+        "planning automation",
+        "authority",
+        "execution",
+        "scientific standing"
+      ]
+    }
   }
 }
