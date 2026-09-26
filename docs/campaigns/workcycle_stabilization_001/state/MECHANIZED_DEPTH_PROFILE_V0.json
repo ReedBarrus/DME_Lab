@@ -71,6 +71,18 @@
       "adjudication_packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_001_ADJUDICATION_READY_TO_SEND.md",
       "observed": "Exact authority for successor+spec A+unit A admits A; the same successor paired with spec B+unit B is blocked by authority_request_materialized_work_mismatch. The receipt binds exact successor, work-spec, and materialized-unit identities; authority remains unconsumed; no model invocation or execution occurs.",
       "claim": "No repaired exact materialized-work authority standing until independent adjudication."
+    },
+    "materialized_admitted_authority_consumption": {
+      "posture": "WITNESSED_AWAITING_ADJUDICATION",
+      "implementation": "src/coordination/materialized_admitted_authority_consumption_v0.py",
+      "tests": "tests/coordination/test_materialized_admitted_authority_consumption_v0.py",
+      "observer": "tools/observe_materialized_admitted_authority_consumption_v0.py",
+      "witness": "materialized_admitted_authority_consumption_observation.json",
+      "witness_source_ref": "793672dbce01ecd0a5ecdb0cfe79f8487eed53f2",
+      "witness_transport_ref": "7967ef73e862fa0d5beea0c5941d46b385820aaa",
+      "adjudication_packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+      "observed": "Exact admitted materialized work consumed one-use authority once, crossed one caller-supplied callback once, preserved exact successor/work-spec/unit lineage and raw return, blocked replay, blocked wrong materialization before consumption, and created no execution or scientific standing.",
+      "claim": "No consumption standing until independent adjudication."
     }
   },
   "metabolic_depth": {
@@ -168,8 +180,8 @@
   },
   "next_load_bearing_coordinate": {
     "coordinate": "materialized_admitted_authority_consumption",
-    "pressure": "MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001",
-    "selection_basis": "Exact materialized-work admission is matched; the next required relation is one one-shot callback crossing for that exact admitted work object."
+    "pressure": "MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_ADJUDICATION",
+    "selection_basis": "The one-shot exact-work consumption witness has clean witness-only transport. Independent adjudication is required before immutable result-witness composition."
   },
   "downstream_frontier": [
     "independently adjudicate exact materialized-work authority repair",
