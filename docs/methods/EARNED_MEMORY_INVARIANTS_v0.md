@@ -556,12 +556,73 @@ global invariance, global ecology coverage, economic weighting, or scientific st
 
 ---
 
-## Current nonclaim
-
-These thirteen entries are the current bounded invariant bank.
+## EMI-014 — Non-authoritative planning/task artifacts are not operative currentness
 
 ```text
-thirteen earned invariants
+non-authoritative planning / task artifacts
+!=
+operative current state
+```
+
+for the tested WORKCYCLE_STABILIZATION_001 currentness-reconstruction class.
+
+For the exact G15 specimen, the control carrier explicitly preserved:
+
+```text
+CAMPAIGN_POSTURE = CLOSED
+CURRENT_HORIZON_POSTURE = CLOSED
+NEXT_PRESSURE = null
+SUCCESSOR_POSTURE = NO_SUCCESSOR
+NEXT_PRESSURE_ALLOWED = false
+```
+
+while both control and ablation preserved the same non-authoritative planning/task
+surfaces, including an ACTIVE_CANDIDATE_SEQUENCE planning seed and a
+READY_TO_SEND_WORK_PACKET.
+
+When the authoritative current-state coordinate was ablated, an independent
+reconstructor returned:
+
+```text
+CAMPAIGN_POSTURE = UNRESOLVED_FROM_CARRIER
+CURRENT_HORIZON_POSTURE = UNRESOLVED_FROM_CARRIER
+NEXT_PRESSURE = UNRESOLVED_FROM_CARRIER
+SUCCESSOR_POSTURE = UNRESOLVED_FROM_CARRIER
+NEXT_PRESSURE_ALLOWED = UNRESOLVED_FROM_CARRIER
+```
+
+rather than inferring operative standing from those planning/task artifacts.
+
+**Earned by:** G15 /
+`OPERATIVE_CURRENTNESS_RECONSTRUCTION_V0_PRESSURE_001`.
+
+Frozen G15 result:
+`docs/campaigns/operative_currentness_reconstruction_001/pressure_runs/OPERATIVE_CURRENTNESS_RECONSTRUCTION_V0_PRESSURE_RESULT_001.md`
+(blob `dc39156956cd08df6fef7970fcd88d69dbb6b378`).
+
+Runtime G15 witness:
+`docs/campaigns/operative_currentness_reconstruction_001/pressure_runs/OPERATIVE_CURRENTNESS_RECONSTRUCTION_V0_PRESSURE_OBSERVATION_001.json`
+(blob `f0f4136772c0440491e6a87631b6301cc67bef94`).
+
+**Consequence:** for this bounded reconstruction class, visible planning/task
+artifacts are insufficient to recover exact operative campaign currentness when
+the authoritative current-state coordinate is absent. A currentness-bearing
+coordinate must remain explicitly recoverable rather than being inferred from
+artifact labels, readiness, or existence.
+
+This does not establish a generic currentness resolver, cross-campaign precedence,
+task ranking, planning activation, work selection, authority, execution, global
+invariance, global ecology coverage, economic weighting, scientific standing,
+or path-relocation semantics.
+
+---
+
+## Current nonclaim
+
+These fourteen entries are the current bounded invariant bank.
+
+```text
+fourteen earned invariants
 !=
 complete coordinate system of semantic memory
 ```
