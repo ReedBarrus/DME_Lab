@@ -167,9 +167,9 @@
     }
   },
   "next_load_bearing_coordinate": {
-    "coordinate": "materialized_unit_authority_binding",
-    "pressure": "MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_001_ADJUDICATION",
-    "selection_basis": "The exact materialized-work authority repair has a clean witness-only transport. Independent adjudication is the next required relation before authority consumption or invocation."
+    "coordinate": "materialized_admitted_authority_consumption",
+    "pressure": "MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001",
+    "selection_basis": "Exact materialized-work admission is matched; the next required relation is one one-shot callback crossing for that exact admitted work object."
   },
   "downstream_frontier": [
     "independently adjudicate exact materialized-work authority repair",
