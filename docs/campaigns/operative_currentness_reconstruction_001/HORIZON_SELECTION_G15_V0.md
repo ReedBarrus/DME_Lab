@@ -1,0 +1,69 @@
+# G15 Horizon Selection V0
+
+STATUS:
+JUSTIFIED_CANDIDATE
+
+CURRENT_LEDGER_BLOB:
+7ee754aa4e0480fd5d72afe6783535d4cdee4822
+
+CAMPAIGN:
+WORKCYCLE_STABILIZATION_001
+
+AUTHORITATIVE_CURRENT_STATE:
+docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json
+
+AUTHORITATIVE_CURRENT_STATE_BLOB:
+4892474e16b3128ad76f5b4cab3f8cef6f966aec
+
+PLANNING_SEED:
+docs/campaigns/workcycle_stabilization_001/IMMEDIATE_CAMPAIGN_TASKS.md
+
+PLANNING_SEED_BLOB:
+374d3af51efbed52fc3519bb0ebc3a42aa69f141
+
+READY_PACKET:
+docs/campaigns/workcycle_stabilization_001/RELATIONAL_COMPRESSION_W2_READY_TO_SEND.md
+
+READY_PACKET_BLOB:
+cb1ffac0e296828cc2145a8e2261c258293e2670
+
+TARGET_RELATION:
+PLANNING_OR_TASK_ARTIFACT != CURRENT_OPERATIVE_STATE
+
+HORIZON_ID:
+OPERATIVE_CURRENTNESS_RECONSTRUCTION_HORIZON_V0
+
+GAP_ID:
+G15_OPERATIVE_CURRENTNESS_RECONSTRUCTION_DEPENDENCE
+
+QUESTION:
+If the authoritative current-state coordinate is removed while planning/task
+artifacts remain visible, can a fresh reconstructor still recover exact current
+campaign posture and next-pressure standing without importing stale artifact
+semantics?
+
+CONTROL_CURRENT_STATE:
+CAMPAIGN_POSTURE = CLOSED
+CURRENT_HORIZON_POSTURE = CLOSED
+NEXT_PRESSURE = null
+SUCCESSOR_POSTURE = NO_SUCCESSOR
+NEXT_PRESSURE_ALLOWED = false
+
+REQUIRED_NONCOLLAPSES:
+PLANNING_FILE != CURRENT_CAMPAIGN_STATE
+READY_PACKET_EXISTS != CURRENT_PRESSURE
+ARTIFACT_EXISTS != CAMPAIGN_STANDING_ADVANCED
+NO_SUCCESSOR != NO_HISTORY
+CURRENTNESS_RECONSTRUCTION != TASK_SELECTION
+
+DEFERRED:
+generic currentness resolver
+cross-campaign currentness
+task ranking
+planning activation
+authority
+execution
+scientific standing
+
+CLAIM_CEILING:
+One bounded reconstruction test over WORKCYCLE_STABILIZATION_001 only.
