@@ -1,7 +1,7 @@
 {
   "object_type": "DISTINCTION_RETENTION_MODE_CURRENT_CAMPAIGN_STATE_V0",
   "campaign_id": "DISTINCTION_RETENTION_MODE_001",
-  "campaign_posture": "G7_IMPLEMENTED_READY_FOR_PRESSURE",
+  "campaign_posture": "G7_WITNESSED_AWAITING_ADJUDICATION",
   "campaign_basis": "Test whether one exact horizon-scoped load-bearing distinction can be carried by a minimal hot-memory representation while richer G4/G5/G6 evidence remains cold-routable through exact source handles.",
   "predecessor": {
     "campaign_id": "CURRENT_HORIZON_DISTINCTION_DEPENDENCE_001",
@@ -17,15 +17,18 @@
   },
   "current_cell": {
     "cell_id": "DISTINCTION_RETENTION_MODE_G7",
-    "posture": "IMPLEMENTED_READY_FOR_PRESSURE",
+    "posture": "WITNESSED_AWAITING_ADJUDICATION",
     "target": "DISTINCTION_RETENTION_MODE_V0",
     "horizon_id": "COGNITIVE_METHOD_APPLICABILITY_HORIZON_V0",
-    "distinction": "WORLD_CHANGE != METHOD_CHANGE"
+    "distinction": "WORLD_CHANGE != METHOD_CHANGE",
+    "witness": "distinction_retention_mode_v0_observation.json",
+    "witness_source_ref": "1c9a3aa5befaf5eda275d2ff72a758ace3553415",
+    "witness_transport_ref": "7faa6d397db918215aa04933189542a03d8006ec"
   },
   "current_gap": {
-    "gap_id": "G7_DISTINCTION_RETENTION_MODE",
-    "gap_class": "OPERATIVE_RELATIONAL",
-    "statement": "The distinction is load-bearing for one declared current horizon, but the minimum retention mode required to preserve that horizon has not yet been mechanically tested.",
+    "gap_id": "G7_DISTINCTION_RETENTION_MODE_EVIDENTIARY_STANDING",
+    "gap_class": "EVIDENTIARY",
+    "statement": "The G7 minimal hot-memory carrier has a clean runtime witness, but its retention-mode standing has not yet been independently adjudicated.",
     "work_eligible": true
   },
   "pressure_targets": {
@@ -58,9 +61,9 @@
     "scientific standing"
   ],
   "next_pressure": {
-    "pressure_id": "DISTINCTION_RETENTION_MODE_V0_PRESSURE_001",
-    "destination": "LOCAL_G7_RETENTION_MODE_OBSERVATION",
-    "packet": "docs/campaigns/distinction_retention_mode_001/DISTINCTION_RETENTION_MODE_V0_PRESSURE_001_READY_TO_RUN.md",
-    "if_nothing_changes": "RUN_ONCE"
+    "pressure_id": "DISTINCTION_RETENTION_MODE_V0_PRESSURE_001_ADJUDICATION",
+    "destination": "FRESH_INDEPENDENT_DISTINCTION_RETENTION_MODE_ADJUDICATOR",
+    "packet": "docs/campaigns/distinction_retention_mode_001/DISTINCTION_RETENTION_MODE_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+    "if_nothing_changes": "DO_NOT_RUN"
   }
 }
