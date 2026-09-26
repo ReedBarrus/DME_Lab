@@ -173,16 +173,16 @@
     }
   },
   "next_load_bearing_coordinate": {
-    "coordinate": "materialized_invocation_result_witness",
-    "pressure": "MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_001",
-    "selection_basis": "Exact materialized-work consumption is matched; immutable exact-work result witnessing is the next required relation."
+    "coordinate": "materialized_invocation_result_settlement",
+    "pressure": "MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001",
+    "selection_basis": "Exact materialized result witnessing is matched; candidate settlement at the same identity resolution is the next required relation."
   },
   "downstream_frontier": [
-    "pressure exact materialized-work immutable result witness",
-    "settle the exact materialized-work result witness",
-    "observe consequence and reconcile the materialized successor basis",
-    "derive successor3 and repeat metabolic loop",
-    "introduce relational-horizon / cognitive-capital control kernel only after the exact consequence spine is frozen"
+    "pressure exact materialized candidate settlement",
+    "bind independent consequence evidence to exact materialized settlement",
+    "reconcile the exact materialized successor basis",
+    "derive successor3 and freeze the consequence spine",
+    "activate post-consequence control/economy projection"
   ],
   "deferred_nonblocking": [
     "cross-process admission contention",
@@ -195,12 +195,20 @@
   "claim_ceiling": "Frontier map only. Coordinate posture does not itself create standing; each stronger claim requires one new mechanically witnessed relation.",
   "observation_depth": {
     "materialized_invocation_result_witness": {
+      "posture": "QUALIFIED",
+      "evidence": "MATERIALIZED_INVOCATION_RESULT_WITNESS_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_RESULT_001.md",
+      "claim": "Exact consumed materialized work plus raw callback return -> deterministic immutable result witness with full exact-work lineage; no interpretation, settlement, consequence, authority, execution standing, or scientific standing."
+    }
+  },
+  "settlement_depth": {
+    "materialized_invocation_result_settlement": {
       "posture": "IMPLEMENTED_READY_FOR_PRESSURE",
-      "implementation": "src/observation/materialized_invocation_result_witness_v0.py",
-      "tests": "tests/observation/test_materialized_invocation_result_witness_v0.py",
-      "observer": "tools/observe_materialized_invocation_result_witness_v0.py",
-      "pressure_packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_001_READY_TO_RUN.md",
-      "claim": "Candidate only: one already-consumed exact materialized-work attempt + raw callback return -> one deterministic immutable result witness with full exact-work lineage and zero semantic/settlement/consequence/standing effects."
+      "implementation": "src/coordination/materialized_invocation_result_settlement_v0.py",
+      "tests": "tests/coordination/test_materialized_invocation_result_settlement_v0.py",
+      "observer": "tools/observe_materialized_invocation_result_settlement_v0.py",
+      "pressure_packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_001_READY_TO_RUN.md",
+      "claim": "Candidate only: exact materialized result witness + externally supplied field dispositions/bases -> deterministic candidate settlement preserving full exact-work lineage; no qualification or consequence standing."
     }
   }
 }
