@@ -1,7 +1,7 @@
 {
   "object_type": "RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_CURRENT_CAMPAIGN_STATE_V0",
   "campaign_id": "RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_001",
-  "campaign_posture": "G12_WITNESSED_AWAITING_ADJUDICATION",
+  "campaign_posture": "G12_MATCHED_CHECKPOINT_TERMINAL",
   "predecessor": {
     "campaign_id": "PARTIAL_BASIS_RESIDUAL_CONSERVATION_001",
     "standing": "PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_MATCHED",
@@ -14,17 +14,13 @@
     "selection_handle": "docs/campaigns/residual_conservation_reconstruction_load_001/HORIZON_SELECTION_G12_V0.md",
     "selection_blob": "83fd917f5556c470de832eec5c745c1659ede283"
   },
-  "current_gap": {
-    "gap_id": "G12_G11_RESIDUAL_RECONSTRUCTION_DEPENDENCE_EVIDENTIARY_STANDING",
-    "gap_class": "EVIDENTIARY",
-    "statement": "The repaired G12 reconstruction pair produced a clean control/ablation discrimination witness, but bounded reconstruction-load standing and satisfaction of the invariant-promotion missing predicate remain unadjudicated.",
-    "work_eligible": true
-  },
+  "current_gap": null,
   "promotion_target": {
     "governing_ledger": "docs/methods/EARNED_MEMORY_INVARIANTS_v0.md",
-    "posture": "PINNED_NOT_EARNED",
-    "missing_predicate": "CONSEQUENTIAL_FAILURE_OR_REPEATED_RECONSTRUCTION_REQUIREMENT",
-    "ledger_mutation_effect": "NONE"
+    "posture": "ELIGIBLE_AWAITING_SEPARATE_PROMOTION_ADJUDICATION",
+    "missing_predicate": "SATISFIED_BY_G12",
+    "ledger_mutation_effect": "NONE",
+    "candidate_relation": "UNRESOLVED_MEMBERSHIP != CONSERVED_RESIDUAL_POSTURE"
   },
   "pressure_pair": {
     "control_carrier": "docs/campaigns/residual_conservation_reconstruction_load_001/specimens/G11_RESIDUAL_RECONSTRUCTION_CONTROL_CARRIER_V0.json",
@@ -52,9 +48,9 @@
     "scientific standing"
   ],
   "next_pressure": {
-    "pressure_id": "RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_V0_PRESSURE_001_ADJUDICATION",
-    "destination": "FRESH_INDEPENDENT_RESIDUAL_RECONSTRUCTION_LOAD_ADJUDICATOR",
-    "packet": "docs/campaigns/residual_conservation_reconstruction_load_001/RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+    "pressure_id": "RESIDUAL_CONSERVATION_INVARIANT_PROMOTION_V0_ADJUDICATION",
+    "destination": "FRESH_INDEPENDENT_INVARIANT_PROMOTION_ADJUDICATOR",
+    "packet": "docs/campaigns/residual_conservation_invariant_promotion_001/RESIDUAL_CONSERVATION_INVARIANT_PROMOTION_V0_ADJUDICATION_READY_TO_SEND.md",
     "if_nothing_changes": "ADJUDICATE_ONCE"
   },
   "interface_failure_001": {
@@ -72,5 +68,13 @@
     "blob": "c49f9dbc70be84fd61a02bf63dd7cba03c415e4d",
     "reconstruction_discrimination_present": "YES",
     "standing_effect": "PENDING_INDEPENDENT_ADJUDICATION"
-  }
+  },
+  "g12_result": {
+    "standing": "RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_V0_MATCHED",
+    "result_handle": "docs/campaigns/residual_conservation_reconstruction_load_001/pressure_runs/RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_V0_PRESSURE_RESULT_001.md",
+    "result_blob": "298e0449faee65c7c1ae615ea00363d0e0e52675",
+    "reconstruction_load": "YES",
+    "invariant_promotion_missing_predicate_satisfied": "YES"
+  },
+  "horizon_posture": "CLOSED_PENDING_PROMOTION_MEMBRANE"
 }
