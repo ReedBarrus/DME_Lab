@@ -800,7 +800,100 @@ NO JUSTIFIED GAP
 
 ---
 
-## 18. CLAIM CEILING
+## 18. SIX LOAD ECONOMIES
+
+A useful projected decomposition is six coupled subsystems, each primarily
+responsible for conserving one kind of load and projecting it across one bounded
+interface.
+
+```
+1. CONSEQUENCE SPINE
+   conserves:
+     exact work / consequence lineage
+   projects:
+     one exact unit through lawful consequence boundaries
+
+2. CONTROL KERNEL
+   conserves:
+     live relational justification
+   projects:
+     one exact eligible gap or NO_JUSTIFIED_WORK
+
+3. COGNITIVE ECONOMY
+   conserves:
+     justified carrying load
+   projects:
+     KEEP_HOT / CAPITALIZE / COMPRESS / DEMOTE / ARCHIVE / REOPEN
+
+4. RELATIONAL MAPPING
+   conserves:
+     dependency / coupling topology
+   projects:
+     what each operative relation can currently affect or block
+
+5. PLANNING / WORKSHOP
+   conserves:
+     unresolved resolution load
+   projects:
+     candidate transformation geometry without authority
+
+6. ROUTINE / CAMPAIGNING
+   conserves:
+     temporal continuity of already-justified work
+   projects:
+     repeated bounded transformations under explicit stop laws
+```
+
+Projected common pattern:
+
+```
+SUBSYSTEM
+=
+LOAD CONSERVATION
++
+BOUNDED PROJECTION
++
+EXPLICIT HANDOFF
+```
+
+No subsystem should silently absorb another subsystem's conserved quantity.
+
+Examples:
+
+```
+PLANNING LOAD
+!=
+AUTHORITY LOAD
+
+RELATIONAL RELEVANCE
+!=
+WORK ADMISSION
+
+HISTORICAL STRUCTURE
+!=
+OPERATIVE RETENTION
+
+CAMPAIGN CONTINUITY
+!=
+PERPETUAL WORK
+```
+
+The architecture becomes stable if each subsystem can answer:
+
+```
+WHAT LOAD DO I CONSERVE?
+WHAT MAY I PROJECT?
+WHAT MUST I NOT PROJECT?
+WHAT RECEIPT PROVES THE HANDOFF?
+WHAT CONDITION LETS ME STOP?
+```
+
+This six-system decomposition is a projection only. It should not be treated as
+earned subsystem standing until each boundary is separately pressured.
+
+---
+
+## 19. CLAIM CEILING
 
 This projection establishes no scientific standing.
 
