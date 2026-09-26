@@ -1,0 +1,161 @@
+{
+  "object_type": "DECLARATION_WORK_ELIGIBILITY_SELECTION_LOAD_V0_OBSERVATION",
+  "repo_head": "82d829ba00113261984749361f49c4a1374753ac",
+  "campaign_id": "DECLARATION_WORK_ELIGIBILITY_SELECTION_LOAD_001",
+  "pressure_id": "DECLARATION_WORK_ELIGIBILITY_SELECTION_LOAD_V0_PRESSURE_001",
+  "control": {
+    "horizon": {
+      "object_type": "RELATIONAL_HORIZON_V0",
+      "horizon_id": "H1_POST_CONSEQUENCE_PHASE_HANDOFF",
+      "relation": {
+        "subject": "post-consequence phase handoff",
+        "counterparty_or_surface": "docs/projections/POST_CONSEQUENCE_SPINE_CONTROL_ECONOMY_PROJECTIONS_V0.md",
+        "declared_purpose": "Enter the control-kernel phase without manufacturing continuation after lawful no-successor closure."
+      },
+      "current_posture": {
+        "state": "PARTIAL",
+        "evidence_refs": [
+          "repo://G14_DECLARATION_ELIGIBILITY_PRESSURE"
+        ]
+      },
+      "load_bearing_gaps": [
+        {
+          "gap_id": "G1_STALE_SUCCESSOR_3_HANDOFF",
+          "statement": "declared eligible gap",
+          "blocks": [
+            "CONTROL_KERNEL_ACTIVATION"
+          ],
+          "work_eligible": true
+        }
+      ],
+      "challenge_posture": {
+        "anomaly_count": 0,
+        "stale_basis": false,
+        "external_novelty_present": false
+      },
+      "representation_source": "EXTERNALLY_SUPPLIED",
+      "horizon_state_id": "relational-horizon-state:sha256:92c39fc6affbac0e5f9e74019daf5344da516d6ef95dc64b988c8566ae50bf8c",
+      "gap_selection_effect": "NONE",
+      "work_justification_effect": "NONE",
+      "work_materialization_effect": "NONE",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE",
+      "scientific_standing_effect": "NONE",
+      "claim_ceiling": "One externally supplied relational horizon state representation only. Stable logical horizon identity may persist while posture/gap state changes. No gap selection, ranking, work justification, planning, authority, execution, or scientific standing is established.",
+      "integrity_sha256": "ec8e592a6109d0a702cdc20a13c9825a6f7d90db6f807b45a66cfa54742b8cd1"
+    },
+    "selection": {
+      "object_type": "HORIZON_GAP_SELECTION_V0",
+      "source_horizon_id": "H1_POST_CONSEQUENCE_PHASE_HANDOFF",
+      "source_horizon_state_id": "relational-horizon-state:sha256:92c39fc6affbac0e5f9e74019daf5344da516d6ef95dc64b988c8566ae50bf8c",
+      "source_horizon_integrity_sha256": "ec8e592a6109d0a702cdc20a13c9825a6f7d90db6f807b45a66cfa54742b8cd1",
+      "selection_posture": "EXACT_ELIGIBLE_GAP",
+      "selected_gap_id": "G1_STALE_SUCCESSOR_3_HANDOFF",
+      "selected_gap": {
+        "gap_id": "G1_STALE_SUCCESSOR_3_HANDOFF",
+        "statement": "declared eligible gap",
+        "blocks": [
+          "CONTROL_KERNEL_ACTIVATION"
+        ],
+        "work_eligible": true
+      },
+      "eligible_gap_count": 1,
+      "selection_basis": "EXACTLY_ONE_DECLARED_WORK_ELIGIBLE_GAP",
+      "stop_required": false,
+      "selection_id": "horizon-gap-selection:sha256:870b3c67eaddb54111a9df13fdd31f7f86855181e254625dacc8dccd149b2d55",
+      "ranking_effect": "NONE",
+      "planning_effect": "NONE",
+      "work_materialization_effect": "NONE",
+      "work_admission_effect": "NONE",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE",
+      "scientific_standing_effect": "NONE",
+      "claim_ceiling": "One deterministic selection over one validated represented horizon: exactly one already-declared work-eligible gap is returned, otherwise NO_JUSTIFIED_WORK. Multiple eligible gaps are rejected. No ranking, planning, work materialization, admission, authority, or execution is created.",
+      "integrity_sha256": "496b4b1b448807055225a9b88ed4bebfd8c9d8f45faec6a92acc58c30d7285ac"
+    }
+  },
+  "intervention": {
+    "horizon": {
+      "object_type": "RELATIONAL_HORIZON_V0",
+      "horizon_id": "H1_POST_CONSEQUENCE_PHASE_HANDOFF",
+      "relation": {
+        "subject": "post-consequence phase handoff",
+        "counterparty_or_surface": "docs/projections/POST_CONSEQUENCE_SPINE_CONTROL_ECONOMY_PROJECTIONS_V0.md",
+        "declared_purpose": "Enter the control-kernel phase without manufacturing continuation after lawful no-successor closure."
+      },
+      "current_posture": {
+        "state": "PARTIAL",
+        "evidence_refs": [
+          "repo://G14_DECLARATION_ELIGIBILITY_PRESSURE"
+        ]
+      },
+      "load_bearing_gaps": [
+        {
+          "gap_id": "G1_STALE_SUCCESSOR_3_HANDOFF",
+          "statement": "declared eligible gap",
+          "blocks": [
+            "CONTROL_KERNEL_ACTIVATION"
+          ],
+          "work_eligible": false
+        }
+      ],
+      "challenge_posture": {
+        "anomaly_count": 0,
+        "stale_basis": false,
+        "external_novelty_present": false
+      },
+      "representation_source": "EXTERNALLY_SUPPLIED",
+      "horizon_state_id": "relational-horizon-state:sha256:55b095e467dd57d803f3518fa96da874cb688ec5076ecc750c07ff618db733eb",
+      "gap_selection_effect": "NONE",
+      "work_justification_effect": "NONE",
+      "work_materialization_effect": "NONE",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE",
+      "scientific_standing_effect": "NONE",
+      "claim_ceiling": "One externally supplied relational horizon state representation only. Stable logical horizon identity may persist while posture/gap state changes. No gap selection, ranking, work justification, planning, authority, execution, or scientific standing is established.",
+      "integrity_sha256": "7677d93112e867a6cb3fd00b4b52487cb6a23ef2ce43091de68ad78c96eaf9d9"
+    },
+    "selection": {
+      "object_type": "HORIZON_GAP_SELECTION_V0",
+      "source_horizon_id": "H1_POST_CONSEQUENCE_PHASE_HANDOFF",
+      "source_horizon_state_id": "relational-horizon-state:sha256:55b095e467dd57d803f3518fa96da874cb688ec5076ecc750c07ff618db733eb",
+      "source_horizon_integrity_sha256": "7677d93112e867a6cb3fd00b4b52487cb6a23ef2ce43091de68ad78c96eaf9d9",
+      "selection_posture": "NO_JUSTIFIED_WORK",
+      "selected_gap_id": null,
+      "selected_gap": null,
+      "eligible_gap_count": 0,
+      "selection_basis": "NO_DECLARED_WORK_ELIGIBLE_GAP",
+      "stop_required": true,
+      "selection_id": "horizon-gap-selection:sha256:0aedf45befaf4df06f35a81ab39ffb884784294f1f523b8910be21dbaacc1589",
+      "ranking_effect": "NONE",
+      "planning_effect": "NONE",
+      "work_materialization_effect": "NONE",
+      "work_admission_effect": "NONE",
+      "authority_effect": "NONE",
+      "execution_effect": "NONE",
+      "scientific_standing_effect": "NONE",
+      "claim_ceiling": "One deterministic selection over one validated represented horizon: exactly one already-declared work-eligible gap is returned, otherwise NO_JUSTIFIED_WORK. Multiple eligible gaps are rejected. No ranking, planning, work materialization, admission, authority, or execution is created.",
+      "integrity_sha256": "b75e3b716f6a6b5f63cadfac49d322c253a9264b7a306a3eeedf2ea4dbb7c6b4"
+    }
+  },
+  "assertions": {
+    "same_logical_horizon_id": true,
+    "same_gap_id": true,
+    "same_statement": true,
+    "same_blocks": true,
+    "declared_gap_persists_control": true,
+    "declared_gap_persists_intervention": true,
+    "control_work_eligible_true": true,
+    "intervention_work_eligible_false": true,
+    "control_exact_gap_selected": true,
+    "intervention_no_justified_work": true,
+    "no_downstream_effects": true
+  },
+  "all_assertions_pass": true,
+  "candidate_relation": {
+    "declaration_standing_ne_work_eligibility": "YES",
+    "work_eligibility_selection_load": "YES"
+  },
+  "claim_ceiling": "At this bounded selector intervention, the same declared gap remains represented in the same logical horizon while changing only work_eligible from true to false changes selector posture from EXACT_ELIGIBLE_GAP to NO_JUSTIFIED_WORK. This does not establish criteria for granting eligibility, gap discovery, work admission, planning, authority, execution, or scientific standing.",
+  "stopped": "YES"
+}
