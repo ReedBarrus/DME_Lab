@@ -1,0 +1,89 @@
+{
+  "schema_version": "chatgpt_main_working_state_v0",
+  "seat_id": "CHATGPT_MAIN",
+  "state_id": "CHATGPT_MAIN_STATE_000001",
+  "materialization_basis": {
+    "branch": "world-method-reconciliation-v0",
+    "base_commit": "b847e8d19568905c1105cd33f1e2d600fba07ecb",
+    "continuity_events_blob": "e86b96f2dd8ed8dfdd251628589f3c321deb846a"
+  },
+  "campaign": {
+    "campaign_id": "CHATGPT_MAIN_SEAT_ACTIVATION_001",
+    "title": "Wake ChatGPT-main inside the Lab",
+    "status": "ACTIVE_CANDIDATE_CONSTRUCTION",
+    "objective": "Materialize a reconstructable ChatGPT-main semantic/planner seat whose durable continuity, Atlas context, and bounded relational-invariance basis can survive occupant/thread replacement without cursor laundering or ambient execution authority."
+  },
+  "continuity": {
+    "consumer": "chatgpt",
+    "cursor_ref": "continuity/cursors/chatgpt.json",
+    "cursor_acknowledged_through": "CE-000006",
+    "observed_stream_head": "CE-000039",
+    "delta_inspected_from": "CE-000007",
+    "delta_inspected_through": "CE-000039",
+    "delta_semantic_application": "PARTIAL_TASK_LOCAL",
+    "cursor_advancement": "HELD_UNTIL_FRESH_OCCUPANT_RECONSTRUCTION",
+    "historical_chat_imported": false
+  },
+  "current_frontier": "Qualify deterministic ChatGPT-main wake and fresh-occupant semantic reconstruction; only then acknowledge the consumed continuity delta and pressure the bounded Atlas planner role.",
+  "qualified_relational_basis": [
+    {
+      "relation": "RELATIONAL_CONFIGURATION_CARRIES_CONSEQUENTIAL_LOAD_BEYOND_ENDPOINT_LOCAL_STATE",
+      "scope": "exact RIL1 deterministic four-case stewardship pressure only",
+      "adjudication_ref": "docs/campaigns/relational_invariance_load_001/pressure_runs/RELATIONAL_INVARIANCE_LOAD_V0_ADJUDICATION_RESULT_001.md",
+      "adjudication_blob": "d0fa23ee2301024e9a6b96dede95ec62b253156f"
+    },
+    {
+      "relation": "RELATIONAL_TOPOLOGY_CARRIES_CONSEQUENTIAL_LOAD_BEYOND_ISOLATED_LOCAL_RELATION",
+      "scope": "exact RTL1 deterministic four-node/two-edge load-topology family only",
+      "adjudication_ref": "docs/campaigns/relational_topology_load_001/pressure_runs/RELATIONAL_TOPOLOGY_LOAD_V0_ADJUDICATION_RESULT_001.md",
+      "adjudication_blob": "fc789514c9276f3857add4fe90402553d70b441d"
+    },
+    {
+      "relation": "REPRESENTED_RELATIONAL_TOPOLOGY_NE_OPERATIVE_RELATIONAL_TOPOLOGY",
+      "scope": "exact RTL1 observer-omission intervention only",
+      "adjudication_ref": "docs/campaigns/relational_topology_load_001/pressure_runs/RELATIONAL_TOPOLOGY_LOAD_V0_ADJUDICATION_RESULT_001.md",
+      "adjudication_blob": "fc789514c9276f3857add4fe90402553d70b441d"
+    }
+  ],
+  "atlas_context": {
+    "status": "AVAILABLE_AS_DERIVED_PROJECTION_NOT_WORLD_TRUTH",
+    "projection_ref": "docs/projections/ATLAS_EXECUTIVE_TOMOGRAPHY_PRESSURE_FIELD_V0.md",
+    "reported_recent_continuity_events": [
+      "CE-000034",
+      "CE-000035",
+      "CE-000036",
+      "CE-000037",
+      "CE-000038",
+      "CE-000039"
+    ],
+    "reported_recent_summary": "Continuity reports geometric repository projection, Atlas-first overlays, temporal actor/wound replay, typed distinction Cell 001, environmental load-transfer pressure, and E03 decomposed-load pressure. These are recorded activity reports and must be source-verified when relied upon."
+  },
+  "planner_posture": {
+    "status": "CANDIDATE_ONLY",
+    "leverage_sought": "Use continuity + Atlas + qualified relational/invariance carriers to reduce reconstruction and nominate bounded pressure without activating autonomous planning authority.",
+    "next_pressure_after_seat_qualification": "CHATGPT_MAIN_ATLAS_PLANNER_ROLE_V0_PRESSURE_001",
+    "authority_effect": "NONE"
+  },
+  "must_not_assume": [
+    "continuity event presence establishes scientific standing",
+    "Atlas equals the operative world/topology",
+    "manual ChatGPT tether establishes live native invocation binding",
+    "H2 establishes a universal topology law",
+    "seat existence establishes occupant liveness",
+    "planner candidate status grants work admission or execution authority"
+  ],
+  "unresolved": [
+    "fresh occupant has not yet reconstructed this seat from durable basis",
+    "chatgpt cursor remains at CE-000006",
+    "manual ChatGPT invocation association remains opaque",
+    "automatic Cockpit-to-ChatGPT native context injection is not established",
+    "planner role is candidate-only and not yet pressured on this seat",
+    "continuity stream does not yet include the Sep 25-26 relational-invariance campaign activity"
+  ],
+  "authority": {
+    "standing": "NONE",
+    "source": null
+  },
+  "standing_effect": "NONE_BY_WORKING_STATE",
+  "authority_effect": "NONE_BY_WORKING_STATE"
+}
