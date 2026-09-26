@@ -239,7 +239,7 @@ def consume_materialized_admitted_authority_once(
         "invocation_count": authority_receipt["invocation_count"],
         "authority_effect": "NONE",
         "consumption_effect": "CONSUMED_ONE_USE",
-        "execution_effect": "CALLBACK_BOUNDARY_ONLY",
+        "execution_effect": "NONE",
         "scientific_standing_effect": "NONE",
         "claim_ceiling": (
             "One exact admitted materialized-work object was rebound to the same "
@@ -260,6 +260,6 @@ def consume_materialized_admitted_authority_once(
         "invocation_result": invocation["invocation_result"],
         "authority_effect": "NONE",
         "consumption_effect": "CONSUMED_ONE_USE",
-        "execution_effect": "CALLBACK_BOUNDARY_ONLY",
+        "execution_effect": "NONE",
         "scientific_standing_effect": "NONE",
     }
