@@ -105,5 +105,21 @@
       ]
     }
   },
-  "horizon_posture": "OPEN_FOR_REINSPECTION"
+  "horizon_posture": "OPEN_FOR_REINSPECTION",
+  "memory_invariant_promotion": {
+    "posture": "PINNED_NOT_EARNED",
+    "candidate_relation": "UNRESOLVED_RESIDUAL != DECLARED_GAP != WORK_ELIGIBLE_GAP",
+    "candidate_extension": "RESIDUAL_CONSERVATION_PRESERVES_NOT_ESTABLISHED_GAP_WORK_ARCHITECTURE_POSTURES",
+    "governing_ledger": "docs/methods/EARNED_MEMORY_INVARIANTS_v0.md",
+    "promotion_rule": "candidate relation -> pressure -> consequential failure or repeated reconstruction requirement -> bounded qualification -> ledger entry",
+    "already_satisfied": [
+      "candidate relation",
+      "bounded G11 pressure",
+      "bounded G11 qualification"
+    ],
+    "missing_predicate": "CONSEQUENTIAL_FAILURE_OR_REPEATED_RECONSTRUCTION_REQUIREMENT",
+    "promotion_effect": "NONE",
+    "ledger_entry_created": false,
+    "note": "G11 qualification alone does not satisfy the invariant-ledger promotion rule. Promotion remains explicitly pending a separate memory/reconstruction pressure."
+  }
 }
