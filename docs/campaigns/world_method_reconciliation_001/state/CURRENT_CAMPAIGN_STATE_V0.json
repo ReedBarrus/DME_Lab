@@ -1,0 +1,41 @@
+{
+  "object_type": "WORLD_METHOD_RECONCILIATION_CURRENT_CAMPAIGN_STATE_V0",
+  "campaign_id": "WORLD_METHOD_RECONCILIATION_001",
+  "campaign_basis": "Pressure the distinction between world-posture change and cognitive-method change after exact consequence reconciliation, without implying causal learning or policy mutation.",
+  "predecessor_floor": {
+    "main_merge_commit": "fcaf3fe49e1f76781a1f568caa87540d00da4937",
+    "qualified_head": "bb838ec3c71e1f5265c594db41aa67f42248b101"
+  },
+  "current_cell": {
+    "cell_id": "WORLD_METHOD_RECONCILIATION_G4",
+    "posture": "WITNESSED_AWAITING_ADJUDICATION",
+    "target": "WORLD_METHOD_RECONCILIATION_V0",
+    "witness": "world_method_reconciliation_v0_observation.json",
+    "witness_source_ref": "9c6a63c8ecb662ab4101968d943c975a035fdfff",
+    "witness_transport_ref": "c6353895ec3961b87d6a7442a28c572ba4db5919"
+  },
+  "current_gap": {
+    "gap_id": "G4_WORLD_METHOD_RECONCILIATION_EVIDENTIARY_STANDING",
+    "gap_class": "EVIDENTIARY",
+    "statement": "WORLD_METHOD_RECONCILIATION_V0 has a clean runtime witness for orthogonal world/method change representation, but has not yet been independently adjudicated.",
+    "work_eligible": true
+  },
+  "explicitly_deferred": [
+    "causal attribution",
+    "automatic learning",
+    "method improvement inference",
+    "method capitalization",
+    "policy mutation",
+    "semantic gap discovery",
+    "multi-gap optimization",
+    "cognitive asset load probe",
+    "freshness/currentness membrane",
+    "concurrency and joint viability economics"
+  ],
+  "next_pressure": {
+    "pressure_id": "WORLD_METHOD_RECONCILIATION_V0_PRESSURE_001_ADJUDICATION",
+    "destination": "FRESH_INDEPENDENT_WORLD_METHOD_RECONCILIATION_ADJUDICATOR",
+    "packet": "docs/campaigns/world_method_reconciliation_001/WORLD_METHOD_RECONCILIATION_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+    "if_nothing_changes": "DO_NOT_RUN"
+  }
+}
