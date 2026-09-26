@@ -120,21 +120,26 @@
       "standing": "SUCCESSOR_WORK_UNIT_MATERIALIZATION_MATCHED",
       "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_RESULT_001.md",
       "claim_ceiling": "At the exact supplied source, one exact deterministic successor candidate plus one externally supplied bounded work specification can materialize one complete basis_workcycle_v1-compatible next workflow unit while conserving exact successor, reconciliation, and next-pressure lineage. The same successor can bind different explicit work specifications into different materialized units, so successor identity and executable work specification remain distinct. Materialization creates no qualification, work admission, authority, execution, or scientific standing."
+    },
+    "materialized_unit_authority_binding_fracture": {
+      "standing": "MATERIALIZED_UNIT_AUTHORITY_BINDING_FRACTURED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_RESULT_001.md",
+      "claim_ceiling": "At the exact supplied source, the existing qualified successor-bound authority/admission layer does not bind exact materialized workflow-unit integrity or work-spec identity. Two distinct materialized units derived from the same successor share the same successor authority coordinates and can each cross the existing successor-bound admission decision in separate disposable fixtures without presenting exact materialized-unit identity to that layer. This does not invalidate successor-bound authority/admission standing in isolation and does not establish a production exploit."
     }
   },
   "current_unresolved": [
-    "Materialized-unit authority binding is witnessed and awaits independent adjudication.",
-    "Observed routing suggests current successor-bound authority does not bind exact materialized workflow-unit or work-spec identity.",
-    "No authority-binding repair is admitted until the fracture adjudication is frozen.",
+    "The coarse successor-bound authority composition fracture is frozen.",
+    "A narrow exact materialized-work authority repair is implemented and ready for runtime pressure.",
+    "No repaired exact-work authority/admission standing is earned yet.",
     "Repeated metabolism and seat consequential/meta-feedback remain unearned."
   ],
   "next_pressure": {
-    "pressure_id": "MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_ADJUDICATION",
-    "work_item_id": "WORKCYCLE_STABILIZATION_001_MATERIALIZED_UNIT_AUTHORITY_BINDING",
-    "destination": "FRESH_INDEPENDENT_MATERIALIZED_UNIT_AUTHORITY_BINDING_ADJUDICATOR",
-    "packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-    "selection_basis": "The authority-binding witness exercised repo head 1984164bf4f6797d8249ceaf49fae712aa2445bf and was transported alone in c34b37b681c717dcc1b426385c942522dfc71a15. The witness shows two distinct materialized units under the same successor sharing the same successor-bound authority coordinates and both crossing the existing admission decision without exact unit/work-spec binding. Independent adjudication is required before any repair.",
-    "expected_operating_change": "Freeze MATCHED/PARTIAL/FRACTURED/UNRESOLVED for successor-bound authority versus exact materialized-work authority while preserving prior component standing.",
+    "pressure_id": "MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_001",
+    "work_item_id": "WORKCYCLE_STABILIZATION_001_MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR",
+    "destination": "LOCAL_EXACT_MATERIALIZED_WORK_AUTHORITY_REPAIR_WITNESS",
+    "packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_001_READY_TO_RUN.md",
+    "selection_basis": "The frozen fracture shows successor-bound authority is too coarse once one successor can materialize into multiple distinct work units. The repair adds a parallel exact-work authority layer binding successor, work spec, and materialized-unit identity before atomic admission without mutating the previously qualified successor-bound law.",
+    "expected_operating_change": "Observe exact A-authority + A-unit admission, same-successor B-unit rejection, exact receipt binding, unchanged one-winner same-process atomicity, and zero authority-consumption/execution effects.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -223,7 +228,12 @@
       "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_READY_TO_RUN.md",
       "tools/observe_materialized_unit_authority_binding_v0.py",
       "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-      "materialized_unit_authority_binding_observation.json"
+      "materialized_unit_authority_binding_observation.json",
+      "docs/campaigns/workcycle_stabilization_001/pressure_runs/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_RESULT_001.md",
+      "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_001_READY_TO_RUN.md",
+      "src/coordination/materialized_unit_authority_admission_v0.py",
+      "tests/coordination/test_materialized_unit_authority_admission_v0.py",
+      "tools/observe_materialized_unit_authority_binding_repair_v0.py"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
@@ -292,8 +302,8 @@
       "exact successor + explicit bounded work spec -> complete next workflow unit independently matched"
     ],
     "unresolved_components": [
-      "materialized-unit authority binding awaits independent adjudication",
-      "exact work-unit/work-spec authority remains unearned",
+      "exact materialized-work authority repair awaits runtime pressure",
+      "fresh exact-work authority consumption/execution remains unearned",
       "repeat without manual successor selection has not yet been observed"
     ]
   },
