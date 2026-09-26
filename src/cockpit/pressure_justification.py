@@ -133,6 +133,10 @@ def _expected_change(pressure: str) -> str:
             "pressure whether current successor-bound authority also binds the exact "
             "materialized work-unit and work-spec identity before admission"
         ),
+        "MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_PRESSURE": (
+            "repressure exact successor + work-spec + materialized-unit authority "
+            "binding after the frozen coarse-authority fracture"
+        ),
         "REPEATED_METABOLIC_LOOP_PRESSURE": (
             "establish or fracture two consecutive basis-bound workcycle transitions "
             "whose successor selection is derived from prior witnessed consequence"
@@ -217,6 +221,11 @@ def _select_pressure(
         if blocker.startswith("SUCCESSOR_WORK_UNIT_MATERIALIZATION:"):
             return (
                 "SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE",
+                "SELF_MOVING_QUALIFICATION_BLOCKER",
+            )
+        if blocker.startswith("MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR:"):
+            return (
+                "MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_PRESSURE",
                 "SELF_MOVING_QUALIFICATION_BLOCKER",
             )
         if blocker.startswith("MATERIALIZED_UNIT_AUTHORITY_BINDING:"):
