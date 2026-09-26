@@ -1,0 +1,24 @@
+{
+  "object_type": "G11_RESIDUAL_RECONSTRUCTION_ABLATION_CARRIER_V0",
+  "horizon_id": "G11_RESIDUAL_RECONSTRUCTION_CONTINUITY_HORIZON_V0",
+  "distinction_id": "WORLD_CHANGE_NE_METHOD_CHANGE",
+  "basis_id": "B1",
+  "source_profile_id": "partial-basis-retention-profile:sha256:1727532fd69214120cddfbb46b2a9f7dc1f2a3c5078f62f33aec28abd277d5b3",
+  "source_extension_id": "partial-basis-retention-profile-extension:sha256:00abe68d1546d608becb9289ba21070876e02cfe0ba016acefd2107bc6d242d2",
+  "g10_profile": {
+    "required_members": ["H_A"],
+    "unresolved_members": ["H_C"],
+    "not_required_members": ["H_B"],
+    "exterior_posture": "UNRESOLVED"
+  },
+  "g11_relation_inline": false,
+  "exact_cold_source_handles": {
+    "g10_result_blob": "e0c27dd06b68ac7e3dc08d20093e60eee35509eb",
+    "g10_witness_blob": "4f4c7efef184c1f60ab362420d7ef09a1c43dab1",
+    "g11_result_blob": "c31eefa748213c70a39713e2137343638ee4fb15",
+    "g11_witness_blob": "1736d63c13c27d37641f3a6f78825c9288428a50"
+  },
+  "cold_source_reading_during_pressure": "DISALLOWED_BY_EXPERIMENT",
+  "missing_posture_rule": "RETURN_UNRESOLVED_FROM_CARRIER",
+  "stopped": "YES"
+}
