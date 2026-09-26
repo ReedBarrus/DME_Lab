@@ -125,20 +125,26 @@
       "standing": "MATERIALIZED_UNIT_AUTHORITY_BINDING_FRACTURED",
       "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_RESULT_001.md",
       "claim_ceiling": "At the exact supplied source, the existing qualified successor-bound authority/admission layer does not bind exact materialized workflow-unit integrity or work-spec identity. Two distinct materialized units derived from the same successor share the same successor authority coordinates and can each cross the existing successor-bound admission decision in separate disposable fixtures without presenting exact materialized-unit identity to that layer. This does not invalidate successor-bound authority/admission standing in isolation and does not establish a production exploit."
+    },
+    "materialized_unit_authority_binding": {
+      "standing": "MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_RESULT_001.md",
+      "claim_ceiling": "At the exact supplied repaired source, one current verified one-use local authority envelope can bind one exact sealed successor, one exact sealed externally supplied work specification, and one exact sealed materialized workflow unit before one same-process atomic admission. Authority for one materialization rejects a different materialization under the same successor. The admission receipt conserves exact successor, work-spec, materialized-unit, and authority coordinates. Authority remains unconsumed and no model invocation or work execution occurs."
     }
   },
   "current_unresolved": [
-    "The exact materialized-work authority repair is witnessed and awaits independent adjudication.",
-    "Authority consumption and invocation over the exact materialized successor work unit remain unearned.",
+    "Exact materialized-work authority/admission is independently repair-matched.",
+    "Exact admitted materialized-work authority consumption and one callback crossing are implemented and ready for runtime pressure.",
+    "Raw callback return has no result-witness, settlement, consequence, or reconciliation standing yet.",
     "Repeated metabolism and seat consequential/meta-feedback remain unearned."
   ],
   "next_pressure": {
-    "pressure_id": "MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_001_ADJUDICATION",
-    "work_item_id": "WORKCYCLE_STABILIZATION_001_MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR",
-    "destination": "FRESH_INDEPENDENT_EXACT_MATERIALIZED_WORK_AUTHORITY_REPAIR_ADJUDICATOR",
-    "packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_001_ADJUDICATION_READY_TO_SEND.md",
-    "selection_basis": "The exact-work authority repair witness exercised repo head 9ce423bfc53610e0b650927709baeedfce360030 and was transported alone in 2529aec9996d796636fb5f1806563561c7bd6843. The witness shows exact A-work authority admits A, rejects B under the same successor, binds exact successor/work-spec/unit identities in the receipt, preserves authority unconsumed, and performs no execution. Independent adjudication is required before authority consumption/invocation.",
-    "expected_operating_change": "Freeze MATCHED/PARTIAL/FRACTURED/UNRESOLVED for the exact materialized-work authority repair without widening to consumption, invocation, execution, or repeated-loop standing.",
+    "pressure_id": "MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001",
+    "work_item_id": "WORKCYCLE_STABILIZATION_001_MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION",
+    "destination": "LOCAL_EXACT_MATERIALIZED_WORK_CONSUMPTION_WITNESS",
+    "packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_READY_TO_RUN.md",
+    "selection_basis": "MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_MATCHED is frozen in canonical two-line form. The next relation is exact admitted materialized-work authority consumption plus one caller-supplied callback while conserving exact successor/work-spec/unit identity and preserving raw return as uninterpreted.",
+    "expected_operating_change": "Observe one exact one-shot consumption/callback, replay denial, wrong-materialization blocking before consumption, post-reservation recovery semantics, and zero work-execution/standing effects.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -234,7 +240,12 @@
       "tests/coordination/test_materialized_unit_authority_admission_v0.py",
       "tools/observe_materialized_unit_authority_binding_repair_v0.py",
       "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_001_ADJUDICATION_READY_TO_SEND.md",
-      "materialized_unit_authority_binding_repair_observation.json"
+      "materialized_unit_authority_binding_repair_observation.json",
+      "docs/campaigns/workcycle_stabilization_001/pressure_runs/MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_RESULT_001.md",
+      "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_PRESSURE_001_READY_TO_RUN.md",
+      "src/coordination/materialized_admitted_authority_consumption_v0.py",
+      "tests/coordination/test_materialized_admitted_authority_consumption_v0.py",
+      "tools/observe_materialized_admitted_authority_consumption_v0.py"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
@@ -300,11 +311,12 @@
       "immutable result witness + field-level candidate settlement independently matched",
       "settlement + independent consequence -> basis reconciliation independently matched",
       "fresh reconciliation -> lawful second successor projection independently repair-matched",
-      "exact successor + explicit bounded work spec -> complete next workflow unit independently matched"
+      "exact successor + explicit bounded work spec -> complete next workflow unit independently matched",
+      "exact successor + exact work spec + exact materialized unit -> verified atomic admission independently repair-matched"
     ],
     "unresolved_components": [
-      "exact materialized-work authority repair awaits independent adjudication",
-      "fresh exact-work authority consumption/invocation remains unearned",
+      "exact admitted materialized-work authority consumption awaits runtime pressure",
+      "raw callback return has not yet been immutably witnessed",
       "repeat without manual successor selection has not yet been observed"
     ]
   },
