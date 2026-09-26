@@ -1,0 +1,280 @@
+{
+  "object_type": "RELATIONAL_INVARIANCE_LOAD_V0_OBSERVATION",
+  "pressure_id": "RELATIONAL_INVARIANCE_LOAD_V0_PRESSURE_001",
+  "frozen_basis": {
+    "expected_blobs": {
+      "g19_adjudication": "b22483a5ecf9551bfdf9c22834367db4082640a5",
+      "g19_steward": "8dddd57779d2432dd87c92ce95056dee2be398b5",
+      "g22_adjudication": "c7597a8e8f5e9c9306b288bed50608ef182e23bd",
+      "projection": "d8b8727b752ed318d60f877466fe536d1a8abc87",
+      "horizon": "77f1cc23a6fb5db096c39df13e7aebd77b59825b"
+    },
+    "actual_blobs": {
+      "g19_adjudication": "b22483a5ecf9551bfdf9c22834367db4082640a5",
+      "g19_steward": "8dddd57779d2432dd87c92ce95056dee2be398b5",
+      "g22_adjudication": "c7597a8e8f5e9c9306b288bed50608ef182e23bd",
+      "projection": "d8b8727b752ed318d60f877466fe536d1a8abc87",
+      "horizon": "77f1cc23a6fb5db096c39df13e7aebd77b59825b"
+    },
+    "blob_checks": {
+      "g19_adjudication": true,
+      "g19_steward": true,
+      "g22_adjudication": true,
+      "projection": true,
+      "horizon": true
+    }
+  },
+  "declared_transformation_class": "BIJECTIVE_SYMBOL_RENAMING_PRESERVING_EQUALITY_AND_CHANGE_STRUCTURE",
+  "cases": {
+    "r0_base": {
+      "case_id": "R0_BASE_COHERENT",
+      "result": {
+        "object_type": "RELATIONAL_CHANGE_STEWARDSHIP_V0_RESULT",
+        "relation_id": "R0_BASE_COHERENT",
+        "before": {
+          "endpoint": "A0",
+          "counterpart": "B0",
+          "edge": "E0"
+        },
+        "after": {
+          "endpoint": "A1",
+          "counterpart": "B0",
+          "edge": "E0"
+        },
+        "obligations": {
+          "endpoint": "CHANGE",
+          "counterpart": "PRESERVE",
+          "edge": "PRESERVE",
+          "flow": "PASS"
+        },
+        "checks": {
+          "endpoint_obligation_satisfied": true,
+          "counterpart_obligation_satisfied": true,
+          "edge_obligation_satisfied": true,
+          "flow_witness_required": true,
+          "flow_witness": "PASS",
+          "flow_obligation_satisfied": true
+        },
+        "closure_posture": "COHERENT",
+        "effects": {
+          "mutation_effect": "NONE",
+          "planning_effect": "NONE",
+          "authority_effect": "NONE",
+          "execution_effect": "NONE",
+          "scientific_standing_effect": "NONE"
+        }
+      }
+    },
+    "r1_symbol_renaming": {
+      "case_id": "R1_BIJECTIVE_SYMBOL_RENAMING",
+      "result": {
+        "object_type": "RELATIONAL_CHANGE_STEWARDSHIP_V0_RESULT",
+        "relation_id": "R1_BIJECTIVE_SYMBOL_RENAMING",
+        "before": {
+          "endpoint": "P7",
+          "counterpart": "Q3",
+          "edge": "LINK9"
+        },
+        "after": {
+          "endpoint": "P8",
+          "counterpart": "Q3",
+          "edge": "LINK9"
+        },
+        "obligations": {
+          "endpoint": "CHANGE",
+          "counterpart": "PRESERVE",
+          "edge": "PRESERVE",
+          "flow": "PASS"
+        },
+        "checks": {
+          "endpoint_obligation_satisfied": true,
+          "counterpart_obligation_satisfied": true,
+          "edge_obligation_satisfied": true,
+          "flow_witness_required": true,
+          "flow_witness": "PASS",
+          "flow_obligation_satisfied": true
+        },
+        "closure_posture": "COHERENT",
+        "effects": {
+          "mutation_effect": "NONE",
+          "planning_effect": "NONE",
+          "authority_effect": "NONE",
+          "execution_effect": "NONE",
+          "scientific_standing_effect": "NONE"
+        }
+      }
+    },
+    "r2_edge_drift": {
+      "case_id": "R2_EDGE_DRIFT",
+      "result": {
+        "object_type": "RELATIONAL_CHANGE_STEWARDSHIP_V0_RESULT",
+        "relation_id": "R2_EDGE_DRIFT",
+        "before": {
+          "endpoint": "A0",
+          "counterpart": "B0",
+          "edge": "E0"
+        },
+        "after": {
+          "endpoint": "A1",
+          "counterpart": "B0",
+          "edge": "E1"
+        },
+        "obligations": {
+          "endpoint": "CHANGE",
+          "counterpart": "PRESERVE",
+          "edge": "PRESERVE",
+          "flow": "PASS"
+        },
+        "checks": {
+          "endpoint_obligation_satisfied": true,
+          "counterpart_obligation_satisfied": true,
+          "edge_obligation_satisfied": false,
+          "flow_witness_required": true,
+          "flow_witness": "PASS",
+          "flow_obligation_satisfied": true
+        },
+        "closure_posture": "HOLD",
+        "effects": {
+          "mutation_effect": "NONE",
+          "planning_effect": "NONE",
+          "authority_effect": "NONE",
+          "execution_effect": "NONE",
+          "scientific_standing_effect": "NONE"
+        }
+      }
+    },
+    "r3_flow_loss": {
+      "case_id": "R3_FLOW_LOSS",
+      "result": {
+        "object_type": "RELATIONAL_CHANGE_STEWARDSHIP_V0_RESULT",
+        "relation_id": "R3_FLOW_LOSS",
+        "before": {
+          "endpoint": "A0",
+          "counterpart": "B0",
+          "edge": "E0"
+        },
+        "after": {
+          "endpoint": "A1",
+          "counterpart": "B0",
+          "edge": "E0"
+        },
+        "obligations": {
+          "endpoint": "CHANGE",
+          "counterpart": "PRESERVE",
+          "edge": "PRESERVE",
+          "flow": "PASS"
+        },
+        "checks": {
+          "endpoint_obligation_satisfied": true,
+          "counterpart_obligation_satisfied": true,
+          "edge_obligation_satisfied": true,
+          "flow_witness_required": true,
+          "flow_witness": "ABSENT",
+          "flow_obligation_satisfied": false
+        },
+        "closure_posture": "HOLD",
+        "effects": {
+          "mutation_effect": "NONE",
+          "planning_effect": "NONE",
+          "authority_effect": "NONE",
+          "execution_effect": "NONE",
+          "scientific_standing_effect": "NONE"
+        }
+      }
+    }
+  },
+  "normalized_signatures": {
+    "r0_base": {
+      "change_pattern": {
+        "endpoint_changed": true,
+        "counterpart_changed": false,
+        "edge_changed": false
+      },
+      "obligations": {
+        "endpoint": "CHANGE",
+        "counterpart": "PRESERVE",
+        "edge": "PRESERVE",
+        "flow": "PASS"
+      },
+      "checks": {
+        "endpoint_obligation_satisfied": true,
+        "counterpart_obligation_satisfied": true,
+        "edge_obligation_satisfied": true,
+        "flow_witness_required": true,
+        "flow_witness": "PASS",
+        "flow_obligation_satisfied": true
+      },
+      "closure_posture": "COHERENT",
+      "effects": {
+        "mutation_effect": "NONE",
+        "planning_effect": "NONE",
+        "authority_effect": "NONE",
+        "execution_effect": "NONE",
+        "scientific_standing_effect": "NONE"
+      }
+    },
+    "r1_symbol_renaming": {
+      "change_pattern": {
+        "endpoint_changed": true,
+        "counterpart_changed": false,
+        "edge_changed": false
+      },
+      "obligations": {
+        "endpoint": "CHANGE",
+        "counterpart": "PRESERVE",
+        "edge": "PRESERVE",
+        "flow": "PASS"
+      },
+      "checks": {
+        "endpoint_obligation_satisfied": true,
+        "counterpart_obligation_satisfied": true,
+        "edge_obligation_satisfied": true,
+        "flow_witness_required": true,
+        "flow_witness": "PASS",
+        "flow_obligation_satisfied": true
+      },
+      "closure_posture": "COHERENT",
+      "effects": {
+        "mutation_effect": "NONE",
+        "planning_effect": "NONE",
+        "authority_effect": "NONE",
+        "execution_effect": "NONE",
+        "scientific_standing_effect": "NONE"
+      }
+    }
+  },
+  "checks": {
+    "frozen_blobs_match": true,
+    "r0_coherent": true,
+    "r1_coherent": true,
+    "r1_raw_labels_differ_from_r0": true,
+    "r1_normalized_consequence_signature_matches_r0": true,
+    "r2_endpoint_local_state_matches_r0": true,
+    "r2_edge_state_differs_from_r0": true,
+    "r2_hold": true,
+    "r2_consequence_differs_from_r0": true,
+    "r3_static_relation_state_matches_r0": true,
+    "r3_flow_witness_differs_from_r0": true,
+    "r3_hold": true,
+    "r3_consequence_differs_from_r0": true
+  },
+  "all_checks_pass": true,
+  "candidate_relations": {
+    "qualified_relational_consequence_invariant_under_bijective_symbol_renaming": "YES",
+    "endpoint_local_state_equivalence_ne_relational_consequence_equivalence": "YES",
+    "static_relation_state_equivalence_ne_flow_consequence_equivalence": "YES",
+    "relational_configuration_carries_consequential_load_beyond_endpoint_local_state": "YES"
+  },
+  "effects": {
+    "relation_discovery_effect": "NONE",
+    "topology_law_effect": "NONE",
+    "trajectory_law_effect": "NONE",
+    "planning_effect": "NONE",
+    "seat_identity_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE"
+  },
+  "claim_ceiling": "One deterministic stewardship operator over four supplied synthetic cases. The pressure tests consequence preservation under one declared bijective symbol-renaming class and consequence change under one edge drift and one missing-flow intervention. No physical causation claim, universal ontology, global coupling claim, multi-relation topology law, trajectory/history law, planning activation, seat identity law, authority, execution, or scientific standing is created.",
+  "stopped": "YES"
+}
