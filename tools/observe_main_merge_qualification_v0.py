@@ -58,13 +58,35 @@ PY_MODULES=[
   "tests.runtime.test_historical_p09_producer_v0",
   "tests.runtime.test_historical_p11_producer_v0",
   "tests.runtime.test_labboib_temporal_seat",
-  "tests.runtime.test_lane_b_successor_engagement_v0",
   "tests.runtime.test_quiet_peer_coordination_v1",
-  "tests.runtime.test_lane_b_successor_engagement_repressure_v1",
   "tests.runtime.test_legacy_lane_succession_fencing_v0",
   "tests.runtime.test_two_lane_coordination_v0",
   "tests.runtime.test_live_predecessor_fence_v0",
   "tests.runtime.test_primary_ecology_v0",
+]
+
+HISTORICAL_BRANCH_SCOPED_EXCLUSIONS=[
+  {
+    "modules":[
+      "tests.runtime.test_lane_b_successor_engagement_v0",
+      "tests.runtime.test_lane_b_successor_engagement_repressure_v1",
+    ],
+    "workflows":[
+      ".github/workflows/lane-b-successor-engagement-001.yml",
+      ".github/workflows/lane-b-successor-engagement-repressure-001.yml",
+    ],
+    "required_branch_tokens":[
+      "lane-b-successor-engagement-qualification-v0",
+      "lane-b-successor-engagement-repressure-v1",
+      "lane-b-successor-engagement-repressure-repair-v1",
+    ],
+    "historical_basis":"f6d033068c2df18c3261dae3e1769517a4762ae5",
+    "historical_fixture_paths":[
+      "coordination/lane_manifest.json",
+      "coordination/succession/LANE_B_SUCCESSOR_INSTANCE_001.json",
+    ],
+    "reason":"Dedicated historical Lane-B qualification apparatus requires historical successor fixtures intentionally absent from the current DRACI branch.",
+  }
 ]
 
 NODE_FILES=[
@@ -87,6 +109,32 @@ def git(*args):
     if e: raise RuntimeError(e)
     if p.returncode: raise RuntimeError(p.stderr.strip() or p.stdout.strip())
     return p.stdout.strip()
+
+def git_path_exists(ref,path):
+    p,e=run(["git","cat-file","-e",f"{ref}:{path}"],timeout=15)
+    return e is None and p is not None and p.returncode==0
+
+def verify_historical_exclusions():
+    rows=[]
+    for spec in HISTORICAL_BRANCH_SCOPED_EXCLUSIONS:
+        workflow_text="\n".join((ROOT/p).read_text(encoding="utf-8") for p in spec["workflows"])
+        branch_scope_verified=all(token in workflow_text for token in spec["required_branch_tokens"])
+        fixture_rows=[]
+        for path in spec["historical_fixture_paths"]:
+            fixture_rows.append({
+              "path":path,
+              "absent_at_head":not git_path_exists("HEAD",path),
+              "present_at_historical_basis":git_path_exists(spec["historical_basis"],path),
+            })
+        rows.append({
+          "modules":spec["modules"],
+          "reason":spec["reason"],
+          "branch_scope_verified":branch_scope_verified,
+          "historical_basis":spec["historical_basis"],
+          "fixtures":fixture_rows,
+          "verified":branch_scope_verified and all(x["absent_at_head"] and x["present_at_historical_basis"] for x in fixture_rows),
+        })
+    return rows
 
 def run_case(name,args):
     print(f"[RUN] {name}",flush=True)
@@ -120,6 +168,8 @@ def main():
     workcycle=json.loads((ROOT/"docs/campaigns/workcycle_stabilization_001/state/CURRENT_CAMPAIGN_STATE_V0.json").read_text())
     control=json.loads((ROOT/"docs/campaigns/control_kernel_001/state/CURRENT_CAMPAIGN_STATE_V0.json").read_text())
 
+    historical_exclusions=verify_historical_exclusions()
+
     cases=[]
     for module in PY_MODULES:
         cases.append(run_case(module,[sys.executable,"-m","unittest",module,"-q"]))
@@ -136,6 +186,7 @@ def main():
       "working_tree_clean_before": clean_before,
       "working_tree_clean_after": clean_after,
       "bounded_regression_matrix_passed": all(x["passed"] for x in cases),
+      "historical_branch_scoped_exclusions_verified": all(x["verified"] for x in historical_exclusions),
       "bounded_regression_case_count_observed": len(cases)==len(PY_MODULES)+len(NODE_FILES),
       "all_required_standings_frozen": all(x["matched"] for x in standing.values()),
       "workcycle_campaign_closed": workcycle.get("campaign_posture")=="CLOSED",
@@ -150,8 +201,9 @@ def main():
       "origin_main":main_ref,
       "branch":"draci-v0-candidate-basis",
       "standing_checks":standing,
+      "historical_branch_scoped_exclusions":historical_exclusions,
       "regression_matrix":{
-        "basis":"active repo CI modules plus exact promoted consequence/control chain",
+        "basis":"applicable active repo CI modules plus exact promoted consequence/control chain; dedicated historical branch-scoped apparatus is separately verified and excluded",
         "timeout_seconds_per_case":TIMEOUT_SECONDS,
         "case_count":len(cases),
         "passed_count":passed_count,
@@ -161,7 +213,7 @@ def main():
       "all_assertions_pass":all(assertions.values()),
       "qualification_posture":"CANDIDATE_FOR_INDEPENDENT_MERGE_QUALIFICATION" if all(assertions.values()) else "HOLD_NOT_QUALIFIED",
       "merge_effect":"NONE",
-      "claim_ceiling":"Exact-head bounded merge-qualification witness. It demonstrates a cross-surface regression matrix derived from active repo CI plus the promoted consequence/control chain passed with per-case timeouts, origin/main is an ancestor, the working tree remained clean, and required frozen standings are present. It is not exhaustive proof over every historical test, does not itself merge or authorize merge, creates no scientific standing, and does not qualify future commits.",
+      "claim_ceiling":"Exact-head bounded merge-qualification witness. It demonstrates a cross-surface regression matrix derived from applicable active repo CI plus the promoted consequence/control chain passed with per-case timeouts; dedicated historical branch-scoped Lane-B apparatus was separately verified as non-applicable because its historical successor fixtures are absent at HEAD and present at its frozen basis; origin/main is an ancestor, the working tree remained clean, and required frozen standings are present. It is not exhaustive proof over every historical test, does not itself merge or authorize merge, creates no scientific standing, and does not qualify future commits.",
       "stopped":"YES",
     }
     data=(json.dumps(obs,indent=2)+"\n").encode()
