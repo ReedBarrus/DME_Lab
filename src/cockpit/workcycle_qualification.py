@@ -74,6 +74,10 @@ MATERIALIZED_UNIT_AUTHORITY_BINDING_RESULT = Path(
     "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
     "MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_RESULT_001.md"
 )
+MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_RESULT = Path(
+    "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
+    "MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_RESULT_001.md"
+)
 REPEATED_METABOLIC_LOOP_RESULT = Path(
     "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
     "REPEATED_METABOLIC_LOOP_PRESSURE_RESULT_001.md"
@@ -223,9 +227,17 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
     materialized_unit_authority_binding_disposition = _markdown_field(
         materialized_unit_authority_binding_path, "DISPOSITION"
     )
+    materialized_unit_authority_binding_repair_path = (
+        repo / MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_RESULT
+    )
+    materialized_unit_authority_binding_repair_disposition = _markdown_field(
+        materialized_unit_authority_binding_repair_path, "DISPOSITION"
+    )
     materialized_unit_authority_binding_ready = (
         materialized_unit_authority_binding_disposition
         == "MATERIALIZED_UNIT_AUTHORITY_BINDING_MATCHED"
+        or materialized_unit_authority_binding_repair_disposition
+        == "MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_MATCHED"
     )
 
     metabolic_loop_path = repo / REPEATED_METABOLIC_LOOP_RESULT
@@ -303,10 +315,19 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
             + (successor_work_unit_materialization_disposition or "UNFROZEN")
         )
     if not materialized_unit_authority_binding_ready:
-        self_moving_blockers.append(
-            "MATERIALIZED_UNIT_AUTHORITY_BINDING:"
-            + (materialized_unit_authority_binding_disposition or "UNFROZEN")
-        )
+        if (
+            materialized_unit_authority_binding_disposition
+            == "MATERIALIZED_UNIT_AUTHORITY_BINDING_FRACTURED"
+        ):
+            self_moving_blockers.append(
+                "MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR:"
+                + (materialized_unit_authority_binding_repair_disposition or "UNFROZEN")
+            )
+        else:
+            self_moving_blockers.append(
+                "MATERIALIZED_UNIT_AUTHORITY_BINDING:"
+                + (materialized_unit_authority_binding_disposition or "UNFROZEN")
+            )
     if not metabolic_loop_ready:
         self_moving_blockers.append(
             f"REPEATED_METABOLIC_LOOP:{metabolic_loop_disposition or 'UNFROZEN'}"
@@ -386,6 +407,8 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
         "materialized_unit_authority_binding": {
             "result_path": MATERIALIZED_UNIT_AUTHORITY_BINDING_RESULT.as_posix(),
             "disposition": materialized_unit_authority_binding_disposition,
+            "repair_result_path": MATERIALIZED_UNIT_AUTHORITY_BINDING_REPAIR_RESULT.as_posix(),
+            "repair_disposition": materialized_unit_authority_binding_repair_disposition,
             "ready": materialized_unit_authority_binding_ready,
         },
         "repeated_metabolic_loop": {
