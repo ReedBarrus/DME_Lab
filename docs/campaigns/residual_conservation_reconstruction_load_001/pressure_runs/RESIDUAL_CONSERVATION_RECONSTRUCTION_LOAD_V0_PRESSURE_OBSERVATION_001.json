@@ -1,0 +1,51 @@
+{
+  "object_type": "RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_V0_OBSERVATION",
+  "campaign_id": "RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_001",
+  "pressure_id": "RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_V0_PRESSURE_001",
+  "frozen_setup_source": "a98fe5d605bd3471b68e0547d293929e64ea149d",
+  "control_return": {
+    "interior_unresolved_members": [
+      "H_C"
+    ],
+    "nonresidual_members": [
+      "H_A",
+      "H_B"
+    ],
+    "exterior_posture": "UNRESOLVED",
+    "residual_conserved": "YES",
+    "residual_gap_status": "NOT_ESTABLISHED",
+    "residual_work_eligibility": "NOT_ESTABLISHED",
+    "architecture_requirement": "NOT_ESTABLISHED",
+    "exact_g11_posture_reconstructable_from_carrier": "UNRESOLVED_FROM_CARRIER"
+  },
+  "ablation_return": {
+    "interior_unresolved_members": [
+      "H_C"
+    ],
+    "nonresidual_members": "UNRESOLVED_FROM_CARRIER",
+    "exterior_posture": "UNRESOLVED",
+    "residual_conserved": "UNRESOLVED_FROM_CARRIER",
+    "residual_gap_status": "UNRESOLVED_FROM_CARRIER",
+    "residual_work_eligibility": "UNRESOLVED_FROM_CARRIER",
+    "architecture_requirement": "UNRESOLVED_FROM_CARRIER",
+    "exact_g11_posture_reconstructable_from_carrier": "UNRESOLVED_FROM_CARRIER"
+  },
+  "observations": {
+    "control_substantive_g11_coordinates_reconstructed": "YES",
+    "control_meta_reconstructable_coordinate_supported": "NO",
+    "ablation_residual_specific_coordinates_reconstructed": "NO",
+    "ablation_nonresidual_members_supported": "NO",
+    "ablation_exterior_posture_supported": "YES",
+    "expected_pair_exact_match": "NO",
+    "reconstruction_discrimination_present": "PARTIAL_BUT_NOT_QUALIFIED"
+  },
+  "failure_modes": [
+    "The control carrier does not explicitly support the requested meta-coordinate EXACT_G11_POSTURE_RECONSTRUCTABLE_FROM_CARRIER under the no-inference rule.",
+    "The ablation carrier carries G10 required/not-required classifications but does not explicitly provide a carrier-local derivation law mapping those classifications to NONRESIDUAL_MEMBERS."
+  ],
+  "standing_effect": "NONE",
+  "invariant_promotion_effect": "NONE",
+  "ledger_mutation_effect": "NONE",
+  "claim_ceiling": "This observation records only that the first G12 reconstruction interface was under-specified relative to its own requested return schema. It does not establish or refute G11 reconstruction load, invariant promotion eligibility, residual gap/work standing, architecture requirement, global invariance, economics, planning, authority, execution, or scientific standing.",
+  "stopped": "YES"
+}
