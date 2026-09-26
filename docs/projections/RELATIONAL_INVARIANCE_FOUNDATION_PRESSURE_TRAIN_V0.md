@@ -78,7 +78,13 @@ This is the only currently staged pressure.
 
 H2 — RELATIONAL TOPOLOGY LOAD
 
-**Status:** NEXT_BOUNDED_PRESSURE
+**Status:** MATCHED
+
+Frozen adjudication:
+`docs/campaigns/relational_topology_load_001/pressure_runs/RELATIONAL_TOPOLOGY_LOAD_V0_ADJUDICATION_RESULT_001.md`
+
+Frozen adjudication blob:
+`fc789514c9276f3857add4fe90402553d70b441d`
 
 Question:
 
@@ -104,7 +110,7 @@ one memory carrier.
 
 H3 — TRAJECTORY / HISTORY LOAD
 
-PROJECTED_ONLY_AFTER_H2
+**Status:** PROJECTED_NOT_ACTIVE — planner/Atlas integration pressure selected first
 
 Question:
 
