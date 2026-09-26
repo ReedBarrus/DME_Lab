@@ -1,7 +1,7 @@
 {
   "object_type": "PARTIAL_BASIS_RESIDUAL_CONSERVATION_CURRENT_CAMPAIGN_STATE_V0",
   "campaign_id": "PARTIAL_BASIS_RESIDUAL_CONSERVATION_001",
-  "campaign_posture": "G11_IMPLEMENTED_READY_FOR_PRESSURE",
+  "campaign_posture": "G11_WITNESSED_AWAITING_ADJUDICATION",
   "campaign_basis": "Test whether the exact unresolved residue exposed by the qualified G10 partial basis can be conserved in a smaller typed carrier without promoting that residue into a gap, work item, architecture requirement, or global claim.",
   "predecessor": {
     "campaign_id": "PARTIAL_BASIS_RETENTION_PROFILE_001",
@@ -12,14 +12,18 @@
   },
   "current_cell": {
     "cell_id": "PARTIAL_BASIS_RESIDUAL_CONSERVATION_G11",
-    "posture": "IMPLEMENTED_READY_FOR_PRESSURE",
+    "posture": "WITNESSED_AWAITING_ADJUDICATION",
     "target": "PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0",
-    "distinction": "WORLD_CHANGE != METHOD_CHANGE"
+    "distinction": "WORLD_CHANGE != METHOD_CHANGE",
+    "implementation_source_ref": "bb5ecee077215d7b992e79ec2333c38e5a689125",
+    "witness_transport_ref": "7d4deef2ab07574b034f212d1a0481b9c94ce4ea",
+    "witness_handle": "partial_basis_residual_conservation_v0_observation.json",
+    "witness_blob": "1736d63c13c27d37641f3a6f78825c9288428a50"
   },
   "current_gap": {
-    "gap_id": "G11_PARTIAL_BASIS_RESIDUAL_CONSERVATION",
-    "gap_class": "OPERATIVE_RELATIONAL",
-    "statement": "G10 exposes exact unresolved interior and exterior residue, but that residue has not yet been conserved in a typed carrier that explicitly refuses automatic gap/work/architecture promotion.",
+    "gap_id": "G11_PARTIAL_BASIS_RESIDUAL_CONSERVATION_EVIDENTIARY_STANDING",
+    "gap_class": "EVIDENTIARY",
+    "statement": "A passing G11 runtime witness exists with exact source identity and bounded claim ceiling, but independent adjudication has not yet established G11 evidentiary standing.",
     "work_eligible": true
   },
   "required_residual": {
@@ -59,14 +63,15 @@
     "retention transition",
     "raw source deletion",
     "method capitalization",
+    "policy mutation",
     "planning authority",
     "execution authority",
     "scientific standing"
   ],
   "next_pressure": {
     "pressure_id": "PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_PRESSURE_001",
-    "destination": "LOCAL_G11_RESIDUAL_CONSERVATION_OBSERVATION",
-    "packet": "docs/campaigns/partial_basis_residual_conservation_001/PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_PRESSURE_001_READY_TO_RUN.md",
-    "if_nothing_changes": "RUN_ONCE"
+    "destination": "FRESH_INDEPENDENT_ADJUDICATION",
+    "packet": "docs/campaigns/partial_basis_residual_conservation_001/PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+    "if_nothing_changes": "ADJUDICATE_ONCE"
   }
 }
