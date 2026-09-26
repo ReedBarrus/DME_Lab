@@ -1,0 +1,61 @@
+{
+  "object_type": "METHOD_DISTINCTION_LOAD_CURRENT_CAMPAIGN_STATE_V0",
+  "campaign_id": "METHOD_DISTINCTION_LOAD_001",
+  "campaign_posture": "G5_IMPLEMENTED_READY_FOR_PRESSURE",
+  "campaign_basis": "Test whether one exact matched cognitive distinction carries any declared load by ablating it from its exact represented frame without inferring current live dependence, improvement, retention, or capitalization.",
+  "predecessor": {
+    "campaign_id": "WORLD_METHOD_RECONCILIATION_001",
+    "standing": "WORLD_METHOD_RECONCILIATION_V0_MATCHED",
+    "result_handle": "docs/campaigns/world_method_reconciliation_001/pressure_runs/WORLD_METHOD_RECONCILIATION_V0_PRESSURE_RESULT_001.md",
+    "witness": "world_method_reconciliation_v0_observation.json",
+    "witness_blob": "a49d948432c9560310133557ce6c8102ce4931ac"
+  },
+  "current_cell": {
+    "cell_id": "METHOD_DISTINCTION_LOAD_G5",
+    "posture": "IMPLEMENTED_READY_FOR_PRESSURE",
+    "target": "METHOD_DISTINCTION_LOAD_ABLATION_V0",
+    "specimen_distinction": "WORLD_CHANGE != METHOD_CHANGE"
+  },
+  "current_gap": {
+    "gap_id": "G5_METHOD_DISTINCTION_LOAD_ABLATION",
+    "gap_class": "ARCHITECTURAL_CAPABILITY",
+    "statement": "The ecology can represent world change separately from method change, but has not yet mechanically tested whether preserving that distinction carries any declared load under ablation.",
+    "work_eligible": true
+  },
+  "permitted_load_claims": {
+    "functional": "UNRESOLVED",
+    "semantic": "PRESSURE_TARGET",
+    "authority": "UNRESOLVED",
+    "provenance": "UNRESOLVED",
+    "temporal": "UNRESOLVED",
+    "coordination": "UNRESOLVED"
+  },
+  "explicit_noncollapses": [
+    "ABLATION_EFFECT != CURRENT_LOAD_BEARING_STATUS",
+    "SEMANTIC_LOAD_CHANGE != METHOD_IMPROVEMENT",
+    "SEMANTIC_LOAD_CHANGE != RETENTION_JUSTIFICATION",
+    "SEMANTIC_LOAD_CHANGE != METHOD_CAPITALIZATION",
+    "REPRESENTATIONAL_COLLISION != WORLD_CONSEQUENCE",
+    "LOAD_PROFILE != SCALAR_IMPORTANCE",
+    "DISTINCTION_REPRESENTED != DISTINCTION_WORLD_SUPPORTED"
+  ],
+  "explicitly_deferred": [
+    "current live-horizon dependence",
+    "retention justification",
+    "method capitalization",
+    "depreciation or retirement",
+    "functional load claim",
+    "authority load claim",
+    "provenance load claim",
+    "temporal load claim",
+    "coordination load claim",
+    "freshness/currentness membrane",
+    "concurrency and joint viability economics"
+  ],
+  "next_pressure": {
+    "pressure_id": "METHOD_DISTINCTION_LOAD_ABLATION_V0_PRESSURE_001",
+    "destination": "LOCAL_G5_ABLATION_OBSERVATION",
+    "packet": "docs/campaigns/method_distinction_load_001/METHOD_DISTINCTION_LOAD_ABLATION_V0_PRESSURE_001_READY_TO_RUN.md",
+    "if_nothing_changes": "RUN_ONCE"
+  }
+}
