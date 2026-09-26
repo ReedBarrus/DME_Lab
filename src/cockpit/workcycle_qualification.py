@@ -86,6 +86,10 @@ MATERIALIZED_INVOCATION_RESULT_WITNESS_RESULT = Path(
     "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
     "MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_RESULT_001.md"
 )
+MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_RESULT = Path(
+    "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
+    "MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_PRESSURE_RESULT_001.md"
+)
 REPEATED_METABOLIC_LOOP_RESULT = Path(
     "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
     "REPEATED_METABOLIC_LOOP_PRESSURE_RESULT_001.md"
@@ -270,6 +274,17 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
         == "MATERIALIZED_INVOCATION_RESULT_WITNESS_MATCHED"
     )
 
+    materialized_invocation_result_settlement_path = (
+        repo / MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_RESULT
+    )
+    materialized_invocation_result_settlement_disposition = _markdown_field(
+        materialized_invocation_result_settlement_path, "DISPOSITION"
+    )
+    materialized_invocation_result_settlement_ready = (
+        materialized_invocation_result_settlement_disposition
+        == "MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_MATCHED"
+    )
+
     metabolic_loop_path = repo / REPEATED_METABOLIC_LOOP_RESULT
     metabolic_loop_disposition = _markdown_field(
         metabolic_loop_path, "DISPOSITION"
@@ -368,6 +383,11 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
             "MATERIALIZED_INVOCATION_RESULT_WITNESS:"
             + (materialized_invocation_result_witness_disposition or "UNFROZEN")
         )
+    if not materialized_invocation_result_settlement_ready:
+        self_moving_blockers.append(
+            "MATERIALIZED_INVOCATION_RESULT_SETTLEMENT:"
+            + (materialized_invocation_result_settlement_disposition or "UNFROZEN")
+        )
     if not metabolic_loop_ready:
         self_moving_blockers.append(
             f"REPEATED_METABOLIC_LOOP:{metabolic_loop_disposition or 'UNFROZEN'}"
@@ -460,6 +480,11 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
             "result_path": MATERIALIZED_INVOCATION_RESULT_WITNESS_RESULT.as_posix(),
             "disposition": materialized_invocation_result_witness_disposition,
             "ready": materialized_invocation_result_witness_ready,
+        },
+        "materialized_invocation_result_settlement": {
+            "result_path": MATERIALIZED_INVOCATION_RESULT_SETTLEMENT_RESULT.as_posix(),
+            "disposition": materialized_invocation_result_settlement_disposition,
+            "ready": materialized_invocation_result_settlement_ready,
         },
         "repeated_metabolic_loop": {
             "result_path": REPEATED_METABOLIC_LOOP_RESULT.as_posix(),
