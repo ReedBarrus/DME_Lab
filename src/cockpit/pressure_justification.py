@@ -129,6 +129,10 @@ def _expected_change(pressure: str) -> str:
             "bind one exact successor projection to one explicit bounded work spec "
             "and materialize a complete next workflow unit without admission or execution"
         ),
+        "MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE": (
+            "pressure whether current successor-bound authority also binds the exact "
+            "materialized work-unit and work-spec identity before admission"
+        ),
         "REPEATED_METABOLIC_LOOP_PRESSURE": (
             "establish or fracture two consecutive basis-bound workcycle transitions "
             "whose successor selection is derived from prior witnessed consequence"
@@ -213,6 +217,11 @@ def _select_pressure(
         if blocker.startswith("SUCCESSOR_WORK_UNIT_MATERIALIZATION:"):
             return (
                 "SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE",
+                "SELF_MOVING_QUALIFICATION_BLOCKER",
+            )
+        if blocker.startswith("MATERIALIZED_UNIT_AUTHORITY_BINDING:"):
+            return (
+                "MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE",
                 "SELF_MOVING_QUALIFICATION_BLOCKER",
             )
         if blocker.startswith("REPEATED_METABOLIC_LOOP:"):
