@@ -70,6 +70,10 @@ SUCCESSOR_WORK_UNIT_MATERIALIZATION_RESULT = Path(
     "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
     "SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_RESULT_001.md"
 )
+MATERIALIZED_UNIT_AUTHORITY_BINDING_RESULT = Path(
+    "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
+    "MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_RESULT_001.md"
+)
 REPEATED_METABOLIC_LOOP_RESULT = Path(
     "docs/campaigns/workcycle_stabilization_001/pressure_runs/"
     "REPEATED_METABOLIC_LOOP_PRESSURE_RESULT_001.md"
@@ -213,6 +217,17 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
         == "SUCCESSOR_WORK_UNIT_MATERIALIZATION_MATCHED"
     )
 
+    materialized_unit_authority_binding_path = (
+        repo / MATERIALIZED_UNIT_AUTHORITY_BINDING_RESULT
+    )
+    materialized_unit_authority_binding_disposition = _markdown_field(
+        materialized_unit_authority_binding_path, "DISPOSITION"
+    )
+    materialized_unit_authority_binding_ready = (
+        materialized_unit_authority_binding_disposition
+        == "MATERIALIZED_UNIT_AUTHORITY_BINDING_MATCHED"
+    )
+
     metabolic_loop_path = repo / REPEATED_METABOLIC_LOOP_RESULT
     metabolic_loop_disposition = _markdown_field(
         metabolic_loop_path, "DISPOSITION"
@@ -286,6 +301,11 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
         self_moving_blockers.append(
             "SUCCESSOR_WORK_UNIT_MATERIALIZATION:"
             + (successor_work_unit_materialization_disposition or "UNFROZEN")
+        )
+    if not materialized_unit_authority_binding_ready:
+        self_moving_blockers.append(
+            "MATERIALIZED_UNIT_AUTHORITY_BINDING:"
+            + (materialized_unit_authority_binding_disposition or "UNFROZEN")
         )
     if not metabolic_loop_ready:
         self_moving_blockers.append(
@@ -362,6 +382,11 @@ def build_workcycle_qualification_readiness(repo_root: str | Path) -> dict[str, 
             "result_path": SUCCESSOR_WORK_UNIT_MATERIALIZATION_RESULT.as_posix(),
             "disposition": successor_work_unit_materialization_disposition,
             "ready": successor_work_unit_materialization_ready,
+        },
+        "materialized_unit_authority_binding": {
+            "result_path": MATERIALIZED_UNIT_AUTHORITY_BINDING_RESULT.as_posix(),
+            "disposition": materialized_unit_authority_binding_disposition,
+            "ready": materialized_unit_authority_binding_ready,
         },
         "repeated_metabolic_loop": {
             "result_path": REPEATED_METABOLIC_LOOP_RESULT.as_posix(),
