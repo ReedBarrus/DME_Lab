@@ -115,21 +115,26 @@
       "standing": "SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_MATCHED",
       "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/SECOND_SUCCESSOR_FROM_RECONCILIATION_REPAIR_RESULT_001.md",
       "claim_ceiling": "At the exact supplied repaired source, fresh bounded basis reconciliation controls current next-work posture in the disposable composition fixture: STILL_BLOCKED preserves the prior consequence-observation route, PARTIALLY_SATISFIED derives one deterministic successor projection bound to the exact remaining next-pressure basis, SATISFIED closes the basis with no successor, and INVALIDATED holds with no successor. Historical workflow state remains preserved. No successor is admitted, authorized, scheduled, or executed."
+    },
+    "successor_work_unit_materialization": {
+      "standing": "SUCCESSOR_WORK_UNIT_MATERIALIZATION_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_RESULT_001.md",
+      "claim_ceiling": "At the exact supplied source, one exact deterministic successor candidate plus one externally supplied bounded work specification can materialize one complete basis_workcycle_v1-compatible next workflow unit while conserving exact successor, reconciliation, and next-pressure lineage. The same successor can bind different explicit work specifications into different materialized units, so successor identity and executable work specification remain distinct. Materialization creates no qualification, work admission, authority, execution, or scientific standing."
     }
   },
   "current_unresolved": [
-    "Successor work-unit materialization is witnessed and awaits independent adjudication.",
-    "Fresh authority/admission over the materialized successor unit remains unearned.",
-    "Automatic work-spec generation remains unearned.",
+    "Successor work-unit materialization is independently matched.",
+    "Existing successor-bound authority/admission may not bind exact materialized workflow-unit or work-spec identity; diagnostic pressure is staged.",
+    "Fresh exact-work authority/admission remains unearned.",
     "Repeated metabolism and seat consequential/meta-feedback remain unearned."
   ],
   "next_pressure": {
-    "pressure_id": "SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001_ADJUDICATION",
-    "work_item_id": "WORKCYCLE_STABILIZATION_001_SUCCESSOR_WORK_UNIT_MATERIALIZATION",
-    "destination": "FRESH_INDEPENDENT_SUCCESSOR_WORK_UNIT_MATERIALIZATION_ADJUDICATOR",
-    "packet": "docs/campaigns/workcycle_stabilization_001/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-    "selection_basis": "The materialization witness exercised repo head 0c6eec42366ab715029e5c645cf9d5baae22ff79 and was transported alone in 94ff342c43996fd7ed3dc061f28b8b07242f2eaa. Independent adjudication is required before the materialized successor unit may be treated as an earned predecessor for fresh authority/admission.",
-    "expected_operating_change": "Freeze MATCHED/PARTIAL/FRACTURED/UNRESOLVED for exact successor + explicit externally supplied bounded work spec -> complete next workflow unit, preserving lineage and zero admission/authority/execution/standing effects.",
+    "pressure_id": "MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001",
+    "work_item_id": "WORKCYCLE_STABILIZATION_001_MATERIALIZED_UNIT_AUTHORITY_BINDING",
+    "destination": "LOCAL_MATERIALIZED_UNIT_AUTHORITY_BINDING_WITNESS",
+    "packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_READY_TO_RUN.md",
+    "selection_basis": "SUCCESSOR_WORK_UNIT_MATERIALIZATION_MATCHED is frozen. Because one successor can bind multiple distinct materialized work units, the next load-bearing relation is whether current successor-bound authority also binds exact materialized-unit/work-spec identity before admission.",
+    "expected_operating_change": "Observe whether two distinct units under the same successor share identical successor-bound authority coordinates and cross existing admission without exact materialized-unit identity. Preserve any fracture without repair.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -213,7 +218,10 @@
       "tools/observe_successor_work_unit_materialization_v0.py",
       "docs/campaigns/workcycle_stabilization_001/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001_READY_TO_RUN.md",
       "docs/campaigns/workcycle_stabilization_001/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-      "successor_work_unit_materialization_observation.json"
+      "successor_work_unit_materialization_observation.json",
+      "docs/campaigns/workcycle_stabilization_001/pressure_runs/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_RESULT_001.md",
+      "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_READY_TO_RUN.md",
+      "tools/observe_materialized_unit_authority_binding_v0.py"
     ],
     "cold_challengeable": [
       "bridge/results/CELL001R_DEPENDENCE_RUN_A.json",
@@ -278,11 +286,12 @@
       "immutable invocation result witness independently matched",
       "immutable result witness + field-level candidate settlement independently matched",
       "settlement + independent consequence -> basis reconciliation independently matched",
-      "fresh reconciliation -> lawful second successor projection independently repair-matched"
+      "fresh reconciliation -> lawful second successor projection independently repair-matched",
+      "exact successor + explicit bounded work spec -> complete next workflow unit independently matched"
     ],
     "unresolved_components": [
-      "successor work-unit materialization awaits independent adjudication",
-      "fresh authority/admission over the materialized successor unit has not been pressured",
+      "materialized-unit authority binding has not been pressured",
+      "exact work-unit authority/admission remains unearned",
       "repeat without manual successor selection has not yet been observed"
     ]
   },
