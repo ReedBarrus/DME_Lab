@@ -1,0 +1,55 @@
+{
+  "schema_version": "chatgpt_main_temporal_seat_manifest_v0",
+  "seat_id": "CHATGPT_MAIN",
+  "registry_consumer_id": "chatgpt-main",
+  "continuity_consumer": "chatgpt",
+  "seat_class": "SEMANTIC_REENTRY_PLANNER_SEAT_CANDIDATE",
+  "role": "semantic integrator, continuity consumer, and bounded Atlas planner-seat candidate",
+  "cursor_ref": "continuity/cursors/chatgpt.json",
+  "working_state_ref": "continuity/current_state/chatgpt_main_working_state_v0.json",
+  "inbox_ref": "continuity/queues/chatgpt-main/inbox.jsonl",
+  "outbox_ref": "continuity/queues/chatgpt-main/outbox.jsonl",
+  "trigger": {
+    "state": "UNBOUND",
+    "kind": "MANUAL_CHATGPT_THREAD",
+    "schedule_ref": null
+  },
+  "occupant": {
+    "binding": "MANUAL_TETHER_CANDIDATE",
+    "model_family": "GPT-5.6 Sol",
+    "invocation_ref": "CHATGPT-MANUAL-TETHER-001",
+    "association_basis": "MANUAL_ASSERTION",
+    "resolution_status": "OPAQUE",
+    "liveness": "UNRESOLVED"
+  },
+  "allowed_wake_effects": [
+    "read exact durable seat basis",
+    "read unread continuity after the chatgpt cursor",
+    "read the bounded working-state carrier",
+    "resolve task-required authoritative refs",
+    "derive task-local continuity orientation",
+    "inspect Atlas/Cockpit projections without treating them as world truth",
+    "propose bounded planner pressures",
+    "emit status, handoff, review request, action request, or wake receipt"
+  ],
+  "forbidden_wake_effects": [
+    "advance the chatgpt cursor before successful semantic consumption",
+    "treat continuity events as authoritative standing without following required refs",
+    "treat Atlas representation as the complete operative topology",
+    "infer authority from seat existence, model capability, or manual tether",
+    "execute external consequence without separate authority",
+    "promote planning or seat identity standing by wake alone",
+    "claim model-instance continuity is seat continuity"
+  ],
+  "noncollapses": [
+    "DURABLE_SEAT != LIVE_OCCUPANT",
+    "MODEL_INSTANCE != SEAT",
+    "CURSOR_POSITION != WORKING_SEMANTIC_STATE",
+    "DELTA_RETRIEVED != DELTA_SEMANTICALLY_APPLIED",
+    "ATLAS_REPRESENTATION != OPERATIVE_RELATIONAL_TOPOLOGY",
+    "PLANNER_CANDIDATE != PLANNING_AUTHORITY",
+    "ACTION_REQUESTED != ACTION_AUTHORIZED != ACTION_EXECUTED"
+  ],
+  "authority_effect": "NONE_BY_MANIFEST",
+  "execution_effect": "NONE_BY_MANIFEST"
+}
