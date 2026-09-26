@@ -1,0 +1,103 @@
+{
+  "object_type": "OPERATIONAL_INVARIANCE_CATALOGUE_ENTRY_V0",
+  "catalogue_entry_id": "G20_TYPED_SURFACE_STEWARDSHIP_RELATION",
+  "standing": "MATCHED_BOUNDED_RELATION_NOT_LEDGER_PROMOTED",
+  "relations": [
+    "SAME_ABSTRACT_STEWARDSHIP_ROLE_NE_SAME_OPERATIVE_CONFIGURATION_GEOMETRY",
+    "TYPED_SURFACE_BINDING_PRESERVES_SURFACE_SPECIFIC_OBSERVATION"
+  ],
+  "qualified_scope": {
+    "pressure_id": "TYPED_SURFACE_STEWARDSHIP_V0_PRESSURE_001",
+    "tested_surface_count": 2,
+    "scope_statement": "Two exact digital specimens only: REPOSITORY_PRODUCER_ROUTE and PYTHON_CALLABLE_INVOCATION."
+  },
+  "tested_surfaces": [
+    "REPOSITORY_PRODUCER_ROUTE",
+    "PYTHON_CALLABLE_INVOCATION"
+  ],
+  "surface_bindings": {
+    "REPOSITORY_PRODUCER_ROUTE": {
+      "abstract_roles": [
+        "endpoint",
+        "counterpart",
+        "edge",
+        "flow"
+      ],
+      "endpoint_fields": [
+        "output_blob",
+        "output_path",
+        "output_present"
+      ],
+      "counterpart_fields": [
+        "storage_blob",
+        "storage_path"
+      ],
+      "edge_fields": [
+        "alignment",
+        "declared_output_path",
+        "relation_kind",
+        "storage_path"
+      ],
+      "observed_closure_posture": "HOLD"
+    },
+    "PYTHON_CALLABLE_INVOCATION": {
+      "abstract_roles": [
+        "endpoint",
+        "counterpart",
+        "edge",
+        "flow"
+      ],
+      "endpoint_fields": [
+        "endpoint_value",
+        "payload_kind",
+        "payload_shape"
+      ],
+      "counterpart_fields": [
+        "callable_path",
+        "code_blob",
+        "symbol"
+      ],
+      "edge_fields": [
+        "argument_names",
+        "binding_mode",
+        "relation_kind",
+        "return_coordinate"
+      ],
+      "observed_closure_posture": "COHERENT"
+    }
+  },
+  "live_applicability_currentness": "UNRESOLVED_BEYOND_FROZEN_G20_BASIS",
+  "reconstruction_use": "ROUTE_TO_TESTED_SURFACE_BINDING_WITHOUT_REOPENING_RICH_EVIDENCE",
+  "basis_handles": [
+    {
+      "role": "G20_ADJUDICATION",
+      "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_ADJUDICATION_RESULT_001.md",
+      "blob": "2445254a4b0738c269a627bde5c746c1e51227cc"
+    },
+    {
+      "role": "G20_PRESSURE_RESULT",
+      "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_PRESSURE_RESULT_001.md",
+      "blob": "0f1fe776a9ed7ade963b4c5373071ddb304f6ee1"
+    },
+    {
+      "role": "G20_RUNTIME_WITNESS",
+      "path": "docs/evidence/for_planner/typed_surface_stewardship_v0_observation.json",
+      "blob": "a63e164636a34010105d307e5891cff62e26be73"
+    }
+  ],
+  "known_nonclaims": [
+    "PHYSICAL_SURFACE_PORTABILITY",
+    "PERMISSION_NETWORK_SOCIAL_SURFACE_PORTABILITY",
+    "UNIVERSAL_RELATIONAL_SCHEMA",
+    "AUTOMATIC_RELATION_DISCOVERY",
+    "AUTOMATIC_PROPAGATION_SEMANTICS",
+    "PLANNING_ACTIVATION",
+    "WORK_ADMISSION",
+    "AUTHORITY",
+    "EXECUTION",
+    "GLOBAL_INVARIANCE",
+    "SCIENTIFIC_STANDING"
+  ],
+  "catalogue_authority_effect": "NONE",
+  "stopped": "YES"
+}
