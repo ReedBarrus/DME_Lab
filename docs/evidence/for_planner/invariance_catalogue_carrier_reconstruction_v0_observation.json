@@ -1,0 +1,2208 @@
+{
+  "object_type": "INVARIANCE_CATALOGUE_CARRIER_RECONSTRUCTION_LOAD_V0_OBSERVATION",
+  "pressure_id": "INVARIANCE_CATALOGUE_CARRIER_RECONSTRUCTION_LOAD_V0_PRESSURE_001",
+  "frozen_basis": {
+    "expected_blobs": {
+      "control_carrier": "8e67e8aca3ff71d1512e008196f905fffd82bbd2",
+      "g21_adjudication": "204988eac6d1161a06e1e26250565dc303c62c77",
+      "reconstructor": "7d19a07ca1c8bc8d53ff175955f1128fb6e2a4de",
+      "horizon": "82fd28c98eea50892fca0388f95d1213759a3be2",
+      "contract": "b6440a52ff4746fb9cb6199e517b9537a9f59216"
+    },
+    "actual_blobs": {
+      "control_carrier": "8e67e8aca3ff71d1512e008196f905fffd82bbd2",
+      "g21_adjudication": "204988eac6d1161a06e1e26250565dc303c62c77",
+      "reconstructor": "7d19a07ca1c8bc8d53ff175955f1128fb6e2a4de",
+      "horizon": "82fd28c98eea50892fca0388f95d1213759a3be2",
+      "contract": "b6440a52ff4746fb9cb6199e517b9537a9f59216"
+    },
+    "blob_checks": {
+      "control_carrier": true,
+      "g21_adjudication": true,
+      "reconstructor": true,
+      "horizon": true,
+      "contract": true
+    }
+  },
+  "control_carrier_size_bytes": 2395,
+  "required_reconstruction_target": {
+    "relations": [
+      "SAME_ABSTRACT_STEWARDSHIP_ROLE_NE_SAME_OPERATIVE_CONFIGURATION_GEOMETRY",
+      "TYPED_SURFACE_BINDING_PRESERVES_SURFACE_SPECIFIC_OBSERVATION"
+    ],
+    "standing": "MATCHED_BOUNDED_RELATION_NOT_LEDGER_PROMOTED",
+    "live_applicability_currentness": "UNRESOLVED_BEYOND_FROZEN_G20_BASIS",
+    "basis_handles": [
+      {
+        "role": "G20_ADJUDICATION",
+        "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_ADJUDICATION_RESULT_001.md",
+        "blob": "2445254a4b0738c269a627bde5c746c1e51227cc"
+      },
+      {
+        "role": "G20_PRESSURE_RESULT",
+        "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_PRESSURE_RESULT_001.md",
+        "blob": "0f1fe776a9ed7ade963b4c5373071ddb304f6ee1"
+      },
+      {
+        "role": "G20_RUNTIME_WITNESS",
+        "path": "docs/evidence/for_planner/typed_surface_stewardship_v0_observation.json",
+        "blob": "a63e164636a34010105d307e5891cff62e26be73"
+      }
+    ],
+    "known_nonclaims": [
+      "PHYSICAL_SURFACE_PORTABILITY",
+      "PERMISSION_NETWORK_SOCIAL_SURFACE_PORTABILITY",
+      "UNIVERSAL_RELATIONAL_SCHEMA",
+      "AUTOMATIC_RELATION_DISCOVERY",
+      "AUTOMATIC_PROPAGATION_SEMANTICS",
+      "PLANNING_ACTIVATION",
+      "WORK_ADMISSION",
+      "AUTHORITY",
+      "EXECUTION",
+      "GLOBAL_INVARIANCE",
+      "SCIENTIFIC_STANDING"
+    ],
+    "queries": {
+      "REPOSITORY_PRODUCER_ROUTE": {
+        "lookup_posture": "CATALOGUED_TESTED_BINDING",
+        "surface_binding": {
+          "abstract_roles": [
+            "endpoint",
+            "counterpart",
+            "edge",
+            "flow"
+          ],
+          "endpoint_fields": [
+            "output_blob",
+            "output_path",
+            "output_present"
+          ],
+          "counterpart_fields": [
+            "storage_blob",
+            "storage_path"
+          ],
+          "edge_fields": [
+            "alignment",
+            "declared_output_path",
+            "relation_kind",
+            "storage_path"
+          ],
+          "observed_closure_posture": "HOLD"
+        },
+        "tested_surface_match": true,
+        "live_application_authorized": false
+      },
+      "PYTHON_CALLABLE_INVOCATION": {
+        "lookup_posture": "CATALOGUED_TESTED_BINDING",
+        "surface_binding": {
+          "abstract_roles": [
+            "endpoint",
+            "counterpart",
+            "edge",
+            "flow"
+          ],
+          "endpoint_fields": [
+            "endpoint_value",
+            "payload_kind",
+            "payload_shape"
+          ],
+          "counterpart_fields": [
+            "callable_path",
+            "code_blob",
+            "symbol"
+          ],
+          "edge_fields": [
+            "argument_names",
+            "binding_mode",
+            "relation_kind",
+            "return_coordinate"
+          ],
+          "observed_closure_posture": "COHERENT"
+        },
+        "tested_surface_match": true,
+        "live_application_authorized": false
+      },
+      "UNTESTED_SURFACE_SENTINEL": {
+        "lookup_posture": "NO_QUALIFIED_BINDING",
+        "surface_binding": null,
+        "tested_surface_match": false,
+        "live_application_authorized": false
+      }
+    }
+  },
+  "control": {
+    "variant_id": "A0_CONTROL",
+    "removed_coordinates": [],
+    "carrier_size_bytes": 2395,
+    "size_delta_bytes_from_control": 0,
+    "reconstruction": {
+      "object_type": "INVARIANCE_CATALOGUE_CARRIER_RECONSTRUCTION_V0",
+      "relations": [
+        "SAME_ABSTRACT_STEWARDSHIP_ROLE_NE_SAME_OPERATIVE_CONFIGURATION_GEOMETRY",
+        "TYPED_SURFACE_BINDING_PRESERVES_SURFACE_SPECIFIC_OBSERVATION"
+      ],
+      "standing": "MATCHED_BOUNDED_RELATION_NOT_LEDGER_PROMOTED",
+      "live_applicability_currentness": "UNRESOLVED_BEYOND_FROZEN_G20_BASIS",
+      "basis_handles": [
+        {
+          "role": "G20_ADJUDICATION",
+          "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_ADJUDICATION_RESULT_001.md",
+          "blob": "2445254a4b0738c269a627bde5c746c1e51227cc"
+        },
+        {
+          "role": "G20_PRESSURE_RESULT",
+          "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_PRESSURE_RESULT_001.md",
+          "blob": "0f1fe776a9ed7ade963b4c5373071ddb304f6ee1"
+        },
+        {
+          "role": "G20_RUNTIME_WITNESS",
+          "path": "docs/evidence/for_planner/typed_surface_stewardship_v0_observation.json",
+          "blob": "a63e164636a34010105d307e5891cff62e26be73"
+        }
+      ],
+      "known_nonclaims": [
+        "PHYSICAL_SURFACE_PORTABILITY",
+        "PERMISSION_NETWORK_SOCIAL_SURFACE_PORTABILITY",
+        "UNIVERSAL_RELATIONAL_SCHEMA",
+        "AUTOMATIC_RELATION_DISCOVERY",
+        "AUTOMATIC_PROPAGATION_SEMANTICS",
+        "PLANNING_ACTIVATION",
+        "WORK_ADMISSION",
+        "AUTHORITY",
+        "EXECUTION",
+        "GLOBAL_INVARIANCE",
+        "SCIENTIFIC_STANDING"
+      ],
+      "binding_domain_complete": true,
+      "queries": {
+        "REPOSITORY_PRODUCER_ROUTE": {
+          "lookup_posture": "CATALOGUED_TESTED_BINDING",
+          "surface_binding": {
+            "abstract_roles": [
+              "endpoint",
+              "counterpart",
+              "edge",
+              "flow"
+            ],
+            "endpoint_fields": [
+              "output_blob",
+              "output_path",
+              "output_present"
+            ],
+            "counterpart_fields": [
+              "storage_blob",
+              "storage_path"
+            ],
+            "edge_fields": [
+              "alignment",
+              "declared_output_path",
+              "relation_kind",
+              "storage_path"
+            ],
+            "observed_closure_posture": "HOLD"
+          },
+          "tested_surface_match": true,
+          "live_application_authorized": false
+        },
+        "PYTHON_CALLABLE_INVOCATION": {
+          "lookup_posture": "CATALOGUED_TESTED_BINDING",
+          "surface_binding": {
+            "abstract_roles": [
+              "endpoint",
+              "counterpart",
+              "edge",
+              "flow"
+            ],
+            "endpoint_fields": [
+              "endpoint_value",
+              "payload_kind",
+              "payload_shape"
+            ],
+            "counterpart_fields": [
+              "callable_path",
+              "code_blob",
+              "symbol"
+            ],
+            "edge_fields": [
+              "argument_names",
+              "binding_mode",
+              "relation_kind",
+              "return_coordinate"
+            ],
+            "observed_closure_posture": "COHERENT"
+          },
+          "tested_surface_match": true,
+          "live_application_authorized": false
+        },
+        "UNTESTED_SURFACE_SENTINEL": {
+          "lookup_posture": "NO_QUALIFIED_BINDING",
+          "surface_binding": null,
+          "tested_surface_match": false,
+          "live_application_authorized": false
+        }
+      },
+      "catalogue_authority_effect": "NONE",
+      "planning_effect": "NONE",
+      "execution_effect": "NONE"
+    },
+    "required_checks": {
+      "relations": true,
+      "standing": true,
+      "live_applicability_currentness": true,
+      "basis_handles": true,
+      "known_nonclaims": true,
+      "REPOSITORY_PRODUCER_ROUTE.lookup_posture": true,
+      "REPOSITORY_PRODUCER_ROUTE.surface_binding": true,
+      "REPOSITORY_PRODUCER_ROUTE.tested_surface_match": true,
+      "REPOSITORY_PRODUCER_ROUTE.live_application_authorized": true,
+      "PYTHON_CALLABLE_INVOCATION.lookup_posture": true,
+      "PYTHON_CALLABLE_INVOCATION.surface_binding": true,
+      "PYTHON_CALLABLE_INVOCATION.tested_surface_match": true,
+      "PYTHON_CALLABLE_INVOCATION.live_application_authorized": true,
+      "UNTESTED_SURFACE_SENTINEL.lookup_posture": true,
+      "UNTESTED_SURFACE_SENTINEL.surface_binding": true,
+      "UNTESTED_SURFACE_SENTINEL.tested_surface_match": true,
+      "UNTESTED_SURFACE_SENTINEL.live_application_authorized": true
+    },
+    "classification": "RECONSTRUCTION_EQUIVALENT",
+    "loss_coordinates": []
+  },
+  "ablations": [
+    {
+      "variant_id": "A1_REMOVE_OBJECT_TYPE",
+      "removed_coordinates": [
+        "object_type"
+      ],
+      "carrier_size_bytes": 2337,
+      "size_delta_bytes_from_control": -58,
+      "reconstruction": {
+        "object_type": "INVARIANCE_CATALOGUE_CARRIER_RECONSTRUCTION_V0",
+        "relations": [
+          "SAME_ABSTRACT_STEWARDSHIP_ROLE_NE_SAME_OPERATIVE_CONFIGURATION_GEOMETRY",
+          "TYPED_SURFACE_BINDING_PRESERVES_SURFACE_SPECIFIC_OBSERVATION"
+        ],
+        "standing": "MATCHED_BOUNDED_RELATION_NOT_LEDGER_PROMOTED",
+        "live_applicability_currentness": "UNRESOLVED_BEYOND_FROZEN_G20_BASIS",
+        "basis_handles": [
+          {
+            "role": "G20_ADJUDICATION",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_ADJUDICATION_RESULT_001.md",
+            "blob": "2445254a4b0738c269a627bde5c746c1e51227cc"
+          },
+          {
+            "role": "G20_PRESSURE_RESULT",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_PRESSURE_RESULT_001.md",
+            "blob": "0f1fe776a9ed7ade963b4c5373071ddb304f6ee1"
+          },
+          {
+            "role": "G20_RUNTIME_WITNESS",
+            "path": "docs/evidence/for_planner/typed_surface_stewardship_v0_observation.json",
+            "blob": "a63e164636a34010105d307e5891cff62e26be73"
+          }
+        ],
+        "known_nonclaims": [
+          "PHYSICAL_SURFACE_PORTABILITY",
+          "PERMISSION_NETWORK_SOCIAL_SURFACE_PORTABILITY",
+          "UNIVERSAL_RELATIONAL_SCHEMA",
+          "AUTOMATIC_RELATION_DISCOVERY",
+          "AUTOMATIC_PROPAGATION_SEMANTICS",
+          "PLANNING_ACTIVATION",
+          "WORK_ADMISSION",
+          "AUTHORITY",
+          "EXECUTION",
+          "GLOBAL_INVARIANCE",
+          "SCIENTIFIC_STANDING"
+        ],
+        "binding_domain_complete": true,
+        "queries": {
+          "REPOSITORY_PRODUCER_ROUTE": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "output_blob",
+                "output_path",
+                "output_present"
+              ],
+              "counterpart_fields": [
+                "storage_blob",
+                "storage_path"
+              ],
+              "edge_fields": [
+                "alignment",
+                "declared_output_path",
+                "relation_kind",
+                "storage_path"
+              ],
+              "observed_closure_posture": "HOLD"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "PYTHON_CALLABLE_INVOCATION": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "endpoint_value",
+                "payload_kind",
+                "payload_shape"
+              ],
+              "counterpart_fields": [
+                "callable_path",
+                "code_blob",
+                "symbol"
+              ],
+              "edge_fields": [
+                "argument_names",
+                "binding_mode",
+                "relation_kind",
+                "return_coordinate"
+              ],
+              "observed_closure_posture": "COHERENT"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "UNTESTED_SURFACE_SENTINEL": {
+            "lookup_posture": "NO_QUALIFIED_BINDING",
+            "surface_binding": null,
+            "tested_surface_match": false,
+            "live_application_authorized": false
+          }
+        },
+        "catalogue_authority_effect": "NONE",
+        "planning_effect": "NONE",
+        "execution_effect": "NONE"
+      },
+      "required_checks": {
+        "relations": true,
+        "standing": true,
+        "live_applicability_currentness": true,
+        "basis_handles": true,
+        "known_nonclaims": true,
+        "REPOSITORY_PRODUCER_ROUTE.lookup_posture": true,
+        "REPOSITORY_PRODUCER_ROUTE.surface_binding": true,
+        "REPOSITORY_PRODUCER_ROUTE.tested_surface_match": true,
+        "REPOSITORY_PRODUCER_ROUTE.live_application_authorized": true,
+        "PYTHON_CALLABLE_INVOCATION.lookup_posture": true,
+        "PYTHON_CALLABLE_INVOCATION.surface_binding": true,
+        "PYTHON_CALLABLE_INVOCATION.tested_surface_match": true,
+        "PYTHON_CALLABLE_INVOCATION.live_application_authorized": true,
+        "UNTESTED_SURFACE_SENTINEL.lookup_posture": true,
+        "UNTESTED_SURFACE_SENTINEL.surface_binding": true,
+        "UNTESTED_SURFACE_SENTINEL.tested_surface_match": true,
+        "UNTESTED_SURFACE_SENTINEL.live_application_authorized": true
+      },
+      "classification": "RECONSTRUCTION_EQUIVALENT",
+      "loss_coordinates": []
+    },
+    {
+      "variant_id": "A2_REMOVE_CATALOGUE_ENTRY_ID",
+      "removed_coordinates": [
+        "catalogue_entry_id"
+      ],
+      "carrier_size_bytes": 2333,
+      "size_delta_bytes_from_control": -62,
+      "reconstruction": {
+        "object_type": "INVARIANCE_CATALOGUE_CARRIER_RECONSTRUCTION_V0",
+        "relations": [
+          "SAME_ABSTRACT_STEWARDSHIP_ROLE_NE_SAME_OPERATIVE_CONFIGURATION_GEOMETRY",
+          "TYPED_SURFACE_BINDING_PRESERVES_SURFACE_SPECIFIC_OBSERVATION"
+        ],
+        "standing": "MATCHED_BOUNDED_RELATION_NOT_LEDGER_PROMOTED",
+        "live_applicability_currentness": "UNRESOLVED_BEYOND_FROZEN_G20_BASIS",
+        "basis_handles": [
+          {
+            "role": "G20_ADJUDICATION",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_ADJUDICATION_RESULT_001.md",
+            "blob": "2445254a4b0738c269a627bde5c746c1e51227cc"
+          },
+          {
+            "role": "G20_PRESSURE_RESULT",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_PRESSURE_RESULT_001.md",
+            "blob": "0f1fe776a9ed7ade963b4c5373071ddb304f6ee1"
+          },
+          {
+            "role": "G20_RUNTIME_WITNESS",
+            "path": "docs/evidence/for_planner/typed_surface_stewardship_v0_observation.json",
+            "blob": "a63e164636a34010105d307e5891cff62e26be73"
+          }
+        ],
+        "known_nonclaims": [
+          "PHYSICAL_SURFACE_PORTABILITY",
+          "PERMISSION_NETWORK_SOCIAL_SURFACE_PORTABILITY",
+          "UNIVERSAL_RELATIONAL_SCHEMA",
+          "AUTOMATIC_RELATION_DISCOVERY",
+          "AUTOMATIC_PROPAGATION_SEMANTICS",
+          "PLANNING_ACTIVATION",
+          "WORK_ADMISSION",
+          "AUTHORITY",
+          "EXECUTION",
+          "GLOBAL_INVARIANCE",
+          "SCIENTIFIC_STANDING"
+        ],
+        "binding_domain_complete": true,
+        "queries": {
+          "REPOSITORY_PRODUCER_ROUTE": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "output_blob",
+                "output_path",
+                "output_present"
+              ],
+              "counterpart_fields": [
+                "storage_blob",
+                "storage_path"
+              ],
+              "edge_fields": [
+                "alignment",
+                "declared_output_path",
+                "relation_kind",
+                "storage_path"
+              ],
+              "observed_closure_posture": "HOLD"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "PYTHON_CALLABLE_INVOCATION": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "endpoint_value",
+                "payload_kind",
+                "payload_shape"
+              ],
+              "counterpart_fields": [
+                "callable_path",
+                "code_blob",
+                "symbol"
+              ],
+              "edge_fields": [
+                "argument_names",
+                "binding_mode",
+                "relation_kind",
+                "return_coordinate"
+              ],
+              "observed_closure_posture": "COHERENT"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "UNTESTED_SURFACE_SENTINEL": {
+            "lookup_posture": "NO_QUALIFIED_BINDING",
+            "surface_binding": null,
+            "tested_surface_match": false,
+            "live_application_authorized": false
+          }
+        },
+        "catalogue_authority_effect": "NONE",
+        "planning_effect": "NONE",
+        "execution_effect": "NONE"
+      },
+      "required_checks": {
+        "relations": true,
+        "standing": true,
+        "live_applicability_currentness": true,
+        "basis_handles": true,
+        "known_nonclaims": true,
+        "REPOSITORY_PRODUCER_ROUTE.lookup_posture": true,
+        "REPOSITORY_PRODUCER_ROUTE.surface_binding": true,
+        "REPOSITORY_PRODUCER_ROUTE.tested_surface_match": true,
+        "REPOSITORY_PRODUCER_ROUTE.live_application_authorized": true,
+        "PYTHON_CALLABLE_INVOCATION.lookup_posture": true,
+        "PYTHON_CALLABLE_INVOCATION.surface_binding": true,
+        "PYTHON_CALLABLE_INVOCATION.tested_surface_match": true,
+        "PYTHON_CALLABLE_INVOCATION.live_application_authorized": true,
+        "UNTESTED_SURFACE_SENTINEL.lookup_posture": true,
+        "UNTESTED_SURFACE_SENTINEL.surface_binding": true,
+        "UNTESTED_SURFACE_SENTINEL.tested_surface_match": true,
+        "UNTESTED_SURFACE_SENTINEL.live_application_authorized": true
+      },
+      "classification": "RECONSTRUCTION_EQUIVALENT",
+      "loss_coordinates": []
+    },
+    {
+      "variant_id": "A3_REMOVE_QUALIFIED_SCOPE",
+      "removed_coordinates": [
+        "qualified_scope"
+      ],
+      "carrier_size_bytes": 2180,
+      "size_delta_bytes_from_control": -215,
+      "reconstruction": {
+        "object_type": "INVARIANCE_CATALOGUE_CARRIER_RECONSTRUCTION_V0",
+        "relations": [
+          "SAME_ABSTRACT_STEWARDSHIP_ROLE_NE_SAME_OPERATIVE_CONFIGURATION_GEOMETRY",
+          "TYPED_SURFACE_BINDING_PRESERVES_SURFACE_SPECIFIC_OBSERVATION"
+        ],
+        "standing": "MATCHED_BOUNDED_RELATION_NOT_LEDGER_PROMOTED",
+        "live_applicability_currentness": "UNRESOLVED_BEYOND_FROZEN_G20_BASIS",
+        "basis_handles": [
+          {
+            "role": "G20_ADJUDICATION",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_ADJUDICATION_RESULT_001.md",
+            "blob": "2445254a4b0738c269a627bde5c746c1e51227cc"
+          },
+          {
+            "role": "G20_PRESSURE_RESULT",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_PRESSURE_RESULT_001.md",
+            "blob": "0f1fe776a9ed7ade963b4c5373071ddb304f6ee1"
+          },
+          {
+            "role": "G20_RUNTIME_WITNESS",
+            "path": "docs/evidence/for_planner/typed_surface_stewardship_v0_observation.json",
+            "blob": "a63e164636a34010105d307e5891cff62e26be73"
+          }
+        ],
+        "known_nonclaims": [
+          "PHYSICAL_SURFACE_PORTABILITY",
+          "PERMISSION_NETWORK_SOCIAL_SURFACE_PORTABILITY",
+          "UNIVERSAL_RELATIONAL_SCHEMA",
+          "AUTOMATIC_RELATION_DISCOVERY",
+          "AUTOMATIC_PROPAGATION_SEMANTICS",
+          "PLANNING_ACTIVATION",
+          "WORK_ADMISSION",
+          "AUTHORITY",
+          "EXECUTION",
+          "GLOBAL_INVARIANCE",
+          "SCIENTIFIC_STANDING"
+        ],
+        "binding_domain_complete": true,
+        "queries": {
+          "REPOSITORY_PRODUCER_ROUTE": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "output_blob",
+                "output_path",
+                "output_present"
+              ],
+              "counterpart_fields": [
+                "storage_blob",
+                "storage_path"
+              ],
+              "edge_fields": [
+                "alignment",
+                "declared_output_path",
+                "relation_kind",
+                "storage_path"
+              ],
+              "observed_closure_posture": "HOLD"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "PYTHON_CALLABLE_INVOCATION": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "endpoint_value",
+                "payload_kind",
+                "payload_shape"
+              ],
+              "counterpart_fields": [
+                "callable_path",
+                "code_blob",
+                "symbol"
+              ],
+              "edge_fields": [
+                "argument_names",
+                "binding_mode",
+                "relation_kind",
+                "return_coordinate"
+              ],
+              "observed_closure_posture": "COHERENT"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "UNTESTED_SURFACE_SENTINEL": {
+            "lookup_posture": "NO_QUALIFIED_BINDING",
+            "surface_binding": null,
+            "tested_surface_match": false,
+            "live_application_authorized": false
+          }
+        },
+        "catalogue_authority_effect": "NONE",
+        "planning_effect": "NONE",
+        "execution_effect": "NONE"
+      },
+      "required_checks": {
+        "relations": true,
+        "standing": true,
+        "live_applicability_currentness": true,
+        "basis_handles": true,
+        "known_nonclaims": true,
+        "REPOSITORY_PRODUCER_ROUTE.lookup_posture": true,
+        "REPOSITORY_PRODUCER_ROUTE.surface_binding": true,
+        "REPOSITORY_PRODUCER_ROUTE.tested_surface_match": true,
+        "REPOSITORY_PRODUCER_ROUTE.live_application_authorized": true,
+        "PYTHON_CALLABLE_INVOCATION.lookup_posture": true,
+        "PYTHON_CALLABLE_INVOCATION.surface_binding": true,
+        "PYTHON_CALLABLE_INVOCATION.tested_surface_match": true,
+        "PYTHON_CALLABLE_INVOCATION.live_application_authorized": true,
+        "UNTESTED_SURFACE_SENTINEL.lookup_posture": true,
+        "UNTESTED_SURFACE_SENTINEL.surface_binding": true,
+        "UNTESTED_SURFACE_SENTINEL.tested_surface_match": true,
+        "UNTESTED_SURFACE_SENTINEL.live_application_authorized": true
+      },
+      "classification": "RECONSTRUCTION_EQUIVALENT",
+      "loss_coordinates": []
+    },
+    {
+      "variant_id": "A4_REMOVE_TESTED_SURFACES",
+      "removed_coordinates": [
+        "tested_surfaces"
+      ],
+      "carrier_size_bytes": 2318,
+      "size_delta_bytes_from_control": -77,
+      "reconstruction": {
+        "object_type": "INVARIANCE_CATALOGUE_CARRIER_RECONSTRUCTION_V0",
+        "relations": [
+          "SAME_ABSTRACT_STEWARDSHIP_ROLE_NE_SAME_OPERATIVE_CONFIGURATION_GEOMETRY",
+          "TYPED_SURFACE_BINDING_PRESERVES_SURFACE_SPECIFIC_OBSERVATION"
+        ],
+        "standing": "MATCHED_BOUNDED_RELATION_NOT_LEDGER_PROMOTED",
+        "live_applicability_currentness": "UNRESOLVED_BEYOND_FROZEN_G20_BASIS",
+        "basis_handles": [
+          {
+            "role": "G20_ADJUDICATION",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_ADJUDICATION_RESULT_001.md",
+            "blob": "2445254a4b0738c269a627bde5c746c1e51227cc"
+          },
+          {
+            "role": "G20_PRESSURE_RESULT",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_PRESSURE_RESULT_001.md",
+            "blob": "0f1fe776a9ed7ade963b4c5373071ddb304f6ee1"
+          },
+          {
+            "role": "G20_RUNTIME_WITNESS",
+            "path": "docs/evidence/for_planner/typed_surface_stewardship_v0_observation.json",
+            "blob": "a63e164636a34010105d307e5891cff62e26be73"
+          }
+        ],
+        "known_nonclaims": [
+          "PHYSICAL_SURFACE_PORTABILITY",
+          "PERMISSION_NETWORK_SOCIAL_SURFACE_PORTABILITY",
+          "UNIVERSAL_RELATIONAL_SCHEMA",
+          "AUTOMATIC_RELATION_DISCOVERY",
+          "AUTOMATIC_PROPAGATION_SEMANTICS",
+          "PLANNING_ACTIVATION",
+          "WORK_ADMISSION",
+          "AUTHORITY",
+          "EXECUTION",
+          "GLOBAL_INVARIANCE",
+          "SCIENTIFIC_STANDING"
+        ],
+        "binding_domain_complete": true,
+        "queries": {
+          "REPOSITORY_PRODUCER_ROUTE": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "output_blob",
+                "output_path",
+                "output_present"
+              ],
+              "counterpart_fields": [
+                "storage_blob",
+                "storage_path"
+              ],
+              "edge_fields": [
+                "alignment",
+                "declared_output_path",
+                "relation_kind",
+                "storage_path"
+              ],
+              "observed_closure_posture": "HOLD"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "PYTHON_CALLABLE_INVOCATION": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "endpoint_value",
+                "payload_kind",
+                "payload_shape"
+              ],
+              "counterpart_fields": [
+                "callable_path",
+                "code_blob",
+                "symbol"
+              ],
+              "edge_fields": [
+                "argument_names",
+                "binding_mode",
+                "relation_kind",
+                "return_coordinate"
+              ],
+              "observed_closure_posture": "COHERENT"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "UNTESTED_SURFACE_SENTINEL": {
+            "lookup_posture": "NO_QUALIFIED_BINDING",
+            "surface_binding": null,
+            "tested_surface_match": false,
+            "live_application_authorized": false
+          }
+        },
+        "catalogue_authority_effect": "NONE",
+        "planning_effect": "NONE",
+        "execution_effect": "NONE"
+      },
+      "required_checks": {
+        "relations": true,
+        "standing": true,
+        "live_applicability_currentness": true,
+        "basis_handles": true,
+        "known_nonclaims": true,
+        "REPOSITORY_PRODUCER_ROUTE.lookup_posture": true,
+        "REPOSITORY_PRODUCER_ROUTE.surface_binding": true,
+        "REPOSITORY_PRODUCER_ROUTE.tested_surface_match": true,
+        "REPOSITORY_PRODUCER_ROUTE.live_application_authorized": true,
+        "PYTHON_CALLABLE_INVOCATION.lookup_posture": true,
+        "PYTHON_CALLABLE_INVOCATION.surface_binding": true,
+        "PYTHON_CALLABLE_INVOCATION.tested_surface_match": true,
+        "PYTHON_CALLABLE_INVOCATION.live_application_authorized": true,
+        "UNTESTED_SURFACE_SENTINEL.lookup_posture": true,
+        "UNTESTED_SURFACE_SENTINEL.surface_binding": true,
+        "UNTESTED_SURFACE_SENTINEL.tested_surface_match": true,
+        "UNTESTED_SURFACE_SENTINEL.live_application_authorized": true
+      },
+      "classification": "RECONSTRUCTION_EQUIVALENT",
+      "loss_coordinates": []
+    },
+    {
+      "variant_id": "A5_REMOVE_RECONSTRUCTION_USE",
+      "removed_coordinates": [
+        "reconstruction_use"
+      ],
+      "carrier_size_bytes": 2308,
+      "size_delta_bytes_from_control": -87,
+      "reconstruction": {
+        "object_type": "INVARIANCE_CATALOGUE_CARRIER_RECONSTRUCTION_V0",
+        "relations": [
+          "SAME_ABSTRACT_STEWARDSHIP_ROLE_NE_SAME_OPERATIVE_CONFIGURATION_GEOMETRY",
+          "TYPED_SURFACE_BINDING_PRESERVES_SURFACE_SPECIFIC_OBSERVATION"
+        ],
+        "standing": "MATCHED_BOUNDED_RELATION_NOT_LEDGER_PROMOTED",
+        "live_applicability_currentness": "UNRESOLVED_BEYOND_FROZEN_G20_BASIS",
+        "basis_handles": [
+          {
+            "role": "G20_ADJUDICATION",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_ADJUDICATION_RESULT_001.md",
+            "blob": "2445254a4b0738c269a627bde5c746c1e51227cc"
+          },
+          {
+            "role": "G20_PRESSURE_RESULT",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_PRESSURE_RESULT_001.md",
+            "blob": "0f1fe776a9ed7ade963b4c5373071ddb304f6ee1"
+          },
+          {
+            "role": "G20_RUNTIME_WITNESS",
+            "path": "docs/evidence/for_planner/typed_surface_stewardship_v0_observation.json",
+            "blob": "a63e164636a34010105d307e5891cff62e26be73"
+          }
+        ],
+        "known_nonclaims": [
+          "PHYSICAL_SURFACE_PORTABILITY",
+          "PERMISSION_NETWORK_SOCIAL_SURFACE_PORTABILITY",
+          "UNIVERSAL_RELATIONAL_SCHEMA",
+          "AUTOMATIC_RELATION_DISCOVERY",
+          "AUTOMATIC_PROPAGATION_SEMANTICS",
+          "PLANNING_ACTIVATION",
+          "WORK_ADMISSION",
+          "AUTHORITY",
+          "EXECUTION",
+          "GLOBAL_INVARIANCE",
+          "SCIENTIFIC_STANDING"
+        ],
+        "binding_domain_complete": true,
+        "queries": {
+          "REPOSITORY_PRODUCER_ROUTE": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "output_blob",
+                "output_path",
+                "output_present"
+              ],
+              "counterpart_fields": [
+                "storage_blob",
+                "storage_path"
+              ],
+              "edge_fields": [
+                "alignment",
+                "declared_output_path",
+                "relation_kind",
+                "storage_path"
+              ],
+              "observed_closure_posture": "HOLD"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "PYTHON_CALLABLE_INVOCATION": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "endpoint_value",
+                "payload_kind",
+                "payload_shape"
+              ],
+              "counterpart_fields": [
+                "callable_path",
+                "code_blob",
+                "symbol"
+              ],
+              "edge_fields": [
+                "argument_names",
+                "binding_mode",
+                "relation_kind",
+                "return_coordinate"
+              ],
+              "observed_closure_posture": "COHERENT"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "UNTESTED_SURFACE_SENTINEL": {
+            "lookup_posture": "NO_QUALIFIED_BINDING",
+            "surface_binding": null,
+            "tested_surface_match": false,
+            "live_application_authorized": false
+          }
+        },
+        "catalogue_authority_effect": "NONE",
+        "planning_effect": "NONE",
+        "execution_effect": "NONE"
+      },
+      "required_checks": {
+        "relations": true,
+        "standing": true,
+        "live_applicability_currentness": true,
+        "basis_handles": true,
+        "known_nonclaims": true,
+        "REPOSITORY_PRODUCER_ROUTE.lookup_posture": true,
+        "REPOSITORY_PRODUCER_ROUTE.surface_binding": true,
+        "REPOSITORY_PRODUCER_ROUTE.tested_surface_match": true,
+        "REPOSITORY_PRODUCER_ROUTE.live_application_authorized": true,
+        "PYTHON_CALLABLE_INVOCATION.lookup_posture": true,
+        "PYTHON_CALLABLE_INVOCATION.surface_binding": true,
+        "PYTHON_CALLABLE_INVOCATION.tested_surface_match": true,
+        "PYTHON_CALLABLE_INVOCATION.live_application_authorized": true,
+        "UNTESTED_SURFACE_SENTINEL.lookup_posture": true,
+        "UNTESTED_SURFACE_SENTINEL.surface_binding": true,
+        "UNTESTED_SURFACE_SENTINEL.tested_surface_match": true,
+        "UNTESTED_SURFACE_SENTINEL.live_application_authorized": true
+      },
+      "classification": "RECONSTRUCTION_EQUIVALENT",
+      "loss_coordinates": []
+    },
+    {
+      "variant_id": "A6_REMOVE_CATALOGUE_AUTHORITY_EFFECT",
+      "removed_coordinates": [
+        "catalogue_authority_effect"
+      ],
+      "carrier_size_bytes": 2359,
+      "size_delta_bytes_from_control": -36,
+      "reconstruction": {
+        "object_type": "INVARIANCE_CATALOGUE_CARRIER_RECONSTRUCTION_V0",
+        "relations": [
+          "SAME_ABSTRACT_STEWARDSHIP_ROLE_NE_SAME_OPERATIVE_CONFIGURATION_GEOMETRY",
+          "TYPED_SURFACE_BINDING_PRESERVES_SURFACE_SPECIFIC_OBSERVATION"
+        ],
+        "standing": "MATCHED_BOUNDED_RELATION_NOT_LEDGER_PROMOTED",
+        "live_applicability_currentness": "UNRESOLVED_BEYOND_FROZEN_G20_BASIS",
+        "basis_handles": [
+          {
+            "role": "G20_ADJUDICATION",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_ADJUDICATION_RESULT_001.md",
+            "blob": "2445254a4b0738c269a627bde5c746c1e51227cc"
+          },
+          {
+            "role": "G20_PRESSURE_RESULT",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_PRESSURE_RESULT_001.md",
+            "blob": "0f1fe776a9ed7ade963b4c5373071ddb304f6ee1"
+          },
+          {
+            "role": "G20_RUNTIME_WITNESS",
+            "path": "docs/evidence/for_planner/typed_surface_stewardship_v0_observation.json",
+            "blob": "a63e164636a34010105d307e5891cff62e26be73"
+          }
+        ],
+        "known_nonclaims": [
+          "PHYSICAL_SURFACE_PORTABILITY",
+          "PERMISSION_NETWORK_SOCIAL_SURFACE_PORTABILITY",
+          "UNIVERSAL_RELATIONAL_SCHEMA",
+          "AUTOMATIC_RELATION_DISCOVERY",
+          "AUTOMATIC_PROPAGATION_SEMANTICS",
+          "PLANNING_ACTIVATION",
+          "WORK_ADMISSION",
+          "AUTHORITY",
+          "EXECUTION",
+          "GLOBAL_INVARIANCE",
+          "SCIENTIFIC_STANDING"
+        ],
+        "binding_domain_complete": true,
+        "queries": {
+          "REPOSITORY_PRODUCER_ROUTE": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "output_blob",
+                "output_path",
+                "output_present"
+              ],
+              "counterpart_fields": [
+                "storage_blob",
+                "storage_path"
+              ],
+              "edge_fields": [
+                "alignment",
+                "declared_output_path",
+                "relation_kind",
+                "storage_path"
+              ],
+              "observed_closure_posture": "HOLD"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "PYTHON_CALLABLE_INVOCATION": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "endpoint_value",
+                "payload_kind",
+                "payload_shape"
+              ],
+              "counterpart_fields": [
+                "callable_path",
+                "code_blob",
+                "symbol"
+              ],
+              "edge_fields": [
+                "argument_names",
+                "binding_mode",
+                "relation_kind",
+                "return_coordinate"
+              ],
+              "observed_closure_posture": "COHERENT"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "UNTESTED_SURFACE_SENTINEL": {
+            "lookup_posture": "NO_QUALIFIED_BINDING",
+            "surface_binding": null,
+            "tested_surface_match": false,
+            "live_application_authorized": false
+          }
+        },
+        "catalogue_authority_effect": "NONE",
+        "planning_effect": "NONE",
+        "execution_effect": "NONE"
+      },
+      "required_checks": {
+        "relations": true,
+        "standing": true,
+        "live_applicability_currentness": true,
+        "basis_handles": true,
+        "known_nonclaims": true,
+        "REPOSITORY_PRODUCER_ROUTE.lookup_posture": true,
+        "REPOSITORY_PRODUCER_ROUTE.surface_binding": true,
+        "REPOSITORY_PRODUCER_ROUTE.tested_surface_match": true,
+        "REPOSITORY_PRODUCER_ROUTE.live_application_authorized": true,
+        "PYTHON_CALLABLE_INVOCATION.lookup_posture": true,
+        "PYTHON_CALLABLE_INVOCATION.surface_binding": true,
+        "PYTHON_CALLABLE_INVOCATION.tested_surface_match": true,
+        "PYTHON_CALLABLE_INVOCATION.live_application_authorized": true,
+        "UNTESTED_SURFACE_SENTINEL.lookup_posture": true,
+        "UNTESTED_SURFACE_SENTINEL.surface_binding": true,
+        "UNTESTED_SURFACE_SENTINEL.tested_surface_match": true,
+        "UNTESTED_SURFACE_SENTINEL.live_application_authorized": true
+      },
+      "classification": "RECONSTRUCTION_EQUIVALENT",
+      "loss_coordinates": []
+    },
+    {
+      "variant_id": "A7_REMOVE_STOPPED",
+      "removed_coordinates": [
+        "stopped"
+      ],
+      "carrier_size_bytes": 2379,
+      "size_delta_bytes_from_control": -16,
+      "reconstruction": {
+        "object_type": "INVARIANCE_CATALOGUE_CARRIER_RECONSTRUCTION_V0",
+        "relations": [
+          "SAME_ABSTRACT_STEWARDSHIP_ROLE_NE_SAME_OPERATIVE_CONFIGURATION_GEOMETRY",
+          "TYPED_SURFACE_BINDING_PRESERVES_SURFACE_SPECIFIC_OBSERVATION"
+        ],
+        "standing": "MATCHED_BOUNDED_RELATION_NOT_LEDGER_PROMOTED",
+        "live_applicability_currentness": "UNRESOLVED_BEYOND_FROZEN_G20_BASIS",
+        "basis_handles": [
+          {
+            "role": "G20_ADJUDICATION",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_ADJUDICATION_RESULT_001.md",
+            "blob": "2445254a4b0738c269a627bde5c746c1e51227cc"
+          },
+          {
+            "role": "G20_PRESSURE_RESULT",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_PRESSURE_RESULT_001.md",
+            "blob": "0f1fe776a9ed7ade963b4c5373071ddb304f6ee1"
+          },
+          {
+            "role": "G20_RUNTIME_WITNESS",
+            "path": "docs/evidence/for_planner/typed_surface_stewardship_v0_observation.json",
+            "blob": "a63e164636a34010105d307e5891cff62e26be73"
+          }
+        ],
+        "known_nonclaims": [
+          "PHYSICAL_SURFACE_PORTABILITY",
+          "PERMISSION_NETWORK_SOCIAL_SURFACE_PORTABILITY",
+          "UNIVERSAL_RELATIONAL_SCHEMA",
+          "AUTOMATIC_RELATION_DISCOVERY",
+          "AUTOMATIC_PROPAGATION_SEMANTICS",
+          "PLANNING_ACTIVATION",
+          "WORK_ADMISSION",
+          "AUTHORITY",
+          "EXECUTION",
+          "GLOBAL_INVARIANCE",
+          "SCIENTIFIC_STANDING"
+        ],
+        "binding_domain_complete": true,
+        "queries": {
+          "REPOSITORY_PRODUCER_ROUTE": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "output_blob",
+                "output_path",
+                "output_present"
+              ],
+              "counterpart_fields": [
+                "storage_blob",
+                "storage_path"
+              ],
+              "edge_fields": [
+                "alignment",
+                "declared_output_path",
+                "relation_kind",
+                "storage_path"
+              ],
+              "observed_closure_posture": "HOLD"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "PYTHON_CALLABLE_INVOCATION": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "endpoint_value",
+                "payload_kind",
+                "payload_shape"
+              ],
+              "counterpart_fields": [
+                "callable_path",
+                "code_blob",
+                "symbol"
+              ],
+              "edge_fields": [
+                "argument_names",
+                "binding_mode",
+                "relation_kind",
+                "return_coordinate"
+              ],
+              "observed_closure_posture": "COHERENT"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "UNTESTED_SURFACE_SENTINEL": {
+            "lookup_posture": "NO_QUALIFIED_BINDING",
+            "surface_binding": null,
+            "tested_surface_match": false,
+            "live_application_authorized": false
+          }
+        },
+        "catalogue_authority_effect": "NONE",
+        "planning_effect": "NONE",
+        "execution_effect": "NONE"
+      },
+      "required_checks": {
+        "relations": true,
+        "standing": true,
+        "live_applicability_currentness": true,
+        "basis_handles": true,
+        "known_nonclaims": true,
+        "REPOSITORY_PRODUCER_ROUTE.lookup_posture": true,
+        "REPOSITORY_PRODUCER_ROUTE.surface_binding": true,
+        "REPOSITORY_PRODUCER_ROUTE.tested_surface_match": true,
+        "REPOSITORY_PRODUCER_ROUTE.live_application_authorized": true,
+        "PYTHON_CALLABLE_INVOCATION.lookup_posture": true,
+        "PYTHON_CALLABLE_INVOCATION.surface_binding": true,
+        "PYTHON_CALLABLE_INVOCATION.tested_surface_match": true,
+        "PYTHON_CALLABLE_INVOCATION.live_application_authorized": true,
+        "UNTESTED_SURFACE_SENTINEL.lookup_posture": true,
+        "UNTESTED_SURFACE_SENTINEL.surface_binding": true,
+        "UNTESTED_SURFACE_SENTINEL.tested_surface_match": true,
+        "UNTESTED_SURFACE_SENTINEL.live_application_authorized": true
+      },
+      "classification": "RECONSTRUCTION_EQUIVALENT",
+      "loss_coordinates": []
+    },
+    {
+      "variant_id": "B1_REMOVE_RELATIONS",
+      "removed_coordinates": [
+        "relations"
+      ],
+      "carrier_size_bytes": 2244,
+      "size_delta_bytes_from_control": -151,
+      "reconstruction": {
+        "object_type": "INVARIANCE_CATALOGUE_CARRIER_RECONSTRUCTION_V0",
+        "relations": "UNRESOLVED_FROM_CARRIER",
+        "standing": "MATCHED_BOUNDED_RELATION_NOT_LEDGER_PROMOTED",
+        "live_applicability_currentness": "UNRESOLVED_BEYOND_FROZEN_G20_BASIS",
+        "basis_handles": [
+          {
+            "role": "G20_ADJUDICATION",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_ADJUDICATION_RESULT_001.md",
+            "blob": "2445254a4b0738c269a627bde5c746c1e51227cc"
+          },
+          {
+            "role": "G20_PRESSURE_RESULT",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_PRESSURE_RESULT_001.md",
+            "blob": "0f1fe776a9ed7ade963b4c5373071ddb304f6ee1"
+          },
+          {
+            "role": "G20_RUNTIME_WITNESS",
+            "path": "docs/evidence/for_planner/typed_surface_stewardship_v0_observation.json",
+            "blob": "a63e164636a34010105d307e5891cff62e26be73"
+          }
+        ],
+        "known_nonclaims": [
+          "PHYSICAL_SURFACE_PORTABILITY",
+          "PERMISSION_NETWORK_SOCIAL_SURFACE_PORTABILITY",
+          "UNIVERSAL_RELATIONAL_SCHEMA",
+          "AUTOMATIC_RELATION_DISCOVERY",
+          "AUTOMATIC_PROPAGATION_SEMANTICS",
+          "PLANNING_ACTIVATION",
+          "WORK_ADMISSION",
+          "AUTHORITY",
+          "EXECUTION",
+          "GLOBAL_INVARIANCE",
+          "SCIENTIFIC_STANDING"
+        ],
+        "binding_domain_complete": true,
+        "queries": {
+          "REPOSITORY_PRODUCER_ROUTE": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "output_blob",
+                "output_path",
+                "output_present"
+              ],
+              "counterpart_fields": [
+                "storage_blob",
+                "storage_path"
+              ],
+              "edge_fields": [
+                "alignment",
+                "declared_output_path",
+                "relation_kind",
+                "storage_path"
+              ],
+              "observed_closure_posture": "HOLD"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "PYTHON_CALLABLE_INVOCATION": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "endpoint_value",
+                "payload_kind",
+                "payload_shape"
+              ],
+              "counterpart_fields": [
+                "callable_path",
+                "code_blob",
+                "symbol"
+              ],
+              "edge_fields": [
+                "argument_names",
+                "binding_mode",
+                "relation_kind",
+                "return_coordinate"
+              ],
+              "observed_closure_posture": "COHERENT"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "UNTESTED_SURFACE_SENTINEL": {
+            "lookup_posture": "NO_QUALIFIED_BINDING",
+            "surface_binding": null,
+            "tested_surface_match": false,
+            "live_application_authorized": false
+          }
+        },
+        "catalogue_authority_effect": "NONE",
+        "planning_effect": "NONE",
+        "execution_effect": "NONE"
+      },
+      "required_checks": {
+        "relations": false,
+        "standing": true,
+        "live_applicability_currentness": true,
+        "basis_handles": true,
+        "known_nonclaims": true,
+        "REPOSITORY_PRODUCER_ROUTE.lookup_posture": true,
+        "REPOSITORY_PRODUCER_ROUTE.surface_binding": true,
+        "REPOSITORY_PRODUCER_ROUTE.tested_surface_match": true,
+        "REPOSITORY_PRODUCER_ROUTE.live_application_authorized": true,
+        "PYTHON_CALLABLE_INVOCATION.lookup_posture": true,
+        "PYTHON_CALLABLE_INVOCATION.surface_binding": true,
+        "PYTHON_CALLABLE_INVOCATION.tested_surface_match": true,
+        "PYTHON_CALLABLE_INVOCATION.live_application_authorized": true,
+        "UNTESTED_SURFACE_SENTINEL.lookup_posture": true,
+        "UNTESTED_SURFACE_SENTINEL.surface_binding": true,
+        "UNTESTED_SURFACE_SENTINEL.tested_surface_match": true,
+        "UNTESTED_SURFACE_SENTINEL.live_application_authorized": true
+      },
+      "classification": "RECONSTRUCTION_LOSS",
+      "loss_coordinates": [
+        "relations"
+      ]
+    },
+    {
+      "variant_id": "B2_REMOVE_STANDING",
+      "removed_coordinates": [
+        "standing"
+      ],
+      "carrier_size_bytes": 2337,
+      "size_delta_bytes_from_control": -58,
+      "reconstruction": {
+        "object_type": "INVARIANCE_CATALOGUE_CARRIER_RECONSTRUCTION_V0",
+        "relations": [
+          "SAME_ABSTRACT_STEWARDSHIP_ROLE_NE_SAME_OPERATIVE_CONFIGURATION_GEOMETRY",
+          "TYPED_SURFACE_BINDING_PRESERVES_SURFACE_SPECIFIC_OBSERVATION"
+        ],
+        "standing": "UNRESOLVED_FROM_CARRIER",
+        "live_applicability_currentness": "UNRESOLVED_BEYOND_FROZEN_G20_BASIS",
+        "basis_handles": [
+          {
+            "role": "G20_ADJUDICATION",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_ADJUDICATION_RESULT_001.md",
+            "blob": "2445254a4b0738c269a627bde5c746c1e51227cc"
+          },
+          {
+            "role": "G20_PRESSURE_RESULT",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_PRESSURE_RESULT_001.md",
+            "blob": "0f1fe776a9ed7ade963b4c5373071ddb304f6ee1"
+          },
+          {
+            "role": "G20_RUNTIME_WITNESS",
+            "path": "docs/evidence/for_planner/typed_surface_stewardship_v0_observation.json",
+            "blob": "a63e164636a34010105d307e5891cff62e26be73"
+          }
+        ],
+        "known_nonclaims": [
+          "PHYSICAL_SURFACE_PORTABILITY",
+          "PERMISSION_NETWORK_SOCIAL_SURFACE_PORTABILITY",
+          "UNIVERSAL_RELATIONAL_SCHEMA",
+          "AUTOMATIC_RELATION_DISCOVERY",
+          "AUTOMATIC_PROPAGATION_SEMANTICS",
+          "PLANNING_ACTIVATION",
+          "WORK_ADMISSION",
+          "AUTHORITY",
+          "EXECUTION",
+          "GLOBAL_INVARIANCE",
+          "SCIENTIFIC_STANDING"
+        ],
+        "binding_domain_complete": true,
+        "queries": {
+          "REPOSITORY_PRODUCER_ROUTE": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "output_blob",
+                "output_path",
+                "output_present"
+              ],
+              "counterpart_fields": [
+                "storage_blob",
+                "storage_path"
+              ],
+              "edge_fields": [
+                "alignment",
+                "declared_output_path",
+                "relation_kind",
+                "storage_path"
+              ],
+              "observed_closure_posture": "HOLD"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "PYTHON_CALLABLE_INVOCATION": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "endpoint_value",
+                "payload_kind",
+                "payload_shape"
+              ],
+              "counterpart_fields": [
+                "callable_path",
+                "code_blob",
+                "symbol"
+              ],
+              "edge_fields": [
+                "argument_names",
+                "binding_mode",
+                "relation_kind",
+                "return_coordinate"
+              ],
+              "observed_closure_posture": "COHERENT"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "UNTESTED_SURFACE_SENTINEL": {
+            "lookup_posture": "NO_QUALIFIED_BINDING",
+            "surface_binding": null,
+            "tested_surface_match": false,
+            "live_application_authorized": false
+          }
+        },
+        "catalogue_authority_effect": "NONE",
+        "planning_effect": "NONE",
+        "execution_effect": "NONE"
+      },
+      "required_checks": {
+        "relations": true,
+        "standing": false,
+        "live_applicability_currentness": true,
+        "basis_handles": true,
+        "known_nonclaims": true,
+        "REPOSITORY_PRODUCER_ROUTE.lookup_posture": true,
+        "REPOSITORY_PRODUCER_ROUTE.surface_binding": true,
+        "REPOSITORY_PRODUCER_ROUTE.tested_surface_match": true,
+        "REPOSITORY_PRODUCER_ROUTE.live_application_authorized": true,
+        "PYTHON_CALLABLE_INVOCATION.lookup_posture": true,
+        "PYTHON_CALLABLE_INVOCATION.surface_binding": true,
+        "PYTHON_CALLABLE_INVOCATION.tested_surface_match": true,
+        "PYTHON_CALLABLE_INVOCATION.live_application_authorized": true,
+        "UNTESTED_SURFACE_SENTINEL.lookup_posture": true,
+        "UNTESTED_SURFACE_SENTINEL.surface_binding": true,
+        "UNTESTED_SURFACE_SENTINEL.tested_surface_match": true,
+        "UNTESTED_SURFACE_SENTINEL.live_application_authorized": true
+      },
+      "classification": "RECONSTRUCTION_LOSS",
+      "loss_coordinates": [
+        "standing"
+      ]
+    },
+    {
+      "variant_id": "B3_REMOVE_SURFACE_BINDINGS",
+      "removed_coordinates": [
+        "surface_bindings"
+      ],
+      "carrier_size_bytes": 1713,
+      "size_delta_bytes_from_control": -682,
+      "reconstruction": {
+        "object_type": "INVARIANCE_CATALOGUE_CARRIER_RECONSTRUCTION_V0",
+        "relations": [
+          "SAME_ABSTRACT_STEWARDSHIP_ROLE_NE_SAME_OPERATIVE_CONFIGURATION_GEOMETRY",
+          "TYPED_SURFACE_BINDING_PRESERVES_SURFACE_SPECIFIC_OBSERVATION"
+        ],
+        "standing": "MATCHED_BOUNDED_RELATION_NOT_LEDGER_PROMOTED",
+        "live_applicability_currentness": "UNRESOLVED_BEYOND_FROZEN_G20_BASIS",
+        "basis_handles": [
+          {
+            "role": "G20_ADJUDICATION",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_ADJUDICATION_RESULT_001.md",
+            "blob": "2445254a4b0738c269a627bde5c746c1e51227cc"
+          },
+          {
+            "role": "G20_PRESSURE_RESULT",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_PRESSURE_RESULT_001.md",
+            "blob": "0f1fe776a9ed7ade963b4c5373071ddb304f6ee1"
+          },
+          {
+            "role": "G20_RUNTIME_WITNESS",
+            "path": "docs/evidence/for_planner/typed_surface_stewardship_v0_observation.json",
+            "blob": "a63e164636a34010105d307e5891cff62e26be73"
+          }
+        ],
+        "known_nonclaims": [
+          "PHYSICAL_SURFACE_PORTABILITY",
+          "PERMISSION_NETWORK_SOCIAL_SURFACE_PORTABILITY",
+          "UNIVERSAL_RELATIONAL_SCHEMA",
+          "AUTOMATIC_RELATION_DISCOVERY",
+          "AUTOMATIC_PROPAGATION_SEMANTICS",
+          "PLANNING_ACTIVATION",
+          "WORK_ADMISSION",
+          "AUTHORITY",
+          "EXECUTION",
+          "GLOBAL_INVARIANCE",
+          "SCIENTIFIC_STANDING"
+        ],
+        "binding_domain_complete": "UNRESOLVED_FROM_CARRIER",
+        "queries": {
+          "REPOSITORY_PRODUCER_ROUTE": {
+            "lookup_posture": "UNRESOLVED_FROM_CARRIER",
+            "surface_binding": "UNRESOLVED_FROM_CARRIER",
+            "tested_surface_match": "UNRESOLVED_FROM_CARRIER",
+            "live_application_authorized": false
+          },
+          "PYTHON_CALLABLE_INVOCATION": {
+            "lookup_posture": "UNRESOLVED_FROM_CARRIER",
+            "surface_binding": "UNRESOLVED_FROM_CARRIER",
+            "tested_surface_match": "UNRESOLVED_FROM_CARRIER",
+            "live_application_authorized": false
+          },
+          "UNTESTED_SURFACE_SENTINEL": {
+            "lookup_posture": "UNRESOLVED_FROM_CARRIER",
+            "surface_binding": "UNRESOLVED_FROM_CARRIER",
+            "tested_surface_match": "UNRESOLVED_FROM_CARRIER",
+            "live_application_authorized": false
+          }
+        },
+        "catalogue_authority_effect": "NONE",
+        "planning_effect": "NONE",
+        "execution_effect": "NONE"
+      },
+      "required_checks": {
+        "relations": true,
+        "standing": true,
+        "live_applicability_currentness": true,
+        "basis_handles": true,
+        "known_nonclaims": true,
+        "REPOSITORY_PRODUCER_ROUTE.lookup_posture": false,
+        "REPOSITORY_PRODUCER_ROUTE.surface_binding": false,
+        "REPOSITORY_PRODUCER_ROUTE.tested_surface_match": false,
+        "REPOSITORY_PRODUCER_ROUTE.live_application_authorized": true,
+        "PYTHON_CALLABLE_INVOCATION.lookup_posture": false,
+        "PYTHON_CALLABLE_INVOCATION.surface_binding": false,
+        "PYTHON_CALLABLE_INVOCATION.tested_surface_match": false,
+        "PYTHON_CALLABLE_INVOCATION.live_application_authorized": true,
+        "UNTESTED_SURFACE_SENTINEL.lookup_posture": false,
+        "UNTESTED_SURFACE_SENTINEL.surface_binding": false,
+        "UNTESTED_SURFACE_SENTINEL.tested_surface_match": false,
+        "UNTESTED_SURFACE_SENTINEL.live_application_authorized": true
+      },
+      "classification": "RECONSTRUCTION_LOSS",
+      "loss_coordinates": [
+        "PYTHON_CALLABLE_INVOCATION.lookup_posture",
+        "PYTHON_CALLABLE_INVOCATION.surface_binding",
+        "PYTHON_CALLABLE_INVOCATION.tested_surface_match",
+        "REPOSITORY_PRODUCER_ROUTE.lookup_posture",
+        "REPOSITORY_PRODUCER_ROUTE.surface_binding",
+        "REPOSITORY_PRODUCER_ROUTE.tested_surface_match",
+        "UNTESTED_SURFACE_SENTINEL.lookup_posture",
+        "UNTESTED_SURFACE_SENTINEL.surface_binding",
+        "UNTESTED_SURFACE_SENTINEL.tested_surface_match"
+      ]
+    },
+    {
+      "variant_id": "B4_REMOVE_LIVE_CURRENTNESS",
+      "removed_coordinates": [
+        "live_applicability_currentness"
+      ],
+      "carrier_size_bytes": 2325,
+      "size_delta_bytes_from_control": -70,
+      "reconstruction": {
+        "object_type": "INVARIANCE_CATALOGUE_CARRIER_RECONSTRUCTION_V0",
+        "relations": [
+          "SAME_ABSTRACT_STEWARDSHIP_ROLE_NE_SAME_OPERATIVE_CONFIGURATION_GEOMETRY",
+          "TYPED_SURFACE_BINDING_PRESERVES_SURFACE_SPECIFIC_OBSERVATION"
+        ],
+        "standing": "MATCHED_BOUNDED_RELATION_NOT_LEDGER_PROMOTED",
+        "live_applicability_currentness": "UNRESOLVED_FROM_CARRIER",
+        "basis_handles": [
+          {
+            "role": "G20_ADJUDICATION",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_ADJUDICATION_RESULT_001.md",
+            "blob": "2445254a4b0738c269a627bde5c746c1e51227cc"
+          },
+          {
+            "role": "G20_PRESSURE_RESULT",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_PRESSURE_RESULT_001.md",
+            "blob": "0f1fe776a9ed7ade963b4c5373071ddb304f6ee1"
+          },
+          {
+            "role": "G20_RUNTIME_WITNESS",
+            "path": "docs/evidence/for_planner/typed_surface_stewardship_v0_observation.json",
+            "blob": "a63e164636a34010105d307e5891cff62e26be73"
+          }
+        ],
+        "known_nonclaims": [
+          "PHYSICAL_SURFACE_PORTABILITY",
+          "PERMISSION_NETWORK_SOCIAL_SURFACE_PORTABILITY",
+          "UNIVERSAL_RELATIONAL_SCHEMA",
+          "AUTOMATIC_RELATION_DISCOVERY",
+          "AUTOMATIC_PROPAGATION_SEMANTICS",
+          "PLANNING_ACTIVATION",
+          "WORK_ADMISSION",
+          "AUTHORITY",
+          "EXECUTION",
+          "GLOBAL_INVARIANCE",
+          "SCIENTIFIC_STANDING"
+        ],
+        "binding_domain_complete": true,
+        "queries": {
+          "REPOSITORY_PRODUCER_ROUTE": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "output_blob",
+                "output_path",
+                "output_present"
+              ],
+              "counterpart_fields": [
+                "storage_blob",
+                "storage_path"
+              ],
+              "edge_fields": [
+                "alignment",
+                "declared_output_path",
+                "relation_kind",
+                "storage_path"
+              ],
+              "observed_closure_posture": "HOLD"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "PYTHON_CALLABLE_INVOCATION": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "endpoint_value",
+                "payload_kind",
+                "payload_shape"
+              ],
+              "counterpart_fields": [
+                "callable_path",
+                "code_blob",
+                "symbol"
+              ],
+              "edge_fields": [
+                "argument_names",
+                "binding_mode",
+                "relation_kind",
+                "return_coordinate"
+              ],
+              "observed_closure_posture": "COHERENT"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "UNTESTED_SURFACE_SENTINEL": {
+            "lookup_posture": "NO_QUALIFIED_BINDING",
+            "surface_binding": null,
+            "tested_surface_match": false,
+            "live_application_authorized": false
+          }
+        },
+        "catalogue_authority_effect": "NONE",
+        "planning_effect": "NONE",
+        "execution_effect": "NONE"
+      },
+      "required_checks": {
+        "relations": true,
+        "standing": true,
+        "live_applicability_currentness": false,
+        "basis_handles": true,
+        "known_nonclaims": true,
+        "REPOSITORY_PRODUCER_ROUTE.lookup_posture": true,
+        "REPOSITORY_PRODUCER_ROUTE.surface_binding": true,
+        "REPOSITORY_PRODUCER_ROUTE.tested_surface_match": true,
+        "REPOSITORY_PRODUCER_ROUTE.live_application_authorized": true,
+        "PYTHON_CALLABLE_INVOCATION.lookup_posture": true,
+        "PYTHON_CALLABLE_INVOCATION.surface_binding": true,
+        "PYTHON_CALLABLE_INVOCATION.tested_surface_match": true,
+        "PYTHON_CALLABLE_INVOCATION.live_application_authorized": true,
+        "UNTESTED_SURFACE_SENTINEL.lookup_posture": true,
+        "UNTESTED_SURFACE_SENTINEL.surface_binding": true,
+        "UNTESTED_SURFACE_SENTINEL.tested_surface_match": true,
+        "UNTESTED_SURFACE_SENTINEL.live_application_authorized": true
+      },
+      "classification": "RECONSTRUCTION_LOSS",
+      "loss_coordinates": [
+        "live_applicability_currentness"
+      ]
+    },
+    {
+      "variant_id": "B5_REMOVE_BASIS_HANDLES",
+      "removed_coordinates": [
+        "basis_handles"
+      ],
+      "carrier_size_bytes": 1812,
+      "size_delta_bytes_from_control": -583,
+      "reconstruction": {
+        "object_type": "INVARIANCE_CATALOGUE_CARRIER_RECONSTRUCTION_V0",
+        "relations": [
+          "SAME_ABSTRACT_STEWARDSHIP_ROLE_NE_SAME_OPERATIVE_CONFIGURATION_GEOMETRY",
+          "TYPED_SURFACE_BINDING_PRESERVES_SURFACE_SPECIFIC_OBSERVATION"
+        ],
+        "standing": "MATCHED_BOUNDED_RELATION_NOT_LEDGER_PROMOTED",
+        "live_applicability_currentness": "UNRESOLVED_BEYOND_FROZEN_G20_BASIS",
+        "basis_handles": "UNRESOLVED_FROM_CARRIER",
+        "known_nonclaims": [
+          "PHYSICAL_SURFACE_PORTABILITY",
+          "PERMISSION_NETWORK_SOCIAL_SURFACE_PORTABILITY",
+          "UNIVERSAL_RELATIONAL_SCHEMA",
+          "AUTOMATIC_RELATION_DISCOVERY",
+          "AUTOMATIC_PROPAGATION_SEMANTICS",
+          "PLANNING_ACTIVATION",
+          "WORK_ADMISSION",
+          "AUTHORITY",
+          "EXECUTION",
+          "GLOBAL_INVARIANCE",
+          "SCIENTIFIC_STANDING"
+        ],
+        "binding_domain_complete": true,
+        "queries": {
+          "REPOSITORY_PRODUCER_ROUTE": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "output_blob",
+                "output_path",
+                "output_present"
+              ],
+              "counterpart_fields": [
+                "storage_blob",
+                "storage_path"
+              ],
+              "edge_fields": [
+                "alignment",
+                "declared_output_path",
+                "relation_kind",
+                "storage_path"
+              ],
+              "observed_closure_posture": "HOLD"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "PYTHON_CALLABLE_INVOCATION": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "endpoint_value",
+                "payload_kind",
+                "payload_shape"
+              ],
+              "counterpart_fields": [
+                "callable_path",
+                "code_blob",
+                "symbol"
+              ],
+              "edge_fields": [
+                "argument_names",
+                "binding_mode",
+                "relation_kind",
+                "return_coordinate"
+              ],
+              "observed_closure_posture": "COHERENT"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "UNTESTED_SURFACE_SENTINEL": {
+            "lookup_posture": "NO_QUALIFIED_BINDING",
+            "surface_binding": null,
+            "tested_surface_match": false,
+            "live_application_authorized": false
+          }
+        },
+        "catalogue_authority_effect": "NONE",
+        "planning_effect": "NONE",
+        "execution_effect": "NONE"
+      },
+      "required_checks": {
+        "relations": true,
+        "standing": true,
+        "live_applicability_currentness": true,
+        "basis_handles": false,
+        "known_nonclaims": true,
+        "REPOSITORY_PRODUCER_ROUTE.lookup_posture": true,
+        "REPOSITORY_PRODUCER_ROUTE.surface_binding": true,
+        "REPOSITORY_PRODUCER_ROUTE.tested_surface_match": true,
+        "REPOSITORY_PRODUCER_ROUTE.live_application_authorized": true,
+        "PYTHON_CALLABLE_INVOCATION.lookup_posture": true,
+        "PYTHON_CALLABLE_INVOCATION.surface_binding": true,
+        "PYTHON_CALLABLE_INVOCATION.tested_surface_match": true,
+        "PYTHON_CALLABLE_INVOCATION.live_application_authorized": true,
+        "UNTESTED_SURFACE_SENTINEL.lookup_posture": true,
+        "UNTESTED_SURFACE_SENTINEL.surface_binding": true,
+        "UNTESTED_SURFACE_SENTINEL.tested_surface_match": true,
+        "UNTESTED_SURFACE_SENTINEL.live_application_authorized": true
+      },
+      "classification": "RECONSTRUCTION_LOSS",
+      "loss_coordinates": [
+        "basis_handles"
+      ]
+    },
+    {
+      "variant_id": "B6_REMOVE_KNOWN_NONCLAIMS",
+      "removed_coordinates": [
+        "known_nonclaims"
+      ],
+      "carrier_size_bytes": 2096,
+      "size_delta_bytes_from_control": -299,
+      "reconstruction": {
+        "object_type": "INVARIANCE_CATALOGUE_CARRIER_RECONSTRUCTION_V0",
+        "relations": [
+          "SAME_ABSTRACT_STEWARDSHIP_ROLE_NE_SAME_OPERATIVE_CONFIGURATION_GEOMETRY",
+          "TYPED_SURFACE_BINDING_PRESERVES_SURFACE_SPECIFIC_OBSERVATION"
+        ],
+        "standing": "MATCHED_BOUNDED_RELATION_NOT_LEDGER_PROMOTED",
+        "live_applicability_currentness": "UNRESOLVED_BEYOND_FROZEN_G20_BASIS",
+        "basis_handles": [
+          {
+            "role": "G20_ADJUDICATION",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_ADJUDICATION_RESULT_001.md",
+            "blob": "2445254a4b0738c269a627bde5c746c1e51227cc"
+          },
+          {
+            "role": "G20_PRESSURE_RESULT",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_PRESSURE_RESULT_001.md",
+            "blob": "0f1fe776a9ed7ade963b4c5373071ddb304f6ee1"
+          },
+          {
+            "role": "G20_RUNTIME_WITNESS",
+            "path": "docs/evidence/for_planner/typed_surface_stewardship_v0_observation.json",
+            "blob": "a63e164636a34010105d307e5891cff62e26be73"
+          }
+        ],
+        "known_nonclaims": "UNRESOLVED_FROM_CARRIER",
+        "binding_domain_complete": true,
+        "queries": {
+          "REPOSITORY_PRODUCER_ROUTE": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "output_blob",
+                "output_path",
+                "output_present"
+              ],
+              "counterpart_fields": [
+                "storage_blob",
+                "storage_path"
+              ],
+              "edge_fields": [
+                "alignment",
+                "declared_output_path",
+                "relation_kind",
+                "storage_path"
+              ],
+              "observed_closure_posture": "HOLD"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "PYTHON_CALLABLE_INVOCATION": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "endpoint_value",
+                "payload_kind",
+                "payload_shape"
+              ],
+              "counterpart_fields": [
+                "callable_path",
+                "code_blob",
+                "symbol"
+              ],
+              "edge_fields": [
+                "argument_names",
+                "binding_mode",
+                "relation_kind",
+                "return_coordinate"
+              ],
+              "observed_closure_posture": "COHERENT"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "UNTESTED_SURFACE_SENTINEL": {
+            "lookup_posture": "NO_QUALIFIED_BINDING",
+            "surface_binding": null,
+            "tested_surface_match": false,
+            "live_application_authorized": false
+          }
+        },
+        "catalogue_authority_effect": "NONE",
+        "planning_effect": "NONE",
+        "execution_effect": "NONE"
+      },
+      "required_checks": {
+        "relations": true,
+        "standing": true,
+        "live_applicability_currentness": true,
+        "basis_handles": true,
+        "known_nonclaims": false,
+        "REPOSITORY_PRODUCER_ROUTE.lookup_posture": true,
+        "REPOSITORY_PRODUCER_ROUTE.surface_binding": true,
+        "REPOSITORY_PRODUCER_ROUTE.tested_surface_match": true,
+        "REPOSITORY_PRODUCER_ROUTE.live_application_authorized": true,
+        "PYTHON_CALLABLE_INVOCATION.lookup_posture": true,
+        "PYTHON_CALLABLE_INVOCATION.surface_binding": true,
+        "PYTHON_CALLABLE_INVOCATION.tested_surface_match": true,
+        "PYTHON_CALLABLE_INVOCATION.live_application_authorized": true,
+        "UNTESTED_SURFACE_SENTINEL.lookup_posture": true,
+        "UNTESTED_SURFACE_SENTINEL.surface_binding": true,
+        "UNTESTED_SURFACE_SENTINEL.tested_surface_match": true,
+        "UNTESTED_SURFACE_SENTINEL.live_application_authorized": true
+      },
+      "classification": "RECONSTRUCTION_LOSS",
+      "loss_coordinates": [
+        "known_nonclaims"
+      ]
+    },
+    {
+      "variant_id": "C1_REMOVE_SCOPE_AND_TESTED_SURFACES",
+      "removed_coordinates": [
+        "qualified_scope",
+        "tested_surfaces"
+      ],
+      "carrier_size_bytes": 2103,
+      "size_delta_bytes_from_control": -292,
+      "reconstruction": {
+        "object_type": "INVARIANCE_CATALOGUE_CARRIER_RECONSTRUCTION_V0",
+        "relations": [
+          "SAME_ABSTRACT_STEWARDSHIP_ROLE_NE_SAME_OPERATIVE_CONFIGURATION_GEOMETRY",
+          "TYPED_SURFACE_BINDING_PRESERVES_SURFACE_SPECIFIC_OBSERVATION"
+        ],
+        "standing": "MATCHED_BOUNDED_RELATION_NOT_LEDGER_PROMOTED",
+        "live_applicability_currentness": "UNRESOLVED_BEYOND_FROZEN_G20_BASIS",
+        "basis_handles": [
+          {
+            "role": "G20_ADJUDICATION",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_ADJUDICATION_RESULT_001.md",
+            "blob": "2445254a4b0738c269a627bde5c746c1e51227cc"
+          },
+          {
+            "role": "G20_PRESSURE_RESULT",
+            "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_PRESSURE_RESULT_001.md",
+            "blob": "0f1fe776a9ed7ade963b4c5373071ddb304f6ee1"
+          },
+          {
+            "role": "G20_RUNTIME_WITNESS",
+            "path": "docs/evidence/for_planner/typed_surface_stewardship_v0_observation.json",
+            "blob": "a63e164636a34010105d307e5891cff62e26be73"
+          }
+        ],
+        "known_nonclaims": [
+          "PHYSICAL_SURFACE_PORTABILITY",
+          "PERMISSION_NETWORK_SOCIAL_SURFACE_PORTABILITY",
+          "UNIVERSAL_RELATIONAL_SCHEMA",
+          "AUTOMATIC_RELATION_DISCOVERY",
+          "AUTOMATIC_PROPAGATION_SEMANTICS",
+          "PLANNING_ACTIVATION",
+          "WORK_ADMISSION",
+          "AUTHORITY",
+          "EXECUTION",
+          "GLOBAL_INVARIANCE",
+          "SCIENTIFIC_STANDING"
+        ],
+        "binding_domain_complete": "UNRESOLVED_FROM_CARRIER",
+        "queries": {
+          "REPOSITORY_PRODUCER_ROUTE": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "output_blob",
+                "output_path",
+                "output_present"
+              ],
+              "counterpart_fields": [
+                "storage_blob",
+                "storage_path"
+              ],
+              "edge_fields": [
+                "alignment",
+                "declared_output_path",
+                "relation_kind",
+                "storage_path"
+              ],
+              "observed_closure_posture": "HOLD"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "PYTHON_CALLABLE_INVOCATION": {
+            "lookup_posture": "CATALOGUED_TESTED_BINDING",
+            "surface_binding": {
+              "abstract_roles": [
+                "endpoint",
+                "counterpart",
+                "edge",
+                "flow"
+              ],
+              "endpoint_fields": [
+                "endpoint_value",
+                "payload_kind",
+                "payload_shape"
+              ],
+              "counterpart_fields": [
+                "callable_path",
+                "code_blob",
+                "symbol"
+              ],
+              "edge_fields": [
+                "argument_names",
+                "binding_mode",
+                "relation_kind",
+                "return_coordinate"
+              ],
+              "observed_closure_posture": "COHERENT"
+            },
+            "tested_surface_match": true,
+            "live_application_authorized": false
+          },
+          "UNTESTED_SURFACE_SENTINEL": {
+            "lookup_posture": "UNRESOLVED_FROM_CARRIER",
+            "surface_binding": "UNRESOLVED_FROM_CARRIER",
+            "tested_surface_match": "UNRESOLVED_FROM_CARRIER",
+            "live_application_authorized": false
+          }
+        },
+        "catalogue_authority_effect": "NONE",
+        "planning_effect": "NONE",
+        "execution_effect": "NONE"
+      },
+      "required_checks": {
+        "relations": true,
+        "standing": true,
+        "live_applicability_currentness": true,
+        "basis_handles": true,
+        "known_nonclaims": true,
+        "REPOSITORY_PRODUCER_ROUTE.lookup_posture": true,
+        "REPOSITORY_PRODUCER_ROUTE.surface_binding": true,
+        "REPOSITORY_PRODUCER_ROUTE.tested_surface_match": true,
+        "REPOSITORY_PRODUCER_ROUTE.live_application_authorized": true,
+        "PYTHON_CALLABLE_INVOCATION.lookup_posture": true,
+        "PYTHON_CALLABLE_INVOCATION.surface_binding": true,
+        "PYTHON_CALLABLE_INVOCATION.tested_surface_match": true,
+        "PYTHON_CALLABLE_INVOCATION.live_application_authorized": true,
+        "UNTESTED_SURFACE_SENTINEL.lookup_posture": false,
+        "UNTESTED_SURFACE_SENTINEL.surface_binding": false,
+        "UNTESTED_SURFACE_SENTINEL.tested_surface_match": false,
+        "UNTESTED_SURFACE_SENTINEL.live_application_authorized": true
+      },
+      "classification": "RECONSTRUCTION_LOSS",
+      "loss_coordinates": [
+        "UNTESTED_SURFACE_SENTINEL.lookup_posture",
+        "UNTESTED_SURFACE_SENTINEL.surface_binding",
+        "UNTESTED_SURFACE_SENTINEL.tested_surface_match"
+      ]
+    }
+  ],
+  "expectation_checks": {
+    "control_equivalent": true,
+    "expected_equivalent_set": true,
+    "expected_loss_set": true,
+    "paired_scope_loss_is_untested_refusal": true,
+    "single_scope_ablation_preserves_refusal": true,
+    "single_tested_surfaces_ablation_preserves_refusal": true
+  },
+  "all_expectations_match": true,
+  "candidate_findings": {
+    "task_relative_removable_single_coordinates": [
+      "A1_REMOVE_OBJECT_TYPE",
+      "A2_REMOVE_CATALOGUE_ENTRY_ID",
+      "A3_REMOVE_QUALIFIED_SCOPE",
+      "A4_REMOVE_TESTED_SURFACES",
+      "A5_REMOVE_RECONSTRUCTION_USE",
+      "A6_REMOVE_CATALOGUE_AUTHORITY_EFFECT",
+      "A7_REMOVE_STOPPED"
+    ],
+    "task_relative_load_bearing_ablations": [
+      "B1_REMOVE_RELATIONS",
+      "B2_REMOVE_STANDING",
+      "B3_REMOVE_SURFACE_BINDINGS",
+      "B4_REMOVE_LIVE_CURRENTNESS",
+      "B5_REMOVE_BASIS_HANDLES",
+      "B6_REMOVE_KNOWN_NONCLAIMS",
+      "C1_REMOVE_SCOPE_AND_TESTED_SURFACES"
+    ],
+    "single_coordinate_redundancy_ne_absence_of_distributed_reconstruction_load": "YES",
+    "operational_carrier_load_is_task_relative": "YES"
+  },
+  "effects": {
+    "catalogue_mutation_effect": "NONE",
+    "source_mutation_effect": "NONE",
+    "safe_deletion_effect": "NONE",
+    "final_schema_effect": "NONE",
+    "planning_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE"
+  },
+  "claim_ceiling": "One ablation study over the exact G21 candidate operational entry and one declared bounded reconstruction target. Passing an ablation means only that the removed coordinate was not individually required for this target under this reconstructor and preserved alternate coordinates. Failing an ablation means only that the removed coordinate or coordinate set carried load for this target. No global uselessness, global necessity, final schema, safe deletion, quantitative performance benefit, live applicability, planning activation, authority, execution, global invariance, or scientific standing is created.",
+  "stopped": "YES"
+}
