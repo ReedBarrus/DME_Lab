@@ -161,5 +161,7 @@ export function classifyAtlasRelationalTopologySlice(source) {
   if (!checks.represented_vs_qualified_gap_recoverable) return 'HOLD_TOPOLOGY_GAP_LOST';
   if (!checks.unresolved_exterior_visible) return 'HOLD_UNRESOLVED_EXTERIOR_LOST';
   if (!checks.atlas_projection_semantics_preserved) return 'HOLD_ATLAS_SEMANTICS_LOST';
+  if (!checks.projection_status_derived) return 'HOLD_PROJECTION_WORLD_COLLAPSE';
+  if (!checks.effects_neutral) return 'HOLD_FORBIDDEN_EFFECT';
   return 'HOLD_SLICE_CONTRACT_INCOMPLETE';
 }
