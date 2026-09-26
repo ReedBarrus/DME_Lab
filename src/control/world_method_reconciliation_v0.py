@@ -31,7 +31,7 @@ def _refs(value: Sequence[str], field: str) -> list[str]:
 def build_world_method_reconciliation(
     *,
     source_reconciliation_id: str,
-    source_reconciliation_integrity_sha256: str,
+    source_reconciliation_identity_sha256: str,
     world_posture_change: str,
     world_evidence_refs: Sequence[str],
     cognitive_method_change: str,
@@ -48,12 +48,12 @@ def build_world_method_reconciliation(
         )
 
     source_integrity = _text(
-        source_reconciliation_integrity_sha256,
-        "source_reconciliation_integrity_sha256",
+        source_reconciliation_identity_sha256,
+        "source_reconciliation_identity_sha256",
     )
     if len(source_integrity) != 64:
         raise WorldMethodReconciliationError(
-            "source_reconciliation_integrity_sha256 must be sha256"
+            "source_reconciliation_identity_sha256 must be sha256"
         )
 
     world_refs = _refs(world_evidence_refs, "world_evidence_refs")
@@ -72,7 +72,7 @@ def build_world_method_reconciliation(
         "source_reconciliation_id": _text(
             source_reconciliation_id, "source_reconciliation_id"
         ),
-        "source_reconciliation_integrity_sha256": source_integrity,
+        "source_reconciliation_identity_sha256": source_integrity,
         "world_axis": {
             "posture_change": world_posture_change,
             "evidence_refs": world_refs,
@@ -118,8 +118,8 @@ def validate_world_method_reconciliation(value: Mapping[str, Any]) -> dict[str, 
         raise WorldMethodReconciliationError("object_type mismatch")
     expected = build_world_method_reconciliation(
         source_reconciliation_id=retained["source_reconciliation_id"],
-        source_reconciliation_integrity_sha256=retained[
-            "source_reconciliation_integrity_sha256"
+        source_reconciliation_identity_sha256=retained[
+            "source_reconciliation_identity_sha256"
         ],
         world_posture_change=retained["world_axis"]["posture_change"],
         world_evidence_refs=retained["world_axis"]["evidence_refs"],
