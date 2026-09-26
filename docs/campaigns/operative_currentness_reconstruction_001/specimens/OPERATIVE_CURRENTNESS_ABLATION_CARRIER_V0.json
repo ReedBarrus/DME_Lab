@@ -1,0 +1,28 @@
+{
+  "object_type": "OPERATIVE_CURRENTNESS_ABLATION_CARRIER_V0",
+  "campaign_id": "WORKCYCLE_STABILIZATION_001",
+  "authoritative_current_state_inline": false,
+  "planning_surfaces": {
+    "immediate_tasks": {
+      "path": "docs/campaigns/workcycle_stabilization_001/IMMEDIATE_CAMPAIGN_TASKS.md",
+      "blob": "374d3af51efbed52fc3519bb0ebc3a42aa69f141",
+      "declared_status": "ACTIVE_CANDIDATE_SEQUENCE",
+      "currentness_notice": "PLANNING_FILE_NE_CURRENT_CAMPAIGN_STATE",
+      "authoritative_for_currentness": false
+    },
+    "relational_compression_w2": {
+      "path": "docs/campaigns/workcycle_stabilization_001/RELATIONAL_COMPRESSION_W2_READY_TO_SEND.md",
+      "blob": "cb1ffac0e296828cc2145a8e2261c258293e2670",
+      "object_type": "READY_TO_SEND_WORK_PACKET",
+      "work_item_id": "WORKCYCLE_STABILIZATION_001_RELATIONAL_COMPRESSION_W2",
+      "authoritative_for_currentness": false
+    }
+  },
+  "source_handles": {
+    "authoritative_current_state_blob": "4892474e16b3128ad76f5b4cab3f8cef6f966aec",
+    "immediate_tasks_blob": "374d3af51efbed52fc3519bb0ebc3a42aa69f141",
+    "relational_compression_w2_blob": "cb1ffac0e296828cc2145a8e2261c258293e2670"
+  },
+  "cold_source_reading_during_pressure": "DISALLOWED",
+  "missing_coordinate_rule": "RETURN_UNRESOLVED_FROM_CARRIER"
+}
