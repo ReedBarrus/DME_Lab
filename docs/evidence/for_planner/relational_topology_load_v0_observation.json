@@ -1,0 +1,467 @@
+{
+  "object_type": "RELATIONAL_TOPOLOGY_LOAD_V0_OBSERVATION",
+  "pressure_id": "RELATIONAL_TOPOLOGY_LOAD_V0_PRESSURE_001",
+  "frozen_basis": {
+    "expected_blobs": {
+      "h1_adjudication": "d0fa23ee2301024e9a6b96dede95ec62b253156f",
+      "projection": "c09a78d496a0df65ec9570ee05bfbd6d21f5f80a",
+      "topology_evaluator": "810d05ed8dfdfb72b7b6e2cc052d511ac8d8a865",
+      "horizon": "a40c1c31e18b8a5a5b078ad380a8849c6345afb9",
+      "contract": "5100e36f23091d37c89b404c861a079f85f9ddbe"
+    },
+    "actual_blobs": {
+      "h1_adjudication": "d0fa23ee2301024e9a6b96dede95ec62b253156f",
+      "projection": "c09a78d496a0df65ec9570ee05bfbd6d21f5f80a",
+      "topology_evaluator": "810d05ed8dfdfb72b7b6e2cc052d511ac8d8a865",
+      "horizon": "a40c1c31e18b8a5a5b078ad380a8849c6345afb9",
+      "contract": "5100e36f23091d37c89b404c861a079f85f9ddbe"
+    },
+    "blob_checks": {
+      "h1_adjudication": true,
+      "projection": true,
+      "topology_evaluator": true,
+      "horizon": true,
+      "contract": true
+    }
+  },
+  "declared_transformation_class": "BIJECTIVE_TOPOLOGY_SYMBOL_RENAMING_PRESERVING_INCIDENCE_CAPACITY_AND_LOAD",
+  "cases": {
+    "t0_context_distributed_away": {
+      "topology": {
+        "nodes": [
+          {
+            "node_id": "A",
+            "incoming_capacity": 99
+          },
+          {
+            "node_id": "B",
+            "incoming_capacity": 3
+          },
+          {
+            "node_id": "C",
+            "incoming_capacity": 99
+          },
+          {
+            "node_id": "D",
+            "incoming_capacity": 3
+          }
+        ],
+        "edges": [
+          {
+            "edge_id": "FOCAL",
+            "source": "A",
+            "target": "B",
+            "load": 2,
+            "active": true
+          },
+          {
+            "edge_id": "CONTEXT",
+            "source": "C",
+            "target": "D",
+            "load": 2,
+            "active": true
+          }
+        ]
+      },
+      "result": {
+        "object_type": "RELATIONAL_TOPOLOGY_LOAD_V0_RESULT",
+        "focal_edge": {
+          "edge_id": "FOCAL",
+          "source": "A",
+          "target": "B",
+          "load": 2
+        },
+        "focal_endpoint_state": {
+          "source_node": "A",
+          "target_node": "B",
+          "target_incoming_capacity": 3
+        },
+        "incoming_incident_edges": [
+          {
+            "edge_id": "FOCAL",
+            "source": "A",
+            "target": "B",
+            "load": 2
+          }
+        ],
+        "incoming_incident_edge_count": 1,
+        "total_incoming_load": 2,
+        "consequence_posture": "SUPPORTED",
+        "effects": {
+          "mutation_effect": "NONE",
+          "planning_effect": "NONE",
+          "authority_effect": "NONE",
+          "execution_effect": "NONE",
+          "scientific_standing_effect": "NONE"
+        }
+      }
+    },
+    "t1_context_rewired_to_focal_target": {
+      "topology": {
+        "nodes": [
+          {
+            "node_id": "A",
+            "incoming_capacity": 99
+          },
+          {
+            "node_id": "B",
+            "incoming_capacity": 3
+          },
+          {
+            "node_id": "C",
+            "incoming_capacity": 99
+          },
+          {
+            "node_id": "D",
+            "incoming_capacity": 3
+          }
+        ],
+        "edges": [
+          {
+            "edge_id": "FOCAL",
+            "source": "A",
+            "target": "B",
+            "load": 2,
+            "active": true
+          },
+          {
+            "edge_id": "CONTEXT",
+            "source": "C",
+            "target": "B",
+            "load": 2,
+            "active": true
+          }
+        ]
+      },
+      "result": {
+        "object_type": "RELATIONAL_TOPOLOGY_LOAD_V0_RESULT",
+        "focal_edge": {
+          "edge_id": "FOCAL",
+          "source": "A",
+          "target": "B",
+          "load": 2
+        },
+        "focal_endpoint_state": {
+          "source_node": "A",
+          "target_node": "B",
+          "target_incoming_capacity": 3
+        },
+        "incoming_incident_edges": [
+          {
+            "edge_id": "FOCAL",
+            "source": "A",
+            "target": "B",
+            "load": 2
+          },
+          {
+            "edge_id": "CONTEXT",
+            "source": "C",
+            "target": "B",
+            "load": 2
+          }
+        ],
+        "incoming_incident_edge_count": 2,
+        "total_incoming_load": 4,
+        "consequence_posture": "HOLD",
+        "effects": {
+          "mutation_effect": "NONE",
+          "planning_effect": "NONE",
+          "authority_effect": "NONE",
+          "execution_effect": "NONE",
+          "scientific_standing_effect": "NONE"
+        }
+      }
+    },
+    "t2_bijective_topology_renaming": {
+      "topology": {
+        "nodes": [
+          {
+            "node_id": "P",
+            "incoming_capacity": 99
+          },
+          {
+            "node_id": "Q",
+            "incoming_capacity": 3
+          },
+          {
+            "node_id": "R",
+            "incoming_capacity": 99
+          },
+          {
+            "node_id": "S",
+            "incoming_capacity": 3
+          }
+        ],
+        "edges": [
+          {
+            "edge_id": "EDGE_ALPHA",
+            "source": "P",
+            "target": "Q",
+            "load": 2,
+            "active": true
+          },
+          {
+            "edge_id": "EDGE_BETA",
+            "source": "R",
+            "target": "Q",
+            "load": 2,
+            "active": true
+          }
+        ]
+      },
+      "result": {
+        "object_type": "RELATIONAL_TOPOLOGY_LOAD_V0_RESULT",
+        "focal_edge": {
+          "edge_id": "EDGE_ALPHA",
+          "source": "P",
+          "target": "Q",
+          "load": 2
+        },
+        "focal_endpoint_state": {
+          "source_node": "P",
+          "target_node": "Q",
+          "target_incoming_capacity": 3
+        },
+        "incoming_incident_edges": [
+          {
+            "edge_id": "EDGE_ALPHA",
+            "source": "P",
+            "target": "Q",
+            "load": 2
+          },
+          {
+            "edge_id": "EDGE_BETA",
+            "source": "R",
+            "target": "Q",
+            "load": 2
+          }
+        ],
+        "incoming_incident_edge_count": 2,
+        "total_incoming_load": 4,
+        "consequence_posture": "HOLD",
+        "effects": {
+          "mutation_effect": "NONE",
+          "planning_effect": "NONE",
+          "authority_effect": "NONE",
+          "execution_effect": "NONE",
+          "scientific_standing_effect": "NONE"
+        }
+      }
+    },
+    "t3_unrepresented_context_edge": {
+      "operative_topology": {
+        "nodes": [
+          {
+            "node_id": "A",
+            "incoming_capacity": 99
+          },
+          {
+            "node_id": "B",
+            "incoming_capacity": 3
+          },
+          {
+            "node_id": "C",
+            "incoming_capacity": 99
+          },
+          {
+            "node_id": "D",
+            "incoming_capacity": 3
+          }
+        ],
+        "edges": [
+          {
+            "edge_id": "FOCAL",
+            "source": "A",
+            "target": "B",
+            "load": 2,
+            "active": true
+          },
+          {
+            "edge_id": "CONTEXT",
+            "source": "C",
+            "target": "B",
+            "load": 2,
+            "active": true
+          }
+        ]
+      },
+      "represented_topology": {
+        "nodes": [
+          {
+            "node_id": "A",
+            "incoming_capacity": 99
+          },
+          {
+            "node_id": "B",
+            "incoming_capacity": 3
+          },
+          {
+            "node_id": "C",
+            "incoming_capacity": 99
+          },
+          {
+            "node_id": "D",
+            "incoming_capacity": 3
+          }
+        ],
+        "edges": [
+          {
+            "edge_id": "FOCAL",
+            "source": "A",
+            "target": "B",
+            "load": 2,
+            "active": true
+          }
+        ]
+      },
+      "operative_result": {
+        "object_type": "RELATIONAL_TOPOLOGY_LOAD_V0_RESULT",
+        "focal_edge": {
+          "edge_id": "FOCAL",
+          "source": "A",
+          "target": "B",
+          "load": 2
+        },
+        "focal_endpoint_state": {
+          "source_node": "A",
+          "target_node": "B",
+          "target_incoming_capacity": 3
+        },
+        "incoming_incident_edges": [
+          {
+            "edge_id": "FOCAL",
+            "source": "A",
+            "target": "B",
+            "load": 2
+          },
+          {
+            "edge_id": "CONTEXT",
+            "source": "C",
+            "target": "B",
+            "load": 2
+          }
+        ],
+        "incoming_incident_edge_count": 2,
+        "total_incoming_load": 4,
+        "consequence_posture": "HOLD",
+        "effects": {
+          "mutation_effect": "NONE",
+          "planning_effect": "NONE",
+          "authority_effect": "NONE",
+          "execution_effect": "NONE",
+          "scientific_standing_effect": "NONE"
+        }
+      },
+      "represented_prediction": {
+        "object_type": "RELATIONAL_TOPOLOGY_LOAD_V0_RESULT",
+        "focal_edge": {
+          "edge_id": "FOCAL",
+          "source": "A",
+          "target": "B",
+          "load": 2
+        },
+        "focal_endpoint_state": {
+          "source_node": "A",
+          "target_node": "B",
+          "target_incoming_capacity": 3
+        },
+        "incoming_incident_edges": [
+          {
+            "edge_id": "FOCAL",
+            "source": "A",
+            "target": "B",
+            "load": 2
+          }
+        ],
+        "incoming_incident_edge_count": 1,
+        "total_incoming_load": 2,
+        "consequence_posture": "SUPPORTED",
+        "effects": {
+          "mutation_effect": "NONE",
+          "planning_effect": "NONE",
+          "authority_effect": "NONE",
+          "execution_effect": "NONE",
+          "scientific_standing_effect": "NONE"
+        }
+      }
+    }
+  },
+  "normalized_signatures": {
+    "t1_context_rewired_to_focal_target": {
+      "focal_load": 2,
+      "target_incoming_capacity": 3,
+      "incoming_incident_edge_count": 2,
+      "incoming_incident_loads": [
+        2,
+        2
+      ],
+      "total_incoming_load": 4,
+      "consequence_posture": "HOLD",
+      "effects": {
+        "mutation_effect": "NONE",
+        "planning_effect": "NONE",
+        "authority_effect": "NONE",
+        "execution_effect": "NONE",
+        "scientific_standing_effect": "NONE"
+      }
+    },
+    "t2_bijective_topology_renaming": {
+      "focal_load": 2,
+      "target_incoming_capacity": 3,
+      "incoming_incident_edge_count": 2,
+      "incoming_incident_loads": [
+        2,
+        2
+      ],
+      "total_incoming_load": 4,
+      "consequence_posture": "HOLD",
+      "effects": {
+        "mutation_effect": "NONE",
+        "planning_effect": "NONE",
+        "authority_effect": "NONE",
+        "execution_effect": "NONE",
+        "scientific_standing_effect": "NONE"
+      }
+    }
+  },
+  "checks": {
+    "frozen_blobs_match": true,
+    "t0_supported": true,
+    "t1_hold": true,
+    "t0_t1_same_nodes_and_capacities": true,
+    "t0_t1_same_focal_relation": true,
+    "t0_t1_same_focal_endpoint_state": true,
+    "t0_t1_same_edge_count": true,
+    "t0_t1_same_edge_load_multiset": true,
+    "t0_t1_only_context_target_changes": true,
+    "t0_t1_consequence_differs": true,
+    "t2_raw_labels_differ_from_t1": true,
+    "t2_hold": true,
+    "t2_normalized_signature_matches_t1": true,
+    "t3_local_focal_relation_identical": true,
+    "t3_operative_hold": true,
+    "t3_represented_prediction_supported": true,
+    "t3_prediction_fracture": true,
+    "t3_context_edge_operatively_present_but_unrepresented": true
+  },
+  "all_checks_pass": true,
+  "candidate_relations": {
+    "local_relation_state_equivalence_ne_topological_consequence_equivalence": "YES",
+    "qualified_topological_consequence_invariant_under_bijective_renaming": "YES",
+    "represented_relational_topology_ne_operative_relational_topology": "YES",
+    "unrepresented_coupling_can_carry_consequence_within_declared_horizon": "YES",
+    "relational_topology_carries_consequential_load_beyond_isolated_local_relation": "YES"
+  },
+  "effects": {
+    "relation_discovery_effect": "NONE",
+    "global_topology_law_effect": "NONE",
+    "trajectory_law_effect": "NONE",
+    "planning_effect": "NONE",
+    "seat_identity_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE"
+  },
+  "claim_ceiling": "One deterministic four-node/two-edge load-topology family with one focal relation, one surrounding relation, one bijective topology-symbol renaming control, and one observer-omission intervention. The pressure tests whether surrounding incidence/load configuration changes the focal consequence while the local focal relation is fixed, and whether omission of an operative coupling fractures the represented prediction. No universal topology law, causal ontology, global coupling, physical-world validation, trajectory/history law, planning activation, seat identity law, authority, execution, global invariance, or scientific standing is created.",
+  "stopped": "YES"
+}
