@@ -1,7 +1,7 @@
 {
   "object_type": "DISTINCTION_RETENTION_MODE_CURRENT_CAMPAIGN_STATE_V0",
   "campaign_id": "DISTINCTION_RETENTION_MODE_001",
-  "campaign_posture": "G7_WITNESSED_AWAITING_ADJUDICATION",
+  "campaign_posture": "G7_MATCHED_CHECKPOINT_TERMINAL",
   "campaign_basis": "Test whether one exact horizon-scoped load-bearing distinction can be carried by a minimal hot-memory representation while richer G4/G5/G6 evidence remains cold-routable through exact source handles.",
   "predecessor": {
     "campaign_id": "CURRENT_HORIZON_DISTINCTION_DEPENDENCE_001",
@@ -17,20 +17,14 @@
   },
   "current_cell": {
     "cell_id": "DISTINCTION_RETENTION_MODE_G7",
-    "posture": "WITNESSED_AWAITING_ADJUDICATION",
+    "posture": "MATCHED_CHECKPOINT_TERMINAL",
     "target": "DISTINCTION_RETENTION_MODE_V0",
+    "standing": "DISTINCTION_RETENTION_MODE_V0_MATCHED",
+    "result_handle": "docs/campaigns/distinction_retention_mode_001/pressure_runs/DISTINCTION_RETENTION_MODE_V0_PRESSURE_RESULT_001.md",
     "horizon_id": "COGNITIVE_METHOD_APPLICABILITY_HORIZON_V0",
-    "distinction": "WORLD_CHANGE != METHOD_CHANGE",
-    "witness": "distinction_retention_mode_v0_observation.json",
-    "witness_source_ref": "1c9a3aa5befaf5eda275d2ff72a758ace3553415",
-    "witness_transport_ref": "7faa6d397db918215aa04933189542a03d8006ec"
+    "distinction": "WORLD_CHANGE != METHOD_CHANGE"
   },
-  "current_gap": {
-    "gap_id": "G7_DISTINCTION_RETENTION_MODE_EVIDENTIARY_STANDING",
-    "gap_class": "EVIDENTIARY",
-    "statement": "The G7 minimal hot-memory carrier has a clean runtime witness, but its retention-mode standing has not yet been independently adjudicated.",
-    "work_eligible": true
-  },
+  "current_gap": null,
   "pressure_targets": {
     "distinction_retention_required_for_declared_horizon": "YES",
     "full_g4_g5_g6_inline_hot_required": "PRESSURE_TARGET",
@@ -61,9 +55,31 @@
     "scientific standing"
   ],
   "next_pressure": {
-    "pressure_id": "DISTINCTION_RETENTION_MODE_V0_PRESSURE_001_ADJUDICATION",
-    "destination": "FRESH_INDEPENDENT_DISTINCTION_RETENTION_MODE_ADJUDICATOR",
-    "packet": "docs/campaigns/distinction_retention_mode_001/DISTINCTION_RETENTION_MODE_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-    "if_nothing_changes": "DO_NOT_RUN"
-  }
+    "pressure_id": "UNSELECTED",
+    "destination": "HORIZON_REINSPECTION",
+    "if_nothing_changes": "DO_NOT_INSTANTIATE_WORK"
+  },
+  "earned_cells": {
+    "DISTINCTION_RETENTION_MODE_G7": {
+      "standing": "DISTINCTION_RETENTION_MODE_V0_MATCHED",
+      "retention_split": {
+        "distinction_retention_required_for_declared_horizon": "YES",
+        "full_g4_g5_g6_inline_hot_required": "NO",
+        "minimal_hot_carrier_candidate": "YES",
+        "exact_cold_source_retention_required": "YES"
+      },
+      "does_not_establish": [
+        "quantitative carrying-cost optimum",
+        "global ecology retention",
+        "method improvement",
+        "method capitalization",
+        "raw source deletion",
+        "autonomous planning",
+        "authority",
+        "execution",
+        "scientific standing"
+      ]
+    }
+  },
+  "horizon_posture": "OPEN_FOR_REINSPECTION"
 }
