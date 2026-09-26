@@ -1,0 +1,67 @@
+{
+  "object_type": "PARTIAL_BASIS_RETENTION_PROFILE_CURRENT_CAMPAIGN_STATE_V0",
+  "campaign_id": "PARTIAL_BASIS_RETENTION_PROFILE_001",
+  "campaign_posture": "G10_IMPLEMENTED_READY_FOR_PRESSURE",
+  "campaign_basis": "Test whether one exact partial declared basis can carry a non-scalar retention profile over supplied horizon-local requirements while the exterior remains explicitly unresolved, and whether basis extension preserves unchanged prior local coordinates.",
+  "predecessor": {
+    "campaign_id": "RETENTION_SCOPE_AGGREGATION_001",
+    "standing": "RETENTION_SCOPE_AGGREGATION_V0_MATCHED",
+    "result_handle": "docs/campaigns/retention_scope_aggregation_001/pressure_runs/RETENTION_SCOPE_AGGREGATION_V0_PRESSURE_RESULT_001.md",
+    "result_blob": "94152a26078c527cabfef7cd2cf1e7e3b4990df1",
+    "witness_blob": "212d7a9d4fb7bc982cb83b418ee6d5982008c574"
+  },
+  "current_cell": {
+    "cell_id": "PARTIAL_BASIS_RETENTION_PROFILE_G10",
+    "posture": "IMPLEMENTED_READY_FOR_PRESSURE",
+    "target": "PARTIAL_BASIS_RETENTION_PROFILE_V0",
+    "distinction": "WORLD_CHANGE != METHOD_CHANGE"
+  },
+  "current_gap": {
+    "gap_id": "G10_PARTIAL_DECLARED_BASIS_RETENTION_PROFILE",
+    "gap_class": "OPERATIVE_RELATIONAL",
+    "statement": "G9 can aggregate one exact declared horizon set, but the ecology has not yet mechanically represented a partial declared basis as a non-scalar retention profile with an unresolved exterior or tested whether basis extension preserves unchanged prior local coordinates.",
+    "work_eligible": true
+  },
+  "required_profile_coordinates": [
+    "required_members",
+    "unresolved_members",
+    "not_required_members",
+    "n_required",
+    "n_unresolved",
+    "n_not_required",
+    "basis_size"
+  ],
+  "required_scope_split": {
+    "exterior_posture": "UNRESOLVED",
+    "global_ecology_hot_requirement": "UNRESOLVED"
+  },
+  "explicit_noncollapses": [
+    "PARTIAL_DECLARED_BASIS != GLOBAL_ECOLOGY",
+    "PROFILE_COUNTS != LOAD_WEIGHTS",
+    "PROFILE_VECTOR != SCALAR_HOTNESS",
+    "BASIS_EXTENSION != PRIOR_LOCAL_INVALIDATION",
+    "UNRESOLVED_EXTERIOR != EMPTY_EXTERIOR",
+    "LOCAL_COORDINATE_PRESERVATION != GLOBAL_INVARIANCE",
+    "OBSERVABLE_INTELLIGENCE != CONSEQUENTIAL_BEHAVIOR"
+  ],
+  "explicitly_deferred": [
+    "global ecology coverage",
+    "load weighting",
+    "scalar hotness",
+    "economic optimality",
+    "global invariance",
+    "cooling authority",
+    "retention transition execution",
+    "raw source deletion",
+    "method capitalization",
+    "planning authority",
+    "execution authority",
+    "scientific standing"
+  ],
+  "next_pressure": {
+    "pressure_id": "PARTIAL_BASIS_RETENTION_PROFILE_V0_PRESSURE_001",
+    "destination": "LOCAL_G10_PARTIAL_BASIS_PROFILE_OBSERVATION",
+    "packet": "docs/campaigns/partial_basis_retention_profile_001/PARTIAL_BASIS_RETENTION_PROFILE_V0_PRESSURE_001_READY_TO_RUN.md",
+    "if_nothing_changes": "RUN_ONCE"
+  }
+}
