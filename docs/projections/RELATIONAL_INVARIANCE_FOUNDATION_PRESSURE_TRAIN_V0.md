@@ -52,6 +52,14 @@ RESEARCH_LADDER:
 
 H1 — RELATIONAL CONFIGURATION LOAD
 
+**Status:** MATCHED
+
+Frozen adjudication:
+`docs/campaigns/relational_invariance_load_001/pressure_runs/RELATIONAL_INVARIANCE_LOAD_V0_ADJUDICATION_RESULT_001.md`
+
+Frozen adjudication blob:
+`d0fa23ee2301024e9a6b96dede95ec62b253156f`
+
 Question:
 
 Does relational configuration carry consequence beyond endpoint-local state,
@@ -70,7 +78,7 @@ This is the only currently staged pressure.
 
 H2 — RELATIONAL TOPOLOGY LOAD
 
-PROJECTED_ONLY_AFTER_H1
+**Status:** NEXT_BOUNDED_PRESSURE
 
 Question:
 
