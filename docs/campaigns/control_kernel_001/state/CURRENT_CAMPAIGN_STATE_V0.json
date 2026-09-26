@@ -12,8 +12,11 @@
   },
   "current_cell": {
     "cell_id": "CONTROL_KERNEL_CELL_003",
-    "posture": "IMPLEMENTED_READY_FOR_PRESSURE",
+    "posture": "WITNESSED_AWAITING_ADJUDICATION",
     "target": "HORIZON_GAP_SELECTOR_V0",
+    "witness": "horizon_gap_selector_v0_observation.json",
+    "witness_source_ref": "e8cd3acd34e84c15279c275590950a6d304d2885",
+    "witness_transport_ref": "484750cc84d6e14b7b76b7fa31b2566c5bc1bfa0",
     "machine_selection_scope": "EXACT_SINGLE_DECLARED_ELIGIBLE_GAP_OR_STOP",
     "multi_gap_ranking": "UNSUPPORTED"
   },
@@ -23,9 +26,9 @@
     "architectural_capability": "What machinery is missing for later classes of relational gaps?"
   },
   "current_gap": {
-    "gap_id": "G3_HORIZON_GAP_SELECTOR",
-    "gap_class": "ARCHITECTURAL_CAPABILITY",
-    "statement": "RELATIONAL_HORIZON_V0 has matched standing, but the system does not yet have standing to mechanically return the exact sole declared work-eligible gap or NO_JUSTIFIED_WORK from one validated horizon state.",
+    "gap_id": "G3_HORIZON_GAP_SELECTOR_EVIDENTIARY_STANDING",
+    "gap_class": "EVIDENTIARY",
+    "statement": "HORIZON_GAP_SELECTOR_V0 has a clean runtime witness for exact single-gap selection, zero-gap NO_JUSTIFIED_WORK, and multi-gap rejection, but has not yet been independently adjudicated.",
     "work_eligible": true
   },
   "explicitly_deferred": [
@@ -37,9 +40,9 @@
     "concurrency and joint viability economics"
   ],
   "next_pressure": {
-    "pressure_id": "HORIZON_GAP_SELECTOR_V0_PRESSURE_001",
-    "destination": "LOCAL_SINGLE_GAP_OR_STOP_SELECTOR_PRESSURE",
-    "packet": "docs/campaigns/control_kernel_001/HORIZON_GAP_SELECTOR_V0_PRESSURE_001_READY_TO_RUN.md",
+    "pressure_id": "HORIZON_GAP_SELECTOR_V0_PRESSURE_001_ADJUDICATION",
+    "destination": "FRESH_INDEPENDENT_SINGLE_GAP_OR_STOP_SELECTOR_ADJUDICATOR",
+    "packet": "docs/campaigns/control_kernel_001/HORIZON_GAP_SELECTOR_V0_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "earned_cells": {
