@@ -57,6 +57,14 @@
     },
     "cross_host": {
       "posture": "OUT_OF_SCOPE"
+    },
+    "materialized_unit_authority_binding": {
+      "posture": "DIAGNOSTIC_READY_FOR_PRESSURE",
+      "existing_implementation": "src/coordination/verified_authority_admission_v0.py::successor_authority_coordinates + try_verified_authority_atomic_admission",
+      "observer": "tools/observe_materialized_unit_authority_binding_v0.py",
+      "pressure_packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001_READY_TO_RUN.md",
+      "concern": "Current authority coordinates bind exact successor integrity but do not currently include materialized workflow-unit integrity or work-spec identity.",
+      "claim": "No exact materialized-unit authority standing."
     }
   },
   "metabolic_depth": {
@@ -145,26 +153,22 @@
       "claim": "The same settlement can remain STILL_BLOCKED without consequence, reach SATISFIED under independently supplied matched consequence with resolved obstruction, or reach INVALIDATED under contradicted consequence; no successor derivation is established."
     },
     "successor_work_unit_materialization": {
-      "posture": "WITNESSED_AWAITING_ADJUDICATION",
+      "posture": "QUALIFIED",
+      "evidence": "SUCCESSOR_WORK_UNIT_MATERIALIZATION_MATCHED",
+      "result_handle": "docs/campaigns/workcycle_stabilization_001/pressure_runs/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_RESULT_001.md",
       "implementation": "src/coordination/successor_work_unit_materialization_v0.py",
-      "tests": "tests/coordination/test_successor_work_unit_materialization_v0.py",
-      "observer": "tools/observe_successor_work_unit_materialization_v0.py",
-      "witness": "successor_work_unit_materialization_observation.json",
-      "witness_source_ref": "0c6eec42366ab715029e5c645cf9d5baae22ff79",
-      "witness_transport_ref": "94ff342c43996fd7ed3dc061f28b8b07242f2eaa",
-      "adjudication_packet": "docs/campaigns/workcycle_stabilization_001/SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
-      "observed": "One exact deterministic successor plus one explicit externally supplied bounded work spec materializes one complete valid next workflow unit. The unit preserves exact successor/reconciliation/next-pressure lineage, changed work specs change unit identity without changing successor identity, tampering is rejected, and pressure admissibility remains distinct from admission.",
-      "claim": "No materialization standing until independent adjudication."
+      "claim": "Exact successor + explicit externally supplied bounded work spec deterministically materializes one complete next workflow unit; successor identity and work-spec identity remain distinct; no admission, authority, execution, or standing is created."
     }
   },
   "next_load_bearing_coordinate": {
-    "coordinate": "successor_work_unit_materialization",
-    "pressure": "SUCCESSOR_WORK_UNIT_MATERIALIZATION_PRESSURE_001_ADJUDICATION",
-    "selection_basis": "The successor-to-work-unit membrane has a clean witness-only transport. Independent adjudication is required before fresh authority/admission composition is eligible."
+    "coordinate": "materialized_unit_authority_binding",
+    "pressure": "MATERIALIZED_UNIT_AUTHORITY_BINDING_PRESSURE_001",
+    "selection_basis": "Materialization is qualified and demonstrates multiple distinct work units can share one successor identity. The next pressure asks whether current successor-bound authority distinguishes exact executable work semantics before admission."
   },
   "downstream_frontier": [
-    "independently adjudicate successor + explicit work spec -> complete next workflow unit",
-    "bind fresh authority and atomic admission to the materialized successor unit",
+    "pressure successor-bound authority against two distinct materialized units under the same successor",
+    "repair exact materialized-unit/work-spec authority binding only if fractured",
+    "admit and consume fresh exact-work authority for the materialized successor unit",
     "execute/witness/settle/reconcile the materialized successor attempt",
     "derive successor3 and repeat metabolic loop",
     "planner-seat generation of bounded work specs",
