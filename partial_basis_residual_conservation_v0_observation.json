@@ -1,0 +1,68 @@
+{
+  "object_type": "PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0_OBSERVATION",
+  "repo_head": "bb5ecee077215d7b992e79ec2333c38e5a689125",
+  "campaign_id": "PARTIAL_BASIS_RESIDUAL_CONSERVATION_001",
+  "gap_id": "G11_PARTIAL_BASIS_RESIDUAL_CONSERVATION",
+  "distinction_id": "WORLD_CHANGE_NE_METHOD_CHANGE",
+  "basis": {
+    "g10_result": "docs/campaigns/partial_basis_retention_profile_001/pressure_runs/PARTIAL_BASIS_RETENTION_PROFILE_V0_PRESSURE_RESULT_001.md",
+    "g10_result_blob": "e0c27dd06b68ac7e3dc08d20093e60eee35509eb",
+    "g10_witness": "partial_basis_retention_profile_v0_observation.json",
+    "g10_witness_blob": "4f4c7efef184c1f60ab362420d7ef09a1c43dab1"
+  },
+  "residual": {
+    "object_type": "PARTIAL_BASIS_RESIDUAL_CONSERVATION_V0",
+    "distinction_id": "WORLD_CHANGE_NE_METHOD_CHANGE",
+    "source_g10_result_blob_sha": "e0c27dd06b68ac7e3dc08d20093e60eee35509eb",
+    "source_g10_witness_blob_sha": "4f4c7efef184c1f60ab362420d7ef09a1c43dab1",
+    "basis_id": "B1",
+    "source_profile_id": "partial-basis-retention-profile:sha256:1727532fd69214120cddfbb46b2a9f7dc1f2a3c5078f62f33aec28abd277d5b3",
+    "source_extension_id": "partial-basis-retention-profile-extension:sha256:00abe68d1546d608becb9289ba21070876e02cfe0ba016acefd2107bc6d242d2",
+    "interior_unresolved_members": [
+      "H_C"
+    ],
+    "nonresidual_members": [
+      "H_A",
+      "H_B"
+    ],
+    "exterior_posture": "UNRESOLVED",
+    "representation_source": "EXTERNALLY_SUPPLIED",
+    "residual_id": "partial-basis-residual:sha256:e659b06085df2405749844cef3298a23df8fc8dc70b0562d77d4a5f5b5407b58",
+    "residual_conserved": "YES",
+    "residual_gap_status": "NOT_ESTABLISHED",
+    "residual_work_eligibility": "NOT_ESTABLISHED",
+    "architecture_requirement": "NOT_ESTABLISHED",
+    "gap_discovery_effect": "NONE",
+    "gap_selection_effect": "NONE",
+    "work_justification_effect": "NONE",
+    "work_materialization_effect": "NONE",
+    "retention_transition_effect": "NONE",
+    "raw_source_deletion_effect": "NONE",
+    "method_capitalization_effect": "NONE",
+    "policy_mutation_effect": "NONE",
+    "planning_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE",
+    "claim_ceiling": "The exact unresolved residue from one qualified G10 partial basis may be conserved as a typed carrier preserving interior unresolved members, unresolved exterior posture, and source identity. Residual gap standing, work eligibility, architecture requirement, global coverage, planning, authority, execution, and scientific standing remain unestablished.",
+    "integrity_sha256": "74b850074bd9454be5188cf8e52040ae9489437bdff812e131e40b9c3614961e"
+  },
+  "assertions": {
+    "g10_result_blob_exact": true,
+    "g10_witness_blob_exact": true,
+    "g10_standing_matched": true,
+    "g10_witness_passed": true,
+    "interior_residual_exact": true,
+    "nonresidual_members_exact": true,
+    "exterior_residual_unresolved": true,
+    "residual_conserved": true,
+    "residual_gap_status_not_established": true,
+    "residual_work_eligibility_not_established": true,
+    "architecture_requirement_not_established": true,
+    "no_gap_or_work_effects": true,
+    "no_downstream_consequence_effects": true
+  },
+  "all_assertions_pass": true,
+  "claim_ceiling": "The exact unresolved residue exposed by the qualified G10 partial basis is conserved as a typed carrier containing interior unresolved {H_C}, unresolved exterior posture, and exact source identity. H_A and H_B remain classified nonresidual members. Residual gap standing, work eligibility, architecture requirement, global coverage, planning, authority, execution, and scientific standing remain unestablished.",
+  "stopped": "YES"
+}
