@@ -1,0 +1,70 @@
+{
+  "object_type": "RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_V0_OBSERVATION",
+  "campaign_id": "RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_001",
+  "pressure_id": "RESIDUAL_CONSERVATION_RECONSTRUCTION_LOAD_V0_PRESSURE_001_RERUN",
+  "frozen_setup_source": "9efce94d4a548e3bf356fa7411fedd26ccf698c9",
+  "control_return": {
+    "interior_unresolved_members": [
+      "H_C"
+    ],
+    "nonresidual_members": [
+      "H_A",
+      "H_B"
+    ],
+    "exterior_posture": "UNRESOLVED",
+    "residual_conserved": "YES",
+    "residual_gap_status": "NOT_ESTABLISHED",
+    "residual_work_eligibility": "NOT_ESTABLISHED",
+    "architecture_requirement": "NOT_ESTABLISHED"
+  },
+  "ablation_return": {
+    "interior_unresolved_members": [
+      "H_C"
+    ],
+    "nonresidual_members": "UNRESOLVED_FROM_CARRIER",
+    "exterior_posture": "UNRESOLVED",
+    "residual_conserved": "UNRESOLVED_FROM_CARRIER",
+    "residual_gap_status": "UNRESOLVED_FROM_CARRIER",
+    "residual_work_eligibility": "UNRESOLVED_FROM_CARRIER",
+    "architecture_requirement": "UNRESOLVED_FROM_CARRIER"
+  },
+  "assembly": {
+    "control_requested_posture_coordinates_all_resolved": "YES",
+    "ablation_requested_posture_coordinates_all_resolved": "NO",
+    "control_exact_g11_posture_match": "YES",
+    "ablation_exact_g11_posture_match": "NO",
+    "reconstruction_discrimination_present": "YES"
+  },
+  "observed_loss_under_ablation": [
+    "NONRESIDUAL_MEMBERS",
+    "RESIDUAL_CONSERVED",
+    "RESIDUAL_GAP_STATUS",
+    "RESIDUAL_WORK_ELIGIBILITY",
+    "ARCHITECTURE_REQUIREMENT"
+  ],
+  "preserved_under_ablation": [
+    "INTERIOR_UNRESOLVED_MEMBERS",
+    "EXTERIOR_POSTURE"
+  ],
+  "candidate_relation": {
+    "g11_residual_relation_reconstruction_load": "YES",
+    "invariant_promotion_missing_predicate_satisfied": "CANDIDATE_PENDING_ADJUDICATION"
+  },
+  "effects": {
+    "ledger_mutation_effect": "NONE",
+    "gap_discovery_effect": "NONE",
+    "gap_selection_effect": "NONE",
+    "work_justification_effect": "NONE",
+    "work_materialization_effect": "NONE",
+    "retention_transition_effect": "NONE",
+    "raw_source_deletion_effect": "NONE",
+    "method_capitalization_effect": "NONE",
+    "policy_mutation_effect": "NONE",
+    "planning_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE"
+  },
+  "claim_ceiling": "This observation establishes only a runtime discrimination: with the exact G12 carrier pair and cold-source reading withheld, the control carrier reconstructs all seven requested G11 posture coordinates exactly while the ablation carrier leaves five requested coordinates unresolved. Whether this establishes bounded reconstruction load and satisfies the invariant-ledger promotion predicate requires independent adjudication. No ledger mutation, residual gap/work promotion, architecture requirement, global invariance, economics, planning, authority, execution, or scientific standing is established.",
+  "stopped": "YES"
+}
