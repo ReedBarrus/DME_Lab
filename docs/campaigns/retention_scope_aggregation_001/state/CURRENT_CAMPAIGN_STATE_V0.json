@@ -1,0 +1,65 @@
+{
+  "object_type": "RETENTION_SCOPE_AGGREGATION_CURRENT_CAMPAIGN_STATE_V0",
+  "campaign_id": "RETENTION_SCOPE_AGGREGATION_001",
+  "campaign_posture": "G9_IMPLEMENTED_READY_FOR_PRESSURE",
+  "campaign_basis": "Test whether multiple exact horizon-local hot-retention requirements for one distinction can be aggregated into one declared-scope posture without claiming global ecology completeness.",
+  "predecessor": {
+    "campaign_id": "DISTINCTION_RETENTION_CURRENTNESS_001",
+    "standing": "DISTINCTION_RETENTION_CURRENTNESS_V0_MATCHED",
+    "result_handle": "docs/campaigns/distinction_retention_currentness_001/pressure_runs/DISTINCTION_RETENTION_CURRENTNESS_V0_PRESSURE_RESULT_001.md",
+    "result_blob": "e5f603fbea6ef05193f092245252cd26d6eae66a",
+    "witness_blob": "949ff2b9333146ca16e68981123f338f6e4dfd15",
+    "unresolved": "GLOBAL_HOT_REQUIREMENT"
+  },
+  "current_cell": {
+    "cell_id": "RETENTION_SCOPE_AGGREGATION_G9",
+    "posture": "IMPLEMENTED_READY_FOR_PRESSURE",
+    "target": "RETENTION_SCOPE_AGGREGATION_V0",
+    "distinction": "WORLD_CHANGE != METHOD_CHANGE"
+  },
+  "current_gap": {
+    "gap_id": "G9_RETENTION_SCOPE_AGGREGATION",
+    "gap_class": "OPERATIVE_RELATIONAL",
+    "statement": "G8 conditions retention per horizon, but the ecology has no earned mechanism for aggregating multiple horizon-local retention requirements into one bounded declared-scope posture.",
+    "work_eligible": true
+  },
+  "aggregation_law": {
+    "any_required": "REQUIRED",
+    "else_any_unresolved": "UNRESOLVED",
+    "else": "NOT_REQUIRED_FOR_DECLARED_SCOPE"
+  },
+  "required_scope_split": {
+    "declared_scope_complete_for_supplied_horizons": "YES",
+    "global_ecology_hot_requirement": "UNRESOLVED",
+    "exact_cold_source_retention_required": "YES"
+  },
+  "explicit_noncollapses": [
+    "DECLARED_HORIZON_SET != GLOBAL_ECOLOGY",
+    "SCOPE_HOT_REQUIREMENT != GLOBAL_HOT_REQUIREMENT",
+    "NO_REQUIRED_LOCAL_HORIZON_IN_DECLARED_SET != SAFE_GLOBAL_COOLING",
+    "SCOPE_AGGREGATION != RETENTION_TRANSITION",
+    "RETENTION_TRANSITION != AUTHORITY",
+    "UNRESOLVED_LOCAL_HORIZON != NOT_REQUIRED",
+    "OBSERVABLE_INTELLIGENCE != CONSEQUENTIAL_BEHAVIOR"
+  ],
+  "explicitly_deferred": [
+    "global ecology completeness",
+    "global hot requirement",
+    "global cooling",
+    "retention transition execution",
+    "raw source deletion",
+    "depreciation",
+    "retirement",
+    "quantitative carrying-cost optimum",
+    "method capitalization",
+    "planning authority",
+    "execution authority",
+    "scientific standing"
+  ],
+  "next_pressure": {
+    "pressure_id": "RETENTION_SCOPE_AGGREGATION_V0_PRESSURE_001",
+    "destination": "LOCAL_G9_SCOPE_AGGREGATION_OBSERVATION",
+    "packet": "docs/campaigns/retention_scope_aggregation_001/RETENTION_SCOPE_AGGREGATION_V0_PRESSURE_001_READY_TO_RUN.md",
+    "if_nothing_changes": "RUN_ONCE"
+  }
+}
