@@ -1,0 +1,278 @@
+{
+  "object_type": "OPERATIONAL_INVARIANCE_CATALOGUE_V0_OBSERVATION",
+  "pressure_id": "OPERATIONAL_INVARIANCE_CATALOGUE_V0_PRESSURE_001",
+  "frozen_basis": {
+    "expected_blobs": {
+      "memory_compilation_method": "cf3179d0cb2f25459c54112cf783b2479531452c",
+      "g20_adjudication": "2445254a4b0738c269a627bde5c746c1e51227cc",
+      "g20_pressure_result": "0f1fe776a9ed7ade963b4c5373071ddb304f6ee1",
+      "g20_witness": "a63e164636a34010105d307e5891cff62e26be73",
+      "catalogue_entry": "8e67e8aca3ff71d1512e008196f905fffd82bbd2",
+      "lookup_membrane": "ba74a02fbbcf3d9baa823310de09dd7082cd5aa3",
+      "horizon": "ee55fed8c8c243fdb2e87d39cb2893fd1a131ab4",
+      "contract": "245e37841e8f67f5b9a0abca38973acc7b35026f"
+    },
+    "actual_blobs": {
+      "memory_compilation_method": "cf3179d0cb2f25459c54112cf783b2479531452c",
+      "g20_adjudication": "2445254a4b0738c269a627bde5c746c1e51227cc",
+      "g20_pressure_result": "0f1fe776a9ed7ade963b4c5373071ddb304f6ee1",
+      "g20_witness": "a63e164636a34010105d307e5891cff62e26be73",
+      "catalogue_entry": "8e67e8aca3ff71d1512e008196f905fffd82bbd2",
+      "lookup_membrane": "ba74a02fbbcf3d9baa823310de09dd7082cd5aa3",
+      "horizon": "ee55fed8c8c243fdb2e87d39cb2893fd1a131ab4",
+      "contract": "245e37841e8f67f5b9a0abca38973acc7b35026f"
+    },
+    "blob_checks": {
+      "memory_compilation_method": true,
+      "g20_adjudication": true,
+      "g20_pressure_result": true,
+      "g20_witness": true,
+      "catalogue_entry": true,
+      "lookup_membrane": true,
+      "horizon": true,
+      "contract": true
+    }
+  },
+  "catalogue_entry_summary": {
+    "catalogue_entry_id": "G20_TYPED_SURFACE_STEWARDSHIP_RELATION",
+    "tested_surface_count": 2,
+    "tested_surfaces": [
+      "REPOSITORY_PRODUCER_ROUTE",
+      "PYTHON_CALLABLE_INVOCATION"
+    ],
+    "standing": "MATCHED_BOUNDED_RELATION_NOT_LEDGER_PROMOTED",
+    "live_applicability_currentness": "UNRESOLVED_BEYOND_FROZEN_G20_BASIS"
+  },
+  "queries": {
+    "repository_producer_route": {
+      "object_type": "OPERATIONAL_INVARIANCE_CATALOGUE_LOOKUP_V0",
+      "catalogue_entry_id": "G20_TYPED_SURFACE_STEWARDSHIP_RELATION",
+      "requested_surface": "REPOSITORY_PRODUCER_ROUTE",
+      "relations": [
+        "SAME_ABSTRACT_STEWARDSHIP_ROLE_NE_SAME_OPERATIVE_CONFIGURATION_GEOMETRY",
+        "TYPED_SURFACE_BINDING_PRESERVES_SURFACE_SPECIFIC_OBSERVATION"
+      ],
+      "standing": "MATCHED_BOUNDED_RELATION_NOT_LEDGER_PROMOTED",
+      "live_applicability_currentness": "UNRESOLVED_BEYOND_FROZEN_G20_BASIS",
+      "basis_handles": [
+        {
+          "role": "G20_ADJUDICATION",
+          "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_ADJUDICATION_RESULT_001.md",
+          "blob": "2445254a4b0738c269a627bde5c746c1e51227cc"
+        },
+        {
+          "role": "G20_PRESSURE_RESULT",
+          "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_PRESSURE_RESULT_001.md",
+          "blob": "0f1fe776a9ed7ade963b4c5373071ddb304f6ee1"
+        },
+        {
+          "role": "G20_RUNTIME_WITNESS",
+          "path": "docs/evidence/for_planner/typed_surface_stewardship_v0_observation.json",
+          "blob": "a63e164636a34010105d307e5891cff62e26be73"
+        }
+      ],
+      "known_nonclaims": [
+        "PHYSICAL_SURFACE_PORTABILITY",
+        "PERMISSION_NETWORK_SOCIAL_SURFACE_PORTABILITY",
+        "UNIVERSAL_RELATIONAL_SCHEMA",
+        "AUTOMATIC_RELATION_DISCOVERY",
+        "AUTOMATIC_PROPAGATION_SEMANTICS",
+        "PLANNING_ACTIVATION",
+        "WORK_ADMISSION",
+        "AUTHORITY",
+        "EXECUTION",
+        "GLOBAL_INVARIANCE",
+        "SCIENTIFIC_STANDING"
+      ],
+      "catalogue_authority_effect": "NONE",
+      "planning_effect": "NONE",
+      "execution_effect": "NONE",
+      "lookup_posture": "CATALOGUED_TESTED_BINDING",
+      "surface_binding": {
+        "abstract_roles": [
+          "endpoint",
+          "counterpart",
+          "edge",
+          "flow"
+        ],
+        "endpoint_fields": [
+          "output_blob",
+          "output_path",
+          "output_present"
+        ],
+        "counterpart_fields": [
+          "storage_blob",
+          "storage_path"
+        ],
+        "edge_fields": [
+          "alignment",
+          "declared_output_path",
+          "relation_kind",
+          "storage_path"
+        ],
+        "observed_closure_posture": "HOLD"
+      },
+      "tested_surface_match": true,
+      "live_application_authorized": false
+    },
+    "python_callable_invocation": {
+      "object_type": "OPERATIONAL_INVARIANCE_CATALOGUE_LOOKUP_V0",
+      "catalogue_entry_id": "G20_TYPED_SURFACE_STEWARDSHIP_RELATION",
+      "requested_surface": "PYTHON_CALLABLE_INVOCATION",
+      "relations": [
+        "SAME_ABSTRACT_STEWARDSHIP_ROLE_NE_SAME_OPERATIVE_CONFIGURATION_GEOMETRY",
+        "TYPED_SURFACE_BINDING_PRESERVES_SURFACE_SPECIFIC_OBSERVATION"
+      ],
+      "standing": "MATCHED_BOUNDED_RELATION_NOT_LEDGER_PROMOTED",
+      "live_applicability_currentness": "UNRESOLVED_BEYOND_FROZEN_G20_BASIS",
+      "basis_handles": [
+        {
+          "role": "G20_ADJUDICATION",
+          "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_ADJUDICATION_RESULT_001.md",
+          "blob": "2445254a4b0738c269a627bde5c746c1e51227cc"
+        },
+        {
+          "role": "G20_PRESSURE_RESULT",
+          "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_PRESSURE_RESULT_001.md",
+          "blob": "0f1fe776a9ed7ade963b4c5373071ddb304f6ee1"
+        },
+        {
+          "role": "G20_RUNTIME_WITNESS",
+          "path": "docs/evidence/for_planner/typed_surface_stewardship_v0_observation.json",
+          "blob": "a63e164636a34010105d307e5891cff62e26be73"
+        }
+      ],
+      "known_nonclaims": [
+        "PHYSICAL_SURFACE_PORTABILITY",
+        "PERMISSION_NETWORK_SOCIAL_SURFACE_PORTABILITY",
+        "UNIVERSAL_RELATIONAL_SCHEMA",
+        "AUTOMATIC_RELATION_DISCOVERY",
+        "AUTOMATIC_PROPAGATION_SEMANTICS",
+        "PLANNING_ACTIVATION",
+        "WORK_ADMISSION",
+        "AUTHORITY",
+        "EXECUTION",
+        "GLOBAL_INVARIANCE",
+        "SCIENTIFIC_STANDING"
+      ],
+      "catalogue_authority_effect": "NONE",
+      "planning_effect": "NONE",
+      "execution_effect": "NONE",
+      "lookup_posture": "CATALOGUED_TESTED_BINDING",
+      "surface_binding": {
+        "abstract_roles": [
+          "endpoint",
+          "counterpart",
+          "edge",
+          "flow"
+        ],
+        "endpoint_fields": [
+          "endpoint_value",
+          "payload_kind",
+          "payload_shape"
+        ],
+        "counterpart_fields": [
+          "callable_path",
+          "code_blob",
+          "symbol"
+        ],
+        "edge_fields": [
+          "argument_names",
+          "binding_mode",
+          "relation_kind",
+          "return_coordinate"
+        ],
+        "observed_closure_posture": "COHERENT"
+      },
+      "tested_surface_match": true,
+      "live_application_authorized": false
+    },
+    "untested_surface_sentinel": {
+      "object_type": "OPERATIONAL_INVARIANCE_CATALOGUE_LOOKUP_V0",
+      "catalogue_entry_id": "G20_TYPED_SURFACE_STEWARDSHIP_RELATION",
+      "requested_surface": "UNTESTED_SURFACE_SENTINEL",
+      "relations": [
+        "SAME_ABSTRACT_STEWARDSHIP_ROLE_NE_SAME_OPERATIVE_CONFIGURATION_GEOMETRY",
+        "TYPED_SURFACE_BINDING_PRESERVES_SURFACE_SPECIFIC_OBSERVATION"
+      ],
+      "standing": "MATCHED_BOUNDED_RELATION_NOT_LEDGER_PROMOTED",
+      "live_applicability_currentness": "UNRESOLVED_BEYOND_FROZEN_G20_BASIS",
+      "basis_handles": [
+        {
+          "role": "G20_ADJUDICATION",
+          "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_ADJUDICATION_RESULT_001.md",
+          "blob": "2445254a4b0738c269a627bde5c746c1e51227cc"
+        },
+        {
+          "role": "G20_PRESSURE_RESULT",
+          "path": "docs/campaigns/typed_surface_stewardship_001/pressure_runs/TYPED_SURFACE_STEWARDSHIP_V0_PRESSURE_RESULT_001.md",
+          "blob": "0f1fe776a9ed7ade963b4c5373071ddb304f6ee1"
+        },
+        {
+          "role": "G20_RUNTIME_WITNESS",
+          "path": "docs/evidence/for_planner/typed_surface_stewardship_v0_observation.json",
+          "blob": "a63e164636a34010105d307e5891cff62e26be73"
+        }
+      ],
+      "known_nonclaims": [
+        "PHYSICAL_SURFACE_PORTABILITY",
+        "PERMISSION_NETWORK_SOCIAL_SURFACE_PORTABILITY",
+        "UNIVERSAL_RELATIONAL_SCHEMA",
+        "AUTOMATIC_RELATION_DISCOVERY",
+        "AUTOMATIC_PROPAGATION_SEMANTICS",
+        "PLANNING_ACTIVATION",
+        "WORK_ADMISSION",
+        "AUTHORITY",
+        "EXECUTION",
+        "GLOBAL_INVARIANCE",
+        "SCIENTIFIC_STANDING"
+      ],
+      "catalogue_authority_effect": "NONE",
+      "planning_effect": "NONE",
+      "execution_effect": "NONE",
+      "lookup_posture": "NO_QUALIFIED_BINDING",
+      "surface_binding": null,
+      "tested_surface_match": false,
+      "live_application_authorized": false
+    }
+  },
+  "checks": {
+    "frozen_blobs_match": true,
+    "catalogue_entry_valid": true,
+    "repository_lookup_posture": true,
+    "repository_binding_present": true,
+    "repository_closure_preserved": true,
+    "repository_live_application_not_authorized": true,
+    "callable_lookup_posture": true,
+    "callable_binding_present": true,
+    "callable_closure_preserved": true,
+    "callable_live_application_not_authorized": true,
+    "untested_lookup_posture": true,
+    "untested_binding_absent": true,
+    "untested_live_application_not_authorized": true,
+    "standing_preserved": true,
+    "live_currentness_preserved": true,
+    "basis_handles_preserved": true,
+    "nonclaims_preserved": true,
+    "neutral_effects": true
+  },
+  "all_checks_pass": true,
+  "rich_basis_content_reads": 0,
+  "candidate_relations": {
+    "catalogued_tested_binding_ne_live_applicability": "YES",
+    "catalogue_index_ne_scientific_basis": "YES",
+    "untested_surface_ne_inferred_binding": "YES",
+    "compact_operational_entry_supports_tested_surface_routing_without_rich_basis_reopen": "YES"
+  },
+  "effects": {
+    "catalogue_schema_finalization_effect": "NONE",
+    "ledger_promotion_effect": "NONE",
+    "live_applicability_effect": "NONE",
+    "planning_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE"
+  },
+  "claim_ceiling": "One compact candidate catalogue entry indexing the exact matched G20 relation over two tested digital surfaces, plus one untested sentinel lookup. The observer reads the candidate entry and mechanically verifies frozen basis identities without opening rich G20 basis contents. No minimal-carrier claim, final catalogue schema, live applicability, safe deletion, automatic relation discovery, universal portability, planning activation, authority, execution, global invariance, or scientific standing is created.",
+  "stopped": "YES"
+}
