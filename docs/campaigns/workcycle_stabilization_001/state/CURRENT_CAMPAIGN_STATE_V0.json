@@ -138,18 +138,17 @@
     }
   },
   "current_unresolved": [
-    "Exact materialized-work authority consumption is independently matched.",
-    "Exact materialized-work immutable result witnessing is implemented and ready for runtime pressure.",
-    "No exact materialized-work settlement/consequence/reconciliation standing exists yet.",
-    "Repeated metabolism remains unearned."
+    "Exact materialized-work immutable result witnessing is witnessed and awaits independent adjudication.",
+    "Exact materialized-work settlement, consequence, reconciliation, and successor3 remain unearned.",
+    "Post-consequence control/economy projection is pinned but dormant until the consequence spine is frozen."
   ],
   "next_pressure": {
-    "pressure_id": "MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_001",
+    "pressure_id": "MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_001_ADJUDICATION",
     "work_item_id": "WORKCYCLE_STABILIZATION_001_MATERIALIZED_INVOCATION_RESULT_WITNESS",
-    "destination": "LOCAL_EXACT_MATERIALIZED_RESULT_WITNESS",
-    "packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_001_READY_TO_RUN.md",
-    "selection_basis": "MATERIALIZED_ADMITTED_AUTHORITY_CONSUMPTION_MATCHED is frozen. The next load-bearing relation is exact raw callback return -> deterministic immutable result witness while conserving successor/work-spec/materialized-unit/admission/consumption lineage.",
-    "expected_operating_change": "Observe deterministic exact-work result witnessing, output-identity sensitivity, chain-tamper rejection, unresolved model identity preservation, and zero semantic/settlement/consequence/standing effects.",
+    "destination": "FRESH_INDEPENDENT_EXACT_MATERIALIZED_RESULT_WITNESS_ADJUDICATOR",
+    "packet": "docs/campaigns/workcycle_stabilization_001/MATERIALIZED_INVOCATION_RESULT_WITNESS_PRESSURE_001_ADJUDICATION_READY_TO_SEND.md",
+    "selection_basis": "The exact result-witness observation exercised source 5aafa4cb88cf4be6f1f430cfd10b31cbc135d3dd and was transported alone in f6cdb2bfef3ed77a3f3883d4ba50b9398a1a3c87. Independent adjudication is required before exact-work settlement.",
+    "expected_operating_change": "Freeze MATCHED/PARTIAL/FRACTURED/UNRESOLVED for immutable exact-work result witnessing without semantic interpretation, settlement, consequence, execution standing, or scientific standing.",
     "if_nothing_changes": "DO_NOT_RUN"
   },
   "memory_posture": {
@@ -350,5 +349,11 @@
       "priority": "DEFERRED_NONBLOCKING"
     }
   ],
-  "mechanized_depth_profile": "docs/campaigns/workcycle_stabilization_001/state/MECHANIZED_DEPTH_PROFILE_V0.json"
+  "mechanized_depth_profile": "docs/campaigns/workcycle_stabilization_001/state/MECHANIZED_DEPTH_PROFILE_V0.json",
+  "future_phase_projection": {
+    "path": "docs/projections/POST_CONSEQUENCE_SPINE_CONTROL_ECONOMY_PROJECTIONS_V0.md",
+    "posture": "PROJECTION_ONLY",
+    "activation_gate": "DO_NOT_INSTANTIATE_UNTIL_EXACT_CONSEQUENCE_SPINE_IS_FROZEN_THROUGH_SUCCESSOR_3",
+    "standing_effect": "NONE"
+  }
 }
