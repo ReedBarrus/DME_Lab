@@ -1,0 +1,111 @@
+{
+  "object_type": "METHOD_DISTINCTION_LOAD_ABLATION_V0_OBSERVATION",
+  "repo_head": "39ae3cfa4b6243477bef84dbbb56140dd4df252d",
+  "campaign_id": "METHOD_DISTINCTION_LOAD_001",
+  "gap_id": "G5_METHOD_DISTINCTION_LOAD_ABLATION",
+  "specimen_distinction": "WORLD_CHANGE != METHOD_CHANGE",
+  "basis": {
+    "g4_result": "docs/campaigns/world_method_reconciliation_001/pressure_runs/WORLD_METHOD_RECONCILIATION_V0_PRESSURE_RESULT_001.md",
+    "g4_witness": "world_method_reconciliation_v0_observation.json",
+    "g4_witness_blob": "a49d948432c9560310133557ce6c8102ce4931ac",
+    "ablation_protocol": "docs/methods/Distinction_Ablation_Protocol_v0.md",
+    "load_dimensions": "docs/campaigns/sca001/atlas/ATLAS_SEVEN_CONSERVATION_SURFACES_SIX_LOAD_DIMENSIONS_V0.md"
+  },
+  "ablation": {
+    "object_type": "METHOD_DISTINCTION_LOAD_ABLATION_V0",
+    "distinction_id": "WORLD_CHANGE_NE_METHOD_CHANGE",
+    "source_g4_observation_blob_sha": "a49d948432c9560310133557ce6c8102ce4931ac",
+    "pre_ablation_cases": {
+      "WORLD_ONLY": {
+        "world": "CHANGED",
+        "method": "UNCHANGED"
+      },
+      "METHOD_ONLY": {
+        "world": "UNCHANGED",
+        "method": "CHANGED"
+      },
+      "BOTH": {
+        "world": "CHANGED",
+        "method": "CHANGED"
+      },
+      "NEITHER": {
+        "world": "UNCHANGED",
+        "method": "UNCHANGED"
+      },
+      "WORLD_UNRESOLVED": {
+        "world": "UNRESOLVED",
+        "method": "UNCHANGED"
+      },
+      "METHOD_UNRESOLVED": {
+        "world": "UNCHANGED",
+        "method": "UNRESOLVED"
+      }
+    },
+    "ablated_generic_change": {
+      "WORLD_ONLY": "CHANGED",
+      "METHOD_ONLY": "CHANGED",
+      "BOTH": "CHANGED",
+      "NEITHER": "UNCHANGED",
+      "WORLD_UNRESOLVED": "UNRESOLVED",
+      "METHOD_UNRESOLVED": "UNRESOLVED"
+    },
+    "collision_groups": {
+      "CHANGED": [
+        "BOTH",
+        "METHOD_ONLY",
+        "WORLD_ONLY"
+      ],
+      "UNCHANGED": [
+        "NEITHER"
+      ],
+      "UNRESOLVED": [
+        "METHOD_UNRESOLVED",
+        "WORLD_UNRESOLVED"
+      ]
+    },
+    "pre_ablation_distinct_signature_count": 6,
+    "post_ablation_distinct_signature_count": 3,
+    "semantic_discrimination_loss": true,
+    "load_profile": {
+      "functional": "UNRESOLVED",
+      "semantic": "YES",
+      "authority": "UNRESOLVED",
+      "provenance": "UNRESOLVED",
+      "temporal": "UNRESOLVED",
+      "coordination": "UNRESOLVED"
+    },
+    "representation_source": "EXTERNALLY_SUPPLIED",
+    "ablation_id": "method-distinction-load-ablation:sha256:1bb492d319298519786503a873ceabc5f24dbe33a0b78e2ad48b8c1798a19141",
+    "current_load_bearing_status": "UNRESOLVED",
+    "retention_effect": "NONE",
+    "method_capitalization_effect": "NONE",
+    "policy_mutation_effect": "NONE",
+    "gap_selection_effect": "NONE",
+    "work_justification_effect": "NONE",
+    "planning_effect": "NONE",
+    "authority_effect": "NONE",
+    "execution_effect": "NONE",
+    "scientific_standing_effect": "NONE",
+    "claim_ceiling": "Ablating WORLD_CHANGE != METHOD_CHANGE from the exact supplied G4 case frame may establish deterministic loss of representational discrimination and therefore semantic load within that frame only. No live-horizon dependence, method improvement, retention, capitalization, policy mutation, work justification, authority, execution, or scientific standing is established.",
+    "integrity_sha256": "06e73368b46d4792ffdc8252603bc51c3ead9cff236983e5c921ea0be78fd1b7"
+  },
+  "assertions": {
+    "g4_standing_matched": true,
+    "g4_witness_blob_exact": true,
+    "g4_witness_assertions_pass": true,
+    "six_pre_ablation_signatures": true,
+    "three_post_ablation_signatures": true,
+    "changed_collision_exact": true,
+    "unchanged_neither_only": true,
+    "unresolved_collision_exact": true,
+    "semantic_discrimination_loss": true,
+    "semantic_load_change_yes": true,
+    "other_load_dimensions_unresolved": true,
+    "current_load_bearing_status_unresolved": true,
+    "no_retention_or_capitalization_effect": true,
+    "no_downstream_consequence_effects": true
+  },
+  "all_assertions_pass": true,
+  "claim_ceiling": "Removing WORLD_CHANGE != METHOD_CHANGE from the exact matched G4 case frame collapses six distinct world/method signatures into three generic change signatures. This establishes semantic / representational load for that distinction within this exact frame only. Functional, authority, provenance, temporal, and coordination load remain UNRESOLVED. Current live-horizon dependence, method improvement, retention value, capitalization, policy mutation, work justification, authority, execution, and scientific standing are not established.",
+  "stopped": "YES"
+}
