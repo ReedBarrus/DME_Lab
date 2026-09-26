@@ -81,6 +81,21 @@ Each reconstruction must run in a separate fresh thread.
 Each thread receives only its assigned carrier identity plus the reconstruction
 instructions below.
 
+REPAIR NOTE:
+
+Pressure observation 001 showed that the prior interface incorrectly requested
+EXACT_G11_POSTURE_RECONSTRUCTABLE_FROM_CARRIER as if it were carrier content.
+That meta-coordinate is removed from the observer return schema.
+
+The carriers are unchanged.
+
+After each seven-field return, assembly derives:
+
+REQUESTED_POSTURE_COORDINATES_ALL_RESOLVED = YES
+iff none of the seven returned coordinates is UNRESOLVED_FROM_CARRIER.
+
+Otherwise it is NO.
+
 The reconstructor must not read:
 
 - the other carrier;
@@ -132,13 +147,12 @@ RESIDUAL_CONSERVED
 RESIDUAL_GAP_STATUS
 RESIDUAL_WORK_ELIGIBILITY
 ARCHITECTURE_REQUIREMENT
-EXACT_G11_POSTURE_RECONSTRUCTABLE_FROM_CARRIER
 
 If a requested coordinate is not explicitly supported by the carrier, return:
 
 UNRESOLVED_FROM_CARRIER
 
-Return only those eight fields and stop.
+Return only those seven fields and stop.
 
 # ABLATION THREAD PROMPT
 
@@ -173,7 +187,7 @@ If a requested coordinate is not explicitly supported by the carrier, return:
 
 UNRESOLVED_FROM_CARRIER
 
-Return only those eight fields and stop.
+Return only those seven fields and stop.
 
 # OBSERVATION ASSEMBLY
 
@@ -183,17 +197,17 @@ CONTROL_RETURN
 ABLATION_RETURN
 CONTROL_EXACT_MATCH
 ABLATION_EXACT_MATCH
-CONTROL_RECONSTRUCTABLE
-ABLATION_RECONSTRUCTABLE
+CONTROL_REQUESTED_POSTURE_COORDINATES_ALL_RESOLVED
+ABLATION_REQUESTED_POSTURE_COORDINATES_ALL_RESOLVED
 RECONSTRUCTION_DISCRIMINATION_PRESENT
 
 Do not interpret a thread's prose beyond the eight exact requested fields.
 
 Candidate pressure relation:
 
-CONTROL exact G11 posture reconstructable
+CONTROL seven requested posture coordinates all resolved and exact
 +
-ABLATION exact G11 posture not reconstructable
+ABLATION one or more requested posture coordinates unresolved
 →
 G11_RESIDUAL_RELATION_RECONSTRUCTION_LOAD = YES
 
